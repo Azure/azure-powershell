@@ -20,8 +20,8 @@ Get-AzVMwareWorkloadNetworkSegment -PrivateCloudName <String> -ResourceGroupName
 
 ### Get
 ```
-Get-AzVMwareWorkloadNetworkSegment -PrivateCloudName <String> -ResourceGroupName <String> -SegmentId <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVMwareWorkloadNetworkSegment -PrivateCloudName <String> -ResourceGroupName <String>
+ -SegmentName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -117,7 +117,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SegmentId
+### -SegmentName
 NSX Segment identifier.
 Generally the same as the Segment's display name
 

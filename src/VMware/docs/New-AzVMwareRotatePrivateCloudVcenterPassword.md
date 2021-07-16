@@ -1,32 +1,32 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/invoke-azvmwarerotateprivatecloudnsxtpassword
+online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarerotateprivatecloudvcenterpassword
 schema: 2.0.0
 ---
 
-# Invoke-AzVMwareRotatePrivateCloudNsxtPassword
+# New-AzVMwareRotatePrivateCloudVcenterPassword
 
 ## SYNOPSIS
-Rotate the NSX-T Manager password
+Rotate the vCenter password
 
 ## SYNTAX
 
 ### Rotate (Default)
 ```
-Invoke-AzVMwareRotatePrivateCloudNsxtPassword -PrivateCloudName <String> -ResourceGroupName <String>
+New-AzVMwareRotatePrivateCloudVcenterPassword -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RotateViaIdentity
 ```
-Invoke-AzVMwareRotatePrivateCloudNsxtPassword -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>]
+New-AzVMwareRotatePrivateCloudVcenterPassword -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Rotate the NSX-T Manager password
+Rotate the vCenter password
 
 ## EXAMPLES
 

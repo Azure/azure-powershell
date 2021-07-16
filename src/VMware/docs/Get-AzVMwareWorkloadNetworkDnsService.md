@@ -20,7 +20,7 @@ Get-AzVMwareWorkloadNetworkDnsService -PrivateCloudName <String> -ResourceGroupN
 
 ### Get
 ```
-Get-AzVMwareWorkloadNetworkDnsService -DnsServiceId <String> -PrivateCloudName <String>
+Get-AzVMwareWorkloadNetworkDnsService -DnsServiceName <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -70,7 +70,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsServiceId
+### -DnsServiceName
 NSX DNS Service identifier.
 Generally the same as the DNS Service's display name
 

@@ -14,7 +14,7 @@ Delete a Public IP Block by id in a private cloud workload network.
 
 ### Delete (Default)
 ```
-Remove-AzVMwareWorkloadNetworkPublicIP -PrivateCloudName <String> -PublicIPId <String>
+Remove-AzVMwareWorkloadNetworkPublicIP -PrivateCloudName <String> -PublicIPName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -141,7 +141,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIPId
+### -PublicIPName
 NSX Public IP Block identifier.
 Generally the same as the Public IP Block's display name
 

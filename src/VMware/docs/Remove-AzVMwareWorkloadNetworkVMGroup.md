@@ -15,7 +15,7 @@ Delete a vm group by id in a private cloud workload network.
 ### Delete (Default)
 ```
 Remove-AzVMwareWorkloadNetworkVMGroup -PrivateCloudName <String> -ResourceGroupName <String>
- -VMGroupId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ -VMGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -172,7 +172,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMGroupId
+### -VMGroupName
 NSX VM Group identifier.
 Generally the same as the VM Group's display name
 

@@ -1,59 +1,67 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkvirtualmachine
+online version: https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareexpressrouteauthorization
 schema: 2.0.0
 ---
 
-# Get-AzVMwareWorkloadNetworkVirtualMachine
+# Remove-AzVMwareExpressRouteAuthorization
 
 ## SYNOPSIS
-Get a virtual machine by id in a private cloud workload network.
+Delete an ExpressRoute Circuit Authorization in a private cloud
 
 ## SYNTAX
 
-### List (Default)
+### Delete (Default)
 ```
-Get-AzVMwareWorkloadNetworkVirtualMachine -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzVMwareWorkloadNetworkVirtualMachine -PrivateCloudName <String> -ResourceGroupName <String>
- -VirtualMachineId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzVMwareWorkloadNetworkVirtualMachine -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>]
+Remove-AzVMwareExpressRouteAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### DeleteViaIdentity
+```
+Remove-AzVMwareExpressRouteAuthorization -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Get a virtual machine by id in a private cloud workload network.
+Delete an ExpressRoute Circuit Authorization in a private cloud
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete express route authorization in private cloud
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzVMwareExpressRouteAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_authorization
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete express route authorization in private cloud
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete express route authorization in private cloud
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzVMwareExpressRouteAuthorization -InputObject "/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/authorizations/azps_test_authorization
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete express route authorization in private cloud
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -76,7 +84,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -86,12 +94,57 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the ExpressRoute Circuit Authorization in the private cloud
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: AuthorizationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PrivateCloudName
 Name of the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -107,7 +160,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -121,8 +174,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -132,15 +185,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualMachineId
-Virtual Machine identifier
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +225,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IWorkloadNetworkVirtualMachine
+### System.Boolean
 
 ## NOTES
 

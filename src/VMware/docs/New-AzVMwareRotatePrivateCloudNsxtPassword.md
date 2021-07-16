@@ -1,62 +1,69 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareauthorization
+online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarerotateprivatecloudnsxtpassword
 schema: 2.0.0
 ---
 
-# Get-AzVMwareAuthorization
+# New-AzVMwareRotatePrivateCloudNsxtPassword
 
 ## SYNOPSIS
-Get an ExpressRoute Circuit Authorization by name in a private cloud
+Rotate the NSX-T Manager password
 
 ## SYNTAX
 
-### List (Default)
+### Rotate (Default)
 ```
-Get-AzVMwareAuthorization -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzVMwareRotatePrivateCloudNsxtPassword -PrivateCloudName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### RotateViaIdentity
 ```
-Get-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzVMwareRotatePrivateCloudNsxtPassword -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get an ExpressRoute Circuit Authorization by name in a private cloud
+Rotate the NSX-T Manager password
 
 ## EXAMPLES
 
-### Example 1: Get authorization
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzVMwareAuthorization -Name azps_test_auth -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+PS C:\> {{ Add code here }}
 
-Name           Type
-----           ----
-azps_test_auth Microsoft.AVS/privateClouds/authorizations
+{{ Add output here }}
 ```
 
-This cmdlet gets authorization `azps_test_auth` under private cloud `azps_test_cloud`
+{{ Add description here }}
 
-### Example 2: List authorization
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+PS C:\> {{ Add code here }}
 
-Name           Type
-----           ----
-azps_test_auth Microsoft.AVS/privateClouds/authorizations
+{{ Add output here }}
 ```
 
-This cmdlet lists authorization `azps_test_auth` under private cloud `azps_test_cloud`
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -79,7 +86,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: RotateViaIdentity
 Aliases:
 
 Required: True
@@ -89,15 +96,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the ExpressRoute Circuit Authorization in the private cloud
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: AuthorizationName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -109,7 +131,7 @@ Name of the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Rotate
 Aliases:
 
 Required: True
@@ -125,7 +147,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Rotate
 Aliases:
 
 Required: True
@@ -139,13 +161,44 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Rotate
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -159,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IExpressRouteAuthorization
+### System.Boolean
 
 ## NOTES
 

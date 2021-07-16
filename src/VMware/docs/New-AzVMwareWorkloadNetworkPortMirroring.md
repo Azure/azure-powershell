@@ -13,7 +13,7 @@ Create a port mirroring profile by id in a private cloud workload network.
 ## SYNTAX
 
 ```
-New-AzVMwareWorkloadNetworkPortMirroring -PortMirroringId <String> -PrivateCloudName <String>
+New-AzVMwareWorkloadNetworkPortMirroring -PortMirroringName <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Destination <String>]
  [-Direction <PortMirroringDirectionEnum>] [-DisplayName <String>] [-Revision <Int64>] [-Source <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -134,7 +134,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PortMirroringId
+### -PortMirroringName
 NSX Port Mirroring identifier.
 Generally the same as the Port Mirroring display name
 

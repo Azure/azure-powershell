@@ -20,8 +20,8 @@ Get-AzVMwareWorkloadNetworkVMGroup -PrivateCloudName <String> -ResourceGroupName
 
 ### Get
 ```
-Get-AzVMwareWorkloadNetworkVMGroup -PrivateCloudName <String> -ResourceGroupName <String> -VMGroupId <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVMwareWorkloadNetworkVMGroup -PrivateCloudName <String> -ResourceGroupName <String>
+ -VMGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -132,7 +132,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMGroupId
+### -VMGroupName
 NSX VM Group identifier.
 Generally the same as the VM Group's display name
 

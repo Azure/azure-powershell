@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzVMwareRotatePrivateCloudNsxtPassword.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzVMwareWorkloadNetworkVM.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,12 +11,16 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Invoke-AzVMwareRotatePrivateCloudNsxtPassword' {
-    It 'Rotate' -skip {
+Describe 'Get-AzVMwareWorkloadNetworkVM' {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'RotateViaIdentity' -skip {
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

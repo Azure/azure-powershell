@@ -13,6 +13,11 @@ while(-not $mockingPath) {
 
 Describe 'New-AzVMwareGlobalReachConnection' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            New-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup
+
+            New-AzVMwareGlobalReachConnection -Name $env.rstr4 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup
+
+        } | Should -Not -Throw
     }
 }

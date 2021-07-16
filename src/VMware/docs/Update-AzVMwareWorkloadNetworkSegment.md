@@ -15,7 +15,7 @@ Create or update a segment by id in a private cloud workload network.
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwareWorkloadNetworkSegment -PrivateCloudName <String> -ResourceGroupName <String>
- -SegmentId <String> [-SubscriptionId <String>] [-ConnectedGateway <String>] [-DisplayName <String>]
+ -SegmentName <String> [-SubscriptionId <String>] [-ConnectedGateway <String>] [-DisplayName <String>]
  [-Revision <Int64>] [-SubnetDhcpRange <String[]>] [-SubnetGatewayAddress <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -189,7 +189,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SegmentId
+### -SegmentName
 NSX Segment identifier.
 Generally the same as the Segment's display name
 

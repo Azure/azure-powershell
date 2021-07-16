@@ -15,7 +15,7 @@ Create or update a vm group by id in a private cloud workload network.
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwareWorkloadNetworkVMGroup -PrivateCloudName <String> -ResourceGroupName <String>
- -VMGroupId <String> [-SubscriptionId <String>] [-DisplayName <String>] [-Member <String[]>]
+ -VMGroupName <String> [-SubscriptionId <String>] [-DisplayName <String>] [-Member <String[]>]
  [-Revision <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -203,7 +203,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMGroupId
+### -VMGroupName
 NSX VM Group identifier.
 Generally the same as the VM Group's display name
 

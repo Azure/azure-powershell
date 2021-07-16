@@ -13,9 +13,9 @@ Create a vm group by id in a private cloud workload network.
 ## SYNTAX
 
 ```
-New-AzVMwareWorkloadNetworkVMGroup -PrivateCloudName <String> -ResourceGroupName <String> -VMGroupId <String>
- [-SubscriptionId <String>] [-DisplayName <String>] [-Member <String[]>] [-Revision <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVMwareWorkloadNetworkVMGroup -PrivateCloudName <String> -ResourceGroupName <String>
+ -VMGroupName <String> [-SubscriptionId <String>] [-DisplayName <String>] [-Member <String[]>]
+ [-Revision <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,7 +179,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMGroupId
+### -VMGroupName
 NSX VM Group identifier.
 Generally the same as the VM Group's display name
 

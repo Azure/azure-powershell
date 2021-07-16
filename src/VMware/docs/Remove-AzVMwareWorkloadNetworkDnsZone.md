@@ -14,7 +14,7 @@ Delete a DNS zone by id in a private cloud workload network.
 
 ### Delete (Default)
 ```
-Remove-AzVMwareWorkloadNetworkDnsZone -DnsZoneId <String> -PrivateCloudName <String>
+Remove-AzVMwareWorkloadNetworkDnsZone -DnsZoneName <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -80,7 +80,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsZoneId
+### -DnsZoneName
 NSX DNS Zone identifier.
 Generally the same as the DNS Zone's display name
 

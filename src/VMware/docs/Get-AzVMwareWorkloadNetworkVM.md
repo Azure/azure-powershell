@@ -1,32 +1,36 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/invoke-azvmwarerotateprivatecloudvcenterpassword
+online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkvm
 schema: 2.0.0
 ---
 
-# Invoke-AzVMwareRotatePrivateCloudVcenterPassword
+# Get-AzVMwareWorkloadNetworkVM
 
 ## SYNOPSIS
-Rotate the vCenter password
+Get a virtual machine by id in a private cloud workload network.
 
 ## SYNTAX
 
-### Rotate (Default)
+### List (Default)
 ```
-Invoke-AzVMwareRotatePrivateCloudVcenterPassword -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzVMwareWorkloadNetworkVM -PrivateCloudName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### RotateViaIdentity
+### Get
 ```
-Invoke-AzVMwareRotatePrivateCloudVcenterPassword -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzVMwareWorkloadNetworkVM -PrivateCloudName <String> -ResourceGroupName <String>
+ -VirtualMachineId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzVMwareWorkloadNetworkVM -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Rotate the vCenter password
+Get a virtual machine by id in a private cloud workload network.
 
 ## EXAMPLES
 
@@ -50,21 +54,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -86,7 +75,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-Parameter Sets: RotateViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -96,42 +85,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PrivateCloudName
 Name of the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Rotate
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -147,7 +106,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Rotate
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -161,8 +120,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Rotate
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -172,31 +131,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -VirtualMachineId
+Virtual Machine identifier
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: System.String
+Parameter Sets: Get
+Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -212,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IWorkloadNetworkVirtualMachine
 
 ## NOTES
 

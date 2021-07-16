@@ -20,7 +20,7 @@ Get-AzVMwareWorkloadNetworkPortMirroring -PrivateCloudName <String> -ResourceGro
 
 ### Get
 ```
-Get-AzVMwareWorkloadNetworkPortMirroring -PortMirroringId <String> -PrivateCloudName <String>
+Get-AzVMwareWorkloadNetworkPortMirroring -PortMirroringName <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -86,7 +86,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PortMirroringId
+### -PortMirroringName
 NSX Port Mirroring identifier.
 Generally the same as the Port Mirroring display name
 

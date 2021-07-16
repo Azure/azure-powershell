@@ -12,32 +12,38 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
-    $privatecloudname1 = "azps-test-cloud-" + (RandomString -allChars $false -len 3)
-    $privatecloudname2 = "azps-test-cloud-" + (RandomString -allChars $false -len 4)
+    $privateCloudName1 = "azps_test_cloud_" + (RandomString -allChars $false -len 3)
+    $privateCloudName2 = "azps_test_cloud_" + (RandomString -allChars $false -len 4)
     $rstr1 = RandomString -allChars $false -len 6
     $rstr2 = RandomString -allChars $false -len 6
     $rstr3 = RandomString -allChars $false -len 6
     $rstr4 = RandomString -allChars $false -len 6
 
-    $env.Add("privatecloudname1", $privatecloudname1)
+    $env.Add("privateCloudName1", $privateCloudName1)
+    $env.Add("privateCloudName2", $privateCloudName2)
+    
     $env.Add("rstr1", $rstr1)
     $env.Add("rstr2", $rstr2)
     $env.Add("rstr3", $rstr3)
     $env.Add("rstr4", $rstr4)
 
-    $env.Add("location", "australiaeast")
+    $env.Add("location", "centralus")
 
     # Create the test group
     write-host "start to create test group"
-    $resourceGroup = "azps-test-grou" #"testgroup" + $env.rstr4
+    $resourceGroup1 = "azps_test_grou1" #"testgroup" + $env.rstr4
+    $resourceGroup2 = "azps_test_grou2" #"testgroup" + $env.rstr4
     $env.Add("resourceGroup", $resourceGroup)
-    New-AzResourceGroup -Name $resourceGroup -Location $env.location
-    New-AzVMwarePrivateCloud -Name $env.privatecloudname1 `
-        -ResourceGroupName $resourceGroup -NetworkBlock 192.168.48.0/22 `
+    
+    New-AzResourceGroup -Name $resourceGroup1 -Location $env.location
+    New-AzResourceGroup -Name $resourceGroup2 -Location $env.location
+
+    New-AzVMwarePrivateCloud -Name $env.privateCloudName1 `
+        -ResourceGroupName $resourceGroup1 -NetworkBlock 192.168.48.0/22 `
         -Sku av36 -ManagementClusterSize 3 -Location $env.location
     
-    New-AzVMwarePrivateCloud -Name $env.privatecloudname2 `
-        -ResourceGroupName $resourceGroup -NetworkBlock 192.168.48.0/22 `
+    New-AzVMwarePrivateCloud -Name $env.privateCloudName2 `
+        -ResourceGroupName $resourceGroup2 -NetworkBlock 192.168.48.0/22 `
         -Sku av36 -ManagementClusterSize 3 -Location $env.location
 
     # For any resources you created for test, you should add it to $env here.

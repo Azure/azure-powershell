@@ -14,7 +14,7 @@ Create or update a global reach connection in a private cloud
 
 ```
 New-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AuthorizationKey <String>] [-PeerExpressRouteCircuit <String>]
+ [-SubscriptionId <String>] [-AuthorizationKey <String>] [-PeerExpressRouteResourceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeerExpressRouteCircuit
+### -PeerExpressRouteResourceId
 Identifier of the ExpressRoute Circuit to peer with in the global reach connection
 
 ```yaml

@@ -13,10 +13,10 @@ Create a segment by id in a private cloud workload network.
 ## SYNTAX
 
 ```
-New-AzVMwareWorkloadNetworkSegment -PrivateCloudName <String> -ResourceGroupName <String> -SegmentId <String>
- [-SubscriptionId <String>] [-ConnectedGateway <String>] [-DisplayName <String>] [-Revision <Int64>]
- [-SubnetDhcpRange <String[]>] [-SubnetGatewayAddress <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVMwareWorkloadNetworkSegment -PrivateCloudName <String> -ResourceGroupName <String>
+ -SegmentName <String> [-SubscriptionId <String>] [-ConnectedGateway <String>] [-DisplayName <String>]
+ [-Revision <Int64>] [-SubnetDhcpRange <String[]>] [-SubnetGatewayAddress <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -165,7 +165,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SegmentId
+### -SegmentName
 NSX Segment identifier.
 Generally the same as the Segment's display name
 

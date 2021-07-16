@@ -20,7 +20,7 @@ Get-AzVMwareWorkloadNetworkDhcp -PrivateCloudName <String> -ResourceGroupName <S
 
 ### Get
 ```
-Get-AzVMwareWorkloadNetworkDhcp -DhcpId <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Get-AzVMwareWorkloadNetworkDhcp -DhcpIdName <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -70,7 +70,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DhcpId
+### -DhcpIdName
 NSX DHCP identifier.
 Generally the same as the DHCP display name
 

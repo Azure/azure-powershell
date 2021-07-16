@@ -20,8 +20,8 @@ Get-AzVMwareWorkloadNetworkGateway -PrivateCloudName <String> -ResourceGroupName
 
 ### Get
 ```
-Get-AzVMwareWorkloadNetworkGateway -GatewayId <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVMwareWorkloadNetworkGateway -GatewayName <String> -PrivateCloudName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -70,7 +70,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GatewayId
+### -GatewayName
 NSX Gateway identifier.
 Generally the same as the Gateway's display name
 

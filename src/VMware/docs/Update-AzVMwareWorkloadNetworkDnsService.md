@@ -14,7 +14,7 @@ Create or update a DNS service by id in a private cloud workload network.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzVMwareWorkloadNetworkDnsService -DnsServiceId <String> -PrivateCloudName <String>
+Update-AzVMwareWorkloadNetworkDnsService -DnsServiceName <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultDnsZone <String>] [-DisplayName <String>]
  [-DnsServiceIP <String>] [-FqdnZone <String[]>] [-LogLevel <DnsServiceLogLevelEnum>] [-Revision <Int64>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -112,22 +112,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsServiceId
-NSX DNS Service identifier.
-Generally the same as the DNS Service's display name
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DnsServiceIP
 DNS service IP of the DNS Service.
 
@@ -137,6 +121,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsServiceName
+NSX DNS Service identifier.
+Generally the same as the DNS Service's display name
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

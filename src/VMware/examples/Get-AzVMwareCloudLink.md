@@ -22,7 +22,7 @@ Get cloud link
 
 ### Example 3: Get cloud link
 ```powershell
-PS C:\> Get-AzVMwareCloudLink -InputObject /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/cloudLinks/azps_test_cloudlink
+PS C:\> Get-AzVMwareCloudLink -InputObject "/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/cloudLinks/azps_test_cloudlink"
 
 Name                Type
 ----                ----

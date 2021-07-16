@@ -13,7 +13,7 @@ Create a Public IP Block by id in a private cloud workload network.
 ## SYNTAX
 
 ```
-New-AzVMwareWorkloadNetworkPublicIP -PrivateCloudName <String> -PublicIPId <String>
+New-AzVMwareWorkloadNetworkPublicIP -PrivateCloudName <String> -PublicIPName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DisplayName <String>] [-NumberOfPublicIP <Int64>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -133,7 +133,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIPId
+### -PublicIPName
 NSX Public IP Block identifier.
 Generally the same as the Public IP Block's display name
 

@@ -14,9 +14,6 @@ Microsoft Azure PowerShell: VMware cmdlets
 ### [Get-AzVMwareAddon](Get-AzVMwareAddon.md)
 Get an addon by name in a private cloud
 
-### [Get-AzVMwareAuthorization](Get-AzVMwareAuthorization.md)
-Get an ExpressRoute Circuit Authorization by name in a private cloud
-
 ### [Get-AzVMwareCloudLink](Get-AzVMwareCloudLink.md)
 Get an cloud link by name in a private cloud
 
@@ -25,6 +22,9 @@ Get a cluster by name in a private cloud
 
 ### [Get-AzVMwareDatastore](Get-AzVMwareDatastore.md)
 Get a datastore in a private cloud cluster
+
+### [Get-AzVMwareExpressRouteAuthorization](Get-AzVMwareExpressRouteAuthorization.md)
+Get an ExpressRoute Circuit Authorization by name in a private cloud
 
 ### [Get-AzVMwareGlobalReachConnection](Get-AzVMwareGlobalReachConnection.md)
 Get a global reach connection by name in a private cloud
@@ -68,23 +68,23 @@ Get a Public IP Block by id in a private cloud workload network.
 ### [Get-AzVMwareWorkloadNetworkSegment](Get-AzVMwareWorkloadNetworkSegment.md)
 Get a segment by id in a private cloud workload network.
 
-### [Get-AzVMwareWorkloadNetworkVirtualMachine](Get-AzVMwareWorkloadNetworkVirtualMachine.md)
+### [Get-AzVMwareWorkloadNetworkVM](Get-AzVMwareWorkloadNetworkVM.md)
 Get a virtual machine by id in a private cloud workload network.
 
 ### [Get-AzVMwareWorkloadNetworkVMGroup](Get-AzVMwareWorkloadNetworkVMGroup.md)
 Get a vm group by id in a private cloud workload network.
 
-### [Invoke-AzVMwareRotatePrivateCloudNsxtPassword](Invoke-AzVMwareRotatePrivateCloudNsxtPassword.md)
-Rotate the NSX-T Manager password
-
-### [Invoke-AzVMwareRotatePrivateCloudVcenterPassword](Invoke-AzVMwareRotatePrivateCloudVcenterPassword.md)
-Rotate the vCenter password
-
 ### [New-AzVMwareAddon](New-AzVMwareAddon.md)
 Create or update a addon in a private cloud
 
-### [New-AzVMwareAuthorization](New-AzVMwareAuthorization.md)
-Create or update an ExpressRoute Circuit Authorization in a private cloud
+### [New-AzVMwareAddonHcxPropertiesObject](New-AzVMwareAddonHcxPropertiesObject.md)
+Create a in-memory object for AddonHcxProperties
+
+### [New-AzVMwareAddonSrmPropertiesObject](New-AzVMwareAddonSrmPropertiesObject.md)
+Create a in-memory object for AddonSrmProperties
+
+### [New-AzVMwareAddonVrPropertiesObject](New-AzVMwareAddonVrPropertiesObject.md)
+Create a in-memory object for AddonVrProperties
 
 ### [New-AzVMwareCloudLink](New-AzVMwareCloudLink.md)
 Create or update a cloud link in a private cloud
@@ -95,14 +95,26 @@ Create or update a cluster in a private cloud
 ### [New-AzVMwareDatastore](New-AzVMwareDatastore.md)
 Create or update a datastore in a private cloud cluster
 
+### [New-AzVMwareExpressRouteAuthorization](New-AzVMwareExpressRouteAuthorization.md)
+Create or update an ExpressRoute Circuit Authorization in a private cloud
+
 ### [New-AzVMwareGlobalReachConnection](New-AzVMwareGlobalReachConnection.md)
 Create or update a global reach connection in a private cloud
 
 ### [New-AzVMwarePrivateCloud](New-AzVMwarePrivateCloud.md)
 Create or update a private cloud
 
+### [New-AzVMwareRotatePrivateCloudNsxtPassword](New-AzVMwareRotatePrivateCloudNsxtPassword.md)
+Rotate the NSX-T Manager password
+
+### [New-AzVMwareRotatePrivateCloudVcenterPassword](New-AzVMwareRotatePrivateCloudVcenterPassword.md)
+Rotate the vCenter password
+
 ### [New-AzVMwareScriptExecution](New-AzVMwareScriptExecution.md)
 Create or update a script execution resource in a private cloud
+
+### [New-AzVMwareScriptExecutionParameterObject](New-AzVMwareScriptExecutionParameterObject.md)
+Create a in-memory object for ScriptExecutionParameter
 
 ### [New-AzVMwareWorkloadNetworkDhcp](New-AzVMwareWorkloadNetworkDhcp.md)
 Create dhcp by id in a private cloud workload network.
@@ -128,9 +140,6 @@ Create a vm group by id in a private cloud workload network.
 ### [Remove-AzVMwareAddon](Remove-AzVMwareAddon.md)
 Delete a addon in a private cloud
 
-### [Remove-AzVMwareAuthorization](Remove-AzVMwareAuthorization.md)
-Delete an ExpressRoute Circuit Authorization in a private cloud
-
 ### [Remove-AzVMwareCloudLink](Remove-AzVMwareCloudLink.md)
 Delete a cloud link in a private cloud
 
@@ -139,6 +148,9 @@ Delete a cluster in a private cloud
 
 ### [Remove-AzVMwareDatastore](Remove-AzVMwareDatastore.md)
 Delete a datastore in a private cloud cluster
+
+### [Remove-AzVMwareExpressRouteAuthorization](Remove-AzVMwareExpressRouteAuthorization.md)
+Delete an ExpressRoute Circuit Authorization in a private cloud
 
 ### [Remove-AzVMwareGlobalReachConnection](Remove-AzVMwareGlobalReachConnection.md)
 Delete a global reach connection in a private cloud

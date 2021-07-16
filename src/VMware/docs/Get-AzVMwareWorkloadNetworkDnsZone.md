@@ -20,8 +20,8 @@ Get-AzVMwareWorkloadNetworkDnsZone -PrivateCloudName <String> -ResourceGroupName
 
 ### Get
 ```
-Get-AzVMwareWorkloadNetworkDnsZone -DnsZoneId <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVMwareWorkloadNetworkDnsZone -DnsZoneName <String> -PrivateCloudName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -70,7 +70,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsZoneId
+### -DnsZoneName
 NSX DNS Zone identifier.
 Generally the same as the DNS Zone's display name
 

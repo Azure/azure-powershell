@@ -20,7 +20,7 @@ Get-AzVMwareWorkloadNetworkPublicIP -PrivateCloudName <String> -ResourceGroupNam
 
 ### Get
 ```
-Get-AzVMwareWorkloadNetworkPublicIP -PrivateCloudName <String> -PublicIPId <String>
+Get-AzVMwareWorkloadNetworkPublicIP -PrivateCloudName <String> -PublicIPName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -101,7 +101,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIPId
+### -PublicIPName
 NSX Public IP Block identifier.
 Generally the same as the Public IP Block's display name
 

@@ -15,7 +15,7 @@ Delete a segment by id in a private cloud workload network.
 ### Delete (Default)
 ```
 Remove-AzVMwareWorkloadNetworkSegment -PrivateCloudName <String> -ResourceGroupName <String>
- -SegmentId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ -SegmentName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -157,7 +157,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SegmentId
+### -SegmentName
 NSX Segment identifier.
 Generally the same as the Segment's display name
 

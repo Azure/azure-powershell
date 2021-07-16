@@ -79,4 +79,80 @@ directive:
       verb: New|Get|Remove
       subject: HcxEnterpriseSite
     remove: true
+  #- no-inline:
+  #    - AddonProperties
+  - model-cmdlet:
+      - ScriptExecutionParameter
+      #- AddonSrmProperties
+      #- AddonVrProperties
+      #- AddonHcxProperties
+  - where:
+      verb: Invoke
+      subject: ^RotatePrivateCloudNsxtPassword$|^RotatePrivateCloudVcenterPassword$
+    set:
+      verb: New
+  - where:
+      verb: Get
+      subject: ^WorkloadNetworkVirtualMachine$
+    set:
+      subject: WorkloadNetworkVM
+  - where:
+      verb: New|Get|Remove
+      subject: ^Authorization$
+    set:
+      subject: ExpressRouteAuthorization
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkDhcp$
+      parameter-name: DhcpId
+    set:
+      parameter-name: DhcpIdName
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkDnsService$
+      parameter-name: DnsServiceId
+    set:
+      parameter-name: DnsServiceName
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkDnsZone$
+      parameter-name: DnsZoneId
+    set:
+      parameter-name: DnsZoneName
+  - where:
+      verb: Get
+      subject: ^WorkloadNetworkGateway$
+      parameter-name: GatewayId
+    set:
+      parameter-name: GatewayName
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkPortMirroring$
+      parameter-name: PortMirroringId
+    set:
+      parameter-name: PortMirroringName
+  - where:
+      verb: New|Get|Remove
+      subject: ^WorkloadNetworkPublicIP$
+      parameter-name: PublicIPId
+    set:
+      parameter-name: PublicIPName
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkSegment$
+      parameter-name: SegmentId
+    set:
+      parameter-name: SegmentName
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkVMGroup$
+      parameter-name: VMGroupId
+    set:
+      parameter-name: VMGroupName
+  - where:
+      verb: New
+      subject: ^GlobalReachConnection$
+      parameter-name: PeerExpressRouteCircuit
+    set:
+      parameter-name: PeerExpressRouteResourceId
 ```

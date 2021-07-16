@@ -14,7 +14,7 @@ Create or update a DNS zone by id in a private cloud workload network.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzVMwareWorkloadNetworkDnsZone -DnsZoneId <String> -PrivateCloudName <String>
+Update-AzVMwareWorkloadNetworkDnsZone -DnsZoneName <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DisplayName <String>] [-DnsServerIP <String[]>]
  [-DnsService <Int64>] [-Domain <String[]>] [-Revision <Int64>] [-SourceIP <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -127,7 +127,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsZoneId
+### -DnsZoneName
 NSX DNS Zone identifier.
 Generally the same as the DNS Zone's display name
 

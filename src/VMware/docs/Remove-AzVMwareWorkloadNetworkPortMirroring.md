@@ -14,7 +14,7 @@ Delete a port mirroring profile by id in a private cloud workload network.
 
 ### Delete (Default)
 ```
-Remove-AzVMwareWorkloadNetworkPortMirroring -PortMirroringId <String> -PrivateCloudName <String>
+Remove-AzVMwareWorkloadNetworkPortMirroring -PortMirroringName <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -126,7 +126,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PortMirroringId
+### -PortMirroringName
 NSX Port Mirroring identifier.
 Generally the same as the Port Mirroring display name
 
