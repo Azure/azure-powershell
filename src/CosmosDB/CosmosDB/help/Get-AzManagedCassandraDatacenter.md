@@ -26,9 +26,9 @@ This cmdlet can be used to list the ManagedCassandra Datacenters in a Cluster an
 ```powershell
 PS C:\> Get-AzManagedCassandraDatacenter -ResourceGroupName "test-powershell" -ClusterName "cluster1" -DataCenterName "dc1"
 
-Id                                                                                                                                                           Name Properties
---                                                                                                                                                           ---- ----------
-/subscriptions/{subscriptionId}/resourceGroups/test-powershell/providers/Microsoft.DocumentDB/cassandraClusters/cluster1/dataCenters/dc1 dc1  Microsoft.Azure.Commands.CosmosDB.Models.PSDataCenterResourceProperties
+Id         : /subscriptions/{subscriptionId}/resourceGroups/test-powershell/providers/Microsoft.DocumentDB/cassandraClusters/cluster1/dataCenters/dc1
+Name       : dc1
+Properties : Microsoft.Azure.Commands.CosmosDB.Models.PSDataCenterResourceProperties
 ```
 
 ### Example 2: List Managed Cassandra Datacenters a Cluster
