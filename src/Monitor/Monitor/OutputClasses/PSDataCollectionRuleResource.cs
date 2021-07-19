@@ -649,4 +649,129 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         }
     }
     #endregion
+
+    #region DCE - Data Collection Endpoint
+    /// <summary>
+    /// Wraps the DataCollectionEndpointResource class.
+    /// </summary>
+    public class PSDataCollectionEndpointResource : Resource
+    {
+        /// <summary>
+        /// Gets or sets description of the data collection endpoint.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the immutable ID of this data collection endpoint
+        /// resource. This property is READ-ONLY.
+        /// </summary>
+        public string ImmutableId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the endpoint used by agents to access their
+        /// configuration.
+        /// </summary>
+        public PSDataCollectionEndpointConfigurationAccess ConfigurationAccess { get; set; }
+
+        /// <summary>
+        /// Gets or sets the endpoint used by clients to ingest logs.
+        /// </summary>
+        public PSDataCollectionEndpointLogsIngestion LogsIngestion { get; set; }
+
+        /// <summary>
+        /// Gets or sets network access control rules for the endpoints.
+        /// </summary>
+        public PSDataCollectionEndpointNetworkAcls NetworkAcls { get; set; }
+
+        /// <summary>
+        /// Gets the resource provisioning state. This property is READ-ONLY.
+        /// Possible values include: 'Creating', 'Updating', 'Deleting',
+        /// 'Succeeded', 'Failed'
+        /// </summary>
+        public string ProvisioningState { get; private set; }
+
+        public PSDataCollectionEndpointResource()
+        { }
+
+        public PSDataCollectionEndpointResource(DataCollectionEndpointResource dataCollectionEndpointResource)
+            :base(
+                 location: dataCollectionEndpointResource.Location,
+                 id: dataCollectionEndpointResource.Id,
+                 name: dataCollectionEndpointResource.Name,
+                 type: dataCollectionEndpointResource.Type,
+                 tags: dataCollectionEndpointResource.Tags,
+                 kind: dataCollectionEndpointResource.Kind,
+                 etag: dataCollectionEndpointResource.Etag)
+        {
+            ConfigurationAccess = dataCollectionEndpointResource.ConfigurationAccess == null ? new PSDataCollectionEndpointConfigurationAccess() :
+                new PSDataCollectionEndpointConfigurationAccess(dataCollectionEndpointResource.ConfigurationAccess);
+            Description = dataCollectionEndpointResource.Description;
+            ImmutableId = dataCollectionEndpointResource.ImmutableId;
+            LogsIngestion = dataCollectionEndpointResource.LogsIngestion == null ? new PSDataCollectionEndpointLogsIngestion() :
+                new PSDataCollectionEndpointLogsIngestion(dataCollectionEndpointResource.LogsIngestion);
+            NetworkAcls = dataCollectionEndpointResource.NetworkAcls == null ? new PSDataCollectionEndpointNetworkAcls() :
+                new PSDataCollectionEndpointNetworkAcls(dataCollectionEndpointResource.NetworkAcls);
+            ProvisioningState = dataCollectionEndpointResource.ProvisioningState;
+        }
+    }
+
+    /// <summary>
+    /// Wraps the DataCollectionEndpointConfigurationAccess class.
+    /// </summary>
+    public class PSDataCollectionEndpointConfigurationAccess 
+    {
+        /// <summary>
+        /// Gets the endpoint. This property is READ-ONLY.
+        /// </summary>
+        public string Endpoint { get; private set; }
+
+        public PSDataCollectionEndpointConfigurationAccess()
+        { }
+
+        public PSDataCollectionEndpointConfigurationAccess(DataCollectionEndpointConfigurationAccess dataCollectionEndpointConfigurationAccess)
+        {
+            Endpoint = dataCollectionEndpointConfigurationAccess?.Endpoint;
+        }
+    }
+
+    /// <summary>
+    /// Wraps the DataCollectionEndpointLogsIngestion class.
+    /// </summary>
+    public class PSDataCollectionEndpointLogsIngestion 
+    {
+        /// <summary>
+        /// Gets the endpoint. This property is READ-ONLY.
+        /// </summary>
+        public string Endpoint { get; private set; }
+
+        public PSDataCollectionEndpointLogsIngestion()
+        { }
+
+        public PSDataCollectionEndpointLogsIngestion(DataCollectionEndpointLogsIngestion dataCollectionEndpointLogsIngestion)
+        {
+            Endpoint = dataCollectionEndpointLogsIngestion?.Endpoint;
+        }
+    }
+
+    /// <summary>
+    /// Wraps the DataCollectionEndpointNetworkAcls class.
+    /// </summary>
+    public class PSDataCollectionEndpointNetworkAcls
+    {
+        /// <summary>
+        /// Gets or sets the configuration to set whether network access from
+        /// public internet to the endpoints are allowed. Possible values
+        /// include: 'Enabled', 'Disabled'
+        /// </summary>
+        public string PublicNetworkAccess { get; set; }
+
+        public PSDataCollectionEndpointNetworkAcls()
+        {}
+
+        public PSDataCollectionEndpointNetworkAcls(DataCollectionEndpointNetworkAcls dataCollectionEndpointNetworkAcls)
+        {
+            PublicNetworkAccess = dataCollectionEndpointNetworkAcls?.PublicNetworkAccess;
+        }
+    }
+    #endregion
 }

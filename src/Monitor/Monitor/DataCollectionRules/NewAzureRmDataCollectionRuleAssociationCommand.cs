@@ -61,6 +61,13 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         public string RuleId { get; set; }
 
         /// <summary>
+        /// Gets or sets the data collection endpoint.
+        /// </summary>
+        [Parameter(ParameterSetName = ByDataCollectionRuleId, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The data collection endpoint id.")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The data collection endpoint id.")]
+        public string EndpointId { get; set; }
+
+        /// <summary>
         /// Gets or sets the association description.
         /// </summary>
         [Parameter(ParameterSetName = ByDataCollectionRuleId, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource description.")]
@@ -109,6 +116,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                                     associationName: AssociationName,
                                     body: new DataCollectionRuleAssociationProxyOnlyResource(
                                         dataCollectionRuleId: RuleId,
+                                        dataCollectionEndpointId: EndpointId,
                                         description: Description
                                     )
                                 );
