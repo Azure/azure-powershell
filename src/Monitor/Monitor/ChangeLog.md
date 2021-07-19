@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added parameter `ResourceGroupName` back for `Add-AzAutoscaleSetting` parameter set `AddAzureRmAutoscaleSettingUpdateParamGroup` and made it optional [#15491]
 
 ## Version 2.6.0
 * Fixed null reference bug for `Get-AzMetric` when `ResultType` set to "Metadata"
