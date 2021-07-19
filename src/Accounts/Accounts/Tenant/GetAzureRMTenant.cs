@@ -17,9 +17,10 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -36,11 +37,26 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
 
+
         public override void ExecuteCmdlet()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+            profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
 
-            WriteObject(profileClient.ListTenants(TenantId).Select((t) => new PSAzureTenant(t)), enumerateCollection: true);
+            var tenants = profileClient.ListTenants(TenantId).Select((t) => new PSAzureTenant(t));
+            HandleActions();
+            WriteObject(tenants, enumerateCollection: true);
+        }
+
+        private ConcurrentQueue<Task> _tasks = new ConcurrentQueue<Task>();
+
+        private void HandleActions()
+        {
+            Task task;
+            while (_tasks.TryDequeue(out task))
+            {
+                task.RunSynchronously();
+            }
         }
     }
 }

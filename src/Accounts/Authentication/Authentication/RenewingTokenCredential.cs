@@ -20,14 +20,22 @@ using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class RenewingTokenCredential : ServiceClientCredentials
+    public class RenewingTokenCredential : ServiceClientCredentials, IClaimsChallengeProcessor
     {
         private IAccessToken _token;
-
 
         public RenewingTokenCredential(IAccessToken token)
         {
             _token = token;
+        }
+        public ValueTask<bool> OnClaimsChallenageAsync(HttpRequestMessage request, string claimsChallenge, CancellationToken cancellationToken)
+        {
+            if(_token is IClaimsChallengeProcessor processor)
+            {
+                return processor.OnClaimsChallenageAsync(request, claimsChallenge, cancellationToken);
+            }
+
+            return new ValueTask<bool>(false);
         }
 
         public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
