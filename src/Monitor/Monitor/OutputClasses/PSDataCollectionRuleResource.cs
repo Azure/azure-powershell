@@ -54,11 +54,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// 'Creating', 'Updating', 'Deleting', 'Succeeded', 'Failed'
         /// </summary>
         public string ProvisioningState { get; private set; }
-
-        /// <summary>
-        /// Gets resource entity tag (ETag).
-        /// </summary>
-        public string Etag { get; private set; }
         #endregion
 
         /// <summary>
@@ -77,6 +72,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 id: dataCollectionRuleResource.Id,
                 name: dataCollectionRuleResource.Name,
                 type: dataCollectionRuleResource.Type,
+                etag: dataCollectionRuleResource.Etag,
                 tags: dataCollectionRuleResource.Tags)
         {
             Description = dataCollectionRuleResource.Description;
@@ -86,7 +82,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                                                                              new PSDataCollectionRuleDestinations(dataCollectionRuleResource.Destinations);
             DataFlows = dataCollectionRuleResource.DataFlows?.Select(x => new PSDataFlow(x)).ToList();
             ProvisioningState = dataCollectionRuleResource.ProvisioningState;
-            Etag = dataCollectionRuleResource.Etag;
         }
 
         internal DataCollectionRuleResource ConvertToApiObject() 
@@ -101,25 +96,37 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             if (this.DataSources.PerformanceCounters != null && this.DataSources.PerformanceCounters.Count > 0)
             {
                 dcrDefinitionObject.DataSources.PerformanceCounters = this.DataSources.PerformanceCounters.Select(x => new PerfCounterDataSource(
-                    x.Streams, x.ScheduledTransferPeriod, x.SamplingFrequencyInSeconds, x.CounterSpecifiers, x.Name)).ToList();
+                    streams: x.Streams,
+                    samplingFrequencyInSeconds: x.SamplingFrequencyInSeconds,
+                    counterSpecifiers: x.CounterSpecifiers,
+                    name: x.Name)).ToList();
             }
 
             if (this.DataSources.WindowsEventLogs != null && this.DataSources.WindowsEventLogs.Count > 0)
             {
                 dcrDefinitionObject.DataSources.WindowsEventLogs = this.DataSources.WindowsEventLogs.Select(x => new WindowsEventLogDataSource(
-                    x.Streams, x.ScheduledTransferPeriod, x.XPathQueries, x.Name)).ToList();
+                    streams: x.Streams, 
+                    xPathQueries: x.XPathQueries, 
+                    name: x.Name)).ToList();
             }
 
             if (this.DataSources.Syslog != null && this.DataSources.Syslog.Count > 0)
             {
                 dcrDefinitionObject.DataSources.Syslog = this.DataSources.Syslog.Select(x => new SyslogDataSource(
-                    x.Streams, x.FacilityNames, x.Name, x.LogLevels)).ToList();
+                    streams: x.Streams, 
+                    facilityNames: x.FacilityNames,
+                    logLevels: x.LogLevels,
+                    name: x.Name)).ToList();
             }
 
             if (this.DataSources.Extensions != null && this.DataSources.Extensions.Count > 0)
             {
                 dcrDefinitionObject.DataSources.Extensions = this.DataSources.Extensions.Select(x => new ExtensionDataSource(
-                    x.Streams, x.ExtensionName, x.Name, x.ExtensionSettings)).ToList();
+                    extensionName: x.ExtensionName,
+                    streams: x.Streams,                    
+                    extensionSettings: x.ExtensionSettings,
+                    inputDataSources: x.InputDataSources,
+                    name: x.Name)).ToList();
             }
 
             if (this.Destinations.LogAnalytics != null && this.Destinations.LogAnalytics.Count > 0)
@@ -420,6 +427,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the list of data sources this extension needs data from.
+        /// </summary>
+        public IList<string> InputDataSources { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the PSExtensionDataSource class.
         /// </summary>
         public PSExtensionDataSource()
@@ -435,6 +447,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             ExtensionName = extensionDataSource.ExtensionName;
             ExtensionSettings = extensionDataSource.ExtensionSettings;
             Name = extensionDataSource.Name;
+            InputDataSources = extensionDataSource.InputDataSources;
         }
     }
 
@@ -499,13 +512,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public IList<string> Streams { get; set; }
 
         /// <summary>
-        /// Gets or sets the interval between data uploads (scheduled
-        /// transfers), rounded up to the nearest minute. Possible values
-        /// include: 'PT1M', 'PT5M', 'PT15M', 'PT30M', 'PT60M'
-        /// </summary>
-        public string ScheduledTransferPeriod { get; set; }
-
-        /// <summary>
         /// Gets or sets a list of Windows Event Log queries in XPATH format.
         /// </summary>
         public IList<string> XPathQueries { get; set; }
@@ -530,7 +536,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSWindowsEventLogDataSource(WindowsEventLogDataSource windowsEventLogDataSource)
         {
             Streams = windowsEventLogDataSource.Streams?.Select(x => x).ToList();
-            ScheduledTransferPeriod = windowsEventLogDataSource.ScheduledTransferPeriod;
             XPathQueries = windowsEventLogDataSource.XPathQueries?.Select(x => x).ToList();
             Name = windowsEventLogDataSource.Name;
         }
@@ -549,17 +554,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public IList<string> Streams { get; set; }
 
         /// <summary>
-        /// Gets or sets the interval between data uploads (scheduled
-        /// transfers), rounded up to the nearest minute. Possible values
-        /// include: 'PT1M', 'PT5M', 'PT15M', 'PT30M', 'PT60M'
-        /// </summary>
-        public string ScheduledTransferPeriod { get; set; }
-
-        /// <summary>
         /// Gets or sets the number of seconds between consecutive counter
         /// measurements (samples).
         /// </summary>
-        public int SamplingFrequencyInSeconds { get; set; }
+        public int? SamplingFrequencyInSeconds { get; set; }
 
         /// <summary>
         /// Gets or sets a list of specifier names of the performance counters
@@ -590,7 +588,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSPerfCounterDataSource(PerfCounterDataSource perfCounterDataSource)
         {
             Streams = perfCounterDataSource.Streams?.Select(x => x).ToList();
-            ScheduledTransferPeriod = perfCounterDataSource.ScheduledTransferPeriod;
             SamplingFrequencyInSeconds = perfCounterDataSource.SamplingFrequencyInSeconds;
             CounterSpecifiers = perfCounterDataSource.CounterSpecifiers?.Select(x => x).ToList();
             Name = perfCounterDataSource.Name;

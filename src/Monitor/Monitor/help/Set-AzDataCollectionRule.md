@@ -93,7 +93,6 @@ Tags              : {[tag2, value2], [tag1, value1]}
           "streams": [
             "Microsoft-InsightsMetrics"
           ],
-          "scheduledTransferPeriod": "PT1M",
           "samplingFrequencyInSeconds": 10,
           "counterSpecifiers": [
             "\\Processor Information(_Total)\\% Processor Time"
@@ -150,7 +149,6 @@ Tags              : {[tag2, value2], [tag1, value1]}
         "Streams": [
           "Microsoft-InsightsMetrics"
         ],
-        "ScheduledTransferPeriod": "PT1M",
         "SamplingFrequencyInSeconds": 10,
         "CounterSpecifiers": [
           "\\Processor Information(_Total)\\% Processor Time"

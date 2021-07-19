@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public string Type { get; set; }
 
         /// <summary>
-        /// Metric Unit
+        /// Gets or sets the unit of the metric. Possible values include: 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond', 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified', 'Cores', 'MilliCores', 'NanoCores', 'BitsPerSecond'
         /// </summary>
-        public Unit Unit { get; set; }
+        public string Unit { get; set; }
 
         /// <summary>
         /// Metric data

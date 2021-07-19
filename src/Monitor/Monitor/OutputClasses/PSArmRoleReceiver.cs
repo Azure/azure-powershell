@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public string RoleId { get; set; }
 
         /// <summary>Gets or sets a value indicating whether or not use common alert schema.</summary>
-        public bool UseCommonAlertSchema { get; set; }
+        public bool? UseCommonAlertSchema { get; set; }
 
         /// <summary>Initializes a new instance of the PSArmRoleReceiver class</summary>
         public PSArmRoleReceiver()

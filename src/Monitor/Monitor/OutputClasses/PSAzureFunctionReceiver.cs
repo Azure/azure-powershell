@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public string HttpTriggerUrl { get; set; }
 
         /// <summary>Gets or sets a value indicating whether or not use common alert schema.</summary>
-        public bool UseCommonAlertSchema { get; set; }
+        public bool? UseCommonAlertSchema { get; set; }
 
         /// <summary>Initializes a new instance of the PSAzureFunctionReceiver class</summary>
         public PSAzureFunctionReceiver()

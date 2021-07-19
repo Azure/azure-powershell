@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
@@ -21,7 +22,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor;
-using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
 {
@@ -98,10 +98,10 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                     throw new Exception("Unkown ParameterSetName");
             }
 
-            var resourceForUpdate = new ResourceForUpdate();
+            var resourceForUpdate = new Dictionary<string, string>();
 
             if (Tag != null)
-                resourceForUpdate.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+                resourceForUpdate = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
             if (ShouldProcess(
                         target: string.Format("Data collection rule '{0}' in resource group '{1}'", RuleName, ResourceGroupName),
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
                 var dcrRespone = this.MonitorManagementClient.DataCollectionRules.Update(
                     resourceGroupName: ResourceGroupName,
                     dataCollectionRuleName: RuleName,
-                    body: resourceForUpdate
+                    tags: resourceForUpdate
                 );
 
                 var output = new PSDataCollectionRuleResource(dcrRespone);

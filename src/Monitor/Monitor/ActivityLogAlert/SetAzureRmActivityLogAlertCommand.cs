@@ -208,16 +208,16 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         private ActivityLogAlertResource UpdateActivityLogAlertPsResource(PSActivityLogAlertResource inputObject)
         {
             var activityLogAlertResource = new ActivityLogAlertResource(
-                inputObject.Location,
-                inputObject.Scopes,
-                new ActivityLogAlertAllOfCondition(inputObject.Condition.AllOf.Select(e => new ActivityLogAlertLeafCondition(field: e.Field, equals: e.Equals)).ToList()), 
-                new ActivityLogAlertActionList(inputObject.Actions.ActionGroups.Select(e => new ActivityLogAlertActionGroup(actionGroupId: e.ActionGroupId, webhookProperties: e.WebhookProperties)).ToList()),
-                inputObject.Id,
-                inputObject.Name,
-                inputObject.Type,
-                inputObject.Tags,
-                inputObject.Enabled,
-                inputObject.Description);
+                location: inputObject.Location,
+                scopes: inputObject.Scopes,
+                condition: new ActivityLogAlertAllOfCondition(inputObject.Condition.AllOf.Select(e => new ActivityLogAlertLeafCondition(field: e.Field, equals: e.Equals)).ToList()), 
+                actions: new ActivityLogAlertActionList(inputObject.Actions.ActionGroups.Select(e => new ActivityLogAlertActionGroup(actionGroupId: e.ActionGroupId, webhookProperties: e.WebhookProperties)).ToList()),
+                id: inputObject.Id,
+                name: inputObject.Name,
+                type: inputObject.Type,
+                tags: inputObject.Tags,
+                enabled: inputObject.Enabled,
+                description: inputObject.Description);
 
             return UpdateActivityLogAlertResource(activityLogAlertResource);
         }

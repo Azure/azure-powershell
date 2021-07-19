@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or set a value indicating whether common alert schema is to be used or not
         /// </summary>
-        public bool UseCommonAlertSchema { get; set; }
+        public bool? UseCommonAlertSchema { get; set; }
 
         /// <summary>Initializes a new instance of the PSEmailReceiver class</summary>
         public PSEmailReceiver()

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or set a value indicating whether common alert schema is to be used or not
         /// </summary>
-        public bool UseCommonAlertSchema { get; set; }
+        public bool? UseCommonAlertSchema { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether or not use AAD authentication.

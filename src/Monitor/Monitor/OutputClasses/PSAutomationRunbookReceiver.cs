@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public bool IsGlobalRunbook { get; set; }
 
         /// <summary>Gets or sets a value indicating whether or not use common alert schema.</summary>
-        public bool UseCommonAlertSchema { get; set; }
+        public bool? UseCommonAlertSchema { get; set; }
 
         /// <summary> Gets or sets the URI where webhooks should be sent..</summary>
         public string ServiceUri { get; set; }

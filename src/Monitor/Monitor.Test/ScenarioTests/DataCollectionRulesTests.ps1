@@ -58,7 +58,7 @@ function Test-AddGetListSetRemoveDataCollectionRulesAndAssociations
         $dcr3 = New-AzDataCollectionRule -Location $location -ResourceGroupName $resourceGroupName -RuleName $dcrName03 -RuleFile $newDcrJsonFile.FullName
 		Assert-NotNull $dcr3
 		Assert-AreEqual $dcrName03 $dcr3.Name
-        Assert-AreEqual "PT1M" $dcr3.DataSources.PerformanceCounters[0].ScheduledTransferPeriod
+        Assert-AreEqual "10" $dcr3.DataSources.PerformanceCounters[0].SamplingFrequencyInSeconds
 
         Write-Verbose " ****** Get DCRs By Subscription"
         $dcrList = Get-AzDataCollectionRule
@@ -200,7 +200,6 @@ function Set-JsonContent($FileFullPath, $NamePerfCounter)
               "streams": [
                 "Microsoft-InsightsMetrics"
               ],
-              "scheduledTransferPeriod": "PT1M",
               "samplingFrequencyInSeconds": 10,
               "counterSpecifiers": [
                 "\\Processor Information(_Total)\\% Processor Time"
