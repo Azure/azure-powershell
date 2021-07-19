@@ -14,6 +14,7 @@ Az.Datadog
 Az.DataProtection
 Az.DedicatedHsm
 Az.DesktopVirtualization
+Az.DigitalTwins
 Az.DiskPool
 Az.Functions
 Az.HanaOnAzure
@@ -22,6 +23,7 @@ Az.ImageBuilder
 Az.ImportExport
 Az.KubernetesConfiguration
 Az.Kusto
+Az.Maps
 Az.MariaDb
 Az.Migrate
 Az.MonitoringSolutions
@@ -32,6 +34,7 @@ Az.ProviderHub
 Az.RedisEnterpriseCache
 Az.ResourceMover
 Az.SpringCloud
+Az.StackHCI
 Az.StreamAnalytics
 Az.TimeSeriesInsights
 Az.VMware
