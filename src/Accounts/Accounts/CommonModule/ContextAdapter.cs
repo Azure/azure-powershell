@@ -26,6 +26,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Properties;
+using System.Linq.Expressions;
+using Azure.Identity;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -202,8 +204,31 @@ namespace Microsoft.Azure.Commands.Common
             return async (request, cancelToken, cancelAction, signal, next) =>
             {
                 PatchRequestUri(context, request);
-                await AuthorizeRequest(context, request, cancelToken, resourceId, resourceId);
-                return await next(request, cancelToken, cancelAction, signal);
+                IAccessToken accessToken = await AuthorizeRequest(context, request, cancelToken, resourceId, resourceId);
+                var response = await next(request, cancelToken, cancelAction, signal);
+
+                if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized && response.Headers.WwwAuthenticate?.Count > 0)
+                {
+                    //get token again with claims challenge
+                    if(accessToken is IClaimsChallengeProcessor processor)
+                    {
+                        try
+                        {
+                            var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
+                            if (!string.IsNullOrEmpty(claimsChallenge))
+                            {
+                                await processor.OnClaimsChallenageAsync(request, claimsChallenge, cancelToken).ConfigureAwait(false);
+                                response = await next(request, cancelToken, cancelAction, signal);
+                            }
+                        }
+                        catch (AuthenticationFailedException e)
+                        {
+                            string message = response?.GetWwwAuthenticateMessage() ?? string.Empty;
+                            throw e.FromExceptionAndAdditionalMessage(message);
+                        }
+                    }
+                }
+                return response;
             };
         }
 
@@ -213,9 +238,9 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="context"></param>
         /// <param name="endpointResourceIdKey"></param>
         /// <param name="request"></param>
-        /// <param name="outerToken"></param>
+        /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        internal async Task AuthorizeRequest(IAzureContext context, HttpRequestMessage request, CancellationToken outerToken, string endpointResourceIdKey,
+        internal async Task<IAccessToken> AuthorizeRequest(IAzureContext context, HttpRequestMessage request, CancellationToken cancellationToken, string endpointResourceIdKey,
                         string endpointSuffixKey, TokenAudienceConverterDelegate tokenAudienceConverter = null, IDictionary<string, object> extensibleParamters = null)
         {
             if (context == null || context.Account == null || context.Environment == null)
@@ -223,7 +248,7 @@ namespace Microsoft.Azure.Commands.Common
                 throw new InvalidOperationException(Resources.InvalidAzureContext);
             }
 
-            await Task.Run(() =>
+            return await Task.Run(() =>
             {
                 if (tokenAudienceConverter != null)
                 {
@@ -233,7 +258,8 @@ namespace Microsoft.Azure.Commands.Common
                 }
                 var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, endpointResourceIdKey);
                 authToken.AuthorizeRequest((type, token) => request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(type, token));
-            }, outerToken);
+                return authToken;
+            }, cancellationToken);
         }
 
         private (string CurEnvEndpointResourceId, string CurEnvEndpointSuffix, string BaseEnvEndpointResourceId, string BaseEnvEndpointSuffix) GetEndpointInfo(IAzureEnvironment environment, string endpointResourceIdKey, string endpointSuffixKey)

@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Implement CAE by adding handler to http pipeline
+* Improved error message when login is blocked by AAD
+* Improved error message when silent reauthentication failed
+* Enabled CAE for Get-AzTenant and Get-AzSubcription
+* Added test cases
 
 ## Version 2.7.2
 * Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
