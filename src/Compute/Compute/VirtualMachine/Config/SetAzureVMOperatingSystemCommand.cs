@@ -314,15 +314,16 @@ namespace Microsoft.Azure.Commands.Compute
                     CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
                 };
             }
-            //else if check if -Linux and ahs WindowsConfig, then null the config. Same other way.
-            /* else if ((this.ParameterSetName == LinuxParamSet) & this.VM.OSProfile.WindowsConfiguration != null)
+            // These two checks below are present to allow users to change the OS type in the VM object.
+            // This behavior may change in the future. 
+            else if ((this.ParameterSetName == LinuxParamSet) & this.VM.OSProfile.WindowsConfiguration != null)
             {
                 this.VM.OSProfile.WindowsConfiguration = null;
             }
             else if ((this.ParameterSetName == WindowsParamSet) & this.VM.OSProfile.LinuxConfiguration != null)
             {
                 this.VM.OSProfile.LinuxConfiguration = null;
-            }*/ //adam added these to keep behavior the same
+            }
             
             if (this.ParameterSetName == LinuxParamSet)
             {
