@@ -19,26 +19,32 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Rest.Serialization;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
 {
     /// <summary>
-    /// Create a Data Collection Endpoint
+    /// Update a Data Collection Endpoint
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionEndpoint", DefaultParameterSetName = ByName, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSDataCollectionEndpointResource))]
-    public class NewAzureRmDataCollectionEndpointCommand : ManagementCmdletBase
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionEndpoint", DefaultParameterSetName = ByName, SupportsShouldProcess = true)]
+    [OutputType(typeof(PSDataCollectionRuleResource))]
+    public class SetAzureRmDataCollectionEndpointCommand : ManagementCmdletBase
     {
         private const string ByName = "ByName";
+        private const string ByResourceId = "ByResourceId";
+        private const string ByInputObject = "ByInputObject";
 
         #region Cmdlet parameters
-
         /// <summary>
         /// Gets or sets the data collection rule location.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource location.")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -54,14 +60,29 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the data collection rule name.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource name.")]
-        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ResourceId parameter
+        /// </summary>
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource identifier")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        
+        /// <summary>
+        /// Gets or sets the data collection rule object.
+        /// </summary>
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = "PSDataCollectionEndpointResource Object.")]
+        [ValidateNotNull]
+        public PSDataCollectionEndpointResource InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the data collection rule description.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource description.")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource description.")]
         public string Description { get; set; }
 
         //PublicNetworkAccess
@@ -69,43 +90,60 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// Gets or sets the configuration to set whether network access from public internet to the endpoints are allowed. Possible values include: 'Enabled', 'Disabled'
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "Gets or sets the configuration to set whether network access from public internet to the endpoints are allowed. Possible values include: 'Enabled', 'Disabled'")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource description.")]
         public string PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets or sets the data collection rule tags.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource tags.")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource tags.")]
         public Hashtable Tag { get; set; }
-
         #endregion
 
         /// <summary>
-        /// Executes the cmdlet. New-AzDataCollectionEndpoint
+        /// Executes the cmdlet. Set-AzDataCollectionEndpoint
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            ResourceIdentifier resourceIdentifier;
             switch (ParameterSetName)
             {
                 case ByName:
-                    ProcessRecordInternalByName();
+                    break;
+                case ByResourceId:
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                    Name = resourceIdentifier.ResourceName;
+                    ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    break;
+                case ByInputObject:
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                    Name = resourceIdentifier.ResourceName;
+                    ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    PublicNetworkAccess = InputObject.NetworkAcls?.PublicNetworkAccess;
+                    Location = InputObject.Location;
+                    Description = InputObject.Description;
+                    Tag = InputObject.Tags.ToHashtable();
                     break;
                 default:
-                    throw new Exception("Unkown ParameterSetName");
+                    throw new Exception("Unknown ParameterSetName");
             }
+
+            ReplaceDataCollectionRule();
         }
 
-        private void ProcessRecordInternalByName()
+        private void ReplaceDataCollectionRule()
         {
             if (ShouldProcess(
-                    target: string.Format("Data collection endpoint '{0}' in resource group '{1}'", Name, ResourceGroupName),
-                    action: "Create a data collection endpoint"))
+                        target: string.Format("Data collection endpoint '{0}' in resource group '{1}'", Name, ResourceGroupName),
+                        action: "Update a data collection endpoint"))
             {
                 var dceResponse = MonitorManagementClient.DataCollectionEndpoints.Create(resourceGroupName: ResourceGroupName, dataCollectionEndpointName: Name, body: new DataCollectionEndpointResource(
                     location: Location,
-                    description: Description, 
-                    immutableId: null, 
-                    configurationAccess: null, 
-                    logsIngestion: null, 
+                    description: Description,
+                    immutableId: null,
+                    configurationAccess: null,
+                    logsIngestion: null,
                     networkAcls: new DataCollectionEndpointNetworkAcls(PublicNetworkAccess),
                     provisioningState: null,
                     tags: Tag != null ? TagsConversionHelper.CreateTagDictionary(Tag, validate: true) : null,

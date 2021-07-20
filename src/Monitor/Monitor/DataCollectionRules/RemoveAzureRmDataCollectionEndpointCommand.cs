@@ -13,28 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.Monitor;
-using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
 {
     /// <summary>
-    /// Get a Data Collection Endpoint
+    /// Delete a Data Collection Endpoint
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionEndpoint", DefaultParameterSetName = BySubscription)]
-    [OutputType(typeof(PSDataCollectionEndpointResource))]
-    public class GetAzureRmDataCollectionEndpointCommand : ManagementCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionEndpoint", DefaultParameterSetName = ByName, SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
+    public class RemoveAzureRmDataCollectionEndpointCommand : ManagementCmdletBase
     {
         private const string ByName = "ByName";
-        private const string ByResourceGroup = "ByResourceGroup";
-        private const string BySubscription = "BySubscription";
+        private const string ByInputObject = "ByInputObject";
         private const string ByResourceId = "ByResourceId";
 
         #region Cmdlet parameters
@@ -42,18 +37,24 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// <summary>
         /// Gets or sets the resource group parameter.
         /// </summary>
-        [Parameter(ParameterSetName = ByResourceGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource name parameter.
+        /// Gets or sets the reource name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the InputObject parameter
+        /// </summary>
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The data collection rule resource from the pipe")]
+        [ValidateNotNull]
+        public PSDataCollectionEndpointResource InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the ResourceId parameter
@@ -61,43 +62,55 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource identifier")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PassThru switch parameter to force return an object when removing the resource.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Return true upon successful removal.")]
+        public SwitchParameter PassThru { get; set; }
+
         #endregion
 
         /// <summary>
-        /// Executes the cmdlet. Get-AzDataCollectionEndpoint
+        /// Executes the cmdlet. Remove-AzDataCollectionEndpoint
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            List<DataCollectionEndpointResource> apiResult = null;
-
             switch (ParameterSetName)
             {
-                case BySubscription:
-                    apiResult = MonitorManagementClient.DataCollectionEndpoints.ListBySubscription().ToList();
-                    break;
-                case ByResourceGroup:
-                    apiResult = MonitorManagementClient.DataCollectionEndpoints.ListByResourceGroup(
-                        resourceGroupName: ResourceGroupName).ToList();
-                    break;
                 case ByName:
-                    var oneDcrByName = MonitorManagementClient.DataCollectionEndpoints.Get(
-                        resourceGroupName: ResourceGroupName,
-                        dataCollectionEndpointName: Name);
-                    apiResult = new List<DataCollectionEndpointResource> { oneDcrByName };
+                    break;
+                case ByInputObject:
+                    ResourceId = InputObject.Id;
+                    SetNameAndResourceFromResourceId();
                     break;
                 case ByResourceId:
-                    var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                    var oneDcrByRuleId = MonitorManagementClient.DataCollectionEndpoints.Get(
-                        resourceGroupName: resourceIdentifier.ResourceGroupName,
-                        dataCollectionEndpointName: resourceIdentifier.ResourceName);
-                    apiResult = new List<DataCollectionEndpointResource> { oneDcrByRuleId };
+                    SetNameAndResourceFromResourceId();
                     break;
                 default:
                     throw new Exception("Unkown ParameterSetName");
             }
 
-            var output = apiResult.Select(x => new PSDataCollectionEndpointResource(x)).ToList();
-            WriteObject(sendToPipeline: output, enumerateCollection: true);
+            if (ShouldProcess(
+                    target: string.Format("Data collection endpoint '{0}' from resource group '{1}'", this.Name, this.ResourceGroupName),
+                    action: "Delete a data collection endpoint"))
+            {
+                this.MonitorManagementClient.DataCollectionEndpoints.DeleteWithHttpMessagesAsync(
+                    resourceGroupName: ResourceGroupName,
+                    dataCollectionEndpointName: Name).GetAwaiter().GetResult();
+
+                if (this.PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
+            }
+        }
+
+        private void SetNameAndResourceFromResourceId()
+        {
+            var resourceIdentifier = new ResourceIdentifier(ResourceId);
+            Name = resourceIdentifier.ResourceName;
+            ResourceGroupName = resourceIdentifier.ResourceGroupName;
         }
     }
 }
