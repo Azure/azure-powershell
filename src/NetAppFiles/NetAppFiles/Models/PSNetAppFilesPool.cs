@@ -85,13 +85,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </value>
         public double? UtilizedThroughputMibps { get; set; }
 
-
         /// <summary>
-        /// Gets or sets qosType
+        /// Gets or sets QosType
         /// </summary>
         /// <value>
-        /// The qos type of the pool. Possible values include: 'Auto', 'Manual'
+        /// The qos type of the pool (Auto, Manual)
         /// </value>
         public string QosType { get; set; }
+
+        /// <summary>
+        /// Gets or sets CoolAccess
+        /// </summary>
+        /// <value>
+        /// If enabled (true) the pool can contain cool Access enabled volumes.
+        /// </value>
+        public bool? CoolAccess { get; set; }
+                
     }
 }

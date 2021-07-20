@@ -15,13 +15,13 @@
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
 
-    public class PSNetAppFilesVolumeBackupStatus
+    public class PSNetAppFilesVolumeRestoreStatus
     {
         /// <summary>
         /// Gets or sets Healthy
         /// </summary>
         /// <remarks>
-        /// Backup health status
+        /// Restore health status
         /// </remarks>
         public bool? Healthy { get; set; }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets RelationshipStatus
         /// </summary>
         /// <remarks>
-        /// Status of the mirror relationship
+        /// Status of the restore SnapMirror relationship
         /// </remarks>
         public string RelationshipStatus { get; set; }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets MirrorState
         /// </summary>
         /// <remarks>
-        /// The status of the backup
+        /// The status of the restore ("Uninitialized", "Mirrored", "Broken")
         /// </remarks>
         public string MirrorState { get; set; }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets UnhealthyReason
         /// </summary>
         /// <remarks>
-        /// Reason for the unhealthy backup relationship
+        /// Reason for the unhealthy restore relationship
         /// </remarks>
         public string UnhealthyReason { get; set; }
 
@@ -53,25 +53,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets ErrorMessage
         /// </summary>
         /// <remarks>
-        /// Displays error message if the backup is in an error state
+        /// Displays error message if the restore is in an error state
         /// </remarks>
         public string ErrorMessage { get; set; }
-
-        /// <summary>
-        /// Gets or sets LastTransferSize
-        /// </summary>
-        /// <remarks>
-        /// Displays the last transfer size
-        /// </remarks>
-        public long? LastTransferSize { get; set; }
-
-        /// <summary>
-        /// Gets or sets LastTransferType
-        /// </summary>
-        /// <remarks>
-        /// Displays the last transfer type
-        /// </remarks>
-        public string LastTransferType { get; set; }
 
         /// <summary>
         /// Gets or sets TotalTransferBytes

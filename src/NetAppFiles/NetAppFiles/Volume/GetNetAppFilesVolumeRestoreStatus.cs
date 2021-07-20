@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeBackupStatus",
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolumeBackupStatus))]
-    [Alias("Get-AnfVolumeBackupStatus")]
-    public class GetAzureRmNetAppFilesVolumeBackupStatus : AzureNetAppFilesCmdletBase
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeRestoreStatus",
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolumeRestoreStatus))]
+    [Alias("Get-AnfVolumeRestoreStatus")]
+    public class GetAzureRmNetAppFilesVolumeRestoreStatus : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = ParentObjectParameterSet,
-            HelpMessage = "The pool object containing the volume to return backup status for")]
+            HelpMessage = "The pool object containing the volume to return restore status for")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesPool PoolObject { get; set; }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The volume object to get backup status for")]
+            HelpMessage = "The volume object to get Restore status for")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolume InputObject { get; set; }
 
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             if (Name != null)
             {
-                var anfVolumeBackupStatus = AzureNetAppFilesManagementClient.Backups.GetStatus(ResourceGroupName, AccountName, PoolName, Name);
-                WriteObject(anfVolumeBackupStatus.ConvertToPs());
+                var anfVolumeRestoreStatus = AzureNetAppFilesManagementClient.Backups.GetVolumeRestoreStatus(ResourceGroupName, AccountName, PoolName, Name);
+                WriteObject(anfVolumeRestoreStatus.ConvertToPs());
             }
         }
     }
