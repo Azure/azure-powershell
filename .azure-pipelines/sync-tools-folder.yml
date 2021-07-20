@@ -77,7 +77,7 @@ jobs:
 
         git commit -m "Sync tools folder from main branch to generation branch"
 
-        git remote set-url origin https://$env:SERVICENAME@github.com/Azure/azure-powershell.git
+        git remote set-url origin https://$env:GITHUB_TOKEN@github.com/Azure/azure-powershell.git
 
         git push origin syncToolsFolder --force
       pwsh: true
