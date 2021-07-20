@@ -656,7 +656,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
             else if (localChannel.StorageContext.StorageAccount.Credentials.IsSAS) //SAS
             {
-                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + localChannel.StorageContext.StorageAccount.Credentials.SASToken));
+                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)));
             }
             else if (localChannel.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
@@ -897,15 +897,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
             else if (cloubBlob.ServiceClient.Credentials.IsSAS) //SAS
             {
+                string sas = Util.GetSASStringWithoutQuestionMark(cloubBlob.ServiceClient.Credentials.SASToken);
                 string fullUri = cloubBlob.SnapshotQualifiedUri.ToString();
                 if (cloubBlob.IsSnapshot)
                 {
                     // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + cloubBlob.ServiceClient.Credentials.SASToken.Substring(1);
+                    fullUri = fullUri + "&" + sas;
                 }
                 else
                 {
-                    fullUri = fullUri + cloubBlob.ServiceClient.Credentials.SASToken;
+                    fullUri = fullUri + "?" + sas;
                 }
                 blobClient = new BlobClient(new Uri(fullUri), options);
             }

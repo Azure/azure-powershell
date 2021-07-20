@@ -53,11 +53,12 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.5.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'YamlDotNet.dll', 'AutoMapper.dll', 
-               'Microsoft.Azure.Management.ContainerService.dll'
+               'Microsoft.Azure.Management.ContainerService.dll', 
+               'Aks.Autorest\bin\Az.Aks.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -69,10 +70,15 @@ RequiredAssemblies = 'YamlDotNet.dll', 'AutoMapper.dll',
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Aks.dll')
+FormatsToProcess = 'Aks.Autorest\Az.Aks.format.ps1xml'
+
+# Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Aks.dll', 
+                'Aks.Autorest\Az.Aks.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile', 
+               'Start-AzAksCluster', 'Stop-AzAksCluster'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzAksCluster', 'New-AzAksCluster', 'Remove-AzAksCluster', 

@@ -77,96 +77,92 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string ETag { get; set; }
 
-        public PSResource(GenericResource resource)
+        private PSResource(string id, string name, string kind, string location, string type, Identity identity, PSObject properties, Plan plan, Sku sku, IDictionary<string, string> tags)
         {
-            this.ResourceId = resource.Id;
-            this.Id = resource.Id;
-            this.Identity = resource.Identity;
-            this.Kind = resource.Kind;
-            this.Location = resource.Location;
-            this.ManagedBy = resource.ManagedBy;
-            this.ResourceName = resource.Name;
-            this.Name = resource.Name;
-            this.Plan = resource.Plan;
-            this.Properties = ((JToken)resource.Properties).ToPsObject();
-            this.ResourceType = resource.Type;
-            this.Sku = resource.Sku;
-            this.Tags = resource.Tags;
-            this.Type = resource.Type;
-
-            var resourceIdentifier = new ResourceIdentifier(this.Id);
-            this.ParentResource = resourceIdentifier.ParentResource;
-            this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            this.ResourceId = id;
+            this.Id = id;
+            this.ResourceName = name;
+            this.Name = name;
+            this.Kind = kind;
+            this.Location = location;
+            this.ResourceType = type;
+            this.Type = type;
+            this.Identity = identity;
+            this.Properties = properties;
+            this.Plan = plan;
+            this.Sku = sku;
+            this.Tags = tags;
         }
 
-        public PSResource(GenericResourceExpanded resource)
+        public PSResource(GenericResource resource): this(
+            resource.Id,
+            resource.Name,
+            resource.Kind,
+            resource.Location,
+            resource.Type,
+            resource.Identity,
+            ((JToken)resource.Properties).ToPsObject(),
+            resource.Plan,
+            resource.Sku,
+            resource.Tags
+        )
         {
-            this.ResourceId = resource.Id;
-            this.Id = resource.Id;
-            this.Identity = resource.Identity;
-            this.Kind = resource.Kind;
-            this.Location = resource.Location;
+            ResourceIdentifier resourceId = new ResourceIdentifier(resource.Id);
+            this.SubscriptionId = resourceId.Subscription;
+            this.ResourceGroupName = resourceId.ResourceGroupName;
+            this.ParentResource = resourceId.ParentResource;
             this.ManagedBy = resource.ManagedBy;
-            this.ResourceName = resource.Name;
-            this.Name = resource.Name;
-            this.Plan = resource.Plan;
-            this.Properties = ((JToken)resource.Properties).ToPsObject();
-            this.ResourceType = resource.Type;
-            this.Sku = resource.Sku;
-            this.Tags = resource.Tags;
-            this.Type = resource.Type;
-            this.CreatedTime = resource.CreatedTime;
-            this.ChangedTime = resource.ChangedTime;
-
-            var resourceIdentifier = new ResourceIdentifier(this.Id);
-            this.ParentResource = resourceIdentifier.ParentResource;
-            this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
         }
 
-        public PSResource(Resource<JToken> resource)
+        public PSResource(GenericResourceExpanded resource) : this(
+            (GenericResource)resource
+        )
         {
-            this.Name = resource.Name;
-            this.ResourceName = resource.Name;
-            this.ResourceId = resource.Id;
-            this.Id = resource.Id;
-            this.Type = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceType(resource.Id);
-            this.ResourceType = Type;
-            this.ExtensionResourceName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceName(resource.Id);
-            this.ExtensionResourceType = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceType(resource.Id);
-            this.Kind = resource.Kind;
-            this.ResourceGroupName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id);
-            this.Location = resource.Location;
-            this.SubscriptionId = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id);
-            this.Tags = TagsHelper.GetTagsDictionary(TagsHelper.GetTagsHashtable(resource.Tags));
-            this.Properties = resource.Properties == null ? null : resource.Properties.ToPsObject();
             this.CreatedTime = resource.CreatedTime;
             this.ChangedTime = resource.ChangedTime;
-            this.ETag = resource.ETag;
-            this.Plan = resource.Plan == null ? null : new Plan
+        }
+
+        public PSResource(Resource<JToken> resource): this(
+            resource.Id,
+            resource.Name,
+            resource.Kind,
+            resource.Location,
+            string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceType(resource.Id),
+            resource.Identity == null ? null : new Identity(resource.Identity.PrincipalId, resource.Identity.TenantId),
+            resource.Properties?.ToPsObject(),
+            resource.Plan == null ? null : new Plan
             {
                 Name = resource.Plan.Name,
                 Publisher = resource.Plan.Publisher,
                 Product = resource.Plan.Product,
                 PromotionCode = resource.Plan.PromotionCode,
                 Version = resource.Plan.Version
-            };
-            this.Sku = resource.Sku == null ? null : new Sku
+            },
+            resource.Sku == null ? null : new Sku
             {
                 Name = resource.Sku.Name,
                 Tier = resource.Sku.Tier,
                 Size = resource.Sku.Size,
                 Family = resource.Sku.Family,
                 Capacity = resource.Sku.Capacity
-            };
+            },
+            TagsHelper.GetTagsDictionary(TagsHelper.GetTagsHashtable(resource.Tags))
+        )
+        {
+            this.CreatedTime = resource.CreatedTime;
+            this.ChangedTime = resource.ChangedTime;
 
+            this.SubscriptionId = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id);
+            this.ResourceGroupName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id);
+            this.ExtensionResourceName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceName(resource.Id);
+            this.ExtensionResourceType = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceType(resource.Id);
+            this.ETag = resource.ETag;
             if (resource.Identity != null)
             {
-                this.Identity = new Identity(resource.Identity.PrincipalId, resource.Identity.TenantId);
                 if (Enum.TryParse(resource.Identity.Type, out Management.ResourceManager.Models.ResourceIdentityType type))
                 {
                     this.Identity.Type = type;
                 }
-
             }
         }
     }

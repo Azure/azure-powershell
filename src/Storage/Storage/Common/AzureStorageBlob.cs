@@ -379,15 +379,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             }
             else if (cloubBlob.ServiceClient.Credentials.IsSAS) //SAS
             {
+                string sas = Util.GetSASStringWithoutQuestionMark(cloubBlob.ServiceClient.Credentials.SASToken);
                 string fullUri = cloubBlob.SnapshotQualifiedUri.ToString();
                 if (cloubBlob.IsSnapshot)
                 {
                     // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + cloubBlob.ServiceClient.Credentials.SASToken.Substring(1);
+                    fullUri = fullUri + "&" + sas;
                 }
                 else
                 {
-                    fullUri = fullUri + cloubBlob.ServiceClient.Credentials.SASToken;
+                    fullUri = fullUri + "?" + sas;
                 }
                 blobClient = new BlobClient(new Uri(fullUri), options);
             }
