@@ -69,8 +69,9 @@ namespace Microsoft.Azure.Commands.Network
         public PSLoadBalancer LoadBalancer { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The backend address pool to remove",
+            ValueFromPipeline = true,
             ParameterSetName = DeleteByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSBackendAddressPool InputObject { get; set; }
