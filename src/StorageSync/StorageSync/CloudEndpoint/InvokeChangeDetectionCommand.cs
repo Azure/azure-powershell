@@ -53,6 +53,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
            Mandatory = true,
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.ResourceGroupNameParameter)]
+        [Parameter(
+           Position = 0,
+           ParameterSetName = StorageSyncParameterSets.ChangeDetectionStringAndRecursiveParameterSet,
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = false,
+           HelpMessage = HelpMessages.ResourceGroupNameParameter)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -70,6 +76,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [Parameter(
            Position = 1,
            ParameterSetName = StorageSyncParameterSets.ChangeDetectionStringAndPathParameterSet,
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = false,
+           HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
+        [Parameter(
+           Position = 1,
+           ParameterSetName = StorageSyncParameterSets.ChangeDetectionStringAndRecursiveParameterSet,
            Mandatory = true,
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.StorageSyncServiceNameParameter)]
@@ -94,6 +106,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
            Mandatory = true,
            ValueFromPipelineByPropertyName = false,
            HelpMessage = HelpMessages.SyncGroupNameParameter)]
+        [Parameter(
+           Position = 2,
+           ParameterSetName = StorageSyncParameterSets.ChangeDetectionStringAndRecursiveParameterSet,
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = false,
+           HelpMessage = HelpMessages.SyncGroupNameParameter)]
         [ValidateNotNullOrEmpty]
         // TODO : Place ResourceNameCompleter for all non root resources. https://github.com/Azure/azure-powershell/issues/8620
         [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
@@ -109,6 +127,10 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
             HelpMessage = HelpMessages.CloudEndpointNameParameter)]
         [Parameter(Mandatory = true,
             ParameterSetName = StorageSyncParameterSets.ChangeDetectionStringAndPathParameterSet,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = HelpMessages.CloudEndpointNameParameter)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = StorageSyncParameterSets.ChangeDetectionStringAndRecursiveParameterSet,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.CloudEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
@@ -131,6 +153,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
           Mandatory = true,
           ValueFromPipelineByPropertyName = true,
           HelpMessage = HelpMessages.CloudEndpointResourceIdParameter)]
+        [Parameter(
+          Position = 0,
+          ParameterSetName = StorageSyncParameterSets.ChangeDetectionResourceIdAndRecursiveParameterSet,
+          Mandatory = true,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = HelpMessages.CloudEndpointResourceIdParameter)]
         [ValidateNotNullOrEmpty]
         [Alias(StorageSyncAliases.CloudEndpointIdAlias)]
         [ResourceIdCompleter(StorageSyncConstants.CloudEndpointType)]
@@ -149,6 +177,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [Parameter(
            Position = 0,
            ParameterSetName = StorageSyncParameterSets.ChangeDetectionObjectAndPathParameterSet,
+           Mandatory = true,
+           ValueFromPipeline = true,
+           HelpMessage = HelpMessages.CloudEndpointObjectParameter)]
+        [Parameter(
+           Position = 0,
+           ParameterSetName = StorageSyncParameterSets.ChangeDetectionObjectAndRecursiveParameterSet,
            Mandatory = true,
            ValueFromPipeline = true,
            HelpMessage = HelpMessages.CloudEndpointObjectParameter)]
@@ -189,6 +223,18 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = false,
                    ParameterSetName = StorageSyncParameterSets.ChangeDetectionResourceIdAndDirectoryParameterSet,
+                   HelpMessage = HelpMessages.ChangeDetectionRecurseParameter)]
+        [Parameter(Mandatory = true,
+                   ValueFromPipelineByPropertyName = false,
+                   ParameterSetName = StorageSyncParameterSets.ChangeDetectionStringAndRecursiveParameterSet,
+                   HelpMessage = HelpMessages.ChangeDetectionRecurseParameter)]
+        [Parameter(Mandatory = true,
+                   ValueFromPipelineByPropertyName = false,
+                   ParameterSetName = StorageSyncParameterSets.ChangeDetectionObjectAndRecursiveParameterSet,
+                   HelpMessage = HelpMessages.ChangeDetectionRecurseParameter)]
+        [Parameter(Mandatory = true,
+                   ValueFromPipelineByPropertyName = false,
+                   ParameterSetName = StorageSyncParameterSets.ChangeDetectionResourceIdAndRecursiveParameterSet,
                    HelpMessage = HelpMessages.ChangeDetectionRecurseParameter)]
         public SwitchParameter Recursive { get; set; }
 
@@ -296,6 +342,11 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 
                     triggerChangeDetectionParameters = new TriggerChangeDetectionParameters(
                         paths: this.Path.ToList());
+                }
+                else if (this.IsParameterBound(c => c.Recursive)) {
+                    triggerChangeDetectionParameters = new TriggerChangeDetectionParameters(
+                        changeDetectionMode: ChangeDetectionMode.Recursive
+                    );
                 }
                 else
                 {

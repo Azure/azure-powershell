@@ -76,5 +76,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The change detection resource identifier and path parameter set
         /// </summary>
         public const string ChangeDetectionResourceIdAndPathParameterSet = "ResourceIdAndPathParameterSet";
+
+        /// <summary>
+        /// The change detection object and recursive parameter set
+        /// </summary>
+        public const string ChangeDetectionObjectAndRecursiveParameterSet = "ObjectAndRecursiveParameterSet";
+
+        /// <summary>
+        /// The change detection resource identifier and recursive parameter set
+        /// </summary>
+        public const string ChangeDetectionResourceIdAndRecursiveParameterSet = "ResourceIdAndRecursiveParameterSet";
+
+        /// <summary>
+        /// The change detection string and recursive parameter set
+        /// </summary>
+        public const string ChangeDetectionStringAndRecursiveParameterSet = "StringAndRecursiveParameterSet";
     }
 }
