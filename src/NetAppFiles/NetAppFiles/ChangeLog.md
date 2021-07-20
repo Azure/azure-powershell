@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Administrators to ActiveDirectory
+* Added LastTransferSize, LastTransferType,TotalTransferBytes to BackupStatus
+* Added CoolAccess and QosType to CapacityPool
+* Added CoolAccess, CoolnessPeriod and UnixPermissions to Volume
+* Added ChownMode to ExportPolicyRule
+* Added Get-Az-NetAppFilesVolumeRestoreStatus to get the status of a restore operation for a volume
 
 ## Version 0.6.0
 * Added UseExistingSnapshot to Backups 

@@ -24,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using BlobContainerProperties = global::Azure.Storage.Blobs.Models.BlobContainerProperties;
     using Microsoft.Azure.Storage.Auth;
     using Microsoft.Azure.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
 
     /// <summary>
     /// azure storage container
@@ -259,7 +260,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             else if (cloubContainer.ServiceClient.Credentials.IsSAS) //SAS
             {
                 string fullUri = cloubContainer.Uri.ToString();
-                fullUri = fullUri + cloubContainer.ServiceClient.Credentials.SASToken;
+                string sas = Util.GetSASStringWithoutQuestionMark(cloubContainer.ServiceClient.Credentials.SASToken);
+                fullUri = fullUri + "?" + sas;
                 blobContainerClient = new BlobContainerClient(new Uri(fullUri), options);
             }
             else if (cloubContainer.ServiceClient.Credentials.IsSharedKey) //Shared Key

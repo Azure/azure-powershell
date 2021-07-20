@@ -118,21 +118,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions requestOptions = RequestOptions;
             bool useFlatBlobListing = this.Recurse.IsPresent ? true : false;
 
-            IEnumerator<Page<PathItem>> enumerator = fileSystem.GetPaths(this.Path, this.Recurse, this.OutputUserPrincipalName.IsPresent)
-                .AsPages(this.ContinuationToken, this.MaxCount)
-                .GetEnumerator();
-
+            int listCount = InternalMaxCount;
             Page<PathItem> page;
-            enumerator.MoveNext();
-            page = enumerator.Current;
-            if(string.IsNullOrEmpty(page.ContinuationToken) && (MaxCount == null || page.Values.Count < MaxCount.Value))
+            do
             {
-                WriteWarning(string.Format("Not all result returned, to list the left items run this cmdlet again with parameter: '-ContinuationToken {0}'.", page.ContinuationToken));
-            }
-            foreach (PathItem item in page.Values)
-            {
-                WriteDataLakeGen2Item(localChannel, item, fileSystem, page.ContinuationToken, this.FetchProperty.IsPresent);
-            }
+                IEnumerator<Page<PathItem>> enumerator = fileSystem.GetPaths(this.Path, this.Recurse, this.OutputUserPrincipalName.IsPresent)
+                    .AsPages(this.ContinuationToken, listCount)
+                    .GetEnumerator();
+
+                enumerator.MoveNext();
+                page = enumerator.Current;
+                foreach (PathItem item in page.Values)
+                {
+                    WriteDataLakeGen2Item(localChannel, item, fileSystem, page.ContinuationToken, this.FetchProperty.IsPresent);
+                }
+                if (listCount != int.MaxValue)
+                {
+                    listCount -= page.Values.Count;
+                }
+                this.ContinuationToken = page.ContinuationToken;
+            } while (!string.IsNullOrEmpty(this.ContinuationToken) && (listCount > 0));
         }
     }
 }

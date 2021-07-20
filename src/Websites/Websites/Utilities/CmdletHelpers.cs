@@ -1,9 +1,4 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.WebApps.Models;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+﻿using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;

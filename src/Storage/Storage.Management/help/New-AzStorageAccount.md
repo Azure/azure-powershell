@@ -24,9 +24,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
  [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -43,8 +43,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-ActiveDirectoryAzureStorageSid <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
  [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
- [-AllowSharedKeyAccess <Boolean>] [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
+ [-DefaultSharePermission <String>] [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -580,6 +581,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableNfsV3
+Enable NFS 3.0 protocol support if sets to true
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EncryptionKeyTypeForQueue
 Set the Encryption KeyType for Queue. The default value is Service.
 -Account: Queue will be encrypted with account-scoped encryption key. 
@@ -954,7 +970,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

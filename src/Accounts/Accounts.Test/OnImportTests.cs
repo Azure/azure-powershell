@@ -45,5 +45,22 @@ namespace Microsoft.Azure.Commands.Profile.Test
             //Verify
             Assert.Equal(AzureSession.Instance.ARMContextSaveMode, ContextSaveMode.Process);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PersistenceCheckReturnFalse()
+        {
+            // Setup
+            var cmdlt = new ConnectAzureRmAccountCommand();
+            var mockChecker = new Mock<TokenCachePersistenceChecker>();
+            mockChecker.Setup(f => f.Verify()).Returns(false);
+            cmdlt.TokenCachePersistenceChecker = mockChecker.Object;
+
+            // Act
+            cmdlt.OnImport();
+
+            //Verify
+            Assert.Equal(AzureSession.Instance.ARMContextSaveMode, ContextSaveMode.Process);
+        }
     }
 }
