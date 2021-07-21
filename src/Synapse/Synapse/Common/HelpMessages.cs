@@ -441,9 +441,9 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string AutoResume = "Indicates whether the sql pool can automatically resume when connection attempts are made.";
 
-        public const string ManagedPrivateEndpointName = "Synapse Managed Private Endpoint Name";
+        public const string ManagedPrivateEndpointName = "The Synapse Managed Private Endpoint Name.";
 
-        public const string ManagedPrivateEndpointObject = "Synapse Managed Private Endpoint Object";
+        public const string ManagedPrivateEndpointObject = "The Synapse Managed Private Endpoint Object.";
 
         public const string VirtualNetworkName = "Synapse Virtual Network Name where Managed Private Endpoint runs";
     }

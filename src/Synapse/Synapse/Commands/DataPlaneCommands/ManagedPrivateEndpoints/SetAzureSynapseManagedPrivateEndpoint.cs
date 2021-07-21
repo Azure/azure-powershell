@@ -12,8 +12,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.ManagedPrivateEndpoint,
         DefaultParameterSetName = SetByName, SupportsShouldProcess = true)]
-    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.ManagedPrivateEndpoint,
-        "Import-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.ManagedPrivateEndpoint)]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.ManagedPrivateEndpoint)]
     [OutputType(typeof(PSManagedPrivateEndpointResource))]
     public class SetAzureSynapseManagedPrivateEndpoint : SynapseManagedPrivateEndpointsClientCmdletBase
     {
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
         [ValidateNotNullOrEmpty]
         [Alias("ManagedPrivateEndpointName")]
-        public string PrivateEndpointName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.VirtualNetworkName)]
         [ValidateNotNullOrEmpty]
@@ -56,10 +55,10 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseManagedPrivateEndPoint, this.PrivateEndpointName, this.WorkspaceName)))
+            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseManagedPrivateEndPoint, this.Name, this.WorkspaceName)))
             { 
                 string rawJsonContent = SynapseManagedPrivateEndpointsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
-                WriteObject(new PSManagedPrivateEndpointResource(SynapseManagedPrivateEndpointsClient.CreateManagedPrivateEndpoint(this.PrivateEndpointName, rawJsonContent, this.VirtualNetworkName), this.WorkspaceName));
+                WriteObject(new PSManagedPrivateEndpointResource(SynapseManagedPrivateEndpointsClient.CreateManagedPrivateEndpoint(this.Name, rawJsonContent, this.VirtualNetworkName), this.WorkspaceName));
             }
         }
     }

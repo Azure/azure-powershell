@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class SynapseManagedPrivateEndpointsClient
     {
-        private readonly ManagedPrivateEndpointsClient _ManagedPrivateEndpointClient;
+        private readonly ManagedPrivateEndpointsClient _managedPrivateEndpointClient;
 
         public SynapseManagedPrivateEndpointsClient(String workspaceName, IAzureContext context)
         {
@@ -23,39 +23,33 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
-            _ManagedPrivateEndpointClient = new ManagedPrivateEndpointsClient(uri, new AzureSessionCredential(context));
+            _managedPrivateEndpointClient = new ManagedPrivateEndpointsClient(uri, new AzureSessionCredential(context));
         }
-
-        #region Managed Private Endpoint
 
         public ManagedPrivateEndpoint CreateManagedPrivateEndpoint(string managedPrivateEndpointName, string rawJsonContent, string managedVirtualNetworkName = "default")
         {
             ManagedPrivateEndpoint managedPrivateEndpoint = JsonConvert.DeserializeObject<ManagedPrivateEndpoint>(rawJsonContent);
-            var operation = _ManagedPrivateEndpointClient.Create(managedPrivateEndpointName, managedPrivateEndpoint, managedVirtualNetworkName);
+            var operation = _managedPrivateEndpointClient.Create(managedPrivateEndpointName, managedPrivateEndpoint, managedVirtualNetworkName);
             return operation.Value;
         }
 
         public void DeleteManagedPrivateEndpoint(string managedPrivateEndpointName, string managedVirtualNetworkName = "default")
         {
-            _ManagedPrivateEndpointClient.Delete(managedPrivateEndpointName, managedVirtualNetworkName);
+            _managedPrivateEndpointClient.Delete(managedPrivateEndpointName, managedVirtualNetworkName);
         }
 
         public ManagedPrivateEndpoint GetManagedPrivateEndpoint(string managedPrivateEndpointName, string managedVirtualNetworkName = "default")
         {
-            var opration =  _ManagedPrivateEndpointClient.Get(managedPrivateEndpointName, managedVirtualNetworkName);
+            var opration =  _managedPrivateEndpointClient.Get(managedPrivateEndpointName, managedVirtualNetworkName);
             return opration.Value;
         }
 
         public Pageable<ManagedPrivateEndpoint> ListManagedPrivateEndpoints(string managedVirtualNetworkName = "default")
-        {  
-            var endpoints = _ManagedPrivateEndpointClient.List(managedVirtualNetworkName);
+        {
+            var endpoints = _managedPrivateEndpointClient.List(managedVirtualNetworkName);
             return endpoints;
         }
 
-
-        #endregion
-
-        #region helper
         public virtual string ReadJsonFileContent(string path)
         {
             if (!File.Exists(path))
@@ -68,7 +62,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 return reader.ReadToEnd();
             }
         }
-        #endregion
-
     }
 }

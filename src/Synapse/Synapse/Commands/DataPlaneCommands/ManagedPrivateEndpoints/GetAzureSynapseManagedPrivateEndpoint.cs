@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
         [ValidateNotNullOrEmpty]
         [Alias("ManagedPrivateEndpointName")]
-        public string PrivateEndpointName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.VirtualNetworkName)]
         [ValidateNotNullOrEmpty]
@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
-            if(this.IsParameterBound(c => this.PrivateEndpointName))
+            if(this.IsParameterBound(c => this.Name))
             {
-                if (!string.IsNullOrEmpty(PrivateEndpointName) && !string.IsNullOrEmpty(VirtualNetworkName))
+                if (!string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(VirtualNetworkName))
                 {
-                    WriteObject(new PSManagedPrivateEndpointResource(SynapseManagedPrivateEndpointsClient.GetManagedPrivateEndpoint(this.PrivateEndpointName, this.VirtualNetworkName), this.WorkspaceName));
+                    WriteObject(new PSManagedPrivateEndpointResource(SynapseManagedPrivateEndpointsClient.GetManagedPrivateEndpoint(this.Name, this.VirtualNetworkName), this.WorkspaceName));
                 }
             }
             else
@@ -55,9 +55,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 var privateEndpoints = SynapseManagedPrivateEndpointsClient.ListManagedPrivateEndpoints(this.VirtualNetworkName)
                    .Select(element => new PSManagedPrivateEndpointResource(element, this.WorkspaceName));
                 WriteObject(privateEndpoints, true);
-            }
-
-            
+            }            
        }
     }
 }

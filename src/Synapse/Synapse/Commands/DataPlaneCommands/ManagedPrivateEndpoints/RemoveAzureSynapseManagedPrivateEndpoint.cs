@@ -14,6 +14,7 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         private const string RemoveByName = "RemoveByName";
         private const string RemoveByObject = "RemoveByObject";
+        private const string RemoveByInputObject = "RemoveByInputObject";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -26,13 +27,18 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
+        [Parameter(ValueFromPipeline = true, ParameterSetName = RemoveByInputObject,
+           Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointObject)]
+        [ValidateNotNull]
+        public PSManagedPrivateEndpointResource InputObject { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByName,
             Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByObject,
             Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
         [ValidateNotNullOrEmpty]
         [Alias("ManagedPrivateEndpointName")]
-        public string PrivateEndpointName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.VirtualNetworkName)]
         [ValidateNotNullOrEmpty]
@@ -42,6 +48,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
+        public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.Force)]
         public SwitchParameter Force { get; set; }
@@ -55,12 +63,12 @@ namespace Microsoft.Azure.Commands.Synapse
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemoveSynapseManagedPrivateEndpoint, this.PrivateEndpointName),
-                string.Format(Resources.RemovingSynapseManagedPrivateEndpoint, this.PrivateEndpointName, this.WorkspaceName),
-                PrivateEndpointName,
+                string.Format(Resources.RemoveSynapseManagedPrivateEndpoint, this.Name),
+                string.Format(Resources.RemovingSynapseManagedPrivateEndpoint, this.Name, this.WorkspaceName),
+                Name,
                 () =>
                 {
-                    SynapseManagedPrivateEndpointsClient.DeleteManagedPrivateEndpoint(this.PrivateEndpointName,this.VirtualNetworkName);
+                    SynapseManagedPrivateEndpointsClient.DeleteManagedPrivateEndpoint(this.Name,this.VirtualNetworkName);
                     if (PassThru)
                     {
                         WriteObject(true);

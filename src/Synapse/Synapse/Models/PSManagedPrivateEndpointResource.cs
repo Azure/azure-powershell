@@ -1,7 +1,4 @@
 ﻿using Azure.Analytics.Synapse.ManagedPrivateEndpoints.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -13,8 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Id = managedPrivateEndpoint?.Id;
             this.Name = managedPrivateEndpoint?.Name;
             this.Type = managedPrivateEndpoint?.Type;
-            this.Properties = managedPrivateEndpoint?.Properties;
-               
+            this.Properties = managedPrivateEndpoint?.Properties != null? new PSManagedPrivateEndpointProperties(managedPrivateEndpoint.Properties) : null;
         }
 
         public string WorkspaceName { get; set; }
@@ -25,7 +21,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string Type { get;  set; }
 
-        public ManagedPrivateEndpointProperties Properties { get;  set; }
-
+        public PSManagedPrivateEndpointProperties Properties { get;  set; }
     }
 }
