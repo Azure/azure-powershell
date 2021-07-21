@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
 
                 this.Location = this.InputObject.Location;
                 this.Name = this.InputObject.Name;
-                this.ResourceGroupName = new ResourceIdentifier(this.InputObject.Id).ResourceGroupName;
+                this.ResourceGroupName = this.ResourceGroupName ?? new ResourceIdentifier(this.InputObject.Id).ResourceGroupName;
 
                 // The semantics is if AutoscaleProfiles is given it will replace the existing Profiles
                 this.AutoscaleProfile = this.AutoscaleProfile ?? property.Profiles.ToList();
