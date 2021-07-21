@@ -18,10 +18,6 @@
 Creates a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
 .Description
 Creates a provider instance for the specified subscription, resource group, SapMonitor name, and resource name.
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance
-.Link
-https://docs.microsoft.com/powershell/module/az.hana/new-azsapproviderinstance
 #>
 function New-AzSapMonitorProviderInstance {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance])]
