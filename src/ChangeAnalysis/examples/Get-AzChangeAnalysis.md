@@ -55,7 +55,7 @@ ARG_3dd199c6-cfec-421a-bcd3-797c08de63bc_0ee1aacb-523b-40bd-96a0-00fed2f47380_13
 This command lists the changes of a resource group within the specified time range.
 `StartTime` and `EndTime` are UTC date formats.
 
-### Example 3: List the changes of a resource id within the specified time range
+### Example 3: List the changes of a resource within the specified time range
 ```powershell
 PS C:\> $start = Get-Date -Date "2021-07-16T12:09:03.141Z" -AsUTC
 PS C:\> $end = Get-Date -Date "2021-07-18T12:09:03.141Z" -AsUTC
@@ -66,5 +66,5 @@ Name                                                                            
 ARG_3dd199c6-cfec-421a-bcd3-797c08de63bc_0ee1aacb-523b-40bd-96a0-00fed2f47380_132711384626690000_132712151317657566 Microsoft.ChangeAnalysis/changes
 ```
 
-This command lists the changes of a resource id within the specified time range.
+This command lists the changes of a resource within the specified time range.
 `StartTime` and `EndTime` are UTC date formats.
