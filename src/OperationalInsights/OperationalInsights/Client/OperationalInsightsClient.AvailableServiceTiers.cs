@@ -2,11 +2,7 @@
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights.Models;
-using System.Management.Automation;
-using System.Net;
-using Microsoft.Rest;
 using System;
-using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Workspaces
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, $"Regerate workspace:{Name} shared keys"))
+            if (ShouldProcess(Name, $"Regenerate workspace:{Name} shared keys"))
             {
                 WriteObject(OperationalInsightsClient.UpdateWorkspaceKeys(ResourceGroupName, Name), true);
             }
