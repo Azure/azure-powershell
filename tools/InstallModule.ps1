@@ -4,7 +4,7 @@ param(
   [Parameter(Mandatory = $false, Position = 0)]
   $ModuleName = "Az",
   [string]
-  [Parameter(Mandatory = $false, Position = 1)]
+  [Parameter(Mandatory = $false, Position = 1, HelpMessage = "Specifies the path for discovering and installing modules from.")]
   $SourceLocation = $PSScriptRoot
 )
 
