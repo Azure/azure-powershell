@@ -31,14 +31,14 @@ Updating the address space on peered virtual networks is now supported. However,
 
 ### Example 1
 ```powershell
-PS C:\> Sync-AzVirtualNetworkPeering -Name 'peering2' -VirtualNetwork 'vnet1' -ResourceGroupName 'rg1'
+PS C:\> Sync-AzVirtualNetworkPeering -Name 'peering2' -VirtualNetworkName 'vnet1' -ResourceGroupName 'rg1'
 ```
 
 Syncs the address space on the peering, peering2 in the virtual network, vnet1 within the resource group, rg1.
 
 ### Example 2
 ```powershell
-PS C:\> $s1h1 = Get-AzVirtualNetworkPeering -Name 'spoke1-hub1' -VirtualNetwork 'spoke1' -ResourceGroupName 'HUB1-RG'
+PS C:\> $s1h1 = Get-AzVirtualNetworkPeering -Name 'spoke1-hub1' -VirtualNetworkName 'spoke1' -ResourceGroupName 'HUB1-RG'
 PS C:\> $s1h1 | Sync-AzVirtualNetworkPeering
 ```
 
