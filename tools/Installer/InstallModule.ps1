@@ -1,7 +1,7 @@
 [cmdletbinding()]
 param(
   [string]
-  [Parameter(Mandatory = $false, Position = 0)]
+  [Parameter(Mandatory = $false, Position = 0, HelpMessage = "Name of the module to install. By default all modules are installed.")]
   $ModuleName = "Az",
   [string]
   [Parameter(Mandatory = $false, Position = 1, HelpMessage = "Specifies the path for discovering and installing modules from.")]
