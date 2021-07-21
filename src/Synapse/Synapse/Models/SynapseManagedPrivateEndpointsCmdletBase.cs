@@ -1,0 +1,31 @@
+﻿using Microsoft.Azure.Commands.Synapse.Common;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+using System.Text;
+
+
+namespace Microsoft.Azure.Commands.Synapse.Models
+{
+    public class SynapseManagedPrivateEndpointsClientCmdletBase : SynapseCmdletBase
+    {
+        private SynapseManagedPrivateEndpointsClient _synapseManagedPrivateEndpointClient;
+        public virtual string WorkspaceName { get; set; }
+
+        public SynapseManagedPrivateEndpointsClient SynapseManagedPrivateEndpointsClient
+        {
+            get
+            {
+                if (_synapseManagedPrivateEndpointClient == null)
+                {
+                    _synapseManagedPrivateEndpointClient = new SynapseManagedPrivateEndpointsClient(this.WorkspaceName, DefaultProfile.DefaultContext);
+                }
+
+                return _synapseManagedPrivateEndpointClient;
+            }
+
+            set { _synapseManagedPrivateEndpointClient = value; }
+        }
+    }
+}
