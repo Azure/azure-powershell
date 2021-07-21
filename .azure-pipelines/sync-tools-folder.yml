@@ -1,19 +1,28 @@
-variables:
-  GenerationBranchName: windows
-  AzureStackBranchName: windows
-
-trigger: none
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: main
 
 pr:
   branches:
     include:
-      - '*'
-    exclude:
-      - Azs-tzl
+      - main
+  paths:
+    include:
+      - .azure-pipeline
+      - tools
+      - src/lib
+      
+variables:
+  GenerationBranchName: generation
+  AzureStackBranchName: Azs-tzl
+
+trigger: none
 
 jobs:
-- job: Build
-  displayName: Build
+- job: Sync
+  displayName: Sync to ${{ parameters.BranchName }}
   condition: succeeded()
   strategy:
     matrix:
@@ -23,6 +32,6 @@ jobs:
         BranchName: ${{ variables.AzureStackBranchName }}
 
   steps:
-  - template: util/build-steps.yml
+  - template: util/sync-tools-folder-template.yml
     parameters:
       BranchName: $(BranchName)
