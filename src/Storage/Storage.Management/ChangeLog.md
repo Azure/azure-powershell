@@ -24,6 +24,7 @@
     -  `Add-AzStorageAccountManagementPolicyAction`
 * Make list datalake gen2 items list out all items by default, instead of need user to list chunk by chunk.
     - `Get-AzDataLakeGen2ChildItem`
+* Fix BlobProperties is empty issue when use sas without prefix '?' [#15460]
 
 ## Version 3.9.0
 * Supported enable/disable Blob container soft delete

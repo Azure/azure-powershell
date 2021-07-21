@@ -163,5 +163,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </value>
         public bool? AllowLocalNfsUsersWithLdap { get; set; }
 
+        /// <summary>
+        /// Gets or sets Administrators
+        /// </summary>
+        /// <value>
+        /// Domain Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
+        /// </value>
+        public IList<string> Administrators { get; set; }
     }
 }
