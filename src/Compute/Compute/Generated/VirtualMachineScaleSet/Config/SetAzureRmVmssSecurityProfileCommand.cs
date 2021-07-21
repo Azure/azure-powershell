@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        public SecurityTypes SecurityType { get; set; }
+        public string SecurityType { get; set; }
 
         protected override void ProcessRecord()
         {

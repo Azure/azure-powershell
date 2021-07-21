@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
-        public SecurityTypes SecurityType { get; set; }
+        public string SecurityType { get; set; }
 
         public override void ExecuteCmdlet()
         {
