@@ -4,6 +4,17 @@ parameters:
 steps:
 - checkout: self
 - task: PowerShell@2
+  displayName: Save folders need to be sync
+  inputs:
+    targetType: inline
+    script: >-
+      cp .azure-pipelines .azure-pipelines-tmp -r
+
+      cp src/lib src/lib-tmp -r
+
+      cp tools tools-tmp -r
+    pwsh: true
+- task: PowerShell@2
   displayName: Config git
   inputs:
     targetType: inline
@@ -12,15 +23,13 @@ steps:
 
       git config --global user.name "azurepowershell"
 
-      git checkout ${{ parameters.BranchName }}
+      git checkout -b syncToolsFolder-${{ parameters.BranchName }} origin/${{ parameters.BranchName }}
     pwsh: true
 - task: PowerShell@2
   displayName: Sync .azure-pipelines folder from main to ${{ parameters.BranchName }}
   inputs:
     targetType: inline
     script: >-
-      #cp .azure-pipelines .azure-pipelines-tmp -r
-
       rm .azure-pipelines -r
 
       mv .azure-pipelines-tmp .azure-pipelines
@@ -32,8 +41,6 @@ steps:
   inputs:
     targetType: inline
     script: >-
-      #cp src/lib src/lib-tmp -r
-
       rm src/lib -r
 
       mv src/lib-tmp src/lib
@@ -45,8 +52,6 @@ steps:
   inputs:
     targetType: inline
     script: >-
-      #cp tools tools-tmp -r
-
       rm tools -r
 
       mv tools-tmp tools
@@ -57,6 +62,6 @@ steps:
 
       git remote set-url origin https://$env:GITHUB_TOKEN@github.com/Azure/azure-powershell.git
 
-      git push origin syncToolsFolder --force
+      git push origin syncToolsFolder-${{ parameters.BranchName }} --force
     pwsh: true
 
