@@ -1,84 +1,28 @@
-# Variable 'BaseBranch' was defined in the Variables tab
-# Variable 'ServiceName' was defined in the Variables tab
-# Multi-job configuration must be converted to matrix strategy: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#multi-job-configuration
-resources:
-  repositories:
-  - repository: self
-    type: git
-    ref: main
+variables:
+  GenerationBranchName: windows
+  AzureStackBranchName: windows
+
+trigger: none
 
 pr:
   branches:
     include:
-      - main
-  paths:
-    include:
-      - .azure-pipeline
-      - tools
-      - src/lib
+      - '*'
+    exclude:
+      - Azs-tzl
 
 jobs:
-- job: Job_1
-  displayName: 'Service: '
-  timeoutInMinutes: 90
-  pool:
-    name: Hosted VS2017
+- job: Build
+  displayName: Build
+  condition: succeeded()
+  strategy:
+    matrix:
+      Generation:
+        BranchName: ${{ variables.GenerationBranchName }}
+      AzureStack:
+        BranchName: ${{ variables.AzureStackBranchName }}
+
   steps:
-  - checkout: self
-  - task: PowerShell@2
-    displayName: Config git
-    inputs:
-      targetType: inline
-      script: >-
-        git config --global user.email "azurepowershell@ms.com"
-
-        git config --global user.name "azurepowershell"
-
-        git checkout generation
-      pwsh: true
-  - task: PowerShell@2
-    displayName: Sync .azure-pipeline folder from main to generation
-    inputs:
-      targetType: inline
-      script: >-
-        #cp .azure-pipeline .azure-pipeline-tmp -r
-
-        rm .azure-pipeline -r
-
-        mv .azure-pipeline-tmp .azure-pipeline
-
-        git add .azure-pipeline
-      pwsh: true
-  - task: PowerShell@2
-    displayName: Sync src/lib folder from main to generation
-    inputs:
-      targetType: inline
-      script: >-
-        #cp src/lib src/lib-tmp -r
-
-        rm src/lib -r
-
-        mv src/lib-tmp src/lib
-
-        git add src/lib
-      pwsh: true
-  - task: PowerShell@2
-    displayName: Sync tools folder from main to generation
-    inputs:
-      targetType: inline
-      script: >-
-        #cp tools tools-tmp -r
-
-        rm tools -r
-
-        mv tools-tmp tools
-
-        git add tools
-
-        git commit -m "Sync tools folder from main branch to generation branch"
-
-        git remote set-url origin https://$env:GITHUB_TOKEN@github.com/Azure/azure-powershell.git
-
-        git push origin syncToolsFolder --force
-      pwsh: true
-...
+  - template: util/build-steps.yml
+    parameters:
+      BranchName: $(BranchName)
