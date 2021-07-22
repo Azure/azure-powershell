@@ -327,7 +327,7 @@ function New-AzCloudService {
 
         # Perform action
         Write-Host("Creating the Cloud Service resource.")
-        Az.CloudService.internal\New-AzCloudService @PSBoundParameters
+        Az.CloudService\New-AzCloudService @PSBoundParameters
     }
 
 }
