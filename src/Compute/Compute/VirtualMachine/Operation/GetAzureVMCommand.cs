@@ -101,9 +101,6 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var azureStorageService = new AzureStorageService();
-            azureStorageService.UseBlobClientOptions();
-
             ExecuteClientAction(() =>
             {
                 if (this.ParameterSetName.Equals(ListLocationVirtualMachinesParamSet))

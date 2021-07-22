@@ -28,6 +28,7 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 
         static AzAssemblyLoadContextInitializer()
         {
+            //TODO: Generate assembly version info into AzSharedAssemblies.json during build
             var azSharedAssemblies = new Dictionary<string, Version>()
             {
                 {"Azure.Core", new Version("1.16.0.0")},
