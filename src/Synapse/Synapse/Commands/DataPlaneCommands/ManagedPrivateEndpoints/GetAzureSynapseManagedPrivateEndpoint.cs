@@ -14,8 +14,6 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         private const string GetByName = "GetByName";
         private const string GetByObject = "GetByObject";
-        private const string DefaultVNetName = "default";
-        private const string DefaultVNetNameString = "default";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -33,11 +31,11 @@ namespace Microsoft.Azure.Commands.Synapse
         [Alias("ManagedPrivateEndpointName")]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = "Default Managed Virtual Network Name is " + DefaultVNetNameString)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = "Default Managed Virtual Network Name is " + SynapseConstants.DefaultVNetNameString)]
         [ValidateNotNullOrEmpty]
         [Alias("VNetName")]
-        [PSDefaultValue(Help = DefaultVNetNameString, Value = DefaultVNetName)]
-        public string VirtualNetworkName { get; set; } = DefaultVNetName;
+        [PSDefaultValue(Help = SynapseConstants.DefaultVNetNameString, Value = SynapseConstants.DefaultVNetName)]
+        public string VirtualNetworkName { get; set; } = SynapseConstants.DefaultVNetName;
 
         public override void ExecuteCmdlet()
         {

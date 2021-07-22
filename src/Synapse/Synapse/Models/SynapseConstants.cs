@@ -169,6 +169,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string ManagedPrivateEndpoint = nameof(ManagedPrivateEndpoint);
 
+        public const string DefaultVNetName = "default";
+
+        public const string DefaultVNetNameString = "default";
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {
