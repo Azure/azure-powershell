@@ -13,9 +13,9 @@ Creates new Named Value.
 ## SYNTAX
 
 ```
-New-AzApiManagementNamedValue -Context <PsApiManagementContext> [-NamedValueId <String>] -Name <String>
- -Value <String> [-Secret] [-Tag <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzApiManagementNamedValue -Context <PsApiManagementContext> [-NamedValueId <String>] [-Name <String>]
+ [-Value <String>] [-Secret] [-Tag <String[]>] [-KeyVault <PsApiManagementKeyVaultEntity>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +74,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KeyVault
+KeyVault used to fetch Namedvalue data.This parameter is required if Value not specified.
+
+```yaml
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementKeyVaultEntity
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the named value.
 Maximum length is 100 characters.
@@ -85,7 +100,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -154,7 +169,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

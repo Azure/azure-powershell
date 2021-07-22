@@ -1921,7 +1921,7 @@ function Certificate-CrudTest {
     $certId = getAssetName
     $kvcertId = 'cert1234'
     $secretIdentifier = 'https://jikangsdkkeyvault.vault.azure.net/secrets/sdkcert1'
-    $keyvault = New-AzApiManagementKeyVaultEntity -SecretIdentifier $secretIdentifier
+    $keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier
     try {
         # Add Keyvault Certificate
         $kvcert = New-AzApiManagementCertificate -Context $context -CertificateId $kvcertId -KeyVault $keyvault
@@ -1930,7 +1930,8 @@ function Certificate-CrudTest {
         Assert-NotNull $kvcert.Thumbprint
         Assert-AreEqual $secretIdentifier $kvcert.keyVault.SecretIdentifier
 
-        $refresh = Update-AzApiManagementKeyVaultBasedObject -ResourceId $kvcert.Id
+        $refresh = Get-AzApiManagementCertificate -ResourceId $kvcert.Id | Sync-AzApiManagementKeyVaultObject 
+        Assert-NotNull $refresh
 
         # upload certificate
         $cert = New-AzApiManagementCertificate -Context $context -CertificateId $certId -PfxFilePath $certPath -PfxPassword $certPassword
@@ -2029,6 +2030,7 @@ function Cache-CrudTest {
         Assert-AreEqual $cacheId $cache.CacheId
         Assert-NotNull $cache.ConnectionString
         Assert-AreEqual $cacheDescription $cache.Description
+        Assert-NotNull $cache.UseFromLocation
 
 		# get cache by Id
 		$cache = Get-AzApiManagementCache -ResourceId $cache.Id
@@ -2503,7 +2505,7 @@ function Properties-CrudTest {
     $namedValueId = getAssetName
     $secretNamedValueId = $null
     $secretIdentifier = 'https://jikangsdkkeyvault.vault.azure.net/secrets/sdkkv'
-    $keyvault = New-AzApiManagementKeyVaultEntity -SecretIdentifier $secretIdentifier
+    $keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier
     try {
         $propertyName = getAssetName
         $propertyValue = getAssetName
@@ -2531,7 +2533,7 @@ function Properties-CrudTest {
         Assert-Null $keyVaultNamedValue.Value
         Assert-NotNull $keyVaultNamedValue.KeyVault.SecretIdentifier
 
-        $refresh = Update-AzApiManagementKeyVaultBasedObject -ResourceId $keyVaultNamedValue.Id
+        $refresh = Sync-AzApiManagementKeyVaultObject -ResourceId $keyVaultNamedValue.Id
 
         #create Secret Property
         $secretNamedValueId = getAssetName
@@ -2551,7 +2553,7 @@ function Properties-CrudTest {
         $properties = Get-AzApiManagementNamedValue -Context $context
 
         Assert-NotNull $properties
-        # there should be 2 properties
+        # there should be 3 properties
         Assert-AreEqual 3 $properties.Count
 
         # get properties by name

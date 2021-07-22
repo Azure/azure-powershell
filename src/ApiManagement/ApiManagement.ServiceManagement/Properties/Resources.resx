@@ -439,6 +439,6 @@
     <comment>Process workflow</comment>
   </data>
   <data name="RefreshKeyVaultBasedObject" xml:space="preserve">
-    <value>Refresh KeyVault Based Object.</value>
+    <value>Refresh KeyVault Object.</value>
   </data>
 </root>

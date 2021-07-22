@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementKeyVaultEntity"), OutputType(typeof(PsApiManagementKeyVaultEntity))]
-    public class NewAzureApiManagementKeyVaultEntity : AzureApiManagementCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementKeyVaultObject"), OutputType(typeof(PsApiManagementKeyVaultEntity))]
+    public class NewAzureApiManagementKeyVaultObject : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = false,

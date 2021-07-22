@@ -579,12 +579,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .CreateMap<CacheContract, PsApiManagementCache>()
                     .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dest => dest.AzureRedisResourceId, opt => opt.MapFrom(src => src.ResourceId))
-                    .ForMember(dest => dest.CacheId, opt => opt.MapFrom(src => src.Name));
+                    .ForMember(dest => dest.CacheId, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.UseFromLocation, opt => opt.MapFrom(src => src.UseFromLocation));
 
                 cfg
                     .CreateMap<PsApiManagementCache, CacheContract>()
                     .ForMember(dest => dest.ResourceId, opt => opt.MapFrom(src => src.AzureRedisResourceId))
-                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.CacheId));
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.CacheId))
+                    .ForMember(dest => dest.UseFromLocation, opt => opt.MapFrom(src => src.UseFromLocation));
 
                 cfg
                     .CreateMap<PsApiManagementCache, CacheUpdateParameters>()
@@ -3779,6 +3781,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string connectionString,
             string description,
             string resourceId,
+            string UseFromLocation,
             PsApiManagementCache cacheObject)
         {
             CacheUpdateParameters parameters;
@@ -3804,6 +3807,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (resourceId != null)
             {
                 parameters.ResourceId = resourceId;
+            }
+
+            if (UseFromLocation != null)
+            {
+                parameters.UseFromLocation = UseFromLocation;
             }
 
             Client.Cache.Update(

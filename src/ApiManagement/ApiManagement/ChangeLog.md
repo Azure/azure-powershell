@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new `Sync-AzApiManagementKeyVaultSecret` cmdlet.
+* Added new `New-AzApiManagementKeyVaultObject` cmdlet.
+* Added new optional [-useFromLocation] parameter to the `Get-ApiManagementCache` `New-ApiManagementCache``Update-ApiManagementCache` cmdlet.
 
 * Updated cmdlet **New-AzApiManagement** to manage ApiManagement service 
     - Added support for the new `Isolated` SKU

@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Refresh KeyVault Based Object..
+        ///   Looks up a localized string similar to Refresh KeyVault Object..
         /// </summary>
         internal static string RefreshKeyVaultBasedObject {
             get {
