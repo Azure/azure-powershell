@@ -194,7 +194,8 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Get-AzDataLakeGen2DeletedItem', 'Restore-AzDataLakeGen2DeletedItem', 
                'Restore-AzStorageContainer', 
                'Set-AzStorageBlobImmutabilityPolicy', 'Remove-AzStorageBlobImmutabilityPolicy',
-               'Set-AzStorageBlobLegalHold', 'Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration'
+               'Set-AzStorageBlobLegalHold', 'Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration',
+               'New-AzStorageBlobQueryArrowField'
 
 # Variables to export from this module
 # VariablesToExport = @()

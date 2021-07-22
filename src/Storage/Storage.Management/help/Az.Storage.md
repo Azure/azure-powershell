@@ -221,6 +221,9 @@ Creates an account-level SAS token.
 ### [New-AzStorageBlobInventoryPolicyRule](New-AzStorageBlobInventoryPolicyRule.md)
 Creates a blob inventory policy rule object, which can be used in Set-AzStorageBlobInventoryPolicy.
 
+### [New-AzStorageBlobQueryArrowField](New-AzStorageBlobQueryArrowField.md)
+Creates a blob query arrow field object, which can be used in New-AzStorageBlobQueryConfig.
+
 ### [New-AzStorageBlobQueryConfig](New-AzStorageBlobQueryConfig.md)
 Creates a blob query configuration object, which can be used in Get-AzStorageBlobQueryResult.
 

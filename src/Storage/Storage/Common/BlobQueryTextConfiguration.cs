@@ -24,7 +24,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     {
         Csv,
         Json,
-        Parquet
+        Parquet,
+        Arrow
     }
 
     /// <summary>
@@ -56,9 +57,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                     RecordSeparator = jsonconfig.RecordSeparator
                 };
             }
-            else //Parquet
+            else if (this.Type == BlobQueryConfigType.Parquet)//Parquet
             {
                 return new BlobQueryParquetTextOptions();
+            }
+            else //arrow
+            {
+                PSBlobQueryArrowOptions arrowconfig = (PSBlobQueryArrowOptions)this;
+                return arrowconfig.ParseBlobQueryArrowOptions();
             }
         }
     }
@@ -143,6 +149,106 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             return new BlobQueryParquetTextOptions();
         }
+    }
+
+
+    /// <summary>
+    ///  Wrapper Class for BlobQueryArrowOptions
+    /// </summary>
+    public class PSBlobQueryArrowOptions : PSBlobQueryTextConfiguration
+    {
+        public PSBlobQueryArrowField[] Schema { get; set; }
+        public PSBlobQueryArrowOptions()
+        {
+            this.Type = BlobQueryConfigType.Arrow;
+        }
+
+        public PSBlobQueryArrowOptions(BlobQueryArrowOptions config)
+        {
+            this.Type = BlobQueryConfigType.Arrow;
+            this.Schema = ParsePSBlobQueryArrowFieldList(config.Schema);
+        }
+
+        public BlobQueryArrowOptions ParseBlobQueryArrowOptions()
+        {
+            return new BlobQueryArrowOptions()
+            {
+                Schema = ParseBlobQueryArrowFieldArray(this.Schema)
+            };
+        }
+
+
+        public static List<BlobQueryArrowField> ParseBlobQueryArrowFieldArray(PSBlobQueryArrowField[] psFieldArray)
+        {
+            List<BlobQueryArrowField> returnvalue = new List<BlobQueryArrowField>();
+            if (psFieldArray != null && psFieldArray.Length > 0)
+            {
+                foreach (PSBlobQueryArrowField psField in psFieldArray)
+                {
+                    returnvalue.Add(psField.ParseBlobQueryArrowField());
+                }
+            }
+            return returnvalue;
+        }
+
+        public static PSBlobQueryArrowField[] ParsePSBlobQueryArrowFieldList(IList<BlobQueryArrowField> fieldArray)
+        {
+            List<PSBlobQueryArrowField> returnvalue = new List<PSBlobQueryArrowField>();
+            if (fieldArray != null && fieldArray.Count > 0)
+            {
+                foreach (BlobQueryArrowField field in fieldArray)
+                {
+                    returnvalue.Add(new PSBlobQueryArrowField(field));
+                }
+            }
+            return returnvalue.ToArray();
+        }
+
+    }
+
+
+    /// <summary>
+    ///  Wrapper Class for BlobQueryArrowField
+    /// </summary>
+    public class PSBlobQueryArrowField
+    {
+        public BlobQueryArrowFieldType Type { get; set; }
+        public string Name { get; set; }
+        public int Precision { get; set; }
+        public int Scale { get; set; }
+
+        public PSBlobQueryArrowField()
+        {
+        }
+
+        public PSBlobQueryArrowField(BlobQueryArrowField field)
+        {
+            this.Type = field.Type;
+            this.Name = field.Name;
+            this.Precision = field.Precision;
+            this.Scale = field.Scale;
+        }
+
+        public BlobQueryArrowField ParseBlobQueryArrowField()
+        {
+            return new BlobQueryArrowField()
+            {
+                Type = this.Type,
+                Name = this.Name,
+                Precision = this.Precision,
+                Scale = this.Scale,
+            };
+        }
+    }
+
+    public enum PSBlobQueryArrowFieldType
+    {
+        Int64 = 0,
+        Bool = 1,
+        Timestamp = 2,
+        String = 3,
+        Double = 4,
+        Decimal = 5
     }
 
     /// <summary>

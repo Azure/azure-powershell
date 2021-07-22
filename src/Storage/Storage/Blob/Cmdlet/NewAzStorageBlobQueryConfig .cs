@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Storage.Blobs.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
@@ -35,9 +37,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// <summary>
         /// Parquet parameter set name
         /// </summary>
-        private const string ParquetParameterSet = "Parquet"; 
+        private const string ParquetParameterSet = "Parquet";
 
-         [Parameter(Mandatory = true,
+        /// <summary>
+        /// Arrow parameter set name
+        /// </summary>
+        private const string ArrowParameterSet = "Arrow";
+
+        [Parameter(Mandatory = true,
             Position = 0,
             HelpMessage = "Indicate to create a Blob Query Configuration for CSV.", 
             ParameterSetName = CsvParameterSet)]
@@ -57,6 +64,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = ParquetParameterSet)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AsParquet { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 0,
+            HelpMessage = "Indicate to create a Blob Query Configuration for Arrow.",
+            ParameterSetName = ArrowParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AsArrow { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The list of arrow fields to define the schema.", ParameterSetName = ArrowParameterSet)]
+        public PSBlobQueryArrowField[] ArrowField { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Optional. The string used to separate records.", ParameterSetName = CsvParameterSet)]
         [Parameter(Mandatory = false, HelpMessage = "Optional. The string used to separate records.", ParameterSetName = JsonParameterSet)]
@@ -139,11 +156,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 };
                 WriteObject(queryConfig);
             }
-            else // Parquet
+            else if(this.AsParquet.IsPresent) // Parquet
             {
                 PSBlobQueryParquetTextOptions queryConfig = new PSBlobQueryParquetTextOptions()
                 {
                     Type = BlobQueryConfigType.Parquet
+                };
+                WriteObject(queryConfig);
+            }
+            else // Arrow
+            {
+                PSBlobQueryArrowOptions queryConfig = new PSBlobQueryArrowOptions()
+                {
+                    Type = BlobQueryConfigType.Arrow,
+                    Schema = this.ArrowField
                 };
                 WriteObject(queryConfig);
             }

@@ -18,9 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Supported Parquest as input text config in blob quick query
+* Supported Parquest as input text config, Arrow as output text config in blob quick query
     -  `New-AzStorageBlobQueryConfig`
     -  `Get-AzStorageBlobQueryResult`
+    -  `New-AzStorageBlobQueryArrowField`
 
 ## Version 3.10.1
 * Supported create or migrate container to enable immutable Storage with versioning.

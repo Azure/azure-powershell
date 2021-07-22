@@ -28,6 +28,11 @@ New-AzStorageBlobQueryConfig [-AsJson] [-RecordSeparator <String>] [-AsJob] [<Co
 New-AzStorageBlobQueryConfig [-AsParquet] [-AsJob] [<CommonParameters>]
 ```
 
+### Arrow
+```
+New-AzStorageBlobQueryConfig [-AsArrow] -ArrowField <PSBlobQueryArrowField[]> [-AsJob] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzStorageBlobQueryConfig** cmdlet creates a blob query configuration object, which can be used in Get-AzStorageBlobQueryResult.
 
@@ -53,6 +58,36 @@ BytesScanned FailureCount BlobQueryError
 This command first create input configuration object as csv, and output configuration object as json, then use the 2 configurations to query blob.
 
 ## PARAMETERS
+
+### -ArrowField
+The list of arrow fields to define the schema.
+
+```yaml
+Type: Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.PSBlobQueryArrowField[]
+Parameter Sets: Arrow
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsArrow
+Indicate to create a Blob Query Configuration for Arrow.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Arrow
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsCsv
 Indicate to create a Blob Query Configuration for CSV.
