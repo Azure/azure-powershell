@@ -607,18 +607,18 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
 
         if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
-             throw "The virtual machine name must be between 1 and 64 characters long."
+             throw "The target virtual machine name must be between 1 and 64 characters long."
         }
 
         $TargetResourceGroupName = $ProviderSpecificDetails.TargetResourceGroupId.Split('/')[4]
         $VMNamePresentinRg = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $TargetVMName -ResourceType "Microsoft.Compute/virtualMachines" -ErrorVariable notPresent -ErrorAction SilentlyContinue
         if ($VMNamePresentinRg) {
-            throw "Virtual machine name must be unique in the target resource group."
+            throw "The target virtual machine name must be unique in the target resource group."
         }
 
         if ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$")
         {
-            throw "The virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
+            throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
         }
 
         $ProviderSpecificDetails.TargetVMName = $TargetVMName

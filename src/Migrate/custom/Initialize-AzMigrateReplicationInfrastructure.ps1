@@ -158,24 +158,24 @@ function Initialize-AzMigrateReplicationInfrastructure {
 
         $LogStringCreated = "Created : "
         $LogStringSkipping = " already exists."
-    
-    $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
 
-    if (-not $userObject) {
+        $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
+
+        if (-not $userObject) {
             $userObject = Get-AzADUser -Mail $context.Subscription.ExtendedProperties.Account
         }
-                
+
         if (-not $userObject) {
             $mailNicname = "{0}#EXT#" -f $($context.Account.Id -replace '@', '_')
-                    
+
             $userObject = Get-AzADUser | 
                 Where-Object {$_.MailNickName -eq $mailNicname}
         }
-                
+
         if (-not $userObject) {
             $userObject = Get-AzADServicePrincipal -ApplicationID $context.Account.Id
         }
-                 
+
         if (-not $userObject)
         {
             throw 'User Object Id Not Found!'
@@ -219,13 +219,13 @@ public static int hashForArtifact(String artifact)
                 $appMap[$item.ApplianceName] = $item.SiteId
             }
         }
-        
+
         if ($null -ne $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"]) {
             $appMapV3 = $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] | ConvertFrom-Json
             foreach ($item in $appMapV3) {
                 $t = $item.psobject.properties
                 $appMap[$t.Name] = $t.Value.SiteId
-            }    
+            }
         }
 
         if ($null -eq $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] -And
@@ -250,7 +250,7 @@ public static int hashForArtifact(String artifact)
                     if (($existingMapping) -and ($existingMapping.ProviderSpecificDetail.TargetLocation -ne $TargetRegion)) {
                         $targetRegionMismatchExceptionMsg = $ProjectName + " is already configured for migrating servers to " + $TargetRegion + ". Target Region cannot be modified once configured."
                         throw $targetRegionMismatchExceptionMsg
-                    }   
+                    }
                 }
             }
 
@@ -266,7 +266,7 @@ public static int hashForArtifact(String artifact)
 
             # Phase 1
             # Storage account
-            $MigratePrefix = "migrate"            
+            $MigratePrefix = "migrate"
             $LogStorageAcName = $MigratePrefix + "lsa" + $hash
             $GateWayStorageAcName = $MigratePrefix + "gwsa" + $hash
             $StorageType = "Microsoft.Storage/storageAccounts"
@@ -324,13 +324,13 @@ public static int hashForArtifact(String artifact)
             else {
                 Write-Host $ServiceBusNamespace, $LogStringSkipping
             }
-           
+
             # Key vault
             $KeyVaultName = $MigratePrefix + "kv" + $hash
             $KeyVaultType = "Microsoft.KeyVault/vaults"
             $KeyVaultApiVersion = "2016-10-01"
             $KeyVaultKind = "KeyVault"
-            
+
             $existingKeyVaultAccount = Get-AzResource -ResourceGroupName $ResourceGroupName -Name $KeyVaultName -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if ($existingKeyVaultAccount) {
                 Write-Host $KeyVaultName, $LogStringSkipping
@@ -491,7 +491,7 @@ public static int hashForArtifact(String artifact)
             Set-AzKeyVaultManagedStorageSasDefinition -AccountName $GateWayStorageAcName -VaultName $KeyVaultName -Name $gatewayStorageAccountSasSecretName -TemplateUri $gwyat -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
             
             # Phase 2
-           
+
             # ServiceBusConnectionString
             $serviceBusConnString = "ServiceBusConnectionString"
             $serviceBusSecretObject = Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name $serviceBusConnString -ErrorVariable notPresent -ErrorAction SilentlyContinue
@@ -503,7 +503,7 @@ public static int hashForArtifact(String artifact)
                 $secret = ConvertTo-SecureString -String $serviceBusRootKey.PrimaryConnectionString -AsPlainText -Force
                 $output = Set-AzKeyVaultSecret -VaultName $KeyVaultName -Name $serviceBusConnString -SecretValue $secret
                 Write-Host $LogStringCreated, $serviceBusConnString, " for ", $applianceName
-            }  
+            }
 
             # Policy
             $policyName = $MigratePrefix + $SiteName + "policy"
@@ -545,9 +545,9 @@ public static int hashForArtifact(String artifact)
                         $providerSpecificInput.TargetLocation = $TargetRegion
                         $output = New-AzMigrateReplicationProtectionContainerMapping -FabricName $fabric.Name -MappingName $mappingName -ProtectionContainerName $peContainer.Name -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -PolicyId $existingPolicyObject.Id -ProviderSpecificInput $providerSpecificInput -TargetProtectionContainerId  "Microsoft Azure"
                         Write-Host $LogStringCreated, $mappingName, " for ", $applianceName
-                    } 
+                    }
                 }
-            }  
+            }
         }
         Write-Host "Finished successfully."
         return $true
