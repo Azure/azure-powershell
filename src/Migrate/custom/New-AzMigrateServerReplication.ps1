@@ -553,6 +553,11 @@ public static int hashForArtifact(String artifact)
 
             foreach ($key in $ResourceTag.Keys)
             {
+                if ($key.length -eq 0)
+                {
+                    throw "InvalidTagName : The tag name must be non-null, non-empty and non-whitespace only. Please provide an actual value."
+                }
+
                 if ($key.length -gt 512)
                 {
                     $ExceededLengthKey.add($key)
