@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "SKU of the resource for which capacity needs be reserved.")]
+        [Alias("Size")]
         public string Sku { get; set; }
 
         [Parameter(Mandatory = false,

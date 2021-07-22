@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Get the Instance View of the Capacity Reservation Group.")]
+            HelpMessage = "Get the Instance View of the Capacity Reservation.")]
         public SwitchParameter InstanceView { get; set; }
 
         public override void ExecuteCmdlet()
