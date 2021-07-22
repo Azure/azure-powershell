@@ -22,7 +22,7 @@ Use this cmdlet to enable Az Predictor and start receiving suggestions.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Enable-AzPredictor
 ```
 
@@ -40,7 +40,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -55,7 +55,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -66,9 +66,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS
