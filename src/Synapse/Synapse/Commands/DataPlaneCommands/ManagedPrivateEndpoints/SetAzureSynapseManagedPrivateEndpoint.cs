@@ -1,11 +1,9 @@
-﻿using Azure.Analytics.Synapse.ManagedPrivateEndpoints.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
@@ -18,6 +16,8 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         private const string SetByName = "SetByName";
         private const string SetByObject = "SetByObject";
+        private const string DefaultVNetName = "default";
+        private const string DefaultVNetNameString = "default";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -35,10 +35,11 @@ namespace Microsoft.Azure.Commands.Synapse
         [Alias("ManagedPrivateEndpointName")]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.VirtualNetworkName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = "Default Managed Virtual Network Name is " + DefaultVNetNameString)]
         [ValidateNotNullOrEmpty]
         [Alias("VNetName")]
-        public string VirtualNetworkName { get; set; }
+        [PSDefaultValue(Help = DefaultVNetNameString, Value = DefaultVNetName)]
+        public string VirtualNetworkName { get; set; } = DefaultVNetName;
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
         [ValidateNotNullOrEmpty]

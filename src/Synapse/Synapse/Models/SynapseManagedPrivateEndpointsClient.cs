@@ -5,6 +5,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Properties;
+using Microsoft.Azure.Management.Synapse.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.IO;
 
@@ -40,8 +42,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public ManagedPrivateEndpoint GetManagedPrivateEndpoint(string managedPrivateEndpointName, string managedVirtualNetworkName = "default")
         {
-            var opration =  _managedPrivateEndpointClient.Get(managedPrivateEndpointName, managedVirtualNetworkName);
-            return opration.Value;
+            var opration = _managedPrivateEndpointClient.Get(managedPrivateEndpointName, managedVirtualNetworkName);
+            return opration.Value;            
         }
 
         public Pageable<ManagedPrivateEndpoint> ListManagedPrivateEndpoints(string managedVirtualNetworkName = "default")

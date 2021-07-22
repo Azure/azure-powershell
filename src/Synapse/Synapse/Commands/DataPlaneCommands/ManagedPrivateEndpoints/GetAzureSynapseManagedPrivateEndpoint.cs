@@ -5,7 +5,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
 
-
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.ManagedPrivateEndpoint,
@@ -15,6 +14,8 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         private const string GetByName = "GetByName";
         private const string GetByObject = "GetByObject";
+        private const string DefaultVNetName = "default";
+        private const string DefaultVNetNameString = "default";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -32,10 +33,11 @@ namespace Microsoft.Azure.Commands.Synapse
         [Alias("ManagedPrivateEndpointName")]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.VirtualNetworkName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = "Default Managed Virtual Network Name is " + DefaultVNetNameString)]
         [ValidateNotNullOrEmpty]
         [Alias("VNetName")]
-        public string VirtualNetworkName { get; set; }
+        [PSDefaultValue(Help = DefaultVNetNameString, Value = DefaultVNetName)]
+        public string VirtualNetworkName { get; set; } = DefaultVNetName;
 
         public override void ExecuteCmdlet()
         {
@@ -45,7 +47,7 @@ namespace Microsoft.Azure.Commands.Synapse
             }
             if(this.IsParameterBound(c => this.Name))
             {
-                if (!string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(VirtualNetworkName))
+                if (!string.IsNullOrEmpty(Name))
                 {
                     WriteObject(new PSManagedPrivateEndpointResource(SynapseManagedPrivateEndpointsClient.GetManagedPrivateEndpoint(this.Name, this.VirtualNetworkName), this.WorkspaceName));
                 }

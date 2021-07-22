@@ -15,6 +15,8 @@ namespace Microsoft.Azure.Commands.Synapse
         private const string RemoveByName = "RemoveByName";
         private const string RemoveByObject = "RemoveByObject";
         private const string RemoveByInputObject = "RemoveByInputObject";
+        private const string DefaultVNetName = "default";
+        private const string DefaultVNetNameString = "default";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -32,18 +34,19 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSManagedPrivateEndpointResource InputObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByName,
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveByName,
             Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByObject,
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveByObject,
             Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
         [ValidateNotNullOrEmpty]
         [Alias("ManagedPrivateEndpointName")]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.VirtualNetworkName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = "Default Managed Virtual Network Name is " + DefaultVNetNameString)]
         [ValidateNotNullOrEmpty]
         [Alias("VNetName")]
-        public string VirtualNetworkName { get; set; }
+        [PSDefaultValue(Help = DefaultVNetNameString, Value = DefaultVNetName)]
+        public string VirtualNetworkName { get; set; } = DefaultVNetName;
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
@@ -59,6 +62,12 @@ namespace Microsoft.Azure.Commands.Synapse
             if (this.IsParameterBound(c => c.WorkspaceObject))
             {
                 this.WorkspaceName = this.WorkspaceObject.Name;
+            }
+
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.WorkspaceName = this.InputObject.WorkspaceName;
+                this.Name = this.InputObject.Name;
             }
 
             ConfirmAction(

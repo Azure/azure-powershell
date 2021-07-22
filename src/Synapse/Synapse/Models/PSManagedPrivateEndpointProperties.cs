@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.GroupId = properties?.GroupId;
             this.ProvisioningState = properties?.ProvisioningState;
             this.IsReserved = properties?.IsReserved;
-            this.ConnectionState = properties.ConnectionState != null? new PSManagedPrivateEndpointConnectionState(properties?.ConnectionState) : null;
+            this.ConnectionState = properties?.ConnectionState != null? new PSManagedPrivateEndpointConnectionState(properties?.ConnectionState) : null;
         }      
 
         public string PrivateLinkResourceId { get; set; }
@@ -22,6 +22,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSManagedPrivateEndpointConnectionState ConnectionState { get; set; }
 
         public bool? IsReserved { get; }
-
     }
 }

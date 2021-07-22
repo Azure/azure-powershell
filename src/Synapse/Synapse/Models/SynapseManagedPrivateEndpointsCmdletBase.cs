@@ -1,10 +1,4 @@
-﻿using Microsoft.Azure.Commands.Synapse.Common;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Management.Automation;
-using System.Text;
-
+﻿using System;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
