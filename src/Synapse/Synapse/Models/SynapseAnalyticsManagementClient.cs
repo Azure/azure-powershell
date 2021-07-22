@@ -37,6 +37,8 @@ using Action = System.Action;
 using ResourceIdentityType = Microsoft.Azure.Management.Synapse.Models.ResourceIdentityType;
 using Microsoft.Azure.Commands.Synapse.Model;
 using Microsoft.Azure.Commands.Synapse.Models.ManagedIdentitySqlControl;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
+using ErrorResponseException = Microsoft.Azure.Management.Synapse.Models.ErrorResponseException;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -50,6 +52,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private ActiveDirectoryClient _activeDirectoryClient;
         private ResourceManagementClient _resourceManagementClient;
         private StorageManagementClient _storageManagementClient;
+        private MonitorManagementClient _monitorManagementClient;
 
         public SynapseAnalyticsManagementClient(IAzureContext context)
         {
@@ -68,6 +71,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 AzureEnvironment.Endpoint.ResourceManager);
 
             _synapseSqlV3ManagementClient = SynapseCmdletBase.CreateSynapseClient<SynapseSqlV3ManagementClient>(context,
+                AzureEnvironment.Endpoint.ResourceManager);
+
+            _monitorManagementClient = SynapseCmdletBase.CreateSynapseClient<MonitorManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
 
@@ -113,6 +119,21 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
 
             set { this._storageManagementClient = value; }
+        }
+
+        public MonitorManagementClient MonitorManagementClient
+        {
+            get
+            {
+                if (_monitorManagementClient == null)
+                {
+                    _monitorManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<MonitorManagementClient>(Context,
+                        AzureEnvironment.Endpoint.ResourceManager);
+                }
+                return this._monitorManagementClient;
+            }
+
+            set { this._monitorManagementClient = value; }
         }
 
         #region Workspace operations
@@ -1050,12 +1071,46 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     IsAuditEnabled(policy.State), policy.RetentionDays);
                 model.BlobStorageTargetState = policy.State == BlobAuditingPolicyState.Enabled ? AuditStateType.Enabled : AuditStateType.Disabled;
 
+                model.DiagnosticsEnablingAuditCategory = GetDiagnosticsEnablingAuditCategory(out string nextDiagnosticSettingsName,
+                    resourceGroupName, workspaceName);
+                model.NextDiagnosticSettingsName = nextDiagnosticSettingsName;
+
+                // var list = _monitorManagementClient.DiagnosticSettings.List("/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ywtest/providers/Microsoft.Synapse/workspaces/ywtestworkspace");
+
                 return model;
             }
             catch (CloudException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
+        }
+
+        private IList<DiagnosticSettingsResource> GetDiagnosticsEnablingAuditCategory(
+            out string nextDiagnosticSettingsName, string resourceGroupName, string workspaceName, string sqlPoolName = null)
+        {
+            string resourceUri = GetResourceUri(resourceGroupName, workspaceName, sqlPoolName);
+            IList<DiagnosticSettingsResource> settings = MonitorManagementClient.DiagnosticSettings.ListAsync(resourceUri).Result.Value;
+            nextDiagnosticSettingsName = GetNextDiagnosticSettingsName(settings, SynapseConstants.DiagnosticSettingsNamePrefixSQLSecurityAuditEvents);
+            return settings?.Where(s => IsAuditCategoryEnabled(s, SynapseConstants.SQLSecurityAuditCategory))?.OrderBy(s => s.Name)?.ToList();
+        }
+
+        private static string GetNextDiagnosticSettingsName(IList<DiagnosticSettingsResource> settings,
+            string settingsNamePrefix)
+        {
+            int nextIndex = (settings?.Where(
+                s => s.Name.StartsWith(settingsNamePrefix)).Select(
+                s => s.Name).Select(
+                name => name.Replace(settingsNamePrefix, string.Empty)).Select(
+                number => Int32.TryParse(number, out Int32 index) ? index : 0).DefaultIfEmpty().Max() ?? 0) + 1;
+
+            return $"{settingsNamePrefix}{nextIndex}";
+        }
+
+        private static bool IsAuditCategoryEnabled(DiagnosticSettingsResource settings, string categoryName)
+        {
+            return settings?.Logs?.FirstOrDefault(
+                l => l.Enabled &&
+                string.Equals(l.Category, categoryName)) != null;
         }
 
         public void CreateOrUpdateWorkspaceAudit(WorkspaceAuditModel model)
@@ -3023,6 +3078,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private static Exception GetAzurePowerShellException(CloudException ex)
         {
             return Utils.CreateAzurePowerShellException(ex);
+        }
+
+        private string GetResourceUri(string resourceGroupName, string workspaceName, string sqlPoolName = null)
+        {
+            string resourceUri = $"/subscriptions/{_subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}";
+
+            if (sqlPoolName == null)
+            {
+                return resourceUri;
+            }
+            else
+            {
+                return resourceUri + $"/sqlPools/{sqlPoolName}";
+            }
         }
 
         #endregion

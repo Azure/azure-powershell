@@ -11,21 +11,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Synapse.Models;
+
 using Microsoft.Azure.Commands.Synapse.Models.Auditing;
+using Microsoft.Azure.Management.Synapse.Models;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + DefinitionsCommon.SqlPoolAuditCmdletsSuffix,
-        DefaultParameterSetName = DefinitionsCommon.SqlPoolParameterSetName,
-        SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
-    public class RemoveAzureSynapseSqlPoolAudit : SynapseSqlPoolAuditCmdlet
+    public abstract class RemoveSynapseWorkspaceAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> : SynapseWorkspaceAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType>
+        where ServerAuditPolicyType : ProxyResource
+        where ServerAuditModelType : WorkspaceDevOpsAuditModel, new()
+        where ServerAuditAdapterType : SqlAuditAdapter<ServerAuditPolicyType, ServerAuditModelType> 
     {
-        protected override SqlPoolAuditModel PersistChanges(SqlPoolAuditModel entity)
+        protected override ServerAuditModelType PersistChanges(ServerAuditModelType entity)
         {
             ModelAdapter.RemoveAuditingSettings(entity);
             return null;
