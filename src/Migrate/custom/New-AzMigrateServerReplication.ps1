@@ -584,18 +584,18 @@ public static int hashForArtifact(String artifact)
                 throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
             }
 
-            if( $tagtype -eq "Tag" -or $tagtype -eq "DiskTag")
+            if ($tagtype -eq "Tag" -or $tagtype -eq "DiskTag")
             {
                 $ProviderSpecificDetails.SeedDiskTag = $ResourceTag
                 $ProviderSpecificDetails.TargetDiskTag = $ResourceTag
             }
 
-            if( $tagtype -eq "Tag" -or $tagtype -eq "NicTag")
+            if ($tagtype -eq "Tag" -or $tagtype -eq "NicTag")
             {
                 $ProviderSpecificDetails.TargetNicTag = $ResourceTag
             }
 
-            if( $tagtype -eq "Tag" -or $tagtype -eq "VMTag")
+            if ($tagtype -eq "Tag" -or $tagtype -eq "VMTag")
             {
                 $ProviderSpecificDetails.TargetVmTag = $ResourceTag
             }
@@ -605,6 +605,22 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId
         $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupId
         $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
+
+        if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
+             throw "The target virtual machine name must be between 1 and 64 characters long."
+        }
+
+        $TargetResourceGroupName = $ProviderSpecificDetails.TargetResourceGroupId.Split('/')[4]
+        $VMNamePresentinRg = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $TargetVMName -ResourceType "Microsoft.Compute/virtualMachines" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        if ($VMNamePresentinRg) {
+            throw "The target virtual machine name must be unique in the target resource group."
+        }
+
+        if ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$")
+        {
+            throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
+        }
+
         $ProviderSpecificDetails.TargetVMName = $TargetVMName
         if ($HasTargetVMSize) { $ProviderSpecificDetails.TargetVMSize = $TargetVMSize }
         $ProviderSpecificDetails.VmwareMachineId = $MachineId
