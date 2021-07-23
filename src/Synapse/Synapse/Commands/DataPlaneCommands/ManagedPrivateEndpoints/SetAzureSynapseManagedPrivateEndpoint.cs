@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [Alias("ManagedPrivateEndpointName")]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = "Default Managed Virtual Network Name is " + SynapseConstants.DefaultVNetNameString)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.DefaultVNetName)]
         [ValidateNotNullOrEmpty]
         [Alias("VNetName")]
-        [PSDefaultValue(Help = SynapseConstants.DefaultVNetNameString, Value = SynapseConstants.DefaultVNetName)]
+        [PSDefaultValue(Help = SynapseConstants.DefaultVNetName, Value = SynapseConstants.DefaultVNetName)]
         public string VirtualNetworkName { get; set; } = SynapseConstants.DefaultVNetName;
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]

@@ -32,18 +32,15 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSManagedPrivateEndpointResource InputObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveByName,
-            Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveByObject,
-            Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
         [ValidateNotNullOrEmpty]
         [Alias("ManagedPrivateEndpointName")]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = "Default Managed Virtual Network Name is " + SynapseConstants.DefaultVNetNameString)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.DefaultVNetName)]
         [ValidateNotNullOrEmpty]
         [Alias("VNetName")]
-        [PSDefaultValue(Help = SynapseConstants.DefaultVNetNameString, Value = SynapseConstants.DefaultVNetName)]
+        [PSDefaultValue(Help = SynapseConstants.DefaultVNetName, Value = SynapseConstants.DefaultVNetName)]
         public string VirtualNetworkName { get; set; } = SynapseConstants.DefaultVNetName;
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
