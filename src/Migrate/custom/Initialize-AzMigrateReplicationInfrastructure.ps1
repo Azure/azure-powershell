@@ -166,10 +166,10 @@ function Initialize-AzMigrateReplicationInfrastructure {
         }
 
         if (-not $userObject) {
-            $mailNicname = "{0}#EXT#" -f $($context.Account.Id -replace '@', '_')
+            $mailNickname = "{0}#EXT#" -f $($context.Account.Id -replace '@', '_')
 
             $userObject = Get-AzADUser | 
-                Where-Object {$_.MailNickName -eq $mailNicname}
+                Where-Object {$_.MailNickname -eq $mailNickname}
         }
 
         if (-not $userObject) {
