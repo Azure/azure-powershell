@@ -26,53 +26,57 @@ Describe 'AzPostgreSqlFlexibleServer' {
         $Sku = 'Standard_D4s_v3'
         $SkuTier = 'GeneralPurpose'
         $BackupRetentionDay = 11
-        $HaEnabled = 'Enabled'
-        $Server = New-AzPostgreSqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName2 -Sku $Sku -SkuTier $SkuTier -BackupRetentionDay $BackupRetentionDay -HaEnabled $HaEnabled -StorageInMb 65536 
+        $Server = New-AzPostgreSqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName4 -Sku $Sku -SkuTier $SkuTier -BackupRetentionDay $BackupRetentionDay -StorageInMb 65536 
 
         # Get
-        $Server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName2
+        $Server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName4
         $Server.NetworkPublicNetworkAccess | Should -Be "Enabled"
         $Server.SkuName | Should -Be $Sku
         $Server.SkuTier | Should -Be $SkuTier
         $Server.BackupRetentionDay | Should -Be $BackupRetentionDay
-        $Server.HighAvailabilityMode | Should -Be 'ZoneRedundant'
 
         # stop
-        Stop-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
+        Stop-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
 
         # start
-        Start-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
+        Start-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
         
         # restart
-        Restart-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
+        Restart-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
 
         # restore
         $restorePointInTime = (Get-Date).AddMinutes(-10)
-        $RestoredName = $env.serverName + '-restored'
-        $RestoredServer = Restore-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $RestoredName -SourceServerName $env.serverName -RestorePointInTime $restorePointInTime 
+        $RestoredName = $env.flexibleServerName + '-restored'
+        $RestoredServer = Restore-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $RestoredName -SourceServerName $env.flexibleServerName -RestorePointInTime $restorePointInTime 
         $RestoredServer.Name | Should -Be $RestoredName
      
         # update - half paramaeters
-        $UpdatedServer = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -MaintenanceWindow Mon:1:20
+        $UpdatedServer = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -MaintenanceWindow Mon:1:20
         $UpdatedServer.MaintenanceWindowCustomWindow | Should -Be 'Enabled'
         $UpdatedServer.MaintenanceWindowDayOfWeek | Should -Be 1
         $UpdatedServer.MaintenanceWindowStartHour | Should -Be 1
         $UpdatedServer.MaintenanceWindowStartMinute | Should -Be 20
+
     }
 
     It 'ViaIdentity' {
-        $Server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName2
+        $Server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName4
 
         # stop
-        Stop-AzPostgreSqlFlexibleServer -InputObject $server
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName4)/stop"
+        Stop-AzPostgreSqlFlexibleServer -InputObject $ID
 
         # start
-        Start-AzPostgreSqlFlexibleServer -InputObject $server
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName4)/start"
+        Start-AzPostgreSqlFlexibleServer -InputObject $ID
         
         # restart
-        Restart-AzPostgreSqlFlexibleServer -InputObject $server
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName4)/restart"
+        Restart-AzPostgreSqlFlexibleServer -InputObject $ID
 
         $UpdatedServer = Update-AzPostgreSqlFlexibleServer -BackupRetentionDay 15 -InputObject $server
         $UpdatedServer.BackupRetentionDay | Should -Be 15
+        
+        Remove-AzPostgreSqlFlexibleServer -InputObject $Server.Id
     }
 }

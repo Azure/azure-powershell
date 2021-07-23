@@ -83,10 +83,11 @@ function New-AzPostgreSqlFlexibleServer {
         [System.Int32]
         ${BackupRetentionDay},
 
-        [Parameter(HelpMessage = 'Max storage allowed for a server.')]
+        [Parameter(HelpMessage = 'Max storage allowed for a server. ')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.Int32]
-        [ValidateSet(32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384)]
+        [ValidateSet(32768, 65536, 131072, 262144, 524288, 1048576
+        , 2097152, 4194304, 8388608, 16777216)]
         ${StorageInMb},
 
         [Parameter(HelpMessage='Enable or disable high availability feature. Allowed values: Enabled, Disabled')]
@@ -264,13 +265,9 @@ function New-AzPostgreSqlFlexibleServer {
 
             if (!$PSBoundParameters.ContainsKey('SkuTier')) {
                 $PSBoundParameters.SkuTier = 'GeneralPurpose'
-            } 
-
-            if ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
-                $PSBoundParameters.BackupRetentionDay = $PSBoundParameters['BackupRetentionDay']
-                $null = $PSBoundParameters.Remove('BackupRetentionDay')
             }
-            else {
+
+            if (!$PSBoundParameters.ContainsKey('BackupRetentionDay')) {
                 $PSBoundParameters.BackupRetentionDay = 7
             }
 
@@ -301,6 +298,7 @@ function New-AzPostgreSqlFlexibleServer {
                 else {
                     $PSBoundParameters.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode]::Disabled
                 }
+                $null = $PSBoundParameters.Remove('HaEnabled')
             }
 
             $PSBoundParameters.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::Default
@@ -326,7 +324,6 @@ function New-AzPostgreSqlFlexibleServer {
                 }
             }
             else{
-                Write-Host $NetworkParameters.PublicAccess
                 $RuleName, $StartIp, $EndIp = ParseFirewallRule $NetworkParameters.PublicAccess
             }
             
@@ -368,13 +365,13 @@ function CreateNetworkResource($NetworkParameters) {
     }
 
     # # When address space parameters are passed, the only valid combination is : -Vnet -Subnet -VnetPrefix -SubnetPrefix
-    # if ($NetworkParameters.ContainsKey('Vnet') -Or $NetworkParameters.ContainsKey('Subnet')) {
-    #     if (($NetworkParameters.ContainsKey('VnetPrefix') -And !$NetworkParameters.ContainsKey('SubnetPrefix')) -Or
-    #         (!$NetworkParameters.ContainsKey('VnetPrefix') -And $NetworkParameters.ContainsKey('SubnetPrefix')) -Or 
-    #         ($NetworkParameters.ContainsKey('VnetPrefix') -And $NetworkParameters.ContainsKey('SubnetPrefix') -And (!$NetworkParameters.ContainsKey('Vnet') -Or !$NetworkParameters.ContainsKey('Subnet')))){
-    #             throw "Incorrect usage : -Vnet -Subnet -VnetPrefix -SubnetPrefix must be supplied together."
-    #     }
-    # }
+    if ($NetworkParameters.ContainsKey('Vnet') -Or $NetworkParameters.ContainsKey('Subnet')) {
+        if (($NetworkParameters.ContainsKey('VnetPrefix') -And !$NetworkParameters.ContainsKey('SubnetPrefix')) -Or
+            (!$NetworkParameters.ContainsKey('VnetPrefix') -And $NetworkParameters.ContainsKey('SubnetPrefix')) -Or 
+            ($NetworkParameters.ContainsKey('VnetPrefix') -And $NetworkParameters.ContainsKey('SubnetPrefix') -And (!$NetworkParameters.ContainsKey('Vnet') -Or !$NetworkParameters.ContainsKey('Subnet')))){
+                throw "Incorrect usage : -Vnet -Subnet -VnetPrefix -SubnetPrefix must be supplied together."
+        }
+    }
     
     #Handle Vnet, Subnet scenario
     # Only the Subnet ID provided.. 
@@ -516,11 +513,6 @@ function CreateAndDelegateSubnet($Parameters) {
     return $Subnet
 }
 function CreateFirewallRule($RuleName, $StartIp, $EndIp, $ResourceGroupName, $ServerName) {
-    Write-Host $RuleName
-    Write-Host $StartIp
-    Write-Host $EndIp
-    Write-Host $ResourceGroupName
-    Write-Host $ServerName
     $FirewallRule = New-AzPostgreSqlFlexibleServerFirewallRule -Name $RuleName -ResourceGroupName $ResourceGroupName -ServerName $ServerName -EndIPAddress $EndIp -StartIPAddress $StartIp
     return $FirewallRule.Name 
 }

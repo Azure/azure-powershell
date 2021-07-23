@@ -22,6 +22,7 @@ function setupEnv() {
     $flexibleServerName = "postgresql-flexible-test-100"
     $flexibleServerName2 = "postgresql-flexible-test-200"
     $flexibleServerName3 = "postgresql-flexible-test-300"
+    $flexibleServerName4 = "postgresql-flexible-test-400"
     $restoreName = "postgresql-test-100-restore"
     $restoreName2 = "postgresql-test-100-restore-2"
     $replicaName = "postgresql-test-100-replica"
@@ -43,6 +44,7 @@ function setupEnv() {
         $flexibleServerName = $PowershellPrefix + "flexibleserver" + $RandomNumbers
         $flexibleServerName2 = $PowershellPrefix + "2-flexibleserver" + $RandomNumbers
         $flexibleServerName3 = $PowershellPrefix + "3-flexibleserver" + $RandomNumbers
+        $flexibleServerName4 = $PowershellPrefix + "4-flexibleserver" + $RandomNumbers
         $resourceGroup = $PowershellPrefix + "group" + $RandomNumbers
         $restoreName = $PowershellPrefix + "restore-server" + $RandomNumbers
         $restoreName2 = $PowershellPrefix + "2-restore-server" + $RandomNumbers
@@ -55,6 +57,7 @@ function setupEnv() {
     $env.Add("flexibleServerName", $flexibleServerName)
     $env.Add("flexibleServerName2", $flexibleServerName2)
     $env.Add("flexibleServerName3", $flexibleServerName3)
+    $env.Add("flexibleServerName4", $flexibleServerName4)
     $env.Add("restoreName", $restoreName)
     $env.Add("restoreName2", $restoreName2)
     $env.Add("replicaName", $replicaName)
@@ -72,19 +75,19 @@ function setupEnv() {
     write-host "start to create test group."
     New-AzResourceGroup -Name $resourceGroup -Location $location
 
-    # if ($TestMode -ne 'live') {
-    #     # Create the test Vnet
-    #     write-host "Deploy Vnet template"
-    #     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup  
+    if ($TestMode -ne 'live') {
+        # Create the test Vnet
+        write-host "Deploy Vnet template"
+        New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup  
 
-    #     write-host (Get-AzContext | Out-String)
+        write-host (Get-AzContext | Out-String)
 
-    #     write-host "New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku"
-    #     New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku
-    # }
+        write-host "New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku"
+        New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku
+    }
 
-    # write-host "New-AzPostgreSqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess none"
-    # New-AzPostgreSqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess none
+    write-host "New-AzPostgreSqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess none"
+    New-AzPostgreSqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess none
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -96,6 +99,6 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
-    # write-host "Clean resources you create for testing."
-    # Remove-AzResourceGroup -Name $env.resourceGroup
+    write-host "Clean resources you create for testing."
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }

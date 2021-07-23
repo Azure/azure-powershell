@@ -152,18 +152,13 @@ function Update-AzPostgreSqlFlexibleServer {
     process {
         try {
             if ($PSBoundParameters.ContainsKey('StorageInMb')) {
-                $PSBoundParameters.StorageSizeGb = $PSBoundParameters['StorageInMb'] * 1024
+                $PSBoundParameters.StorageSizeGb = [Math]::floor($PSBoundParameters['StorageInMb'] / 1024)
                 $null = $PSBoundParameters.Remove('StorageInMb')
             }
 
             if ($PSBoundParameters.ContainsKey('Sku')) {
                 $PSBoundParameters.SkuName = $PSBoundParameters['Sku']
                 $null = $PSBoundParameters.Remove('Sku')
-            }
-
-            if ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
-                $PSBoundParameters.BackupRetentionDay = $PSBoundParameters['BackupRetentionDay']
-                $null = $PSBoundParameters.Remove('BackupRetentionDay')
             }
 
             if ($PSBoundParameters.ContainsKey('HaEnabled')) {
