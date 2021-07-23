@@ -32,7 +32,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSManagedPrivateEndpointResource InputObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByName,
+            Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByObject,
+            Mandatory = true, HelpMessage = HelpMessages.ManagedPrivateEndpointName)]
         [ValidateNotNullOrEmpty]
         [Alias("ManagedPrivateEndpointName")]
         public string Name { get; set; }
