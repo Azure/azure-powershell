@@ -258,6 +258,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies the orchestration mode for the virtual machine scale set.")]
         [PSArgumentCompleter("Uniform", "Flexible")]
         public string OrchestrationMode { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -413,6 +419,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
                 }
                 vVirtualMachineProfile.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
+            }
+
+            if (this.IsParameterBound(c=> c.CapacityReservationGroupId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.CapacityReservation == null)
+                {
+                    vVirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
+                }
+                vVirtualMachineProfile.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
             }
 
             if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))

@@ -23,6 +23,20 @@
 * Fixed the warning in `New-AzVM` cmdlet stating the sku of the VM is being defaulted even if a sku size is provided by the user. Now it only occurs when the user does not provide a sku size.
 * Edited `Set-AzVmOperatingSystem` cmdlet to no longer overwrite any existing EnableAutomaticUpdates value on the passed in virtual machine if it exists.
 * Updated Compute module to use the latest .Net SDK version 48.0.0.
+* Added new cmdlets for the Capacity Reservation Feature:
+    - `New-AzCapacityReservationGroup`
+    - `Remove-AzCapacityReservationGroup`
+    - `Get-AzCapacityReservationGroup`
+    - `New-AzCapacityReservation`
+    - `Remove-AzCapacityReservation`
+    - `Get-AzCapacityReservation`
+* Added a new parameter `-CapacityReservationGroupId` to the folloinwg cmdlets:
+    - `New-AzVm`
+    - `New-AzVmConfig`
+    - `New-AzVmss`
+    - `New-AzVmssConfig`
+    - `Update-AzVm`
+    - `Update-AzVmss`
 
 ## Version 4.15.0
 * Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`
