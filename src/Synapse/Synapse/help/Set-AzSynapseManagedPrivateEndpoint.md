@@ -41,7 +41,7 @@ This command creates or updates a managed private endpoint from json file in the
 ### Example 2
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Set-AzSynapseManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
+PS C:\> $ws | Set-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
 ```
 
 This command creates or updates a managed private endpoint from json file in the workspace named ContosoWorkspace through pipeline.
