@@ -86,11 +86,13 @@ function New-AzPostgreSqlFlexibleServer {
         [Parameter(HelpMessage = 'Max storage allowed for a server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.Int32]
+        [ValidateSet(32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384)]
         ${StorageInMb},
 
         [Parameter(HelpMessage='Enable or disable high availability feature. Allowed values: Enabled, Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [Validateset('Enabled', 'Disabled')]
+        [System.String]
         ${HaEnabled},
 
         [Parameter(HelpMessage = 'Application-specific metadata in the form of key-value pairs.')]
@@ -134,7 +136,6 @@ function New-AzPostgreSqlFlexibleServer {
         [System.String]
         ${PrivateDnsZone},
 
-        # [Parameter(ParameterSetName='CreateWithPublicAccess')]
         [Parameter(HelpMessage = "
             Determines the public access. Enter single or range of IP addresses to be 
             included in the allowed list of IPs. IP address ranges must be dash-
@@ -274,18 +275,16 @@ function New-AzPostgreSqlFlexibleServer {
             }
 
             if ($PSBoundParameters.ContainsKey('StorageInMb')) {
-                $PSBoundParameters.StorageSizeGb = $PSBoundParameters['StorageInMb'] * 1024
+                $PSBoundParameters.StorageSizeGb = [Math]::floor($PSBoundParameters['StorageInMb'] / 1024)
                 $null = $PSBoundParameters.Remove('StorageInMb')
             }
             else {
-                $PSBoundParameters.StorageProfileStorageMb = 128*1024
+                $PSBoundParameters.StorageSizeGb = 128
             }
 
             if (!$PSBoundParameters.ContainsKey('Version')) {
                 $PSBoundParameters.Version = '12'
             }
-
-                       
 
             if ($PSBoundParameters.ContainsKey('AdministratorUserName')) {
                 $PSBoundParameters.AdministratorLogin = $PSBoundParameters['AdministratorUserName']
@@ -293,6 +292,15 @@ function New-AzPostgreSqlFlexibleServer {
             }
             else {
                 $PSBoundParameters.AdministratorLogin = Get-RandomName
+            }
+
+            if ($PSBoundParameters.ContainsKey('HaEnabled')){
+                if ($PSBoundParameters["HaEnabled"] -eq "Enabled"){
+                    $PSBoundParameters.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode]::ZoneRedundant
+                }
+                else {
+                    $PSBoundParameters.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode]::Disabled
+                }
             }
 
             $PSBoundParameters.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::Default
@@ -309,17 +317,17 @@ function New-AzPostgreSqlFlexibleServer {
             $RequiredKeys = 'SubscriptionId', 'ResourceGroupName', 'Name', 'Location'
             foreach($Key in $RequiredKeys){ $NetworkParameters[$Key] = $PSBoundParameters[$Key] }
 
-            if (NetworkParameters.ContainsKey('Vnet') -Or  NetworkParameters.ContainsKey('Subnet')){
+            if ($NetworkParameters.ContainsKey('Vnet') -Or  $NetworkParameters.ContainsKey('Subnet')){
                 $VnetSubnetParameters = CreateNetworkResource $NetworkParameters
                 $SubnetId = GetSubnetId $VnetSubnetParameters.ResourceGroupName $VnetSubnetParameters.VnetName $VnetSubnetParameters.SubnetName
-                $PSBoundParameters.DelegatedSubnetArgumentSubnetArmResourceId = $SubnetId
-                if ([string]::IsNullOrEmpty($PSBoundParameters.DelegatedSubnetArgumentSubnetArmResourceId)) {
+                $PSBoundParameters.NetworkDelegatedSubnetResourceId = $SubnetId
+                if ([string]::IsNullOrEmpty($PSBoundParameters.NetworkDelegatedSubnetResourceId)) {
                     $null = $PSBoundParameters.Remove('DelegatedSubnetArgumentSubnetArmResourceId')
                 }
             }
             else{
-                $PSBoundParameters.NetworkPublicNetworkAccess = ' Enabled'
-                $RuleName, $StartIp, $EndIp = ParseFirewallRule($NetworkParameters)
+                Write-Host $NetworkParameters.PublicAccess
+                $RuleName, $StartIp, $EndIp = ParseFirewallRule $NetworkParameters.PublicAccess
             }
             
             $Msg = 'Creating PostgreSQL server {0} in group {1}...' -f $PSBoundParameters.Name, $PSBoundParameters.resourceGroupName
@@ -329,9 +337,8 @@ function New-AzPostgreSqlFlexibleServer {
             $Server = Az.PostgreSql.internal\New-AzPostgreSqlFlexibleServer @PSBoundParameters
 
             # Create Firewallrules
-            $FirewallRuleName = CreateFirewallRule $RuleName, $StartIp, $EndIp
-
-            if (![string]::IsNullOrEmpty($FirewallRuleName)) {
+            if (![string]::IsNullOrEmpty($RuleName)) {
+                $FirewallRuleName = CreateFirewallRule $RuleName $StartIp $EndIp $PSBoundParameters.ResourceGroupName $PSBoundParameters.Name
                 $Server.FirewallRuleName = $FirewallRuleName
             }
             $Server.SecuredPassword =  $PSBoundParameters.AdministratorLoginPassword
@@ -508,21 +515,30 @@ function CreateAndDelegateSubnet($Parameters) {
 
     return $Subnet
 }
-function CreateFirewallRule($RuleName, $StartIp, $EndIp) {
-    $FirewallRule = New-AzPostgreSqlFlexibleServerFirewallRule -Name $RuleName -ResourceGroupName $FirewallRuleParameters.ResourceGroupName -ServerName $FirewallRuleParameters.Name -EndIPAddress $EndIp -StartIPAddress $StartIp
-    return $FirewallRule.Name    
+function CreateFirewallRule($RuleName, $StartIp, $EndIp, $ResourceGroupName, $ServerName) {
+    Write-Host $RuleName
+    Write-Host $StartIp
+    Write-Host $EndIp
+    Write-Host $ResourceGroupName
+    Write-Host $ServerName
+    $FirewallRule = New-AzPostgreSqlFlexibleServerFirewallRule -Name $RuleName -ResourceGroupName $ResourceGroupName -ServerName $ServerName -EndIPAddress $EndIp -StartIPAddress $StartIp
+    return $FirewallRule.Name 
 }
 
-function ParseFirewallRule($FirewallRuleParameters){
-    if ($FirewallRuleParameters.ContainsKey('PublicAccess') -And $FirewallRuleParameters.PublicAccess.ToLower() -ne 'none') {
+function ParseFirewallRule($PublicAccess){
+    $PublicAccess = [string]$PublicAccess
+    if ([string]::IsNullOrEmpty($PublicAccess)) {
+        $PublicAccess = 'none'
+    }
+    if ($PublicAccess.ToLower() -ne 'none') {
         $Date = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
-        if ($FirewallRuleParameters.PublicAccess.ToLower() -eq 'all'){
+        if ($PublicAccess.ToLower() -eq 'all'){
             $StartIp = '0.0.0.0' 
             $EndIp = '255.255.255.255'
             $RuleName = "AllowAll_" + $Date 
         }
         else {
-            $Parsed = $FirewallRuleParameters.PublicAccess -split "-"
+            $Parsed = $PublicAccess -split "-"
             if ($Parsed.length -eq 1) {
                 $StartIp = $Parsed[0]
                 $EndIp = $Parsed[0]
@@ -547,8 +563,10 @@ function ParseFirewallRule($FirewallRuleParameters){
             Write-Host $Msg
         }
     }
-    elseif ($FirewallRuleParameters.ContainsKey('PublicAccess') -And $FirewallRuleParameters.PublicAccess.ToLower() -eq 'none') {
-        Write-Host "No firewall rule was set"
+    else{
+        $StartIp = $null
+        $EndIp = $null
+        $RuleName = $null
     }
     return $RuleName, $StartIp, $EndIp
 }
@@ -608,9 +626,7 @@ function Get-RandomName() {
 function Get-GeneratePassword() {
     $Password = ''
     $Chars = 'abcdefghiklmnoprstuvwxyzABCDEFGHKLMNOPRSTUVWXYZ1234567890'
-    $SpecialChars = '!$%&/()=?}][{@#*+'
-    for ($i = 0; $i -lt 10; $i++ ) { $Password += $Chars[(Get-Random -Minimum 0 -Maximum $Chars.Length)] }
-    for ($i = 0; $i -lt 6; $i++ ) { $Password += $SpecialChars[(Get-Random -Minimum 0 -Maximum $SpecialChars.Length)] }
+    for ($i = 0; $i -lt 16; $i++ ) { $Password += $Chars[(Get-Random -Minimum 0 -Maximum $Chars.Length)] }
     $Password = ($Password -split '' | Sort-Object {Get-Random}) -join ''
     return $Password
 }

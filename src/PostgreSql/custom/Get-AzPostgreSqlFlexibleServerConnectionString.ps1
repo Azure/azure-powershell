@@ -99,7 +99,7 @@ function Get-AzPostgreSqlFlexibleServerConnectionString {
 
     process {
         $null = $PSBoundParameters.Remove('Client')
-        $postgreSql = aAz.PostgreSql\Get-AzPostgreSqlFlexibleServer @PSBoundParameters
+        $postgreSql = Az.PostgreSql\Get-AzPostgreSqlFlexibleServer @PSBoundParameters
         $DBHost = $postgreSql.FullyQualifiedDomainName
         $DBPort = 5432
         $adminName = $postgreSql.AdministratorLogin
