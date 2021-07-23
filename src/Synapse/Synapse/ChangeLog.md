@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
+* Add support for Synapse Managed Private Endpoint
+	- Add `New-AzSynapseManagedPrivateEndpoint` cmdlet
+	- Add `Get-AzSynapseManagedPrivateEndpoint` cmdlet
+	- Add `Remove-AzSynapseManagedPrivateEndpoint` cmdlet
 
 ## Version 0.13.0
 * Add support for Synapse Spark job definition
