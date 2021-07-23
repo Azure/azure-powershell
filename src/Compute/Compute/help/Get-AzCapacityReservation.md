@@ -14,7 +14,7 @@ Gets the properties of Capacity Reservation resources from a Capacity Reservatio
 ## SYNTAX
 
 ```
-Get-AzCapacityReservation -ResourceGroupName <String> [-ReservationGroupName <String>] [-Name <String>]
+Get-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> [-Name <String>]
  [-InstanceView] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -92,7 +92,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: CapacityReservationGroupName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

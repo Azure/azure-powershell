@@ -13,7 +13,7 @@ Removes a Capacity Reservation resource
 ## SYNTAX
 
 ```
-Remove-AzCapacityReservation -ResourceGroupName <String> [-ReservationGroupName <String>] [-Name <String>]
+Remove-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> [-Name <String>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -84,7 +84,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: CapacityReservationGroupName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

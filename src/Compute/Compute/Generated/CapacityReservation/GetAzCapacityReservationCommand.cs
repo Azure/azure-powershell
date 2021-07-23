@@ -25,8 +25,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Compute/capacityReservations", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Compute/capacityReservationGroups", "ResourceGroupName")]
         [SupportsWildcards]
         [Alias("CapacityReservationGroupName")]
         public string ReservationGroupName { get; set; }
