@@ -121,8 +121,7 @@ function Restore-AzPostgreSqlFlexibleServer_PointInTimeRestore {
         try {
             $PSBoundParameters.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::PointInTimeRestore
 
-            $Subscription = Get-AzContext
-            $server = Get-AzPostgreSqlFlexibleServer -SubscriptionId $Subscription.Subscription.Id -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.SourceServerName
+            $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.SourceServerName
             $null = $PSBoundParameters.Remove('SourceServerName')
             $PSBoundParameters.PointInTimeUtc = $PSBoundParameters["RestorePointInTime"]
             $null = $PSBoundParameters.Remove('RestorePointInTime')

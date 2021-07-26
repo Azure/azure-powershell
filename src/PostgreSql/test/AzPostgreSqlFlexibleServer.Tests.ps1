@@ -42,12 +42,6 @@ Describe 'AzPostgreSqlFlexibleServer' {
         
         # restart
         Restart-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
-
-        # restore
-        $restorePointInTime = (Get-Date).AddMinutes(-10)
-        $RestoredName = $env.flexibleServerName + '-restored-server'
-        $RestoredServer = Restore-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $RestoredName -SourceServerName $env.flexibleServerName -RestorePointInTime $restorePointInTime 
-        $RestoredServer.Name | Should -Be $RestoredName
      
         # update - half paramaeters
         $UpdatedServer = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -MaintenanceWindow Mon:1:20
