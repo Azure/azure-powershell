@@ -1,5 +1,4 @@
-﻿#if GEN3
-using Microsoft.Azure.Commands.Common.Exceptions;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
@@ -104,4 +103,3 @@ namespace Microsoft.Azure.Commands.Synapse
         }
     }
 }
-#endif

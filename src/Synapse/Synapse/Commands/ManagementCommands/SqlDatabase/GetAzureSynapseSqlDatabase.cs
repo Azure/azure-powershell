@@ -1,5 +1,4 @@
-﻿#if GEN3
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -77,4 +76,3 @@ namespace Microsoft.Azure.Commands.Synapse
         }
     }
 }
-#endif

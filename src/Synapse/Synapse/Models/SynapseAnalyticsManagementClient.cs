@@ -45,9 +45,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly Guid _subscriptionId;
         private readonly Guid _tenantId;
         private readonly SynapseManagementClient _synapseManagementClient;
-#if GEN3
         private readonly SynapseSqlV3ManagementClient _synapseSqlV3ManagementClient;
-#endif
         private ActiveDirectoryClient _activeDirectoryClient;
         private ResourceManagementClient _resourceManagementClient;
         private StorageManagementClient _storageManagementClient;
@@ -69,7 +67,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _synapseManagementClient = SynapseCmdletBase.CreateSynapseClient<SynapseManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
 
-#if GEN3
             _synapseSqlV3ManagementClient = SynapseCmdletBase.CreateSynapseClient<SynapseSqlV3ManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
 
@@ -121,7 +118,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             set { this._storageManagementClient = value; }
         }
 
-#region Workspace operations
+        #region Workspace operations
 
         public Workspace CreateWorkspace(string resourceGroupName, string workspaceName, Workspace createParams)
         {
@@ -358,9 +355,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-#endregion
+        #endregion
 
-#region Workspace SQL Active Directory Administrator
+        #region Workspace SQL Active Directory Administrator
 
         public WorkspaceAadAdminInfo GetSqlActiveDirectoryAdministrators(string resourceGroupName, string workspaceName)
         {
@@ -567,7 +564,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-#endregion
+        #endregion
 
         #region Threat Detection
 
@@ -788,9 +785,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-#endregion
+        #endregion
 
-#region Vulnerability Assessment
+        #region Vulnerability Assessment
 
         public ServerVulnerabilityAssessment GetWorkspaceVulnerabilityAssessmentSettings(string resourceGroupName, string workspaceName)
         {
@@ -899,9 +896,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-#endregion
+        #endregion
 
-#region Advanced Threat Protection
+        #region Advanced Threat Protection
 
         public void EnableWorkspaceVa(string resourceGroupName, string workspaceName, string workspaceLocation, string deploymentName)
         {
@@ -961,9 +958,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return template;
         }
 
-#endregion
+        #endregion
 
-#region Transparent Data Encryption
+        #region Transparent Data Encryption
 
         public TransparentDataEncryption GetSqlPoolTransparentDataEncryption(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
@@ -989,9 +986,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-#endregion
+        #endregion
 
-#region SQL pool operations
+        #region SQL pool operations
 
         public SqlPool CreateSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPool createOrUpdateParams)
         {
@@ -1239,9 +1236,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-#endregion
+        #endregion
 
-#region SQL Pool Backup
+        #region SQL Pool Backup
 
         public List<RestorePoint> ListSqlPoolRestorePoints(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
@@ -1320,64 +1317,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        public PSRecoverableSqlPool GetRecoverableSqlPool(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                var recoverableSqlPool = this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlPools.Get(resourceGroupName, workspaceName, sqlPoolName);
-
-                return new PSRecoverableSqlPool(recoverableSqlPool);
-            }
-            catch (ErrorResponseException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public List<RecoverableSqlPool> ListRecoverableSqlPool(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                var firstPage =  this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlPools.List(resourceGroupName, workspaceName);
-                return ListResources(firstPage, _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlPools.ListNext);
-            }
-            catch (ErrorResponseException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public PSRestorableDroppedSqlPool GetDroppedSqlPoolBackup(string resourceGroupName, string workspaceName, string sqlPoolAndTimeName)
-        {
-            try
-            {
-                var restorableDroppedSqlPool = this._synapseManagementClient.RestorableDroppedSqlPools.Get(resourceGroupName, workspaceName, sqlPoolAndTimeName);
-
-                return new PSRestorableDroppedSqlPool(restorableDroppedSqlPool);
-            }
-            catch (ErrorResponseException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public List<RestorableDroppedSqlPool> ListDroppedSqlPoolBackups (string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                var restorableDroppedSqlPoolList = this._synapseManagementClient.RestorableDroppedSqlPools.ListByWorkspace(resourceGroupName, workspaceName);
-                return restorableDroppedSqlPoolList.ToList();
-            }
-            catch (ErrorResponseException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
         #endregion
 
-#if GEN3
-#region SQL Pool V3 operations
+        #region SQL Pool V3 operations
+
         public SqlPoolV3 CreateSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName, SqlPoolV3 createOrUpdateParams)
         {
             try
@@ -1488,7 +1431,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 return false;
             }
         }
-#endregion
 
         public void PauseSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName)
         {
@@ -1693,10 +1635,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-#endregion
-#endif
+        #endregion
 
-#region Spark pool operations
+        #region Spark pool operations
 
         public BigDataPoolResourceInfo CreateOrUpdateSparkPool(string resourceGroupName, string workspaceName, string sparkPoolName, BigDataPoolResourceInfo createOrUpdateParams)
         {
@@ -1780,9 +1721,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-#endregion
+        #endregion
 
-#region integration runtime operations
+        #region integration runtime operations
 
         public virtual async Task<List<PSIntegrationRuntime>> ListIntegrationRuntimesAsync(SynapseEntityFilterOptions filterOptions)
         {
@@ -2380,9 +2321,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 request);
         }
 
-#endregion
+        #endregion
 
-#region Managed Identity Sql Control
+        #region Managed Identity Sql Control
 
         public ManagedIdentitySqlControlSettingsModel GetManagedIdentitySqlControlSetting(string resourceGroupName, string workspaceName)
         {
@@ -2423,9 +2364,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-#endregion
+        #endregion
 
-#region Workspace Key
+        #region Workspace Key
 
         public Key CreateOrUpdateKey(string resourceGroupName, string workspaceName, string keyName, Key createOrUpdateParams)
         {
@@ -2521,9 +2462,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-#endregion
+        #endregion
 
-#region helpers
+        #region helpers
 
         private static List<T> ListResources<T>(
             IPage<T> firstPage,

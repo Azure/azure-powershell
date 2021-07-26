@@ -53,18 +53,14 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-#if GEN3
             if (this.Version == 3)
             {
                 WriteObject(SynapseAnalyticsClient.TestSqlPoolV3(ResourceGroupName, WorkspaceName, Name));
             }
             else
             {
-#endif
                 WriteObject(SynapseAnalyticsClient.TestSqlPool(ResourceGroupName, WorkspaceName, Name));
-#if GEN3
             }
-#endif
         }
     }
 }
