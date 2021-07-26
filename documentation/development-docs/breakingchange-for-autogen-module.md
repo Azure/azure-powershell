@@ -75,7 +75,7 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
       variant: Delete
     set:
       breaking-change:
-	deprecated-by-version: 5.0.0
+        deprecated-by-version: 5.0.0
         change-efective-date: 2022/05/30
 ```
 
