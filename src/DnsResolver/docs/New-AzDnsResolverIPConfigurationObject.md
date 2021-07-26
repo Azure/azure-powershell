@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/en-us/powershell/module/az.DnsResolver/new-AzDnsResolverIPConfigurationObject
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject
 schema: 2.0.0
 ---
 

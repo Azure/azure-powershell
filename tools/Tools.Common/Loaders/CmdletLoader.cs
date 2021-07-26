@@ -40,6 +40,10 @@ namespace Tools.Common.Loaders
                 {
                     var assemblyName = args.Name.Substring(0, args.Name.IndexOf(","));
                     var dll = Directory.GetFiles(commonOutputFolder, "*.dll").FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == assemblyName);
+                    if (dll == null && Directory.Exists(commonOutputFolder + "\\PreloadAssemblies"))
+                    {
+                        dll = Directory.GetFiles(commonOutputFolder + "\\PreloadAssemblies", "*.dll").FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == assemblyName);
+                    }
                     if (dll == null)
                     {
                         continue;
@@ -64,149 +68,149 @@ namespace Tools.Common.Loaders
             var results = new List<CmdletMetadata>();
 
             ModuleMetadata = new ModuleMetadata();
-            try
-            {
-                var assembly = Assembly.LoadFrom(assemblyPath);
-                foreach (var type in assembly.GetCmdletTypes())
-                {
-                    var cmdlet = type.GetAttribute<CmdletAttribute>();
-                    var outputs = type.GetAttributes<OutputTypeAttribute>();
-                    var parameters = type.GetParameters();
 
-                    var cmdletMetadata = new CmdletMetadata
+        /// If assemble is not dll, return directly, in the future, except for dll, we should also support psm1
+            if (!assemblyPath.EndsWith("dll")) {
+                ModuleMetadata.Cmdlets = results;
+                return ModuleMetadata;
+            }
+
+            var assembly = Assembly.LoadFrom(assemblyPath);
+            foreach (var type in assembly.GetCmdletTypes())
+            {
+                var cmdlet = type.GetAttribute<CmdletAttribute>();
+                var outputs = type.GetAttributes<OutputTypeAttribute>();
+                var parameters = type.GetParameters();
+
+                var cmdletMetadata = new CmdletMetadata
+                {
+                    VerbName = cmdlet.VerbName,
+                    NounName = cmdlet.NounName,
+                    ConfirmImpact = cmdlet.ConfirmImpact,
+                    SupportsPaging = cmdlet.SupportsPaging,
+                    SupportsShouldProcess = cmdlet.SupportsShouldProcess,
+                    ClassName = type.FullName,
+                    DefaultParameterSetName = cmdlet.DefaultParameterSetName ?? "__AllParameterSets"
+                };
+
+                if (type.HasAttribute<AliasAttribute>())
+                {
+                    var aliases = type.GetAttributes<AliasAttribute>();
+                    cmdletMetadata.AliasList.AddRange(
+                        aliases.SelectMany(a => a.AliasNames));
+                }
+
+                foreach (var output in outputs)
+                {
+                    foreach (var outputType in output.Type)
                     {
-                        VerbName = cmdlet.VerbName,
-                        NounName = cmdlet.NounName,
-                        ConfirmImpact = cmdlet.ConfirmImpact,
-                        SupportsPaging = cmdlet.SupportsPaging,
-                        SupportsShouldProcess = cmdlet.SupportsShouldProcess,
-                        ClassName = type.FullName,
-                        DefaultParameterSetName = cmdlet.DefaultParameterSetName ?? "__AllParameterSets"
+                        var outputMetadata = new OutputMetadata
+                        {
+                            Type = outputType.Type
+                        };
+                        outputMetadata.ParameterSets.AddRange(output.ParameterSetName);
+                        cmdletMetadata.OutputTypes.Add(outputMetadata);
+                    }
+                }
+
+                var globalParameters = new List<Parameter>();
+
+                foreach (var parameter in parameters)
+                {
+                    if (string.Equals(parameter.MemberInfo.Name, "Force", StringComparison.OrdinalIgnoreCase) && parameter.ParameterType == typeof(SwitchParameter))
+                    {
+                        cmdletMetadata.HasForceSwitch = true;
+                    }
+
+                    var parameterData = new Models.ParameterMetadata
+                    {
+                        Type = parameter.ParameterType,
+                        Name = parameter.MemberInfo.Name
                     };
 
-                    if (type.HasAttribute<AliasAttribute>())
+                    if (parameter.HasAttribute<AliasAttribute>())
                     {
-                        var aliases = type.GetAttributes<AliasAttribute>();
-                        cmdletMetadata.AliasList.AddRange(
+                        var aliases = parameter.GetAttributes<AliasAttribute>();
+                        parameterData.AliasList.AddRange(
                             aliases.SelectMany(a => a.AliasNames));
                     }
 
-                    foreach (var output in outputs)
+                    if (parameter.HasAttribute<ValidateSetAttribute>())
                     {
-                        foreach (var outputType in output.Type)
-                        {
-                            var outputMetadata = new OutputMetadata
-                            {
-                                Type = outputType.Type
-                            };
-                            outputMetadata.ParameterSets.AddRange(output.ParameterSetName);
-                            cmdletMetadata.OutputTypes.Add(outputMetadata);
-                        }
+                        var validateSet = parameter.GetAttribute<ValidateSetAttribute>();
+                        parameterData.ValidateSet.AddRange(validateSet.ValidValues);
                     }
 
-                    var globalParameters = new List<Parameter>();
-
-                    foreach (var parameter in parameters)
+                    if (parameter.HasAttribute<ValidateRangeAttribute>())
                     {
-                        if (string.Equals(parameter.Name, "Force", StringComparison.OrdinalIgnoreCase) && parameter.PropertyType == typeof(SwitchParameter))
-                        {
-                            cmdletMetadata.HasForceSwitch = true;
-                        }
+                        var validateRange = parameter.GetAttribute<ValidateRangeAttribute>();
+                        parameterData.ValidateRangeMin = Convert.ToInt64(validateRange.MinRange);
+                        parameterData.ValidateRangeMax = Convert.ToInt64(validateRange.MaxRange);
+                    }
 
-                        var parameterData = new Models.ParameterMetadata
-                        {
-                            Type = parameter.PropertyType,
-                            Name = parameter.Name
-                        };
+                    parameterData.ValidateNotNullOrEmpty = parameter.HasAttribute<ValidateNotNullOrEmptyAttribute>();
 
-                        if (parameter.HasAttribute<AliasAttribute>())
-                        {
-                            var aliases = parameter.GetAttributes<AliasAttribute>();
-                            parameterData.AliasList.AddRange(
-                                aliases.SelectMany(a => a.AliasNames));
-                        }
+                    cmdletMetadata.Parameters.Add(parameterData);
 
-                        if (parameter.HasAttribute<ValidateSetAttribute>())
-                        {
-                            var validateSet = parameter.GetAttribute<ValidateSetAttribute>();
-                            parameterData.ValidateSet.AddRange(validateSet.ValidValues);
-                        }
-
-                        if (parameter.HasAttribute<ValidateRangeAttribute>())
-                        {
-                            var validateRange = parameter.GetAttribute<ValidateRangeAttribute>();
-                            parameterData.ValidateRangeMin = Convert.ToInt64(validateRange.MinRange);
-                            parameterData.ValidateRangeMax = Convert.ToInt64(validateRange.MaxRange);
-                        }
-
-                        parameterData.ValidateNotNullOrEmpty = parameter.HasAttribute<ValidateNotNullOrEmptyAttribute>();
-
-                        cmdletMetadata.Parameters.Add(parameterData);
-
-                        foreach (var parameterSet in parameter.GetAttributes<ParameterAttribute>())
-                        {
-                            var parameterSetMetadata = 
-                                cmdletMetadata.ParameterSets.FirstOrDefault(s => s.Name.Equals(parameterSet.ParameterSetName))
-                                ?? new Models.ParameterSetMetadata
-                                {
-                                    Name = parameterSet.ParameterSetName ?? "__AllParameterSets"
-                                };
-
-                            var param = new Parameter
+                    foreach (var parameterSet in parameter.GetAttributes<ParameterAttribute>())
+                    {
+                        var parameterSetMetadata =
+                            cmdletMetadata.ParameterSets.FirstOrDefault(s => s.Name.Equals(parameterSet.ParameterSetName))
+                            ?? new Models.ParameterSetMetadata
                             {
-                                ParameterMetadata = parameterData,
-                                Mandatory = parameterSet.Mandatory,
-                                Position = parameterSet.Position,
-                                ValueFromPipeline = parameterSet.ValueFromPipeline,
-                                ValueFromPipelineByPropertyName = parameterSet.ValueFromPipelineByPropertyName
+                                Name = parameterSet.ParameterSetName ?? "__AllParameterSets"
                             };
 
-                            if (parameterSet.ParameterSetName.Equals("__AllParameterSets"))
-                            {
-                                globalParameters.Add(param);
-                            }
-
-                            parameterSetMetadata.Parameters.Add(param);
-
-                            if (parameterSetMetadata.Parameters.Count == 1)
-                            {
-                                cmdletMetadata.ParameterSets.Add(parameterSetMetadata);
-                            }
-                        }
-                    }
-
-                    foreach (var parameterSet in cmdletMetadata.ParameterSets)
-                    {
-                        if (parameterSet.Name.Equals("__AllParameterSets"))
+                        var param = new Parameter
                         {
-                            continue;
-                        }
-
-                        foreach (var parameter in globalParameters)
-                        {
-                            var param = parameterSet.Parameters.FirstOrDefault(p => p.ParameterMetadata.Name.Equals(parameter.ParameterMetadata.Name));
-                            if (param == null)
-                            {
-                                parameterSet.Parameters.Add(parameter);
-                            }
-                        }
-                    }
-
-                    if (!cmdletMetadata.ParameterSets.Any(p => p.Name.Equals(cmdletMetadata.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase)))
-                    {
-                        var defaultSet = new Models.ParameterSetMetadata
-                        {
-                            Name = cmdletMetadata.DefaultParameterSetName
+                            ParameterMetadata = parameterData,
+                            Mandatory = parameterSet.Mandatory,
+                            Position = parameterSet.Position,
+                            ValueFromPipeline = parameterSet.ValueFromPipeline,
+                            ValueFromPipelineByPropertyName = parameterSet.ValueFromPipelineByPropertyName
                         };
-                        cmdletMetadata.ParameterSets.Add(defaultSet);
-                    }
 
-                    results.Add(cmdletMetadata);
+                        if (parameterSet.ParameterSetName.Equals("__AllParameterSets"))
+                        {
+                            globalParameters.Add(param);
+                        }
+
+                        parameterSetMetadata.Parameters.Add(param);
+
+                        if (parameterSetMetadata.Parameters.Count == 1)
+                        {
+                            cmdletMetadata.ParameterSets.Add(parameterSetMetadata);
+                        }
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+
+                foreach (var parameterSet in cmdletMetadata.ParameterSets)
+                {
+                    if (parameterSet.Name.Equals("__AllParameterSets"))
+                    {
+                        continue;
+                    }
+
+                    foreach (var parameter in globalParameters)
+                    {
+                        var param = parameterSet.Parameters.FirstOrDefault(p => p.ParameterMetadata.Name.Equals(parameter.ParameterMetadata.Name));
+                        if (param == null)
+                        {
+                            parameterSet.Parameters.Add(parameter);
+                        }
+                    }
+                }
+
+                if (!cmdletMetadata.ParameterSets.Any(p => p.Name.Equals(cmdletMetadata.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase)))
+                {
+                    var defaultSet = new Models.ParameterSetMetadata
+                    {
+                        Name = cmdletMetadata.DefaultParameterSetName
+                    };
+                    cmdletMetadata.ParameterSets.Add(defaultSet);
+                }
+
+                results.Add(cmdletMetadata);
             }
 
             ModuleMetadata.Cmdlets = results;

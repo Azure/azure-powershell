@@ -30,7 +30,7 @@ For information on how to develop for `Az.DiskPool`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: 418603118e704ffeabacff1dd56957400cf83f3a
+branch: 418603118e704ffeabacff1dd56957400cf83f3a
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
@@ -41,6 +41,7 @@ module-version: 0.1.0
 title: DiskPool
 subject-prefix: $(service-name)
 identity-correction-for-post: true 
+nested-object-to-string: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -61,6 +62,12 @@ directive:
       subject-prefix: ''
       subject: DiskPool
   - where:
+      verb: Stop
+      subject: DiskPool
+      parameter-name: DiskPoolName
+    set:
+      parameter-name: Name
+  - where:
       verb: New
       subject: DiskPool
     hide: true
@@ -75,14 +82,34 @@ directive:
   - where:
       verb: Update
       subject: IscsiTarget
-    hide: true
-  - where:
-      subject: DiskPoolOutboundNetworkDependencyEndpoint
-    hide: true
-  - where:
-      subject: DiskPoolZone
     hide: true
   - model-cmdlet:
     - Acl
     - IscsiLun
+  - where:
+      model-name: DiskPoolZoneInfo
+    set:
+      format-table:
+        properties:
+          - SkuName
+          - SkuTier
+          - AvailabilityZone
+          - AdditionalCapability
+  - where:
+      model-name: OutboundEnvironmentEndpoint
+    set:
+      format-table:
+        properties:
+          - Category
+          - Endpoint
+  - where:
+      model-name: DiskPool 
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Status
+          - ProvisioningState
+          - AvailabilityZone       
 ```

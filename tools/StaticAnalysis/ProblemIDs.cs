@@ -13,6 +13,9 @@
         public const int ParameterSetWithSpace = 8500;
         public const int MultipleParameterSetsWithNoDefault = 8510;
         public const int CmdletWithNoOutputType = 8600;
+        public const int ParameterSetWithStrictMandatoryEqual = 8700;
+        public const int ParameterSetWithLenientMandatoryEqual = 8710;
+        //public const int EmptyDefaultParameterSet = 8800;
         public const int CmdletWithDestructiveVerb = 98300;
         public const int CmdletWithForceParameter = 98310;
     }
