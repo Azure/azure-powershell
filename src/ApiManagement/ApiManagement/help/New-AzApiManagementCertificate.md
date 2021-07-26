@@ -49,6 +49,16 @@ Creates an API Management certificate to be used during Authentication with Back
 New-AzApiManagementCertificate -CertificateId '0123456789' -Context <PsApiManagementContext> -PfxFilePath 'C:\contoso\certificates\apimanagement.pfx' -PfxPassword '1111'
 ```
 
+### Example 3 : Create a keyVault Certificate
+```powershell
+PS C:\>$secretIdentifier = 'https://contoso.vault.azure.net/secrets/xxxx'
+PS C:\>$keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier 
+PS C:\>$keyVaultcert = New-AzApiManagementCertificate -Context $context -CertificateId $kvcertId -KeyVault $keyvault
+```
+
+The first command creates a keyvault.
+The second command creates a certificate using secret from this keyvault.
+
 ## PARAMETERS
 
 ### -CertificateId
@@ -99,6 +109,7 @@ Accept wildcard characters: False
 
 ### -KeyVault
 KeyVault used to fetch certificate data.This parameter is required if -PfxFilePath not specified.
+See New-AzApiManagementKeyVaultObject for details.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementKeyVaultEntity

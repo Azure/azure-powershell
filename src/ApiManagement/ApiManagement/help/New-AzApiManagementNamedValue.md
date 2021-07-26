@@ -41,6 +41,16 @@ PS C:\>New-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Proper
 
 This command creates a **Named Value** that has a value that is encrypted.
 
+### Example 3 : Create a keyVault Namedvalue
+```powershell
+PS C:\>$secretIdentifier = 'https://contoso.vault.azure.net/secrets/xxxx'
+PS C:\>$keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier 
+PS C:\>$keyVaultNamedValue = New-AzApiManagementNamedValue -Context $context -NamedValueId $keyVaultNamedValueId -Name $keyVaultNamedValueName -keyVault $keyvault -Secret
+```
+
+The first command creates a keyvault.
+The second command creates a named value using secret from this keyvault.
+
 ## PARAMETERS
 
 ### -Context
@@ -76,6 +86,7 @@ Accept wildcard characters: False
 
 ### -KeyVault
 KeyVault used to fetch Namedvalue data.This parameter is required if Value not specified.
+See New-AzApiManagementKeyVaultObject for details.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementKeyVaultEntity
