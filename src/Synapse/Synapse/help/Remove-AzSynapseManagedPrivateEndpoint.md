@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsemanagedprivateendpoint
 schema: 2.0.0
 ---
 
 # Remove-AzSynapseManagedPrivateEndpoint
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a managed private endpoint from a workspace.
 
 ## SYNTAX
 
@@ -34,16 +34,32 @@ Remove-AzSynapseManagedPrivateEndpoint -InputObject <PSManagedPrivateEndpointRes
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzSynapseManagedPrivateEndpoint** cmdlet removes a managed private endpoint from a workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
 ```
 
-{{ Add example description here }}
+Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the workspace ContosoWorkspace.
+
+### Example 2
+```powershell
+PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+PS C:\> $ws | Remove-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint
+```
+
+Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the workspace ContosoWorkspace through pipeline.
+
+### Example 3
+```powershell
+PS C:\> $privateendpint = Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
+PS C:\> $privateendpint | Remove-AzSynapseManagedPrivateEndpoint
+```
+
+Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the workspace ContosoWorkspace through pipeline.
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsemanagedprivateendpoint
 schema: 2.0.0
 ---
 
 # Get-AzSynapseManagedPrivateEndpoint
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets information about mananged private endpoints in a workspace
 
 ## SYNTAX
 
@@ -25,16 +25,31 @@ Get-AzSynapseManagedPrivateEndpoint -WorkspaceObject <PSSynapseWorkspace> [-Name
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzSynapseManagedPrivateEndpoint** cmdlet gets information about mananged private endpoints in a workspace. If you specify the name of a mananged private endpoint, the cmdlet gets information about that  mananged private endpoint. If you do not specify a name, the cmdlet gets information about all mananged private endpoints in the workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
 ```
 
-{{ Add example description here }}
+Gets a single mananged private endpoint called ContosoManagedPrivateEndpoint in the workspace ContosoWorkspace.
+
+### Example 2
+```powershell
+PS C:\> Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace
+```
+
+Gets a list of all mananged private endpoints in the workspace ContosoWorkspace.
+
+### Example 3
+```powershell
+PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+PS C:\> $ws | Get-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint
+```
+
+Gets a single mananged private endpoint called ContosoManagedPrivateEndpoint in the workspace ContosoWorkspace through pipeline.
 
 ## PARAMETERS
 
