@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsemanagedprivateendpoint
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzSynapseManagedPrivateEndpoint
 
 ## SYNOPSIS
-Removes a managed private endpoint from a workspace.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -34,32 +34,16 @@ Remove-AzSynapseManagedPrivateEndpoint -InputObject <PSManagedPrivateEndpointRes
 ```
 
 ## DESCRIPTION
-The **Remove-AzSynapseManagedPrivateEndpoint** cmdlet removes a managed private endpoint from a workspace.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
+PS C:\> {{ Add example code here }}
 ```
 
-Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the workspace ContosoWorkspace.
-
-### Example 2
-```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint
-```
-
-Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the workspace ContosoWorkspace through pipeline.
-
-### Example 3
-```powershell
-PS C:\> $privateendpint = Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
-PS C:\> $privateendpint | Remove-AzSynapseManagedPrivateEndpoint
-```
-
-Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the workspace ContosoWorkspace through pipeline.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -67,7 +51,7 @@ Remove a managed private endpoint called ContosoManagedPrivateEndpoint from the 
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -97,7 +81,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +96,7 @@ Accept wildcard characters: False
 The Synapse Managed Private Endpoint Object.
 
 ```yaml
-Type: PSManagedPrivateEndpointResource
+Type: Microsoft.Azure.Commands.Synapse.Models.PSManagedPrivateEndpointResource
 Parameter Sets: RemoveByInputObject
 Aliases:
 
@@ -127,14 +111,14 @@ Accept wildcard characters: False
 The Synapse Managed Private Endpoint Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByName, RemoveByObject
 Aliases: ManagedPrivateEndpointName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -143,7 +127,7 @@ This Cmdlet does not return an object by default.
 If this switch is specified, it returns true if successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +142,7 @@ Accept wildcard characters: False
 Managed Virtual Network Name is default.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: VNetName
 
@@ -173,7 +157,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByName
 Aliases:
 
@@ -188,7 +172,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: RemoveByObject
 Aliases:
 
@@ -203,7 +187,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -219,7 +203,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -238,8 +222,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 
 ### Microsoft.Azure.Commands.Synapse.Models.PSManagedPrivateEndpointResource
-
-### System.String
 
 ## OUTPUTS
 

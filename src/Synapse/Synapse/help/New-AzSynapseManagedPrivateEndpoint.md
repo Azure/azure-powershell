@@ -1,50 +1,42 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/set-azsynapsemanagedprivateendpoint
+online version:
 schema: 2.0.0
 ---
 
-# Set-AzSynapseManagedPrivateEndpoint
+# New-AzSynapseManagedPrivateEndpoint
 
 ## SYNOPSIS
-Creates or updates a managed private endpoint in a workspace.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### SetByName (Default)
 ```
-Set-AzSynapseManagedPrivateEndpoint -WorkspaceName <String> -Name <String> [-VirtualNetworkName <String>]
+New-AzSynapseManagedPrivateEndpoint -WorkspaceName <String> -Name <String> [-VirtualNetworkName <String>]
  -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByObject
 ```
-Set-AzSynapseManagedPrivateEndpoint -WorkspaceObject <PSSynapseWorkspace> -Name <String>
+New-AzSynapseManagedPrivateEndpoint -WorkspaceObject <PSSynapseWorkspace> -Name <String>
  [-VirtualNetworkName <String>] -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSynapseManagedPrivateEndpoint** cmdlet creates or updates a managed private endpoint in a workspace.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
+PS C:\> {{ Add example code here }}
 ```
 
-This command creates or updates a managed private endpoint from json file in the workspace named ContosoWorkspace.
-
-### Example 2
-```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Set-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint -DefinitionFile "C:\\endpoint.json"
-```
-
-This command creates or updates a managed private endpoint from json file in the workspace named ContosoWorkspace through pipeline.
+{{ Add example description here }}
 
 ## PARAMETERS
 

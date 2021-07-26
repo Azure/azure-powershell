@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsemanagedprivateendpoint
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzSynapseManagedPrivateEndpoint
 
 ## SYNOPSIS
-Gets information about mananged private endpoints in a workspace
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -25,30 +25,16 @@ Get-AzSynapseManagedPrivateEndpoint -WorkspaceObject <PSSynapseWorkspace> [-Name
 ```
 
 ## DESCRIPTION
-The **Get-AzSynapseManagedPrivateEndpoint** cmdlet gets information about mananged private endpoints in a workspace. If you specify the name of a mananged private endpoint, the cmdlet gets information about that  mananged private endpoint. If you do not specify a name, the cmdlet gets information about all mananged private endpoints in the workspace.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace -Name ContosoManagedPrivateEndpoint
-```
-Gets a single mananged private endpoint called ContosoManagedPrivateEndpoint in the workspace ContosoWorkspace.
-
-### Example 2
-```powershell
-PS C:\> Get-AzSynapseManagedPrivateEndpoint -WorkspaceName ContosoWorkspace 
+PS C:\> {{ Add example code here }}
 ```
 
-Gets a list of all mananged private endpoints in the workspace ContosoWorkspace.
-
-### Example 3
-```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseManagedPrivateEndpoint -Name ContosoManagedPrivateEndpoint
-```
-
-Gets a single mananged private endpoint called ContosoManagedPrivateEndpoint in the workspace ContosoWorkspace through pipeline.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -56,7 +42,7 @@ Gets a single mananged private endpoint called ContosoManagedPrivateEndpoint in 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -71,7 +57,7 @@ Accept wildcard characters: False
 The Synapse Managed Private Endpoint Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ManagedPrivateEndpointName
 
@@ -86,7 +72,7 @@ Accept wildcard characters: False
 Managed Virtual Network Name is default.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: VNetName
 
@@ -101,7 +87,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
 Aliases:
 
@@ -116,7 +102,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: GetByObject
 Aliases:
 

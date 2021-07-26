@@ -68,6 +68,9 @@ Gets information about linked services in workspace.
 ### [Get-AzSynapseManagedIdentitySqlControlSetting](Get-AzSynapseManagedIdentitySqlControlSetting.md)
 Gets Managed Identity Sql Control Settings.
 
+### [Get-AzSynapseManagedPrivateEndpoint](Get-AzSynapseManagedPrivateEndpoint.md)
+Gets a Synapse managed private endpoint.
+
 ### [Get-AzSynapseNotebook](Get-AzSynapseNotebook.md)
 Gets information about notebooks in a workspace.
 
@@ -223,6 +226,9 @@ Remove a node with the given name on an integration runtime.
 
 ### [Remove-AzSynapseLinkedService](Remove-AzSynapseLinkedService.md)
 Removes a linked service from workspace.
+
+### [Remove-AzSynapseManagedPrivateEndpoint](Remove-AzSynapseManagedPrivateEndpoint.md)
+Remove a Synapse managed private endpoint.
 
 ### [Remove-AzSynapseNotebook](Remove-AzSynapseNotebook.md)
 Removes a notebook from a workspace.

@@ -176,7 +176,7 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Remove-AzSynapseSparkJobDefinition', 
                'Set-AzSynapseSparkJobDefinition',
                'Get-AzSynapseManagedPrivateEndpoint',
-               'Set-AzSynapseManagedPrivateEndpoint',
+               'New-AzSynapseManagedPrivateEndpoint',
                'Remove-AzSynapseManagedPrivateEndpoint'
 
 # Variables to export from this module
@@ -196,7 +196,8 @@ AliasesToExport = 'New-AzSynapsePipeline', 'New-AzSynapseLinkedService',
                'Clear-AzSynapseSqlPoolVulnerabilityAssessmentSetting', 
                'Enable-AzSynapseSqlAdvancedThreatProtection', 
                'Disable-AzSynapseSqlAdvancedThreatProtection', 
-               'New-AzSynapseSparkJobDefinition'
+               'New-AzSynapseSparkJobDefinition',
+               'Set-AzSynapseManagedPrivateEndpoint'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
