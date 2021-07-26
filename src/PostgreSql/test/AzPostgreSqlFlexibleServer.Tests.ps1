@@ -23,10 +23,9 @@ Describe 'AzPostgreSqlFlexibleServer' {
 
     It 'ViaName' {
         # New
-        $Sku = 'Standard_D4s_v3'
+        $Sku = 'Standard_D2s_v3'
         $SkuTier = 'GeneralPurpose'
-        $BackupRetentionDay = 11
-        $Server = New-AzPostgreSqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName4 -Sku $Sku -SkuTier $SkuTier -BackupRetentionDay $BackupRetentionDay -StorageInMb 65536 
+        $BackupRetentionDay = 11 
 
         # Get
         $Server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName4
@@ -46,7 +45,7 @@ Describe 'AzPostgreSqlFlexibleServer' {
 
         # restore
         $restorePointInTime = (Get-Date).AddMinutes(-10)
-        $RestoredName = $env.flexibleServerName + '-restored'
+        $RestoredName = $env.flexibleServerName + '-restored-server'
         $RestoredServer = Restore-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $RestoredName -SourceServerName $env.flexibleServerName -RestorePointInTime $restorePointInTime 
         $RestoredServer.Name | Should -Be $RestoredName
      

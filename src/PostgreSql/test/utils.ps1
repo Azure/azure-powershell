@@ -88,6 +88,7 @@ function setupEnv() {
 
     write-host "New-AzPostgreSqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess none"
     New-AzPostgreSqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess none
+    New-AzPostgreSqlFlexibleServer -Location $location -ResourceGroupName $resourceGroup -Name $flexibleServerName4 -BackupRetentionDay 11 -StorageInMb 65536
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
