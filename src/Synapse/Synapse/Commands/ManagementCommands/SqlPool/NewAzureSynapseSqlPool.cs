@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(2, 3)]
         public int Version { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.Tag)]
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 {
                     case CreateByNameParameterSet:
                     case CreateByParentObjectParameterSet:
-                        createParams.Sku = new Sku
+                        createParams.Sku = new SkuV3
                         {
                             Name = this.PerformanceLevel
                         };

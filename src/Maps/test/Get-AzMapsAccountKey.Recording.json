@@ -1,0 +1,43 @@
+{
+  "Get-AzMapsAccountKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3/listKeys?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3/listKeys?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "482f5214-6a84-416b-b33a-806ac64e091a" ],
+        "CommandName": [ "Get-AzMapsAccountKey" ],
+        "FullCommandName": [ "Get-AzMapsAccountKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "5ea49aa0-badd-4263-98a8-63789a841137" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "86376460-b8b0-4bce-b57e-8947474884a0" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070353Z:86376460-b8b0-4bce-b57e-8947474884a0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:03:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"r25kxSBzJ7WavWOmuIOI5DVTkgB4KI002AYMb5OOXSc\",\r\n  \"secondaryKey\": \"9ihScQqbMa7M6jsYW0olJ2fUY8i_ZT9uHHtDX1s6-jU\",\r\n  \"primaryKeyLastUpdated\": \"2021-06-23T07:03:38.9320732Z\",\r\n  \"secondaryKeyLastUpdated\": \"2021-06-23T07:03:38.9320732Z\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

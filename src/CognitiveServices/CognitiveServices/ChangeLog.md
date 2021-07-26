@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Changed type of PSCognitiveServicesAccount.Identity.Type from IdentityType to ResourceIdentityType.
+* [Breaking Change] Changed type of PSCognitiveServicesAccount.Sku.Tier from SkuTier to string.
+* [Breaking Change] Removed ActionRequired from PrivateLinkServiceConnectionState.
+* Updated PowerShell to use 2021-04-30 version.
+* Added `Undo-AzCognitiveServicesAccountRemoval` cmdlet.
+* Added parameters `-RestrictOutboundNetworkAccess`, `-AllowedFqdnList`, `-DisableLocalAuth`, `-KeyVaultIdentityClientId`, `-IdentityType`, `-UserAssignedIdentityId` to `New-AzureCognitiveServicesAccount` and `Set-AzureCognitiveServicesAccount`.
+* Added parameters `-InRemovedState`, `-Location` to `Remove-AzureCognitiveServicesAccount` and `Get-AzureCognitiveServicesAccount`.
 
 ## Version 1.8.0
 

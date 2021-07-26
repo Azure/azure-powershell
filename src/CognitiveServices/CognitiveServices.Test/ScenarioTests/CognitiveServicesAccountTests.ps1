@@ -50,73 +50,6 @@ function Test-NewAzureRmCognitiveServicesAccount
 
 <#
 .SYNOPSIS
-Test New-AzCognitiveServicesAccountInvalidName
-#>
-function Test-NewAzureRmCognitiveServicesAccountInvalidName
-{
-    # Setup
-    $rgname = Get-CognitiveServicesManagementTestResourceName;
-
-    try
-    {
-        # Test
-        $accountname = 'csa' + $rgname + ".invalid";
-        $skuname = 'S2';
-        $accounttype = 'TextAnalytics';
-        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
-
-        New-AzResourceGroup -Name $rgname -Location $loc;
-
-		Assert-ThrowsContains { New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
-        Assert-NotNull $createdAccount; } 'Failed to create Cognitive Services account.'
-        
-        Retry-IfException { Remove-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Test New-AzCognitiveServicesAccount
-#>
-function Test-NewAzureRmAllKindsOfCognitiveServicesAccounts
-{
-	# Setup
-    $rgname = Get-CognitiveServicesManagementTestResourceName;
-
-	$locWU = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
-	$locGBL = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "Global";
-
-	try
-	{
-		New-AzResourceGroup -Name $rgname -Location 'West US';
-		
-		# Create all known kinds of Cognitive Services accounts.
-		Test-CreateCognitiveServicesAccount $rgname 'BingSearchTest' 'Bing.Search.v7' 'S1' $locGBL
-		Test-CreateCognitiveServicesAccount $rgname 'BingSpeechTest' 'SpeechServices' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'BingSpellCheckTest' 'Bing.SpellCheck.v7' 'S1' $locGBL
-		Test-CreateCognitiveServicesAccount $rgname 'ComputerVisionTest' 'ComputerVision' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'ContentModeratorTest' 'ContentModerator' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'FaceTest' 'Face' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'LUISTest' 'LUIS' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'SpeakerRecognitionTest' 'SpeakerRecognition' 'S0' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'TextAnalyticsTest' 'TextAnalytics' 'S1' $locWU
-		Test-CreateCognitiveServicesAccount $rgname 'TextTranslationTest' 'TextTranslation' 'S1' $locGBL
-	}
-	finally
-	{
-	    # Cleanup
-        Clean-ResourceGroup $rgname
-	}
-}
-
-
-<#
-.SYNOPSIS
 Test AsyncAccountOperations
 #>
 function Test-AsyncAccountOperations
@@ -943,7 +876,8 @@ function Test-ManagedIdentity
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-
+    
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
     try
     {
         # Update with AssignIdentity
@@ -965,7 +899,8 @@ function Test-ManagedIdentity
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-
+    
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
     try
     {
         # Update with IdentityType
@@ -987,7 +922,8 @@ function Test-ManagedIdentity
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-
+    
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
     try
     {
         # Create with AssignIdentity and Update with IdentityType.None
@@ -1012,6 +948,177 @@ function Test-ManagedIdentity
     }
 }
 
+
+<#
+.SYNOPSIS
+Test DisableLocalAuth
+#>
+function Test-DisableLocalAuth
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'TextAnalytics';
+        $loc = "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -DisableLocalAuth $true -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.DisableLocalAuth $true
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'Face';
+        $loc = "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.DisableLocalAuth $null
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -DisableLocalAuth $true
+        Assert-NotNull $updatedAccount; 
+        Assert-AreEqual $updatedAccount.DisableLocalAuth $true
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -DisableLocalAuth $false
+        Assert-NotNull $updatedAccount; 
+        Assert-AreEqual $updatedAccount.DisableLocalAuth $false
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test RestrictOutboundNetworkAccess
+#>
+function Test-RestrictOutboundNetworkAccess
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'Face';
+        $loc = "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -RestrictOutboundNetworkAccess $true -AllowedFqdnList @("abc.com", "dfe.net") -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.AllowedFqdnList.Count 2
+        Assert-AreEqual $createdAccount.RestrictOutboundNetworkAccess $true
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'Face';
+        $loc = "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.RestrictOutboundNetworkAccess $null
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -RestrictOutboundNetworkAccess $true -AllowedFqdnList @("abc.com", "dfe.net")
+        Assert-NotNull $updatedAccount; 
+        Assert-AreEqual $updatedAccount.AllowedFqdnList.Count 2
+        Assert-AreEqual $updatedAccount.RestrictOutboundNetworkAccess $true
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -RestrictOutboundNetworkAccess $false
+        Assert-NotNull $updatedAccount; 
+        Assert-AreEqual $updatedAccount.RestrictOutboundNetworkAccess $false
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test UserAssignedIdentity
+#>
+function Test-UserAssignedIdentity
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'E0';
+        $accounttype = 'Face';
+        $loc = "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -IdentityType "UserAssigned" -UserAssignedIdentityId @("/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/yuanyang/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sdk-test-mi") -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.Identity.Type "UserAssigned"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'E0';
+        $accounttype = 'Face';
+        $loc = "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -Force;
+        Assert-NotNull $createdAccount;
+        Assert-AreEqual $createdAccount.Identity.Type "SystemAssigned"
+
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -AssignIdentity -IdentityType "SystemAssignedUserAssigned" -UserAssignedIdentityId "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/yuanyang/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sdk-test-mi"
+        Assert-NotNull $updatedAccount; 
+        Assert-AreEqual $updatedAccount.Identity.Type "SystemAssignedUserAssigned"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+   
 <#
 .SYNOPSIS
 Test Encryption
@@ -1041,7 +1148,7 @@ function Test-Encryption
         Clean-ResourceGroup $rgname
     }
 
-    
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
     try
     {
         # Test
@@ -1064,50 +1171,53 @@ function Test-Encryption
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-
+    
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
     try
     {
         # Test
         $accountname = 'csa' + $rgname;
-        $skuname = 'E0';
-        $accounttype = 'Face';
+        $skuname = 'S0';
+        $accounttype = 'FormRecognizer';
         $loc = "Central US EUAP";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
-        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -KeyVaultEncryption -KeyName "FakeKeyName" -KeyVersion "891CF236-D241-4738-9462-D506AF493DFA" -KeyVaultUri "https://pltfrmscrts-use-pc-dev.vault.azure.net/" -Force;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -IdentityType "UserAssigned" -UserAssignedIdentityId "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/yuanyang/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sdk-test-mi"  -KeyVaultEncryption -KeyName "TestKey" -KeyVersion "dcb017f640db4818ba240751674f975f" -KeyVaultUri "https://sdk-test-mi.vault.azure.net/" -KeyVaultIdentityClientId "9feb3cc7-408c-449d-8baf-f3dd44ad292b" -Force;
         Assert-NotNull $createdAccount;
-        Assert-AreEqual $createdAccount.Identity.Type "SystemAssigned"
+        Assert-AreEqual $createdAccount.Identity.Type "UserAssigned"
         Assert-AreEqual $createdAccount.Encryption.KeySource "Microsoft.KeyVault"
-        Assert-AreEqual $createdAccount.Encryption.KeyVaultProperties.KeyName "FakeKeyName"
-        Assert-AreEqual $createdAccount.Encryption.KeyVaultProperties.KeyVersion "891CF236-D241-4738-9462-D506AF493DFA"
-        Assert-AreEqual $createdAccount.Encryption.KeyVaultProperties.KeyVaultUri "https://pltfrmscrts-use-pc-dev.vault.azure.net/"
+        Assert-AreEqual $createdAccount.Encryption.KeyVaultProperties.KeyName "TestKey"
+        Assert-AreEqual $createdAccount.Encryption.KeyVaultProperties.KeyVersion "dcb017f640db4818ba240751674f975f"
+        Assert-AreEqual $createdAccount.Encryption.KeyVaultProperties.KeyVaultUri "https://sdk-test-mi.vault.azure.net/"
+        Assert-AreEqual $createdAccount.Encryption.KeyVaultProperties.IdentityClientId "9feb3cc7-408c-449d-8baf-f3dd44ad292b"
     }
     finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-
     
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
     try
     {
         # Test
         $accountname = 'csa' + $rgname;
-        $skuname = 'E0';
-        $accounttype = 'Face';
+        $skuname = 'S0';
+        $accounttype = 'FormRecognizer';
         $loc = "Central US EUAP";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
-        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -Force;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -IdentityType "UserAssigned" -UserAssignedIdentityId "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/yuanyang/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sdk-test-mi" -Force;
         Assert-NotNull $createdAccount;
-        Assert-AreEqual $createdAccount.Identity.Type "SystemAssigned"
+        Assert-AreEqual $createdAccount.Identity.Type "UserAssigned"
 
-        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -KeyVaultEncryption -KeyName "FakeKeyName" -KeyVersion "891CF236-D241-4738-9462-D506AF493DFA" -KeyVaultUri "https://pltfrmscrts-use-pc-dev.vault.azure.net/"
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -KeyVaultEncryption -KeyName "TestKey" -KeyVersion "dcb017f640db4818ba240751674f975f" -KeyVaultUri "https://sdk-test-mi.vault.azure.net/" -KeyVaultIdentityClientId "9feb3cc7-408c-449d-8baf-f3dd44ad292b"
         Assert-NotNull $updatedAccount; 
         Assert-AreEqual $updatedAccount.Encryption.KeySource "Microsoft.KeyVault"
-        Assert-AreEqual $updatedAccount.Encryption.KeyVaultProperties.KeyName "FakeKeyName"
-        Assert-AreEqual $updatedAccount.Encryption.KeyVaultProperties.KeyVersion "891CF236-D241-4738-9462-D506AF493DFA"
-        Assert-AreEqual $updatedAccount.Encryption.KeyVaultProperties.KeyVaultUri "https://pltfrmscrts-use-pc-dev.vault.azure.net/"
+        Assert-AreEqual $updatedAccount.Encryption.KeyVaultProperties.KeyName "TestKey"
+        Assert-AreEqual $updatedAccount.Encryption.KeyVaultProperties.KeyVersion "dcb017f640db4818ba240751674f975f"
+        Assert-AreEqual $updatedAccount.Encryption.KeyVaultProperties.KeyVaultUri "https://sdk-test-mi.vault.azure.net/"
+        Assert-AreEqual $updatedAccount.Encryption.KeyVaultProperties.IdentityClientId "9feb3cc7-408c-449d-8baf-f3dd44ad292b"
     }
     finally
     {
@@ -1124,7 +1234,6 @@ function Test-UserOwnedStorage
 {
     # Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName;
-
     try
     {
         # Test
@@ -1145,7 +1254,8 @@ function Test-UserOwnedStorage
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-
+    
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
     try
     {
         # Test
@@ -1214,17 +1324,14 @@ Test PublicNetworkAccess
 #>
 function Test-PublicNetworkAccess
 {
-    # Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName;
-    # Test
-    $accountname = 'csa' + $rgname;
-    $skuname = 'S1';
-    $accounttype = 'TextAnalytics';
-    $loc = "Central US EUAP";
-
-
     try
     {
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S1';
+        $accounttype = 'TextAnalytics';
+        $loc = "Central US EUAP";
+
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
         Assert-NotNull $createdAccount;
@@ -1247,9 +1354,15 @@ function Test-PublicNetworkAccess
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-
+    
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
     try
     {
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S1';
+        $accounttype = 'TextAnalytics';
+        $loc = "Central US EUAP";
+
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -PublicNetworkAccess "Enabled" -Force;
         Assert-NotNull $createdAccount;
@@ -1260,9 +1373,15 @@ function Test-PublicNetworkAccess
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-
+    
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
     try
     {
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S1';
+        $accounttype = 'TextAnalytics';
+        $loc = "Central US EUAP";
+
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -PublicNetworkAccess "Disabled" -Force;
         Assert-NotNull $createdAccount;
@@ -1340,4 +1459,65 @@ function Test-ApiProperties
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
+
+
+<#
+.SYNOPSIS
+Test New-SoftDelete
+#>
+function Test-SoftDelete
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S2';
+        $accounttype = 'TextAnalytics';
+        $loc = "Central US EUAP";
+        
+        # generate a soft deleted account
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        Assert-NotNull $createdAccount;
+        Remove-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force;
+        
+        # Check the soft deleted account
+        $deletedAccounts = Get-AzCognitiveServicesAccount -InRemovedState;
+        $deletedAccount = Get-AzCognitiveServicesAccount -InRemovedState -Location $loc -ResourceGroupName $rgname -Name $accountname;
+        Assert-NotNull $deletedAccount;
+        Assert-True {IsAccountInInAccountList $deletedAccount $deletedAccounts}
+
+        # can recover
+        Undo-AzCognitiveServicesAccountRemoval -Location $loc -ResourceGroupName $rgname -Name $accountname -Force
+        Remove-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force;
+
+        # can purge
+        Remove-AzCognitiveServicesAccount -Location $loc -ResourceGroupName $rgname -Name $accountname -InRemovedState -Force;
+        $lastDeletedAccounts = Get-AzCognitiveServicesAccount -InRemovedState;
+        Assert-False {IsAccountInInAccountList $deletedAccount $lastDeletedAccounts}
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Check if an account is in a list of accounts (location, resource group name and resource name match)
+#>
+function IsAccountInInAccountList ($account, $accounts) {
+    foreach ($a in $accounts)
+    {
+        if (($a.AccountName -eq $account.AccountName) -and ($a.ResourceGroupName -eq $account.ResourceGroupName) -and ($a.Location -eq $account.Location)) {
+            return $true
+        }
+    }
+    return $false
 }

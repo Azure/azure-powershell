@@ -17,7 +17,8 @@ New-AzSynapseWorkspace -ResourceGroupName <String> -Name <String> -Location <Str
  -DefaultDataLakeStorageAccountName <String> -DefaultDataLakeStorageFilesystem <String>
  -SqlAdministratorLoginCredential <PSCredential> [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
  [-EncryptionKeyName <String>] [-EncryptionKeyIdentifier <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ManagedResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +34,16 @@ PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name Con
 ```
 
 This command creates a Synapse Analytics workspace named ContosoWorkspace that uses the ContosoAdlGenStorage Data Store, in the resource group named ContosoResourceGroup.
+
+### Example 2
+```powershell
+PS C:\> $config = New-AzSynapseManagedVirtualNetworkConfig -PreventDataExfiltration -AllowedAadTenantIdsForLinking ContosoTenantId
+PS C:\> $password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+PS C:\> $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
+PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -ManagedVirtualNetwork $config
+```
+
+The first command creates a managed virtual network configuration. Then the rest methods uses the configuration to creates a new Synapse workspace.
 
 ## PARAMETERS
 
@@ -135,6 +146,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ManagedResourceGroupName
+A container that holds ancillary resources. Created by default while the name can be specified. Note that this field must not be the same with ResearchGroupName
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

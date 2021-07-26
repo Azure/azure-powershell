@@ -12,25 +12,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzMySqlFlexibleServerConfiguration' {
-    It 'List' {
-        {
-            $config = Get-AzMySqlFlexibleServerConfiguration -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
-            $config.Count | Should -BeGreaterOrEqual 1      
-        } | Should -Not -Throw
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        { 
-            $config = Get-AzMySqlFlexibleServerConfiguration -Name time_zone -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
-            $config.Name | Should -Be time_zone
-        } | Should -Not -Throw
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/configurations/server_id"
-            $config = Get-AzMySqlFlexibleServerConfiguration -InputObject $ID 
-            $config.Name | Should -Be server_id
-        } | Should -Not -Throw
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

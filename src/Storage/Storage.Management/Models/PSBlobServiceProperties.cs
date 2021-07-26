@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed(),
                 IsVersioningEnabled = this.IsVersioningEnabled,
                 LastAccessTimeTrackingPolicy = this.LastAccessTimeTrackingPolicy is null ? null : this.LastAccessTimeTrackingPolicy.ParseLastAccessTimeTrackingPolicy(),
-                ContainerDeleteRetentionPolicy = this.ContainerDeleteRetentionPolicy is null ? null : this.ContainerDeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
+                ContainerDeleteRetentionPolicy = this.ContainerDeleteRetentionPolicy is null ? null : this.ContainerDeleteRetentionPolicy.ParseDeleteRetentionPolicy()
             };
         }
 

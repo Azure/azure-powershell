@@ -242,6 +242,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public ICapacityReservationGroupsOperations CapacityReservationGroupClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.CapacityReservationGroups;
+            }
+        }
+        public ICapacityReservationsOperations CapacityReservationClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.CapacityReservations;
+            }
+        }
+
         public static string FormatObject(Object obj)
         {
             var objType = obj.GetType();

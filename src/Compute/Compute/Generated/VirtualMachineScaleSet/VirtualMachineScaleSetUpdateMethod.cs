@@ -321,6 +321,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public UpgradeMode UpgradePolicyMode { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
+
+        [Parameter(
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] VhdContainer { get; set; }
@@ -1200,6 +1206,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics = new BootDiagnostics();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.StorageUri = this.BootDiagnosticsStorageUri;
+            }
+
+            if (this.IsParameterBound(c=> c.CapacityReservationGroupId))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation = new CapacityReservationProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup = new SubResource();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.CapacityReservation.CapacityReservationGroup.Id = this.CapacityReservationGroupId;
             }
 
             if (this.IsParameterBound(c => c.CustomData))
