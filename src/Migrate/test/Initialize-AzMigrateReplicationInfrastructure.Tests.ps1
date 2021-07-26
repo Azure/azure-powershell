@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Initialize-AzMigrateReplicationInfrastructure' {
-    It 'Default' {
+    It 'Default' -skip {
         $response = Initialize-AzMigrateReplicationInfrastructure -ProjectName $env.srsinitinfraProjectName -ResourceGroupName $env.srsinitinfraResourceGroupName -Scenario $env.srsinitinfraScenario -TargetRegion $env.srsinitinfraTargetRegion
         $response[$response.length -1] | Should -Be $true
     }
