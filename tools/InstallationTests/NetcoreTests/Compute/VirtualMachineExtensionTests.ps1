@@ -1789,7 +1789,7 @@ function Test-VirtualMachineADDomainExtensionDomainJoin
         # Set ADDomain extension
         Assert-ThrowsContains { Set-AzureRmVMADDomainExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname `
             -DomainName $domainName -Credential $cred2 -OUPath $ouPath -JoinOption 3 -Restart; } `
-            "occured while joining Domain";
+            "occurred while joining Domain";
         $publisher = 'Microsoft.Compute';
         $exttype = 'JsonADDomainExtension';
 

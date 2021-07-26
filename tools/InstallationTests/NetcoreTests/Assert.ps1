@@ -48,7 +48,7 @@ function Assert-Throws
     }
   }
 
-  throw "No exception occured";
+  throw "No exception occurred";
 }
 
 ######################
@@ -86,7 +86,7 @@ function Assert-ThrowsContains
     }
   }
 
-  throw "No exception occured";
+  throw "No exception occurred";
 }
 
 ######################
@@ -124,7 +124,7 @@ function Assert-ThrowsLike
     }
   }
 
-  throw "No exception occured";
+  throw "No exception occurred";
 }
 
 <#
@@ -137,7 +137,7 @@ function Assert-Env
    $tmp = Get-Item env:
    $env = @{}
    $tmp | % { $env.Add($_.Key, $_.Value)}
-   $vars | % { Assert-True {$env.ContainsKey($_)} "Environment Variable $_ Is Required.  Please set the value before runnign the test"}
+   $vars | % { Assert-True {$env.ContainsKey($_)} "Environment Variable $_ Is Required.  Please set the value before running the test"}
 }
 
 ###################

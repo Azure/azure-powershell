@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMariaDbServer
 
 ## SYNOPSIS
-
+Creates a new MariaDB.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ New-AzMariaDbServer -Name <String> -ResourceGroupName <String> -AdministratorLog
 ```
 
 ## DESCRIPTION
-
+Creates a new MariaDB.
 
 ## EXAMPLES
 

@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.PowerShell.Cmdlets.Blueprint.dll","Microsoft.Azure.Commands.Blueprint.Cmdlets.ImportAzureRmBlueprint","Import-AzBlueprintWithArtifact","1","8410","Parameter IncludeSubFolders of cmdlet Import-AzBlueprintWithArtifact does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
