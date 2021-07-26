@@ -1,0 +1,86 @@
+{
+  "Remove-AzVMwareExpressRouteAuthorization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/6i1coj?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/6i1coj?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "155" ],
+        "x-ms-client-request-id": [ "a4dfb7ae-ff5a-486c-ae82-f0d15d1d07eb" ],
+        "CommandName": [ "Remove-AzVMwareExpressRouteAuthorization" ],
+        "FullCommandName": [ "Remove-AzVMwareExpressRouteAuthorization_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "309c05ff-1e12-4836-aa95-cf07679e21b9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "210e8e23-9ebe-4cb6-a986-dd3387d778c7" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T105429Z:210e8e23-9ebe-4cb6-a986-dd3387d778c7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5CEB169F6BAD44F6A64FE2F2412CAA89 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:54:28Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:54:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "text/html" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareExpressRouteAuthorization+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/1yn38t?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/1yn38t?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "156" ],
+        "x-ms-client-request-id": [ "3eda10e4-7e4a-4f1d-8e85-41e57f4a0bce" ],
+        "CommandName": [ "Remove-AzVMwareExpressRouteAuthorization" ],
+        "FullCommandName": [ "Remove-AzVMwareExpressRouteAuthorization_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "76f41f97-2a5a-4b05-b6ea-fcf1a3cf88e9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "3965ce14-1055-4caa-992c-5305bb223efa" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T105430Z:3965ce14-1055-4caa-992c-5305bb223efa" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EB08660417E745BF9C675B0E48C9900D Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:54:29Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:54:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "text/html" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

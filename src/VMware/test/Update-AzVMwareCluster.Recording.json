@@ -1,0 +1,39 @@
+{
+  "Update-AzVMwareCluster+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/clusters/xysvow?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/clusters/xysvow?api-version=2021-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"clusterSize\": 4\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "50" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
+        "x-ms-request-id": [ "df9e7d77-b2fa-4bef-b6c3-f1d9ab2a9324" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "d9f0267f-1d9b-4415-b1dc-fffe893ce6cd" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T105438Z:d9f0267f-1d9b-4415-b1dc-fffe893ce6cd" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2B90C6F9E952497DB7158B976F68C1A8 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:54:38Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:54:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "151" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"NotFound\",\"message\":\"The Resource \u0027Microsoft.AVS/azps_test_cloud_2/xysvow\u0027 under resource group \u0027azps_test_group_2\u0027 was not found.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

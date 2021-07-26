@@ -1,52 +1,52 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarerotateprivatecloudnsxtpassword
+online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloudvcenterpassword
 schema: 2.0.0
 ---
 
-# New-AzVMwareRotatePrivateCloudNsxtPassword
+# New-AzVMwarePrivateCloudVcenterPassword
 
 ## SYNOPSIS
-Rotate the NSX-T Manager password
+Rotate the vCenter password
 
 ## SYNTAX
 
 ### Rotate (Default)
 ```
-New-AzVMwareRotatePrivateCloudNsxtPassword -PrivateCloudName <String> -ResourceGroupName <String>
+New-AzVMwarePrivateCloudVcenterPassword -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RotateViaIdentity
 ```
-New-AzVMwareRotatePrivateCloudNsxtPassword -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVMwarePrivateCloudVcenterPassword -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Rotate the NSX-T Manager password
+Rotate the vCenter password
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Rotate the vCenter password
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzVMwarePrivateCloudVcenterPassword -ResourceGroupName azps_test_group -PrivateCloudName azps_test_cloud -PassThru
 
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+Rotate the vCenter password
 
-### Example 2: {{ Add title here }}
+### Example 2: Rotate the vCenter password
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzVMwarePrivateCloudVcenterPassword -InputObject "/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud"
 
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+Rotate the vCenter password
 
 ## PARAMETERS
 

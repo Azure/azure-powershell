@@ -1,0 +1,763 @@
+{
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$PUT+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh?api-version=2021-06-01",
+      "Content": "{\r\n  \"location\": \"centralus\",\r\n  \"sku\": {\r\n    \"name\": \"av36\"\r\n  },\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 3\r\n    },\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "193" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "Azure-AsyncOperation": [ "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01" ],
+        "x-ms-request-id": [ "a2fe1767-50a7-41a3-be27-50d7bda42584" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "4633ca95-2344-4890-a7df-4ee247975ebf" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104402Z:4633ca95-2344-4890-a7df-4ee247975ebf" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D90FAEDB8DFE415393486495CBC4CAC1 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:43:54Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:44:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "866" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh\",\"location\":\"centralus\",\"name\":\"a1qrvh\",\"properties\":{\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost29.mp01.mock01.vmcp.vs.management\",\"he-fakehost31.mp01.mock01.vmcp.vs.management\",\"he-fakehost48.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Building\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Building\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "87" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14964" ],
+        "x-ms-request-id": [ "77275dcc-3ed6-40ef-bd7b-071d119e7bd7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "f8bf09df-ea01-44cc-8c57-5af2fb2dff9e" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104412Z:f8bf09df-ea01-44cc-8c57-5af2fb2dff9e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C2AFFB106A374B2C812C536E61A3C101 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:44:12Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:44:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":0,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "88" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14963" ],
+        "x-ms-request-id": [ "88d07468-803d-4506-ae4b-c8e184e1ae6e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "d6f59054-84d5-4c6f-8b8a-b8f0be939057" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104423Z:d6f59054-84d5-4c6f-8b8a-b8f0be939057" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 298ABFB4DF9F480385EB884ECD1CC313 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:44:23Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:44:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":0,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "89" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14960" ],
+        "x-ms-request-id": [ "38ef359b-d069-44fd-a777-63b2d0c63087" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "3afd5aee-b7e8-4368-a4b0-776557a340c2" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104434Z:3afd5aee-b7e8-4368-a4b0-776557a340c2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 660758A2A9194FEF927A2E831D920652 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:44:34Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:44:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "331" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":88.75,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14962" ],
+        "x-ms-request-id": [ "8692295d-471a-49be-8352-b85c2be9a3f3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "744b57dd-876e-479d-84ee-f5ba359884a4" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104445Z:744b57dd-876e-479d-84ee-f5ba359884a4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D1F9C4E6676B49C0A08207A35DC7F631 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:44:44Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:44:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "331" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":88.75,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "91" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14959" ],
+        "x-ms-request-id": [ "cbe45e28-5700-4a76-8f50-32c82774c8b7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "a1366471-45bf-4d5b-98c6-8af47348da93" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104455Z:a1366471-45bf-4d5b-98c6-8af47348da93" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3C09DBB432A3460684CAE12DA9F7DC56 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:44:55Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:44:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":100,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "92" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14961" ],
+        "x-ms-request-id": [ "4636880b-a65e-4c99-9dbd-a474879f50ea" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "76ee8e24-cee2-4b3a-bebd-8ee5672fa4a8" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104506Z:76ee8e24-cee2-4b3a-bebd-8ee5672fa4a8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 099FFA8ABF2D48F9AC06AEEAE2C1D9C2 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:45:06Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:45:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":100,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "93" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14958" ],
+        "x-ms-request-id": [ "b6684807-5377-4a50-a9f0-c50e46be3f1c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "f6e2df4c-f57e-4fd8-a70a-ca64259a2d1e" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104517Z:f6e2df4c-f57e-4fd8-a70a-ca64259a2d1e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DB8898129918402A98C9A64275E37AD9 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:45:17Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:45:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":100,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "94" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14960" ],
+        "x-ms-request-id": [ "a32bf7ae-b436-4d9b-b502-03b7ee58df40" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "eefb1f26-e143-4d65-a67f-e3b899d2aaad" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104528Z:eefb1f26-e143-4d65-a67f-e3b899d2aaad" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2B0A9DA428114916B001913EA48E6730 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:45:28Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:45:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":100,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "95" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14957" ],
+        "x-ms-request-id": [ "ddfd5e1e-879b-4da8-85b0-9fd650511d56" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "92f6403c-be37-4b4b-ba31-c647eeba81c0" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104539Z:92f6403c-be37-4b4b-ba31-c647eeba81c0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DEA53A5E99F544CDBAE655E5E7DCD61D Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:45:38Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:45:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":100,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "96" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14959" ],
+        "x-ms-request-id": [ "807601d0-d305-43f3-b6d1-9b6681c4b3f6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "892c0938-5b31-40d3-8d96-98636f8fe1d0" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104549Z:892c0938-5b31-40d3-8d96-98636f8fe1d0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1B88B4EB1BD6494F86CFDA941E5FB9C8 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:45:49Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:45:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":100,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "97" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14958" ],
+        "x-ms-request-id": [ "595ecaa0-80a5-4fde-bb40-4f7a30b1784c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "6782df10-a6aa-4ad6-9cfb-79f39f14e6d8" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104600Z:6782df10-a6aa-4ad6-9cfb-79f39f14e6d8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DAA516B8A90A4163A24C53C68BA851D1 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:46:00Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:46:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":100,\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "98" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14957" ],
+        "x-ms-request-id": [ "549bade6-ca24-437a-815f-d4b86a324e3b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "71470d60-2476-487e-818b-c43155ab610c" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104611Z:71470d60-2476-487e-818b-c43155ab610c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 57BC9AAF863C4F8FAAEC605D87BDC570 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:46:11Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:46:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1900" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"endTime\":\"2021-07-23T10:46:05.4181521+00:00\",\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh/operationstatuses/e3badd45-4bfb-455e-b9f6-633837f3e309\",\"name\":\"e3badd45-4bfb-455e-b9f6-633837f3e309\",\"percentComplete\":100,\"properties\":{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh\",\"location\":\"centralus\",\"name\":\"a1qrvh\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt47-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt47-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt47-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt47-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost29.mp01.mock01.vmcp.vs.management\",\"he-fakehost31.mp01.mock01.vmcp.vs.management\",\"he-fakehost48.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},\"startTime\":\"2021-07-23T10:40:49.4048858+00:00\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh?api-version=2021-06-01+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "99" ],
+        "x-ms-client-request-id": [ "21222355-f186-4081-ba7b-3ed7bd17d2ce" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14956" ],
+        "x-ms-request-id": [ "c4de15ea-1b80-4ffd-a8d2-69126c0e6649" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "1de3c90c-c002-45d8-8734-3175dd6fbbee" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104612Z:1de3c90c-c002-45d8-8734-3175dd6fbbee" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D23E354F7E34419BAB96ECF89DDFE51F Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:46:12Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:46:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1510" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh\",\"location\":\"centralus\",\"name\":\"a1qrvh\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt47-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt47-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt47-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt47-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost29.mp01.mock01.vmcp.vs.management\",\"he-fakehost31.mp01.mock01.vmcp.vs.management\",\"he-fakehost48.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/privateClouds?api-version=2021-06-01+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/privateClouds?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "100" ],
+        "x-ms-client-request-id": [ "b18441eb-0968-43a1-aadb-dad6332b7eb8" ],
+        "CommandName": [ "Get-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Get-AzVMwarePrivateCloud_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "8ec50091-a5be-45d5-9218-3764061ed8dd", "d7f78c3c-35cf-48e5-898d-07545a880ca2", "8997fc99-d91c-4665-a38f-c7b1b03083a6", "054cf8f8-d83c-4dac-9b5f-c9e7a770c649", "1169a798-1a99-4f51-94e0-42ac5ecd872a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14956" ],
+        "x-ms-request-id": [ "dd9493e3-bd5f-42ef-a7b3-079e024fc145" ],
+        "x-ms-correlation-request-id": [ "dd9493e3-bd5f-42ef-a7b3-079e024fc145" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104620Z:dd9493e3-bd5f-42ef-a7b3-079e024fc145" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B2637A1509C24B1693725DCD92392184 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:46:13Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:46:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "85850" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-northcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-northcentralus-127\",\"location\":\"northcentralus\",\"name\":\"fct-mock-northcentralus-127\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt32-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt32-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt32-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt32-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost45.mp01.mock01.vmcp.vs.management\",\"he-fakehost08.mp01.mock01.vmcp.vs.management\",\"he-fakehost21.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-northcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-northcentralus-72\",\"location\":\"northcentralus\",\"name\":\"fct-mock-northcentralus-72\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt44-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt44-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt44-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt44-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"he-fakehost06.mp01.mock01.vmcp.vs.management\",\"he-fakehost16.mp01.mock01.vmcp.vs.management\",\"he-fakehost32.mp01.mock01.vmcp.vs.management\",\"he-fakehost33.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/yiesAddOnRG/providers/Microsoft.AVS/privateClouds/yiesAvsAddOnTest\",\"location\":\"northcentralus\",\"name\":\"yiesAvsAddOnTest\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt64-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt64-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt64-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt64-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.4.0.232/30\",\"secondarySubnet\":\"10.4.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.4.0.9/\",\"nsxtManager\":\"https://10.4.0.3/\",\"vcsa\":\"https://10.4.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost31.mp01.mock01.vmcp.vs.management\",\"he-fakehost36.mp01.mock01.vmcp.vs.management\",\"he-fakehost13.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"10.4.0.0/26\",\"networkBlock\":\"10.4.0.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"10.4.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"10.4.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-northcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-northcentralus-141\",\"location\":\"northcentralus\",\"name\":\"fct-mock-northcentralus-141\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt80-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt80-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt80-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt80-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost44.mp01.mock01.vmcp.vs.management\",\"he-fakehost07.mp01.mock01.vmcp.vs.management\",\"he-fakehost39.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Failed\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-northcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-northcentralus-133\",\"location\":\"northcentralus\",\"name\":\"fct-mock-northcentralus-133\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt55-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt55-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt55-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt55-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":0,\"hosts\":[],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-northcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-northcentralus-122\",\"location\":\"northcentralus\",\"name\":\"fct-mock-northcentralus-122\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt60-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt60-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt60-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt60-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost15.mp01.mock01.vmcp.vs.management\",\"he-fakehost20.mp01.mock01.vmcp.vs.management\",\"he-fakehost30.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/cli_test_vmware_addonmizaww4j6wxbbkyatfmawn2gl6b6di544rwxfacy3wo7vk55wigkde/providers/Microsoft.AVS/privateClouds/mycloud1\",\"location\":\"northcentralus\",\"name\":\"mycloud1\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt15-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt15-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt15-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt15-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"gp-fakehost40.mp01.mock01.vmcp.vs.management\",\"gp-fakehost36.mp01.mock01.vmcp.vs.management\",\"gp-fakehost37.mp01.mock01.vmcp.vs.management\",\"gp-fakehost35.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av20\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/yiesAddOnRG/providers/Microsoft.AVS/privateClouds/yiesPrivateCloud\",\"location\":\"northcentralus\",\"name\":\"yiesPrivateCloud\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt37-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt37-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt37-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt37-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.8.0.232/30\",\"secondarySubnet\":\"10.8.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.8.0.9/\",\"nsxtManager\":\"https://10.8.0.3/\",\"vcsa\":\"https://10.8.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"gp-fakehost19.mp01.mock01.vmcp.vs.management\",\"gp-fakehost17.mp01.mock01.vmcp.vs.management\",\"gp-fakehost12.mp01.mock01.vmcp.vs.management\",\"gp-fakehost18.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"10.8.0.0/26\",\"networkBlock\":\"10.8.0.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"10.8.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"10.8.1.128/25\"},\"sku\":{\"name\":\"av20\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-northcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-northcentralus-139\",\"location\":\"northcentralus\",\"name\":\"fct-mock-northcentralus-139\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt56-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt56-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt56-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt56-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"he-fakehost02.mp01.mock01.vmcp.vs.management\",\"he-fakehost04.mp01.mock01.vmcp.vs.management\",\"he-fakehost41.mp01.mock01.vmcp.vs.management\",\"he-fakehost46.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-northcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-northcentralus-71\",\"location\":\"northcentralus\",\"name\":\"fct-mock-northcentralus-71\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt84-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt84-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt84-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt84-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"he-fakehost23.mp01.mock01.vmcp.vs.management\",\"he-fakehost26.mp01.mock01.vmcp.vs.management\",\"he-fakehost29.mp01.mock01.vmcp.vs.management\",\"he-fakehost37.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-northcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-northcentralus-140\",\"location\":\"northcentralus\",\"name\":\"fct-mock-northcentralus-140\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt14-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt14-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt14-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt14-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"he-fakehost10.mp01.mock01.vmcp.vs.management\",\"he-fakehost28.mp01.mock01.vmcp.vs.management\",\"he-fakehost40.mp01.mock01.vmcp.vs.management\",\"he-fakehost42.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/afzhaq-msiput-rg2/providers/Microsoft.AVS/privateClouds/afzhaq_msiput14\",\"location\":\"northcentralus\",\"name\":\"afzhaq_msiput14\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt75-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt75-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt75-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt75-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.242.0.232/30\",\"secondarySubnet\":\"10.242.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.242.0.9/\",\"nsxtManager\":\"https://10.242.0.3/\",\"vcsa\":\"https://10.242.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost03.mp01.mock01.vmcp.vs.management\",\"he-fakehost02.mp01.mock01.vmcp.vs.management\",\"he-fakehost01.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"10.242.0.0/26\",\"networkBlock\":\"10.242.0.0/22\",\"provisioningNetwork\":\"10.242.2.0/25\",\"provisioningState\":\"Failed\",\"vmotionNetwork\":\"10.242.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-northcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-northcentralus-138\",\"location\":\"northcentralus\",\"name\":\"fct-mock-northcentralus-138\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt27-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt27-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt27-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt27-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"he-fakehost14.mp01.mock01.vmcp.vs.management\",\"he-fakehost22.mp01.mock01.vmcp.vs.management\",\"he-fakehost43.mp01.mock01.vmcp.vs.management\",\"he-fakehost50.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-northcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-northcentralus-131\",\"location\":\"northcentralus\",\"name\":\"fct-mock-northcentralus-131\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt79-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt79-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt79-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt79-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost27.mp01.mock01.vmcp.vs.management\",\"he-fakehost25.mp01.mock01.vmcp.vs.management\",\"he-fakehost09.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-83\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-83\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt26-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt26-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt26-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt26-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost05.mp01.mock01.vmcp.vs.management\",\"he-fakehost03.mp01.mock01.vmcp.vs.management\",\"he-fakehost08.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Building\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Building\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/taggac-hcx/providers/Microsoft.AVS/privateClouds/taggac-hcx\",\"location\":\"westcentralus\",\"name\":\"taggac-hcx\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt50-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt50-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt50-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt50-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.0.0.232/30\",\"secondarySubnet\":\"10.0.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.0.0.9/\",\"nsxtManager\":\"https://10.0.0.3/\",\"vcsa\":\"https://10.0.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost17.mp01.mock01.vmcp.vs.management\",\"he-fakehost14.mp01.mock01.vmcp.vs.management\",\"he-fakehost25.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"10.0.0.0/26\",\"networkBlock\":\"10.0.0.0/22\",\"provisioningNetwork\":\"10.0.2.0/25\",\"provisioningState\":\"Deleting\",\"vmotionNetwork\":\"10.0.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-76\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-76\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt36-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt36-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt36-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt36-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost12.mp01.mock01.vmcp.vs.management\",\"he-fakehost44.mp01.mock01.vmcp.vs.management\",\"he-fakehost45.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Failed\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-114\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-114\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt43-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt43-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt43-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt43-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost29.mp01.mock01.vmcp.vs.management\",\"he-fakehost30.mp01.mock01.vmcp.vs.management\",\"he-fakehost28.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-129\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-129\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt18-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt18-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt18-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt18-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost40.mp01.mock01.vmcp.vs.management\",\"he-fakehost09.mp01.mock01.vmcp.vs.management\",\"he-fakehost07.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/jatramme-wc02-0614\",\"location\":\"westcentralus\",\"name\":\"jatramme-wc02-0614\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt93-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt93-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt93-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt93-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.0.0.232/30\",\"secondarySubnet\":\"10.0.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.0.0.9/\",\"nsxtManager\":\"https://10.0.0.3/\",\"vcsa\":\"https://10.0.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost19.mp01.mock01.vmcp.vs.management\",\"he-fakehost18.mp01.mock01.vmcp.vs.management\",\"he-fakehost22.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"10.0.0.0/26\",\"networkBlock\":\"10.0.0.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"10.0.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"10.0.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-73\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-73\",\"properties\":{\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":0,\"hosts\":[],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/cli_test_vmwarelymkwlgufchxqi2gr3konkj3sep637oy4dwxbdx5o6vwh3p3taaf7mvuxpdh/providers/Microsoft.AVS/privateClouds/cloud1\",\"location\":\"westcentralus\",\"name\":\"cloud1\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt87-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt87-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt87-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt87-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"gp-fakehost43.mp01.mock01.vmcp.vs.management\",\"gp-fakehost42.mp01.mock01.vmcp.vs.management\",\"gp-fakehost41.mp01.mock01.vmcp.vs.management\",\"gp-fakehost40.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av20\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/cli_test_vmwarec2rl2li7jrduyhrft3scw6dhze4nzgt52hcyeidufgoyijipw37hidtmbumw/providers/Microsoft.AVS/privateClouds/cloud1\",\"location\":\"westcentralus\",\"name\":\"cloud1\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt39-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt39-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt39-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt39-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"gp-fakehost39.mp01.mock01.vmcp.vs.management\",\"gp-fakehost38.mp01.mock01.vmcp.vs.management\",\"gp-fakehost37.mp01.mock01.vmcp.vs.management\",\"gp-fakehost36.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av20\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-123\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-123\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt83-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt83-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt83-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt83-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"he-fakehost26.mp01.mock01.vmcp.vs.management\",\"he-fakehost46.mp01.mock01.vmcp.vs.management\",\"he-fakehost47.mp01.mock01.vmcp.vs.management\",\"he-fakehost49.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/jatramme-wc-0622-nohcx1\",\"location\":\"westcentralus\",\"name\":\"jatramme-wc-0622-nohcx1\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt53-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt53-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt53-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt53-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.0.0.232/30\",\"secondarySubnet\":\"10.0.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.0.0.9/\",\"nsxtManager\":\"https://10.0.0.3/\",\"vcsa\":\"https://10.0.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost05.mp01.mock01.vmcp.vs.management\",\"he-fakehost15.mp01.mock01.vmcp.vs.management\",\"he-fakehost16.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"10.0.0.0/26\",\"networkBlock\":\"10.0.0.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"10.0.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"10.0.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-122\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-122\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt86-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt86-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt86-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt86-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost27.mp01.mock01.vmcp.vs.management\",\"he-fakehost10.mp01.mock01.vmcp.vs.management\",\"he-fakehost43.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-92\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-92\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt33-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt33-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt33-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt33-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"he-fakehost03.mp01.mock01.vmcp.vs.management\",\"he-fakehost31.mp01.mock01.vmcp.vs.management\",\"he-fakehost32.mp01.mock01.vmcp.vs.management\",\"he-fakehost33.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-115\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-115\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt94-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt94-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt94-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt94-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost39.mp01.mock01.vmcp.vs.management\",\"he-fakehost35.mp01.mock01.vmcp.vs.management\",\"he-fakehost23.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/avs-sdk-addons-rg5247/providers/Microsoft.AVS/privateClouds/avs-sdk-addons-cloud7202\",\"location\":\"westcentralus\",\"name\":\"avs-sdk-addons-cloud7202\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt21-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt21-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt21-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt21-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"gp-fakehost49.mp01.mock01.vmcp.vs.management\",\"gp-fakehost50.mp01.mock01.vmcp.vs.management\",\"gp-fakehost06.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av20\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/jatramme-wc01\",\"location\":\"westcentralus\",\"name\":\"jatramme-wc01\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt91-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt91-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt91-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt91-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.0.0.232/30\",\"secondarySubnet\":\"10.0.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.0.0.9/\",\"nsxtManager\":\"https://10.0.0.3/\",\"vcsa\":\"https://10.0.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost01.mp01.mock01.vmcp.vs.management\",\"he-fakehost04.mp01.mock01.vmcp.vs.management\",\"he-fakehost48.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"10.0.0.0/26\",\"networkBlock\":\"10.0.0.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"10.0.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"10.0.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-113\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-113\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt62-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt62-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt62-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt62-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost21.mp01.mock01.vmcp.vs.management\",\"he-fakehost24.mp01.mock01.vmcp.vs.management\",\"he-fakehost20.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Failed\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3\",\"location\":\"westcentralus\",\"name\":\"azps_test_cloud_3\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt80-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt80-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt80-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt80-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost34.mp01.mock01.vmcp.vs.management\",\"he-fakehost36.mp01.mock01.vmcp.vs.management\",\"he-fakehost50.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-75\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-75\",\"properties\":{\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":0,\"hosts\":[],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-74\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-74\",\"properties\":{\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":0,\"hosts\":[],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/fct-mock-westcentralus-86\",\"location\":\"westcentralus\",\"name\":\"fct-mock-westcentralus-86\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt10-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt10-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt10-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt10-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost07.mp01.mock01.vmcp.vs.management\",\"he-fakehost40.mp01.mock01.vmcp.vs.management\",\"he-fakehost38.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Building\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Building\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-centralus/providers/Microsoft.AVS/privateClouds/fct-mock-centralus-56\",\"location\":\"centralus\",\"name\":\"fct-mock-centralus-56\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt30-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt30-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt30-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt30-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost12.mp01.mock01.vmcp.vs.management\",\"he-fakehost11.mp01.mock01.vmcp.vs.management\",\"he-fakehost10.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Updating\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/cli_test_vmware_hcxjxpjkuvqfazjrt24owwhac2nawhkdsmoy4tb6irhl3s7fkk7eptacywa/providers/Microsoft.AVS/privateClouds/cloud1\",\"location\":\"centralus\",\"name\":\"cloud1\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt91-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt91-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt91-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt91-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"gp-fakehost28.mp01.mock01.vmcp.vs.management\",\"gp-fakehost27.mp01.mock01.vmcp.vs.management\",\"gp-fakehost26.mp01.mock01.vmcp.vs.management\",\"gp-fakehost25.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av20\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/jay-dev-testing/providers/Microsoft.AVS/privateClouds/cloudlinker3\",\"location\":\"centralus\",\"name\":\"cloudlinker3\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt83-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt83-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt83-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt83-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"172.16.0.232/30\",\"secondarySubnet\":\"172.16.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://172.16.0.9/\",\"nsxtManager\":\"https://172.16.0.3/\",\"vcsa\":\"https://172.16.0.2/\"},\"externalCloudLinks\":[\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/jay-dev-testing/providers/Microsoft.AVS/privateClouds/cloudlinker2/cloudLinks/cloudlinker2 \u003c-\u003e cloudlinker3\"],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost42.mp01.mock01.vmcp.vs.management\",\"he-fakehost35.mp01.mock01.vmcp.vs.management\",\"he-fakehost18.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"172.16.0.0/26\",\"networkBlock\":\"172.16.0.0/16\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"172.16.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"172.16.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1\",\"location\":\"centralus\",\"name\":\"azps_test_cloud_1\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt51-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt51-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt51-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt51-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost25.mp01.mock01.vmcp.vs.management\",\"he-fakehost22.mp01.mock01.vmcp.vs.management\",\"he-fakehost23.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/jay-dev-testing/providers/Microsoft.AVS/privateClouds/cloudlinker4\",\"location\":\"centralus\",\"name\":\"cloudlinker4\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt39-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt39-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt39-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt39-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.0.232/30\",\"secondarySubnet\":\"192.168.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.0.9/\",\"nsxtManager\":\"https://192.168.0.3/\",\"vcsa\":\"https://192.168.0.2/\"},\"externalCloudLinks\":[\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/jay-dev-testing/providers/Microsoft.AVS/privateClouds/cloudlinker3/cloudLinks/cloudlinker3 \u003c-\u003e cloudlinker4\",\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/jay-dev-testing/providers/Microsoft.AVS/privateClouds/cloudlinker2/cloudLinks/cloudlinker2 \u003c-\u003e cloudlinker4\"],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost30.mp01.mock01.vmcp.vs.management\",\"he-fakehost37.mp01.mock01.vmcp.vs.management\",\"he-fakehost21.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.0.0/26\",\"networkBlock\":\"192.168.0.0/16\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group2/providers/Microsoft.AVS/privateClouds/azps_test_cloud2\",\"location\":\"centralus\",\"name\":\"azps_test_cloud2\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt24-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt24-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt24-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt24-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/cloudLinks/azps_test_cloudlink\"],\"identitySources\":[],\"internet\":\"Enabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost41.mp01.mock01.vmcp.vs.management\",\"he-fakehost39.mp01.mock01.vmcp.vs.management\",\"he-fakehost38.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/jay-dev-testing/providers/Microsoft.AVS/privateClouds/cloudlinker2\",\"location\":\"centralus\",\"name\":\"cloudlinker2\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt15-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt15-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt15-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt15-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.0.232/30\",\"secondarySubnet\":\"192.168.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.0.9/\",\"nsxtManager\":\"https://192.168.0.3/\",\"vcsa\":\"https://192.168.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost49.mp01.mock01.vmcp.vs.management\",\"he-fakehost50.mp01.mock01.vmcp.vs.management\",\"he-fakehost20.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.0.0/26\",\"networkBlock\":\"192.168.0.0/16\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{\"owner\":\"jay\"},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud\",\"location\":\"centralus\",\"name\":\"azps_test_cloud\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt57-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt57-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt57-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt57-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Enabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost32.mp01.mock01.vmcp.vs.management\",\"he-fakehost34.mp01.mock01.vmcp.vs.management\",\"he-fakehost33.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/js-dev-testing/providers/Microsoft.AVS/privateClouds/cloudLinker\",\"location\":\"centralus\",\"name\":\"cloudLinker\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt62-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt62-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt62-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt62-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"172.16.0.232/30\",\"secondarySubnet\":\"172.16.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://172.16.0.9/\",\"nsxtManager\":\"https://172.16.0.3/\",\"vcsa\":\"https://172.16.0.2/\"},\"externalCloudLinks\":[\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/cli_test_vmware_hcxjxpjkuvqfazjrt24owwhac2nawhkdsmoy4tb6irhl3s7fkk7eptacywa/providers/Microsoft.AVS/privateClouds/cloud1/cloudLinks/cloud1 \u003c-\u003e cloudLinker\"],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost09.mp01.mock01.vmcp.vs.management\",\"he-fakehost08.mp01.mock01.vmcp.vs.management\",\"he-fakehost07.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"172.16.0.0/26\",\"networkBlock\":\"172.16.0.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"172.16.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"172.16.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{\"ENV\":\"Test\"},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-centralus/providers/Microsoft.AVS/privateClouds/fct-mock-centralus-58\",\"location\":\"centralus\",\"name\":\"fct-mock-centralus-58\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt49-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt49-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt49-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt49-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost16.mp01.mock01.vmcp.vs.management\",\"he-fakehost15.mp01.mock01.vmcp.vs.management\",\"he-fakehost14.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Updating\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\",\"location\":\"centralus\",\"name\":\"azps_test_cloud_2\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt66-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt66-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt66-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt66-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/6i1coj\"],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost28.mp01.mock01.vmcp.vs.management\",\"he-fakehost19.mp01.mock01.vmcp.vs.management\",\"he-fakehost36.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/cli_test_vmware_hcxdxwycncgxafaop2gvo35opgte3tquwzqqc5lrv4hnusxlrsvwizxiaqa/providers/Microsoft.AVS/privateClouds/cloud1\",\"location\":\"centralus\",\"name\":\"cloud1\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt54-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt54-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt54-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt54-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":4,\"hosts\":[\"gp-fakehost08.mp01.mock01.vmcp.vs.management\",\"gp-fakehost07.mp01.mock01.vmcp.vs.management\",\"gp-fakehost06.mp01.mock01.vmcp.vs.management\",\"gp-fakehost05.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av20\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh\",\"location\":\"centralus\",\"name\":\"a1qrvh\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt47-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt47-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt47-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt47-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost29.mp01.mock01.vmcp.vs.management\",\"he-fakehost31.mp01.mock01.vmcp.vs.management\",\"he-fakehost48.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-centralus/providers/Microsoft.AVS/privateClouds/fct-mock-centralus-54\",\"location\":\"centralus\",\"name\":\"fct-mock-centralus-54\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt14-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt14-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt14-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt14-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost03.mp01.mock01.vmcp.vs.management\",\"he-fakehost02.mp01.mock01.vmcp.vs.management\",\"he-fakehost01.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/t-anakazawa-centralus-rg/providers/Microsoft.AVS/privateClouds/t-anakazawa-centralus-pc\",\"location\":\"centralus\",\"name\":\"t-anakazawa-centralus-pc\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt28-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt28-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt28-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt28-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.0.0.232/30\",\"secondarySubnet\":\"10.0.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.0.0.9/\",\"nsxtManager\":\"https://10.0.0.3/\",\"vcsa\":\"https://10.0.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost26.mp01.mock01.vmcp.vs.management\",\"he-fakehost27.mp01.mock01.vmcp.vs.management\",\"he-fakehost24.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"10.0.0.0/26\",\"networkBlock\":\"10.0.0.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"10.0.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"10.0.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-centralus/providers/Microsoft.AVS/privateClouds/fct-mock-centralus-55\",\"location\":\"centralus\",\"name\":\"fct-mock-centralus-55\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt72-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt72-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt72-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt72-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost06.mp01.mock01.vmcp.vs.management\",\"he-fakehost05.mp01.mock01.vmcp.vs.management\",\"he-fakehost04.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/t-anakazawa-dogfood-EastUS-rg/providers/Microsoft.AVS/privateClouds/t-anakazawa-dogfood-EastUS\",\"location\":\"eastus\",\"name\":\"t-anakazawa-dogfood-EastUS\",\"properties\":{\"endpoints\":{\"hcxCloudManager\":\"https://10.0.0.9/\",\"nsxtManager\":\"https://10.0.0.3/\",\"vcsa\":\"https://10.0.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"gp-fakehost03.mp01.mock01.vmcp.vs.management\",\"gp-fakehost02.mp01.mock01.vmcp.vs.management\",\"gp-fakehost01.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"10.0.0.0/26\",\"networkBlock\":\"10.0.0.0/8\",\"provisioningNetwork\":\"10.0.2.0/25\",\"provisioningState\":\"Failed\",\"vmotionNetwork\":\"10.0.1.128/25\"},\"sku\":{\"name\":\"av20\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/afzhaq-msiput-rg2/providers/Microsoft.AVS/privateClouds/afzhaq_sddc_msi2\",\"location\":\"eastus\",\"name\":\"afzhaq_sddc_msi2\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt54-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt54-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt54-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt54-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.242.0.232/30\",\"secondarySubnet\":\"10.242.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.242.0.9/\",\"nsxtManager\":\"https://10.242.0.3/\",\"vcsa\":\"https://10.242.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost06.mp01.mock01.vmcp.vs.management\",\"he-fakehost05.mp01.mock01.vmcp.vs.management\",\"he-fakehost04.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"10.242.0.0/26\",\"networkBlock\":\"10.242.0.0/22\",\"provisioningNetwork\":\"10.242.2.0/25\",\"provisioningState\":\"Failed\",\"vmotionNetwork\":\"10.242.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/afzhaq-msiput-rg2/providers/Microsoft.AVS/privateClouds/afzhaq_sddc_msi1\",\"location\":\"eastus\",\"name\":\"afzhaq_sddc_msi1\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt29-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt29-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt29-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt29-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.242.0.232/30\",\"secondarySubnet\":\"10.242.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.242.0.9/\",\"nsxtManager\":\"https://10.242.0.3/\",\"vcsa\":\"https://10.242.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost03.mp01.mock01.vmcp.vs.management\",\"he-fakehost02.mp01.mock01.vmcp.vs.management\",\"he-fakehost01.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Building\"},\"managementNetwork\":\"10.242.0.0/26\",\"networkBlock\":\"10.242.0.0/22\",\"provisioningNetwork\":\"10.242.2.0/25\",\"provisioningState\":\"Succeeded\",\"vmotionNetwork\":\"10.242.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/rasivagu-sddc-rg/providers/Microsoft.AVS/privateClouds/rasivagu-mock-sddc\",\"location\":\"eastus\",\"name\":\"rasivagu-mock-sddc\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt26-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt26-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt26-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt26-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost06.mp01.mock01.vmcp.vs.management\",\"he-fakehost05.mp01.mock01.vmcp.vs.management\",\"he-fakehost04.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/mock-avs-fct-dogfood-conveyor-westcentralus/providers/Microsoft.AVS/privateClouds/jatramme-0622-nohcx\",\"location\":\"eastus\",\"name\":\"jatramme-0622-nohcx\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt28-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt28-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt28-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt28-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.0.0.232/30\",\"secondarySubnet\":\"10.0.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.0.0.9/\",\"nsxtManager\":\"https://10.0.0.3/\",\"vcsa\":\"https://10.0.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost09.mp01.mock01.vmcp.vs.management\",\"he-fakehost08.mp01.mock01.vmcp.vs.management\",\"he-fakehost07.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"10.0.0.0/26\",\"networkBlock\":\"10.0.0.0/22\",\"provisioningNetwork\":\"10.0.2.0/25\",\"provisioningState\":\"Failed\",\"vmotionNetwork\":\"10.0.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/t-anakazawa-dogfood-EastUS-rg/providers/Microsoft.AVS/privateClouds/t-anakazawa-dogfood-EastUS-pc\",\"location\":\"eastus\",\"name\":\"t-anakazawa-dogfood-EastUS-pc\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt40-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt40-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt40-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt40-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.0.0.232/30\",\"secondarySubnet\":\"10.0.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.0.0.9/\",\"nsxtManager\":\"https://10.0.0.3/\",\"vcsa\":\"https://10.0.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost03.mp01.mock01.vmcp.vs.management\",\"he-fakehost02.mp01.mock01.vmcp.vs.management\",\"he-fakehost01.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Failed\"},\"managementNetwork\":\"10.0.0.0/26\",\"networkBlock\":\"10.0.0.0/22\",\"provisioningNetwork\":\"10.0.2.0/25\",\"provisioningState\":\"Failed\",\"vmotionNetwork\":\"10.0.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/afzhaq-msiput-rg2/providers/Microsoft.AVS/privateClouds/azppe_bl22_pc3\",\"location\":\"eastus2\",\"name\":\"azppe_bl22_pc3\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/23995e3f-96a0-4b7a-95a0-c77f91054b52/resourceGroups/tnt94-cust-p01-eastus/providers/Microsoft.Network/expressRouteCircuits/tnt94-cust-p01-eastus-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/23995e3f-96a0-4b7a-95a0-c77f91054b52/resourceGroups/tnt94-cust-p01-eastus/providers/Microsoft.Network/expressRouteCircuits/tnt94-cust-p01-eastus-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"10.242.0.232/30\",\"secondarySubnet\":\"10.242.0.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://10.242.0.9/\",\"nsxtManager\":\"https://10.242.0.3/\",\"vcsa\":\"https://10.242.0.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"esx08-r03.p01.eastus.avslab.azure.com\",\"esx20-r18.p01.eastus.avslab.azure.com\",\"esx14-r19.p01.eastus.avslab.azure.com\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"10.242.0.0/26\",\"networkBlock\":\"10.242.0.0/22\",\"nsxtCertificateThumbprint\":\"F38B4B3D0DD608696D5D9A7CDDBE911C0BE667C1\",\"provisioningNetwork\":\"10.242.2.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"3884261630237647608726280917B51FBBE54C02\",\"vmotionNetwork\":\"10.242.1.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+Get+$PATCH+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh?api-version=2021-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 4\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "87" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-request-id": [ "24df2b5a-296f-4cd9-9767-de46e26f3c19" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "6f51ad67-d152-452d-b003-0cf5f4b496c7" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104622Z:6f51ad67-d152-452d-b003-0cf5f4b496c7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7EE04B495B2647A58DA237DAE398BCB5 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:46:20Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:46:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "68" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"Conflict\",\"message\":\"Out of hosts in centralus.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+List+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "102" ],
+        "x-ms-client-request-id": [ "840e425a-410e-4cd9-84f2-4409251336b7" ],
+        "CommandName": [ "Get-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Get-AzVMwarePrivateCloud_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14955" ],
+        "x-ms-request-id": [ "c83d90d4-e3a1-4315-a782-22e1ab7d81b5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "9da53640-6d06-44c3-8e9f-d315addc4737" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104623Z:9da53640-6d06-44c3-8e9f-d315addc4737" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9CE595F7F4F447F1B914B1CAF29D3AC5 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:46:23Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:46:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3055" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1\",\"location\":\"centralus\",\"name\":\"azps_test_cloud_1\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt51-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt51-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt51-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt51-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost25.mp01.mock01.vmcp.vs.management\",\"he-fakehost22.mp01.mock01.vmcp.vs.management\",\"he-fakehost23.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"},{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh\",\"location\":\"centralus\",\"name\":\"a1qrvh\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt47-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt47-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt47-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt47-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost29.mp01.mock01.vmcp.vs.management\",\"he-fakehost31.mp01.mock01.vmcp.vs.management\",\"he-fakehost48.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzVMwarePrivateCloud+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "103" ],
+        "x-ms-client-request-id": [ "2c1cac70-7c26-496a-bded-9ec0ba9b214d" ],
+        "CommandName": [ "Get-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Get-AzVMwarePrivateCloud_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14955" ],
+        "x-ms-request-id": [ "a7fea38c-1075-4a90-882c-77f3dea90888" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "b15e07f7-d6e2-41fe-b574-1485ff7f5721" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104624Z:b15e07f7-d6e2-41fe-b574-1485ff7f5721" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D50B276E0A6B4F769781CF1613079F90 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:46:24Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:46:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1510" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/a1qrvh\",\"location\":\"centralus\",\"name\":\"a1qrvh\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt47-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt47-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt47-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt47-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost29.mp01.mock01.vmcp.vs.management\",\"he-fakehost31.mp01.mock01.vmcp.vs.management\",\"he-fakehost48.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}",
+      "isContentBase64": false
+    }
+  }
+}

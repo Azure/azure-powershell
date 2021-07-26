@@ -1,0 +1,97 @@
+---
+external help file:
+Module Name: Az.VMware
+online version: https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptSecureStringExecutionParameterObject
+schema: 2.0.0
+---
+
+# New-AzVMwareScriptSecureStringExecutionParameterObject
+
+## SYNOPSIS
+Create a in-memory object for ScriptSecureStringExecutionParameter
+
+## SYNTAX
+
+```
+New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> -Type <ScriptExecutionParameterType>
+ [-SecureValue <String>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Create a in-memory object for ScriptSecureStringExecutionParameter
+
+## EXAMPLES
+
+### Example 1: Create a in-memory object for ScriptSecureStringExecutionParameter
+```powershell
+PS C:\> New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -Type SecureValue -SecureValue "passwordValue"
+
+Name                  Type        SecureValue
+----                  ----        -----------
+azps_test_securevalue SecureValue passwordValue
+```
+
+Create a in-memory object for ScriptSecureStringExecutionParameter
+
+## PARAMETERS
+
+### -Name
+The parameter name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureValue
+A secure value for the passed parameter, not to be stored in logs.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The type of execution parameter.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ScriptExecutionParameterType
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ScriptSecureStringExecutionParameter
+
+## NOTES
+
+ALIASES
+
+## RELATED LINKS
+

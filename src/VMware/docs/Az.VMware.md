@@ -32,7 +32,7 @@ Get a global reach connection by name in a private cloud
 ### [Get-AzVMwarePrivateCloud](Get-AzVMwarePrivateCloud.md)
 Get a private cloud
 
-### [Get-AzVMwarePrivateCloudAdminCredentials](Get-AzVMwarePrivateCloudAdminCredentials.md)
+### [Get-AzVMwarePrivateCloudAdminCredential](Get-AzVMwarePrivateCloudAdminCredential.md)
 List the admin credentials for the private cloud
 
 ### [Get-AzVMwareScriptCmdlet](Get-AzVMwareScriptCmdlet.md)
@@ -104,17 +104,26 @@ Create or update a global reach connection in a private cloud
 ### [New-AzVMwarePrivateCloud](New-AzVMwarePrivateCloud.md)
 Create or update a private cloud
 
-### [New-AzVMwareRotatePrivateCloudNsxtPassword](New-AzVMwareRotatePrivateCloudNsxtPassword.md)
+### [New-AzVMwarePrivateCloudNsxtPassword](New-AzVMwarePrivateCloudNsxtPassword.md)
 Rotate the NSX-T Manager password
 
-### [New-AzVMwareRotatePrivateCloudVcenterPassword](New-AzVMwareRotatePrivateCloudVcenterPassword.md)
+### [New-AzVMwarePrivateCloudVcenterPassword](New-AzVMwarePrivateCloudVcenterPassword.md)
 Rotate the vCenter password
+
+### [New-AzVMwarePSCredentialExecutionParameterObject](New-AzVMwarePSCredentialExecutionParameterObject.md)
+Create a in-memory object for PSCredentialExecutionParameter
 
 ### [New-AzVMwareScriptExecution](New-AzVMwareScriptExecution.md)
 Create or update a script execution resource in a private cloud
 
 ### [New-AzVMwareScriptExecutionParameterObject](New-AzVMwareScriptExecutionParameterObject.md)
 Create a in-memory object for ScriptExecutionParameter
+
+### [New-AzVMwareScriptSecureStringExecutionParameterObject](New-AzVMwareScriptSecureStringExecutionParameterObject.md)
+Create a in-memory object for ScriptSecureStringExecutionParameter
+
+### [New-AzVMwareScriptStringExecutionParameterObject](New-AzVMwareScriptStringExecutionParameterObject.md)
+Create a in-memory object for ScriptStringExecutionParameter
 
 ### [New-AzVMwareWorkloadNetworkDhcp](New-AzVMwareWorkloadNetworkDhcp.md)
 Create dhcp by id in a private cloud workload network.

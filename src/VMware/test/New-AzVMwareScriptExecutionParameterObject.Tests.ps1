@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzVMwareScriptExecutionParameterObject' {
-    It '__AllParameterSets' -skip {
+    It '__AllParameterSets' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

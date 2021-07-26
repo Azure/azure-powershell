@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloudadmincredentials
+online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloudadmincredential
 schema: 2.0.0
 ---
 
-# Get-AzVMwarePrivateCloudAdminCredentials
+# Get-AzVMwarePrivateCloudAdminCredential
 
 ## SYNOPSIS
 List the admin credentials for the private cloud
@@ -13,7 +13,7 @@ List the admin credentials for the private cloud
 ## SYNTAX
 
 ```
-Get-AzVMwarePrivateCloudAdminCredentials -PrivateCloudName <String> -ResourceGroupName <String>
+Get-AzVMwarePrivateCloudAdminCredential -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -22,16 +22,27 @@ List the admin credentials for the private cloud
 
 ## EXAMPLES
 
-### Example 1: Get admin credential of private cloud
+### Example 1: List the admin credentials for the private cloud
 ```powershell
-PS C:\> Get-AzVMwarePrivateCloudAdminCredentials -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwarePrivateCloudAdminCredential -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
-NsxtPassword NsxtUsername VcenterPassword VcenterUsername
------------- ------------ --------------- ---------------
-************ admin        ************    cloudadmin@vsphere.local
+NsxtUsername VcenterUsername
+------------ ---------------
+admin        cloudadmin@vsphere.local
 ```
 
-Get admin credential of private cloud
+List the admin credentials for the private cloud
+
+### Example 2: List the admin credentials for the private cloud
+```powershell
+PS C:\> Get-AzVMwarePrivateCloudAdminCredential -InputObject "/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud"
+
+NsxtUsername VcenterUsername
+------------ ---------------
+admin        cloudadmin@vsphere.local
+```
+
+List the admin credentials for the private cloud
 
 ## PARAMETERS
 

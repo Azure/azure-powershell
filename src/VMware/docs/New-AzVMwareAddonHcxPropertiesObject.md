@@ -21,23 +21,16 @@ Create a in-memory object for AddonHcxProperties
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a in-memory object for AddonHcxProperties
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzVMwareAddonHcxPropertiesObject -AddonType HCX -Offer "OfferValue"
 
-{{ Add output here }}
+AddonType ProvisioningState Offer
+--------- ----------------- -----
+HCX1                        OfferValue
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a in-memory object for AddonHcxProperties
 
 ## PARAMETERS
 

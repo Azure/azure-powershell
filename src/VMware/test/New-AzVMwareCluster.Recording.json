@@ -1,0 +1,39 @@
+{
+  "New-AzVMwareCluster+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/clusters/xysvow?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/clusters/xysvow?api-version=2021-06-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"av36\"\r\n  },\r\n  \"properties\": {\r\n    \"clusterSize\": 3\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "88" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "a88001f2-fe28-4064-a4f9-270d35df854f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "1bbdd27e-9eb8-4eb9-b778-1c2c1b34acad" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104706Z:1bbdd27e-9eb8-4eb9-b778-1c2c1b34acad" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 90C7573DC99647D7A568D3621BDCA484 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:47:05Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:47:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "118" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"Conflict\",\"message\":\"Unable to reserve 3 hosts: Requested hosts count exceed available (buffer=0)\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -12,7 +12,10 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzVMwareAddonVrPropertiesObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            $config = New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 123
+            $config.AddonType | Should -Be 123
+        } | Should -Not -Throw
     }
 }

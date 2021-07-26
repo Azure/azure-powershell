@@ -1,12 +1,13 @@
 {
-  "Test-AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AVS/locations/australiaeast/checkTrialAvailability?api-version=2020-03-20+1": {
+  "Test-AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/westcentralus/checkTrialAvailability?api-version=2021-06-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AVS/locations/australiaeast/checkTrialAvailability?api-version=2020-03-20",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/westcentralus/checkTrialAvailability?api-version=2021-06-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "63c48195-78f4-402e-ae89-8511fd770e85" ],
+        "x-ms-unique-id": [ "160" ],
+        "x-ms-client-request-id": [ "59bf20a9-7846-4754-9c43-3533dafff8c2" ],
         "CommandName": [ "Test-AzVMwareLocationTrialAvailability" ],
         "FullCommandName": [ "Test-AzVMwareLocationTrialAvailability_Check" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,21 +22,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-request-id": [ "366acef8-9882-4745-a5de-fa9745ce9c10" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "bac0db37-909e-4a63-b2a5-3d66e43b6974" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "nginx" ],
-        "x-ms-correlation-request-id": [ "b2615272-05ee-4af6-8ace-2ef96c2e21bb" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20200913T040258Z:b2615272-05ee-4af6-8ace-2ef96c2e21bb" ],
+        "x-ms-correlation-request-id": [ "3e86e477-8f71-49df-8c75-996ac8a21326" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T105437Z:3e86e477-8f71-49df-8c75-996ac8a21326" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 13 Sep 2020 04:02:58 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 699B18E232874ABB8A18624194657FDC Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:54:37Z" ],
+        "Date": [ "Fri, 23 Jul 2021 10:54:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "45" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"availableHosts\":0,\"status\":\"TrialDisabled\"}"
+      "Content": "{\"availableHosts\":0,\"status\":\"TrialDisabled\"}",
+      "isContentBase64": false
     }
   }
 }

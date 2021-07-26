@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzVMwareRotatePrivateCloudVcenterPassword.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzVMwarePrivateCloudAdminCredential.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,12 +11,11 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzVMwareRotatePrivateCloudVcenterPassword' {
-    It 'Rotate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RotateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Get-AzVMwarePrivateCloudAdminCredential' {
+    It 'List' {
+        {
+            $config = Get-AzVMwarePrivateCloudAdminCredential -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
+            $config.NsxtPassword | Should -Be "System.Security.SecureString"
+        } | Should -Not -Throw
     }
 }

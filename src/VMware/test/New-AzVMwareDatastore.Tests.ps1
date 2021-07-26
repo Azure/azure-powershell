@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzVMwareDatastore' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         {
             New-AzVMwareCluster -Name $env.rstr2 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup -ClusterSize 3 -SkuName av36
 

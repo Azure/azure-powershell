@@ -60,17 +60,32 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
-  # Following is two common directive which are normally required in all the RPs
-  # 1. Remove the unexpanded parameter set
-  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
+  - from: swagger-document 
+    where: $.definitions.AdminCredentials.properties.nsxtPassword
+    transform: >-
+      return {
+          "description": "NSX-T Manager password",
+          "type": "string",
+          "readOnly": true,
+          "x-ms-secret": true,
+          "format": "password"
+      }
+  - from: swagger-document 
+    where: $.definitions.AdminCredentials.properties.vcenterPassword
+    transform: >-
+      return {
+          "description": "vCenter admin password",
+          "type": "string",
+          "readOnly": true,
+          "x-ms-secret": true,
+          "format": "password"
+      }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
-  # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
-  # Hide cmdlets.
   - where:
       verb: New|Remove
       subject: PrivateCloud
@@ -79,18 +94,38 @@ directive:
       verb: New|Get|Remove
       subject: HcxEnterpriseSite
     remove: true
-  #- no-inline:
-  #    - AddonProperties
+  - no-inline:
+      - AddonProperties
   - model-cmdlet:
       - ScriptExecutionParameter
-      #- AddonSrmProperties
-      #- AddonVrProperties
-      #- AddonHcxProperties
+      - ScriptSecureStringExecutionParameter
+      - ScriptStringExecutionParameter
+      - PSCredentialExecutionParameter
+      - AddonSrmProperties
+      - AddonVrProperties
+      - AddonHcxProperties
+  - where:
+      verb: Test
+      subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$
+      variant: ^CheckViaIdentity$
+    remove: true
+  - where:
+      verb: Get
+      subject: ^PrivateCloudAdminCredentials$
+    set:
+      subject: PrivateCloudAdminCredential
   - where:
       verb: Invoke
-      subject: ^RotatePrivateCloudNsxtPassword$|^RotatePrivateCloudVcenterPassword$
+      subject: ^RotatePrivateCloudNsxtPassword$
     set:
       verb: New
+      subject: PrivateCloudNsxtPassword
+  - where:
+      verb: Invoke
+      subject: ^RotatePrivateCloudVcenterPassword$
+    set:
+      verb: New
+      subject: PrivateCloudVcenterPassword
   - where:
       verb: Get
       subject: ^WorkloadNetworkVirtualMachine$

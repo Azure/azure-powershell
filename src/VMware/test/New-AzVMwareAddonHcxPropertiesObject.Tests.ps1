@@ -12,7 +12,10 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzVMwareAddonHcxPropertiesObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            $config = New-AzVMwareAddonHcxPropertiesObject -AddonType HCX1 -Offer "OfferValue"
+            $config.AddonType | Should -Be "HCX"
+        } | Should -Not -Throw
     }
 }

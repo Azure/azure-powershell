@@ -12,8 +12,10 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Test-AzVMwareLocationTrialAvailability' {
-    It 'Check' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-        # $test = Test-AzVMwareLocationTrialAvailability -Location australiaeast
+    It 'Check' {
+        {
+            $config = Test-AzVMwareLocationTrialAvailability -Location $env.location2
+            $config.Status | Should -Be "TrialDisabled"
+        } | Should -Not -Throw
     }
 }
