@@ -66,26 +66,14 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         private AzurePSDataCollectionProfile _profile;
 
-        private static PSHost _host;
-
-        private static string _psVersion;
-
+        [Obsolete("Should use AzurePSCmdlet.PowerShellVersion")]
         protected string PSVersion
         {
             get
             {
-                if (_host != null)
-                {
-                    _psVersion = _host.Version.ToString();
-                }
-                else
-                {
-                    _psVersion = DefaultPSVersion;
-                }
-                return _psVersion;
+                return DefaultPSVersion;
             }
         }
-
         public string HashMacAddress
         {
             get
@@ -256,9 +244,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
         }
 
+        [Obsolete()]
         public void SetPSHost(PSHost host)
         {
-            _host = host;
         }
 
         private void PopulatePropertiesFromQos(AzurePSQoSEvent qos, IDictionary<string, string> eventProperties, bool populateException = false)
@@ -268,18 +256,22 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 return;
             }
 
-            eventProperties.Add("telemetry-version", "1");
+            // Breaking change of telemetry
+            // * 2, change host version to real PowerShell version. Original version was PowerShell host version which is not always the same as PS version
+            //      and can be customized.
+            eventProperties.Add("telemetry-version", "2");
             eventProperties.Add("Command", qos.CommandName);
             eventProperties.Add("IsSuccess", qos.IsSuccess.ToString());
             eventProperties.Add("ModuleName", qos.ModuleName);
             eventProperties.Add("ModuleVersion", qos.ModuleVersion);
             eventProperties.Add("HostVersion", qos.HostVersion);
+            eventProperties.Add("HostName", qos.PSHostName);
             eventProperties.Add("OS", Environment.OSVersion.ToString());
             eventProperties.Add("CommandParameters", qos.Parameters);
             eventProperties.Add("x-ms-client-request-id", qos.ClientRequestId);
             eventProperties.Add("UserAgent", qos.UserAgent);
             eventProperties.Add("HashMacAddress", HashMacAddress);
-            eventProperties.Add("PowerShellVersion", PSVersion);
+            eventProperties.Add("PowerShellVersion", qos.PSVersion);
             eventProperties.Add("Version", qos.AzVersion);
             eventProperties.Add("CommandParameterSetName", qos.ParameterSetName);
             eventProperties.Add("CommandInvocationName", qos.InvocationName);
@@ -538,7 +530,12 @@ public class AzurePSQoSEvent
     public string CommandName { get; set; }
     public string ModuleName { get; set; }
     public string ModuleVersion { get; set; }
+    //Version of PowerShell runspace ($Host.Runspace.Version)
+    public string PSVersion { get; set; }
+    //Host version of PowerShell ($Host.Version) which can be customized by PowerShell wrapper
     public string HostVersion { get; set; }
+    //Host Name of PowerShell
+    public string PSHostName { get; set; }
     public string AzVersion { get; set; }
     public string UserAgent { get; set; }
     public string Parameters { get; set; }
@@ -583,11 +580,12 @@ public class AzurePSQoSEvent
 
     public override string ToString()
     {
-        string ret = string.Format(
-            "AzureQoSEvent: CommandName - {0}; IsSuccess - {1}; Duration - {2}", CommandName, IsSuccess, Duration);
+        string ret = $"AzureQoSEvent: Module: {ModuleName}:{ModuleVersion}; CommandName: {CommandName}; PSVersion: {PSVersion}";
+        ret += $"; IsSuccess: {IsSuccess}; Duration: {Duration}";
+
         if (Exception != null)
         {
-            ret = $"{ret}; Exception - {Exception.Message};";
+            ret += $"; Exception: {Exception.Message};";
         }
         return ret;
     }
