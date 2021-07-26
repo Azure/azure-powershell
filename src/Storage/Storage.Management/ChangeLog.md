@@ -22,6 +22,9 @@
     -  `Enable-AzStorageBlobLastAccessTimeTracking`
     -  `Disable-AzStorageBlobLastAccessTimeTracking`
     -  `Add-AzStorageAccountManagementPolicyAction`
+* Supported Parquest as input text config in blob quick query
+    -  `New-AzStorageBlobQueryConfig`
+    -  `Get-AzStorageBlobQueryResult`
 * Make list datalake gen2 items list out all items by default, instead of need user to list chunk by chunk.
     - `Get-AzDataLakeGen2ChildItem`
 * Fix BlobProperties is empty issue when use sas without prefix '?' [#15460]
