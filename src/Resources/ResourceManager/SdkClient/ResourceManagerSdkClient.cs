@@ -412,6 +412,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return new List<DeploymentOperation>();
         }
 
+        private JObject ParseTemplate(string template)
+        {
+            using (var reader = new JsonTextReader(new StringReader(template)))
+            {
+                reader.DateParseHandling = DateParseHandling.None;
+                return JObject.Load(reader);
+            }
+        }
+
         private Deployment CreateBasicDeployment(PSDeploymentCmdletParameters parameters, DeploymentMode deploymentMode, string debugSetting)
         {
             Deployment deployment = new Deployment
@@ -453,11 +462,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 if (!string.IsNullOrEmpty(parameters.TemplateFile))
                 {
-                    deployment.Properties.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
+                    deployment.Properties.Template = ParseTemplate(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
                 }
                 else
                 {
-                    deployment.Properties.Template = JObject.Parse(PSJsonSerializer.Serialize(parameters.TemplateObject));
+                    deployment.Properties.Template = ParseTemplate(PSJsonSerializer.Serialize(parameters.TemplateObject));
                 }
             }
 
