@@ -13,7 +13,7 @@ function Test-RedisCache
     New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -RedisVersion 6
 
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -25,6 +25,7 @@ function Test-RedisCache
     Assert-AreEqual "creating" $cacheCreated.ProvisioningState
     Assert-AreEqual "6GB" $cacheCreated.Size
     Assert-AreEqual "Premium" $cacheCreated.Sku
+    Assert-AreEqual "6" $cacheCreated.RedisVersion.split(".")[0]
 
     Assert-NotNull $cacheCreated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheCreated.SecondaryKey "SecondaryKey do not exists"
@@ -396,7 +397,7 @@ function Test-RedisCachePatchSchedules
 
     Remove-AzRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName
 
-    Assert-ThrowsContains {Get-AzRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName} "There are no patch schedules found for redis cache"
+    Assert-ThrowsContains {Get-AzRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName} "Operation returned an invalid status code 'NotFound'"
 
     ############################# Bug fix in set redis cache related to EnableNonSslPort ##########################################
     $cacheUpdated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -EnableNonSslPort $true
