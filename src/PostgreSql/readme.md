@@ -54,8 +54,6 @@ input-file:
   - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/postgresql.json
   - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/ServerSecurityAlertPolicies.json
   - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json
-  - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/Databases.json
-  - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/PrivateDnsZone.json
 module-version: 0.1.0
 title: PostgreSQL 
 subject-prefix: 'PostgreSQL'
