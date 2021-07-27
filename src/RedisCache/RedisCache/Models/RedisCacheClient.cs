@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
 
         public RedisResource UpdateCache(string resourceGroupName, string cacheName, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion, Hashtable tags)
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion, string redisVersion, Hashtable tags)
         {
             try
             {
@@ -168,6 +168,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
 
             parameters.EnableNonSslPort = enableNonSslPort;
+            parameters.RedisVersion = redisVersion;
 
             if (tenantSettings != null)
             {

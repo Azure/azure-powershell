@@ -172,7 +172,7 @@ function Test-RedisCachePipeline
     }
 
     # Updating Cache using pipeline
-    Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzRedisCache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -EnableNonSslPort $false
+    Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzRedisCache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -EnableNonSslPort $false -RedisVersion 6
     $cacheUpdatedPiped = Get-AzRedisCache -Name $cacheName
 
     Assert-AreEqual $cacheName $cacheUpdatedPiped.Name
