@@ -1018,8 +1018,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             try
             {
-                var outputs = this.ExecuteScript<string>("$Host.Runspace.Version.ToString()");
-                return outputs[0];
+                var outputs = this.ExecuteScript<PSObject>("$Host.Runspace.Version");
+                foreach (PSObject obj in outputs)
+                {
+                    string psVersion = obj.ToString();
+                    return string.IsNullOrWhiteSpace(psVersion) ? DEFAULT_PSVERSION: psVersion;
+                }
             }
             catch (Exception e)
             {
