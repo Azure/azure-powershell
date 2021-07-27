@@ -954,7 +954,7 @@ function Test-NewDeploymentFromTemplateFileContainingDatetimeOutput
 		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 
-		$datetimeOutput = $getById.Outputs
+		$datetimeOutput = $getById.Outputs.date
 		Assert-AreEqual $datetime $datetimeOutput
 	}
 
