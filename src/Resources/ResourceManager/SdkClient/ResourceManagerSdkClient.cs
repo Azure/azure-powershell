@@ -489,8 +489,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 string parametersContent = parametersDictionary != null
                     ? PSJsonSerializer.Serialize(parametersDictionary)
                     : null;
+                // NOTE(jcotillo): Adding FromJson<> to parameters as well 
                 deployment.Properties.Parameters = !string.IsNullOrEmpty(parametersContent)
-                    ? JObject.Parse(parametersContent)
+                    ? parametersContent.FromJson<JObject>()
                     : null;
             }
 
