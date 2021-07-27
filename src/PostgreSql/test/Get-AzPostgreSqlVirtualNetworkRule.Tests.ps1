@@ -28,7 +28,7 @@ Describe 'Get-AzPostgreSqlVirtualNetworkRule' {
         Remove-AzPostgreSqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup-ServerName $env.serverName
     }
 
-    It 'GetViaIdentity' -Skip {
+    It 'GetViaIdentity' {
         $VnetID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/PostgreSqlVnet/subnets/PostgresqlSubnet1"
         New-AzPostgreSqlVirtualNetworkRule -Name $env.VNetName -ResourceGroupName $env.resourceGroup -ServerName $env.serverName -SubnetId $VnetID
         $RuleID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/servers/$($env.serverName)/virtualNetworkRules/$($env.VNetName)"
