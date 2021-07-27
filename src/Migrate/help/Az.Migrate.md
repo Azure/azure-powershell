@@ -20,6 +20,9 @@ The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
 ### [Get-AzMigrateProject](Get-AzMigrateProject.md)
 Method to get a migrate project.
 
+### [Get-AzMigrateReplicationEligibilityResult](Get-AzMigrateReplicationEligibilityResult.md)
+Validates whether a given VM can be protected or not in which case returns list of errors.
+
 ### [Get-AzMigrateReplicationFabric](Get-AzMigrateReplicationFabric.md)
 Gets the details of an Azure Site Recovery fabric.
 
@@ -32,8 +35,15 @@ Gets the details of a protection container.
 ### [Get-AzMigrateReplicationProtectionContainerMapping](Get-AzMigrateReplicationProtectionContainerMapping.md)
 Gets the details of a protection container mapping.
 
+### [Get-AzMigrateReplicationProtectionIntent](Get-AzMigrateReplicationProtectionIntent.md)
+Gets the details of an ASR replication protection intent.
+
 ### [Get-AzMigrateReplicationRecoveryServicesProvider](Get-AzMigrateReplicationRecoveryServicesProvider.md)
 Gets the details of registered recovery services provider.
+
+### [Get-AzMigrateReplicationVaultSetting](Get-AzMigrateReplicationVaultSetting.md)
+Gets the vault setting.
+This includes the Migration Hub connection settings.
 
 ### [Get-AzMigrateRunAsAccount](Get-AzMigrateRunAsAccount.md)
 Method to get run as account.
@@ -46,6 +56,9 @@ Method to get a site.
 
 ### [Get-AzMigrateSolution](Get-AzMigrateSolution.md)
 Gets a solution in the migrate project.
+
+### [Get-AzMigrateSupportedOperatingSystem](Get-AzMigrateSupportedOperatingSystem.md)
+Gets the data of supported operating systems by SRS.
 
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
 The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
@@ -61,10 +74,16 @@ This object is provided as an input to the Set-AzMigrateServerReplication cmdlet
 Creates a new Migrate project.
 
 ### [New-AzMigrateReplicationPolicy](New-AzMigrateReplicationPolicy.md)
-The operation to create a replication policy
+The operation to create a replication policy.
 
 ### [New-AzMigrateReplicationProtectionContainerMapping](New-AzMigrateReplicationProtectionContainerMapping.md)
 The operation to create a protection container mapping.
+
+### [New-AzMigrateReplicationProtectionIntent](New-AzMigrateReplicationProtectionIntent.md)
+The operation to create an ASR replication protection intent item.
+
+### [New-AzMigrateReplicationVaultSetting](New-AzMigrateReplicationVaultSetting.md)
+The operation to configure vault setting.
 
 ### [New-AzMigrateServerReplication](New-AzMigrateServerReplication.md)
 The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
@@ -81,6 +100,9 @@ The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrate
 
 ### [Restart-AzMigrateServerReplication](Restart-AzMigrateServerReplication.md)
 The Restart-AzMigrateServerReplication cmdlet repairs the replication for the specified server.
+
+### [Set-AzMigrateDiskMapping](Set-AzMigrateDiskMapping.md)
+The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attached to the server to be migrated
 
 ### [Set-AzMigrateServerReplication](Set-AzMigrateServerReplication.md)
 The Set-AzMigrateServerReplication cmdlet updates the target properties for the replicating server.
