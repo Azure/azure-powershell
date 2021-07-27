@@ -29,7 +29,7 @@ key2    eu9kx94TKH506R0i4JhYBmsx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.blockchain/get-azblockchainmemberapikey
+https://docs.microsoft.com/powershell/module/az.blockchain/get-azblockchainmemberapikey
 #>
 function Get-AzBlockchainMemberApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey])]
@@ -117,6 +117,8 @@ begin {
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
