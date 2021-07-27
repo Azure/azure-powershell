@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = false,
             HelpMessage = "Identity Client Id of the user-assigned Managed Identity. Will default system-assigned if leave empty.")]
         public string IdentityClientId { get; set; }
+        
         public override void ExecuteApiManagementCmdlet()
         {
             WriteObject(

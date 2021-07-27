@@ -19,12 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementKeyVaultSecret", SupportsShouldProcess = true, DefaultParameterSetName = ContextParameterSet)]
-    [OutputType(typeof(PsApiManagementKeyVaultEntity), ParameterSetName = new[] { ContextParameterSet, ResourceIdParameterSet, ByInputObjectParameterSet })]
+    [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementKeyVaultSecret", SupportsShouldProcess = true, DefaultParameterSetName = ResourceIdParameterSet)]
+    [OutputType(typeof(PsApiManagementKeyVaultEntity), ParameterSetName = new[] { ResourceIdParameterSet, ByInputObjectParameterSet })]
     public class SyncAzureApiManagementKeyVaultSecret : AzureApiManagementCmdletBase
     {
         #region ParameterSets
-        private const string ContextParameterSet = "ContextParameterSet";
         private const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string ByInputObjectParameterSet = "ByInputObject";
         #endregion
