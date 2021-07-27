@@ -19,12 +19,15 @@
 -->
 
 ## Upcoming Release
+* Fixed bug with `PSResource` where some constructors left `SubscriptionId` property unassigned/null.  [#10783]
+* Added support for creating and updating Template Spec in Bicep file [#15313]
+* Added `-ProceedIfNoChange` parameter to deployment create cmdlets.
 
 ## Version 4.2.0
 * Allowed naming the deployment when testing deployments [#11497]
 
 ## Version 4.1.1
- Fixed issue that property `IdentifierUri` is cleaned by `Update-AzAdApplication` [#15134]
+* Fixed issue that property `IdentifierUri` is cleaned by `Update-AzAdApplication` [#15134]
 
 ## Version 4.1.0
 * Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter
@@ -183,8 +186,8 @@
     - New-AzTag -ResourceId
     - Remove-AzTag -ResourceId
 * Added new Tag cmdlet
-    - Update-AzTag -ResourceId
-* Brought ScopedDeployment from SDK 3.3.0 
+    - Update-AzTag -ResourceId 
+* Brought ScopedDeployment from SDK 3.3.0
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets

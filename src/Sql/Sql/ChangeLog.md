@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.4.1
+* Fixed identity logic in `Set-AzSqlServer` and `Set-AzSqlInstance`
+
+## Version 3.4.0
 * Added `RestrictOutboundNetworkAccess` parameter to following cmdlets
     - `New-AzSqlServer`
     - `Set-AzSqlServer`

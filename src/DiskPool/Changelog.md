@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Added additional info in the output table of New/Update/Remove-Az.DiskPool [#15236]
 * Added cmdlet Get-AzDiskPoolOutboundNetworkDependencyEndpoint and Get-AzDiskPoolZone [#15237]
 

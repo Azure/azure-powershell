@@ -11,7 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Azure Functions, please visit the following: https://docs.microsoft.com/azure/azure-functions/
 
 ## Az.Functions Cmdlets
-
 ### [Get-AzFunctionApp](Get-AzFunctionApp.md)
 Gets function apps in a subscription.
 
@@ -23,6 +22,27 @@ Get function apps plans in a subscription.
 
 ### [Get-AzFunctionAppSetting](Get-AzFunctionAppSetting.md)
 Gets app settings for a function app.
+
+### [Get-AzSystemAssignedIdentity](Get-AzSystemAssignedIdentity.md)
+Gets the systemAssignedIdentity available under the specified RP scope.
+
+### [Get-AzWebAppFunctionKey](Get-AzWebAppFunctionKey.md)
+Description for Get function keys for a function in a web site, or a deployment slot.
+
+### [Get-AzWebAppFunctionKeySlot](Get-AzWebAppFunctionKeySlot.md)
+Description for Get function keys for a function in a web site, or a deployment slot.
+
+### [Get-AzWebAppSettingKeyVaultReference](Get-AzWebAppSettingKeyVaultReference.md)
+Description for Gets the config reference app settings and status of an app
+
+### [Get-AzWebAppSyncStatus](Get-AzWebAppSyncStatus.md)
+Description for This is to allow calling via powershell and ARM template.
+
+### [Get-AzWebAppSyncStatusSlot](Get-AzWebAppSyncStatusSlot.md)
+Description for This is to allow calling via powershell and ARM template.
+
+### [Move-Az](Move-Az.md)
+Description for Move resources between resource groups.
 
 ### [New-AzFunctionApp](New-AzFunctionApp.md)
 Creates a function app.
@@ -48,6 +68,12 @@ Starts a function app.
 ### [Stop-AzFunctionApp](Stop-AzFunctionApp.md)
 Stops a function app.
 
+### [Sync-AzWebAppFunctionSlot](Sync-AzWebAppFunctionSlot.md)
+Description for Syncs function trigger metadata to the management database
+
+### [Test-Az](Test-Az.md)
+Description for Validate if a resource can be created.
+
 ### [Update-AzFunctionApp](Update-AzFunctionApp.md)
 Updates a function app.
 
@@ -56,3 +82,4 @@ Updates a function app service plan.
 
 ### [Update-AzFunctionAppSetting](Update-AzFunctionAppSetting.md)
 Adds or updates app settings in a function app.
+

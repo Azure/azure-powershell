@@ -312,7 +312,7 @@
     "alias": "Traffic Manager"
   },
   {
-    "regex": "MarketplaceTerms",
+    "module": "MarketplaceOrdering",
     "alias": "Marketplace Ordering"
   },
   {
@@ -534,15 +534,11 @@
     "alias": "Database for PostgreSQL"
   },
   {
-    "regex": "SqlVM",
-    "alias": "SqlVM"
+    "module": "SqlVirtualMachine",
+    "alias": "Sql VM"
   },
   {
-    "regex": "AvailabilityGroupListener",
-    "alias": "SqlVM"
-  },
-  {
-    "regex": "Sql",
+    "module": "Sql",
     "alias": "SQL"
   },
   {
@@ -574,7 +570,7 @@
     "alias": "Custom Resource Providers"
   },
   {
-    "regex": "MonitorLogAnalytics",
+    "module": "MonitoringSolutions",
     "alias": "Monitoring Solutions"
   },
   {
@@ -667,7 +663,11 @@
   },
   {
     "alias": "Security Insights",
-    "regex": "SecurityInsights"
+    "module": "SecurityInsights"
+  },
+  {
+    "alias": "Private DNS",
+    "module": "PrivateDns"
   },
   {
     "regex": "ContainerInstance",
@@ -675,7 +675,7 @@
   },
   {
     "alias": "DiskPool",
-    "regex": "DiskPool"
+    "module": "DiskPool"
   },
   {
     "alias": "Datadog",

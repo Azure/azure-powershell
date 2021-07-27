@@ -71,7 +71,7 @@ Modifies a Templace Spec. If the Template Spec with the specified name and/or sp
 created.
 
 When modifying a Template Spec version's ARM Template content, the content can either come from a raw 
-JSON string (using **UpdateVersionByNameFromJsonParameterSet** parameter set) or from a specified JSON file
+JSON string (using **UpdateVersionByNameFromJsonParameterSet** parameter set) or from a specified JSON/Bicep file
 (using **UpdateVersionByNameFromJsonFileParameterSet** parameter set).
 
 ## EXAMPLES
@@ -245,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateFile
-The file path to the local Azure Resource Manager template JSON file.
+The file path to the local Azure Resource Manager template JSON/Bicep file.
 
 ```yaml
 Type: System.String

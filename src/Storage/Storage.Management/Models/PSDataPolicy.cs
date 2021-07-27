@@ -311,6 +311,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.DaysAfterLastAccessTimeGreaterThan = null;
         }
 
+        public PSDateAfterModification(int daysAfterModificationGreaterThan)
+        {
+            this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
+            this.DaysAfterLastAccessTimeGreaterThan = null;
+        }
+
         public PSDateAfterModification(int? daysAfterModificationGreaterThan, int? daysAfterLastAccessTimeGreaterThan)
         {
             this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
@@ -341,6 +347,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             return new DateAfterModification(this.DaysAfterModificationGreaterThan, this.DaysAfterLastAccessTimeGreaterThan);
         }
     }
+
 
     /// <summary>
     /// Wrapper of SDK type DateAfterCreation

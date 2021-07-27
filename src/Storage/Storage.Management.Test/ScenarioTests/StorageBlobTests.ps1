@@ -889,5 +889,3 @@ function Test-StorageBlobContainerSoftDelete
         Clean-ResourceGroup $rgname
     }
 }
-
-

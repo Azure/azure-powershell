@@ -21,6 +21,8 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
+$SKIP_MODULES = @("AppService", "Billing", "Compute", "ContainerInstance", "ConnectedMachine", "ContainerRegistry", "Dns", "KeyVault", "Media", "Monitor", "Network", "Resources", "ServiceBus", "Storage")
+
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
 foreach ($file in $ChangedFiles)
@@ -44,11 +46,11 @@ foreach ($file in $ChangedFiles)
 }
 if ($ModuleSet.Contains($ALL_MODULE))
 {
-    $ModuleList = (Get-ChildItem "$PSScriptRoot\..\src\" -Directory).Name
+    $ModuleList = (Get-ChildItem "$PSScriptRoot\..\src\" -Directory -Exclude helpers,lib).Name | Where-Object { $SKIP_MODULES -notcontains $_ }
 }
 else
 {
-    $ModuleList = $ModuleSet | Where-Object { $_ }
+    $ModuleList = $ModuleSet | Where-Object { $SKIP_MODULES -notcontains $_ }
 }
 #EndRegion
 
@@ -65,6 +67,11 @@ git config core.sparseCheckout true
 Add-Content -Path .git/info/sparse-checkout -Value "src/Accounts/"
 git pull origin main
 Move-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts"
+Copy-Item "$TmpFolder\Accounts" "$PSScriptRoot\..\src" -Recurse -Force
+Remove-Item -Path "$TmpFolder\src" -Recurse -Force
+Install-Module Az.Accounts -Repository PSGallery -Force
+Import-Module Az.Accounts
+Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
 #EndRegion
 
 #Region generate the code and make the struture same with main branch.
@@ -77,10 +84,18 @@ foreach ($Module in $ModuleList)
         Throw "Cannot find Az.$Module.psd1 in $ModuleFolder."
     }
     Set-Location -Path $ModuleFolder
-    autorest
+    try
+    {
+        npx autorest --max-memory-size=8192
+    }
+    catch
+    {
+        Write-Host "Generating $currentModule with m3"
+        npx autorest --use:@autorest/powershell@2.1.401 --max-memory-size=8192
+    }
     ./build-module.ps1
     Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
-    Remove-Item "$ModuleFolder\*" -Recurse
+    Remove-Item "$ModuleFolder\*" -Recurse -Force
 }
 #EndRegion
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force

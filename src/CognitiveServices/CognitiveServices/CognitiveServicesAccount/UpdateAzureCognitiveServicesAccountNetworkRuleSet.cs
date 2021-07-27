@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     throw new System.ArgumentNullException("IpRules, VirtualNetworkRules, DefaultAction", "Request must specify an account NetworkRule property to update.");
                 }
 
-                var account = this.CognitiveServicesClient.Accounts.GetProperties(
+                var account = this.CognitiveServicesClient.Accounts.Get(
                     this.ResourceGroupName,
                     this.Name);
                 NetworkRuleSet accountACL = account.Properties.NetworkAcls;
@@ -138,18 +138,18 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     psNetworkRule.DefaultAction = defaultAction.Value;
                 }
 
-                var properties = new CognitiveServicesAccountProperties();
+                var properties = new AccountProperties();
                 properties.NetworkAcls = psNetworkRule.ToNetworkRuleSet();
                 this.CognitiveServicesClient.Accounts.Update(
                     this.ResourceGroupName,
                     this.Name,
-                    new CognitiveServicesAccount()
+                    new Account()
                     {
                         Properties = properties
                     }
                     );
 
-                account = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
+                account = this.CognitiveServicesClient.Accounts.Get(this.ResourceGroupName, this.Name);
 
                 WriteObject(PSNetworkRuleSet.Create(account.Properties.NetworkAcls));
             }

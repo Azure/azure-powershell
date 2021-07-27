@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancerbackendaddresspool
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancerbackendaddresspool
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ Removes a backend pool from a load balancer
 
 ## SYNTAX
 
-### DeleteByNameParameterSet
+### DeleteByNameParameterSet (Default)
 ```
 Remove-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -Name <String> [-LoadBalancerName <String>]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -27,7 +27,7 @@ Remove-AzLoadBalancerBackendAddressPool -Name <String> [-LoadBalancerName <Strin
 
 ### DeleteByInputObjectParameterSet
 ```
-Remove-AzLoadBalancerBackendAddressPool [-LoadBalancerName <String>] [-InputObject <PSBackendAddressPool>]
+Remove-AzLoadBalancerBackendAddressPool [-LoadBalancerName <String>] -InputObject <PSBackendAddressPool>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,7 +66,7 @@ PS C:\> Remove-AzLoadBalancerBackendAddressPool -ResourceId $backendPoolObject.I
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,14 +81,14 @@ Accept wildcard characters: False
 The backend address pool to remove
 
 ```yaml
-Type: PSBackendAddressPool
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
 Parameter Sets: DeleteByInputObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The load balancer resource.
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: DeleteByParentObjectParameterSet
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DeleteByNameParameterSet, DeleteByParentObjectParameterSet
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 The resource group name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ### -ResourceId
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DeleteByResourceIdParameterSet
 Aliases:
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -201,7 +201,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -249,6 +249,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
                  ((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
                  ((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+            fileSharePolicyModel.ProtectedItemsCount = ((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.
+                Properties).ProtectedItemsCount;
             return policyModel;
         }
 
@@ -329,6 +331,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             azureVmWorkloadPolicyModel.IsLogBackupEnabled = false;
             GetPSSubProtectionPolicy(azureVmWorkloadPolicyModel, serviceClientResponse,
                 ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+            azureVmWorkloadPolicyModel.ProtectedItemsCount = ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.
+                Properties).ProtectedItemsCount;
             return policyModel;
         }
 

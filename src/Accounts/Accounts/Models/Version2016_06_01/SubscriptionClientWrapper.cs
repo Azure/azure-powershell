@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
-using Microsoft.Azure.Commands.ResourceManager.Version2019_06_01.Customized;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Azure.Internal.Subscriptions.Models.Utilities;
