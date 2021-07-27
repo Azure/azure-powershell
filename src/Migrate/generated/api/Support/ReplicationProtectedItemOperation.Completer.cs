@@ -62,6 +62,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("FinalizeFailback", "FinalizeFailback", global::System.Management.Automation.CompletionResultType.ParameterValue, "FinalizeFailback");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CancelFailover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("CancelFailover", "CancelFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "CancelFailover");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ChangePit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("ChangePit", "ChangePit", global::System.Management.Automation.CompletionResultType.ParameterValue, "ChangePit");
