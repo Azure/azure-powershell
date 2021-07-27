@@ -139,7 +139,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         PSModuleInfo moduleInfo = result[0].BaseObject as PSModuleInfo;
                         if (moduleInfo.Version.Major < 1)
                         {
-                            return;
+                            continue;
                         }
                     }
 
