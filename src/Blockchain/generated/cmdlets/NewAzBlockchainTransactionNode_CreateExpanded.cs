@@ -11,8 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Blockchain/blockchainMembers/{blockchainMemberName}/transactionNodes/{transactionNodeName}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzBlockchainTransactionNode_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.CmdletBreakingChange(ChangeDescription="On September 10, 2021, Azure Blockchain will be retired.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Description(@"Create or update the transaction node.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Generated]
@@ -146,8 +146,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
         ReadOnly = false,
         Description = @"Sets the transaction node dns endpoint basic auth password.",
         SerializedName = @"password",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Password { get => TransactionNodeBody.Password ?? null; set => TransactionNodeBody.Password = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString Password { get => TransactionNodeBody.Password ?? null; set => TransactionNodeBody.Password = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.HttpPipeline" /> that the remote call will use.

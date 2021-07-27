@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking changes for all cmdlets since Blockchain will be retired.
 
 ## Version 0.3.0
 * On September 10, 2021, Azure Blockchain will be retired
