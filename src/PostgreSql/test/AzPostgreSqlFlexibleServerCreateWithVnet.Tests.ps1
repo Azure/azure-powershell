@@ -12,7 +12,6 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 
-$DEFAULT_DB_NAME = 'flexibleserverdb'
 $DELEGATION_SERVICE_NAME = "Microsoft.DBforPostgreSQL/flexibleServers"
 $DEFAULT_VNET_PREFIX = '10.0.0.0/16'
 $DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
@@ -21,16 +20,17 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
 
     function WaitServerDelete(){
         if ($TestMode -eq 'live') {
-            Start-Sleep -Seconds 450
+            Start-Sleep -Seconds 500
         }
     }
-    function ValidateSubnetVnet($Server, $VnetName, $SubnetName){
+    function ValidateSubnetVnet($Server, $VnetName, $SubnetName, $SubnetPrefix){
         $Vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $env.resourceGroup
         $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $Vnet
-            
-        $Server.DelegatedSubnetArgumentSubnetArmResourceId | Should -Be $Subnet.Id
+
+        $Server.NetworkDelegatedSubnetResourceId | Should -Be $Subnet.Id
         $Delegation = Get-AzDelegation -Name Microsoft.DBforPostgreSQL/flexibleServers -Subnet $Subnet
         $Delegation.ServiceName | Should -Be $DELEGATION_SERVICE_NAME
+        $Subnet.AddressPrefix | Should -Be $SubnetPrefix
     }
     
     function RemoveServerVnet($ServerName, $VnetName, $SubnetName){
@@ -44,36 +44,6 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
         Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName $env.resourceGroup -Force
     }
 
-    It 'NoArgumentsScenario' {
-        If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
-            {
-                $Server = New-AzPostgreSqlFlexibleServer
-                $Splits = $Server.Id -Split "/" 
-                $ResourceGroupName = $Splits[4]
-                $SubnetName = 'Subnet' + $Server.Name
-                $VnetName = 'VNET' + $Server.Name
-                $Vnet = Get-AzVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroupName
-                $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $Vnet
-
-                $Server.SkuName | Should -Be "Standard_D2s_v3"
-                $Server.SkuTier | Should -Be "GeneralPurpose"
-                $Server.StorageProfileStorageMb | Should -Be 131072
-                $Server.StorageProfileBackupRetentionDay | Should -Be 7
-                $Server.Location | Should -Be "East US"
-
-                $Vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName
-                $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $Vnet
-                    
-                $Server.DelegatedSubnetArgumentSubnetArmResourceId | Should -Be $Subnet.Id
-                $Delegation = Get-AzDelegation -Name $DELEGATION_SERVICE_NAME -Subnet $Subnet
-                $Delegation.ServiceName | Should -Be $DELEGATION_SERVICE_NAME
-                Remove-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $Server.Name
-                WaitServerDelete
-                Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName $ResourceGroupName -Force
-                Remove-AzResourceGroup -Name $ResourceGroupName
-            } | Should -Not -Throw
-        }
-    }
 
     It 'VnetNameScenario-ValidVnet' {
         If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
@@ -83,7 +53,7 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
                 $Server = New-AzPostgreSqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Vnet $Vnet.Name
                 
                 $SubnetName = 'Subnet' + $Server.Name
-                ValidateSubnetVnet $Server $env.VNetName $SubnetName
+                ValidateSubnetVnet $Server $env.VNetName $SubnetName $DEFAULT_SUBNET_PREFIX
                 RemoveServerVnet $env.flexibleServerName2 $env.VNetName $SubnetName
             } | Should -Not -Throw
         }
@@ -96,7 +66,7 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
                 $Server = New-AzPostgreSqlFlexibleServer -Location $env.location -Name $env.flexibleServerName3 -ResourceGroupName $env.resourceGroup -Vnet nonexistingvnetforpowershelltest
                 
                 $SubnetName = 'Subnet' + $Server.Name
-                ValidateSubnetVnet $Server nonexistingvnetforpowershelltest $SubnetName
+                ValidateSubnetVnet $Server nonexistingvnetforpowershelltest $SubnetName $DEFAULT_SUBNET_PREFIX
                 RemoveServerVnet $env.flexibleServerName3 nonexistingvnetforpowershelltest $SubnetName
             } | Should -Not -Throw
         }
@@ -112,7 +82,7 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
         }
     }
 
-    It 'VnetIdScenario-ValidVnet' {
+    It 'VnetIdScenario-ValidVnetNotExist' {
         If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
             {           
                 # valid vnet Id but the vnet doesn't exist
@@ -120,13 +90,13 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
                 $Server = New-AzPostgreSqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Vnet $VnetId
 
                 $SubnetName = 'Subnet' + $Server.Name
-                ValidateSubnetVnet $Server nonexistingvnetforpowershelltest $SubnetName
+                ValidateSubnetVnet $Server nonexistingvnetforpowershelltest $SubnetName $DEFAULT_SUBNET_PREFIX
                 RemoveServerVnet $env.flexibleServerName2 nonexistingvnetforpowershelltest $SubnetName
             } | Should -Not -Throw
         }
     }
 
-    It 'VnetIdScenario-ValidVnetNotExist' {
+    It 'VnetIdScenario-ValidVnet' {
         If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
             {
                 # valid vnet Id and the vnet exists (subnet does not exist) 
@@ -134,7 +104,7 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
                 $Server = New-AzPostgreSqlFlexibleServer -Location $env.location -Name $env.flexibleServerName3 -ResourceGroupName $env.resourceGroup -Vnet $Vnet.Id
                 
                 $SubnetName = 'Subnet' + $Server.Name
-                ValidateSubnetVnet $Server $env.VNetName $SubnetName
+                ValidateSubnetVnet $Server $env.VNetName $SubnetName $DEFAULT_SUBNET_PREFIX
                 RemoveServerVnet $env.flexibleServerName3 $env.VNetName $SubnetName
             } | Should -Not -Throw
         }
@@ -154,12 +124,14 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
         If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
             {
                 # valid subnet Id and the subnet exists without delegation
-                $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $DEFAULT_SUBNET_PREFIX
-                New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $DEFAULT_VNET_PREFIX -Subnet $Subnet -Force
+                $VnetPrefix = "172.1.0.0/16"
+                $SubnetPrefix = "172.1.0.0/24"
+                $Subnet = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName -AddressPrefix $VnetPrefix
+                New-AzVirtualNetwork -Name $env.VNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix $SubnetPrefix -Subnet $Subnet -Force
                 $SubnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($env.VNetName)" + "/subnets/$($env.SubnetName)"
                 $Server = New-AzPostgreSqlFlexibleServer -Location $env.location -Name $env.flexibleServerName2 -ResourceGroupName $env.resourceGroup -Subnet $SubnetId
                 
-                ValidateSubnetVnet $Server $env.VNetName $env.SubnetName
+                ValidateSubnetVnet $Server $env.VNetName $env.SubnetName $SubnetPrefix
                 RemoveServerVnet $env.flexibleServerName2 $env.VNetName $env.SubnetName
             } | Should -Not -Throw
         }
@@ -252,6 +224,7 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
             } | Should -Not -Throw
         }
     }
+
     It 'VnetSubnetScenario-ValidVnetSubnet' {
         If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
             {

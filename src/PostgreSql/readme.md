@@ -47,21 +47,18 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 542cfcc19172c7edec5d22b3af0ff7379b26ba12
+branch: d241e05b224891ddc0147544213d8edccf53f7d9
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/postgresql.json
   - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/ServerSecurityAlertPolicies.json
-  - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
+  - $(repo)/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json
 module-version: 0.1.0
 title: PostgreSQL 
 subject-prefix: 'PostgreSQL'
 
 directive:
-  - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
-    where: $
-    transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourceGroups\/\{resourceGroupName\}\/providers\/Microsoft\.DBForPostgreSql\/flexibleServers\/\{serverName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}")
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^CheckNameAvailability_Execute$/g, "NameAvailability_Test")
@@ -74,16 +71,19 @@ directive:
   - from: Microsoft.DBforPostgreSQL/stable/2017-12-01/postgresql.json
     where: $.definitions.VirtualNetworkRule
     transform: $['required'] = ['properties']
-  - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
+  - from: Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json
     where: $.paths..operationId
     transform: return $.replace(/^(Servers|ServerKeys)_/g, "flexible$1_")
-  - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
+  - from: Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json
     where: $.paths..operationId
     transform: return $.replace(/^(FirewallRules|Configurations|NameAvailabilities|LocationBasedCapabilities)_/g, "flexibleServer$1_")
-  - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
+  - from: Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json
     where: $.paths..operationId
     transform: return $.replace(/^VirtualNetworkSubnetUsage_Execute$/g,"flexibleServerVirtualNetworkSubnetUsage_Get")
-  - from: Microsoft.DBforPostgreSQL/preview/2020-02-14-preview/postgresql.json
+  - from: Microsoft.DBforPostgreSQL/stable/2021-06-01/Databases.json
+    where: $.paths..operationId
+    transform: return $.replace(/^(Databases)_/g, "flexibleServer$1_")
+  - from: Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json
     where: 
       verb: Restore$
       subject: ^FlexibleServer$
@@ -91,6 +91,10 @@ directive:
   - where:
       verb: Get$
       subject: ^FlexibleServerVirtualNetworkSubnetUsage$|^FlexibleServerLocationBasedCapability$
+    hide: true
+  - where:
+      verb: Execute$
+      subject: ^PrivateDnsZoneSuffix$
     hide: true
   - where:
       verb: Test$
