@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.WorkspaceParameterSetName,
-            Mandatory = true,
+            Mandatory = false,
             Position = 0,
             HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]

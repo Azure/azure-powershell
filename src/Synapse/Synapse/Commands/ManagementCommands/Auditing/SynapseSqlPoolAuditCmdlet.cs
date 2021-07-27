@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.SqlPoolParameterSetName,
-            Mandatory = true,
+            Mandatory = false,
             Position = 0,
             HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Synapse
             nameof(ResourceGroupName),
             nameof(WorkspaceName))]
         [ValidateNotNullOrEmpty]
+        [Alias("Name")]
         public override string SqlPoolName { get; set; }
 
         [Parameter(

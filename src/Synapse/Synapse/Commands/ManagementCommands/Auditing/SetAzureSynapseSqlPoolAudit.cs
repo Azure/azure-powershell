@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Models.Auditing;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.Synapse
         DefaultParameterSetName = DefinitionsCommon.SqlPoolParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
+    [Alias("Set-AzSynapseSqlPoolAudit")]
     public class SetAzureSynapseSqlPoolAudit : SynapseSqlPoolAuditCmdlet
     {
         [Parameter(

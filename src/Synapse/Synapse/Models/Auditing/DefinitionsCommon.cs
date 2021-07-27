@@ -21,10 +21,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models.Auditing
     {
         internal const string WhatIfParameterName = "WhatIf";
         internal const string ConfirmParameterName = "Confirm";
-        internal const string WorkspaceAuditCmdletsSuffix = "SqlAudit";
-        internal const string WorkspaceDevOpsAuditCmdletsSuffix = "WorkspaceSqlMSSupportAudit";
-        internal const string DatabaseAuditingCmdletsSuffix = "SqlDatabaseAuditing";
-        internal const string SqlPoolAuditCmdletsSuffix = "SqlPoolAudit";
+        internal const string WorkspaceAuditCmdletsSuffix = "SqlAuditSetting";
+        internal const string SqlPoolAuditCmdletsSuffix = "SqlPoolAuditSetting";
         internal const string BlobStorageParameterSetName = "DefaultParameterSet";
         internal const string BlobStorageByParentResourceParameterSetName = "BlobStorageByParentResourceSet";
         internal const string EventHubParameterSetName = "EventHubSet";
@@ -38,9 +36,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models.Auditing
         internal const string WorkspaceParameterSetName = "WorkspaceParameterSet";
         internal const string WorkspaceObjectParameterSetName = "WorkspaceObjectParameterSet";
         internal const string SQLSecurityAuditCategory = "SQLSecurityAuditEvents";
-        internal const string DevOpsAuditCategory = "DevOpsOperationsAudit";
         internal const string DiagnosticSettingsNamePrefixSQLSecurityAuditEvents = SQLSecurityAuditCategory + "_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
-        internal const string DiagnosticSettingsNamePrefixDevOpsOperationsAudit = DevOpsAuditCategory + "_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
         internal const string BlobStorageParameterName = "BlobStorage";
         internal static readonly string AuditLogsDestinationWasNotSpecifiedWarning = $"Audit logs destination was not specified, {BlobStorageParameterName} is the default destination.";
         internal static readonly Exception SetAuditingSettingsException = new Exception("Setting Auditing Settings failed.");

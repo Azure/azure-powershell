@@ -12,13 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Auditing.Model;
-using Microsoft.Azure.Commands.Sql.Auditing.Services;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Models.Auditing;
-using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
@@ -31,7 +27,8 @@ namespace Microsoft.Azure.Commands.Synapse
         DefaultParameterSetName = DefinitionsCommon.WorkspaceParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class SetAzureSynapseWorkspaceAudit : SetSynapseWorkspaceAuditCmdlet<ExtendedServerBlobAuditingPolicy, WorkspaceAuditModel, SqlAuditAdapter>
+    [Alias("Set-AzSynapseSqlAudit")]
+    public class SetAzureSynapseWorkspaceAudit : SetSynapseWorkspaceAuditCmdlet<ExtendedServerBlobAuditingPolicy, WorkspaceAuditModel, SynapseWorkspaceAuditAdapter>
     {
         [Parameter(
             Mandatory = false,
@@ -86,9 +83,9 @@ namespace Microsoft.Azure.Commands.Synapse
             return model;
         }
 
-        protected override SqlAuditAdapter InitModelAdapter()
+        protected override SynapseWorkspaceAuditAdapter InitModelAdapter()
         {
-            return new SqlAuditAdapter(DefaultProfile.DefaultContext, RoleAssignmentId);
+            return new SynapseWorkspaceAuditAdapter(DefaultProfile.DefaultContext, RoleAssignmentId);
         }
     }
 }

@@ -31,6 +31,9 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using NewStorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01;
+using Microsoft.Azure.Management.OperationalInsights;
+using Microsoft.Azure.Management.EventHub;
 
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
@@ -50,6 +53,12 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         public SynapseClient SynapseClient { get; private set; }
 
         public StorageManagementClient StorageManagementClient { get; private set; }
+
+        public MonitorManagementClient MonitorManagementClient { get; private set; }
+
+        public OperationalInsightsManagementClient OperationalInsightsManagementClient { get; private set; }
+
+        public EventHubManagementClient EventHubManagementClient { get; private set; }
 
         public static SynapseTestBase NewInstance => new SynapseTestBase();
 
@@ -134,12 +143,18 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
             SynapseClient = GetSynapseClient(context);
             StorageManagementClient = GetStorageManagementClient(context);
             NewResourceManagementClient = GetResourceManagementClient(context);
+            MonitorManagementClient = GetMonitorManagementClient(context);
+            OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
+            EventHubManagementClient = GetEventHubManagementClient(context);
             _helper.SetupManagementClients(
                 SynapseManagementClient,
                 SynapseSqlV3ManagementClient,
                 SynapseClient,
                 StorageManagementClient,
                 NewResourceManagementClient,
+                MonitorManagementClient,
+                OperationalInsightsManagementClient,
+                EventHubManagementClient,
                 GetNewSynapseManagementClient(context)
             );
 
@@ -180,6 +195,21 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         protected static SynapseSqlV3ManagementClient GetSynapseSqlV3ManagementClient(MockContext context)
         {
             return context.GetServiceClient<SynapseSqlV3ManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected static MonitorManagementClient GetMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected static OperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected static EventHubManagementClient GetEventHubManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected static SynapseClient GetSynapseClient(MockContext context)

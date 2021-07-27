@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Synapse
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + DefinitionsCommon.SqlPoolAuditCmdletsSuffix,
         DefaultParameterSetName = DefinitionsCommon.SqlPoolParameterSetName),
         OutputType(typeof(SqlPoolAuditModel))]
+    [Alias("Get-AzSynapseSqlPoolAudit")]
     public class GetAzureSynapseSqlPoolAudit : SynapseSqlPoolAuditCmdlet
     {
     }

@@ -18,11 +18,12 @@ using Microsoft.Azure.Commands.Synapse.Models.Auditing;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(
-        VerbsCommon.Remove,
+        VerbsCommon.Reset,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + DefinitionsCommon.SqlPoolAuditCmdletsSuffix,
         DefaultParameterSetName = DefinitionsCommon.SqlPoolParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
+    [Alias("Remove-AzSynapseSqlPoolAudit")]
     public class RemoveAzureSynapseSqlPoolAudit : SynapseSqlPoolAuditCmdlet
     {
         protected override SqlPoolAuditModel PersistChanges(SqlPoolAuditModel entity)

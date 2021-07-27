@@ -11,22 +11,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using Microsoft.Azure.Commands.Sql.Auditing.Model;
-using Microsoft.Azure.Commands.Sql.Auditing.Services;
+
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Models.Auditing;
-using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(
-        VerbsCommon.Remove,
+        VerbsCommon.Reset,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + DefinitionsCommon.WorkspaceAuditCmdletsSuffix,
         DefaultParameterSetName = DefinitionsCommon.WorkspaceParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
+    [Alias("Remove-AzSynapseSqlAudit")]
     public class RemoveAzureSynapseWorkspaceAudit : RemoveSynapseWorkspaceAuditCmdlet<ExtendedServerBlobAuditingPolicy, WorkspaceAuditModel, SynapseWorkspaceAuditAdapter>
     {
         protected override SynapseWorkspaceAuditAdapter InitModelAdapter()

@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Synapse
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + DefinitionsCommon.WorkspaceAuditCmdletsSuffix,
         DefaultParameterSetName = DefinitionsCommon.WorkspaceParameterSetName),
         OutputType(typeof(WorkspaceAuditModel))]
+    [Alias("Get-AzSynapseSqlAudit")]
     public class GetAzureSynapseWorkspaceAudit : SynapseWorkspaceAuditCmdlet<ExtendedServerBlobAuditingPolicy, WorkspaceAuditModel, SynapseWorkspaceAuditAdapter>
     {
         protected override SynapseWorkspaceAuditAdapter InitModelAdapter()
