@@ -462,11 +462,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 if (!string.IsNullOrEmpty(parameters.TemplateFile))
                 {
-                    deployment.Properties.Template = ParseTemplate(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
+                    // NOTE(jcotillo): JsonExtensions.FromJson<> extension uses a custom serialization settings
+                    // that preserves DateTime values as string (DateParseHandling = DateParseHandling.None),
+                    // plus other custom settings (see: JsonExtensions.JsonObjectTypeSerializer)
+                    deployment.Properties.Template =
+                        FileUtilities.DataStore.ReadFileAsStream(parameters.TemplateFile).FromJson<JObject>();
                 }
                 else
                 {
-                    deployment.Properties.Template = ParseTemplate(PSJsonSerializer.Serialize(parameters.TemplateObject));
+                    deployment.Properties.Template = 
+                        PSJsonSerializer.Serialize(parameters.TemplateObject).FromJson<JObject>();
                 }
             }
 
