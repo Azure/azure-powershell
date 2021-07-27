@@ -12,6 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzConfluentMarketplaceAgreement' {
+    # New-AzConfluentMarketplaceAgreeemt has  be removed, because it cand be replace by Set-AzMarketplaceTerms (Az.MarketplaceOrdering).
     It 'CreateExpanded' {
         { New-AzConfluentMarketplaceAgreement -Accepted } | Should -Not -Throw
     }

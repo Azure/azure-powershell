@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Confluent.private.dll'
   FormatsToProcess = './Az.Confluent.format.ps1xml'
-  FunctionsToExport = 'Get-AzConfluentMarketplaceAgreement', 'Get-AzConfluentOrganization', 'New-AzConfluentMarketplaceAgreement', 'New-AzConfluentOrganization', 'Remove-AzConfluentOrganization', 'Update-AzConfluentOrganization', '*'
+  FunctionsToExport = 'Get-AzConfluentMarketplaceAgreement', 'Get-AzConfluentOrganization', 'New-AzConfluentOrganization', 'Remove-AzConfluentOrganization', 'Update-AzConfluentOrganization', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

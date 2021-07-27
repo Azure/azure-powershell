@@ -59,6 +59,12 @@ title: Confluent
 subject-prefix: $(service-name)
 
 directive:
+  # New-AzConfluentMarketplaceAgreeemt has  be removed, because it cand be replace by Set-AzMarketplaceTerms (Az.MarketplaceOrdering).
+  - where:
+      verb: New
+      subject: MarketplaceAgreement
+    remove: true
+
   - where:
       subject: OrganizationOperation
     hide: true
