@@ -173,9 +173,6 @@
             <Label>ConsortiumManagementAccountAddress</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ConsortiumManagementAccountPassword</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ConsortiumMemberDisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -183,9 +180,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Dns</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Password</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Protocol</Label>
@@ -213,9 +207,6 @@
                 <PropertyName>ConsortiumManagementAccountAddress</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ConsortiumManagementAccountPassword</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ConsortiumMemberDisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -223,9 +214,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Dns</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Password</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Protocol</PropertyName>
@@ -241,34 +229,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>UserName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.BlockchainMemberPropertiesUpdate</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.BlockchainMemberPropertiesUpdate</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Password</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ConsortiumManagementAccountPassword</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Password</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ConsortiumManagementAccountPassword</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -872,9 +832,6 @@
             <Label>Dns</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Password</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -891,9 +848,6 @@
                 <PropertyName>Dns</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Password</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -901,28 +855,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>UserName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.TransactionNodePropertiesUpdate</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.TransactionNodePropertiesUpdate</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Password</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Password</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

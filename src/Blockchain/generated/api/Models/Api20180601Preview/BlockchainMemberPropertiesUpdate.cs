@@ -15,19 +15,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         private Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdate __transactionNodePropertiesUpdate = new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.TransactionNodePropertiesUpdate();
 
         /// <summary>Backing field for <see cref="ConsortiumManagementAccountPassword" /> property.</summary>
-        private string _consortiumManagementAccountPassword;
+        private System.Security.SecureString _consortiumManagementAccountPassword;
 
         /// <summary>Sets the managed consortium management account password.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Owned)]
-        public string ConsortiumManagementAccountPassword { get => this._consortiumManagementAccountPassword; set => this._consortiumManagementAccountPassword = value; }
+        public System.Security.SecureString ConsortiumManagementAccountPassword { get => this._consortiumManagementAccountPassword; set => this._consortiumManagementAccountPassword = value; }
 
         /// <summary>Gets or sets the firewall rules.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[] FirewallRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)__transactionNodePropertiesUpdate).FirewallRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)__transactionNodePropertiesUpdate).FirewallRule = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[] FirewallRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)__transactionNodePropertiesUpdate).FirewallRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)__transactionNodePropertiesUpdate).FirewallRule = value ?? null /* arrayOf */; }
 
         /// <summary>Sets the transaction node dns endpoint basic auth password.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inherited)]
-        public string Password { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)__transactionNodePropertiesUpdate).Password; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)__transactionNodePropertiesUpdate).Password = value; }
+        public System.Security.SecureString Password { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)__transactionNodePropertiesUpdate).Password; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal)__transactionNodePropertiesUpdate).Password = value ?? null; }
 
         /// <summary>Creates an new <see cref="BlockchainMemberPropertiesUpdate" /> instance.</summary>
         public BlockchainMemberPropertiesUpdate()
@@ -58,8 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         ReadOnly = false,
         Description = @"Sets the managed consortium management account password.",
         SerializedName = @"consortiumManagementAccountPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string ConsortiumManagementAccountPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString ConsortiumManagementAccountPassword { get; set; }
 
     }
     /// Update the payload of the blockchain member properties for a blockchain member.
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNodePropertiesUpdateInternal
     {
         /// <summary>Sets the managed consortium management account password.</summary>
-        string ConsortiumManagementAccountPassword { get; set; }
+        System.Security.SecureString ConsortiumManagementAccountPassword { get; set; }
 
     }
 }

@@ -11,8 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Blockchain/blockchainMembers/{blockchainMemberName}/transactionNodes/{transactionNodeName}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzBlockchainTransactionNode_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.CmdletBreakingChange(ChangeDescription="On September 10, 2021, Azure Blockchain will be retired.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Description(@"Update the transaction node.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Generated]
@@ -101,8 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
         ReadOnly = false,
         Description = @"Sets the transaction node dns endpoint basic auth password.",
         SerializedName = @"password",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Password { get => TransactionNodeBody.Password ?? null; set => TransactionNodeBody.Password = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString Password { get => TransactionNodeBody.Password ?? null; set => TransactionNodeBody.Password = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.HttpPipeline" /> that the remote call will use.
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Events.Debug:

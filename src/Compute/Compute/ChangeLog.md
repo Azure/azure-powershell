@@ -30,7 +30,7 @@
     - `New-AzCapacityReservation`
     - `Remove-AzCapacityReservation`
     - `Get-AzCapacityReservation`
-* Added a new parameter `-CapacityReservationGroupId` to the folloinwg cmdlets:
+* Added a new parameter `-CapacityReservationGroupId` to the following cmdlets:
     - `New-AzVm`
     - `New-AzVmConfig`
     - `New-AzVmss`

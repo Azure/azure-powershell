@@ -171,6 +171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.PowerShell
 
         public string[] Aliases { get; }
         public bool HasValidateNotNull { get; }
+        public bool HasAllowEmptyArray { get; }
         public CompleterInfo CompleterInfo { get; }
         public DefaultInfo DefaultInfo { get; }
         public bool HasDefaultInfo { get; }
@@ -205,6 +206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.PowerShell
 
             Aliases = Parameters.SelectMany(p => p.Attributes).ToAliasNames().ToArray();
             HasValidateNotNull = Parameters.SelectMany(p => p.Attributes.OfType<ValidateNotNullAttribute>()).Any();
+            HasAllowEmptyArray = Parameters.SelectMany(p => p.Attributes.OfType<AllowEmptyCollectionAttribute>()).Any();
             CompleterInfo = Parameters.Select(p => p.CompleterInfoAttribute).FirstOrDefault()?.ToCompleterInfo()
                             ?? Parameters.Select(p => p.ArgumentCompleterAttribute).FirstOrDefault()?.ToCompleterInfo();
             DefaultInfo = Parameters.Select(p => p.DefaultInfoAttribute).FirstOrDefault()?.ToDefaultInfo(this)
@@ -363,7 +365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.PowerShell
         public string OnlineVersion { get; }
         public string[] RelatedLinks { get; }
 
-        private const string HelpLinkPrefix = @"https://docs.microsoft.com/en-us/powershell/module/";
+        private const string HelpLinkPrefix = @"https://docs.microsoft.com/powershell/module/";
 
         public CommentInfo(VariantGroup variantGroup)
         {

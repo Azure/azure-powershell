@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>The consolidated health.</summary>
+    /// <summary>The health.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealthTypeConverter))]
     public partial struct ProtectionHealth :
         System.Management.Automation.IArgumentCompleter
