@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Func<IEngine, SubResource> proximityPlacementGroup,
             string hostId,
             string hostGroupId,
+            string capacityReservationGroupId,
             string VmssId,
             string priority,
             string evictionPolicy,
@@ -105,7 +106,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null
+                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                    CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                    {
+                        CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                    }
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -123,6 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Func<IEngine, SubResource> proximityPlacementGroup,
             string hostId,
             string hostGroupId,
+            string capacityReservationGroupId,
             string VmssId,
             string priority,
             string evictionPolicy,
@@ -171,7 +177,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null
+                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                    CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                    {
+                        CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                    }
                 });
     }
 }
