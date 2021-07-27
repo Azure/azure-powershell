@@ -412,15 +412,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return new List<DeploymentOperation>();
         }
 
-        private JObject ParseTemplate(string template)
-        {
-            using (var reader = new JsonTextReader(new StringReader(template)))
-            {
-                reader.DateParseHandling = DateParseHandling.None;
-                return JObject.Load(reader);
-            }
-        }
-
         private Deployment CreateBasicDeployment(PSDeploymentCmdletParameters parameters, DeploymentMode deploymentMode, string debugSetting)
         {
             Deployment deployment = new Deployment
