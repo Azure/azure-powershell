@@ -19,6 +19,7 @@ FIREWALLRULE <IFirewallRule[]>: Gets or sets firewall rules
 https://docs.microsoft.com/powershell/module/az.blockchain/new-azblockchainmember
 #>
 function New-AzBlockchainMember {
+[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.CmdletBreakingChangeAttribute(ChangeDescription="On September 10, 2021, Azure Blockchain will be retired.")]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
