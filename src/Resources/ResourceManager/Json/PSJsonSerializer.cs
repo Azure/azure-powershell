@@ -55,7 +55,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
                 // NOTE(jcotillo): JsonExtensions.ToJson() extension uses a custom serialization settings
                 // that preserves DateTime values as string (DateParseHandling = DateParseHandling.None),
                 // plus other custom settings.
-                //return JsonConvert.SerializeObject(processed);
                 return processed.ToJson();
             }
             catch (OperationCanceledException)
