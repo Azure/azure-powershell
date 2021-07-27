@@ -289,6 +289,17 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         public string HostGroupId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -425,6 +436,7 @@ namespace Microsoft.Azure.Commands.Compute
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
                         hostGroupId: _cmdlet.HostGroupId,
+                        capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
                         VmssId: _cmdlet.VmssId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
@@ -455,6 +467,7 @@ namespace Microsoft.Azure.Commands.Compute
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
                         hostGroupId: _cmdlet.HostGroupId,
+                        capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
                         VmssId: _cmdlet.VmssId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
@@ -485,7 +498,7 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new Parameters(this, client, resourceClient);
 
             // Information message if the default Size value is used. 
-            if (!this.IsBound(Size))
+            if (!this.IsParameterBound(c => c.Size))
             {
                 WriteInformation("No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.", new string[] { "PSHOST" });
             }
@@ -631,7 +644,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Priority = this.VM.Priority,
                         EvictionPolicy = this.VM.EvictionPolicy,
                         BillingProfile = this.VM.BillingProfile,
-                        SecurityProfile = this.VM.SecurityProfile
+                        SecurityProfile = this.VM.SecurityProfile,
+                        CapacityReservation = this.VM.CapacityReservation
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;

@@ -2711,6 +2711,10 @@
                 <PropertyName>VirtualNetworkIdText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Subnet</Label>
+                <PropertyName>SubnetIdText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>LoadBalancerFrontendIPConfiguration</Label>
                 <PropertyName>LoadBalancerFrontendIPConfigurationIdText</PropertyName>
               </ListItem>

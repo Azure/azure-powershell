@@ -20,7 +20,8 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  [-ReplicationObject <PSNetAppFilesReplicationObject>] [-Snapshot <PSNetAppFilesVolumeSnapshot>]
  [-SnapshotPolicyId <String>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>]
  [-SnapshotDirectoryVisible] [-BackupId <String>] [-SecurityStyle <String>] [-ThroughputMibps <Double>]
- [-KerberosEnabled] [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-Tag <Hashtable>]
+ [-KerberosEnabled] [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-CoolAccess]
+ [-CoolnessPeriod <Int32>] [-UnixPermissions <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +32,8 @@ New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String
  [-ReplicationObject <PSNetAppFilesReplicationObject>] [-Snapshot <PSNetAppFilesVolumeSnapshot>]
  [-SnapshotPolicyId <String>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>]
  [-SnapshotDirectoryVisible] [-SecurityStyle <String>] [-ThroughputMibps <Double>] [-KerberosEnabled]
- [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
+ [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-CoolAccess] [-CoolnessPeriod <Int32>]
+ [-UnixPermissions <String>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -99,6 +101,36 @@ Backup ID. UUID v4 or resource identifier used to identify the Backup
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CoolAccess
+Specifies whether Cool Access(tiering) is enabled for the volume (default false).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CoolnessPeriod
+Specifies the number of days after which data that is not accessed by clients will be tiered (minimum 7, maximum 63).
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -443,6 +475,21 @@ Maximum throughput in Mibps that can be achieved by this volume
 
 ```yaml
 Type: System.Nullable`1[System.Double]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UnixPermissions
+UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 case RestoreFromRestorePointIdByParentObjectParameterSet:
                     createParams.CreateMode = SynapseSqlPoolCreateMode.PointInTimeRestore;
                     createParams.SourceDatabaseId = this.ResourceId;
-                    createParams.RestorePointInTime = this.RestorePoint.ToUniversalTime().ToString("o");
+                    createParams.RestorePointInTime = this.RestorePoint;
                     createParams.Sku = new Sku
                     {
                         Name = this.PerformanceLevel

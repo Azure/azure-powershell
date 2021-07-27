@@ -15,14 +15,11 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {

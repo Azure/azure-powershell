@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-               return this.GetTags();
+                return this.GetTags();
             }
         }
     }

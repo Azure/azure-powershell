@@ -22,6 +22,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Insights.TransitionalClasses;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
@@ -63,6 +64,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Gets or set the resource group name
         /// </summary>
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceGroup")]
@@ -142,6 +144,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
 
                 this.Location = this.InputObject.Location;
                 this.Name = this.InputObject.Name;
+                this.ResourceGroupName = this.ResourceGroupName ?? new ResourceIdentifier(this.InputObject.Id).ResourceGroupName;
 
                 // The semantics is if AutoscaleProfiles is given it will replace the existing Profiles
                 this.AutoscaleProfile = this.AutoscaleProfile ?? property.Profiles.ToList();

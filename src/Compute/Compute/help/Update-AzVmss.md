@@ -32,8 +32,8 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-TerminateScheduledEvents <Boolean>]
  [-TimeZone <String>] [-UltraSSDEnabled <Boolean>] [-UpgradePolicyMode <UpgradeMode>]
- [-VhdContainer <String[]>] [-AsJob] [-EncryptionAtHost <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob] [-EncryptionAtHost <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -55,8 +55,8 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-TerminateScheduledEvents <Boolean>]
  [-TimeZone <String>] [-UltraSSDEnabled <Boolean>] [-UpgradePolicyMode <UpgradeMode>]
- [-VhdContainer <String[]>] [-AsJob] [-EncryptionAtHost <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob] [-EncryptionAtHost <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,6 +135,21 @@ Accept wildcard characters: False
 
 ### -BootDiagnosticsStorageUri
 URI of the storage account to use for placing the console output and screenshot.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapacityReservationGroupId
+Id of the capacity reservation Group that is used to allocate.
 
 ```yaml
 Type: System.String

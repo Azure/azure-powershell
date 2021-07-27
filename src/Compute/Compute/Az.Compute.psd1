@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.5.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Compute.dll', 
@@ -171,7 +171,9 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Get-AzDiskEncryptionSetAssociatedResource', 
                'Start-AzVmssRollingExtensionUpgrade', 'Invoke-AzVmInstallPatch', 
                'Get-AzSshKey', 'Remove-AzSshkey', 'Update-AzSshKey', 'New-AzSshKey', 
-               'New-AzDiskPurchasePlanConfig', 'Set-AzDiskSecurityProfile'
+               'New-AzDiskPurchasePlanConfig', 'Set-AzDiskSecurityProfile', 'New-AzCapacityReservationGroup',
+               'Remove-AzCapacityReservationGroup', 'Get-AzCapacityReservationGroup', 'New-AzCapacityReservation',
+               'Get-AzCapacityReservation', 'Remove-AzCapacityReservation'
 
 # Variables to export from this module
 # VariablesToExport = @()

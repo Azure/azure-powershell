@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
@@ -25,6 +26,107 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     /// </summary>
     public class RecoveryPointConversions
     {
+
+        /// <summary>
+        /// filter RPs based on tier
+        /// </summary>
+        /// <param name="recoveryPointList"></param>
+        /// <param name="Tier"></param>
+        /// <returns></returns>
+        public static List<RecoveryPointBase> FilterRPsBasedOnTier(List<RecoveryPointBase> recoveryPointList, RecoveryPointTier Tier)
+        {
+            if (Tier != 0)
+            {
+                recoveryPointList = recoveryPointList.Where(
+                recoveryPoint =>
+                {
+                    if (recoveryPoint.GetType() == typeof(AzureVmRecoveryPoint))
+                    {
+                        return ((AzureVmRecoveryPoint)recoveryPoint).RecoveryPointTier == Tier;
+                    }
+
+                    if (recoveryPoint.GetType() == typeof(AzureWorkloadRecoveryPoint))
+                    {
+                        return ((AzureWorkloadRecoveryPoint)recoveryPoint).RecoveryPointTier == Tier;
+                    }
+
+                    return false;
+                }).ToList();
+            }
+            return recoveryPointList;
+        }
+
+        /// <summary>
+        /// filter move readness based on target tier
+        /// </summary>
+        /// <param name="recoveryPointList"></param>
+        /// <param name="TargetTier"></param>
+        /// <param name="IsReadyForMove"></param>
+        /// <returns></returns>
+        public static List<RecoveryPointBase> CheckRPMoveReadiness(List<RecoveryPointBase> recoveryPointList, RecoveryPointTier targetTier, bool isReadyForMove)
+        {
+            if (recoveryPointList != null && targetTier != 0)   // if TargetTier and IsReadyForMove params are present 
+            {
+                if ((recoveryPointList[0].GetType() == typeof(AzureVmRecoveryPoint) && ((AzureVmRecoveryPoint)recoveryPointList[0]).RecoveryPointMoveReadinessInfo == null) 
+                   || (recoveryPointList[0].GetType() == typeof(AzureWorkloadRecoveryPoint) && ((AzureWorkloadRecoveryPoint)recoveryPointList[0]).RecoveryPointMoveReadinessInfo == null))
+                {
+                    throw new ArgumentException(Resources.MoveReadinessInfoUndefined);
+                }
+
+                recoveryPointList = recoveryPointList.Where(
+                recoveryPoint =>
+                {
+                    if (targetTier == RecoveryPointTier.VaultArchive)
+                    {
+                        if (recoveryPoint.GetType() == typeof(AzureVmRecoveryPoint) && 
+                            ((AzureVmRecoveryPoint)recoveryPoint).RecoveryPointMoveReadinessInfo.ContainsKey(ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()))
+                        {
+                            return (((AzureVmRecoveryPoint)recoveryPoint).RecoveryPointMoveReadinessInfo[ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()].IsReadyForMove == isReadyForMove);
+                        }
+
+                        if (recoveryPoint.GetType() == typeof(AzureWorkloadRecoveryPoint) &&
+                            ((AzureWorkloadRecoveryPoint)recoveryPoint).RecoveryPointMoveReadinessInfo.ContainsKey(ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()))
+                        {
+                            return (((AzureWorkloadRecoveryPoint)recoveryPoint).RecoveryPointMoveReadinessInfo[ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()].IsReadyForMove == isReadyForMove);
+                        }
+                        else
+                        {
+                            throw new ArgumentException(Resources.ArchiveNotSupported);
+                        }
+                    }
+
+                    return false;
+                }).ToList();
+            }
+            return recoveryPointList;
+        }
+
+
+        /// <summary>
+        /// Gets Service Client Recovery Point Tier
+        /// </summary>
+        public static ServiceClientModel.RecoveryPointTierType GetServiceClientRecoveryPointTier(RecoveryPointTier rpTier)
+        {
+            ServiceClientModel.RecoveryPointTierType recoveryPointTierType = ServiceClientModel.RecoveryPointTierType.Invalid;
+
+            switch (rpTier)
+            {
+                case RecoveryPointTier.VaultArchive:
+                    recoveryPointTierType = ServiceClientModel.RecoveryPointTierType.ArchivedRP;
+                    break;
+                case RecoveryPointTier.VaultStandard:
+                    recoveryPointTierType = ServiceClientModel.RecoveryPointTierType.HardenedRP;
+                    break;
+                case RecoveryPointTier.Snapshot:
+                    recoveryPointTierType = ServiceClientModel.RecoveryPointTierType.InstantRP;
+                    break;
+                default:
+                    break;
+            }
+
+            return recoveryPointTierType;
+        }
+
         /// <summary>
         /// Helper function to convert ps recovery points list model from service response.
         /// </summary>
@@ -168,16 +270,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 bool isInstantRecoverable = false;
                 bool isArchived = false;
                 bool isRehydrated = false;
-
-                foreach (ServiceClientModel.RecoveryPointTierInformation tierInfo in recoveryPoint.RecoveryPointTierDetails)
+                                
+                foreach(ServiceClientModel.RecoveryPointTierInformation tierInfo in recoveryPoint.RecoveryPointTierDetails)
                 {
                     if (tierInfo.Status == ServiceClientModel.RecoveryPointTierStatus.Rehydrated)
                     {
-                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.ArchivedRP)
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.ArchivedRP) 
                         {
                             isRehydrated = true;
 
-                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? DateTime.Parse(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;
+                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? DateTime.Parse(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;                            
                         }
                     }
 
@@ -206,7 +308,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     rpBase.RecoveryPointTier = RecoveryPointTier.SnapshotAndVaultStandard;
                 }
-                else if (isInstantRecoverable && isArchived)
+                else if(isInstantRecoverable && isArchived)
                 {
                     rpBase.RecoveryPointTier = RecoveryPointTier.SnapshotAndVaultArchive;
                 }
@@ -224,6 +326,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
             }
 
+            if(recoveryPoint.RecoveryPointMoveReadinessInfo != null)
+            {
+                rpBase.RecoveryPointMoveReadinessInfo = new Dictionary<string, RecoveryPointMoveReadinessInfo>();
+
+                foreach (var moveInfo in recoveryPoint.RecoveryPointMoveReadinessInfo)
+                {
+                    RecoveryPointMoveReadinessInfo AzureVmMoveInfo = new RecoveryPointMoveReadinessInfo();
+                    AzureVmMoveInfo.IsReadyForMove = moveInfo.Value.IsReadyForMove;
+                    AzureVmMoveInfo.AdditionalInfo = moveInfo.Value.AdditionalInfo;
+
+                    rpBase.RecoveryPointMoveReadinessInfo.Add(moveInfo.Key, AzureVmMoveInfo);
+                }
+            }
 
             if (rpBase.EncryptionEnabled && recoveryPoint.KeyAndSecret != null)
             {
@@ -313,8 +428,86 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 RecoveryPointType = recoveryPoint.Type,
                 Id = rp.Id,
                 WorkloadType = item.WorkloadType,
-                DataDirectoryPaths = recoveryPoint.ExtendedInfo != null ? recoveryPoint.ExtendedInfo.DataDirectoryPaths : null
+                DataDirectoryPaths = recoveryPoint.ExtendedInfo != null ? recoveryPoint.ExtendedInfo.DataDirectoryPaths : null,
+                RehydrationExpiryTime = (DateTime?)null
             };
+
+            if (recoveryPoint.RecoveryPointTierDetails != null)
+            {
+                bool isHardenedRP = false;
+                bool isInstantRecoverable = false;
+                bool isArchived = false;
+                bool isRehydrated = false;
+
+                foreach (ServiceClientModel.RecoveryPointTierInformation tierInfo in recoveryPoint.RecoveryPointTierDetails)
+                {
+                    if (tierInfo.Status == ServiceClientModel.RecoveryPointTierStatus.Rehydrated)
+                    {
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.ArchivedRP)
+                        {
+                            isRehydrated = true;
+                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? DateTime.Parse(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;                            
+                        }
+                    }
+
+                    if (tierInfo.Status == ServiceClientModel.RecoveryPointTierStatus.Valid)
+                    {
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.InstantRP)
+                        {
+                            isInstantRecoverable = true;
+                        }
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.HardenedRP)
+                        {
+                            isHardenedRP = true;
+                        }
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.ArchivedRP)
+                        {
+                            isArchived = true;
+                        }
+                    }
+                }
+
+                if ((isHardenedRP && isArchived) || (isRehydrated))
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.VaultStandardRehydrated;
+                }
+                else if (isInstantRecoverable && isHardenedRP)
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.SnapshotAndVaultStandard;
+                }
+                else if (isInstantRecoverable && isArchived)
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.SnapshotAndVaultArchive;
+                }
+                else if (isArchived)
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.VaultArchive;
+                }
+                else if (isInstantRecoverable)
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.Snapshot;
+                }
+                else if (isHardenedRP)
+                {
+                    rpBase.RecoveryPointTier = RecoveryPointTier.VaultStandard;
+                }
+            }
+
+
+            if (recoveryPoint.RecoveryPointMoveReadinessInfo != null)
+            {
+                rpBase.RecoveryPointMoveReadinessInfo = new Dictionary<string, RecoveryPointMoveReadinessInfo>();
+
+                foreach (var moveInfo in recoveryPoint.RecoveryPointMoveReadinessInfo)
+                {
+                    RecoveryPointMoveReadinessInfo AzureVmMoveInfo = new RecoveryPointMoveReadinessInfo();
+                    AzureVmMoveInfo.IsReadyForMove = moveInfo.Value.IsReadyForMove;
+                    AzureVmMoveInfo.AdditionalInfo = moveInfo.Value.AdditionalInfo;
+
+                    rpBase.RecoveryPointMoveReadinessInfo.Add(moveInfo.Key, AzureVmMoveInfo);
+                }
+            }
+
             return rpBase;
         }
 

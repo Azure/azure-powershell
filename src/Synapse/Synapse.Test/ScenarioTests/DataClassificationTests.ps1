@@ -205,7 +205,7 @@ function Remove-DataClassificationTestEnvironment ($testSuffix)
 .SYNOPSIS
 Creates the test environment needed to perform the tests
 #>
-function Create-SqlDataClassificationTestEnvironment ($testSuffix, $location = "West Central US")
+function Create-SqlDataClassificationTestEnvironment ($testSuffix, $location = "canadacentral")
 {
 	$params = Get-DataClassificationTestEnvironmentParameters $testSuffix
 	

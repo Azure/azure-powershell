@@ -30,7 +30,7 @@ New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <Stri
 
 ## DESCRIPTION
 Creates a new Template Spec version with the specified ARM Template content. The content can either come from a raw 
-JSON string (using **FromJsonStringParameterSet** parameter set) or from a specified JSON file
+JSON string (using **FromJsonStringParameterSet** parameter set) or from a specified JSON/Bicep file
 (using **FromJsonFileParameterSet** parameter set).  
 
 If the root Template Spec does not already exist it will be created along with the Template Spec version. If 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateFile
-The file path to the local Azure Resource Manager template JSON file.
+The file path to the local Azure Resource Manager template JSON/Bicep file.
 
 ```yaml
 Type: System.String

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Add-AzWebAppAccessRestrictionRule` failing when users does not have permissions to get Service Tag list #15316 and #14862
 
 ## Version 2.8.0
 * Fixed `Import-AzWebAppKeyVaultCertificate` to support ServerFarmId [#15091] 
