@@ -76,7 +76,7 @@ JSON string (using **UpdateVersionByNameFromJsonParameterSet** parameter set) or
 
 ## EXAMPLES
 
-### Example 1:
+### Example 1
 ```powershell
 PS C:\> $templateJson = @"
 {
@@ -99,7 +99,7 @@ do not already exist they will be created.
 * The ARM Template in the example is a no-op as it contains no actual resources.
 * Location is only required when the Template Spec does not already exist
 
-### Example 2:
+### Example 2
 ```powershell
 PS C:\> Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateFile 'myTemplateContent.json'
 ```
@@ -110,7 +110,7 @@ root Template Spec and/or version do not already exist they will be created.
 
 **Note:** Location is only required when the Template Spec does not already exist
 
-### Example 3:
+### Example 3
 ```powershell
 PS C:\> Set-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec'  -Location 'West US' -Description 'My updated Template Spec'
 ```
