@@ -423,6 +423,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 //.ForMember(dest => dest.PrimaryKey, opt => opt.MapFrom(src => src.PrimaryKey))
                 //.ForMember(dest => dest.SecondaryKey, opt => opt.MapFrom(src => src.SecondaryKey));
 
+                cfg
+                    .CreateMap<AccessInformationSecretsContract, PsApiManagementAccessInformation>()
+                    .ForMember(dest => dest.Enabled, opt => opt.MapFrom(src => src.Enabled))
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.PrimaryKey, opt => opt.MapFrom(src => src.PrimaryKey))
+                    .ForMember(dest => dest.SecondaryKey, opt => opt.MapFrom(src => src.SecondaryKey));
+
                 cfg.CreateMap<TenantConfigurationSyncStateContract, PsApiManagementTenantConfigurationSyncState>();
 
                 cfg
@@ -3194,7 +3201,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         //replace with listsecret
         public PsApiManagementAccessInformation GetTenantGitAccessInformation(PsApiManagementContext context)
         {
-            var response = Client.TenantAccess.Get(
+            var response = Client.TenantAccess.ListSecrets(
                 context.ResourceGroupName,
                 context.ServiceName,
                 "gitaccess");
