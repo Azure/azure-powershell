@@ -30,8 +30,8 @@ Az.Migrate
 Az.MonitoringSolutions
 Az.MySql
 Az.Portal
-Az.PostgreSql
 Az.PostgreSQL
+Az.PostgreSql
 Az.ProviderHub
 Az.RedisEnterpriseCache
 Az.ResourceMover
