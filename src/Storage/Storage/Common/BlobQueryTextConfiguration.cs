@@ -23,8 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     public enum BlobQueryConfigType
     {
         Csv,
-        Json,
-        Parquet
+        Json
     }
 
     /// <summary>
@@ -33,6 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     public abstract class PSBlobQueryTextConfiguration
     {
         public BlobQueryConfigType Type { get; set; }
+        public string RecordSeparator { get; set; }
 
         public BlobQueryTextOptions ParseBlobQueryTextConfiguration()
         {
@@ -48,17 +48,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                     HasHeaders = csvconfig.HasHeaders
                 };
             }
-            else if (this.Type == BlobQueryConfigType.Json)  //json
+            else //json
             {
                 PSBlobQueryJsonTextConfiguration jsonconfig = (PSBlobQueryJsonTextConfiguration)this;
                 return new BlobQueryJsonTextOptions()
                 {
                     RecordSeparator = jsonconfig.RecordSeparator
                 };
-            }
-            else //Parquet
-            {
-                return new BlobQueryParquetTextOptions();
             }
         }
     }
@@ -68,7 +64,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     /// </summary>
     public class PSBlobQueryJsonTextConfiguration : PSBlobQueryTextConfiguration
     {
-        public string RecordSeparator { get; set; }
         public PSBlobQueryJsonTextConfiguration() { }
 
         public PSBlobQueryJsonTextConfiguration(BlobQueryJsonTextOptions config)
@@ -91,7 +86,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     /// </summary>
     public class PSBlobQueryCsvTextConfiguration : PSBlobQueryTextConfiguration
     {
-        public string RecordSeparator { get; set; }
         public string ColumnSeparator { get; set; }
         public char? QuotationCharacter { get; set; }
         public char? EscapeCharacter { get; set; }
@@ -120,28 +114,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 EscapeCharacter = this.EscapeCharacter,
                 HasHeaders = this.HasHeaders
             };
-        }
-    }
-
-
-    /// <summary>
-    ///  Wrapper Class for BlobQueryParquetTextOptions
-    /// </summary>
-    public class PSBlobQueryParquetTextOptions : PSBlobQueryTextConfiguration
-    {
-        public PSBlobQueryParquetTextOptions()
-        {
-            this.Type = BlobQueryConfigType.Parquet;
-        }
-
-        public PSBlobQueryParquetTextOptions(BlobQueryParquetTextOptions config)
-        {
-            this.Type = BlobQueryConfigType.Parquet;
-        }
-
-        public BlobQueryParquetTextOptions ParseBlobQueryParquetTextOptions()
-        {
-            return new BlobQueryParquetTextOptions();
         }
     }
 
