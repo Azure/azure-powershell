@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 2.5.2
 * Disabled context auto saving when token cache persistence fails on Windows and macOS
 * Added PowerShell version into telemetry record
 * Upgraded Microsoft.ApplicationInsights from 2.4.0 to 2.12.0

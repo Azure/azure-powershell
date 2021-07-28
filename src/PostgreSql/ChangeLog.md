@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.6.0
 * Migrated from 20200214 preview API to 20210601 API
 * Changed default database create experience to public access from private access
 
