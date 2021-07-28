@@ -62,7 +62,7 @@ directive:
   # New-AzConfluentMarketplaceAgreeemt has  be removed, because it cand be replace by Set-AzMarketplaceTerms (Az.MarketplaceOrdering).
   - where:
       verb: New
-      subject: MarketplaceAgreement
+      subject: MarketplaceAgreement$
     remove: true
 
   - where:
@@ -72,4 +72,10 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentityExpanded$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
     remove: true
+  
+  # Hide the Remove-AzConfluentOrganization for ask user confirmation before Remove-AzConfluentOrganization been invoken
+  - where:
+      verb: Remove
+      subject: Organization$
+    hide: true
 ```

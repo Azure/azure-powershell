@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'New-AzConfluentMarketplaceAgreement' {
     # New-AzConfluentMarketplaceAgreeemt has  be removed, because it cand be replace by Set-AzMarketplaceTerms (Az.MarketplaceOrdering).
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         { New-AzConfluentMarketplaceAgreement -Accepted } | Should -Not -Throw
     }
 }
