@@ -39,7 +39,7 @@ FIREWALLRULE <IFirewallRule[]>: Gets or sets firewall rules
   [RuleName <String>]: Gets or sets the name of the firewall rules.
   [StartIPAddress <String>]: Gets or sets the start IP address of the firewall rule range.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchainmember
+https://docs.microsoft.com/powershell/module/az.blockchain/new-azblockchainmember
 #>
 function New-AzBlockchainMember {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember])]
@@ -75,7 +75,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # Sets the managed consortium management account password.
     ${ConsortiumManagementAccountPassword},
 
@@ -92,6 +92,7 @@ param(
     ${ConsortiumRole},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]]
     # Gets or sets firewall rules
@@ -106,7 +107,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # Sets the basic auth password of the blockchain member.
     ${Password},
 
@@ -215,6 +216,7 @@ begin {
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

@@ -12,6 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Blockchain/blockchainMembers/{blockchainMemberName}/transactionNodes/{transactionNodeName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzBlockchainTransactionNode_DeleteViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.CmdletBreakingChange(ChangeDescription="On September 10, 2021, Azure Blockchain will be retired.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Description(@"Delete the transaction node.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Generated]
