@@ -27,10 +27,12 @@ The **Remove-AzApplicationGatewayFrontendPort** cmdlet removes a front-end port 
 ```
 PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> Remove-AzApplicationGatewayFrontendPort -ApplicationGateway $AppGw -Name "FrontEndPort02"
+PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
 The first command gets an application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores the gateway in $AppGw variable.
 The second command removes the port named FrontEndPort02 from the application gateway.
+The last command updates the application gateway.
 
 ## PARAMETERS
 

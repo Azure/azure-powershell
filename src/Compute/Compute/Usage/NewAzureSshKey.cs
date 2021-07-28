@@ -42,28 +42,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                string resourceGroupName = this.ResourceGroupName;
-                string sshKeyName = this.Name;
-                SshPublicKeyResource result;
-                SshPublicKeyResource sshkey = new SshPublicKeyResource();
-                ResourceGroup rg = ArmClient.ResourceGroups.Get(resourceGroupName);
-                sshkey.Location = rg.Location;
+            string resourceGroupName = this.ResourceGroupName;
+            string sshKeyName = this.Name;
+            SshPublicKeyResource result;
+            SshPublicKeyResource sshkey = new SshPublicKeyResource();
+            ResourceGroup rg = ArmClient.ResourceGroups.Get(resourceGroupName);
+            sshkey.Location = rg.Location;
 
-                if (this.IsParameterBound(c => c.PublicKey))
-                {
+            if (this.IsParameterBound(c => c.PublicKey))
+            {
 
-                    sshkey.PublicKey = this.PublicKey;
-                    result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
-                }
-                else
-                {
-                    WriteDebug("No public key is provided. A key pair is being generated for you.");
+                sshkey.PublicKey = this.PublicKey;
+                result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
+            }
+            else
+            {
+                WriteDebug("No public key is provided. A key pair is being generated for you.");
 
-                    result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
-                    SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName);
-                    result.PublicKey = keypair.PublicKey;
+                result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
+                SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName);
+                result.PublicKey = keypair.PublicKey;
 
-                    string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh" );
+                string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh" );
                     if (!Directory.Exists(sshFolder))
                     {
                         Directory.CreateDirectory(sshFolder);

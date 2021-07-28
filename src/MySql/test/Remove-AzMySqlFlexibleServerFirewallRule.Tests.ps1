@@ -12,14 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzMySqlFlexibleServerFirewallRule' {
-    It 'Delete' {
-        New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-        Remove-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName 
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
-        New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
-        Remove-AzMySqlFlexibleServerFirewallRule -InputObject $ID 
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

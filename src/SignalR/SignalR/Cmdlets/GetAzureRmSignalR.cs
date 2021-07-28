@@ -12,17 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.SignalR;
-using System;
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR", DefaultParameterSetName = ListSignalRServiceParameterSet)]
     [OutputType(typeof(PSSignalRResource))]
+    [CmdletOutputBreakingChange(typeof(PSSignalRResource), DeprecatedOutputProperties = new String[] { nameof(PSSignalRResource.HostNamePrefix) })]
     public class GetAzureRmSignalR : SignalRCmdletBase, IWithResourceId
     {
         [Parameter(
@@ -33,8 +35,8 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The resource group name. The default one will be used if not specified.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }
 
         [Parameter(Position = 0,
@@ -42,6 +44,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(Constants.SignalRResourceType, nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true,

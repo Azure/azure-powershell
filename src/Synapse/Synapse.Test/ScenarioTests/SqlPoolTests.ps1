@@ -207,7 +207,7 @@ function Get-SqlPoolTestEnvironmentParameters ($testSuffix)
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
 			  perfLevel = 'DW200c';
-              location = "westcentralus";
+              location = "canadacentral";
 		}
 }
 

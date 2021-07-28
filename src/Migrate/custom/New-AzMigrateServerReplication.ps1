@@ -22,7 +22,7 @@ The New-AzMigrateServerReplication cmdlet starts the replication for a particula
 https://docs.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
@@ -42,7 +42,7 @@ function New-AzMigrateServerReplication {
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Parameter(ParameterSetName = 'ByInputObjectPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtDiskInput[]]
         # Specifies the disks on the source server to be included for replication.
         ${DiskToInclude},
 
@@ -53,6 +53,14 @@ function New-AzMigrateServerReplication {
         [System.String]
         # Specifies if Azure Hybrid benefit is applicable for the source server to be migrated.
         ${LicenseType},
+
+        [Parameter()]
+        [ValidateSet("NoLicenseType" , "PAYG" , "AHUB")]
+        [ArgumentCompleter( { "NoLicenseType" , "PAYG" , "AHUB" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
+        ${SqlServerLicenseType},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -118,6 +126,30 @@ function New-AzMigrateServerReplication {
         [System.String]
         # Specifies the Availability Zone to be used for VM creation.
         ${TargetAvailabilityZone},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetVmtags]
+        # Specifies the tag to be used for VM creation.
+        ${VMTag},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetNicTags]
+        # Specifies the tag to be used for NIC creation.
+        ${NicTag},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetDiskTags]
+        # Specifies the tag to be used for disk creation.
+        ${DiskTag},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.Collections.Hashtable]
+        # Specifies the tag to be used for Resource creation.
+        ${Tag},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -209,6 +241,11 @@ function New-AzMigrateServerReplication {
         $HasRunAsAccountId = $PSBoundParameters.ContainsKey('VMWarerunasaccountID')
         $HasTargetAVSet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
         $HasTargetAVZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
+        $HasVMTag = $PSBoundParameters.ContainsKey('VMTag')
+        $HasNicTag = $PSBoundParameters.ContainsKey('NicTag')
+        $HasDiskTag = $PSBoundParameters.ContainsKey('DiskTag')
+        $HasTag = $PSBoundParameters.ContainsKey('Tag')
+        $HasSqlServerLicenseType = $PSBoundParameters.ContainsKey('SqlServerLicenseType')
         $HasTargetBDStorage = $PSBoundParameters.ContainsKey('TargetBootDiagnosticsStorageAccount')
         $HasResync = $PSBoundParameters.ContainsKey('PerformAutoResync')
         $HasDiskEncryptionSetID = $PSBoundParameters.ContainsKey('DiskEncryptionSetID')
@@ -218,6 +255,10 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('VMWarerunasaccountID')
         $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
         $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
+        $null = $PSBoundParameters.Remove('VMTag')
+        $null = $PSBoundParameters.Remove('NicTag')
+        $null = $PSBoundParameters.Remove('DiskTag')
+        $null = $PSBoundParameters.Remove('Tag')
         $null = $PSBoundParameters.Remove('TargetBootDiagnosticsStorageAccount')
         $null = $PSBoundParameters.Remove('MachineId')
         $null = $PSBoundParameters.Remove('DiskToInclude')
@@ -229,6 +270,7 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('PerformAutoResync')
         $null = $PSBoundParameters.Remove('DiskType')
         $null = $PSBoundParameters.Remove('OSDiskID')
+        $null = $PSBoundParameters.Remove('SqlServerLicenseType')
         $null = $PSBoundParameters.Remove('LicenseType')
         $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
 
@@ -258,7 +300,7 @@ function New-AzMigrateServerReplication {
                 }
             }
         }
-           
+
         if (($parameterSet -match 'Id') -or ($parameterSet -match 'InputObject')) {
             if (($parameterSet -match 'InputObject')) {
                 $MachineId = $InputObject.Id
@@ -452,7 +494,7 @@ public static int hashForArtifact(String artifact)
         $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
         $null = $PSBoundParameters.Add("PolicyId", $PolicyId)
 
-        $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtEnableMigrationInput]::new()
+        $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtEnableMigrationInput]::new()
         $ProviderSpecificDetails.DataMoverRunAsAccountId = $VMWarerunasaccountID
         $ProviderSpecificDetails.SnapshotRunAsAccountId = $VMWarerunasaccountID
         $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
@@ -464,21 +506,137 @@ public static int hashForArtifact(String artifact)
         if ($HasTargetAVZone) {
             $ProviderSpecificDetails.TargetAvailabilityZone = $TargetAvailabilityZone
         }
+
+        if ($HasSqlServerLicenseType)
+        {
+            $validSqlLicenseSpellings = @{ 
+                NoLicenseType = "NoLicenseType";
+                PAYG = "PAYG";
+                AHUB = "AHUB"
+            }
+            $SqlServerLicenseType = $validSqlLicenseSpellings[$SqlServerLicenseType]
+            $ProviderSpecificDetails.SqlServerLicenseType = $SqlServerLicenseType
+        }
+
+        $UserProvidedTags = $null
+        if ($HasTag -And $Tag)
+        {
+            $UserProvidedTags += @{"Tag" = $Tag}
+        }
+
+        if ($HasVMTag -And $VMTag)
+        {
+            $UserProvidedTags += @{"VMTag" = $VMTag}
+        }
+
+        if ($HasNicTag -And $NicTag)
+        {
+            $UserProvidedTags += @{"NicTag" = $NicTag}
+        }
+
+        if ($HasDiskTag -And $DiskTag)
+        {
+            $UserProvidedTags += @{"DiskTag" = $DiskTag}
+        }
+
+        foreach($tagtype in $UserProvidedTags.Keys)
+        {
+            $IllegalCharKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthValue = New-Object Collections.Generic.List[String]
+            $ResourceTag = $($UserProvidedTags.Item($tagtype))
+
+            if ($ResourceTag.Count -gt 50)
+            {
+                throw "InvalidTags : Too many tags specified. Requested tag count - '$($ResourceTag.Count)'. Maximum number of tags allowed - '50'."
+            }
+
+            foreach ($key in $ResourceTag.Keys)
+            {
+                if ($key.length -eq 0)
+                {
+                    throw "InvalidTagName : The tag name must be non-null, non-empty and non-whitespace only. Please provide an actual value."
+                }
+
+                if ($key.length -gt 512)
+                {
+                    $ExceededLengthKey.add($key)
+                }
+
+                if ($key -match "[<>%&\?/.]")
+                {
+                    $IllegalCharKey.add($key)
+                }
+
+                if ($($ResourceTag.Item($key)).length -gt 256)
+                {
+                    $ExceededLengthValue.add($($ResourceTag.Item($key)))
+                }
+            }
+
+            if ($IllegalCharKey.Count -gt 0)
+            {
+                throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters."
+            }
+
+            if ($ExceededLengthKey.Count -gt 0)
+            {
+                throw "InvalidTagName : Tag key too large. Following tag name '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag name - '512' characters."
+            }
+
+            if ($ExceededLengthValue.Count -gt 0)
+            {
+                throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
+            }
+
+            if ($tagtype -eq "Tag" -or $tagtype -eq "DiskTag")
+            {
+                $ProviderSpecificDetails.SeedDiskTag = $ResourceTag
+                $ProviderSpecificDetails.TargetDiskTag = $ResourceTag
+            }
+
+            if ($tagtype -eq "Tag" -or $tagtype -eq "NicTag")
+            {
+                $ProviderSpecificDetails.TargetNicTag = $ResourceTag
+            }
+
+            if ($tagtype -eq "Tag" -or $tagtype -eq "VMTag")
+            {
+                $ProviderSpecificDetails.TargetVmTag = $ResourceTag
+            }
+        }
+
         $ProviderSpecificDetails.TargetBootDiagnosticsStorageAccountId = $TargetBootDiagnosticsStorageAccount
         $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId
         $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupId
         $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
+
+        if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
+             throw "The target virtual machine name must be between 1 and 64 characters long."
+        }
+
+        $TargetResourceGroupName = $ProviderSpecificDetails.TargetResourceGroupId.Split('/')[4]
+        $VMNamePresentinRg = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $TargetVMName -ResourceType "Microsoft.Compute/virtualMachines" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        if ($VMNamePresentinRg) {
+            throw "The target virtual machine name must be unique in the target resource group."
+        }
+
+        if ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$")
+        {
+            throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
+        }
+
         $ProviderSpecificDetails.TargetVMName = $TargetVMName
         if ($HasTargetVMSize) { $ProviderSpecificDetails.TargetVMSize = $TargetVMSize }
         $ProviderSpecificDetails.VmwareMachineId = $MachineId
 
 
         if ($parameterSet -match 'DefaultUser') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtDiskInput[]]$DiskToInclude = @()
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtDiskInput[]]$DiskToInclude = @()
             if ($parameterSet -eq 'ByInputObjectDefaultUser') {
                 foreach ($onPremDisk in $InputObject.Disk) {
                     if ($onPremDisk.Uuid -ne $OSDiskID) {
-                        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtDiskInput]::new()
+                        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtDiskInput]::new()
                         $DiskObject.DiskId = $onPremDisk.Uuid
                         $DiskObject.DiskType = "Standard_LRS"
                         $DiskObject.IsOSDisk = "false"
@@ -491,7 +649,7 @@ public static int hashForArtifact(String artifact)
                     }
                 }
             }
-            $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtDiskInput]::new()
+            $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtDiskInput]::new()
             $DiskObject.DiskId = $OSDiskID
             $DiskObject.DiskType = $DiskType
             $DiskObject.IsOSDisk = "true"

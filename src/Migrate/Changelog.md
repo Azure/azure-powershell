@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added SQL Server license type.
+* Added CRN feature.
+* Added resource tags feature.
+* Updated to 2021-02-10 api version.
+
+## Version 1.0.2
+* Fixed an issue in Initialize-AzMigrateReplicationInfrastructure.ps1
 
 ## Version 1.0.1
 * Nullref Bug fixed in get discovered server and initialize replication infrastructure commandlets.

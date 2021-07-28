@@ -24,9 +24,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
  [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -43,8 +43,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-ActiveDirectoryAzureStorageSid <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
  [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
- [-AllowSharedKeyAccess <Boolean>] [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
+ [-DefaultSharePermission <String>] [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -241,6 +242,17 @@ LastKeyRotationTimestamp      : 4/12/2021 8:17:57 AM
 ```
 
 This command first create a keyvault and a user assigned identity, then create a storage account with keyvault encryption (the storage access access keyvault with the user assigned identity).
+
+### Example 13: Create account with EnableNfsV3
+```
+PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableNfsV3 $true -EnableHierarchicalNamespace $true -EnableHttpsTrafficOnly $false -NetworkRuleSet (@{bypass="Logging,Metrics";
+        virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"});
+        defaultAction="deny"}) 
+PS C:\> $account.EnableNfsV3
+True
+```
+
+The command create account with EnableNfsV3 as true, and then show the EnableNfsV3 property of the created account 
 
 ## PARAMETERS
 
@@ -467,7 +479,7 @@ Default share permission for users using Kerberos authentication if RBAC role is
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, StorageFileDataSmbShareContributor, StorageFileDataSmbShareReader, StorageFileDataSmbShareElevatedContributor, StorageFileDataSmbShareOwner
+Accepted values: None, StorageFileDataSmbShareContributor, StorageFileDataSmbShareReader, StorageFileDataSmbShareElevatedContributor
 
 Required: False
 Position: Named
@@ -559,6 +571,21 @@ Learn more in https://go.microsoft.com/fwlink/?linkid=2086047
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableNfsV3
+Enable NFS 3.0 protocol support if sets to true
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -943,7 +970,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

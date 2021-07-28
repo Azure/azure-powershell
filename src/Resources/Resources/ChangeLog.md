@@ -19,12 +19,24 @@
 -->
 
 ## Upcoming Release
+* Fixed bug with `PSResource` where some constructors left `SubscriptionId` property unassigned/null.  [#10783]
+* Added support for creating and updating Template Spec in Bicep file [#15313]
+* Added `-ProceedIfNoChange` parameter to deployment create cmdlets.
+
+## Version 4.2.0
+* Allowed naming the deployment when testing deployments [#11497]
+
+## Version 4.1.1
+* Fixed issue that property `IdentifierUri` is cleaned by `Update-AzAdApplication` [#15134]
+
+## Version 4.1.0
 * Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter
 * Removed generated `DisplayName` of ADApplication created by `New-AzADServicePrincipal`
 * Updated SDK to 3.13.1-preview to use GA TemplateSpecs API version
 * Added `AdditionalProperties` to PSADUser and PSADGroup [#14568]
 * Supported `CustomKeyIdentifier` in `New-AzADAppCredential` and `Get-AzADAppCredential` [#11457], [#13723]
 * Changed `MainTemplate` to be shown by the default formatter for Template Spec Versions
+* Added support for `NonComplianceMessage` to `*-AzPolicyAssignment` cmdlets
 
 ## Version 3.5.0
 * Added parameter `ObjectType` for `New-AzRoleAssignment`
@@ -174,8 +186,8 @@
     - New-AzTag -ResourceId
     - Remove-AzTag -ResourceId
 * Added new Tag cmdlet
-    - Update-AzTag -ResourceId
-* Brought ScopedDeployment from SDK 3.3.0 
+    - Update-AzTag -ResourceId 
+* Brought ScopedDeployment from SDK 3.3.0
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets

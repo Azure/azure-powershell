@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicyAssignmentInputObjectHelp = "The policy assignment object to update that was output from another cmdlet.";
         public const string PolicyAssignmentAssignIdentityHelp = "Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' and 'modify' policies. Location is required when assigning an identity.";
         public const string PolicyAssignmentLocationHelp = "The location of the policy assignment's resource identity. This is required when the -AssignIdentity switch is used.";
+        public const string PolicyAssignmentNonComplianceMessageHelp = "The non-compliance messages that describe why a resource is non-compliant with the policy.";
 
         /// <summary>
         /// Policy definition cmdlet parameter help strings

@@ -196,10 +196,12 @@ function Test-CreateNamedSecondaryDatabase()
 
 		# Create Named Replica
 		$namedReplica = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $hsDatabase.DatabaseName `
-		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName "secondary" -SecondaryType "Named"
+		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName "secondary" -SecondaryType "Named" `
+		 -HighAvailabilityReplicaCount 2
 
 		$newDb = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName "secondary"
 		Assert-AreEqual "Named" $newDb.SecondaryType
+		Assert-AreEqual 2 $newDb.HighAvailabilityReplicaCount
 	}
 	finally
 	{

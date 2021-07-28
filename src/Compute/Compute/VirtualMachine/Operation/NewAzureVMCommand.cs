@@ -145,6 +145,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string NetworkInterfaceDeleteOption { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string VirtualNetworkName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
@@ -225,9 +229,15 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public string OSDiskDeleteOption { get; set; }
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public string DataDiskDeleteOption { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
@@ -279,6 +289,17 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
             ValueFromPipelineByPropertyName = true)]
         public string HostGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -436,11 +457,15 @@ namespace Microsoft.Azure.Commands.Compute
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
                         hostGroupId: _cmdlet.HostGroupId,
+                        capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
                         VmssId: _cmdlet.VmssId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
+                        osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
                         );
                 }
                 else
@@ -463,11 +488,15 @@ namespace Microsoft.Azure.Commands.Compute
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
                         hostGroupId: _cmdlet.HostGroupId,
+                        capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
                         VmssId: _cmdlet.VmssId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
+                        osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
                     );
                 }
             }
@@ -490,7 +519,7 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new Parameters(this, client, resourceClient);
 
             // Information message if the default Size value is used. 
-            if (!this.IsBound(Size))
+            if (!this.IsParameterBound(c => c.Size))
             {
                 WriteInformation("No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.", new string[] { "PSHOST" });
             }
@@ -648,7 +677,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Priority = this.VM.Priority,
                         EvictionPolicy = this.VM.EvictionPolicy,
                         BillingProfile = this.VM.BillingProfile,
-                        SecurityProfile = this.VM.SecurityProfile
+                        SecurityProfile = this.VM.SecurityProfile,
+                        CapacityReservation = this.VM.CapacityReservation
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;

@@ -445,6 +445,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable NFS 3.0 protocol support if sets to true")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableNfsV3
+        {
+            get
+            {
+                return enableNfsV3.Value;
+            }
+            set
+            {
+                enableNfsV3 = value;
+            }
+        }
+        private bool? enableNfsV3 = null;
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.")]
         [ValidateNotNullOrEmpty]
         public bool AllowCrossTenantReplication
@@ -467,7 +484,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             DefaultSharePermissionType.StorageFileDataSmbShareContributor,
             DefaultSharePermissionType.StorageFileDataSmbShareReader,
             DefaultSharePermissionType.StorageFileDataSmbShareElevatedContributor,
-            DefaultSharePermissionType.StorageFileDataSmbShareOwner,
             IgnoreCase = true)]
         public string DefaultSharePermission { get; set; }
 
@@ -680,7 +696,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.AllowSharedKeyAccess = allowSharedKeyAccess;
             }
-            if(this.EdgeZone != null)
+            if (enableNfsV3 != null)
+            {
+                createParameters.EnableNfsV3 = enableNfsV3;
+            }
+            if (this.EdgeZone != null)
             {
                 createParameters.ExtendedLocation = new ExtendedLocation()
                 {

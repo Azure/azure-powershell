@@ -20,12 +20,12 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzSqlServerFirewallRule cmdlet
+    /// Defines the New-AzSqlServerFirewallRule cmdlet
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerFirewallRule", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(Model.AzureSqlServerFirewallRuleModel))]
     public class NewAzureSqlServerFirewallRule : AzureSqlServerFirewallRuleCmdletBase
     {
-        #region Private 
+        #region Private
 
         /// <summary> Parameter Set name for using -AllowAllAzureIPs switch </summary>
         private const string AzureIpRuleSet = "AzureIpRuleSet";

@@ -186,6 +186,47 @@ function Create-BasicTestEnvironmentWithParams ($params, $location, $serverVersi
 
 <#
 .SYNOPSIS
+Gets the values of the parameters used for ledger digest upload tests
+#>
+function Get-LedgerTestEnvironmentParameters ($testSuffix)
+{
+	return @{ subscriptionId = (Get-AzContext).Subscription.Id;
+			  rgname = "ledger-cmdlet-test-rg" + $testSuffix;
+			  serverName = "ledger-cmdlet-server" + $testSuffix;
+			  databaseName = "ledger-cmdlet-db" + $testSuffix;
+		}
+}
+
+<#
+.SYNOPSIS
+Creates the basic test environment used for the ledger tests - creates resource group, server, and database
+#>
+function Create-LedgerTestEnvironment ($params)
+{
+	$location = "eastus2euap"
+	$serverVersion = "12.0"
+	New-AzResourceGroup -Name $params.rgname -Location $location
+	$serverName = $params.serverName
+	$serverLogin = "testusername"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
+	$serverPassword = "t357ingP@s5w0rd!ledger"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	New-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
+	New-AzSqlDatabase -DatabaseName $params.databaseName -ResourceGroupName $params.rgname -ServerName $params.serverName -Edition Basic
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the ledger digest upload tests
+#>
+function Remove-LedgerTestEnvironment ($testSuffix)
+{
+	$params = Get-LedgerTestEnvironmentParameters $testSuffix
+	Remove-AzResourceGroup -Name $params.rgname -Force
+}
+
+<#
+.SYNOPSIS
 Creates the basic test environment needed to perform the Sql data security tests - resource group, managed instance and managed database
 #>
 function Create-BasicManagedTestEnvironmentWithParams ($params, $location)

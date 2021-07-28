@@ -13,12 +13,12 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzMigrateReplicationFabric' {
     It 'List' {
-       $output = Get-AzMigrateReplicationFabric -ResourceName $env.srsVaultName -ResourceGroupName $env.srsResourceGroup -SubscriptionId $env.srsSubscriptionId
+       $output = Get-AzMigrateReplicationFabric -ResourceName $env.srsVaultName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.srsSubscriptionId
        $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'Get' {
-       $output = Get-AzMigrateReplicationFabric -FabricName $env.srsFabricName -ResourceName $env.srsVaultName -ResourceGroupName $env.srsResourceGroup -SubscriptionId $env.srsSubscriptionId
+       $output = Get-AzMigrateReplicationFabric -FabricName $env.srsFabricName -ResourceName $env.srsVaultName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.srsSubscriptionId
        $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

@@ -15,8 +15,9 @@ Modifies properties of a SQL Database server.
 
 ```
 Set-AzSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>] [-Tags <Hashtable>]
- [-ServerVersion <String>] [-AssignIdentity] [-PublicNetworkAccess <String>] [-MinimalTlsVersion <String>]
- [-Force] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ServerVersion <String>] [-AssignIdentity] [-PublicNetworkAccess <String>] [-MinimalTlsVersion <String>] 
+ [-RestrictOutboundNetworkAccess <String>] [-Force] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] 
+ [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -131,6 +132,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RestrictOutboundNetworkAccess
+When enabled, only outbound connections allowed by the outbound firewall rules will succeed.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group to which the server is assigned.
 
@@ -184,6 +200,66 @@ ConvertTo-SecureString`.
 
 ```yaml
 Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryUserAssignedIdentityId
+The primary User Managed Identity(UMI) id.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyId
+The Azure Key Vault URI that is used for encryption.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+The list of user assigned identities.
+
+```yaml
+Type: System.Collections.Generic.List
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of identity to be assigned to the server. Possible values are SystemAsssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -123,8 +123,13 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string RequestedBackupStorageRedundancy { get; set; }
 
         /// <summary>
-        /// Gets or sets the secondary type for the database if it is a secondary.
+        /// Gets or sets the secondary type for the database if it is a secondary
         /// </summary>
         public string SecondaryType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of high availability replicas for the database
+        /// </summary>
+        public int? HighAvailabilityReplicaCount { get; set; }
     }
 }

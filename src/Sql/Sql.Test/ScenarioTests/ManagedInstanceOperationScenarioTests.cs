@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             ////base.resourceTypesToIgnoreApiVersion = new string[] { "Microsoft.Sql/managedInstance/operations" };
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedInstanceOperation()
         {
             RunPowerShellTest("Test-GetManagedInstanceOperation");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopManagedInstanceOperation()
         {

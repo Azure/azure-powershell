@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Made changes to show Arc not supported error on 20H2 only if intent to enable Arc is specified by user.
+    - Show Arc not supported error on 20H2 only if -EnableAzureArc:$true is specified in registration Cmdlet.
+
+## Version 0.8.0
+* Made changes to use FQDN while connecting to nodes and the cluster.
+    - Using FQDN while connecting to cluster and the nodes.
+    - Using AAD retries in Arc AAD application setup.
+    - Returning ErrorDetails in PS output stream for WAC to handle the case of RegisteredButArcFailed.
+
+## Version 0.7.0
 * Made changes in the registration to onboard nodes to Azure Arc.
     - Registering On-Premises Azure Stack HCI with Azure will also make the nodes in the cluster Azure Arc enabled.   
 

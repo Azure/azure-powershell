@@ -1,3 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.Billing","Microsoft.Azure.Commands.Billing.Cmdlets.InvoiceSections.GetAzureRmInvoiceSection","Get-AzInvoiceSection","0","1050","The parameter set 'List' for cmdlet 'Get-AzInvoiceSection' has been removed.","Add parameter set 'List' back to cmdlet 'Get-AzInvoiceSection'."
-"Az.Billing","Microsoft.Azure.Commands.Billing.Cmdlets.BillingProfiles.GetAzureRmBillingProfile","Get-AzBillingProfile","0","1050","The parameter set 'List' for cmdlet 'Get-AzBillingProfile' has been removed.","Add parameter set 'List' back to cmdlet 'Get-AzBillingProfile'."

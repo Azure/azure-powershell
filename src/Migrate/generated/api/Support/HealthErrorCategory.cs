@@ -10,7 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct HealthErrorCategory :
         System.IEquatable<HealthErrorCategory>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdate = @"AgentAutoUpdate";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdateArtifactDeleted = @"AgentAutoUpdateArtifactDeleted";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdateInfra = @"AgentAutoUpdateInfra";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdateRunAsAccount = @"AgentAutoUpdateRunAsAccount";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdateRunAsAccountExpired = @"AgentAutoUpdateRunAsAccountExpired";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory AgentAutoUpdateRunAsAccountExpiry = @"AgentAutoUpdateRunAsAccountExpiry";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory Configuration = @"Configuration";
 

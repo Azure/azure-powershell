@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     public class PSBackupPolicy
     {
         public static readonly string PeriodicModeBackupType = "Periodic";
+        public static readonly string ContinuousModeBackupType = "Continuous";
 
         public PSBackupPolicy()
         {
@@ -36,9 +37,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 BackupRetentionIntervalInHours = periodicModeBackupPolicy.PeriodicModeProperties.BackupRetentionIntervalInHours;
                 BackupType = PeriodicModeBackupType;
             }
-            else
+            else if (backupPolicy is ContinuousModeBackupPolicy)
             {
-                return;
+                BackupType = ContinuousModeBackupType;
             }
         }
 
@@ -50,7 +51,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public BackupPolicy ToSDKModel()
         {
-            if (BackupType.Equals(PSBackupPolicy.PeriodicModeBackupType))
+            if (BackupType.Equals(PSBackupPolicy.ContinuousModeBackupType))
+            {
+                return new ContinuousModeBackupPolicy();
+            }
+            else
             {
                 PeriodicModeBackupPolicy periodicModeBackupPolicy = new PeriodicModeBackupPolicy
                 {
@@ -62,10 +67,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 };
 
                 return periodicModeBackupPolicy;
-            }
-            else
-            {
-                return null;
             }
         }
     }

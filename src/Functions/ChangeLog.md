@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
+* Added two additional app settings (WEBSITE_CONTENTSHARE and WEBSITE_CONTENTAZUREFILECONNECTIONSTRING) for Linux Consumption apps. [15124]
+* Fixed bug with New-AzFunctionApp when created on Azure Gov. [13379]
+* Added Az.Functions cmdlets need to support creating and copying app settings with empty values. [14511]
+
+## Version 3.0.0
 * Added support in function app creation for Python 3.9 and Node 14 function apps
 * Removed support in function app creation for V2, Python 3.6, Node 8, and Node 10 function apps
 * Updated IdentityID parameter from string to string array in Update-AzFunctionApp. This is to be consistent with New-AzFunctionApp which has the same parameter as a string array

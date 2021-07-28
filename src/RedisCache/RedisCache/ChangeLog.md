@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `RedisVersion` parameter in `New-AzRedisCache` and `Set-AzRedisCache`
 
 ## Version 1.4.0
 * Made `New-AzRedisCache` and `Set-AzRedisCache` cmdlets not fail because of permission issue related to registering Microsoft.Cache RP

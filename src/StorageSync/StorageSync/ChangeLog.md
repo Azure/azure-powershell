@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.0
 * Deprecated `Invoke-AzStorageSyncFileRecall`
     - Customers should instead use `Invoke-StorageSyncFileRecall`, a cmdlet that is shipped with the Azure File Sync agent.
 * Removed offline data transfer feature in `New-AzStorageSyncServerEndpoint`.

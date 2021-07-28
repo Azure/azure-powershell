@@ -163,6 +163,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string KeyName = nameof(KeyName);
 
+        public const string SparkJobDefinition = nameof(SparkJobDefinition);
+
+        public const string DisableMaxServiceObjectiveName = "remove";
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {

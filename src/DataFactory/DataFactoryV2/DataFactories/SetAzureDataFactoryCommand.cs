@@ -107,7 +107,28 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         #region Attributes
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpUserAssignedIdenty)]
         #endregion
-        public IDictionary<string,object> UserAssignedIdentity { get; set; }
+        public IDictionary<string, object> UserAssignedIdentity { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpEncryptionVaultBaseUrl)]
+        #endregion
+        public string EncryptionVaultBaseUrl { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpEncryptionKeyName)]
+        #endregion
+        public string EncryptionKeyName { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpEncryptionKeyVersion)]
+        #endregion
+        public string EncryptionKeyVersion { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpEncryptionUserAssignedIdentity)]
+        #endregion
+        public string EncryptionUserAssignedIdentity { get; set; }
+
 
         #region Attributes
         [Parameter(
@@ -484,11 +505,23 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
             FactoryIdentity factoryIdentity = new FactoryIdentity(factoryIdentityType, userAssignedIdentities: this.UserAssignedIdentity);
 
+            EncryptionConfiguration encryption = null;
+            if(!string.IsNullOrWhiteSpace(this.EncryptionVaultBaseUrl) && !string.IsNullOrWhiteSpace(this.EncryptionKeyName))
+            {
+                CMKIdentityDefinition cmkIdentity = null;
+                if (!string.IsNullOrWhiteSpace(this.EncryptionUserAssignedIdentity))
+                {
+                    cmkIdentity = new CMKIdentityDefinition(this.EncryptionUserAssignedIdentity);
+                }
+                encryption = new EncryptionConfiguration(this.EncryptionKeyName, this.EncryptionVaultBaseUrl, this.EncryptionKeyVersion, cmkIdentity);
+            }
+
             var parameters = new CreatePSDataFactoryParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = Name,
                 Location = Location,
+                EncryptionConfiguration = encryption,
                 FactoryIdentity = factoryIdentity,
                 Tags = Tag,
                 Force = Force.IsPresent,
@@ -514,6 +547,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     this.IdentityType = InputObject.Identity.Type;
                     this.UserAssignedIdentity = InputObject.Identity.UserAssignedIdentities;
                 }
+                if(InputObject.Encryption != null)
+                {
+                    this.EncryptionVaultBaseUrl = InputObject.Encryption.VaultBaseUrl;
+                    this.EncryptionKeyName = InputObject.Encryption.KeyName;
+                    this.EncryptionKeyVersion = InputObject.Encryption.KeyVersion;
+                    this.EncryptionUserAssignedIdentity = InputObject.Encryption.Identity?.UserAssignedIdentity;
+                }
+
                 if (InputObject.RepoConfiguration != null)
                 {
                     this.AccountName = this.AccountName ?? InputObject.RepoConfiguration.AccountName;

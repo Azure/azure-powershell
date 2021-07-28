@@ -12,9 +12,17 @@ Copies data from a vault in one region to a vault in another region.
 
 ## SYNTAX
 
+### AzureRSVaultDataMoveParameterSet
 ```
 Copy-AzRecoveryServicesVault [-Force] [-DefaultProfile <IAzureContextContainer>] [-SourceVault] <ARSVault>
  [-TargetVault] <ARSVault> [-RetryOnlyFailed] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureRSVaultTriggerMoveParameterSet
+```
+Copy-AzRecoveryServicesVault [-Force] -CorrelationIdForDataMove <String>
+ [-DefaultProfile <IAzureContextContainer>] [-SourceVault] <ARSVault> [-TargetVault] <ARSVault> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +31,8 @@ The **Copy-AzRecoveryServicesVault** cmdlet copies data from a vault in one regi
 ## EXAMPLES
 
 ### Example 1: Copy data from vault1 to vault2
-```
+
+```powershell
 PS C:\> $sourceVault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName1" -Name "vault1"
 PS C:\> $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName2" -Name "vault2"
 PS C:\> Copy-AzRecoveryServicesVault -SourceVault $sourceVault -TargetVault $targetVault
@@ -33,7 +42,8 @@ The first two cmdlets fetch Recovery Services Vault - vault1 and vault2 respecti
 $sourceVault and $targetVault can also belong to different subscription within same tanent, can be fetched by setting different subscription contexts.
 
 ### Example 2: Copy data from vault1 to vault2 with only failed items
-```
+
+```powershell
 PS C:\> $sourceVault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName1" -Name "vault1"
 PS C:\> $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName2" -Name "vault2"
 PS C:\> Copy-AzRecoveryServicesVault -SourceVault $sourceVault -TargetVault $targetVault -RetryOnlyFailed
@@ -44,6 +54,21 @@ The second command triggers a partial data move from vault1 to vault2 with only 
 $sourceVault and $targetVault can also belong to different subscription within same tanent, can be fetched by setting different subscription contexts.
 
 ## PARAMETERS
+
+### -CorrelationIdForDataMove
+Correlation Id for triggering DS Move.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureRSVaultTriggerMoveParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -80,7 +105,7 @@ Switch parameter to try data move only for containers in the source vault which 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: AzureRSVaultDataMoveParameterSet
 Aliases:
 
 Required: False

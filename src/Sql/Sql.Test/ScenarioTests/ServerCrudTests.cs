@@ -91,6 +91,27 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestOutboundFirewallRulesCRUD()
+        {
+            RunPowerShellTest("Test-OutboundFirewallRulesCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateAndGetWithRestrictOutboundNetworkAccess()
+        {
+            RunPowerShellTest("Test-CreateAndGetServerWithRestrictOutboundNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdateWithRestrictOutboundNetworkAccess()
+        {
+            RunPowerShellTest("Test-UpdateServerWithRestrictOutboundNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateandUpdateServerWithMinimalTlsVersion()
         {
             RunPowerShellTest("Test-CreateandUpdateServerWithMinimalTlsVersion");

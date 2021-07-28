@@ -275,6 +275,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 LicenseType = model.LicenseType,
                 RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 SecondaryType = model.SecondaryType,
+                HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount,
             });
 
             return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);
@@ -392,7 +393,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.ServerName = serverName;
             model.DatabaseName = databaseName;
             model.AllowConnections = allowConnections;
-            model.Location = resp.Location;
+            model.Location = GetServerLocation(resourceGroupName, serverName);
             model.PartnerLocation = resp.PartnerLocation;
             model.PercentComplete = resp.PercentComplete.ToString();
             model.ReplicationState = resp.ReplicationState;
