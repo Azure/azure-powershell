@@ -338,7 +338,6 @@ function Set-AzMigrateServerReplication {
                 $UserProvidedTag += @{$operation = $UpdateNicTag}
             }
             else {
-
                 $ProviderSpecificDetails.TargetNicTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag
             }
 
