@@ -1,7 +1,7 @@
 @{
   GUID = '18c61846-f6f0-425e-ba4b-5cf903e2bdd8'
   RootModule = './Az.Kusto.psm1'
-  ModuleVersion = '0.1.4'
+  ModuleVersion = '2.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

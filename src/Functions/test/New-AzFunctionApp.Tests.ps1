@@ -376,13 +376,28 @@ Describe 'New-AzFunctionApp' {
         }
     }
 
-    It "New-AzFunctionApp -Location supports locations with no spaces, e.g., 'centralus'" {
+    It "Create Windows Consumption app and validiate app properties: 1) Location 2) App settings 3) Connection string suffix" {
+
+        <# Validate the following:
+            - Location parameter supports passing a region with no spaces, e.g., `centralus` for Central US.
+            - Allow empty app settings
+            - App settings:
+              - WEBSITE_CONTENTSHARE
+              - AzureWebJobsStorage, AzureWebJobsDashboard, and WEBSITE_CONTENTAZUREFILECONNECTIONSTRING (these should include a suffix)
+            - Tag values
+        #>
 
         $functionName = $env.functionNamePowerShell
         $location = 'centralus'
         $tags = @{
             "MyTag1" = "MyTag1Value1"
             "MyTag2" = "MyTag1Value2"
+        }
+
+        $appSetting = @{
+            "AppSetting1" = "Value1"
+            "AppSetting2" = $null
+            "AppSetting3" = ""
         }
 
         try
@@ -394,8 +409,8 @@ Describe 'New-AzFunctionApp' {
                               -OSType "Windows" `
                               -Runtime "PowerShell" `
                               -FunctionsVersion 3 `
-                              -Tag $tags
-
+                              -Tag $tags `
+                              -AppSetting $appSetting
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsConsumption
             $functionApp.OSType | Should -Be "Windows"
@@ -406,6 +421,29 @@ Describe 'New-AzFunctionApp' {
             foreach ($tagName in $tags.Keys)
             {
                 $functionApp.Tag.AdditionalProperties[$tagName] | Should Be $tags[$tagName]
+            }
+
+            # Validate app settings
+            foreach ($appSettingName in $appSetting.Keys)
+            {
+                $expectedValue = $appSetting[$appSettingName]
+                if ($expectedValue -eq $null)
+                {
+                    # null app settings are created as an empty string.
+                    $expectedValue = ""
+                }
+
+                $functionApp.ApplicationSettings[$appSettingName] | Should Be $expectedValue
+            }
+
+            # Validate WEBSITE_CONTENTSHARE
+            $functionApp.ApplicationSettings["WEBSITE_CONTENTSHARE"] | Should Match $functionName
+
+            # Validate the connection string suffix
+            $expectedSuffix = GetStorageAccountEndpointSuffix
+            foreach ($appSettingName in @("AzureWebJobsStorage", "AzureWebJobsDashboard", "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING"))
+            {
+                $functionApp.ApplicationSettings[$appSettingName] | Should Match $expectedSuffix
             }
 
         }
@@ -438,11 +476,6 @@ Describe 'New-AzFunctionApp' {
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.IdentityType | Should -Be "UserAssigned"
-
-            foreach ($appSettingName in $appSetting.Keys)
-            {
-                $functionApp.ApplicationSettings[$appSettingName] | Should Be $appSetting[$appSettingName]
-            }
         }
         finally
         {

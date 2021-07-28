@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDnsResolverInboundEndpoint' {
-    It 'Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted' {
+    It 'Delete an Inbound Endpoint by name, expected Inbound Endpoint deleted' -skip {
         $dnsResolverName = $env.DnsResolverName61
         $virtualNetworkId = $env.VirtualNetworkId61
         $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
@@ -27,7 +27,7 @@ Describe 'Remove-AzDnsResolverInboundEndpoint' {
          {Get-AzDnsResolverInboundEndpoint  -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName } | Should -Throw "not found"
     }
 
-    It 'Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted' {
+    It 'Delete an Inbound Endpoint via identity, expected Inbound Endpoint deleted' -skip {
         $dnsResolverName = $env.DnsResolverName62
         $virtualNetworkId = $env.VirtualNetworkId62
         $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
@@ -42,7 +42,7 @@ Describe 'Remove-AzDnsResolverInboundEndpoint' {
          {Get-AzDnsResolverInboundEndpoint  -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName } | Should -Throw "not found"
     }
 
-    It 'Delete an Inbound Endpoint that does not exist by name, expected failure' {
+    It 'Delete an Inbound Endpoint that does not exist by name, expected failure' -skip {
         $dnsResolverName = $env.DnsResolverName63
         $virtualNetworkId = $env.VirtualNetworkId63
         $inboundEndpointName =  $env.InboundEndpointNamePrefix + (RandomString -allChars $false -len 6)

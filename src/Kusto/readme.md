@@ -59,7 +59,7 @@ input-file:
 
 > Names
 ``` yaml
-module-version: 0.1.4
+module-version: 2.0.0
 title: Kusto
 subject-prefix: $(service-name)
 ```

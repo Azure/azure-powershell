@@ -70,18 +70,17 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ffebe2759a66ebd6ca52288a9eaf1c02f28e3842
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs-pr/blob/Microsoft.Network-dnsresolver-2020-01-01-preview/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2020-04-01-preview/dnsresolver.json
+  - $(this-folder)/resources/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2020-04-01-preview/dnsresolver.json
 
 module-version: 0.1.0
 title: DnsResolver
 subject-prefix: $(service-name)
 
 inlining-threshold: 50
-# If there are post APIs for some kinds of actions in the RP, you may need to 
+# If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 

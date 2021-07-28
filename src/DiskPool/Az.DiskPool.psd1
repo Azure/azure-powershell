@@ -1,5 +1,5 @@
 @{
-  GUID = '4ef9a257-25da-4db7-832b-0c44a0e44cf0'
+  GUID = '6ee0ccda-b0ba-4017-92fe-6eb1cfacfc66'
   RootModule = './Az.DiskPool.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DiskPool.private.dll'
   FormatsToProcess = './Az.DiskPool.format.ps1xml'
-  FunctionsToExport = 'Get-AzDiskPool', 'Get-AzDiskPoolIscsiTarget', 'New-AzDiskPool', 'New-AzDiskPoolAclObject', 'New-AzDiskPoolIscsiLunObject', 'New-AzDiskPoolIscsiTarget', 'Remove-AzDiskPool', 'Remove-AzDiskPoolIscsiTarget', 'Start-AzDiskPool', 'Stop-AzDiskPool', 'Update-AzDiskPool', 'Update-AzDiskPoolIscsiTarget', '*'
+  FunctionsToExport = 'Get-AzDiskPool', 'Get-AzDiskPoolIscsiTarget', 'Get-AzDiskPoolOutboundNetworkDependencyEndpoint', 'Get-AzDiskPoolZone', 'New-AzDiskPool', 'New-AzDiskPoolAclObject', 'New-AzDiskPoolIscsiLunObject', 'New-AzDiskPoolIscsiTarget', 'Remove-AzDiskPool', 'Remove-AzDiskPoolIscsiTarget', 'Start-AzDiskPool', 'Stop-AzDiskPool', 'Update-AzDiskPool', 'Update-AzDiskPoolIscsiTarget', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

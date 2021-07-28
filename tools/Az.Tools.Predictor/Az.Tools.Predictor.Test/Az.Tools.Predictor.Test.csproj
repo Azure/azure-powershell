@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Tools.AzPredictor.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Tools.AzPredictor.Test</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
+    <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor.Test\</OutputPath>
+    <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.AzPredictor.Tools.Test.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <ProjectReference Include="..\Az.Tools.Predictor\Az.Tools.Predictor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\CommandsModel.zip" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Data\PredictionsModel.zip" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
