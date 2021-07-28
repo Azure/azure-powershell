@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Added breaking changes for all cmdlets since Blockchain will be retired.
 
 ## Version 0.3.0
