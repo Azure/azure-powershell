@@ -1930,7 +1930,7 @@ function Certificate-CrudTest {
         Assert-NotNull $kvcert.Thumbprint
         Assert-AreEqual $secretIdentifier $kvcert.keyVault.SecretIdentifier
 
-        $refresh = Get-AzApiManagementCertificate -ResourceId $kvcert.Id | Sync-AzApiManagementKeyVaultObject 
+        $refresh = Get-AzApiManagementCertificate -ResourceId $kvcert.Id | Sync-AzApiManagementKeyVaultSecret 
         Assert-NotNull $refresh
 
         # upload certificate
@@ -1984,9 +1984,9 @@ function Certificate-CrudTest {
         }
         catch {
         }
-
         Assert-Null $cert
 
+        $cert = $null
         try {
             # check it was removed
             $cert = Get-AzApiManagementCertificate -Context $context -CertificateId $kvcertId
@@ -2533,7 +2533,8 @@ function Properties-CrudTest {
         Assert-Null $keyVaultNamedValue.Value
         Assert-NotNull $keyVaultNamedValue.KeyVault.SecretIdentifier
 
-        $refresh = Sync-AzApiManagementKeyVaultObject -ResourceId $keyVaultNamedValue.Id
+        $refresh = Sync-AzApiManagementKeyVaultSecret -ResourceId $keyVaultNamedValue.Id
+        Assert-NotNull $refresh
 
         #create Secret Property
         $secretNamedValueId = getAssetName
