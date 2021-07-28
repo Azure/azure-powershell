@@ -32,9 +32,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models.Auditing
         internal const string StorageAccountSubscriptionIdParameterSetName = "StorageAccountSubscriptionIdSet";
         internal const string StorageAccountSubscriptionIdByParentResourceParameterSetName = "StorageAccountSubscriptionIdByParentResourceSet";
         internal const string SqlPoolParameterSetName = "SqlPoolParameterSet";
+        internal const string SqlPoolParentObjectParameterSetName = "SqlPoolParentObjectParameterSet";
         internal const string SqlPoolObjectParameterSetName = "SqlPoolObjectParameterSet";
+        internal const string SqlPoolResourceIdParameterSetName = "SqlPoolResourceIdParameterSet";
         internal const string WorkspaceParameterSetName = "WorkspaceParameterSet";
         internal const string WorkspaceObjectParameterSetName = "WorkspaceObjectParameterSet";
+        internal const string WorkspaceResourceIdParameterSetName = "WorkspaceResourceIdParameterSetName";
         internal const string SQLSecurityAuditCategory = "SQLSecurityAuditEvents";
         internal const string DiagnosticSettingsNamePrefixSQLSecurityAuditEvents = SQLSecurityAuditCategory + "_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
         internal const string BlobStorageParameterName = "BlobStorage";

@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 "Test-BlobAuditSqlPoolRetentionKeepProperties");
         }
 
-        [Fact]
+        [Fact(Skip = "SQL Data Warehouse audit doesn’t support audit actions.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnSqlPool()
         {
@@ -154,16 +154,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 "Test-BlobAuditOnWorkspace");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestBlobAuditSqlPoolUpdatePolicyWithSameNameStorageOnDifferentRegion()
-        {
-            NewInstance.RunPsTest(
-                _logger,
-                "Test-BlobAuditSqlPoolUpdatePolicyWithSameNameStorageOnDifferentRegion");
-        }
-
-        [Fact]
+        [Fact(Skip = "SQL Data Warehouse audit doesn’t support other audit groups.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWithAuditActionGroups()
         {

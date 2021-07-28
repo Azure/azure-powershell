@@ -24,6 +24,12 @@ Reset-AzSynapseSqlAuditSetting -WorkspaceObject <PSSynapseWorkspace> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### WorkspaceResourceIdParameterSetName
+```
+Reset-AzSynapseSqlAuditSetting -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Reset-AzSynapseSqlAuditSetting** cmdlet removes the auditing settings of an Azure Synapse Analytics Workspace.
 
@@ -90,6 +96,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Resource identifier of Synapse workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: WorkspaceResourceIdParameterSetName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Synapse workspace.
 
@@ -111,7 +132,7 @@ workspace input object, usually passed through the pipeline.
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: WorkspaceObjectParameterSet
-Aliases:
+Aliases: InputObject
 
 Required: True
 Position: Named

@@ -15,13 +15,25 @@ Removes the auditing settings of an Azure Synapse Analytics SQL pool.
 ### SqlPoolParameterSet (Default)
 ```
 Reset-AzSynapseSqlPoolAuditSetting [[-ResourceGroupName] <String>] [-WorkspaceName] <String>
- [-SqlPoolName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SqlPoolName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SqlPoolParentObjectParameterSet
+```
+Reset-AzSynapseSqlPoolAuditSetting -WorkspaceObject <PSSynapseWorkspace> -SqlPoolName <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SqlPoolObjectParameterSet
 ```
 Reset-AzSynapseSqlPoolAuditSetting -SqlPoolObject <PSSynapseSqlPool> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SqlPoolResourceIdParameterSet
+```
+Reset-AzSynapseSqlPoolAuditSetting -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,16 +87,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Resource identifier of Synapse SQL Pool.
+
+```yaml
+Type: System.String
+Parameter Sets: SqlPoolResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SqlPoolName
 Name of Synapse SQL pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: SqlPoolParameterSet
+Parameter Sets: SqlPoolParameterSet, SqlPoolParentObjectParameterSet
 Aliases: Name
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -96,7 +123,7 @@ SQL pool input object, usually passed through the pipeline.
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
 Parameter Sets: SqlPoolObjectParameterSet
-Aliases:
+Aliases: InputObject
 
 Required: True
 Position: Named
@@ -117,6 +144,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceObject
+workspace input object, usually passed through the pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
+Parameter Sets: SqlPoolParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

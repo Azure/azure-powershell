@@ -31,7 +31,8 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using NewStorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Monitor.Version2018_09_01;
+using SDKMonitor = Microsoft.Azure.Management.Monitor;
+using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
 using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.EventHub;
 
@@ -54,7 +55,9 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         public StorageManagementClient StorageManagementClient { get; private set; }
 
-        public MonitorManagementClient MonitorManagementClient { get; private set; }
+        public CommonMonitor.MonitorManagementClient CommonMonitorManagementClient { get; private set; }
+
+        public SDKMonitor.MonitorManagementClient SDKMonitorManagementClient { get; private set; }
 
         public OperationalInsightsManagementClient OperationalInsightsManagementClient { get; private set; }
 
@@ -143,7 +146,8 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
             SynapseClient = GetSynapseClient(context);
             StorageManagementClient = GetStorageManagementClient(context);
             NewResourceManagementClient = GetResourceManagementClient(context);
-            MonitorManagementClient = GetMonitorManagementClient(context);
+            CommonMonitorManagementClient = GetCommonMonitorManagementClient(context);
+            SDKMonitorManagementClient = GetMonitorManagementClient(context);
             OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
             EventHubManagementClient = GetEventHubManagementClient(context);
             _helper.SetupManagementClients(
@@ -152,7 +156,8 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 SynapseClient,
                 StorageManagementClient,
                 NewResourceManagementClient,
-                MonitorManagementClient,
+                CommonMonitorManagementClient,
+                SDKMonitorManagementClient,
                 OperationalInsightsManagementClient,
                 EventHubManagementClient,
                 GetNewSynapseManagementClient(context)
@@ -197,9 +202,14 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
             return context.GetServiceClient<SynapseSqlV3ManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected static MonitorManagementClient GetMonitorManagementClient(MockContext context)
+        protected static CommonMonitor.MonitorManagementClient GetCommonMonitorManagementClient(MockContext context)
         {
-            return context.GetServiceClient<MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<CommonMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected static SDKMonitor.MonitorManagementClient GetMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<SDKMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected static OperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)

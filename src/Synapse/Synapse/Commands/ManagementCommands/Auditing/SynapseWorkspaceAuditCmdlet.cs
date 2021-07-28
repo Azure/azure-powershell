@@ -51,7 +51,15 @@ namespace Microsoft.Azure.Commands.Synapse
             ValueFromPipeline = true,
             HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
+        [Alias("InputObject")]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = DefinitionsCommon.WorkspaceResourceIdParameterSetName,
+            Mandatory = true,
+            HelpMessage = HelpMessages.WorkspaceResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -62,6 +70,13 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 ResourceGroupName = new ResourceIdentifier(this.WorkspaceObject.Id).ResourceGroupName;
                 WorkspaceName = WorkspaceObject.Name;
+            }
+
+            if (ResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.WorkspaceName = resourceIdentifier.ResourceName;
             }
 
             ServerAuditModelType model = new ServerAuditModelType()

@@ -43,6 +43,18 @@ namespace Microsoft.Azure.Commands.Synapse
         public override string WorkspaceName { get; set; }
 
         [Parameter(
+            ParameterSetName = DefinitionsCommon.SqlPoolParentObjectParameterSetName,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = HelpMessages.WorkspaceObject)]
+        [ValidateNotNull]
+        public PSSynapseWorkspace WorkspaceObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = DefinitionsCommon.SqlPoolParentObjectParameterSetName,
+            Mandatory = true,
+            HelpMessage = HelpMessages.SqlPoolName)]
+        [Parameter(
             ParameterSetName = DefinitionsCommon.SqlPoolParameterSetName,
             Mandatory = true,
             Position = 2,
@@ -61,13 +73,36 @@ namespace Microsoft.Azure.Commands.Synapse
             ValueFromPipeline = true,
             HelpMessage = HelpMessages.SqlPoolObject)]
         [ValidateNotNull]
+        [Alias("InputObject")]
         public PSSynapseSqlPool SqlPoolObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = DefinitionsCommon.SqlPoolResourceIdParameterSetName,
+            Mandatory = true,
+            HelpMessage = HelpMessages.SqlPoolResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         protected override SqlPoolAuditModel GetEntity()
         {
             if (SqlPoolObject != null)
             {
                 var resourceIdentifier = new ResourceIdentifier(this.SqlPoolObject.Id);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.WorkspaceName = resourceIdentifier.ParentResource;
+                this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
+                this.SqlPoolName = resourceIdentifier.ResourceName;
+            }
+
+            if (WorkspaceObject != null)
+            {
+                this.ResourceGroupName = new ResourceIdentifier(this.WorkspaceObject.Id).ResourceGroupName;
+                this.WorkspaceName = this.WorkspaceObject.Name;
+            }
+
+            if (ResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.WorkspaceName = resourceIdentifier.ParentResource;
                 this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);

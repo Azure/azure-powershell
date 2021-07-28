@@ -521,46 +521,6 @@ function Test-BlobAuditOnWorkspace
 
 <#
 .SYNOPSIS
-Tests the flow in which re-setting the policy with storage account that has the same name as before, but it is now on a different region
-#>
-function Test-BlobAuditSqlPoolUpdatePolicyWithSameNameStorageOnDifferentRegion
-{
-	# Setup
-	$testSuffix = getAssetName
-	Create-BlobAuditingTestEnvironment $testSuffix
-	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
-
-	try 
-	{
-		# Test
-		Set-AzSynapseSqlPoolAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName -StorageAccountResourceId $params.storageAccountResourceId
-		$policy = Get-AzSynapseSqlPoolAudit -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName
-	
-		# Assert
-		Assert-AreEqual $policy.StorageAccountResourceId $params.storageAccountResourceId
-		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"  
-
-		$newResourceGroupName =  "test-rg2-for-sql-cmdlets-" + $testSuffix
-		New-AzureRmResourceGroup -Location "West Europe" -ResourceGroupName $newResourceGroupName
-		New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $newResourceGroupName -Location "West Europe" -Type Standard_GRS
-
-		Set-AzSynapseSqlPoolAudit -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName -StorageAccountResourceId $params.storageAccountResourceId
-		$policy = Get-AzSynapseSqlPoolAudit -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName
-	
-		# Assert
-		Assert-AreEqual $policy.StorageAccountResourceId $params.storageAccountResourceId
-		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"  
-	}
-	finally
-	{
-		# Cleanup
-		Remove-AzureRmResourceGroup -Name $newResourceGroupName -Force
-		Remove-BlobAuditingTestEnvironment $testSuffix
-	}
-}
-
-<#
-.SYNOPSIS
 Tests that when modifying the auditActionGroup property of a blob auditing policy, these properties are later fetched properly
 #>
 function Test-BlobAuditWithAuditActionGroups
@@ -821,7 +781,7 @@ function Test-AuditOnSqlPool
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-Null $policy.PredicateExpression
+		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
@@ -1204,7 +1164,7 @@ function Test-NewSqlPoolAuditDiagnosticsAreCreatedOnNeed
 		Assert-AreEqual "Disabled" $policy.EventHubTargetState
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-Null $policy.PredicateExpression
+		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-Null $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 
@@ -1232,7 +1192,7 @@ function Test-NewSqlPoolAuditDiagnosticsAreCreatedOnNeed
 
 		# Enable a new category in existing Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
-		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SqlRequests
 		
 		# Enable log analytics auditing policy and verify it
 		Set-AzSynapseSqlPoolAudit -LogAnalyticsTargetState Enabled -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName -WorkspaceResourceId $workspaceResourceId
@@ -1259,7 +1219,7 @@ function Test-NewSqlPoolAuditDiagnosticsAreCreatedOnNeed
 
 		# Enable a new category in Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
-		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SqlRequests
 		
 		# Verify log analytics auditing policy is enabled.
 		$policy = Get-AzSynapseSqlPoolAudit -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName
@@ -1299,7 +1259,7 @@ function Test-NewSqlPoolAuditDiagnosticsAreCreatedOnNeed
 		
 		# Enable a new category in Diagnostic Settings
 		$settingsName = ($diagnostics)[0].Name
-		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SqlRequests
 		
 		# Verify event hub auditing settings is enabled.
 		$policy = Get-AzSynapseSqlPoolAudit -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName
@@ -1368,7 +1328,7 @@ function Test-NewSqlPoolAuditDiagnosticsAreCreatedOnNeed
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
 		Assert-AreEqual 1 ($diagnostics).count
 		$settingsName = ($diagnostics)[0].Name
-		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SqlRequests
 		
 		# Disable log analytics auditing policy and verify it
 		Set-AzSynapseSqlPoolAudit -LogAnalyticsTargetState Disabled -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -SqlPoolName $params.sqlPoolName
@@ -1472,7 +1432,7 @@ function Test-NewWorkspaceAuditDiagnosticsAreCreatedOnNeed
 
 		# Enable a new category in existing Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
-		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category BuiltinSqlReqsEnded
 
 		# Enable log analytics auditing policy and verify it
 		Set-AzSynapseSqlAudit -LogAnalyticsTargetState Enabled -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -WorkspaceResourceId $workspaceResourceId
@@ -1498,7 +1458,7 @@ function Test-NewWorkspaceAuditDiagnosticsAreCreatedOnNeed
 		
 		# Enable a new category in Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
-		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category BuiltinSqlReqsEnded
 		
 		# Verify log analytics auditing policy is enabled.
 		$policy = Get-AzSynapseSqlAudit -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
@@ -1535,7 +1495,7 @@ function Test-NewWorkspaceAuditDiagnosticsAreCreatedOnNeed
 		
 		# Enable a new category in Diagnostic Settings
 		$settingsName = ($diagnostics)[0].Name
-		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category BuiltinSqlReqsEnded
 		# Verify event hub auditing settings is enabled.
 		$policy = Get-AzSynapseSqlAudit -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
@@ -1596,7 +1556,7 @@ function Test-NewWorkspaceAuditDiagnosticsAreCreatedOnNeed
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
 		Assert-AreEqual 1 ($diagnostics).count "8"
 		$settingsName = ($diagnostics)[0].Name
-		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category BuiltinSqlReqsEnded
 		
 		# Disable log analytics auditing policy and verify it
 		Set-AzSynapseSqlAudit -LogAnalyticsTargetState Disabled -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
@@ -1814,7 +1774,7 @@ function Test-RemoveAuditOnSqlPool
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-Null $policy.PredicateExpression
+		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "None" $policy.StorageKeyType
 		Assert-Null $policy.RetentionInDays
@@ -1957,7 +1917,7 @@ function Test-RemoveSqlPoolAuditingSettingsMultipleDiagnosticSettings
 		Assert-AreEqual "Disabled" $policy.EventHubTargetState
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-Null $policy.PredicateExpression
+		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-Null $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 
@@ -1985,7 +1945,7 @@ function Test-RemoveSqlPoolAuditingSettingsMultipleDiagnosticSettings
 
 		# Enable a new category in existing Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
-		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SqlRequests
 		
 		# Create new Diagnostic Settings and enable auditing category
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Category SQLSecurityAuditEvents -WorkspaceId $workspaceResourceId
@@ -2082,7 +2042,7 @@ function Test-RemoveWorkspaceAuditingSettingsMultipleDiagnosticSettings
 		
 		# Enable a new category in existing Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
-		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category IntegrationPipelineRuns
 		
 		# Create new Diagnostic Settings and enable auditing category
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Category SQLSecurityAuditEvents -WorkspaceId $workspaceResourceId
