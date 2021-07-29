@@ -176,6 +176,37 @@ MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 This command resets maintenance configuration to default for existing instance
 
+### Example 6: Move managed instance to another subnet
+```powershell
+PS C:\> Set-AzSqlInstance -Name "managediInstance1" -ResourceGroupName "Resourcegroup01" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/target_subnet_name"
+Location                   : westus
+Id                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName          : resourcegroup01
+ManagedInstanceName        : managedInstance1
+Tags                       :
+Identity                   :
+Sku                        : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName   : managedInstance1.wusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin         : adminLogin1
+AdministratorPassword      :
+SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/target_subnet_name
+LicenseType                : LicenseIncluded
+VCores                     : 8
+StorageSizeInGB            : 256
+Collation                  : SQL_Latin1_General_CP1_CI_AS
+PublicDataEndpointEnabled  : False
+ProxyOverride              :
+TimezoneId                 : UTC
+DnsZonePartner             :
+DnsZone                    : ad35cna0mw
+InstancePoolName           :
+MinimalTlsVersion          :
+BackupStorageRedundancy    : Geo
+MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default
+```
+
+This command moves managed instance to another subnet
+
 ## PARAMETERS
 
 ### -AdministratorPassword
