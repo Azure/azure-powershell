@@ -54,7 +54,7 @@ require:
 input-file:
   - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/stable/2020-03-01/confluent.json
 
-module-version: 0.1.0
+module-version: 0.2.0
 title: Confluent
 subject-prefix: $(service-name)
 
