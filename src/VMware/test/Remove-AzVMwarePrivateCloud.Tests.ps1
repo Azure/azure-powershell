@@ -14,14 +14,14 @@ while(-not $mockingPath) {
 Describe 'Remove-AzVMwarePrivateCloud' {
     It 'Delete' {
         {
-            Remove-AzVMwarePrivateCloud -ResourceGroupName $env.resourceGroup1 -Name $env.rstr1
+            Remove-AzVMwarePrivateCloud -ResourceGroupName $env.resourceGroup2 -Name $env.rstr2 -Confirm:$false
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         {
-            $Id2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup2)/providers/Microsoft.AVS/privateClouds/$($env.rstr2)"
-            Remove-AzVMwarePrivateCloud -InputObject $Id2
+            $Id2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.rstr1)"
+            Remove-AzVMwarePrivateCloud -InputObject $Id2 -Confirm:$false
         } | Should -Not -Throw
     }
 }

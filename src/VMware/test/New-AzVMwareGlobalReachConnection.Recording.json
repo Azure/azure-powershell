@@ -1,13 +1,13 @@
 {
-  "New-AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/a1qrvh?api-version=2021-06-01+1": {
+  "New-AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/twp4gr?api-version=2021-06-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/a1qrvh?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/twp4gr?api-version=2021-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "111" ],
-        "x-ms-client-request-id": [ "9fe54a11-a29d-49a9-b08d-31bf905ace33" ],
+        "x-ms-unique-id": [ "130" ],
+        "x-ms-client-request-id": [ "704a4380-5ed5-4fee-82df-58b4cd2d86f8" ],
         "CommandName": [ "Get-AzVMwareExpressRouteAuthorization" ],
         "FullCommandName": [ "Get-AzVMwareExpressRouteAuthorization_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,34 +22,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14998" ],
-        "x-ms-request-id": [ "ec9833e2-1d10-443e-8ec4-a78f52590a71" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14931" ],
+        "x-ms-request-id": [ "879b38b3-1546-4185-85ef-3c83bd5fbf82" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "22cc5fc8-592b-4ec0-9a11-feefdc85ed63" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104741Z:22cc5fc8-592b-4ec0-9a11-feefdc85ed63" ],
+        "x-ms-correlation-request-id": [ "81898a46-d853-4ca3-af2f-fe6d1e7e30a1" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T040704Z:81898a46-d853-4ca3-af2f-fe6d1e7e30a1" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 252D85E2D9F6413681F09AD5059FE68B Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:47:41Z" ],
-        "Date": [ "Fri, 23 Jul 2021 10:47:41 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2095070D0D6E439BB14D2AE0DD677817 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:07:04Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:07:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "588" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/a1qrvh\",\"name\":\"a1qrvh\",\"properties\":{\"expressRouteAuthorizationId\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt51-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt51-cust-mp01-mock01-er/authorizations/avs_resource_a1qrvh\",\"expressRouteAuthorizationKey\":\"1f7a9cce-08df-437c-b2e8-dde8d02f137c\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/authorizations\"}",
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/twp4gr\",\"name\":\"twp4gr\",\"properties\":{\"expressRouteAuthorizationId\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt38-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt38-cust-mp01-mock01-er/authorizations/avs_resource_twp4gr\",\"expressRouteAuthorizationKey\":\"0185da08-ee9b-4dbe-a93c-863108c29417\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/authorizations\"}",
       "isContentBase64": false
     }
   },
   "New-AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3?api-version=2021-06-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3?api-version=2021-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "112" ],
-        "x-ms-client-request-id": [ "ec877bae-7ab3-4aa9-a804-8c39b5b3c52a" ],
+        "x-ms-unique-id": [ "131" ],
+        "x-ms-client-request-id": [ "a9936e9a-3342-4d79-9079-0658eb4498ed" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "Get-AzVMwarePrivateCloud_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -64,30 +64,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14952" ],
-        "x-ms-request-id": [ "c3cae5ed-1c26-46cf-bbbe-98a043b6e42b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14930" ],
+        "x-ms-request-id": [ "52c6fbd8-fbfd-47a4-93e6-a1e07b85fc1c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "92924773-e16c-4c96-bef2-f36c20eacb09" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104742Z:92924773-e16c-4c96-bef2-f36c20eacb09" ],
+        "x-ms-correlation-request-id": [ "b222b1f3-2abf-456c-b47c-a59f36e711ab" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T040705Z:b222b1f3-2abf-456c-b47c-a59f36e711ab" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 22E347EB72914992B24949691BEE0173 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:47:42Z" ],
-        "Date": [ "Fri, 23 Jul 2021 10:47:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F318951B53D847EA9BBD27D32B252A14 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:07:05Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:07:04 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1536" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3\",\"location\":\"westcentralus\",\"name\":\"azps_test_cloud_3\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt80-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt80-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt80-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt80-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost34.mp01.mock01.vmcp.vs.management\",\"he-fakehost36.mp01.mock01.vmcp.vs.management\",\"he-fakehost50.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}",
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3\",\"location\":\"westcentralus\",\"name\":\"azps_test_cloud_3\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost02.mp01.mock01.vmcp.vs.management\",\"he-fakehost41.mp01.mock01.vmcp.vs.management\",\"he-fakehost42.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Succeeded\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}",
       "isContentBase64": false
     }
   },
-  "New-AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/1yn38t?api-version=2021-06-01+3": {
+  "New-AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/ftr3ic?api-version=2021-06-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/1yn38t?api-version=2021-06-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"authorizationKey\": \"1f7a9cce-08df-437c-b2e8-dde8d02f137c\",\r\n    \"peerExpressRouteCircuit\": \"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt80-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt80-cust-mp01-mock01-er\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/ftr3ic?api-version=2021-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"authorizationKey\": \"0185da08-ee9b-4dbe-a93c-863108c29417\",\r\n    \"peerExpressRouteCircuit\": \"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -101,35 +101,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-request-id": [ "e41dccbd-29da-4d02-850e-36cee39998c4" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-request-id": [ "d54b6888-f6b3-4b97-b81b-8d86a9f2844d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "c629eaf9-cc1e-4b7b-b1c5-f4c934c1a851" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104744Z:c629eaf9-cc1e-4b7b-b1c5-f4c934c1a851" ],
+        "x-ms-correlation-request-id": [ "03fa5252-4bfa-4f06-9119-7a91e97375af" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T040706Z:03fa5252-4bfa-4f06-9119-7a91e97375af" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 110EC922F31D4F72B539291B3CD718AD Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:47:42Z" ],
-        "Date": [ "Fri, 23 Jul 2021 10:47:44 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F9A89049DBD94A9AB7855E3721203D70 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:07:06Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:07:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "627" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/1yn38t\",\"name\":\"1yn38t\",\"properties\":{\"addressPrefix\":\"192.168.48.136/29\",\"authorizationKey\":\"1f7a9cce-08df-437c-b2e8-dde8d02f137c\",\"circuitConnectionStatus\":\"Connected\",\"peerExpressRouteCircuit\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt80-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt80-cust-mp01-mock01-er\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/globalReachConnections\"}",
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/ftr3ic\",\"name\":\"ftr3ic\",\"properties\":{\"addressPrefix\":\"192.168.48.128/29\",\"authorizationKey\":\"0185da08-ee9b-4dbe-a93c-863108c29417\",\"circuitConnectionStatus\":\"Connected\",\"peerExpressRouteCircuit\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/globalReachConnections\"}",
       "isContentBase64": false
     }
   },
-  "New-AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/1yn38t?api-version=2021-06-01+4": {
+  "New-AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/ftr3ic?api-version=2021-06-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/1yn38t?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/ftr3ic?api-version=2021-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "114" ],
-        "x-ms-client-request-id": [ "884eb696-0224-47f9-af28-d134f5254a37" ],
+        "x-ms-unique-id": [ "133" ],
+        "x-ms-client-request-id": [ "c40891eb-7b4d-44e0-bd82-9dba08524444" ],
         "CommandName": [ "New-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "New-AzVMwareGlobalReachConnection_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -143,35 +143,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14997" ],
-        "x-ms-request-id": [ "18cb44b3-aecd-4322-9311-d532dc929f2c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14929" ],
+        "x-ms-request-id": [ "3234b9d0-71e8-4594-a52a-be94699374a4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "5d42f386-f4eb-42ce-9cac-888a326f6d77" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104816Z:5d42f386-f4eb-42ce-9cac-888a326f6d77" ],
+        "x-ms-correlation-request-id": [ "b15f685b-6901-433a-a4c6-97baadb80c20" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T040737Z:b15f685b-6901-433a-a4c6-97baadb80c20" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CB26402E8B42416797AED940B866383B Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:48:14Z" ],
-        "Date": [ "Fri, 23 Jul 2021 10:48:15 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 94CD30CC0C7543C18C75D58BA8785331 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:07:37Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:07:36 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "627" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/1yn38t\",\"name\":\"1yn38t\",\"properties\":{\"addressPrefix\":\"192.168.48.136/29\",\"authorizationKey\":\"1f7a9cce-08df-437c-b2e8-dde8d02f137c\",\"circuitConnectionStatus\":\"Connected\",\"peerExpressRouteCircuit\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt80-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt80-cust-mp01-mock01-er\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/globalReachConnections\"}",
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/ftr3ic\",\"name\":\"ftr3ic\",\"properties\":{\"addressPrefix\":\"192.168.48.128/29\",\"authorizationKey\":\"0185da08-ee9b-4dbe-a93c-863108c29417\",\"circuitConnectionStatus\":\"Connected\",\"peerExpressRouteCircuit\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/globalReachConnections\"}",
       "isContentBase64": false
     }
   },
-  "New-AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/1yn38t?api-version=2021-06-01+5": {
+  "New-AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/ftr3ic?api-version=2021-06-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/1yn38t?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/ftr3ic?api-version=2021-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "115" ],
-        "x-ms-client-request-id": [ "884eb696-0224-47f9-af28-d134f5254a37" ],
+        "x-ms-unique-id": [ "134" ],
+        "x-ms-client-request-id": [ "c40891eb-7b4d-44e0-bd82-9dba08524444" ],
         "CommandName": [ "New-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "New-AzVMwareGlobalReachConnection_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -185,22 +185,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14951" ],
-        "x-ms-request-id": [ "02497afe-36e2-4c93-8127-0ce145333380" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14928" ],
+        "x-ms-request-id": [ "88ed5e4a-5401-470d-8fff-25e5bb7da5bf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "77383677-22cc-4690-9d3f-e2ae49023d65" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T104817Z:77383677-22cc-4690-9d3f-e2ae49023d65" ],
+        "x-ms-correlation-request-id": [ "702c8be1-28d1-42ff-b6fc-15d20c4b42a9" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T040738Z:702c8be1-28d1-42ff-b6fc-15d20c4b42a9" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AAEE6F85366040B3B766532B13C6BB49 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:48:16Z" ],
-        "Date": [ "Fri, 23 Jul 2021 10:48:17 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6E2DC0EA97FC42D18D7AB020C78E23D9 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:07:38Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:07:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "627" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/1yn38t\",\"name\":\"1yn38t\",\"properties\":{\"addressPrefix\":\"192.168.48.136/29\",\"authorizationKey\":\"1f7a9cce-08df-437c-b2e8-dde8d02f137c\",\"circuitConnectionStatus\":\"Connected\",\"peerExpressRouteCircuit\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt80-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt80-cust-mp01-mock01-er\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/globalReachConnections\"}",
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/globalReachConnections/ftr3ic\",\"name\":\"ftr3ic\",\"properties\":{\"addressPrefix\":\"192.168.48.128/29\",\"authorizationKey\":\"0185da08-ee9b-4dbe-a93c-863108c29417\",\"circuitConnectionStatus\":\"Connected\",\"peerExpressRouteCircuit\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/globalReachConnections\"}",
       "isContentBase64": false
     }
   }

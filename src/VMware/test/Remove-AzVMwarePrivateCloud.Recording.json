@@ -1,0 +1,950 @@
+{
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "205" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationresults/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14988" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01" ],
+        "x-ms-request-id": [ "5c8d705a-53f7-48b3-81a6-e6477193e021" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "06145c35-842c-4864-a222-8f34ace82b03" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041736Z:06145c35-842c-4864-a222-8f34ace82b03" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AF1CE0B396204A419979B61923C1383F Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:17:34Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:17:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1\",\"location\":\"centralus\",\"name\":\"wmvla1\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt41-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt41-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt41-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt41-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"gp-fakehost09.mp01.mock01.vmcp.vs.management\",\"gp-fakehost01.mp01.mock01.vmcp.vs.management\",\"gp-fakehost12.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av20\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "206" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14873" ],
+        "x-ms-request-id": [ "8b319c1c-73fa-4539-86b1-8aaf498c83f1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "682f76a8-4e8a-4d35-bbd5-081a6138cee6" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041746Z:682f76a8-4e8a-4d35-bbd5-081a6138cee6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 085D1329B3704008B9C6CB65372799B9 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:17:46Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:17:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111\",\"name\":\"7ef6e6bd-d4ab-4129-8590-736547a28111\",\"percentComplete\":5,\"startTime\":\"2021-07-29T04:13:49.1649828+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "207" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14872" ],
+        "x-ms-request-id": [ "5b534987-c3f1-44ab-b0c3-40ee88f440a0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "20e7f5b0-4578-452c-9043-776816a8f949" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041757Z:20e7f5b0-4578-452c-9043-776816a8f949" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7C9F4852F3E5488AB61B113B8D95CB62 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:17:57Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:17:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111\",\"name\":\"7ef6e6bd-d4ab-4129-8590-736547a28111\",\"percentComplete\":25,\"startTime\":\"2021-07-29T04:13:49.1649828+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "208" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14871" ],
+        "x-ms-request-id": [ "478c3cff-79fe-44b2-a52e-7fbebdbb299e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "c0150aea-71af-4eb2-898e-958f87796e47" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041808Z:c0150aea-71af-4eb2-898e-958f87796e47" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7B77BF18035F4BDD8AC52A5F7B340772 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:18:08Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:18:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111\",\"name\":\"7ef6e6bd-d4ab-4129-8590-736547a28111\",\"percentComplete\":5,\"startTime\":\"2021-07-29T04:13:49.1649828+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "209" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14870" ],
+        "x-ms-request-id": [ "a3afa5f5-0fa9-4a37-b351-0ddc74df8064" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "64a6ca68-730c-4aab-a4ea-54c217043697" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041819Z:64a6ca68-730c-4aab-a4ea-54c217043697" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FCB574B150CA453F8854A936C1272246 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:18:18Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:18:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111\",\"name\":\"7ef6e6bd-d4ab-4129-8590-736547a28111\",\"percentComplete\":5,\"startTime\":\"2021-07-29T04:13:49.1649828+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "210" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14869" ],
+        "x-ms-request-id": [ "c3bc14f5-619c-4bc1-81d2-c06eb2c9ec6b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "f97345b7-9762-4955-a0a1-dd1a8d713a5b" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041829Z:f97345b7-9762-4955-a0a1-dd1a8d713a5b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5D72DF109AFB4D7F9D5793352BDE65A2 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:18:29Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:18:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111\",\"name\":\"7ef6e6bd-d4ab-4129-8590-736547a28111\",\"percentComplete\":0,\"startTime\":\"2021-07-29T04:13:49.1649828+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "211" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14868" ],
+        "x-ms-request-id": [ "8b709dce-1b14-4e7e-844d-fb2f0083afdc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "9ac9d921-1ce7-4efa-93ea-03e53a5e313c" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041840Z:9ac9d921-1ce7-4efa-93ea-03e53a5e313c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3CA1BF79397248EA802CEA770E4F3502 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:18:40Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:18:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111\",\"name\":\"7ef6e6bd-d4ab-4129-8590-736547a28111\",\"percentComplete\":0,\"startTime\":\"2021-07-29T04:13:49.1649828+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "212" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14867" ],
+        "x-ms-request-id": [ "11707cf8-a222-4023-8f7c-f8f319909a4b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "bf7a941a-5be5-4417-9b73-090ef3278e5a" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041851Z:bf7a941a-5be5-4417-9b73-090ef3278e5a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B522146EA8E04691A4A2047DB616FAC0 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:18:50Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:18:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111\",\"name\":\"7ef6e6bd-d4ab-4129-8590-736547a28111\",\"percentComplete\":50,\"startTime\":\"2021-07-29T04:13:49.1649828+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "213" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14866" ],
+        "x-ms-request-id": [ "ac618bb5-ac1a-483b-a609-11e29e192f78" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "73d8042a-3923-45ec-9369-22b6a13d3e80" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041902Z:73d8042a-3923-45ec-9369-22b6a13d3e80" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2E55A671CA9042C18EAF27E4BEDB06E7 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:19:01Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:19:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111\",\"name\":\"7ef6e6bd-d4ab-4129-8590-736547a28111\",\"percentComplete\":90,\"startTime\":\"2021-07-29T04:13:49.1649828+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "214" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14865" ],
+        "x-ms-request-id": [ "c2775b9e-d287-4722-981d-38766f6328db" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "dc3655f2-5429-45a0-a43a-46a799f7255b" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041912Z:dc3655f2-5429-45a0-a43a-46a799f7255b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 36DB45D0B340467BABAF5C0ECC41C77D Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:19:12Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:19:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "376" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"endTime\":\"2021-07-29T04:19:05.3305679+00:00\",\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationstatuses/7ef6e6bd-d4ab-4129-8590-736547a28111\",\"name\":\"7ef6e6bd-d4ab-4129-8590-736547a28111\",\"percentComplete\":100,\"startTime\":\"2021-07-29T04:13:49.1649828+00:00\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationresults/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/wmvla1/operationresults/7ef6e6bd-d4ab-4129-8590-736547a28111?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "215" ],
+        "x-ms-client-request-id": [ "47415700-edbe-4c2a-bbad-5c94ef7996c9" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14864" ],
+        "x-ms-request-id": [ "41c55e70-4d0a-4c8c-83ee-83257d4d868a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "dfa1ea02-2631-448e-a1c1-bf423b90f67a" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041914Z:dfa1ea02-2631-448e-a1c1-bf423b90f67a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 81FD405C05A04E63832B5CA6EDF4DD6B Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:19:13Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:19:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "216" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationresults/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14987" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01" ],
+        "x-ms-request-id": [ "6780efb9-f2dd-4e67-b578-d707ac6e3ffb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "0c3edca4-a1af-4ff5-997c-8df626f258de" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041917Z:0c3edca4-a1af-4ff5-997c-8df626f258de" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 04F5D1A9BC4B4D6E9D44F93129C8E2C5 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:19:15Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:19:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1509" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr\",\"location\":\"centralus\",\"name\":\"twp4gr\",\"properties\":{\"circuit\":{\"expressRouteID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt66-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt66-cust-mp01-mock01-er\",\"expressRoutePrivatePeeringID\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt66-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt66-cust-mp01-mock01-er/peerings/AzurePrivatePeering\",\"primarySubnet\":\"192.168.48.232/30\",\"secondarySubnet\":\"192.168.48.236/30\"},\"endpoints\":{\"hcxCloudManager\":\"https://192.168.48.9/\",\"nsxtManager\":\"https://192.168.48.3/\",\"vcsa\":\"https://192.168.48.2/\"},\"externalCloudLinks\":[],\"identitySources\":[],\"internet\":\"Disabled\",\"managementCluster\":{\"clusterId\":1,\"clusterSize\":3,\"hosts\":[\"he-fakehost25.mp01.mock01.vmcp.vs.management\",\"he-fakehost43.mp01.mock01.vmcp.vs.management\",\"he-fakehost39.mp01.mock01.vmcp.vs.management\"],\"provisioningState\":\"Succeeded\"},\"managementNetwork\":\"192.168.48.0/26\",\"networkBlock\":\"192.168.48.0/22\",\"nsxtCertificateThumbprint\":\"B9A9474616752565A3FAF23E0A013ECE3DC8B8FF\",\"provisioningNetwork\":\"192.168.50.0/25\",\"provisioningState\":\"Deleting\",\"vcenterCertificateThumbprint\":\"BE8EA855AA13D9662A115571636B9B1925C6DB68\",\"vmotionNetwork\":\"192.168.49.128/25\"},\"sku\":{\"name\":\"av36\"},\"tags\":{},\"type\":\"Microsoft.AVS/privateClouds\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "217" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14863" ],
+        "x-ms-request-id": [ "1abf4e42-8cee-48d7-ba51-cfcf2a3bdf0d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "11ed9790-69bc-4b06-80d9-7dc468efaac9" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041927Z:11ed9790-69bc-4b06-80d9-7dc468efaac9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4A9BD6B6A08340D18B760A03FD652177 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:19:27Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:19:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4\",\"name\":\"28b67640-9f98-4c52-a69f-444746bddde4\",\"percentComplete\":5,\"startTime\":\"2021-07-29T04:15:30.1156187+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "218" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14862" ],
+        "x-ms-request-id": [ "f20dd11b-9d10-4636-b26d-fd52f7e03aca" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "06ec1028-fc77-4f6c-a2e8-4a79e8d7ac96" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041938Z:06ec1028-fc77-4f6c-a2e8-4a79e8d7ac96" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A589D38A6D254637BBF24CD90A438299 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:19:38Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:19:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4\",\"name\":\"28b67640-9f98-4c52-a69f-444746bddde4\",\"percentComplete\":25,\"startTime\":\"2021-07-29T04:15:30.1156187+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "219" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14861" ],
+        "x-ms-request-id": [ "01006c67-da4e-4885-9c55-eed2727d01a0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "230add04-2d80-46ef-87fe-f129f2f417dd" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041949Z:230add04-2d80-46ef-87fe-f129f2f417dd" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6FB1881BA87247808E12826842233B28 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:19:49Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:19:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4\",\"name\":\"28b67640-9f98-4c52-a69f-444746bddde4\",\"percentComplete\":5,\"startTime\":\"2021-07-29T04:15:30.1156187+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "220" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14860" ],
+        "x-ms-request-id": [ "30c19912-0acd-43d5-bead-7ec03a7cd832" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "ac5b069b-505f-4c52-a638-f86d881a1076" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042000Z:ac5b069b-505f-4c52-a638-f86d881a1076" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FFC78CE73DF348739CCB2D317334B8E7 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:20:00Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:20:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4\",\"name\":\"28b67640-9f98-4c52-a69f-444746bddde4\",\"percentComplete\":5,\"startTime\":\"2021-07-29T04:15:30.1156187+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "221" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14859" ],
+        "x-ms-request-id": [ "7ed53a2f-3476-4075-844b-9739529baba8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "b0121a72-809e-4973-8893-3291402fcbf7" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042011Z:b0121a72-809e-4973-8893-3291402fcbf7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 54113711DAFD4CE183CE73CD878C8AF7 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:20:11Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:20:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4\",\"name\":\"28b67640-9f98-4c52-a69f-444746bddde4\",\"percentComplete\":0,\"startTime\":\"2021-07-29T04:15:30.1156187+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "222" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14858" ],
+        "x-ms-request-id": [ "b2d7a95e-0f14-4ff1-ac5e-eb98a70d57ae" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "2ea53b4b-5d7e-48f7-8569-7482bbb0f7ec" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042022Z:2ea53b4b-5d7e-48f7-8569-7482bbb0f7ec" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 61A7521B465F4103B216B65C4C6B3CBA Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:20:22Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:20:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "327" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4\",\"name\":\"28b67640-9f98-4c52-a69f-444746bddde4\",\"percentComplete\":0,\"startTime\":\"2021-07-29T04:15:30.1156187+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "223" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14857" ],
+        "x-ms-request-id": [ "7599d7ef-6c15-45b8-b038-449a21785cc2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "3657d9cb-f9ae-4454-823f-c2d587234543" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042033Z:3657d9cb-f9ae-4454-823f-c2d587234543" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7DB7AABC2E1B4051806D73E976FBB375 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:20:33Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:20:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4\",\"name\":\"28b67640-9f98-4c52-a69f-444746bddde4\",\"percentComplete\":50,\"startTime\":\"2021-07-29T04:15:30.1156187+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "224" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14856" ],
+        "x-ms-request-id": [ "f6fc5f5f-e0e0-4e9c-a0d2-4cbfed944a8a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "e4c4e631-7e48-4073-a954-4e1870e818d1" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042044Z:e4c4e631-7e48-4073-a954-4e1870e818d1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E61ACAE720B3404E95BF48A4074B7BC2 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:20:43Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:20:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4\",\"name\":\"28b67640-9f98-4c52-a69f-444746bddde4\",\"percentComplete\":90,\"startTime\":\"2021-07-29T04:15:30.1156187+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "225" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14855" ],
+        "x-ms-request-id": [ "9fcc1360-5e18-4311-945c-727f771c009a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "c73780cb-cd97-4e16-8872-450928031060" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042055Z:c73780cb-cd97-4e16-8872-450928031060" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F218F7C2B640425380142291DF952D8B Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:20:54Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:20:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "376" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"endTime\":\"2021-07-29T04:20:46.9174719+00:00\",\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationstatuses/28b67640-9f98-4c52-a69f-444746bddde4\",\"name\":\"28b67640-9f98-4c52-a69f-444746bddde4\",\"percentComplete\":100,\"startTime\":\"2021-07-29T04:15:30.1156187+00:00\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwarePrivateCloud+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationresults/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/twp4gr/operationresults/28b67640-9f98-4c52-a69f-444746bddde4?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "226" ],
+        "x-ms-client-request-id": [ "c8fe5579-c926-4d06-853d-cd0e8a517bac" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
+        "FullCommandName": [ "Remove-AzVMwarePrivateCloud_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14854" ],
+        "x-ms-request-id": [ "4c4683a8-990c-4a2c-85e6-cb269b144ca4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "460586fb-9e76-44bb-beeb-f2b038021630" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042056Z:460586fb-9e76-44bb-beeb-f2b038021630" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 18F6DB729C9F450196071DB2E6F34444 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:20:55Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:20:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  }
+}

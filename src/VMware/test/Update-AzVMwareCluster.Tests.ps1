@@ -14,16 +14,26 @@ while(-not $mockingPath) {
 Describe 'Update-AzVMwareCluster' {
     It 'UpdateExpanded' {
         {
+            $config = New-AzVMwareCluster -Name $env.rstr2 -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGroup2 -ClusterSize 3 -SkuName av36
+            $config.Name | Should -Be $env.rstr2
+
             $config = Update-AzVMwareCluster -Name $env.rstr2 -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGroup2 -ClusterSize 4
-            $config.ClusterSize | Should -Be 4
+            $config.Name | Should -Be $env.rstr2
+
+            Remove-AzVMwareCluster -Name $env.rstr2 -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGroup2
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGorup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/clusters/$($env.rstr1)"
+            $config = New-AzVMwareCluster -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -ClusterSize 3 -SkuName av20
+            $config.Name | Should -Be $env.rstr1
+
+            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/clusters/$($env.rstr1)"
             $config = Update-AzVMwareCluster -InputObject $Id1 -ClusterSize 4
-            $config.ClusterSize | Should -Be 4
+            $config.Name | Should -Be $env.rstr1
+
+            Remove-AzVMwareCluster -InputObject $Id1
         } | Should -Not -Throw
     }
 }

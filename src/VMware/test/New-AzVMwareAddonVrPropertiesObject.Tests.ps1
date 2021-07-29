@@ -15,7 +15,7 @@ Describe 'New-AzVMwareAddonVrPropertiesObject' {
     It '__AllParameterSets' {
         {
             $config = New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 123
-            $config.AddonType | Should -Be 123
+            $config.AddonType | Should -Be "VR"
         } | Should -Not -Throw
     }
 }

@@ -16,10 +16,10 @@ function setupEnv() {
     $privateCloudName2 = "azps_test_cloud_2" #+ (RandomString -allChars $false -len 4)
     $privateCloudName3 = "azps_test_cloud_3" #+ (RandomString -allChars $false -len 4)
 
-    $rstr1 = RandomString -allChars $false -len 6
-    $rstr2 = RandomString -allChars $false -len 6
-    $rstr3 = RandomString -allChars $false -len 6
-    $rstr4 = RandomString -allChars $false -len 6
+    $rstr1 = "twp4gr" #RandomString -allChars $false -len 6
+    $rstr2 = "wmvla1" #RandomString -allChars $false -len 6
+    $rstr3 = "azslrt" #RandomString -allChars $false -len 6
+    $rstr4 = "ftr3ic" #RandomString -allChars $false -len 6
 
     $env.Add("privateCloudName1", $privateCloudName1)
     $env.Add("privateCloudName2", $privateCloudName2)
@@ -44,7 +44,7 @@ function setupEnv() {
     
     New-AzResourceGroup -Name $resourceGroup1 -Location $env.location1
     New-AzResourceGroup -Name $resourceGroup2 -Location $env.location1
-    New-AzResourceGroup -Name $resourceGroup3 -Location $env.location2
+    New-AzResourceGroup -Name $resourceGroup3 -Location $env.location1
 
     New-AzVMwarePrivateCloud -Name $env.privateCloudName1 `
         -ResourceGroupName $env.resourceGroup1 -NetworkBlock 192.168.48.0/22 `

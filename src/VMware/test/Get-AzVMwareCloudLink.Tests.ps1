@@ -31,9 +31,9 @@ Describe 'Get-AzVMwareCloudLink' {
     }
 
     It 'GetViaIdentity' {
-        {          "/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/cloudLinks/azps_test_cloudlink"
-            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/cloudLinks/$($enc.rstr3)"
-            $config = Get-AzVMwareCloudLink -InputObject $Id1
+        { 
+            $Id2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/cloudLinks/$($env.rstr3)"
+            $config = Get-AzVMwareCloudLink -InputObject $Id2
             $config.Name | Should -Be $env.rstr3
         } | Should -Not -Throw
     }

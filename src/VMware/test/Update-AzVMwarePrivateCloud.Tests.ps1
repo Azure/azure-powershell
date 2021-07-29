@@ -14,15 +14,15 @@ while(-not $mockingPath) {
 Describe 'Update-AzVMwarePrivateCloud' {
     It 'UpdateExpanded' {
         {
-            $config = Update-AzVMwarePrivateCloud -Name $env.rstr1 -ResourceGroupName $env.resourceGroup1 -ManagementClusterSize 4
+            $config = Update-AzVMwarePrivateCloud -Name $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -ManagementClusterSize 4
             $config.ManagementClusterSize | Should -Be 4
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $Id2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup2)/providers/Microsoft.AVS/privateClouds/$($env.rstr2)"
-            $config = Update-AzVMwarePrivateCloud -InputObject $ID2 -ManagementClusterSize 4
+            $Id2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup2)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName2)"
+            $config = Update-AzVMwarePrivateCloud -InputObject $Id2 -ManagementClusterSize 4
             $config.ManagementClusterSize | Should -Be 4
         } | Should -Not -Throw
     }

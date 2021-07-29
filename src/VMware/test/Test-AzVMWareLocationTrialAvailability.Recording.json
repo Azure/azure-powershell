@@ -2,12 +2,12 @@
   "Test-AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/westcentralus/checkTrialAvailability?api-version=2021-06-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/westcentralus/checkTrialAvailability?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/providers/Microsoft.AVS/locations/westcentralus/checkTrialAvailability?api-version=2021-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "160" ],
-        "x-ms-client-request-id": [ "59bf20a9-7846-4754-9c43-3533dafff8c2" ],
+        "x-ms-unique-id": [ "228" ],
+        "x-ms-client-request-id": [ "50f69e1b-ab6f-4698-a9cb-370d2ff8b4ed" ],
         "CommandName": [ "Test-AzVMwareLocationTrialAvailability" ],
         "FullCommandName": [ "Test-AzVMwareLocationTrialAvailability_Check" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,15 +22,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-request-id": [ "bac0db37-909e-4a63-b2a5-3d66e43b6974" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "977a0061-9e71-469f-8a64-2af5b68261fe" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "3e86e477-8f71-49df-8c75-996ac8a21326" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T105437Z:3e86e477-8f71-49df-8c75-996ac8a21326" ],
+        "x-ms-correlation-request-id": [ "e17228e2-bc63-43ac-a6af-35ccf790fcfc" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T042101Z:e17228e2-bc63-43ac-a6af-35ccf790fcfc" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 699B18E232874ABB8A18624194657FDC Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:54:37Z" ],
-        "Date": [ "Fri, 23 Jul 2021 10:54:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D03A890D768E49288B14640E3580CC7A Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:21:00Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:21:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "45" ],

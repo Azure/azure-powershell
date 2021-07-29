@@ -25,7 +25,7 @@ Describe 'Get-AzVMwareCluster' {
     It 'Get' {
         {
             $config = Get-AzVMwareCluster -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-            $config.ClusterSize | Should -Be 3
+            $config.SkuName | Should -Be "av20"
         } | Should -Not -Throw
     }
 
@@ -34,6 +34,8 @@ Describe 'Get-AzVMwareCluster' {
             $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/clusters/$($env.rstr1)"
             $config = Get-AzVMwareCluster -InputObject $Id1
             $config.SkuName | Should -Be "av20"
+
+            Remove-AzVMwareCluster -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
         } | Should -Not -Throw
     }
 }

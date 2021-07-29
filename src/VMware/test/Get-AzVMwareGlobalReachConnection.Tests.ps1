@@ -37,6 +37,8 @@ Describe 'Get-AzVMwareGlobalReachConnection' {
             $Id3 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/globalReachConnections/$($env.rstr3)"
             $config = Get-AzVMwareGlobalReachConnection -InputObject $Id3
             $config.CircuitExpressRouteId | Should -Be $circuitExpressRouteId.CircuitExpressRouteId
+
+            Remove-AzVMwareGlobalReachConnection -Name $env.rstr3 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
         } | Should -Not -Throw
     }
 }

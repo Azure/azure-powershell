@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzVMwareAddonHcxPropertiesObject' {
     It '__AllParameterSets' {
         {
-            $config = New-AzVMwareAddonHcxPropertiesObject -AddonType HCX1 -Offer "OfferValue"
+            $config = New-AzVMwareAddonHcxPropertiesObject -AddonType HCX -Offer "OfferValue"
             $config.AddonType | Should -Be "HCX"
         } | Should -Not -Throw
     }

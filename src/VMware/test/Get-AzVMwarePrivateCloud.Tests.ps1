@@ -24,15 +24,15 @@ Describe 'Get-AzVMwarePrivateCloud' {
 
     It 'Get' {
         {
-            $config = Update-AzVMwarePrivateCloud -Name $env.rstr1 -ResourceGroupName $env.resourceGroup1 -ManagementClusterSize 4
-            $config.ManagementClusterSize | Should -Be 4
+            $config = Get-AzVMwarePrivateCloud -Name $env.rstr1 -ResourceGroupName $env.resourceGroup1
+            $config.ManagementClusterSize | Should -Be 3
         } | Should -Not -Throw
     }
 
     It 'List' {
         {
             $config = Get-AzVMwarePrivateCloud -ResourceGroupName $env.resourceGroup1
-            $config.Count | Should -Be 1
+            $config.Count | Should -Be 2
         } | Should -Not -Throw
     }
 

@@ -1,13 +1,13 @@
 {
-  "Remove-AzVMwareExpressRouteAuthorization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/6i1coj?api-version=2021-06-01+1": {
+  "Remove-AzVMwareExpressRouteAuthorization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/azslrt?api-version=2021-06-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/6i1coj?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/azslrt?api-version=2021-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "155" ],
-        "x-ms-client-request-id": [ "a4dfb7ae-ff5a-486c-ae82-f0d15d1d07eb" ],
+        "x-ms-unique-id": [ "196" ],
+        "x-ms-client-request-id": [ "d876fec5-a11c-4a51-9c98-35de788c5ca5" ],
         "CommandName": [ "Remove-AzVMwareExpressRouteAuthorization" ],
         "FullCommandName": [ "Remove-AzVMwareExpressRouteAuthorization_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,15 +22,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-request-id": [ "309c05ff-1e12-4836-aa95-cf07679e21b9" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14992" ],
+        "x-ms-request-id": [ "1ddfa546-d0a4-40a4-a795-c9edd73514f4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "210e8e23-9ebe-4cb6-a986-dd3387d778c7" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T105429Z:210e8e23-9ebe-4cb6-a986-dd3387d778c7" ],
+        "x-ms-correlation-request-id": [ "5542f914-c204-4d12-b261-2e9c7c124c0a" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041654Z:5542f914-c204-4d12-b261-2e9c7c124c0a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5CEB169F6BAD44F6A64FE2F2412CAA89 Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:54:28Z" ],
-        "Date": [ "Fri, 23 Jul 2021 10:54:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 583F483C0BE848E8AC905673EA1CA7BD Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:16:51Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:16:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "text/html" ],
@@ -41,15 +41,15 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzVMwareExpressRouteAuthorization+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/1yn38t?api-version=2021-06-01+1": {
+  "Remove-AzVMwareExpressRouteAuthorization+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/1yn38t?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "156" ],
-        "x-ms-client-request-id": [ "3eda10e4-7e4a-4f1d-8e85-41e57f4a0bce" ],
+        "x-ms-unique-id": [ "197" ],
+        "x-ms-client-request-id": [ "d7bcf51c-74b7-44f8-83e7-8c777d4075f2" ],
         "CommandName": [ "Remove-AzVMwareExpressRouteAuthorization" ],
         "FullCommandName": [ "Remove-AzVMwareExpressRouteAuthorization_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -64,15 +64,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-request-id": [ "76f41f97-2a5a-4b05-b6ea-fcf1a3cf88e9" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14991" ],
+        "x-ms-request-id": [ "9d519d96-04ff-4f54-b3fd-957e2f397fe8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "3965ce14-1055-4caa-992c-5305bb223efa" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210723T105430Z:3965ce14-1055-4caa-992c-5305bb223efa" ],
+        "x-ms-correlation-request-id": [ "e8f6e108-5b5a-4ddd-b450-24a5e4e501b8" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041656Z:e8f6e108-5b5a-4ddd-b450-24a5e4e501b8" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: EB08660417E745BF9C675B0E48C9900D Ref B: SG2EDGE1717 Ref C: 2021-07-23T10:54:29Z" ],
-        "Date": [ "Fri, 23 Jul 2021 10:54:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9A574BE0E0374CF1AC5FA7ADCBA000AF Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:16:55Z" ],
+        "Date": [ "Thu, 29 Jul 2021 04:16:56 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "text/html" ],

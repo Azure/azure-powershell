@@ -14,14 +14,17 @@ while(-not $mockingPath) {
 Describe 'Remove-AzVMwareCluster' {
     It 'Delete' {
         {
-            Remove-AzVMwarePrivateCloud -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -Name $env.rstr1
+            Remove-AzVMwareCluster -Name $env.rstr2 -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGroup2
         } | Should -Not -Throw
     }
     
     It 'DeleteViaIdentity' {
         {
-            $Id2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGorup2)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName2)/clusters/$($env.rstr2)"
-            Remove-AzVMwarePrivateCloud -InputObject $Id2
+            $config = New-AzVMwareCluster -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -ClusterSize 3 -SkuName av20
+            $config.Name | Should -Be $env.rstr1
+
+            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/clusters/$($env.rstr1)"
+            Remove-AzVMwareCluster -InputObject $Id1
         } | Should -Not -Throw
     }
 }
