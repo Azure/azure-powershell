@@ -12,6 +12,6 @@ Microsoft Azure PowerShell: ChangeAnalysis cmdlets
 
 ## Az.ChangeAnalysis Cmdlets
 ### [Get-AzChangeAnalysis](Get-AzChangeAnalysis.md)
-List the changes of a resource within the specified time range.
-Customer data will be masked if the user doesn't have access.
+Customer data is always masked if query at subscription or resource group level.
+For query on a single resource, customer data is masked if the user doesn’t have access.
 

@@ -8,8 +8,8 @@ schema: 2.0.0
 # Get-AzChangeAnalysis
 
 ## SYNOPSIS
-List the changes of a resource within the specified time range.
-Customer data will be masked if the user doesn't have access.
+Customer data is always masked if query at subscription or resource group level.
+For query on a single resource, customer data is masked if the user doesn’t have access.
 
 ## SYNTAX
 
@@ -32,8 +32,8 @@ Get-AzChangeAnalysis -ResourceGroupName <String> -EndTime <DateTime> -StartTime 
 ```
 
 ## DESCRIPTION
-List the changes of a resource within the specified time range.
-Customer data will be masked if the user doesn't have access.
+Customer data is always masked if query at subscription or resource group level.
+For query on a single resource, customer data is masked if the user doesn’t have access.
 
 ## EXAMPLES
 

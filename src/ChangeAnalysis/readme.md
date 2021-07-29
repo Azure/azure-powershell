@@ -49,6 +49,11 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
+  - from: swagger-document 
+    where: $.paths["/{resourceId}/providers/Microsoft.ChangeAnalysis/resourceChanges"].post.summary
+    transform: >-
+      return "Customer data is always masked if query at subscription or resource group level. For query on a single resource, customer data is masked if the user doesn’t have access."
+      
   # Merged cmdlet because the response of two get-* cmdlet are same.
   - from: swagger-document 
     where: $.paths["/{resourceId}/providers/Microsoft.ChangeAnalysis/resourceChanges"].post.operationId
@@ -64,5 +69,5 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.ChangeAnalysis/changes"].get.operationId
     transform: >-
       return "ChangeAnalysis_ListBySubscription"
-
+  
 ```
