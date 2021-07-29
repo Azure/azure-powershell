@@ -168,7 +168,7 @@ function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 {
 	$subscriptionId = (Get-AzContext).Subscription.Id
 	return @{ 
-              rgname = "audit-cmdlet-test-rg" +$testSuffix;
+			  rgname = "audit-cmdlet-test-rg" +$testSuffix;
 			  workspaceName = "audit-cmdlet-workspace" +$testSuffix;
 			  sqlPoolName = "auditsqlpool" + $testSuffix;
 			  storageAccountName = "sqlstorage" + $testSuffix;
@@ -176,7 +176,7 @@ function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
 			  perfLevel = 'DW200c';
-              location = "canadacentral";
+			  location = "canadacentral";
 			  eventHubNamespace = "audit-cmdlet-event-hub-ns" + $testSuffix
 			  logworkspaceName = "audit-cmdlet-logworkspace" +$testSuffix
 			  storageAccountResourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + "audit-cmdlet-test-rg" + $testSuffix + "/providers/Microsoft.Storage/storageAccounts/" + "sqlstorage" + $testSuffix

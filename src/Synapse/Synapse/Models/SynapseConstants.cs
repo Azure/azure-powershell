@@ -222,10 +222,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             public const string Secondary = "Secondary";
         }
 
-        internal const string SQLSecurityAuditCategory = "SQLSecurityAuditEvents";
-
-        internal const string DiagnosticSettingsNamePrefixSQLSecurityAuditEvents = SQLSecurityAuditCategory + "_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
-
         public class DetectionType
         {
             public const string Sql_Injection = "Sql_Injection";
