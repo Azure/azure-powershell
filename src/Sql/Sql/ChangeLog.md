@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `AsJob` flag to `Remove-AzSqlInstance`
+* Added `SubnetId` parameter to `Set-AzSqlInstance` to support the cross-subnet update SLO
 
 ## Version 3.4.1
 * Fixed identity logic in `Set-AzSqlServer` and `Set-AzSqlInstance`
