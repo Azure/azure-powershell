@@ -29,7 +29,7 @@ For more information about the cmdlets, see [Azure Key Vault Cmdlets](/powershel
 > [!NOTE] 
 > To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows) instead of `Add-AzVMSecret`.
 
-## EXAMPLE
+## EXAMPLES
 
 ### Example: Add a secret to a virtual machine using Add-AzVMSecret
 ```powershell
