@@ -1,7 +1,7 @@
 # Please don't use ADO UI defined scheduled triggers because it takes precedence over YAML scheduled triggers.
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers
 schedules:
-- cron: "0 0 * * *"
+- cron: "0 18 * * *" # 18PM UTC+0 aka 2AM UTC+8, every day
   displayName: Daily Midnight Build
   branches:
     include:
