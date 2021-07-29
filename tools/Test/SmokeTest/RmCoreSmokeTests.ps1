@@ -121,7 +121,7 @@ $resourceTestCommands = @(
     @{Name = "Az.Kusto";                      Command = {Get-AzKustoCluster -ErrorAction Stop}},
     @{Name = "Az.LogicApp";                   Command = {Get-AzIntegrationAccount -ErrorAction Stop}},
     @{Name = "Az.MachineLearning";            Command = {Get-AzMlWebService -ErrorAction Stop}},
-    @{Name = "Az.Maintenance";                Command = {Get-AzMaintenanceConfiguration -ErrorAction Stop}},
+    @{Name = "Az.Maintenance";                Command = {Retry-AzCommand -Command "Get-AzMaintenanceConfiguration -ErrorAction Stop" -RetryCount 30 -Sleep 30}},
     @{Name = "Az.ManagedServices";            Command = {Get-AzManagedServicesAssignment -ErrorAction Stop}},
     # Machine learning compute cmdlets are removed. The following line are to be commented until they are brought back
     # @{Name = "Az.MachineLearning [Compute]";  Command = {Get-AzMlOpCluster -ErrorAction Stop}},
