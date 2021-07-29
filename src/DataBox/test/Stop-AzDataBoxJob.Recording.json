@@ -1,0 +1,212 @@
+{
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/powershellScheduleeph0/cancel?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/powershellScheduleeph0/cancel?api-version=2021-03-01",
+      "Content": "{\n  \"reason\": \"Test Job\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "26" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "47b10b14-27fa-436a-9470-e67e23a1386c" ],
+        "x-ms-client-request-id": [ "49d41d96-1dac-4552-82ee-5d40a9f25e53" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "47b10b14-27fa-436a-9470-e67e23a1386c" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20210729T100944Z:47b10b14-27fa-436a-9470-e67e23a1386c" ],
+        "Date": [ "Thu, 29 Jul 2021 10:09:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/powershellm5ig/cancel?api-version=2021-03-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/powershellm5ig/cancel?api-version=2021-03-01",
+      "Content": "{\n  \"reason\": \"Test Job\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "26" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "4a817b86-1dba-4077-b5b9-29c59ac41bd7" ],
+        "x-ms-client-request-id": [ "d193c999-7f76-4432-8d09-2a00674d965e" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "4a817b86-1dba-4077-b5b9-29c59ac41bd7" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20210729T100945Z:4a817b86-1dba-4077-b5b9-29c59ac41bd7" ],
+        "Date": [ "Thu, 29 Jul 2021 10:09:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/powershellExportkrxf/cancel?api-version=2021-03-01+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/powershellExportkrxf/cancel?api-version=2021-03-01",
+      "Content": "{\n  \"reason\": \"Test Job\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "26" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "b93f8056-d2fe-4185-bc86-c57f4338de59" ],
+        "x-ms-client-request-id": [ "a6cc399d-f744-437d-9c96-d8ae123b916c" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "b93f8056-d2fe-4185-bc86-c57f4338de59" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20210729T100946Z:b93f8056-d2fe-4185-bc86-c57f4338de59" ],
+        "Date": [ "Thu, 29 Jul 2021 10:09:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/powershellUAI612q/cancel?api-version=2021-03-01+4": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/powershellUAI612q/cancel?api-version=2021-03-01",
+      "Content": "{\n  \"reason\": \"Test Job\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "26" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "4bfec523-5d33-4c00-ab01-670a39a2fc91" ],
+        "x-ms-client-request-id": [ "871bb336-c19e-4300-b90d-2cc727e4b67f" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "4bfec523-5d33-4c00-ab01-670a39a2fc91" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20210729T100947Z:4bfec523-5d33-4c00-ab01-670a39a2fc91" ],
+        "Date": [ "Thu, 29 Jul 2021 10:09:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/PwshDisk3zek/cancel?api-version=2021-03-01+5": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/PwshDisk3zek/cancel?api-version=2021-03-01",
+      "Content": "{\n  \"reason\": \"Test Job\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "26" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "e7fff2cc-0c8f-4c1d-8a0d-66de1bf61a37" ],
+        "x-ms-client-request-id": [ "7cbe493e-2218-4b46-a9d6-15987e2bccab" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "e7fff2cc-0c8f-4c1d-8a0d-66de1bf61a37" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20210729T100948Z:e7fff2cc-0c8f-4c1d-8a0d-66de1bf61a37" ],
+        "Date": [ "Thu, 29 Jul 2021 10:09:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzDataBoxJob+[NoContext]+CancelExpanded+$POST+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/PwshHeavyhrdz/cancel?api-version=2021-03-01+6": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-kp/providers/Microsoft.DataBox/jobs/PwshHeavyhrdz/cancel?api-version=2021-03-01",
+      "Content": "{\n  \"reason\": \"Test Job\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "26" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c1d561c7-2a18-4f55-8e16-5b6c51e30351" ],
+        "x-ms-client-request-id": [ "7878c941-941c-4105-85b3-445d77313050" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-correlation-request-id": [ "c1d561c7-2a18-4f55-8e16-5b6c51e30351" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20210729T100949Z:c1d561c7-2a18-4f55-8e16-5b6c51e30351" ],
+        "Date": [ "Thu, 29 Jul 2021 10:09:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
