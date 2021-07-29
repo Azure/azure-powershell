@@ -71,7 +71,7 @@ function Test-LoadBalancerBackendPoolCRUD
 
         #remove IpAddress from list
         $backendPoolSet1.LoadBalancerBackendAddresses.Remove($backendPoolSet1.LoadBalancerBackendAddresses[0])
-        $backendPoolSet2 = Set-AzLoadBalancerBackendAddressPool -InputObject $backendPoolSet1
+        $backendPoolSet2 = $backendPoolSet1 | Set-AzLoadBalancerBackendAddressPool
 
         Assert-NotNull  $backendPoolSet2
         
@@ -104,7 +104,7 @@ function Test-LoadBalancerBackendPoolCreate
     $location = Get-ProviderLocation $resourceTypeParent
     $backendAddressConfigName = "TestVNetRef"
     $testIpAddress1 = "10.0.0.5"
-    $testIpAddress2 = "10.0.0.6"
+    $testIpAddress2 = "10.0.1.6"
     $testIpAddress3 = "10.0.0.7"
 
     $backendAddressConfigName1 = Get-ResourceName
@@ -129,7 +129,7 @@ function Test-LoadBalancerBackendPoolCreate
         $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard
 
         $ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress1 -Name $backendAddressConfigName1 -VirtualNetworkId $vnet.Id
-        $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress2 -Name $backendAddressConfigName2 -VirtualNetworkId $vnet.Id 
+        $ip2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress2 -Name $backendAddressConfigName2 -SubnetId $vnet.Subnets[0].Id 
         $ip3 = New-AzLoadBalancerBackendAddressConfig -IpAddress $testIpAddress3 -Name $backendAddressConfigName3 -VirtualNetworkId $vnet.Id
 
         $ips = @($ip1, $ip2)
@@ -274,7 +274,7 @@ function Test-LoadBalancerBackendPoolDelete
         $lb | Remove-AzLoadBalancerBackendAddressPool -Name $backendPoolName1
 
         ##test passing input object
-        Remove-AzLoadBalancerBackendAddressPool -InputObject $b2
+        $b2 | Remove-AzLoadBalancerBackendAddressPool
 
         ##test passing resourceId
         Remove-AzLoadBalancerBackendAddressPool -ResourceId $b3.Id
@@ -469,6 +469,12 @@ function Test-LoadBalancerBackendAddressConfig
         Assert-AreEqual $ipconfig1.Name $backendAddressConfigName1
         Assert-AreEqual $ipconfig1.IpAddress $validIpAddress
         Assert-AreEqual $ipconfig1.VirtualNetwork.Id $virtualNetwork.Id
+
+        $ipconfig2 = New-AzLoadBalancerBackendAddressConfig -IpAddress $validIpAddress -Name $backendAddressConfigName1 -SubnetId virtualNetwork.Subnets[0].Id
+
+        Assert-AreEqual $ipconfig2.Name $backendAddressConfigName1
+        Assert-AreEqual $ipconfig2.IpAddress $validIpAddress
+        Assert-AreEqual $ipconfig2.Subnet.Id  virtualNetwork.Subnets[0].Id
 
         Assert-ThrowsLike { New-AzLoadBalancerBackendAddressConfig -IpAddress $invalidIpAddress2 -Name $backendAddressConfigName1 -VirtualNetworkId $virtualNetwork.Id} "*Invalid IPAddress*"
 

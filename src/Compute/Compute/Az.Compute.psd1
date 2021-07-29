@@ -171,7 +171,9 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Get-AzDiskEncryptionSetAssociatedResource', 
                'Start-AzVmssRollingExtensionUpgrade', 'Invoke-AzVmInstallPatch', 
                'Get-AzSshKey', 'Remove-AzSshkey', 'Update-AzSshKey', 'New-AzSshKey', 
-               'New-AzDiskPurchasePlanConfig', 'Set-AzDiskSecurityProfile'
+               'New-AzDiskPurchasePlanConfig', 'Set-AzDiskSecurityProfile', 'New-AzCapacityReservationGroup',
+               'Remove-AzCapacityReservationGroup', 'Get-AzCapacityReservationGroup', 'New-AzCapacityReservation',
+               'Get-AzCapacityReservation', 'Remove-AzCapacityReservation'
 
 # Variables to export from this module
 # VariablesToExport = @()

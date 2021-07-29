@@ -22,9 +22,13 @@
     -  `Enable-AzStorageBlobLastAccessTimeTracking`
     -  `Disable-AzStorageBlobLastAccessTimeTracking`
     -  `Add-AzStorageAccountManagementPolicyAction`
-* Make list datalake gen2 items list out all items by default, instead of need user to list chunk by chunk.
-    - `Get-AzDataLakeGen2ChildItem`
-* Fix BlobProperties is empty issue when use sas without prefix '?' [#15460]
+* Supported Parquest as input text config in blob quick query
+    -  `New-AzStorageBlobQueryConfig`
+    -  `Get-AzStorageBlobQueryResult`
+* Made `Get-AzDataLakeGen2ChildItem` list all datalake gen2 items by default, instead of needing user to list chunk by chunk.
+* Fixed BlobProperties is empty issue when using sas without prefix '?' [#15460]
+* Fixed synchronously copy small blob failure [#15548]
+    - `Copy-AzStorageBlob`
 
 ## Version 3.9.0
 * Supported enable/disable Blob container soft delete

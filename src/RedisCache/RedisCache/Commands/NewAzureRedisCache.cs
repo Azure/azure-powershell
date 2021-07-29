@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "List of zones.")]
         public string[] Zone { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version. Valid values: 4, 6")]
+        public string RedisVersion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
@@ -133,6 +136,22 @@ namespace Microsoft.Azure.Commands.RedisCache
                     throw;
                 }
             }
+            catch (ErrorResponseException ex)
+            {
+                if (ex.Body.Error.Code == "ResourceNotFound" || ex.Message.Contains("ResourceNotFound"))
+                {
+                    // cache does not exists so go ahead and create one
+                }
+                else if (ex.Body.Error.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
+                {
+                    // resource group not found, let create throw error don't throw from here
+                }
+                else
+                {
+                    // all other exceptions should be thrown
+                    throw;
+                }
+            }
 
             ConfirmAction(
               string.Format(Resources.CreateRedisCache, Name),
@@ -140,7 +159,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               () =>
               {
                   var redisResource = CacheClient.CreateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku,
-                      RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, SubnetId, StaticIP, Tag, Zone);
+                      RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, SubnetId, StaticIP, Tag, Zone, RedisVersion);
                   var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
                   WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
               });

@@ -75,6 +75,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="IntentObjectName" /> property.</summary>
+        private string _intentObjectName;
+
+        /// <summary>Replication protection intent name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string IntentObjectName { get => this._intentObjectName; set => this._intentObjectName = value; }
+
         /// <summary>Backing field for <see cref="JobName" /> property.</summary>
         private string _jobName;
 
@@ -169,7 +176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="ProviderName" /> property.</summary>
         private string _providerName;
 
-        /// <summary>Recovery services provider name</summary>
+        /// <summary>Recovery services provider name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string ProviderName { get => this._providerName; set => this._providerName = value; }
 
@@ -250,12 +257,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>Backing field for <see cref="VaultSettingName" /> property.</summary>
+        private string _vaultSettingName;
+
+        /// <summary>Vault setting name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string VaultSettingName { get => this._vaultSettingName; set => this._vaultSettingName = value; }
+
         /// <summary>Backing field for <see cref="VcenterName" /> property.</summary>
         private string _vcenterName;
 
         /// <summary>VCenter ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string VcenterName { get => this._vcenterName; set => this._vcenterName = value; }
+
+        /// <summary>Backing field for <see cref="VirtualMachineName" /> property.</summary>
+        private string _virtualMachineName;
+
+        /// <summary>Virtual Machine name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string VirtualMachineName { get => this._virtualMachineName; set => this._virtualMachineName = value; }
 
         /// <summary>Creates an new <see cref="MigrateIdentity" /> instance.</summary>
         public MigrateIdentity()
@@ -338,6 +359,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>Replication protection intent name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Replication protection intent name.",
+        SerializedName = @"intentObjectName",
+        PossibleTypes = new [] { typeof(string) })]
+        string IntentObjectName { get; set; }
         /// <summary>Job ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -442,11 +471,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"protectionContainerName",
         PossibleTypes = new [] { typeof(string) })]
         string ProtectionContainerName { get; set; }
-        /// <summary>Recovery services provider name</summary>
+        /// <summary>Recovery services provider name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Recovery services provider name",
+        Description = @"Recovery services provider name.",
         SerializedName = @"providerName",
         PossibleTypes = new [] { typeof(string) })]
         string ProviderName { get; set; }
@@ -538,6 +567,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>Vault setting name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Vault setting name.",
+        SerializedName = @"vaultSettingName",
+        PossibleTypes = new [] { typeof(string) })]
+        string VaultSettingName { get; set; }
         /// <summary>VCenter ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -546,6 +583,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"vcenterName",
         PossibleTypes = new [] { typeof(string) })]
         string VcenterName { get; set; }
+        /// <summary>Virtual Machine name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Virtual Machine name.",
+        SerializedName = @"virtualMachineName",
+        PossibleTypes = new [] { typeof(string) })]
+        string VirtualMachineName { get; set; }
 
     }
     internal partial interface IMigrateIdentityInternal
@@ -569,6 +614,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string HostName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>Replication protection intent name.</summary>
+        string IntentObjectName { get; set; }
         /// <summary>Job ARM name.</summary>
         string JobName { get; set; }
         /// <summary>Logical network name.</summary>
@@ -595,7 +642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string ProtectableItemName { get; set; }
         /// <summary>Protection container name.</summary>
         string ProtectionContainerName { get; set; }
-        /// <summary>Recovery services provider name</summary>
+        /// <summary>Recovery services provider name.</summary>
         string ProviderName { get; set; }
         /// <summary>Name of the recovery plan.</summary>
         string RecoveryPlanName { get; set; }
@@ -619,8 +666,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string StorageClassificationName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
+        /// <summary>Vault setting name.</summary>
+        string VaultSettingName { get; set; }
         /// <summary>VCenter ARM name.</summary>
         string VcenterName { get; set; }
+        /// <summary>Virtual Machine name.</summary>
+        string VirtualMachineName { get; set; }
 
     }
 }
