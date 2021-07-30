@@ -131,7 +131,7 @@ $resourceTestCommands = @(
     @{Name = "Az.Network";                    Command = {Get-AzNetworkInterface -ErrorAction Stop}},
     @{Name = "Az.NotificationHubs";           Command = {Get-AzNotificationHubsNamespace -ErrorAction Stop}},
     @{Name = "Az.OperationalInsights";        Command = {Get-AzOperationalInsightsWorkspace -ErrorAction Stop}},
-    @{Name = "Az.PolicyInsights";             Command = {Get-AzPolicyEvent -ErrorAction Stop}},
+    @{Name = "Az.PolicyInsights";             Command = {Get-AzPolicyEvent -Top 10 -ErrorAction Stop}}, # without -Top service may return 400: ResponseTooLarge
     @{Name = "Az.PowerBIEmbedded";            Command = {Get-AzPowerBIEmbeddedCapacity -ErrorAction Stop}},
     @{Name = "Az.PowerBIUEmbedded";           Command = {Get-AzPowerBIWorkspaceCollection -ErrorAction Stop}},
     @{Name = "Az.PrivateDns";                 Command = {Get-AzPrivateDnsZone -ErrorAction Stop}},
