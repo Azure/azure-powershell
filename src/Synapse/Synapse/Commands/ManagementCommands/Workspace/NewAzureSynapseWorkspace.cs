@@ -15,6 +15,8 @@ namespace Microsoft.Azure.Commands.Synapse
     [OutputType(typeof(PSSynapseWorkspace))]
     public class NewAzureSynapseWorkspace : SynapseManagementCmdletBase
     {
+        private const string SetGitConfigParameterSet = "SetGitConfigParameterSet";
+
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter()]
@@ -75,6 +77,42 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string ManagedResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = SetGitConfigParameterSet,
+            HelpMessage = HelpMessages.RepositoryType)]
+        [ValidateSet(SynapseConstants.RepositoryType.GitHub, SynapseConstants.RepositoryType.DevOps, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string RepositoryType { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = SetGitConfigParameterSet,
+            HelpMessage = HelpMessages.AccountName)]
+        [ValidateNotNullOrEmpty]
+        public string AccountName { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = SetGitConfigParameterSet,
+            HelpMessage = HelpMessages.ProjectName)]
+        [ValidateNotNullOrEmpty]
+        public string ProjectName { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = SetGitConfigParameterSet,
+            HelpMessage = HelpMessages.RepositoryName)]
+        [ValidateNotNullOrEmpty]
+        public string RepositoryName { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = SetGitConfigParameterSet,
+            HelpMessage = HelpMessages.CollaborationBranch)]
+        [ValidateNotNullOrEmpty]
+        public string CollaborationBranch { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = SetGitConfigParameterSet,
+            HelpMessage = HelpMessages.PublishBranch)]
+        [ValidateNotNullOrEmpty]
+        public string PublishBranch { get; set; } = "workspace_publish";
+
+        [Parameter(Mandatory = false, ParameterSetName = SetGitConfigParameterSet,
+            HelpMessage = HelpMessages.RootFolder)]
+        [ValidateNotNullOrEmpty]
+        public string RootFolder { get; set; } = "/";
+
         public override void ExecuteCmdlet()
         {
             try
@@ -100,6 +138,11 @@ namespace Microsoft.Azure.Commands.Synapse
                     // all other exceptions should be thrown
                     throw;
                 }
+            }
+
+            if(this.RepositoryType == SynapseConstants.RepositoryType.DevOps && this.ProjectName == null)
+            {
+                throw new PSArgumentException("Project name is not provided", "ProjectName");
             }
 
             var defaultDataLakeStorageAccountUrl = string.Format(
@@ -134,6 +177,15 @@ namespace Microsoft.Azure.Commands.Synapse
                             KeyVaultUrl = this.EncryptionKeyIdentifier
                         }
                     }
+                } : null,
+                WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.RepositoryType) ? new WorkspaceRepositoryConfiguration
+                {
+                    Type = this.RepositoryType == SynapseConstants.RepositoryType.DevOps ? SynapseConstants.RepositoryType.WorkspaceVSTSConfiguration : SynapseConstants.RepositoryType.WorkspaceGitHubConfiguration,
+                    AccountName = this.AccountName,
+                    ProjectName = this.RepositoryType == SynapseConstants.RepositoryType.DevOps ? this.ProjectName : null,
+                    RepositoryName = this.RepositoryName,
+                    CollaborationBranch = this.CollaborationBranch,
+                    RootFolder = this.RootFolder
                 } : null
             };
 

@@ -243,5 +243,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             LinkedService,
             Credential
         }
+
+        public class RepositoryType
+        {
+            public const string GitHub = "GitHub";
+            public const string DevOps = "DevOps";
+            public const string WorkspaceVSTSConfiguration = "WorkspaceVSTSConfiguration";
+            public const string WorkspaceGitHubConfiguration = "WorkspaceGitHubConfiguration";
+        }
     }
 }
