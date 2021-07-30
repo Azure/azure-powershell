@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Fixed remove datalakegen2 item fail with readonly SAS token
     -  `Remove-AzDataLakeGen2Item` 
+* Revised destination existing check in move datalakegen2 item
+    -  `Move-AzDataLakeGen2Item` 
 
 * Supported Blob Last Access Time
     -  `Enable-AzStorageBlobLastAccessTimeTracking`
