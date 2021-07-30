@@ -65,7 +65,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         public DateTimeOffset? ExpiresOn { get; set; }
 
         [Parameter(HelpMessage = "Blob ImmutabilityPolicy PolicyMode", Mandatory = false)]
-        [PSArgumentCompleter("Unlocked", "Locked", "Mutable")]
         [ValidateSet("Unlocked", "Locked", "Mutable", IgnoreCase = true)]
         public string PolicyMode
         {
