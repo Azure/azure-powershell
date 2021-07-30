@@ -49,7 +49,7 @@ FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
   [FriendlyName <String>]: Friendly Name
   [RemoteDnsIP <String>]: Remote Dns ips
   [TrustDirection <String>]: Trust Direction
-  [TrustPassword <String>]: Trust Password
+  [TrustPassword <SecureString>]: Trust Password
   [TrustedDomainFqdn <String>]: Trusted Domain FQDN
 
 INPUTOBJECT <IAdDomainServicesIdentity>: Identity Parameter
@@ -62,9 +62,9 @@ REPLICASET <IReplicaSet[]>: List of ReplicaSets
   [Location <String>]: Virtual network location
   [SubnetId <String>]: The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.addomainservices/update-azaddomainservice
+https://docs.microsoft.com/powershell/module/az.addomainservices/update-azaddomainservice
 #>
-function Update-AzADDomainService {
+function Update-AzAdDomainService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -104,58 +104,78 @@ param(
     ${DomainConfigurationType},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1])]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
+    # The name of the Azure domain that the user would like to deploy Domain Services to.
+    ${DomainName},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1]
     # A flag to determine whether or not NtlmV1 is enabled or disabled.
     ${DomainSecuritySettingNtlmV1},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords])]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords]
     # A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncKerberosPassword},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords])]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords]
     # A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncNtlmPassword},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords])]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords]
     # A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncOnPremPassword},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1])]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1]
     # A flag to determine whether or not TlsV1 is enabled or disabled.
     ${DomainSecuritySettingTlsV1},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync])]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String]
+    # Resource etag
+    ${Etag},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync]
     # Enabled or Disabled flag to turn on Group-based filtered sync
     ${FilteredSync},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[]]
+    # List of settings for Resource Forest
+    # To construct, see NOTES section for FORESTTRUST properties and create a hash table.
+    ${ForestTrust},
+
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess])]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess]
     # A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
     ${LdapSettingExternalAccess},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps])]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps]
     # A flag to determine whether or not Secure LDAP is enabled or disabled.
     ${LdapSettingLdaps},
 
@@ -174,6 +194,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
+    [System.String]
+    # Resource location
+    ${Location},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String[]]
     # The list of additional recipients
     ${NotificationSettingAdditionalRecipient},
@@ -181,18 +208,19 @@ param(
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins])]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins]
     # Should domain controller admins be notified
     ${NotificationSettingNotifyDcAdmin},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins])]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [System.String]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins]
     # Should global admins be notified
     ${NotificationSettingNotifyGlobalAdmin},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IReplicaSet[]]
     # List of ReplicaSets
@@ -204,13 +232,6 @@ param(
     [System.String]
     # Resource Forest
     ${ResourceForest},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[]]
-    # List of settings for Resource Forest
-    # To construct, see NOTES section for FORESTTRUST properties and create a hash table.
-    ${ForestTrust},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
@@ -293,12 +314,14 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.ADDomainServices.custom\Update-AzADDomainService';
-            UpdateViaIdentityExpanded = 'Az.ADDomainServices.custom\Update-AzADDomainService';
+            UpdateExpanded = 'Az.ADDomainServices.private\Update-AzAdDomainService_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.ADDomainServices.private\Update-AzAdDomainService_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

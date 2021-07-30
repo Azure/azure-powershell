@@ -27,7 +27,7 @@ Create a in-memory object for ReplicaSet
 ### [Remove-AzADDomainService](Remove-AzADDomainService.md)
 The Delete Domain Service operation deletes an existing Domain Service.
 
-### [Update-AzADDomainService](Update-AzADDomainService.md)
+### [Update-AzAdDomainService](Update-AzAdDomainService.md)
 The Update Domain Service operation can be used to update the existing deployment.
 The update call only supports the properties listed in the PATCH body.
 

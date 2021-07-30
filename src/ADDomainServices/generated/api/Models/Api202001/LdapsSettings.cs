@@ -58,11 +58,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         public string PfxCertificate { get => this._pfxCertificate; set => this._pfxCertificate = value; }
 
         /// <summary>Backing field for <see cref="PfxCertificatePassword" /> property.</summary>
-        private string _pfxCertificatePassword;
+        private System.Security.SecureString _pfxCertificatePassword;
 
         /// <summary>The password to decrypt the provided Secure LDAP certificate pfx file.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Owned)]
-        public string PfxCertificatePassword { get => this._pfxCertificatePassword; set => this._pfxCertificatePassword = value; }
+        public System.Security.SecureString PfxCertificatePassword { get => this._pfxCertificatePassword; set => this._pfxCertificatePassword = value; }
 
         /// <summary>Backing field for <see cref="PublicCertificate" /> property.</summary>
         private string _publicCertificate;
@@ -132,8 +132,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         ReadOnly = false,
         Description = @"The password to decrypt the provided Secure LDAP certificate pfx file.",
         SerializedName = @"pfxCertificatePassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string PfxCertificatePassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString PfxCertificatePassword { get; set; }
         /// <summary>Public certificate used to configure secure ldap.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(
         Required = false,
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         /// </summary>
         string PfxCertificate { get; set; }
         /// <summary>The password to decrypt the provided Secure LDAP certificate pfx file.</summary>
-        string PfxCertificatePassword { get; set; }
+        System.Security.SecureString PfxCertificatePassword { get; set; }
         /// <summary>Public certificate used to configure secure ldap.</summary>
         string PublicCertificate { get; set; }
 

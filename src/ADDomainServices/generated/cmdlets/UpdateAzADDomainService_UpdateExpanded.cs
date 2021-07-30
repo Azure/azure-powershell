@@ -14,12 +14,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.InternalExport]
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzADDomainService_UpdateExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAdDomainService_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Description(@"The Update Domain Service operation can be used to update the existing deployment. The update call only supports the properties listed in the PATCH body.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Generated]
-    public partial class UpdateAzADDomainService_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
+    public partial class UpdateAzAdDomainService_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -248,8 +247,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         ReadOnly = false,
         Description = @"The password to decrypt the provided Secure LDAP certificate pfx file.",
         SerializedName = @"pfxCertificatePassword",
-        PossibleTypes = new [] { typeof(string) })]
-        public string LdapSettingPfxCertificatePassword { get => DomainServiceBody.LdapSettingPfxCertificatePassword ?? null; set => DomainServiceBody.LdapSettingPfxCertificatePassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString LdapSettingPfxCertificatePassword { get => DomainServiceBody.LdapSettingPfxCertificatePassword ?? null; set => DomainServiceBody.LdapSettingPfxCertificatePassword = value; }
 
         /// <summary>Resource location</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location")]
@@ -471,10 +470,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of UpdateAzADDomainService_UpdateExpanded</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets.UpdateAzADDomainService_UpdateExpanded Clone()
+        /// <returns>a duplicate instance of UpdateAzAdDomainService_UpdateExpanded</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets.UpdateAzAdDomainService_UpdateExpanded Clone()
         {
-            var clone = new UpdateAzADDomainService_UpdateExpanded();
+            var clone = new UpdateAzAdDomainService_UpdateExpanded();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -670,9 +669,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzADDomainService_UpdateExpanded" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="UpdateAzAdDomainService_UpdateExpanded" /> cmdlet class.
         /// </summary>
-        public UpdateAzADDomainService_UpdateExpanded()
+        public UpdateAzAdDomainService_UpdateExpanded()
         {
 
         }

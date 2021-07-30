@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IOperationEntity
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.addomainservices/get-azaddomainserviceoperation
+https://docs.microsoft.com/powershell/module/az.addomainservices/get-azaddomainserviceoperation
 #>
 function Get-AzADDomainServiceOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IOperationEntity])]
@@ -94,6 +94,7 @@ begin {
         $mapping = @{
             List = 'Az.ADDomainServices.private\Get-AzADDomainServiceOperation_List';
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

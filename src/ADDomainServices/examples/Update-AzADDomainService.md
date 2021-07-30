@@ -1,24 +1,18 @@
-### Example 1: Update AzADDomainService By ResourceGroupName and Name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> $ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 Disabled
-Update-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain -DomainSecuritySetting $ADDomainSetting
+PS C:\> {{ Add code here }}
 
-Name          Domain Name       Location Sku
-----          -----------       -------- ---
-youriADdomain youriAddomain.com westus   Enterprise
+{{ Add output here }}
 ```
 
-Update AzADDomainService By ResourceGroupName and Name
+{{ Add description here }}
 
-### Example 2: Update AzADDomainService By Inputobject
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $getAzAddomain = Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
-$ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 Disabled
-Update-AzADDomainService -InputObject $getAzAddomain -DomainSecuritySetting $ADDomainSetting
+PS C:\> {{ Add code here }}
 
-Name          Domain Name       Location Sku
-----          -----------       -------- ---
-youriADdomain youriAddomain.com westus   Enterprise
+{{ Add output here }}
 ```
 
-Update AzADDomainService By Inputobject
+{{ Add description here }}
+

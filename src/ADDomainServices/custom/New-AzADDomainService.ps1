@@ -39,7 +39,7 @@ RESOURCEFORESTSETTING <IForestTrust[]>: List of settings for Resource Forest
   [TrustPassword <String>]: Trust Password
   [TrustedDomainFqdn <String>]: Trusted Domain FQDN
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.addomainservices/new-azaddomainservice
+https://docs.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 #>
 function New-AzADDomainService {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
@@ -266,11 +266,6 @@ function New-AzADDomainService {
     process {
         try {
             $PSBoundParameters['Location'] = $PSBoundParameters['ReplicaSet'][0].Location
-
-            if ($PSBoundParameters.ContainsKey('LdapSettingPfxCertificatePassword')) {
-                $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['LdapSettingPfxCertificatePassword']
-                $PSBoundParameters['LdapSettingPfxCertificatePassword'] = $psTxt
-            }  
 
             Az.ADDomainServices.internal\New-AzADDomainService @PSBoundParameters
         } catch {

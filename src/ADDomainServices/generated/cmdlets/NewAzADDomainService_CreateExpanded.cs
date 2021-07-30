@@ -248,8 +248,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         ReadOnly = false,
         Description = @"The password to decrypt the provided Secure LDAP certificate pfx file.",
         SerializedName = @"pfxCertificatePassword",
-        PossibleTypes = new [] { typeof(string) })]
-        public string LdapSettingPfxCertificatePassword { get => DomainServiceBody.LdapSettingPfxCertificatePassword ?? null; set => DomainServiceBody.LdapSettingPfxCertificatePassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString LdapSettingPfxCertificatePassword { get => DomainServiceBody.LdapSettingPfxCertificatePassword ?? null; set => DomainServiceBody.LdapSettingPfxCertificatePassword = value; }
 
         /// <summary>Resource location</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location")]

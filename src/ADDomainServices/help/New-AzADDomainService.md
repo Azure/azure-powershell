@@ -494,7 +494,7 @@ FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
   - `[FriendlyName <String>]`: Friendly Name
   - `[RemoteDnsIP <String>]`: Remote Dns ips
   - `[TrustDirection <String>]`: Trust Direction
-  - `[TrustPassword <String>]`: Trust Password
+  - `[TrustPassword <SecureString>]`: Trust Password
   - `[TrustedDomainFqdn <String>]`: Trusted Domain FQDN
 
 REPLICASET <IReplicaSet[]>: List of ReplicaSets

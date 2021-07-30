@@ -39,14 +39,14 @@ FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
   [FriendlyName <String>]: Friendly Name
   [RemoteDnsIP <String>]: Remote Dns ips
   [TrustDirection <String>]: Trust Direction
-  [TrustPassword <String>]: Trust Password
+  [TrustPassword <SecureString>]: Trust Password
   [TrustedDomainFqdn <String>]: Trusted Domain FQDN
 
 REPLICASET <IReplicaSet[]>: List of ReplicaSets
   [Location <String>]: Virtual network location
   [SubnetId <String>]: The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.addomainservices/new-azaddomainservice
+https://docs.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 #>
 function New-AzADDomainService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
@@ -135,6 +135,7 @@ param(
     ${FilteredSync},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[]]
     # List of settings for Resource Forest
@@ -164,7 +165,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # The password to decrypt the provided Secure LDAP certificate pfx file.
     ${LdapSettingPfxCertificatePassword},
 
@@ -175,6 +176,7 @@ param(
     ${Location},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [System.String[]]
     # The list of additional recipients
@@ -195,6 +197,7 @@ param(
     ${NotificationSettingNotifyGlobalAdmin},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IReplicaSet[]]
     # List of ReplicaSets
@@ -293,6 +296,7 @@ begin {
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

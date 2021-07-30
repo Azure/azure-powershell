@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         /// <summary>Resource etag</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.DoNotFormat]
-        public string Etag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Etag = value; }
+        public string Etag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Etag = value ?? null; }
 
         /// <summary>Enabled or Disabled flag to turn on Group-based filtered sync</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inlined)]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         /// <summary>The password to decrypt the provided Secure LDAP certificate pfx file.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.DoNotFormat]
-        public string LdapSettingPfxCertificatePassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainServicePropertiesInternal)Property).LdapSettingPfxCertificatePassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainServicePropertiesInternal)Property).LdapSettingPfxCertificatePassword = value ?? null; }
+        public System.Security.SecureString LdapSettingPfxCertificatePassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainServicePropertiesInternal)Property).LdapSettingPfxCertificatePassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainServicePropertiesInternal)Property).LdapSettingPfxCertificatePassword = value ?? null; }
 
         /// <summary>Public certificate used to configure secure ldap.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inlined)]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         /// <summary>Resource location</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.FormatTable(Index = 2)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Location = value; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for DeploymentId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainServiceInternal.DeploymentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainServicePropertiesInternal)Property).DeploymentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainServicePropertiesInternal)Property).DeploymentId = value; }
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         /// <summary>Resource tags</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inherited)]
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
 
         /// <summary>Azure Active Directory Tenant Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Inlined)]
@@ -428,8 +428,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         ReadOnly = false,
         Description = @"The password to decrypt the provided Secure LDAP certificate pfx file.",
         SerializedName = @"pfxCertificatePassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string LdapSettingPfxCertificatePassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString LdapSettingPfxCertificatePassword { get; set; }
         /// <summary>Public certificate used to configure secure ldap.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(
         Required = false,
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         /// </summary>
         string LdapSettingPfxCertificate { get; set; }
         /// <summary>The password to decrypt the provided Secure LDAP certificate pfx file.</summary>
-        string LdapSettingPfxCertificatePassword { get; set; }
+        System.Security.SecureString LdapSettingPfxCertificatePassword { get; set; }
         /// <summary>Public certificate used to configure secure ldap.</summary>
         string LdapSettingPublicCertificate { get; set; }
         /// <summary>Secure LDAP Settings</summary>

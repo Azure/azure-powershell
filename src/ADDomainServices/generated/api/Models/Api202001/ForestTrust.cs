@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         public string TrustDirection { get => this._trustDirection; set => this._trustDirection = value; }
 
         /// <summary>Backing field for <see cref="TrustPassword" /> property.</summary>
-        private string _trustPassword;
+        private System.Security.SecureString _trustPassword;
 
         /// <summary>Trust Password</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.PropertyOrigin.Owned)]
-        public string TrustPassword { get => this._trustPassword; set => this._trustPassword = value; }
+        public System.Security.SecureString TrustPassword { get => this._trustPassword; set => this._trustPassword = value; }
 
         /// <summary>Backing field for <see cref="TrustedDomainFqdn" /> property.</summary>
         private string _trustedDomainFqdn;
@@ -83,8 +83,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         ReadOnly = false,
         Description = @"Trust Password",
         SerializedName = @"trustPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string TrustPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString TrustPassword { get; set; }
         /// <summary>Trusted Domain FQDN</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(
         Required = false,
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
         /// <summary>Trust Direction</summary>
         string TrustDirection { get; set; }
         /// <summary>Trust Password</summary>
-        string TrustPassword { get; set; }
+        System.Security.SecureString TrustPassword { get; set; }
         /// <summary>Trusted Domain FQDN</summary>
         string TrustedDomainFqdn { get; set; }
 

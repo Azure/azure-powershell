@@ -680,5 +680,9 @@
   {
     "alias": "Datadog",
     "regex": "Datadog"
+  },
+  {
+    "alias": "ADDomainServices",
+    "regex": "ADDomainServices"
   }
 ]

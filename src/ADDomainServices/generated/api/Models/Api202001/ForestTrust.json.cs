@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
             {_trustDirection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonString>("trustDirection"), out var __jsonTrustDirection) ? (string)__jsonTrustDirection : (string)TrustDirection;}
             {_friendlyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonString>("friendlyName"), out var __jsonFriendlyName) ? (string)__jsonFriendlyName : (string)FriendlyName;}
             {_remoteDnsIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonString>("remoteDnsIps"), out var __jsonRemoteDnsIps) ? (string)__jsonRemoteDnsIps : (string)RemoteDnsIP;}
-            {_trustPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonString>("trustPassword"), out var __jsonTrustPassword) ? (string)__jsonTrustPassword : (string)TrustPassword;}
+            {_trustPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonString>("trustPassword"), out var __jsonTrustPassword) ? new System.Net.NetworkCredential("",(string)__jsonTrustPassword).SecurePassword : TrustPassword;}
             AfterFromJson(json);
         }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001
             AddIf( null != (((object)this._trustDirection)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonString(this._trustDirection.ToString()) : null, "trustDirection" ,container.Add );
             AddIf( null != (((object)this._friendlyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonString(this._friendlyName.ToString()) : null, "friendlyName" ,container.Add );
             AddIf( null != (((object)this._remoteDnsIP)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonString(this._remoteDnsIP.ToString()) : null, "remoteDnsIps" ,container.Add );
-            AddIf( null != (((object)this._trustPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonString(this._trustPassword.ToString()) : null, "trustPassword" ,container.Add );
+            AddIf( null != (((object)this._trustPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._trustPassword))) : null, "trustPassword" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

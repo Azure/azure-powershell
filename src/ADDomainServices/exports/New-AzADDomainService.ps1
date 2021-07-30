@@ -39,14 +39,14 @@ FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
   [FriendlyName <String>]: Friendly Name
   [RemoteDnsIP <String>]: Remote Dns ips
   [TrustDirection <String>]: Trust Direction
-  [TrustPassword <String>]: Trust Password
+  [TrustPassword <SecureString>]: Trust Password
   [TrustedDomainFqdn <String>]: Trusted Domain FQDN
 
 REPLICASET <IReplicaSet[]>: List of ReplicaSets
   [Location <String>]: Virtual network location
   [SubnetId <String>]: The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.addomainservices/new-azaddomainservice
+https://docs.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 #>
 function New-AzADDomainService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
@@ -281,6 +281,8 @@ begin {
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
