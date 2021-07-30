@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = false,
             ParameterSetName = SslCertificateFromKeyVault,
             Mandatory = false,
-            HelpMessage = "User Assigned Managed Identity ClientId credentials to authenticate to KeyVault to fetch Custom SSL Certificate.")]
+            HelpMessage = "User-Assigned Managed Identity ClientId to authenticate to KeyVault to fetch Custom SSL Certificate.")]
         public string IdentityClientId { get; set; }
 
         [Parameter(

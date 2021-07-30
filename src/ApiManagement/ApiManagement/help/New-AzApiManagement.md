@@ -22,8 +22,8 @@ New-AzApiManagement -ResourceGroupName <String> -Name <String> -Location <String
  [-CustomHostnameConfiguration <PsApiManagementCustomHostNameConfiguration[]>]
  [-SystemCertificateConfiguration <PsApiManagementSystemCertificate[]>]
  [-SslSetting <PsApiManagementSslSetting>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
- [-EnableClientCertificate] [-Zone <String[]>] [-DisableGateway <Boolean>] [-ApiVersionConstraint <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnableClientCertificate] [-Zone <String[]>] [-DisableGateway <Boolean>]
+ [-MinimalControlPlaneApiVersion <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,6 +167,48 @@ ResourceGroupName                     : Api-Default-CentralUS
 
 This command creates a Standard SKU Api Management service and Enable TLS 1.0 on Frontend client to ApiManagement Gateway and Backend client between ApiManagement Gateway and Backend.
 
+### Example 7: Create an API Management service in Availability Zones
+```powershell
+PS D:\> New-AzApiManagement -ResourceGroupName "contoso-rg" -Name "apim-test-pshell-azs" -Location "Central US" -Organization "Contoso" -AdminEmail "admin@contoso.com" -Sku Premium -Capacity 3 -Zone @("1","2","3")
+
+PublicIPAddresses                     : {52.238.252.170}
+PrivateIPAddresses                    :
+Id                                    : /subscriptions/aa7def4e-6bcd-4b28-b8d5-7613a618e753/resourceGroups/contoso-rg/providers/Microsoft.ApiManagement/service/apim-test-pshell-azs
+Name                                  : apim-test-pshell-azs
+Location                              : Central US
+Sku                                   : Premium
+Capacity                              : 3
+CreatedTimeUtc                        : 7/30/2021 7:47:12 PM
+ProvisioningState                     : Succeeded
+RuntimeUrl                            : https://apim-test-pshell-azs.azure-api.net
+RuntimeRegionalUrl                    : https://apim-test-pshell-azs-centralus-01.regional.azure-api.net
+PortalUrl                             : https://apim-test-pshell-azs.portal.azure-api.net
+DeveloperPortalUrl                    : https://apim-test-pshell-azs.developer.azure-api.net
+ManagementApiUrl                      : https://apim-test-pshell-azs.management.azure-api.net
+ScmUrl                                : https://apim-test-pshell-azs.scm.azure-api.net
+PublisherEmail                        : admin@contoso.com
+OrganizationName                      : Contoso
+NotificationSenderEmail               : apimgmt-noreply@mail.windowsazure.com
+VirtualNetwork                        :
+VpnType                               : None
+PortalCustomHostnameConfiguration     :
+ProxyCustomHostnameConfiguration      : {apim-test-pshell-azs.azure-api.net}
+ManagementCustomHostnameConfiguration :
+ScmCustomHostnameConfiguration        :
+DeveloperPortalHostnameConfiguration  :
+SystemCertificates                    :
+Tags                                  : {}
+AdditionalRegions                     : {}
+SslSetting                            : Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting
+Identity                              :
+EnableClientCertificate               :
+Zone                                  : {1, 2, 3}
+DisableGateway                        : False
+MinimalControlPlaneApiVersion         :
+ResourceGroupName                     : contoso-rg
+```
+This command creates a Premium SKU Api Management service in Zones
+
 ## PARAMETERS
 
 ### -AdditionalRegions
@@ -196,21 +238,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ApiVersionConstraint
-Control Plane Apis version constraint for the API Management service.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -304,6 +331,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MinimalControlPlaneApiVersion
+Minimal Control Plane Apis version  to allow for managing the API Management service.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

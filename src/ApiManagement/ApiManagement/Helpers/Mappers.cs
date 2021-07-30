@@ -230,11 +230,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(apiManagement.ApiVersionConstraint))
+            if (!string.IsNullOrWhiteSpace(apiManagement.MinimalControlPlaneApiVersion))
             {
                 parameters.ApiVersionConstraint = new ApiVersionConstraint()
                 {
-                    MinApiVersion = apiManagement.ApiVersionConstraint
+                    MinApiVersion = apiManagement.MinimalControlPlaneApiVersion
                 };
             }
 

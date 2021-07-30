@@ -144,13 +144,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = false,
             HelpMessage = "Flag only meant to be used for Premium SKU ApiManagement Service and Non Internal VNET deployments. " +
             "This is useful in case we want to take a gateway region out of rotation." +
-            " This can also be used to standup a new region in Passive mode, test it and then make it Live later.")]
+            " This can also be used to standup a new region in Passive mode, test it and then make it Live later." +
+            "Default behavior is to make the region live immediately. ")]
         public bool? DisableGateway { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Control Plane Apis version constraint for the API Management service.")]
-        public string ApiVersionConstraint { get; set; }
+            HelpMessage = "Minimal Control Plane Apis version  to allow for managing the API Management service.")]
+        public string MinimalControlPlaneApiVersion { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -174,7 +175,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     UserAssignedIdentity,
                     Zone,
                     DisableGateway,
-                    ApiVersionConstraint);
+                    MinimalControlPlaneApiVersion);
 
             this.WriteObject(apiManagementService);
         }

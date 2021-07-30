@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string[] userAssignedIdentity = null,
             string[] zone = null,
             bool? disableGateway = null,
-            string apiVersionConstraint = null)
+            string minimalControlPlaneApiVersion = null)
         {
             string skuType = Mappers.MapSku(sku);
 
@@ -213,11 +213,11 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 parameters.DisableGateway = disableGateway.Value;
             }
 
-            if (!string.IsNullOrWhiteSpace(apiVersionConstraint))
+            if (!string.IsNullOrWhiteSpace(minimalControlPlaneApiVersion))
             {
                 parameters.ApiVersionConstraint = new ApiVersionConstraint()
                 {
-                    MinApiVersion = apiVersionConstraint
+                    MinApiVersion = minimalControlPlaneApiVersion
                 };
             }
 
