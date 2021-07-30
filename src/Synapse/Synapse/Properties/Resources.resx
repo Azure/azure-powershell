@@ -688,6 +688,6 @@ Are you sure you want to continue?</value>
     <value>Deleting Synapse managed private endpoint '{0}' in workspace '{1}'.</value>
   </data>
   <data name="SettingSynapseManagedPrivateEndPoint" xml:space="preserve">
-    <value>Setting Synapse managed private endpoint '{0}' in workspace '{1}'.</value>
+    <value>Creating or updating Synapse managed private endpoint '{0}' in workspace '{1}'.</value>
   </data>
 </root>

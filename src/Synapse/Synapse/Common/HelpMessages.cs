@@ -445,6 +445,6 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string ManagedPrivateEndpointObject = "The Synapse Managed Private Endpoint Object.";
 
-        public const string DefaultVNetName = "Managed Virtual Network Name is default.";
+        public const string DefaultVNetName = "Managed Virtual Network Name is 'default'.";
     }
 }
