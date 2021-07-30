@@ -91,6 +91,7 @@ Accept wildcard characters: False
 
 ### -DisableGateway
 Flag only meant to be used for Premium SKU ApiManagement Service and Non Internal VNET deployments. This is useful in case we want to take a gateway region out of rotation. This can also be used to standup a new region in Passive mode, test it and then make it Live later.
+ Default behavior is to make the region live immediately.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

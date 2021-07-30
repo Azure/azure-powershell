@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             }
 
             Zone = apiServiceResource.Zones?.ToArray();
-            ApiVersionConstraint = apiServiceResource.ApiVersionConstraint?.MinApiVersion;
+            MinimalControlPlaneApiVersion = apiServiceResource.ApiVersionConstraint?.MinApiVersion;
             DisableGateway = apiServiceResource.DisableGateway;
         }
 
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public bool? DisableGateway { get; set; }
 
-        public string ApiVersionConstraint { get; set; }
+        public string MinimalControlPlaneApiVersion { get; set; }
 
         public string ResourceGroupName
         {

@@ -12,13 +12,7 @@ Refreshes NamedValue or Certificate created by KeyVault.
 
 ## SYNTAX
 
-### ContextParameterSet (Default)
-```
-Sync-AzApiManagementKeyVaultSecret [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ResourceIdParameterSet
+### ResourceIdParameterSet (Default)
 ```
 Sync-AzApiManagementKeyVaultSecret -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -34,13 +28,12 @@ Sync-AzApiManagementKeyVaultSecret [-InputObjectCert <PsApiManagementCertificate
 ## DESCRIPTION
 Refreshes NamedValue or Certificate created by KeyVault.
 
-
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementCertificate -ResourceId $kvcert.Id | Sync-AzApiManagementKeyVaultObject 
+PS C:\>Get-AzApiManagementCertificate -ResourceId $kvcert.Id | Sync-AzApiManagementKeyVaultObject
 ```
 
 This command refreshes NamedValue or Certificate created by KeyVault.
@@ -51,7 +44,7 @@ This command refreshes NamedValue or Certificate created by KeyVault.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -67,7 +60,7 @@ Instance of PsApiManagementCert.
 This parameter or NameValue is required.
 
 ```yaml
-Type: PsApiManagementCertificate
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementCertificate
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -83,7 +76,7 @@ Instance of PsApiManagementNamedvalue.
 This parameter or Certificate is required.
 
 ```yaml
-Type: PsApiManagementNamedValue
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementNamedValue
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -99,7 +92,7 @@ Arm ResourceId of the Keyvault Based object.
 This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -114,7 +107,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -130,7 +123,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

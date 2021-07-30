@@ -22,8 +22,8 @@ New-AzApiManagement -ResourceGroupName <String> -Name <String> -Location <String
  [-CustomHostnameConfiguration <PsApiManagementCustomHostNameConfiguration[]>]
  [-SystemCertificateConfiguration <PsApiManagementSystemCertificate[]>]
  [-SslSetting <PsApiManagementSslSetting>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
- [-EnableClientCertificate] [-Zone <String[]>] [-DisableGateway <Boolean>] [-ApiVersionConstraint <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnableClientCertificate] [-Zone <String[]>] [-DisableGateway <Boolean>]
+ [-MinimalControlPlaneApiVersion <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -199,21 +199,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApiVersionConstraint
-Control Plane Apis version constraint for the API Management service.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Capacity
 Specifies the SKU capacity of the Azure API Management service.
 The default is one (1).
@@ -304,6 +289,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MinimalControlPlaneApiVersion
+Minimal Control Plane Apis version  to allow for managing the API Management service.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityClientId
-User Assigned Managed Identity ClientId credentials to authenticate to KeyVault to fetch Custom SSL Certificate.
+User-Assigned Managed Identity ClientId used to authenticate to KeyVault to fetch Custom SSL Certificate.
 
 ```yaml
 Type: System.String

@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = false,
             HelpMessage = "Flag only meant to be used for Premium SKU ApiManagement Service and Non Internal VNET deployments. " +
             "This is useful in case we want to take a gateway region out of rotation." +
-            " This can also be used to standup a new region in Passive mode, test it and then make it Live later.")]
+            " This can also be used to standup a new region in Passive mode, test it and then make it Live later." +
+            " Default behavior is to make the region live immediately. ")]
         public bool? DisableGateway { get; set; }
 
         public override void ExecuteCmdlet()

@@ -478,7 +478,7 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         $result = New-AzApiManagement -ResourceGroupName $resourceGroupName `
                        -Location $location -Name $apiManagementName -Organization $organization `
                        -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -AdditionalRegions $regions `
-                       -UserAssignedIdentity $userIdentities -Zone $zones -DisableGateway $false -ApiVersionConstraint "2019-12-01"
+                       -UserAssignedIdentity $userIdentities -Zone $zones -DisableGateway $false -MinimalControlPlaneApiVersion "2019-12-01"
 
         Assert-AreEqual $resourceGroupName $result.ResourceGroupName
         Assert-AreEqual $apiManagementName $result.Name
