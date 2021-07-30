@@ -1333,7 +1333,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting Synapse managed private endpoint &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Creating or updating Synapse managed private endpoint &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseManagedPrivateEndPoint {
             get {
