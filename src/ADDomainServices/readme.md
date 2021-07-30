@@ -85,6 +85,13 @@ directive:
       subject: $2
     hide: true
   - where:
+      verb: Update
+      subject: (^DomainService)(.*) 
+    set: 
+      subject-prefix: ADDomainService
+      subject: $2
+    hide: true
+  - where:
       verb: Get
       subject: (^DomainService)(.*) 
     set: 
