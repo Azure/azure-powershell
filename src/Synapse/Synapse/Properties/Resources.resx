@@ -681,4 +681,13 @@ Are you sure you want to continue?</value>
   <data name="SettingSynapseSparkJobDefinition" xml:space="preserve">
     <value>Setting Spark job definition '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="RemoveSynapseManagedPrivateEndpoint" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse managed private endpoint '{0}'?</value>
+  </data>
+  <data name="RemovingSynapseManagedPrivateEndpoint" xml:space="preserve">
+    <value>Deleting Synapse managed private endpoint '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseManagedPrivateEndPoint" xml:space="preserve">
+    <value>Creating or updating Synapse managed private endpoint '{0}' in workspace '{1}'.</value>
+  </data>
 </root>

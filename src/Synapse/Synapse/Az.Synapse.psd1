@@ -59,7 +59,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.5.1'; })
 RequiredAssemblies = 'Microsoft.Azure.Management.Synapse.dll', 
                'Azure.Analytics.Synapse.Spark.dll', 
                'Azure.Analytics.Synapse.AccessControl.dll', 
-               'Azure.Analytics.Synapse.Artifacts.dll'
+               'Azure.Analytics.Synapse.Artifacts.dll',
+               'Azure.Analytics.Synapse.ManagedPrivateEndpoints.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -174,7 +175,10 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Update-AzSynapseManagedVirtualNetworkConfig', 
                'Get-AzSynapseSparkJobDefinition', 
                'Remove-AzSynapseSparkJobDefinition', 
-               'Set-AzSynapseSparkJobDefinition'
+               'Set-AzSynapseSparkJobDefinition',
+               'Get-AzSynapseManagedPrivateEndpoint',
+               'New-AzSynapseManagedPrivateEndpoint',
+               'Remove-AzSynapseManagedPrivateEndpoint'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -193,7 +197,8 @@ AliasesToExport = 'New-AzSynapsePipeline', 'New-AzSynapseLinkedService',
                'Clear-AzSynapseSqlPoolVulnerabilityAssessmentSetting', 
                'Enable-AzSynapseSqlAdvancedThreatProtection', 
                'Disable-AzSynapseSqlAdvancedThreatProtection', 
-               'New-AzSynapseSparkJobDefinition'
+               'New-AzSynapseSparkJobDefinition',
+               'Set-AzSynapseManagedPrivateEndpoint'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
