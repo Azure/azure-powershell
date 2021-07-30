@@ -97,6 +97,28 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public DisplayHintType DisplayHint { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DefaultParamSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ListNextLinkVirtualMachinesParamSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ListLocationVirtualMachinesParamSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        public string UserData { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
