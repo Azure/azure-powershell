@@ -21,7 +21,7 @@ Describe 'Remove-AzPostgreSqlServer' {
         } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
         {
             #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force

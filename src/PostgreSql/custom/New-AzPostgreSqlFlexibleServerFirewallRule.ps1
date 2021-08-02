@@ -171,6 +171,8 @@ process {
                 $PSBoundParameters['Name'] = "undefined"
             }
         }
+        $PSBoundParameters['FirewallRuleName'] = $PSBoundParameters['Name']
+        $null = $PSBoundParameters.Remove('Name')
 
         Az.PostgreSql.internal\New-AzPostgreSqlFlexibleServerFirewallRule @PSBoundParameters
     } catch {

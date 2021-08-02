@@ -12,7 +12,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Blockchain/blockchainMembers/{blockchainMemberName}/transactionNodes"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzBlockchainTransactionNode_List")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.CmdletBreakingChange(ChangeDescription="On September 10, 2021, Azure Blockchain will be retired.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Description(@"Lists the transaction nodes for a blockchain member.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Generated]
@@ -216,7 +215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data.Message, new string[]{});
+                        WriteInformation(data, new[] { data.Message });
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Events.Debug:

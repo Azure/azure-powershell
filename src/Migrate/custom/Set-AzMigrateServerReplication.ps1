@@ -338,7 +338,7 @@ function Set-AzMigrateServerReplication {
                 $UserProvidedTag += @{$operation = $UpdateNicTag}
             }
             else {
-                $ProviderSpecificDetails.TargetNicTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag
+                $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
             }
 
             if ($HasUpdateDiskTag -And $HasUpdateDiskTagOperation -And $UpdateDiskTag)
@@ -347,7 +347,7 @@ function Set-AzMigrateServerReplication {
                 $UserProvidedTag += @{$operation = $UpdateDiskTag}
             }
             else {
-                $ProviderSpecificDetails.TargetDiskTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag
+                $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
             }
 
             foreach($tag in $UserProvidedTag.Keys)
@@ -623,7 +623,6 @@ function Set-AzMigrateServerReplication {
                 $updateNic.NicId = $storedNic.NicId
                 $updateNic.TargetStaticIPAddress = $storedNic.TargetIPAddress
                 $updateNic.TargetSubnetName = $storedNic.TargetSubnetName
-                $updateNic.TargetNicName = $storedNic.TargetNicName
 
                 $matchingUserInputNic = $null
                 if ($HasNicToUpdate) {
