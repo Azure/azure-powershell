@@ -100,6 +100,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
+        /// <summary>Backing field for <see cref="Parameter" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter _parameter;
+
+        /// <summary>Represents server restart parameters.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Represents server restart parameters.", ValueFromPipeline = true)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Represents server restart parameters.",
+        SerializedName = @"parameters",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter Parameter { get => this._parameter; set => this._parameter = value; }
+
         /// <summary>
         /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
         /// </summary>
@@ -215,6 +228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
+            clone.Parameter = this.Parameter;
             return clone;
         }
 
@@ -369,12 +383,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.FlexibleServersRestart(SubscriptionId, ResourceGroupName, Name, onOk, onDefault, this, Pipeline);
+                    await this.Client.FlexibleServersRestart(SubscriptionId, ResourceGroupName, Name, Parameter, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=Parameter})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -428,14 +442,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=Parameter })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=Parameter })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

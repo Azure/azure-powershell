@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
                 return;
             }
             __transactionNodePropertiesUpdate = new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.TransactionNodePropertiesUpdate(json);
-            {_consortiumManagementAccountPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("consortiumManagementAccountPassword"), out var __jsonConsortiumManagementAccountPassword) ? (string)__jsonConsortiumManagementAccountPassword : (string)ConsortiumManagementAccountPassword;}
+            {_consortiumManagementAccountPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString>("consortiumManagementAccountPassword"), out var __jsonConsortiumManagementAccountPassword) ? new System.Net.NetworkCredential("",(string)__jsonConsortiumManagementAccountPassword).SecurePassword : ConsortiumManagementAccountPassword;}
             AfterFromJson(json);
         }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
                 return container;
             }
             __transactionNodePropertiesUpdate?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._consortiumManagementAccountPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(this._consortiumManagementAccountPassword.ToString()) : null, "consortiumManagementAccountPassword" ,container.Add );
+            AddIf( null != (((object)this._consortiumManagementAccountPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._consortiumManagementAccountPassword))) : null, "consortiumManagementAccountPassword" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

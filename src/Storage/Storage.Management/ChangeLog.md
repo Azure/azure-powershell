@@ -18,13 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.10.0
 * Supported Blob Last Access Time
     -  `Enable-AzStorageBlobLastAccessTimeTracking`
     -  `Disable-AzStorageBlobLastAccessTimeTracking`
     -  `Add-AzStorageAccountManagementPolicyAction`
-* Supported Parquest as input text config in blob quick query
-    -  `New-AzStorageBlobQueryConfig`
-    -  `Get-AzStorageBlobQueryResult`
 * Made `Get-AzDataLakeGen2ChildItem` list all datalake gen2 items by default, instead of needing user to list chunk by chunk.
 * Fixed BlobProperties is empty issue when using sas without prefix '?' [#15460]
 * Fixed synchronously copy small blob failure [#15548]
