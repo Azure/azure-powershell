@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     DateTimeOffset now = DateTimeOffset.UtcNow;
                     string privateKeyFileName = now.ToUnixTimeSeconds().ToString();
                     string publicKeyFileName = now.ToUnixTimeSeconds().ToString() + ".pub";
-                    string privateKeyFilePath = Path.Combine(sshFolder + privateKeyFileName);
-                    string publicKeyFilePath = Path.Combine(sshFolder + publicKeyFileName);
+                    string privateKeyFilePath = Path.Combine(sshFolder, privateKeyFileName);
+                    string publicKeyFilePath = Path.Combine(sshFolder, publicKeyFileName);
                     using (StreamWriter writer = new StreamWriter(privateKeyFilePath))
                     {
                         writer.WriteLine(keypair.PrivateKey);

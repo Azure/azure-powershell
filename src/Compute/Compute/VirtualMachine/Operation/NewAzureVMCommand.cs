@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             HelpMessage = "Name of the SSH Public Key resource.",
-            ParameterSetName =DefaultParameterSet)]
+            ParameterSetName = DefaultParameterSet)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Name of the SSH Public Key resource.",
@@ -439,6 +439,24 @@ namespace Microsoft.Azure.Commands.Compute
                         name: _cmdlet.AvailabilitySetName,
                         proximityPlacementGroup: ppgSubResourceFunc);
 
+
+                List<SshPublicKey> sshPublicKeyList = new List<SshPublicKey>();
+                if (_cmdlet.SshKeyName != null || _cmdlet.GenerateSshKey == true)
+                {
+                    if (ImageAndOsType?.OsType != OperatingSystemTypes.Linux)
+                    {
+                        throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
+                    }
+
+                    string publicKey = _cmdlet.SshKeyForLinux();
+                    SshPublicKey sshPublicKey = new SshPublicKey("~/.ssh", publicKey);
+                    sshPublicKeyList.Add(sshPublicKey);
+                }
+                else
+                {
+                    sshPublicKeyList = null;
+                }
+
                 if (_cmdlet.DiskFile == null)
                 {
                     return resourceGroup.CreateVirtualMachineConfig(
@@ -463,6 +481,7 @@ namespace Microsoft.Azure.Commands.Compute
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                         encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        sshPublicKeys: sshPublicKeyList,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
@@ -541,17 +560,6 @@ namespace Microsoft.Azure.Commands.Compute
                     Linux ? OperatingSystemTypes.Linux : OperatingSystemTypes.Windows,
                     null,
                     null);
-
-                //if (this.IsParameterBound(c => c.SshKeyName) || this.GenerateSshKey.IsPresent)
-                //{
-                //    string sshPublicKey = SshKeyForLinux();
-                //    if (parameters.OsProfile.LinuxConfiguration.Ssh == null)
-                //    {
-                //        SshConfiguration sshConfig = new SshConfiguration();
-                //        parameters.OsProfile.LinuxConfiguration.Ssh = sshConfig;
-                //    }
-                //    parameters.OsProfile.LinuxConfiguration.Ssh.PublicKeys = [sshPublicKey];
-                //}
 
                 var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
                     DefaultProfile.DefaultContext,
@@ -704,6 +712,11 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (this.IsParameterBound(c => c.SshKeyName) || this.GenerateSshKey.IsPresent)
                     {
+                        if (!IsLinuxOs())
+                        {
+                            throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
+                        }
+
                         string publicKey = SshKeyForLinux();
                         SshPublicKey sshPublicKey = new SshPublicKey("~/.ssh", publicKey);
                         List<SshPublicKey> sshPublicKeys = new List<SshPublicKey>()
@@ -1042,10 +1055,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         private string SshKeyForLinux()
         {
-            if (!IsLinuxOs())
-            {
-                throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
-            }
 
             if (this.GenerateSshKey.IsPresent && ! this.IsParameterBound(c => c.SshKeyName))
             {
@@ -1070,7 +1079,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     //create key 
                     SshPublicKeyResource sshkey = new SshPublicKeyResource();
-                    sshkey.Location = this.Location;
+                    sshkey.Location = this.Location != null ? this.Location : "eastus";
                     SshPublicKey = sshKeyClass.SshPublicKeyClient.Create(this.ResourceGroupName, this.SshKeyName, sshkey);
                     SshPublicKeyGenerateKeyPairResult keypair = sshKeyClass.SshPublicKeyClient.GenerateKeyPair(this.ResourceGroupName, this.SshKeyName);
 
@@ -1083,8 +1092,8 @@ namespace Microsoft.Azure.Commands.Compute
                     DateTimeOffset now = DateTimeOffset.UtcNow;
                     string privateKeyFileName = now.ToUnixTimeSeconds().ToString();
                     string publicKeyFileName = now.ToUnixTimeSeconds().ToString() + ".pub";
-                    string privateKeyFilePath = Path.Combine(sshFolder + privateKeyFileName);
-                    string publicKeyFilePath = Path.Combine(sshFolder + publicKeyFileName);
+                    string privateKeyFilePath = Path.Combine(sshFolder, privateKeyFileName);
+                    string publicKeyFilePath = Path.Combine(sshFolder, publicKeyFileName);
                     using (StreamWriter writer = new StreamWriter(privateKeyFilePath))
                     {
                         writer.WriteLine(keypair.PrivateKey);
