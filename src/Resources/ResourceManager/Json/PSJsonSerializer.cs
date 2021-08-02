@@ -52,7 +52,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
             {
                 object processed = ProcessValue(value, 0, context);
 
-                return JsonConvert.SerializeObject(processed);
+                // NOTE(jcotillo): JsonExtensions.ToJson() extension uses a custom serialization settings
+                // that preserves DateTime values as string (DateParseHandling = DateParseHandling.None),
+                // plus other custom settings.
+                return processed.ToJson();
             }
             catch (OperationCanceledException)
             {

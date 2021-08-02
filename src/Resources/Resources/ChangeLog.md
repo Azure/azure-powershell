@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Use JsonExtensions to serialize deserialize JSON objects to ensure the use of custom serialization settings [#15552]
 
 ## Version 4.3.0
 * Fixed bug with `PSResource` where some constructors left `SubscriptionId` property unassigned/null.  [#10783]
