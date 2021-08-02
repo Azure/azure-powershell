@@ -26,8 +26,8 @@ Remove-AzSqlInstance [-InputObject] <AzureSqlManagedInstanceModel> [-Force] [-As
 
 ### RemoveInstanceFromAzureResourceId
 ```
-Remove-AzSqlInstance [-ResourceId] <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzSqlInstance [-ResourceId] <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
