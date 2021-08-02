@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.3.0
 * Fixed bug with `PSResource` where some constructors left `SubscriptionId` property unassigned/null.  [#10783]
 * Added support for creating and updating Template Spec in Bicep file [#15313]
 * Added `-ProceedIfNoChange` parameter to deployment create cmdlets.

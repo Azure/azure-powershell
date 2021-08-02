@@ -32,12 +32,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         private const string JsonParameterSet = "Json";
 
-        /// <summary>
-        /// Parquet parameter set name
-        /// </summary>
-        private const string ParquetParameterSet = "Parquet"; 
-
-         [Parameter(Mandatory = true,
+        [Parameter(Mandatory = true,
             Position = 0,
             HelpMessage = "Indicate to create a Blob Query Configuration for CSV.", 
             ParameterSetName = CsvParameterSet)]
@@ -46,17 +41,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(Mandatory = true,
             Position = 0,
-            HelpMessage = "Indicate to create a Blob Query Configuration for Json.",
+            HelpMessage = "Indicate to create a Blob Query Configuration for Json.", 
             ParameterSetName = JsonParameterSet)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AsJson { get; set; }
-
-        [Parameter(Mandatory = true,
-            Position = 0,
-            HelpMessage = "Indicate to create a Blob Query Configuration for Parquet.",
-            ParameterSetName = ParquetParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter AsParquet { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Optional. The string used to separate records.", ParameterSetName = CsvParameterSet)]
         [Parameter(Mandatory = false, HelpMessage = "Optional. The string used to separate records.", ParameterSetName = JsonParameterSet)]
@@ -126,7 +114,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 };
                 WriteObject(queryConfig);
             }
-            else if (this.AsCsv.IsPresent) // Csv
+            else // Csv
             {
                 PSBlobQueryTextConfiguration queryConfig = new PSBlobQueryCsvTextConfiguration()
                 {
@@ -136,14 +124,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     EscapeCharacter = this.escapeCharacter,
                     HasHeaders = this.HasHeader.IsPresent,
                     Type = BlobQueryConfigType.Csv
-                };
-                WriteObject(queryConfig);
-            }
-            else // Parquet
-            {
-                PSBlobQueryParquetTextOptions queryConfig = new PSBlobQueryParquetTextOptions()
-                {
-                    Type = BlobQueryConfigType.Parquet
                 };
                 WriteObject(queryConfig);
             }

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.0
 * Added Administrators to ActiveDirectory
 * Added LastTransferSize, LastTransferType,TotalTransferBytes to BackupStatus
 * Added CoolAccess and QosType to CapacityPool

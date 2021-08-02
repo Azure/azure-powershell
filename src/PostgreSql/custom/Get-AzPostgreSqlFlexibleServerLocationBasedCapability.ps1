@@ -20,7 +20,7 @@ Get the available SKU information for the location
 #>
 
 function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ICapabilityProperties])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityProperties])]
     [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

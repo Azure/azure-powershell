@@ -51,9 +51,9 @@ The **Get-AzStorageBlobQueryResult** cmdlet applies a simple Structured Query La
 
 ### Example 1: Query a blob
 ```powershell
-PS C:\> $inputconfig = New-AzStorageBlobQueryConfig -AsParquet
+PS C:\> $inputconfig = New-AzStorageBlobQueryConfig -AsCsv -HasHeader
 
-PS C:\> $outputconfig = New-AzStorageBlobQueryConfig -AsCsv -HasHeader
+PS C:\> $outputconfig = New-AzStorageBlobQueryConfig -AsJson
 
 PS C:\> $queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
 
@@ -387,7 +387,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
