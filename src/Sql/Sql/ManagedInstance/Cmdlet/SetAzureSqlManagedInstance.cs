@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the instance Subnet Id
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The Subnet Id to use for instance update SLO.")]
+            HelpMessage = "The Subnet Id to use for instance update.")]
         public string SubnetId { get; set; }
 
         /// <summary>
