@@ -24,6 +24,12 @@ Get-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List1
+```
+Get-AzDataBoxJob -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets information about the specified job.
 
@@ -51,6 +57,19 @@ testorder  uksouth       Cancelled     ImportToAzure   DataBoxDisk None         
 ```
 
 {{  List all job under a subscription }}
+
+### Example 3: {{ List all job under a resourcegroup }}
+```powershell
+PS C:\>  Get-AzDataBoxJob -ResourceGroupName "dhja"
+
+Name                   Location Status        TransferType    SkuName IdentityType   DeliveryType Detail
+----                   -------- ------        ------------    ------- ------------   ------------ ------
+abcbnkndnkndn          westus   DeviceOrdered ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+abcbnkndnkndn-Clone    westus   DeviceOrdered ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+abcOrder               westus   Cancelled     ImportToAzure   DataBox None           NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+```
+
+{{  List all job under a resource group }}
 
 ## PARAMETERS
 
@@ -105,7 +124,7 @@ The Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -120,7 +139,7 @@ $skipToken is supported on Get list of jobs, which provides the next page in the
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False

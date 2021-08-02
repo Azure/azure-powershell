@@ -14,7 +14,7 @@ Microsoft Azure PowerShell: DataBox cmdlets
 ### [Get-AzDataBoxJob](Get-AzDataBoxJob.md)
 Gets information about the specified job.
 
-### [Get-AzDataBoxJobCredentials](Get-AzDataBoxJobCredentials.md)
+### [Get-AzDataBoxJobCredential](Get-AzDataBoxJobCredential.md)
 This method gets the unencrypted secrets related to the job.
 
 ### [New-AzDataBoxContactDetailsObject](New-AzDataBoxContactDetailsObject.md)

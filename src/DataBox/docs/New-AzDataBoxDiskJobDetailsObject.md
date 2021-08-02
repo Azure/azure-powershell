@@ -25,23 +25,12 @@ Create a in-memory object for DataBoxDiskJobDetails
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: {{ DataBoxDisk details in-memory object }}
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $details = New-AzDataBoxDiskJobDetailsObject -Type "DataBoxDisk"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -Passkey "randm@423jarABC" -PreferredDisk @{"8" = 8; "4" = 2} -ExpectedDataSizeInTeraByte 18
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+{{ DataBoxDisk details in-memory object }}
 
 ## PARAMETERS
 

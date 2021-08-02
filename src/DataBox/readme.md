@@ -55,7 +55,7 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^GetViaIdentity$|^List1$|^Validate.*$ |^Cancel$|^CancelViaIdentity.*$|^DeleteViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^GetViaIdentity$|^Validate.*$ |^Cancel$|^CancelViaIdentity.*$|^DeleteViaIdentity$
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -83,6 +83,19 @@ directive:
       parameter-name: ^Detail(.*)
     set:
       parameter-name: $1
+  
+  - where:
+      verb: Get
+      subject: JobCredentials
+      parameter-name: JobName
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Get
+      subject: JobCredentials
+    set:
+      subject: JobCredential
 
   - where:
       verb: New
