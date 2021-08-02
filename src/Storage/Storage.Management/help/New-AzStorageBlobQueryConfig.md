@@ -23,11 +23,6 @@ New-AzStorageBlobQueryConfig [-AsCsv] [-RecordSeparator <String>] [-ColumnSepara
 New-AzStorageBlobQueryConfig [-AsJson] [-RecordSeparator <String>] [-AsJob] [<CommonParameters>]
 ```
 
-### Parquet
-```
-New-AzStorageBlobQueryConfig [-AsParquet] [-AsJob] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **New-AzStorageBlobQueryConfig** cmdlet creates a blob query configuration object, which can be used in Get-AzStorageBlobQueryResult.
 
@@ -90,21 +85,6 @@ Indicate to create a Blob Query Configuration for Json.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Json
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AsParquet
-Indicate to create a Blob Query Configuration for Parquet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Parquet
 Aliases:
 
 Required: True
@@ -184,7 +164,7 @@ The string used to separate records.
 
 ```yaml
 Type: System.String
-Parameter Sets: Csv, Json
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -195,7 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
