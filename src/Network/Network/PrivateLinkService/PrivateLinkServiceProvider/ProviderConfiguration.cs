@@ -14,6 +14,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         static ProviderConfiguration()
         {
+            RegisterConfiguration("Microsoft.ApiManagement/service", "2021-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2020-06-01", true, true);
             RegisterConfiguration("Microsoft.Automation/automationAccounts", "2020-01-13-preview", true, false);
             RegisterConfiguration("Microsoft.Batch/batchAccounts", "2020-03-01", true, true);

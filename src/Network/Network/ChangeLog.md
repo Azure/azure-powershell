@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Onboard API Management to Private Link Common Cmdlets
 
 ## Version 4.10.0
 * Added public ip address as an optional parameter to create route server

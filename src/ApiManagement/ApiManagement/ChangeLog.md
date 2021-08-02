@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Added PrivateEndpointConnections to ApiManagementService cmdlets.
+
 ## Version 2.2.0
 * [Breaking change] `New-AzApiManagementProduct` by default has no subscription limit.
 
