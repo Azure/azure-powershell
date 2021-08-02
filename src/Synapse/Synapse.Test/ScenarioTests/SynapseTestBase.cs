@@ -123,7 +123,10 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"Az.Synapse.psd1"),
                     "AzureRM.Resources.ps1",
-                    _helper.GetRMModulePath(@"Az.Storage.psd1"));
+                    _helper.GetRMModulePath(@"Az.Storage.psd1"),
+                    _helper.RMOperationalInsightsModule,
+                    _helper.RMEventHubModule,
+                    _helper.RMMonitorModule);
 
                 try
                 {

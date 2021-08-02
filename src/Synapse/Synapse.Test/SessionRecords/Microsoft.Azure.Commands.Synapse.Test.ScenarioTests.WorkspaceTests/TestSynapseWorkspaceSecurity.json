@@ -1827,14 +1827,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"+XTEfCGlxM0Zt06oNdlVh7QnEF0T20bgNwHSEL+LvrmCdbEOjKIWQuNvNEgE8wrbawKUCQYKW6KHslfV3ovLKg==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"CFKXKpEx9GQKr8YWfDWSYkZoOVhW6ATgE2TceosRwN/CCQ/KeeCXdqfQCbcKqwvSEGUmnWczg7Y90wAKnDjCRA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"key1\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"key2\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps948/providers/Microsoft.Synapse/workspaces/wsps948/auditingSettings/default?api-version=2021-04-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHM5NDgvcHJvdmlkZXJzL01pY3Jvc29mdC5TeW5hcHNlL3dvcmtzcGFjZXMvd3Nwczk0OC9hdWRpdGluZ1NldHRpbmdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMS0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://sqlauditstorageps5724.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"+XTEfCGlxM0Zt06oNdlVh7QnEF0T20bgNwHSEL+LvrmCdbEOjKIWQuNvNEgE8wrbawKUCQYKW6KHslfV3ovLKg==\",\r\n    \"auditActionsAndGroups\": [\r\n      \"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"FAILED_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"BATCH_COMPLETED_GROUP\"\r\n    ],\r\n    \"storageAccountSubscriptionId\": \"051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3\",\r\n    \"isStorageSecondaryKeyInUse\": false\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"storageEndpoint\": \"https://sqlauditstorageps5724.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"key1\",\r\n    \"auditActionsAndGroups\": [\r\n      \"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"FAILED_DATABASE_AUTHENTICATION_GROUP\",\r\n      \"BATCH_COMPLETED_GROUP\"\r\n    ],\r\n    \"storageAccountSubscriptionId\": \"051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3\",\r\n    \"isStorageSecondaryKeyInUse\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "1711680a-f1bf-4694-994c-7940041661b8"
@@ -3091,7 +3091,7 @@
       "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps948/providers/Microsoft.Synapse/workspaces/wsps948/securityAlertPolicies/Default?api-version=2021-04-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHM5NDgvcHJvdmlkZXJzL01pY3Jvc29mdC5TeW5hcHNlL3dvcmtzcGFjZXMvd3Nwczk0OC9zZWN1cml0eUFsZXJ0UG9saWNpZXMvRGVmYXVsdD9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection\",\r\n      \"Unsafe_Action\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"mail1@mail.com\",\r\n      \"mail2@mail.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"https://sqlauditstorageps5724.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"+XTEfCGlxM0Zt06oNdlVh7QnEF0T20bgNwHSEL+LvrmCdbEOjKIWQuNvNEgE8wrbawKUCQYKW6KHslfV3ovLKg==\",\r\n    \"retentionDays\": 0\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection\",\r\n      \"Unsafe_Action\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"mail1@mail.com\",\r\n      \"mail2@mail.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"https://sqlauditstorageps5724.blob.core.windows.net\",\r\n    \"storageAccountAccessKey\": \"key1\",\r\n    \"retentionDays\": 0\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "803ca40f-0565-4a35-8488-d75c446af83c"
@@ -3744,7 +3744,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"+XTEfCGlxM0Zt06oNdlVh7QnEF0T20bgNwHSEL+LvrmCdbEOjKIWQuNvNEgE8wrbawKUCQYKW6KHslfV3ovLKg==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"CFKXKpEx9GQKr8YWfDWSYkZoOVhW6ATgE2TceosRwN/CCQ/KeeCXdqfQCbcKqwvSEGUmnWczg7Y90wAKnDjCRA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"key1\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"key2\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -3807,7 +3807,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"+XTEfCGlxM0Zt06oNdlVh7QnEF0T20bgNwHSEL+LvrmCdbEOjKIWQuNvNEgE8wrbawKUCQYKW6KHslfV3ovLKg==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"CFKXKpEx9GQKr8YWfDWSYkZoOVhW6ATgE2TceosRwN/CCQ/KeeCXdqfQCbcKqwvSEGUmnWczg7Y90wAKnDjCRA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"key1\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"key2\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -4063,7 +4063,7 @@
       "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps948/providers/Microsoft.Synapse/workspaces/wsps948/vulnerabilityAssessments/default?api-version=2021-04-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHM5NDgvcHJvdmlkZXJzL01pY3Jvc29mdC5TeW5hcHNlL3dvcmtzcGFjZXMvd3Nwczk0OC92dWxuZXJhYmlsaXR5QXNzZXNzbWVudHMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storageContainerPath\": \"https://sqlauditstorageps5724.blob.core.windows.net/vulnerability-assessment\",\r\n    \"storageAccountAccessKey\": \"+XTEfCGlxM0Zt06oNdlVh7QnEF0T20bgNwHSEL+LvrmCdbEOjKIWQuNvNEgE8wrbawKUCQYKW6KHslfV3ovLKg==\",\r\n    \"recurringScans\": {\r\n      \"isEnabled\": true,\r\n      \"emailSubscriptionAdmins\": false,\r\n      \"emails\": [\r\n        \"mail1@mail.com\",\r\n        \"mail2@mail.com\"\r\n      ]\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storageContainerPath\": \"https://sqlauditstorageps5724.blob.core.windows.net/vulnerability-assessment\",\r\n    \"storageAccountAccessKey\": \"key1\",\r\n    \"recurringScans\": {\r\n      \"isEnabled\": true,\r\n      \"emailSubscriptionAdmins\": false,\r\n      \"emails\": [\r\n        \"mail1@mail.com\",\r\n        \"mail2@mail.com\"\r\n      ]\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "df7c73cd-2f9e-4efe-a1ba-716f16cb3465"

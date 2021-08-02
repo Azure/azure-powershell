@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
-* `Set-AzSynapseSqlAuditSetting` and `Set-AzSynapseSqlPoolAuditSetting` now supports event hub and log analytics
+* Added support for event hub and log analytics to `Set-AzSynapseSqlAuditSetting` and `Set-AzSynapseSqlPoolAuditSetting`
   - Added parameters `-EventHubTargetState -EventHubName -EventHubAuthorizationRuleResourceId -LogAnalyticsTargetState -WorkspaceResourceId`
 
 ## Version 0.13.0
