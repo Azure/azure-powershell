@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Synapse Managed Private Endpoint
+	- Added `New-AzSynapseManagedPrivateEndpoint` cmdlet
+	- Added `Get-AzSynapseManagedPrivateEndpoint` cmdlet
+	- Added `Remove-AzSynapseManagedPrivateEndpoint` cmdlet
 
 ## Version 0.14.0
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
