@@ -90,7 +90,6 @@ directive:
     set: 
       subject-prefix: ADDomainService
       subject: $2
-    hide: true
   - where:
       verb: Get
       subject: (^DomainService)(.*) 
