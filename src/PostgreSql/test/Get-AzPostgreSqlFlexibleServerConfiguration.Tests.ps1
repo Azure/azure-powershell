@@ -12,15 +12,25 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzPostgreSqlFlexibleServerConfiguration' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $config = Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
+            $config.Count | Should -BeGreaterOrEqual 1      
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $config = Get-AzPostgreSqlFlexibleServerConfiguration -Name TimeZone -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
+            $config.Name | Should -Be TimeZone
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/configurations/TimeZone"
+            $config = Get-AzPostgreSqlFlexibleServerConfiguration -InputObject $ID 
+            $config.Name | Should -Be TimeZone
+        } | Should -Not -Throw
     }
 }

@@ -1,8 +1,6 @@
 Param(
     [Parameter(Mandatory = $true)]
-    [string]$FeedPsd1FullPath,
-    [Parameter(Mandatory = $false)]
-    [string]$CustomSource = "https://www.powershellgallery.com/api/v2/"
+    [string]$FeedPsd1FullPath
 )
 
 $feedDir = (Get-Item $FeedPsd1FullPath).Directory
@@ -14,8 +12,8 @@ $dotnetCsv = New-Item -Path "$PSScriptRoot\" -Name "az-ps-latest.csv" -ItemType 
 $dotnetCsvContent = ""
 for ($index = 0; $index -lt $modules.Count; $index++){
     $moduleName = $modules[$index].ModuleName
-    $moduleVersion = [string]::IsNullOrEmpty($modules[$index].RequiredVersion) ? $modules[$index].ModuleVersion : $modules[$index].RequiredVersion
-    $dotnetCsvContent += "pac$index,[ps=true;customSource=$CustomSource],$moduleName,$moduleVersion`n"
+    $moduleVersion = if([string]::IsNullOrEmpty($modules[$index].RequiredVersion)){ $modules[$index].ModuleVersion } else{ $modules[$index].RequiredVersion } 
+    $dotnetCsvContent += "pac$index,[ps=true;customSource=https://www.powershellgallery.com/api/v2/],$moduleName,$moduleVersion`n"
 }
 Set-Content -Path $dotnetCsv.FullName -Value $dotnetCsvContent -Encoding UTF8
 

@@ -12,19 +12,32 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzPostgreSqlFlexibleServer' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        {
+            $servers = Get-AzPostgreSqlFlexibleServer
+            $servers.Count | Should -BeGreaterOrEqual 1    
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get'  {
+        {
+            $servers = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+            $servers.Name | Should -Be $env.flexibleServerName
+        } | Should -Not -Throw
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $servers = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup
+            $servers.Count | Should -BeGreaterOrEqual 1
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)"
+            $servers = Get-AzPostgreSqlFlexibleServer -InputObject $ID
+            $servers.Name | Should -Be $env.flexibleServerName
+        } | Should -Not -Throw
     }
 }

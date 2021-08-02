@@ -120,16 +120,9 @@ $moduleName = 'Az.Blockchain'
 $examplesFolder = Join-Path $PSScriptRoot 'examples'
 $null = New-Item -ItemType Directory -Force -Path $examplesFolder
 
-Write-Host -ForegroundColor Green 'Creating cmdlets for specified models...'
-$modelCmdlets = @()
-if ($modelCmdlets.Count -gt 0) {
-  . (Join-Path $PSScriptRoot 'create-model-cmdlets.ps1')
-  CreateModelCmdlet($modelCmdlets)
-}
-
 if($NoDocs) {
   Write-Host -ForegroundColor Green 'Creating exports...'
-  Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ExcludeDocs -ExamplesFolder $examplesFolder
+  Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ExcludeDocs
 } else {
   Write-Host -ForegroundColor Green 'Creating exports and docs...'
   $moduleDescription = 'Microsoft Azure PowerShell: Blockchain cmdlets'

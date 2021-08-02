@@ -25,8 +25,6 @@ PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreS
 PS C:\> Restart-AzPostgreSqlFlexibleServer -InputObject $ID
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 .Outputs
 System.Boolean
@@ -46,19 +44,14 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
   [ServerName <String>]: The name of the server.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
-
-PARAMETER <IRestartParameter>: Represents server restart parameters.
-  [FailoverMode <String>]: Failover mode.
-  [RestartWithFailover <Boolean?>]: Indicates whether to restart the server with failover.
 .Link
 https://docs.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlflexibleserver
 #>
 function Restart-AzPostgreSqlFlexibleServer {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='RestartExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Restart', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Restart', Mandatory)]
-    [Parameter(ParameterSetName='RestartExpanded', Mandatory)]
     [Alias('ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
@@ -66,7 +59,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Restart', Mandatory)]
-    [Parameter(ParameterSetName='RestartExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -74,7 +66,6 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Restart')]
-    [Parameter(ParameterSetName='RestartExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -82,34 +73,11 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RestartViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='RestartViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Restart', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='RestartViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter]
-    # Represents server restart parameters.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
-    ${Parameter},
-
-    [Parameter(ParameterSetName='RestartExpanded')]
-    [Parameter(ParameterSetName='RestartViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [System.String]
-    # Failover mode.
-    ${FailoverMode},
-
-    [Parameter(ParameterSetName='RestartExpanded')]
-    [Parameter(ParameterSetName='RestartViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Indicates whether to restart the server with failover.
-    ${RestartWithFailover},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -186,15 +154,11 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             Restart = 'Az.PostgreSql.private\Restart-AzPostgreSqlFlexibleServer_Restart';
-            RestartExpanded = 'Az.PostgreSql.private\Restart-AzPostgreSqlFlexibleServer_RestartExpanded';
             RestartViaIdentity = 'Az.PostgreSql.private\Restart-AzPostgreSqlFlexibleServer_RestartViaIdentity';
-            RestartViaIdentityExpanded = 'Az.PostgreSql.private\Restart-AzPostgreSqlFlexibleServer_RestartViaIdentityExpanded';
         }
-        if (('Restart', 'RestartExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Restart') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

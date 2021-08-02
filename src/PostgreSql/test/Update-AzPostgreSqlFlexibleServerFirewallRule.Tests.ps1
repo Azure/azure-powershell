@@ -12,19 +12,30 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzPostgreSqlFlexibleServerFirewallRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        New-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
+        $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
+        $rule.StartIPAddress | Should -Be 0.0.0.2
+        $rule.EndIPAddress | Should -Be 0.0.0.3
     }
 
-    It 'ClientIPAddress' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ClientIPAddress' {
+        $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -ClientIPAddress 0.0.0.2
+        $rule.StartIPAddress | Should -Be 0.0.0.2
+        $rule.EndIPAddress | Should -Be 0.0.0.2
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+        $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID -EndIPAddress 0.0.0.5 -StartIPAddress 0.0.0.4
+        $rule.StartIPAddress | Should -Be 0.0.0.4
+        $rule.EndIPAddress | Should -Be 0.0.0.5
     }
 
-    It 'ClientIPAddressViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ClientIPAddressViaIdentity' {
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+        $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID -ClientIPAddress 0.0.0.9
+        $rule.StartIPAddress | Should -Be 0.0.0.9
+        $rule.EndIPAddress | Should -Be 0.0.0.9
     }
 }

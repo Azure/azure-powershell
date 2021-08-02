@@ -23,14 +23,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="configurationName">The name of the server configuration.</param>
         /// <param name="body">The required parameters for updating a server configuration.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -42,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations/"
                         + global::System.Uri.EscapeDataString(configurationName)
@@ -63,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ConfigurationsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ConfigurationsCreateOrUpdate_Call(request,onOk,eventListener,sender);
             }
         }
 
@@ -71,14 +69,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="viaIdentity"></param>
         /// <param name="body">The required parameters for updating a server configuration.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -86,10 +82,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/configurations/{configurationName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/configurations/{configurationName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -103,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/configurations/"
                         + configurationName
@@ -124,21 +120,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ConfigurationsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ConfigurationsCreateOrUpdate_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="ConfigurationsCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -259,9 +253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -297,6 +289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(configurationName),configurationName);
                 await eventListener.AssertNotNull(nameof(body), body);
@@ -310,14 +303,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="serverName">The name of the server.</param>
         /// <param name="configurationName">The name of the server configuration.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsGet(string subscriptionId, string resourceGroupName, string serverName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsGet(string subscriptionId, string resourceGroupName, string serverName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -329,7 +320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations/"
                         + global::System.Uri.EscapeDataString(configurationName)
@@ -346,21 +337,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ConfigurationsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ConfigurationsGet_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Gets information about a configuration of server.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -368,10 +357,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/configurations/{configurationName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/configurations/{configurationName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -385,7 +374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/configurations/"
                         + configurationName
@@ -402,21 +391,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ConfigurationsGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ConfigurationsGet_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="ConfigurationsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConfigurationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConfigurationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -439,9 +426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -476,6 +461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(configurationName),configurationName);
             }
@@ -486,14 +472,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="serverName">The name of the server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -505,7 +489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations"
                         + "?"
@@ -521,21 +505,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ConfigurationsListByServer_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ConfigurationsListByServer_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>List all the configurations in a given server.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -543,10 +525,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/configurations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/configurations$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/configurations'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/configurations'");
                 }
 
                 // replace URI parameters with values from identity
@@ -559,7 +541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/configurations"
                         + "?"
@@ -575,21 +557,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ConfigurationsListByServer_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ConfigurationsListByServer_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="ConfigurationsListByServer" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConfigurationsListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConfigurationsListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -612,9 +592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -648,287 +626,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
-            }
-        }
-
-        /// <summary>Update a list of configurations in a given server.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="serverName">The name of the server.</param>
-        /// <param name="body">The parameters for updating a list of server configuration.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsListUpdate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2017-12-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
-                        + global::System.Uri.EscapeDataString(serverName)
-                        + "/updateConfigurations"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ConfigurationsListUpdate_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Update a list of configurations in a given server.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="body">The parameters for updating a list of server configuration.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsListUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2017-12-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/updateConfigurations$").Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/updateConfigurations'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var serverName = _match.Groups["serverName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
-                        + serverName
-                        + "/updateConfigurations"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ConfigurationsListUpdate_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref="ConfigurationsListUpdate" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ConfigurationsListUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
-                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var location = _response.GetFirstHeader(@"Location");
-                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                    {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
-
-                        // while we wait, let's grab the headers and get ready to poll.
-                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
-                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
-                            location = _response.GetFirstHeader(@"Location");
-                        }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
-                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get);
-
-                        // and let's look at the current response body and see if we have some information we can give back to the listener
-                        var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
-
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the polling call
-                        _response = await sender.SendAsync(request, eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
-                                          break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
-
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
-
-                        // check for terminal status code
-                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                        {
-                            continue;
-                        }
-                        // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get);
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        break;
-                    }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ConfigurationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="ConfigurationsListUpdate" /> method. Call this like the actual call, but you will get
-        /// validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="serverName">The name of the server.</param>
-        /// <param name="body">The parameters for updating a list of server configuration.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ConfigurationsListUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfigurationListResult body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(serverName),serverName);
-                await eventListener.AssertNotNull(nameof(body), body);
-                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
@@ -939,14 +638,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="databaseName">The name of the database.</param>
         /// <param name="body">The required parameters for creating or updating a database.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -958,7 +655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases/"
                         + global::System.Uri.EscapeDataString(databaseName)
@@ -979,7 +676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DatabasesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DatabasesCreateOrUpdate_Call(request,onOk,eventListener,sender);
             }
         }
 
@@ -987,14 +684,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="viaIdentity"></param>
         /// <param name="body">The required parameters for creating or updating a database.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -1002,10 +697,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/databases/{databaseName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/databases/{databaseName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1019,7 +714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/databases/"
                         + databaseName
@@ -1040,21 +735,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DatabasesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DatabasesCreateOrUpdate_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="DatabasesCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1175,9 +868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -1213,6 +904,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
                 await eventListener.AssertNotNull(nameof(body), body);
@@ -1227,14 +919,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="databaseName">The name of the database.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesDelete(string subscriptionId, string resourceGroupName, string serverName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesDelete(string subscriptionId, string resourceGroupName, string serverName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -1246,7 +936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases/"
                         + global::System.Uri.EscapeDataString(databaseName)
@@ -1263,7 +953,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DatabasesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.DatabasesDelete_Call(request,onOk,onNoContent,eventListener,sender);
             }
         }
 
@@ -1271,14 +961,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -1286,10 +974,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/databases/{databaseName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/databases/{databaseName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1303,7 +991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/databases/"
                         + databaseName
@@ -1320,7 +1008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DatabasesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.DatabasesDelete_Call(request,onOk,onNoContent,eventListener,sender);
             }
         }
 
@@ -1328,14 +1016,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1463,9 +1149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -1500,6 +1184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
             }
@@ -1511,14 +1196,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="serverName">The name of the server.</param>
         /// <param name="databaseName">The name of the database.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesGet(string subscriptionId, string resourceGroupName, string serverName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesGet(string subscriptionId, string resourceGroupName, string serverName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -1530,7 +1213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases/"
                         + global::System.Uri.EscapeDataString(databaseName)
@@ -1547,21 +1230,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DatabasesGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DatabasesGet_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Gets information about a database.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -1569,10 +1250,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/databases/{databaseName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/databases/{databaseName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1586,7 +1267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/databases/"
                         + databaseName
@@ -1603,21 +1284,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DatabasesGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DatabasesGet_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="DatabasesGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1640,9 +1319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -1677,6 +1354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
             }
@@ -1687,14 +1365,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="serverName">The name of the server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -1706,7 +1382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases"
                         + "?"
@@ -1722,21 +1398,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DatabasesListByServer_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DatabasesListByServer_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>List all the databases in a given server.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -1744,10 +1418,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/databases$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/databases$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/databases'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/databases'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1760,7 +1434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/databases"
                         + "?"
@@ -1776,21 +1450,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DatabasesListByServer_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DatabasesListByServer_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="DatabasesListByServer" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1813,9 +1485,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -1849,6 +1519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -1860,14 +1531,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="firewallRuleName">The name of the server firewall rule.</param>
         /// <param name="body">The required parameters for creating or updating a firewall rule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FirewallRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FirewallRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -1879,7 +1548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -1900,7 +1569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FirewallRulesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FirewallRulesCreateOrUpdate_Call(request,onOk,eventListener,sender);
             }
         }
 
@@ -1908,14 +1577,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="viaIdentity"></param>
         /// <param name="body">The required parameters for creating or updating a firewall rule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FirewallRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FirewallRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -1923,10 +1590,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -1940,7 +1607,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -1961,21 +1628,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FirewallRulesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FirewallRulesCreateOrUpdate_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="FirewallRulesCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FirewallRulesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FirewallRulesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2096,9 +1761,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -2134,6 +1797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(firewallRuleName),firewallRuleName);
                 await eventListener.AssertNotNull(nameof(body), body);
@@ -2148,14 +1812,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="firewallRuleName">The name of the server firewall rule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FirewallRulesDelete(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FirewallRulesDelete(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -2167,7 +1829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -2184,7 +1846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FirewallRulesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.FirewallRulesDelete_Call(request,onOk,onNoContent,eventListener,sender);
             }
         }
 
@@ -2192,14 +1854,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FirewallRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FirewallRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -2207,10 +1867,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2224,7 +1884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -2241,7 +1901,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FirewallRulesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.FirewallRulesDelete_Call(request,onOk,onNoContent,eventListener,sender);
             }
         }
 
@@ -2249,14 +1909,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FirewallRulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FirewallRulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2384,9 +2042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -2421,6 +2077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(firewallRuleName),firewallRuleName);
             }
@@ -2432,14 +2089,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="serverName">The name of the server.</param>
         /// <param name="firewallRuleName">The name of the server firewall rule.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FirewallRulesGet(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FirewallRulesGet(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -2451,7 +2106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -2468,21 +2123,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FirewallRulesGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FirewallRulesGet_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Gets information about a server firewall rule.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FirewallRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FirewallRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -2490,10 +2143,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2507,7 +2160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -2524,21 +2177,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FirewallRulesGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FirewallRulesGet_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="FirewallRulesGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FirewallRulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FirewallRulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2561,9 +2212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -2598,6 +2247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(firewallRuleName),firewallRuleName);
             }
@@ -2608,14 +2258,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="serverName">The name of the server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FirewallRulesListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FirewallRulesListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRuleListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -2627,7 +2275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules"
                         + "?"
@@ -2643,21 +2291,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FirewallRulesListByServer_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FirewallRulesListByServer_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>List all the firewall rules in a given server.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FirewallRulesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FirewallRulesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRuleListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -2665,10 +2311,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/firewallRules$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/firewallRules$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/firewallRules'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/firewallRules'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2681,7 +2327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/firewallRules"
                         + "?"
@@ -2697,21 +2343,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FirewallRulesListByServer_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FirewallRulesListByServer_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="FirewallRulesListByServer" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FirewallRulesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FirewallRulesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRuleListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2734,9 +2378,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -2770,6 +2412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -2787,9 +2430,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsGet(string subscriptionId, string resourceGroupName, string serverName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsGet(string subscriptionId, string resourceGroupName, string serverName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2830,9 +2473,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2886,7 +2529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2904,7 +2547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ConfigurationAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ConfigurationAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2946,6 +2589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(configurationName),configurationName);
             }
@@ -2963,9 +2607,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3005,9 +2649,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3061,7 +2705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3079,7 +2723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ConfigurationListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ConfigurationListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3120,6 +2764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -3138,297 +2783,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsPut(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdate(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
-                        + global::System.Uri.EscapeDataString(serverName)
-                        + "/configurations/"
-                        + global::System.Uri.EscapeDataString(configurationName)
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.FlexibleServerConfigurationsPut_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Updates a configuration of a server.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="body">The required parameters for updating a server configuration.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsPutViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2021-06-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var serverName = _match.Groups["serverName"].Value;
-                var configurationName = _match.Groups["configurationName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers/"
-                        + serverName
-                        + "/configurations/"
-                        + configurationName
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.FlexibleServerConfigurationsPut_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref="FlexibleServerConfigurationsPut" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsPut_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: default
-                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                    var location = _response.GetFirstHeader(@"Location");
-                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                    {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
-
-                        // while we wait, let's grab the headers and get ready to poll.
-                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
-                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
-                        }
-                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
-                            location = _response.GetFirstHeader(@"Location");
-                        }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
-                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get);
-
-                        // and let's look at the current response body and see if we have some information we can give back to the listener
-                        var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
-
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // drop the old response
-                        _response?.Dispose();
-
-                        // make the polling call
-                        _response = await sender.SendAsync(request, eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
-                                          break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
-
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
-
-                        // check for terminal status code
-                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
-                        {
-                            continue;
-                        }
-                        // we are done polling, do a request on final target?
-                        if (!string.IsNullOrWhiteSpace(_originalUri))
-                        {
-                            // create a new request with the final uri
-                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get);
-
-                            // drop the old response
-                            _response?.Dispose();
-
-                            // make the final call
-                            _response = await sender.SendAsync(request,  eventListener);
-                            break;
-                        }
-                    }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ConfigurationAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="FlexibleServerConfigurationsPut" /> method. Call this like the actual call, but you will
-        /// get validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="serverName">The name of the server.</param>
-        /// <param name="configurationName">The name of the server configuration.</param>
-        /// <param name="body">The required parameters for updating a server configuration.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsPut_Validate(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(serverName),serverName);
-                await eventListener.AssertNotNull(nameof(configurationName),configurationName);
-                await eventListener.AssertNotNull(nameof(body), body);
-                await eventListener.AssertObjectIsValid(nameof(body), body);
-            }
-        }
-
-        /// <summary>Updates a configuration of a server.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="serverName">The name of the server.</param>
-        /// <param name="configurationName">The name of the server configuration.</param>
-        /// <param name="body">The required parameters for updating a server configuration.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdate(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3474,9 +2831,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3534,7 +2891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3650,7 +3007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ConfigurationAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ConfigurationAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3684,7 +3041,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task FlexibleServerConfigurationsUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3693,6 +3050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(configurationName),configurationName);
                 await eventListener.AssertNotNull(nameof(body), body);
@@ -3714,9 +3072,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3762,9 +3120,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3824,7 +3182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3940,7 +3298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FirewallRuleAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.FirewallRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3974,7 +3332,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3983,6 +3341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(firewallRuleName),firewallRuleName);
                 await eventListener.AssertNotNull(nameof(body), body);
@@ -4006,7 +3365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// </returns>
         public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesDelete(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4050,7 +3409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// </returns>
         public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4270,6 +3629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(firewallRuleName),firewallRuleName);
             }
@@ -4288,9 +3648,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesGet(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesGet(string subscriptionId, string resourceGroupName, string serverName, string firewallRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4331,9 +3691,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4387,7 +3747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4405,7 +3765,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FirewallRuleAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.FirewallRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4447,6 +3807,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(firewallRuleName),firewallRuleName);
             }
@@ -4464,9 +3825,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IFirewallRuleListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4506,9 +3867,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IFirewallRuleListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4562,7 +3923,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServerFirewallRulesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IFirewallRuleListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4580,7 +3941,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FirewallRuleListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.FirewallRuleListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4621,6 +3982,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -4636,9 +3998,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerLocationBasedCapabilitiesGet(string subscriptionId, string locationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilitiesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerLocationBasedCapabilitiesGet(string subscriptionId, string locationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ICapabilitiesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4646,7 +4008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.DBforPostgreSQL/locations/"
+                        + "/providers/Microsoft.DBForPostgreSql/locations/"
                         + global::System.Uri.EscapeDataString(locationName)
                         + "/capabilities"
                         + "?"
@@ -4676,18 +4038,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerLocationBasedCapabilitiesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilitiesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerLocationBasedCapabilitiesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ICapabilitiesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBforPostgreSQL/locations/(?<locationName>[^/]+)/capabilities$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForPostgreSql/locations/(?<locationName>[^/]+)/capabilities$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/capabilities'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForPostgreSql/locations/{locationName}/capabilities'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4697,7 +4059,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.DBforPostgreSQL/locations/"
+                        + "/providers/Microsoft.DBForPostgreSql/locations/"
                         + locationName
                         + "/capabilities"
                         + "?"
@@ -4729,7 +4091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerLocationBasedCapabilitiesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilitiesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServerLocationBasedCapabilitiesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ICapabilitiesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4747,7 +4109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.CapabilitiesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.CapabilitiesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4800,9 +4162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGet(string subscriptionId, string locationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGet(string subscriptionId, string locationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4810,7 +4172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.DBforPostgreSQL/locations/"
+                        + "/providers/Microsoft.DBForPostgreSql/locations/"
                         + global::System.Uri.EscapeDataString(locationName)
                         + "/checkVirtualNetworkSubnetUsage"
                         + "?"
@@ -4845,18 +4207,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBforPostgreSQL/locations/(?<locationName>[^/]+)/checkVirtualNetworkSubnetUsage$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForPostgreSql/locations/(?<locationName>[^/]+)/checkVirtualNetworkSubnetUsage$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkVirtualNetworkSubnetUsage'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForPostgreSql/locations/{locationName}/checkVirtualNetworkSubnetUsage'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4866,7 +4228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.DBforPostgreSQL/locations/"
+                        + "/providers/Microsoft.DBForPostgreSql/locations/"
                         + locationName
                         + "/checkVirtualNetworkSubnetUsage"
                         + "?"
@@ -4902,7 +4264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4920,7 +4282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.VirtualNetworkSubnetUsageResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.VirtualNetworkSubnetUsageResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4952,7 +4314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGet_Validate(string subscriptionId, string locationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameter body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task FlexibleServerVirtualNetworkSubnetUsageGet_Validate(string subscriptionId, string locationName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageParameter body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4977,9 +4339,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersCreate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersCreate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5023,9 +4385,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5080,7 +4442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5196,7 +4558,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5229,7 +4591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServersCreate_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task FlexibleServersCreate_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5238,6 +4600,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
@@ -5259,7 +4622,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// </returns>
         public async global::System.Threading.Tasks.Task FlexibleServersDelete(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5301,7 +4664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// </returns>
         public async global::System.Threading.Tasks.Task FlexibleServersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5517,6 +4880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -5533,9 +4897,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersGet(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersGet(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5574,9 +4938,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5627,7 +4991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5645,7 +5009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5686,6 +5050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -5700,9 +5065,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5710,7 +5075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5739,9 +5104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5751,7 +5116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5779,18 +5144,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5802,7 +5167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5830,7 +5195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServersListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServersListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5848,7 +5213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5888,6 +5253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
             }
         }
 
@@ -5901,18 +5267,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBforPostgreSQL/flexibleServers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForPostgreSql/flexibleServers$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/flexibleServers'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForPostgreSql/flexibleServers'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5921,7 +5287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.DBforPostgreSQL/flexibleServers"
+                        + "/providers/Microsoft.DBForPostgreSql/flexibleServers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -5949,7 +5315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5967,7 +5333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6010,7 +5376,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="serverName">The name of the server.</param>
-        /// <param name="body">The parameters for restarting a server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -6019,9 +5384,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersRestart(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersRestart(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6046,10 +5411,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.FlexibleServersRestart_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -6057,7 +5418,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
         /// <summary>Restarts a server.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">The parameters for restarting a server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -6066,9 +5426,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersRestartViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersRestartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6105,10 +5465,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
-                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.FlexibleServersRestart_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -6269,12 +5625,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="serverName">The name of the server.</param>
-        /// <param name="body">The parameters for restarting a server.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServersRestart_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task FlexibleServersRestart_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6283,9 +5638,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
-                await eventListener.AssertNotNull(nameof(body), body);
-                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
@@ -6303,7 +5657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// </returns>
         public async global::System.Threading.Tasks.Task FlexibleServersStart(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6345,7 +5699,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// </returns>
         public async global::System.Threading.Tasks.Task FlexibleServersStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6555,6 +5909,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -6573,7 +5928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// </returns>
         public async global::System.Threading.Tasks.Task FlexibleServersStop(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6615,7 +5970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// </returns>
         public async global::System.Threading.Tasks.Task FlexibleServersStopViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6825,6 +6180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -6844,9 +6200,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersUpdate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerForUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersUpdate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerForUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6892,9 +6248,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FlexibleServersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerForUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FlexibleServersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerForUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6949,7 +6305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FlexibleServersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7065,7 +6421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7098,7 +6454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FlexibleServersUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerForUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task FlexibleServersUpdate_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerForUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -7107,6 +6463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
@@ -7117,14 +6474,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="locationName">The name of the location.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LocationBasedPerformanceTierList(string subscriptionId, string locationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LocationBasedPerformanceTierList(string subscriptionId, string locationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -7134,7 +6489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.DBforPostgreSQL/locations/"
+                        + "/providers/Microsoft.DBForPostgreSQL/locations/"
                         + global::System.Uri.EscapeDataString(locationName)
                         + "/performanceTiers"
                         + "?"
@@ -7150,21 +6505,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.LocationBasedPerformanceTierList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.LocationBasedPerformanceTierList_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>List all the performance tiers at specified location in a given subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LocationBasedPerformanceTierListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LocationBasedPerformanceTierListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -7172,10 +6525,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBforPostgreSQL/locations/(?<locationName>[^/]+)/performanceTiers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForPostgreSQL/locations/(?<locationName>[^/]+)/performanceTiers$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/performanceTiers'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForPostgreSQL/locations/{locationName}/performanceTiers'");
                 }
 
                 // replace URI parameters with values from identity
@@ -7185,7 +6538,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.DBforPostgreSQL/locations/"
+                        + "/providers/Microsoft.DBForPostgreSQL/locations/"
                         + locationName
                         + "/performanceTiers"
                         + "?"
@@ -7201,21 +6554,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.LocationBasedPerformanceTierList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.LocationBasedPerformanceTierList_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="LocationBasedPerformanceTierList" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LocationBasedPerformanceTierList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LocationBasedPerformanceTierList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7238,9 +6589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -7279,14 +6628,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="serverName">The name of the server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogFilesListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ILogFileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogFilesListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ILogFileListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -7298,7 +6645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/logFiles"
                         + "?"
@@ -7314,21 +6661,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.LogFilesListByServer_Call(request,onOk,onDefault,eventListener,sender);
+                await this.LogFilesListByServer_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>List all the log files in a given server.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogFilesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ILogFileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogFilesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ILogFileListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -7336,10 +6681,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/logFiles$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/logFiles$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/logFiles'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/logFiles'");
                 }
 
                 // replace URI parameters with values from identity
@@ -7352,7 +6697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/logFiles"
                         + "?"
@@ -7368,21 +6713,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.LogFilesListByServer_Call(request,onOk,onDefault,eventListener,sender);
+                await this.LogFilesListByServer_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="LogFilesListByServer" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LogFilesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ILogFileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LogFilesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ILogFileListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7405,9 +6748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -7441,6 +6782,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -7449,14 +6791,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The required parameters for checking if resource name is available.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NameAvailabilityTest(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NameAvailabilityTest(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -7466,7 +6806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.DBforPostgreSQL/checkNameAvailability"
+                        + "/providers/Microsoft.DBForPostgreSQL/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -7484,7 +6824,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.NameAvailabilityTest_Call(request,onOk,onDefault,eventListener,sender);
+                await this.NameAvailabilityTest_Call(request,onOk,eventListener,sender);
             }
         }
 
@@ -7499,9 +6839,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NameAvailabilityTest1(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INameAvailabilityAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NameAvailabilityTest1(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.INameAvailabilityAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7509,7 +6849,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.DBforPostgreSQL/checkNameAvailability"
+                        + "/providers/Microsoft.DBForPostgreSql/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -7542,18 +6882,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NameAvailabilityTest1ViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INameAvailabilityAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NameAvailabilityTest1ViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.INameAvailabilityAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBforPostgreSQL/checkNameAvailability$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForPostgreSql/checkNameAvailability$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForPostgreSql/checkNameAvailability'");
                 }
 
                 // replace URI parameters with values from identity
@@ -7562,7 +6902,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.DBforPostgreSQL/checkNameAvailability"
+                        + "/providers/Microsoft.DBForPostgreSql/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -7594,7 +6934,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task NameAvailabilityTest1_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INameAvailabilityAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task NameAvailabilityTest1_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.INameAvailabilityAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7612,7 +6952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.NameAvailabilityAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.NameAvailabilityAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7658,14 +6998,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="viaIdentity"></param>
         /// <param name="body">The required parameters for checking if resource name is available.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task NameAvailabilityTestViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task NameAvailabilityTestViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -7673,10 +7011,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBforPostgreSQL/checkNameAvailability$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForPostgreSQL/checkNameAvailability$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/checkNameAvailability'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForPostgreSQL/checkNameAvailability'");
                 }
 
                 // replace URI parameters with values from identity
@@ -7685,7 +7023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.DBforPostgreSQL/checkNameAvailability"
+                        + "/providers/Microsoft.DBForPostgreSQL/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -7703,21 +7041,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.NameAvailabilityTest_Call(request,onOk,onDefault,eventListener,sender);
+                await this.NameAvailabilityTest_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="NameAvailabilityTest" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task NameAvailabilityTest_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task NameAvailabilityTest_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailability>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7740,9 +7076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -7779,14 +7113,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
         /// <summary>Lists all of the available REST API operations.</summary>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -7794,7 +7126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.DBforPostgreSQL/operations"
+                        "/providers/Microsoft.DBForPostgreSQL/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -7808,7 +7140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OperationsList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.OperationsList_Call(request,onOk,eventListener,sender);
             }
         }
 
@@ -7821,15 +7153,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList1(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList1(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.DBforPostgreSQL/operations"
+                        "/providers/Microsoft.DBForPostgreSql/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -7857,24 +7189,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList1ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList1ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-06-01";
+            var apiVersion = @"2020-02-14-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.DBforPostgreSQL/operations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.DBForPostgreSql/operations$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.DBforPostgreSQL/operations'");
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.DBForPostgreSql/operations'");
                 }
 
                 // replace URI parameters with values from identity
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.DBforPostgreSQL/operations"
+                        "/providers/Microsoft.DBForPostgreSql/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -7902,7 +7234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList1_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList1_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7920,7 +7252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.OperationListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.OperationListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7960,14 +7292,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <summary>Lists all of the available REST API operations.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -7975,16 +7305,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.DBforPostgreSQL/operations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.DBForPostgreSQL/operations$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.DBforPostgreSQL/operations'");
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.DBForPostgreSQL/operations'");
                 }
 
                 // replace URI parameters with values from identity
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.DBforPostgreSQL/operations"
+                        "/providers/Microsoft.DBForPostgreSQL/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -7998,21 +7328,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OperationsList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.OperationsList_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="OperationsList" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8035,9 +7363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -8067,19 +7393,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             }
         }
 
-        /// <summary>Gets a recoverable PostgreSQL Server.</summary>
+        /// <summary>List all the replicas for a given server.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="serverName">The name of the server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecoverableServersGet(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IRecoverableServerResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicasListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -8091,9 +7415,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
-                        + "/recoverableServers"
+                        + "/Replicas"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -8107,21 +7431,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecoverableServersGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ReplicasListByServer_Call(request,onOk,eventListener,sender);
             }
         }
 
-        /// <summary>Gets a recoverable PostgreSQL Server.</summary>
+        /// <summary>List all the replicas for a given server.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecoverableServersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IRecoverableServerResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ReplicasListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -8129,10 +7451,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/recoverableServers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/Replicas$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/recoverableServers'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/Replicas'");
                 }
 
                 // replace URI parameters with values from identity
@@ -8145,9 +7467,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
-                        + "/recoverableServers"
+                        + "/Replicas"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -8161,192 +7483,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.RecoverableServersGet_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref="RecoverableServersGet" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task RecoverableServersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IRecoverableServerResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.RecoverableServerResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="RecoverableServersGet" /> method. Call this like the actual call, but you will get validation
-        /// events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="serverName">The name of the server.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task RecoverableServersGet_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(serverName),serverName);
-            }
-        }
-
-        /// <summary>List all the replicas for a given server.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="serverName">The name of the server.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicasListByServer(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2017-12-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
-                        + global::System.Uri.EscapeDataString(serverName)
-                        + "/replicas"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ReplicasListByServer_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>List all the replicas for a given server.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ReplicasListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2017-12-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/replicas$").Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/replicas'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var serverName = _match.Groups["serverName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
-                        + serverName
-                        + "/replicas"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ReplicasListByServer_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ReplicasListByServer_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="ReplicasListByServer" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ReplicasListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ReplicasListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8369,9 +7518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -8405,6 +7552,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -8437,9 +7585,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
-                        + "/administrators/activeDirectory"
+                        + "/Administrators/activeDirectory"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -8483,10 +7631,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/administrators/activeDirectory$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/Administrators/activeDirectory$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/administrators/activeDirectory'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/Administrators/activeDirectory'");
                 }
 
                 // replace URI parameters with values from identity
@@ -8499,9 +7647,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
-                        + "/administrators/activeDirectory"
+                        + "/Administrators/activeDirectory"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -8691,6 +7839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
@@ -8722,9 +7871,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
-                        + "/administrators/activeDirectory"
+                        + "/Administrators/activeDirectory"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -8761,10 +7910,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/administrators/activeDirectory$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/Administrators/activeDirectory$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/administrators/activeDirectory'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/Administrators/activeDirectory'");
                 }
 
                 // replace URI parameters with values from identity
@@ -8777,9 +7926,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
-                        + "/administrators/activeDirectory"
+                        + "/Administrators/activeDirectory"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -8972,6 +8121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -9000,9 +8150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
-                        + "/administrators/activeDirectory"
+                        + "/Administrators/activeDirectory"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -9038,10 +8188,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/administrators/activeDirectory$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/Administrators/activeDirectory$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/administrators/activeDirectory'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/Administrators/activeDirectory'");
                 }
 
                 // replace URI parameters with values from identity
@@ -9054,9 +8204,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
-                        + "/administrators/activeDirectory"
+                        + "/Administrators/activeDirectory"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -9143,6 +8293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -9171,7 +8322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/administrators"
                         + "?"
@@ -9209,10 +8360,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/administrators$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/administrators$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/administrators'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/administrators'");
                 }
 
                 // replace URI parameters with values from identity
@@ -9225,7 +8376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/administrators"
                         + "?"
@@ -9314,177 +8465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(serverName),serverName);
-            }
-        }
-
-        /// <summary>List all the performance tiers for a PostgreSQL server.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="serverName">The name of the server.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ServerBasedPerformanceTierList(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2017-12-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
-                        + global::System.Uri.EscapeDataString(serverName)
-                        + "/performanceTiers"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ServerBasedPerformanceTierList_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>List all the performance tiers for a PostgreSQL server.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ServerBasedPerformanceTierListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2017-12-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/performanceTiers$").Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/performanceTiers'");
-                }
-
-                // replace URI parameters with values from identity
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var serverName = _match.Groups["serverName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
-                        + serverName
-                        + "/performanceTiers"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ServerBasedPerformanceTierList_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref="ServerBasedPerformanceTierList" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ServerBasedPerformanceTierList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.PerformanceTierListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="ServerBasedPerformanceTierList" /> method. Call this like the actual call, but you will
-        /// get validation events back.
-        /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="serverName">The name of the server.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ServerBasedPerformanceTierList_Validate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -9769,6 +8750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
@@ -9946,179 +8928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertNotNull(nameof(serverName),serverName);
-                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
-            }
-        }
-
-        /// <summary>Get the server's threat detection policies.</summary>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="serverName">The name of the server.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ServerSecurityAlertPoliciesListByServer(string resourceGroupName, string serverName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2017-12-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/resourceGroups/"
-                        + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
-                        + global::System.Uri.EscapeDataString(serverName)
-                        + "/securityAlertPolicies"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ServerSecurityAlertPoliciesListByServer_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Get the server's threat detection policies.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ServerSecurityAlertPoliciesListByServerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2017-12-01";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/securityAlertPolicies$").Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/securityAlertPolicies'");
-                }
-
-                // replace URI parameters with values from identity
-                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
-                var serverName = _match.Groups["serverName"].Value;
-                var subscriptionId = _match.Groups["subscriptionId"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/"
-                        + subscriptionId
-                        + "/resourceGroups/"
-                        + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
-                        + serverName
-                        + "/securityAlertPolicies"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ServerSecurityAlertPoliciesListByServer_Call(request,onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>
-        /// Actual wire call for <see cref="ServerSecurityAlertPoliciesListByServer" /> method.
-        /// </summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ServerSecurityAlertPoliciesListByServer_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerSecurityAlertPolicyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response);
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="ServerSecurityAlertPoliciesListByServer" /> method. Call this like the actual call, but
-        /// you will get validation events back.
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="serverName">The name of the server.</param>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ServerSecurityAlertPoliciesListByServer_Validate(string resourceGroupName, string serverName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
-                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
@@ -10131,14 +8941,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="serverName">The name of the server.</param>
         /// <param name="body">The required parameters for creating or updating a server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersCreate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerForCreate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersCreate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerForCreate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -10150,7 +8958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -10169,7 +8977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersCreate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServersCreate_Call(request,onOk,eventListener,sender);
             }
         }
 
@@ -10177,14 +8985,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="viaIdentity"></param>
         /// <param name="body">The required parameters for creating or updating a server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerForCreate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerForCreate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -10192,10 +8998,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -10208,7 +9014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -10227,21 +9033,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersCreate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServersCreate_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="ServersCreate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10362,9 +9166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -10399,6 +9201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
@@ -10411,14 +9214,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="serverName">The name of the server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersDelete(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersDelete(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -10430,7 +9231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -10445,7 +9246,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.ServersDelete_Call(request,onOk,onNoContent,eventListener,sender);
             }
         }
 
@@ -10453,14 +9254,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -10468,10 +9267,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -10484,7 +9283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -10499,7 +9298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.ServersDelete_Call(request,onOk,onNoContent,eventListener,sender);
             }
         }
 
@@ -10507,14 +9306,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServersDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServersDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10642,9 +9439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -10678,6 +9473,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -10687,14 +9483,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="serverName">The name of the server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersGet(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersGet(string subscriptionId, string resourceGroupName, string serverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -10706,7 +9500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -10721,21 +9515,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServersGet_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Gets information about a server.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -10743,10 +9535,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -10759,7 +9551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -10774,21 +9566,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServersGet_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="ServersGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10811,9 +9601,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -10847,6 +9635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -10854,14 +9643,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <summary>List all the servers in a given subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -10871,7 +9658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -10885,7 +9672,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServersList_Call(request,onOk,eventListener,sender);
             }
         }
 
@@ -10893,14 +9680,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -10912,7 +9697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -10926,21 +9711,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServersListByResourceGroup_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>List all the servers in a given resource group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -10948,10 +9731,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers'");
                 }
 
                 // replace URI parameters with values from identity
@@ -10963,7 +9746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -10977,21 +9760,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServersListByResourceGroup_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="ServersListByResourceGroup" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServersListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServersListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11014,9 +9795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -11049,20 +9828,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
             }
         }
 
         /// <summary>List all the servers in a given subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -11070,10 +9848,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/servers'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DBForPostgreSQL/servers'");
                 }
 
                 // replace URI parameters with values from identity
@@ -11082,7 +9860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/subscriptions/"
                         + subscriptionId
-                        + "/providers/Microsoft.DBforPostgreSQL/servers"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -11096,21 +9874,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServersList_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="ServersList" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11133,9 +9909,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -11191,7 +9965,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/restart"
                         + "?"
@@ -11229,10 +10003,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/restart$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/restart$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/restart'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/restart'");
                 }
 
                 // replace URI parameters with values from identity
@@ -11245,7 +10019,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/restart"
                         + "?"
@@ -11433,6 +10207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
             }
         }
@@ -11445,14 +10220,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="serverName">The name of the server.</param>
         /// <param name="body">The required parameters for updating a server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersUpdate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersUpdate(string subscriptionId, string resourceGroupName, string serverName, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -11464,7 +10237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -11483,7 +10256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServersUpdate_Call(request,onOk,eventListener,sender);
             }
         }
 
@@ -11493,14 +10266,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
         /// <param name="viaIdentity"></param>
         /// <param name="body">The required parameters for updating a server.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ServersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ServersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2017-12-01";
             // Constant Parameters
@@ -11508,10 +10279,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -11524,7 +10295,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -11543,21 +10314,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ServersUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.ServersUpdate_Call(request,onOk,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="ServersUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ServersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ServersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11678,9 +10447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         }
                         default:
                         {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
+                            throw new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.UndeclaredResponseException(_response);
                         }
                     }
                 }
@@ -11715,6 +10482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
@@ -11747,7 +10515,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/virtualNetworkRules/"
                         + global::System.Uri.EscapeDataString(virtualNetworkRuleName)
@@ -11791,10 +10559,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -11808,7 +10576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/virtualNetworkRules/"
                         + virtualNetworkRuleName
@@ -12000,6 +10768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
@@ -12035,7 +10804,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/virtualNetworkRules/"
                         + global::System.Uri.EscapeDataString(virtualNetworkRuleName)
@@ -12075,10 +10844,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -12092,7 +10861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/virtualNetworkRules/"
                         + virtualNetworkRuleName
@@ -12287,6 +11056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(virtualNetworkRuleName),virtualNetworkRuleName);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
@@ -12319,7 +11089,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/virtualNetworkRules/"
                         + global::System.Uri.EscapeDataString(virtualNetworkRuleName)
@@ -12358,10 +11128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/virtualNetworkRules/(?<virtualNetworkRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -12375,7 +11145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/virtualNetworkRules/"
                         + virtualNetworkRuleName
@@ -12464,6 +11234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
@@ -12495,7 +11266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/virtualNetworkRules"
                         + "?"
@@ -12533,10 +11304,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforPostgreSQL/servers/(?<serverName>[^/]+)/virtualNetworkRules$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForPostgreSQL/servers/(?<serverName>[^/]+)/virtualNetworkRules$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSQL/servers/{serverName}/virtualNetworkRules'");
                 }
 
                 // replace URI parameters with values from identity
@@ -12549,7 +11320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBforPostgreSQL/servers/"
+                        + "/providers/Microsoft.DBForPostgreSQL/servers/"
                         + serverName
                         + "/virtualNetworkRules"
                         + "?"
@@ -12636,6 +11407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._\(\)]+$");
                 await eventListener.AssertNotNull(nameof(serverName),serverName);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);

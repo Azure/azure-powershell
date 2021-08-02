@@ -12,7 +12,10 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Restore-AzPostgreSqlFlexibleServer' {
-    It 'PointInTimeRestore' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PointInTimeRestore' {
+        {
+            $restorePointInTime = (Get-Date).AddMinutes(-10)
+            Restore-AzPostgreSqlFlexibleServer -SourceServerName $env.flexibleServerName -Location $env.location -Name $env.restoreName -ResourceGroupName $env.resourceGroup -RestorePointInTime $restorePointInTime
+        } | Should -Not -Throw
     }
 }
