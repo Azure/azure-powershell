@@ -233,7 +233,7 @@ function Test-SynapseWorkspaceSecurity
         Assert-False {$dataSecurityDisable.IsEnabled}
 
         # Remove SQL Auditing
-        Assert-True {Remove-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -PassThru}
+        Assert-True {Remove-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName}
 
         # Verify that SQL Auditing was deleted
         $auditing = Get-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
