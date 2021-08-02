@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string evictionPolicy,
             double? maxPrice,
             bool encryptionAtHostPresent,
+            List<SshPublicKey> sshPublicKeys,
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
             string dataDiskDeleteOption = null)
@@ -74,7 +75,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         ComputerName = name,
                         WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
-                        LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
+                        LinuxConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Linux) ? null : new LinuxConfiguration
+                        {
+                            Ssh = new SshConfiguration(sshPublicKeys)
+                        },
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     },
