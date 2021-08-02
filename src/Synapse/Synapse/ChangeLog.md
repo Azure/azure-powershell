@@ -22,6 +22,8 @@
 	- Added `New-AzSynapseManagedPrivateEndpoint` cmdlet
 	- Added `Get-AzSynapseManagedPrivateEndpoint` cmdlet
 	- Added `Remove-AzSynapseManagedPrivateEndpoint` cmdlet
+
+## Version 0.14.0
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
 
 ## Version 0.13.0
