@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.DefaultEncryptionScope = container.DefaultEncryptionScope;
             this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
             this.Deleted = container.Deleted;
+            this.ImmutableStorageWithVersioning = container.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageWithVersioning(container.ImmutableStorageWithVersioning);
             this.RemainingRetentionDays = container.RemainingRetentionDays;
             this.DeletedTime = container.DeletedTime;
             this.Version = container.Version;
@@ -76,6 +77,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.DefaultEncryptionScope = container.DefaultEncryptionScope;
             this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
             this.Deleted = container.Deleted;
+            this.ImmutableStorageWithVersioning = container.ImmutableStorageWithVersioning is null? null : new PSImmutableStorageWithVersioning(container.ImmutableStorageWithVersioning);
             this.RemainingRetentionDays = container.RemainingRetentionDays;
             this.DeletedTime = container.DeletedTime;
             this.Version = container.Version;
@@ -138,6 +140,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public bool? EnableNfsV3AllSquash { get; set; }
 
+        public PSImmutableStorageWithVersioning ImmutableStorageWithVersioning { get; set; }
 
         public static string ParseResourceGroupFromId(string idFromServer)
         {
@@ -333,7 +336,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AllowProtectedAppendWrites = updateHistory.AllowProtectedAppendWrites;
             this.AllowProtectedAppendWritesAll = updateHistory.AllowProtectedAppendWritesAll;
         }
-        
+
         public string Update { get; set; }
         public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
         public DateTime? Timestamp { get; set; }
@@ -342,5 +345,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Upn { get; set; }
         public bool? AllowProtectedAppendWrites { get; set; }
         public bool? AllowProtectedAppendWritesAll { get; set; }
+    }
+
+    public class PSImmutableStorageWithVersioning
+    {
+        public PSImmutableStorageWithVersioning(ImmutableStorageWithVersioning inputValue)
+        {
+            this.Enabled = inputValue.Enabled;
+            this.TimeStamp = inputValue.TimeStamp;
+            this.MigrationState = inputValue.MigrationState;
+        }
+
+        public bool? Enabled { get; set; }
+        public DateTime? TimeStamp { get; }
+        public string MigrationState { get; }
     }
 }
