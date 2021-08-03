@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string ListLocationVirtualMachinesParamSet = "ListLocationVirtualMachinesParamSet";
         private const string InfoNotAvailable = "Info Not Available";
         private const int MaxNumVMforStatus = 100;
+        private InstanceViewTypes InstanceViewExpand = InstanceViewTypes.InstanceView;
 
         [Parameter(
            Mandatory = false,
@@ -117,14 +118,25 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = ListLocationVirtualMachinesParamSet,
             HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipeline = true)]
-        public string UserData { get; set; }
+        public SwitchParameter UserData { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            
             base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
+                if (this.UserData == true)
+                {
+                    InstanceViewExpand = InstanceViewTypes.UserData;
+                }
+                else
+                {
+                    InstanceViewExpand = InstanceViewTypes.InstanceView;
+                }
+                
+
                 if (this.ParameterSetName.Equals(ListLocationVirtualMachinesParamSet))
                 {   
                     ReturnListVMObject(
