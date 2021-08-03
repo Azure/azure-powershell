@@ -15,37 +15,17 @@
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Models.Auditing;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Synapse.Models;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + DefinitionsCommon.SqlPoolAuditCmdletsSuffix,
-        DefaultParameterSetName = DefinitionsCommon.SqlPoolParameterSetName,
-        SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
-    [Alias("Set-AzSynapseSqlPoolAudit")]
-    public class SetAzureSynapseSqlPoolAudit : SynapseSqlPoolAuditCmdlet
+    public abstract class SetSynapseWorkspaceAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> : SynapseWorkspaceAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> 
+        where ServerAuditPolicyType : ProxyResource
+        where ServerAuditModelType : WorkspaceDevOpsAuditModel, new()
+        where ServerAuditAdapterType : SqlAuditAdapter<ServerAuditPolicyType, ServerAuditModelType> 
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = HelpMessages.AuditActionGroup)]
-        public AuditActionGroups[] AuditActionGroup { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = HelpMessages.AuditAction)]
-        public string[] AuditAction { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = HelpMessages.PredicateExpression)]
-        [ValidateNotNull]
-        public string PredicateExpression { get; set; }
-
         [Parameter(
             Mandatory = false,
             HelpMessage = HelpMessages.BlobStorageTargetState)]
@@ -58,21 +38,6 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.AuditStorageAccountResourceId)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = HelpMessages.StorageKeyType)]
-        [ValidateSet(
-            SynapseConstants.Security.Primary,
-            SynapseConstants.Security.Secondary,
-            IgnoreCase = false)]
-        public string StorageKeyType { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = HelpMessages.RetentionInDays)]
-        [ValidateNotNullOrEmpty]
-        public uint? RetentionInDays { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -113,24 +78,9 @@ namespace Microsoft.Azure.Commands.Synapse
 
         public Guid RoleAssignmentId { get; set; } = default(Guid);
 
-        protected override SqlPoolAuditModel ApplyUserInputToModel(SqlPoolAuditModel model)
+        protected override ServerAuditModelType ApplyUserInputToModel(ServerAuditModelType model)
         {
             base.ApplyUserInputToModel(model);
-
-            if (AuditAction != null)
-            {
-                model.AuditAction = AuditAction;
-            }
-
-            if (AuditActionGroup != null)
-            {
-                model.AuditActionGroup = AuditActionGroup;
-            }
-
-            if (PredicateExpression != null)
-            {
-                model.PredicateExpression = PredicateExpression;
-            }
 
             if (BlobStorageTargetState != null)
             {
@@ -141,16 +91,6 @@ namespace Microsoft.Azure.Commands.Synapse
             if (StorageAccountResourceId != null)
             {
                 model.StorageAccountResourceId = StorageAccountResourceId;
-            }
-
-            if (this.IsParameterBound(c => c.StorageKeyType))
-            {
-                model.StorageKeyType = (StorageKeyType == SynapseConstants.Security.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
-            }
-
-            if (RetentionInDays != null)
-            {
-                model.RetentionInDays = RetentionInDays;
             }
 
             if (EventHubTargetState != null)
@@ -183,15 +123,10 @@ namespace Microsoft.Azure.Commands.Synapse
             return model;
         }
 
-        protected override SqlPoolAuditModel PersistChanges(SqlPoolAuditModel entity)
+        protected override ServerAuditModelType PersistChanges(ServerAuditModelType entity)
         {
             ModelAdapter.PersistAuditChanges(entity);
             return null;
-        }
-
-        protected override SynapseSqlPoolAuditAdapter InitModelAdapter()
-        {
-            return new SynapseSqlPoolAuditAdapter(DefaultProfile.DefaultContext, SqlPoolName, RoleAssignmentId);
         }
 
         protected override bool WriteResult() => PassThru;
