@@ -3,14 +3,6 @@
 PS C:\> Remove-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "dhja"
 ```
 
-{{ Add description here }}
+{{Deletes a job }}
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

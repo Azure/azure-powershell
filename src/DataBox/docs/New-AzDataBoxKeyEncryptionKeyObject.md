@@ -34,15 +34,6 @@ CustomerManaged https://sdkkeyvault.vault.azure.net/keys/SSDKEY/ /subscriptions/
 
 {{ Create a in-memory object for KeyEncryptionKey }}
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -IdentityProperty

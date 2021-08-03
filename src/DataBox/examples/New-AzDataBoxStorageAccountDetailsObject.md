@@ -8,14 +8,5 @@ DataAccountType SharePassword StorageAccountId
 StorageAccount                /subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/dhja/providers/Microsoft.Storage/storageAccounts/dhjapowershellstorage
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+{{ Storage account in-memory object }}
 
