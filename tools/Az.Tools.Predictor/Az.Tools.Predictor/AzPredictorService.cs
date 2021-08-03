@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
-using System.Management.Automation.Subsystem;
+using System.Management.Automation.Subsystem.Prediction;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(telemetryClient, $"{nameof(telemetryClient)} cannot be null.");
             Validation.CheckArgument(azContext, $"{nameof(azContext)} cannot be null.");
 
-            _parameterValuePredictor = new ParameterValuePredictor(telemetryClient);
+            _parameterValuePredictor = new ParameterValuePredictor(telemetryClient, azContext);
 
             _commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context.versionNumber={azContext.AzVersion}";
             _predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;
@@ -116,8 +116,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// A default constructor for the derived class. This is used in test cases.
         /// </summary>
-        protected AzPredictorService()
+        /// <param name="azContext">The Az context which this module runs in.</param>
+        protected AzPredictorService(IAzContext azContext)
         {
+            _azContext = azContext;
             RequestAllPredictiveCommands();
         }
 
@@ -144,7 +146,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
-            var commandName = commandAst?.GetCommandName();
+            if (commandAst == null)
+            {
+                return null;
+            }
+
+            var commandName = commandAst.GetCommandName();
 
             if (string.IsNullOrWhiteSpace(commandName))
             {
@@ -155,15 +162,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             try
             {
-                inputParameterSet = new ParameterSet(commandAst);
+                inputParameterSet = new ParameterSet(commandAst, _azContext);
             }
             catch when (!IsSupportedCommand(commandName))
             {
                 // We only ignore the exception when the command name is not supported.
-                // For the supported ones, this most likely happens when positional parameters are used.
-                // We want to collect the telemetry about the exception how common a positional parameter is used.
+                // We want to collect the telemetry about the exception how common it is for the format we don't support.
                 return null;
             }
+
+            cancellationToken.ThrowIfCancellationRequested();
 
             var rawUserInput = context.InputAst.ToString();
             var presentCommands = new Dictionary<string, int>();
@@ -218,11 +226,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     for (var i = 0; i < resultsFromFallback.Count; ++i)
                     {
-                        if (result.SourceTexts.Contains(resultsFromFallback.SourceTexts[i]))
-                        {
-                            continue;
-                        }
-
                         result.AddSuggestion(resultsFromFallback.PredictiveSuggestions[i], resultsFromFallback.SourceTexts[i], SuggestionSource.StaticCommands);
                     }
                 }
@@ -232,7 +235,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual async Task<bool> RequestPredictionsAsync(IEnumerable<string> commands, CancellationToken cancellationToken)
+        public virtual async Task<bool> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
@@ -251,7 +254,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     SetCommandToRequestPrediction(localCommands);
 
-                    AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.HashUserId, _telemetryClient.RequestId);
+                    AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.HashUserId, requestId);
 
                     var requestContext = new PredictionRequestBody.RequestContext()
                     {
@@ -310,10 +313,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         var hasSentHttpRequest = false;
                         Exception exception = null;
+                        var requestId = Guid.NewGuid().ToString();
 
                         try
                         {
-                            AzPredictorService.SetHttpRequestHeader(_client.DefaultRequestHeaders, _azContext.HashUserId, _telemetryClient.RequestId);
+                            AzPredictorService.SetHttpRequestHeader(_client.DefaultRequestHeaders, _azContext.HashUserId, requestId);
 
                             var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
                             hasSentHttpRequest = true;
@@ -329,7 +333,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         finally
                         {
-                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(AzPredictorConstants.DefaultClientId,
+                            _telemetryClient.RequestId = requestId;
+                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
                                         new List<string>(),
                                         hasSentHttpRequest,
                                         exception));
@@ -340,9 +345,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         var placeholderCommands = new string[] {
                                     AzPredictorConstants.CommandPlaceholder,
                                     AzPredictorConstants.CommandPlaceholder};
+                        requestId = Guid.NewGuid().ToString();
+
                         try
                         {
-                            hasSentHttpRequest = await RequestPredictionsAsync(placeholderCommands, CancellationToken.None);
+                            hasSentHttpRequest = await RequestPredictionsAsync(placeholderCommands, requestId, CancellationToken.None);
                         }
                         catch (ServiceRequestException e)
                         {
@@ -355,7 +362,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         finally
                         {
-                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(AzPredictorConstants.DefaultClientId,
+                            _telemetryClient.RequestId = requestId;
+                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
                                         placeholderCommands,
                                         hasSentHttpRequest,
                                         (exception is OperationCanceledException ? null : exception)));
@@ -371,7 +379,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
-            _fallbackPredictor = new CommandLinePredictor(commands, _parameterValuePredictor);
+            _fallbackPredictor = new CommandLinePredictor(commands, _parameterValuePredictor, _telemetryClient, _azContext);
             _allPredictiveCommands = commands.Select(x => AzPredictorService.GetCommandName(x.Command)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
         }
 
@@ -385,7 +393,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(commands), $"{nameof(commands)} cannot be null or whitespace.");
             Validation.CheckArgument(suggestions, $"{nameof(suggestions)} cannot be null.");
 
-            _commandBasedPredictor = Tuple.Create(commands, new CommandLinePredictor(suggestions, _parameterValuePredictor));
+            _commandBasedPredictor = Tuple.Create(commands, new CommandLinePredictor(suggestions, _parameterValuePredictor, _telemetryClient, _azContext));
         }
 
         /// <summary>
