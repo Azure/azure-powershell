@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.DefaultEncryptionScope = container.DefaultEncryptionScope;
             this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
             this.Deleted = container.Deleted;
+            this.ImmutableStorageWithVersioning = container.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageWithVersioning(container.ImmutableStorageWithVersioning);
             this.RemainingRetentionDays = container.RemainingRetentionDays;
             this.DeletedTime = container.DeletedTime;
             this.Version = container.Version;
@@ -74,6 +75,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.DefaultEncryptionScope = container.DefaultEncryptionScope;
             this.DenyEncryptionScopeOverride = container.DenyEncryptionScopeOverride;
             this.Deleted = container.Deleted;
+            this.ImmutableStorageWithVersioning = container.ImmutableStorageWithVersioning is null? null : new PSImmutableStorageWithVersioning(container.ImmutableStorageWithVersioning);
             this.RemainingRetentionDays = container.RemainingRetentionDays;
             this.DeletedTime = container.DeletedTime;
             this.Version = container.Version;
@@ -129,6 +131,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? Deleted { get; }
 
         public string Version { get; }
+
+        public PSImmutableStorageWithVersioning ImmutableStorageWithVersioning { get; set; }
 
 
         public static string ParseResourceGroupFromId(string idFromServer)
@@ -303,12 +307,26 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.TenantId = updateHistory.TenantId;
             this.Upn = updateHistory.Upn;
         }
-        
+
         public string Update { get; set; }
         public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
         public DateTime? Timestamp { get; set; }
         public string ObjectIdentifier { get; set; }
         public string TenantId { get; set; }
         public string Upn { get; set; }
+    }
+
+    public class PSImmutableStorageWithVersioning
+    {
+        public PSImmutableStorageWithVersioning(ImmutableStorageWithVersioning inputValue)
+        {
+            this.Enabled = inputValue.Enabled;
+            this.TimeStamp = inputValue.TimeStamp;
+            this.MigrationState = inputValue.MigrationState;
+        }
+
+        public bool? Enabled { get; set; }
+        public DateTime? TimeStamp { get; }
+        public string MigrationState { get; }
     }
 }

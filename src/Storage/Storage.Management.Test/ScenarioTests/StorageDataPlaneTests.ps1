@@ -336,41 +336,24 @@ function Test-Blob
         Disable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $ResourceGroupName -Name $StorageAccountName 
         Remove-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext -Force
 
-		# container softdelete test
-		## Enabled container softdelete,then create and delete a container
-		Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -RetentionDays 3
-		$containerNamesoftdelete = "softdeletecontainer"
-		$newcontainerName = "newcontainer"
-		New-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext
-		Remove-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext -Force
-		## Get container without -IncludeDeleted, won't list out deleted containers
-		$deletedcontainer = Get-AzStorageContainer -Context $storageContext | ?{$_.IsDeleted}
-		Assert-AreEqual 0 $deletedcontainer.Count
-		## Get container with -IncludeDeleted, will list out deleted containers
-		$deletedcontainer = Get-AzStorageContainer -Context $storageContext -IncludeDeleted | ?{$_.IsDeleted}
-		Assert-AreEqual 1 $deletedcontainer.Count
-		Assert-AreEqual $true $deletedcontainer.IsDeleted
-		Assert-NotNull $deletedcontainer.VersionId
-		## restore container with pipeline, to same container name
-		sleep 60 # need wait for some time, or restore will fail with 409 (The specified container is being deleted.)
-		$deletedcontainer | Restore-AzStorageContainer  
-		$container =  Get-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext
-		Assert-AreEqual 1 $container.Count
-		Assert-Null $container.IsDeleted
-		Assert-Null $container.VersionId
-		## restore container with parameter, to a new container name
-		Remove-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext -Force
-		$deletedcontainer = Get-AzStorageContainer -Context $storageContext -IncludeDeleted | ?{$_.IsDeleted}
-		Assert-AreEqual 1 $deletedcontainer.Count
-		sleep 60 # need wait for some time, or restore will fail with 409 (The specified container is being deleted.)
-		Restore-AzStorageContainer -Name $deletedcontainer[0].Name -VersionId $deletedcontainer[0].VersionId -DestinationContainerName $newcontainerName -Context $storageContext
-		$container =  Get-AzStorageContainer -Name $newcontainerName -Context $storageContext
-		Assert-AreEqual 1 $container.Count
-		Assert-AreEqual $newcontainerName $container.Name
-		Assert-Null $container.IsDeleted
-		Assert-Null $container.VersionId
-		Disable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $ResourceGroupName -Name $StorageAccountName 
-		Remove-AzStorageContainer -Name $newcontainerName -Context $storageContext -Force	
+        # VLW
+        ## enabled versioning
+        Update-AzStorageBlobServiceProperty -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -IsVersioningEnabled $true
+        $containerNamevlw = "vlwcontainer"
+        # create container with ImmutableStorageWithVersioning
+        New-AzRmStorageContainer -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -Name $containerNamevlw -EnableImmutableStorageWithVersioning
+        # upload a blob
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerNamevlw -Blob $objectName -Force -Context $storageContext
+        # manage ImmutabilityPolicy
+        $policy = Set-AzStorageBlobImmutabilityPolicy -Container $containerNamevlw -Blob $objectName -ExpiriesOn (Get-Date).AddDays(1) -PolicyMode Unlocked -Context $storageContext
+        $blob = Get-AzStorageBlob -Container $containerNamevlw -Blob $objectName  -Context $storageContext
+        Remove-AzStorageBlobImmutabilityPolicy -Container $containerNamevlw -Blob $objectName  -Context $storageContext 
+        $blob = Get-AzStorageBlob -Container $containerNamevlw -Blob $objectName  -Context $storageContext
+        # manage legalhold
+        Set-AzStorageBlobLegalHold -Container $containerNamevlw -Blob $objectName  -Context $storageContext  -EnableLegalHold
+        $blob = Get-AzStorageBlob -Container $containerNamevlw -Blob $objectName  -Context $storageContext
+        Set-AzStorageBlobLegalHold -Container $containerNamevlw -Blob $objectName  -Context $storageContext  -DisableLegalHold
+        $blob = Get-AzStorageBlob -Container $containerNamevlw -Blob $objectName  -Context $storageContext
 
         # Clean Storage Account
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext
