@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "69062fd0-f643-404e-9f55-d192bdb605c9"
+          "9e369d89-e1ae-4417-843f-3af4a622b553"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11979"
         ],
         "x-ms-request-id": [
-          "b6075cd9-92bf-4007-9319-1b38358a55a0"
+          "09dd6a5d-fe5b-4608-b99a-9e528bc4279c"
         ],
         "x-ms-correlation-request-id": [
-          "b6075cd9-92bf-4007-9319-1b38358a55a0"
+          "09dd6a5d-fe5b-4608-b99a-9e528bc4279c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T090958Z:b6075cd9-92bf-4007-9319-1b38358a55a0"
+          "SOUTHEASTASIA:20210705T111930Z:09dd6a5d-fe5b-4608-b99a-9e528bc4279c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:09:58 GMT"
+          "Mon, 05 Jul 2021 11:19:30 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -54,29 +54,29 @@
           "-1"
         ],
         "Content-Length": [
-          "15017"
+          "16245"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage\",\r\n  \"namespace\": \"Microsoft.Storage\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"a6aa9161-5291-40bb-8c5c-923b567bee3b\",\r\n      \"roleDefinitionId\": \"070ab87f-0efc-4423-b18b-756f3bdb0236\"\r\n    },\r\n    {\r\n      \"applicationId\": \"e406a681-f3d4-42a8-90b6-c2b029497af1\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"deletedAccounts\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deletedAccounts\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\",\r\n        \"2016-01-01\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"zoneMappings\": [\r\n        {\r\n          \"location\": \"East US 2\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"Central US\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"West Europe\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"East US 2 EUAP\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Central US EUAP\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"France Central\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"Southeast Asia\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"West US 2\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"North Europe\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"East US\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"UK South\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"Japan East\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"Australia East\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"South Africa North\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"South Central US\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"Canada Central\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"Germany West Central\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"Brazil South\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"Central India\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"Korea Central\",\r\n          \"zones\": []\r\n        }\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\",\r\n        \"2016-01-01\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/asyncoperations\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\",\r\n        \"2016-01-01\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/listAccountSas\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/listServiceSas\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/blobServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/tableServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/queueServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/fileServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-07-01\",\r\n        \"2016-01-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deleteVirtualNetworkOrSubnets\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-07-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"usages\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\",\r\n        \"2016-01-01\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\",\r\n        \"2016-01-01\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkNameAvailability\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/services\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West US\",\r\n        \"East US 2 (Stage)\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/services/metricDefinitions\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West US\",\r\n        \"East US 2 (Stage)\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage\",\r\n  \"namespace\": \"Microsoft.Storage\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"a6aa9161-5291-40bb-8c5c-923b567bee3b\",\r\n      \"roleDefinitionId\": \"070ab87f-0efc-4423-b18b-756f3bdb0236\"\r\n    },\r\n    {\r\n      \"applicationId\": \"e406a681-f3d4-42a8-90b6-c2b029497af1\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"deletedAccounts\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deletedAccounts\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\",\r\n        \"2016-01-01\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"zoneMappings\": [\r\n        {\r\n          \"location\": \"East US 2\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Central US\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"West Europe\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"East US 2 EUAP\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Central US EUAP\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"France Central\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Southeast Asia\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"West US 2\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"North Europe\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"East US\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"UK South\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Japan East\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Australia East\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"South Africa North\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"South Central US\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Canada Central\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Germany West Central\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Brazil South\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Central India\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"Korea Central\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"West US 3\",\r\n          \"zones\": [\r\n            \"1\",\r\n            \"2\",\r\n            \"3\"\r\n          ]\r\n        },\r\n        {\r\n          \"location\": \"Norway East\",\r\n          \"zones\": []\r\n        },\r\n        {\r\n          \"location\": \"East Asia\",\r\n          \"zones\": []\r\n        }\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\",\r\n        \"2016-01-01\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/asyncoperations\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\",\r\n        \"2016-01-01\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/listAccountSas\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/listServiceSas\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/blobServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/tableServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/queueServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/fileServices\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-07-01\",\r\n        \"2016-01-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deleteVirtualNetworkOrSubnets\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-07-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"usages\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\",\r\n        \"2016-01-01\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-03-01-preview\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\",\r\n        \"2016-05-01\",\r\n        \"2016-01-01\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkNameAvailability\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"North Europe\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"Australia Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 (Stage)\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-02-01\",\r\n        \"2021-01-01\",\r\n        \"2020-08-01-preview\",\r\n        \"2019-06-01\",\r\n        \"2019-04-01\",\r\n        \"2018-11-01\",\r\n        \"2018-07-01\",\r\n        \"2018-02-01\",\r\n        \"2017-10-01\",\r\n        \"2017-06-01\",\r\n        \"2016-12-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/services\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West US\",\r\n        \"East US 2 (Stage)\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"storageAccounts/services/metricDefinitions\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West US\",\r\n        \"East US 2 (Stage)\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada East\",\r\n        \"Canada Central\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"West US 3\",\r\n        \"Jio India West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/pstestrg2605?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMjYwNT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/pstestrg4204?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNDIwND9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fefc67ab-e4e7-433a-9099-012996edcbcf"
+          "c7f97ab5-6751-486a-9183-ed1bea6d4bfe"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -93,16 +93,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1194"
         ],
         "x-ms-request-id": [
-          "4e851b30-9b69-4840-aa49-f1ccf0b200e7"
+          "0e6a34ae-7dd5-4d24-8e2f-a16ad6bbcd1f"
         ],
         "x-ms-correlation-request-id": [
-          "4e851b30-9b69-4840-aa49-f1ccf0b200e7"
+          "0e6a34ae-7dd5-4d24-8e2f-a16ad6bbcd1f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091001Z:4e851b30-9b69-4840-aa49-f1ccf0b200e7"
+          "SOUTHEASTASIA:20210705T111932Z:0e6a34ae-7dd5-4d24-8e2f-a16ad6bbcd1f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:00 GMT"
+          "Mon, 05 Jul 2021 11:19:32 GMT"
         ],
         "Content-Length": [
           "177"
@@ -123,26 +123,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605\",\r\n  \"name\": \"pstestrg2605\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204\",\r\n  \"name\": \"pstestrg4204\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
       "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/checkNameAvailability?api-version=2021-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"stopstestrg2605\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"stopstestrg4204\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d1a07d44-75fa-44e5-9f50-e2093d73f600"
+          "6a46352e-8a8d-45f2-aa17-5dc39094727b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -159,7 +159,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "eb6fa6f3-0265-4e89-853b-e8d5e22fb515"
+          "824e52be-16e6-498d-a001-a09fe14034c0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -168,19 +168,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "9d5bc28a-c2fe-41dd-ab2c-4f9cae7f6154"
+          "9a703f71-2f68-4d5a-a82e-e2c7dcc3e51e"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091002Z:9d5bc28a-c2fe-41dd-ab2c-4f9cae7f6154"
+          "SOUTHEASTASIA:20210705T111934Z:9a703f71-2f68-4d5a-a82e-e2c7dcc3e51e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:01 GMT"
+          "Mon, 05 Jul 2021 11:19:33 GMT"
         ],
         "Content-Length": [
           "22"
@@ -196,22 +196,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwND9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_LRS\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d1a07d44-75fa-44e5-9f50-e2093d73f600"
+          "6a46352e-8a8d-45f2-aa17-5dc39094727b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -228,13 +228,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/westus/asyncoperations/8ad8bac2-095c-4562-aec1-b1a925f398cd?monitor=true&api-version=2021-04-01"
+          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/westus/asyncoperations/fd5f1786-68a0-4cb5-a331-d7e1cb7954f7?monitor=true&api-version=2021-04-01"
         ],
         "Retry-After": [
           "17"
         ],
         "x-ms-request-id": [
-          "8ad8bac2-095c-4562-aec1-b1a925f398cd"
+          "fd5f1786-68a0-4cb5-a331-d7e1cb7954f7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -243,19 +243,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1191"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "c57ce424-13e3-474e-b9d0-3eb963440817"
+          "9e0fc53e-726f-43d3-821c-ef727c03a098"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091007Z:c57ce424-13e3-474e-b9d0-3eb963440817"
+          "SOUTHEASTASIA:20210705T111942Z:9e0fc53e-726f-43d3-821c-ef727c03a098"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:07 GMT"
+          "Mon, 05 Jul 2021 11:19:42 GMT"
         ],
         "Content-Type": [
           "text/plain; charset=utf-8"
@@ -271,19 +271,19 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/westus/asyncoperations/8ad8bac2-095c-4562-aec1-b1a925f398cd?monitor=true&api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9sb2NhdGlvbnMvd2VzdHVzL2FzeW5jb3BlcmF0aW9ucy84YWQ4YmFjMi0wOTVjLTQ1NjItYWVjMS1iMWE5MjVmMzk4Y2Q/bW9uaXRvcj10cnVlJmFwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/westus/asyncoperations/fd5f1786-68a0-4cb5-a331-d7e1cb7954f7?monitor=true&api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9sb2NhdGlvbnMvd2VzdHVzL2FzeW5jb3BlcmF0aW9ucy9mZDVmMTc4Ni02OGEwLTRjYjUtYTMzMS1kN2UxY2I3OTU0Zjc/bW9uaXRvcj10cnVlJmFwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d1a07d44-75fa-44e5-9f50-e2093d73f600"
+          "6a46352e-8a8d-45f2-aa17-5dc39094727b"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -294,7 +294,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ba88bfad-5dd3-4ec6-863d-0392ec77c3a8"
+          "6a7e207a-bdfe-4693-a3dc-ebf2c5f0a285"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -303,22 +303,22 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "4db6b4de-98f3-41ad-9047-4302d23c8ef7"
+          "5234f60d-b460-4342-9621-08ba80a73905"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091025Z:4db6b4de-98f3-41ad-9047-4302d23c8ef7"
+          "SOUTHEASTASIA:20210705T111959Z:5234f60d-b460-4342-9621-08ba80a73905"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:24 GMT"
+          "Mon, 05 Jul 2021 11:19:59 GMT"
         ],
         "Content-Length": [
-          "1256"
+          "1352"
         ],
         "Content-Type": [
           "application/json"
@@ -327,26 +327,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_LRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605\",\r\n  \"name\": \"stopstestrg2605\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"privateEndpointConnections\": [],\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": true,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-02-19T09:10:07.1942333Z\"\r\n        },\r\n        \"blob\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-02-19T09:10:07.1942333Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2021-02-19T09:10:07.1005124Z\",\r\n    \"primaryEndpoints\": {\r\n      \"dfs\": \"https://stopstestrg2605.dfs.core.windows.net/\",\r\n      \"web\": \"https://stopstestrg2605.z22.web.core.windows.net/\",\r\n      \"blob\": \"https://stopstestrg2605.blob.core.windows.net/\",\r\n      \"queue\": \"https://stopstestrg2605.queue.core.windows.net/\",\r\n      \"table\": \"https://stopstestrg2605.table.core.windows.net/\",\r\n      \"file\": \"https://stopstestrg2605.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"westus\",\r\n    \"statusOfPrimary\": \"available\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_LRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204\",\r\n  \"name\": \"stopstestrg4204\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"keyCreationTime\": {\r\n      \"key1\": \"2021-07-05T11:19:38.8468147Z\",\r\n      \"key2\": \"2021-07-05T11:19:38.8468147Z\"\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": true,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-07-05T11:19:38.8468147Z\"\r\n        },\r\n        \"blob\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-07-05T11:19:38.8468147Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2021-07-05T11:19:38.7530624Z\",\r\n    \"primaryEndpoints\": {\r\n      \"dfs\": \"https://stopstestrg4204.dfs.core.windows.net/\",\r\n      \"web\": \"https://stopstestrg4204.z22.web.core.windows.net/\",\r\n      \"blob\": \"https://stopstestrg4204.blob.core.windows.net/\",\r\n      \"queue\": \"https://stopstestrg4204.queue.core.windows.net/\",\r\n      \"table\": \"https://stopstestrg4204.table.core.windows.net/\",\r\n      \"file\": \"https://stopstestrg4204.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"westus\",\r\n    \"statusOfPrimary\": \"available\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwND9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d1a07d44-75fa-44e5-9f50-e2093d73f600"
+          "6a46352e-8a8d-45f2-aa17-5dc39094727b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -357,7 +357,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "646b2480-e1a8-4e96-960e-3fd4849452da"
+          "81d66e91-2f8e-4031-bb4e-9ba013b3f9d8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -366,22 +366,22 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "9e5925d4-eebf-41e4-8e4b-949ab3a35e68"
+          "a9970a61-7dcc-48b0-851a-a4b5a030beb4"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091025Z:9e5925d4-eebf-41e4-8e4b-949ab3a35e68"
+          "SOUTHEASTASIA:20210705T112000Z:a9970a61-7dcc-48b0-851a-a4b5a030beb4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:25 GMT"
+          "Mon, 05 Jul 2021 11:19:59 GMT"
         ],
         "Content-Length": [
-          "1256"
+          "1352"
         ],
         "Content-Type": [
           "application/json"
@@ -390,26 +390,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_LRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605\",\r\n  \"name\": \"stopstestrg2605\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"privateEndpointConnections\": [],\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": true,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-02-19T09:10:07.1942333Z\"\r\n        },\r\n        \"blob\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-02-19T09:10:07.1942333Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2021-02-19T09:10:07.1005124Z\",\r\n    \"primaryEndpoints\": {\r\n      \"dfs\": \"https://stopstestrg2605.dfs.core.windows.net/\",\r\n      \"web\": \"https://stopstestrg2605.z22.web.core.windows.net/\",\r\n      \"blob\": \"https://stopstestrg2605.blob.core.windows.net/\",\r\n      \"queue\": \"https://stopstestrg2605.queue.core.windows.net/\",\r\n      \"table\": \"https://stopstestrg2605.table.core.windows.net/\",\r\n      \"file\": \"https://stopstestrg2605.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"westus\",\r\n    \"statusOfPrimary\": \"available\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_LRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204\",\r\n  \"name\": \"stopstestrg4204\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"keyCreationTime\": {\r\n      \"key1\": \"2021-07-05T11:19:38.8468147Z\",\r\n      \"key2\": \"2021-07-05T11:19:38.8468147Z\"\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": true,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-07-05T11:19:38.8468147Z\"\r\n        },\r\n        \"blob\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-07-05T11:19:38.8468147Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2021-07-05T11:19:38.7530624Z\",\r\n    \"primaryEndpoints\": {\r\n      \"dfs\": \"https://stopstestrg4204.dfs.core.windows.net/\",\r\n      \"web\": \"https://stopstestrg4204.z22.web.core.windows.net/\",\r\n      \"blob\": \"https://stopstestrg4204.blob.core.windows.net/\",\r\n      \"queue\": \"https://stopstestrg4204.queue.core.windows.net/\",\r\n      \"table\": \"https://stopstestrg4204.table.core.windows.net/\",\r\n      \"file\": \"https://stopstestrg4204.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"westus\",\r\n    \"statusOfPrimary\": \"available\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzP2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzP2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6522f4cc-3718-47ae-a4c2-eed98b9aba10"
+          "54d68aa0-285b-4d2a-b338-b3214bbc2dce"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -420,7 +420,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "16fe7775-7a38-425e-a61b-a12c06758572"
+          "bd6a1cf8-b3f6-44a3-8d08-3c5a4f06af90"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -429,22 +429,22 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11984"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "b1ec5284-8cd5-4c56-950e-f40080c2bf38"
+          "8fbcd0aa-3c79-4fb7-99e5-d3bfce7bfdc1"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091025Z:b1ec5284-8cd5-4c56-950e-f40080c2bf38"
+          "SOUTHEASTASIA:20210705T112000Z:8fbcd0aa-3c79-4fb7-99e5-d3bfce7bfdc1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:25 GMT"
+          "Mon, 05 Jul 2021 11:19:59 GMT"
         ],
         "Content-Length": [
-          "1268"
+          "1364"
         ],
         "Content-Type": [
           "application/json"
@@ -453,26 +453,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_LRS\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"kind\": \"StorageV2\",\r\n      \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605\",\r\n      \"name\": \"stopstestrg2605\",\r\n      \"type\": \"Microsoft.Storage/storageAccounts\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"privateEndpointConnections\": [],\r\n        \"networkAcls\": {\r\n          \"bypass\": \"AzureServices\",\r\n          \"virtualNetworkRules\": [],\r\n          \"ipRules\": [],\r\n          \"defaultAction\": \"Allow\"\r\n        },\r\n        \"supportsHttpsTrafficOnly\": true,\r\n        \"encryption\": {\r\n          \"services\": {\r\n            \"file\": {\r\n              \"keyType\": \"Account\",\r\n              \"enabled\": true,\r\n              \"lastEnabledTime\": \"2021-02-19T09:10:07.1942333Z\"\r\n            },\r\n            \"blob\": {\r\n              \"keyType\": \"Account\",\r\n              \"enabled\": true,\r\n              \"lastEnabledTime\": \"2021-02-19T09:10:07.1942333Z\"\r\n            }\r\n          },\r\n          \"keySource\": \"Microsoft.Storage\"\r\n        },\r\n        \"accessTier\": \"Hot\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"2021-02-19T09:10:07.1005124Z\",\r\n        \"primaryEndpoints\": {\r\n          \"dfs\": \"https://stopstestrg2605.dfs.core.windows.net/\",\r\n          \"web\": \"https://stopstestrg2605.z22.web.core.windows.net/\",\r\n          \"blob\": \"https://stopstestrg2605.blob.core.windows.net/\",\r\n          \"queue\": \"https://stopstestrg2605.queue.core.windows.net/\",\r\n          \"table\": \"https://stopstestrg2605.table.core.windows.net/\",\r\n          \"file\": \"https://stopstestrg2605.file.core.windows.net/\"\r\n        },\r\n        \"primaryLocation\": \"westus\",\r\n        \"statusOfPrimary\": \"available\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Standard_LRS\",\r\n        \"tier\": \"Standard\"\r\n      },\r\n      \"kind\": \"StorageV2\",\r\n      \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204\",\r\n      \"name\": \"stopstestrg4204\",\r\n      \"type\": \"Microsoft.Storage/storageAccounts\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"keyCreationTime\": {\r\n          \"key1\": \"2021-07-05T11:19:38.8468147Z\",\r\n          \"key2\": \"2021-07-05T11:19:38.8468147Z\"\r\n        },\r\n        \"privateEndpointConnections\": [],\r\n        \"networkAcls\": {\r\n          \"bypass\": \"AzureServices\",\r\n          \"virtualNetworkRules\": [],\r\n          \"ipRules\": [],\r\n          \"defaultAction\": \"Allow\"\r\n        },\r\n        \"supportsHttpsTrafficOnly\": true,\r\n        \"encryption\": {\r\n          \"services\": {\r\n            \"file\": {\r\n              \"keyType\": \"Account\",\r\n              \"enabled\": true,\r\n              \"lastEnabledTime\": \"2021-07-05T11:19:38.8468147Z\"\r\n            },\r\n            \"blob\": {\r\n              \"keyType\": \"Account\",\r\n              \"enabled\": true,\r\n              \"lastEnabledTime\": \"2021-07-05T11:19:38.8468147Z\"\r\n            }\r\n          },\r\n          \"keySource\": \"Microsoft.Storage\"\r\n        },\r\n        \"accessTier\": \"Hot\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"creationTime\": \"2021-07-05T11:19:38.7530624Z\",\r\n        \"primaryEndpoints\": {\r\n          \"dfs\": \"https://stopstestrg4204.dfs.core.windows.net/\",\r\n          \"web\": \"https://stopstestrg4204.z22.web.core.windows.net/\",\r\n          \"blob\": \"https://stopstestrg4204.blob.core.windows.net/\",\r\n          \"queue\": \"https://stopstestrg4204.queue.core.windows.net/\",\r\n          \"table\": \"https://stopstestrg4204.table.core.windows.net/\",\r\n          \"file\": \"https://stopstestrg4204.file.core.windows.net/\"\r\n        },\r\n        \"primaryLocation\": \"westus\",\r\n        \"statusOfPrimary\": \"available\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNS9lbmNyeXB0aW9uU2NvcGVzL3Rlc3RzY29wZT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9lbmNyeXB0aW9uU2NvcGVzL3Rlc3RzY29wZT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"requireInfrastructureEncryption\": true\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ae1d003a-d62c-42e3-a780-c72430ec9d9c"
+          "4565c6a8-9d28-4989-8e77-6681a9cca7ed"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -489,7 +489,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0de27000-61cf-46d7-865f-439ac66b439f"
+          "3df887bb-13a6-4136-ae4a-9aea678ce3cd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -498,19 +498,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1190"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "afcb00b1-21fe-4fc5-85ba-efd9dad5b5bf"
+          "681af864-c834-4e65-a6dd-e51f10333891"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091026Z:afcb00b1-21fe-4fc5-85ba-efd9dad5b5bf"
+          "SOUTHEASTASIA:20210705T112001Z:681af864-c834-4e65-a6dd-e51f10333891"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:25 GMT"
+          "Mon, 05 Jul 2021 11:20:00 GMT"
         ],
         "Content-Length": [
           "475"
@@ -522,26 +522,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n  \"name\": \"testscope\",\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"keyVaultProperties\": {},\r\n    \"creationTime\": \"2021-02-19T09:10:26.2460207Z\",\r\n    \"lastModifiedTime\": \"2021-02-19T09:10:26.2460207Z\",\r\n    \"state\": \"Enabled\",\r\n    \"requireInfrastructureEncryption\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n  \"name\": \"testscope\",\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"keyVaultProperties\": {},\r\n    \"creationTime\": \"2021-07-05T11:20:00.8924739Z\",\r\n    \"lastModifiedTime\": \"2021-07-05T11:20:00.8924739Z\",\r\n    \"state\": \"Enabled\",\r\n    \"requireInfrastructureEncryption\": true\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNS9lbmNyeXB0aW9uU2NvcGVzL3Rlc3RzY29wZT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9lbmNyeXB0aW9uU2NvcGVzL3Rlc3RzY29wZT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "21b6d73f-0c7c-4aff-90b0-4573f052f2d1"
+          "3deef71f-d59d-4c1f-b1fa-cd25583ba7cd"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -552,7 +552,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "25bf1b68-3928-4d96-a202-53229e70c2c4"
+          "5dd327e8-e27f-4a3f-a80f-79baa43a3a8d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -561,19 +561,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11983"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "3fccb3f3-e05b-4c43-b0fc-23b9a366d14e"
+          "a96607d8-8263-43db-9645-4915ff62459f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091026Z:3fccb3f3-e05b-4c43-b0fc-23b9a366d14e"
+          "SOUTHEASTASIA:20210705T112001Z:a96607d8-8263-43db-9645-4915ff62459f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:26 GMT"
+          "Mon, 05 Jul 2021 11:20:01 GMT"
         ],
         "Content-Length": [
           "451"
@@ -585,26 +585,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n  \"name\": \"testscope\",\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"creationTime\": \"2021-02-19T09:10:26.2460207Z\",\r\n    \"lastModifiedTime\": \"2021-02-19T09:10:26.2460207Z\",\r\n    \"state\": \"Enabled\",\r\n    \"requireInfrastructureEncryption\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n  \"name\": \"testscope\",\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"creationTime\": \"2021-07-05T11:20:00.8924739Z\",\r\n    \"lastModifiedTime\": \"2021-07-05T11:20:00.8924739Z\",\r\n    \"state\": \"Enabled\",\r\n    \"requireInfrastructureEncryption\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNS9lbmNyeXB0aW9uU2NvcGVzL3Rlc3RzY29wZT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9lbmNyeXB0aW9uU2NvcGVzL3Rlc3RzY29wZT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "PATCH",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f6420e0a-1fa4-4a3c-a09e-80482924fe19"
+          "31be03d8-3a70-46da-9788-fa7eec19e760"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -621,7 +621,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0ff88d31-f92a-488a-ab5b-d68c7506cc77"
+          "8d6f8569-2b59-4282-a7c8-508502435efd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -630,19 +630,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1189"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "7f05c6e8-a209-4dd9-a487-e888d3acaf23"
+          "b0215a06-5b8c-43e3-b97e-40f93074c3ea"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091027Z:7f05c6e8-a209-4dd9-a487-e888d3acaf23"
+          "SOUTHEASTASIA:20210705T112002Z:b0215a06-5b8c-43e3-b97e-40f93074c3ea"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:26 GMT"
+          "Mon, 05 Jul 2021 11:20:01 GMT"
         ],
         "Content-Length": [
           "452"
@@ -654,26 +654,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n  \"name\": \"testscope\",\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"creationTime\": \"2021-02-19T09:10:26.2460207Z\",\r\n    \"lastModifiedTime\": \"2021-02-19T09:10:27.1746506Z\",\r\n    \"state\": \"Disabled\",\r\n    \"requireInfrastructureEncryption\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n  \"name\": \"testscope\",\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"creationTime\": \"2021-07-05T11:20:00.8924739Z\",\r\n    \"lastModifiedTime\": \"2021-07-05T11:20:02.0996211Z\",\r\n    \"state\": \"Disabled\",\r\n    \"requireInfrastructureEncryption\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNS9lbmNyeXB0aW9uU2NvcGVzL3Rlc3RzY29wZT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9lbmNyeXB0aW9uU2NvcGVzL3Rlc3RzY29wZT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "PATCH",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a1c46fe3-8f3f-45c5-8538-4e0d76f03f68"
+          "304a848a-d466-4ab3-959c-23d5847b1a2f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -690,7 +690,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f037e482-58dc-450b-9d95-4a20c2114658"
+          "e767e6ae-f3ea-4590-9f8b-7d2c5fc712b5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -699,19 +699,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1188"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "2cf3f5b1-68dd-4eea-81db-c05e800b7dd4"
+          "118808dd-bdda-42e3-a730-d42f2aec359a"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091027Z:2cf3f5b1-68dd-4eea-81db-c05e800b7dd4"
+          "SOUTHEASTASIA:20210705T112002Z:118808dd-bdda-42e3-a730-d42f2aec359a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:27 GMT"
+          "Mon, 05 Jul 2021 11:20:02 GMT"
         ],
         "Content-Length": [
           "451"
@@ -723,26 +723,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n  \"name\": \"testscope\",\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"creationTime\": \"2021-02-19T09:10:26.2460207Z\",\r\n    \"lastModifiedTime\": \"2021-02-19T09:10:27.7210212Z\",\r\n    \"state\": \"Enabled\",\r\n    \"requireInfrastructureEncryption\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n  \"name\": \"testscope\",\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"creationTime\": \"2021-07-05T11:20:00.8924739Z\",\r\n    \"lastModifiedTime\": \"2021-07-05T11:20:02.7051976Z\",\r\n    \"state\": \"Enabled\",\r\n    \"requireInfrastructureEncryption\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope2?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNS9lbmNyeXB0aW9uU2NvcGVzL3Rlc3RzY29wZTI/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope2?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9lbmNyeXB0aW9uU2NvcGVzL3Rlc3RzY29wZTI/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "657af6bd-3414-47e8-8625-a78de992ff91"
+          "340c8537-2d43-418b-b97c-6311e351b1ee"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -759,7 +759,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "29f2b448-f8e3-4a50-88c3-0691a0519614"
+          "4b7539f4-b500-4bd9-95a7-43ed1e1d6718"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -768,19 +768,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1187"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "03ddb28f-6444-49d5-a2fa-20abe3376c0e"
+          "09a45dea-486a-4d68-9724-3f0a16aef46b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091028Z:03ddb28f-6444-49d5-a2fa-20abe3376c0e"
+          "SOUTHEASTASIA:20210705T112003Z:09a45dea-486a-4d68-9724-3f0a16aef46b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:27 GMT"
+          "Mon, 05 Jul 2021 11:20:02 GMT"
         ],
         "Content-Length": [
           "438"
@@ -792,26 +792,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope2\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n  \"name\": \"testscope2\",\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"keyVaultProperties\": {},\r\n    \"creationTime\": \"2021-02-19T09:10:28.2513809Z\",\r\n    \"lastModifiedTime\": \"2021-02-19T09:10:28.2513809Z\",\r\n    \"state\": \"Enabled\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope2\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n  \"name\": \"testscope2\",\r\n  \"properties\": {\r\n    \"source\": \"Microsoft.Storage\",\r\n    \"keyVaultProperties\": {},\r\n    \"creationTime\": \"2021-07-05T11:20:03.2807463Z\",\r\n    \"lastModifiedTime\": \"2021-07-05T11:20:03.2807463Z\",\r\n    \"state\": \"Enabled\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNS9lbmNyeXB0aW9uU2NvcGVzP2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9lbmNyeXB0aW9uU2NvcGVzP2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bf5ce1db-d94a-4151-a818-e08f153cf4ac"
+          "4b2d6b6c-ba1c-4109-8284-653906d0e2a3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -822,7 +822,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ccebfd6c-5eb8-4787-b214-d8c281561a08"
+          "9be43ae1-2297-4198-af99-72dfcb59c58f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -831,19 +831,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11982"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "1444c8d7-55d8-47af-aa8e-6f6a6266414b"
+          "cd29d6ec-3842-4da4-90db-bebeb765d580"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091028Z:1444c8d7-55d8-47af-aa8e-6f6a6266414b"
+          "SOUTHEASTASIA:20210705T112003Z:cd29d6ec-3842-4da4-90db-bebeb765d580"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:28 GMT"
+          "Mon, 05 Jul 2021 11:20:03 GMT"
         ],
         "Content-Length": [
           "878"
@@ -855,26 +855,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope\",\r\n      \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n      \"name\": \"testscope\",\r\n      \"properties\": {\r\n        \"source\": \"Microsoft.Storage\",\r\n        \"creationTime\": \"2021-02-19T09:10:26.2460207Z\",\r\n        \"lastModifiedTime\": \"2021-02-19T09:10:27.7210212Z\",\r\n        \"state\": \"Enabled\",\r\n        \"requireInfrastructureEncryption\": true\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/encryptionScopes/testscope2\",\r\n      \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n      \"name\": \"testscope2\",\r\n      \"properties\": {\r\n        \"source\": \"Microsoft.Storage\",\r\n        \"creationTime\": \"2021-02-19T09:10:28.2513809Z\",\r\n        \"lastModifiedTime\": \"2021-02-19T09:10:28.2513809Z\",\r\n        \"state\": \"Enabled\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope\",\r\n      \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n      \"name\": \"testscope\",\r\n      \"properties\": {\r\n        \"source\": \"Microsoft.Storage\",\r\n        \"creationTime\": \"2021-07-05T11:20:00.8924739Z\",\r\n        \"lastModifiedTime\": \"2021-07-05T11:20:02.7051976Z\",\r\n        \"state\": \"Enabled\",\r\n        \"requireInfrastructureEncryption\": true\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/encryptionScopes/testscope2\",\r\n      \"type\": \"Microsoft.Storage/storageAccounts/encryptionScopes\",\r\n      \"name\": \"testscope2\",\r\n      \"properties\": {\r\n        \"source\": \"Microsoft.Storage\",\r\n        \"creationTime\": \"2021-07-05T11:20:03.2807463Z\",\r\n        \"lastModifiedTime\": \"2021-07-05T11:20:03.2807463Z\",\r\n        \"state\": \"Enabled\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/blobServices/default/containers/containerpstestrg2605?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNS9ibG9iU2VydmljZXMvZGVmYXVsdC9jb250YWluZXJzL2NvbnRhaW5lcnBzdGVzdHJnMjYwNT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/containerpstestrg4204?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9ibG9iU2VydmljZXMvZGVmYXVsdC9jb250YWluZXJzL2NvbnRhaW5lcnBzdGVzdHJnNDIwND9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"defaultEncryptionScope\": \"testscope\",\r\n    \"denyEncryptionScopeOverride\": true\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "99e2b2f8-0d8c-4c55-9b43-2a01b3088ac6"
+          "9a9e3eca-ba41-407f-8b81-3c0a05a01643"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -891,10 +891,10 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0x8D8D4B633D98320\""
+          "\"0x8D93FA6D661C237\""
         ],
         "x-ms-request-id": [
-          "4f632951-a291-4d2f-b362-d56dd7b54e86"
+          "0d6446ab-5fde-4c41-a841-4ea175f4034a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -903,19 +903,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1186"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
-          "a8a70248-661f-49d8-b212-e5bf0b18bd10"
+          "eb440aa3-fd95-462a-bc6b-2a632209e55f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091029Z:a8a70248-661f-49d8-b212-e5bf0b18bd10"
+          "SOUTHEASTASIA:20210705T112004Z:eb440aa3-fd95-462a-bc6b-2a632209e55f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:28 GMT"
+          "Mon, 05 Jul 2021 11:20:03 GMT"
         ],
         "Content-Length": [
           "481"
@@ -927,26 +927,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/blobServices/default/containers/containerpstestrg2605\",\r\n  \"name\": \"containerpstestrg2605\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/blobServices/containers\",\r\n  \"properties\": {\r\n    \"deleted\": false,\r\n    \"remainingRetentionDays\": 0,\r\n    \"defaultEncryptionScope\": \"testscope\",\r\n    \"denyEncryptionScopeOverride\": true,\r\n    \"hasImmutabilityPolicy\": false,\r\n    \"hasLegalHold\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/containerpstestrg4204\",\r\n  \"name\": \"containerpstestrg4204\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/blobServices/containers\",\r\n  \"properties\": {\r\n    \"deleted\": false,\r\n    \"remainingRetentionDays\": 0,\r\n    \"defaultEncryptionScope\": \"testscope\",\r\n    \"denyEncryptionScopeOverride\": true,\r\n    \"hasImmutabilityPolicy\": false,\r\n    \"hasLegalHold\": false\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/blobServices/default/containers/containerpstestrg2605?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNS9ibG9iU2VydmljZXMvZGVmYXVsdC9jb250YWluZXJzL2NvbnRhaW5lcnBzdGVzdHJnMjYwNT9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/containerpstestrg4204?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9ibG9iU2VydmljZXMvZGVmYXVsdC9jb250YWluZXJzL2NvbnRhaW5lcnBzdGVzdHJnNDIwND9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c316b163-7521-4090-ad95-8949379055d3"
+          "9a9e3eca-ba41-407f-8b81-3c0a05a01643"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -957,10 +957,10 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0x8D8D4B633D98320\""
+          "\"0x8D93FA6D661C237\""
         ],
         "x-ms-request-id": [
-          "9775dfc4-9ebb-4dbe-a815-93975accf9e7"
+          "ac7a2c73-766c-490a-a7ce-19bfaeb4cb3b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -969,19 +969,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "2edb3b1b-4396-464e-80f7-e534d861c077"
+          "12c8f2e9-788b-457e-9eab-777fd98fcd83"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091029Z:2edb3b1b-4396-464e-80f7-e534d861c077"
+          "SOUTHEASTASIA:20210705T112004Z:12c8f2e9-788b-457e-9eab-777fd98fcd83"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:29 GMT"
+          "Mon, 05 Jul 2021 11:20:04 GMT"
         ],
         "Content-Length": [
           "679"
@@ -993,26 +993,92 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/blobServices/default/containers/containerpstestrg2605\",\r\n  \"name\": \"containerpstestrg2605\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/blobServices/containers\",\r\n  \"etag\": \"\\\"0x8D8D4B633D98320\\\"\",\r\n  \"properties\": {\r\n    \"deleted\": false,\r\n    \"remainingRetentionDays\": 0,\r\n    \"defaultEncryptionScope\": \"testscope\",\r\n    \"denyEncryptionScopeOverride\": true,\r\n    \"publicAccess\": \"None\",\r\n    \"leaseStatus\": \"Unlocked\",\r\n    \"leaseState\": \"Available\",\r\n    \"lastModifiedTime\": \"2021-02-19T09:10:29Z\",\r\n    \"legalHold\": {\r\n      \"hasLegalHold\": false,\r\n      \"tags\": []\r\n    },\r\n    \"hasImmutabilityPolicy\": false,\r\n    \"hasLegalHold\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/containerpstestrg4204\",\r\n  \"name\": \"containerpstestrg4204\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/blobServices/containers\",\r\n  \"etag\": \"\\\"0x8D93FA6D661C237\\\"\",\r\n  \"properties\": {\r\n    \"deleted\": false,\r\n    \"remainingRetentionDays\": 0,\r\n    \"defaultEncryptionScope\": \"testscope\",\r\n    \"denyEncryptionScopeOverride\": true,\r\n    \"publicAccess\": \"None\",\r\n    \"leaseStatus\": \"Unlocked\",\r\n    \"leaseState\": \"Available\",\r\n    \"lastModifiedTime\": \"2021-07-05T11:20:04Z\",\r\n    \"legalHold\": {\r\n      \"hasLegalHold\": false,\r\n      \"tags\": []\r\n    },\r\n    \"hasImmutabilityPolicy\": false,\r\n    \"hasLegalHold\": false\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/blobServices/default/containers/container2pstestrg2605?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNS9ibG9iU2VydmljZXMvZGVmYXVsdC9jb250YWluZXJzL2NvbnRhaW5lcjJwc3Rlc3RyZzI2MDU/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"defaultEncryptionScope\": \"testscope2\",\r\n    \"denyEncryptionScopeOverride\": false\r\n  }\r\n}",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/containerpstestrg4204?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9ibG9iU2VydmljZXMvZGVmYXVsdC9jb250YWluZXJzL2NvbnRhaW5lcnBzdGVzdHJnNDIwND9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5a70dc55-3990-48f1-a1de-d708643e4abe"
+          "4931290d-9585-498a-91f9-8721eff02031"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"0x8D93FA6D661C237\""
+        ],
+        "x-ms-request-id": [
+          "08190ad4-863b-415d-8280-b4dbd62e136a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "6dd79d75-8a48-4c75-a08e-dd15a974ce85"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20210705T112005Z:6dd79d75-8a48-4c75-a08e-dd15a974ce85"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Jul 2021 11:20:04 GMT"
+        ],
+        "Content-Length": [
+          "679"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/containerpstestrg4204\",\r\n  \"name\": \"containerpstestrg4204\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/blobServices/containers\",\r\n  \"etag\": \"\\\"0x8D93FA6D661C237\\\"\",\r\n  \"properties\": {\r\n    \"deleted\": false,\r\n    \"remainingRetentionDays\": 0,\r\n    \"defaultEncryptionScope\": \"testscope\",\r\n    \"denyEncryptionScopeOverride\": true,\r\n    \"publicAccess\": \"None\",\r\n    \"leaseStatus\": \"Unlocked\",\r\n    \"leaseState\": \"Available\",\r\n    \"lastModifiedTime\": \"2021-07-05T11:20:04Z\",\r\n    \"legalHold\": {\r\n      \"hasLegalHold\": false,\r\n      \"tags\": []\r\n    },\r\n    \"hasImmutabilityPolicy\": false,\r\n    \"hasLegalHold\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/container2pstestrg4204?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9ibG9iU2VydmljZXMvZGVmYXVsdC9jb250YWluZXJzL2NvbnRhaW5lcjJwc3Rlc3RyZzQyMDQ/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"defaultEncryptionScope\": \"testscope2\",\r\n    \"denyEncryptionScopeOverride\": false\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3ef73a87-67df-4c92-bd46-83b3f1f7caa2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1029,10 +1095,10 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0x8D8D4B634747FA6\""
+          "\"0x8D93FA6D719F483\""
         ],
         "x-ms-request-id": [
-          "b110cb91-e7d3-40fd-af00-8c82e7225fbe"
+          "e14980d2-2258-40d6-8a9d-6ec333227dee"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1041,19 +1107,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1185"
+          "1193"
         ],
         "x-ms-correlation-request-id": [
-          "7650b7b9-f63b-45a9-ae1c-09d87c172d09"
+          "fb4c85f5-32c0-46fd-a62e-c2afd68041d5"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091030Z:7650b7b9-f63b-45a9-ae1c-09d87c172d09"
+          "SOUTHEASTASIA:20210705T112005Z:fb4c85f5-32c0-46fd-a62e-c2afd68041d5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:29 GMT"
+          "Mon, 05 Jul 2021 11:20:05 GMT"
         ],
         "Content-Length": [
           "485"
@@ -1065,26 +1131,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/blobServices/default/containers/container2pstestrg2605\",\r\n  \"name\": \"container2pstestrg2605\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/blobServices/containers\",\r\n  \"properties\": {\r\n    \"deleted\": false,\r\n    \"remainingRetentionDays\": 0,\r\n    \"defaultEncryptionScope\": \"testscope2\",\r\n    \"denyEncryptionScopeOverride\": false,\r\n    \"hasImmutabilityPolicy\": false,\r\n    \"hasLegalHold\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/container2pstestrg4204\",\r\n  \"name\": \"container2pstestrg4204\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/blobServices/containers\",\r\n  \"properties\": {\r\n    \"deleted\": false,\r\n    \"remainingRetentionDays\": 0,\r\n    \"defaultEncryptionScope\": \"testscope2\",\r\n    \"denyEncryptionScopeOverride\": false,\r\n    \"hasImmutabilityPolicy\": false,\r\n    \"hasLegalHold\": false\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/blobServices/default/containers/container2pstestrg2605?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMjYwNS9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnMjYwNS9ibG9iU2VydmljZXMvZGVmYXVsdC9jb250YWluZXJzL2NvbnRhaW5lcjJwc3Rlc3RyZzI2MDU/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/container2pstestrg4204?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9ibG9iU2VydmljZXMvZGVmYXVsdC9jb250YWluZXJzL2NvbnRhaW5lcjJwc3Rlc3RyZzQyMDQ/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1aeb9399-acce-4a25-bd40-6305658a0544"
+          "3ef73a87-67df-4c92-bd46-83b3f1f7caa2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/19.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1095,10 +1161,10 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0x8D8D4B634747FA6\""
+          "\"0x8D93FA6D719F483\""
         ],
         "x-ms-request-id": [
-          "1dfaeb69-6add-416c-b1ef-d477a75b9d99"
+          "81210346-992d-4a56-91e5-e721c1824b2c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1107,19 +1173,19 @@
           "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
+          "11991"
         ],
         "x-ms-correlation-request-id": [
-          "5666056f-0ee1-4d14-bbc6-37784b5058ad"
+          "fac3de38-47eb-4fec-9142-e82cc6bfec1f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091030Z:5666056f-0ee1-4d14-bbc6-37784b5058ad"
+          "SOUTHEASTASIA:20210705T112006Z:fac3de38-47eb-4fec-9142-e82cc6bfec1f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:30 GMT"
+          "Mon, 05 Jul 2021 11:20:05 GMT"
         ],
         "Content-Length": [
           "683"
@@ -1131,26 +1197,92 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg2605/providers/Microsoft.Storage/storageAccounts/stopstestrg2605/blobServices/default/containers/container2pstestrg2605\",\r\n  \"name\": \"container2pstestrg2605\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/blobServices/containers\",\r\n  \"etag\": \"\\\"0x8D8D4B634747FA6\\\"\",\r\n  \"properties\": {\r\n    \"deleted\": false,\r\n    \"remainingRetentionDays\": 0,\r\n    \"defaultEncryptionScope\": \"testscope2\",\r\n    \"denyEncryptionScopeOverride\": false,\r\n    \"publicAccess\": \"None\",\r\n    \"leaseStatus\": \"Unlocked\",\r\n    \"leaseState\": \"Available\",\r\n    \"lastModifiedTime\": \"2021-02-19T09:10:30Z\",\r\n    \"legalHold\": {\r\n      \"hasLegalHold\": false,\r\n      \"tags\": []\r\n    },\r\n    \"hasImmutabilityPolicy\": false,\r\n    \"hasLegalHold\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/container2pstestrg4204\",\r\n  \"name\": \"container2pstestrg4204\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/blobServices/containers\",\r\n  \"etag\": \"\\\"0x8D93FA6D719F483\\\"\",\r\n  \"properties\": {\r\n    \"deleted\": false,\r\n    \"remainingRetentionDays\": 0,\r\n    \"defaultEncryptionScope\": \"testscope2\",\r\n    \"denyEncryptionScopeOverride\": false,\r\n    \"publicAccess\": \"None\",\r\n    \"leaseStatus\": \"Unlocked\",\r\n    \"leaseState\": \"Available\",\r\n    \"lastModifiedTime\": \"2021-07-05T11:20:05Z\",\r\n    \"legalHold\": {\r\n      \"hasLegalHold\": false,\r\n      \"tags\": []\r\n    },\r\n    \"hasImmutabilityPolicy\": false,\r\n    \"hasLegalHold\": false\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/pstestrg2605?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMjYwNT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "DELETE",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/container2pstestrg4204?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDIwNC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDIwNC9ibG9iU2VydmljZXMvZGVmYXVsdC9jb250YWluZXJzL2NvbnRhaW5lcjJwc3Rlc3RyZzQyMDQ/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
+      "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "16cff3ca-887a-4fc7-83ab-957f41e8ff27"
+          "4e8de0aa-afcb-4dce-87ea-78135db97c31"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/22.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"0x8D93FA6D719F483\""
+        ],
+        "x-ms-request-id": [
+          "dd2113f7-8905-4ded-b3b3-ba0307c76148"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "fbc973a3-4ac3-4b96-a176-9dc07e427fd6"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20210705T112006Z:fbc973a3-4ac3-4b96-a176-9dc07e427fd6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 05 Jul 2021 11:20:05 GMT"
+        ],
+        "Content-Length": [
+          "683"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg4204/providers/Microsoft.Storage/storageAccounts/stopstestrg4204/blobServices/default/containers/container2pstestrg4204\",\r\n  \"name\": \"container2pstestrg4204\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts/blobServices/containers\",\r\n  \"etag\": \"\\\"0x8D93FA6D719F483\\\"\",\r\n  \"properties\": {\r\n    \"deleted\": false,\r\n    \"remainingRetentionDays\": 0,\r\n    \"defaultEncryptionScope\": \"testscope2\",\r\n    \"denyEncryptionScopeOverride\": false,\r\n    \"publicAccess\": \"None\",\r\n    \"leaseStatus\": \"Unlocked\",\r\n    \"leaseState\": \"Available\",\r\n    \"lastModifiedTime\": \"2021-07-05T11:20:05Z\",\r\n    \"legalHold\": {\r\n      \"hasLegalHold\": false,\r\n      \"tags\": []\r\n    },\r\n    \"hasImmutabilityPolicy\": false,\r\n    \"hasLegalHold\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourcegroups/pstestrg4204?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnNDIwND9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c2dae114-ef90-4932-8167-bedf8dfddd64"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -1161,22 +1293,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14996"
         ],
         "x-ms-request-id": [
-          "fb8fa581-c514-4186-83e0-608611ae99d0"
+          "7952feba-fbc0-4568-adb2-6869ee3409ea"
         ],
         "x-ms-correlation-request-id": [
-          "fb8fa581-c514-4186-83e0-608611ae99d0"
+          "7952feba-fbc0-4568-adb2-6869ee3409ea"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091033Z:fb8fa581-c514-4186-83e0-608611ae99d0"
+          "SOUTHEASTASIA:20210705T112009Z:7952feba-fbc0-4568-adb2-6869ee3409ea"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1185,7 +1317,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:33 GMT"
+          "Mon, 05 Jul 2021 11:20:08 GMT"
         ],
         "Expires": [
           "-1"
@@ -1198,16 +1330,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekkyTURVdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TURRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -1218,22 +1350,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11978"
         ],
         "x-ms-request-id": [
-          "9d0a485f-7890-4fe0-b513-7220c026eed3"
+          "d7eba4ad-7b30-4a9f-8d12-87f1dc904aba"
         ],
         "x-ms-correlation-request-id": [
-          "9d0a485f-7890-4fe0-b513-7220c026eed3"
+          "d7eba4ad-7b30-4a9f-8d12-87f1dc904aba"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091048Z:9d0a485f-7890-4fe0-b513-7220c026eed3"
+          "SOUTHEASTASIA:20210705T112024Z:d7eba4ad-7b30-4a9f-8d12-87f1dc904aba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1242,7 +1374,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:10:48 GMT"
+          "Mon, 05 Jul 2021 11:20:24 GMT"
         ],
         "Expires": [
           "-1"
@@ -1255,16 +1387,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekkyTURVdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TURRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -1275,22 +1407,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11977"
         ],
         "x-ms-request-id": [
-          "fcf15d59-a6c8-4c4a-a824-de03f7174469"
+          "3d4944d3-1018-4d19-a072-fb5855ef142f"
         ],
         "x-ms-correlation-request-id": [
-          "fcf15d59-a6c8-4c4a-a824-de03f7174469"
+          "3d4944d3-1018-4d19-a072-fb5855ef142f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091104Z:fcf15d59-a6c8-4c4a-a824-de03f7174469"
+          "SOUTHEASTASIA:20210705T112040Z:3d4944d3-1018-4d19-a072-fb5855ef142f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1299,7 +1431,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:11:03 GMT"
+          "Mon, 05 Jul 2021 11:20:39 GMT"
         ],
         "Expires": [
           "-1"
@@ -1312,16 +1444,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekkyTURVdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TURRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -1332,22 +1464,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11976"
         ],
         "x-ms-request-id": [
-          "b30391eb-2801-4965-a05e-8cf90545fd92"
+          "601e4397-78d2-47ae-b5a6-d5f9a39998ef"
         ],
         "x-ms-correlation-request-id": [
-          "b30391eb-2801-4965-a05e-8cf90545fd92"
+          "601e4397-78d2-47ae-b5a6-d5f9a39998ef"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091119Z:b30391eb-2801-4965-a05e-8cf90545fd92"
+          "SOUTHEASTASIA:20210705T112055Z:601e4397-78d2-47ae-b5a6-d5f9a39998ef"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1356,7 +1488,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:11:18 GMT"
+          "Mon, 05 Jul 2021 11:20:54 GMT"
         ],
         "Expires": [
           "-1"
@@ -1369,16 +1501,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekkyTURVdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TURRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -1389,22 +1521,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11975"
         ],
         "x-ms-request-id": [
-          "b7eadb2a-c1fe-42bc-a758-cdd578411726"
+          "324ebeef-79d7-4ba0-959c-dc6458fadbd2"
         ],
         "x-ms-correlation-request-id": [
-          "b7eadb2a-c1fe-42bc-a758-cdd578411726"
+          "324ebeef-79d7-4ba0-959c-dc6458fadbd2"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091135Z:b7eadb2a-c1fe-42bc-a758-cdd578411726"
+          "SOUTHEASTASIA:20210705T112111Z:324ebeef-79d7-4ba0-959c-dc6458fadbd2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1413,7 +1545,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:11:34 GMT"
+          "Mon, 05 Jul 2021 11:21:11 GMT"
         ],
         "Expires": [
           "-1"
@@ -1426,16 +1558,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekkyTURVdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TURRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -1446,22 +1578,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11974"
         ],
         "x-ms-request-id": [
-          "848f56cb-2eaa-436a-807a-9efab8e20122"
+          "704b400d-2cf0-4c08-9756-9ea9e3e73a06"
         ],
         "x-ms-correlation-request-id": [
-          "848f56cb-2eaa-436a-807a-9efab8e20122"
+          "704b400d-2cf0-4c08-9756-9ea9e3e73a06"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091150Z:848f56cb-2eaa-436a-807a-9efab8e20122"
+          "SOUTHEASTASIA:20210705T112126Z:704b400d-2cf0-4c08-9756-9ea9e3e73a06"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1470,7 +1602,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:11:49 GMT"
+          "Mon, 05 Jul 2021 11:21:26 GMT"
         ],
         "Expires": [
           "-1"
@@ -1483,16 +1615,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekkyTURVdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TURRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -1503,22 +1635,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11973"
         ],
         "x-ms-request-id": [
-          "50c784ee-9940-4c2e-a4f9-103448351e53"
+          "bcb6958c-6fd7-4f24-81ae-4580b61e34ef"
         ],
         "x-ms-correlation-request-id": [
-          "50c784ee-9940-4c2e-a4f9-103448351e53"
+          "bcb6958c-6fd7-4f24-81ae-4580b61e34ef"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091205Z:50c784ee-9940-4c2e-a4f9-103448351e53"
+          "SOUTHEASTASIA:20210705T112142Z:bcb6958c-6fd7-4f24-81ae-4580b61e34ef"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1527,7 +1659,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:12:05 GMT"
+          "Mon, 05 Jul 2021 11:21:41 GMT"
         ],
         "Expires": [
           "-1"
@@ -1540,16 +1672,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekkyTURVdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TURRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -1560,16 +1692,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11972"
         ],
         "x-ms-request-id": [
-          "22e17543-030c-4de3-aba2-2ee51c2c6c0a"
+          "76df44e0-3d25-4b26-88cf-7bf431de0fb1"
         ],
         "x-ms-correlation-request-id": [
-          "22e17543-030c-4de3-aba2-2ee51c2c6c0a"
+          "76df44e0-3d25-4b26-88cf-7bf431de0fb1"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091221Z:22e17543-030c-4de3-aba2-2ee51c2c6c0a"
+          "SOUTHEASTASIA:20210705T112157Z:76df44e0-3d25-4b26-88cf-7bf431de0fb1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1578,7 +1710,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:12:21 GMT"
+          "Mon, 05 Jul 2021 11:21:57 GMT"
         ],
         "Expires": [
           "-1"
@@ -1591,16 +1723,16 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzI2MDUtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSekkyTURVdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzQyMDQtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSelF5TURRdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.31"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -1611,16 +1743,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11971"
         ],
         "x-ms-request-id": [
-          "d81b2c55-e46e-4d0a-965f-f87c65f603a2"
+          "ad31c06a-a4df-4b79-9109-8f19d5e10408"
         ],
         "x-ms-correlation-request-id": [
-          "d81b2c55-e46e-4d0a-965f-f87c65f603a2"
+          "ad31c06a-a4df-4b79-9109-8f19d5e10408"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210219T091221Z:d81b2c55-e46e-4d0a-965f-f87c65f603a2"
+          "SOUTHEASTASIA:20210705T112157Z:ad31c06a-a4df-4b79-9109-8f19d5e10408"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1629,7 +1761,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 19 Feb 2021 09:12:21 GMT"
+          "Mon, 05 Jul 2021 11:21:57 GMT"
         ],
         "Expires": [
           "-1"
@@ -1644,7 +1776,7 @@
   ],
   "Names": {
     "Test-StorageBlobContainerEncryptionScope": [
-      "pstestrg2605"
+      "pstestrg4204"
     ]
   },
   "Variables": {

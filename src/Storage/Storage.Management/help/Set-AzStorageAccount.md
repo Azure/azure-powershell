@@ -184,7 +184,32 @@ AzureStorageSid   : S-1-5-21-1234567890-1234567890-1234567890-1234
 
 The command updates a Storage account by enable Azure Files Active Directory Domain Service Authentication, and then shows the File Identity Based authentication setting
 
-### Example 12: Set MinimumTlsVersion, AllowBlobPublicAccess and AllowSharedKeyAccess
+### Example 12: Update a Storage account with RoutingPreference setting
+```powershell
+PS C:\>$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -PublishMicrosoftEndpoint $false -PublishInternetEndpoint $true -RoutingChoice InternetRouting
+
+PS C:\>$account.RoutingPreference
+
+RoutingChoice   PublishMicrosoftEndpoints PublishInternetEndpoints
+-------------   ------------------------- ------------------------
+InternetRouting                     False                     True
+
+PS C:\>$account.PrimaryEndpoints
+
+Blob               : https://mystorageaccount.blob.core.windows.net/
+Queue              : https://mystorageaccount.queue.core.windows.net/
+Table              : https://mystorageaccount.table.core.windows.net/
+File               : https://mystorageaccount.file.core.windows.net/
+Web                : https://mystorageaccount.z2.web.core.windows.net/
+Dfs                : https://mystorageaccount.dfs.core.windows.net/
+MicrosoftEndpoints : 
+InternetEndpoints  : {"Blob":"https://mystorageaccount-internetrouting.blob.core.windows.net/","File":"https://mystorageaccount-internetrouting.file.core.windows.net/","Web":"https://mystorageaccount-internetrouting.z2.web.core.windows.net/","Dfs":"https://w
+                     eirp3-internetrouting.dfs.core.windows.net/"}
+```
+
+This command updates a Storage account with RoutingPreference setting: PublishMicrosoftEndpoint as false, PublishInternetEndpoint as true, and RoutingChoice as MicrosoftRouting.
+
+### Example 13: Set MinimumTlsVersion and AllowBlobPublicAccess
 ```
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
 

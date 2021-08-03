@@ -655,6 +655,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
                     }
+                    if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
+                    { 
+                        updateParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
+                    }
                     if (this.minimumTlsVersion != null)
                     {
                         updateParameters.MinimumTlsVersion = this.minimumTlsVersion;

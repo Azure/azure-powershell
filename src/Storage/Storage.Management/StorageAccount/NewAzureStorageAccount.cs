@@ -700,6 +700,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.EnableNfsV3 = enableNfsV3;
             }
+            if (enableNfsV3 != null)
+            {
+                createParameters.EnableNfsV3 = enableNfsV3;
+            }
             if (this.EdgeZone != null)
             {
                 createParameters.ExtendedLocation = new ExtendedLocation()

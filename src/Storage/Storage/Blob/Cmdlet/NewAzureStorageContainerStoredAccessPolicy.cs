@@ -54,6 +54,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Expiry Time")]
         public DateTime? ExpiryTime { get; set; }
 
+        // Overwrite the useless parameter
+        public override string TagCondition { get; set; }
+
         protected override bool UseTrack2Sdk()
         {
             return true;
@@ -113,9 +116,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             var newsignedIdentifiers = new List<BlobSignedIdentifier>(signedIdentifiers);
             newsignedIdentifiers.Add(signedIdentifier);
 
-            //Set permissions back to container
+                //Set permissions back to container
             container.SetAccessPolicy(accessPolicy.BlobPublicAccess, newsignedIdentifiers, BlobRequestConditions, CmdletCancellationToken);
-            return policyName;
+                return policyName;
+            //}
         }
 
         /// <summary>

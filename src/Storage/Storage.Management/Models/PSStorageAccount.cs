@@ -67,7 +67,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.KeyPolicy = storageAccount.KeyPolicy;
             this.SasPolicy = storageAccount.SasPolicy;
             this.AllowCrossTenantReplication = storageAccount.AllowCrossTenantReplication;
-
         }
         public bool? AllowCrossTenantReplication { get; set; }
 
@@ -130,9 +129,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public bool? EnableHierarchicalNamespace { get; set; }
 
-        public bool? FailoverInProgress { get; set; }
-
         public string LargeFileSharesState { get; set; }
+
+        public bool? FailoverInProgress { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 

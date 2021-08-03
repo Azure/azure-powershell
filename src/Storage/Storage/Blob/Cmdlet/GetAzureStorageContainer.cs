@@ -82,6 +82,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public SwitchParameter IncludeDeleted { get; set; }
 
+        // Overwrite the useless parameter
+        public override string TagCondition { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageContainerCommand class.
         /// </summary>

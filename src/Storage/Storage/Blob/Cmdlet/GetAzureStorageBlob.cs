@@ -96,6 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "Container name", ValueFromPipelineByPropertyName = true, ParameterSetName = PrefixParameterSet)]
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "Container name", ValueFromPipelineByPropertyName = true, ParameterSetName = SingleBlobSnapshotTimeParameterSet)]
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "Container name", ValueFromPipelineByPropertyName = true, ParameterSetName = SingleBlobVersionIDParameterSet)]
+
         [ValidateNotNullOrEmpty]
         public string Container
         {
@@ -122,6 +123,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Blob versions will be listed only if this parameter is present, by default get blob won't include blob versions.", ParameterSetName = PrefixParameterSet)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter IncludeVersion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Include blob tags, by default get blob won't include blob tags.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter IncludeTag { get; set; }
 
         [Parameter(HelpMessage = "Blob SnapshotTime", Mandatory = true, ParameterSetName = SingleBlobSnapshotTimeParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -155,9 +160,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private bool NeedWarningForContinuationToken = false;
 
+        // Overwrite the parameter, function
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = NameParameterSet)]
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = SingleBlobSnapshotTimeParameterSet)]
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = SingleBlobVersionIDParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public override string TagCondition { get; set; }
+
         protected override bool UseTrack2Sdk()
         {
-            if (this.IncludeVersion.IsPresent || this.VersionId != null)
+            if (this.IncludeVersion.IsPresent || this.IncludeTag.IsPresent || this.VersionId != null)
             {
                 return true;
             }
@@ -236,6 +248,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, blobProperties.IsLatestVersion, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"), ClientOptions, blobProperties.BlobType);
 
                     AzureStorageBlob outputBlob = new AzureStorageBlob(blobClient, localChannel.StorageContext, blobProperties, ClientOptions);
+                    if (this.IncludeTag.IsPresent)
+                    {
+                        IDictionary<string, string> tags = (await blobClient.GetTagsAsync(null, this.CmdletCancellationToken).ConfigureAwait(false)).Value.Tags;
+                        if (tags != null)
+                        {
+                            outputBlob.Tags = tags.ToHashtable();
+                            outputBlob.TagCount = tags.Count;
+                        }
+                    }
                     OutputStream.WriteObject(taskId, outputBlob);
                 }
                 else // Use Track1 SDK
@@ -283,6 +304,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (includeVersion)
                 {
                     blobStates = blobStates | BlobStates.Version;
+                }
+                if (IncludeTag.IsPresent)
+                {
+                    blobTraits = blobTraits | BlobTraits.Tags;
                 }
 
                 do

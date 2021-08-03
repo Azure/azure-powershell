@@ -31,17 +31,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private const string AccountNameParameterSet = "AccountName";
 
         /// <summary>
-        /// Account object parameter set 
+        /// Account object EncryptionScope parameter set 
         /// </summary>
         private const string AccountObjectParameterSet = "AccountObject";
-
         /// <summary>
         /// AccountName EncryptionScope Parameter Set
         /// </summary>
         private const string AccountNameEncryptionScopeParameterSet = "AccountNameEncryptionScope";
 
         /// <summary>
-        /// Account object EncryptionScope parameter set 
+        /// Account object parameter set 
         /// </summary>
         private const string AccountObjectEncryptionScopeParameterSet = "AccountObjectEncryptionScope";
 
@@ -147,6 +146,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNull]
         public Hashtable Metadata { get; set; }
 
+        [Parameter(HelpMessage = "Enable object level immutability at the container level.", Mandatory = false)]
+        public SwitchParameter EnableImmutableStorageWithVersioning { get; set; }        
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -162,7 +164,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                 Dictionary<string, string> MetadataDictionary = CreateMetadataDictionary(Metadata, validate: true);
 
-                var contaienr =
+                var container =
                     this.StorageClient.BlobContainers.Create(
                             this.ResourceGroupName,
                             this.StorageAccountName,
@@ -171,9 +173,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 defaultEncryptionScope: this.DefaultEncryptionScope,
                                 denyEncryptionScopeOverride: this.preventEncryptionScopeOverride,
                                 publicAccess: (PublicAccess?)this.publicAccess,
-                                metadata: MetadataDictionary));
+                                metadata: MetadataDictionary,
+                                immutableStorageWithVersioning: this.EnableImmutableStorageWithVersioning.IsPresent ? new ImmutableStorageWithVersioning(true) : null));
 
-                WriteObject(new PSContainer(contaienr));
+                container =
+                    this.StorageClient.BlobContainers.Get(
+                            this.ResourceGroupName,
+                            this.StorageAccountName,
+                            this.Name);
+
+                WriteObject(new PSContainer(container));
             }
         }
     }

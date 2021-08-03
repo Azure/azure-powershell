@@ -31,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using global::Azure.Storage.Blobs;
     using global::Azure.Storage;
     using global::Azure.Storage.Files.Shares.Models;
+    using global::Azure.Storage.Files.DataLake;
 
     internal static class Util
     {
@@ -499,6 +500,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 blobServiceClient = new BlobServiceClient(connectionString, options);
             }
             return blobServiceClient;
+        }
+
+        public static DataLakeServiceClient GetTrack2DataLakeServiceClient(AzureStorageContext context, DataLakeClientOptions options = null)
+        {
+            DataLakeServiceClient serviceClient;
+            if (context.StorageAccount.Credentials.IsToken) //Oauth
+            {
+                serviceClient = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, options);
+            }
+            else if (context.StorageAccount.Credentials.IsSharedKey) //key 
+            {
+                serviceClient = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey()), options);
+            }
+            else if (context.StorageAccount.Credentials.IsSAS) //sas 
+            {
+                serviceClient = new DataLakeServiceClient(new Uri(context.StorageAccount.BlobEndpoint.ToString() + context.StorageAccount.Credentials.SASToken), options);
+            }
+            else // Anonymous
+            {
+                serviceClient = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, options);
+            }
+            return serviceClient;
         }
 
         /// <summary>

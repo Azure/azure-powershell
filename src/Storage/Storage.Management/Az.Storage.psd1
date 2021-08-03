@@ -153,6 +153,7 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'New-AzStorageAccountManagementPolicyFilter', 
                'New-AzStorageAccountManagementPolicyRule', 
                'Add-AzStorageAccountManagementPolicyAction', 
+               'Invoke-AzStorageAccountFailover', 
                'Update-AzStorageBlobServiceProperty', 
                'Get-AzStorageBlobServiceProperty', 
                'Enable-AzStorageBlobDeleteRetentionPolicy', 
@@ -167,28 +168,33 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'New-AzDataLakeGen2Item', 'Move-AzDataLakeGen2Item', 
                'Remove-AzDataLakeGen2Item', 'Update-AzDataLakeGen2Item', 
                'Set-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent', 
-               'Invoke-AzStorageAccountFailover', 'Get-AzStorageBlobQueryResult', 
-               'New-AzStorageBlobQueryConfig', 
-               'New-AzStorageObjectReplicationPolicyRule', 
-               'Set-AzStorageObjectReplicationPolicy', 
-               'Get-AzStorageObjectReplicationPolicy', 
-               'Remove-AzStorageObjectReplicationPolicy', 
+               'Get-AzStorageBlobQueryResult', 'New-AzStorageBlobQueryConfig', 
                'Enable-AzStorageBlobRestorePolicy', 
                'Disable-AzStorageBlobRestorePolicy', 
                'New-AzStorageBlobRangeToRestore', 'Restore-AzStorageBlobRange', 
+               'New-AzStorageEncryptionScope', 'Update-AzStorageEncryptionScope', 
+               'Get-AzStorageEncryptionScope', 
+               'New-AzStorageObjectReplicationPolicyRule', 
+               'Set-AzStorageObjectReplicationPolicy', 
+               'Get-AzStorageObjectReplicationPolicy', 
+               'Remove-AzStorageObjectReplicationPolicy', 'Set-AzStorageBlobTag', 
+               'Get-AzStorageBlobTag', 'Get-AzStorageBlobByTag', 
                'Set-AzDataLakeGen2AclRecursive', 
                'Update-AzDataLakeGen2AclRecursive', 
-               'Remove-AzDataLakeGen2AclRecursive', 'New-AzStorageEncryptionScope', 
-               'Update-AzStorageEncryptionScope', 'Get-AzStorageEncryptionScope', 
-               'Copy-AzStorageBlob', 'Set-AzStorageBlobInventoryPolicy', 
-               'New-AzStorageBlobInventoryPolicyRule', 
-               'Get-AzStorageBlobInventoryPolicy', 
-               'Remove-AzStorageBlobInventoryPolicy', 
+               'Remove-AzDataLakeGen2AclRecursive', 
+               'Enable-AzStorageBlobLastAccessTimeTracking', 
+               'Disable-AzStorageBlobLastAccessTimeTracking', 
                'Enable-AzStorageContainerDeleteRetentionPolicy', 
                'Disable-AzStorageContainerDeleteRetentionPolicy', 
+               'Restore-AzStorageContainer', 'Set-AzStorageBlobInventoryPolicy', 
+               'New-AzStorageBlobInventoryPolicyRule', 
+               'Get-AzStorageBlobInventoryPolicy', 
+               'Remove-AzStorageBlobInventoryPolicy',
+               'Copy-AzStorageBlob',
+               'Get-AzDataLakeGen2DeletedItem', 'Restore-AzDataLakeGen2DeletedItem', 
                'Restore-AzStorageContainer', 
-               'Enable-AzStorageBlobLastAccessTimeTracking', 
-               'Disable-AzStorageBlobLastAccessTimeTracking'
+               'Set-AzStorageBlobImmutabilityPolicy', 'Remove-AzStorageBlobImmutabilityPolicy',
+               'Set-AzStorageBlobLegalHold', 'Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -196,9 +202,14 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
                'Stop-CopyAzureStorageBlob', 'Enable-AzStorageSoftDelete', 
-               'Disable-AzStorageSoftDelete', 'New-AzDatalakeGen2FileSystem', 
-               'Remove-AzDatalakeGen2FileSystem', 'Get-AzDatalakeGen2FileSystem', 
-               'New-AzDataLakeGen2ItemAclObject'
+               'Disable-AzStorageSoftDelete', 'Enable-AzureStorageStaticWebsite', 
+               'Disable-AzureStorageStaticWebsite', 
+               'Invoke-AzureRmStorageAccountFailover', 
+               'Get-AzureRmStorageAccountManagementPolicy', 
+               'Set-AzureRmStorageAccountManagementPolicy', 
+               'Remove-AzureRmStorageAccountManagementPolicy', 
+               'New-AzDatalakeGen2FileSystem', 'Remove-AzDatalakeGen2FileSystem', 
+               'Get-AzDatalakeGen2FileSystem', 'New-AzDataLakeGen2ItemAclObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -237,7 +248,7 @@ PrivateData = @{
     - ''Copy-AzStorageBlob'''
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

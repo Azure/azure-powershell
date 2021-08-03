@@ -65,6 +65,9 @@ Enable static website for the Azure Storage account.
 ### [Get-AzDataLakeGen2ChildItem](Get-AzDataLakeGen2ChildItem.md)
 Lists sub directorys and files from a directory or filesystem root.
 
+### [Get-AzDataLakeGen2DeletedItem](Get-AzDataLakeGen2DeletedItem.md)
+List all deleted files or directories from a directory or filesystem root.
+
 ### [Get-AzDataLakeGen2Item](Get-AzDataLakeGen2Item.md)
 Gets the details of a file or directory in a filesystem.
 
@@ -98,6 +101,9 @@ Get the NetWorkRule property of a Storage account
 ### [Get-AzStorageBlob](Get-AzStorageBlob.md)
 Lists blobs in a container.
 
+### [Get-AzStorageBlobByTag](Get-AzStorageBlobByTag.md)
+Lists blobs in a storage account across containers, with a blob tag filter sql expression.
+
 ### [Get-AzStorageBlobContent](Get-AzStorageBlobContent.md)
 Downloads a storage blob.
 
@@ -112,6 +118,9 @@ Applies a simple Structured Query Language (SQL) statement on a blob's contents 
 
 ### [Get-AzStorageBlobServiceProperty](Get-AzStorageBlobServiceProperty.md)
 Gets service properties for Azure Storage Blob services.
+
+### [Get-AzStorageBlobTag](Get-AzStorageBlobTag.md)
+Get blob tags of a specific blob.
 
 ### [Get-AzStorageContainer](Get-AzStorageContainer.md)
 Lists the storage containers.
@@ -172,6 +181,9 @@ Gets the stored access policy or policies for an Azure storage table.
 
 ### [Get-AzStorageUsage](Get-AzStorageUsage.md)
 Gets the Storage resource usage of the current subscription.
+
+### [Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration](Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration.md)
+Migrate an existing Storage blob containers to enable immutable Storage with versioning.
 
 ### [Invoke-AzStorageAccountFailover](Invoke-AzStorageAccountFailover.md)
 Invokes failover of a Storage account.
@@ -299,6 +311,9 @@ Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage
 ### [Remove-AzStorageBlob](Remove-AzStorageBlob.md)
 Removes the specified storage blob.
 
+### [Remove-AzStorageBlobImmutabilityPolicy](Remove-AzStorageBlobImmutabilityPolicy.md)
+Removes ImmutabilityPolicy of a Storage blob.
+
 ### [Remove-AzStorageBlobInventoryPolicy](Remove-AzStorageBlobInventoryPolicy.md)
 Removes blob inventory policy from a Storage account.
 
@@ -338,6 +353,9 @@ Removes a storage table.
 ### [Remove-AzStorageTableStoredAccessPolicy](Remove-AzStorageTableStoredAccessPolicy.md)
 Removes a stored access policy from an Azure storage table.
 
+### [Restore-AzDataLakeGen2DeletedItem](Restore-AzDataLakeGen2DeletedItem.md)
+Restores a deleted file or directory in a filesystem.
+
 ### [Restore-AzRmStorageShare](Restore-AzRmStorageShare.md)
 Restores a deleted file share.
 
@@ -371,8 +389,17 @@ Creates or modifies the management policy of an Azure Storage account.
 ### [Set-AzStorageBlobContent](Set-AzStorageBlobContent.md)
 Uploads a local file to an Azure Storage blob.
 
+### [Set-AzStorageBlobImmutabilityPolicy](Set-AzStorageBlobImmutabilityPolicy.md)
+Creates or updates ImmutabilityPolicy of a Storage blob.
+
 ### [Set-AzStorageBlobInventoryPolicy](Set-AzStorageBlobInventoryPolicy.md)
 Creates or updates blob inventory policy in a Storage account.
+
+### [Set-AzStorageBlobLegalHold](Set-AzStorageBlobLegalHold.md)
+Enables or disables legal hold on a Storage blob.
+
+### [Set-AzStorageBlobTag](Set-AzStorageBlobTag.md)
+Set blob tags of a specific blob.
 
 ### [Set-AzStorageContainerAcl](Set-AzStorageContainerAcl.md)
 Sets the public access permission to a storage container.

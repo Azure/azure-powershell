@@ -864,22 +864,6 @@ function Test-NewAzureStorageAccountBlockBlobStorage
 
 <#
 .SYNOPSIS
-Test GetAzureStorageUsage with current Location
-.Description
-AzureAutomationTest
-#>
-function Test-GetAzureStorageLocationUsage
-{
-        # Test
-        $loc = Get-ProviderLocation_Stage ResourceManagement; 
-
-        $usage = Get-AzStorageUsage -Location $loc
-        Assert-AreNotEqual 0 $usage.Limit;
-        Assert-AreNotEqual 0 $usage.CurrentValue;      
-}
-
-<#
-.SYNOPSIS
 Test Get-AzStorageAccount with -IncludeGeoReplicationStats
 .DESCRIPTION
 Smoke[Broken]Test
