@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public Uri Uri { get { return _pageBlobClient.Uri; } }
 
-        public void UploadPagesAsync(Stream content, long offset)
+        public void UploadPages(Stream content, long offset)
         {
             _pageBlobClient.UploadPagesAsync(content, offset).ConfigureAwait(false).GetAwaiter().GetResult();
         }

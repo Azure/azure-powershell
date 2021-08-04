@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                                                           var md5HashOfDataChunk = GetBase64EncodedMd5Hash(dwr.Data, (int)dwr.Range.Length);
                                                           using (var stream = new MemoryStream(dwr.Data, 0, (int)dwr.Range.Length))
                                                           {
-                                                              b.UploadPagesAsync(stream, dwr.Range.StartIndex);
+                                                              b.UploadPages(stream, dwr.Range.StartIndex);
                                                           }
                                                       }
                                                       uploadStatus.AddToProcessedBytes((int)dwr.Range.Length);
