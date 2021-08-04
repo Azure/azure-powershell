@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation.Subsystem.Prediction;
+
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
@@ -29,9 +31,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         string ITelemetryData.SessionId { get; set; }
 
         /// <summary>
-        /// Gets the id of the client that makes the calls.
+        /// Gets the client that makes the calls.
         /// </summary>
-        public string ClientId { get; init; }
+        public PredictionClient Client { get; init; }
 
         /// <summary>
         /// Gets the history command line.
@@ -39,14 +41,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public string Command { get; }
 
         /// <summary>
+        /// Gets whether the commdn line ran successfully.
+        /// </summary>
+        public bool Success { get; }
+
+        /// <summary>
         /// Creates a new instance of <see cref="HistoryTelemetryData"/>.
         /// </summary>
-        /// <param name="clientId">The client id that makes the call.</param>
+        /// <param name="client">The client that makes the call.</param>
         /// <param name="command">The history command line.</param>
-        public HistoryTelemetryData(string clientId, string command)
+        /// <param name="success">Whether the <paramref name="command" /> ran successfully.</param>
+        public HistoryTelemetryData(PredictionClient client, string command, bool success)
         {
-            ClientId = clientId;
+            Client = client;
             Command = command;
+            Success = success;
         }
     }
 }

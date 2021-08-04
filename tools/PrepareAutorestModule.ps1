@@ -81,7 +81,9 @@ foreach ($Module in $ModuleList)
     $ModuleFolder = (Get-ChildItem -path $ModuleFolder -filter Az.$Module.psd1 -Recurse).Directory
     if ($Null -eq $ModuleFolder)
     {
-        Throw "Cannot find Az.$Module.psd1 in $ModuleFolder."
+        # Module is not found maybe it's deleted in this PR
+        Write-Warning "Cannot find Az.$Module.psd1 in $ModuleFolder."
+        continue
     }
     Set-Location -Path $ModuleFolder
     try

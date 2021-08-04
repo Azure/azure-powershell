@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
@@ -28,13 +30,74 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <summary>
     /// The class for the current Azure PowerShell context.
     /// </summary>
-    internal sealed class AzContext : IAzContext
+    internal sealed class AzContext : IAzContext, IDisposable
     {
         private const string InternalUserSuffix = "@microsoft.com";
         private static readonly Version DefaultVersion = new Version("0.0.0.0");
 
+        private PowerShell _powerShellRuntime;
+        private PowerShell PowerShellRuntime
+        {
+            get
+            {
+                if (_powerShellRuntime == null)
+                {
+                    _powerShellRuntime = PowerShell.Create(DefaultRunspace);
+                }
+
+                return _powerShellRuntime;
+            }
+        }
+
+        private readonly Lazy<Runspace> _defaultRunspace = new(() =>
+                {
+                    // Create a mini runspace by remove the types and formats
+                    InitialSessionState minimalState = InitialSessionState.CreateDefault2();
+                    minimalState.Types.Clear();
+                    minimalState.Formats.Clear();
+                    // Refer to the remarks for the property DefaultRunspace.
+                    minimalState.ImportPSModule("Az.Accounts");
+                    var runspace = RunspaceFactory.CreateRunspace(minimalState);
+                    runspace.Open();
+                    return runspace;
+                });
+
+        /// <inheritdoc />
+        /// <remarks>
+        /// We pre-load some common Az service modules.
+        /// Creating the instance is at the first time this is called.
+        /// It can be slow. So the first call must not be in the path of the user interaction.
+        /// Loading too many modules can also impact user experience because that may add to much memory pressure at the same
+        /// time.
+        /// </remarks>
+        public Runspace DefaultRunspace => _defaultRunspace.Value;
+
         /// <inheritdoc/>
         public Version AzVersion { get; private set; } = DefaultVersion;
+
+        private int? _cohort;
+        /// <inheritdoc/>
+        public int Cohort
+        {
+            get
+            {
+                if (!_cohort.HasValue)
+                {
+                    if (!string.IsNullOrWhiteSpace(MacAddress))
+                    {
+                        if (int.TryParse($"{MacAddress.Last()}", NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out int lastDigit))
+                        {
+                            _cohort = lastDigit % AzPredictorConstants.CohortCount;
+                            return _cohort.Value;
+                        }
+                    }
+
+                    _cohort = (new Random(DateTime.UtcNow.Millisecond)).Next() % AzPredictorConstants.CohortCount;
+                }
+
+                return _cohort.Value;
+            }
+        }
 
         /// <inheritdoc/>
         public string HashUserId { get; private set; } = string.Empty;
@@ -77,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 if (_powerShellVersion == null)
                 {
-                    var outputs = AzContext.ExecuteScript<Version>("(Get-Host).Version");
+                    var outputs = ExecuteScript<Version>("(Get-Host).Version");
 
                     _powerShellVersion = outputs.FirstOrDefault();
                 }
@@ -126,6 +189,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
         }
 
+        public void Dispose()
+        {
+            if (_powerShellRuntime != null)
+            {
+                _powerShellRuntime.Dispose();
+                _powerShellRuntime = null;
+            }
+
+            if (_defaultRunspace.IsValueCreated)
+            {
+                _defaultRunspace.Value.Dispose();
+            }
+        }
+
         internal string RawUserId { get; set; }
 
         /// <summary>
@@ -135,7 +212,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             try
             {
-                var output = AzContext.ExecuteScript<string>("(Get-AzContext).Account.Id");
+                var output = ExecuteScript<string>("(Get-AzContext).Account.Id");
                 return output.FirstOrDefault() ?? string.Empty;
             }
             catch (Exception)
@@ -154,7 +231,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             try
             {
-                var outputs = AzContext.ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
+                var outputs = ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
                 foreach (PSObject obj in outputs)
                 {
                     string psVersion = obj.Properties["Version"].Value.ToString();
@@ -176,19 +253,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// Executes the PowerShell cmdlet in the current powershell session.
         /// </summary>
-        private static List<T> ExecuteScript<T>(string contents)
+        private List<T> ExecuteScript<T>(string contents)
         {
             List<T> output = new List<T>();
 
-            using (PowerShell powershell = PowerShell.Create(RunspaceMode.NewRunspace))
-            {
-                powershell.AddScript(contents);
-                Collection<T> result = powershell.Invoke<T>();
+            PowerShellRuntime.Commands.Clear();
+            PowerShellRuntime.AddScript(contents);
+            Collection<T> result = PowerShellRuntime.Invoke<T>();
 
-                if (result != null && result.Count > 0)
-                {
-                    output.AddRange(result);
-                }
+            if (result != null && result.Count > 0)
+            {
+                output.AddRange(result);
             }
 
             return output;
@@ -209,7 +284,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             string result = string.Empty;
             try
             {
-                using (var sha256 = new SHA256CryptoServiceProvider())
+                using (var sha256 = SHA256.Create())
                 {
                     var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
                     result = BitConverter.ToString(bytes);
