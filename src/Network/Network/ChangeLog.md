@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
     - `New-AzLoadBalancerBackendAddressConfig`
+* Onboard PowerBI to Private Link Common Cmdlets 
 
 ## Version 4.10.0
 * Added public ip address as an optional parameter to create route server
