@@ -316,6 +316,16 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Name of the SSH Public Key resource.",
+            ParameterSetName = DefaultParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Name of the SSH Public Key resource.",
+            ParameterSetName = SimpleParameterSet)]
+        public string SshKeyName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Generate a SSH Public/Private key pair and create a SSH Public Key resource on Azure.",
             ParameterSetName = DefaultParameterSet)]
         [Parameter(
