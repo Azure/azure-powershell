@@ -15,18 +15,19 @@ List Kubernetes managed clusters.
 ### ResourceGroupParameterSet (Default)
 ```
 Get-AzAksCluster [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Get-AzAksCluster [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAksCluster [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### NameParameterSet
 ```
 Get-AzAksCluster [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,6 +111,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+placeholder
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
