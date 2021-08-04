@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         /// </summary>
         public string AzureRedisResourceId { get; set; }
 
+        public string UseFromLocation { get; set; }
+
         public PsApiManagementCache()  {   }
 
         public PsApiManagementCache(string armResourceId)
