@@ -13,6 +13,6 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzDataBoxJobCredential' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Get-AzDataBoxJobCredential -JobName $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId   
     }
 }

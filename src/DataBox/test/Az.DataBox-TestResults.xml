@@ -22,15 +22,6 @@
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="/src/src/DataBox/test/Get-AzDataBoxJobCredentials.Tests.ps1" executed="True" result="Ignored" success="True" time="9.1443" asserts="0" description="/src/src/DataBox/test/Get-AzDataBoxJobCredentials.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Get-AzDataBoxJobCredentials" executed="True" result="Ignored" success="True" time="0.0453" asserts="0" description="Get-AzDataBoxJobCredentials">
-            <results>
-              <test-case description="List" name="Get-AzDataBoxJobCredentials.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
-      </test-suite>
       <test-suite type="TestFixture" name="/src/src/DataBox/test/New-AzDataBoxContactDetailsObject.Tests.ps1" executed="True" result="Success" success="True" time="8.4252" asserts="0" description="/src/src/DataBox/test/New-AzDataBoxContactDetailsObject.Tests.ps1">
         <results>
           <test-suite type="TestFixture" name="New-AzDataBoxContactDetailsObject" executed="True" result="Success" success="True" time="0.0742" asserts="0" description="New-AzDataBoxContactDetailsObject">
