@@ -48,6 +48,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using CM = Microsoft.Azure.Management.Compute.Models;
 using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
+using Microsoft.Azure.Commands.Compute;
 
 
 namespace Microsoft.Azure.Commands.Compute
@@ -443,8 +444,8 @@ namespace Microsoft.Azure.Commands.Compute
                         proximityPlacementGroup: ppgSubResourceFunc);
 
 
-                List<SshPublicKey> sshPublicKeyList = new List<SshPublicKey>();
-                if (_cmdlet.SshKeyName != null || _cmdlet.GenerateSshKey == true)
+                List<SshPublicKey> sshPublicKeyList = null;
+                if ( !String.IsNullOrEmpty(_cmdlet.SshKeyName) || _cmdlet.GenerateSshKey)
                 {
                     if (ImageAndOsType?.OsType != OperatingSystemTypes.Linux)
                     {
@@ -453,11 +454,8 @@ namespace Microsoft.Azure.Commands.Compute
 
                     string publicKey = _cmdlet.SshKeyForLinux();
                     SshPublicKey sshPublicKey = new SshPublicKey("/home/" + _cmdlet.Credential.UserName + "/.ssh/authorized_keys", publicKey);
+                    sshPublicKeyList = new List<SshPublicKey>();
                     sshPublicKeyList.Add(sshPublicKey);
-                }
-                else
-                {
-                    sshPublicKeyList = null;
                 }
 
                 _cmdlet.ConfigAsyncVisited = true;
@@ -634,8 +632,7 @@ namespace Microsoft.Azure.Commands.Compute
                     //delete the created ssh key resource
 
                     WriteInformation("VM creation failed. Deleting the SSH key resource that was created.", new string[] { "PSHOST" });
-                    Microsoft.Azure.Commands.Compute.Automation.NewAzureSshKey sshKeyClass = new Microsoft.Azure.Commands.Compute.Automation.NewAzureSshKey();
-                    sshKeyClass.SshPublicKeyClient.Delete(this.ResourceGroupName, this.SshKeyName);
+                    SshPublicKeyClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.SshKeyName).GetAwaiter().GetResult();
                     // throw exception
                     throw ex;
                 }
@@ -1071,7 +1068,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         private string SshKeyForLinux()
         {
-            if (this.ConfigAsyncVisited == true)
+            if (this.ConfigAsyncVisited)
             {
                 this.GenerateSshKey = false;
             }
@@ -1083,6 +1080,10 @@ namespace Microsoft.Azure.Commands.Compute
 
 
             // check if -SshKeyName exists in azure
+            // TODO
+            //ComputeClient computeClinet = new ComputeClient(this.DefaultContext);
+            //computeClinet.ComputeManagementClient.SshPublicKeys sshPublicKeys 
+            //ISshPublicKeysOperation sshKeyClass = Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet.SshPublicKeyClient
             Microsoft.Azure.Commands.Compute.Automation.NewAzureSshKey sshKeyClass = new Microsoft.Azure.Commands.Compute.Automation.NewAzureSshKey();
             SshPublicKeyResource SshPublicKey;
             string publicKey = "value";

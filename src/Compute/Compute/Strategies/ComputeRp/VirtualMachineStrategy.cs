@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     OsProfile = new OSProfile
                     {
                         ComputerName = name,
-                        WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
+                        WindowsConfiguration = imageAndOsType?.CreateWindowsConfiguration(),
                         LinuxConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Linux) ? null : new LinuxConfiguration
                         {
                             Ssh = new SshConfiguration(sshPublicKeys)
