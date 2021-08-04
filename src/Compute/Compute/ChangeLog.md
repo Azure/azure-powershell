@@ -39,6 +39,7 @@
     - `New-AzVmssConfig`
     - `Update-AzVm`
     - `Update-AzVmss`
+* Added new parameters `-SshKeyName` and `-GenerateSshKey` to `New-AzVM` to create a VM with SSH Key
 
 ## Version 4.15.0
 * Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`
