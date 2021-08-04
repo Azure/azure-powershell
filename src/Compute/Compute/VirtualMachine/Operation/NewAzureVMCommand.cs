@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Commands.Compute
 
 
                 List<SshPublicKey> sshPublicKeyList = new List<SshPublicKey>();
-                if (_cmdlet.ConfigAsyncVisited == true && (_cmdlet.SshKeyName != null || _cmdlet.GenerateSshKey == true))
+                if (_cmdlet.SshKeyName != null || _cmdlet.GenerateSshKey == true)
                 {
                     if (ImageAndOsType?.OsType != OperatingSystemTypes.Linux)
                     {
@@ -1071,6 +1071,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         private string SshKeyForLinux()
         {
+            if (this.ConfigAsyncVisited == true)
+            {
+                this.GenerateSshKey = false;
+            }
 
             if (this.GenerateSshKey.IsPresent && ! this.IsParameterBound(c => c.SshKeyName))
             {
