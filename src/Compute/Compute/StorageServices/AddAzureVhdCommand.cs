@@ -213,13 +213,12 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Generating SAS");
                     Console.ResetColor();
-                    GrantAzureRmDiskAccess sas = new GrantAzureRmDiskAccess();
                     var grantAccessData = new GrantAccessData();
                     grantAccessData.Access = "Write";
                     long gbInBytes = 1073741824;
                     int gb = (int)(this.LocalFilePath.Length / gbInBytes);
                     grantAccessData.DurationInSeconds = 86400 * Math.Max(gb / 100, 1);   // 24h per 100gb
-                    var accessUri = sas.DisksClient.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
+                    var accessUri = this.ComputeClient.ComputeManagementClient.Disks.GrantAccess(this.ResourceGroupName, this.DiskName, grantAccessData);
                     Uri sasUri = new Uri(accessUri.AccessSAS);
                     Console.WriteLine("SAS generated: " + accessUri.AccessSAS);
 
@@ -251,8 +250,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Revoking SAS");
                     Console.ResetColor();
-                    RevokeAzureRmDiskAccess revokeSas = new RevokeAzureRmDiskAccess();
-                    var RevokeResult = revokeSas.DisksClient.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
+                    var RevokeResult = this.ComputeClient.ComputeManagementClient.Disks.RevokeAccessWithHttpMessagesAsync(this.ResourceGroupName, this.DiskName).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -443,13 +441,12 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private void createManagedDisk(string ResourceGroupName, string DiskName, PSDisk psDisk)
         {
-            NewAzureRmDisk newDisk = new NewAzureRmDisk();
             string resourceGroupName = ResourceGroupName;
             string diskName = DiskName;
             Disk disk = new Disk();
             ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(psDisk, disk);
 
-            var result = newDisk.DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
+            var result = this.ComputeClient.ComputeManagementClient.Disks.CreateOrUpdate(resourceGroupName, diskName, disk);
             var psObject = new PSDisk();
             ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
 
@@ -498,11 +495,10 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
         private void checkForExistingDisk(string resourceGroupName, string DiskName)
         {
-            GetAzureRmDisk azDisk = new GetAzureRmDisk();
             Disk aDisk;
             try
             {
-                aDisk = azDisk.DisksClient.Get(resourceGroupName, DiskName);
+                aDisk = this.ComputeClient.ComputeManagementClient.Disks.Get(resourceGroupName, DiskName);
             }
             catch
             {
