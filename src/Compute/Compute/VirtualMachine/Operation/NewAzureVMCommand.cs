@@ -302,27 +302,6 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Name of the SSH Public Key resource.",
             ParameterSetName = SimpleParameterSet)]
         public string SshKeyName { get; set; }
-        
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = SimpleParameterSet,
-            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = DiskFileParameterSet,
-            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
-        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
-        public string CapacityReservationGroupId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Name of the SSH Public Key resource.",
-            ParameterSetName = DefaultParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Name of the SSH Public Key resource.",
-            ParameterSetName = SimpleParameterSet)]
-        public string SshKeyName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -333,6 +312,17 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Generate a SSH Public/Private key pair and create a SSH Public Key resource on Azure.",
             ParameterSetName = SimpleParameterSet)]
         public SwitchParameter GenerateSshKey { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -630,27 +620,22 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             VirtualMachine result;
-            if (this.GenerateSshKey.IsPresent)
-            {
-                try
-                {
-                    result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
-                }
-                catch (Microsoft.Rest.Azure.CloudException ex)
-                {
-
-                    //delete the created ssh key resource
-
-                    WriteInformation("VM creation failed. Deleting the SSH key resource that was created.", new string[] { "PSHOST" });
-                    SshPublicKeyClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.SshKeyName).GetAwaiter().GetResult();
-                    // throw exception
-                    throw ex;
-                }
-            }
-            else
+            try
             {
                 result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
             }
+            catch (Microsoft.Rest.Azure.CloudException ex)
+            {
+                if (this.GenerateSshKey.IsPresent)
+                {
+                    //delete the created ssh key resource
+                    WriteInformation("VM creation failed. Deleting the SSH key resource that was created.", new string[] { "PSHOST" });
+                    this.ComputeClient.ComputeManagementClient.SshPublicKeys.Delete(this.ResourceGroupName, this.SshKeyName);
+                }
+                // throw exception
+                throw ex;
+            }
+
 
             if (result != null)
             {
@@ -752,32 +737,26 @@ namespace Microsoft.Azure.Commands.Compute
                         }
 
                         parameters = addSshPublicKey(parameters);
-
-                        try
-                        {
-                            result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VM.Name,
-                            parameters,
-                            auxAuthHeader).GetAwaiter().GetResult();
-                        }
-                        catch (Exception ex)
-                        {
-                            // delete the created ssh key resource
-                            WriteWarning("VM creation failed. Deleting the SSH key resource that was created.");
-                            Microsoft.Azure.Commands.Compute.Automation.NewAzureSshKey sshKeyClass = new Microsoft.Azure.Commands.Compute.Automation.NewAzureSshKey();
-                            sshKeyClass.SshPublicKeyClient.Delete(this.ResourceGroupName, this.SshKeyName);
-                            // throw exception
-                            throw ex;
-                        }
                     }
-                    else
+
+                    try
                     {
                         result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VM.Name,
                         parameters,
                         auxAuthHeader).GetAwaiter().GetResult();
+                    }
+                    catch (Exception ex)
+                    {   
+                        if (this.GenerateSshKey.IsPresent)
+                        {
+                            // delete the created ssh key resource
+                            WriteWarning("VM creation failed. Deleting the SSH key resource that was created.");
+                            this.ComputeClient.ComputeManagementClient.SshPublicKeys.Delete(this.ResourceGroupName, this.SshKeyName);
+                        }
+                        // throw exception
+                        throw ex;
                     }
 
                     var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
@@ -1078,41 +1057,28 @@ namespace Microsoft.Azure.Commands.Compute
 
         private string SshKeyForLinux()
         {
-            if (this.ConfigAsyncVisited)
-            {
-                this.GenerateSshKey = false;
-            }
 
             if (this.GenerateSshKey.IsPresent && ! this.IsParameterBound(c => c.SshKeyName))
             {
                 throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
             }
 
-
-            // check if -SshKeyName exists in azure
-            // TODO
-            //ComputeClient computeClinet = new ComputeClient(this.DefaultContext);
-            //computeClinet.ComputeManagementClient.SshPublicKeys sshPublicKeys 
-            //ISshPublicKeysOperation sshKeyClass = Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet.SshPublicKeyClient
-            Microsoft.Azure.Commands.Compute.Automation.NewAzureSshKey sshKeyClass = new Microsoft.Azure.Commands.Compute.Automation.NewAzureSshKey();
+            string publicKey = "";
             SshPublicKeyResource SshPublicKey;
-            string publicKey = "value";
-            try
+            if (!this.ConfigAsyncVisited && this.GenerateSshKey.IsPresent)
             {
-                SshPublicKey = sshKeyClass.SshPublicKeyClient.Get(this.ResourceGroupName, this.SshKeyName);
-                publicKey = SshPublicKey.PublicKey;
-            }
-            catch (Rest.Azure.CloudException ex)
-            {
-                // SshKey Does not exist
-                // is -GenerateSshKeyGiven? 
-                if (this.GenerateSshKey.IsPresent)
+                try
+                {
+                    SshPublicKey = this.ComputeClient.ComputeManagementClient.SshPublicKeys.Get(this.ResourceGroupName, this.SshKeyName);
+                    publicKey = SshPublicKey.PublicKey;
+                }
+                catch (Rest.Azure.CloudException)
                 {
                     //create key 
                     SshPublicKeyResource sshkey = new SshPublicKeyResource();
                     sshkey.Location = this.Location != null ? this.Location : "eastus";
-                    SshPublicKey = sshKeyClass.SshPublicKeyClient.Create(this.ResourceGroupName, this.SshKeyName, sshkey);
-                    SshPublicKeyGenerateKeyPairResult keypair = sshKeyClass.SshPublicKeyClient.GenerateKeyPair(this.ResourceGroupName, this.SshKeyName);
+                    SshPublicKey = this.ComputeClient.ComputeManagementClient.SshPublicKeys.Create(this.ResourceGroupName, this.SshKeyName, sshkey);
+                    SshPublicKeyGenerateKeyPairResult keypair = this.ComputeClient.ComputeManagementClient.SshPublicKeys.GenerateKeyPair(this.ResourceGroupName, this.SshKeyName);
 
                     string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh");
                     if (!Directory.Exists(sshFolder))
@@ -1139,21 +1105,24 @@ namespace Microsoft.Azure.Commands.Compute
 
                     return keypair.PublicKey;
                 }
-                else
-                {
-                    // Generate Ssh Key needs to be provided 
-                    throw new Exception("The SSH Public Key resource with name '-SshKeyName' was not found. Either provide '-GenerateSshKey' to create the resource or provide a '-SshKeyName' that exists in the provided Resource Group.");
-                    throw ex;
-                }
-            }
-            
-            // SshKey does exist 
-            if (this.GenerateSshKey.IsPresent)
-            {
-                throw new Exception("The SSH Public Key resource with name '-SshKeyName' already exists. Either remove '-GenerateSshKey' to use the existing resource or update '-SshKeyName' to create a SSH Public Key resource with a different name.");
-            }
 
-            return publicKey;
+                throw new Exception("The SSH Public Key resource with name '-SshKeyName' already exists. Either remove '-GenerateSshKey' to use the existing resource or update '-SshKeyName' to create a SSH Public Key resource with a different name.");
+
+            }
+            else
+            {
+                try
+                {
+                    SshPublicKey = this.ComputeClient.ComputeManagementClient.SshPublicKeys.Get(this.ResourceGroupName, this.SshKeyName);
+                    publicKey = SshPublicKey.PublicKey;
+                }
+                catch (Rest.Azure.CloudException)
+                {
+                    throw new Exception("The SSH Public Key resource with name '-SshKeyName' was not found. Either provide '-GenerateSshKey' to create the resource or provide a '-SshKeyName' that exists in the provided Resource Group.");
+                }
+
+                return publicKey;
+            }
         }
 
         private VirtualMachine addSshPublicKey(VirtualMachine parameters)
