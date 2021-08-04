@@ -304,14 +304,27 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            this.VM.OSProfile = new OSProfile
+            if (this.VM.OSProfile == null)
             {
-                ComputerName = this.ComputerName,
-                AdminUsername = this.Credential.UserName,
-                AdminPassword = ConversionUtilities.SecureStringToString(this.Credential.Password),
-                CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
-            };
-
+                this.VM.OSProfile = new OSProfile
+                {
+                    ComputerName = this.ComputerName,
+                    AdminUsername = this.Credential.UserName,
+                    AdminPassword = ConversionUtilities.SecureStringToString(this.Credential.Password),
+                    CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
+                };
+            }
+            // These two checks below are present to allow users to change the OS type in the VM object.
+            // This behavior may change in the future. 
+            else if ((this.ParameterSetName == LinuxParamSet) & this.VM.OSProfile.WindowsConfiguration != null)
+            {
+                this.VM.OSProfile.WindowsConfiguration = null;
+            }
+            else if ((this.ParameterSetName == WindowsParamSet) & this.VM.OSProfile.LinuxConfiguration != null)
+            {
+                this.VM.OSProfile.LinuxConfiguration = null;
+            }
+            
             if (this.ParameterSetName == LinuxParamSet)
             {
                 if (this.VM.OSProfile.WindowsConfiguration != null)
@@ -408,9 +421,15 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = false;
                 }
 
-                this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutoUpdate.IsPresent;
+                if (this.IsParameterBound(c => c.EnableAutoUpdate))
+                {
+                    this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutoUpdate;
+                }
 
-                this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
+                //adam tmp removal, if (this.IsParameterBound(c => c.TimeZone))
+                //{
+                    this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
+                //}
 
                 this.VM.OSProfile.WindowsConfiguration.WinRM =
                     !(this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)

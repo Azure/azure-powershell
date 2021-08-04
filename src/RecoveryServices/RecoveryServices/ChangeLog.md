@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.4.0
+* Added Archive for V1 vaults.
+* Added ProtectedItemsCount in Get-AzRecoveryServicesBackupProtectionPolicy.
+* Azure site recovery bug fix for azure to azure in update vm properties.
+
+## Version 4.3.0
 * Fixed Disable SQL AG AutoProtection.
 
 ## Version 4.2.0

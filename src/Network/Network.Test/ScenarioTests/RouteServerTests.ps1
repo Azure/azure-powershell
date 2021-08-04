@@ -22,6 +22,9 @@ function Test-RouteServerCRUD
     $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
     $routeServerName = Get-ResourceName
     $subnetName = "RouteServerSubnet"
+    $publicIpAddressName = Get-ResourceName
+    $skuType = "Standard"
+    $tier = "Regional"
 
     try
     {
@@ -34,8 +37,12 @@ function Test-RouteServerCRUD
       $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
         
+      # Create the public ip address for route server
+      $publicIp = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
+      $publicIp = Get-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName
+
       # Create route server
-      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id
+      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp
       $expectedvr = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
       Assert-AreEqual $expectedvr.ResourceGroupName $actualvr.ResourceGroupName	
       Assert-AreEqual $expectedvr.Name $actualvr.Name
@@ -73,9 +80,11 @@ function Test-RouteServerPeerCRUD
     $vnetName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
     $routeServerName = Get-ResourceName
-    $virtualWanName = Get-ResourceName
     $subnetName = "RouteServerSubnet"
     $peerName = Get-ResourceName
+    $publicIpAddressName = Get-ResourceName
+    $skuType = "Standard"
+    $tier = "Regional"
 
     try
     {
@@ -88,8 +97,12 @@ function Test-RouteServerPeerCRUD
       $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
       
+      # Create the public ip address for route server
+      $publicIp = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
+      $publicIp = Get-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName
+
       # Create route server
-      $routeServer = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id
+      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp
       $routeServer = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
 
       # Create hub bgp connection
@@ -128,9 +141,11 @@ function Test-RouteServerPeerRoutes
     $vnetName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
     $routeServerName = Get-ResourceName
-    $virtualWanName = Get-ResourceName
     $subnetName = "RouteServerSubnet"
     $peerName = Get-ResourceName
+    $publicIpAddressName = Get-ResourceName
+    $skuType = "Standard"
+    $tier = "Regional"
 
     try
     {
@@ -141,10 +156,14 @@ function Test-RouteServerPeerRoutes
       $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
       $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
       $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-      $subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+      $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
       
+      # Create the public ip address for route server
+      $publicIp = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
+      $publicIp = Get-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName
+
       # Create route server
-      $routeServer = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $subnet.Id
+      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp
       $routeServer = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
 
       # Create route server peering

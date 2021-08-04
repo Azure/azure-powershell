@@ -12,14 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
-using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
 using System.Management.Automation;
-using System.Text;
-using System.Text.Json;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -40,6 +33,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <para type="description">The rating of Az Predictor: 1 (poor) - 5 (great).</para>
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "The rating of Az Predictor: 1 (poor) - 5 (great).")]
+        [ValidateRange(1, 5)]
         public int Rating { get; set; }
 
         /// <inheritdoc/>

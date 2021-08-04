@@ -5,6 +5,7 @@
 Description                           | Module Name                             | PowerShell Gallery Link
 ------------------------------------- | --------------------------------------- | -----------------------
 Azure PowerShell                      | `Az`                                    | [![Az]][AzGallery]
+Azure PowerShell with preview modules | `AzPreview`                             | [![AzPreview]][AzPreviewGallery]
 
 ## Service Modules
 
@@ -136,6 +137,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 
 <!-- Shields -->
 [Az]:                         https://img.shields.io/powershellgallery/v/Az.svg?style=flat-square&label=Az
+[AzPreview]:                  https://img.shields.io/powershellgallery/v/AzPreview.svg?style=flat-square&label=AzPreview
 [Accounts]:                   https://img.shields.io/powershellgallery/v/Az.Accounts.svg?style=flat-square&label=Az.Accounts
 [ADDomainServices]:           https://img.shields.io/powershellgallery/v/Az.ADDomainServices.svg?style=flat-square&label=Az.ADDomainServices
 [Advisor]:                    https://img.shields.io/powershellgallery/v/Az.Advisor.svg?style=flat-square&label=Az.Advisor
@@ -260,6 +262,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
+[AzPreviewGallery]:                  https://www.powershellgallery.com/packages/AzPreview/
 [AccountsGallery]:                   https://www.powershellgallery.com/packages/Az.Accounts/
 [ADDomainServicesGallery]:           https://www.powershellgallery.com/packages/Az.ADDomainServices/
 [AdvisorGallery]:                    https://www.powershellgallery.com/packages/Az.Advisor/

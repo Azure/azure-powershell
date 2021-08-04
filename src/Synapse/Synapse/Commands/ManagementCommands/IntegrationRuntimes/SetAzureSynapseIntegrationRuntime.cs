@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Commands.Synapse
             }
             catch (CloudException e)
             {
-                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                if (e.Response?.StatusCode == HttpStatusCode.NotFound || "Operation returned an invalid status code 'NotFound'".Equals(e.Message))
                 {
                     if (Type == null)
                     {

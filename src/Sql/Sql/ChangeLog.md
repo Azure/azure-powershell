@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `AsJob` flag to `Remove-AzSqlInstance`
+* Added `SubnetId` parameter to `Set-AzSqlInstance` to support the cross-subnet update SLO
+
+## Version 3.4.1
+* Fixed identity logic in `Set-AzSqlServer` and `Set-AzSqlInstance`
+
+## Version 3.4.0
 * Added `RestrictOutboundNetworkAccess` parameter to following cmdlets
     - `New-AzSqlServer`
     - `Set-AzSqlServer`
@@ -25,6 +32,7 @@
       `Get-AzSqlServerOutboundFirewallRule`
       `New-AzSqlServerOutboundFirewallRule`
       `Remove-AzSqlServerOutboundFirewallRule`
+* Fixed the identity logic for SystemAssigned,UserAssigned identities for New-AzSqlServer, New-AzSqlInstance
 * Updated cmdlets for getting and updating SQL database's differential backup frequency
       `Get-AzSqlDatabaseBackupShortTermRetentionPolicy`
       `Set-AzSqlDatabaseBackupShortTermRetentionPolicy`

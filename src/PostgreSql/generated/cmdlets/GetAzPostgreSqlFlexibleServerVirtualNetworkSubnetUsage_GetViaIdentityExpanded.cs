@@ -9,11 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 
     /// <summary>Get virtual network subnet usage for a given vNet resource id.</summary>
     /// <remarks>
-    /// [OpenAPI] Get=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.DBForPostgreSql/locations/{locationName}/checkVirtualNetworkSubnetUsage"
+    /// [OpenAPI] Get=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/checkVirtualNetworkSubnetUsage"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage_GetViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IDelegatedSubnetUsage))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description(@"Get virtual network subnet usage for a given vNet resource id.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Generated]
     public partial class GetAzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage_GetViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -82,10 +82,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageParameter _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.VirtualNetworkSubnetUsageParameter();
+        private Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameter _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.VirtualNetworkSubnetUsageParameter();
 
         /// <summary>Virtual network subnet usage parameter</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageParameter ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameter ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.HttpPipeline" /> that the remote call will use.
@@ -136,12 +136,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageResult"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResult"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Events.Debug:
@@ -370,12 +370,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageResult"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResult"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageResult> response)
         {
             using( NoSynchronizationContext )
             {

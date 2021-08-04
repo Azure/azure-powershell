@@ -147,3 +147,48 @@ function Create-BasicTestEnvironmentWithParams ($params, $location)
 	$credentials = new-object System.Management.Automation.PSCredential($workspaceLogin, ($workspacePassword | ConvertTo-SecureString -asPlainText -Force))
     New-AzSynapseWorkspace -ResourceGroupName  $params.rgname -WorkspaceName $params.workspaceName -Location $location -SqlAdministratorLoginCredential $credentials -DefaultDataLakeStorageAccountName $params.storageAccountName -DefaultDataLakeStorageFilesystem $params.fileSystemName
 }
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Sql blob auditing tests
+#>
+function Create-BlobAuditingTestEnvironment ($testSuffix)
+{
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+    Create-SqlTestEnvironmentWithParams $params $params.location
+	New-AzOperationalInsightsWorkspace -ResourceGroupName $params.rgname -Name $params.logworkspaceName -Sku "Standard" -Location $params.location
+	New-AzEventHubNamespace -ResourceGroupName $params.rgname -NamespaceName $params.eventHubNamespace -Location $params.location
+}
+
+<#
+.SYNOPSIS
+Gets the values of the parameters used at the blob auditing tests
+#>
+function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
+{
+	$subscriptionId = (Get-AzContext).Subscription.Id
+	return @{ 
+			  rgname = "audit-cmdlet-test-rg" +$testSuffix;
+			  workspaceName = "audit-cmdlet-workspace" +$testSuffix;
+			  sqlPoolName = "auditsqlpool" + $testSuffix;
+			  storageAccountName = "sqlstorage" + $testSuffix;
+			  fileSystemName = "sqlcmdletfs" + $testSuffix;
+			  loginName = "testlogin";
+			  pwd = "testp@ssMakingIt1007Longer";
+			  perfLevel = 'DW200c';
+			  location = "canadacentral";
+			  eventHubNamespace = "audit-cmdlet-event-hub-ns" + $testSuffix
+			  logworkspaceName = "audit-cmdlet-logworkspace" +$testSuffix
+			  storageAccountResourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + "audit-cmdlet-test-rg" + $testSuffix + "/providers/Microsoft.Storage/storageAccounts/" + "sqlstorage" + $testSuffix
+		}
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the Sql blob auditing tests
+#>
+function Remove-BlobAuditingTestEnvironment ($testSuffix)
+{
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	Remove-AzResourceGroup -Name $params.rgname -Force
+}

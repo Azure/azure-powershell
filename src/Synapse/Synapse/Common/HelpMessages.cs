@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string WorkspaceObject = "workspace input object, usually passed through the pipeline.";
 
+        public const string ManagedResourceGroupName = "A container that holds ancillary resources. Created by default while the name can be specified. Note that this group must be different with ResourceGroupName.";
+
         public const string DefaultDataLakeStorageAccountName = "The default ADLS Gen2 storage account name.";
 
         public const string DefaultDataLakeStorageFilesystem = "The default ADLS Gen2 file system.";
@@ -156,6 +158,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         
         public const string MaxSizeInBytes = "Specifies the maximum size of the database in bytes.";
 
+        public const string StorageRedundancy = "Storage redundancy of the database.";
+
         public const string BackupResourceGroupName = "The resource group name of bakcup SQL pool object to create from.";
 
         public const string BackupWorkspaceName = "The Synapse workspace name of bakcup SQL pool object to create from.";
@@ -226,6 +230,16 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string StorageKeyType = "Specifies which of the storage access keys to use.";
 
         public const string RetentionInDays = "The number of retention days for the audit logs.";
+
+        public const string EventHubTargetState = "Indicates whether event hub is a destination for audit records.";
+
+        public const string EventHubName = "The name of the event hub. If none is specified when providing EventHubAuthorizationRuleResourceId, the default event hub will be selected.";
+
+        public const string EventHubAuthorizationRuleId = "The resource Id for the event hub authorization rule";
+
+        public const string LogAnalyticsTargetState = "Indicates whether log analytics is a destination for audit records.";
+
+        public const string WorkspaceId = "The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Audit Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2";
 
         public const string NotificationRecipientsEmails = "A semicolon separated list of email addresses to send the alerts to.";
 
@@ -430,5 +444,17 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string SparkJobDefinitionName = "The Spark job definition name.";
 
         public const string SparkJobDefinitionObject = "The Spark job definition object.";
+
+        public const string MaxServiceObjectName = "The max service level objective name of the sql pool.";
+
+        public const string AutoPauseTimer = "The period of inactivity in minutes before automatically pausing the sql pool.";
+
+        public const string AutoResume = "Indicates whether the sql pool can automatically resume when connection attempts are made.";
+
+        public const string ManagedPrivateEndpointName = "The Synapse Managed Private Endpoint Name.";
+
+        public const string ManagedPrivateEndpointObject = "The Synapse Managed Private Endpoint Object.";
+
+        public const string DefaultVNetName = "Managed Virtual Network Name is 'default'.";
     }
 }

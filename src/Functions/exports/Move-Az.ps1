@@ -141,6 +141,7 @@ param(
 
     [Parameter(ParameterSetName='MoveExpanded')]
     [Parameter(ParameterSetName='MoveViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String[]]
     # .
