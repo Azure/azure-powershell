@@ -45,6 +45,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using CM = Microsoft.Azure.Management.Compute.Models;
 using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 
@@ -58,6 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
         public const string DefaultParameterSet = "DefaultParameterSet";
         public const string SimpleParameterSet = "SimpleParameterSet";
         public const string DiskFileParameterSet = "DiskFileParameterSet";
+        public bool ConfigAsyncVisited = false;
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -395,6 +397,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()
             {
+
                 if (_cmdlet.DiskFile == null)
                 {
                     ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
@@ -441,7 +444,7 @@ namespace Microsoft.Azure.Commands.Compute
 
 
                 List<SshPublicKey> sshPublicKeyList = new List<SshPublicKey>();
-                if (_cmdlet.SshKeyName != null || _cmdlet.GenerateSshKey == true)
+                if (_cmdlet.ConfigAsyncVisited == true && (_cmdlet.SshKeyName != null || _cmdlet.GenerateSshKey == true))
                 {
                     if (ImageAndOsType?.OsType != OperatingSystemTypes.Linux)
                     {
@@ -449,13 +452,15 @@ namespace Microsoft.Azure.Commands.Compute
                     }
 
                     string publicKey = _cmdlet.SshKeyForLinux();
-                    SshPublicKey sshPublicKey = new SshPublicKey("~/.ssh", publicKey);
+                    SshPublicKey sshPublicKey = new SshPublicKey("/home/" + _cmdlet.Credential.UserName + "/.ssh/authorized_keys", publicKey);
                     sshPublicKeyList.Add(sshPublicKey);
                 }
                 else
                 {
                     sshPublicKeyList = null;
                 }
+
+                _cmdlet.ConfigAsyncVisited = true;
 
                 if (_cmdlet.DiskFile == null)
                 {
@@ -616,7 +621,29 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+            VirtualMachine result;
+            if (this.GenerateSshKey.IsPresent)
+            {
+                try
+                {
+                    result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+                }
+                catch (Microsoft.Rest.Azure.CloudException ex)
+                {
+
+                    //delete the created ssh key resource
+
+                    WriteInformation("VM creation failed. Deleting the SSH key resource that was created.", new string[] { "PSHOST" });
+                    Microsoft.Azure.Commands.Compute.Automation.NewAzureSshKey sshKeyClass = new Microsoft.Azure.Commands.Compute.Automation.NewAzureSshKey();
+                    sshKeyClass.SshPublicKeyClient.Delete(this.ResourceGroupName, this.SshKeyName);
+                    // throw exception
+                    throw ex;
+                }
+            }
+            else
+            {
+                result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+            }
 
             if (result != null)
             {
@@ -717,18 +744,7 @@ namespace Microsoft.Azure.Commands.Compute
                             throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
                         }
 
-                        string publicKey = SshKeyForLinux();
-                        SshPublicKey sshPublicKey = new SshPublicKey("~/.ssh", publicKey);
-                        List<SshPublicKey> sshPublicKeys = new List<SshPublicKey>()
-                        {
-                            sshPublicKey
-                        };
-                        if (parameters.OsProfile.LinuxConfiguration.Ssh == null)
-                        {
-                            SshConfiguration sshConfig = new SshConfiguration();
-                            parameters.OsProfile.LinuxConfiguration.Ssh = sshConfig;
-                        }
-                        parameters.OsProfile.LinuxConfiguration.Ssh.PublicKeys = sshPublicKeys;
+                        parameters = addSshPublicKey(parameters);
 
                         try
                         {
@@ -1123,6 +1139,35 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             return publicKey;
+        }
+
+        private VirtualMachine addSshPublicKey(VirtualMachine parameters)
+        {
+            string publicKeyPath;
+            if (parameters.OsProfile?.AdminUsername != null)
+            {
+                publicKeyPath = "/home/" + parameters.OsProfile.AdminUsername + "/.ssh/authorized_keys";
+            }
+            else
+            {
+                publicKeyPath = "/home/azureuser/.ssh/authorized_keys";
+            }
+          
+            string publicKey = SshKeyForLinux();
+
+            SshPublicKey sshPublicKey = new SshPublicKey(publicKeyPath, publicKey);
+            List<SshPublicKey> sshPublicKeys = new List<SshPublicKey>()
+            {
+                sshPublicKey
+            };
+            if (parameters.OsProfile.LinuxConfiguration.Ssh == null)
+            {
+                SshConfiguration sshConfig = new SshConfiguration();
+                parameters.OsProfile.LinuxConfiguration.Ssh = sshConfig;
+            }
+            parameters.OsProfile.LinuxConfiguration.Ssh.PublicKeys = sshPublicKeys;
+
+            return parameters;
         }
     }
 }
