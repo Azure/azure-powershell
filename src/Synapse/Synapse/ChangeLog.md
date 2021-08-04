@@ -22,6 +22,7 @@
 	- Added `New-AzSynapseManagedPrivateEndpoint` cmdlet
 	- Added `Get-AzSynapseManagedPrivateEndpoint` cmdlet
 	- Added `Remove-AzSynapseManagedPrivateEndpoint` cmdlet
+* Fixed the blank page issue of pause setting and scale setting for Apache Spark pool through management API
 
 ## Version 0.14.0
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
