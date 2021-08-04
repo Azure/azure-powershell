@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndDisplayNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.DisplayName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByInputObjectAndDisplayNameParameterSet,

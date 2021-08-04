@@ -72,11 +72,10 @@ This command provisions an Azure AD administrator group named DBAs for the works
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace -DisplayName "DBAs" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
+PS C:\> Set-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
 ```
 
-This command provisions an Azure AD administrator group named DBAs for the workspace named ContosoWorkspace.
-This makes sure that the command succeeds even if the display name of the group is not unique.
+This command provisions an Azure AD administrator by objectId for the workspace named ContosoWorkspace.
 
 ## PARAMETERS
 

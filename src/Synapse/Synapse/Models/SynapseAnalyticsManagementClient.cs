@@ -388,12 +388,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     };
                     return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, info);
                 }
-                
             }
             catch (CloudException ex)
             {
                 throw GetAzurePowerShellException(ex);
-            }  
+            }
         }
 
         private WorkspaceAadAdminInfo GetActiveDirectoryInformation(string displayName, Guid objectId)
