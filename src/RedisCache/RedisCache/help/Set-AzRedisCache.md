@@ -16,7 +16,7 @@ Modifies a Redis Cache.
 ```
 Set-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-Size <String>] [-Sku <String>]
  [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>] [-TenantSettings <Hashtable>]
- [-ShardCount <Int32>] [-MinimumTlsVersion <String>] [-Tag <Hashtable>]
+ [-ShardCount <Int32>] [-MinimumTlsVersion <String>] [-RedisVersion <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -158,6 +158,21 @@ For more information, see Manage Azure Redis Cache with Azure PowerShellhttp://g
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RedisVersion
+Redis version. Valid values: 4, 6
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

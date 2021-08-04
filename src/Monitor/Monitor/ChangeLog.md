@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.7.0
 * Added parameter `ResourceGroupName` back for `Add-AzAutoscaleSetting` parameter set `AddAzureRmAutoscaleSettingUpdateParamGroup` and made it optional [#15491]
 
 ## Version 2.6.0

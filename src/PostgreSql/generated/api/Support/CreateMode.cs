@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
     public partial struct CreateMode :
         System.IEquatable<CreateMode>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode Create = @"Create";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode Default = @"Default";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode GeoRestore = @"GeoRestore";
@@ -17,6 +19,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode PointInTimeRestore = @"PointInTimeRestore";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode Replica = @"Replica";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode Update = @"Update";
 
         /// <summary>the value for an instance of the <see cref="CreateMode" /> Enum.</summary>
         private string _value { get; set; }
