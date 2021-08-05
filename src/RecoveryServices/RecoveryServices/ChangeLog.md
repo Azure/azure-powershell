@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added MSI based restore for managed virtual machines.
 
 ## Version 4.4.0
 * Added Archive for V1 vaults.
