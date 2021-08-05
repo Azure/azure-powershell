@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
@@ -150,5 +149,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 
             return mergedEnvironment;
         }
+
+
     }
 }

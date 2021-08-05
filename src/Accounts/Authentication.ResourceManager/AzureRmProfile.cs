@@ -831,10 +831,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             Save(ProfilePath, false);
         }
 
-        public IAzureContextContainer Clone()
+        public IAzureContextContainer Clone() // should we name it "CustomClone()"? Cause it's different than the usual clone
         {
-            var clone = MemberwiseClone() as AzureRmProfile;
-            clone.DefaultContext = DefaultContext.Clone(); // Clone for modification
+            var clone = MemberwiseClone() as AzureRmProfile; // shallow clone every member
+            clone.DefaultContext = DefaultContext.Clone(); // but deep clone DefaultContext cause we are gonna modify it
             return clone;
         }
     }

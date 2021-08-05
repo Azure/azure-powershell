@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -36,12 +35,10 @@ using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
-using Microsoft.WindowsAzure.Commands.Common;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    public class KeyVaultManagementCmdletBase : AzureRMCmdlet, ICustomSubscription
+    public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
 
         private VaultManagementClient _keyVaultManagementClient;
@@ -96,9 +93,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             set { _resourceClient = value; }
         }
-
-        [Parameter()]
-        public Guid SubscriptionId { get; set; }
 
         protected List<T> FilterByTag<T>(List<T> listResult, Hashtable tag) where T : PSKeyVaultIdentityItem
         {

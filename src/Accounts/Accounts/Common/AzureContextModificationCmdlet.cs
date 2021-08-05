@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// Get the default profile for the current cmdlet invocation
         /// </summary>
         /// <returns>The default profile, whether it is a process-specific profile, ot a profile for the current user</returns>
-        protected new virtual IProfileOperations GetDefaultProfile()
+        protected new virtual IProfileOperations GetDefaultProfile() // no need for "new" if we can redesign azurermmcmdlet
         {
             IProfileOperations result = null;
             var currentProfile = base.GetDefaultProfile() as AzureRmProfile;
