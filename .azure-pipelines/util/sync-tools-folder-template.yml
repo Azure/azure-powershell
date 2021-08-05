@@ -13,6 +13,8 @@ steps:
       cp src/lib src/lib-tmp -r
 
       cp tools tools-tmp -r
+
+      cp build.proj build-tmp.proj
     pwsh: true
 - task: PowerShell@2
   displayName: Config git
@@ -24,6 +26,17 @@ steps:
       git config --global user.name "azurepowershell"
 
       git checkout -b syncToolsFolder-${{ parameters.BranchName }} origin/${{ parameters.BranchName }}
+    pwsh: true
+- task: PowerShell@2
+  displayName: Sync build.proj folder from main to ${{ parameters.BranchName }}
+  inputs:
+    targetType: inline
+    script: >-
+      rm build.proj
+
+      mv build-tmp.proj build.proj
+
+      git add build.proj
     pwsh: true
 - task: PowerShell@2
   displayName: Sync .azure-pipelines folder from main to ${{ parameters.BranchName }}
