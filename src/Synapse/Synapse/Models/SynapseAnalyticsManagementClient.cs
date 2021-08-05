@@ -375,7 +375,19 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, GetActiveDirectoryInformation(displayName, objectId));
+                if(displayName != null)
+                {
+                    return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, GetActiveDirectoryInformation(displayName, objectId));
+                }
+                else
+                {
+                    var info = new WorkspaceAadAdminInfo()
+                    {
+                        Sid = objectId.ToString(),
+                        TenantId = _tenantId.ToString()
+                    };
+                    return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, info);
+                }
             }
             catch (CloudException ex)
             {
