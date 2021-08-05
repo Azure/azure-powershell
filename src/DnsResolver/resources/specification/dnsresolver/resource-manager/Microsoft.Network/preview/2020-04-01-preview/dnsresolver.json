@@ -1693,6 +1693,9 @@
   "definitions": {
     "DnsResolverProperties": {
       "description": "Represents the properties of a DNS resolver.",
+      "required": [
+        "virtualNetwork"
+      ],
       "properties": {
         "virtualNetwork": {
           "description": "The reference to the virtual network. This cannot be changed after creation.",
@@ -2052,7 +2055,15 @@
     },
     "ForwardingRuleProperties": {
       "description": "Represents the properties of a forwarding rule within a DNS forwarding ruleset.",
+      "required": [
+        "domainName",
+        "targetDnsServers"
+      ],
       "properties": {
+        "domainName": {
+          "description": "The domain name for the forwarding rule.",
+          "type": "string"
+        },
         "targetDnsServers": {
           "description": "DNS servers to forward the DNS query to.",
           "type": "array",
