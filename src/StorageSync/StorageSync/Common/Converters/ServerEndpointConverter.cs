@@ -19,6 +19,7 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
+
     /// <summary>
     /// Class ServerEndpointConverter.
     /// Implements the <see cref="Converters.ConverterBase{PSServerEndpoint, StorageSyncModels.ServerEndpoint}" />
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// <seealso cref="Converters.ConverterBase{PSServerEndpoint, StorageSyncModels.ServerEndpoint}" />
     public class ServerEndpointConverter : ConverterBase<PSServerEndpoint, StorageSyncModels.ServerEndpoint>
     {
+
         /// <summary>
         /// Transforms the specified source.
         /// </summary>

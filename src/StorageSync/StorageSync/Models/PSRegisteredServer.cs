@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         public string MonitoringConfiguration { get; set; }
 
         /// <summary>
-        /// Gets the FQDN of the server based on telemetry events.
+        /// Gets the current FQDN of the server as observed by AFS.
         /// </summary>
         /// <value>The FQDN of the server.</value>
         public string ServerName { get; internal set; }

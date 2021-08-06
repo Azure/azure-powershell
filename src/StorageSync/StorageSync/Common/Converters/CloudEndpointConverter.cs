@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
+using Microsoft.Azure.Commands.StorageSync.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
+
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
-    using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
-    using Microsoft.Azure.Commands.StorageSync.Models;
-    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
-
     /// <summary>
     /// Class CloudEndpointConverter.
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.Management.StorageSync.Models.CloudEndpoint}" />
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>PSCloudEndpoint.</returns>
         protected override PSCloudEndpoint Transform(StorageSyncModels.CloudEndpoint source)
         {
-            var changeEnumerationStatus = source.ChangeEnumerationStatus != null ? new CloudEndpointChangeEnumerationStatusConverter().Convert(source.ChangeEnumerationStatus) : null;
+            PSCloudEndpointChangeEnumerationStatus changeEnumerationStatus = source.ChangeEnumerationStatus != null ? new CloudEndpointChangeEnumerationStatusConverter().Convert(source.ChangeEnumerationStatus) : null;
 
             var resourceIdentifier = new ResourceIdentifier(source.Id);
             return new PSCloudEndpoint()

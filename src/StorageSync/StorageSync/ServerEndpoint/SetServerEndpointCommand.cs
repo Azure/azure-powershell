@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
            Mandatory = true,
            ValueFromPipeline = true,
-           HelpMessage = HelpMessages.SyncGroupObjectParameter)]
+           HelpMessage = HelpMessages.ServerEndpointObjectParameter)]
         [CmdletParameterBreakingChange("InputObject", ChangeDescription = "Alias RegisteredServer is invalid and preserved for compatibility. Alias ServerEndpoint should be used instead")]
         [Alias(StorageSyncAliases.RegisteredServerAlias, StorageSyncAliases.ServerEndpointAlias)]
         public PSServerEndpoint InputObject { get; set; }
@@ -140,6 +140,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         ValueFromPipelineByPropertyName = false,
         HelpMessage = HelpMessages.VolumeFreeSpacePercentParameter)]
         public int? VolumeFreeSpacePercent { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cloud seeded data.
+        /// </summary>
+        /// <value>The cloud seeded data.</value>
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = false,
+          HelpMessage = HelpMessages.OfflineDataTransferParameter)]
+        public SwitchParameter OfflineDataTransfer { get; set; }
 
         /// <summary>
         /// Gets or sets the tier files older than days.
@@ -212,6 +222,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     updateParameters.CloudTiering = InputObject.CloudTiering;
                     updateParameters.VolumeFreeSpacePercent = InputObject.VolumeFreeSpacePercent;
                     updateParameters.TierFilesOlderThanDays = InputObject.TierFilesOlderThanDays;
+                    updateParameters.OfflineDataTransfer = InputObject.OfflineDataTransfer;
                 }
                 else
                 {
@@ -243,6 +254,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 if (this.IsParameterBound(c => c.TierFilesOlderThanDays))
                 {
                     updateParameters.TierFilesOlderThanDays = TierFilesOlderThanDays;
+                }
+                if (this.IsParameterBound(c => c.OfflineDataTransfer))
+                {
+                    updateParameters.OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff;
                 }
 
                 if (this.IsParameterBound(c => c.LocalCacheMode))

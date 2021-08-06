@@ -35,9 +35,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
     public class NewServerEndpointCommand : StorageSyncClientCmdletBase
     {
-        // Using a string constant here because value provided to attribute must be constant.
-        public const string OfflineDataTransferDeprecationMessage = "The offline data transfer feature is deprecated. Please use server authoritative upload instead.";
-
         /// <summary>
         /// Gets or sets the name of the resource group.
         /// </summary>
