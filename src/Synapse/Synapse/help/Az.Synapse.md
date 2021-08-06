@@ -32,6 +32,9 @@ Enables Advanced Data Security on a workspace.
 ### [Enable-AzSynapseSqlPoolSensitivityRecommendation](Enable-AzSynapseSqlPoolSensitivityRecommendation.md)
 Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the SQL pool.
 
+### [Enable-AzSynapseWorkspace](Enable-AzSynapseWorkspace.md)
+Activate a new Azure Synapse Analytics workspace.
+
 ### [Export-AzSynapseNotebook](Export-AzSynapseNotebook.md)
 Exports notbooks.
 
@@ -69,7 +72,7 @@ Gets information about linked services in workspace.
 Gets Managed Identity Sql Control Settings.
 
 ### [Get-AzSynapseManagedPrivateEndpoint](Get-AzSynapseManagedPrivateEndpoint.md)
-Gets information about mananged private endpoints in a workspace
+Gets a Synapse managed private endpoint.
 
 ### [Get-AzSynapseNotebook](Get-AzSynapseNotebook.md)
 Gets information about notebooks in a workspace.
@@ -186,7 +189,7 @@ Creates a Synapse Analytics Firewall Rule.
 Regenerate self-hosted integration runtime key.
 
 ### [New-AzSynapseManagedPrivateEndpoint](New-AzSynapseManagedPrivateEndpoint.md)
-Creates or updates a managed private endpoint in a workspace.
+Creates a Synapse managed private endpoint.
 
 ### [New-AzSynapseManagedVirtualNetworkConfig](New-AzSynapseManagedVirtualNetworkConfig.md)
 Creates managed virtual network configuration.
@@ -231,7 +234,7 @@ Remove a node with the given name on an integration runtime.
 Removes a linked service from workspace.
 
 ### [Remove-AzSynapseManagedPrivateEndpoint](Remove-AzSynapseManagedPrivateEndpoint.md)
-Removes a managed private endpoint from a workspace.
+Removes a Synape managed private endpoint.
 
 ### [Remove-AzSynapseNotebook](Remove-AzSynapseNotebook.md)
 Removes a notebook from a workspace.

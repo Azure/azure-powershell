@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.synapse/enable-azsynapseworkspace
 schema: 2.0.0
 ---
 
@@ -63,7 +63,7 @@ This command activites a new Azure Synapse Analytics workspace named ContosoWork
 PS C:\> Enable-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/keys/default
 ```
 
-This command activates an Azure Synapse Analytics workspace through pipeline with the specified resource ID.
+This command activates a new Azure Synapse Analytics workspace through pipeline with the specified resource ID.
 
 ## PARAMETERS
 
@@ -71,7 +71,7 @@ This command activates an Azure Synapse Analytics workspace through pipeline wit
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Key identifier should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Workspace key input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSWorkspaceKey
+Type: Microsoft.Azure.Commands.Synapse.Models.WorkspaceKey.PSWorkspaceKey
 Parameter Sets: EnableByInputObjectParameterSet
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 The workspace encryption key name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EnableByNameParameterSet, EnableByParentObjectParameterSet
 Aliases: KeyName
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EnableByNameParameterSet
 Aliases:
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The resource identifier of Synapse SQL Pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EnableByResourceIdParameterSet
 Aliases:
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EnableByNameParameterSet
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: EnableByParentObjectParameterSet
 Aliases:
 
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -222,7 +222,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
