@@ -36,24 +36,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                string resourceGroup = this.ResourceGroupName;
-                string restorePointCollectionName = this.Name;
-                RestorePointCollectionUpdate update = new RestorePointCollectionUpdate();
-
-                var result = RestorePointCollectionsClient.DeleteWithHttpMessagesAsync(resourceGroup, restorePointCollectionName).GetAwaiter().GetResult();
-
-                PSOperationStatusResponse output = new PSOperationStatusResponse
+                if (ShouldProcess(this.Name, VerbsCommon.Remove))
                 {
-                    StartTime = this.StartTime,
-                    EndTime = DateTime.Now
-                };
+                    string resourceGroup = this.ResourceGroupName;
+                    string restorePointCollectionName = this.Name;
+                    RestorePointCollectionUpdate update = new RestorePointCollectionUpdate();
 
-                if (result != null && result.Request != null && result.Request.RequestUri != null)
-                {
-                    output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    var result = RestorePointCollectionsClient.DeleteWithHttpMessagesAsync(resourceGroup, restorePointCollectionName).GetAwaiter().GetResult();
+
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
-
-                WriteObject(output);
             });
         }
     }

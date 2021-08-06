@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        [Alias("RestorePointCollectionName")]
         public string RestorePointCollectionName{ get; set; }
 
         [Parameter(

@@ -41,20 +41,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                string resourceGroup = this.ResourceGroupName;
-                string restorePointCollectionName = this.Name;
-                RestorePointCollectionUpdate update = new RestorePointCollectionUpdate();
-
-                if (this.IsParameterBound(c => c.Tag))
+                if (ShouldProcess(this.Name, VerbsData.Update))
                 {
-                    update.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
-                }
+                    string resourceGroup = this.ResourceGroupName;
+                    string restorePointCollectionName = this.Name;
+                    RestorePointCollectionUpdate update = new RestorePointCollectionUpdate();
 
-                RestorePointCollectionsClient.Update(resourceGroup, restorePointCollectionName, update);
-                var result = RestorePointCollectionsClient.Get(resourceGroup, restorePointCollectionName);
-                var psObject = new PSRestorePointCollection();
-                ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePointCollection, PSRestorePointCollection>(result, psObject);
-                WriteObject(psObject);
+                    if (this.IsParameterBound(c => c.Tag))
+                    {
+                        update.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                    }
+
+                    RestorePointCollectionsClient.Update(resourceGroup, restorePointCollectionName, update);
+                    var result = RestorePointCollectionsClient.Get(resourceGroup, restorePointCollectionName);
+                    var psObject = new PSRestorePointCollection();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePointCollection, PSRestorePointCollection>(result, psObject);
+                    WriteObject(psObject);
+                }
             });
         }
     }

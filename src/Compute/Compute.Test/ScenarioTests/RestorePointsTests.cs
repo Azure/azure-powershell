@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRestorePointCollection()
+        public void TestRestorePoints()
         {
-            TestRunner.RunTestScript("Test-RestorePointCollection");
+            TestRunner.RunTestScript("Test-RestorePoints");
         }
     }
 }
