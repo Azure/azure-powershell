@@ -12,18 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzPostgreSqlFlexibleServer' {
-    It 'Start' {
-        {
-            Stop-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
-            Start-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
-        } | Should -Not -Throw
+    It 'Start' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'StartViaIdentity' {
-        {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/start"
-            Stop-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
-            Start-AzPostgreSqlFlexibleServer -InputObject $ID
-        } | Should -Not -Throw
+    It 'StartViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

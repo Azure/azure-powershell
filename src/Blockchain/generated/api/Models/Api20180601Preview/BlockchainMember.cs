@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
         /// <summary>Gets or sets the consortium for the blockchain member.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public string Consortium { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Consortium; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Consortium = value; }
+        public string Consortium { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Consortium; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Consortium = value ?? null; }
 
         /// <summary>Gets the managed consortium management account address.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
@@ -26,15 +26,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
         /// <summary>Sets the managed consortium management account password.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public string ConsortiumManagementAccountPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumManagementAccountPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumManagementAccountPassword = value; }
+        public System.Security.SecureString ConsortiumManagementAccountPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumManagementAccountPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumManagementAccountPassword = value ?? null; }
 
         /// <summary>Gets the display name of the member in the consortium.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public string ConsortiumMemberDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumMemberDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumMemberDisplayName = value; }
+        public string ConsortiumMemberDisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumMemberDisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumMemberDisplayName = value ?? null; }
 
         /// <summary>Gets the role of the member in the consortium.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public string ConsortiumRole { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumRole; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumRole = value; }
+        public string ConsortiumRole { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumRole; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumRole = value ?? null; }
 
         /// <summary>Gets the dns endpoint of the blockchain member.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
         /// <summary>Gets or sets firewall rules</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[] FirewallRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).FirewallRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).FirewallRule = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[] FirewallRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).FirewallRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).FirewallRule = value ?? null /* arrayOf */; }
 
         /// <summary>Fully qualified resource Id of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inherited)]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
         /// <summary>The GEO location of the blockchain service.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITrackedResourceInternal)__trackedResource).Location = value; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for ConsortiumManagementAccountAddress</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberInternal.ConsortiumManagementAccountAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumManagementAccountAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ConsortiumManagementAccountAddress = value; }
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
         /// <summary>Sets the basic auth password of the blockchain member.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public string Password { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Password; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Password = value; }
+        public System.Security.SecureString Password { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Password; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Password = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberProperties _property;
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
         /// <summary>Gets or sets the blockchain protocol.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol? Protocol { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Protocol; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Protocol = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol? Protocol { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Protocol; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).Protocol = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol)""); }
 
         /// <summary>Gets or sets the blockchain member provision state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
@@ -128,17 +128,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
         /// <summary>Gets or sets Sku name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuInternal)Sku).Name = value; }
+        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuInternal)Sku).Name = value ?? null; }
 
         /// <summary>Gets or sets Sku tier</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public string SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuInternal)Sku).Tier = value; }
+        public string SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuInternal)Sku).Tier = value ?? null; }
 
         /// <summary>
         /// Tags of the service which is a list of key value pairs that describes the resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITrackedResourceInternal)__trackedResource).Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
 
         /// <summary>The type of the service - e.g. "Microsoft.Blockchain"</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inherited)]
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
 
         /// <summary>Gets or sets the nodes capacity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Origin(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.PropertyOrigin.Inlined)]
-        public int? ValidatorNodeSkuCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ValidatorNodeSkuCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ValidatorNodeSkuCapacity = value; }
+        public int? ValidatorNodeSkuCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ValidatorNodeSkuCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberPropertiesInternal)Property).ValidatorNodeSkuCapacity = value ?? default(int); }
 
         /// <summary>Creates an new <see cref="BlockchainMember" /> instance.</summary>
         public BlockchainMember()
@@ -197,8 +197,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         ReadOnly = false,
         Description = @"Sets the managed consortium management account password.",
         SerializedName = @"consortiumManagementAccountPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string ConsortiumManagementAccountPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString ConsortiumManagementAccountPassword { get; set; }
         /// <summary>Gets the display name of the member in the consortium.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Info(
         Required = false,
@@ -237,8 +237,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         ReadOnly = false,
         Description = @"Sets the basic auth password of the blockchain member.",
         SerializedName = @"password",
-        PossibleTypes = new [] { typeof(string) })]
-        string Password { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString Password { get; set; }
         /// <summary>Gets or sets the blockchain protocol.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.Info(
         Required = false,
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         /// <summary>Gets the managed consortium management account address.</summary>
         string ConsortiumManagementAccountAddress { get; set; }
         /// <summary>Sets the managed consortium management account password.</summary>
-        string ConsortiumManagementAccountPassword { get; set; }
+        System.Security.SecureString ConsortiumManagementAccountPassword { get; set; }
         /// <summary>Gets the display name of the member in the consortium.</summary>
         string ConsortiumMemberDisplayName { get; set; }
         /// <summary>Gets the role of the member in the consortium.</summary>
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Previe
         /// <summary>Gets or sets firewall rules</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[] FirewallRule { get; set; }
         /// <summary>Sets the basic auth password of the blockchain member.</summary>
-        string Password { get; set; }
+        System.Security.SecureString Password { get; set; }
         /// <summary>Gets or sets the blockchain member properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMemberProperties Property { get; set; }
         /// <summary>Gets or sets the blockchain protocol.</summary>

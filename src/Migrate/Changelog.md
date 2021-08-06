@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added SQL Server license type.
+* Added CRN feature.
+* Added resource tags feature.
+* Updated to 2021-02-10 api version.
+
 ## Version 1.0.2
 * Fixed an issue in Initialize-AzMigrateReplicationInfrastructure.ps1
 

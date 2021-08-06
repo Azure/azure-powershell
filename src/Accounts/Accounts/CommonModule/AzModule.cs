@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
@@ -223,10 +224,16 @@ namespace Microsoft.Azure.Commands.Common
 
         internal async Task OnProcessRecordAsyncStart(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId, InvocationInfo invocationInfo, string parameterSetName, string correlationId)
         {
+            //AzVersion is null indicates no SDK based cmdlet is invoked. Below properties needs to be filled.
+            if(_runtime != null && AzurePSCmdlet.AzVersion == null)
+            {
+                AzurePSCmdlet.PSHostName = _runtime.Host?.Name;
+                AzurePSCmdlet.PSHostVersion = _runtime.Host?.Version?.ToString();
+            }
             var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, correlationId, processRecordId);
             qos.PreviousEndTime = _previousEndTime;
             await signal(Events.Debug, cancellationToken,
-                () => EventHelper.CreateLogEvent($"[{id}]: Created new QosEvent for command '{qos?.CommandName}': {qos?.ToString()}"));
+                () => EventHelper.CreateLogEvent($"[{id}]: Created new QosEvent for command '{qos?.CommandName}'"));
         }
 
         internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
@@ -280,9 +287,9 @@ namespace Microsoft.Azure.Commands.Common
             if (_telemetry.TryGetValue(processRecordId, out qos))
             {
                 qos.IsSuccess = (qos.Exception == null);
-                await signal(Events.Debug, cancellationToken,
-                    () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
+                await signal(Events.Debug, cancellationToken, () => EventHelper.CreateLogEvent(qos.ToString()));
                 _telemetry.LogEvent(processRecordId);
+                await signal(Events.Debug, cancellationToken, () => EventHelper.CreateLogEvent("Finish sending metric."));
                 _previousEndTime = DateTimeOffset.Now;
             }
         }

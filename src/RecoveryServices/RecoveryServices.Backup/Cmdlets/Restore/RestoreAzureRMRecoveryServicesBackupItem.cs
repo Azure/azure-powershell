@@ -30,10 +30,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Restores an item using the recovery point provided within the recovery services vault
     /// </summary>
     [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem",
-        DefaultParameterSetName = AzureVMParameterSet, SupportsShouldProcess = true), OutputType(typeof(JobBase))]
+        DefaultParameterSetName = AzureVMManagedDiskParameterSet, SupportsShouldProcess = true), OutputType(typeof(JobBase))]
     public class RestoreAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
-        internal const string AzureVMParameterSet = "AzureVMParameterSet";
+        // to be removed
+        internal const string AzureVMParameterSet = "AzureVMParameterSet"; 
+
         internal const string AzureVMManagedDiskParameterSet = "AzureVMManagedDiskParameterSet";
         internal const string AzureVMRestoreManagedAsUnmanaged = "AzureVMRestoreManagedAsUnmanaged";
         internal const string AzureVMRestoreUnmanagedAsManaged = "AzureVMRestoreUnmanagedAsManaged";
@@ -286,6 +288,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RecoveryPoint.RehydrateDuration)]
         public string RehydrateDuration = "15";
 
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMManagedDiskParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.UseSystemAssignedIdentity)]
+        public SwitchParameter UseSystemAssignedIdentity { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMManagedDiskParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.UserAssignedIdentityId)]
+        public string UserAssignedIdentityId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -317,7 +327,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     providerParameters.Add(RecoveryPointParams.RehydrateDuration, RehydrateDuration);
                     providerParameters.Add(RecoveryPointParams.RehydratePriority, RehydratePriority);
-                }                
+                }
+
+                if (UseSystemAssignedIdentity.IsPresent || UserAssignedIdentityId != null)
+                {   
+                    if (UseSystemAssignedIdentity.IsPresent && UserAssignedIdentityId != null)
+                    {
+                        throw new ArgumentException(Resources.MultipleMSIProvidedForRestore);
+                    }
+
+                    /*if (UseSystemAssignedIdentity.IsPresent)
+                    {
+                        // check to be added on vault.Identity
+                    }
+                    else
+                    {
+                        // check whether given User MSI is present on vault
+                    }*/
+                }
 
                 providerParameters.Add(VaultParams.VaultName, vaultName);
                 providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
@@ -334,13 +361,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreOnlyOSDisk, RestoreOnlyOSDisk);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreAsUnmanagedDisks, RestoreAsUnmanagedDisks);
                 providerParameters.Add(CRRParams.UseSecondaryRegion, RestoreToSecondaryRegion.IsPresent);
-                providerParameters.Add(RestoreVMBackupItemParams.RestoreAsManagedDisk, RestoreAsManagedDisk.IsPresent);
+                providerParameters.Add(RestoreVMBackupItemParams.RestoreAsManagedDisk, RestoreAsManagedDisk.IsPresent);                
+                providerParameters.Add(RestoreVMBackupItemParams.UseSystemAssignedIdentity, UseSystemAssignedIdentity.IsPresent);
+                providerParameters.Add(RestoreVMBackupItemParams.UserAssignedIdentityId, UserAssignedIdentityId);
 
                 if (DiskEncryptionSetId != null)
                 {
                     AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
 
-                    ServiceClientModel.BackupResourceEncryptionConfigResource vaultEncryptionSettings = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
+                    ServiceClientModel.BackupResourceEncryptionConfigExtendedResource vaultEncryptionSettings = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
                     
                     if ((vaultEncryptionSettings.Properties.EncryptionAtRestType == "CustomerManaged") && rp.IsManagedVirtualMachine && !(rp.EncryptionEnabled) && !(RestoreToSecondaryRegion.IsPresent))
                     {

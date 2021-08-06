@@ -9,6 +9,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     public partial struct ReplicationProtectedItemOperation :
         System.IEquatable<ReplicationProtectedItemOperation>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation CancelFailover = @"CancelFailover";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation ChangePit = @"ChangePit";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ReplicationProtectedItemOperation Commit = @"Commit";
