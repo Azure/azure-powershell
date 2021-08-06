@@ -41,7 +41,7 @@ function Test-RestorePoints
         $tags = $tags = @{test1 = "testval1"; test2 = "testval2" };
 
         #restorepoint
-        New-AzRestorePointCollection -ResourceGroupName $rgname -Name $restorePointCollectionName -VmId $vm1.Id
+        New-AzRestorePointCollection -ResourceGroupName $rgname -Name $restorePointCollectionName -VmId $vm1.Id -Location "eastus"
         Get-AzRestorePointCollection -ResourceGroupName $rgname -Name $restorePointCollectionName
         Update-AzRestorePointCollection -ResourceGroupName $rgname -Name $restorePointCollectionName -Tag $tags
 
