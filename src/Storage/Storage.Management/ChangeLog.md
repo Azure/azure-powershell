@@ -19,6 +19,69 @@
 -->
 ## Upcoming Release
 
+## Version 3.10.0
+* Supported Blob Last Access Time
+    -  `Enable-AzStorageBlobLastAccessTimeTracking`
+    -  `Disable-AzStorageBlobLastAccessTimeTracking`
+    -  `Add-AzStorageAccountManagementPolicyAction`
+* Made `Get-AzDataLakeGen2ChildItem` list all datalake gen2 items by default, instead of needing user to list chunk by chunk.
+* Fixed BlobProperties is empty issue when using sas without prefix '?' [#15460]
+* Fixed synchronously copy small blob failure [#15548]
+    - `Copy-AzStorageBlob`
+
+## Version 3.9.0
+* Supported enable/disable Blob container soft delete
+    -  `Enable-AzStorageContainerDeleteRetentionPolicy`
+    -  `Disable-AzStorageContainerDeleteRetentionPolicy`
+* Supported list deleted Blob containers
+    -  `Get-AzRmStorageContainer`
+    -  `Get-AzStorageContainer`
+* Supported restore deleted Blob container
+    -  `Restore-AzStorageContainer`
+* Supported secure SMB setting in File service properties
+    - `Update-AzStorageFileServiceProperty`
+* Supported create account with EnableNfsV3
+    - `New-AzStorageAccount`
+* Supported input more copy blob parameters from pipeline [#15301]
+    -  `Start-AzStorageBlobCopy`
+
+## Version 3.8.0
+* Supported create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+* Supported enable Smb Multichannel on File service
+    -  `Update-AzStorageFileServiceProperty`
+* Fixed copy inside same account issue by access source with anonymous credential, when copy Blob inside same account with Oauth credential
+* Removed StorageFileDataSmbShareOwner from value set of parameter DefaultSharePermission in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+
+## Version 3.7.0
+* Supported file share snapshot
+    - `New-AzRmStorageShare`
+    - `Get-AzRmStorageShare`
+    - `Remove-AzRmStorageShare`
+* Supported remove file share with it's snapshot (leased and not leased), by default remove file share will fail when share has snapshot
+    - `Remove-AzRmStorageShare`
+* Supported Set/Get/Remove blob inventory policy
+    - `New-AzStorageBlobInventoryPolicyRule`
+    - `Set-AzStorageBlobInventoryPolicy`
+    - `Get-AzStorageBlobInventoryPolicy`
+    - `Remove-AzStorageBlobInventoryPolicy`
+* Supported DefaultSharePermission in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported AllowCrossTenantReplication in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported Set Object Replication Policy with SourceAccount/DestinationAccount as Storage account resource Id
+    - `Set-AzStorageObjectReplicationPolicy`
+* Supported set SasExpirationPeriod as TimeSpan.Zero
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount
+* Make sure the correct account name is used when create account credential
+    - `New-AzStorageContext`
+
 ## Version 3.6.0
 * Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
     - `New-AzStorageAccount`

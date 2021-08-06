@@ -16,12 +16,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
-using System.Security;
-using System.Threading;
+using System.Web;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -48,7 +46,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The application id for which service principal is created.")]
         public Guid ApplicationId { get; set; }
 
-        [CmdletParameterBreakingChange("DisplayName", ChangeDescription = "DisplayName is used as the IdentifierUri of created application. The value will be considered valid only if it exists as a verified domain in a tenant.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithoutCredential,
             HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithPasswordPlain,
@@ -59,8 +56,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyCredential,
             HelpMessage = "The display name for the application.")]
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The display name for the application. If a display name is not provided, " +
-            "this value will default to 'azure-powershell-MM-dd-yyyy-HH-mm-ss', where the suffix is the time of application creation.")]
+        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The display name for the service principal is derived from the IdentifierUris of created application.")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
@@ -196,15 +192,17 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 if (ApplicationId == Guid.Empty)
                 {
-                    string uri = "http://" + DisplayName.Trim().Replace(' ', '_');
+
 
                     // Create an application and get the applicationId
-                    CreatePSApplicationParameters appParameters = new CreatePSApplicationParameters
+                    CreatePSApplicationParameters appParameters = new CreatePSApplicationParameters();
+
+                    if(this.IsParameterBound(c => c.DisplayName) && !string.IsNullOrEmpty(DisplayName))
                     {
-                        DisplayName = DisplayName,
-                        IdentifierUris = new[] { uri },
-                        HomePage = uri
-                    };
+                        string uri = "http://" + HttpUtility.UrlEncode(DisplayName.Trim());
+                        appParameters.IdentifierUris = new string[] { };
+                        appParameters.DisplayName = DisplayName;
+                    }
 
                     if (this.IsParameterBound(c => c.PasswordCredential))
                     {
@@ -271,8 +269,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 WriteVerbose(string.Format("No display name provided - using the default display name of '{0}'", DisplayName));
             }
 
-            var identifierUri = "http://" + DisplayName;
-
             bool printPassword = false;
             bool printUseExistingSecret = true;
 
@@ -286,8 +282,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 CreatePSApplicationParameters appParameters = new CreatePSApplicationParameters
                 {
                     DisplayName = DisplayName,
-                    IdentifierUris = new[] { identifierUri },
-                    HomePage = identifierUri,
+                    HomePage = "http://" + HttpUtility.UrlEncode(DisplayName.Trim()),
                     PasswordCredentials = new PSADPasswordCredential[]
                     {
                         new PSADPasswordCredential()

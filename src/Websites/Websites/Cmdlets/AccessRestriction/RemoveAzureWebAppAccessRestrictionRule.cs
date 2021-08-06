@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
 using Microsoft.Azure.Commands.WebApps.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -100,6 +101,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     var accessRestrictionList = TargetScmSite ? siteConfig.ScmIpSecurityRestrictions : siteConfig.IpSecurityRestrictions;
                     IpSecurityRestriction ipSecurityRestriction = null;
                     bool accessRestrictionExists = false;
+                    int ruleTypes = Convert.ToInt32(!string.IsNullOrWhiteSpace(IpAddress)) + Convert.ToInt32(!string.IsNullOrWhiteSpace(ServiceTag)) +
+                        Convert.ToInt32(!string.IsNullOrWhiteSpace(SubnetId) || (!string.IsNullOrWhiteSpace(SubnetName) && !string.IsNullOrWhiteSpace(VirtualNetworkName)));
+
+                    if (ruleTypes > 1)
+                        throw new Exception("Please specify only one of: IpAddress or ServiceTag or Subnet");
 
                     foreach (var accessRestriction in accessRestrictionList)
                     {
@@ -117,7 +123,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             if (!string.IsNullOrWhiteSpace(accessRestriction.IpAddress) && accessRestriction.IpAddress.ToLowerInvariant() == IpAddress.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
                             {
                                 if (!string.IsNullOrWhiteSpace(Name))
-                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() == Name.ToLowerInvariant())
+                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() != Name.ToLowerInvariant())
                                         continue;
 
                                 ipSecurityRestriction = accessRestriction;
@@ -130,7 +136,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             if (!string.IsNullOrWhiteSpace(accessRestriction.IpAddress) && accessRestriction.IpAddress.ToLowerInvariant() == ServiceTag.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
                             {
                                 if (!string.IsNullOrWhiteSpace(Name))
-                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() == Name.ToLowerInvariant())
+                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() != Name.ToLowerInvariant())
                                         continue;
 
                                 ipSecurityRestriction = accessRestriction;
@@ -145,7 +151,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             if (!string.IsNullOrWhiteSpace(accessRestriction.VnetSubnetResourceId) && accessRestriction.VnetSubnetResourceId.ToLowerInvariant() == subnetResourceId.ToLowerInvariant() && accessRestriction.Action.ToLowerInvariant() == Action.ToLowerInvariant())
                             {
                                 if (!string.IsNullOrWhiteSpace(Name))
-                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() == Name.ToLowerInvariant())
+                                    if (!string.IsNullOrWhiteSpace(accessRestriction.Name) && accessRestriction.Name.ToLowerInvariant() != Name.ToLowerInvariant())
                                         continue;
 
                                 ipSecurityRestriction = accessRestriction;

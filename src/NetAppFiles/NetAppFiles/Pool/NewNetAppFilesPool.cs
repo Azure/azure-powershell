@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "If enabled (true) the pool can contain cool Access enabled volumes.")]
+        public SwitchParameter CoolAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -148,7 +153,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Size = PoolSize,
                 Location = Location,
                 Tags = tagPairs,
-                QosType = QosType
+                QosType = QosType,
+                CoolAccess = CoolAccess
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

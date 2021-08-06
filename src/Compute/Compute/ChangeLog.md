@@ -21,6 +21,68 @@
 -->
 ## Upcoming Release
 
+## Version 4.16.0
+* Fixed the warning in `New-AzVM` cmdlet stating the sku of the VM is being defaulted even if a sku size is provided by the user. Now it only occurs when the user does not provide a sku size.
+* Edited `Set-AzVmOperatingSystem` cmdlet to no longer overwrite any existing EnableAutomaticUpdates value on the passed in virtual machine if it exists.
+* Updated Compute module to use the latest .Net SDK version 48.0.0.
+* Added new cmdlets for the Capacity Reservation Feature:
+    - `New-AzCapacityReservationGroup`
+    - `Remove-AzCapacityReservationGroup`
+    - `Get-AzCapacityReservationGroup`
+    - `New-AzCapacityReservation`
+    - `Remove-AzCapacityReservation`
+    - `Get-AzCapacityReservation`
+* Added a new parameter `-CapacityReservationGroupId` to the following cmdlets:
+    - `New-AzVm`
+    - `New-AzVmConfig`
+    - `New-AzVmss`
+    - `New-AzVmssConfig`
+    - `Update-AzVm`
+    - `Update-AzVmss`
+
+## Version 4.15.0
+* Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`
+* Updated the following cmdlets to work when the resource uses a remote image source using AKS or Shared Image Gallery.
+    - `Update-AzVm`
+    - `Update-AzVmss`
+    - `Update-AzGalleryImageVersion`
+* Added parameters `-EnableCrossZoneUpgrade` and `-PrioritizeUnhealthyInstance` to the `Set-AzVmssRollingUpgradePolicy`  
+* Added `AssessmentMode` parameter to the `Set-AzVMOperatingSystem` cmdlet.
+* Fixed a bug in `Add-AzVmssNetworkInterfaceConfiguration`
+* Fixed IOPS and throughput check in `Test-AzVMAEMExtension`
+* Added new cmdlets for 2020-12-01 DiskRP API version
+    - New-AzDiskPurchasePlanConfig
+    - Set-AzDiskSecurityProfile
+* Changed Cmdlets for 2020-12-01 DiskRP API version
+    - New-AzDiskConfig
+    - New-AzSnapshotConfig
+    - New-AzSnapshotUpdateConfig
+    - New-AzDiskUpdateConfig
+    - New-AzDiskEncryptionSetConfig
+    - Update-AzDiskEncryptionSet
+
+## Version 4.14.0
+* Updated Compute module to use the latest .Net SDK version 47.0.0.
+
+## Version 4.13.0
+* Added `Invoke-AzVmInstallPatch` to support patch installation in VMs using PowerShell.
+* Updated Compute module to use the latest .Net SDK version 46.0.0.
+* Added optional parameter `-EdgeZone` to the following cmdlets:
+    - `Get-AzVMImage
+    - `Get-AzVMImageOffer`
+    - `Get-AzVMImageSku`
+    - `New-AzDiskConfig`
+    - `New-AzImageConfig`
+    - `New-AzSnapshotConfig`
+    - `New-AzVM`
+    - `New-AzVmssConfig`
+    - `New-AzVMSS`
+* Added cmdlets to create, update, delete, and get new Azure resource: Ssh Public Key
+    - `New-AzSshKey`
+    - `Remove-AzSshKey`
+    - `Get-AzSshKey`
+    - `Update-AzSshKey`
+
 ## Version 4.12.0
 * Updated the `Set-AzVMDiskEncryptionExtension` cmdlet to support ADE extension migration from two pass (version with AAD input parameters) to single pass (version without AAD input parameters).
     - Added a switch parameter `-Migrate` to trigger migration workflow.

@@ -18,6 +18,27 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added MSI based restore for managed virtual machines.
+
+## Version 4.4.0
+* Added Archive for V1 vaults.
+* Added ProtectedItemsCount in Get-AzRecoveryServicesBackupProtectionPolicy.
+* Azure site recovery bug fix for azure to azure in update vm properties.
+
+## Version 4.3.0
+* Fixed Disable SQL AG AutoProtection.
+
+## Version 4.2.0
+* Added cross tenant DS Move.
+* Removed restriction to fetch recovery points only for a 30 days time range.
+* Enabled CRR for new regions.
+
+## Version 4.1.0
+* Fixed security issue with SQL restore, this is a necessary breaking change. TargetContainer becomes mandatory for Alternate Location Restore.
+* Removed Set-AzRecoveryServicesBackupProperties cmdlet alias, Set-AzRecoveryServicesBackupProperty is supported.
+* Removed Get-AzRecoveryServicesBackupJobDetails cmdlet alias, Get-AzRecoveryServicesBackupJobDetail is supported.
+* Added support for cross subscription DS Move.
+* Azure Site Recovery support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
 
 ## Version 3.6.0
 * Azure Site Recovery support for Multiple IP per NIC for Azure to Azure provider.

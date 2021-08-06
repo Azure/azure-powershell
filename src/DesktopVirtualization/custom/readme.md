@@ -31,11 +31,11 @@ These provide functionality to our HTTP pipeline and other useful features. In s
 
 ### Attributes
 For processing the cmdlets, we've created some additional attributes:
-- `Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DescriptionAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.DescriptionAttribute`
   - Used in C# cmdlets to provide a high-level description of the cmdlet. This is propegated to reference documentation via [help comments](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comment_based_help) in the exported scripts.
-- `Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DoNotExportAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.DoNotExportAttribute`
   - Used in C# and script cmdlets to suppress creating an exported cmdlet at build-time. These cmdlets will *not be exposed* by `Az.DesktopVirtualization`.
-- `Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.InternalExportAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.InternalExportAttribute`
   - Used in C# cmdlets to route exported cmdlets to the `..\internal`, which are *not exposed* by `Az.DesktopVirtualization`. For more information, see [readme.md](..\internal/readme.md) in the `..\internal` folder.
-- `Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ProfileAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ProfileAttribute`
   - Used in C# and script cmdlets to define which Azure profiles the cmdlet supports. This is only supported for Azure (`--azure`) modules.

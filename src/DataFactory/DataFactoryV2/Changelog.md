@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 1.13.1
+* Updated ADF .Net SDK version to 4.21.0
+
+## Version 1.13.0
+* Added Customer Managed Key Encryption to DataFactory
+
+## Version 1.12.1
+* Updated ADF .Net SDK version to 4.19.0
+
 ## Version 1.12.0
 * Added User Assigned Identities to Data Factory.
 * Updated ADF .Net SDK version to 4.18.0

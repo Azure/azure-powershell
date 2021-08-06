@@ -27,16 +27,29 @@ function New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject {
         [Parameter(HelpMessage="Name of FrontendIpConfigration.")]
         [string]
         $Name,
-        [Parameter(HelpMessage="Resource Id.")]
+        [Parameter(ParameterSetName="DefaultParameterSet", HelpMessage="Resource Id.")]
         [string]
-        $PublicIPAddressId
+        $PublicIPAddressId,
+        [Parameter(ParameterSetName="PrivateIP", HelpMessage="Private IP Address")]
+        [string]
+        $PrivateIPAddress,
+        [Parameter(ParameterSetName="PrivateIP", HelpMessage="Subnet ID")]
+        [string]
+        $SubnetId
     )
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration]::New()
 
         $Object.Name = $Name
-        $Object.PublicIPAddressId = $PublicIPAddressId
+        if ($PSBoundParameters.ContainsKey("PublicIPAddressId")) {
+            $Object.PublicIPAddressId = $PublicIPAddressId
+        }
+        if ($PSBoundParameters.ContainsKey("PrivateIPAddress")) {
+            $Object.privateIPAddress = $PrivateIPAddress
+            $Object.SubnetId = $SubnetId
+        }
+        
         return $Object
     }
 }

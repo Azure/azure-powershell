@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 
@@ -56,6 +57,35 @@ namespace Microsoft.Azure.Commands.Profile
         private void WriteQuestion(string question)
         {
             this.Host.UI.WriteLine(ConsoleColor.Cyan, this.Host.UI.RawUI.BackgroundColor, $"{Environment.NewLine}{question}{Environment.NewLine}");
+        }
+
+        //This method was moved from AzurePSCmdlet
+        private bool CheckIfInteractive()
+        {
+            bool interactive = true;
+            if (this.Host?.UI?.RawUI == null ||
+                Environment.GetCommandLineArgs().Any(s =>
+                    s.Equals("-NonInteractive", StringComparison.OrdinalIgnoreCase)))
+            {
+                interactive = false;
+            }
+            else
+            {
+                try
+                {
+                    var test = this.Host.UI.RawUI.KeyAvailable;
+                }
+                catch
+                {
+                    interactive = false;
+                }
+            }
+
+            if (!interactive && _dataCollectionProfile != null && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            {
+                _dataCollectionProfile.EnableAzureDataCollection = false;
+            }
+            return interactive;
         }
 
         private bool OpenBrowser(string url)

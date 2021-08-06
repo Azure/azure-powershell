@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
         public DateTime ExpirationDate { get; set; }
 
+        public PsApiManagementKeyVaultEntity KeyVault { get; set; }
+
         public PsApiManagementCertificate() { }
 
         public PsApiManagementCertificate(string armResourceId)

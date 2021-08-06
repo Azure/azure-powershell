@@ -20,6 +20,34 @@
 
 ## Upcoming Release
 
+## Version 2.5.2
+* Disabled context auto saving when token cache persistence fails on Windows and macOS
+* Added PowerShell version into telemetry record
+* Upgraded Microsoft.ApplicationInsights from 2.4.0 to 2.12.0
+* Updated Azure.Core to 1.16.0
+
+## Version 2.5.1
+* Fixed access error when subscripiton has no `Tags` property [#15425].
+
+## Version 2.5.0
+* Added Tags, AuthorizationSource to PSAzureSusbscripiton and added TenantType, DefaultDomain, TenantBrandingLogoUrl, CountryCode to PSAzureTenant [#15220]
+* Upgraded subscription client to 2021-01-01 [#15220]
+* Removed Interactive mode check in common lib
+* Added endpoint of OperationalInsights to environment AzureChinaCloud [#15305]
+* Printed auto generated modules' default logs to verbose stream
+
+## Version 2.4.0
+* Added cmdlet `Open-AzSurveyLink`
+* Supported certificate file as input parameter of Connect-AzAccount
+
+## Version 2.3.0
+* Upgraded Azure.Identity to 1.4 and MSAL to 4.30.1
+* Removed obsolete parameters `ManagedServiceHostName`, `ManagedServicePort` and `ManagedServiceSecret` of cmdlet `Connect-AzAccount`, environment variables `MSI_ENDPOINT` and `MSI_SECRET` could be used instead
+* Customized display format of PSAzureRmAccount to hide secret of service principal [#14208]
+* Added optional parameter `AuthScope` to `Connect-AzAccount` to support enhanced authentication of data plane features
+* Set retry times by environment variable [#14748]
+* Supported subject name issuer authentication
+
 ## Version 2.2.8
 * Fallback to first valid context if current default context key is "Default" which is invalid
 

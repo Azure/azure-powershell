@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.0
+* Added Administrators to ActiveDirectory
+* Added LastTransferSize, LastTransferType,TotalTransferBytes to BackupStatus
+* Added CoolAccess and QosType to CapacityPool
+* Added CoolAccess, CoolnessPeriod and UnixPermissions to Volume
+* Added ChownMode to ExportPolicyRule
+* Added Get-Az-NetAppFilesVolumeRestoreStatus to get the status of a restore operation for a volume
+
+## Version 0.6.0
+* Added UseExistingSnapshot to Backups 
+* SnapshotPolicyId to UpdateAnfNetAppFilesVolume, this can be used to apply a snapshot policy to an existing volume
+
 ## Version 0.5.0
 * Added AllowLocalNfsUsersWithLdap to ActiveDirectory
 * Added VolumeName to Backup

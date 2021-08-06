@@ -12,15 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
-using System.Net;
-using System.Reflection;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -36,16 +27,26 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using System.Reflection;
+using System.Threading.Tasks;
 using CM = Microsoft.Azure.Management.Compute.Models;
+using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -86,6 +87,11 @@ namespace Microsoft.Azure.Commands.Compute
         [LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string EdgeZone { get; set; }
 
         [Alias("VMProfile")]
         [Parameter(
@@ -135,6 +141,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string NetworkInterfaceDeleteOption { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
@@ -218,9 +228,15 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public string OSDiskDeleteOption { get; set; }
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public string DataDiskDeleteOption { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
@@ -272,6 +288,17 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
             ValueFromPipelineByPropertyName = true)]
         public string HostGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -343,6 +370,8 @@ namespace Microsoft.Azure.Commands.Compute
 
             public BlobUri DestinationUri;
 
+            public string StorageAccountId;
+
             public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()
             {
                 if (_cmdlet.DiskFile == null)
@@ -359,10 +388,11 @@ namespace Microsoft.Azure.Commands.Compute
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
-                    name: _cmdlet.VirtualNetworkName, addressPrefix: _cmdlet.AddressPrefix);
+                    name: _cmdlet.VirtualNetworkName, edgeZone: _cmdlet.EdgeZone, addressPrefix: _cmdlet.AddressPrefix);
                 var subnet = virtualNetwork.CreateSubnet(_cmdlet.SubnetName, _cmdlet.SubnetAddressPrefix);
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                     name: _cmdlet.PublicIpAddressName,
+                    edgeZone: _cmdlet.EdgeZone,
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
                     sku: _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard,
@@ -378,7 +408,7 @@ namespace Microsoft.Azure.Commands.Compute
                     ImageAndOsType, _cmdlet.Size, Location, DefaultLocation);
 
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
-                    _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
+                    _cmdlet.Name, _cmdlet.EdgeZone, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
 
                 var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
@@ -406,11 +436,15 @@ namespace Microsoft.Azure.Commands.Compute
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
                         hostGroupId: _cmdlet.HostGroupId,
+                        capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
                         VmssId: _cmdlet.VmssId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
+                        osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
                         );
                 }
                 else
@@ -433,11 +467,15 @@ namespace Microsoft.Azure.Commands.Compute
                         proximityPlacementGroup: ppgSubResourceFunc,
                         hostId: _cmdlet.HostId,
                         hostGroupId: _cmdlet.HostGroupId,
+                        capacityReservationGroupId: _cmdlet.CapacityReservationGroupId,
                         VmssId: _cmdlet.VmssId,
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
+                        osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
                     );
                 }
             }
@@ -460,7 +498,7 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new Parameters(this, client, resourceClient);
 
             // Information message if the default Size value is used. 
-            if (!this.IsBound(Size))
+            if (!this.IsParameterBound(c => c.Size))
             {
                 WriteInformation("No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.", new string[] { "PSHOST" });
             }
@@ -490,7 +528,8 @@ namespace Microsoft.Azure.Commands.Compute
                     Name,
                     new StorageAccountCreateParameters
                     {
-                        Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
+                        Kind = "StorageV2",
+                        Sku = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models.Sku
                         {
                             Name = SkuName.PremiumLRS
                         },
@@ -508,6 +547,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
                 var storageAccount = storageClient.StorageAccounts.GetProperties(ResourceGroupName, Name);
+                parameters.StorageAccountId = storageAccount.Id;
                 // BlobUri destinationUri = null;
                 BlobUri.TryParseUri(
                     new Uri(string.Format(
@@ -571,6 +611,13 @@ namespace Microsoft.Azure.Commands.Compute
                     };
                 }
             }
+
+            CM.ExtendedLocation ExtendedLocation = null;
+            if (this.EdgeZone != null)
+            {
+                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+            }
+
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
@@ -586,6 +633,7 @@ namespace Microsoft.Azure.Commands.Compute
                         LicenseType = this.LicenseType ?? this.VM.LicenseType,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
+                        ExtendedLocation = ExtendedLocation,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = this.Zone ?? this.VM.Zones,
@@ -596,7 +644,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Priority = this.VM.Priority,
                         EvictionPolicy = this.VM.EvictionPolicy,
                         BillingProfile = this.VM.BillingProfile,
-                        SecurityProfile = this.VM.SecurityProfile
+                        SecurityProfile = this.VM.SecurityProfile,
+                        CapacityReservation = this.VM.CapacityReservation
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
@@ -820,7 +869,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
         {
-            var storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+            IEnumerable<StorageAccount> storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
             if (storageAccountList == null || storageAccountList.Count() == 0)
             {
                 storageAccountList = client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
@@ -857,9 +906,16 @@ namespace Microsoft.Azure.Commands.Compute
             }
             while (i < 10 && (bool)!client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
 
+            SM.ExtendedLocation extendedLocation = null;
+            if (this.EdgeZone != null)
+            {
+                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+            }
+
             var storaeAccountParameter = new StorageAccountCreateParameters
             {
                 Location = this.Location ?? this.VM.Location,
+                ExtendedLocation = extendedLocation
             };
             storaeAccountParameter.SetAsStandardGRS();
 

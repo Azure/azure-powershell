@@ -838,6 +838,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse managed private endpoint &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseManagedPrivateEndpoint {
+            get {
+                return ResourceManager.GetString("RemoveSynapseManagedPrivateEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove notebook &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseNotebook {
@@ -852,6 +861,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemoveSynapsePipeline {
             get {
                 return ResourceManager.GetString("RemoveSynapsePipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Spark job definition &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSparkJobDefinition", resourceCulture);
             }
         }
         
@@ -1018,6 +1036,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting Synapse managed private endpoint &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseManagedPrivateEndpoint {
+            get {
+                return ResourceManager.GetString("RemovingSynapseManagedPrivateEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting notebook &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string RemovingSynapseNotebook {
@@ -1050,6 +1077,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseRoleAssignmentById {
             get {
                 return ResourceManager.GetString("RemovingSynapseRoleAssignmentById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Spark job definition &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSparkJobDefinition", resourceCulture);
             }
         }
         
@@ -1297,6 +1333,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating or updating Synapse managed private endpoint &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseManagedPrivateEndPoint {
+            get {
+                return ResourceManager.GetString("SettingSynapseManagedPrivateEndPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting notebook &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseNotebook {
@@ -1311,6 +1356,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SettingSynapsePipeline {
             get {
                 return ResourceManager.GetString("SettingSynapsePipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Spark job definition &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("SettingSynapseSparkJobDefinition", resourceCulture);
             }
         }
         

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.3
+* Fixed username and password issue in `Import-AzContainerRegistryImage` [#14971]
+* Fixed data plane operations (repository, tag, manifest) failed cross registry in single Powershell session [#14849]
+
 ## Version 2.2.2
 * Fixed bug in `Get-AzContainerRegistryManifest` showing incorrect image name 
 

@@ -19,6 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.1
+* Fixed Managed and Classic Application models (Application, Cluster, Service) by updating constructor to take all new properties
+    - This solves piping related issues where piping the results directly from a Get cmdlet call into and Update or Set call remove some intentionally set properties
+    - Updated appropriate test files to cover the above mentioned cases
+
+## Version 3.0.0
+* Removed deprecated cluster certificate commands:
+    - `Add-AzServiceFabricClusterCertificate`
+    - `Remove-AzServiceFabricClusterCertificate`
+* Changed PSManagedService model to avoid using the properties parameter directly from sdk.
+* Removed deprecated parameters for managed cmdlets:
+    - `ReverseProxyEndpointPort`
+    - `InstanceCloseDelayDuration`
+    - `ServiceDnsName`
+    - `InstanceCloseDelayDuration`
+    - `DropSourceReplicaOnMove`
+* Fixed `Update-AzServiceFabricReliability` to update correctly the vm instance count of the primary node type on the cluster resource.
+
 ## Version 2.4.0
 * Upgraded Managed Cluster commands to use Service Fabric Managed Cluster SDK version 1.0.0 which uses service fabric resource provider api-version 2021-05-01.
 * `New-AzServiceFabricManagedCluster` add parameters UpgradeCadence and ZonalResiliency.

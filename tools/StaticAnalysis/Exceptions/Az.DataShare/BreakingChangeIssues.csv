@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.DataShare","Microsoft.Azure.Commands.DataShare.Account.NewAzDataShareAccount","New-AzDataShareAccount","0","1050","The parameter set 'ByFieldsParameterSet' for cmdlet 'New-AzDataShareAccount' has been removed.","Add parameter set 'ByFieldsParameterSet' back to cmdlet 'New-AzDataShareAccount'."

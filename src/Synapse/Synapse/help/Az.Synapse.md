@@ -68,6 +68,9 @@ Gets information about linked services in workspace.
 ### [Get-AzSynapseManagedIdentitySqlControlSetting](Get-AzSynapseManagedIdentitySqlControlSetting.md)
 Gets Managed Identity Sql Control Settings.
 
+### [Get-AzSynapseManagedPrivateEndpoint](Get-AzSynapseManagedPrivateEndpoint.md)
+Gets a Synapse managed private endpoint.
+
 ### [Get-AzSynapseNotebook](Get-AzSynapseNotebook.md)
 Gets information about notebooks in a workspace.
 
@@ -88,6 +91,9 @@ Gets a Synapse Analytics role scope.
 
 ### [Get-AzSynapseSparkJob](Get-AzSynapseSparkJob.md)
 Gets a Synapse Analytics Spark job.
+
+### [Get-AzSynapseSparkJobDefinition](Get-AzSynapseSparkJobDefinition.md)
+Gets a Spark job definition in workspace.
 
 ### [Get-AzSynapseSparkPool](Get-AzSynapseSparkPool.md)
 Gets a Synapse Analytics Spark pool.
@@ -179,6 +185,9 @@ Creates a Synapse Analytics Firewall Rule.
 ### [New-AzSynapseIntegrationRuntimeKey](New-AzSynapseIntegrationRuntimeKey.md)
 Regenerate self-hosted integration runtime key.
 
+### [New-AzSynapseManagedPrivateEndpoint](New-AzSynapseManagedPrivateEndpoint.md)
+Creates a Synapse managed private endpoint.
+
 ### [New-AzSynapseManagedVirtualNetworkConfig](New-AzSynapseManagedVirtualNetworkConfig.md)
 Creates managed virtual network configuration.
 
@@ -221,6 +230,9 @@ Remove a node with the given name on an integration runtime.
 ### [Remove-AzSynapseLinkedService](Remove-AzSynapseLinkedService.md)
 Removes a linked service from workspace.
 
+### [Remove-AzSynapseManagedPrivateEndpoint](Remove-AzSynapseManagedPrivateEndpoint.md)
+Removes a Synape managed private endpoint.
+
 ### [Remove-AzSynapseNotebook](Remove-AzSynapseNotebook.md)
 Removes a notebook from a workspace.
 
@@ -229,6 +241,9 @@ Removes a pipeline from workspace.
 
 ### [Remove-AzSynapseRoleAssignment](Remove-AzSynapseRoleAssignment.md)
 Deletes a Synapse Analytics role assignment.
+
+### [Remove-AzSynapseSparkJobDefinition](Remove-AzSynapseSparkJobDefinition.md)
+Removes a Spark job definition from workspace.
 
 ### [Remove-AzSynapseSparkPool](Remove-AzSynapseSparkPool.md)
 Deletes a Synapse Analytics Spark pool.
@@ -307,6 +322,9 @@ Creates or updates a notebook in a workspace.
 
 ### [Set-AzSynapsePipeline](Set-AzSynapsePipeline.md)
 Creates a pipeline in workspace.
+
+### [Set-AzSynapseSparkJobDefinition](Set-AzSynapseSparkJobDefinition.md)
+Creates a Spark job definition in workspace.
 
 ### [Set-AzSynapseSqlActiveDirectoryAdministrator](Set-AzSynapseSqlActiveDirectoryAdministrator.md)
 Provisions an Azure AD administrator for Synapse Analytics SQL pool.

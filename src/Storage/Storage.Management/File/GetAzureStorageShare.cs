@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
@@ -110,6 +111,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = ShareResourceIdParameterSet)]
         public string Name { get; set; }
 
+        [Parameter(HelpMessage = "Share SnapshotTime",
+            Mandatory = false,
+            ParameterSetName = AccountObjectSingleParameterSet)]
+        [Parameter(HelpMessage = "Share SnapshotTime",
+            Mandatory = false,
+            ParameterSetName = AccountNameSingleParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public DateTime? SnapshotTime { get; set; }
+
         [Parameter(HelpMessage = "Specify this parameter to get the Share Usage in Bytes.",
             Mandatory = false,
             ParameterSetName = AccountObjectSingleParameterSet)]
@@ -120,7 +130,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             ParameterSetName = ShareResourceIdParameterSet)]
         public SwitchParameter GetShareUsage { get; set; }
-        
+
         [Parameter(Mandatory = false,
             HelpMessage = "Include deleted shares, by default list shares won't include deleted shares",
             ParameterSetName = AccountNameParameterSet)]
@@ -128,6 +138,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Include deleted shares, by default list shares won't include deleted shares",
             ParameterSetName = AccountObjectParameterSet)]
         public SwitchParameter IncludeDeleted { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Include share snapshots, by default list shares won't include share snapshots.",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Include share snapshots, by default list shares won't include share snapshots.",
+            ParameterSetName = AccountObjectParameterSet)]
+        public SwitchParameter IncludeSnapshot { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -157,16 +175,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (!string.IsNullOrEmpty(this.Name))
             {
-                GetShareExpand? expend = null;
+                string expend = null;
                 if(this.GetShareUsage)
                 {
-                    expend = GetShareExpand.Stats;
+                    expend = ShareGetExpand.Stats;
                 }
                 var Share = this.StorageClient.FileShares.Get(
                            this.ResourceGroupName,
                            this.StorageAccountName,
                            this.Name,
-                           expend);
+                           expend,
+                           xMsSnapshot: this.SnapshotTime is null? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o"));
                 WriteObject(new PSShare(Share));
             }
             else
@@ -174,7 +193,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 string listSharesExpand = null;
                 if (this.IncludeDeleted.IsPresent)
                 {
-                    listSharesExpand = ListSharesExpand.Deleted;
+                    listSharesExpand = ShareListExpand.Deleted;
+                }
+                if (this.IncludeSnapshot.IsPresent)
+                {
+                    listSharesExpand = string.IsNullOrEmpty(listSharesExpand) ? ShareListExpand.Snapshots : listSharesExpand + "," + ShareListExpand.Snapshots;
                 }
                 IPage<FileShareItem> shares = this.StorageClient.FileShares.List(
                            this.ResourceGroupName,

@@ -124,18 +124,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string EndDate = "End time of Time range for which recovery point need to be fetched";
             public const string Item = "Protected Item object for which recovery point need to be fetched";
             public const string RecoveryPointId = "Recovery point Id for which detail is needed";
-            public const string ILRRecoveryPoint =
-                "Recovery point to be explored for file folder restore";
-            public const string ILRConnect =
-                "Initiate an iCSCI connection for file folder restore";
-            public const string ILRExtend =
-                "Extend the existing iCSCI connection for file folder restore";
-            public const string ILRTerminate =
-                "Terminate the existing iCSCI connection for file folder restore";
-            public const string KeyFileDownloadLocation =
-                "Location where the key file should be downloaded in the case of encrypted VMs.";
-            public const string FileDownloadLocation =
-                "Location where the file should be downloaded in the case of file recovery. If -Path is not provided, the script file will be downloaded in the current directory.";
+            public const string ILRRecoveryPoint = "Recovery point to be explored for file folder restore";
+            public const string ILRConnect = "Initiate an iCSCI connection for file folder restore";
+            public const string ILRExtend = "Extend the existing iCSCI connection for file folder restore";
+            public const string ILRTerminate = "Terminate the existing iCSCI connection for file folder restore";
+            public const string KeyFileDownloadLocation = "Location where the key file should be downloaded in the case of encrypted VMs";
+            public const string FileDownloadLocation = "Location where the file should be downloaded in the case of file recovery. If -Path is not provided, the script file will be downloaded in the current directory";
+            public const string Tier = "Filter recovery points based on tier";
+            public const string IsReadyForMove = "checks whether the RP is ready to move to target tier. Use this along with target tier parameter";
+            public const string TargetTier = "Target tier to check move readiness of recovery point. Currently only valid value is VaultArchive";
+            public const string ArchivableRP = "Recovery Point to move to archive";
+            public const string SourceTier = "Source Tier for Recovery Point move. Currently the only acceptable value is 'VaultStandard' ";
+            public const string DestinationTier = "Destination Tier for Recovery Point move. Currently the only acceptable value is 'VaultArchive' ";
+            public const string RehydratePriority = "Rehydration priority for an archived recovery point while triggering the restore. Acceptable values are " +
+                "Standard, High.";
+            public const string RehydrateDuration = "Duration in days for which to keep the archived recovery point rehydrated. Value can range from" +
+                " 10 to 30 days, default value is 15 days.";
         }
 
         internal static class RestoreDisk
@@ -156,6 +160,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RestoreAsUnmanagedDisks = "Use this switch to specify to restore as unmanaged disks";
             public const string TargetZone = "Target zone to restore the disks";
             public const string RestoreAsManagedDisk = "Use this switch to specify to restore as managed disks.";
+            public const string UseSystemAssignedIdentity = "Use this switch to trigger MSI based restore with SystemAssigned Identity";
+            public const string UserAssignedIdentityId = "UserAssigned Identity Id to trigger MSI based restore with UserAssigned Identity"; 
         }
 
         internal static class RestoreFS
@@ -197,6 +203,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ForceOption = "Forces the data move operation (prevents confirmation dialog). This parameter is optional.";
             public const string CmdletOutput = "Please monitor the operation using Get-AzRecoveryServicesBackupJob cmdlet";
             public const string RetryOnlyFailed = "Switch parameter to try data move only for containers in the source vault which are not yet moved.";
+            public const string CorrelationId = "Correlation Id for triggering DS Move";
         }
 
         internal static class Encryption

@@ -44,7 +44,7 @@ INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
   [TransactionNodeName <String>]: Transaction node name.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.blockchain/remove-azblockchainmember
+https://docs.microsoft.com/powershell/module/az.blockchain/remove-azblockchainmember
 #>
 function Remove-AzBlockchainMember {
 [OutputType([System.Boolean])]
@@ -159,6 +159,8 @@ begin {
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

@@ -15,35 +15,35 @@ Creates a new azure active directory application.
 
 ### ApplicationWithoutCredentialParameterSet (Default)
 ```
-New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> [-IdentifierUri <String[]>] [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordPlainParameterSet
 ```
-New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> [-IdentifierUri <String[]>] [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithPasswordCredentialParameterSet
 ```
-New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> [-IdentifierUri <String[]>] [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -PasswordCredentials <PSADPasswordCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyPlainParameterSet
 ```
-New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> [-IdentifierUri <String[]>] [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -CertValue <String> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationWithKeyCredentialParameterSet
 ```
-New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage <String>]
+New-AzADApplication -DisplayName <String> [-IdentifierUri <String[]>] [-HomePage <String>]
  [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>] -KeyCredentials <PSADKeyCredential[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -172,15 +172,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IdentifierUris
+### -IdentifierUri
 The URIs that identify the application.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: IdentifierUris
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

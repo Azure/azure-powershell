@@ -63,6 +63,11 @@ function Test-ManagedAppType
 	Assert-AreEqual $appType.Id $appTypeFromGet.Id
 	Assert-HashtableEqual $appType.Tags $appTypeFromGet.Tags
 
+	# Test noop
+	$appTypeNoop = $appType | Set-AzServiceFabricManagedClusterApplicationType
+	Assert-AreEqual "Succeeded" $appTypeNoop.ProvisioningState
+	Assert-AreEqualObjectProperties $appType $appTypeNoop
+
 	$removeResponse = Remove-AzServiceFabricManagedClusterApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Force -PassThru -Verbose
 	Assert-True { $removeResponse }
 	
@@ -111,6 +116,11 @@ function Test-ManagedAppTypeVersion
 	Assert-AreEqual $appTypeVersion.Id $appTypeVersionFromGet.Id
 	Assert-HashtableEqual $appTypeVersion.Tags $appTypeVersionFromGet.Tags
 
+	# Test noop
+	$appTypeVersionNoop = $appTypeVersion | Set-AzServiceFabricManagedClusterApplicationTypeVersion
+	Assert-AreEqual "Succeeded" $appTypeVersionNoop.ProvisioningState
+	Assert-AreEqualObjectProperties $appTypeVersion $appTypeVersionNoop
+
 	$removeResponse = Remove-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $v1 -Force -PassThru -Verbose
 	Assert-True { $removeResponse }
 
@@ -157,7 +167,7 @@ function Test-ManagedApp
 	Assert-AreEqual $app.Id $appFromGet.Id
 
 	$service = New-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Stateless -InstanceCount -1 -ApplicationName $appName -Name $serviceName -Type $statelessServiceTypeName -PartitionSchemeSingleton -Verbose
-	Assert-AreEqual "Succeeded" $service.Properties.ProvisioningState
+	Assert-AreEqual "Succeeded" $service.ProvisioningState
 
 	$serviceFromGet = Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName
 	Assert-NotNull $serviceFromGet
@@ -175,6 +185,11 @@ function Test-ManagedApp
 	Assert-AreEqual "01:56:40" $app.UpgradePolicy.RollingUpgradeMonitoringPolicy.UpgradeTimeout
 	Assert-AreEqual "01:23:20" $app.UpgradePolicy.RollingUpgradeMonitoringPolicy.UpgradeDomainTimeout
 	Assert-AreEqual "Rollback" $app.UpgradePolicy.RollingUpgradeMonitoringPolicy.FailureAction
+
+	# Test noop
+	$appNoop = $app | Set-AzServiceFabricManagedClusterApplication
+	Assert-AreEqual "Succeeded" $appNoop.ProvisioningState
+	Assert-AreEqualObjectProperties $app $appNoop
 
 	$removeResponse = Remove-AzServiceFabricManagedClusterApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName -Force -PassThru -Verbose
 	Assert-True { $removeResponse }
@@ -221,7 +236,7 @@ function Test-ManagedService
 	$statefulService = New-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Stateful -TargetReplicaSetSize 3 `
 		-MinReplicaSetSize 2 -HasPersistedState -ApplicationName $appName -Name $statefulServiceName -Type $statefulServiceTypeName -PartitionSchemeUniformInt64 `
 		-PartitionCount 1 -LowKey 0 -HighKey 25 -Verbose
-	Assert-AreEqual "Succeeded" $statefulService.Properties.ProvisioningState
+	Assert-AreEqual "Succeeded" $statefulService.ProvisioningState
 
 	$statefulServiceFromGet = Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $statefulServiceName
 	Assert-NotNull $statefulServiceFromGet
@@ -229,7 +244,7 @@ function Test-ManagedService
 
 	$statelessService = New-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Stateless -InstanceCount -1 `
 		-ApplicationName $appName -Name $statelessServiceName -Type $statelessServiceTypeName -PartitionSchemeSingleton -Verbose
-	Assert-AreEqual "Succeeded" $statelessService.Properties.ProvisioningState
+	Assert-AreEqual "Succeeded" $statelessService.ProvisioningState
 
 	$statelessServiceFromGet = Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $statelessServiceName
 	Assert-NotNull $statelessServiceFromGet
@@ -242,20 +257,30 @@ function Test-ManagedService
 
 	$statefulService = $statefulServiceFromGet | Set-AzServiceFabricManagedClusterService -Stateful -ReplicaRestartWaitDuration $replicaRestartWaitDuration -QuorumLossWaitDuration $quorumLossWaitDuration `
 		-StandByReplicaKeepDuration $standByReplicaKeepDuration -ServicePlacementTimeLimit $servicePlacementTimeLimit -Verbose
-	Assert-AreEqual "Succeeded" $statefulService.Properties.ProvisioningState
-	Assert-AreEqual $replicaRestartWaitDuration $statefulService.Properties.ReplicaRestartWaitDuration
-	Assert-AreEqual $quorumLossWaitDuration $statefulService.Properties.QuorumLossWaitDuration
-	Assert-AreEqual $standByReplicaKeepDuration $statefulService.Properties.StandByReplicaKeepDuration
-	Assert-AreEqual $servicePlacementTimeLimit $statefulService.Properties.ServicePlacementTimeLimit
+	Assert-AreEqual "Succeeded" $statefulService.ProvisioningState
+	Assert-AreEqual $replicaRestartWaitDuration $statefulService.ReplicaRestartWaitDuration
+	Assert-AreEqual $quorumLossWaitDuration $statefulService.QuorumLossWaitDuration
+	Assert-AreEqual $standByReplicaKeepDuration $statefulService.StandByReplicaKeepDuration
+	Assert-AreEqual $servicePlacementTimeLimit $statefulService.ServicePlacementTimeLimit
+
+	# Test noop
+	$statefulServiceNoop = $statefulService | Set-AzServiceFabricManagedClusterService -Stateful -Verbose
+	Assert-AreEqual "Succeeded" $statefulServiceNoop.ProvisioningState
+	Assert-AreEqualObjectProperties $statefulService $statefulServiceNoop
 
 	$minInstancePercentage = 20
 	$minInstanceCount = 2
 
 	$statelessService = $statelessServiceFromGet | Set-AzServiceFabricManagedClusterService -Stateless -MinInstancePercentage $minInstancePercentage `
 		-MinInstanceCount $minInstanceCount -Verbose
-	Assert-AreEqual "Succeeded" $statelessService.Properties.ProvisioningState
-	Assert-AreEqual $minInstancePercentage $statelessService.Properties.MinInstancePercentage
-	Assert-AreEqual $minInstanceCount $statelessService.Properties.MinInstanceCount
+	Assert-AreEqual "Succeeded" $statelessService.ProvisioningState
+	Assert-AreEqual $minInstancePercentage $statelessService.MinInstancePercentage
+	Assert-AreEqual $minInstanceCount $statelessService.MinInstanceCount
+
+	# Test noop
+	$statelessServiceNoop = $statelessService | Set-AzServiceFabricManagedClusterService -Stateless -Verbose
+	Assert-AreEqual "Succeeded" $statelessServiceNoop.ProvisioningState
+	Assert-AreEqualObjectProperties $statelessService $statelessServiceNoop 
 
 	$removeStatefulServiceResponse = Remove-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $statefulServiceName -Force -PassThru -Verbose
 	Assert-True { $removeStatefulServiceResponse }

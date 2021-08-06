@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll","Microsoft.Azure.Commands.ServiceFabric.Commands.GetAzServiceFabricManagedClusterService","Get-AzServiceFabricManagedClusterService","0","3010","The property 'ServiceDnsName' of type 'Microsoft.Azure.Management.ServiceFabricManagedClusters.Models.ServiceResourceProperties' has been removed.","Add the property 'ServiceDnsName' back to type 'Microsoft.Azure.Management.ServiceFabricManagedClusters.Models.ServiceResourceProperties'."

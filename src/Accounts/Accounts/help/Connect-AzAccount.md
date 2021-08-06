@@ -14,34 +14,44 @@ Connect to Azure with an authenticated account for use with cmdlets from the Az 
 
 ### UserWithSubscriptionId (Default)
 ```
-Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-Subscription <String>] [-ContextName <String>]
- [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-UseDeviceAuthentication] [-Force]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-Subscription <String>] [-AuthScope <String>]
+ [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-UseDeviceAuthentication]
+ [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-ServicePrincipal] -Tenant <String>
- [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
- [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
+ [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UserWithCredential
 ```
 Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-Tenant <String>]
- [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
- [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
+ [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificateWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
- [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation]
- [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>]
+ [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force] [-SendCertificateChain]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ServicePrincipalCertificateFileWithSubscriptionId
+```
+Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrincipal] -Tenant <String>
+ [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
+ [-Force] [-SendCertificateChain] -CertificatePath <String> [-CertificatePassword <SecureString>]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccessTokenWithSubscriptionId
@@ -56,10 +66,9 @@ Connect-AzAccount [-Environment <String>] [-Tenant <String>] -AccessToken <Strin
 ### ManagedServiceLogin
 ```
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-AccountId <String>] [-Identity]
- [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-ManagedServiceSecret <SecureString>]
- [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
- [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
+ [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,22 +193,54 @@ more information on creating a self-signed certificates and assigning them permi
 [Use Azure PowerShell to create a service principal with a certificate](/azure/active-directory/develop/howto-authenticate-service-principal-powershell)
 
 ```powershell
-$Thumbprint = '0SZTNJ34TCCMUJ5MJZGR8XQD3S0RVHJBA33Z8ZXV'
-$TenantId = '4cd76576-b611-43d0-8f2b-adcb139531bf'
-$ApplicationId = '3794a65a-e4e4-493d-ac1d-f04308d712dd'
+$Thumbprint = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+$TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
+$ApplicationId = '00000000-0000-0000-0000-00000000'
 Connect-AzAccount -CertificateThumbprint $Thumbprint -ApplicationId $ApplicationId -Tenant $TenantId -ServicePrincipal
 ```
 
 ```Output
-Account             SubscriptionName TenantId            Environment
--------             ---------------- --------            -----------
-xxxx-xxxx-xxxx-xxxx Subscription1    xxxx-xxxx-xxxx-xxxx AzureCloud
+Account                      SubscriptionName TenantId                        Environment
+-------                      ---------------- --------                        -----------
+xxxxxxxx-xxxx-xxxx-xxxxxxxxx Subscription1    yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy AzureCloud
 
-Account          : 3794a65a-e4e4-493d-ac1d-f04308d712dd
+Account          : xxxxxxxx-xxxx-xxxx-xxxxxxxx
 SubscriptionName : MyTestSubscription
-SubscriptionId   : 85f0f653-1f86-4d2c-a9f1-042efc00085c
-TenantId         : 4cd76576-b611-43d0-8f2b-adcb139531bf
+SubscriptionId   : zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz
+TenantId         : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy
 Environment      : AzureCloud
+```
+
+### Example 8: Connect with AuthScope
+AuthScope is used to support scenario that data plane resources have enhanced authentication than ARM resources, e.g. storage needs MFA but ARM does not.
+Once AuthScope is specified, e.g. Storage, Connect-AzAccount will first login with storage scope https://storage.azure.com/, then silently require token for ARM.
+
+```powershell
+Connect-AzAccount -AuthScope Storage
+```
+
+```Output
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
+```
+
+### Example 9: Connect using certificate file
+
+This example connects to an Azure account using certificate-based service principal authentication.
+The certificate file, which is specified by `CertficatePath`, should contains both certificate and private key as the input.
+
+```powershell
+$securePassword = $plainPassword | ConvertTo-SecureString -AsPlainText -Force
+$TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
+$ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
+Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $securePassword
+```
+
+```Output
+Account                     SubscriptionName TenantId                        Environment
+-------                     ---------------- --------                        -----------
+xxxxxxxx-xxxx-xxxx-xxxxxxxx Subscription1    yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy AzureCloud
 ```
 
 ## PARAMETERS
@@ -261,7 +302,52 @@ Application ID of the service principal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthScope
+Optional OAuth scope for login, supported pre-defined values: AadGraph, AnalysisServices, Attestation, Batch, DataLake, KeyVault, OperationalInsights, Storage, Synapse. It also supports resource id like 'https://storage.azure.com/'.
+
+```yaml
+Type: System.String
+Parameter Sets: UserWithSubscriptionId, ServicePrincipalWithSubscriptionId, UserWithCredential, ServicePrincipalCertificateWithSubscriptionId, ManagedServiceLogin
+Aliases: AuthScopeTypeName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificatePassword
+The password required to access the pkcs#12 certificate file.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: ServicePrincipalCertificateFileWithSubscriptionId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificatePath
+The path of certficate file in pkcs#12 format.
+
+```yaml
+Type: System.String
+Parameter Sets: ServicePrincipalCertificateFileWithSubscriptionId
 Aliases:
 
 Required: True
@@ -418,54 +504,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedServiceHostName
-
-Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. "http://localhost:50342/oauth2/token". Host name for the managed service.
-
-```yaml
-Type: System.String
-Parameter Sets: ManagedServiceLogin
-Aliases:
-
-Required: False
-Position: Named
-Default value: localhost
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedServicePort
-
-Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. "http://localhost:50342/oauth2/token".Port number for the managed service.
-
-```yaml
-Type: System.Int32
-Parameter Sets: ManagedServiceLogin
-Aliases:
-
-Required: False
-Position: Named
-Default value: 50342
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedServiceSecret
-
-Obsolete. To use customized MSI secret, please set environment variable MSI_SECRET. Token for the managed service login.
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: ManagedServiceLogin
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MaxContextPopulation
 
 Max subscription number to populate contexts after login. Default is 25. To populate all subscriptions to contexts, set to -1.
@@ -500,6 +538,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SendCertificateChain
+Specifies if the x5c claim (public key of the certificate) should be sent to the STS to achieve easy certificate rollover in Azure AD.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServicePrincipal
 
 Indicates that this account authenticates by providing service principal credentials.
@@ -518,7 +571,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases:
 
 Required: False
@@ -598,7 +651,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId
+Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases: Domain, TenantId
 
 Required: True

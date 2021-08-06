@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>Argument completer implementation for ProvisioningStateType.</summary>
+    /// <summary>The provisioning state of the resource provider.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ProvisioningStateTypeTypeConverter))]
     public partial struct ProvisioningStateType :
         System.Management.Automation.IArgumentCompleter

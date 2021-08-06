@@ -105,22 +105,22 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Object Replication Policy SourceAccount.",
+            HelpMessage = "Object Replication Policy SourceAccount. It should be resource id if storage account property allowCrossTenantReplication set to false.",
             ParameterSetName = AccountNameParameterSet)]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Object Replication Policy SourceAccount.",
+            HelpMessage = "Object Replication Policy SourceAccount. It should be resource id if storage account property allowCrossTenantReplication set to false.",
             ParameterSetName = AccountObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SourceAccount { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Object Replication Policy DestinationAccount. Default value will be the input StorageAccountName.",
+            HelpMessage = "Object Replication Policy DestinationAccount, if SourceAccount is account name it should be account name, else should be account resource id. Default value will be the input StorageAccountName, or the resouceID of the account.",
             ParameterSetName = AccountNameParameterSet)]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Object Replication Policy DestinationAccount. Default value will be the account name of the input account object.",
+            HelpMessage = "Object Replication Policy DestinationAccount, if SourceAccount is account name it should be account name, else should be account resource id. Default value will be the account name, or resource ID of the input account object.",
             ParameterSetName = AccountObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string DestinationAccount { get; set; }
@@ -161,11 +161,25 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 // Build the policy object to set from the input policy properties
                 if (ParameterSetName != PolicyObjectParameterSet)
                 {
+                    // If not specify the destination account, will set destination account to the account which the policy will be set to
+                    if (string.IsNullOrWhiteSpace(this.DestinationAccount))
+                    {
+                        // If source account is resource ID, destonation account also need be resource ID
+                        if (this.SourceAccount.Contains("/"))
+                        {
+                            var account = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.StorageAccountName);
+                            this.DestinationAccount = account.Id;
+                        }
+                        else // if source account is account name, destination account should also be account name
+                        {
+                            this.DestinationAccount = this.StorageAccountName;
+                        }
+                    }
+
                     policyToSet = new ObjectReplicationPolicy()
                     {
                         SourceAccount = this.SourceAccount,
-                        // If not specify the destination account, will set destination account to the account which the policy will be set to
-                        DestinationAccount = string.IsNullOrWhiteSpace(this.DestinationAccount) ? this.StorageAccountName : this.DestinationAccount,
+                        DestinationAccount = this.DestinationAccount,
                         Rules = PSObjectReplicationPolicyRule.ParseObjectReplicationPolicyRules(this.Rule)
                     };
                 }

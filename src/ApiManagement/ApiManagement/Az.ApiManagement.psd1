@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.5.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.ApiManagement.dll', 
@@ -172,7 +172,8 @@ CmdletsToExport = 'Add-AzApiManagementApiToGateway',
                'Set-AzApiManagementSubscription', 
                'Set-AzApiManagementTenantAccess', 'Set-AzApiManagementUser', 
                'Update-AzApiManagementApiRelease', 'Update-AzApiManagementCache', 
-               'Update-AzApiManagementRegion'
+               'Update-AzApiManagementRegion', 
+               'Sync-AzApiManagementKeyVaultSecret', 'New-AzApiManagementKeyVaultObject'
 
 # Variables to export from this module
 # VariablesToExport = @()

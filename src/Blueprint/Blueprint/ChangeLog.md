@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Fix custom delegating handler to only apply to Blueprint requests
+
 ## Version 0.3.0
 * Added a fix to unregister the API delegating handler from blueprint client
 

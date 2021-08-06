@@ -18,7 +18,7 @@ Adds a rule configuration to a load balancer.
 Add-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
  [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT]
- [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-BackendAddressPool <PSBackendAddressPool>]
+ [-FrontendIpConfiguration <PSFrontendIPConfiguration>] [-BackendAddressPool <PSBackendAddressPool[]>]
  [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Add-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Pro
 Add-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-LoadDistribution <String>] [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>]
  [-EnableFloatingIP] [-EnableTcpReset] [-DisableOutboundSNAT] [-FrontendIpConfigurationId <String>]
- [-BackendAddressPoolId <String>] [-ProbeId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-BackendAddressPoolId <String[]>] [-ProbeId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -47,13 +47,27 @@ The first command gets the load balancer named MyLoadBalancer, and then stores i
 The second command uses the pipeline operator to pass the load balancer in $slb to **Add-AzLoadBalancerRuleConfig**, which adds the rule configuration named NewRule.
 The third command will update the load balancer in azure with the new Load Balancer Rule Config.
 
+### Example 2: Add a rule configuration with two backend address pools to a load balancer
+```
+PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\> $MyBackendPool1 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool1Name
+PS C:\> $MyBackendPool2 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool2Name
+PS C:\> $slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol All -FrontendPort 0 -BackendPort 0 -BackendAddressPool $MyBackendPool1, $MyBackendPool2
+PS C:\>$slb | Set-AzLoadBalancer
+```
+This enables Gateway Load Balancer to have multiple backend pools
+The first command will get the load balancer named MyLoadBalancer, and then stores it in the variable $slb.
+The second and thrid command will get the backend address pools to be added the rule
+The forth command will add a new rule with configured backend pools
+the fifth command will update the load balancer in azure with the new Load Balancer Rule Config.
+
 ## PARAMETERS
 
 ### -BackendAddressPool
 Specifies the backend address pool to associate with a load balancer rule configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool[]
 Parameter Sets: SetByResource
 Aliases:
 
@@ -68,7 +82,7 @@ Accept wildcard characters: False
 Specifies the ID of a **BackendAddressPool** object to associate with a load balancer rule configuration.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: SetByResourceId
 Aliases:
 

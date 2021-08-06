@@ -215,6 +215,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSDateAfterModification TierToCool { get; set; }
         public PSDateAfterModification TierToArchive { get; set; }
         public PSDateAfterModification Delete { get; set; }
+        public bool? EnableAutoTierToHotFromCool { get; set; }
 
         public PSManagementPolicyBaseBlob()
         { }
@@ -224,6 +225,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.TierToCool = blobAction.TierToCool is null ? null : new PSDateAfterModification(blobAction.TierToCool);
             this.TierToArchive = blobAction.TierToArchive is null ? null : new PSDateAfterModification(blobAction.TierToArchive);
             this.Delete = blobAction.Delete is null ? null : new PSDateAfterModification(blobAction.Delete);
+            this.EnableAutoTierToHotFromCool = blobAction.EnableAutoTierToHotFromCool;
         }
         public ManagementPolicyBaseBlob ParseManagementPolicyBaseBlob()
         {
@@ -231,7 +233,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 TierToCool = this.TierToCool is null ? null : this.TierToCool.ParseDateAfterModification(),
                 TierToArchive = this.TierToArchive is null ? null : this.TierToArchive.ParseDateAfterModification(),
-                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterModification()
+                Delete = this.Delete is null ? null : this.Delete.ParseDateAfterModification(),
+                EnableAutoTierToHotFromCool = this.EnableAutoTierToHotFromCool
             };
         }
     }
@@ -300,26 +303,51 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     public class PSDateAfterModification
     {
         public int? DaysAfterModificationGreaterThan { get; set; }
+        public int? DaysAfterLastAccessTimeGreaterThan { get; set; }
 
         public PSDateAfterModification()
         {
             this.DaysAfterModificationGreaterThan = null;
+            this.DaysAfterLastAccessTimeGreaterThan = null;
         }
 
         public PSDateAfterModification(int daysAfterModificationGreaterThan)
         {
             this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
+            this.DaysAfterLastAccessTimeGreaterThan = null;
+        }
+
+        public PSDateAfterModification(int? daysAfterModificationGreaterThan, int? daysAfterLastAccessTimeGreaterThan)
+        {
+            this.DaysAfterModificationGreaterThan = daysAfterModificationGreaterThan;
+            this.DaysAfterLastAccessTimeGreaterThan = daysAfterLastAccessTimeGreaterThan;
         }
 
         public PSDateAfterModification(DateAfterModification data)
         {
-            this.DaysAfterModificationGreaterThan = Convert.ToInt32(data.DaysAfterModificationGreaterThan);
+            if (data.DaysAfterModificationGreaterThan is null)
+            {
+                this.DaysAfterModificationGreaterThan = null;
+            }
+            else
+            {
+                this.DaysAfterModificationGreaterThan = Convert.ToInt32(data.DaysAfterModificationGreaterThan);
+            }
+            if (data.DaysAfterLastAccessTimeGreaterThan is null)
+            {
+                this.DaysAfterLastAccessTimeGreaterThan = null;
+            }
+            else
+            {
+                this.DaysAfterLastAccessTimeGreaterThan = Convert.ToInt32(data.DaysAfterLastAccessTimeGreaterThan);
+            }
         }
         public DateAfterModification ParseDateAfterModification()
         {
-            return this.DaysAfterModificationGreaterThan is null? new DateAfterModification() : new DateAfterModification(this.DaysAfterModificationGreaterThan.Value);
+            return new DateAfterModification(this.DaysAfterModificationGreaterThan, this.DaysAfterLastAccessTimeGreaterThan);
         }
     }
+
 
     /// <summary>
     /// Wrapper of SDK type DateAfterCreation

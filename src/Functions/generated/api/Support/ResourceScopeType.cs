@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="ResourceScopeType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ResourceScopeType(System.Convert.ToString(value));
+            return new ResourceScopeType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ResourceScopeType</summary>

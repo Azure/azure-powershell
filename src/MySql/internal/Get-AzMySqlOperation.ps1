@@ -97,6 +97,7 @@ begin {
             List = 'Az.MySql.private\Get-AzMySqlOperation_List';
             List1 = 'Az.MySql.private\Get-AzMySqlOperation_List1';
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

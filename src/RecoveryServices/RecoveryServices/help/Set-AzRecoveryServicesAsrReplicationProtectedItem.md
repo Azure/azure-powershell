@@ -16,21 +16,23 @@ Sets recovery properties such as target network and virtual machine size for the
 Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem> [-Name <String>]
  [-Size <String>] [-UpdateNic <String>] [-RecoveryNetworkId <String>] [-PrimaryNic <String>]
  [-RecoveryCloudServiceId <String>] [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>]
- [-NicSelectionType <String>] [-RecoveryResourceGroupId <String>] [-LicenseType <String>]
- [-RecoveryAvailabilitySet <String>] [-RecoveryVirtualMachineScaleSetId <String>] [-SqlServerLicenseType <String>]
+ [-TestNicSubnetName <String>] [-TestNicStaticIPAddress <String>] [-NicSelectionType <String>]
+ [-RecoveryResourceGroupId <String>] [-LicenseType <String>] [-RecoveryAvailabilitySet <String>]
+ [-SqlServerLicenseType <String>]
  [-RecoveryVmTag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-DiskTag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-RecoveryNicTag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-RecoveryAvailabilityZone <String>] [-RecoveryProximityPlacementGroupId <String>]
- [-EnableAcceleratedNetworkingOnRecovery] [-RecoveryBootDiagStorageAccountId <String>]
+ [-RecoveryVirtualMachineScaleSetId <String>] [-EnableAcceleratedNetworkingOnRecovery]
+ [-RecoveryBootDiagStorageAccountId <String>]
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>]
  [-DiskIdToDiskEncryptionSetMap <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-RecoveryPublicIPAddressId <String>] [-RecoveryNetworkSecurityGroupId <String>]
  [-RecoveryLBBackendAddressPoolId <String[]>] [-TfoAzureVMName <String>]
- [-ASRVMNicConfiguration <ASRVMNicConfig[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ASRVMNicConfiguration <ASRVMNicConfig[]>] [-TestNetworkId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -465,7 +467,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryNicTag 
+### -RecoveryNicTag
 Specify the tags for the target NICs of the VM. This is applicable for Vmware to Azure and HyperV to Azure providers.
 
 ```yaml
@@ -579,6 +581,51 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: NoLicenseType, PAYG, AHUB
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestNetworkId
+Specifies the ARM Id of test network (Applicable only for VMware to Azure replication scenario).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestNicStaticIPAddress
+Specifies the test static IP address (Applicable only for VMware to Azure replication scenario).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestNicSubnetName
+Specifies the name of the test subnet (Applicable only for VMware to Azure replication scenario).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

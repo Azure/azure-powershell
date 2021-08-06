@@ -16,9 +16,8 @@ Create new service fabric managed service under the specified application and cl
 ```
 New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ApplicationName] <String> [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32>
- [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-InstanceCloseDelayDuration <TimeSpan>]
- [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
- [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
+ [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-DefaultMoveCost <MoveCostEnum>]
+ [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
  [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -28,9 +27,8 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
 ```
 New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ApplicationName] <String> [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32>
- [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-InstanceCloseDelayDuration <TimeSpan>]
- [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
- [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
+ [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-DefaultMoveCost <MoveCostEnum>]
+ [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
  [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-PartitionSchemeUniformInt64] -PartitionCount <Int32> -LowKey <Int64> -HighKey <Int64>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -40,9 +38,8 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
 ```
 New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ApplicationName] <String> [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32>
- [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-InstanceCloseDelayDuration <TimeSpan>]
- [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
- [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
+ [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-DefaultMoveCost <MoveCostEnum>]
+ [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
  [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-PartitionSchemeNamed] -PartitionName <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -52,11 +49,10 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
 ```
 New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ApplicationName] <String> [-Name] <String> -Type <String> [-Stateful] -TargetReplicaSetSize <Int32>
- -MinReplicaSetSize <Int32> [-HasPersistedState] [-DropSourceReplicaOnMove]
- [-ReplicaRestartWaitDuration <TimeSpan>] [-QuorumLossWaitDuration <TimeSpan>]
- [-StandByReplicaKeepDuration <TimeSpan>] [-ServicePlacementTimeLimit <TimeSpan>]
- [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
- [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
+ -MinReplicaSetSize <Int32> [-HasPersistedState] [-ReplicaRestartWaitDuration <TimeSpan>]
+ [-QuorumLossWaitDuration <TimeSpan>] [-StandByReplicaKeepDuration <TimeSpan>]
+ [-ServicePlacementTimeLimit <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>]
+ [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
  [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -66,11 +62,10 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
 ```
 New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ApplicationName] <String> [-Name] <String> -Type <String> [-Stateful] -TargetReplicaSetSize <Int32>
- -MinReplicaSetSize <Int32> [-HasPersistedState] [-DropSourceReplicaOnMove]
- [-ReplicaRestartWaitDuration <TimeSpan>] [-QuorumLossWaitDuration <TimeSpan>]
- [-StandByReplicaKeepDuration <TimeSpan>] [-ServicePlacementTimeLimit <TimeSpan>]
- [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
- [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
+ -MinReplicaSetSize <Int32> [-HasPersistedState] [-ReplicaRestartWaitDuration <TimeSpan>]
+ [-QuorumLossWaitDuration <TimeSpan>] [-StandByReplicaKeepDuration <TimeSpan>]
+ [-ServicePlacementTimeLimit <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>]
+ [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
  [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-PartitionSchemeUniformInt64] -PartitionCount <Int32> -LowKey <Int64> -HighKey <Int64>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -80,11 +75,10 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
 ```
 New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ApplicationName] <String> [-Name] <String> -Type <String> [-Stateful] -TargetReplicaSetSize <Int32>
- -MinReplicaSetSize <Int32> [-HasPersistedState] [-DropSourceReplicaOnMove]
- [-ReplicaRestartWaitDuration <TimeSpan>] [-QuorumLossWaitDuration <TimeSpan>]
- [-StandByReplicaKeepDuration <TimeSpan>] [-ServicePlacementTimeLimit <TimeSpan>]
- [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
- [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
+ -MinReplicaSetSize <Int32> [-HasPersistedState] [-ReplicaRestartWaitDuration <TimeSpan>]
+ [-QuorumLossWaitDuration <TimeSpan>] [-StandByReplicaKeepDuration <TimeSpan>]
+ [-ServicePlacementTimeLimit <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>]
+ [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
  [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-PartitionSchemeNamed] -PartitionName <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -233,21 +227,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DropSourceReplicaOnMove
-Specify the drop source replica on move property for the managed service
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Force
 Continue without prompts
 
@@ -287,22 +266,6 @@ Parameter Sets: Stateless-UniformInt64Range, Stateful-UniformInt64Range
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceCloseDelayDuration
-Specify the instance close delay duration for the managed service.
-Duration represented in ISO 8601 format 'hh:mm:ss'
-
-```yaml
-Type: System.TimeSpan
-Parameter Sets: Stateless-Singleton, Stateless-UniformInt64Range, Stateless-Named
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -552,21 +515,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServiceDnsName
-Specify the placement constraints of the managed service, as a string.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

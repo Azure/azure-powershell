@@ -92,6 +92,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestStorageBlobChangeFeed()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobChangeFeed");
-        }        
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobContainerSoftDelete()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainerSoftDelete");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobLastAccessTimeTracking()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobLastAccessTimeTracking");
+        }
     }
 }

@@ -528,4 +528,10 @@
   <data name="InteractiveAuthNotSupported" xml:space="preserve">
     <value>Interactive authentication is not supported in this session, please run cmdlet 'Connect-AzAccount -UseDeviceAuthentication'.</value>
   </data>
+  <data name="PreviewFunctionMessage" xml:space="preserve">
+    <value>This function is in preview. It may not be available in the selected subscription.</value>
+  </data>
+  <data name="TokenCachePersistenceCheckError" xml:space="preserve">
+    <value>Persistence check fails due to unknown error</value>
+  </data>
 </root>

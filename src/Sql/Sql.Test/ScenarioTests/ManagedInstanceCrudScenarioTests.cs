@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateManagedInstanceWithIdentity");
         }
 
-        [Fact(Skip = "Skip due to bug in backend which is currently deploying")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateUpdateManagedInstanceWithMinimalTlsVersion()
         {

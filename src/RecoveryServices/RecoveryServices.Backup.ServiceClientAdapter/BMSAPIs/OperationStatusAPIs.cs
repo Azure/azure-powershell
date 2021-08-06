@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns></returns>
-        public ServiceClientModel.PrepareDataMoveResponse
+        public PrepareDataMoveResponse
             GetPrepareDataMoveOperationResult(
             string operationId,
             string vaultName = null,

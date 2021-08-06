@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineInEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineInEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePiping()
         {
             TestRunner.RunTestScript("Test-VirtualMachinePiping");
@@ -152,6 +159,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMImageEdgeZoneCmdletOutputFormat()
+        {
+            TestRunner.RunTestScript("Test-VMImageEdgeZoneCmdletOutputFormat");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVMSizeFromAllLocations()
         {
             TestRunner.RunTestScript("Test-GetVMSizeFromAllLocations");
@@ -233,6 +247,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineManagedDiskConversion()
         {
             TestRunner.RunTestScript("Test-VirtualMachineManagedDiskConversion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineDiskDeleteOption()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineDiskDeleteOption");
         }
 
         [Fact]
@@ -380,6 +401,34 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestNewAzVMDefaultingSize()
         {
             TestRunner.RunTestScript("Test-NewAzVMDefaultingSize");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestInvokeAzVMInstallPatch()
+        {
+            TestRunner.RunTestScript("Test-InvokeAzVMInstallPatch");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineAssessmentMode()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineAssessmentMode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineEnableAutoUpdate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineEnableAutoUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCapacityReservation()
+        {
+            TestRunner.RunTestScript("Test-CapacityReservation");
         }
     }
 }

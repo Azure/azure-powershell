@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'Initialize-AzMigrateReplicationInfrastructure' {
     It 'Default' -skip {
         $response = Initialize-AzMigrateReplicationInfrastructure -ProjectName $env.srsinitinfraProjectName -ResourceGroupName $env.srsinitinfraResourceGroupName -Scenario $env.srsinitinfraScenario -TargetRegion $env.srsinitinfraTargetRegion
-        $response | Should -Be $true
+        $response[$response.length -1] | Should -Be $true
     }
 }

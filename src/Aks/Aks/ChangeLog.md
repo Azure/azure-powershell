@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Added `Start-AzAksCluster`, `Stop-AzAksCluster`, `Get-AzAksUpgradeProfile` and `Get-AzAksNodePoolUpgradeProfile`. [#14194]
+* Added property `IdentityProfile` in the output of `Get-AzAksCluster`. [#12546]
+
+## Version 2.2.0
+* Added parameter `AvailabilityZone` for `New-AzAksNodePool`. [#14505]
+
+## Version 2.1.1
+* Fixed the issue that `Set-AzAks` will fail in Automation Runbook. [#15006]
+
 ## Version 2.1.0
 * Added support `AcrNameToAttach` in `Set-AzAksCluster`. [#14692]
 * Added support `AcrNameToDetach` in `Set-AzAksCluster`. [#14693] 
