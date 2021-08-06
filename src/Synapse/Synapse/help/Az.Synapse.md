@@ -69,7 +69,7 @@ Gets information about linked services in workspace.
 Gets Managed Identity Sql Control Settings.
 
 ### [Get-AzSynapseManagedPrivateEndpoint](Get-AzSynapseManagedPrivateEndpoint.md)
-Gets a Synapse managed private endpoint.
+Gets information about mananged private endpoints in a workspace
 
 ### [Get-AzSynapseNotebook](Get-AzSynapseNotebook.md)
 Gets information about notebooks in a workspace.
@@ -186,7 +186,7 @@ Creates a Synapse Analytics Firewall Rule.
 Regenerate self-hosted integration runtime key.
 
 ### [New-AzSynapseManagedPrivateEndpoint](New-AzSynapseManagedPrivateEndpoint.md)
-Creates a Synapse managed private endpoint.
+Creates or updates a managed private endpoint in a workspace.
 
 ### [New-AzSynapseManagedVirtualNetworkConfig](New-AzSynapseManagedVirtualNetworkConfig.md)
 Creates managed virtual network configuration.
@@ -231,7 +231,7 @@ Remove a node with the given name on an integration runtime.
 Removes a linked service from workspace.
 
 ### [Remove-AzSynapseManagedPrivateEndpoint](Remove-AzSynapseManagedPrivateEndpoint.md)
-Removes a Synape managed private endpoint.
+Removes a managed private endpoint from a workspace.
 
 ### [Remove-AzSynapseNotebook](Remove-AzSynapseNotebook.md)
 Removes a notebook from a workspace.
@@ -427,9 +427,6 @@ Updates the vulnerability assessment settings of a workspace.
 
 ### [Update-AzSynapseWorkspace](Update-AzSynapseWorkspace.md)
 Updates a Synapse Analytics workspace.
-
-### [Update-AzSynapseWorkspaceKey](Update-AzSynapseWorkspaceKey.md)
-Updates a workspace key.
 
 ### [Wait-AzSynapseSparkJob](Wait-AzSynapseSparkJob.md)
 Waits for a Synapse Analytics Spark job to complete.
