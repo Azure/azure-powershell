@@ -56,9 +56,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.EncryptionKeyIdentifier)]
         public string EncryptionKeyIdentifier { get;  set; }
 
-        //[Parameter(Mandatory = false, HelpMessage = HelpMessages.IsActiveCustomerManagedKey)]
-        //public SwitchParameter Activate { get; set; } 
-
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -110,7 +107,6 @@ namespace Microsoft.Azure.Commands.Synapse
 
             var enableParams = new Key
             {
-                //IsActiveCMK = this.IsParameterBound(c => c.Activate) ? this.Activate.IsPresent : existingKey.IsActiveCMK,
                 IsActiveCMK = true,
                 KeyVaultUrl = this.IsParameterBound(c => c.EncryptionKeyIdentifier) ? this.EncryptionKeyIdentifier : existingKey.KeyVaultUrl
             };

@@ -45,22 +45,22 @@ The Enable-AzSynapseWorkspace cmdlet activites a new Azure Synapse Analytics wor
 
 ### Example 1
 ```powershell
-PS C:\> Enable-AzSynapseWorkspace -WorkspaceName ContosoWorkspace -Name ContosoKeyName
+PS C:\> Enable-AzSynapseWorkspace -WorkspaceName ContosoWorkspace
 ```
 
-This command activites a new Azure Synapse Analytics workspace named ContosoWorkspace with key ContosoKeyName.
+This command activites a new Azure Synapse Analytics workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-		$ws | Enable-AzSynapseWorkspace -Name ContosoKeyName
+		$ws | Enable-AzSynapseWorkspace
 ```
 
-This command activites a new Azure Synapse Analytics workspace named ContosoWorkspace with key ContosoKeyName through pipeline.
+This command activites a new Azure Synapse Analytics workspace named ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> Enable-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/keys/ContosoKeyName
+PS C:\> Enable-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/keys/default
 ```
 
 This command activates an Azure Synapse Analytics workspace through pipeline with the specified resource ID.
