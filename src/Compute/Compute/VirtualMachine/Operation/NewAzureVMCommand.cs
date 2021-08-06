@@ -353,6 +353,7 @@ namespace Microsoft.Azure.Commands.Compute
                 _cmdlet = cmdlet;
                 _client = client;
                 _resourceClient = resourceClient;
+                _cmdlet.validate();
             }
 
             public ImageAndOsType ImageAndOsType { get; set; }
@@ -445,17 +446,13 @@ namespace Microsoft.Azure.Commands.Compute
 
 
                 List<SshPublicKey> sshPublicKeyList = null;
-                if ( !String.IsNullOrEmpty(_cmdlet.SshKeyName) || _cmdlet.GenerateSshKey)
+                if (!String.IsNullOrEmpty(_cmdlet.SshKeyName))
                 {
-                    if (ImageAndOsType?.OsType != OperatingSystemTypes.Linux)
+                    SshPublicKey sshPublicKey = _cmdlet.createPublicKeyObject(_cmdlet.Credential.UserName); 
+                    sshPublicKeyList = new List<SshPublicKey>()
                     {
-                        throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
-                    }
-
-                    string publicKey = _cmdlet.SshKeyForLinux();
-                    SshPublicKey sshPublicKey = new SshPublicKey("/home/" + _cmdlet.Credential.UserName + "/.ssh/authorized_keys", publicKey);
-                    sshPublicKeyList = new List<SshPublicKey>();
-                    sshPublicKeyList.Add(sshPublicKey);
+                        sshPublicKey
+                    };
                 }
 
                 _cmdlet.ConfigAsyncVisited = true;
@@ -626,13 +623,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             catch (Microsoft.Rest.Azure.CloudException ex)
             {
-                if (this.GenerateSshKey.IsPresent)
-                {
-                    //delete the created ssh key resource
-                    WriteInformation("VM creation failed. Deleting the SSH key resource that was created.", new string[] { "PSHOST" });
-                    this.ComputeClient.ComputeManagementClient.SshPublicKeys.Delete(this.ResourceGroupName, this.SshKeyName);
-                }
-                // throw exception
+                cleanUp();
                 throw ex;
             }
 
@@ -654,6 +645,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         public void DefaultExecuteCmdlet()
         {
+            validate();
+
             base.ExecuteCmdlet();
             if (this.VM.DiagnosticsProfile == null)
             {
@@ -729,13 +722,8 @@ namespace Microsoft.Azure.Commands.Compute
 
                     Rest.Azure.AzureOperationResponse<VirtualMachine> result;
 
-                    if (this.IsParameterBound(c => c.SshKeyName) || this.GenerateSshKey.IsPresent)
-                    {
-                        if (!IsLinuxOs())
-                        {
-                            throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
-                        }
-
+                    if (this.IsParameterBound(c => c.SshKeyName))
+                    { 
                         parameters = addSshPublicKey(parameters);
                     }
 
@@ -748,14 +736,8 @@ namespace Microsoft.Azure.Commands.Compute
                         auxAuthHeader).GetAwaiter().GetResult();
                     }
                     catch (Exception ex)
-                    {   
-                        if (this.GenerateSshKey.IsPresent)
-                        {
-                            // delete the created ssh key resource
-                            WriteWarning("VM creation failed. Deleting the SSH key resource that was created.");
-                            this.ComputeClient.ComputeManagementClient.SshPublicKeys.Delete(this.ResourceGroupName, this.SshKeyName);
-                        }
-                        // throw exception
+                    {
+                        cleanUp();
                         throw ex;
                     }
 
@@ -1055,14 +1037,16 @@ namespace Microsoft.Azure.Commands.Compute
             return storageUri.Substring(0, index);
         }
 
-        private string SshKeyForLinux()
+        private SshPublicKey createPublicKeyObject(string username)
         {
+            string publicKeyPath = "/home/" + username + "/.ssh/authorized_keys";
+            string publicKey = GenerateOrFindSshKey();
+            SshPublicKey sshPublicKey = new SshPublicKey(publicKeyPath, publicKey);
+            return sshPublicKey;
 
-            if (this.GenerateSshKey.IsPresent && ! this.IsParameterBound(c => c.SshKeyName))
-            {
-                throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
-            }
-
+        }
+        private string GenerateOrFindSshKey()
+        {
             string publicKey = "";
             SshPublicKeyResource SshPublicKey;
             if (!this.ConfigAsyncVisited && this.GenerateSshKey.IsPresent)
@@ -1127,19 +1111,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         private VirtualMachine addSshPublicKey(VirtualMachine parameters)
         {
-            string publicKeyPath;
-            if (parameters.OsProfile?.AdminUsername != null)
-            {
-                publicKeyPath = "/home/" + parameters.OsProfile.AdminUsername + "/.ssh/authorized_keys";
-            }
-            else
-            {
-                publicKeyPath = "/home/azureuser/.ssh/authorized_keys";
-            }
-          
-            string publicKey = SshKeyForLinux();
-
-            SshPublicKey sshPublicKey = new SshPublicKey(publicKeyPath, publicKey);
+            SshPublicKey sshPublicKey = createPublicKeyObject(parameters.OsProfile.AdminUsername);
             List<SshPublicKey> sshPublicKeys = new List<SshPublicKey>()
             {
                 sshPublicKey
@@ -1152,6 +1124,40 @@ namespace Microsoft.Azure.Commands.Compute
             parameters.OsProfile.LinuxConfiguration.Ssh.PublicKeys = sshPublicKeys;
 
             return parameters;
+        }
+
+        private void cleanUp()
+        {
+            if (this.GenerateSshKey.IsPresent)
+            {
+                //delete the created ssh key resource
+                WriteInformation("VM creation failed. Deleting the SSH key resource that was created.", new string[] { "PSHOST" });
+                this.ComputeClient.ComputeManagementClient.SshPublicKeys.Delete(this.ResourceGroupName, this.SshKeyName);
+            }
+        }
+
+        private void validate()
+        {
+            if (this.GenerateSshKey.IsPresent && !this.IsParameterBound(c => c.SshKeyName))
+            {
+                throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
+            }
+
+            if (this.ParameterSetName == "DefaultParameterSet" && !IsLinuxOs())
+            {
+                throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
+            }
+
+            if (this.ParameterSetName == "SimpleParameterSet")
+            {
+                var client = new Client(DefaultProfile.DefaultContext);
+                ImageAndOsType ImageAndOsType = client.UpdateImageAndOsTypeAsync(
+                        null, this.ResourceGroupName, this.Image, "").Result;
+                if (ImageAndOsType?.OsType != OperatingSystemTypes.Linux)
+                {
+                    throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
+                }
+            }
         }
     }
 }
