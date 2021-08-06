@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         protected virtual IProfileOperations GetDefaultProfile()
         {
             IProfileOperations result = null;
-            var currentProfile = GetDefaultProfile() as AzureRmProfile;
+            var currentProfile = DefaultProfile as AzureRmProfile;
             switch (GetContextModificationScope())
             {
                 case ContextModificationScope.Process:
