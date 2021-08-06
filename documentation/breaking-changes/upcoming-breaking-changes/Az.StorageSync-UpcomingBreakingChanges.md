@@ -2,20 +2,27 @@
 
  The following cmdlets were affected this release:
 
-### **Invoke-AzStorageSyncFileRecall**
-This cmdlet is being deprecated.
 
-### **New-AzStorageSyncServerEndpoint**
+
+
+### **Invoke-AzStorageSyncFileRecall**
 The following parameters were affected this release:
-#### **OfflineDataTransfer**
- - Cmdlet : 'New-AzStorageSyncServerEndpoint'
- - The parameter : 'OfflineDataTransfer' is being removed.
-#### **OfflineDataTransferShareName**
- - Cmdlet : 'New-AzStorageSyncServerEndpoint'
- - The parameter : 'OfflineDataTransferShareName' is being removed.
+#### **InputObject**
+ - Cmdlet : 'Invoke-AzStorageSyncFileRecall'
+ - The parameter : 'InputObject' is changing.
+	Change description : Alias RegisteredServer is invalid and preserved for compatibility. Alias ServerEndpoint should be used instead
+
+
+
+
 
 ### **Set-AzStorageSyncServerEndpoint**
 The following parameters were affected this release:
-#### **OfflineDataTransfer**
+#### **InputObject**
  - Cmdlet : 'Set-AzStorageSyncServerEndpoint'
- - The parameter : 'InputObject' is being removed.
+ - The parameter : 'InputObject' is changing.
+	Change description : Alias RegisteredServer is invalid and preserved for compatibility. Alias ServerEndpoint should be used instead
+
+
+
+
