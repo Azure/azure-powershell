@@ -47,6 +47,12 @@ Gets a Kusto cluster database principalAssignment.
 ### [Get-AzKustoDataConnection](Get-AzKustoDataConnection.md)
 Returns a data connection.
 
+### [Get-AzKustoOperationsResult](Get-AzKustoOperationsResult.md)
+Returns operation results.
+
+### [Get-AzKustoScript](Get-AzKustoScript.md)
+Gets a Kusto cluster database script.
+
 ### [Invoke-AzKustoDataConnectionValidation](Invoke-AzKustoDataConnectionValidation.md)
 Checks that the data connection parameters are valid.
 
@@ -74,6 +80,9 @@ Creates a Kusto cluster database principalAssignment.
 ### [New-AzKustoDataConnection](New-AzKustoDataConnection.md)
 Creates or updates a data connection.
 
+### [New-AzKustoScript](New-AzKustoScript.md)
+Creates a Kusto database script.
+
 ### [Remove-AzKustoAttachedDatabaseConfiguration](Remove-AzKustoAttachedDatabaseConfiguration.md)
 Deletes the attached database configuration with the given name.
 
@@ -98,6 +107,9 @@ Deletes a Kusto principalAssignment.
 ### [Remove-AzKustoDataConnection](Remove-AzKustoDataConnection.md)
 Deletes the data connection with the given name.
 
+### [Remove-AzKustoScript](Remove-AzKustoScript.md)
+Deletes a Kusto principalAssignment.
+
 ### [Start-AzKustoCluster](Start-AzKustoCluster.md)
 Starts a Kusto cluster.
 
@@ -119,6 +131,9 @@ Checks that the database principal assignment is valid and is not already in use
 ### [Test-AzKustoDataConnectionNameAvailability](Test-AzKustoDataConnectionNameAvailability.md)
 Checks that the data connection name is valid and is not already in use.
 
+### [Test-AzKustoScriptNameAvailability](Test-AzKustoScriptNameAvailability.md)
+Checks that the script name is valid and is not already in use.
+
 ### [Update-AzKustoCluster](Update-AzKustoCluster.md)
 Update a Kusto cluster.
 
@@ -127,4 +142,7 @@ Updates a database.
 
 ### [Update-AzKustoDataConnection](Update-AzKustoDataConnection.md)
 Updates a data connection.
+
+### [Update-AzKustoScript](Update-AzKustoScript.md)
+Updates a database script.
 

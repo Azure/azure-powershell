@@ -11,13 +11,31 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-
-$DEFAULT_DB_NAME = 'flexibleserverdb'
-$DELEGATION_SERVICE_NAME = "Microsoft.DBforPostgreSQL/flexibleServers"
-$DEFAULT_VNET_PREFIX = '10.0.0.0/16'
-$DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
-
 Describe 'AzPostgreSqlFlexibleServerCreateWithFirewallRule' {
+
+    It 'PublicAccessScenario-NoInput' {
+        If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            {
+                # Public Access All
+                New-AzPostgreSqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName2
+                $Server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName2
+                $Server.NetworkPublicNetworkAccess | Should -Be "Enabled"
+                Remove-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName2
+            } | Should -Not -Throw
+        }
+    }
+
+    It 'PublicAccessScenario-None' {
+        If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
+            {
+                # Public Access All
+                New-AzPostgreSqlFlexibleServer -Location $env.location -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName3 -PublicAccess None
+                $Server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName3
+                $Server.NetworkPublicNetworkAccess | Should -Be "Enabled"
+                Remove-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName3
+            } | Should -Not -Throw
+        }
+    }
 
     It 'PublicAccessScenario-AllowAll' {
         If ($TestMode -eq 'live' -or $TestMode -eq 'record') {
@@ -44,7 +62,6 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithFirewallRule' {
                 $FirewallRules[0].StartIPAddress | Should -Be "10.10.10.10"
                 $FirewallRules[0].EndIPAddress | Should -Be "10.10.10.12"
                 Remove-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName3
-                WaitServerDelete
             }
         } | Should -Not -Throw
     }

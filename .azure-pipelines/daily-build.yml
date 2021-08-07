@@ -1,0 +1,156 @@
+# Please don't use ADO UI defined scheduled triggers because it takes precedence over YAML scheduled triggers.
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers
+schedules:
+- cron: "0 18 * * *"
+  displayName: 2:00 AM (UTC + 8:00) China Daily Build
+  branches:
+    include:
+    - main
+
+pr: none
+
+jobs:
+- job: DailyBuild
+  timeoutInMinutes: 180
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+  - task: PowerShell@2
+    displayName: 'Initialization'
+    inputs:
+      targetType: 'inline'
+      script: |
+        Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+        # Avoid issue of filename too long
+        git config --global core.longpaths true
+        # Wipe any changes from a previous branch
+        git clean -xdf
+
+  - task: PowerShell@2
+    displayName: Prepare Powershell $(PSVersion) 
+    inputs:
+      filePath: 'tools/Test/SmokeTest/PrepareRequiredPowershell.ps1'
+      arguments: '-RequiredPsVersion $(PSVersion)'      
+
+  - task: PowerShell@2
+    displayName: 'Install platyPS'
+    inputs:
+      targetType: 'inline'
+      script: |
+        $command = "`$PSVersionTable `
+                    Install-Module platyPS -Force -Confirm:`$false -Scope CurrentUser `
+                    Exit"
+        dotnet tool run pwsh -c $command
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Build for Bumping Version'
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:"Build" /p:"Configuration=Release"'
+
+  - task: PowerShell@2
+    displayName: 'Bump Version'
+    inputs:
+      targetType: 'inline'
+      script: |
+        $command = "`$PSVersionTable `
+        ./tools/RunVersionController.ps1  -MonthName $(MonthName) -Year $(Year) `
+        Exit"
+        dotnet tool run pwsh -c $command  
+
+  # - task: PowerShell@2
+  #   displayName: 'Push to Branch internal/dailybuild'
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: |
+  #       git config user.email "azuresdkci@microsoft.com"
+  #       git config user.name "azuresdkci"
+  #       git remote set-url origin https://$(Token)@github.com/Azure/azure-powershell.git
+  #       git checkout -b internal/dailybuild
+  #       git add .
+  #       git commit -m "Bump Version"
+  #       git status
+  #       git push -u origin internal/dailybuild --force
+
+  - task: PowerShell@2
+    displayName: 'Clean artifacts folder'
+    inputs:
+      targetType: 'inline'
+      script: |
+        Remove-Item -Force -Recurse -Path artifacts
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Build after Version Bump up'
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:Build /p:Configuration=Release'
+
+  - task: EsrpCodeSigning@1
+    inputs:
+      ConnectedServiceName: '$(signServiceConnection)'
+      FolderPath: 'artifacts'
+      Pattern: |
+        Release/**/Microsoft*Azure*PowerShell*Cmdlets*.dll
+        Release/**/Az.*.private.dll
+        Release/**/Microsoft.Azure.PowerShell.Authentication.dll
+        Release/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll
+        Release/**/Microsoft.Azure.PowerShell.Authenticators.dll
+        !Release/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll
+      UseMinimatch: true
+      signConfigType: 'inlineSignParams'
+      inlineOperation: |
+        [
+              {
+                "KeyCode": "CP-233863-SN",
+                "OperationCode": "StrongNameSign",
+                "Parameters": {},
+                "ToolName": "sign",
+                "ToolVersion": "1.0"
+              },
+              {
+                "KeyCode": "CP-233863-SN",
+                "OperationCode": "StrongNameVerify",
+                "Parameters": {},
+                "ToolName": "sign",
+                "ToolVersion": "1.0"
+              },
+              {
+                "KeyCode": "CP-230012",
+                "OperationCode": "SigntoolSign",
+                "Parameters": {
+                  "OpusName": "Microsoft",
+                  "OpusInfo": "http://www.microsoft.com",
+                  "FileDigest": "/fd \"SHA256\"",
+                  "PageHash": "/NPH",
+                  "TimeStamp": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+                },
+                "ToolName": "sign",
+                "ToolVersion": "1.0"
+              },
+              {
+                "KeyCode": "CP-230012",
+                "OperationCode": "SigntoolVerify",
+                "Parameters": {},
+                "ToolName": "sign",
+                "ToolVersion": "1.0"
+              }
+            ]
+      SessionTimeout: '60'
+      MaxConcurrency: '50'
+      MaxRetryAttempts: '5'
+
+  - task: DotNetCoreCLI@2
+    displayName: Publish
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:Publish /p:Configuration=Release;NuGetKey=$(NuGetKey)'
+
+  - task: PublishPipelineArtifact@0
+    displayName: 'Save artifacts'
+    inputs:
+      artifactName: artifacts
+      targetPath: artifacts
+    condition: succeededOrFailed()
