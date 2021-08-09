@@ -91,6 +91,18 @@ directive:
       subject: PrivateCloud
     hide: true
   - where:
+      verb: Get
+      subject: ScriptCmdlet|ScriptExecutionLog|ScriptPackage|WorkloadNetworkGateway|WorkloadNetworkVirtualMachine
+    hide: true
+  - where:
+      verb: Get|New|Remove
+      subject: ScriptExecution|WorkloadNetworkPublicIP
+    hide: true
+  - where:
+      verb: Get|New|Update|Remove
+      subject: WorkloadNetworkDhcp|WorkloadNetworkDnsService|WorkloadNetworkDnsZone|WorkloadNetworkPortMirroring|WorkloadNetworkSegment|WorkloadNetworkVMGroup
+    hide: true
+  - where:
       verb: New|Get|Remove
       subject: HcxEnterpriseSite
     remove: true
