@@ -19,7 +19,7 @@ Set-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String
  [-SkuCapacity <Int32>] [[-Tag] <Hashtable>] [-RetentionInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-PublicNetworkAccessForIngestion <String>]
  [-PublicNetworkAccessForQuery <String>] [-DailyQuotaGb <Int32>] [[-ForceCmkForQuery] <Boolean>]
- [<CommonParameters>]
+ [[-DisableLocalAuth] <Boolean>] [<CommonParameters>]
 ```
 
 ### ByObject
@@ -27,7 +27,7 @@ Set-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String
 Set-AzOperationalInsightsWorkspace [-Workspace] <PSWorkspace> [[-Sku] <String>] [-SkuCapacity <Int32>]
  [[-Tag] <Hashtable>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [-PublicNetworkAccessForIngestion <String>] [-PublicNetworkAccessForQuery <String>] [-DailyQuotaGb <Int32>]
- [[-ForceCmkForQuery] <Boolean>] [<CommonParameters>]
+ [[-ForceCmkForQuery] <Boolean>] [[-DisableLocalAuth] <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +76,21 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAuth
+Allow to opt-out of local authentication and ensure customers can use only MSI and AAD for exclusive authentication
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

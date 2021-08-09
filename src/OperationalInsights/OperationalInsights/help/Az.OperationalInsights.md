@@ -59,6 +59,12 @@ Get or list linked storage account
 ### [Get-AzOperationalInsightsOperations](Get-AzOperationalInsightsOperations.md)
 Lists all of the available OperationalInsights Rest API operations.
 
+### [Get-AzOperationalInsightsOperationStatus](Get-AzOperationalInsightsOperationStatus.md)
+Get the status of a long running azure asynchronous operation.
+
+### [Get-AzOperationalInsightsPurgeWorkspaceStatus](Get-AzOperationalInsightsPurgeWorkspaceStatus.md)
+Gets status of an ongoing purge operation.
+
 ### [Get-AzOperationalInsightsSavedSearch](Get-AzOperationalInsightsSavedSearch.md)
 Returns all of the saved searches for a specified workspace.
 
@@ -82,9 +88,6 @@ Gets the shared keys for a workspace.
 
 ### [Get-AzOperationalInsightsWorkspaceUsage](Get-AzOperationalInsightsWorkspaceUsage.md)
 Gets the usage data for a workspace.
-
-### [Get-AzOperationalInsightsOperationStatus](Get-AzOperationalInsightsOperationStatus.md)
-Get the status of a long running azure asynchronous operation.
 
 ### [Invoke-AzOperationalInsightsQuery](Invoke-AzOperationalInsightsQuery.md)
 Returns search results based on the specified parameters.
@@ -115,6 +118,9 @@ Adds performance counters to all Linux computers in a workspace.
 
 ### [New-AzOperationalInsightsLinuxSyslogDataSource](New-AzOperationalInsightsLinuxSyslogDataSource.md)
 Adds a data source to Linux computers.
+
+### [New-AzOperationalInsightsPurgeWorkspace](New-AzOperationalInsightsPurgeWorkspace.md)
+Purges data in an Log Analytics workspace by a set of user-defined filters
 
 ### [New-AzOperationalInsightsSavedSearch](New-AzOperationalInsightsSavedSearch.md)
 Creates a new saved search with the specified parameters.
@@ -187,4 +193,7 @@ update cluster
 
 ### [Update-AzOperationalInsightsDataExport](Update-AzOperationalInsightsDataExport.md)
 Update data export.
+
+### [Update-AzOperationalInsightsWorkspaceSharedKey](Update-AzOperationalInsightsWorkspaceSharedKey.md)
+Regenerates the shared keys for a Log Analytics Workspace. These keys are used to connect Microsoft Operational Insights agents to the workspace.
 

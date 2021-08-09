@@ -17,8 +17,8 @@ Creates a workspace, or restore a soft-deleted workspace.
 New-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-Sku] <String>] [-SkuCapacity <Int32>] [[-Tag] <Hashtable>] [[-RetentionInDays] <Int32>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [[-PublicNetworkAccessForIngestion] <String>]
- [[-PublicNetworkAccessForQuery] <String>] [[-ForceCmkForQuery] <Boolean>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-PublicNetworkAccessForQuery] <String>] [[-ForceCmkForQuery] <Boolean>] [[-DisableLocalAuth] <Boolean>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +56,21 @@ Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAuth
+Allow to opt-out of local authentication and ensure customers can use only MSI and AAD for exclusive authentication
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

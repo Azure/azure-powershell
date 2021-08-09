@@ -10,14 +10,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.WorkspacePurge
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsPurgeWorkspace", DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSWorkspacePurgeResponse))]
     public class NewAzureOperationalInsightsPurgeWorkspaceCommand : OperationalInsightsBaseCmdlet
     {
-        [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true,
-            HelpMessage = "The resource group name.")]
+        [Parameter(Position = 0, ParameterSetName = CreateByNameParameterSet, Mandatory = true, HelpMessage = "The resource group name.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = CreateByObjectParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true,
-            HelpMessage = "The name of the workspace to purge.")]
+        [Parameter(Position = 1, ParameterSetName = CreateByNameParameterSet, Mandatory = true, HelpMessage = "The name of the workspace to purge.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = CreateByObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.WorkspacePurge
                 parameters = new PSWorkspacePurgeBody(filters,Table);
             }
 
-            if (ShouldProcess(WorkspaceName, $"Purges data in a Log Analytics workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            if (ShouldProcess(WorkspaceName, $"Purges data in a LogAnalytics workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {
                 WriteObject(OperationalInsightsClient.PurgeWorkspace(ResourceGroupName, WorkspaceName, parameters));
             }
