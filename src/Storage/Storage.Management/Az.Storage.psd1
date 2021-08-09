@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.10.0'
+ModuleVersion = '3.10.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -238,14 +238,14 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Supported Blob Last Access Time
-    -  ''Enable-AzStorageBlobLastAccessTimeTracking''
-    -  ''Disable-AzStorageBlobLastAccessTimeTracking''
-    -  ''Add-AzStorageAccountManagementPolicyAction''
-* Made ''Get-AzDataLakeGen2ChildItem'' list all datalake gen2 items by default, instead of needing user to list chunk by chunk.
-* Fixed BlobProperties is empty issue when using sas without prefix ''?'' [#15460]
-* Fixed synchronously copy small blob failure [#15548]
-    - ''Copy-AzStorageBlob'''
+        ReleaseNotes = '* Supported create or migrate container to enable immutable Storage with versioning.
+        -  ''New-AzRmStorageContainer''
+        -  ''Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration''
+    * Supported set/remove immutability policy on a Storage blob.
+        -  ''Set-AzStorageBlobImmutabilityPolicy''
+        -  ''Remove-AzStorageBlobImmutabilityPolicy''
+    * Supported enable/disable legal hold on a Storage blob.
+        -  ''Set-AzStorageBlobLegalHold'''
 
         # Prerelease string of this module
         Prerelease = 'preview'
