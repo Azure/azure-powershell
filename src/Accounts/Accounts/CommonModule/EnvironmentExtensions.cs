@@ -103,6 +103,7 @@ namespace Microsoft.Azure.Commands.Common
             return baseEndpoint;
         }
 
+        ////TODO: Update to support all data plane audience
         /// <summary>
         /// Determien the inteneded audience of a request
         /// </summary>
@@ -156,6 +157,12 @@ namespace Microsoft.Azure.Commands.Common
                 return environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId) 
                     ? environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId]
                     : baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId];
+            }
+
+            //TODO: Add ExtendedProperties
+            if("http://azconfig.io".IsMatch(baseEndpoint))
+            {
+                return baseEndpoint.GetLeftPart(UriPartial.Authority); //return https://{myname}.azconfig.io
             }
 
             return environment.ActiveDirectoryServiceEndpointResourceId;

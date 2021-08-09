@@ -51,7 +51,16 @@
   $instance.OnModuleLoad = $VTable.OnModuleLoad
   
   # Tweaks the pipeline per call
-  $instance.OnNewRequest = $VTable.OnNewRequest
+  #$instance.OnNewRequest = $VTable.OnNewRequest
+
+  # Tweaks the pipeline per call
+  $instance.AddRequestUserAgentHandler = $VTable.AddRequestUserAgentHandler
+
+  # Tweaks the pipeline per call
+  $instance.AddPatchRequestUriHandler = $VTable.AddPatchRequestUriHandler
+  
+  # Tweaks the pipeline per call
+  $instance.AddAuthorizeRequestHandler = $VTable.AddAuthorizeRequestHandler
   
   # Gets shared parameter values
   $instance.GetParameterValue = $VTable.GetParameterValue
