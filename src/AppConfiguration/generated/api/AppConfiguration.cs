@@ -3392,5 +3392,207 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration
                 await eventListener.AssertRegEx(nameof(configStoreName),configStoreName,@"^[a-zA-Z0-9_-]*$");
             }
         }
+        /// <summary>Gets a list of labels.</summary>
+        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="name">A filter for the name of the returned labels.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
+        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GetLabels(string endpoint, string name, string syncToken, string after, string acceptDatetime, string[] Select, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api10.ILabelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api10.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"1.0";
+            // Constant Parameters
+            using (NoSynchronizationContext)
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        endpoint //TODO: modified by eriwan
+                        + "/labels"
+                        + "?"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
+                        + "&"
+                        + (null != Select && Select.Length > 0 ? "Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + (global::System.Uri.EscapeDataString(each?.ToString() ?? global::System.String.Empty)))) : global::System.String.Empty)
+                        , "\\?&*$|&*$|(\\?)&+|(&)&+", "$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.URLCreated, pathAndQuery); if (eventListener.Token.IsCancellationRequested) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{pathAndQuery}");
+                var request = new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if (eventListener.Token.IsCancellationRequested) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token", syncToken);
+                }
+                if (null != acceptDatetime)
+                {
+                    request.Headers.Add("Accept-Datetime", acceptDatetime);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.HeaderParametersAdded); if (eventListener.Token.IsCancellationRequested) { return; }
+                // make the call
+                await this.GetLabels_Call(request, onOk, onDefault, eventListener, sender);
+            }
+        }
+
+        /// <summary>Gets a list of labels.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="name">A filter for the name of the returned labels.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
+        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GetLabelsViaIdentity(global::System.String viaIdentity, string endpoint, string name, string syncToken, string after, string acceptDatetime, string[] Select, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api10.ILabelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api10.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"1.0";
+            // Constant Parameters
+            using (NoSynchronizationContext)
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/labels$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/labels'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/labels"
+                        + "?"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
+                        + "&"
+                        + (null != Select && Select.Length > 0 ? "Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + (global::System.Uri.EscapeDataString(each?.ToString() ?? global::System.String.Empty)))) : global::System.String.Empty)
+                        , "\\?&*$|&*$|(\\?)&+|(&)&+", "$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.URLCreated, pathAndQuery); if (eventListener.Token.IsCancellationRequested) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{pathAndQuery}");
+                var request = new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if (eventListener.Token.IsCancellationRequested) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token", syncToken);
+                }
+                if (null != acceptDatetime)
+                {
+                    request.Headers.Add("Accept-Datetime", acceptDatetime);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.HeaderParametersAdded); if (eventListener.Token.IsCancellationRequested) { return; }
+                // make the call
+                await this.GetLabels_Call(request, onOk, onDefault, eventListener, sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="GetLabels" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task GetLabels_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api10.ILabelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api10.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.ISendAsync sender)
+        {
+            using (NoSynchronizationContext)
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.BeforeCall, request); if (eventListener.Token.IsCancellationRequested) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.ResponseCreated, _response); if (eventListener.Token.IsCancellationRequested) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch (_response.StatusCode)
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                            {
+                                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.BeforeResponseDispatch, _response); if (eventListener.Token.IsCancellationRequested) { return; }
+                                await onOk(_response, _response.Content.ReadAsStringAsync().ContinueWith(body => Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api10.LabelListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode.Parse(body.Result)).ReadHeaders(_response.Headers)));
+                                break;
+                            }
+                        default:
+                            {
+                                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.BeforeResponseDispatch, _response); if (eventListener.Token.IsCancellationRequested) { return; }
+                                await onDefault(_response, _response.Content.ReadAsStringAsync().ContinueWith(body => Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api10.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Json.JsonNode.Parse(body.Result))));
+                                break;
+                            }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="GetLabels" /> method. Call this like the actual call, but you will get validation events
+        /// back.
+        /// </summary>
+        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="name">A filter for the name of the returned labels.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
+        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task GetLabels_Validate(string endpoint, string name, string syncToken, string after, string acceptDatetime, string[] Select, Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.IEventListener eventListener)
+        {
+            using (NoSynchronizationContext)
+            {
+                await eventListener.AssertNotNull(nameof(endpoint), endpoint);
+                await eventListener.AssertNotNull(nameof(name), name);
+                await eventListener.AssertNotNull(nameof(syncToken), syncToken);
+                await eventListener.AssertNotNull(nameof(after), after);
+                await eventListener.AssertNotNull(nameof(acceptDatetime), acceptDatetime);
+            }
+        }
     }
 }
