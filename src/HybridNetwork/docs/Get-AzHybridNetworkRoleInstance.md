@@ -191,7 +191,7 @@ INPUTOBJECT <IHybridNetworkIdentity>: Identity Parameter
   - `[ServiceKey <String>]`: The GUID for the vendor network function.
   - `[SkuName <String>]`: The name of the sku.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VendorName <String>]`: The name of the network function vendor.
+  - `[VendorName <String>]`: The name of the vendor.
   - `[VendorSkuName <String>]`: The name of the network function sku.
 
 ## RELATED LINKS
