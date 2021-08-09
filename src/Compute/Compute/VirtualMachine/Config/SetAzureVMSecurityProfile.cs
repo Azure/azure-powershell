@@ -20,6 +20,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
-        public SecurityTypes SecurityType { get; set; }
+        [PSArgumentCompleter("TrustedLaunch")]
+        public string SecurityType { get; set; }
 
         public override void ExecuteCmdlet()
         {

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support
         /// <param name="value">the value to convert to an instance of <see cref="NodeProvisioningState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new NodeProvisioningState(System.Convert.ToString(value));
+            return new NodeProvisioningState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type NodeProvisioningState</summary>

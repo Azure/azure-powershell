@@ -68,6 +68,9 @@ Gets information about linked services in workspace.
 ### [Get-AzSynapseManagedIdentitySqlControlSetting](Get-AzSynapseManagedIdentitySqlControlSetting.md)
 Gets Managed Identity Sql Control Settings.
 
+### [Get-AzSynapseManagedPrivateEndpoint](Get-AzSynapseManagedPrivateEndpoint.md)
+Gets a Synapse managed private endpoint.
+
 ### [Get-AzSynapseNotebook](Get-AzSynapseNotebook.md)
 Gets information about notebooks in a workspace.
 
@@ -182,6 +185,9 @@ Creates a Synapse Analytics Firewall Rule.
 ### [New-AzSynapseIntegrationRuntimeKey](New-AzSynapseIntegrationRuntimeKey.md)
 Regenerate self-hosted integration runtime key.
 
+### [New-AzSynapseManagedPrivateEndpoint](New-AzSynapseManagedPrivateEndpoint.md)
+Creates a Synapse managed private endpoint.
+
 ### [New-AzSynapseManagedVirtualNetworkConfig](New-AzSynapseManagedVirtualNetworkConfig.md)
 Creates managed virtual network configuration.
 
@@ -223,6 +229,9 @@ Remove a node with the given name on an integration runtime.
 
 ### [Remove-AzSynapseLinkedService](Remove-AzSynapseLinkedService.md)
 Removes a linked service from workspace.
+
+### [Remove-AzSynapseManagedPrivateEndpoint](Remove-AzSynapseManagedPrivateEndpoint.md)
+Removes a Synape managed private endpoint.
 
 ### [Remove-AzSynapseNotebook](Remove-AzSynapseNotebook.md)
 Removes a notebook from a workspace.

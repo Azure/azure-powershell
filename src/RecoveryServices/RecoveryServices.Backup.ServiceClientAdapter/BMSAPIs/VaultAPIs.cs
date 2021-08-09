@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="resouceGroupName">Name of the resouce group</param>  
         /// <param name="vaultName">Name of the vault</param>  
         /// <returns>Azure Resource Encryption response object.</returns>  
-        public BackupResourceEncryptionConfigResource GetVaultEncryptionConfig(string resouceGroupName, string vaultName)
+        public BackupResourceEncryptionConfigExtendedResource GetVaultEncryptionConfig(string resouceGroupName, string vaultName)
         {
             return BmsAdapter.Client.BackupResourceEncryptionConfigs.GetWithHttpMessagesAsync(
                 vaultName, resouceGroupName).Result.Body;

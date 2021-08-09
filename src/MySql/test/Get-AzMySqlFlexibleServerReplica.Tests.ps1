@@ -11,16 +11,8 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-# !Important: some test cases are skipped and require to be recorded again
-# See https://github.com/Azure/autorest.powershell/issues/580
 Describe 'Get-AzMySqlFlexibleServerReplica' {
-    It 'List' {
-        {
-            Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.serverName | New-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
-            $replica = Get-AzMySqlFlexibleServerReplica -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
-            $replica.Count | Should -Be 1
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.serverName)"
-            Remove-AzMySqlFlexibleServer -InputObject $ID
-        } | Should -Not -Throw
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

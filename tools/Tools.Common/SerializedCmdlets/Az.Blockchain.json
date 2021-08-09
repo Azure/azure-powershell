@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IConsortium",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IConsortium, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IConsortium, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Protocol": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol]",
               "Name": "System.String"
@@ -111,7 +111,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -129,7 +129,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -306,7 +306,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -330,7 +330,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -438,19 +438,19 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallRule": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState]",
               "Protocol": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol]",
               "ValidatorNodeSkuCapacity": "System.Nullable`1[System.Int32]",
+              "ConsortiumManagementAccountPassword": "System.Security.SecureString",
+              "Password": "System.Security.SecureString",
               "Consortium": "System.String",
               "ConsortiumManagementAccountAddress": "System.String",
-              "ConsortiumManagementAccountPassword": "System.String",
               "ConsortiumMemberDisplayName": "System.String",
               "ConsortiumRole": "System.String",
               "Dns": "System.String",
-              "Password": "System.String",
               "PublicKey": "System.String",
               "RootContractAddress": "System.String",
               "SkuName": "System.String",
@@ -530,7 +530,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BlockchainMemberName": "System.String",
               "Id": "System.String",
@@ -595,7 +595,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -613,7 +613,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -816,7 +816,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -840,7 +840,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1040,7 +1040,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1064,7 +1064,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1240,7 +1240,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1264,7 +1264,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1365,7 +1365,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BlockchainMemberName": "System.String",
                     "Id": "System.String",
@@ -1448,7 +1448,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1472,7 +1472,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1624,7 +1624,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1648,7 +1648,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1756,7 +1756,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyName": "System.String",
               "Value": "System.String"
@@ -1871,7 +1871,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1889,7 +1889,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2090,7 +2090,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2114,7 +2114,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2222,7 +2222,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IConsortiumMember",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IConsortiumMember, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IConsortiumMember, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DateModified": "System.Nullable`1[System.DateTime]",
               "JoinDate": "System.Nullable`1[System.DateTime]",
@@ -2342,7 +2342,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2360,7 +2360,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2561,7 +2561,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2585,7 +2585,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2693,7 +2693,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IResourceTypeSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IResourceTypeSku, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IResourceTypeSku, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuSetting[]",
               "ResourceType": "System.String"
@@ -2772,7 +2772,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2790,7 +2790,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2943,7 +2943,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2967,7 +2967,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3075,13 +3075,13 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallRule": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState]",
+              "Password": "System.Security.SecureString",
               "Dns": "System.String",
               "Location": "System.String",
-              "Password": "System.String",
               "PublicKey": "System.String",
               "UserName": "System.String"
             },
@@ -3176,7 +3176,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BlockchainMemberName": "System.String",
               "Id": "System.String",
@@ -3241,7 +3241,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3259,7 +3259,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3460,7 +3460,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3484,7 +3484,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3734,7 +3734,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3758,7 +3758,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3859,7 +3859,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BlockchainMemberName": "System.String",
                     "Id": "System.String",
@@ -3942,7 +3942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3966,7 +3966,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4118,7 +4118,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4142,7 +4142,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4250,7 +4250,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyName": "System.String",
               "Value": "System.String"
@@ -4383,7 +4383,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4401,7 +4401,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4626,7 +4626,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4650,7 +4650,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4758,19 +4758,19 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallRule": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState]",
               "Protocol": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol]",
               "ValidatorNodeSkuCapacity": "System.Nullable`1[System.Int32]",
+              "ConsortiumManagementAccountPassword": "System.Security.SecureString",
+              "Password": "System.Security.SecureString",
               "Consortium": "System.String",
               "ConsortiumManagementAccountAddress": "System.String",
-              "ConsortiumManagementAccountPassword": "System.String",
               "ConsortiumMemberDisplayName": "System.String",
               "ConsortiumRole": "System.String",
               "Dns": "System.String",
-              "Password": "System.String",
               "PublicKey": "System.String",
               "RootContractAddress": "System.String",
               "SkuName": "System.String",
@@ -4922,7 +4922,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
             "GenericTypeArguments": [],
@@ -4976,7 +4976,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5185,7 +5185,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5203,7 +5203,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5469,7 +5469,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
                   "GenericTypeArguments": [],
@@ -5541,7 +5541,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5798,7 +5798,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5822,7 +5822,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5954,7 +5954,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyName": "System.String",
               "Value": "System.String"
@@ -6030,7 +6030,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BlockchainMemberName": "System.String",
               "Id": "System.String",
@@ -6131,7 +6131,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6149,7 +6149,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6398,7 +6398,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6422,7 +6422,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6523,7 +6523,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BlockchainMemberName": "System.String",
                     "Id": "System.String",
@@ -6654,7 +6654,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6678,7 +6678,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6878,7 +6878,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6902,7 +6902,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7010,13 +7010,13 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallRule": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState]",
+              "Password": "System.Security.SecureString",
               "Dns": "System.String",
               "Location": "System.String",
-              "Password": "System.String",
               "PublicKey": "System.String",
               "UserName": "System.String"
             },
@@ -7111,7 +7111,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
             "GenericTypeArguments": [],
@@ -7222,7 +7222,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7240,7 +7240,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7434,7 +7434,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
                   "GenericTypeArguments": [],
@@ -7581,7 +7581,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7605,7 +7605,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7737,7 +7737,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IApiKey, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyName": "System.String",
               "Value": "System.String"
@@ -7831,7 +7831,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BlockchainMemberName": "System.String",
               "Id": "System.String",
@@ -7932,7 +7932,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7950,7 +7950,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8223,7 +8223,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8247,7 +8247,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8348,7 +8348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BlockchainMemberName": "System.String",
                     "Id": "System.String",
@@ -8479,7 +8479,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8503,7 +8503,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8703,7 +8703,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8727,7 +8727,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8910,7 +8910,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BlockchainMemberName": "System.String",
               "Id": "System.String",
@@ -8993,7 +8993,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9011,7 +9011,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9274,7 +9274,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9298,7 +9298,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9447,7 +9447,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BlockchainMemberName": "System.String",
                     "Id": "System.String",
@@ -9554,7 +9554,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9578,7 +9578,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9802,7 +9802,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9826,7 +9826,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10075,7 +10075,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BlockchainMemberName": "System.String",
               "Id": "System.String",
@@ -10158,7 +10158,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10176,7 +10176,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10463,7 +10463,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10487,7 +10487,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10636,7 +10636,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BlockchainMemberName": "System.String",
                     "Id": "System.String",
@@ -10743,7 +10743,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10767,7 +10767,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10991,7 +10991,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11015,7 +11015,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11171,7 +11171,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.INameAvailability",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.INameAvailability, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.INameAvailability, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Reason": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NameAvailabilityReason]",
               "NameAvailable": "System.Nullable`1[System.Boolean]",
@@ -11305,7 +11305,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11323,7 +11323,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11548,7 +11548,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11572,7 +11572,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11680,19 +11680,19 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallRule": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState]",
               "Protocol": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol]",
               "ValidatorNodeSkuCapacity": "System.Nullable`1[System.Int32]",
+              "ConsortiumManagementAccountPassword": "System.Security.SecureString",
+              "Password": "System.Security.SecureString",
               "Consortium": "System.String",
               "ConsortiumManagementAccountAddress": "System.String",
-              "ConsortiumManagementAccountPassword": "System.String",
               "ConsortiumMemberDisplayName": "System.String",
               "ConsortiumRole": "System.String",
               "Dns": "System.String",
-              "Password": "System.String",
               "PublicKey": "System.String",
               "RootContractAddress": "System.String",
               "SkuName": "System.String",
@@ -11772,7 +11772,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BlockchainMemberName": "System.String",
               "Id": "System.String",
@@ -11816,7 +11816,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
             "GenericTypeArguments": [],
@@ -11909,7 +11909,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11927,7 +11927,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12103,7 +12103,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
                   "GenericTypeArguments": [],
@@ -12226,7 +12226,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12250,7 +12250,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12351,7 +12351,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BlockchainMemberName": "System.String",
                     "Id": "System.String",
@@ -12407,7 +12407,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
                   "GenericTypeArguments": [],
@@ -12530,7 +12530,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12554,7 +12554,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12679,7 +12679,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
                   "GenericTypeArguments": [],
@@ -12802,7 +12802,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12826,7 +12826,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12934,13 +12934,13 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "FirewallRule": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState]",
+              "Password": "System.Security.SecureString",
               "Dns": "System.String",
               "Location": "System.String",
-              "Password": "System.String",
               "PublicKey": "System.String",
               "UserName": "System.String"
             },
@@ -13035,7 +13035,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BlockchainMemberName": "System.String",
               "Id": "System.String",
@@ -13061,7 +13061,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
             "GenericTypeArguments": [],
@@ -13136,7 +13136,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13154,7 +13154,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13330,7 +13330,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
                   "GenericTypeArguments": [],
@@ -13429,7 +13429,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13453,7 +13453,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13554,7 +13554,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BlockchainMemberName": "System.String",
                     "Id": "System.String",
@@ -13586,7 +13586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
                   "GenericTypeArguments": [],
@@ -13685,7 +13685,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13709,7 +13709,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13810,7 +13810,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
                   "GenericTypeArguments": [],
@@ -13909,7 +13909,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13933,7 +13933,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14172,7 +14172,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -14184,7 +14184,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainProtocol, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -14288,7 +14288,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.SendAsyncStep, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -14512,7 +14512,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
       "GenericTypeArguments": [],
@@ -14522,7 +14522,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "EndIPAddress": "System.String",
         "RuleName": "System.String",
@@ -14536,7 +14536,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -14548,7 +14548,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.BlockchainMemberProvisioningState, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -14629,6 +14629,16 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Security.SecureString": {
+      "Namespace": "System.Security",
+      "Name": "System.Security.SecureString",
+      "AssemblyQualifiedName": "System.Security.SecureString, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.DateTime]",
@@ -14654,7 +14664,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuSetting[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuSetting[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuSetting[], Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuSetting[], Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuSetting",
       "GenericTypeArguments": [],
@@ -14664,7 +14674,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuSetting": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuSetting",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuSetting, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ISkuSetting, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Tier": "System.String",
@@ -14689,7 +14699,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -14701,7 +14711,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NodeProvisioningState, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -14773,7 +14783,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NameAvailabilityReason]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NameAvailabilityReason]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NameAvailabilityReason, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NameAvailabilityReason, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -14785,7 +14795,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NameAvailabilityReason": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NameAvailabilityReason",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NameAvailabilityReason, Az.Blockchain.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Support.NameAvailabilityReason, Az.Blockchain.private, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

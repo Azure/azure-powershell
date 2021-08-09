@@ -16,13 +16,15 @@ Creates an API Management certificate to be used during Authentication with Back
 ### LoadFromFile (Default)
 ```
 New-AzApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>]
- -PfxFilePath <String> -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PfxFilePath <String>] [-PfxPassword <String>] [-KeyVault <PsApiManagementKeyVaultEntity>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Raw
 ```
-New-AzApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>] -PfxBytes <Byte[]>
- -PfxPassword <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApiManagementCertificate -Context <PsApiManagementContext> [-CertificateId <String>] [-PfxBytes <Byte[]>]
+ [-PfxPassword <String>] [-KeyVault <PsApiManagementKeyVaultEntity>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +48,16 @@ Creates an API Management certificate to be used during Authentication with Back
 <!-- Aladdin Generated Example --> 
 New-AzApiManagementCertificate -CertificateId '0123456789' -Context <PsApiManagementContext> -PfxFilePath 'C:\contoso\certificates\apimanagement.pfx' -PfxPassword '1111'
 ```
+
+### Example 3 : Create a keyVault Certificate
+```powershell
+PS C:\>$secretIdentifier = 'https://contoso.vault.azure.net/secrets/xxxx'
+PS C:\>$keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier 
+PS C:\>$keyVaultcert = New-AzApiManagementCertificate -Context $context -CertificateId $kvcertId -KeyVault $keyvault
+```
+
+The first command creates a keyvault.
+The second command creates a certificate using secret from this keyvault.
 
 ## PARAMETERS
 
@@ -95,6 +107,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KeyVault
+KeyVault used to fetch certificate data.This parameter is required if -PfxFilePath not specified.
+See New-AzApiManagementKeyVaultObject for details.
+
+```yaml
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementKeyVaultEntity
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PfxBytes
 Specifies an array of bytes of the certificate file in .pfx format.
 This parameter is required if you do not specify the *PfxFilePath* parameter.
@@ -104,7 +132,7 @@ Type: System.Byte[]
 Parameter Sets: Raw
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -120,7 +148,7 @@ Type: System.String
 Parameter Sets: LoadFromFile
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -135,7 +163,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
