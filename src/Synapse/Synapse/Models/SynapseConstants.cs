@@ -247,9 +247,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public class RepositoryType
         {
             public const string GitHub = "GitHub";
-            public const string DevOps = "DevOps";
-            public const string WorkspaceVSTSConfiguration = "WorkspaceVSTSConfiguration";
+            public const string AzureDevOpsGit = "AzureDevOpsGit";
             public const string WorkspaceGitHubConfiguration = "WorkspaceGitHubConfiguration";
+            public const string WorkspaceVSTSConfiguration = "WorkspaceVSTSConfiguration";
         }
     }
 }
