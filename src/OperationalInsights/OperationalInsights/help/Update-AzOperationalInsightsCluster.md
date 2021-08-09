@@ -317,11 +317,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterPatch
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
 
 ## NOTES
 

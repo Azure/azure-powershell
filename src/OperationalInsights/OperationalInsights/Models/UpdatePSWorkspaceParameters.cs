@@ -32,5 +32,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public int? DailyQuotaGb { get; set; }
 
         public bool? ForceCmkForQuery { get; set; }
+
+        public PSWorkspaceFeatures WsFeatures { get; set; }
     }
 }

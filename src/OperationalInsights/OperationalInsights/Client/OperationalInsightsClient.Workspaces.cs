@@ -122,9 +122,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             int? retentionInDays,
             bool? forceCmkForQuery = null,
             int? dailyQuotaGb = null,
-            Guid? customerId = null)
+            Guid? customerId = null,
+            PSWorkspaceFeatures features = null)
         {
-            Workspace properties = new Workspace(location: location, tags: tags, customerId: customerId.HasValue ? customerId.Value.ToString() : null, publicNetworkAccessForIngestion: publicNetworkAccessForIngestion, publicNetworkAccessForQuery: publicNetworkAccessForQuery, forceCmkForQuery: forceCmkForQuery);
+            Workspace properties = new Workspace(
+                location: location, 
+                tags: tags, 
+                customerId: customerId.HasValue ? customerId.Value.ToString() : null, 
+                publicNetworkAccessForIngestion: publicNetworkAccessForIngestion, 
+                publicNetworkAccessForQuery: publicNetworkAccessForQuery, 
+                forceCmkForQuery: forceCmkForQuery,
+                features: features.GetWorkspaceFeatures());
 
             properties.Sku = sku.getWorkspaceSku();
 
@@ -160,7 +168,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 retentionInDays: parameters.RetentionInDays,
                 forceCmkForQuery: parameters.ForceCmkForQuery,
                 dailyQuotaGb: parameters.DailyQuotaGb,
-                workspace.CustomerId);
+                customerId: workspace.CustomerId,
+                features: parameters.WsFeatures);
 
             return new PSWorkspace(updatedWorkspace, parameters.ResourceGroupName);
         }
@@ -187,7 +196,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             parameters.PublicNetworkAccessForIngestion,
                             parameters.PublicNetworkAccessForQuery,
                             retentionInDays: parameters.RetentionInDays,
-                            forceCmkForQuery: parameters.ForceCmkForQuery),
+                            forceCmkForQuery: parameters.ForceCmkForQuery,
+                            features: parameters.WsFeatures),
                         parameters.ResourceGroupName);
                 if (!string.Equals(workspace.ProvisioningState, Azure.OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
                 {

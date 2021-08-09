@@ -249,6 +249,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport

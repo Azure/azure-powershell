@@ -14,7 +14,7 @@ Create linked storage account for workspace
 
 ```
 New-AzOperationalInsightsLinkedStorageAccount [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [-DataSourceType] <String> [-StorageAccountIds] <String[]> [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-DataSourceType] <String> [-StorageAccountId] <String[]> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -101,7 +101,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAccountIds
+### -StorageAccountId
 list of storage account Id.
 
 ```yaml

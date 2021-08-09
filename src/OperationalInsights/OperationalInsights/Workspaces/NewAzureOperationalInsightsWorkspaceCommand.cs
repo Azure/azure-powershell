@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -72,6 +71,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "Gets or sets indicates whether customer managed storage is mandatory for query management")]
         public bool? ForceCmkForQuery;
 
+        [Parameter(Position = 10, Mandatory = false,
+            HelpMessage = "Allow to opt-out of local authentication and ensure customers can use only MSI and AAD for exclusive authentication")]
+        public bool? DisableLocalAuth;
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -89,7 +92,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
                 PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
                 ForceCmkForQuery = ForceCmkForQuery,
-                ConfirmAction = ConfirmAction
+                ConfirmAction = ConfirmAction,
+                WsFeatures = new PSWorkspaceFeatures(DisableLocalAuth)
             };
 
             WriteObject(OperationalInsightsClient.CreatePSWorkspace(parameters));

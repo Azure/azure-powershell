@@ -15,7 +15,7 @@ Updates a workspace.
 
 ### ByName (Default)
 ```
-Set-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [[-SkuName] <String>]
+Set-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [[-Sku] <String>]
  [-SkuCapacity <Int32>] [[-Tag] <Hashtable>] [-RetentionInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-PublicNetworkAccessForIngestion <String>]
  [-PublicNetworkAccessForQuery <String>] [-DailyQuotaGb <Int32>] [[-ForceCmkForQuery] <Boolean>]
@@ -24,7 +24,7 @@ Set-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String
 
 ### ByObject
 ```
-Set-AzOperationalInsightsWorkspace [-Workspace] <PSWorkspace> [[-SkuName] <String>] [-SkuCapacity <Int32>]
+Set-AzOperationalInsightsWorkspace [-Workspace] <PSWorkspace> [[-Sku] <String>] [-SkuCapacity <Int32>]
  [[-Tag] <Hashtable>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [-PublicNetworkAccessForIngestion <String>] [-PublicNetworkAccessForQuery <String>] [-DailyQuotaGb <Int32>]
  [[-ForceCmkForQuery] <Boolean>] [<CommonParameters>]
@@ -173,22 +173,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SkuCapacity
-Sku Capacity, value need to be multiple of 100 and above 0.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
+### -Sku
 The service tier of the workspace.
 
 ```yaml
@@ -201,6 +186,21 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+Sku Capacity, value need to be multiple of 100 and above 0.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

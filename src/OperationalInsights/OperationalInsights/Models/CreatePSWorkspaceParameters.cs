@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public string PublicNetworkAccessForQuery { get; set; }
 
+        public PSWorkspaceFeatures WsFeatures { get; set; }
+
         public bool? ForceCmkForQuery { get; set; }
 
         public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }

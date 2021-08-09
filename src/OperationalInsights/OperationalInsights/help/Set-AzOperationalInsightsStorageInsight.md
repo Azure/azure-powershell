@@ -16,15 +16,17 @@ Updates a Storage Insight.
 ### ByWorkspaceName (Default)
 ```
 Set-AzOperationalInsightsStorageInsight [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [-Name] <String> [[-StorageAccountKey] <String>] [[-Tables] <String[]>] [[-Containers] <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Name] <String> [[-StorageAccountKey] <String>] [-StorageAccountResourceId] <String> [[-Tables] <String[]>]
+ [[-Containers] <String[]>] [-ETag <String>] [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByWorkspaceObject
 ```
 Set-AzOperationalInsightsStorageInsight [-Workspace] <PSWorkspace> [-Name] <String>
- [[-StorageAccountKey] <String>] [[-Tables] <String[]>] [[-Containers] <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-StorageAccountKey] <String>] [-StorageAccountResourceId] <String> [[-Tables] <String[]>]
+ [[-Containers] <String[]>] [-ETag <String>] [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +62,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -78,6 +80,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ETag
+The ETag of the StorageInsight.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -126,6 +143,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -StorageAccountResourceId
+The full Azure Resource Manager ID of the storage account.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Tables
 Specifies the list of tables that contain the data.
 
@@ -135,9 +167,24 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tags
+Tags of the Storage Insight
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -168,6 +215,36 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

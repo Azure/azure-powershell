@@ -15,7 +15,7 @@ Creates a workspace, or restore a soft-deleted workspace.
 
 ```
 New-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-SkuName] <String>] [-SkuCapacity <Int32>] [[-Tag] <Hashtable>] [[-RetentionInDays] <Int32>] [-Force]
+ [[-Sku] <String>] [-SkuCapacity <Int32>] [[-Tag] <Hashtable>] [[-RetentionInDays] <Int32>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [[-PublicNetworkAccessForIngestion] <String>]
  [[-PublicNetworkAccessForQuery] <String>] [[-ForceCmkForQuery] <Boolean>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -184,22 +184,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SkuCapacity
-Sku Capacity, value need to be multiple of 100 and at least 0.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
+### -Sku
 The service tier of the workspace.
 
 ```yaml
@@ -212,6 +197,21 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+Sku Capacity, value need to be multiple of 100 and at least 0.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

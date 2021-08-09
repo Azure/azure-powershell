@@ -16,6 +16,28 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             EnableLogAccessUsingOnlyResourcePermissions = featues.EnableLogAccessUsingOnlyResourcePermissions;
             ImmediatePurgeDataOn30Days = featues.ImmediatePurgeDataOn30Days;
         }
+
+        public PSWorkspaceFeatures(bool? disableLocalAuth = null)
+        {
+            AdditionalProperties = null;
+            ClusterResourceId = null;
+            DisableLocalAuth = disableLocalAuth;
+            EnableDataExport = null;
+            EnableLogAccessUsingOnlyResourcePermissions = null;
+            ImmediatePurgeDataOn30Days = null;
+        }
+
+        public WorkspaceFeatures GetWorkspaceFeatures()
+        {
+            return new WorkspaceFeatures(
+                additionalProperties: AdditionalProperties,
+                enableDataExport: EnableDataExport,
+                immediatePurgeDataOn30Days: ImmediatePurgeDataOn30Days,
+                enableLogAccessUsingOnlyResourcePermissions: EnableLogAccessUsingOnlyResourcePermissions,
+                clusterResourceId: ClusterResourceId,
+                disableLocalAuth: DisableLocalAuth);
+        }
+
         public IDictionary<string, object> AdditionalProperties { get; set; }
         public string ClusterResourceId { get; set; }
         public bool? DisableLocalAuth { get; set; }

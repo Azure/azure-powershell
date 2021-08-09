@@ -73,6 +73,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "Gets or sets indicates whether customer managed storage is mandatory for query management")]
         public bool? ForceCmkForQuery;
 
+        [Parameter(Position = 10, Mandatory = false,
+            HelpMessage = "Allow to opt-out of local authentication and ensure customers can use only MSI and AAD for exclusive authentication")]
+        public bool? DisableLocalAuth;
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByObject)
@@ -91,7 +95,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
                 RetentionInDays = RetentionInDays,
                 DailyQuotaGb = DailyQuotaGb,
-                ForceCmkForQuery = ForceCmkForQuery
+                ForceCmkForQuery = ForceCmkForQuery,
+                WsFeatures = new PSWorkspaceFeatures(DisableLocalAuth)
             };
 
             WriteObject(OperationalInsightsClient.UpdatePSWorkspace(parameters));
