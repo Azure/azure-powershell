@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Migrate/migrateProjects", "2020-06-01-preview", false, false);
             RegisterConfiguration("Microsoft.Network/applicationgateways", "2020-05-01", true, false);
             RegisterConfiguration("Microsoft.OffAzure/masterSites", "2020-07-07", false, false);
-            RegisterConfiguration("Microsoft.PowerBI/privateLinkServicesForPowerBI", "2020-06-01", true, true);
+            RegisterConfiguration("Microsoft.PowerBI/privateLinkServicesForPowerBI", "2020-06-01", false, true);
             RegisterConfiguration("Microsoft.Purview/accounts", "2020-12-01-preview", true, true);
             RegisterConfiguration("Microsoft.Search/searchServices", "2020-08-01", true, false);
             RegisterConfiguration("Microsoft.ServiceBus/namespaces", "2018-01-01-preview", true, false);
