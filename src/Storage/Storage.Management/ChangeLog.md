@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.10.1
 * Supported create or migrate container to enable immutable Storage with versioning.
     -  `New-AzRmStorageContainer`
     -  `Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration`
