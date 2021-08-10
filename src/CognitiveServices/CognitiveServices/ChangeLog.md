@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.0
 * [Breaking Change] Changed type of PSCognitiveServicesAccount.Identity.Type from IdentityType to ResourceIdentityType.
 * [Breaking Change] Changed type of PSCognitiveServicesAccount.Sku.Tier from SkuTier to string.
 * [Breaking Change] Removed ActionRequired from PrivateLinkServiceConnectionState.

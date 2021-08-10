@@ -111,6 +111,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string Edition { get; set; }
 
         /// <summary>
+        /// Gets or sets the instance Subnet Id
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Subnet Id to use for instance update.")]
+        public string SubnetId { get; set; }
+
+        /// <summary>
         /// Gets or sets the instance License Type
         /// </summary>
         [Parameter(Mandatory = false,
@@ -322,6 +329,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].AdministratorLogin = model.FirstOrDefault().AdministratorLogin;
             updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
+            updateData[0].SubnetId = this.SubnetId ?? model.FirstOrDefault().SubnetId;
             return updateData;
         }
 

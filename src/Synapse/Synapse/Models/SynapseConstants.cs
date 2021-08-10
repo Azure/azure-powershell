@@ -167,6 +167,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string DisableMaxServiceObjectiveName = "remove";
 
+        public const string ManagedPrivateEndpoint = nameof(ManagedPrivateEndpoint);
+
+        public const string DefaultVNetName = "default";
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {
