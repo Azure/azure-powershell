@@ -14,7 +14,7 @@ Creates or updates a forwarding rule in a DNS forwarding ruleset.
 
 ```
 New-AzDnsResolverForwardingRule -DnsForwardingRulesetName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DomainName <String>]
  [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -74,6 +74,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DomainName
+The domain name for the forwarding rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
