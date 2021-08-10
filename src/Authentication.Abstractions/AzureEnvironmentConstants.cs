@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Location of the maagement portal for the environment
         /// </summary>
-        public const string AzureManagementPortalUrl = "https://go.microsoft.com/fwlink/?LinkId=254433";
-        public const string ChinaManagementPortalUrl = "https://go.microsoft.com/fwlink/?LinkId=301902";
-        public const string USGovernmentManagementPortalUrl = "https://manage.windowsazure.us";
+        public const string AzureManagementPortalUrl = "https://portal.azure.com/";
+        public const string ChinaManagementPortalUrl = "https://portal.azure.cn/";
+        public const string USGovernmentManagementPortalUrl = "https://portal.azure.us/";
         public const string GermanManagementPortalUrl = "https://portal.microsoftazure.de/";
 
         /// <summary>
