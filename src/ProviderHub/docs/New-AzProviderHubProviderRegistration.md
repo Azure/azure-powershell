@@ -17,18 +17,18 @@ New-AzProviderHubProviderRegistration -ProviderNamespace <String> [-Subscription
  [-Capability <IResourceProviderCapabilities[]>] [-FeatureRuleRequiredFeaturesPolicy <String>]
  [-ManagementIncidentContactEmail <String>] [-ManagementIncidentRoutingService <String>]
  [-ManagementIncidentRoutingTeam <String>] [-ManagementManifestOwner <String[]>]
- [-ManagementResourceAccessPolicy <String>]
- [-ManagementResourceAccessRole <IResourceProviderManagementResourceAccessRolesItem[]>]
- [-ManagementSchemaOwner <String[]>] [-ManagementServiceTreeInfo <IServiceTreeInfo[]>] [-Metadata <Hashtable>]
+ [-ManagementResourceAccessPolicy <String>] [-ManagementResourceAccessRole <IAny[]>]
+ [-ManagementSchemaOwner <String[]>] [-ManagementServiceTreeInfo <IServiceTreeInfo[]>] [-Metadata <IAny>]
  [-Namespace <String>] [-ProviderAuthenticationAllowedAudience <String[]>]
  [-ProviderAuthorization <IResourceProviderAuthorization[]>]
  [-ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]
- [-ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>] [-ProviderType <String>]
- [-ProviderVersion <String>] [-ProvisioningState <String>] [-RequestHeaderOptionOptInHeader <String>]
- [-RequiredFeature <String[]>] [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
+ [-ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]
+ [-ProviderType <ResourceProviderType>] [-ProviderVersion <String>] [-ProvisioningState <ProvisioningState>]
+ [-RequestHeaderOptionOptInHeader <OptInHeaderType>] [-RequiredFeature <String[]>]
+ [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
  [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]
- [-TemplateDeploymentOptionPreflightOption <String[]>] [-TemplateDeploymentOptionPreflightSupported]
- [-ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]
+ [-TemplateDeploymentOptionPreflightOption <PreflightOption[]>] [-TemplateDeploymentOptionPreflightSupported]
+ [-ThirdPartyProviderAuthorizationAuthorization <ILightHouseAuthorization[]>]
  [-ThirdPartyProviderAuthorizationManagedByTenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderManagementResourceAccessRolesItem[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny[]
 Parameter Sets: (All)
 Aliases:
 
@@ -245,10 +245,10 @@ Accept wildcard characters: False
 ```
 
 ### -Metadata
-Dictionary of \<string\>
+Any object
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny
 Parameter Sets: (All)
 Aliases:
 
@@ -370,7 +370,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderType
 Parameter Sets: (All)
 Aliases:
 
@@ -400,7 +400,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
 Parameter Sets: (All)
 Aliases:
 
@@ -415,7 +415,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType
 Parameter Sets: (All)
 Aliases:
 
@@ -491,7 +491,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]
 Parameter Sets: (All)
 Aliases:
 
@@ -517,9 +517,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ThirdPartyProviderAuthorizationAuthorizationszzz
+### -ThirdPartyProviderAuthorizationAuthorization
 .
-To construct, see NOTES section for THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATIONSZZZ properties and create a hash table.
+To construct, see NOTES section for THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILightHouseAuthorization[]
@@ -598,7 +598,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 CAPABILITY <IResourceProviderCapabilities[]>: .
-  - `Effect <String>`: 
+  - `Effect <ResourceProviderCapabilitiesEffect>`: 
   - `QuotaId <String>`: 
   - `[RequiredFeature <String[]>]`: 
 
@@ -617,10 +617,10 @@ PROVIDERHUBMETADATAPROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
   - `[RoleDefinitionId <String>]`: 
 
 SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  - `Action <String>`: 
-  - `State <String>`: 
+  - `Action <SubscriptionNotificationOperation>`: 
+  - `State <SubscriptionTransitioningState>`: 
 
-THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATIONSZZZ <ILightHouseAuthorization[]>: .
+THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATION <ILightHouseAuthorization[]>: .
   - `PrincipalId <String>`: 
   - `RoleDefinitionId <String>`: 
 

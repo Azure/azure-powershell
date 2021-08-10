@@ -14,9 +14,10 @@ Creates or updates a notification registration.
 
 ```
 New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String>
- [-SubscriptionId <String>] [-IncludedEvent <String[]>] [-MessageScope <String>]
- [-NotificationEndpoint <INotificationEndpoint[]>] [-NotificationMode <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-IncludedEvent <String[]>] [-MessageScope <MessageScope>]
+ [-NotificationEndpoint <INotificationEndpoint[]>] [-NotificationMode <NotificationMode>]
+ [-ProvisioningState <ProvisioningState>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +83,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +129,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode
 Parameter Sets: (All)
 Aliases:
 
@@ -148,6 +149,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

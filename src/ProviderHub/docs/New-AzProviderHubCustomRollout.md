@@ -14,7 +14,7 @@ Creates or updates the rollout details.
 
 ```
 New-AzProviderHubCustomRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId <String>]
- [-CanaryRegion <String[]>] [-ProvisioningState <String>]
+ [-CanaryRegion <String[]>] [-ProvisioningState <ProvisioningState>]
  [-SpecificationProviderRegistration <IProviderRegistration>]
  [-SpecificationResourceTypeRegistration <IResourceTypeRegistration[]>] [-StatusCompletedRegion <String[]>]
  [-StatusFailedOrSkippedRegion <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
 Parameter Sets: (All)
 Aliases:
 
@@ -242,7 +242,7 @@ To create the parameters described below, construct a hash table containing the 
 
 SPECIFICATIONPROVIDERREGISTRATION <IProviderRegistration>: .
   - `[Capability <IResourceProviderCapabilities[]>]`: 
-    - `Effect <String>`: 
+    - `Effect <ResourceProviderCapabilitiesEffect>`: 
     - `QuotaId <String>`: 
     - `[RequiredFeature <String[]>]`: 
   - `[FeatureRuleRequiredFeaturesPolicy <String>]`: 
@@ -251,13 +251,12 @@ SPECIFICATIONPROVIDERREGISTRATION <IProviderRegistration>: .
   - `[ManagementIncidentRoutingTeam <String>]`: 
   - `[ManagementManifestOwner <String[]>]`: 
   - `[ManagementResourceAccessPolicy <String>]`: 
-  - `[ManagementResourceAccessRole <IResourceProviderManagementResourceAccessRolesItem[]>]`: 
+  - `[ManagementResourceAccessRole <IAny[]>]`: 
   - `[ManagementSchemaOwner <String[]>]`: 
   - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`: 
     - `[ComponentId <String>]`: 
     - `[ServiceId <String>]`: 
-  - `[Metadata <IResourceProviderManifestPropertiesMetadata>]`: Dictionary of <string>
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Metadata <IAny>]`: Any object
   - `[Namespace <String>]`: 
   - `[ProviderAuthenticationAllowedAudience <String[]>]`: 
   - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`: 
@@ -266,18 +265,18 @@ SPECIFICATIONPROVIDERREGISTRATION <IProviderRegistration>: .
     - `[RoleDefinitionId <String>]`: 
   - `[ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]`: 
   - `[ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]`: 
-  - `[ProviderType <String>]`: 
+  - `[ProviderType <ResourceProviderType?>]`: 
   - `[ProviderVersion <String>]`: 
-  - `[ProvisioningState <String>]`: 
-  - `[RequestHeaderOptionOptInHeader <String>]`: 
+  - `[ProvisioningState <ProvisioningState?>]`: 
+  - `[RequestHeaderOptionOptInHeader <OptInHeaderType?>]`: 
   - `[RequiredFeature <String[]>]`: 
   - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`: 
   - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`: 
-    - `Action <String>`: 
-    - `State <String>`: 
-  - `[TemplateDeploymentOptionPreflightOption <String[]>]`: 
+    - `Action <SubscriptionNotificationOperation>`: 
+    - `State <SubscriptionTransitioningState>`: 
+  - `[TemplateDeploymentOptionPreflightOption <PreflightOption[]>]`: 
   - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`: 
-  - `[ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]`: 
+  - `[ThirdPartyProviderAuthorizationAuthorization <ILightHouseAuthorization[]>]`: 
     - `PrincipalId <String>`: 
     - `RoleDefinitionId <String>`: 
   - `[ThirdPartyProviderAuthorizationManagedByTenantId <String>]`: 
@@ -298,7 +297,7 @@ SPECIFICATIONRESOURCETYPEREGISTRATION <IResourceTypeRegistration[]>: .
     - `[Enabled <Boolean?>]`: 
     - `[Extension <IResourceTypeExtension[]>]`: 
       - `[EndpointUri <String>]`: 
-      - `[ExtensionCategory <String[]>]`: 
+      - `[ExtensionCategory <ExtensionCategory[]>]`: 
       - `[Timeout <TimeSpan?>]`: 
     - `[FeatureRuleRequiredFeaturesPolicy <String>]`: 
     - `[Location <String[]>]`: 
@@ -309,7 +308,7 @@ SPECIFICATIONRESOURCETYPEREGISTRATION <IResourceTypeRegistration[]>: .
     - `[Type <String>]`: 
   - `[FeatureRuleRequiredFeaturesPolicy <String>]`: 
   - `[IdentityManagementApplicationId <String>]`: 
-  - `[IdentityManagementType <String>]`: 
+  - `[IdentityManagementType <IdentityManagementTypes?>]`: 
   - `[IsPureProxy <Boolean?>]`: 
   - `[LinkedAccessCheck <ILinkedAccessCheck[]>]`: 
     - `[ActionName <String>]`: 
@@ -319,42 +318,42 @@ SPECIFICATIONRESOURCETYPEREGISTRATION <IResourceTypeRegistration[]>: .
     - `[LinkedType <String>]`: 
   - `[LoggingRule <ILoggingRule[]>]`: 
     - `Action <String>`: 
-    - `DetailLevel <String>`: 
-    - `Direction <String>`: 
+    - `DetailLevel <LoggingDetails>`: 
+    - `Direction <LoggingDirections>`: 
     - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`: 
     - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`: 
   - `[MarketplaceType <String>]`: 
-  - `[ProvisioningState <String>]`: 
-  - `[Regionality <String>]`: 
-  - `[RequestHeaderOptionOptInHeader <String>]`: 
+  - `[ProvisioningState <ProvisioningState?>]`: 
+  - `[Regionality <Regionality?>]`: 
+  - `[RequestHeaderOptionOptInHeader <OptInHeaderType?>]`: 
   - `[RequiredFeature <String[]>]`: 
-  - `[ResourceCreationBeginRequest <String[]>]`: 
-  - `[ResourceCreationBeginResponse <String[]>]`: 
-  - `[ResourceDeletionPolicy <String>]`: 
+  - `[ResourceCreationBeginRequest <ExtensionOptionType[]>]`: 
+  - `[ResourceCreationBeginResponse <ExtensionOptionType[]>]`: 
+  - `[ResourceDeletionPolicy <ResourceDeletionPolicy?>]`: 
   - `[ResourceMovePolicyCrossResourceGroupMoveEnabled <Boolean?>]`: 
   - `[ResourceMovePolicyCrossSubscriptionMoveEnabled <Boolean?>]`: 
   - `[ResourceMovePolicyValidationRequired <Boolean?>]`: 
-  - `[RoutingType <String>]`: 
+  - `[RoutingType <RoutingType?>]`: 
   - `[ServiceTreeInfo <IServiceTreeInfo[]>]`: 
     - `[ComponentId <String>]`: 
     - `[ServiceId <String>]`: 
   - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`: 
   - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`: 
-    - `Action <String>`: 
-    - `State <String>`: 
+    - `Action <SubscriptionNotificationOperation>`: 
+    - `State <SubscriptionTransitioningState>`: 
   - `[SubscriptionStateRule <ISubscriptionStateRule[]>]`: 
     - `[AllowedAction <String[]>]`: 
-    - `[State <String>]`: 
+    - `[State <SubscriptionState?>]`: 
   - `[SwaggerSpecification <ISwaggerSpecification[]>]`: 
     - `[ApiVersion <String[]>]`: 
     - `[SwaggerSpecFolderUri <String>]`: 
-  - `[TemplateDeploymentOptionPreflightOption <String[]>]`: 
+  - `[TemplateDeploymentOptionPreflightOption <PreflightOption[]>]`: 
   - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`: 
   - `[ThrottlingRule <IThrottlingRule[]>]`: 
     - `Action <String>`: 
     - `Metric <IThrottlingMetric[]>`: 
       - `Limit <Int64>`: 
-      - `Type <String>`: 
+      - `Type <ThrottlingMetricType>`: 
       - `[Interval <TimeSpan?>]`: 
     - `[RequiredFeature <String[]>]`: 
 
