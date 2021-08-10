@@ -20,9 +20,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public interface ITelemetryClient
     {
         /// <summary>
-        /// Gets the id to correlate the request and the server.
+        /// Gets and sets the id to correlate the request and the server.
         /// </summary>
-        public string RequestId { get; }
+        public string RequestId { get; set; }
 
         /// <summary>
         /// Gets the session id for the telemetry events.
@@ -64,5 +64,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>
         public void OnLoadParameterMap(ParameterMapTelemetryData telemetryData);
+
+        /// <summary>
+        /// Collects when we fails to parse a command in the model.
+        /// </summary>
+        /// <param name="telemetryData">The data to collect.</param>
+        public void OnParseCommandLineFailure(CommandLineParsingTelemetryData telemetryData);
     }
 }
