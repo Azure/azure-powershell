@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Mandatory = false, HelpMessage = "Tags of the Storage Insight")]
         [ValidateNotNullOrEmpty]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Containers = Container != null ? Container.ToList() : null,
                 Tables = Table != null ? Table.ToList() : null,
                 Etag = ETag,
-                Tags = Tags
+                Tags = Tag
             };
 
             if (ShouldProcess(Name, $"Update StorageInsight: {Name}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))

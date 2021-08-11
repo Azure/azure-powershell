@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Storage tables that the storage insight will read data from.")]
-        public string[] Tables { get; set; }
+        public string[] Table { get; set; }
 
         [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Storage blob containers that the storage insight will read data from.")]
-        public string[] Containers { get; set; }
+        public string[] Container { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The ETag of the StorageInsight.")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Mandatory = false, HelpMessage = "Tags of the Storage Insight")]
         [ValidateNotNullOrEmpty]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -81,10 +81,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Name = Name,
                 StorageAccountResourceId = StorageAccountResourceId,
                 StorageAccountKey = StorageAccountKey,
-                Tables = Tables != null ? Tables.ToList() : null,
-                Containers = Containers != null ? Containers.ToList() : null,
+                Tables = Table != null ? Table.ToList() : null,
+                Containers = Container != null ? Container.ToList() : null,
                 Etag = ETag,
-                Tags = Tags
+                Tags = Tag
             };
 
             if (ParameterSetName == ByWorkspaceObject)
