@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Adding support for authoritative upload as part of New-AzStorageSyncServerEndpoint.
-* Adding cloud change enumeration status information in Cloud Endpoint object.
-* Updating Server Endpoint object with various health properties
-* Adding "ServerName" property in Server Endpoint and Registered Server objects to support rename of servers.
+* Added support for authoritative upload as part of New-AzStorageSyncServerEndpoint.
+* Added cloud change enumeration status information in Cloud Endpoint object.
+* Updated Server Endpoint object with various health properties
+* Added "ServerName" property in Server Endpoint and Registered Server objects to support rename of servers.
 
 ## Version 1.5.0
 * Deprecated `Invoke-AzStorageSyncFileRecall`
