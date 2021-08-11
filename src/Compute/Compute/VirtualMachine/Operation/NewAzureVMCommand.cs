@@ -1138,26 +1138,31 @@ namespace Microsoft.Azure.Commands.Compute
 
         private void validate()
         {
-            if (this.GenerateSshKey.IsPresent && !this.IsParameterBound(c => c.SshKeyName))
+            if (this.IsParameterBound(c => c.SshKeyName))
             {
-                throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
-            }
-
-            if (this.ParameterSetName == "DefaultParameterSet" && !IsLinuxOs())
-            {
-                throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
-            }
-
-            if (this.ParameterSetName == "SimpleParameterSet")
-            {
-                var client = new Client(DefaultProfile.DefaultContext);
-                ImageAndOsType ImageAndOsType = client.UpdateImageAndOsTypeAsync(
-                        null, this.ResourceGroupName, this.Image, "").Result;
-                if (ImageAndOsType?.OsType != OperatingSystemTypes.Linux)
+                if (this.ParameterSetName == "DefaultParameterSet" && !IsLinuxOs())
                 {
                     throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
                 }
+
+                if (this.ParameterSetName == "SimpleParameterSet")
+                {
+                    var client = new Client(DefaultProfile.DefaultContext);
+                    ImageAndOsType ImageAndOsType = client.UpdateImageAndOsTypeAsync(
+                            null, this.ResourceGroupName, this.Image, "").Result;
+                    if (ImageAndOsType?.OsType != OperatingSystemTypes.Linux)
+                    {
+                        throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
+                    }
+                }
             }
+            else
+            {
+                if (this.GenerateSshKey.IsPresent)
+                {
+                    throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
+                }
+            }  
         }
     }
 }
