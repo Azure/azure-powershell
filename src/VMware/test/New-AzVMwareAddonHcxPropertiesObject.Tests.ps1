@@ -12,9 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzVMwareAddonHcxPropertiesObject' {
-    It '__AllParameterSets' {
+    It 'CreateExpanded' {
         {
-            $config = New-AzVMwareAddonHcxPropertiesObject -AddonType HCX -Offer "OfferValue"
+            $config = New-AzVMwareAddonHcxPropertiesObject -AddonType HCX -Offer "YourOfferValue"
             $config.AddonType | Should -Be "HCX"
         } | Should -Not -Throw
     }

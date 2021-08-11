@@ -23,23 +23,17 @@ Create or update a addon in a private cloud
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a addon in a private cloud
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $data = New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
+PS C:\> New-AzVMwareAddon -Name vr -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
 
-{{ Add output here }}
+Name Type
+---- ----
+vr   Microsoft.AVS/privateClouds/addons
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a addon in a private cloud
 
 ## PARAMETERS
 

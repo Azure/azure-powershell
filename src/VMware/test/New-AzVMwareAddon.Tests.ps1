@@ -12,9 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzVMwareAddon' {
-    It 'CreateExpanded' -Skip {
+    It 'CreateExpanded' {
         {
-            New-AzVMwareAddon -Name $env.rstr2 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1
+            $config = New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
+            $config = New-AzVMwareAddon -Name vr -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGourp2 -Property $config
+            $config.Name | Should -Be "VR"
         } | Should -Not -Throw
     }
 }

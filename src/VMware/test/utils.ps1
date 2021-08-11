@@ -72,8 +72,8 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup1
-    Remove-AzResourceGroup -Name $env.resourceGroup2
-    Remove-AzResourceGroup -Name $env.resourceGroup3
+    #Remove-AzResourceGroup -Name $env.resourceGroup1
+    #Remove-AzResourceGroup -Name $env.resourceGroup2
+    #Remove-AzResourceGroup -Name $env.resourceGroup3
 }
 

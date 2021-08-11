@@ -13,14 +13,28 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzVMwareAddon' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            $config = New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
+            $config = New-AzVMwareAddon -Name vr -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1 -Property $config
+            $config.Name | Should -Be "VR"
+
+            $config = Get-AzVMwareAddon -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1
+            $config.Count | Should -Be 1
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $config = Get-AzVMwareAddon -Name vr -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1
+            $config.Name | Should -Be "vr"
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/addons/srm"
+            $config = Get-AzVMwareAddon -InputObject $Id1
+            $config.Type | Should -Be "Microsoft.AVS/privateClouds/addons"
+        } | Should -Not -Throw
     }
 }

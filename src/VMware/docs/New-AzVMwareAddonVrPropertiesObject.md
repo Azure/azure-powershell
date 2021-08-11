@@ -23,11 +23,11 @@ Create a in-memory object for AddonVrProperties
 
 ### Example 1: Create a in-memory object for AddonVrProperties
 ```powershell
-PS C:\> New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 123
+PS C:\> New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
 
 AddonType ProvisioningState VrsCount
 --------- ----------------- --------
-VR                          123
+VR                          2
 ```
 
 Create a in-memory object for AddonVrProperties
