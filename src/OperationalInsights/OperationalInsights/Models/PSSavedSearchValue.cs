@@ -16,13 +16,13 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSSavedSearch
+    public class PSSavedSearchValue
     {
-        public PSSavedSearch()
+        public PSSavedSearchValue()
         {
         }
 
-        public PSSavedSearch(SavedSearch v)
+        public PSSavedSearchValue(SavedSearch v)
         {
             if (v != null)
             {

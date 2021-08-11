@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearch"), OutputType(typeof(PSSavedSearch))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearch"), OutputType(typeof(PSSavedSearchValue))]
     public class SetAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

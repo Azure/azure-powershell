@@ -22,7 +22,7 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsComputerGroup", SupportsShouldProcess = true), OutputType(typeof(PSSavedSearch))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsComputerGroup", SupportsShouldProcess = true), OutputType(typeof(PSSavedSearchValue))]
     public class NewAzureOperationalInsightsComputerGroupCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

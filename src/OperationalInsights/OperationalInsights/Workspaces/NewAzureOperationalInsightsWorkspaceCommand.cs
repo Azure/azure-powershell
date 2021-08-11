@@ -59,12 +59,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 7, Mandatory = false,
             HelpMessage = "The network access type for accessing workspace ingestion. Value should be 'Enabled' or 'Disabled'")]
-        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         public string PublicNetworkAccessForIngestion;
 
         [Parameter(Position = 8, Mandatory = false,
             HelpMessage = "The network access type for accessing workspace query. Value should be 'Enabled' or 'Disabled'")]
-        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         public string PublicNetworkAccessForQuery;
 
         [Parameter(Position = 9, Mandatory = false,
