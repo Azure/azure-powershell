@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public int? MaxTasksPerComputeNode { get; set; }
+        public int? TaskSlotsPerNode { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Batch
                 TargetLowPriorityComputeNodes = this.TargetLowPriorityComputeNodes,
                 AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval,
                 AutoScaleFormula = this.AutoScaleFormula,
-                MaxTasksPerComputeNode = this.MaxTasksPerComputeNode,
+                TaskSlotsPerNode = this.TaskSlotsPerNode,
                 TaskSchedulingPolicy = this.TaskSchedulingPolicy,
                 Metadata = this.Metadata,
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,

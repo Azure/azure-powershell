@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             pool.VirtualMachineSize = parameters.VirtualMachineSize;
             pool.DisplayName = parameters.DisplayName;
             pool.ResizeTimeout = parameters.ResizeTimeout;
-            pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
+            pool.TaskSlotsPerNode = parameters.TaskSlotsPerNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
 
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
