@@ -98,62 +98,6 @@ Tags              : {[tag2, value2], [tag1, value1]}
 
 This command creates a data collection rules for the current subscription.
 
-### Example 2: Create data collection rule, JSON from PSDataCollectionRuleResource
-```powershell
-PS C:\>New-AzDataCollectionRule -Location 'East US 2 EUAP' -ResourceGroupName 'testdcr' `
-                                -RuleName 'newDcrEx2' -RuleFile 'C:\samples\dcrEx2.json' `
-                                -Description 'Dcr description' `
-                                -Tag @{"tag1"="value1"; "tag2"="value2"}
-
-Description       : Dcr description
-DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
-Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
-DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
-ProvisioningState : Succeeded
-Etag              : "{etag}"
-Id                : /subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcrEx2
-Name              : newDcrEx2
-Type              : Microsoft.Insights/dataCollectionRules
-Location          : East US 2 EUAP
-Tags              : {[tag2, value2], [tag1, value1]}
-
-# Note: Content of C:\samples\dcrEx2.json
-{
-  "DataSources": {
-    "PerformanceCounters": [
-      {
-        "Streams": [
-          "Microsoft-InsightsMetrics"
-        ],
-        "ScheduledTransferPeriod": "PT1M",
-        "SamplingFrequencyInSeconds": 10,
-        "CounterSpecifiers": [
-          "\\Processor Information(_Total)\\% Processor Time"
-        ],
-        "Name": "perfCounter01"
-      }
-    ]
-  },
-  "Destinations": {
-    "AzureMonitorMetrics": {
-      "Name": "azureMonitorMetrics-default"
-    }
-  },
-  "DataFlows": [
-    {
-      "Streams": [
-        "Microsoft-InsightsMetrics"
-      ],
-      "Destinations": [
-        "azureMonitorMetrics-default"
-      ]
-    }
-  ]
-}
-```
-
-This command creates a data collection rules for the current subscription.
-
 ## PARAMETERS
 
 ### -DefaultProfile
