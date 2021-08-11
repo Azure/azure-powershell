@@ -1,7 +1,7 @@
-﻿using Microsoft.Azure.Commands.OperationalInsights.Client;
-using Microsoft.Azure.Commands.OperationalInsights.Models;
+﻿using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 {
@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
         public string DataExportName { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "An array of tables to export, for example: [“Heartbeat, SecurityEvent”].")]
-        public string[] TableNames { get; set; }
+        public string[] TableName { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.")]
+        [Parameter(Mandatory = false, HelpMessage = "The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.")]
         public string ResourceId { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Optional. Allows to define an Event Hub name. Not applicable when destination is Storage Account.")]
+        [Parameter(Mandatory = false, HelpMessage = "Optional. Allows to define an Event Hub name. Not applicable when destination is Storage Account.")]
         public string EventHubName { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Active when enabled.")]
+        [Parameter(Mandatory = false, HelpMessage = "Active when enabled.")]
         public bool? Enable { get; set; }
 
         public override void ExecuteCmdlet()
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = WorkspaceName,
                 DataExportName = DataExportName,
-                TableNames = TableNames,
+                TableNames = TableName.ToList(),
                 DestinationResourceId = ResourceId,
                 EventHubName = EventHubName,
                 Enable = Enable

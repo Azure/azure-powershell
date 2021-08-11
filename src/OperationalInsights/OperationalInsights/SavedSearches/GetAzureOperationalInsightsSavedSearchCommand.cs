@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The saved search id.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty] 
         public string SavedSearchId { get; set; }
 
         protected override void ProcessRecord()

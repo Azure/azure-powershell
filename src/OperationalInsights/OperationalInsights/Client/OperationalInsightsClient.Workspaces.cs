@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 parameters.ResourceGroupName,
                 parameters.WorkspaceName,
                 workspace.Location,
-                parameters?.Sku == null ? workspace.Sku : parameters.Sku,
+                parameters?.Sku == null ? new PSWorkspaceSku(workspace.Sku, workspace.CapacityReservationLevel) : parameters.Sku,
                 parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags),
                 string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForIngestion) ? workspace.PublicNetworkAccessForIngestion : parameters.PublicNetworkAccessForIngestion,
                 string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForQuery) ? workspace.PublicNetworkAccessForQuery : parameters.PublicNetworkAccessForQuery,

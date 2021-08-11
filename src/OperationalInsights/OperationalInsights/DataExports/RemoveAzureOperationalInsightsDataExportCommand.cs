@@ -1,5 +1,4 @@
-﻿using Microsoft.Azure.Commands.OperationalInsights.Client;
-using Microsoft.Azure.Commands.OperationalInsights.Models;
+﻿using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -8,7 +7,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsDataExport", DefaultParameterSetName = DeleteByNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsDataExport", SupportsShouldProcess = true, DefaultParameterSetName = DeleteByNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureOperationalInsightsDataExportCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = DeleteByNameParameterSet,

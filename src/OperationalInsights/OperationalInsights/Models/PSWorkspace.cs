@@ -38,7 +38,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Location = workspace.Location;
             this.Tags = workspace.Tags;
 
-            this.Sku = workspace.Sku != null ? new PSWorkspaceSku(workspace.Sku) : null;
+            this.Sku = workspace.Sku.Name;
+            this.CapacityReservationLevel = workspace?.Sku?.CapacityReservationLevel;
+            this.LastSkuUpdate = workspace?.Sku?.LastSkuUpdate;
+
             this.retentionInDays = workspace.RetentionInDays;
             this.CustomerId = new Guid(workspace.CustomerId);
             this.ProvisioningState = workspace.ProvisioningState;
@@ -63,7 +66,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public IDictionary<string, string> Tags { get; set; }
 
-        public PSWorkspaceSku Sku { get; set; }
+        public string Sku { get; set; }
+
+        public int? CapacityReservationLevel { get; set; }
+
+        public string LastSkuUpdate { get; }
 
         public int? retentionInDays { get; set; }
 

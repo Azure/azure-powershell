@@ -3,6 +3,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 {
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 
         [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet,
             HelpMessage = "An array of tables to export, for example: [“Heartbeat, SecurityEvent”].")]
-        public string[] TableNames { get; set; }
+        public string[] TableName{ get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet,
             HelpMessage = "The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.")]
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
                 parameters.ResourceGroupName = resourceIdentifier.ResourceGroupName; ;
                 parameters.WorkspaceName = resourceIdentifier.ParentResource.ToLower().Replace("workspaces/", "");
                 parameters.DataExportName = resourceIdentifier.ResourceName;
-                parameters.TableNames = InputDataExport.TableNames.ToArray();
+                parameters.TableNames = InputDataExport.TableNames;
                 parameters.DestinationResourceId = InputDataExport.ResourceId;
                 parameters.EventHubName = InputDataExport.EventHubName;
                 parameters.Enable = InputDataExport.Enable;
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
                 parameters.ResourceGroupName = ResourceGroupName;
                 parameters.WorkspaceName = WorkspaceName;
                 parameters.DataExportName = DataExportName;
-                parameters.TableNames = TableNames;
+                parameters.TableNames = TableName.ToList();
                 parameters.DestinationResourceId = DestinationResourceId;
                 parameters.EventHubName = EventHubName;
                 parameters.Enable = Enable;
