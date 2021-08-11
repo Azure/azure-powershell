@@ -181,6 +181,19 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactoryName);
         }
 
+        public virtual async Task<PSIntegrationRuntimeOutboundNetworkDependenciesEndpoints> GetIntegrationRuntimeOutboundNetworkDependenciesEndpointsAsync(
+            string resourceGroupName,
+            string dataFactoryName,
+            string integrationRuntimeName)
+        {
+            var outboundNetworkDependenciesEndpointsResponse = await this.DataFactoryManagementClient.IntegrationRuntimes.ListOutboundNetworkDependenciesEndpointsAsync(
+                resourceGroupName,
+                dataFactoryName,
+                integrationRuntimeName);
+
+            return new PSIntegrationRuntimeOutboundNetworkDependenciesEndpoints(outboundNetworkDependenciesEndpointsResponse);
+        }
+
         public virtual async Task<HttpStatusCode> DeleteIntegrationRuntimeAsync(
             string resourceGroupName,
             string dataFactoryName,

@@ -283,7 +283,10 @@ function Test-Azure-IntegrationRuntime
             -Name $irname
         Assert-AreEqual $actual.Name $expected.Name
         Get-AzDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
-
+        $endpoints = Get-AzDataFactoryV2IntegrationRuntimeOutboundNetwworkDependenciesEndpoints -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname
+        Write-Output $endpoints
         Remove-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
     }
     finally
