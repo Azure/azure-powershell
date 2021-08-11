@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Storage tables that the storage insight will read data from.")]
-        public string[] Table { get; set; }
+        public string[] Tables { get; set; }
 
         [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure Storage blob containers that the storage insight will read data from.")]
-        public string[] Container { get; set; }
+        public string[] Containers { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The ETag of the StorageInsight.")]
@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Name = Name,
                 StorageAccountResourceId = StorageAccountResourceId,
                 StorageAccountKey = StorageAccountKey,
-                Tables = Table != null ? Table.ToList() : null,
-                Containers = Container != null ? Container.ToList() : null,
+                Tables = Tables != null ? Tables.ToList() : null,
+                Containers = Containers != null ? Containers.ToList() : null,
                 Etag = ETag,
                 Tags = Tag
             };
