@@ -35,110 +35,13 @@ namespace PSModelGenerator
             {  "Microsoft.Azure.Batch.MetadataItem",  new Tuple<string, string>("Name", "Value") },
         };
 
-        private static readonly Dictionary<string, string> OMtoPSClassMappings = new Dictionary<string, string>()
+    private static readonly Dictionary<string, string> customMappings = new Dictionary<string, string>
         {
-            {"Microsoft.Azure.Batch.AffinityInformation", "PSAffinityInformation"},
-            {"Microsoft.Azure.Batch.AuthenticationTokenSettings", "PSAuthenticationTokenSettings"},
-            {"Microsoft.Azure.Batch.AutoPoolSpecification", "PSAutoPoolSpecification"},
-            {"Microsoft.Azure.Batch.AutoScaleRun", "PSAutoScaleRun"},
-            {"Microsoft.Azure.Batch.AutoScaleRunError", "PSAutoScaleRunError"},
-            {"Microsoft.Azure.Batch.AutoUserSpecification", "PSAutoUserSpecification"},
-            {"Microsoft.Azure.Batch.ApplicationPackageReference", "PSApplicationPackageReference"},
-            {"Microsoft.Azure.Batch.AzureBlobFileSystemConfiguration", "PSAzureBlobFileSystemConfiguration"},
-            {"Microsoft.Azure.Batch.AzureFileShareConfiguration", "PSAzureFileShareConfiguration"},
-            {"Microsoft.Azure.Batch.Certificate", "PSCertificate"},
-            {"Microsoft.Azure.Batch.CertificateReference", "PSCertificateReference"},
-            {"Microsoft.Azure.Batch.CifsMountConfiguration", "PSCifsMountConfiguration"},
-            {"Microsoft.Azure.Batch.CloudJob", "PSCloudJob"},
-            {"Microsoft.Azure.Batch.CloudJobSchedule", "PSCloudJobSchedule"},
-            {"Microsoft.Azure.Batch.CloudPool", "PSCloudPool"},
-            {"Microsoft.Azure.Batch.CloudTask", "PSCloudTask"},
-            {"Microsoft.Azure.Batch.CloudServiceConfiguration", "PSCloudServiceConfiguration"},
-            {"Microsoft.Azure.Batch.ComputeNode", "PSComputeNode"},
-            {"Microsoft.Azure.Batch.ComputeNodeEndpointConfiguration", "PSComputeNodeEndpointConfiguration"},
-            {"Microsoft.Azure.Batch.ComputeNodeError", "PSComputeNodeError"},
-            {"Microsoft.Azure.Batch.ComputeNodeInformation", "PSComputeNodeInformation"},
-            {"Microsoft.Azure.Batch.ComputeNodeUser", "PSComputeNodeUser"},
-            {"Microsoft.Azure.Batch.ContainerConfiguration", "PSContainerConfiguration"},
-            {"Microsoft.Azure.Batch.ContainerRegistry", "PSContainerRegistry"},
-            {"Microsoft.Azure.Batch.DataDisk", "PSDataDisk"},
-            {"Microsoft.Azure.Batch.DeleteCertificateError", "PSDeleteCertificateError"},
-            {"Microsoft.Azure.Batch.DiskEncryptionConfiguration", "PSDiskEncryptionConfiguration"},
-            {"Microsoft.Azure.Batch.EnvironmentSetting", "PSEnvironmentSetting"},
-            {"Microsoft.Azure.Batch.ExitConditions", "PSExitConditions"},
-            {"Microsoft.Azure.Batch.ExitCodeRangeMapping", "PSExitCodeRangeMapping"},
-            {"Microsoft.Azure.Batch.ExitCodeMapping", "PSExitCodeMapping"},
-            {"Microsoft.Azure.Batch.ExitOptions", "PSExitOptions"},
-            {"Microsoft.Azure.Batch.FileProperties", "PSFileProperties"},
-            {"Microsoft.Azure.Batch.ImageInformation", "PSImageInformation"},
-            {"Microsoft.Azure.Batch.ImageReference", "PSImageReference"},
-            {"Microsoft.Azure.Batch.InboundEndpoint", "PSInboundEndpoint"},
-            {"Microsoft.Azure.Batch.InboundNatPool", "PSInboundNatPool"},
-            {"Microsoft.Azure.Batch.RemoteLoginSettings", "PSRemoteLoginSettings"},
-            {"Microsoft.Azure.Batch.JobConstraints", "PSJobConstraints"},
-            {"Microsoft.Azure.Batch.JobExecutionInformation", "PSJobExecutionInformation"},
-            {"Microsoft.Azure.Batch.JobNetworkConfiguration", "PSJobNetworkConfiguration"},
-            {"Microsoft.Azure.Batch.JobManagerTask", "PSJobManagerTask"},
-            {"Microsoft.Azure.Batch.JobPreparationAndReleaseTaskExecutionInformation", "PSJobPreparationAndReleaseTaskExecutionInformation"},
-            {"Microsoft.Azure.Batch.JobPreparationTask", "PSJobPreparationTask"},
-            {"Microsoft.Azure.Batch.JobPreparationTaskExecutionInformation", "PSJobPreparationTaskExecutionInformation"},
-            {"Microsoft.Azure.Batch.JobReleaseTask", "PSJobReleaseTask"},
-            {"Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation", "PSJobReleaseTaskExecutionInformation"},
-            {"Microsoft.Azure.Batch.JobScheduleExecutionInformation", "PSJobScheduleExecutionInformation"},
-            {"Microsoft.Azure.Batch.JobScheduleStatistics", "PSJobScheduleStatistics"},
-            {"Microsoft.Azure.Batch.JobSchedulingError", "PSJobSchedulingError"},
-            {"Microsoft.Azure.Batch.JobSpecification", "PSJobSpecification"},
-            {"Microsoft.Azure.Batch.JobStatistics", "PSJobStatistics"},
-            {"Microsoft.Azure.Batch.LinuxUserConfiguration", "PSLinuxUserConfiguration"},
-            {"Microsoft.Azure.Batch.MetadataItem", "PSMetadataItem"},
-            {"Microsoft.Azure.Batch.MountConfiguration", "PSMountConfiguration"},
-            {"Microsoft.Azure.Batch.MultiInstanceSettings", "PSMultiInstanceSettings"},
-            {"Microsoft.Azure.Batch.NameValuePair", "PSNameValuePair"},
-            {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
-            {"Microsoft.Azure.Batch.NfsMountConfiguration", "PSNfsMountConfiguration"},
-            {"Microsoft.Azure.Batch.NodeAgentInformation", "PSNodeAgentInformation"},
-            {"Microsoft.Azure.Batch.NetworkSecurityGroupRule", "PSNetworkSecurityGroupRule"},
-            {"Microsoft.Azure.Batch.NodeCounts", "PSNodeCounts"},
-            {"Microsoft.Azure.Batch.NodeFile", "PSNodeFile"},
-            {"Microsoft.Azure.Batch.OutputFile", "PSOutputFile"},
-            {"Microsoft.Azure.Batch.OutputFileDestination", "PSOutputFileDestination"},
-            {"Microsoft.Azure.Batch.OutputFileUploadOptions", "PSOutputFileUploadOptions"},
-            {"Microsoft.Azure.Batch.OutputFileBlobContainerDestination", "PSOutputFileBlobContainerDestination"},
-            {"Microsoft.Azure.Batch.PoolEndpointConfiguration", "PSPoolEndpointConfiguration"},
-            {"Microsoft.Azure.Batch.PoolInformation", "PSPoolInformation"},
-            {"Microsoft.Azure.Batch.PoolNodeCounts", "PSPoolNodeCounts"},
-            {"Microsoft.Azure.Batch.PoolSpecification", "PSPoolSpecification"},
-            {"Microsoft.Azure.Batch.PoolStatistics", "PSPoolStatistics"},
-            {"Microsoft.Azure.Batch.PoolUsageMetrics", "PSPoolUsageMetrics"},
-            {"Microsoft.Azure.Batch.PublicIPAddressConfiguration", "PSPublicIPAddressConfiguration"},
-            {"Microsoft.Azure.Batch.RecentJob", "PSRecentJob"},
-            {"Microsoft.Azure.Batch.ResizeError", "PSResizeError"},
-            {"Microsoft.Azure.Batch.ResourceFile", "PSResourceFile"},
-            {"Microsoft.Azure.Batch.ResourceStatistics", "PSResourceStatistics"},
-            {"Microsoft.Azure.Batch.Schedule", "PSSchedule"},
-            {"Microsoft.Azure.Batch.StartTask", "PSStartTask"},
-            {"Microsoft.Azure.Batch.StartTaskInformation", "PSStartTaskInformation"},
-            {"Microsoft.Azure.Batch.SubtaskInformation", "PSSubtaskInformation"},
-            {"Microsoft.Azure.Batch.TaskConstraints", "PSTaskConstraints"},
-            {"Microsoft.Azure.Batch.TaskContainerExecutionInformation", "PSTaskContainerExecutionInformation"},
-            {"Microsoft.Azure.Batch.TaskContainerSettings", "PSTaskContainerSettings"},
-            {"Microsoft.Azure.Batch.TaskCounts", "PSTaskCounts"},
-            {"Microsoft.Azure.Batch.TaskDependencies", "PSTaskDependencies"},
-            {"Microsoft.Azure.Batch.TaskExecutionInformation", "PSTaskExecutionInformation"},
-            {"Microsoft.Azure.Batch.TaskInformation", "PSTaskInformation"},
-            {"Microsoft.Azure.Batch.TaskIdRange", "PSTaskIdRange"},
-            {"Microsoft.Azure.Batch.TaskFailureInformation", "PSTaskFailureInformation"},
-            {"Microsoft.Azure.Batch.TaskSchedulingPolicy", "PSTaskSchedulingPolicy"},
-            {"Microsoft.Azure.Batch.TaskStatistics", "PSTaskStatistics"},
-            {"Microsoft.Azure.Batch.UploadBatchServiceLogsResult", "PSStartComputeNodeServiceLogUploadResult"},
-            {"Microsoft.Azure.Batch.UsageStatistics", "PSUsageStatistics"},
-            {"Microsoft.Azure.Batch.UserAccount", "PSUserAccount"},
-            {"Microsoft.Azure.Batch.UserIdentity", "PSUserIdentity"},
-            {"Microsoft.Azure.Batch.VirtualMachineConfiguration", "PSVirtualMachineConfiguration"},
-            {"Microsoft.Azure.Batch.WindowsConfiguration", "PSWindowsConfiguration"},
-            {"Microsoft.Azure.Batch.WindowsUserConfiguration", "PSWindowsUserConfiguration"},
+          { "Microsoft.Azure.Batch.NodeFile", "PSNodeFile" },
+          { "Microsoft.Azure.Batch.UploadBatchServiceLogsResult", "PSStartComputeNodeServiceLogUploadResult" },
         };
 
+        private static readonly Dictionary<string, string> OMtoPSClassMappings = new Dictionary<string, string>();
 
         private static readonly Dictionary<string, string[]> OmittedProperties = new Dictionary<string, string[]>()
         {
@@ -162,9 +65,10 @@ namespace PSModelGenerator
                 return;
             }
 
+
             AssemblyPath = args[0];
             Assembly omAssembly = Assembly.LoadFile(AssemblyPath);
-
+            CreateMappings(omAssembly);
             if (Directory.Exists(GeneratedFileDir))
             {
                 Directory.Delete(GeneratedFileDir, true);
@@ -182,6 +86,24 @@ namespace PSModelGenerator
                 }
                 GenerateModel(fileName, omType, mapping.Value);
             }
+        }
+
+        private static void CreateMappings(Assembly omAssembly)
+        {
+          foreach ((string key,string value) in customMappings)
+          {
+            OMtoPSClassMappings.Add(key, value);
+          }
+
+          var typeNames = omAssembly.GetTypes().Where(t => t.GetInterface("IPropertyMetadata") != null && t.Namespace == "Microsoft.Azure.Batch" && t.IsPublic).Select(t => (t.FullName, t.Name)).ToList();
+
+          foreach ((string fullName, string className) in typeNames)
+          {
+            if (OMtoPSClassMappings.ContainsKey(fullName) == false)
+            {
+                OMtoPSClassMappings.Add(fullName, $"PS{className}");
+            }
+          }
         }
 
         private static void ShowUsage()
@@ -546,7 +468,7 @@ namespace PSModelGenerator
 
         private static string GetPropertyType(Type t)
         {
-            if (t.IsEnum || t == typeof(String) || t.IsPrimitive || t == typeof(DateTime) || t == typeof(TimeSpan))
+            if (t.IsEnum || t == typeof(String) || t.IsPrimitive || t == typeof(DateTime) || t == typeof(TimeSpan) || t == typeof(object))
             {
                 return t.FullName;
             }
@@ -597,7 +519,7 @@ namespace PSModelGenerator
             }
             else
             {
-                throw new InvalidOperationException(string.Format("Unexpected type. No mapping defined for type {0}", t.Name));
+                throw new InvalidOperationException(string.Format("Unexpected type. No mapping defined for type {0}", t.FullName));
             }
         }
     }
