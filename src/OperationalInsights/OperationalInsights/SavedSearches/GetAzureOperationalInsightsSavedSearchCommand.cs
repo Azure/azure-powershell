@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearch"), OutputType(typeof(PSSearchGetSavedSearchResponse), typeof(PSSearchGetSavedSearchResponse))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearch"), OutputType(typeof(PSSearchListSavedSearchResponse), typeof(PSSavedSearchValue))]
     public class GetAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The saved search id.")]
-        [ValidateNotNullOrEmpty] 
+        [ValidateNotNullOrEmpty]
         public string SavedSearchId { get; set; }
 
         protected override void ProcessRecord()

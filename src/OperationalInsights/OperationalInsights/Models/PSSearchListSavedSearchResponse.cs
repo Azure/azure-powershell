@@ -18,13 +18,13 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSSearchGetSavedSearchResponse
+    public class PSSearchListSavedSearchResponse
     {
-        public PSSearchGetSavedSearchResponse()
+        public PSSearchListSavedSearchResponse()
         {
         }
 
-        public PSSearchGetSavedSearchResponse(SavedSearchesListResult searchResponse)
+        public PSSearchListSavedSearchResponse(SavedSearchesListResult searchResponse)
         {
             if (searchResponse == null)
             {
