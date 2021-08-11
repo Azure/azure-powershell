@@ -46,7 +46,7 @@ function New-AzCloudServiceRemoteDesktopExtensionObject {
     $RDPExtensionType = "RDP"
 
     $rdpSetting = "<PublicConfig><UserName>$($Credential.UserName)</UserName><Expiration>$Expiration</Expiration></PublicConfig>";
-    $Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $Credential.Password
+    $Password = ConvertFrom-SecureString -AsPlainText $Credential.Password
     $rdpProtectedSetting = "<PrivateConfig><Password>$($Password)</Password></PrivateConfig>";
 
     return New-AzCloudServiceExtensionObject -Name $Name -Publisher $RDPPublisher -Type $RDPExtensionType -TypeHandlerVersion $TypeHandlerVersion -Setting $rdpSetting -ProtectedSetting $rdpProtectedSetting -RolesAppliedTo $RolesAppliedTo -AutoUpgradeMinorVersion $AutoUpgradeMinorVersion
