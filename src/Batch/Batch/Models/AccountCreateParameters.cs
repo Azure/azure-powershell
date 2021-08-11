@@ -88,8 +88,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PublicNetworkAccessType PublicNetworkAccess { get; set; }
 
         /// <summary>
-        /// The identity of the Batch account, if configured. This is only used when the
-        /// user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration.
+        /// The identity of the Batch account.
         /// </summary>
         public BatchAccountIdentity Identity { get; set; }
     }

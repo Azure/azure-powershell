@@ -85,6 +85,26 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <returns>The task counts for the specified job.</returns>
         public PSTaskCounts GetTaskCounts(GetTaskCountsOptions options)
         {
+            return new PSTaskCounts(GetTaskCountsResult(options).TaskCounts);
+        }
+
+        /// <summary>
+        /// Get task slot counts for the specified job.
+        /// </summary>
+        /// <param name="options">Options for GetTaskSlotCounts().</param>
+        /// <returns>The task slot counts for the specified job.</returns>
+        public PSTaskSlotCounts GetTaskSlotCounts(GetTaskCountsOptions options)
+        {
+            return new PSTaskSlotCounts(GetTaskCountsResult(options).TaskSlotCounts);
+        }
+
+        /// <summary>
+        /// Get task count results for the specified job.
+        /// </summary>
+        /// <param name="options">Options for GetTaskCountsResult().</param>
+        /// <returns>The task count results for the specified job.</returns>
+        internal TaskCountsResult GetTaskCountsResult(GetTaskCountsOptions options)
+        {
             if (options == null)
             {
                 throw new ArgumentNullException("options");
@@ -100,7 +120,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             WriteVerbose(string.Format(Resources.GetTaskCounts, jobId));
 
             JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
-            return new PSTaskCounts(jobOperations.GetJobTaskCounts(jobId, options.AdditionalBehaviors));
+            return jobOperations.GetJobTaskCounts(jobId, options.AdditionalBehaviors);
         }
 
         /// <summary>

@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string AutoScaleFormula { get; set; }
 
         /// <summary>
-        /// The maximum number of tasks that can run on a compute node.
+        /// The number of task slots for each compute node.
         /// </summary>
-        public int? MaxTasksPerComputeNode { get; set; }
+        public int? TaskSlotsPerNode { get; set; }
 
         /// <summary>
         /// The task scheduling policy.

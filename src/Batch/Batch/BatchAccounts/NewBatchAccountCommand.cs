@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Batch.Models;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -74,7 +75,10 @@ namespace Microsoft.Azure.Commands.Batch
                 KeyVaultUrl = this.KeyVaultUrl,
                 Tags = this.Tag,
                 PublicNetworkAccess = this.PublicNetworkAccess,
-                Identity = new BatchAccountIdentity(this.IdentityType)
+                // KLUDGE: This is a workaround for an issue with the BatchAccountIdentity constructor. Currently specifying
+                //         a single argument (ie: `new BatchAccountIdentity(this.IdentityType)`) is ambiguous. This needs to
+                //         be resolved in a new release of the management plane SDK.
+                Identity = new BatchAccountIdentity(this.IdentityType, null, null, null as IDictionary<string, UserAssignedIdentities>)
             };
             BatchAccountContext context = BatchClient.CreateAccount(parameters);
             WriteObject(context);

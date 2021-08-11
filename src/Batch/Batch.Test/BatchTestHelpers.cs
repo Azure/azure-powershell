@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 tags: tags == null ? null : TagsConversionHelper.CreateTagDictionary(tags, true),
                 dedicatedCoreQuotaPerVMFamilyEnforced: dedicatedCoreQuotaPerVMFamilyEnforced,
                 dedicatedCoreQuotaPerVMFamily: machineFamilyQuotas,
-                identity: identity ?? new BatchAccountIdentity(ResourceIdentityType.None));
+                identity: identity ?? new BatchAccountIdentity(ResourceIdentityType.None, null, null, null as IDictionary<string, UserAssignedIdentities>));
 
             return resource;
         }
@@ -376,18 +376,23 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a CloudPoolGetResponse object
+        /// Builds a CloudPoolGetResponse object using a pool ID
         /// </summary>
         public static AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> CreateCloudPoolGetResponse(string poolId)
         {
-            var response = new AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>();
-            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
-
             ProxyModels.CloudPool pool = new ProxyModels.CloudPool();
             pool.Id = poolId;
+            return CreateCloudPoolGetResponse(pool);
+        }
 
+        /// <summary>
+        /// Builds a CloudPoolGetResponse object using a pool model
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> CreateCloudPoolGetResponse(ProxyModels.CloudPool pool)
+        {
+            var response = new AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
             response.Body = pool;
-
             return response;
         }
 
