@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return new PSSavedSearchValue(OperationalInsightsManagementClient.SavedSearches.Get(resourceGroupName, workspaceName, savedSearchId));
         }
 
-        public virtual PSSearchListSavedSearchResponse GetSavedSearches(string resourceGroupName, string workspaceName)
+        public virtual PSSearchGetSavedSearchResponse GetSavedSearches(string resourceGroupName, string workspaceName)
         {
             SavedSearchesListResult responses = OperationalInsightsManagementClient.SavedSearches.ListByWorkspace(resourceGroupName, workspaceName);
-            PSSearchListSavedSearchResponse searchResponses = new PSSearchListSavedSearchResponse(responses);
+            PSSearchGetSavedSearchResponse searchResponses = new PSSearchGetSavedSearchResponse(responses);
             return searchResponses;
         }
 

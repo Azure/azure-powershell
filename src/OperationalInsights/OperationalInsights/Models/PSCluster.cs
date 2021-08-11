@@ -108,6 +108,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string Name { get; set; }
         public string Type { get; set; }
         public Hashtable Tags { get; set; }
+        public string NextLink { get; set; }//this is not in use anymore - removing this will cause the build to fail
 
         private IDictionary<string, string> getTags()
         {

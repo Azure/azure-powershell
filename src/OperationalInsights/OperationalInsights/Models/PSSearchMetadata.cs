@@ -86,5 +86,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public long? Sum { get; set; }
         public long? Max { get; set; }
         public PSMetadataSchema Schema { get; set; }
+        public IEnumerable<object> CoreResponses { get; set; } //this is not in use anymore - removing this will cause the build to fail
     }
 }
