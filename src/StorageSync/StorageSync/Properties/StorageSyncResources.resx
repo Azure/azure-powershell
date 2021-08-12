@@ -279,7 +279,4 @@
   <data name="SetStorageSyncServiceActionMessage" xml:space="preserve">
     <value>Updating a Storage Sync Service</value>
   </data>
-  <data name="InvokeAzStorageSyncFileRecallDeprecationMessage" xml:space="preserve">
-    <value>"This cmdlet has been deprecated. Please use the 'Invoke-StorageSyncFileRecall' cmdlet that is shipped with the AFS agent.</value>
-  </data>
 </root>

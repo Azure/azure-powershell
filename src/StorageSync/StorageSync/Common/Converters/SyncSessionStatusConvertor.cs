@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.StorageSync.Models;
+using System;
+using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
+
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
-    using Microsoft.Azure.Commands.StorageSync.Models;
-    using System;
-    using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
     /// <summary>
     /// Class SyncSessionStatusConvertor.
