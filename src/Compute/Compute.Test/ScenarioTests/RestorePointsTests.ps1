@@ -20,9 +20,9 @@ function Test-RestorePoints
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $restorePointCollectionName = 'restorepointcollection' + $rgname;
-    $restorePointName = 'restorepoint' + $rgname;
-    $vmname = 'vm' + $rgname
+    $restorePointCollectionName = 'rpc123' ;
+    $restorePointName = 'rp123' ;
+    $vmname = 'vm123' 
 
     try
     {
@@ -32,10 +32,12 @@ function Test-RestorePoints
 
         #create a new vm
         $user = "Foo12";
-        $password = $PLACEHOLDER;
+        $password = "temppass12345T";
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-        New-Azvm -ResourceGroupName $rgname -Name $vmname -Image Win2012R2Datacenter -Location $loc -Credential $cred
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        New-Azvm -ResourceGroupName $rgname -Name $vmname -Image Win2012R2Datacenter -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel
+        
 
         $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname -DisplayHint Expand;
         $tags = $tags = @{test1 = "testval1"; test2 = "testval2" };
