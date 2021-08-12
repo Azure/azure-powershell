@@ -17,7 +17,7 @@ Creates a Storage Insight inside a workspace.
 ```
 New-AzOperationalInsightsStorageInsight [-ResourceGroupName] <String> [-WorkspaceName] <String>
  [-Name] <String> [-StorageAccountResourceId] <String> [-StorageAccountKey] <String> [[-Tables] <String[]>]
- [[-Containers] <String[]>] [-ETag <String>] [-Tags <Hashtable>] [-Force]
+ [[-Containers] <String[]>] [-ETag <String>] [-Tag <Hashtable>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ New-AzOperationalInsightsStorageInsight [-ResourceGroupName] <String> [-Workspac
 ```
 New-AzOperationalInsightsStorageInsight [-Workspace] <PSWorkspace> [-Name] <String>
  [-StorageAccountResourceId] <String> [-StorageAccountKey] <String> [[-Tables] <String[]>]
- [[-Containers] <String[]>] [-ETag <String>] [-Tags <Hashtable>] [-Force]
+ [[-Containers] <String[]>] [-ETag <String>] [-Tag <Hashtable>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -203,7 +203,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Tags of the Storage Insight
 
 ```yaml

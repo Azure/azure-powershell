@@ -133,7 +133,6 @@ The network access type for accessing workspace ingestion. Value should be 'Enab
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -149,7 +148,6 @@ The network access type for accessing workspace query. Value should be 'Enabled'
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named

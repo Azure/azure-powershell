@@ -126,7 +126,7 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'Restore-AzOperationalInsightsWorkspace',
                'Set-AzOperationalInsightsTable', # new command
                'Get-AzOperationalInsightsTable', # new command
-               'Get-AzOperationalInsightsOperations', # new command
+               'Get-AzOperationalInsightsOperation', # new command
                'Get-AzOperationalInsightsDataExport', # new command
                'New-AzOperationalInsightsDataExport', # new command
                'Remove-AzOperationalInsightsDataExport', # new command

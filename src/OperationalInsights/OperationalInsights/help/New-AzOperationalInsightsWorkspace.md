@@ -143,7 +143,6 @@ The network access type for accessing workspace ingestion. Value should be 'Enab
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: 7
@@ -159,7 +158,6 @@ The network access type for accessing workspace query. Value should be 'Enabled'
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: 8
@@ -206,7 +204,6 @@ The service tier of the workspace.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: free, standard, premium, pernode, standalone, pergb2018, capacityreservation, lacluster
 
 Required: False
 Position: 3

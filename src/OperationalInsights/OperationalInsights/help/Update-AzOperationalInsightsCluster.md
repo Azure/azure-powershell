@@ -30,10 +30,8 @@ Update-AzOperationalInsightsCluster -ResourceId <String> [-SkuName <String>] [-S
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzOperationalInsightsCluster -InputCluster <PSCluster> [-SkuName <String>] [-SkuCapacity <Int64>]
- [-KeyVaultUri <String>] [-KeyName <String>] [-KeyVersion <String>] [-Tag <Hashtable>] [-IdentityType <String>]
- [-BillingType <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzOperationalInsightsCluster -InputCluster <PSCluster> [-SkuName <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +86,7 @@ Billing type can be set as 'Cluster' or 'Workspaces'
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 Accepted values: Cluster, Workspaces
 
@@ -134,7 +132,7 @@ the identity type, value can be 'SystemAssigned', 'None'.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 Accepted values: SystemAssigned, None, UserAssigned
 
@@ -165,7 +163,7 @@ Key Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -180,7 +178,7 @@ Key Vault Uri, "Purge Protection" and "Soft Delete" have to be enabled for this 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -195,7 +193,7 @@ Key Version
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -240,7 +238,7 @@ Sku Capacity
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -271,7 +269,7 @@ Tags of the cluster
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False

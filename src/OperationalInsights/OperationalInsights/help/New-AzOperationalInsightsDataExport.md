@@ -14,8 +14,8 @@ Create data export for workspace.
 
 ```
 New-AzOperationalInsightsDataExport [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [[-DataExportName] <String>] [[-TableNames] <String[]>] [[-ResourceId] <String>] [[-EventHubName] <String>]
- [[-Enable] <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-DataExportName] <String>] [[-TableName] <String[]>] [-ResourceId <String>] [-EventHubName <String>]
+ [-Enable <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +82,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -99,7 +99,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -130,14 +130,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TableNames
-An array of tables to export, for example: \["Heartbeat, SecurityEvent"\].
+### -TableName
+An array of tables to export, for example: ["Heartbeat, SecurityEvent"].
 
 ```yaml
 Type: System.String[]

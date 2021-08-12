@@ -56,7 +56,7 @@ Get or list linked service for workspace
 ### [Get-AzOperationalInsightsLinkedStorageAccount](Get-AzOperationalInsightsLinkedStorageAccount.md)
 Get or list linked storage account
 
-### [Get-AzOperationalInsightsOperations](Get-AzOperationalInsightsOperations.md)
+### [Get-AzOperationalInsightsOperation](Get-AzOperationalInsightsOperation.md)
 Lists all of the available OperationalInsights Rest API operations.
 
 ### [Get-AzOperationalInsightsOperationStatus](Get-AzOperationalInsightsOperationStatus.md)

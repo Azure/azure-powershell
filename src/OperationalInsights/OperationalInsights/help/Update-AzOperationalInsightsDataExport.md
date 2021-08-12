@@ -15,7 +15,7 @@ Update data export.
 ### UpdateByNameParameterSet (Default)
 ```
 Update-AzOperationalInsightsDataExport -ResourceGroupName <String> -WorkspaceName <String>
- [-DataExportName <String>] [-TableNames <String[]>] [-DestinationResourceId <String>] [-EventHubName <String>]
+ [-DataExportName <String>] [-TableName <String[]>] [-DestinationResourceId <String>] [-EventHubName <String>]
  [-Enable <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -181,8 +181,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TableNames
-An array of tables to export, for example: \["Heartbeat, SecurityEvent"\].
+### -TableName
+An array of tables to export, for example: ["Heartbeat, SecurityEvent"].
 
 ```yaml
 Type: System.String[]

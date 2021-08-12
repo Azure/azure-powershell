@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsoperations
+online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsoperation
 schema: 2.0.0
 ---
 
-# Get-AzOperationalInsightsOperations
+# Get-AzOperationalInsightsOperation
 
 ## SYNOPSIS
 Lists all of the available OperationalInsights Rest API operations.
@@ -13,7 +13,7 @@ Lists all of the available OperationalInsights Rest API operations.
 ## SYNTAX
 
 ```
-Get-AzOperationalInsightsOperations [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Get-AzOperationalInsightsOperation [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Lists all of the available OperationalInsights Rest API operations.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzOperationalInsightsOperations
+PS C:\> Get-AzOperationalInsightsOperation
 ```
 
 Name        : microsoft.operationalinsights/workspaces/features/{resource_name0}/read
