@@ -66,5 +66,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the VSTS tenant ID
         /// </summary>
         public System.Guid? TenantId { get; set; }
+
+        public WorkspaceRepositoryConfiguration ToSdkObject()
+        {
+            return new WorkspaceRepositoryConfiguration
+            {
+                Type = this.Type,
+                AccountName = this.AccountName,
+                ProjectName = this.ProjectName,
+                RepositoryName = this.RepositoryName,
+                CollaborationBranch = this.CollaborationBranch,
+                RootFolder = this.RootFolder
+            };
+        }
     }
 }

@@ -12,24 +12,12 @@ Creates a Synapse Analytics workspace.
 
 ## SYNTAX
 
-### CreateWithoutGitConfigParameterSet (Default)
 ```
 New-AzSynapseWorkspace -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
  -DefaultDataLakeStorageAccountName <String> -DefaultDataLakeStorageFilesystem <String>
  -SqlAdministratorLoginCredential <PSCredential> [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
  [-EncryptionKeyName <String>] [-EncryptionKeyIdentifier <String>] [-AsJob]
- [-ManagedResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateWithGitConfigParameterSet
-```
-New-AzSynapseWorkspace -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
- -DefaultDataLakeStorageAccountName <String> -DefaultDataLakeStorageFilesystem <String>
- -SqlAdministratorLoginCredential <PSCredential> [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-EncryptionKeyIdentifier <String>] [-AsJob]
- [-ManagedResourceGroupName <String>] -RepositoryType <String> -AccountName <String> [-ProjectName <String>]
- -RepositoryName <String> -CollaborationBranch <String> [-RootFolder <String>]
+ [-ManagedResourceGroupName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -61,27 +49,13 @@ The first command creates a managed virtual network configuration. Then the rest
 ```powershell
 PS C:\> $password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
 PS C:\> $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
-PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -AsJob -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
+PS C:\> $config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
+PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -AsJob -GitRepository $config
 ```
 
 This command creates a Synapse Analytics workspace named ContosoWorkspace that uses the ContosoAdlGenStorage Data Store, in the resource group named ContosoResourceGroup. And the workspace is connected to a Git Repository called ContosoRepo.
 
 ## PARAMETERS
-
-### -AccountName
-GitHub or DevOps account name used for the repository.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateWithGitConfigParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run cmdlet in the background
@@ -92,21 +66,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CollaborationBranch
-Select the branch name where you will collaborate with others and from which you will publish.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateWithGitConfigParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -188,6 +147,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GitRepository
+Git Repository Settings. Connect workspace to the repository for source control and collaboration for work on your workspace pipelines
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSWorkspaceRepositoryConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Azure region where the resource should be created.
 
@@ -248,52 +222,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProjectName
-The project name you are connecting, only specify it when you choose DevOps.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateWithGitConfigParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RepositoryName
-The name of the repository you are connecting.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateWithGitConfigParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RepositoryType
-Select the repository type that you want to use to store your artifacts for this Synapse Analytics workspace, the type include DevOps and GitHub.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateWithGitConfigParameterSet
-Aliases:
-Accepted values: GitHub, AzureDevOpsGit
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Resource group name.
 
@@ -306,21 +234,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RootFolder
-Displays the name of the folder to the location of your Azure Data Factory JSON resources are imported. The default value is /
-
-```yaml
-Type: System.String
-Parameter Sets: CreateWithGitConfigParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

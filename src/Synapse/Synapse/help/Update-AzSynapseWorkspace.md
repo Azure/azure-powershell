@@ -16,8 +16,7 @@ Updates a Synapse Analytics workspace.
 ```
 Update-AzSynapseWorkspace [-ResourceGroupName <String>] -Name <String> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-RepositoryType <String>] [-AccountName <String>] [-ProjectName <String>]
- [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>] [-AsJob]
+ [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,8 +24,7 @@ Update-AzSynapseWorkspace [-ResourceGroupName <String>] -Name <String> [-Tag <Ha
 ```
 Update-AzSynapseWorkspace -InputObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-RepositoryType <String>] [-AccountName <String>] [-ProjectName <String>]
- [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>] [-AsJob]
+ [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,8 +32,7 @@ Update-AzSynapseWorkspace -InputObject <PSSynapseWorkspace> [-Tag <Hashtable>]
 ```
 Update-AzSynapseWorkspace -ResourceId <String> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-RepositoryType <String>] [-AccountName <String>] [-ProjectName <String>]
- [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>] [-AsJob]
+ [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -68,48 +65,19 @@ This commands updates tags for the specififed Azure Synapse Analytics workspace 
 
 ### Example 4
 ```powershell
-PS C:\> Update-AzSynapseWorkspace -Name ContosoWorkspace -RepositoryName ContosoRepo -CollaborationBranch main
+PS C:\> $config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
+PS C:\> Update-AzSynapseWorkspace -Name ContosoWorkspace -GitRepository $config
 ```
 
 This commands updates Git repository which workspace is conneceted to for the specififed Azure Synapse Analytics workspace.
 
 ## PARAMETERS
 
-### -AccountName
-GitHub or DevOps account name used for the repository.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CollaborationBranch
-Select the branch name where you will collaborate with others and from which you will publish.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -140,6 +108,21 @@ The workspace encryption key name.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GitRepository
+Git Repository Settings. Connect workspace to the repository for source control and collaboration for work on your workspace pipelines
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSWorkspaceRepositoryConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -195,52 +178,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProjectName
-The project name you are connecting, only specify it when you choose DevOps.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RepositoryName
-The name of the repository you are connecting.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RepositoryType
-Select the repository type that you want to use to store your artifacts for this Synapse Analytics workspace, the type include DevOps and GitHub.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: GitHub, AzureDevOpsGit
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Resource group name.
 
@@ -265,21 +202,6 @@ Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RootFolder
-Displays the name of the folder to the location of your Azure Data Factory JSON resources are imported. The default value is /
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

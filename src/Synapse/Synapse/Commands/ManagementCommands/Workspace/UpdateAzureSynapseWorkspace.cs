@@ -62,30 +62,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string EncryptionKeyName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.RepositoryType)]
-        [ValidateSet(SynapseConstants.RepositoryType.GitHub, SynapseConstants.RepositoryType.AzureDevOpsGit, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string RepositoryType { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AccountName)]
-        [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.ProjectName)]
-        [ValidateNotNullOrEmpty]
-        public string ProjectName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.RepositoryName)]
-        [ValidateNotNullOrEmpty]
-        public string RepositoryName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.CollaborationBranch)]
-        [ValidateNotNullOrEmpty]
-        public string CollaborationBranch { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.RootFolder)]
-        [ValidateNotNullOrEmpty]
-        public string RootFolder { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.GitRepository)]
+        [ValidateNotNull]
+        public PSWorkspaceRepositoryConfiguration GitRepository { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -141,19 +120,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     }
                 }
             } : null;
-            WorkspaceRepositoryConfiguration repoConfig = existingWorkspace.WorkspaceRepositoryConfiguration != null ? existingWorkspace.WorkspaceRepositoryConfiguration : new WorkspaceRepositoryConfiguration();
-            if (this.IsParameterBound(c => c.RepositoryType))
-            {
-                this.RepositoryType = this.RepositoryType == SynapseConstants.RepositoryType.AzureDevOpsGit ? SynapseConstants.RepositoryType.WorkspaceVSTSConfiguration : SynapseConstants.RepositoryType.WorkspaceGitHubConfiguration;
-                repoConfig.Type = this.RepositoryType;
-            }
-            repoConfig.AccountName = this.AccountName ?? repoConfig.AccountName;
-            repoConfig.ProjectName = repoConfig.Type == SynapseConstants.RepositoryType.WorkspaceVSTSConfiguration ? this.ProjectName ?? repoConfig.ProjectName : null;
-            repoConfig.RepositoryName = this.RepositoryName ?? repoConfig.RepositoryName;
-            repoConfig.CollaborationBranch = this.CollaborationBranch ?? repoConfig.CollaborationBranch;
-            repoConfig.RootFolder = this.RootFolder ?? repoConfig.RootFolder;
-            CheckRepositoryConfiguration(repoConfig);
-            patchInfo.WorkspaceRepositoryConfiguration = repoConfig.Type != null ? repoConfig : null;
+            patchInfo.WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null;
 
             if (ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseWorkspace, this.Name, this.ResourceGroupName)))
             {
@@ -162,33 +129,6 @@ namespace Microsoft.Azure.Commands.Synapse
                     this.Name,
                     patchInfo));
                 this.WriteObject(workspace);
-            }
-        }
-
-        private void CheckRepositoryConfiguration(WorkspaceRepositoryConfiguration repoConfig)
-        {
-            if (repoConfig.Type != null)
-            {
-                if (repoConfig.Type == SynapseConstants.RepositoryType.WorkspaceVSTSConfiguration && repoConfig.ProjectName == null)
-                {
-                    throw new PSArgumentException(string.Format(Resources.WorkspaceGitRepoParameterException, "ProjectName"), "ProjectName");
-                }
-                if (repoConfig.AccountName == null)
-                {
-                    throw new PSArgumentException(string.Format(Resources.WorkspaceGitRepoParameterException, "AccountName"), "AccountName");
-                }
-                if (repoConfig.RepositoryName == null)
-                {
-                    throw new PSArgumentException(string.Format(Resources.WorkspaceGitRepoParameterException, "RepositoryName"), "RepositoryName");
-                }
-                if (repoConfig.CollaborationBranch == null)
-                {
-                    throw new PSArgumentException(string.Format(Resources.WorkspaceGitRepoParameterException, "CollaborationBranch"), "CollaborationBranch");
-                }
-                if (repoConfig.RootFolder == null)
-                {
-                    repoConfig.RootFolder = "/";
-                }
             }
         }
     }

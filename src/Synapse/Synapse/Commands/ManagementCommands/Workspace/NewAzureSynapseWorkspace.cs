@@ -11,122 +11,73 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Workspace, SupportsShouldProcess = true, DefaultParameterSetName = CreateWithoutGitConfigParameterSet)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Workspace, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseWorkspace))]
     public class NewAzureSynapseWorkspace : SynapseManagementCmdletBase
     {
-        private const string CreateWithoutGitConfigParameterSet = "CreateWithoutGitConfigParameterSet";
-        private const string CreateWithGitConfigParameterSet = "CreateWithGitConfigParameterSet";
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithoutGitConfigParameterSet,
-            HelpMessage = HelpMessages.ResourceGroupName)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithGitConfigParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithoutGitConfigParameterSet,
-            HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithGitConfigParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = HelpMessages.WorkspaceName)]
         [Alias(SynapseConstants.WorkspaceName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithoutGitConfigParameterSet,
-            HelpMessage = HelpMessages.Location)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithGitConfigParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = HelpMessages.Location)]
         [LocationCompleter(ResourceTypes.Workspace)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, ParameterSetName = CreateWithoutGitConfigParameterSet,
-            HelpMessage = HelpMessages.Tag)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, ParameterSetName = CreateWithGitConfigParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = HelpMessages.Tag)]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithoutGitConfigParameterSet,
-            HelpMessage = HelpMessages.DefaultDataLakeStorageAccountName)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithGitConfigParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = HelpMessages.DefaultDataLakeStorageAccountName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter(ResourceTypes.StorageAccount, nameof(ResourceGroupName))]
         public string DefaultDataLakeStorageAccountName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithoutGitConfigParameterSet,
-            HelpMessage = HelpMessages.DefaultDataLakeStorageFilesystem)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithGitConfigParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = HelpMessages.DefaultDataLakeStorageFilesystem)]
         [ValidateNotNullOrEmpty]
         public string DefaultDataLakeStorageFilesystem { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithoutGitConfigParameterSet,
-            HelpMessage = HelpMessages.SqlAdministratorLoginCredential)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = CreateWithGitConfigParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = HelpMessages.SqlAdministratorLoginCredential)]
         [ValidateNotNull]
         public PSCredential SqlAdministratorLoginCredential { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = CreateWithoutGitConfigParameterSet, HelpMessage = HelpMessages.ManagedVirtualNetwork)]
-        [Parameter(Mandatory = false, ParameterSetName = CreateWithGitConfigParameterSet, HelpMessage = HelpMessages.ManagedVirtualNetwork)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.ManagedVirtualNetwork)]
         [ValidateNotNull]
         public PSManagedVirtualNetworkSettings ManagedVirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = CreateWithoutGitConfigParameterSet, HelpMessage = HelpMessages.EncryptionKeyName)]
-        [Parameter(Mandatory = false, ParameterSetName = CreateWithGitConfigParameterSet, HelpMessage = HelpMessages.EncryptionKeyName)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.EncryptionKeyName)]
         [ValidateNotNullOrEmpty]
         public string EncryptionKeyName { get; set; } = SynapseConstants.DefaultName;
 
-        [Parameter(Mandatory = false, ParameterSetName = CreateWithoutGitConfigParameterSet, HelpMessage = HelpMessages.EncryptionKeyIdentifier)]
-        [Parameter(Mandatory = false, ParameterSetName = CreateWithGitConfigParameterSet, HelpMessage = HelpMessages.EncryptionKeyIdentifier)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.EncryptionKeyIdentifier)]
         [ValidateNotNullOrEmpty]
         public string EncryptionKeyIdentifier { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, ParameterSetName = CreateWithoutGitConfigParameterSet,
-            HelpMessage = HelpMessages.ManagedResourceGroupName)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, ParameterSetName = CreateWithGitConfigParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = HelpMessages.ManagedResourceGroupName)]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ManagedResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = CreateWithGitConfigParameterSet,
-            HelpMessage = HelpMessages.RepositoryType)]
-        [ValidateSet(SynapseConstants.RepositoryType.GitHub, SynapseConstants.RepositoryType.AzureDevOpsGit, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string RepositoryType { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = CreateWithGitConfigParameterSet,
-            HelpMessage = HelpMessages.AccountName)]
-        [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
-
-        [Parameter(Mandatory = false, ParameterSetName = CreateWithGitConfigParameterSet,
-            HelpMessage = HelpMessages.ProjectName)]
-        [ValidateNotNullOrEmpty]
-        public string ProjectName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = CreateWithGitConfigParameterSet,
-            HelpMessage = HelpMessages.RepositoryName)]
-        [ValidateNotNullOrEmpty]
-        public string RepositoryName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = CreateWithGitConfigParameterSet,
-            HelpMessage = HelpMessages.CollaborationBranch)]
-        [ValidateNotNullOrEmpty]
-        public string CollaborationBranch { get; set; }
-
-        [Parameter(Mandatory = false, ParameterSetName = CreateWithGitConfigParameterSet,
-            HelpMessage = HelpMessages.RootFolder)]
-        [ValidateNotNullOrEmpty]
-        public string RootFolder { get; set; } = "/";
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.GitRepository)]
+        [ValidateNotNull]
+        public PSWorkspaceRepositoryConfiguration GitRepository { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -153,11 +104,6 @@ namespace Microsoft.Azure.Commands.Synapse
                     // all other exceptions should be thrown
                     throw;
                 }
-            }
-
-            if(this.RepositoryType == SynapseConstants.RepositoryType.AzureDevOpsGit && this.ProjectName == null)
-            {
-                throw new PSArgumentException(string.Format(Resources.WorkspaceGitRepoParameterException, "ProjectName"), "ProjectName");
             }
 
             var defaultDataLakeStorageAccountUrl = string.Format(
@@ -193,15 +139,7 @@ namespace Microsoft.Azure.Commands.Synapse
                         }
                     }
                 } : null,
-                WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.RepositoryType) ? new WorkspaceRepositoryConfiguration
-                {
-                    Type = this.RepositoryType == SynapseConstants.RepositoryType.AzureDevOpsGit ? SynapseConstants.RepositoryType.WorkspaceVSTSConfiguration : SynapseConstants.RepositoryType.WorkspaceGitHubConfiguration,
-                    AccountName = this.AccountName,
-                    ProjectName = this.RepositoryType == SynapseConstants.RepositoryType.AzureDevOpsGit ? this.ProjectName : null,
-                    RepositoryName = this.RepositoryName,
-                    CollaborationBranch = this.CollaborationBranch,
-                    RootFolder = this.RootFolder
-                } : null
+                WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null
             };
 
             if (ShouldProcess(Name, string.Format(Resources.CreatingSynapseWorkspace, this.ResourceGroupName, this.Name)))

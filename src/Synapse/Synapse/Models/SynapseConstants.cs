@@ -155,6 +155,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string ManagedVirtualNetworkConfig = nameof(ManagedVirtualNetworkConfig);
 
+        public const string GitRepositoryConfig = nameof(GitRepositoryConfig);
+
         public const string EncryptionConfig = nameof(EncryptionConfig);
 
         public const string WorkspaceKey = nameof(WorkspaceKey);
