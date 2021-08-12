@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added new parameters `-SshKeyName` and `-GenerateSshKey` to `New-AzVM` to create a VM with SSH Key
 
 ## Version 4.16.0
 * Fixed the warning in `New-AzVM` cmdlet stating the sku of the VM is being defaulted even if a sku size is provided by the user. Now it only occurs when the user does not provide a sku size.
@@ -39,7 +40,6 @@
     - `New-AzVmssConfig`
     - `Update-AzVm`
     - `Update-AzVmss`
-* Added new parameters `-SshKeyName` and `-GenerateSshKey` to `New-AzVM` to create a VM with SSH Key
 
 ## Version 4.15.0
 * Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`
