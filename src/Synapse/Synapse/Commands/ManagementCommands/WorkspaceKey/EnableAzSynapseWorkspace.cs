@@ -12,52 +12,49 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.WorkspaceKey,
-        DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Workspace,
+        DefaultParameterSetName = EnableByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSWorkspaceKey))]
-    public class UpdateAzureSynapseWorkspaceKey : SynapseManagementCmdletBase
+    public class EnableAzSynapseWorkspace : SynapseManagementCmdletBase
     {
-        private const string UpdateByNameParameterSet = "UpdateByNameParameterSet";
-        private const string UpdateByParentObjectParameterSet = "UpdateByParentObjectParameterSet";
-        private const string UpdateByInputObjectParameterSet = "UpdateByInputObjectParameterSet";
-        private const string UpdateByResourceIdParameterSet = "UpdateByResourceIdParameterSet";
+        private const string EnableByNameParameterSet = "EnableByNameParameterSet";
+        private const string EnableByParentObjectParameterSet = "EnableByParentObjectParameterSet";
+        private const string EnableByInputObjectParameterSet = "EnableByInputObjectParameterSet";
+        private const string EnableByResourceIdParameterSet = "EnableByResourceIdParameterSet";
 
-        [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, HelpMessage = HelpMessages.ResourceGroupName)]
+        [Parameter(Mandatory = false, ParameterSetName = EnableByNameParameterSet, HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(Mandatory = true, ParameterSetName = EnableByNameParameterSet, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, HelpMessage = HelpMessages.EncryptionKeyName)]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateByParentObjectParameterSet, HelpMessage = HelpMessages.EncryptionKeyName)]
+        [Parameter(Mandatory = false, ParameterSetName = EnableByNameParameterSet, HelpMessage = HelpMessages.EncryptionKeyName)]
+        [Parameter(Mandatory = false, ParameterSetName = EnableByParentObjectParameterSet, HelpMessage = HelpMessages.EncryptionKeyName)]
         [Alias(nameof(SynapseConstants.KeyName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; } = SynapseConstants.DefaultName;
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = UpdateByParentObjectParameterSet,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = EnableByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = UpdateByInputObjectParameterSet, Mandatory = true,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = EnableByInputObjectParameterSet, Mandatory = true,
             HelpMessage = HelpMessages.KeyObject)]
         [ValidateNotNull]
         public PSWorkspaceKey InputObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = UpdateByResourceIdParameterSet,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = EnableByResourceIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.KeyResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.EncryptionKeyIdentifier)]
         public string EncryptionKeyIdentifier { get;  set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.IsActiveCustomerManagedKey)]
-        public SwitchParameter Activate { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -108,15 +105,15 @@ namespace Microsoft.Azure.Commands.Synapse
                 throw new AzPSInvalidOperationException(string.Format(Resources.FailedToDiscoverKey, this.Name, this.ResourceGroupName, this.WorkspaceName));
             }
 
-            var updateParams = new Key
+            var enableParams = new Key
             {
-                IsActiveCMK = this.IsParameterBound(c => c.Activate) ? this.Activate.IsPresent : existingKey.IsActiveCMK,
+                IsActiveCMK = true,
                 KeyVaultUrl = this.IsParameterBound(c => c.EncryptionKeyIdentifier) ? this.EncryptionKeyIdentifier : existingKey.KeyVaultUrl
             };
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingWorkspaceKey, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
-                WriteObject(new PSWorkspaceKey(this.SynapseAnalyticsClient.CreateOrUpdateKey(this.ResourceGroupName, this.WorkspaceName, this.Name, updateParams)));
+                WriteObject(new PSWorkspaceKey(this.SynapseAnalyticsClient.CreateOrUpdateKey(this.ResourceGroupName, this.WorkspaceName, this.Name, enableParams)));
             }
         }
     }

@@ -24,6 +24,7 @@
 	- Added `Remove-AzSynapseManagedPrivateEndpoint` cmdlet
 * Fixed the blank page issue of pause setting and scale setting for Apache Spark pool through management API
 * Updated `Set-AzSynapseSqlActiveDirectoryAdministrator` to support for setting SQL Admin by `DisplayName` or by `ObjectId`
+* Renamed `Update-AzSynapseWorkspaceKey` to `Enable-AzSynapseWorkspace` to activate a new synapse workspace without `-Activate` parameter 
 
 ## Version 0.14.0
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
