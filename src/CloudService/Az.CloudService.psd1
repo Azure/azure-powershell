@@ -12,7 +12,7 @@
 RootModule = './Az.CloudService.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.0'
+ModuleVersion = '0.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -127,7 +127,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Fixed the issue that RemoteDesktopExtension password is wrong setted.'
 
         # Prerelease string of this module
         # Prerelease = ''
