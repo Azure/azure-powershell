@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType]",
@@ -104,7 +104,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountName": "System.String",
               "CreatorName": "System.String",
@@ -167,7 +167,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -185,7 +185,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -388,7 +388,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -412,7 +412,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -612,7 +612,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -636,7 +636,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -812,7 +812,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -836,7 +836,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -937,7 +937,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountName": "System.String",
                     "CreatorName": "System.String",
@@ -1018,7 +1018,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1042,7 +1042,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1194,7 +1194,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1218,7 +1218,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1327,7 +1327,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryKey": "System.String",
               "PrimaryKeyLastUpdated": "System.String",
@@ -1444,7 +1444,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1462,7 +1462,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1663,7 +1663,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1687,7 +1687,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1796,7 +1796,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StorageUnit": "System.Int32",
               "ProvisioningState": "System.String"
@@ -1892,7 +1892,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountName": "System.String",
               "CreatorName": "System.String",
@@ -1955,7 +1955,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1973,7 +1973,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2174,7 +2174,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2198,7 +2198,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2448,7 +2448,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2472,7 +2472,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2573,7 +2573,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountName": "System.String",
                     "CreatorName": "System.String",
@@ -2654,7 +2654,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2678,7 +2678,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2830,7 +2830,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2854,7 +2854,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2963,7 +2963,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IOperationDetail",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IOperationDetail, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IOperationDetail, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ServiceSpecificationMetricSpecification": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification[]",
               "IsDataAction": "System.Nullable`1[System.Boolean]",
@@ -3048,7 +3048,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3066,7 +3066,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3219,7 +3219,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3243,7 +3243,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3352,7 +3352,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType]",
@@ -3458,7 +3458,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3556,7 +3556,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3693,7 +3693,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3711,7 +3711,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3887,7 +3887,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3997,7 +3997,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4158,7 +4158,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4182,7 +4182,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4291,7 +4291,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryKey": "System.String",
               "PrimaryKeyLastUpdated": "System.String",
@@ -4369,7 +4369,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountName": "System.String",
               "CreatorName": "System.String",
@@ -4393,7 +4393,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4512,7 +4512,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4530,7 +4530,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4680,7 +4680,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4817,7 +4817,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4841,7 +4841,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4942,7 +4942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountName": "System.String",
                     "CreatorName": "System.String",
@@ -4972,7 +4972,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5109,7 +5109,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5133,7 +5133,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5234,7 +5234,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.KeyType, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5371,7 +5371,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5395,7 +5395,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5504,7 +5504,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StorageUnit": "System.Int32",
               "ProvisioningState": "System.String"
@@ -5693,7 +5693,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5711,7 +5711,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6010,7 +6010,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6034,7 +6034,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6218,7 +6218,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountName": "System.String",
               "CreatorName": "System.String",
@@ -6281,7 +6281,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6299,7 +6299,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6520,7 +6520,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6544,7 +6544,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6669,7 +6669,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountName": "System.String",
                     "CreatorName": "System.String",
@@ -6750,7 +6750,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6774,7 +6774,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6950,7 +6950,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6974,7 +6974,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7200,7 +7200,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountName": "System.String",
               "CreatorName": "System.String",
@@ -7263,7 +7263,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7281,7 +7281,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7526,7 +7526,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7550,7 +7550,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7675,7 +7675,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountName": "System.String",
                     "CreatorName": "System.String",
@@ -7756,7 +7756,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7780,7 +7780,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7956,7 +7956,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7980,7 +7980,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8113,7 +8113,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType]",
@@ -8201,7 +8201,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountName": "System.String",
               "CreatorName": "System.String",
@@ -8243,7 +8243,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8323,7 +8323,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8460,7 +8460,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8478,7 +8478,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8654,7 +8654,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8740,7 +8740,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8901,7 +8901,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8925,7 +8925,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9026,7 +9026,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountName": "System.String",
                     "CreatorName": "System.String",
@@ -9080,7 +9080,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9166,7 +9166,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9327,7 +9327,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9351,7 +9351,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9476,7 +9476,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9562,7 +9562,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9723,7 +9723,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9747,7 +9747,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9856,7 +9856,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StorageUnit": "System.Int32",
               "ProvisioningState": "System.String"
@@ -9952,7 +9952,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AccountName": "System.String",
               "CreatorName": "System.String",
@@ -10051,7 +10051,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10069,7 +10069,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10344,7 +10344,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10368,7 +10368,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10469,7 +10469,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.IMapsIdentity, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AccountName": "System.String",
                     "CreatorName": "System.String",
@@ -10598,7 +10598,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10622,7 +10622,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10822,7 +10822,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10846,7 +10846,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11085,7 +11085,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Name, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11189,7 +11189,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11201,7 +11201,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.CreatedByType, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11273,7 +11273,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11285,7 +11285,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Support.Kind, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11391,7 +11391,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.SendAsyncStep, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -11615,7 +11615,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification",
       "GenericTypeArguments": [],
@@ -11625,7 +11625,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMetricSpecification, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Dimension": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IDimension[]",
         "FillGapWithZero": "System.Nullable`1[System.Boolean]",
@@ -11645,7 +11645,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IDimension[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IDimension[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IDimension[], Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IDimension[], Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IDimension",
       "GenericTypeArguments": [],
@@ -11655,7 +11655,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IDimension": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IDimension",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IDimension, Az.Maps.private, Version=0.8.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IDimension, Az.Maps.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ToBeExportedToShoebox": "System.Nullable`1[System.Boolean]",
         "DisplayName": "System.String",
