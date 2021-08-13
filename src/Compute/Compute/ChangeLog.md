@@ -37,6 +37,13 @@
     - `New-AzVmssConfig`
     - `Update-AzVm`
     - `Update-AzVmss`
+* Added new parameter `-UserData` to the following cmdlets:
+    - `New-AzVm`
+    - `New-AzVmss`
+    - `Update-AzVm`
+    - `Update-AzVmss`
+    - `Get-AzVm`
+    - `Get-AzVmss`
 
 ## Version 4.15.0
 * Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`

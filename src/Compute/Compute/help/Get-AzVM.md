@@ -15,24 +15,26 @@ Gets the properties of a virtual machine.
 
 ### DefaultParamSet (Default)
 ```
-Get-AzVM [[-ResourceGroupName] <String>] [[-Name] <String>] [-Status]
+Get-AzVM [[-ResourceGroupName] <String>] [[-Name] <String>] [-Status] [-UserData]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVirtualMachineInResourceGroupParamSet
 ```
-Get-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>]
+Get-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint <DisplayHintType>] [-UserData]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListLocationVirtualMachinesParamSet
 ```
-Get-AzVM -Location <String> [-Status] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVM -Location <String> [-Status] [-UserData] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListNextLinkVirtualMachinesParamSet
 ```
-Get-AzVM [-Status] [-NextLink] <Uri> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVM [-Status] [-NextLink] <Uri> [-UserData] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -351,6 +353,21 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserData
+UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
