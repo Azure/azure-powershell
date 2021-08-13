@@ -712,20 +712,33 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a TaskCountsGetResponse object
         /// </summary>
-        public static AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders> CreateTaskCountsGetResponse(
-            int active, int running, int succeeded, int failed)
+        public static AzureOperationResponse<ProxyModels.TaskCountsResult, ProxyModels.JobGetTaskCountsHeaders> CreateTaskCountsGetResponse(
+            int requiredTaskSlots, int activeTasks, int runningTasks, int succeededTasks, int failedTasks)
         {
-            var response = new AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders>();
+            var response = new AzureOperationResponse<ProxyModels.TaskCountsResult, ProxyModels.JobGetTaskCountsHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
-            ProxyModels.TaskCounts taskCounts = new ProxyModels.TaskCounts();
-            taskCounts.Active = active;
-            taskCounts.Running = running;
-            taskCounts.Succeeded = succeeded;
-            taskCounts.Failed = failed;
-            taskCounts.Completed = succeeded + failed;
+            var completedTasks = succeededTasks + failedTasks;
 
-            response.Body = taskCounts;
+            ProxyModels.TaskCounts taskCounts = new ProxyModels.TaskCounts();
+            taskCounts.Active = activeTasks;
+            taskCounts.Running = runningTasks;
+            taskCounts.Succeeded = succeededTasks;
+            taskCounts.Failed = failedTasks;
+            taskCounts.Completed = completedTasks;
+
+            ProxyModels.TaskSlotCounts slotCounts = new ProxyModels.TaskSlotCounts();
+            slotCounts.Active = requiredTaskSlots * activeTasks;
+            slotCounts.Running = requiredTaskSlots * runningTasks;
+            slotCounts.Succeeded = requiredTaskSlots * succeededTasks;
+            slotCounts.Failed = requiredTaskSlots * failedTasks;
+            slotCounts.Completed = requiredTaskSlots * completedTasks;
+
+            ProxyModels.TaskCountsResult result = new ProxyModels.TaskCountsResult();
+            result.TaskCounts = taskCounts;
+            result.TaskSlotCounts = slotCounts;
+
+            response.Body = result;
 
             return response;
         }

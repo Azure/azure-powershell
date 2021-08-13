@@ -1,39 +1,39 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
-online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchtaskcount
+online version: https://docs.microsoft.com/powershell/module/az.batch/get-azbatchtaskslotcounts
 schema: 2.0.0
 ---
 
-# Get-AzBatchTaskCount
+# Get-AzBatchTaskSlotCounts
 
 ## SYNOPSIS
-Gets the task counts for the specified job.
+Gets the task slot counts for the specified job.
 
 ## SYNTAX
 
 ### Id
 ```
-Get-AzBatchTaskCount [-JobId] <String> -BatchContext <BatchAccountContext>
+Get-AzBatchTaskSlotCounts [-JobId] <String> -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParentObject
 ```
-Get-AzBatchTaskCount [[-Job] <PSCloudJob>] -BatchContext <BatchAccountContext>
+Get-AzBatchTaskSlotCounts [[-Job] <PSCloudJob>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzBatchTaskCount** cmdlet gets the Azure Batch tasks count for a Batch job.
+The **Get-AzBatchTaskSlotCounts** cmdlet gets the Azure Batch task slot counts for a Batch job.
 Specify a job by either the *JobId* parameter or the *Job* parameter.
-Task counts provide a count of the tasks by active, running or completed task state, and a count of tasks which succeeded or failed. Tasks in the preparing state are counted as running. If the validationStatus is unvalidated, then the Batch service has not been able to check state counts against the task states as reported in the List Tasks API. The validationStatus may be unvalidated if the job contains more than 200,000 tasks.
+Task slot counts provide a count of slots by active, running or completed task state, and a count of slots on which tasks succeeded or failed. Slots for tasks in the preparing state are counted as running. If the validationStatus is unvalidated, then the Batch service has not been able to check state counts against the task states as reported in the List Tasks API. The validationStatus may be unvalidated if the job contains more than 200,000 tasks.
 
 ## EXAMPLES
 
 ### Example 1: Get task counts by ID
 ```
-PS C:\> Get-AzBatchTaskCount -JobId "Job01" -Id "Task03" -BatchContext $Context
+PS C:\> Get-AzBatchTaskSlotCounts -JobId "Job01" -Id "Task03" -BatchContext $Context
 Active              : 1
 Completed           : 0
 Failed              : 0
@@ -125,7 +125,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Batch.Models.PSTaskCounts
+### Microsoft.Azure.Commands.Batch.Models.PSTaskSlotCounts
 
 ## NOTES
 

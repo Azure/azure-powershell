@@ -26,18 +26,18 @@ using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
-    public class GetBatchTaskCountsCommandTests
+    public class GetBatchTaskSlotCountsCommandTests
     {
-        private GetBatchTaskCountsCommand cmdlet;
+        private GetBatchTaskSlotCountsCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchTaskCountsCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public GetBatchTaskSlotCountsCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchTaskCountsCommand()
+            cmdlet = new GetBatchTaskSlotCountsCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchTaskCountsTest()
+        public void GetBatchTaskSlotCountsTest()
         {
             // Setup cmdlet to get task counts by job id
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             const int succeeded = 2;
             const int failed = 1;
 
-            // Build a TaskCounts instead of querying the service on a Get TaskCounts call
+            // Build a TaskCountsResult instead of querying the service
             AzureOperationResponse<ProxyModels.TaskCountsResult, ProxyModels.JobGetTaskCountsHeaders> response =
                 BatchTestHelpers.CreateTaskCountsGetResponse(requiredSlots, active, running, succeeded, failed);
 
@@ -70,20 +70,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            PSTaskCounts taskCounts = null;
+            PSTaskSlotCounts slotCounts = null;
             commandRuntimeMock
-                .Setup(r => r.WriteObject(It.IsAny<PSTaskCounts>()))
+                .Setup(r => r.WriteObject(It.IsAny<PSTaskSlotCounts>()))
                 .Callback<object>(p => {
-                    taskCounts = (PSTaskCounts)p;
+                    slotCounts = (PSTaskSlotCounts)p;
                 });
 
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(3, taskCounts.Active);
-            Assert.Equal(5, taskCounts.Running);
-            Assert.Equal(3, taskCounts.Completed);
-            Assert.Equal(2, taskCounts.Succeeded);
-            Assert.Equal(1, taskCounts.Failed);
+            Assert.Equal(6, slotCounts.Active);
+            Assert.Equal(10, slotCounts.Running);
+            Assert.Equal(6, slotCounts.Completed);
+            Assert.Equal(4, slotCounts.Succeeded);
+            Assert.Equal(2, slotCounts.Failed);
         }
     }
 }

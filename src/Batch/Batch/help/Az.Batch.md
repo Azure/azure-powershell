@@ -104,8 +104,11 @@ Gets Batch supported images for a Batch account.
 ### [Get-AzBatchTask](Get-AzBatchTask.md)
 Gets the Batch tasks for a job.
 
-### [Get-AzBatchTaskCount](Get-AzBatchTaskCount.md)
+### [Get-AzBatchTaskCounts](Get-AzBatchTaskCount.md)
 Gets the task counts for the specified job.
+
+### [Get-AzBatchTaskSlotCounts](Get-AzBatchTaskCount.md)
+Gets the task slot counts for the specified job.
 
 ### [New-AzBatchAccount](New-AzBatchAccount.md)
 Creates a Batch account.

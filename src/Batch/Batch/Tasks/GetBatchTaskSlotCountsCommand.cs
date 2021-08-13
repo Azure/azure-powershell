@@ -20,13 +20,12 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [GenericBreakingChange("Get-AzBatchTaskCounts alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchTaskCount"),OutputType(typeof(PSTaskCounts))]
-    [Alias("Get-AzBatchTaskCounts")]
-    public class GetBatchTaskCountCommand : BatchObjectModelCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchTaskSlotCounts"),OutputType(typeof(PSTaskSlotCounts))]
+    [Alias("Get-AzBatchTaskSlotCount")]
+    public class GetBatchTaskSlotCountsCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job for which to get task counts.")]
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job for which to get task slot counts.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
@@ -38,9 +37,9 @@ namespace Microsoft.Azure.Commands.Batch
         {
             GetTaskCountsOptions options = new GetTaskCountsOptions(this.BatchContext, this.JobId, this.Job, this.AdditionalBehaviors);
 
-            PSTaskCounts taskCounts = BatchClient.GetTaskCounts(options);
+            PSTaskSlotCounts taskSlotCounts = BatchClient.GetTaskSlotCounts(options);
 
-            WriteObject(taskCounts);
+            WriteObject(taskSlotCounts);
         }
     }
 }
