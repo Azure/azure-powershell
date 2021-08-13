@@ -432,6 +432,19 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (_cmdlet.DiskFile == null)
                 {
+                    //adam testin
+                    if (String.IsNullOrEmpty(_cmdlet.UserData) || 
+                        _cmdlet.UserData.Contains(" ") ||
+                        _cmdlet.UserData.Length % 4 != 0 ||
+                        _cmdlet.UserData.Contains("\t") ||
+                        _cmdlet.UserData.Contains("\r") ||
+                        _cmdlet.UserData.Contains("\n"))
+                    {
+                        var x = 1;
+                        x += 1;
+                    }
+                    //adam
+
                     return resourceGroup.CreateVirtualMachineConfig(
                         name: _cmdlet.Name,
                         networkInterface: networkInterface,

@@ -37,7 +37,9 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string ListLocationVirtualMachinesParamSet = "ListLocationVirtualMachinesParamSet";
         private const string InfoNotAvailable = "Info Not Available";
         private const int MaxNumVMforStatus = 100;
-        private InstanceViewTypes InstanceViewExpand = InstanceViewTypes.InstanceView;
+
+        //private InstanceViewTypes InstanceViewExpand = InstanceViewTypes.InstanceView;
+        private InstanceViewTypes UserDataExpand = InstanceViewTypes.UserData;
 
         [Parameter(
            Mandatory = false,
@@ -129,11 +131,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.UserData == true)
                 {
-                    InstanceViewExpand = InstanceViewTypes.UserData;
+                    //InstanceViewExpand = InstanceViewTypes.UserData;
                 }
                 else
                 {
-                    InstanceViewExpand = InstanceViewTypes.InstanceView;
+                    //InstanceViewExpand = InstanceViewTypes.InstanceView;
                 }
                 
 
@@ -161,6 +163,11 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name, InstanceViewExpand);
                         WriteObject(result.ToPSVirtualMachineInstanceView(this.ResourceGroupName, this.Name));
+                    }
+                    else if (this.UserData == true)
+                    {
+                        var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name, UserDataExpand);
+                        WriteObject(result);
                     }
                     else
                     {

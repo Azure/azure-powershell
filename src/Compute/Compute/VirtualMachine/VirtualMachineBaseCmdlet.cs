@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class VirtualMachineBaseCmdlet : ComputeClientBaseCmdlet
     {
-        // adam removed protected const InstanceViewTypes InstanceViewExpand = InstanceViewTypes.InstanceView;
+        protected const InstanceViewTypes InstanceViewExpand = InstanceViewTypes.InstanceView;
         //not a good idea protected const InstanceViewTypes UserDataExpand = InstanceViewTypes.UserData;
 
         public IVirtualMachinesOperations VirtualMachineClient
