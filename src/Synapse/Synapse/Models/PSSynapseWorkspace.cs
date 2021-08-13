@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.ExtraProperties = workspace.ExtraProperties;
             this.ManagedVirtualNetworkSettings = workspace?.ManagedVirtualNetworkSettings != null ? new PSManagedVirtualNetworkSettings(workspace?.ManagedVirtualNetworkSettings) : null;
             this.Encryption = workspace?.Encryption != null ? new PSEncryptionDetails(workspace?.Encryption) : null;
+            this.WorkspaceRepositoryConfiguration = workspace.WorkspaceRepositoryConfiguration != null ? new PSWorkspaceRepositoryConfiguration(workspace?.WorkspaceRepositoryConfiguration) : null;
         }
 
         /// <summary>
@@ -89,5 +90,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets or sets the encryption details of the workspace
         /// </summary>
         public PSEncryptionDetails Encryption { get; set; }
+
+        /// <summary>
+        /// Gets or sets git integration settings
+        /// </summary>
+        public PSWorkspaceRepositoryConfiguration WorkspaceRepositoryConfiguration { get; set; }
     }
 }
