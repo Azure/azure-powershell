@@ -20,7 +20,8 @@
 
 -->
 ## Upcoming Release
-* Fixed a bug in `Add-AzVHD` on Linux that caused uploads to fail for certain destination URIs
+* Added new parameters `-SshKeyName` and `-GenerateSshKey` to `New-AzVM` to create a VM with SSH
+* Fixed a bug in `Add-AzVHD` on Linux that caused uploads to fail for certain destination URI
 
 ## Version 4.16.0
 * Fixed the warning in `New-AzVM` cmdlet stating the sku of the VM is being defaulted even if a sku size is provided by the user. Now it only occurs when the user does not provide a sku size.

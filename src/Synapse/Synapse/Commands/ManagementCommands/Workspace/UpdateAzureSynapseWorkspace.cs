@@ -62,6 +62,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string EncryptionKeyName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.GitRepository)]
+        [ValidateNotNull]
+        public PSWorkspaceRepositoryConfiguration GitRepository { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -116,6 +120,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     }
                 }
             } : null;
+            patchInfo.WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null;
 
             if (ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseWorkspace, this.Name, this.ResourceGroupName)))
             {

@@ -185,6 +185,9 @@ Invokes a Synapse Analytics Spark statement.
 ### [New-AzSynapseFirewallRule](New-AzSynapseFirewallRule.md)
 Creates a Synapse Analytics Firewall Rule.
 
+### [New-AzSynapseGitRepositoryConfig](New-AzSynapseGitRepositoryConfig.md)
+Creates Git repository configuration.
+
 ### [New-AzSynapseIntegrationRuntimeKey](New-AzSynapseIntegrationRuntimeKey.md)
 Regenerate self-hosted integration runtime key.
 
