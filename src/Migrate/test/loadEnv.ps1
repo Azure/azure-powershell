@@ -16,10 +16,6 @@ if ($TestMode -eq 'live') {
     $envFile = 'localEnv.json'
 }
 
-if ($TestMode -eq 'Record') {
-    $envFile = 'localEnv.json'
-}
-
 if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
     $envFilePath = Join-Path $PSScriptRoot $envFile
 } else {
