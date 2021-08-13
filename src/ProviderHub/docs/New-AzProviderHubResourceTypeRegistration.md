@@ -21,17 +21,18 @@ New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceT
  [-DefaultApiVersion <String>] [-DisallowedActionVerb <String[]>] [-EnableAsyncOperation]
  [-EnableThirdPartyS2S] [-Endpoint <IResourceTypeEndpoint[]>] [-ExtendedLocation <IExtendedLocationOptions[]>]
  [-FeatureRuleRequiredFeaturesPolicy <String>] [-IdentityManagementApplicationId <String>]
- [-IdentityManagementType <String>] [-IsPureProxy] [-LinkedAccessCheck <ILinkedAccessCheck[]>]
- [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>] [-ProvisioningState <String>]
- [-Regionality <String>] [-RequestHeaderOptionOptInHeader <String>] [-RequiredFeature <String[]>]
- [-ResourceCreationBeginRequest <String[]>] [-ResourceCreationBeginResponse <String[]>]
- [-ResourceDeletionPolicy <String>] [-ResourceMovePolicyCrossResourceGroupMoveEnabled]
- [-ResourceMovePolicyCrossSubscriptionMoveEnabled] [-ResourceMovePolicyValidationRequired]
- [-RoutingType <String>] [-ServiceTreeInfo <IServiceTreeInfo[]>]
+ [-IdentityManagementType <IdentityManagementTypes>] [-IsPureProxy]
+ [-LinkedAccessCheck <ILinkedAccessCheck[]>] [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>]
+ [-ProvisioningState <ProvisioningState>] [-Regionality <Regionality>]
+ [-RequestHeaderOptionOptInHeader <OptInHeaderType>] [-RequiredFeature <String[]>]
+ [-ResourceCreationBeginRequest <ExtensionOptionType[]>]
+ [-ResourceCreationBeginResponse <ExtensionOptionType[]>] [-ResourceDeletionPolicy <ResourceDeletionPolicy>]
+ [-ResourceMovePolicyCrossResourceGroupMoveEnabled] [-ResourceMovePolicyCrossSubscriptionMoveEnabled]
+ [-ResourceMovePolicyValidationRequired] [-RoutingType <RoutingType>] [-ServiceTreeInfo <IServiceTreeInfo[]>]
  [-SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan>]
  [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]
  [-SubscriptionStateRule <ISubscriptionStateRule[]>] [-SwaggerSpecification <ISwaggerSpecification[]>]
- [-TemplateDeploymentOptionPreflightOption <String[]>] [-TemplateDeploymentOptionPreflightSupported]
+ [-TemplateDeploymentOptionPreflightOption <PreflightOption[]>] [-TemplateDeploymentOptionPreflightSupported]
  [-ThrottlingRule <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -44,24 +45,24 @@ Creates or updates a resource type.
 ### Example 1: Create/Update a resource type registration.
 ```powershell
 PS C:\> New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -RoutingType "Default" -Regionality "Regional" -Endpoint @{ApiVersion = "2021-01-01-preview"; Location = "West US 2", "East US 2 EUAP"; RequiredFeature = "Microsoft.Contoso/SampleApp" } -SwaggerSpecification @{ApiVersion = "2021-01-01-preview"; SwaggerSpecFolderUri = "https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/" } -EnableAsyncOperation
-```
 
 Name                  Type
 ----                  ----
 testResourceType      Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations
+```
 
 Create/Update a resource type registration.
 
-### Example 2: Create/Update a resource type registration.
+### Example 2: Create/Update a nested resource type registration.
 ```powershell
-PS C:\> New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -RoutingType "Default" -Regionality "Regional" -Endpoint @{ApiVersion = "2021-01-01-preview"; Location = "West US 2", "East US 2 EUAP"; RequiredFeature = "Microsoft.Contoso/SampleApp" } -SwaggerSpecification @{ApiVersion = "2021-01-01-preview"; SwaggerSpecFolderUri = "https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/" } -EnableAsyncOperation
+PS C:\> New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType/nestedResourceType" -RoutingType "Default" -Regionality "Global" -Endpoint @{ApiVersion = "2021-01-01-preview"; Location = ""; RequiredFeature = "Microsoft.Contoso/SampleApp" } -SwaggerSpecification @{ApiVersion = "2021-01-01-preview"; SwaggerSpecFolderUri = "https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/" }
+
+Name                                     Type
+----                                     ----
+testResourceType/nestedResourceType      Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations
 ```
 
-Name                  Type
-----                  ----
-testResourceType      Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations
-
-Create/Update a resource type registration.
+Create/Update a nested resource type registration.
 
 ## PARAMETERS
 
@@ -282,7 +283,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes
 Parameter Sets: (All)
 Aliases:
 
@@ -389,7 +390,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
 Parameter Sets: (All)
 Aliases:
 
@@ -404,7 +405,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.Regionality
 Parameter Sets: (All)
 Aliases:
 
@@ -419,7 +420,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType
 Parameter Sets: (All)
 Aliases:
 
@@ -449,7 +450,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]
 Parameter Sets: (All)
 Aliases:
 
@@ -464,7 +465,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]
 Parameter Sets: (All)
 Aliases:
 
@@ -479,7 +480,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceDeletionPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -554,7 +555,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType
 Parameter Sets: (All)
 Aliases:
 
@@ -663,7 +664,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]
 Parameter Sets: (All)
 Aliases:
 
@@ -763,7 +764,7 @@ ENDPOINT <IResourceTypeEndpoint[]>: .
   - `[Enabled <Boolean?>]`: 
   - `[Extension <IResourceTypeExtension[]>]`: 
     - `[EndpointUri <String>]`: 
-    - `[ExtensionCategory <String[]>]`: 
+    - `[ExtensionCategory <ExtensionCategory[]>]`: 
     - `[Timeout <TimeSpan?>]`: 
   - `[FeatureRuleRequiredFeaturesPolicy <String>]`: 
   - `[Location <String[]>]`: 
@@ -783,8 +784,8 @@ LINKEDACCESSCHECK <ILinkedAccessCheck[]>: .
 
 LOGGINGRULE <ILoggingRule[]>: .
   - `Action <String>`: 
-  - `DetailLevel <String>`: 
-  - `Direction <String>`: 
+  - `DetailLevel <LoggingDetails>`: 
+  - `Direction <LoggingDirections>`: 
   - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`: 
   - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`: 
 
@@ -793,12 +794,12 @@ SERVICETREEINFO <IServiceTreeInfo[]>: .
   - `[ServiceId <String>]`: 
 
 SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  - `Action <String>`: 
-  - `State <String>`: 
+  - `Action <SubscriptionNotificationOperation>`: 
+  - `State <SubscriptionTransitioningState>`: 
 
 SUBSCRIPTIONSTATERULE <ISubscriptionStateRule[]>: .
   - `[AllowedAction <String[]>]`: 
-  - `[State <String>]`: 
+  - `[State <SubscriptionState?>]`: 
 
 SWAGGERSPECIFICATION <ISwaggerSpecification[]>: .
   - `[ApiVersion <String[]>]`: 
@@ -808,7 +809,7 @@ THROTTLINGRULE <IThrottlingRule[]>: .
   - `Action <String>`: 
   - `Metric <IThrottlingMetric[]>`: 
     - `Limit <Int64>`: 
-    - `Type <String>`: 
+    - `Type <ThrottlingMetricType>`: 
     - `[Interval <TimeSpan?>]`: 
   - `[RequiredFeature <String[]>]`: 
 
