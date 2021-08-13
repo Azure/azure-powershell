@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzVMwarePSCredentialExecutionParameterObject.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzVMwareScriptSecureStringExecutionParameterObject.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,11 +11,11 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'New-AzVMwarePSCredentialExecutionParameterObject' {
+Describe 'New-AzVMwareScriptSecureStringExecutionParameterObject' {
     It 'Rotate' {
         {
-            $config = New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Type Credential -Password "passwordValue" -Username "usernameValue"
-            $config.Type | Should -Be "Credential"
+            $config = New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -Type SecureValue -SecureValue "passwordValue"
+            $config.Type | Should -Be "SecureValue"
         } | Should -Not -Throw
     }
 }
