@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Fixed a bug in `Add-AzVHD` on Linux that caused uploads to fail for certain destination URIs
+
 ## Version 4.16.0
 * Fixed the warning in `New-AzVM` cmdlet stating the sku of the VM is being defaulted even if a sku size is provided by the user. Now it only occurs when the user does not provide a sku size.
 * Edited `Set-AzVmOperatingSystem` cmdlet to no longer overwrite any existing EnableAutomaticUpdates value on the passed in virtual machine if it exists.
