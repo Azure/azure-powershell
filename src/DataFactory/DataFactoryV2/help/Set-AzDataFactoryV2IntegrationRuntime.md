@@ -17,7 +17,7 @@ Updates an integration runtime.
 Set-AzDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-Name] <String> [-Type <String>] [-Description <String>] [-Location <String>] [-NodeSize <String>]
  [-NodeCount <Int32>] [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>]
- [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] [-PublicIPs <String[]>]
+ [-SubnetId <String>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] [-PublicIPs <String[]>]
  [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>] [-DataFlowTimeToLive <Int32>]
  [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-ExpressCustomSetup <ArrayList>]
  [-DataProxyIntegrationRuntimeName <String>] [-DataProxyStagingLinkedServiceName <String>]
@@ -31,7 +31,7 @@ Set-AzDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactor
 Set-AzDataFactoryV2IntegrationRuntime [-ResourceId] <String> [-Type <String>] [-Description <String>]
  [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-PublicIPs <String[]>] [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>]
+ [-SubnetId <String>] [-PublicIPs <String[]>] [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>]
  [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
  [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
  [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
@@ -58,7 +58,7 @@ Set-AzDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactor
 Set-AzDataFactoryV2IntegrationRuntime [-InputObject] <PSIntegrationRuntime> [-Type <String>]
  [-Description <String>] [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>]
  [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>]
- [-VNetId <String>] [-Subnet <String>] [-PublicIPs <String[]>] [-DataFlowComputeType <String>]
+ [-VNetId <String>] [-Subnet <String>] [-SubnetId <String>] [-PublicIPs <String[]>] [-DataFlowComputeType <String>]
  [-DataFlowCoreCount <Int32>] [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>]
  [-Edition <String>] [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
  [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
@@ -125,6 +125,7 @@ PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName testgroup `
     CatalogPricingTier                : 
     VNetId                            : 
     Subnet                            : 
+    SubnetId                          : 
     PublicIPs                         : 
     State                             : Initial
     LicenseType                       : LicenseIncluded
@@ -590,6 +591,20 @@ The ID of the VNet that the integration runtime joins.
 Type: System.String
 Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -SubnetId
+The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
+
+```yaml
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases: 
 
 Required: False
 Position: Named

@@ -256,7 +256,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeSubnetId)]
-        [Alias(Constants.SubnetId)]
         [ValidateNotNull]
         public string SubnetId { get; set; }
 

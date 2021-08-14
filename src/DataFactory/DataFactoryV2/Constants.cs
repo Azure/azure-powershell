@@ -236,8 +236,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string SubnetName = "SubnetName";
 
-        public const string SubnetId = "SubnetId";
-
         public const string IntegrationRuntimeTypeManaged = "Managed";
 
         public const string IntegrationRuntimeSelfhosted = "SelfHosted";
