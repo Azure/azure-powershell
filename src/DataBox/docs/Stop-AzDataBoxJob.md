@@ -24,8 +24,8 @@ CancelJob.
 
 ### Example 1:  {{ Cancel a Job }}
 ```powershell
-PS C:\> Stop-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "dhja" -Reason "Powershell demo job"
-PS C:\> Get-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "dhja"
+PS C:\> Stop-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName" -Reason "Powershell demo job"
+PS C:\> Get-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName"
 
 Name         Location Status    TransferType  SkuName IdentityType DeliveryType Detail
 ----         -------- ------    ------------  ------- ------------ ------------ ------

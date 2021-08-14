@@ -24,7 +24,7 @@ This method gets the unencrypted secrets related to the job.
 
 ### Example 1: {{ Get databox job credential }}
 ```powershell
-PS C:\> Get-AzDataBoxJobCredential -Name "DtbxPowershell" -ResourceGroupName "dhja"
+PS C:\> Get-AzDataBoxJobCredential -Name "DtbxPowershell" -ResourceGroupName "resourceGroupName"
 ```
 
 {{ Get databox job credential }}
