@@ -140,6 +140,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeSubnet = "The name of the subnet in the VNet.";
 
+        public const string HelpIntegrationRuntimeSubnetId = "The ID of subnet, to which this Azure-SSIS integration runtime will be joined.";
+
         public const string HelpIntegrationRuntimePublicIP = "The static public IP addresses which the integration runtime will use.";
 
         public const string HelpIntegrationRuntimeDataFlowCoreCount = "Core count of the data flow cluster which will execute data flow job.";
@@ -233,6 +235,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string IntegrationRuntimeName = "IntegrationRuntimeName";
 
         public const string SubnetName = "SubnetName";
+
+        public const string SubnetId = "SubnetId";
 
         public const string IntegrationRuntimeTypeManaged = "Managed";
 

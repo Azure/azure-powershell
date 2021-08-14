@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             this.ByResourceId();
             this.ByIntegrationRuntimeObject();
 
-            var integrationRuntime = DataFactoryClient.GetIntegrationRuntimeOutboundNetworkDependenciesEndpointsAsync(
+            var outboundNetworkDependenciesEndpoints = DataFactoryClient.GetIntegrationRuntimeOutboundNetworkDependenciesEndpointsAsync(
                         ResourceGroupName,
                         DataFactoryName,
                         Name).ConfigureAwait(true).GetAwaiter().GetResult();
 
-            WriteObject(integrationRuntime);
+            WriteObject(outboundNetworkDependenciesEndpoints);
         }
     }
 }
