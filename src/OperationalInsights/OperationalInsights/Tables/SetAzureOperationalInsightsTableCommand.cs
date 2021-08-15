@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,7 +17,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
-
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSWorkspace))]
     public class SetAzureOperationalInsightsTableCommand : OperationalInsightsBaseCmdlet
     {
