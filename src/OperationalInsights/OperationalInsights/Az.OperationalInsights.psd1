@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.3.1'
+ModuleVersion = '2.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -90,7 +90,7 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'New-AzOperationalInsightsWindowsEventDataSource', 
                'Get-AzOperationalInsightsSavedSearch', 
                'Get-AzOperationalInsightsSchema', 
-               'New-AzOperationalInsightsComputerGroup', # editted - return contract
+               'New-AzOperationalInsightsComputerGroup',
                'New-AzOperationalInsightsSavedSearch', 
                'Set-AzOperationalInsightsSavedSearch', 
                'Remove-AzOperationalInsightsSavedSearch', 
@@ -98,43 +98,43 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'Remove-AzOperationalInsightsDataSource', 
                'Set-AzOperationalInsightsDataSource', 
                'Get-AzOperationalInsightsStorageInsight', 
-               'Set-AzOperationalInsightsStorageInsight', # editted
-               'New-AzOperationalInsightsStorageInsight', # editted
+               'Set-AzOperationalInsightsStorageInsight',
+               'New-AzOperationalInsightsStorageInsight',
                'Remove-AzOperationalInsightsStorageInsight', 
                'Set-AzOperationalInsightsIntelligencePack', 
                'Get-AzOperationalInsightsIntelligencePack', 
                'Get-AzOperationalInsightsWorkspaceManagementGroup', 
                'Get-AzOperationalInsightsWorkspaceUsage', 
                'Get-AzOperationalInsightsWorkspaceSharedKey', 
-               'Get-AzOperationalInsightsWorkspace', # editted - return contract
-               'New-AzOperationalInsightsWorkspace',  # editted
+               'Get-AzOperationalInsightsWorkspace',
+               'New-AzOperationalInsightsWorkspace',
                'Remove-AzOperationalInsightsWorkspace', 
-               'Set-AzOperationalInsightsWorkspace',  # editted
+               'Set-AzOperationalInsightsWorkspace',
                'Invoke-AzOperationalInsightsQuery', 
-               'New-AzOperationalInsightsLinkedStorageAccount', # editted
-               'Get-AzOperationalInsightsLinkedStorageAccount', # editted
-               'Set-AzOperationalInsightsLinkedStorageAccount', # editted
+               'New-AzOperationalInsightsLinkedStorageAccount',
+               'Get-AzOperationalInsightsLinkedStorageAccount',
+               'Set-AzOperationalInsightsLinkedStorageAccount',
                'Remove-AzOperationalInsightsLinkedStorageAccount', 
-               'New-AzOperationalInsightsCluster',  # editted
-               'Get-AzOperationalInsightsCluster',  # editted
-               'Update-AzOperationalInsightsCluster',  # editted
-               'Remove-AzOperationalInsightsCluster',  # editted
+               'New-AzOperationalInsightsCluster',
+               'Get-AzOperationalInsightsCluster',
+               'Update-AzOperationalInsightsCluster',
+               'Remove-AzOperationalInsightsCluster',
                'Get-AzOperationalInsightsLinkedService', 
                'Set-AzOperationalInsightsLinkedService', 
                'Remove-AzOperationalInsightsLinkedService', 
                'Get-AzOperationalInsightsDeletedWorkspace', 
                'Restore-AzOperationalInsightsWorkspace',
-               'Set-AzOperationalInsightsTable', # new command
-               'Get-AzOperationalInsightsTable', # new command
-               'Get-AzOperationalInsightsOperation', # new command
-               'Get-AzOperationalInsightsDataExport', # new command
-               'New-AzOperationalInsightsDataExport', # new command
-               'Remove-AzOperationalInsightsDataExport', # new command
-               'Update-AzOperationalInsightsDataExport', # new command
-               'Get-AzOperationalInsightsOperationStatus', # new command
-               'Update-AzOperationalInsightsWorkspaceSharedKey', # new command
-               'New-AzOperationalInsightsPurgeWorkspace', # new command
-               'Get-AzOperationalInsightsPurgeWorkspaceStatus' # new command
+               'Set-AzOperationalInsightsTable',
+               'Get-AzOperationalInsightsTable',
+               'Get-AzOperationalInsightsOperation',
+               'Get-AzOperationalInsightsDataExport',
+               'New-AzOperationalInsightsDataExport',
+               'Remove-AzOperationalInsightsDataExport',
+               'Update-AzOperationalInsightsDataExport',
+               'Get-AzOperationalInsightsOperationStatus',
+               'Update-AzOperationalInsightsWorkspaceSharedKey',
+               'New-AzOperationalInsightsPurgeWorkspace',
+               'Get-AzOperationalInsightsPurgeWorkspaceStatus'
 
 
 # Variables to export from this module
