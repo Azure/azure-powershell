@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using System.Globalization;
 using System.Management.Automation;

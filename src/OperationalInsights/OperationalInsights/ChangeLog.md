@@ -32,7 +32,6 @@ Files moved (without change):
 	- Remove-AzOperationalInsightsSavedSearch	
 	- Set-AzOperationalInsightsSavedSearch	
 	
-	
 CmdletParameterBreakingChange: rename StorageAccountId to StorageAccountIds 
 	- New-AzOperationalInsightsLinkedStorageAccount
 
@@ -63,47 +62,18 @@ Added new property "StorageAccountResourceId": (string) to cmdlet:
 Added SupportsShouldProcess attribute to cmdlet:
 	- Set-AzOperationalInsightsStorageInsight
 
-
-new commands summary (with command examples):
-1. Set-AzOperationalInsightsTable
-a. $updatedTable = Set-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-troubleShootingE2E -tableName E2E_16_12_2020_CL -RetentionInDays 50
-
-2. Get-AzOperationalInsightsTable
-	a. $testTable = Get-AzOperationalInsightsTable -ResourceGroupName dabenham-dev -WorkspaceName dabenham-troubleShootingE2E -tableName E2E_16_12_2020_CL
-3. Get-AzOperationalInsightsOperations
-	a. $allOps = Get-AzOperationalInsightsOperations
-	
-4. Get-AzOperationalInsightsDataExport
-	a. Get-AzOperationalInsightsDataExport -ResourceGroupName dabenham-dev -WorkspaceName dabenham-troubleShootingE2E
-	b. Get-AzOperationalInsightsDataExport -ResourceGroupName testnotifyrg -WorkspaceName Export
-	c. Get-AzOperationalInsightsDataExport -ResourceGroupName cli_test_monitor_workspace_data_export -WorkspaceName clitestypg6yjcnrwypz
-	
-5. New-AzOperationalInsightsDataExport
-	a. New-AzOperationalInsightsDataExport  -ResourceGroupName cli_test_monitor_workspace_data_export -WorkspaceName clitestypg6yjcnrwypz -DataExportName "dabenhamTestDataExport" -TableNames "Heartbeat" -ResourceId "/subscriptions/57947cb5-aadd-4b6c-9e8e-27f545bb7bf5/resourceGroups/dabenham-dev/providers/Microsoft.EventHub/namespaces/dabenhamNamespace"
-	
-6. Remove-AzOperationalInsightsDataExport
-	a. Remove-AzOperationalInsightsDataExport  -ResourceGroupName cli_test_monitor_workspace_data_export -WorkspaceName clitestypg6yjcnrwypz -DataExportName "dabenhamTestDataExport"
-	
-7. Update-AzOperationalInsightsDataExport
-	a. Update-AzOperationalInsightsDataExport  -ResourceGroupName cli_test_monitor_workspace_data_export -WorkspaceName clitestypg6yjcnrwypz -DataExportName "dabenhamTestDataExport" -TableNames "Heartbeat","Perf"
-	
-8. Get-AzOperationalInsightsOperationStatus
-	a. Get-AzOperationalInsightsOperationStatus -Location "East US" -OperationId  {GUID}
-	
-9. Update-AzOperationalInsightsWorkspaceSharedKey
-	a. Update-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName dabenham-dev -Name  dabenham-troubleShootingE2E
-	NOTE: perform the following command before to validate the keys have changed:
-		 Get-AzOperationalInsightsWorkspaceSharedKey  -ResourceGroupName dabenham-dev -Name  dabenham-troubleShootingE2E 
-		
-		
-10. New-AzOperationalInsightsPurgeWorkspace
-	a. New-AzOperationalInsightsPurgeWorkspace -ResourceGroupName dabenham-dev -WorkspaceName dabenham-troubleShootingE2E -Column {NAME} -OperatorProperty {OPERATOR} -Value {VAL} -key {KEY} -Table {TABLENAME}
-	NOTE:  operators are ==, =~, in, in~, >, >=, <, <=, between, -> as string
-	NOTE: This can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array of values
-	
-11. Get-AzOperationalInsightsPurgeWorkspaceStatus
-	a. Get-AzOperationalInsightsPurgeWorkspaceStatus  -ResourceGroupName dabenham-dev -WorkspaceName dabenham-troubleShootingE2E -PurgeId {PURGEID}
-NOTE: PurgeId is received from New-AzOperationalInsightsPurgeWorkspace command
+New commands added:
+	- Set-AzOperationalInsightsTable
+	- Get-AzOperationalInsightsTable
+	- Get-AzOperationalInsightsOperations
+	- Get-AzOperationalInsightsDataExport
+	- New-AzOperationalInsightsDataExport	
+	- Remove-AzOperationalInsightsDataExport
+	- Update-AzOperationalInsightsDataExport
+	- Get-AzOperationalInsightsOperationStatus
+	- Update-AzOperationalInsightsWorkspaceSharedKey		
+	- New-AzOperationalInsightsPurgeWorkspace
+	- Get-AzOperationalInsightsPurgeWorkspaceStatus
 
 
 
