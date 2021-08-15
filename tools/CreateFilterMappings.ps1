@@ -330,4 +330,4 @@ $Script:ProjectToSolutionMappings = Create-ProjectToSolutionMappings
 Create-CsprojMappings
 
 # $Script:ModuleMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "ModuleMappings.json")
-$Script:CsprojMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "CsprojMappings.json")
+$Script:CsprojMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "./artifacts/CsprojMappings.json")
