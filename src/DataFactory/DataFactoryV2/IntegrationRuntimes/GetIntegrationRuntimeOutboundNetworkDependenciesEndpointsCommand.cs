@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntimeOutboundNetwworkDependenciesEndpoints", DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName), OutputType(typeof(PSIntegrationRuntime))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntimeOutboundNetwworkDependenciesEndpoints", DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName), OutputType(typeof(List<PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>))]
     public class GetIntegrationRuntimeOutboundNetworkDependenciesEndpointsCommand: IntegrationRuntimeCmdlet
     {
   
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
             // TODO -- If Ir is not Azure-SSIS IR.
 
-            WriteObject(outboundNetworkDependenciesEndpoints);
+            WriteObject(outboundNetworkDependenciesEndpoints, true);
         }
     }
 }

@@ -12,21 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.DataFactory.Models;
+using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 {
-    public class PSIntegrationRuntimeOutboundNetworkDependenciesEndpoints
+    public class PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint
     {
-        private readonly IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse outboundNetworkDependenciesEndpointsResponse;
+        private static JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+        public string Category { get; set; }
+        public string EndPoint { get; set; }
+        public IEnumerable<IntegrationRuntimeOutboundNetworkDependenciesEndpoint> Endpoints { get; set; }
 
-        public PSIntegrationRuntimeOutboundNetworkDependenciesEndpoints(IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse outboundNetworkDependenciesEndpointsResponse)
+        public PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint(IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint categoryEndpoint)
         {
-            this.outboundNetworkDependenciesEndpointsResponse = outboundNetworkDependenciesEndpointsResponse;
+            Category = categoryEndpoint.Category;
+            Endpoints = categoryEndpoint.Endpoints.Select(x => x);
+            EndPoint = JsonSerializer.Serialize(categoryEndpoint.Endpoints, options);
         }
-
-        public IList<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint> Value => outboundNetworkDependenciesEndpointsResponse.Value;
     }
 }

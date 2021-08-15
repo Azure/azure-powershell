@@ -78,6 +78,10 @@ function Test-SelfHosted-IntegrationRuntime
     }
 }
 
+function Test-SsisAzure-IntegrationRuntime-OutboundNetworkDependencyEndpoints
+{
+}
+
 <#
 .SYNOPSIS
 Creates a SSIS-Azure integration runtime and then does operations.

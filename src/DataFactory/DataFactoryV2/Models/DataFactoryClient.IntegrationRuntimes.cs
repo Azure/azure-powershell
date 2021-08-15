@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactoryName);
         }
 
-        public virtual async Task<PSIntegrationRuntimeOutboundNetworkDependenciesEndpoints> GetIntegrationRuntimeOutboundNetworkDependenciesEndpointsAsync(
+        public virtual async Task<List<PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>> GetIntegrationRuntimeOutboundNetworkDependenciesEndpointsAsync(
             string resourceGroupName,
             string dataFactoryName,
             string integrationRuntimeName)
@@ -191,7 +191,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactoryName,
                 integrationRuntimeName);
 
-            return new PSIntegrationRuntimeOutboundNetworkDependenciesEndpoints(outboundNetworkDependenciesEndpointsResponse);
+            var response = new List<PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>();
+            foreach(var categoryEndpoints in outboundNetworkDependenciesEndpointsResponse.Value)
+            {
+                response.Add(new PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint(categoryEndpoints));
+            }
+
+            return response;
         }
 
         public virtual async Task<HttpStatusCode> DeleteIntegrationRuntimeAsync(
