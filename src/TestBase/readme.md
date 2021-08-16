@@ -27,7 +27,6 @@ For information on how to develop for `TestBase`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: c35467e04efa830ca3a15c8cafcd2db5e10d55fe
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
