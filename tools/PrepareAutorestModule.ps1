@@ -19,10 +19,6 @@ param(
     [Parameter(Mandatory=$True)]
     [String]$Configuration
 )
-if (Test-Path "$PSScriptRoot\..\artifacts\$Configuration")
-{
-    return
-}
 $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
@@ -80,6 +76,10 @@ Import-Module Az.Accounts
 Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
 #EndRegion
 
+if (Test-Path "$PSScriptRoot\..\artifacts\$Configuration")
+{
+    return
+}
 #Region generate the code and make the struture same with main branch.
 foreach ($Module in $ModuleList)
 {
