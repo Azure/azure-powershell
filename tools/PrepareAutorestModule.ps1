@@ -16,7 +16,13 @@
 
 
 param(
+    [Parameter(Mandatory=$True)]
+    [String]$Configuration,
 )
+if (Test-Path "$PSScriptRoot\..\artifacts\$Configuration")
+{
+    return
+}
 $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
