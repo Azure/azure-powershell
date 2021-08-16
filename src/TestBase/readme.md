@@ -4,7 +4,7 @@ This directory contains the PowerShell module for the TestBase service.
 
 ---
 ## Status
-[![Az.TestBase](https://img.shields.io/powershellgallery/v/TestBase.svg?style=flat-square&label=TestBase "TestBase")](https://www.powershellgallery.com/packages/TestBase/)
+[![Az.TestBase](https://img.shields.io/powershellgallery/v/TestBase.svg?style=flat-square&label=Az.TestBase "Az.TestBase")](https://www.powershellgallery.com/packages/Az.TestBase/)
 
 ## Info
 - Modifiable: yes
