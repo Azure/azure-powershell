@@ -123,6 +123,10 @@ directive:
           - IdentityType
           - DeliveryType  
           - Detail
+          
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobSecrets', 'public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobSecrets');  
     
   - model-cmdlet:
     - DataBoxDiskJobDetails
