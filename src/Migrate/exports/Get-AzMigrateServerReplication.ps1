@@ -161,7 +161,7 @@ TestMigrateStateDescription : None
 Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -169,15 +169,12 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IMigrationItem>: Specifies the machine object of the replicating server.
   [Location <String>]: Resource Location
-  [CurrentJobId <String>]: The ARM Id of the job being executed.
-  [CurrentJobName <String>]: The job name.
-  [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
 #>
 function Get-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ListByName', Mandatory)]
@@ -221,7 +218,7 @@ param(
 
     [Parameter(ParameterSetName='GetByInputObject', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem]
     # Specifies the machine object of the replicating server.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
@@ -318,6 +315,8 @@ begin {
         if (('ListByName', 'GetBySRSID', 'GetByMachineName', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

@@ -233,7 +233,7 @@ function Test-SynapseWorkspaceSecurity
         Assert-False {$dataSecurityDisable.IsEnabled}
 
         # Remove SQL Auditing
-        Assert-True {Remove-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -PassThru}
+        Assert-True {Remove-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName}
 
         # Verify that SQL Auditing was deleted
         $auditing = Get-AzSynapseSqlAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
@@ -388,7 +388,7 @@ function Test-SynapseWorkspaceKey
         Set-AzKeyVaultAccessPolicy -VaultName $params.vaultName -ObjectId $workspaceId -PermissionsToKeys get,wrapkey,unwrapkey
 
         # Activate workspace
-        Update-AzSynapseWorkspaceKey -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Activate
+        Enable-AzSynapseWorkspace -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName
         Wait-Seconds 15
 
         # Retrieve workspace keys

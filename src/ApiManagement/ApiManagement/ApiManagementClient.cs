@@ -138,7 +138,10 @@ namespace Microsoft.Azure.Commands.ApiManagement
             PsApiManagementSystemCertificate[] systemCertificates = null,
             PsApiManagementSslSetting sslSettings = null,
             bool createSystemResourceIdentity = false,
-            string[] userAssignedIdentity = null)
+            string[] userAssignedIdentity = null,
+            string[] zone = null,
+            bool? disableGateway = null,
+            string minimalControlPlaneApiVersion = null)
         {
             string skuType = Mappers.MapSku(sku);
 
@@ -171,22 +174,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             {
                 parameters.AdditionalLocations =
                     additionalRegions
-                        .Select(region =>
-                            new AdditionalLocation
-                            {
-                                Location = region.Location,
-                                Sku = new ApiManagementServiceSkuProperties()
-                                {
-                                    Name = Mappers.MapSku(region.Sku),
-                                    Capacity = region.Capacity
-                                },
-                                VirtualNetworkConfiguration = region.VirtualNetwork == null
-                                    ? null
-                                    : new VirtualNetworkConfiguration
-                                    {
-                                        SubnetResourceId = region.VirtualNetwork.SubnetResourceId
-                                    }
-                            })
+                        .Select(region => region.GetAdditionalLocation())
                         .ToList();
             }
 
@@ -215,10 +203,28 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 parameters.EnableClientCertificate = enableClientCertificate;
             }
 
+            if (zone != null)
+            {
+                parameters.Zones = zone;
+            }
+
+            if (disableGateway != null && disableGateway.HasValue)
+            {
+                parameters.DisableGateway = disableGateway.Value;
+            }
+
+            if (!string.IsNullOrWhiteSpace(minimalControlPlaneApiVersion))
+            {
+                parameters.ApiVersionConstraint = new ApiVersionConstraint()
+                {
+                    MinApiVersion = minimalControlPlaneApiVersion
+                };
+            }
+
             parameters.Identity = Mappers.MapAssignedIdentity(createSystemResourceIdentity, userAssignedIdentity);
 
             var apiManagementResource = Client.ApiManagementService.CreateOrUpdate(resourceGroupName, serviceName, parameters);
-            return new PsApiManagement(apiManagementResource);      
+            return new PsApiManagement(apiManagementResource);
         }
 
         IList<HostnameConfiguration> BuildHostNameConfiguration(PsApiManagementCustomHostNameConfiguration[] pshostnameConfigurations)

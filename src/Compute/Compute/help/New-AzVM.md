@@ -24,15 +24,16 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>] [-DataDiskDeleteOption <String>]
  [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
- [-HostGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
 ```
 New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>] [-VM] <PSVirtualMachine>
  [[-Zone] <String[]>] [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
- [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-SshKeyName <String>] [-GenerateSshKey]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DiskFileParameterSet
@@ -45,7 +46,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-UserAssignedIdentity <String>] [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>]
  [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
  [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
- [-HostGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -233,6 +235,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CapacityReservationGroupId
+Id of the capacity reservation Group that is used to allocate.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Credential
 The administrator credentials for the VM.
 
@@ -391,6 +408,21 @@ The eviction policy for the Azure Spot virtual machine.  Supported values are 'D
 ```yaml
 Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GenerateSshKey
+Generate a SSH Public/Private key pair and create a SSH Public Key resource on Azure.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet, DefaultParameterSet
 Aliases:
 
 Required: False
@@ -684,6 +716,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: Standard_D2s_v3
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SshKeyName
+Name of the SSH Public Key resource.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

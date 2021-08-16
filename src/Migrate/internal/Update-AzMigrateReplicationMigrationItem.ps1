@@ -28,7 +28,7 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ PROVIDERSPECIFICDETAIL <IUpdateMigrationItemProviderSpecificInput>: The provider
 https://docs.microsoft.com/powershell/module/az.migrate/update-azmigratereplicationmigrationitem
 #>
 function Update-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -82,7 +82,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IUpdateMigrationItemProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateMigrationItemProviderSpecificInput]
     # The provider specific input to update migration item.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},
@@ -160,6 +160,7 @@ begin {
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

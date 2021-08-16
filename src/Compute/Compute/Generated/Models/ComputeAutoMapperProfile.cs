@@ -191,6 +191,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.SshPublicKeyResource, TO.PSSshPublicKeyResourceList>();
                 cfg.CreateMap<TO.PSSshPublicKeyResourceList, TO.PSSshPublicKeyResource>();
                 cfg.CreateMap<TO.PSSshPublicKeyResource, TO.PSSshPublicKeyResourceList>();
+                cfg.CreateMap<FROM.CapacityReservationGroup, TO.PSCapacityReservationGroup>();
+                cfg.CreateMap<TO.PSCapacityReservationGroup, FROM.CapacityReservationGroup>();
+                cfg.CreateMap<FROM.CapacityReservationGroup, TO.PSCapacityReservationGroupList>();
+                cfg.CreateMap<TO.PSCapacityReservationGroupList, TO.PSCapacityReservationGroup>();
+                cfg.CreateMap<TO.PSCapacityReservationGroup, TO.PSCapacityReservationGroupList>();
+                cfg.CreateMap<FROM.CapacityReservation, TO.PSCapacityReservation>();
+                cfg.CreateMap<TO.PSCapacityReservation, FROM.CapacityReservation>();
+                cfg.CreateMap<FROM.CapacityReservation, TO.PSCapacityReservationList>();
+                cfg.CreateMap<TO.PSCapacityReservationList, TO.PSCapacityReservation>();
+                cfg.CreateMap<TO.PSCapacityReservation, TO.PSCapacityReservationList>();
             });
             _mapper = config.CreateMapper();
         }

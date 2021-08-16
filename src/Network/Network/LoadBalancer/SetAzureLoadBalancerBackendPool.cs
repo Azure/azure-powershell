@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The backend address pool to set",
+            ValueFromPipeline = true,
             ParameterSetName = SetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSBackendAddressPool InputObject { get; set; }

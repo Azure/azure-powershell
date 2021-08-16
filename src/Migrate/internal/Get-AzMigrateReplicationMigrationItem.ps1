@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationmigrationitem
 #>
 function Get-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -75,17 +75,26 @@ param(
     # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
     [System.String]
     # OData filter options.
     ${Filter},
 
+    [Parameter(ParameterSetName='List')]
     [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
     [System.String]
     # The pagination token.
     ${SkipToken},
+
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # The page size.
+    ${TakeToken},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -150,6 +159,7 @@ begin {
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

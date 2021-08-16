@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
     using System.Collections;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Newtonsoft.Json.Linq;
@@ -90,11 +91,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.Json
 
             string result = PSJsonSerializer.Serialize(hashtable);
 
-            JToken parsedResult = JToken.Parse(result);
+            JToken parsedResult = result.FromJson<JToken>();
+
+            // NOTE(jcotillo): JsonExtensions is now camelCasing all property keys
+            // therefore even though Bar was set as PascalCase, after serializing it
+            // the key became camelCase.
             JToken expected = JToken.FromObject(new
             {
                 foo = "fooValue",
-                Bar = true,
+                bar = true,
                 nested = new
                 {
                     foo = "4d44fe86-f04a-4ba5-9900-abdec8cb11c1",

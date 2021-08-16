@@ -157,5 +157,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             TestController.NewInstance.RunPsTest(
                 _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMCrossRegionRestore");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureVMRestoreWithMSI()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMRestoreWithMSI");
+        }
     }
 }
