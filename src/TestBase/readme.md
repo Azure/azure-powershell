@@ -35,7 +35,7 @@ input-file:
   - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/stable/2020-03-01/confluent.json
 
 module-version: 0.1.0
-title: Confluent
+title: TestBase
 subject-prefix: $(service-name)
 
 directive:
