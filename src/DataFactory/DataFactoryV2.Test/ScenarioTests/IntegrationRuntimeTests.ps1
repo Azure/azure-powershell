@@ -267,32 +267,19 @@ function Test-Azure-IntegrationRuntime
 
     try
     {
+        Write-Debug $dfname
+        Write-Debug $rgname
+        Write-Debug $dflocation
         Set-AzDataFactoryV2 -ResourceGroupName $rgname `
             -Name $dfname `
             -Location $dflocation `
             -Force
      
-        $irname = "test-ManagedElastic-integrationruntime"
-        $description = "ManagedElastic"
-   
-        $actual = Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
-            -DataFactoryName $dfname `
-            -Name $irname `
-            -Type Managed `
-            -Description $description `
-            -Force
-
-        $expected = Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
-            -DataFactoryName $dfname `
-            -Name $irname
-        Assert-AreEqual $actual.Name $expected.Name
-        Get-AzDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
-
-        Remove-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
+        
     }
     finally
     {
-        CleanUp $rgname $dfname
+        # CleanUp $rgname $dfname
     }
 }
 
