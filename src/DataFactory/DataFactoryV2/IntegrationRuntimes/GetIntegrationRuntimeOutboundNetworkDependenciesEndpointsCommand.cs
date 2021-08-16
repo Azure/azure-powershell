@@ -33,8 +33,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         DataFactoryName,
                         Name).ConfigureAwait(true).GetAwaiter().GetResult();
 
-            // TODO -- If Ir is not Azure-SSIS IR.
-
             WriteObject(outboundNetworkDependenciesEndpoints);
         }
     }
