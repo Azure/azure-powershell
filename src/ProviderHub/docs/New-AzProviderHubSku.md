@@ -14,8 +14,8 @@ Creates or updates the resource type skus in the given resource type.
 
 ```
 New-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <String>
- -SkuSetting <ISkuSetting[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -SkuSetting <ISkuSetting[]> [-SubscriptionId <String>] [-ProvisioningState <ProvisioningState>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,25 +25,25 @@ Creates or updates the resource type skus in the given resource type.
 
 ### Example 1: Create/Update a resource SKU definition.
 ```powershell
-PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "Employees" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
-```
+PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
 
 Name      Type
 ----      ----
 default   Microsoft.ProviderHub/providerRegistrations/skus
+```
 
 Create/Update a resource SKU definition.
 
-### Example 2: Create/Update a resource SKU definition.
+### Example 2: Create/Update a nested resource type SKU definition.
 ```powershell
-PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "Employees" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
-```
+PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType/nestedResourceType" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
 
 Name      Type
 ----      ----
 default   Microsoft.ProviderHub/providerRegistrations/skus
+```
 
-Create/Update a resource SKU definition.
+Create/Update a nested resource type SKU definition.
 
 ## PARAMETERS
 
@@ -71,6 +71,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -195,7 +210,7 @@ SKUSETTING <ISkuSetting[]>: .
   - `[CapacityDefault <Int32?>]`: 
   - `[CapacityMaximum <Int32?>]`: 
   - `[CapacityMinimum <Int32?>]`: 
-  - `[CapacityScaleType <String>]`: 
+  - `[CapacityScaleType <SkuScaleType?>]`: 
   - `[Cost <ISkuCost[]>]`: 
     - `MeterId <String>`: 
     - `[ExtendedUnit <String>]`: 
