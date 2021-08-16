@@ -18,4 +18,34 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 
 ## Development
 For information on how to develop for `TestBase`, see [how-to.md](how-to.md).
+
 <!-- endregion -->
+
+
+---
+### AutoRest Configuration
+> see https://aka.ms/autorest
+
+``` yaml
+Branch: c35467e04efa830ca3a15c8cafcd2db5e10d55fe
+require:
+  - $(this-folder)/../readme.azure.noprofile.md
+# lock the commit
+input-file:
+  - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/stable/2020-03-01/confluent.json
+
+module-version: 0.1.0
+title: Confluent
+subject-prefix: $(service-name)
+
+directive:
+  - where:
+      subject: OrganizationOperation
+    hide: true
+  # Remove the unexpanded parameter set
+  - where:
+      variant: ^Create$|^CreateViaIdentityExpanded$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+    remove: true
+```
+
+
