@@ -29,6 +29,9 @@ Gets information about a configuration of server.
 ### [Get-AzPostgreSqlFlexibleServerConnectionString](Get-AzPostgreSqlFlexibleServerConnectionString.md)
 Get the connection string according to client connection provider.
 
+### [Get-AzPostgreSqlFlexibleServerDatabase](Get-AzPostgreSqlFlexibleServerDatabase.md)
+Gets information about a database.
+
 ### [Get-AzPostgreSqlFlexibleServerFirewallRule](Get-AzPostgreSqlFlexibleServerFirewallRule.md)
 List all the firewall rules in a given server.
 
@@ -50,6 +53,9 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### [New-AzPostgreSqlFlexibleServer](New-AzPostgreSqlFlexibleServer.md)
 Creates a new server.
 
+### [New-AzPostgreSqlFlexibleServerDatabase](New-AzPostgreSqlFlexibleServerDatabase.md)
+Creates a new database or updates an existing database.
+
 ### [New-AzPostgreSqlFlexibleServerFirewallRule](New-AzPostgreSqlFlexibleServerFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
@@ -67,6 +73,9 @@ Deletes a server firewall rule.
 
 ### [Remove-AzPostgreSqlFlexibleServer](Remove-AzPostgreSqlFlexibleServer.md)
 Deletes a server.
+
+### [Remove-AzPostgreSqlFlexibleServerDatabase](Remove-AzPostgreSqlFlexibleServerDatabase.md)
+Deletes a database.
 
 ### [Remove-AzPostgreSqlFlexibleServerFirewallRule](Remove-AzPostgreSqlFlexibleServerFirewallRule.md)
 Deletes a PostgreSQL server firewall rule.
