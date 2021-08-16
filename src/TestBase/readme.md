@@ -1,5 +1,5 @@
 <!-- region Generated -->
-# TestBase
+# Az.TestBase
 This directory contains the PowerShell module for the TestBase service.
 
 ---
