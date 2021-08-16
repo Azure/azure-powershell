@@ -4,6 +4,13 @@ Returns an ordered hashtable with the following paths having empty mappings:
 - All folders at the root of the repository (except "src")
 - All files in the "src" folder
 #>
+
+$CsprojMappingsPath = Join-Path -Path $Script:RootPath -ChildPath "./artifacts/CsprojMappings.json"
+if (Test-Path $CsprojMappingsPath)
+{
+    return
+}
+
 function Initialize-Mappings
 {
     param
@@ -326,11 +333,6 @@ $Script:ProjectToFullPathMappings = Create-ProjectToFullPathMappings
 $Script:SolutionToProjectMappings = Create-SolutionToProjectMappings
 $Script:ProjectToSolutionMappings = Create-ProjectToSolutionMappings
 
-$CsprojMappingsPath = Join-Path -Path $Script:RootPath -ChildPath "./artifacts/CsprojMappings.json"
-if (Test-Path $CsprojMappingsPath)
-{
-    return
-}
 # Create-ModuleMappings
 Create-CsprojMappings
 
