@@ -17,7 +17,7 @@
 
 param(
     [Parameter(Mandatory=$True)]
-    [String]$Configuration,
+    [String]$Configuration
 )
 if (Test-Path "$PSScriptRoot\..\artifacts\$Configuration")
 {
