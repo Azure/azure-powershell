@@ -102,7 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// </summary>
         [Ps1Xml(Label = "Group", Target = ViewControl.Table, Position = 7, TableColumnWidth = 10)]
         public string Group { get; set; }
-        
+
         /// <summary>
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
@@ -112,16 +112,30 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             Name = fileClient.Name;
             Path = fileClient.Path;
             File = fileClient;
-            Properties = fileClient.GetProperties();
-            AccessControl = File.GetAccessControl();
-            Length = Properties.ContentLength;
-            ContentType = Properties.ContentType;
-            LastModified = Properties.LastModified;
             IsDirectory = false;
-            Permissions = AccessControl.Permissions;
-            ACL = PSPathAccessControlEntry.ParsePSPathAccessControlEntrys(AccessControl.AccessControlList);
-            Owner = AccessControl.Owner;
-            Group = AccessControl.Group;
+            try
+            {
+                Properties = fileClient.GetProperties();
+                Length = Properties.ContentLength;
+                ContentType = Properties.ContentType;
+                LastModified = Properties.LastModified;
+            }
+            catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404)
+            {
+                // skip get file properties if don't have read permission
+            }
+            try
+            {
+                AccessControl = File.GetAccessControl();
+                Permissions = AccessControl.Permissions;
+                ACL = PSPathAccessControlEntry.ParsePSPathAccessControlEntrys(AccessControl.AccessControlList);
+                Owner = AccessControl.Owner;
+                Group = AccessControl.Group;
+            }
+            catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404)
+            {
+                // skip get file ACL if don't have read permission
+            }
         }
 
         /// <summary>
@@ -136,16 +150,35 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             IsDirectory = true;
             if (directoryClient.Path != "/" || string.IsNullOrEmpty(directoryClient.Path)) //if root directory, GetProperties() will fail. Skip until this is fixed.
             {
-                Properties = directoryClient.GetProperties();
-                Length = Properties.ContentLength;
-                ContentType = Properties.ContentType;
-                LastModified = Properties.LastModified;
+                try
+                {
+
+
+                    Properties = directoryClient.GetProperties();
+                    Length = Properties.ContentLength;
+                    ContentType = Properties.ContentType;
+                    LastModified = Properties.LastModified;
+                }
+                catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404)
+                {
+                    // skip get dir properties if don't have read permission
+                }
             }
-            AccessControl = directoryClient.GetAccessControl();
-            Permissions = AccessControl.Permissions;
-            ACL = PSPathAccessControlEntry.ParsePSPathAccessControlEntrys(AccessControl.AccessControlList);
-            Owner = AccessControl.Owner;
-            Group = AccessControl.Group;
+
+            try
+            {
+
+                AccessControl = directoryClient.GetAccessControl();
+                Permissions = AccessControl.Permissions;
+                ACL = PSPathAccessControlEntry.ParsePSPathAccessControlEntrys(AccessControl.AccessControlList);
+                Owner = AccessControl.Owner;
+                Group = AccessControl.Group;
+            }
+            catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404)
+            {
+                // skip get dir ACL if don't have read permission
+
+            }
         }
 
 

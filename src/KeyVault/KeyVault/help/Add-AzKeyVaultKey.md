@@ -698,5 +698,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzKeyVaultKey](./Get-AzKeyVaultKey.md)
 
 [Remove-AzKeyVaultKey](./Remove-AzKeyVaultKey.md)
-
-[Set-AzKeyVaultKeyAttribute](./Set-AzKeyVaultKeyAttribute.md)
