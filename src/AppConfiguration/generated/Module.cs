@@ -5,7 +5,7 @@
 
 
 using SendAsyncStepDelegate = global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>;
-using TokenAudienceConverterDelegate = global::System.Func<Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, System.Uri, string>;
+using TokenAudienceConverterDelegate = global::System.Func<string, string, string, string, System.Uri, string>;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration
 {
@@ -20,6 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration
     using EventListenerDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Management.Automation.InvocationInfo, string, string, string, global::System.Exception, global::System.Threading.Tasks.Task>;
     using NextDelegate = global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>;
     using AuthorizeRequestDelegate = global::System.Action<System.Management.Automation.InvocationInfo,
+                                        string,
                                         string,
                                         global::System.Action<SendAsyncStepDelegate>,
                                         global::System.Action<SendAsyncStepDelegate>,
@@ -60,9 +61,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration
         /// <summary>Backing field for <see cref="Instance" /> property.</summary>
         private static Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Module _instance;
 
-        private string _resourceId = "AppConfigurationResourceId";
+        private string _endpointResourceIdKey = "AppConfigurationResourceId";
 
-        //private HttpPipelineBuiltInPolicy _httpPipelineBuiltInPolicy = HttpPipelineBuiltInPolicy.All;
+        private string _endpointSuffixKey = "AppConfigurationEndpointSuffix";
 
         /// <summary>the singleton of this module class</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Module Instance => Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Module._instance?? (Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Module._instance = new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Module());
@@ -117,21 +118,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration
             pipeline = (pipeline ?? (_handler.UseProxy ? _pipelineWithProxy : _pipeline)).Clone();
             AfterCreatePipeline(invocationInfo, ref pipeline);
             pipeline.Append(new Runtime.CmdInfoHandler(processRecordId, invocationInfo, parameterSetName).SendAsync);
+
             AddRequestUserAgentHandler?.Invoke(invocationInfo, correlationId, processRecordId, (step) => { pipeline.Prepend(step); }, (step) => { pipeline.Append(step); }); AddRequestUserAgentHandler?.Invoke(invocationInfo, correlationId, processRecordId, (step) => { pipeline.Prepend(step); }, (step) => { pipeline.Append(step); }); AddRequestUserAgentHandler?.Invoke(invocationInfo, correlationId, processRecordId, (step) => { pipeline.Prepend(step); }, (step) => { pipeline.Append(step); });
             AddPatchRequestUriHandler?.Invoke(invocationInfo, correlationId, processRecordId, (step) => { pipeline.Prepend(step); }, (step) => { pipeline.Append(step); }); AddRequestUserAgentHandler?.Invoke(invocationInfo, correlationId, processRecordId, (step) => { pipeline.Prepend(step); }, (step) => { pipeline.Append(step); }); AddRequestUserAgentHandler?.Invoke(invocationInfo, correlationId, processRecordId, (step) => { pipeline.Prepend(step); }, (step) => { pipeline.Append(step); });
-
-            SendAsyncStepDelegate authDelegate = null;
-            CustomizeAuthenticationHandler(extensibleParameters, ref authDelegate);
-            if (authDelegate != null)
-            {
-                pipeline.Append(authDelegate);
-            }
-            else
-            {
-                TokenAudienceConverterDelegate tokenAudienceConverter = null;
-                CustomizeTokenAudienceConverter(ref tokenAudienceConverter);
-                AddAuthorizeRequestHandler?.Invoke(invocationInfo, _resourceId, (step) => { pipeline.Prepend(step); }, (step) => { pipeline.Append(step); }, tokenAudienceConverter, extensibleParameters);
-            }
+            //TokenAudienceConverterDelegate tokenAudienceConverter = null;
+            //CustomizeTokenAudienceConverter(ref tokenAudienceConverter);
+            AddAuthorizeRequestHandler?.Invoke(invocationInfo, _endpointResourceIdKey, _endpointSuffixKey, (step) => { pipeline.Prepend(step); }, (step) => { pipeline.Append(step); }, null, extensibleParameters);
             return pipeline;
         }
 
