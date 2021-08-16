@@ -9,15 +9,11 @@ using Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime;
 using SignalDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>;
 using NextDelegate = global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>;
 using SendAsyncStepDelegate = System.Func<System.Net.Http.HttpRequestMessage, System.Threading.CancellationToken, System.Action, System.Func<string, System.Threading.CancellationToken, System.Func<System.EventArgs>, System.Threading.Tasks.Task>, System.Func<System.Net.Http.HttpRequestMessage, System.Threading.CancellationToken, System.Action, System.Func<string, System.Threading.CancellationToken, System.Func<System.EventArgs>, System.Threading.Tasks.Task>, System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage>>, System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage>>;
-using TokenAudienceConverterDelegate = global::System.Func<Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment,
-                                                           Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment,
-                                                           global::System.Uri, string>;
+using TokenAudienceConverterDelegate = global::System.Func<string, string, string, string, global::System.Uri, string>;
 using System.Security.Cryptography;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Diagnostics;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration
 {

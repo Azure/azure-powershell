@@ -9,6 +9,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration
 {
     interface ITokenAudienceConverter
     {
-        string Convert(IAzureEnvironment environment, IAzureEnvironment baseEnvironment, System.Uri requestUri);
+        string Convert(string curEnvEndpointResourceId, string curEnvEndpointSuffix, string baseEnvEndpointResourceId, string baseEnvEndpointSuffix, System.Uri requestUri);
     }
 }

@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration
 {
-    class AppConfigTokenAudienceConverter : ITokenAudienceConverter
-    {
-        public string Convert(IAzureEnvironment environment, IAzureEnvironment baseEnvironment, Uri requestUri)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    //class AppConfigTokenAudienceConverter : ITokenAudienceConverter
+    //{
+    //    string Convert(string curEnvEndpointResourceId, string curEnvEndpointSuffix, string baseEnvEndpointResourceId, string baseEnvEndpointSuffix, System.Uri requestUri);
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }
