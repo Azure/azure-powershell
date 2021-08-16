@@ -1,0 +1,69 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Extensions;
+
+    /// <summary>Capacity of the sku.</summary>
+    public partial class SkuCapacity :
+        Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacity,
+        Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal
+    {
+
+        /// <summary>Backing field for <see cref="Maximum" /> property.</summary>
+        private string _maximum;
+
+        /// <summary>Maximum capacity in TB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataBox.PropertyOrigin.Owned)]
+        public string Maximum { get => this._maximum; }
+
+        /// <summary>Internal Acessors for Maximum</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal.Maximum { get => this._maximum; set { {_maximum = value;} } }
+
+        /// <summary>Internal Acessors for Usable</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ISkuCapacityInternal.Usable { get => this._usable; set { {_usable = value;} } }
+
+        /// <summary>Backing field for <see cref="Usable" /> property.</summary>
+        private string _usable;
+
+        /// <summary>Usable capacity in TB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataBox.PropertyOrigin.Owned)]
+        public string Usable { get => this._usable; }
+
+        /// <summary>Creates an new <see cref="SkuCapacity" /> instance.</summary>
+        public SkuCapacity()
+        {
+
+        }
+    }
+    /// Capacity of the sku.
+    public partial interface ISkuCapacity :
+        Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IJsonSerializable
+    {
+        /// <summary>Maximum capacity in TB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Maximum capacity in TB.",
+        SerializedName = @"maximum",
+        PossibleTypes = new [] { typeof(string) })]
+        string Maximum { get;  }
+        /// <summary>Usable capacity in TB.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"Usable capacity in TB.",
+        SerializedName = @"usable",
+        PossibleTypes = new [] { typeof(string) })]
+        string Usable { get;  }
+
+    }
+    /// Capacity of the sku.
+    internal partial interface ISkuCapacityInternal
+
+    {
+        /// <summary>Maximum capacity in TB.</summary>
+        string Maximum { get; set; }
+        /// <summary>Usable capacity in TB.</summary>
+        string Usable { get; set; }
+
+    }
+}

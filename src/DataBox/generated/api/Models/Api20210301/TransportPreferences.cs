@@ -1,0 +1,46 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Extensions;
+
+    /// <summary>Preferences related to the shipment logistics of the sku</summary>
+    public partial class TransportPreferences :
+        Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferences,
+        Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ITransportPreferencesInternal
+    {
+
+        /// <summary>Backing field for <see cref="PreferredShipmentType" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes _preferredShipmentType;
+
+        /// <summary>Indicates Shipment Logistics type that the customer preferred.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataBox.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes PreferredShipmentType { get => this._preferredShipmentType; set => this._preferredShipmentType = value; }
+
+        /// <summary>Creates an new <see cref="TransportPreferences" /> instance.</summary>
+        public TransportPreferences()
+        {
+
+        }
+    }
+    /// Preferences related to the shipment logistics of the sku
+    public partial interface ITransportPreferences :
+        Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.IJsonSerializable
+    {
+        /// <summary>Indicates Shipment Logistics type that the customer preferred.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Indicates Shipment Logistics type that the customer preferred.",
+        SerializedName = @"preferredShipmentType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes) })]
+        Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes PreferredShipmentType { get; set; }
+
+    }
+    /// Preferences related to the shipment logistics of the sku
+    internal partial interface ITransportPreferencesInternal
+
+    {
+        /// <summary>Indicates Shipment Logistics type that the customer preferred.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransportShipmentTypes PreferredShipmentType { get; set; }
+
+    }
+}
