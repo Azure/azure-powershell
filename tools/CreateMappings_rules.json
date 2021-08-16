@@ -680,5 +680,9 @@
   {
     "alias": "Datadog",
     "regex": "Datadog"
+  },
+  {
+    "regex": "ChangeAnalysis",
+    "alias": "ChangeAnalysis"
   }
 ]
