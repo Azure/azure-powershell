@@ -13,9 +13,9 @@ Create or update a addon in a private cloud
 ## SYNTAX
 
 ```
-New-AzVMwareAddon -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Property <IAddonProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVMwareAddon -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Property <IAddonProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,17 +23,17 @@ Create or update a addon in a private cloud
 
 ## EXAMPLES
 
-### Example 1: Create a addon in a private cloud
+### Example 1: Create an addon in a private cloud
 ```powershell
 PS C:\> $data = New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
-PS C:\> New-AzVMwareAddon -Name vr -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
+PS C:\> New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
 
 Name Type
 ---- ----
 vr   Microsoft.AVS/privateClouds/addons
 ```
 
-Create a addon in a private cloud
+Create an addon in a private cloud
 
 ## PARAMETERS
 
@@ -61,21 +61,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the addon for the private cloud
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: AddonName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

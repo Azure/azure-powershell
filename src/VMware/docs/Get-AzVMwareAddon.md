@@ -20,7 +20,7 @@ Get-AzVMwareAddon -PrivateCloudName <String> -ResourceGroupName <String> [-Subsc
 
 ### Get
 ```
-Get-AzVMwareAddon -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Get-AzVMwareAddon -AddonType <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ List addon under resource group
 
 ### Example 2: Get an addon by name in a private cloud
 ```powershell
-PS C:\> Get-AzVMwareAddon -Name vr -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+PS C:\> Get-AzVMwareAddon -AddonType vr -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
 Name Type
 ---- ----
@@ -69,6 +69,21 @@ vr   Microsoft.AVS/privateClouds/addons
 Get an addon by name in a private cloud
 
 ## PARAMETERS
+
+### -AddonType
+Name of the addon for the private cloud
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: AddonName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -98,21 +113,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the addon for the private cloud
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: AddonName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

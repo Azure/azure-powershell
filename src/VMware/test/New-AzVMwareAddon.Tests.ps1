@@ -15,7 +15,7 @@ Describe 'New-AzVMwareAddon' {
     It 'CreateExpanded' {
         {
             $config = New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
-            $config = New-AzVMwareAddon -Name vr -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGourp2 -Property $config
+            $config = New-AzVMwareAddon -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGourp2 -Property $config
             $config.Name | Should -Be "VR"
         } | Should -Not -Throw
     }

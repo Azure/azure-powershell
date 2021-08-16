@@ -15,7 +15,7 @@ Describe 'Get-AzVMwareAddon' {
     It 'List' -skip {
         {
             $config = New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
-            $config = New-AzVMwareAddon -Name vr -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1 -Property $config
+            $config = New-AzVMwareAddon -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1 -Property $config
             $config.Name | Should -Be "VR"
 
             $config = Get-AzVMwareAddon -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1
@@ -25,7 +25,7 @@ Describe 'Get-AzVMwareAddon' {
 
     It 'Get' {
         {
-            $config = Get-AzVMwareAddon -Name vr -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1
+            $config = Get-AzVMwareAddon -AddonType vr -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1
             $config.Name | Should -Be "vr"
         } | Should -Not -Throw
     }

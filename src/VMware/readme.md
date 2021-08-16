@@ -53,7 +53,7 @@ require:
 input-file: 
   - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-06-01/vmware.json
 
-module-version: 0.1.0
+module-version: 0.3.0
 title: VMware
 subject-prefix: $(service-name)
 
@@ -87,6 +87,10 @@ directive:
       verb: Set
     remove: true
   - where:
+      verb: Get|New|Remove
+      subject: Addon
+    hide: true
+  - where:
       verb: New|Remove
       subject: PrivateCloud
     hide: true
@@ -115,7 +119,7 @@ directive:
       - PSCredentialExecutionParameter
       - AddonSrmProperties
       - AddonVrProperties
-      - AddonHcxProperties
+      #- AddonHcxProperties
   - where:
       verb: Test
       subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$

@@ -42,21 +42,21 @@ function setupEnv() {
     $env.Add("resourceGroup2", $resourceGroup2)
     $env.Add("resourceGroup3", $resourceGroup3)
     
-    New-AzResourceGroup -Name $resourceGroup1 -Location $env.location1
-    New-AzResourceGroup -Name $resourceGroup2 -Location $env.location1
-    New-AzResourceGroup -Name $resourceGroup3 -Location $env.location1
+    #New-AzResourceGroup -Name $env.resourceGroup1 -Location $env.location1
+    #New-AzResourceGroup -Name $env.resourceGroup2 -Location $env.location1
+    #New-AzResourceGroup -Name $env.resourceGroup3 -Location $env.location1
 
-    New-AzVMwarePrivateCloud -Name $env.privateCloudName1 `
-        -ResourceGroupName $env.resourceGroup1 -NetworkBlock 192.168.48.0/22 `
-        -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
-    New-AzVMwareExpressRouteAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 `
-        -ResourceGroupName $env.resourceGroup1
+    #New-AzVMwarePrivateCloud -Name $env.privateCloudName1 `
+    #    -ResourceGroupName $env.resourceGroup1 -NetworkBlock 192.168.48.0/22 `
+    #    -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
+    #New-AzVMwareExpressRouteAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 `
+    #    -ResourceGroupName $env.resourceGroup1
     
-    New-AzVMwarePrivateCloud -Name $env.privateCloudName2 `
-        -ResourceGroupName $env.resourceGroup2 -NetworkBlock 192.168.48.0/22 `
-        -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
-    New-AzVMwareExpressRouteAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName2 `
-        -ResourceGroupName $env.resourceGroup2
+    #New-AzVMwarePrivateCloud -Name $env.privateCloudName2 `
+    #    -ResourceGroupName $env.resourceGroup2 -NetworkBlock 192.168.48.0/22 `
+    #    -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
+    #New-AzVMwareExpressRouteAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName2 `
+    #    -ResourceGroupName $env.resourceGroup2
 
     New-AzVMwarePrivateCloud -Name $env.privateCloudName3 `
         -ResourceGroupName $env.resourceGroup3 -NetworkBlock 192.168.48.0/22 `
