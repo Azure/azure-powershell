@@ -5,12 +5,6 @@ Returns an ordered hashtable with the following paths having empty mappings:
 - All files in the "src" folder
 #>
 
-$CsprojMappingsPath = Join-Path -Path $Script:RootPath -ChildPath "./artifacts/CsprojMappings.json"
-if (Test-Path $CsprojMappingsPath)
-{
-    return
-}
-
 function Initialize-Mappings
 {
     param
@@ -327,6 +321,11 @@ function Add-CsprojMappings
 }
 
 $Script:RootPath = (Get-Item -Path $PSScriptRoot).Parent.FullName
+$CsprojMappingsPath = Join-Path -Path $Script:RootPath -ChildPath "./artifacts/CsprojMappings.json"
+if (Test-Path $CsprojMappingsPath)
+{
+    return
+}
 $Script:SrcPath = Join-Path -Path $Script:RootPath -ChildPath "src"
 $Script:ServiceFolders = Get-ChildItem -Path $Script:SrcPath -Directory
 $Script:ProjectToFullPathMappings = Create-ProjectToFullPathMappings
