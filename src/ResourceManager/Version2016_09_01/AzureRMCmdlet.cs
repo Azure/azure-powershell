@@ -18,14 +18,17 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Management.Automation;
 using System.Net.Http.Headers;
@@ -37,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     /// <summary>
     /// Represents base class for Resource Manager cmdlets
     /// </summary>
-    public abstract class AzureRMCmdlet : AzurePSCmdlet
+    public abstract class AzureRMCmdlet : AzurePSCmdlet, IDynamicParameters
     {
         protected ServiceClientTracingInterceptor _serviceClientTracingInterceptor;
         IAzureContextContainer _profile;
@@ -50,6 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public const string WriteVerboseKey = "WriteVerbose";
         public const string WriteWarningKey = "WriteWarning";
         public const string EnqueueDebugKey = "EnqueueDebug";
+        private const string SubscriptionIdParameter = "SubscriptionId";
 
         /// <summary>
         /// Creates new instance from AzureRMCmdlet and add the RPRegistration handler.
@@ -67,22 +71,70 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             get
             {
-                if (_profile != null)
+                if (!ShouldCloneDefaultProfile())
                 {
-                    return _profile;
-                }
-                if (AzureRmProfileProvider.Instance == null)
-                {
-                    throw new InvalidOperationException(Resources.ProfileNotInitialized);
+                    return GetDefaultProfile();
                 }
 
-                return AzureRmProfileProvider.Instance.Profile;
+                if (_clonedDefaultProfile == null)
+                {
+                    _clonedDefaultProfile = CloneProfileAndModifyContext();
+                }
+                return _clonedDefaultProfile;
             }
             set
             {
                 _profile = value;
             }
         }
+
+        private IAzureContextContainer GetDefaultProfile()
+        {
+            if (_profile != null)
+            {
+                return _profile;
+            }
+            if (AzureRmProfileProvider.Instance == null)
+            {
+                throw new InvalidOperationException(Resources.ProfileNotInitialized);
+            }
+            return AzureRmProfileProvider.Instance.Profile;
+        }
+
+        private IAzureContextContainer CloneProfileAndModifyContext()
+        {
+            var profile = GetDefaultProfile();
+            if (MyInvocation.BoundParameters.TryGetValue(SubscriptionIdParameter, out var overriddenSub))
+            {
+                var subGuid = new Guid(overriddenSub as string);
+                var matchingSub = profile.Subscriptions.FirstOrDefault(sub => sub.GetId().Equals(subGuid));
+                if (matchingSub != null)
+                {
+                    // going to modify default context, so only shallow copying other stuff
+                    profile = GetDefaultProfile().CopyForContextOverriding();
+                    profile.DefaultContext = profile.DefaultContext.DeepCopy();
+                    profile.DefaultContext.Subscription.CopyFrom(matchingSub);
+                    profile.DefaultContext.Tenant.Id = matchingSub.GetTenant();
+                    var matchingUser = profile.Accounts.FirstOrDefault(account => account.Id.Equals(matchingSub.GetAccount()));
+                    if (matchingUser != null)
+                    {
+                        profile.DefaultContext.Account.CopyFrom(matchingUser);
+                    }
+                }
+                else
+                {
+                    throw new AzPSArgumentException(string.Format(Resources.CustomSubscriptionNotFound, overriddenSub), SubscriptionIdParameter);
+                }
+            }
+            return profile;
+        }
+
+        private bool ShouldCloneDefaultProfile()
+        {
+            return GetType().IsDefined(typeof(SupportsSubscriptionIdAttribute), true);
+        }
+
+        private IAzureContextContainer _clonedDefaultProfile;
 
         protected IDictionary<String, List<String>> GetAuxilaryAuthHeaderFromResourceIds(List<String> resourceIds)
         {
@@ -298,7 +350,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 _qosEvent.SubscriptionId = context.Subscription?.Id;
                 _qosEvent.TenantId = context.Tenant?.Id;
-                if(context.Account != null && !String.IsNullOrWhiteSpace(context.Account.Id))
+                if (context.Account != null && !String.IsNullOrWhiteSpace(context.Account.Id))
                 {
                     _qosEvent.Uid = MetricHelper.GenerateSha256HashString(context.Account.Id.ToString());
                 }
@@ -545,6 +597,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         private void EnqueueDebugSender(object sender, StreamEventArgs args)
         {
             DebugMessages.Enqueue(args.Message);
+        }
+
+        public object GetDynamicParameters()
+        {
+            var parameters = new RuntimeDefinedParameterDictionary();
+
+            // add `-SubscriptionId` if the cmdlet has [SupportsSubscriptionId] attribute
+            if (GetType().IsDefined(typeof(SupportsSubscriptionIdAttribute), true))
+            {
+                parameters.Add(SubscriptionIdParameter, new RuntimeDefinedParameter(
+                    SubscriptionIdParameter,
+                    typeof(string),
+                    new Collection<Attribute>()
+                    {
+                        new ParameterAttribute { HelpMessage = Resources.SubscriptionIdHelpMessage, Mandatory = false, ValueFromPipelineByPropertyName = true }
+                    }
+                ));
+            }
+            return parameters;
         }
     }
 }

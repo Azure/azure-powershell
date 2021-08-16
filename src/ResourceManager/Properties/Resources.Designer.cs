@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -64,8 +64,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
         ///The data is anonymous and does not include commandline argument values.
         ///The data is collected by Microsoft.
-        ///Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Az.Accounts module. To disable data collection: PS &gt; Disable-AzDataCollection.
-        ///Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Az.Accounts module. To enable  [rest of string was truncated]&quot;;.
+        ///
+        ///Use the Disable-AzDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Az.Accounts. To disable data collection: PS &gt; Disable-AzDataCollection.
+        ///Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Az.Accounts module. To enable data collection: PS &gt; Enable-AzD [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ARMDataCollectionMessage {
             get {
@@ -88,6 +89,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string ContextCannotBeNull {
             get {
                 return ResourceManager.GetString("ContextCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not found subscription &apos;{0}&apos; in context. Please run &apos;Connect-AzAccount&apos; with correct user..
+        /// </summary>
+        public static string CustomSubscriptionNotFound {
+            get {
+                return ResourceManager.GetString("CustomSubscriptionNotFound", resourceCulture);
             }
         }
         
@@ -300,6 +310,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string RunConnectAccount {
             get {
                 return ResourceManager.GetString("RunConnectAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ID of the subscription.
+        ///By default, cmdlets are executed in the subscription that is set in the current context. If the user specifies another subscription, the current cmdlet is executed in the subscription specified by the user.
+        ///Overriding subscriptions only take effect during the lifecycle of the current cmdlet. It does not change the subscription in the context, and does not affect subsequent cmdlets..
+        /// </summary>
+        public static string SubscriptionIdHelpMessage {
+            get {
+                return ResourceManager.GetString("SubscriptionIdHelpMessage", resourceCulture);
             }
         }
         

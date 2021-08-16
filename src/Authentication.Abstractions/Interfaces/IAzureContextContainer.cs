@@ -49,5 +49,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// Remove all contexts from the container
         /// </summary>
         void Clear();
+
+        /// <summary>
+        /// Copy the context container for overriding default context.
+        /// See <see cref="SupportsSubscriptionIdAttribute"/>
+        /// </summary>
+        /// <returns>The copy.</returns>
+        IAzureContextContainer CopyForContextOverriding();
     }
 }
