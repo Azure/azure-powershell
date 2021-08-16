@@ -2759,3 +2759,73 @@ function Test-VirtualMachineScaleSetExtRollingUpgrade
         
     }
 }
+
+<#
+.SYNOPSIS
+Test the VMSS spot restore policy 
+#>
+function Test-VirtualMachineScaleSetSpotRestorePolicy
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+        
+        # Common
+        [string]$loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+
+        $adminUsername = 'Foo12';
+        $adminPassword = Get-PasswordForVM;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+
+        # Create VMSS with managed disk
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A2_v2' -UpgradePolicyMode 'Automatic' -EnableSpotRestore -SpotRestoreTimeout '30'`
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName;
+
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmssVMs = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual 1 $vmssVMs[0].StorageProfile.DataDisks[0].Lun;
+        Assert-AreEqual $diskname0 $vmssVMs[0].StorageProfile.DataDisks[0].Name;
+        Assert-AreEqual 10 $vmssVMs[0].StorageProfile.DataDisks[0].DiskSizeGB;
+        Assert-AreEqual "Attach" $vmssVMs[0].StorageProfile.DataDisks[0].CreateOption;
+        Assert-AreEqual "Standard_LRS" $vmssVMs[0].StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType;
+        Assert-AreEqual $disk0.Id $vmssVMs[0].StorageProfile.DataDisks[0].ManagedDisk.Id;
+
+        Assert-ThrowsContains { New-AzVMDataDisk -Name 'wrongdiskname' -Caching 'ReadOnly' -Lun 2 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk1.Id; } `
+            "does not match with given managed disk ID";
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
