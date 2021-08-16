@@ -32,7 +32,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/stable/2020-03-01/confluent.json
+  - $(repo)/specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json
 
 module-version: 0.1.0
 title: TestBase
