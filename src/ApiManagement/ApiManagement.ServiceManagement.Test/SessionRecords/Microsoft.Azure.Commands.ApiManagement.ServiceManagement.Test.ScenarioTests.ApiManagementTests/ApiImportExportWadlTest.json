@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6038?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM2MDM4P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5691?api-version=2020-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1NjkxP2FwaS12ZXJzaW9uPTIwMjAtMTItMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"path\": \"wadlapi\",\r\n    \"value\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\r\\n<application xmlns=\\\"http://wadl.dev.java.net/2009/02\\\" xmlns:tns=\\\"urn:yahoo:yn\\\" xmlns:xsd=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:xsi=\\\"http://www.w3.org/2001/XMLSchema-instance\\\" xmlns:ya=\\\"urn:yahoo:api\\\" xmlns:yn=\\\"urn:yahoo:yn\\\" xsi:schemaLocation=\\\"http://wadl.dev.java.net/2009/02 wadl.xsd\\\">\\r\\n  <doc title=\\\"Yahoo News Search\\\">Yahoo News Search API</doc>\\r\\n  <grammars>\\r\\n      <xs:schema xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns=\\\"urn:yahoo:api\\\" targetNamespace=\\\"urn:yahoo:api\\\" elementFormDefault=\\\"qualified\\\">\\r\\n         <xs:element name=\\\"Error\\\" type=\\\"xs:string\\\" />\\r\\n      </xs:schema>\\r\\n      <xs:schema xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns=\\\"urn:yahoo:yn\\\" targetNamespace=\\\"urn:yahoo:yn\\\" elementFormDefault=\\\"qualified\\\">\\r\\n         <xs:element name=\\\"ResultSet\\\">\\r\\n            <xs:complexType>\\r\\n               <xs:sequence>\\r\\n                  <xs:element name=\\\"Result\\\" type=\\\"ResultType\\\" minOccurs=\\\"0\\\" maxOccurs=\\\"50\\\" />\\r\\n               </xs:sequence>\\r\\n               <xs:attribute name=\\\"totalResultsAvailable\\\" type=\\\"xs:integer\\\" />\\r\\n               <xs:attribute name=\\\"totalResultsReturned\\\" type=\\\"xs:integer\\\" />\\r\\n               <xs:attribute name=\\\"firstResultPosition\\\" type=\\\"xs:integer\\\" />\\r\\n            </xs:complexType>\\r\\n         </xs:element>\\r\\n         <xs:complexType name=\\\"ResultType\\\">\\r\\n            <xs:sequence>\\r\\n               <xs:element name=\\\"Title\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Summary\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Url\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"ClickUrl\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"NewsSource\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"NewsSourceUrl\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Language\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"PublishDate\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"ModificationDate\\\" type=\\\"xs:string\\\" minOccurs=\\\"0\\\" />\\r\\n               <xs:element name=\\\"Thumbnail\\\" type=\\\"ImageType\\\" minOccurs=\\\"0\\\" />\\r\\n            </xs:sequence>\\r\\n         </xs:complexType>\\r\\n         <xs:complexType name=\\\"ImageType\\\">\\r\\n            <xs:sequence>\\r\\n               <xs:element name=\\\"Url\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Height\\\" type=\\\"xs:integer\\\" minOccurs=\\\"0\\\" />\\r\\n               <xs:element name=\\\"Width\\\" type=\\\"xs:integer\\\" minOccurs=\\\"0\\\" />\\r\\n            </xs:sequence>\\r\\n         </xs:complexType>\\r\\n      </xs:schema>\\r\\n   </grammars>\\r\\n   <resources base=\\\"http://api.search.yahoo.com/NewsSearchService/V1/\\\">\\r\\n      <resource path=\\\"newsSearch?willbeIgnored={willbeIgnored}\\\">\\r\\n         <method name=\\\"GET\\\" id=\\\"search\\\">\\r\\n            <request>\\r\\n               <param name=\\\"appid\\\" type=\\\"xsd:string\\\" style=\\\"query\\\" required=\\\"true\\\" />\\r\\n               <param name=\\\"query\\\" type=\\\"xsd:string\\\" style=\\\"query\\\" required=\\\"true\\\" />\\r\\n               <param name=\\\"type\\\" style=\\\"query\\\" default=\\\"all\\\">\\r\\n                  <option value=\\\"all\\\" />\\r\\n                  <option value=\\\"any\\\" />\\r\\n                  <option value=\\\"phrase\\\" />\\r\\n               </param>\\r\\n               <param name=\\\"results\\\" style=\\\"query\\\" type=\\\"xsd:int\\\" default=\\\"\\\" />\\r\\n               <param name=\\\"start\\\" style=\\\"query\\\" type=\\\"xsd:int\\\" default=\\\"1\\\" />\\r\\n               <param name=\\\"sort\\\" style=\\\"query\\\" default=\\\"rank\\\">\\r\\n                  <option value=\\\"rank\\\" />\\r\\n                  <option value=\\\"date\\\" />\\r\\n               </param>\\r\\n               <param name=\\\"language\\\" style=\\\"query\\\" type=\\\"xsd:string\\\" />\\r\\n            </request>\\r\\n            <response status=\\\"200\\\">\\r\\n               <representation mediaType=\\\"application/xml\\\" element=\\\"yn:ResultSet\\\" />\\r\\n            </response>\\r\\n            <response status=\\\"400\\\">\\r\\n               <representation mediaType=\\\"application/xml\\\" element=\\\"ya:Error\\\" />\\r\\n            </response>\\r\\n         </method>\\r\\n      </resource>\\r\\n   </resources>\\r\\n</application>\",\r\n    \"format\": \"wadl-xml\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ccebfa22-9a14-4543-9c19-5b824ba91c6c"
+          "78fcbff7-4e3b-469a-8e73-6399a89e0109"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/7.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -33,13 +33,16 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6038?api-version=2019-12-01&asyncId=5f171bdaa2ca600fe4c2974c&asyncCode=201"
+          "https://management.azure.com/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5691?api-version=2020-12-01&asyncId=60ecdbd7a2ca601290f0cbce&asyncCode=201"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "x-ms-request-id": [
-          "aa5352cd-4162-41e9-8fcd-83a4a2b9b16b"
+          "83588153-e97b-48a1-bff0-52f25639c766"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -48,16 +51,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "b17c9e7c-163e-4317-9c89-28e406e54f18"
+          "ca5dd73b-0bfb-46e4-8a12-a9e2309f262d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200721T164618Z:b17c9e7c-163e-4317-9c89-28e406e54f18"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+          "WESTUS:20210713T001831Z:ca5dd73b-0bfb-46e4-8a12-a9e2309f262d"
         ],
         "Date": [
-          "Tue, 21 Jul 2020 16:46:18 GMT"
+          "Tue, 13 Jul 2021 00:18:31 GMT"
         ],
         "Expires": [
           "-1"
@@ -70,16 +70,19 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6038?api-version=2019-12-01&asyncId=5f171bdaa2ca600fe4c2974c&asyncCode=201",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM2MDM4P2FwaS12ZXJzaW9uPTIwMTktMTItMDEmYXN5bmNJZD01ZjE3MWJkYWEyY2E2MDBmZTRjMjk3NGMmYXN5bmNDb2RlPTIwMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5691?api-version=2020-12-01&asyncId=60ecdbd7a2ca601290f0cbce&asyncCode=201",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1NjkxP2FwaS12ZXJzaW9uPTIwMjAtMTItMDEmYXN5bmNJZD02MGVjZGJkN2EyY2E2MDEyOTBmMGNiY2UmYXN5bmNDb2RlPTIwMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "78fcbff7-4e3b-469a-8e73-6399a89e0109"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/7.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -90,13 +93,16 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAPkA=\""
+          "\"AAAAAAABAcA=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "x-ms-request-id": [
-          "3e281092-7a61-44f5-9d7c-b9b14df0bb03"
+          "95c770c5-1a06-4843-b316-bbb645e54716"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -105,16 +111,13 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "21fc4f69-acb8-44f2-8851-5402d9ee65f9"
+          "554acde3-6b39-4aab-b6c2-41c7b8e076ac"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200721T164653Z:21fc4f69-acb8-44f2-8851-5402d9ee65f9"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+          "WESTUS:20210713T001901Z:554acde3-6b39-4aab-b6c2-41c7b8e076ac"
         ],
         "Date": [
-          "Tue, 21 Jul 2020 16:46:53 GMT"
+          "Tue, 13 Jul 2021 00:19:01 GMT"
         ],
         "Content-Length": [
           "792"
@@ -126,26 +129,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6038\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps6038\",\r\n  \"properties\": {\r\n    \"displayName\": \"Yahoo News Search\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"Yahoo News Search API\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://api.search.yahoo.com/NewsSearchService/V1/\",\r\n    \"path\": \"wadlapi\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5691\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps5691\",\r\n  \"properties\": {\r\n    \"displayName\": \"Yahoo News Search\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"Yahoo News Search API\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://api.search.yahoo.com/NewsSearchService/V1/\",\r\n    \"path\": \"wadlapi\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6038?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM2MDM4P2FwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5691?api-version=2020-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1NjkxP2FwaS12ZXJzaW9uPTIwMjAtMTItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "56d7a686-8d99-4bef-938f-71bcb4c63830"
+          "78fcbff7-4e3b-469a-8e73-6399a89e0109"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/7.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -156,13 +159,16 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAPkA=\""
+          "\"AAAAAAABAcA=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "x-ms-request-id": [
-          "351e0448-285e-41c8-8940-9e766c92aef4"
+          "311072f3-653e-4b89-adbd-3053db14d8fe"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -171,16 +177,13 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "b900da6c-4492-473f-bebf-59d20a7bc68e"
+          "c4c76aaa-91cb-4445-aefa-c768d3f802b6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200721T164653Z:b900da6c-4492-473f-bebf-59d20a7bc68e"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+          "WESTUS:20210713T001901Z:c4c76aaa-91cb-4445-aefa-c768d3f802b6"
         ],
         "Date": [
-          "Tue, 21 Jul 2020 16:46:53 GMT"
+          "Tue, 13 Jul 2021 00:19:01 GMT"
         ],
         "Content-Length": [
           "792"
@@ -192,26 +195,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6038\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps6038\",\r\n  \"properties\": {\r\n    \"displayName\": \"Yahoo News Search\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"Yahoo News Search API\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://api.search.yahoo.com/NewsSearchService/V1/\",\r\n    \"path\": \"wadlapi\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5691\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps5691\",\r\n  \"properties\": {\r\n    \"displayName\": \"Yahoo News Search\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"Yahoo News Search API\",\r\n    \"subscriptionRequired\": true,\r\n    \"serviceUrl\": \"http://api.search.yahoo.com/NewsSearchService/V1/\",\r\n    \"path\": \"wadlapi\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6038/schemas?api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM2MDM4L3NjaGVtYXM/YXBpLXZlcnNpb249MjAxOS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5691/schemas?api-version=2020-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1NjkxL3NjaGVtYXM/YXBpLXZlcnNpb249MjAyMC0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "738a5032-6c07-4799-9adb-73116ae64afa"
+          "f91d8d7d-5a4e-47bc-90eb-60d4c994d107"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/7.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -224,8 +227,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "x-ms-request-id": [
-          "f4886eb0-752b-4104-8f88-84a6df8fdbad"
+          "02fbe1eb-a75d-4aff-a578-13d553165306"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -234,16 +240,13 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "e3ca5c95-9f16-4627-bb90-50651b0ffe5d"
+          "dad38283-528c-4d76-a456-36c53b3caa8d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200721T164654Z:e3ca5c95-9f16-4627-bb90-50651b0ffe5d"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+          "WESTUS:20210713T001901Z:dad38283-528c-4d76-a456-36c53b3caa8d"
         ],
         "Date": [
-          "Tue, 21 Jul 2020 16:46:53 GMT"
+          "Tue, 13 Jul 2021 00:19:01 GMT"
         ],
         "Content-Length": [
           "2909"
@@ -255,17 +258,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6038/schemas/5f171bdaa2ca600fe4c2974b\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"5f171bdaa2ca600fe4c2974b\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.ms-azure-apim.wadl.grammars+xml\",\r\n        \"document\": {\r\n          \"value\": \"<grammars xmlns:tns=\\\"urn:yahoo:yn\\\" xmlns:ya=\\\"urn:yahoo:api\\\" xmlns:yn=\\\"urn:yahoo:yn\\\" xmlns=\\\"http://wadl.dev.java.net/2009/02\\\">\\r\\n      <xs:schema xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns=\\\"urn:yahoo:api\\\" targetNamespace=\\\"urn:yahoo:api\\\" elementFormDefault=\\\"qualified\\\">\\r\\n         <xs:element name=\\\"Error\\\" type=\\\"xs:string\\\" />\\r\\n      </xs:schema>\\r\\n      <xs:schema xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns=\\\"urn:yahoo:yn\\\" targetNamespace=\\\"urn:yahoo:yn\\\" elementFormDefault=\\\"qualified\\\">\\r\\n         <xs:element name=\\\"ResultSet\\\">\\r\\n            <xs:complexType>\\r\\n               <xs:sequence>\\r\\n                  <xs:element name=\\\"Result\\\" type=\\\"ResultType\\\" minOccurs=\\\"0\\\" maxOccurs=\\\"50\\\" />\\r\\n               </xs:sequence>\\r\\n               <xs:attribute name=\\\"totalResultsAvailable\\\" type=\\\"xs:integer\\\" />\\r\\n               <xs:attribute name=\\\"totalResultsReturned\\\" type=\\\"xs:integer\\\" />\\r\\n               <xs:attribute name=\\\"firstResultPosition\\\" type=\\\"xs:integer\\\" />\\r\\n            </xs:complexType>\\r\\n         </xs:element>\\r\\n         <xs:complexType name=\\\"ResultType\\\">\\r\\n            <xs:sequence>\\r\\n               <xs:element name=\\\"Title\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Summary\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Url\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"ClickUrl\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"NewsSource\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"NewsSourceUrl\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Language\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"PublishDate\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"ModificationDate\\\" type=\\\"xs:string\\\" minOccurs=\\\"0\\\" />\\r\\n               <xs:element name=\\\"Thumbnail\\\" type=\\\"ImageType\\\" minOccurs=\\\"0\\\" />\\r\\n            </xs:sequence>\\r\\n         </xs:complexType>\\r\\n         <xs:complexType name=\\\"ImageType\\\">\\r\\n            <xs:sequence>\\r\\n               <xs:element name=\\\"Url\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Height\\\" type=\\\"xs:integer\\\" minOccurs=\\\"0\\\" />\\r\\n               <xs:element name=\\\"Width\\\" type=\\\"xs:integer\\\" minOccurs=\\\"0\\\" />\\r\\n            </xs:sequence>\\r\\n         </xs:complexType>\\r\\n      </xs:schema>\\r\\n   </grammars>\"\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5691/schemas/60ecdbd7a2ca601290f0cbcd\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis/schemas\",\r\n      \"name\": \"60ecdbd7a2ca601290f0cbcd\",\r\n      \"properties\": {\r\n        \"contentType\": \"application/vnd.ms-azure-apim.wadl.grammars+xml\",\r\n        \"document\": {\r\n          \"value\": \"<grammars xmlns:tns=\\\"urn:yahoo:yn\\\" xmlns:ya=\\\"urn:yahoo:api\\\" xmlns:yn=\\\"urn:yahoo:yn\\\" xmlns=\\\"http://wadl.dev.java.net/2009/02\\\">\\r\\n      <xs:schema xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns=\\\"urn:yahoo:api\\\" targetNamespace=\\\"urn:yahoo:api\\\" elementFormDefault=\\\"qualified\\\">\\r\\n         <xs:element name=\\\"Error\\\" type=\\\"xs:string\\\" />\\r\\n      </xs:schema>\\r\\n      <xs:schema xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns=\\\"urn:yahoo:yn\\\" targetNamespace=\\\"urn:yahoo:yn\\\" elementFormDefault=\\\"qualified\\\">\\r\\n         <xs:element name=\\\"ResultSet\\\">\\r\\n            <xs:complexType>\\r\\n               <xs:sequence>\\r\\n                  <xs:element name=\\\"Result\\\" type=\\\"ResultType\\\" minOccurs=\\\"0\\\" maxOccurs=\\\"50\\\" />\\r\\n               </xs:sequence>\\r\\n               <xs:attribute name=\\\"totalResultsAvailable\\\" type=\\\"xs:integer\\\" />\\r\\n               <xs:attribute name=\\\"totalResultsReturned\\\" type=\\\"xs:integer\\\" />\\r\\n               <xs:attribute name=\\\"firstResultPosition\\\" type=\\\"xs:integer\\\" />\\r\\n            </xs:complexType>\\r\\n         </xs:element>\\r\\n         <xs:complexType name=\\\"ResultType\\\">\\r\\n            <xs:sequence>\\r\\n               <xs:element name=\\\"Title\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Summary\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Url\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"ClickUrl\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"NewsSource\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"NewsSourceUrl\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Language\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"PublishDate\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"ModificationDate\\\" type=\\\"xs:string\\\" minOccurs=\\\"0\\\" />\\r\\n               <xs:element name=\\\"Thumbnail\\\" type=\\\"ImageType\\\" minOccurs=\\\"0\\\" />\\r\\n            </xs:sequence>\\r\\n         </xs:complexType>\\r\\n         <xs:complexType name=\\\"ImageType\\\">\\r\\n            <xs:sequence>\\r\\n               <xs:element name=\\\"Url\\\" type=\\\"xs:string\\\" />\\r\\n               <xs:element name=\\\"Height\\\" type=\\\"xs:integer\\\" minOccurs=\\\"0\\\" />\\r\\n               <xs:element name=\\\"Width\\\" type=\\\"xs:integer\\\" minOccurs=\\\"0\\\" />\\r\\n            </xs:sequence>\\r\\n         </xs:complexType>\\r\\n      </xs:schema>\\r\\n   </grammars>\"\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6038?deleteRevisions=true&api-version=2019-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM2MDM4P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTktMTItMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps5691?deleteRevisions=true&api-version=2020-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM1NjkxP2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMjAtMTItMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e4441cbb-8727-48f4-a0c5-90883c02b4d7"
+          "992532ac-7bb6-438b-a33e-2a5152ae239b"
         ],
         "If-Match": [
           "*"
@@ -274,10 +277,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27817.03",
+          "FxVersion/4.6.30015.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/6.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/7.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -290,8 +293,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "x-ms-request-id": [
-          "bb0fa083-5690-4b9b-927d-ed424ef6b799"
+          "72c40530-2477-43ef-9fb8-bec0d7c0948c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -300,16 +306,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "94f38db5-98cf-4ebc-9c7a-8abc8b462bc3"
+          "46c9b401-4433-42cc-afbd-e9d130157402"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200721T164654Z:94f38db5-98cf-4ebc-9c7a-8abc8b462bc3"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
+          "WESTUS:20210713T001902Z:46c9b401-4433-42cc-afbd-e9d130157402"
         ],
         "Date": [
-          "Tue, 21 Jul 2020 16:46:53 GMT"
+          "Tue, 13 Jul 2021 00:19:01 GMT"
         ],
         "Expires": [
           "-1"
@@ -324,7 +327,7 @@
   ],
   "Names": {
     "": [
-      "ps6038"
+      "ps5691"
     ]
   },
   "Variables": {

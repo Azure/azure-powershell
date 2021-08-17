@@ -1994,5 +1994,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("MoveReadinessInfoUndefined", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MSI based Restore can't use both SystemAssigned and UserAssigned identities
+        /// </summary>
+        public static string MultipleMSIProvidedForRestore
+        {
+            get
+            {
+                return ResourceManager.GetString("MultipleMSIProvidedForRestore", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MSI based Restore is only applicable to Managed VM Recovery Points
+        /// </summary>
+        public static string MSIRestoreNotSupportedForUnmanagedVM
+        {
+            get
+            {
+                return ResourceManager.GetString("MSIRestoreNotSupportedForUnmanagedVM", resourceCulture);
+            }
+        }
+
     }
 }

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.1
 * Fixed Managed and Classic Application models (Application, Cluster, Service) by updating constructor to take all new properties
     - This solves piping related issues where piping the results directly from a Get cmdlet call into and Update or Set call remove some intentionally set properties
     - Updated appropriate test files to cover the above mentioned cases

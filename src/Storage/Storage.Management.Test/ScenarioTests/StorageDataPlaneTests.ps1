@@ -900,9 +900,11 @@ function Test-DatalakeGen2
 		Assert-AreEqual 2 $result.TotalFilesSuccessfulCount
 		Assert-AreEqual 3 $result.TotalDirectoriesSuccessfulCount
 
-		# Remove Items
-        Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Force
-        Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Force
+		# Remove Items with delete only SAS
+        $sas = New-AzStorageContainerSASToken -Name $filesystemName -Permission d -Context $storageContext
+        $storageContextSas = New-AzStorageContext -StorageAccountName $storageContext.StorageAccountName -SasToken $sas 
+        Remove-AzDataLakeGen2Item -Context $storageContextSas -FileSystem $filesystemName -Path $filePath1 -Force
+        Remove-AzDataLakeGen2Item -Context $storageContextSas -FileSystem $filesystemName -Path $directoryPath1 -Force
 
         # Clean Storage Account
         Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName | Remove-AzDataLakeGen2Item -Force

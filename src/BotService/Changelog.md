@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that `New-AzBotService` will fail in WebApp mode. [#15608]
 
 ## Version 0.3.0
 * Updated the online links.

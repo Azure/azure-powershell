@@ -652,4 +652,10 @@ Please contact Microsoft for further assistance.</value>
   <data name="MoveReadinessInfoUndefined" xml:space="preserve">
     <value>Move Readiness cannot be checked for given recovery points</value>
   </data>
+  <data name="MSIRestoreNotSupportedForUnmanagedVM" xml:space="preserve">
+    <value>MSI based Restore is only applicable to Managed VM Recovery Points</value>
+  </data>
+  <data name="MultipleMSIProvidedForRestore" xml:space="preserve">
+    <value>MSI based Restore can't use both SystemAssigned and UserAssigned identities</value>
+  </data>
 </root>

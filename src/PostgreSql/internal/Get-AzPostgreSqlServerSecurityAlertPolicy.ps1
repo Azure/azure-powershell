@@ -55,6 +55,7 @@ function Get-AzPostgreSqlServerSecurityAlertPolicy {
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -62,12 +63,14 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -145,10 +148,12 @@ begin {
         $mapping = @{
             Get = 'Az.PostgreSql.private\Get-AzPostgreSqlServerSecurityAlertPolicy_Get';
             GetViaIdentity = 'Az.PostgreSql.private\Get-AzPostgreSqlServerSecurityAlertPolicy_GetViaIdentity';
+            List = 'Az.PostgreSql.private\Get-AzPostgreSqlServerSecurityAlertPolicy_List';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
