@@ -155,6 +155,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string ManagedVirtualNetworkConfig = nameof(ManagedVirtualNetworkConfig);
 
+        public const string GitRepositoryConfig = nameof(GitRepositoryConfig);
+
         public const string EncryptionConfig = nameof(EncryptionConfig);
 
         public const string WorkspaceKey = nameof(WorkspaceKey);
@@ -242,6 +244,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             IntegrationRuntime,
             LinkedService,
             Credential
+        }
+
+        public class RepositoryType
+        {
+            public const string GitHub = "GitHub";
+            public const string AzureDevOpsGit = "AzureDevOpsGit";
+            public const string WorkspaceGitHubConfiguration = "WorkspaceGitHubConfiguration";
+            public const string WorkspaceVSTSConfiguration = "WorkspaceVSTSConfiguration";
         }
     }
 }

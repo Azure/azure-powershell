@@ -1738,6 +1738,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not provided..
+        /// </summary>
+        internal static string WorkspaceGitRepoParameterException {
+            get {
+                return ResourceManager.GetString("WorkspaceGitRepoParameterException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Either -ItemType and -Item should appear together or neither of them should be..
         /// </summary>
         internal static string WorkspaceItemTypeAndItemNotAppearTogether {

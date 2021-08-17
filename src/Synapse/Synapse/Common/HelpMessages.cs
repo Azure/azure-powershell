@@ -30,6 +30,26 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string SqlAdministratorLoginCredential = "SQL administrator credentials.";
 
+        public const string GitRepository = "Git Repository Settings. Connect workspace to the repository for source control and collaboration for work on your workspace pipelines";
+
+        public const string RepositoryType = "Select the repository type that you want to use to store your artifacts for this Synapse Analytics workspace, the type include DevOps and GitHub.";
+
+        public const string HostName = "GitHub Enterprise host name. For example: https://github.mydomain.com";
+
+        public const string AccountName = "GitHub or DevOps account name used for the repository.";
+
+        public const string ProjectName = "The project name you are connecting, only specify it when you choose DevOps.";
+
+        public const string RepositoryName = "The name of the repository you are connecting.";
+
+        public const string CollaborationBranch = "Select the branch name where you will collaborate with others and from which you will publish.";
+
+        public const string PublishBranch = "The publish branch is the branch in your repository where publishing related ARM templates are stored and update. The default value is workspace_publish.";
+
+        public const string RootFolder = "Displays the name of the folder to the location of your Azure Data Factory JSON resources are imported. The default value is /";
+
+        public const string TenantId = "Select the tenant Id to use when signing in into the Azure DevOps Git repository.";
+
         public const string DoNotAssignManagedIdentity = "Do not assign the workspace's system-assigned managed identity CONTROL permissions to SQL pools for pipeline integration.";
 
         public const string SparkPoolName = "Name of Synapse Spark pool.";
