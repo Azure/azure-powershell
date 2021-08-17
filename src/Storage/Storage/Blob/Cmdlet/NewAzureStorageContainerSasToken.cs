@@ -91,11 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override int? ConcurrentTaskCount { get; set; }
         protected override bool UseTrack2Sdk()
         {
-            if (SasTokenHelper.IsTrack2Permission(this.Permission))
-            {
-                return true;
-            }
-            return base.UseTrack2Sdk();
+            return true;
         }
 
         /// <summary>

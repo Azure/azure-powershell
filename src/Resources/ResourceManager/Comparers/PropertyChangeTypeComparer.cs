@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Comparers
                 [PropertyChangeType.Create] = 1,
                 // Modify and Array are set to have the same weight by intention.
                 [PropertyChangeType.Modify] = 2,
-                [PropertyChangeType.Array] = 2
+                [PropertyChangeType.Array] = 2,
+                [PropertyChangeType.NoEffect] = 3,
             };
 
         public int Compare(PropertyChangeType first, PropertyChangeType second)

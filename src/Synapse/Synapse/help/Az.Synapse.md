@@ -32,6 +32,9 @@ Enables Advanced Data Security on a workspace.
 ### [Enable-AzSynapseSqlPoolSensitivityRecommendation](Enable-AzSynapseSqlPoolSensitivityRecommendation.md)
 Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the SQL pool.
 
+### [Enable-AzSynapseWorkspace](Enable-AzSynapseWorkspace.md)
+Activate a new Azure Synapse Analytics workspace.
+
 ### [Export-AzSynapseNotebook](Export-AzSynapseNotebook.md)
 Exports notbooks.
 
@@ -181,6 +184,9 @@ Invokes a Synapse Analytics Spark statement.
 
 ### [New-AzSynapseFirewallRule](New-AzSynapseFirewallRule.md)
 Creates a Synapse Analytics Firewall Rule.
+
+### [New-AzSynapseGitRepositoryConfig](New-AzSynapseGitRepositoryConfig.md)
+Creates Git repository configuration.
 
 ### [New-AzSynapseIntegrationRuntimeKey](New-AzSynapseIntegrationRuntimeKey.md)
 Regenerate self-hosted integration runtime key.
@@ -427,9 +433,6 @@ Updates the vulnerability assessment settings of a workspace.
 
 ### [Update-AzSynapseWorkspace](Update-AzSynapseWorkspace.md)
 Updates a Synapse Analytics workspace.
-
-### [Update-AzSynapseWorkspaceKey](Update-AzSynapseWorkspaceKey.md)
-Updates a workspace key.
 
 ### [Wait-AzSynapseSparkJob](Wait-AzSynapseSparkJob.md)
 Waits for a Synapse Analytics Spark job to complete.
