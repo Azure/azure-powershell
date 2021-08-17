@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
+using System;
 #if NETSTANDARD
 using StaticAnalysis.Netcore.Properties;
 #else
@@ -94,6 +95,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the parameter cannot be found, log an issue
                 else
                 {
+                    Console.WriteLine("==============================================");
+                    Console.WriteLine(String.Join(",", parameterDictionary.Keys));
+                    Console.WriteLine("==============================================");
                     issueLogger?.LogBreakingChangeIssue(
                         cmdlet: cmdlet,
                         severity: 0,
