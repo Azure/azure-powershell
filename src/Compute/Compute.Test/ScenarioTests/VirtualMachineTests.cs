@@ -430,5 +430,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CapacityReservation");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMwithSSHKey()
+        {
+            TestRunner.RunTestScript("Test-VMwithSSHKey");
+        }
+
     }
 }

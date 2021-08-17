@@ -47,7 +47,7 @@ notificationRegistrationTest2
 
 List all the notification registration in the provider namespace.
 
-### Example 1: Get the notification registration by name.
+### Example 2: Get the notification registration by name.
 ```powershell
 PS C:\> Get-AzProviderHubNotificationRegistration -ProviderNamespace "Microsoft.Contoso" -Name "notificationRegistrationTest"
 

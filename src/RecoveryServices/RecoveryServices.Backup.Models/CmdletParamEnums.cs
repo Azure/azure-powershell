@@ -70,7 +70,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         RestoreOnlyOSDisk,
         RestoreAsUnmanagedDisks,
         DiskEncryptionSetId,
-        RestoreAsManagedDisk
+        RestoreAsManagedDisk,
+        UseSystemAssignedIdentity,
+        UserAssignedIdentityId
     }
 
     public enum RestoreFSBackupItemParams

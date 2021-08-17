@@ -132,6 +132,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public Guid GetTenantId()
+        {
+            return this._tenantId;
+        }
+
         public Workspace UpdateWorkspace(string resourceGroupName, string workspaceName, WorkspacePatchInfo updateParams)
         {
             try
@@ -375,7 +380,19 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, GetActiveDirectoryInformation(displayName, objectId));
+                if(displayName != null)
+                {
+                    return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, GetActiveDirectoryInformation(displayName, objectId));
+                }
+                else
+                {
+                    var info = new WorkspaceAadAdminInfo()
+                    {
+                        Sid = objectId.ToString(),
+                        TenantId = _tenantId.ToString()
+                    };
+                    return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, info);
+                }
             }
             catch (CloudException ex)
             {

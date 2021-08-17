@@ -1,86 +1,71 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapseworkspacekey
+online version: https://docs.microsoft.com/powershell/module/az.synapse/enable-azsynapseworkspace
 schema: 2.0.0
 ---
 
-# Update-AzSynapseWorkspaceKey
+# Enable-AzSynapseWorkspace
 
 ## SYNOPSIS
-Updates a workspace key.
+When creating an Azure Synapse Analytics workspace, you can choose to encrypt all data at rest in the workspace `with a customer-managed key which will provide double encryption to the workspace.You may need to set up the encryption environment firstly, such as to create a key vault with purge protection enable and specify Access Polices to the key vault. Then use this cmdlet to activate the new Azure Synapse Analytics workspace which double encryption is enabled using a customer-managed key.
 
 ## SYNTAX
 
-### UpdateByNameParameterSet (Default)
+### EnableByNameParameterSet (Default)
 ```
-Update-AzSynapseWorkspaceKey [-ResourceGroupName <String>] -WorkspaceName <String> [-Name <String>]
- [-EncryptionKeyIdentifier <String>] [-Activate] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### UpdateByParentObjectParameterSet
-```
-Update-AzSynapseWorkspaceKey [-Name <String>] -WorkspaceObject <PSSynapseWorkspace>
- [-EncryptionKeyIdentifier <String>] [-Activate] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Enable-AzSynapseWorkspace [-ResourceGroupName <String>] -WorkspaceName <String> [-Name <String>]
+ [-EncryptionKeyIdentifier <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateByInputObjectParameterSet
+### EnableByParentObjectParameterSet
 ```
-Update-AzSynapseWorkspaceKey -InputObject <PSWorkspaceKey> [-EncryptionKeyIdentifier <String>] [-Activate]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzSynapseWorkspace [-Name <String>] -WorkspaceObject <PSSynapseWorkspace>
+ [-EncryptionKeyIdentifier <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateByResourceIdParameterSet
+### EnableByInputObjectParameterSet
 ```
-Update-AzSynapseWorkspaceKey -ResourceId <String> [-EncryptionKeyIdentifier <String>] [-Activate] [-AsJob]
+Enable-AzSynapseWorkspace -InputObject <PSWorkspaceKey> [-EncryptionKeyIdentifier <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnableByResourceIdParameterSet
+```
+Enable-AzSynapseWorkspace -ResourceId <String> [-EncryptionKeyIdentifier <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This **Update-AzSynapseWorkspaceKey** updates a workspace key.
+The Enable-AzSynapseWorkspace cmdlet activates a new Azure Synapse Analytics workspace which double encryption is enabled using a customer-managed key.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSynapseWorkspaceKey -WorkspaceName ContosoWorkspace -Name ContosoKeyName -Activate
+PS C:\> Enable-AzSynapseWorkspace -WorkspaceName ContosoWorkspace
 ```
 
-This command activates a workspace key under an Azure Synapse Analytics workspace.
+This command activates a new Azure Synapse Analytics workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Update-AzSynapseWorkspaceKey -Name ContosoKeyName -Activate
+		$ws | Enable-AzSynapseWorkspace
 ```
 
-This command activates a workspace key under an Azure Synapse Analytics workspace through pipeline.
+This command activates a new Azure Synapse Analytics workspace named ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> Update-AzSynapseWorkspaceKey -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/keys/ContosoKeyName
+PS C:\> Enable-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/keys/default
 ```
 
-This command activates an Azure Synapse Analytics workspace key through pipeline with the specified resource ID.
+This command activates a new Azure Synapse Analytics workspace through pipeline with the specified resource ID.
 
 ## PARAMETERS
-
-### -Activate
-Indicates whether to activate the workspace after a customer managed key is provided.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run cmdlet in the background
@@ -132,7 +117,7 @@ Workspace key input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.WorkspaceKey.PSWorkspaceKey
-Parameter Sets: UpdateByInputObjectParameterSet
+Parameter Sets: EnableByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -147,7 +132,7 @@ The workspace encryption key name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet, UpdateByParentObjectParameterSet
+Parameter Sets: EnableByNameParameterSet, EnableByParentObjectParameterSet
 Aliases: KeyName
 
 Required: False
@@ -162,7 +147,7 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet
+Parameter Sets: EnableByNameParameterSet
 Aliases:
 
 Required: False
@@ -177,7 +162,7 @@ The resource identifier of Synapse SQL Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByResourceIdParameterSet
+Parameter Sets: EnableByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -192,7 +177,7 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateByNameParameterSet
+Parameter Sets: EnableByNameParameterSet
 Aliases:
 
 Required: True
@@ -207,7 +192,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: UpdateByParentObjectParameterSet
+Parameter Sets: EnableByParentObjectParameterSet
 Aliases:
 
 Required: True

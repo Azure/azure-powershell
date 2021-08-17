@@ -209,6 +209,9 @@ Creates an instance of **PsApiManagementHttpMessageDiagnostic** which is an Http
 ### [New-AzApiManagementIdentityProvider](New-AzApiManagementIdentityProvider.md)
 Creates a new Identity Provider configuration.
 
+### [New-AzApiManagementKeyVaultObject](New-AzApiManagementKeyVaultObject.md)
+Creates an instance of PsApiManagementKeyVaultObject.
+
 ### [New-AzApiManagementLogger](New-AzApiManagementLogger.md)
 Creates an API Management Logger.
 
@@ -342,7 +345,7 @@ Deletes an existing user.
 Removes a user from a group.
 
 ### [Restore-AzApiManagement](Restore-AzApiManagement.md)
-Restores an API Management Service from the specified Azure storage blob.
+Restores an API Management Service from the specified Azure Storage blob.
 
 ### [Save-AzApiManagementTenantGitConfiguration](Save-AzApiManagementTenantGitConfiguration.md)
 Saves changes by creating a commit for current configuration.
@@ -406,6 +409,9 @@ Enables or disables tenant access.
 
 ### [Set-AzApiManagementUser](Set-AzApiManagementUser.md)
 Sets user details.
+
+### [Sync-AzApiManagementKeyVaultSecret](Sync-AzApiManagementKeyVaultSecret.md)
+Refreshes NamedValue or Certificate created by KeyVault.
 
 ### [Update-AzApiManagementApiRelease](Update-AzApiManagementApiRelease.md)
 Updates a particular Api Release.

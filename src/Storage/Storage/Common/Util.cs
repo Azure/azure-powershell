@@ -295,7 +295,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 if (block.StartsWith(snapshotQueryParameter))
                 {
-                    return DateTimeOffset.Parse(block.Replace(snapshotQueryParameter, "")).ToUniversalTime();
+                    return DateTimeOffset.Parse(System.Web.HttpUtility.UrlDecode(block.Replace(snapshotQueryParameter, ""))).ToUniversalTime();
                 }
             }
             return null;
