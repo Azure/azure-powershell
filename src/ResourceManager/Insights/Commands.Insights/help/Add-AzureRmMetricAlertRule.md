@@ -60,6 +60,23 @@ RequestId                                                                       
 
 This command creates a metric alert rule for a website.
 
+### Example 4: Creating DTU alert rules for all databases contained on a specific resource group
+```
+#define variable for resource group name by requesting keyboard input
+    
+ $rg = Read-Host 'Please, input resource group name here (exactly as it is in Azure)'
+    
+ <#create the array containing databases where alerts are required. The value of v12.0,user corresponds to the kind of resource as to include only the SQL DBs and not the SQL servers#>
+    
+ $resources = Get-AzureRmResource | ?{ $_.ResourceGroupName -eq $rg -and $_.kind -eq "v12.0,user"  } | select resourcename,resourceid
+    
+ #loop through the array and create the alert rule for each DB
+    
+ foreach($resource in $resources){$alertname=$resource.resourcename.Substring($resource.resourcename.IndexOf('/')+1);Add-AzureRMMetricAlertRule -ResourceGroup $rg -location "centralus" -targetresourceid $resource.resourceid -Name $alertname -MetricName "dtu_consumption_percent" -Operator "GreaterThan" -Threshold 90 -WindowSize $([TimeSpan]::Parse("00:15:00")) -TimeAggregationOperator "Average" -verbose -Actions $(New-AzureRmAlertRuleEmail -SendToServiceOwners -CustomEmails "Client-address@domain.com")}  
+```
+
+This example creates DTU alert rules that will monitor for the DTU going above 90 % for the last 15min. It will create alerts on all databases within a resource group.
+
 ## PARAMETERS
 
 ### -Action
