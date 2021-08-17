@@ -12,31 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Comparers
 {
-    using Management.ResourceManager.Models;
-    using System.Collections.Generic;
-
-    public class ChangeTypeComparer : IComparer<ChangeType>
+    public class PSChangeTypeComparer : IComparer<PSChangeType>
     {
-        private static readonly IReadOnlyDictionary<ChangeType, int> WeightsByChangeType =
-            new Dictionary<ChangeType, int>
+        private static readonly IReadOnlyDictionary<PSChangeType, int> WeightsByPSChangeType =
+            new Dictionary<PSChangeType, int>
             {
-                [ChangeType.Delete] = 0,
-                [ChangeType.Create] = 1,
-                [ChangeType.Deploy] = 2,
-                [ChangeType.Modify] = 3,
-                [ChangeType.Unsupported] = 4,
-                [ChangeType.NoChange] = 5,
-                [ChangeType.Ignore] = 6,
+                [PSChangeType.Delete] = 0,
+                [PSChangeType.Create] = 1,
+                [PSChangeType.Deploy] = 2,
+                [PSChangeType.Modify] = 3,
+                [PSChangeType.Unsupported] = 4,
+                [PSChangeType.NoEffect] = 5,
+                [PSChangeType.NoChange] = 6,
+                [PSChangeType.Ignore] = 7,
             };
 
-        public int Compare(ChangeType first, ChangeType second)
+        public int Compare(PSChangeType first, PSChangeType second)
         {
-            return WeightsByChangeType[first] - WeightsByChangeType[second];
+            return WeightsByPSChangeType[first] - WeightsByPSChangeType[second];
         }
     }
 }
-
-
-
