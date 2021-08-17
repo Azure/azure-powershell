@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RestorePoint", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RestorePoint", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSRestorePoint))]
     public class GetAzureRestorePoint : ComputeAutomationBaseCmdlet
     {
@@ -57,17 +57,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.Name, VerbsCommon.Get))
-                {
-                    string resourceGroup = this.ResourceGroupName;
-                    string restorePointName = this.Name;
-                    string restorePointCollectionName = this.RestorePointCollectionName;
+                string resourceGroup = this.ResourceGroupName;
+                string restorePointName = this.Name;
+                string restorePointCollectionName = this.RestorePointCollectionName;
 
-                    var result = RestorePointClient.Get(resourceGroup, restorePointCollectionName, restorePointName);
-                    var psObject = new PSRestorePoint();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
-                    WriteObject(psObject);
-                }
+                var result = RestorePointClient.Get(resourceGroup, restorePointCollectionName, restorePointName);
+                var psObject = new PSRestorePoint();
+                ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
+                WriteObject(psObject);
             });
         }
     }
