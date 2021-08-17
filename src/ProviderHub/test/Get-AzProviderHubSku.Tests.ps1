@@ -16,11 +16,7 @@ Describe 'Get-AzProviderHubSku' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List3' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'List2' -skip {
+    It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
@@ -28,7 +24,11 @@ Describe 'Get-AzProviderHubSku' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'List2' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'List3' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
