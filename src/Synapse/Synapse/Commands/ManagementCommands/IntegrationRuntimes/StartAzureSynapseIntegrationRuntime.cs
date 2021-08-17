@@ -2,17 +2,21 @@
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Threading;
+using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 
+
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.IntegrationRuntime,
         DefaultParameterSetName = StartByNameParameterSet)]
-    [OutputType(typeof(PSIntegrationRuntime))]
+    [OutputType(typeof(PSManagedIntegrationRuntimeStatus))]
     public class StartAzureSynapseIntegrationRuntime : SynapseManagementCmdletBase
     {
         private const string StartByNameParameterSet = "StartByNameParameterSet";
@@ -83,12 +87,33 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.Name = InputObject.Name;
             }
 
-            var metric = SynapseAnalyticsClient.GetIntegrationRuntimeMetricAsync(
-                ResourceGroupName,
-                WorkspaceName,
-                Name).ConfigureAwait(true).GetAwaiter().GetResult();
+            IntegrationRuntimeResource resource = SynapseAnalyticsClient.GetIntegrationRuntimeAsync(
+                    ResourceGroupName,
+                    WorkspaceName,
+                    Name).ConfigureAwait(true).GetAwaiter().GetResult().IntegrationRuntime;
 
-            WriteObject(metric);
+            Action startIntegrationRuntime = () =>
+            {
+                PSManagedIntegrationRuntimeStatus response = null;
+                var cancellationTokenSource = new CancellationTokenSource();
+
+                var task = Task.Run(() =>
+                {
+                    response = this.SynapseAnalyticsClient.StartIntegrationRuntimeAsync(
+                        ResourceGroupName,
+                        WorkspaceName,
+                        Name,
+                        resource).ConfigureAwait(true).GetAwaiter().GetResult();
+                }, cancellationTokenSource.Token);
+
+                UpdateProgress(task, new ProgressRecord(1, "Start", "Starting Progress"));
+
+                if (response != null)
+                {
+                    WriteObject(response);
+                }
+            };
+
         }
     }
 }

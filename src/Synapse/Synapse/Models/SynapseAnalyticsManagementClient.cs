@@ -2326,6 +2326,74 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 request);
         }
 
+        public virtual async Task<PSManagedIntegrationRuntimeStatus> StartIntegrationRuntimeAsync(
+            string resourceGroupName,
+            string workspaceName,
+            string integrationRuntimeName,
+            IntegrationRuntimeResource integrationRuntime)
+        { 
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+
+            var response = await this._synapseManagementClient.IntegrationRuntimes.BeginStartWithHttpMessagesAsync(
+                resourceGroupName,
+                workspaceName,
+                integrationRuntimeName);
+
+            try
+            {
+                var result = await this._synapseManagementClient.GetLongRunningOperationResultAsync(response, null, default(CancellationToken));
+                return (PSManagedIntegrationRuntimeStatus)GenerateIntegraionRuntimeObject(integrationRuntime,
+                    result.Body,
+                    resourceGroupName,
+                    workspaceName);
+            }
+            catch (Exception e)
+            {
+                throw RethrowLongingRunningException(e);
+            }
+        }
+
+        public virtual async Task StopIntegrationRuntimeAsync(
+            string resourceGroupName,
+            string workspaceName,
+            string integrationRuntimeName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+            }
+            catch (ErrorResponseException ex)
+            { 
+                throw GetAzurePowerShellException(ex); 
+            }
+
+            var response = await this._synapseManagementClient.IntegrationRuntimes.BeginStopWithHttpMessagesAsync(
+                resourceGroupName,
+                workspaceName,
+                integrationRuntimeName);
+
+            try
+            {
+                await this._synapseManagementClient.GetLongRunningOperationResultAsync(response, null, default(CancellationToken));
+            }
+            catch (Exception e)
+            {
+                throw RethrowLongingRunningException(e);
+            }
+        }
         #endregion
 
         #region Managed Identity Sql Control
@@ -2512,6 +2580,27 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        private Exception RethrowLongingRunningException(Exception e)
+        {
+            var ce = e as CloudException;
+            if (ce?.Body != null)
+            {
+                return new CloudException()
+                {
+                    Body = new CloudError()
+                    {
+                        Code = ce.Body.Code,
+                        Message = Resources.LongRunningStatusError + "\n" + ce.Body.Message,
+                        Target = ce.Body.Target
+                    },
+                    Request = ce.Request,
+                    Response = ce.Response,
+                    RequestId = ce.RequestId
+                };
+            }
+
+            return new Exception(Resources.LongRunningStatusError, e);
+        }
         #endregion
     }
 }
