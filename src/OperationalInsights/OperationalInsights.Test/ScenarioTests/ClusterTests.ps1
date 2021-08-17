@@ -23,11 +23,10 @@ function Test-ClusterCRUD
 	$clusterName = Get-ResourceName
 	$loc = Get-ProviderLocation
 
-	$rgNameExisting = "azps-test-group"
-	$clusterNameExisting = "yabocluster7"
-	$kvNameExisting = "azps-test-kv8"
-	$keyNameExisting = "azps-test-key3"
-	$kvUri = "https://azps-test-kv8.vault.azure.net"
+	$rgNameExisting = "dabenham-dev"
+	$clusterNameExisting = "dabenhamCluster-dev"
+	$keyNameExisting = "dabenham-kv"
+	$kvUri = "https://dabenham-kv.vault.azure.net/"
 	$version = "9ac53081c8fe45f0b26d9d476b29c017"
 
 	try
