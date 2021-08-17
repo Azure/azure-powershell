@@ -236,7 +236,6 @@ function New-AzMigrateServerReplication {
     )
     
     process {
-        Set-PSDebug -Step; foreach ($i in 1..3) { $i }
         $parameterSet = $PSCmdlet.ParameterSetName
         $HasRunAsAccountId = $PSBoundParameters.ContainsKey('VMWarerunasaccountID')
         $HasTargetAVSet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
