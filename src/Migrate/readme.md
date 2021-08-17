@@ -318,6 +318,11 @@ directive:
       verb: Get$|List$
       subject: Machine$
     hide: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Get$
+      subject: ^VCenter$
+    hide: true
   - where:
       verb: New$|Update$
       variant: ^(Update|Create)(?!.*?Expanded)

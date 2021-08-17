@@ -47,9 +47,6 @@ Method to get a site.
 ### [Get-AzMigrateSolution](Get-AzMigrateSolution.md)
 Gets a solution in the migrate project.
 
-### [Get-AzMigrateVCenter](Get-AzMigrateVCenter.md)
-Method to get a vCenter.
-
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
 The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
 

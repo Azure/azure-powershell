@@ -236,7 +236,7 @@ function New-AzMigrateServerReplication {
     )
     
     process {
-        Set-PSDebug -Step; foreach ($i in 1..3) {$i}
+        Set-PSDebug -Step; foreach ($i in 1..3) { $i }
         $parameterSet = $PSCmdlet.ParameterSetName
         $HasRunAsAccountId = $PSBoundParameters.ContainsKey('VMWarerunasaccountID')
         $HasTargetAVSet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
@@ -302,15 +302,29 @@ function New-AzMigrateServerReplication {
         }
 
         if (($parameterSet -match 'Id') -or ($parameterSet -match 'InputObject')) {
+
+            # Get the discovered machine Id.
             if (($parameterSet -match 'InputObject')) {
                 $MachineId = $InputObject.Id
             }
+
+            # Get the discovered machine object.
             $MachineIdArray = $MachineId.Split("/")
             $SiteType = $MachineIdArray[7]
             $SiteName = $MachineIdArray[8]
             $ResourceGroupName = $MachineIdArray[4]
             $MachineName = $MachineIdArray[10]
 
+            $null = $PSBoundParameters.Add("Name", $MachineName)
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("SiteName", $SiteName)
+            $discoveredVMwareMachine = Get-AzMigrateMachine @PSBoundParameters
+
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('SiteName')
+            
+            # Get the site to get project name.
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             $null = $PSBoundParameters.Add('SiteName', $SiteName)
             $siteObject = Az.Migrate\Get-AzMigrateSite @PSBoundParameters
@@ -324,6 +338,7 @@ function New-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('SiteName')
 
+            # Get the solution to get vault name.
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
             $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration")
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
@@ -339,28 +354,31 @@ function New-AzMigrateServerReplication {
             throw "Provider not supported"
         }
            
-        # in case if the credential type is null which is in case of older appliances or
-        # in case if the credential type is vmwarefabric type which is for newer appliances
-        # send that run as account id only.
-        # for vCenter there will be always one credential so returning the first one which matches it.
-        # when multiple vCenter support comes then this might not work and need to redesign this.
+        # This supports Multi-Vcenter feature.
         if (!$HasRunAsAccountId) {
-            $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
-            $null = $PSBoundParameters.Add('SiteName', $SiteName)
-            $runAsAccounts = Az.Migrate\Get-AzMigrateRunAsAccount @PSBoundParameters
-            $VMWarerunasaccountID = ""
-            foreach ($account in $runAsAccounts) {
-                if (($null -eq $account.CredentialType) -or ($account.CredentialType -eq "VMwareFabric")) {
-                    $VMWarerunasaccountID = $account.Id
-                    break
-                }
-            }
-            if ($VMWarerunasaccountID -eq "") {
-                throw "Run As Account missing"
-            }
 
+            # Get the VCenter object.
+            $vcenterId = $discoveredVMwareMachine.VCenterId
+            $vCenterIdArray = $vcenterId.Split("/")
+            $vCenterName = $vCenterIdArray[10] 
+            $vCenterSite = $vCenterIdArray[8]
+            $vCenterResourceGroupName = $vCenterIdArray[4]
+
+            $null = $PSBoundParameters.Add("Name", $vCenterName)
+            $null = $PSBoundParameters.Add("ResourceGroupName", $vCenterResourceGroupName)
+            $null = $PSBoundParameters.Add("SiteName", $vCenterSite)
+
+            $vCenter = Get-AzMigrateVCenter @PSBoundParameters
+
+            $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('SiteName')
+
+            # Get the run as account Id.
+            $VMWarerunasaccountID = $vCenter.RunAsAccountId
+            if ($VMWarerunasaccountID -eq "") {
+                throw "Run As Account missing"
+            } 
         }
 
         $policyName = "migrate" + $SiteName + "policy"
@@ -507,101 +525,83 @@ public static int hashForArtifact(String artifact)
             $ProviderSpecificDetails.TargetAvailabilityZone = $TargetAvailabilityZone
         }
 
-        if ($HasSqlServerLicenseType)
-        {
+        if ($HasSqlServerLicenseType) {
             $validSqlLicenseSpellings = @{ 
                 NoLicenseType = "NoLicenseType";
-                PAYG = "PAYG";
-                AHUB = "AHUB"
+                PAYG          = "PAYG";
+                AHUB          = "AHUB"
             }
             $SqlServerLicenseType = $validSqlLicenseSpellings[$SqlServerLicenseType]
             $ProviderSpecificDetails.SqlServerLicenseType = $SqlServerLicenseType
         }
 
         $UserProvidedTags = $null
-        if ($HasTag -And $Tag)
-        {
-            $UserProvidedTags += @{"Tag" = $Tag}
+        if ($HasTag -And $Tag) {
+            $UserProvidedTags += @{"Tag" = $Tag }
         }
 
-        if ($HasVMTag -And $VMTag)
-        {
-            $UserProvidedTags += @{"VMTag" = $VMTag}
+        if ($HasVMTag -And $VMTag) {
+            $UserProvidedTags += @{"VMTag" = $VMTag }
         }
 
-        if ($HasNicTag -And $NicTag)
-        {
-            $UserProvidedTags += @{"NicTag" = $NicTag}
+        if ($HasNicTag -And $NicTag) {
+            $UserProvidedTags += @{"NicTag" = $NicTag }
         }
 
-        if ($HasDiskTag -And $DiskTag)
-        {
-            $UserProvidedTags += @{"DiskTag" = $DiskTag}
+        if ($HasDiskTag -And $DiskTag) {
+            $UserProvidedTags += @{"DiskTag" = $DiskTag }
         }
 
-        foreach($tagtype in $UserProvidedTags.Keys)
-        {
+        foreach ($tagtype in $UserProvidedTags.Keys) {
             $IllegalCharKey = New-Object Collections.Generic.List[String]
             $ExceededLengthKey = New-Object Collections.Generic.List[String]
             $ExceededLengthValue = New-Object Collections.Generic.List[String]
             $ResourceTag = $($UserProvidedTags.Item($tagtype))
 
-            if ($ResourceTag.Count -gt 50)
-            {
+            if ($ResourceTag.Count -gt 50) {
                 throw "InvalidTags : Too many tags specified. Requested tag count - '$($ResourceTag.Count)'. Maximum number of tags allowed - '50'."
             }
 
-            foreach ($key in $ResourceTag.Keys)
-            {
-                if ($key.length -eq 0)
-                {
+            foreach ($key in $ResourceTag.Keys) {
+                if ($key.length -eq 0) {
                     throw "InvalidTagName : The tag name must be non-null, non-empty and non-whitespace only. Please provide an actual value."
                 }
 
-                if ($key.length -gt 512)
-                {
+                if ($key.length -gt 512) {
                     $ExceededLengthKey.add($key)
                 }
 
-                if ($key -match "[<>%&\?/.]")
-                {
+                if ($key -match "[<>%&\?/.]") {
                     $IllegalCharKey.add($key)
                 }
 
-                if ($($ResourceTag.Item($key)).length -gt 256)
-                {
+                if ($($ResourceTag.Item($key)).length -gt 256) {
                     $ExceededLengthValue.add($($ResourceTag.Item($key)))
                 }
             }
 
-            if ($IllegalCharKey.Count -gt 0)
-            {
+            if ($IllegalCharKey.Count -gt 0) {
                 throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters."
             }
 
-            if ($ExceededLengthKey.Count -gt 0)
-            {
+            if ($ExceededLengthKey.Count -gt 0) {
                 throw "InvalidTagName : Tag key too large. Following tag name '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag name - '512' characters."
             }
 
-            if ($ExceededLengthValue.Count -gt 0)
-            {
+            if ($ExceededLengthValue.Count -gt 0) {
                 throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
             }
 
-            if ($tagtype -eq "Tag" -or $tagtype -eq "DiskTag")
-            {
+            if ($tagtype -eq "Tag" -or $tagtype -eq "DiskTag") {
                 $ProviderSpecificDetails.SeedDiskTag = $ResourceTag
                 $ProviderSpecificDetails.TargetDiskTag = $ResourceTag
             }
 
-            if ($tagtype -eq "Tag" -or $tagtype -eq "NicTag")
-            {
+            if ($tagtype -eq "Tag" -or $tagtype -eq "NicTag") {
                 $ProviderSpecificDetails.TargetNicTag = $ResourceTag
             }
 
-            if ($tagtype -eq "Tag" -or $tagtype -eq "VMTag")
-            {
+            if ($tagtype -eq "Tag" -or $tagtype -eq "VMTag") {
                 $ProviderSpecificDetails.TargetVmTag = $ResourceTag
             }
         }
@@ -612,7 +612,7 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
 
         if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
-             throw "The target virtual machine name must be between 1 and 64 characters long."
+            throw "The target virtual machine name must be between 1 and 64 characters long."
         }
 
         $TargetResourceGroupName = $ProviderSpecificDetails.TargetResourceGroupId.Split('/')[4]
@@ -621,8 +621,7 @@ public static int hashForArtifact(String artifact)
             throw "The target virtual machine name must be unique in the target resource group."
         }
 
-        if ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$")
-        {
+        if ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$") {
             throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
         }
 
