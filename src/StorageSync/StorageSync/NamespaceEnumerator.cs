@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         }
         #endregion
 
-        #region Public methods
+        #region Public Methods
         /// <summary>
         /// Runs the specified root.
         /// </summary>
