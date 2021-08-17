@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added cmdlets for fexible server database
+* Added cmdlets for flexible server database
     - Get-AzPostgreSqlFlexibleServerDatabase
     - New-AzPostgreSqlFlexibleServerDatabase
     - Remove-AzPostgreSqlFlexibleServerDatabase   
