@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public static Symbol ExclamationPoint { get; } = new Symbol('!');
 
+        public static Symbol Cross { get; } = new Symbol('x');
+
         private Symbol(char character)
         {
             this.character = character;

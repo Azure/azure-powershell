@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.5.0
+* Added MSI based restore for managed virtual machines.
+
 ## Version 4.4.0
 * Added Archive for V1 vaults.
 * Added ProtectedItemsCount in Get-AzRecoveryServicesBackupProtectionPolicy.

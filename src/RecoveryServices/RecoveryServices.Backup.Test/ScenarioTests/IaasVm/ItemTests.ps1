@@ -12,6 +12,44 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureVMRestoreWithMSI
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiagavm"
+	$saName = "hiagasa"
+
+	try
+	{
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM `
+			-VaultId $vault.ID -Name $vmName
+
+		$backupJob = Backup-Item $vault $item
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+		
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item; 		
+
+		$restoreJob1 = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName `
+			$vault.ResourceGroupName -RestoreOnlyOSDisk -TargetResourceGroupName $vault.ResourceGroupName `
+			-UseSystemAssignedIdentity | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob1.Status -eq "Completed" }   
+	}
+	finally
+	{
+		# no Cleanup		
+	}
+}
+
 function Test-AzureVMCrossRegionRestore
 {
 	$location = "centraluseuap"

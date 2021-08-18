@@ -75,6 +75,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string ManagedResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.GitRepository)]
+        [ValidateNotNull]
+        public PSWorkspaceRepositoryConfiguration GitRepository { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -134,7 +138,8 @@ namespace Microsoft.Azure.Commands.Synapse
                             KeyVaultUrl = this.EncryptionKeyIdentifier
                         }
                     }
-                } : null
+                } : null,
+                WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null
             };
 
             if (ShouldProcess(Name, string.Format(Resources.CreatingSynapseWorkspace, this.ResourceGroupName, this.Name)))

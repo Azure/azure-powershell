@@ -46,55 +46,73 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ParameterSetName = FromFile,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Path to the certificate file in .pfx format to be created/uploaded. This parameter is required if -PfxBytes not specified.")]
         public String PfxFilePath { get; set; }
 
         [Parameter(
             ParameterSetName = Raw,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Bytes of the certificate file in .pfx format to be created/uploaded. This parameter is required if -PfxFilePath not specified.")]
         public Byte[] PfxBytes { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Password for the certificate. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String PfxPassword { get; set; }
 
+        [Parameter(
+             ValueFromPipelineByPropertyName = true,
+             Mandatory = false,
+             HelpMessage = "KeyVault used to fetch certificate data." +
+                          "This parameter is required if -PfxFilePath not specified.")]
+        public PsApiManagementKeyVaultEntity KeyVault { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             var certificateId = CertificateId ?? Guid.NewGuid().ToString("N");
-            byte[] rawBytes;
-            if (ParameterSetName.Equals(FromFile))
-            {
-                FileInfo localFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.PfxFilePath));
-                if (!localFile.Exists)
-                {
-                    throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, PfxFilePath));
-                }
+            PsApiManagementCertificate certificate;
 
-                using (var certStream = File.OpenRead(localFile.FullName))
-                {
-                    rawBytes = new byte[certStream.Length];
-                    certStream.Read(rawBytes, 0, rawBytes.Length);
-                }
-            }
-            else if (ParameterSetName.Equals(Raw))
+            if (KeyVault != null)
             {
-                rawBytes = PfxBytes;
+                certificate = Client.CertificateCreate(Context, certificateId, null, null, KeyVault);
+
             }
             else
             {
-                throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));
+                byte[] rawBytes;
+
+                if (ParameterSetName.Equals(FromFile))
+                {
+                    FileInfo localFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.PfxFilePath));
+                    if (!localFile.Exists)
+                    {
+                        throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, PfxFilePath));
+                    }
+
+                    using (var certStream = File.OpenRead(localFile.FullName))
+                    {
+                        rawBytes = new byte[certStream.Length];
+                        certStream.Read(rawBytes, 0, rawBytes.Length);
+                    }
+                }
+                else if (ParameterSetName.Equals(Raw))
+                {
+                    rawBytes = PfxBytes;
+                }
+                else
+                {
+                    throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));
+                }
+
+                // check for valid certificate file/bytes
+                new X509Certificate2(rawBytes, PfxPassword);
+
+                certificate = Client.CertificateCreate(Context, certificateId, rawBytes, PfxPassword);
             }
-
-            // check for valid certificate file/bytes
-            new X509Certificate2(rawBytes, PfxPassword);
-
-            var certificate = Client.CertificateCreate(Context, certificateId, rawBytes, PfxPassword);
             WriteObject(certificate);
         }
     }
