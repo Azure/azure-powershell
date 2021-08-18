@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
+using System.Globalization;
+using Microsoft.Azure.Commands.Synapse.Properties;
 
 
 namespace Microsoft.Azure.Commands.Synapse
@@ -63,6 +65,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSIntegrationRuntime InputObject { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = HelpMessages.HelpDontAskConfirmation)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.ResourceId))
@@ -114,6 +120,20 @@ namespace Microsoft.Azure.Commands.Synapse
                 }
             };
 
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.IntegrationRuntimeExists,
+                    Name,
+                    WorkspaceName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.IntegrationRuntimeExists,
+                    Name,
+                    WorkspaceName),
+                Name,
+                startIntegrationRuntime);
         }
     }
 }

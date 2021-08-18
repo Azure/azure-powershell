@@ -10,6 +10,8 @@ using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Text;
+using System.Globalization;
+using Microsoft.Azure.Commands.Synapse.Properties;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
@@ -62,6 +64,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSIntegrationRuntime InputObject { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = HelpMessages.HelpDontAskConfirmation)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.ResourceId))
@@ -99,6 +105,21 @@ namespace Microsoft.Azure.Commands.Synapse
 
                 UpdateProgress(task, new ProgressRecord(1, "Stop", "Stopping Progress"));
             };
+
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.IntegrationRuntimeExists,
+                    Name,
+                    WorkspaceName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.IntegrationRuntimeExists,
+                    Name,
+                    WorkspaceName),
+                Name,
+                stoptIntegrationRuntime);
         }
     }
 }
