@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ParameterSetName = FriendMethod,
-            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            HelpMessage = "UserData for the Vmss, which will be base-64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipeline = true)]
         public SwitchParameter UserData { get; set; }
     }
