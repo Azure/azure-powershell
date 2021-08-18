@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>PSServerEndpoint.</returns>
         protected override PSServerEndpoint Transform(StorageSyncModels.ServerEndpoint source)
         {
-            PSServerEndpointSyncStatus syncStatus = source.SyncStatus != null ? new ServerEndpointHealthConverter().Convert(source.SyncStatus) : null;
+            PSServerEndpointHealth syncStatus = source.SyncStatus != null ? new ServerEndpointHealthConverter().Convert(source.SyncStatus) : null;
             PSServerEndpointCloudTieringStatus cloudTieringStatus = source.CloudTieringStatus != null ? new ServerEndpointCloudTieringStatusConverter().Convert(source.CloudTieringStatus) : null;
             PSServerEndpointRecallStatus recallStatus = source.RecallStatus != null ? new ServerEndpointRecallStatusConverter().Convert(source.RecallStatus) : null;
 

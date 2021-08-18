@@ -20,17 +20,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
     /// Class ServerEndpointHealthConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointHealth}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointHealth}" />
-    public class ServerEndpointHealthConverter : ConverterBase<PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointSyncStatus>
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus}" />
+    public class ServerEndpointHealthConverter : ConverterBase<PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.ServerEndpointSyncStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncStatus Transform(PSServerEndpointSyncStatus source)
+        protected override StorageSyncModels.ServerEndpointSyncStatus Transform(PSServerEndpointHealth source)
         {
             // Sync status properties are read-only from the RP
             throw new NotSupportedException();
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>PSServerEndpointSyncStatus.</returns>
-        protected override PSServerEndpointSyncStatus Transform(StorageSyncModels.ServerEndpointSyncStatus source)
+        /// <returns>PSServerEndpointHealth.</returns>
+        protected override PSServerEndpointHealth Transform(StorageSyncModels.ServerEndpointSyncStatus source)
         {
             PSSyncSessionStatus uploadStatus = source.UploadStatus != null ? new SyncSessionStatusConvertor().Convert(source.UploadStatus) : null;
             PSSyncSessionStatus downloadStatus = source.DownloadStatus != null ? new SyncSessionStatusConvertor().Convert(source.DownloadStatus) : null;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             PSSyncActivityStatus downloadActivity = source.DownloadActivity != null ? new SyncActivityStatusConverter().Convert(source.DownloadActivity) : null;
             PSBackgroundDataDownloadActivity backgroundDataDownloadActivity = source.BackgroundDataDownloadActivity != null ? new BackgroundDataDownloadActivityConverter().Convert(source.BackgroundDataDownloadActivity) : null;
 
-            return new PSServerEndpointSyncStatus()
+            return new PSServerEndpointHealth()
             {
                 DownloadHealth = source.DownloadHealth,
                 UploadHealth = source.UploadHealth,

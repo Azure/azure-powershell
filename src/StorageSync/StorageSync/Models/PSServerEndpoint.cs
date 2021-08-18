@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the sync status.
         /// </summary>
         /// <value>The sync status.</value>
-        public PSServerEndpointSyncStatus SyncStatus { get; set; }
+        public PSServerEndpointHealth SyncStatus { get; set; }
 
         /// <summary>
         /// Gets or sets cloud tiering status.

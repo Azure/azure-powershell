@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ClusterName = source.ClusterName,
                 DiscoveryEndpointUri = source.DiscoveryEndpointUri,
                 FriendlyName = source.FriendlyName,
-                LastHeartBeat = source.LastHeartBeat != null ? DateTime.Parse(source.LastHeartBeat) : default(DateTime?),
+                LastHeartBeat = source.LastHeartBeat,
                 LastOperationName = source.LastOperationName,
                 LastWorkflowId = source.LastWorkflowId,
                 ManagementEndpointUri = source.ManagementEndpointUri,
