@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSTable))]
     public class GetAzureOperationalInsightsTableCommand : OperationalInsightsBaseCmdlet
-
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]

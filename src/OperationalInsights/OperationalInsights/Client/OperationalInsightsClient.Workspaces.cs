@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public virtual PSWorkspace GetWorkspace(string resourceGroupName, string workspaceName)
         {
             var response = OperationalInsightsManagementClient.Workspaces.Get(resourceGroupName, workspaceName);
-
+            
             return new PSWorkspace(response, resourceGroupName);
         }
 
@@ -126,11 +126,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             PSWorkspaceFeatures features = null)
         {
             Workspace properties = new Workspace(
-                location: location, 
-                tags: tags, 
-                customerId: customerId.HasValue ? customerId.Value.ToString() : null, 
-                publicNetworkAccessForIngestion: publicNetworkAccessForIngestion, 
-                publicNetworkAccessForQuery: publicNetworkAccessForQuery, 
+                location: location,
+                tags: tags,
+                customerId: customerId.HasValue ? customerId.Value.ToString() : null,
+                publicNetworkAccessForIngestion: publicNetworkAccessForIngestion,
+                publicNetworkAccessForQuery: publicNetworkAccessForQuery,
                 forceCmkForQuery: forceCmkForQuery,
                 features: features.GetWorkspaceFeatures());
 
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 parameters.ResourceGroupName,
                 parameters.WorkspaceName,
                 workspace.Location,
-                parameters?.Sku == null ? new PSWorkspaceSku(workspace.Sku, workspace.CapacityReservationLevel) : parameters.Sku,
+                parameters.Sku ?? new PSWorkspaceSku(workspace.Sku, workspace.CapacityReservationLevel),
                 parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags),
                 string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForIngestion) ? workspace.PublicNetworkAccessForIngestion : parameters.PublicNetworkAccessForIngestion,
                 string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForQuery) ? workspace.PublicNetworkAccessForQuery : parameters.PublicNetworkAccessForQuery,
@@ -313,7 +313,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 throw new ArgumentException($"OperationStatus {operationId} is not a valid GUID");
             }
-            return new PSOperationStatus(OperationalInsightsManagementClient.OperationStatuses.Get(location, operationId));
+
+            var response = OperationalInsightsManagementClient.OperationStatuses.Get(location, operationId);
+            return new PSOperationStatus(response);
         }
 
         private bool CheckWorkspaceExists(string resourceGroupName, string workspaceName)
@@ -327,6 +329,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 // Get throws NotFound exception if workspace does not exist
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+
+                throw;
+            }
+            catch (ErrorResponseException ex)
+            {
+                if (ex.Response.StatusCode == HttpStatusCode.NotFound)
                 {
                     return false;
                 }

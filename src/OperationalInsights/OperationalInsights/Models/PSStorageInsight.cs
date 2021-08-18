@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,9 +22,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
     public class PSStorageInsight
     {
-        public PSStorageInsight()
-        {
-        }
 
         public PSStorageInsight(StorageInsight storageInsight, string resourceGroupName, string workspaceName)
         {
@@ -36,22 +32,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
             this.ResourceGroupName = resourceGroupName;
             this.WorkspaceName = workspaceName;
-
-            if (storageInsight != null)
-            {
-                this.Name = storageInsight.Name;
-                this.ResourceId = storageInsight.Id;
-                this.Type = storageInsight.Type;
-
-                this.StorageAccountResourceId = storageInsight.StorageAccount != null ? storageInsight.StorageAccount.Id : null;
-                this.StorageAccountKey = storageInsight.StorageAccount != null ? storageInsight.StorageAccount.Key : null;
-                this.Tables = storageInsight.Tables.ToList();
-                this.Containers = storageInsight.Containers.ToList();
-                this.State = storageInsight.Status != null ? storageInsight.Status.State : null;
-                this.StateDescription = storageInsight.Status != null ? storageInsight.Status.Description : null;
-                this.ETag = storageInsight.ETag;
-                this.Tags = new Hashtable((IDictionary)storageInsight.Tags);
-            }
+            this.Name = storageInsight.Name;
+            this.ResourceId = storageInsight.Id;
+            this.Type = storageInsight.Type;
+            this.StorageAccountResourceId = storageInsight.StorageAccount?.Id;
+            this.StorageAccountKey = storageInsight.StorageAccount?.Key;
+            this.Tables = storageInsight.Tables.ToList();
+            this.Containers = storageInsight.Containers.ToList();
+            this.State = storageInsight.Status?.State;
+            this.StateDescription = storageInsight.Status?.Description;
+            this.ETag = storageInsight.ETag;
+            this.Tags = new Hashtable((IDictionary)storageInsight.Tags);
         }
 
         public string Name { get; set; }

@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -119,7 +118,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     : parameters.Sku.Capacity;
             }
 
-            return new PSCluster(this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch()));
+            var response =
+                this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName,
+                    parameters.GetClusterPatch());
+            return new PSCluster(response);
         }
 
         public virtual HttpStatusCode DeletePSCluster(string resourceGroupName, string clusterName)

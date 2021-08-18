@@ -45,8 +45,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string Sku { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Sku Capacity, value need to be multiple of 100 and at least 0.")]
-        [ValidateNotNullOrEmpty]
-        public int SkuCapacity { get; set; }
+        public int? SkuCapacity { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
