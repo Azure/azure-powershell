@@ -23,23 +23,16 @@ Sets the default account for the scope.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Sets the default account for the scope.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Set-AzPurviewDefaultAccount -AccountName test-pa -ResourceGroupName test-rg -ScopeTenantId xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a
 
-{{ Add output here }}
+AccountName ResourceGroupName Scope                                ScopeTenantId                        ScopeType SubscriptionId
+----------- ----------------- -----                                -------------                        --------- --------------
+test-pa      test-rg            xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a Tenant    xxxxxxxx-1bf0-4dda-aec3
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Sets `test-pa` as the default account for the scope.
 
 ## PARAMETERS
 

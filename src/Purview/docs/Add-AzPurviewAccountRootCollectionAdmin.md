@@ -14,14 +14,13 @@ Add the administrator for root collection associated with this account.
 
 ### AddExpanded (Default)
 ```
-Add-AzPurviewAccountRootCollectionAdmin -AccountName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ObjectId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Add-AzPurviewAccountRootCollectionAdmin -AccountName <String> -ResourceGroupName <String> -ObjectId <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
 ```
-Add-AzPurviewAccountRootCollectionAdmin -InputObject <IPurviewIdentity> [-ObjectId <String>]
+Add-AzPurviewAccountRootCollectionAdmin -InputObject <IPurviewIdentity> -ObjectId <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,23 +29,21 @@ Add the administrator for root collection associated with this account.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add the administrator for root collection
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Add-AzPurviewAccountRootCollectionAdmin -AccountName test-pa -ResourceGroupName test-rg -ObjectId xxxxxxxx-5be9-4f43-abd2-04561777c8b0
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Add the administrator for root collection associated with the account named 'test-pa'.
 
-### Example 2: {{ Add title here }}
+### Example 2: Add the administrator for root collection by InputObject
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\>  $got = Get-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg
+PS C:\>  Add-AzPurviewAccountRootCollectionAdmin -InputObject $got -ObjectId xxxxxxxx-5be9-4f43-abd2-04561777c8b0
 ```
 
-{{ Add description here }}
+Add the administrator for root collection associated with the account named 'test-pa' by InputObject.
 
 ## PARAMETERS
 
@@ -104,7 +101,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

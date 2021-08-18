@@ -5,7 +5,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzPurviewAccount'))
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot '{variantGroup.CmdletName}.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzPurviewAccount.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzPurviewAccount'))
 }
 
 Describe 'Update-AzPurviewAccount' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-AzPurviewAccount -Name $env.accountName -ResourceGroupName $env.resourceGroupName -Tag @{"key"="value"} } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $get = Get-AzPurviewAccount -Name $env.accountName -ResourceGroupName $env.resourceGroupName 
+        { Update-AzPurviewAccount -InputObject $get -Tag @{"key"="value"} } | Should -Not -Throw
     }
 }

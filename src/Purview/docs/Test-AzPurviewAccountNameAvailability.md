@@ -22,23 +22,16 @@ Checks if account name is available.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if account name is available
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzPurviewAccountNameAvailability -Name test-pa -Type Tenant
 
-{{ Add output here }}
+Message                                                 NameAvailable Reason
+-------                                                 ------------- ------
+The name test-pa is invalid, please use another name. False         Invalid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Check if account name 'test-pa' is available.
 
 ## PARAMETERS
 

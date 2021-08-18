@@ -5,7 +5,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPurviewAccount'))
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot '{variantGroup.CmdletName}.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzPurviewAccount.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPurviewAccount'))
 }
 
 Describe 'New-AzPurviewAccount' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $pa = New-AzPurviewAccount -Name $env.accountName3 -ResourceGroupName $env.resourceGroupName -Location eastus -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
+        $pa.Name | should -be $env.accountName3
     }
 }

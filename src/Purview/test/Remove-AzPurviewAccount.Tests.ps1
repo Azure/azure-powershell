@@ -5,7 +5,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzPurviewAccount'))
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot '{variantGroup.CmdletName}.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzPurviewAccount.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzPurviewAccount'))
 }
 
 Describe 'Remove-AzPurviewAccount' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { Remove-AzPurviewAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroupName } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $get = Get-AzPurviewAccount -Name $env.accountName2 -ResourceGroupName $env.resourceGroupName 
+        { Remove-AzPurviewAccount -InputObject $get } | Should -Not -Throw
     }
 }

@@ -1,18 +1,17 @@
-### Example 1: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
+### Example 1: Delete a purview account
 
-{{ Add output here }}
+```powershell
+PS C:\> Remove-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg
+
 ```
 
-{{ Add description here }}
+Delete a purview account named 'test-pa'
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a purview account by InputObject
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $get = Get-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg
+PS C:\> Remove-AzPurviewAccount -InputObject $get
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+Delete a purview account named 'test-pa' by InputObject

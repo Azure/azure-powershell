@@ -5,7 +5,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzPurviewAccountRootColle
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot '{variantGroup.CmdletName}.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Add-AzPurviewAccountRootCollectionAdmin.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzPurviewAccountRootColle
 }
 
 Describe 'Add-AzPurviewAccountRootCollectionAdmin' {
-    It 'AddExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'AddExpanded' {
+        { Add-AzPurviewAccountRootCollectionAdmin -AccountName $env.accountName -ResourceGroupName $env.resourceGroupName -ObjectId $env.objectId } | Should -Not -Throw
     }
 
-    It 'AddViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'AddViaIdentityExpanded' {
+        $got = Get-AzPurviewAccount -Name $env.accountName -ResourceGroupName $env.resourceGroupName
+        { Add-AzPurviewAccountRootCollectionAdmin -InputObject $got -ObjectId $env.objectId } | Should -Not -Throw
     }
 }

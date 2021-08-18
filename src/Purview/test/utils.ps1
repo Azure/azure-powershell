@@ -18,7 +18,25 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+    $env.resourceGroupName = "test-rg" + (RandomString -allChars $false -len 5)
+    $env.location = "eastus2"
+    $env.accountName = "bez-test-pa"
+    $env.accountName1 = "bez-test-pa1"
+    $env.accountName2 = "bez-test-pa2"
+    $env.accountName3 = "bez-test-pa3"
+    $env.skuCapacity = 4
+    $env.skuName = "Standard"
+    $env.identityType = "SystemAssigned"
+    $env.objectId = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
     # For any resources you created for test, you should add it to $env here.
+    Write-Debug "Create resource group for test"
+    New-AzResourceGroup -Name $env.resourceGroupName -Location $env.location
+    
+    Write-Debug "Create purview account for test"
+    New-AzPurviewAccount -Name $env.accountName -ResourceGroupName $env.resourceGroupName -Location $env.location -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
+    New-AzPurviewAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroupName -Location $env.location -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
+    New-AzPurviewAccount -Name $env.accountName2 -ResourceGroupName $env.resourceGroupName -Location $env.location -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
+    Set-AzPurviewDefaultAccount -AccountName $env.accountName -ResourceGroupName $env.resourceGroupName -ScopeTenantId $env.Tenant 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -27,5 +45,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroupName
 }
 

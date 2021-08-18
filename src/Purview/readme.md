@@ -75,4 +75,9 @@ directive:
       verb: Test
       subject: AccountNameAvailability
     hide: true
+  # ObjectId is required
+  - where:
+      verb: Add
+      subject: AccountRootCollectionAdmin
+    hide: true
 ```

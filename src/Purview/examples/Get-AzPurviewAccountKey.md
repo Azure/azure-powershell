@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the authorization keys associated with a specified account.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzPurviewAccountKey -AccountName test-pa -ResourceGroupName test-rg
 
-{{ Add output here }}
+AtlasKafkaPrimaryEndpoint
+-------------------------
+Endpoint=sb://atlas-xxxxxxxx-5348-4811-a336-759242a25d37.servicebus.windows.net/;SharedAccessKeyName=AlternateSharedAccessKey;SharedAcces… 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+List the authorization keys associated with account 'test-pa'.
 

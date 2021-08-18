@@ -5,7 +5,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPurviewAccountKey'))
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot '{variantGroup.CmdletName}.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzPurviewAccountKey.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPurviewAccountKey'))
 }
 
 Describe 'Get-AzPurviewAccountKey' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzPurviewAccountKey -AccountName $env.accountName -ResourceGroupName $env.resourceGroupName } | Should -Not -Throw
     }
 }

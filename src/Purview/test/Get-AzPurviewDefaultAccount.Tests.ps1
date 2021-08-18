@@ -5,7 +5,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPurviewDefaultAccount')
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot '{variantGroup.CmdletName}.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzPurviewDefaultAccount.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPurviewDefaultAccount')
 }
 
 Describe 'Get-AzPurviewDefaultAccount' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzPurviewDefaultAccount -ScopeTenantId $env.tenant -ScopeType Tenant } | Should -Not -Throw
     }
 }
