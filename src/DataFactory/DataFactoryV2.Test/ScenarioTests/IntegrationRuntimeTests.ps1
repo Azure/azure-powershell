@@ -267,19 +267,88 @@ function Test-Azure-IntegrationRuntime
 
     try
     {
-        Write-Debug $dfname
-        Write-Debug $rgname
-        Write-Debug $dflocation
         Set-AzDataFactoryV2 -ResourceGroupName $rgname `
             -Name $dfname `
             -Location $dflocation `
             -Force
-     
-        
+
+        $irname = "test-ManagedElastic-integrationruntime"
+        $description = "ManagedElastic"
+
+        $actual = Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname `
+            -Type Managed `
+            -Description $description `
+            -Force
+
+        $expected = Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname
+        Assert-AreEqual $actual.Name $expected.Name
+        Get-AzDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
+
+        Remove-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
     }
     finally
     {
-        # CleanUp $rgname $dfname
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
+Creates an azure integration runtime with subnetId.
+Deletes the created integration runtime at the end.
+
+To record this test, please prepare a subnet, to which the Azure SSIS IR could join.
+#>
+function Test-Azure-IntegrationRuntime-SubnetId
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        Set-AzDataFactoryV2 -ResourceGroupName $rgname `
+            -Name $dfname `
+            -Location $dflocation `
+            -Force
+
+        $irname = "test-Azure-SSIS-IR-subnetId"
+        $description = "Managed SSIS IR"
+
+        # Get SubnetId from environment variable.
+        $subnetId = $Env:SSIS_IR_SUBNETID ?? "DefaultSubnetID"
+
+        $actual = Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname `
+            -Type Managed `
+            -Description $description `
+            -Location $dflocation `
+            -NodeSize Standard_A4_v2 `
+            -NodeCount 1 `
+            -MaxParallelExecutionsPerNode 1 `
+            -Edition standard `
+            -subnetId $subnetId `
+            -Force
+
+        $expected = Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname
+        Assert-AreEqual $actual.Name $expected.Name
+        Get-AzDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
+
+        Remove-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
     }
 }
 
