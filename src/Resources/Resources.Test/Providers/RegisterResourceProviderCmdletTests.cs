@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
             var registrationResult = provider;
 
             this.providerOperationsMock
-                .Setup(client => client.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
-                .Callback((string providerName, Dictionary<string, List<string>> customHeaders, CancellationToken ignored) =>
+                .Setup(client => client.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()))
+                .Callback((string providerName, ProviderRegistrationRequest properties, Dictionary<string, List<string>> customHeaders, CancellationToken ignored) =>
                         Assert.Equal(ProviderName, providerName, StringComparer.OrdinalIgnoreCase))
                 .Returns(() => Task.FromResult(new AzureOperationResponse<Provider>() {
                     Body = registrationResult
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyCallPatternAndReset(bool succeeded)
         {
-            this.providerOperationsMock.Verify(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
+            this.providerOperationsMock.Verify(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Once() : Times.Never());
 
             this.providerOperationsMock.ResetCalls();

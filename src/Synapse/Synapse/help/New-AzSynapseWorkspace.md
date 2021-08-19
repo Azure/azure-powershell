@@ -17,8 +17,8 @@ New-AzSynapseWorkspace -ResourceGroupName <String> -Name <String> -Location <Str
  -DefaultDataLakeStorageAccountName <String> -DefaultDataLakeStorageFilesystem <String>
  -SqlAdministratorLoginCredential <PSCredential> [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
  [-EncryptionKeyName <String>] [-EncryptionKeyIdentifier <String>] [-AsJob]
- [-ManagedResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ManagedResourceGroupName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ The **New-AzSynapseWorkspace** cmdlet creates an Azure Synapse Analytics workspa
 ```powershell
 PS C:\> $password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
 PS C:\> $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
-PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -AsJob
+PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds
 ```
 
 This command creates a Synapse Analytics workspace named ContosoWorkspace that uses the ContosoAdlGenStorage Data Store, in the resource group named ContosoResourceGroup.
@@ -44,6 +44,16 @@ PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name Con
 ```
 
 The first command creates a managed virtual network configuration. Then the rest methods uses the configuration to creates a new Synapse workspace.
+
+### Example 3
+```powershell
+PS C:\> $password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+PS C:\> $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
+PS C:\> $config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
+PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -GitRepository $config
+```
+
+This command creates a Synapse Analytics workspace named ContosoWorkspace that uses the ContosoAdlGenStorage Data Store, in the resource group named ContosoResourceGroup. And the workspace is connected to a Git Repository called ContosoRepo.
 
 ## PARAMETERS
 
@@ -127,6 +137,21 @@ The workspace encryption key name.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GitRepository
+Git Repository Settings. Connect workspace to the repository for source control and collaboration for work on your workspace pipelines
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSWorkspaceRepositoryConfiguration
 Parameter Sets: (All)
 Aliases:
 

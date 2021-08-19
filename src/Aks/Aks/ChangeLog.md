@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Made `-Subscription <String>` available in all Aks cmdlets. You can manage Aks resources in other subscriptions without switching the context.
 
 ## Version 2.3.0
 * Added `Start-AzAksCluster`, `Stop-AzAksCluster`, `Get-AzAksUpgradeProfile` and `Get-AzAksNodePoolUpgradeProfile`. [#14194]
@@ -31,7 +32,7 @@
 
 ## Version 2.1.0
 * Added support `AcrNameToAttach` in `Set-AzAksCluster`. [#14692]
-* Added support `AcrNameToDetach` in `Set-AzAksCluster`. [#14693] 
+* Added support `AcrNameToDetach` in `Set-AzAksCluster`. [#14693]
 * Added `Set-AzAksClusterCredential` to reset the ServicePrincipal of an existing AKS cluster.
 
 ## Version 2.0.2

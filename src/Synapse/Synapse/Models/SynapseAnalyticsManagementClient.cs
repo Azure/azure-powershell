@@ -132,6 +132,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public Guid GetTenantId()
+        {
+            return this._tenantId;
+        }
+
         public Workspace UpdateWorkspace(string resourceGroupName, string workspaceName, WorkspacePatchInfo updateParams)
         {
             try
