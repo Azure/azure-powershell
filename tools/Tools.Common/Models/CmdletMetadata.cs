@@ -152,9 +152,15 @@ namespace Tools.Common.Models
         {
             "Access",
             "Address",
+            "Alerts",
             "Alias",
             "Anonymous",
+            "Assets",
+            "Bypass",
+            "Credentials",
             "Diagnostics",
+            "Dns",
+            "Expires",
             "Express",
             "Https",
             "InBytes",
@@ -169,11 +175,14 @@ namespace Tools.Common.Models
             "Permissions",
             "Process",
             "Progress",
+            "Properties",
+            "ProxyUseDefaultCredentials",
             "SaveAs",
             "Statistics",
             "Status",
             "Success",
-            "Vmss"
+            "Vmss",
+            "Windows"
         };
 
         public List<ParameterMetadata> GetParametersWithPluralNoun()
