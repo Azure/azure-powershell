@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Update to Get-AzSentinelIncident parameters
+* Updated to Get-AzSentinelIncident parameters
     - Added -Filter to support OData filter
     - Added -OrderBy to suppoert OData ordering
     - Added -Max to support retrieving more than the default of 1000 incidents.
