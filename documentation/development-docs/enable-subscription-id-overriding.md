@@ -5,7 +5,15 @@
 ## Steps
 
 1. {add attribute}
-2. if any cmdlet implememts IDynamicParameter
+    ```
+    code sample
+    ```
+1. if any cmdlet implememts IDynamicParameter already, make sure
+    1. `GetDynamicParameters()` is decorates with [`new` keyword](link placeholder)
+    1. `base.GetDynamicParameters()` is called and the results are combined
+        ```
+        code sample
+        ```
 
 ## Troubleshooting
 
