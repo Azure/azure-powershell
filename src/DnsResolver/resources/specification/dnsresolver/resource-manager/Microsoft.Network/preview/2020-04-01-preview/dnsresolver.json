@@ -2302,7 +2302,8 @@
         "port": {
           "description": "DNS server port.",
           "type": "integer",
-          "format": "int64"
+          "format": "int32",
+          "default": 53
         }
       }
     },
