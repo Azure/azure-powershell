@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an existing cluster by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -SkuName "Storage optimized" -SkuSize Medium
 
-{{ Add output here }}
+Location  Name                    Type                                    Etag
+--------  ----                    ----                                    ----
+East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+The above command updates the sku of the Kusto pool "testnewkustopool" found in the workspace "testws".

@@ -34,23 +34,28 @@ Gets a Kusto pool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all Kusto pools in a workspace
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws
 
-{{ Add output here }}
+Location  Name                     Type                                    Etag
+--------  ----                     ----                                    ----
+East US 2 testws/testnewkustopool  Microsoft.Synapse/workspaces/kustoPools 
+East US 2 testws/testnewkustopool1 Microsoft.Synapse/workspaces/kustoPools
 ```
 
-{{ Add description here }}
+The above command lists all Kusto pools in the resource group "testrg".
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific Kusto pool by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSynapseKustoPool -ResourceGroupName testrg -Name testnewkustopool
 
-{{ Add output here }}
+Location  Name                    Type                                    Etag
+--------  ----                    ----                                    ----
+East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools 
 ```
 
-{{ Add description here }}
+The above command returns the Kusto pool named "testnewkustopool" in the resource group "testrg".
 
 ## PARAMETERS
 
@@ -155,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool
+### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210401Preview.IKustoPool
 
 ## NOTES
 
