@@ -100,7 +100,7 @@ directive:
     hide: true
   - where:
       verb: Get|New|Remove
-      subject: ScriptExecution|WorkloadNetworkPublicIP
+      subject: ScriptExecution|WorkloadNetworkPublicIP|Datastore
     hide: true
   - where:
       verb: Get|New|Update|Remove
@@ -113,13 +113,11 @@ directive:
   - no-inline:
       - AddonProperties
   - model-cmdlet:
-      - ScriptExecutionParameter
       - ScriptSecureStringExecutionParameter
       - ScriptStringExecutionParameter
       - PSCredentialExecutionParameter
       - AddonSrmProperties
       - AddonVrProperties
-      #- AddonHcxProperties
   - where:
       verb: Test
       subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$

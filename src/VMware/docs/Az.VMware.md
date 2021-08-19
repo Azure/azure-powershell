@@ -1,6 +1,6 @@
 ---
 Module Name: Az.VMware
-Module Guid: 78d2fac8-ec90-47ad-b8aa-a27106b158f5
+Module Guid: 6ced3ed2-fb86-4a72-aca7-369161b12fea
 Download Help Link: https://docs.microsoft.com/powershell/module/az.vmware
 Help Version: 1.0.0.0
 Locale: en-US
@@ -20,9 +20,6 @@ Get an cloud link by name in a private cloud
 ### [Get-AzVMwareCluster](Get-AzVMwareCluster.md)
 Get a cluster by name in a private cloud
 
-### [Get-AzVMwareDatastore](Get-AzVMwareDatastore.md)
-Get a datastore in a private cloud cluster
-
 ### [Get-AzVMwareExpressRouteAuthorization](Get-AzVMwareExpressRouteAuthorization.md)
 Get an ExpressRoute Circuit Authorization by name in a private cloud
 
@@ -38,9 +35,6 @@ List the admin credentials for the private cloud
 ### [New-AzVMwareAddon](New-AzVMwareAddon.md)
 Create or update a addon in a private cloud
 
-### [New-AzVMwareAddonHcxPropertiesObject](New-AzVMwareAddonHcxPropertiesObject.md)
-Create a in-memory object for AddonHcxProperties
-
 ### [New-AzVMwareAddonSrmPropertiesObject](New-AzVMwareAddonSrmPropertiesObject.md)
 Create a in-memory object for AddonSrmProperties
 
@@ -52,9 +46,6 @@ Create or update a cloud link in a private cloud
 
 ### [New-AzVMwareCluster](New-AzVMwareCluster.md)
 Create or update a cluster in a private cloud
-
-### [New-AzVMwareDatastore](New-AzVMwareDatastore.md)
-Create or update a datastore in a private cloud cluster
 
 ### [New-AzVMwareExpressRouteAuthorization](New-AzVMwareExpressRouteAuthorization.md)
 Create or update an ExpressRoute Circuit Authorization in a private cloud
@@ -74,9 +65,6 @@ Rotate the vCenter password
 ### [New-AzVMwarePSCredentialExecutionParameterObject](New-AzVMwarePSCredentialExecutionParameterObject.md)
 Create a in-memory object for PSCredentialExecutionParameter
 
-### [New-AzVMwareScriptExecutionParameterObject](New-AzVMwareScriptExecutionParameterObject.md)
-Create a in-memory object for ScriptExecutionParameter
-
 ### [New-AzVMwareScriptSecureStringExecutionParameterObject](New-AzVMwareScriptSecureStringExecutionParameterObject.md)
 Create a in-memory object for ScriptSecureStringExecutionParameter
 
@@ -91,9 +79,6 @@ Delete a cloud link in a private cloud
 
 ### [Remove-AzVMwareCluster](Remove-AzVMwareCluster.md)
 Delete a cluster in a private cloud
-
-### [Remove-AzVMwareDatastore](Remove-AzVMwareDatastore.md)
-Delete a datastore in a private cloud cluster
 
 ### [Remove-AzVMwareExpressRouteAuthorization](Remove-AzVMwareExpressRouteAuthorization.md)
 Delete an ExpressRoute Circuit Authorization in a private cloud
