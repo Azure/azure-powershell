@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnEndpointResourceUsage", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSResourceUsage))]
     public class GetAzureRmCdnEndpointResourceUsage : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN endpoint name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 

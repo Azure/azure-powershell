@@ -14,27 +14,37 @@ Gets the resource usage of a CDN endpoint.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzCdnEndpointResourceUsage [-EndpointName <String>] -ProfileName <String> -ResourceGroupName <String>
+Get-AzCdnEndpointResourceUsage -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzCdnEndpointResourceUsage [-EndpointName <String>] -CdnEndpoint <PSEndpoint>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCdnEndpointResourceUsage -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzCdnEndpointResourceUsage** cmdlet gets resource limits and current usage for a CDN endpoint.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> Get-AzCdnEndpointResourceUsage -ProfileName profile1 -ResourceGroupName rg -EndpointName endpoint1
+ResourceType          Unit  CurrentValue Limit
+------------          ----  ------------ -----
+customdomain          count            2    20
+geofilter             count            1    25
+deliveryrule          count            2    25
+deliveryrulecondition count            2    10
+deliveryruleaction    count            1     5
+origin                count            2    10
+origingroup           count            2    10
+originsPerOriginGroup count            2    10
 ```
 
-{{ Add example description here }}
+This example shows the resource limits and current usage of the endpoint with name 'endpoint1' under profile 'profile1'.
 
 ## PARAMETERS
 
@@ -73,10 +83,10 @@ Azure CDN endpoint name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
