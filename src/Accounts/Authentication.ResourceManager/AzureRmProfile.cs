@@ -830,5 +830,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             Save(ProfilePath, false);
         }
+
+        public IAzureContextContainer CopyForContextOverriding()
+        {
+            var copy = MemberwiseClone() as AzureRmProfile;
+            copy.Contexts = new ConcurrentDictionary<string, IAzureContext>(copy.Contexts, StringComparer.CurrentCultureIgnoreCase);
+            return copy;
+        }
     }
 }
