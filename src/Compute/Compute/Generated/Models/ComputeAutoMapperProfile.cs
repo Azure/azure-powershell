@@ -201,6 +201,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.CapacityReservation, TO.PSCapacityReservationList>();
                 cfg.CreateMap<TO.PSCapacityReservationList, TO.PSCapacityReservation>();
                 cfg.CreateMap<TO.PSCapacityReservation, TO.PSCapacityReservationList>();
+                cfg.CreateMap<FROM.RestorePoint, TO.PSRestorePoint>();
+                cfg.CreateMap<FROM.RestorePointCollection, TO.PSRestorePointCollection>();
             });
             _mapper = config.CreateMapper();
         }

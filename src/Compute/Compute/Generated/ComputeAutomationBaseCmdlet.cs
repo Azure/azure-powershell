@@ -257,6 +257,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IRestorePointCollectionsOperations RestorePointCollectionsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.RestorePointCollections;
+            }
+        }
+
+        public IRestorePointsOperations RestorePointClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.RestorePoints;
+            }
+        }
+
         public static string FormatObject(Object obj)
         {
             var objType = obj.GetType();
