@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
             if (this.Capacity < 1000)
             {
-                throw new PSArgumentException("SkuCapacity need to be above 1000 GB ");
+                throw new PSArgumentException("SkuCapacity need to be more than 1000 GB ");
             }
 
             if (this.Capacity % 100 != 0)
