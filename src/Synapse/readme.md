@@ -53,7 +53,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
 
 ```
 
@@ -70,63 +70,26 @@ clear-output-folder: true
 output-folder: .
 ```
 
-<!-- > Directives
+> Directives
 ``` yaml
 identity-correction-for-post: true
 directive:
-  # Fix the error in swagger, RP actually returns 200 when deletion succeeds
-  - from: swagger-document
-    where: $..produces
-    transform: $ = $.filter( each => each === 'application/json');
-    reason: this spec adds produces application/xml and text/json erronously.
-  # Fix the case mismatch between swagger and RP
-  - from: swagger-document
-    where: $
-    transform: return $.replace(/\/clusters\//g, "/Clusters/")
-  - from: swagger-document
-    where: $
-    transform: return $.replace(/\/databases\//g, "/Databases/")
-  - from: swagger-document
-    where: $
-    transform: return $.replace(/\/dataConnections\//g, "/DataConnections/")
-  - from: swagger-document
-    where: $
-    transform: return $.replace(/\/attachedDatabaseConfigurations\//g, "/AttachedDatabaseConfigurations/")
-  - from: swagger-document
-    where: $
-    transform: return $.replace(/\/principalAssignments\//g, "/PrincipalAssignments/")
-  # Remove the unexpanded parameter set
+  # Remove all commands except kusto pool
   - where:
-      variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Detach$|^DetachViaIdentity$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
-  # Remove the unexpanded parameter set for specific commands
   - where:
-      subject: ^AttachedDatabaseConfiguration$|^Cluster$|^ClusterPrincipalAssignment$|^DatabasePrincipalAssignment$
+      subject: ^Database$|^DataConnection$|^KustoPoolPrincipalAssignment$|^DatabasePrincipalAssignment$|^KustoOperation$|^KustoPoolLanguageExtension$|^AttachedDatabaseConfiguration$|^KustoPoolFollowerDatabase$|^KustoPoolSku$
+    remove: true
+  - where:
+      verb: Set|Test|Start|Stop|Invoke
+    remove: true
+  - where:
+      subject: ^KustoPool$
       variant: ^Create$|^Update$|^UpdateViaIdentity$
     remove: true
-  - where:
-      verb: Remove
-      subject: DatabasePrincipal|ClusterLanguageExtension
-      variant: ^Remove$|^RemoveViaIdentity$
-    remove: true
-  # Custom commands
-  - where:
-      subject: ^DataConnectionValidation$
-    hide: true
-  - where:
-      subject: ^Database$|^DataConnection$
-      variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
-    hide: true
-  # Hide the operation API
-  - where:
-      subject: Operation
-    hide: true
-  # Remove the set-* cmdlet
-  - where:
-      verb: Set
-    remove: true
-  # Correct some generated code
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api202101.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api202101.IDataConnection Property');
-``` -->
+  # change API version
+  - from: kustoPool.json
+    where: $.info.version
+    transform: $ = $.replace("2021-06-01-preview", '2021-04-01-preview');
+```

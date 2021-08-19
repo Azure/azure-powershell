@@ -12,7 +12,6 @@ Create or update a Kusto pool.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzSynapseKustoPool -Name <String> -ResourceGroupName <String> -WorkspaceName <String> -Location <String>
  -SkuName <SkuName> -SkuSize <SkuSize> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
@@ -22,51 +21,21 @@ New-AzSynapseKustoPool -Name <String> -ResourceGroupName <String> -WorkspaceName
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzSynapseKustoPool -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -Parameter <IKustoPool> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzSynapseKustoPool -InputObject <ISynapseIdentity> -Parameter <IKustoPool> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzSynapseKustoPool -InputObject <ISynapseIdentity> -Location <String> -SkuName <SkuName>
- -SkuSize <SkuSize> [-IfMatch <String>] [-IfNoneMatch <String>] [-EnablePurge] [-EnableStreamingIngest]
- [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-WorkspaceUid <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Create or update a Kusto pool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Kusto pool
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -Location 'East US' -SkuName "Storage optimized" -SkuSize Medium -WorkspaceUid "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-{{ Add output here }}
+Location  Name                    Type                                    Etag
+--------  ----                    ----                                    ----
+East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The above command creates a new Kusto pool named "testnewkustopool" in the workspace "testws".
 
 ## PARAMETERS
 
@@ -105,7 +74,7 @@ A boolean value that indicates if the purge operations are enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -120,7 +89,7 @@ A boolean value that indicates if the streaming ingest is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -163,28 +132,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -199,7 +152,7 @@ The name of the Kusto pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases: KustoPoolName
 
 Required: True
@@ -229,7 +182,7 @@ A boolean value that indicate if the optimized autoscale feature is enabled or n
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -244,7 +197,7 @@ Maximum allowed instances count.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -259,7 +212,7 @@ Minimum allowed instances count.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -274,7 +227,7 @@ The version of the template defined, for instance 1.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -284,29 +237,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Class representing a Kusto kusto pool.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -321,7 +258,7 @@ The number of instances of the cluster.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -336,7 +273,7 @@ SKU name.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuName
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -351,7 +288,7 @@ SKU size.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuSize
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -366,7 +303,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -381,7 +318,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -396,7 +333,7 @@ The name of the workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -411,7 +348,7 @@ The workspace unique identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -457,57 +394,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool
-
-### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool
+### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210401Preview.IKustoPool
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
-  - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
-  - `[DataConnectionName <String>]`: The name of the data connection.
-  - `[DatabaseName <String>]`: The name of the database in the Kusto pool.
-  - `[Id <String>]`: Resource identity path
-  - `[KustoPoolName <String>]`: The name of the Kusto pool.
-  - `[Location <String>]`: The name of Azure region.
-  - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace
-
-PARAMETER <IKustoPool>: Class representing a Kusto kusto pool.
-  - `Location <String>`: The geo-location where the resource lives
-  - `SkuName <SkuName>`: SKU name.
-  - `SkuSize <SkuSize>`: SKU size.
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[EnablePurge <Boolean?>]`: A boolean value that indicates if the purge operations are enabled.
-  - `[EnableStreamingIngest <Boolean?>]`: A boolean value that indicates if the streaming ingest is enabled.
-  - `[LanguageExtensionValue <ILanguageExtension[]>]`: The list of language extensions.
-    - `[Name <LanguageExtensionName?>]`: The language extension name.
-  - `[OptimizedAutoscaleIsEnabled <Boolean?>]`: A boolean value that indicate if the optimized autoscale feature is enabled or not.
-  - `[OptimizedAutoscaleMaximum <Int32?>]`: Maximum allowed instances count.
-  - `[OptimizedAutoscaleMinimum <Int32?>]`: Minimum allowed instances count.
-  - `[OptimizedAutoscaleVersion <Int32?>]`: The version of the template defined, for instance 1.
-  - `[SkuCapacity <Int32?>]`: The number of instances of the cluster.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[WorkspaceUid <String>]`: The workspace unique identifier.
 
 ## RELATED LINKS
 

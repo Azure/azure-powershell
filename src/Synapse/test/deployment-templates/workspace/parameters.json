@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceName": {
+      "value": "workspacem1ntvy"
+    },
+    "defaultDataLakeStorageAccountName": {
+      "value": "storagem1ntvy"
+    },
+    "defaultDataLakeStorageFilesystemName": {
+      "value": "filesystemm1ntvy"
+    }
+  }
+}
