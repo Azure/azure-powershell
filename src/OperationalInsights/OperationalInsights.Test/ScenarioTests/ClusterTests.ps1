@@ -20,12 +20,12 @@ function Test-ClusterCRUD
 {
 	# setup
 	$rgName = Get-ResourceGroupName
-	$clusterName = Get-ResourceName
+	$wsName = Get-ResourceName
 	$loc = Get-ProviderLocation
 
 	$rgNameExisting = "dabenham-dev"
 	$clusterNameExisting = "dabenhamCluster-dev"
-	$keyNameExisting = "dabenham-kv"
+	$keyNameExisting = "TestClusterKey"
 	$kvUri = "https://dabenham-kv.vault.azure.net/"
 	$version = "9ac53081c8fe45f0b26d9d476b29c017"
 
@@ -45,6 +45,7 @@ function Test-ClusterCRUD
 		$cluster = $job | Receive-Job
 
 		Assert-NotNull $cluster
+		Assert-AreEqual $keyNameExisting $cluster.KeyVaultProperties.KeyName
 		Assert-AreEqual 1500 $cluster.Sku.Capacity
 		Assert-AreEqual "Succeeded" $cluster.ProvisioningState
 	}
