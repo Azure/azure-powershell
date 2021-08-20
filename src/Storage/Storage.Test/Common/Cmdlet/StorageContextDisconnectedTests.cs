@@ -91,6 +91,10 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
             {
                 
             }
+            public IAzureContextContainer CopyForContextOverriding()
+            {
+                return this;
+            }
         }
 
         public AzureSMProfileProvider smProvider = AzureSMProfileProvider.Instance;

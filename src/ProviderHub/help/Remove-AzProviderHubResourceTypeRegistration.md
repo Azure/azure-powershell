@@ -36,12 +36,12 @@ PS C:\> Remove-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microso
 
 Delete a resource type registration by name.
 
-### Example 2: Delete a resource type registration by name.
+### Example 2: Delete a nested resource type registration by name.
 ```powershell
-PS C:\> Remove-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType"
+PS C:\> Remove-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType/nestedResourceType"
 ```
 
-Delete a resource type registration by name.
+Delete a nested resource type registration by name.
 
 ## PARAMETERS
 

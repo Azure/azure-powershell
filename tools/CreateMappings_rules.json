@@ -684,5 +684,9 @@
   {
     "regex": "ChangeAnalysis",
     "alias": "ChangeAnalysis"
+  },
+  {
+    "alias": "Purview",
+    "regex": "Purview"
   }
 ]
