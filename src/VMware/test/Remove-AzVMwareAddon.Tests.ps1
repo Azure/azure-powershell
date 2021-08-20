@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Remove-AzVMwareAddon' {
     It 'Delete' {
         {
-            Remove-AzVMwareAddon -AddonType vr -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGourp2
+            Remove-AzVMwareAddon -AddonType vr -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGroup2
         } | Should -Not -Throw
     }
 

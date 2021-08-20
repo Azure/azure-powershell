@@ -1,0 +1,520 @@
+{
+  "Remove-AzVMwareAddon+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "25fdda90-a9d9-48c6-8163-d3735b39e69d" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationresults/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "Azure-AsyncOperation": [ "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01" ],
+        "x-ms-request-id": [ "5eb91cd4-08c3-4095-836e-3a186a84fbd6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "29deb2c4-6ce4-4306-91dd-55d2dbb0d6e4" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024246Z:29deb2c4-6ce4-4306-91dd-55d2dbb0d6e4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 24502623575447CE91372730DBAE4803 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:42:45Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:42:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "291" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr\",\"name\":\"vr\",\"properties\":{\"addonType\":\"VR\",\"provisioningState\":\"Deleting\",\"vrsCount\":2},\"type\":\"Microsoft.AVS/privateClouds/addons\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+Delete+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "25fdda90-a9d9-48c6-8163-d3735b39e69d" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14886" ],
+        "x-ms-request-id": [ "e45fdf29-505e-453f-aa74-e0ae4d13b5b1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "c9031825-ac26-4ffd-8f65-36af2867cba6" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024257Z:c9031825-ac26-4ffd-8f65-36af2867cba6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 151A6C1FA9F442F69588D5BBF3FFF881 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:42:56Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:42:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "348" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163\",\"name\":\"8e012533-ee3d-4858-8396-1fd6707c0163\",\"percentComplete\":0,\"startTime\":\"2021-08-20T02:42:45.3940905+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+Delete+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "25fdda90-a9d9-48c6-8163-d3735b39e69d" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14885" ],
+        "x-ms-request-id": [ "e5c52ab0-0591-4ccd-baff-ad80dad8f2aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "57da99dc-d287-49c0-9ec3-b85693daa62b" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024307Z:57da99dc-d287-49c0-9ec3-b85693daa62b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3BF1C54408BC42078B6ECF9F00C2FDBA Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:43:07Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:43:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "349" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163\",\"name\":\"8e012533-ee3d-4858-8396-1fd6707c0163\",\"percentComplete\":50,\"startTime\":\"2021-08-20T02:42:45.3940905+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+Delete+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "25fdda90-a9d9-48c6-8163-d3735b39e69d" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14884" ],
+        "x-ms-request-id": [ "06039636-2e60-4d48-876a-4146d13731b6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "7a2140ca-f4cd-4eae-81e0-77b731beeb81" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024318Z:7a2140ca-f4cd-4eae-81e0-77b731beeb81" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DDCF99606C7D45E8B99B4BA6C60F2CFA Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:43:18Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:43:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "348" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163\",\"name\":\"8e012533-ee3d-4858-8396-1fd6707c0163\",\"percentComplete\":0,\"startTime\":\"2021-08-20T02:42:45.3940905+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+Delete+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "25fdda90-a9d9-48c6-8163-d3735b39e69d" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14883" ],
+        "x-ms-request-id": [ "f71e3393-f292-4ec8-806e-032b0a4ec6c8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "cad1d170-9e9b-44e5-a51d-ce851b4903ac" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024329Z:cad1d170-9e9b-44e5-a51d-ce851b4903ac" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 28462D0256A44313B10D138CA2615748 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:43:28Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:43:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "397" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"endTime\":\"2021-08-20T02:43:22.0988451+00:00\",\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationstatuses/8e012533-ee3d-4858-8396-1fd6707c0163\",\"name\":\"8e012533-ee3d-4858-8396-1fd6707c0163\",\"percentComplete\":100,\"startTime\":\"2021-08-20T02:42:45.3940905+00:00\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+Delete+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationresults/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr/operationresults/8e012533-ee3d-4858-8396-1fd6707c0163?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "25fdda90-a9d9-48c6-8163-d3735b39e69d" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14882" ],
+        "x-ms-request-id": [ "34ea8aa3-a472-40d1-8bf1-37352e21adc3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "9fa25aed-66e3-45a4-be14-e76ffd0f900c" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024329Z:9fa25aed-66e3-45a4-be14-e76ffd0f900c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8F8A0175E5E246ADBE6C46A62D1B5BAE Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:43:29Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:43:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "c86ae222-5e50-4730-89bb-e797641311d6" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationresults/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "Azure-AsyncOperation": [ "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01" ],
+        "x-ms-request-id": [ "14b75403-c7b6-41c0-9e24-e3e5e6e0e1fe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "7ed4bd5e-85d9-4205-b897-c9237d115b98" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024330Z:7ed4bd5e-85d9-4205-b897-c9237d115b98" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 14CDD4D753564F8B9FFD8D5BCDC07D67 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:43:30Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:43:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "291" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr\",\"name\":\"vr\",\"properties\":{\"addonType\":\"VR\",\"provisioningState\":\"Deleting\",\"vrsCount\":2},\"type\":\"Microsoft.AVS/privateClouds/addons\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+DeleteViaIdentity+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "c86ae222-5e50-4730-89bb-e797641311d6" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14881" ],
+        "x-ms-request-id": [ "a0cb4ba9-1925-4861-8a67-fbd3fede7877" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "733a2be6-7ef5-44de-bdd2-8cffdc6df1f2" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024341Z:733a2be6-7ef5-44de-bdd2-8cffdc6df1f2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 890BDC3C88C14E8A969435BE3FC76D53 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:43:40Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:43:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "348" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12\",\"name\":\"32e9c307-96fb-4514-a6fe-393676eb5f12\",\"percentComplete\":0,\"startTime\":\"2021-08-20T02:43:29.4435059+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+DeleteViaIdentity+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "c86ae222-5e50-4730-89bb-e797641311d6" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14880" ],
+        "x-ms-request-id": [ "e8630b92-ab9a-4b02-a58c-32998cb60e01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "804487ee-dd70-4a42-bf64-c2a4cc44deb0" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024351Z:804487ee-dd70-4a42-bf64-c2a4cc44deb0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 81C10EA7BCB240958C35EFBAE8BFF585 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:43:51Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:43:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "348" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12\",\"name\":\"32e9c307-96fb-4514-a6fe-393676eb5f12\",\"percentComplete\":0,\"startTime\":\"2021-08-20T02:43:29.4435059+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+DeleteViaIdentity+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "c86ae222-5e50-4730-89bb-e797641311d6" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14879" ],
+        "x-ms-request-id": [ "ee478745-e52c-4f24-91dc-c4ccb43f59dd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "769f44fc-2e95-4d5e-a55b-617ffb2dd636" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024402Z:769f44fc-2e95-4d5e-a55b-617ffb2dd636" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 34E2B267C55140498240C3A88CD2AE62 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:44:02Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:44:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "348" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12\",\"name\":\"32e9c307-96fb-4514-a6fe-393676eb5f12\",\"percentComplete\":0,\"startTime\":\"2021-08-20T02:43:29.4435059+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+DeleteViaIdentity+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "c86ae222-5e50-4730-89bb-e797641311d6" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14878" ],
+        "x-ms-request-id": [ "beafbf41-60a4-45a4-b0ba-8aebe9a7cb2d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "23050e26-0c61-4e5b-acbf-a7ce8de5db13" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024413Z:23050e26-0c61-4e5b-acbf-a7ce8de5db13" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 08A0DB916D5E4427917037E18F754CBC Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:44:13Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:44:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "397" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"endTime\":\"2021-08-20T02:44:07.1085155+00:00\",\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationstatuses/32e9c307-96fb-4514-a6fe-393676eb5f12\",\"name\":\"32e9c307-96fb-4514-a6fe-393676eb5f12\",\"percentComplete\":100,\"startTime\":\"2021-08-20T02:43:29.4435059+00:00\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVMwareAddon+[NoContext]+DeleteViaIdentity+$GET+https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationresults/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/addons/vr/operationresults/32e9c307-96fb-4514-a6fe-393676eb5f12?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "c86ae222-5e50-4730-89bb-e797641311d6" ],
+        "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
+        "FullCommandName": [ "Remove-AzVMwareAddon_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14877" ],
+        "x-ms-request-id": [ "4ffbb0d4-0e1a-4d6d-ae1c-55e9a1999f1e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "a03c95fa-783f-4b6a-b84f-d9c1157ed251" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024414Z:a03c95fa-783f-4b6a-b84f-d9c1157ed251" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D8F9BAF3D6C74E1FB5F125417D83E4FD Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:44:13Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:44:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  }
+}

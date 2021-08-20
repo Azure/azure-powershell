@@ -1,0 +1,298 @@
+{
+  "New-AzVMwareAddon+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR?api-version=2021-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"addonType\": \"VR\",\r\n    \"vrsCount\": 2\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "71" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01" ],
+        "x-ms-request-id": [ "88010f38-f4cb-4ad2-bf2f-ccf271228a2a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "187b6312-009e-4e26-b7d1-3121df25ab69" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024147Z:187b6312-009e-4e26-b7d1-3121df25ab69" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5D7661CD4AF54AF6B555847A4A7BF858 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:41:46Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:41:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "291" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr\",\"name\":\"vr\",\"properties\":{\"addonType\":\"VR\",\"provisioningState\":\"Building\",\"vrsCount\":2},\"type\":\"Microsoft.AVS/privateClouds/addons\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "82b4bba9-04f5-4c5e-8e60-ca2efaeea3e3" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
+        "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14892" ],
+        "x-ms-request-id": [ "bcebadba-0bda-4067-b729-191916807876" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "29785ae2-7666-4439-81d8-b5eb8b2cdff7" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024158Z:29785ae2-7666-4439-81d8-b5eb8b2cdff7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F28EFBD243FC4CBFB4D305564C72657C Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:41:58Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:41:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "349" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e\",\"name\":\"aa4f0b18-539f-41be-a04f-07395deb462e\",\"percentComplete\":25,\"startTime\":\"2021-08-20T02:41:46.6024644+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "82b4bba9-04f5-4c5e-8e60-ca2efaeea3e3" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
+        "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14891" ],
+        "x-ms-request-id": [ "67534d43-e91f-4718-9896-60d02d8cf9a3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "58b9b3de-0dd7-4162-b174-8556de3d15d8" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024208Z:58b9b3de-0dd7-4162-b174-8556de3d15d8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 030A4F51497E4603812DC57B69603CFC Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:42:08Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:42:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "348" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e\",\"name\":\"aa4f0b18-539f-41be-a04f-07395deb462e\",\"percentComplete\":0,\"startTime\":\"2021-08-20T02:41:46.6024644+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "82b4bba9-04f5-4c5e-8e60-ca2efaeea3e3" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
+        "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14890" ],
+        "x-ms-request-id": [ "1951d348-d87a-4a8d-b3aa-74d1e55cddb3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "bd0a693d-4af7-4055-846e-27b151d99e9b" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024219Z:bd0a693d-4af7-4055-846e-27b151d99e9b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2AB6102E788C48CAB05FDF4E1C01437A Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:42:19Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:42:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "349" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e\",\"name\":\"aa4f0b18-539f-41be-a04f-07395deb462e\",\"percentComplete\":50,\"startTime\":\"2021-08-20T02:41:46.6024644+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "82b4bba9-04f5-4c5e-8e60-ca2efaeea3e3" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
+        "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14889" ],
+        "x-ms-request-id": [ "9d05bf9c-3b6a-417c-9b8f-6fe280f181a6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "71689d98-9ce0-4d3a-82b1-e4900e3a5296" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024230Z:71689d98-9ce0-4d3a-82b1-e4900e3a5296" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B09259837D9846A9A5F6AB0C224348A0 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:42:29Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:42:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "348" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e\",\"name\":\"aa4f0b18-539f-41be-a04f-07395deb462e\",\"percentComplete\":0,\"startTime\":\"2021-08-20T02:41:46.6024644+00:00\",\"status\":\"Building\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "82b4bba9-04f5-4c5e-8e60-ca2efaeea3e3" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
+        "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14888" ],
+        "x-ms-request-id": [ "b29ecd45-6b94-429d-a4a3-200f25037153" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "aa94e32d-8268-4289-a59a-d8d3f5943321" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024240Z:aa94e32d-8268-4289-a59a-d8d3f5943321" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CF9781CF39354C90A8F46490B220D381 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:42:40Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:42:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "703" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"endTime\":\"2021-08-20T02:42:27.0997441+00:00\",\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR/operationstatuses/aa4f0b18-539f-41be-a04f-07395deb462e\",\"name\":\"aa4f0b18-539f-41be-a04f-07395deb462e\",\"percentComplete\":100,\"properties\":{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr\",\"name\":\"vr\",\"properties\":{\"addonType\":\"VR\",\"provisioningState\":\"Succeeded\",\"vrsCount\":2},\"type\":\"Microsoft.AVS/privateClouds/addons\"},\"startTime\":\"2021-08-20T02:41:46.6024644+00:00\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR?api-version=2021-06-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/VR?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "82b4bba9-04f5-4c5e-8e60-ca2efaeea3e3" ],
+        "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
+        "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14887" ],
+        "x-ms-request-id": [ "9d1ce665-8e09-4fa5-a3ef-ee7a3468bf07" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "5e46112f-24c2-4246-811e-6015d92e4a60" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20210820T024241Z:5e46112f-24c2-4246-811e-6015d92e4a60" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3D9B403771664355BB4832A159065663 Ref B: SG2EDGE1321 Ref C: 2021-08-20T02:42:41Z" ],
+        "Date": [ "Fri, 20 Aug 2021 02:42:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "292" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/addons/vr\",\"name\":\"vr\",\"properties\":{\"addonType\":\"VR\",\"provisioningState\":\"Succeeded\",\"vrsCount\":2},\"type\":\"Microsoft.AVS/privateClouds/addons\"}",
+      "isContentBase64": false
+    }
+  }
+}

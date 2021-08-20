@@ -12,27 +12,27 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzVMwareAddon' {
-    It 'List' -skip {
+    It 'List' {
         {
             $config = New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
-            $config = New-AzVMwareAddon -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1 -Property $config
+            $config = New-AzVMwareAddon -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -Property $config
             $config.Name | Should -Be "VR"
 
-            $config = Get-AzVMwareAddon -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1
+            $config = Get-AzVMwareAddon -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
             $config.Count | Should -Be 1
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $config = Get-AzVMwareAddon -AddonType vr -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGourp1
+            $config = Get-AzVMwareAddon -AddonType vr -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
             $config.Name | Should -Be "vr"
         } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' {
         {
-            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/addons/srm"
+            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/addons/vr"
             $config = Get-AzVMwareAddon -InputObject $Id1
             $config.Type | Should -Be "Microsoft.AVS/privateClouds/addons"
         } | Should -Not -Throw
