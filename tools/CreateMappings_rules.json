@@ -680,5 +680,9 @@
   {
     "alias": "Datadog",
     "regex": "Datadog"
+  },
+  {
+    "alias": "Purview",
+    "regex": "Purview"
   }
 ]
