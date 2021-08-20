@@ -34,16 +34,22 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = StopByWorkspaceObject,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByTrObject,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.TriggerName)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByName,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByWorkspaceObject,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [Alias("TriggerName")]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.TriggerRunId)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByName,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByWorkspaceObject,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         public string TriggerRunId { get; set; }
 
         [Parameter(Mandatory = false)]
