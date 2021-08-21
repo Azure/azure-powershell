@@ -114,7 +114,7 @@ function Test-JobWithTaskDependencies
 
         $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
         $poolSpec.TargetDedicated = $targetDedicated = 3
-        $poolSpec.VirtualMachineSize = $vmSize = "small"
+        $poolSpec.VirtualMachineSize = $vmSize = "standard_d1_v2"
         $poolSpec.CloudServiceConfiguration = $paasConfiguration
         $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
         $autoPoolSpec.PoolSpecification = $poolSpec
@@ -162,8 +162,8 @@ function IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails
     $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
-    $poolSpec.TargetDedicatedComputeNodes = $targetDedicated = 3
-    $poolSpec.VirtualMachineSize = $vmSize = "small"
+    $poolSpec.TargetDedicatedComputeNodes = $targetDedicated = 1
+    $poolSpec.VirtualMachineSize = $vmSize = "standard_d1_v2"
     $poolSpec.CloudServiceConfiguration = $paasConfiguration
     $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
     $autoPoolSpec.PoolSpecification = $poolSpec

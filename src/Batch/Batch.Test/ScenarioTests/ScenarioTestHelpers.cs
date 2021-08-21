@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
-                VirtualMachineSize = "small",
+                VirtualMachineSize = "standard_d1_v2",
                 CloudServiceConfiguration = paasConfiguration,
                 TargetDedicatedComputeNodes = targetDedicated,
                 TargetLowPriorityComputeNodes = targetLowPriority,
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             DateTime timeout = DateTime.Now.AddMinutes(10);
 
-            while (job.State != JobState.Completed || DateTime.Now > timeout)
+            while (job.State != JobState.Completed && DateTime.Now < timeout)
             {
                 job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
 
