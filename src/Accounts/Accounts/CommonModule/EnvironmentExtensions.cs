@@ -165,6 +165,11 @@ namespace Microsoft.Azure.Commands.Common
                 return baseEndpoint.GetLeftPart(UriPartial.Authority); //return https://{myname}.azconfig.io
             }
 
+            if("https://graph.microsoft.com".IsMatch(baseEndpoint))
+            {
+                return baseEndpoint.GetLeftPart(UriPartial.Authority); //return https://{myname}.azconfig.io
+            }
+
             return environment.ActiveDirectoryServiceEndpointResourceId;
         }
 
