@@ -166,8 +166,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     break;
 
                 default:
-                    string message = $"Invalid value for AnalyticalStorageSchemaType.  Valid values are '{SDKModel.AnalyticalStorageSchemaType.WellDefined}' and '{SDKModel.AnalyticalStorageSchemaType.FullFidelity}'.";
-                    WriteWarning(message);
+                    if (!string.IsNullOrWhiteSpace(param))
+                    {
+                        string message = $"Invalid value for AnalyticalStorageSchemaType.  Valid values are '{SDKModel.AnalyticalStorageSchemaType.WellDefined}' and '{SDKModel.AnalyticalStorageSchemaType.FullFidelity}'.";
+                        WriteWarning(message);
+                    }
                     break;
             }
             return retval;
