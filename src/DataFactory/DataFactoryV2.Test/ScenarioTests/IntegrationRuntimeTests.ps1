@@ -346,6 +346,7 @@ function Test-Azure-IntegrationRuntime-SubnetId
             -DataFactoryName $dfname `
             -Name $irname
         Assert-AreEqual $actual.Name $expected.Name
+        Assert-AreEqual $subnetId $expected.SubnetId
         Get-AzDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
 
         Remove-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
