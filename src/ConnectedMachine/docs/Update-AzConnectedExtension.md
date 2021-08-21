@@ -1,32 +1,46 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachineextension
+online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedextension
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedMachineExtension
+# Update-AzConnectedExtension
 
 ## SYNOPSIS
-The operation to delete the extension.
+The operation to Upgrade Machine Extensions.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpgradeExpanded (Default)
 ```
-Remove-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Update-AzConnectedExtension -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ExtensionTarget <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Upgrade
 ```
-Remove-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzConnectedExtension -MachineName <String> -ResourceGroupName <String>
+ -ExtensionUpgradeParameter <IMachineExtensionUpgrade> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaIdentity
+```
+Update-AzConnectedExtension -InputObject <IConnectedMachineIdentity>
+ -ExtensionUpgradeParameter <IMachineExtensionUpgrade> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaIdentityExpanded
+```
+Update-AzConnectedExtension -InputObject <IConnectedMachineIdentity> [-ExtensionTarget <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to delete the extension.
+The operation to Upgrade Machine Extensions.
 
 ## EXAMPLES
 
@@ -80,13 +94,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExtensionTarget
+Describes the Extension Target Properties.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpgradeExpanded, UpgradeViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtensionUpgradeParameter
+Describes the Machine Extension Upgrade Properties
+To construct, see NOTES section for EXTENSIONUPGRADEPARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtensionUpgrade
+Parameter Sets: Upgrade, UpgradeViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpgradeViaIdentity, UpgradeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -97,26 +142,11 @@ Accept wildcard characters: False
 ```
 
 ### -MachineName
-The name of the machine where the extension should be deleted.
+The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the machine extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Upgrade, UpgradeExpanded
 Aliases:
 
 Required: True
@@ -141,28 +171,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Upgrade, UpgradeExpanded
 Aliases:
 
 Required: True
@@ -177,7 +192,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Upgrade, UpgradeExpanded
 Aliases:
 
 Required: False
@@ -223,6 +238,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtensionUpgrade
+
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
@@ -237,6 +254,10 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+EXTENSIONUPGRADEPARAMETER <IMachineExtensionUpgrade>: Describes the Machine Extension Upgrade Properties
+  - `[ExtensionTarget <IExtensionTarget>]`: Describes the Extension Target Properties.
+    - `[(Any) <IExtensionTargetProperties>]`: This indicates any property can be added to this object.
 
 INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.

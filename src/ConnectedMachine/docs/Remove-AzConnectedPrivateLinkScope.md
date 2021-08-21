@@ -1,32 +1,31 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachineextension
+online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedprivatelinkscope
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedMachineExtension
+# Remove-AzConnectedPrivateLinkScope
 
 ## SYNOPSIS
-The operation to delete the extension.
+Deletes a Azure Arc PrivateLinkScope.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>]
+Remove-AzConnectedPrivateLinkScope -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to delete the extension.
+Deletes a Azure Arc PrivateLinkScope.
 
 ## EXAMPLES
 
@@ -96,36 +95,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MachineName
-The name of the machine where the extension should be deleted.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the machine extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -159,6 +128,21 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScopeName
+The name of the Azure Arc PrivateLinkScope resource.
 
 ```yaml
 Type: System.String

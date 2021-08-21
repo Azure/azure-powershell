@@ -65,7 +65,7 @@ Describe 'New-AzConnectedMachineExtension' {
             MachineName = $machineName
             Name = $extensionName
             Location = $env.location
-            Setting = @{
+            Settings = @{
                 commandToExecute = "dir"
             }
         }
@@ -77,13 +77,13 @@ Describe 'New-AzConnectedMachineExtension' {
         } elseif ($IsWindows) {
             $splat.ExtensionType = "CustomScriptExtension"
             $splat.Publisher = "Microsoft.Compute"
-            $splat.TypeHandlerVersion = "1.10"
+            $splat.TypeHandlerVersion = "1.10.10"
         }
 
         $res = New-AzConnectedMachineExtension @splat
         $res.Name | Should -Be $extensionName
         $res.ProvisioningState | Should -Be "Succeeded"
-        $res.Setting["commandToExecute"] | Should -Be $splat.Setting["commandToExecute"]
+        $res.Settings["commandToExecute"] | Should -Be $splat.Settings["commandToExecute"]
     }
 
     It 'Create parameter set' {
@@ -94,7 +94,7 @@ Describe 'New-AzConnectedMachineExtension' {
             Name                 = $extensionName
             Location             = $env.location
             ProvisioningState    = "Succeeded"
-            Setting              = @{ commandToExecute = "dir" }
+            Settings              = @{ commandToExecute = "dir" }
             MachineExtensionType = if($IsWindows) { "CustomScriptExtension" } else { "CustomScript" }
             Publisher            = if($IsWindows) { "Microsoft.Compute"     } else { "Microsoft.Azure.Extensions" }
         }
@@ -119,7 +119,7 @@ Describe 'New-AzConnectedMachineExtension' {
 
         $splat = @{
             Location = $env.location
-            Setting = @{
+            Settings = @{
                 commandToExecute = "dir"
             }
         }
@@ -146,7 +146,7 @@ Describe 'New-AzConnectedMachineExtension' {
         }
         $res.Name | Should -Be $extensionName
         $res.ProvisioningState | Should -Be "Succeeded"
-        $res.Setting["commandToExecute"] | Should -Be $splat.Setting["commandToExecute"]
+        $res.Settings["commandToExecute"] | Should -Be $splat.Setting["commandToExecute"]
     }
 
     It 'CreateViaIdentity parameter set' {

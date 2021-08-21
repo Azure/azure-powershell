@@ -29,29 +29,23 @@ The operation to get the extension.
 
 ## EXAMPLES
 
-### Example 1: List all extensions for a machine
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2
+PS C:\> {{ Add code here }}
 
-Name    Location  PropertiesType        ProvisioningState
-----    --------  --------------        -----------------
-custom  westus2   CustomScriptExtension Succeeded
-custom  westus2   CustomScriptExtension Succeeded
-dsc     westus2   DSC                   Succeeded
+{{ Add output here }}
 ```
 
-Lists all extensions for a specific machine.
+{{ Add description here }}
 
-### Example 2: Get a specific extension on a machine
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2 -Name dsc
+PS C:\> {{ Add code here }}
 
-Name  Location  PropertiesType        ProvisioningState
-----  --------  --------------        -----------------
-dsc   westus2   CustomScriptExtension Succeeded
+{{ Add output here }}
 ```
 
-Gets a specific extension on a machine.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -117,6 +111,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -131,8 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -153,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20200802.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension
 
 ## NOTES
 

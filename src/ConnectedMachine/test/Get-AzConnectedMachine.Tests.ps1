@@ -49,7 +49,7 @@ Describe 'Get-AzConnectedMachine' {
 
     It 'Get all connected machines in a subscription' {
         $machines = Get-AzConnectedMachine
-        $machines.Count | Should -Be 1
+        $machines.Count | Should -BeGreaterThan 1
     }
 
     It 'Get all connected machines in a resource group' {

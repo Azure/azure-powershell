@@ -1,23 +1,18 @@
-### Example 1: Set an extension on a machine
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
-PS C:\> Set-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
+PS C:\> {{ Add code here }}
 
-Name   Location ProvisioningState
-----   -------- -----------------
-custom eastus   Succeeded
+{{ Add output here }}
 ```
 
-Sets an extension on a machine.
+{{ Add description here }}
 
-### Example 2: Set an extension with extension parameters specified via the pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $otherExtension = Get-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName other
-PS C:\> $otherExtension | Set-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName important
+PS C:\> {{ Add code here }}
 
-Name   Location ProvisioningState
-----   -------- -----------------
-custom eastus   Succeeded
+{{ Add output here }}
 ```
 
-This sets an extension with the extension parameters provided by the object passed in via the pipeline. This is great if you want to grab the parameters of one machine and apply it to another machine.
+{{ Add description here }}
+

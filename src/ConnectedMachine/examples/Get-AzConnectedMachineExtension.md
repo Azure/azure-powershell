@@ -1,23 +1,18 @@
-### Example 1: List all extensions for a machine
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2
+PS C:\> {{ Add code here }}
 
-Name    Location  PropertiesType        ProvisioningState
-----    --------  --------------        -----------------
-custom  westus2   CustomScriptExtension Succeeded
-custom  westus2   CustomScriptExtension Succeeded
-dsc     westus2   DSC                   Succeeded
+{{ Add output here }}
 ```
 
-Lists all extensions for a specific machine.
+{{ Add description here }}
 
-### Example 2: Get a specific extension on a machine
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2 -Name dsc
+PS C:\> {{ Add code here }}
 
-Name  Location  PropertiesType        ProvisioningState
-----  --------  --------------        -----------------
-dsc   westus2   CustomScriptExtension Succeeded
+{{ Add output here }}
 ```
 
-Gets a specific extension on a machine.
+{{ Add description here }}
+

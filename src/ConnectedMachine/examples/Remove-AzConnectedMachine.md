@@ -1,15 +1,18 @@
-### Example 1: Remove a connected machine
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzConnectedMachine -Name myMachine -ResourceGroupName myRG
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-Deletes the connected machine.
+{{ Add description here }}
 
-### Example 2: Remove connected machines via the pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines | Remove-AzConnectedMachine
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-Removes all machines in the `contoso-connected-machines` resource group.
+{{ Add description here }}
+

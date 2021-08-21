@@ -1,36 +1,36 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachine
+online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedprivatelinkscope
 schema: 2.0.0
 ---
 
-# Get-AzConnectedMachine
+# Get-AzConnectedPrivateLinkScope
 
 ## SYNOPSIS
-Retrieves information about the model view or the instance view of a hybrid machine.
+Returns a Azure Arc PrivateLinkScope.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzConnectedMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedPrivateLinkScope [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Expand <InstanceViewTypes>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
-Get-AzConnectedMachine -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedPrivateLinkScope -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieves information about the model view or the instance view of a hybrid machine.
+Returns a Azure Arc PrivateLinkScope.
 
 ## EXAMPLES
 
@@ -69,28 +69,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Expand
-The expand expression to apply on the operation.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.InstanceViewTypes
-Parameter Sets: Get
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the hybrid machine.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: MachineName
+Parameter Sets: Get, List1
+Aliases:
 
 Required: True
 Position: Named
@@ -99,13 +85,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ScopeName
+The name of the Azure Arc PrivateLinkScope resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -137,7 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachine
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
 
 ## NOTES
 

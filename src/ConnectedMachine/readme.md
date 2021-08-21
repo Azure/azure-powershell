@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ConnectedMachine service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -42,11 +42,12 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-module-version: 0.1.0
+module-version: 0.4.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2020-08-02/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2021-05-20/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2021-05-20/privateLinkScopes.json
 
 directive:
   - where:
@@ -60,7 +61,7 @@ directive:
       verb: Get
       variant: ^GetViaIdentity\d?$
     remove: true
-
+    
   # Make parameters friendlier for extensions
   - where:
       subject: MachineExtension
@@ -118,7 +119,34 @@ directive:
           - Location
           - PropertiesType
           - ProvisioningState
-  
+  - where:
+       model-name: PrivateLinkScope
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Tag
+  - where:
+       model-name: PrivateEndpointConnection
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Property.PrivateLinkServiceConnectionStateDescription
+          - Property.PrivateLinkServiceConnectionStateStatus
+
+  # Removing cmlets
+  - where:
+      verb: New
+      subject: PrivateEndpointConnection
+    remove: true
+  - where:
+      verb: Get
+      subject: PrivateLinkScopeValidationDetail
+    remove: true
+    
   # Completers
   - where:
       parameter-name: Location
