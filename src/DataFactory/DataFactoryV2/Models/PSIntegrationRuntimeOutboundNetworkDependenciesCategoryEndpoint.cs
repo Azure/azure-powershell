@@ -24,12 +24,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
         private static JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
         public string Category { get; set; }
         public string EndPoint { get; set; }
-        public IEnumerable<IntegrationRuntimeOutboundNetworkDependenciesEndpoint> Endpoints { get; set; }
 
         public PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint(IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint categoryEndpoint)
         {
             Category = categoryEndpoint.Category;
-            Endpoints = categoryEndpoint.Endpoints.Select(x => x);
             EndPoint = JsonSerializer.Serialize(categoryEndpoint.Endpoints, options);
         }
     }
