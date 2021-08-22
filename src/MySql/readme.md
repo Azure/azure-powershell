@@ -113,10 +113,6 @@ directive:
       variant: ^(?!.*?Expanded)
     hide: true
   - where:
-      verb: Get$
-      subject: ^Configuration$|
-    remove: hide
-  - where:
       parameter-name: VirtualNetworkSubnetId
       subject: VirtualNetworkRule
     set:
