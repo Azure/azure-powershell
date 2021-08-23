@@ -105,6 +105,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string IdentityType { get; set; }
 
         #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpPublicNetworkAccess)]
+        #endregion
+        public string PublicNetworkAccess { get; set; }
+
+        #region Attributes
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpUserAssignedIdenty)]
         #endregion
         public IDictionary<string, object> UserAssignedIdentity { get; set; }
@@ -496,7 +501,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 factoryIdentityType = this.IdentityType;
             }
 
-            if(this.UserAssignedIdentity != null && this.UserAssignedIdentity.Count > 0)
+            if (this.UserAssignedIdentity != null && this.UserAssignedIdentity.Count > 0)
             {
                 if (!factoryIdentityType.ToLower().Contains(FactoryIdentityType.UserAssigned.ToLower()))
                 {
@@ -506,7 +511,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             FactoryIdentity factoryIdentity = new FactoryIdentity(factoryIdentityType, userAssignedIdentities: this.UserAssignedIdentity);
 
             EncryptionConfiguration encryption = null;
-            if(!string.IsNullOrWhiteSpace(this.EncryptionVaultBaseUrl) && !string.IsNullOrWhiteSpace(this.EncryptionKeyName))
+            if (!string.IsNullOrWhiteSpace(this.EncryptionVaultBaseUrl) && !string.IsNullOrWhiteSpace(this.EncryptionKeyName))
             {
                 CMKIdentityDefinition cmkIdentity = null;
                 if (!string.IsNullOrWhiteSpace(this.EncryptionUserAssignedIdentity))
@@ -516,11 +521,18 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 encryption = new EncryptionConfiguration(this.EncryptionKeyName, this.EncryptionVaultBaseUrl, this.EncryptionKeyVersion, cmkIdentity);
             }
 
+            string publicNetworkAccess = Management.DataFactory.Models.PublicNetworkAccess.Enabled;
+            if (!string.IsNullOrWhiteSpace(this.PublicNetworkAccess))
+            {
+                publicNetworkAccess = this.PublicNetworkAccess;
+            }
+
             var parameters = new CreatePSDataFactoryParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = Name,
                 Location = Location,
+                PublicNetworkAccess = publicNetworkAccess,
                 EncryptionConfiguration = encryption,
                 FactoryIdentity = factoryIdentity,
                 Tags = Tag,
@@ -542,12 +554,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 this.Location = this.Location ?? InputObject.Location;
                 this.Tag = this.Tag ?? new Hashtable((IDictionary)InputObject.Tags);
 
-                if(InputObject.Identity != null)
+                if (InputObject.Identity != null)
                 {
                     this.IdentityType = InputObject.Identity.Type;
                     this.UserAssignedIdentity = InputObject.Identity.UserAssignedIdentities;
                 }
-                if(InputObject.Encryption != null)
+                if (InputObject.Encryption != null)
                 {
                     this.EncryptionVaultBaseUrl = InputObject.Encryption.VaultBaseUrl;
                     this.EncryptionKeyName = InputObject.Encryption.KeyName;
@@ -578,7 +590,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         }
                     }
                 }
-                
+
                 this.GlobalParameterDefinition = InputObject.GlobalParameters;
             }
 
