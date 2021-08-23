@@ -34,6 +34,13 @@ Invoke-AzStorageSyncChangeDetection [-ResourceGroupName] <String> [-StorageSyncS
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### FullShareStringParameterSet
+```
+Invoke-AzStorageSyncChangeDetection [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+ [-SyncGroupName] <String> -Name <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ResourceIdAndDirectoryParameterSet
 ```
 Invoke-AzStorageSyncChangeDetection [-ResourceId] <String> -DirectoryPath <String> [-Recursive] [-PassThru]
@@ -46,6 +53,12 @@ Invoke-AzStorageSyncChangeDetection [-ResourceId] <String> -Path <String[]> [-Pa
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### FullShareResourceIdParameterSet
+```
+Invoke-AzStorageSyncChangeDetection [-ResourceId] <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ObjectAndDirectoryParameterSet
 ```
 Invoke-AzStorageSyncChangeDetection [-InputObject] <PSCloudEndpoint> -DirectoryPath <String> [-Recursive]
@@ -55,6 +68,12 @@ Invoke-AzStorageSyncChangeDetection [-InputObject] <PSCloudEndpoint> -DirectoryP
 ### ObjectAndPathParameterSet
 ```
 Invoke-AzStorageSyncChangeDetection [-InputObject] <PSCloudEndpoint> -Path <String[]> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### FullShareObjectParameterSet
+```
+Invoke-AzStorageSyncChangeDetection [-InputObject] <PSCloudEndpoint> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -137,7 +156,7 @@ CloudEndpoint Object, normally passed through the parameter.
 
 ```yaml
 Type: Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint
-Parameter Sets: ObjectAndDirectoryParameterSet, ObjectAndPathParameterSet
+Parameter Sets: ObjectAndDirectoryParameterSet, ObjectAndPathParameterSet, FullShareObjectParameterSet
 Aliases: CloudEndpoint
 
 Required: True
@@ -152,7 +171,7 @@ Name of the CloudEndpoint. The name is a GUID, not the friendly name that's disp
 
 ```yaml
 Type: System.String
-Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet
+Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet, FullShareStringParameterSet
 Aliases: CloudEndpointName
 
 Required: True
@@ -212,7 +231,7 @@ Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet
+Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet, FullShareStringParameterSet
 Aliases:
 
 Required: True
@@ -227,7 +246,7 @@ CloudEndpoint Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdAndDirectoryParameterSet, ResourceIdAndPathParameterSet
+Parameter Sets: ResourceIdAndDirectoryParameterSet, ResourceIdAndPathParameterSet, FullShareResourceIdParameterSet
 Aliases: CloudEndpointId
 
 Required: True
@@ -242,7 +261,7 @@ Name of the StorageSyncService.
 
 ```yaml
 Type: System.String
-Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet
+Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet, FullShareStringParameterSet
 Aliases: ParentName
 
 Required: True
@@ -257,7 +276,7 @@ Name of the SyncGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet
+Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet, FullShareStringParameterSet
 Aliases:
 
 Required: True
@@ -299,7 +318,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
