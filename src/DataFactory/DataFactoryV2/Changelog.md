@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added PublicNetworkAccess to Data Factory.
-* Updated ADF .Net SDK version to 4.23.0
+* Updated ADF .Net SDK version to 4.22.0
 
 ## Version 1.13.1
 * Updated ADF .Net SDK version to 4.21.0
