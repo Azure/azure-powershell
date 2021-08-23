@@ -104,6 +104,13 @@ PS C:\> Invoke-AzStorageSyncChangeDetection -ResourceGroupName "myResourceGroup"
 In this example, change detection is run for the "Examples" directory and will recursively detect changes in subdirectories. 
 Keep in mind the cmdlet will fail if the path contains more than 10,000 items. If the path contains more than 10,000 items, run the command on sub-parts of the namespace.
 
+### Example 4
+```powershell
+PS C:\> Invoke-AzStorageSyncChangeDetection -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -CloudEndpointName "b38fc242-8100-4807-89d0-399cef5863bf"
+```
+
+In this example, neither -DirectoryPath nor -Path has been passed to the command. This will invoke change detection on the entire file share.
+
 ## PARAMETERS
 
 ### -AsJob
