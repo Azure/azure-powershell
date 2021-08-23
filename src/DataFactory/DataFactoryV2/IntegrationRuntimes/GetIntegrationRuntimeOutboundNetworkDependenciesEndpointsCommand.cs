@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntimeOutboundNetwworkDependenciesEndpoints", DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName), OutputType(typeof(List<PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>))]
     public class GetIntegrationRuntimeOutboundNetworkDependenciesEndpointsCommand: IntegrationRuntimeCmdlet
     {
-  
+
+        // Entry of command execution.
         public override void ExecuteCmdlet()
         {
             this.ByResourceId();

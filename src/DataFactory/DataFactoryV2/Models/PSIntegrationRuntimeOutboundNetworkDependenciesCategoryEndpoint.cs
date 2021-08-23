@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 {
     public class PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint
     {
-        private static JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+        private static JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = false };
         public string Category { get; set; }
         public string EndPoint { get; set; }
 

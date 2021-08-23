@@ -192,6 +192,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntimeName);
 
             var response = new List<PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>();
+            if (null == outboundNetworkDependenciesEndpointsResponse?.Value)
+            {
+                return response;
+            }
+
             foreach(var categoryEndpoints in outboundNetworkDependenciesEndpointsResponse.Value)
             {
                 response.Add(new PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint(categoryEndpoints));

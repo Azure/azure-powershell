@@ -16,10 +16,4 @@
     <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="4.14.7587.7" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-    </Compile>
-  </ItemGroup>
-
 </Project>
