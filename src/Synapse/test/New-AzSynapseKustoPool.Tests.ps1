@@ -15,7 +15,7 @@ Describe 'New-AzSynapseKustoPool' {
         }
         . ($mockingPath | Select-Object -First 1).FullName
     }
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         $name = "testkustopool" + $env.rstr4
         $kustoPoolCreated = New-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $name -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize -WorkspaceUid $env.workspaceUid
         Validate_Cluster $kustoPoolCreated $env.workspaceName $name  $env.location  "Running" "Succeeded" $env.resourceType $env.skuName $env.skuSize $env.capacity

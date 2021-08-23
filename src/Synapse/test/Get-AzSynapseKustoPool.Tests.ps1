@@ -15,13 +15,13 @@ Describe 'Get-AzSynapseKustoPool' {
         }
         . ($mockingPath | Select-Object -First 1).FullName
     }
-    It 'List' -skip {
+    It 'List' {
         [array]$kustoPoolGet = Get-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $kustoPoolGetItem = $kustoPoolGet[0]
         Validate_Cluster $kustoPoolGetItem $env.workspaceName $env.kustoPoolName $env.location "Running" "Succeeded" $env.resourceType $env.skuName $env.skuSize $env.capacity
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $kustoPoolGetItem = Get-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.kustoPoolName
         Validate_Cluster $kustoPoolGetItem $env.workspaceName $env.kustoPoolName $env.location "Running" "Succeeded" $env.resourceType $env.skuName $env.skuSize $env.capacity
     }
