@@ -690,4 +690,7 @@ Are you sure you want to continue?</value>
   <data name="SettingSynapseManagedPrivateEndPoint" xml:space="preserve">
     <value>Creating or updating Synapse managed private endpoint '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="WorkspaceGitRepoParameterException" xml:space="preserve">
+    <value>'{0}' is not provided.</value>
+  </data>
 </root>

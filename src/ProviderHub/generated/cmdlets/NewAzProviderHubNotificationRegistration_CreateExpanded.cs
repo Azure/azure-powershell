@@ -160,6 +160,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Path)]
         public string ProviderNamespace { get => this._providerNamespace; set => this._providerNamespace = value; }
 
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState))]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState ProvisioningState { get => PropertiesBody.ProvisioningState ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState)""); set => PropertiesBody.ProvisioningState = value; }
+
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Runtime)]
@@ -268,7 +280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.Debug:

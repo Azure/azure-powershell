@@ -402,7 +402,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.Debug:

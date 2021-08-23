@@ -124,6 +124,7 @@ begin {
             Get = 'Az.BotService.private\Get-AzBotCheckNameAvailability_Get';
             GetExpanded = 'Az.BotService.private\Get-AzBotCheckNameAvailability_GetExpanded';
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

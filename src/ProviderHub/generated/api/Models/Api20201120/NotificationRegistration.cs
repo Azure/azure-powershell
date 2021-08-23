@@ -53,6 +53,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistrationProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.NotificationRegistrationProperties()); set => this._property = value; }
 
+        [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState? ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistrationPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistrationPropertiesInternal)Property).ProvisioningState = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState)""); }
+
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
@@ -114,6 +117,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode) })]
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode? NotificationMode { get; set; }
 
+        [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState? ProvisioningState { get; set; }
+
     }
     /// The notification registration definition.
     internal partial interface INotificationRegistrationInternal :
@@ -128,6 +139,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode? NotificationMode { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistrationProperties Property { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState? ProvisioningState { get; set; }
 
     }
 }

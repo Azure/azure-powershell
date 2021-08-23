@@ -235,3 +235,6 @@ launchSettings.json
 
 # Added due to scan
 src/DataFactory/DataFactoryV2.Test/SessionRecords/Microsoft.Azure.Commands.DataFactoryV2.Test.RunTests/TestRunV2.json
+
+# GitHub codespaces
+.venv
