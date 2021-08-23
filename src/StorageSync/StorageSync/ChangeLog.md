@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added parameter sets to `Invoke-AzStorageSyncChangeDetection`
-    - Customers will now be able to call the cmdlet without -DirectoryPath and -Path parameters to trigger change detection on an entire file share
+    - Can call the cmdlet without -DirectoryPath and -Path parameters to trigger change detection on an entire file share
 
 ## Version 1.5.0
 * Deprecated `Invoke-AzStorageSyncFileRecall`
