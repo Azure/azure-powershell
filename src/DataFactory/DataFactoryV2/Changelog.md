@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added PublicNetworkAccess to Data Factory.
 * Updated ADF .Net SDK version to 4.23.0
 
 ## Version 1.13.1
