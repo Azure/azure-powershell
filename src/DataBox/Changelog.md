@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Creation, Updation, Deletion of Scheduled/Non-Scheduled order .
+* Added support of transfer type ExportFromAzure.
+* Added support of Customer Managed Key.
+* Added support of double encryption.
+* Added support of user assigned identity in create/update order
 
 ## Version 0.1.0
 * First preview release for module Az.DataBox
