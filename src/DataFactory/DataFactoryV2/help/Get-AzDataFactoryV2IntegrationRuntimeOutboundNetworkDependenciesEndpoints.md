@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzIntegrationRuntimeOutboundNetworkDependenciesEndpoints
 
 ## SYNOPSIS
-Gets outbound network dependency endpoints of the integration runtime.
+Gets the list of outbound network dependencies for a given Azure-SSIS integration runtime.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzIntegrationRuntimeOutboundNetworkDependenciesEndpoints [-InputObject] <PSI
 ```
 
 ## DESCRIPTION
-The Get-AzDataFactoryV2IntegrationRuntimeOutboundNetwworkDependenciesEndpoints cmdlet lists outbound network dependency endpoints of a integration runtime in a data factory.
+The Get-AzDataFactoryV2IntegrationRuntimeOutboundNetwworkDependenciesEndpoints cmdlet gets a list of outbound network dependencies for a given Azure-SSIS integration runtime in a data factory.
 
 ## EXAMPLES
 
