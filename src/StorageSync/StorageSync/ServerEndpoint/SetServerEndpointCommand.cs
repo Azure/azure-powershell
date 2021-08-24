@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
            Mandatory = true,
            ValueFromPipeline = true,
-           HelpMessage = HelpMessages.SyncGroupObjectParameter)]
+           HelpMessage = HelpMessages.ServerEndpointObjectParameter)]
         [CmdletParameterBreakingChange("InputObject", ChangeDescription = "Alias RegisteredServer is invalid and preserved for compatibility. Alias ServerEndpoint should be used instead")]
         [Alias(StorageSyncAliases.RegisteredServerAlias, StorageSyncAliases.ServerEndpointAlias)]
         public PSServerEndpoint InputObject { get; set; }
@@ -260,14 +260,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     updateParameters.OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff;
                 }
 
-                StorageSyncModels.LocalCacheMode localCacheMode;
                 if (this.IsParameterBound(c => c.LocalCacheMode))
                 {
-                    if (!Enum.TryParse(LocalCacheMode, true, out localCacheMode))
-                    {
-                        throw new PSArgumentException(StorageSyncResources.InvalidLocalCacheModeErrorMessage);
-                    }
-                    updateParameters.LocalCacheMode = localCacheMode;
+                    updateParameters.LocalCacheMode = LocalCacheMode;
                 }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
