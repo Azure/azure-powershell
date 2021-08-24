@@ -81,5 +81,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The state of the provisioning.</value>
         public string ProvisioningState { get;  set; }
+        /// <summary>
+        /// Gets or sets the change enumeration status.
+        /// </summary>
+        /// <value>The change enumeration status.</value>
+        public PSCloudEndpointChangeEnumerationStatus ChangeEnumerationStatus { get; set; }
     }
 }
