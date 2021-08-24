@@ -230,7 +230,7 @@ function Test-SsisAzure-IntegrationRuntime
             -Name $irname
         Assert-AreEqual $actual.Name $expected.Name
 
-        Get-AzDataFactoryV2IntegrationRuntimeOutboundNetwworkDependenciesEndpoints -ResourceGroupName $rgname `
+        Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname
 
