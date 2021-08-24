@@ -2512,27 +2512,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
-        private Exception RethrowLongingRunningException(Exception e)
-        {
-            var ce = e as CloudException;
-            if (ce?.Body != null)
-            {
-                return new CloudException()
-                {
-                    Body = new CloudError()
-                    {
-                        Code = ce.Body.Code,
-                        Message = Resources.LongRunningStatusError + "\n" + ce.Body.Message,
-                        Target = ce.Body.Target
-                    },
-                    Request = ce.Request,
-                    Response = ce.Response,
-                    RequestId = ce.RequestId
-                };
-            }
-
-            return new Exception(Resources.LongRunningStatusError, e);
-        }
         #endregion
     }
 }
