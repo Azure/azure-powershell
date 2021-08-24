@@ -439,9 +439,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVMandVMSSUserData()
+        public void TestVMUserData()
         {
-            TestRunner.RunTestScript("Test-VMandVMSSUserData");
+            TestRunner.RunTestScript("Test-VMUserData");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMUserData2()
+        {
+            //TestRunner.RunTestScript("Test-VMUserData2");
         }
     }
 }
