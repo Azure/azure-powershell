@@ -62,19 +62,8 @@ A sample implementation:
 public new object GetDynamicParameters()
 {
     var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
-    AzureRmProfile localProfile = DefaultProfile as AzureRmProfile;
-    if (localProfile != null && localProfile.Contexts != null && localProfile.Contexts.Count > 0)
-    {
-        var nameParameter = new RuntimeDefinedParameter(
-        "Name", typeof(string),
-            new Collection<Attribute>()
-            {
-                new ParameterAttribute { Position =0, Mandatory=false, HelpMessage="The name of the context", ParameterSetName=GetSingleParameterSet },
-                new ValidateSetAttribute((DefaultProfile as AzureRmProfile).Contexts.Keys.ToArray())
-            }
-        );
-        parameters.Add(nameParameter.Name, nameParameter);
-    }
+    // here should be customized logic to construct `RuntimeDefinedParameter` objects,
+    // and call `parameters.Add()`
     return parameters;
 }
 ```
