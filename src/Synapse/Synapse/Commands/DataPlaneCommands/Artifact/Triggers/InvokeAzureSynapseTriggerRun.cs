@@ -17,16 +17,14 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         private const string InvokeByName = "InvokeByName";
         private const string InvokeByWorkspaceObject = "InvokeByWorkspaceObject";
-        private const string InvokeByTrObject = "InvokeByTRObject";
+        private const string InvokByInputObject = "InvokByInputObject";
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = InvokeByTrObject, 
+        [Parameter(ValueFromPipeline = true, ParameterSetName = InvokByInputObject, 
             Mandatory = true, HelpMessage = HelpMessages.HelpTriggerRun)]
         [ValidateNotNullOrEmpty]
-        public PSTriggerRun TriggerRunObject { get; set; }
+        public PSTriggerRun InputObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = InvokeByName,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = InvokeByTrObject,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -37,12 +35,18 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.TriggerName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = InvokeByName,
+            Mandatory = true, HelpMessage = HelpMessages.TriggerName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = InvokeByWorkspaceObject,
+            Mandatory = true, HelpMessage = HelpMessages.TriggerName)]
         [ValidateNotNullOrEmpty]
         [Alias("TriggerName")]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.TriggerRunId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = InvokeByName,
+            Mandatory = true, HelpMessage = HelpMessages.TriggerRunId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = InvokeByWorkspaceObject,
+            Mandatory = true, HelpMessage = HelpMessages.TriggerRunId)]
         [ValidateNotNullOrEmpty]
         public string TriggerRunId { get; set; }
 
@@ -56,10 +60,11 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (this.IsParameterBound(c => c.TriggerRunObject))
+            if (this.IsParameterBound(c => c.InputObject))
             {
-                this.Name = this.TriggerRunObject.TriggerName;
-                this.TriggerRunId = this.TriggerRunObject.TriggerRunId;
+                this.WorkspaceName = this.InputObject.WorkspaceName;
+                this.Name = this.InputObject.TriggerName;
+                this.TriggerRunId = this.InputObject.TriggerRunId;
             }
 
             if (ShouldProcess(TriggerRunId))

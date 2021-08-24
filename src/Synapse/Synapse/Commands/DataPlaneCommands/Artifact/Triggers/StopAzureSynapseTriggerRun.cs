@@ -17,16 +17,14 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         private const string StopByName = "StopByName";
         private const string StopByWorkspaceObject = "StopByWorkspaceObject";
-        private const string StopByTrObject = "StopByTRObject";
+        private const string StopByInputObject = "StopByInputObject";
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = StopByTrObject, 
+        [Parameter(ValueFromPipeline = true, ParameterSetName = StopByInputObject, 
             Mandatory = true, HelpMessage = HelpMessages.HelpTriggerRun)]
         [ValidateNotNullOrEmpty]
-        public PSTriggerRun TriggerRunObject { get; set; }
+        public PSTriggerRun InputObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByName,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByTrObject,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -34,22 +32,20 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = StopByWorkspaceObject,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByTrObject,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByName,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+            Mandatory = true, HelpMessage = HelpMessages.TriggerName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByWorkspaceObject,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+            Mandatory = true, HelpMessage = HelpMessages.TriggerName)]
         [Alias("TriggerName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByName,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+            Mandatory = true, HelpMessage = HelpMessages.TriggerRunId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = StopByWorkspaceObject,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+            Mandatory = true, HelpMessage = HelpMessages.TriggerRunId)]
         public string TriggerRunId { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -62,10 +58,11 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (this.IsParameterBound(c => c.TriggerRunObject))
+            if (this.IsParameterBound(c => c.InputObject))
             {
-                this.Name = this.TriggerRunObject.TriggerName;
-                this.TriggerRunId = this.TriggerRunObject.TriggerRunId;
+                this.WorkspaceName = this.InputObject.WorkspaceName;
+                this.Name = this.InputObject.TriggerName;
+                this.TriggerRunId = this.InputObject.TriggerRunId;
             }
 
             if (ShouldProcess(TriggerRunId))
