@@ -3,6 +3,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Synapse.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.TriggerRunId = this.InputObject.TriggerRunId;
             }
 
-            if (ShouldProcess(TriggerRunId))
+            if (ShouldProcess(String.Format(Resources.StoppingSynapseTriggerRun, TriggerRunId)))
             {
                 SynapseAnalyticsClient.StopTriggerRun(Name, TriggerRunId);
             }

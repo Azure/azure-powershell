@@ -1477,6 +1477,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stopping trigger run with Id: &apos;{0}&apos;.
+        /// </summary>
+        internal static string StoppingSynapseTriggerRun {
+            get {
+                return ResourceManager.GetString("StoppingSynapseTriggerRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage acount name is not provided..
         /// </summary>
         internal static string StorageAccountNameParameterException {
