@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Synapse
         public PSIntegrationRuntime InputObject { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.HelpDontAskConfirmation)]
+            HelpMessage = HelpMessages.Force)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
