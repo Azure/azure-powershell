@@ -39,25 +39,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
             }
         }
-
-        protected void UpdateProgress(Task task, ProgressRecord progress)
-        {
-            while (!task.IsCompleted && !task.IsCanceled && !task.IsFaulted)
-            {
-                if (progress.PercentComplete < 100)
-                {
-                    progress.PercentComplete++;
-                }
-                WriteProgress(progress);
-
-                task.Wait(TimeSpan.FromSeconds(15));
-            }
-
-            if (progress.PercentComplete < 100)
-            {
-                progress.PercentComplete = 100;
-                WriteProgress(progress);
-            }
-        }
     }
 }
