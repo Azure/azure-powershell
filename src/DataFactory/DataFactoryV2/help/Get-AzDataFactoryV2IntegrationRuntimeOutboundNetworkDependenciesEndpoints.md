@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2integrationruntime
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints
 schema: 2.0.0
 ---
 
-# Get-AzIntegrationRuntimeOutboundNetworkDependenciesEndpoints
+# Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints
 
 ## SYNOPSIS
 Gets the list of outbound network dependencies for a given Azure-SSIS integration runtime.
@@ -14,30 +14,30 @@ Gets the list of outbound network dependencies for a given Azure-SSIS integratio
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Get-AzIntegrationRuntimeOutboundNetworkDependenciesEndpoints [[-Name] <String>] [-ResourceGroupName] <String>
- [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints [-Name] <String>
+ [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzIntegrationRuntimeOutboundNetworkDependenciesEndpoints [-ResourceId] <String>
+Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Get-AzIntegrationRuntimeOutboundNetworkDependenciesEndpoints [-InputObject] <PSIntegrationRuntime>
+Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints [-InputObject] <PSIntegrationRuntime>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzDataFactoryV2IntegrationRuntimeOutboundNetwworkDependenciesEndpoints cmdlet gets a list of outbound network dependencies for a given Azure-SSIS integration runtime in a data factory.
+The Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints cmdlet gets a list of outbound network dependencies for a given Azure-SSIS integration runtime in a data factory.
 
 ## EXAMPLES
 
 ### Example 1: List outbound network dependency
 ```
-PS C:\> Get-AzDataFactoryV2IntegrationRuntimeOutboundNetwworkDependenciesEndpoints -ResourceId /subscriptions/522737f3-63cf-431d-807d-e126cf8ad10e/resourceGroups/wamao_test_int/providers/Microsoft.DataFactory/factories/WamaoWestUSIntDF/integrationruntimes/SSISIR
 
 Category                                 EndPoint
 --------                                 --------
@@ -52,7 +52,7 @@ Event Hub (Logging)                      [{"DomainName":"*.servicebus.windows.ne
 The data factory name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByIntegrationRuntimeName
 Aliases:
 
@@ -64,10 +64,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 The integration runtime object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+Type: PSIntegrationRuntime
 Parameter Sets: ByIntegrationRuntimeObject
 Aliases:
 
@@ -97,11 +97,11 @@ Accept wildcard characters: False
 The integration runtime name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByIntegrationRuntimeName
 Aliases: IntegrationRuntimeName
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByIntegrationRuntimeName
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 The Azure resource ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceId
 Aliases: Id
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -149,7 +149,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntimeOutboundNetworkDependenciesEndpoints
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint, Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2, Version=1.13.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories, copy, activities, integration runtime
+
+## RELATED LINKS
+
+[Get-AzDataFactoryV2IntegrationRuntime]()
