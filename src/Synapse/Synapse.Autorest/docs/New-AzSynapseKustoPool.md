@@ -17,8 +17,7 @@ New-AzSynapseKustoPool -Name <String> -ResourceGroupName <String> -WorkspaceName
  -SkuName <SkuName> -SkuSize <SkuSize> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-EnablePurge] [-EnableStreamingIngest] [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>]
  [-OptimizedAutoscaleMinimum <Int32>] [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>]
- [-Tag <Hashtable>] [-WorkspaceUid <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +27,7 @@ Create or update a Kusto pool.
 
 ### Example 1: Create a new Kusto pool
 ```powershell
-PS C:\> New-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -Location 'East US' -SkuName "Storage optimized" -SkuSize Medium -WorkspaceUid "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+PS C:\> New-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -Location 'East US' -SkuName "Storage optimized" -SkuSize Medium
 
 Location  Name                    Type                                    Etag
 --------  ----                    ----                                    ----
@@ -337,21 +336,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceUid
-The workspace unique identifier.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -7,9 +7,6 @@ function RandomString([bool]$allChars, [int32]$len) {
 }
 $env = @{}
 function setupEnv() {
-    Write-Host -ForegroundColor Yellow "WARNING: Need to use released Az.Synapse module. Please check if Az.Synapse(0.1.0 or Greater) installed."
-    Import-Module -Name Az.Synapse
-
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
@@ -52,15 +49,12 @@ function setupEnv() {
     $workspaceParams.parameters.workspaceName.value = $workspaceName
     set-content -Path .\test\deployment-templates\workspace\parameters.json -Value (ConvertTo-Json $workspaceParams)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\workspace\template.json -TemplateParameterFile .\test\deployment-templates\workspace\parameters.json -Name workspace -ResourceGroupName $resourceGroupName
-    $workspace = Get-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName
-    $workspaceUid = $workspace.WorkspaceUID
-    $null = $env.Add("workspaceUid", $workspaceUid)
     
     # Deploy kusto pool
     $kustoPoolName = "testkustopool" + $rstr1
     Write-Host "Start to create a Kusto pool" $kustoPoolName
     $null = $env.Add("kustopoolName", $kustoPoolName)
-    New-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $kustoPoolName -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize -WorkspaceUid $env.workspaceUid
+    New-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $kustoPoolName -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -70,6 +64,7 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.kustoPoolName
     Remove-AzResourceGroup -Name $env.resourceGroupName
 }
 

@@ -86,10 +86,10 @@ directive:
     remove: true
   - where:
       subject: ^KustoPool$
-      variant: ^Create$|^Update$|^UpdateViaIdentity$
+      variant: ^Update$|^UpdateViaIdentity$
     remove: true
-  # # change API version
-  # - from: kustoPool.json
-  #   where: $.info.version
-  #   transform: $ = $.replace("2021-06-01-preview", '2021-04-01-preview');
+  - where:
+      subject: ^KustoPool$
+      variant: ^Create$|^CreateExpanded$
+    hide: true
 ```
