@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.5.0
 * Added MSI based restore for managed virtual machines.
 
 ## Version 4.4.0

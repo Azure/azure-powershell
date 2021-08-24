@@ -2,6 +2,7 @@ Az.ADDomainServices
 Az.AppConfiguration
 Az.Blockchain
 Az.BotService
+Az.ChangeAnalysis
 Az.CloudService
 Az.Communication
 Az.Confluent
@@ -32,6 +33,7 @@ Az.MySql
 Az.Portal
 Az.PostgreSql
 Az.ProviderHub
+Az.Purview
 Az.RedisEnterpriseCache
 Az.ResourceMover
 Az.SpringCloud

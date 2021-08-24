@@ -141,7 +141,7 @@ SmokeTest
 #>
 function Test-NewCloudEndpoint
 {
-  # Setup
+    # Setup
     $resourceGroupName = Get-ResourceGroupName
     Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try

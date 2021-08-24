@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Generate blob sas token with new API version
+    -  `New-AzStorageBlobSASToken` 
+    -  `New-AzStorageContainerSASToken` 
+    -  `New-AzStorageAccountSASToken`
+* Fixed blob copy failure with OAuth credentail when client and server has time difference [#15644]
+    -  `Copy-AzStorageBlob` 
+* Fixed remove datalakegen2 item fail with readonly SAS token
+    -  `Remove-AzDataLakeGen2Item` 
+* Revised destination existing check in move datalakegen2 item
+    -  `Move-AzDataLakeGen2Item` 
 
 ## Version 3.10.0
 * Supported Blob Last Access Time

@@ -29,11 +29,12 @@ using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest;
-
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using CloudException = Microsoft.Rest.Azure.CloudException;
 
 namespace Microsoft.Azure.Commands.Aks
 {
+    [SupportsSubscriptionId]
     public abstract class KubeCmdletBase : AzureRMCmdlet
     {
         private IContainerServiceClient _client;

@@ -67,8 +67,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public StorageSyncClientCmdletBase()
         {
-            InitializeComponent();
+        }
 
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            InitializeComponent();
         }
 
         /// <summary>
