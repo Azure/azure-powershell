@@ -38,7 +38,6 @@ The Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints cm
 
 ### Example 1: List outbound network dependency
 ```
-
 Category                                 EndPoint
 --------                                 --------
 Azure Data Factory (Management)          [{"DomainName":"wu.frontend.clouddatahub.net","EndpointDetails":[{"Port":443}]}]
@@ -52,7 +51,7 @@ Event Hub (Logging)                      [{"DomainName":"*.servicebus.windows.ne
 The data factory name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByIntegrationRuntimeName
 Aliases:
 
@@ -67,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -82,7 +81,7 @@ Accept wildcard characters: False
 The integration runtime object.
 
 ```yaml
-Type: PSIntegrationRuntime
+Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
 Parameter Sets: ByIntegrationRuntimeObject
 Aliases:
 
@@ -97,7 +96,7 @@ Accept wildcard characters: False
 The integration runtime name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByIntegrationRuntimeName
 Aliases: IntegrationRuntimeName
 
@@ -112,7 +111,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByIntegrationRuntimeName
 Aliases:
 
@@ -127,7 +126,7 @@ Accept wildcard characters: False
 The Azure resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases: Id
 
