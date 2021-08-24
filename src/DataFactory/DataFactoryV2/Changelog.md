@@ -23,7 +23,7 @@
 * Add command `Get-AzDataFactoryV2IntegrationRuntime` to support listing of outbound network dependencies for a given Azure-SSIS integration runtime.
 
 ## Version 1.13.2
-* Updated ADF .Net SDK version to 4.22.0
+* Updated ADF .Net SDK version to 4.23.0
 
 ## Version 1.13.1
 * Updated ADF .Net SDK version to 4.21.0

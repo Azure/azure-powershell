@@ -67,7 +67,7 @@ If you want to find the auto-generated password for your server, use ConvertFrom
 ### Example 3: Create a new PostgreSql flexible server with existing Subnet
 ```powershell
 PS C:\> $Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
-PS C:\> New-AzPostgreSqlFlexibleServer  -ResourceGroupName postgresqltest -ServerName testserver -Subnet $Subnet
+PS C:\> New-AzPostgreSqlFlexibleServer  -ResourceGroupName postgresqltest -ServerName testserver -Subnet $Subnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
 
 Resource group PowershellPostgreSqlTest exists ? : True
 You have supplied a subnet Id. Verifying its existence...
@@ -88,12 +88,12 @@ You cannot use a subnet delegated to different services
 ### Example 4: Create a new PostgreSql flexible server with virtual network
 ```powershell
 PS C:\> $Vnet = 'vnetname'
-PS C:\> New-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet
+PS C:\> New-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
 
 or
 
 PS C:\> $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
-PS C:\> New-AzPostgreSqlFlexibleServer  -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet
+PS C:\> New-AzPostgreSqlFlexibleServer  -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
 
 Resource group PowershellPostgreSqlTest exists ? : True
 You have supplied a vnet Id/name. Verifying its existence...
@@ -114,7 +114,7 @@ If the virtual network doesn't exist, the cmdlet creates one.
 
 ### Example 5: Create a new PostgreSql flexible server with virtual network and subnet name
 ```powershell
-PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -Vnet postgresql-vnet -Subnet postgresql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24
+PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -Vnet postgresql-vnet -Subnet postgresql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24 -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/postgresql-test.private.postgres.database.azure.com
 
 Resource group PowershellPostgreSqlTest exists ? : True
 Creating new vnet postgresql-vnet in resource group PowershellPostgreSqlTest
@@ -310,15 +310,10 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateDnsZone
-This parameter only applies for a server with private access.
-
-            The name or id of new or existing private dns zone.
-You can use the private dns zone from same resource group, 
-            different resource group, or different subscription.
-If you want to use a zone from different resource group or 
-            subscription, please provide resource Id.
-CLI creates a new private dns zone within the same resource group as 
-            virtual network if not provided by users.
+The id of an existing private dns zone.
+You can use the
+        private dns zone from same resource group, different resource group, or
+        different subscription.
 
 ```yaml
 Type: System.String

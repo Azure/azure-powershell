@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Extended AuditActionGroups enum in server & database audit. Added DBCC_GROUP, DATABASE_OWNERSHIP_CHANGE_GROUP and DATABASE_CHANGE_GROUP.
 * Added `AsJob` flag to `Remove-AzSqlInstance`
 * Added `SubnetId` parameter to `Set-AzSqlInstance` to support the cross-subnet update SLO
 * Upgraded to newest SDK version
