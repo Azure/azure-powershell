@@ -32,7 +32,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Common
 {
     /// <summary>
-    /// Class providing telemtry usage based on the user's data collection settings
+    /// Class providing telemetry usage based on the user's data collection settings
     /// </summary>
     public class TelemetryProvider : IDictionary<string, AzurePSQoSEvent>, IDisposable
     {
@@ -116,6 +116,7 @@ namespace Microsoft.Azure.Commands.Common
             {
                 qos.FinishQosEvent();
                 _helper.LogQoSEvent(qos, enabled, enabled);
+                _helper.FlushMetric();
                 this.Remove(key);
             }
         }
@@ -158,6 +159,9 @@ namespace Microsoft.Azure.Commands.Common
 
             qosEvent.UserAgent = AzurePSCmdlet.UserAgent;
             qosEvent.AzVersion = AzurePSCmdlet.AzVersion;
+            qosEvent.PSVersion = AzurePSCmdlet.PowerShellVersion;
+            qosEvent.HostVersion = AzurePSCmdlet.PSHostVersion;
+            qosEvent.PSHostName = AzurePSCmdlet.PSHostName;
 
             if (invocationInfo != null)
             {

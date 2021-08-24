@@ -38,7 +38,7 @@ FIREWALLRULE <IFirewallRule[]>: Gets or sets the firewall rules.
   [RuleName <String>]: Gets or sets the name of the firewall rules.
   [StartIPAddress <String>]: Gets or sets the start IP address of the firewall rule range.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchaintransactionnode
+https://docs.microsoft.com/powershell/module/az.blockchain/new-azblockchaintransactionnode
 #>
 function New-AzBlockchainTransactionNode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.ITransactionNode])]
@@ -73,6 +73,7 @@ param(
     ${SubscriptionId},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]]
     # Gets or sets the firewall rules.
@@ -159,11 +160,13 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            CreateExpanded = 'Az.Blockchain.custom\New-AzBlockchainTransactionNode';
+            CreateExpanded = 'Az.Blockchain.private\New-AzBlockchainTransactionNode_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

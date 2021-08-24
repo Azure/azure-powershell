@@ -4,7 +4,7 @@ Create a blockchain member.
 .Description
 Create a blockchain member.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchainmember
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/powershell/module/az.blockchain/new-azblockchainmember
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember
 .Notes
@@ -16,9 +16,10 @@ FIREWALLRULE <IFirewallRule[]>: Gets or sets firewall rules
   [RuleName <String>]: Gets or sets the name of the firewall rules.
   [StartIPAddress <String>]: Gets or sets the start IP address of the firewall rule range.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.blockchain/new-azblockchainmember
+https://docs.microsoft.com/powershell/module/az.blockchain/new-azblockchainmember
 #>
 function New-AzBlockchainMember {
+[Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.CmdletBreakingChangeAttribute(ChangeDescription="On September 10, 2021, Azure Blockchain will be retired.")]
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -183,16 +184,6 @@ param(
 
 process {
     try {
-        if ($PSBoundParameters.ContainsKey('Password')) {
-            $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
-            $null = $PSBoundParameters.Remove('Password')
-            $PSBoundParameters.Add('Password', $psTxt)
-        }
-        if ($PSBoundParameters.ContainsKey('ConsortiumManagementAccountPassword')) {
-            $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['ConsortiumManagementAccountPassword']
-            $null = $PSBoundParameters.Remove('ConsortiumManagementAccountPassword')
-            $PSBoundParameters.Add('ConsortiumManagementAccountPassword', $psTxt)
-        }
         if ($PSBoundParameters.ContainsKey('Sku')) {
             $PSBoundParameters.Add('SkuName', $PSBoundParameters['Sku'])
             $null = $PSBoundParameters.Remove('Sku')

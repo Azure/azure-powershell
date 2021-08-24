@@ -15,7 +15,7 @@ Creates an Autoscale setting.
 
 ### UpdateAutoscaleSetting
 ```
-Add-AzAutoscaleSetting -InputObject <PSAutoscaleSetting> [-DisableSetting]
+Add-AzAutoscaleSetting -InputObject <PSAutoscaleSetting> [-ResourceGroupName <String>] [-DisableSetting]
  [-AutoscaleProfile <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]>]
  [-Notification <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -165,7 +165,19 @@ Specifies the name of the resource group for the resource associated with the Au
 
 ```yaml
 Type: System.String
-Parameter Sets: (CreateAutoscaleSetting)
+Parameter Sets: UpdateAutoscaleSetting
+Aliases: ResourceGroup
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: CreateAutoscaleSetting
 Aliases: ResourceGroup
 
 Required: True

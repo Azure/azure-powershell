@@ -2,10 +2,12 @@ Az.ADDomainServices
 Az.AppConfiguration
 Az.Blockchain
 Az.BotService
+Az.ChangeAnalysis
 Az.CloudService
 Az.Communication
 Az.Confluent
 Az.ConnectedKubernetes
+Az.ConnectedMachine
 Az.ContainerInstance
 Az.CostManagement
 Az.CustomProviders
@@ -14,6 +16,7 @@ Az.Datadog
 Az.DataProtection
 Az.DedicatedHsm
 Az.DesktopVirtualization
+Az.DigitalTwins
 Az.DiskPool
 Az.Functions
 Az.HanaOnAzure
@@ -22,6 +25,7 @@ Az.ImageBuilder
 Az.ImportExport
 Az.KubernetesConfiguration
 Az.Kusto
+Az.Maps
 Az.MariaDb
 Az.Migrate
 Az.MonitoringSolutions
@@ -29,6 +33,7 @@ Az.MySql
 Az.Portal
 Az.PostgreSql
 Az.ProviderHub
+Az.Purview
 Az.RedisEnterpriseCache
 Az.ResourceMover
 Az.SpringCloud

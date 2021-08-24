@@ -40,16 +40,47 @@ Update a gallery image version.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Change the replication regions and replica count
+
 ```powershell
-PS C:\> $region1 = @{Name='West US';ReplicaCount=1}
-PS C:\> $region2 = @{Name='East US';ReplicaCount=2}
-PS C:\> $region3 = @{Name='Central US'}
-PS C:\> $targetRegions = @($region1,$region2,$region3)
-PS C:\> Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name $versionName -ReplicaCount 2 -PublishingProfileEndOfLifeDate $endOfLifeDate -TargetRegion $targetRegions
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$imageName = "myImage"
+$versionName = "1.0.0"
+$region1 = @{Name='West US';ReplicaCount=1}
+$region2 = @{Name='East US';ReplicaCount=2}
+$region3 = @{Name='Central US'}
+$targetRegions = @($region1,$region2,$region3)
+Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name $versionName -ReplicaCount 2 -TargetRegion $targetRegions
 ```
 
-Update a gallery image version.
+Update a gallery image version's regions.
+
+### Example 2: Change whether an image version should be considered for latest.
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$imageName = "myImage"
+$versionName = "1.0.0"
+Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name $versionName -PublishingProfileExcludeFromLatest:$false
+```
+
+Update a gallery image version's exclude from latest status. To include an image version in consideration for latest, use `-PublishingProfileExcludeFromLatest:$false`. To exclude an image version from consideration for latest, use `-PublishingProfileExcludeFromLatest`.
+
+### Example 3: Change the end-of-life date for an image version.
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$imageName = "myImage"
+$versionName = "1.0.0"
+$endOfLifeDate = "2024-08-02T00:00:00+00:00"
+Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $imageName -Name $versionName -PublishingProfileEndOfLifeDate $endOfLifeDate
+```
+
+Update a gallery image version's end-of-life date. The image version can still be used to create virtual machines after the end-of-life date.
+
 
 ## PARAMETERS
 

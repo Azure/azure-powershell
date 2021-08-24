@@ -47,12 +47,23 @@ Update a gallery image definition.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Change the recommended configurations for an image definition
+
 ```powershell
-PS C:\> Update-AzGalleryImageDefinition -ResourceGroupName $resourceGroupName -GalleryName $galleryName -Name $galleryImageDefinitionName -Description $description -Eula $eula -PrivacyStatementUri $privacyStatementUri -ReleaseNoteUri $releaseNoteUri -DisallowedDiskType $disallowedDiskTypes -EndOfLifeDate $endOfLifeDate -MinimumMemory $minMemory -MaximumMemory $maxMemory -MinimumVCPU $minVCPU -MaximumVCPU $maxVCPU -PurchasePlanName $purchasePlanName -PurchasePlanProduct $purchasePlanProduct -PurchasePlanPublisher $purchasePlanPublisher
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$imageName = "myImage"
+$versionName = "1.0.0"
+$minVCPU = 1
+$maxVCPU = 4
+$minMemory = 1
+$maxMemory = 8
+$description = "My image definition"
+$endOfLifeDate = "2024-08-02T00:00:00+00:00"
+Update-AzGalleryImageDefinition -ResourceGroupName $resourceGroupName -GalleryName $galleryName -Name $galleryImageDefinitionName -Description $description -EndOfLifeDate $endOfLifeDate -MinimumMemory $minMemory -MaximumMemory $maxMemory -MinimumVCPU $minVCPU -MaximumVCPU $maxVCPU
 ```
 
-Update a gallery image definition.
+Update a gallery image definition's recommended configuration settings
 
 ## PARAMETERS
 

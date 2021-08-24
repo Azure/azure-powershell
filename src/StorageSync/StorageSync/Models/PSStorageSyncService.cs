@@ -58,5 +58,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// <value>The tags.</value>
         public IDictionary<string, string> Tags { get; set; }
 
+        /// <summary>
+        /// Gets or sets the provisioning state.
+        /// </summary>
+        /// <value>The tags.</value>
+        public string ProvisioningState { get; set; }
     }
 }

@@ -161,9 +161,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         }
                     }
                 }
-                catch (Exception e)
+                catch (DefaultErrorResponseException e)
                 {
-                    WriteWarning("Could not set custom hostname '{0}'. Details: {1}", hostName, e.ToString());
+                    WriteWarning("Could not set custom hostname '{0}'. Details: {1}", hostName, e?.Response?.Content?.ToString());
                     return;
                 }
             }

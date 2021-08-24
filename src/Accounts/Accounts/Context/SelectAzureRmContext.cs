@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.Profile.Context
         /// </summary>
         protected override bool RequireDefaultContext() { return false; }
 
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
-            var parameters = new RuntimeDefinedParameterDictionary();
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
             RuntimeDefinedParameter nameParameter;
             if (TryGetExistingContextNameParameter("Name", ContextNameParameterSet, out nameParameter))
             {

@@ -238,6 +238,11 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
             {
                 new WhatIfChange
                 {
+                    ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo",
+                    ChangeType = ChangeType.Unsupported,
+                },
+                new WhatIfChange
+                {
                     ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p1/foo",
                     ChangeType = ChangeType.Ignore,
                 },
@@ -273,7 +278,8 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
   - p5/foo
   - p6/foo{Color.Reset}{Color.Green}
   + p2/foo{Color.Reset}{Color.Blue}
-  ! p4/foo{Color.Reset}{Color.Reset}
+  ! p4/foo{Color.Reset}{Color.Gray}
+  x p0/foo{Color.Reset}{Color.Reset}
   = p3/foo{Color.Reset}{Color.Gray}
   * p1/foo
 {Color.Reset}
@@ -386,6 +392,13 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
                         },
                         new WhatIfPropertyChange
                         {
+                            Path = "path.to.property.change2",
+                            PropertyChangeType = PropertyChangeType.NoEffect,
+                            Before = "no",
+                            After = "yes"
+                        },
+                        new WhatIfPropertyChange
+                        {
                             Path = "path.to.array.change",
                             PropertyChangeType = PropertyChangeType.Array,
                             Children = new List<WhatIfPropertyChange>
@@ -405,6 +418,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
 
             string foo = $@"{Color.Orange}""foo""{Color.Reset}";
             string bar = $@"{Color.Green}""bar""{Color.Reset}";
+            string yes = $@"{Color.Gray}""yes""{Color.Reset}";
             string expected = $@"
 Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
 {Color.Purple}
@@ -412,10 +426,12 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
     {Color.Purple}~{Color.Reset} path.to.array.change{Color.Reset}:{Color.Reset} [
       {Color.Purple}~{Color.Reset} 1{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
       ]
-    {Color.Purple}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
+    {Color.Purple}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset}  ""foo"" => ""bar""
+    {Color.Gray}x{Color.Reset} path.to.property.change2{Color.Reset}:{Color.Reset} ""yes""
 "
                 .Replace(@"""foo""", foo)
                 .Replace(@"""bar""", bar)
+                .Replace(@"""yes""", yes)
                 .Replace("\r\n", Environment.NewLine);
 
             // Act.

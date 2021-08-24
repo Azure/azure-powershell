@@ -19,41 +19,53 @@ function setupEnv() {
     $flexibleServerName = "postgresql-flexible-test-100"
     $serverName2 = "postgresql-test-200"
     $serverName3 = "postgresql-test-300"
+    $flexibleServerName = "postgresql-flexible-test-100"
+    $flexibleServerName2 = "postgresql-flexible-test-200"
+    $flexibleServerName3 = "postgresql-flexible-test-300"
+    $flexibleServerName4 = "postgresql-flexible-test-400"
     $restoreName = "postgresql-test-100-restore"
     $restoreName2 = "postgresql-test-100-restore-2"
     $replicaName = "postgresql-test-100-replica"
     $firewallRuleName = "postgresqlrule01"
     $firewallRuleName2 = "postgresqlrule02"
+    $databaseName = "postgresqldb"
     $VNetName = "postgresqlvnet"
     $SubnetName = "postgresql-subnet"
     $resourceGroup = "PostgreSqlTest"
-    $location = "eastus2euap"
+    $location = "eastus"
     $Sku = "GP_Gen5_4"
     $FlexibleSku = "Standard_D2s_v3"
+
     if ($TestMode -eq 'live') {
+        $location = "eastus2euap"
         $PowershellPrefix = "powershell-pipeline-postgres-"
         $RandomNumbers = ""
         for($i = 0; $i -lt 10; $i++){ $RandomNumbers += Get-Random -Maximum 10  }
         $serverName = $PowershellPrefix + "server" + $RandomNumbers
-        $serverName2 = $PowershellPrefix + "2-flexibleserver" + $RandomNumbers
-        $serverName3 = $PowershellPrefix + "3-flexibleserver" + $RandomNumbers
         $flexibleServerName = $PowershellPrefix + "flexibleserver" + $RandomNumbers
+        $flexibleServerName2 = $PowershellPrefix + "2-flexibleserver" + $RandomNumbers
+        $flexibleServerName3 = $PowershellPrefix + "3-flexibleserver" + $RandomNumbers
+        $flexibleServerName4 = $PowershellPrefix + "4-flexibleserver" + $RandomNumbers
         $resourceGroup = $PowershellPrefix + "group" + $RandomNumbers
         $restoreName = $PowershellPrefix + "restore-server" + $RandomNumbers
         $restoreName2 = $PowershellPrefix + "2-restore-server" + $RandomNumbers
-        $restoreName = $PowershellPrefix + "replica-server" + $RandomNumbers
         $firewallRuleName = $PowershellPrefix + "firewallrule" + $RandomNumbers
+        $databaseName = $PowershellPrefix + "database" + $RandomNumbers
     }
 
     $env.Add("serverName", $serverName)
-    $env.Add("flexibleServerName", $flexibleServerName)
     $env.Add("serverName2", $serverName2)
     $env.Add("serverName3", $serverName3)
+    $env.Add("flexibleServerName", $flexibleServerName)
+    $env.Add("flexibleServerName2", $flexibleServerName2)
+    $env.Add("flexibleServerName3", $flexibleServerName3)
+    $env.Add("flexibleServerName4", $flexibleServerName4)
     $env.Add("restoreName", $restoreName)
     $env.Add("restoreName2", $restoreName2)
     $env.Add("replicaName", $replicaName)
     $env.Add("firewallRuleName", $firewallRuleName)
     $env.Add("firewallRuleName2", $firewallRuleName2)
+    $env.Add("databaseName", $databaseName)
     $env.Add("VNetName", $VNetName)
     $env.Add("SubnetName", $SubnetName)
     $env.Add("resourceGroup", $resourceGroup)
@@ -66,22 +78,26 @@ function setupEnv() {
     write-host "start to create test group."
     New-AzResourceGroup -Name $resourceGroup -Location $location
 
-    # Create the test Vnet
-    write-host "Deploy Vnet template"
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup  
+    if ($TestMode -ne 'live') {
+        # Create the test Vnet
+        write-host "Deploy Vnet template"
+        New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup  
 
-    write-host (Get-AzContext | Out-String)
+        write-host (Get-AzContext | Out-String)
 
-    write-host "New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku"
-    New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku
+        write-host "New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku"
+        New-AzPostgreSqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName postgresql_test -AdministratorLoginPassword $password -Sku $Sku
+    }
 
-    write-host "New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess all"
-    New-AzPostgreSqlFlexibleServer -Name $serverName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess all
+    write-host "New-AzPostgreSqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess none"
+    New-AzPostgreSqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess none
+    New-AzPostgreSqlFlexibleServer -Location $location -ResourceGroupName $resourceGroup -Name $flexibleServerName4 -BackupRetentionDay 11 -StorageInMb 65536
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
+
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {

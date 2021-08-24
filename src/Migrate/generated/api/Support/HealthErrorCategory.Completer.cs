@@ -50,9 +50,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("VersionExpiry", "VersionExpiry", global::System.Management.Automation.CompletionResultType.ParameterValue, "VersionExpiry");
             }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdateInfra".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdate", "AgentAutoUpdate", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdate");
+                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdateInfra", "AgentAutoUpdateInfra", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateInfra");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdateArtifactDeleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdateArtifactDeleted", "AgentAutoUpdateArtifactDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateArtifactDeleted");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdateRunAsAccount".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdateRunAsAccount", "AgentAutoUpdateRunAsAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateRunAsAccount");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdateRunAsAccountExpiry".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdateRunAsAccountExpiry", "AgentAutoUpdateRunAsAccountExpiry", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateRunAsAccountExpiry");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AgentAutoUpdateRunAsAccountExpired".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("AgentAutoUpdateRunAsAccountExpired", "AgentAutoUpdateRunAsAccountExpired", global::System.Management.Automation.CompletionResultType.ParameterValue, "AgentAutoUpdateRunAsAccountExpired");
             }
         }
     }

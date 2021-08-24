@@ -838,6 +838,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse managed private endpoint &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseManagedPrivateEndpoint {
+            get {
+                return ResourceManager.GetString("RemoveSynapseManagedPrivateEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove notebook &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseNotebook {
@@ -1023,6 +1032,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseLinkedService {
             get {
                 return ResourceManager.GetString("RemovingSynapseLinkedService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Synapse managed private endpoint &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseManagedPrivateEndpoint {
+            get {
+                return ResourceManager.GetString("RemovingSynapseManagedPrivateEndpoint", resourceCulture);
             }
         }
         
@@ -1311,6 +1329,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SettingSynapseLinkedService {
             get {
                 return ResourceManager.GetString("SettingSynapseLinkedService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating or updating Synapse managed private endpoint &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseManagedPrivateEndPoint {
+            get {
+                return ResourceManager.GetString("SettingSynapseManagedPrivateEndPoint", resourceCulture);
             }
         }
         
@@ -1707,6 +1734,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string WorkspaceDoesNotExist {
             get {
                 return ResourceManager.GetString("WorkspaceDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not provided..
+        /// </summary>
+        internal static string WorkspaceGitRepoParameterException {
+            get {
+                return ResourceManager.GetString("WorkspaceGitRepoParameterException", resourceCulture);
             }
         }
         

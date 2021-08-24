@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug: Closing in input file handle in Import-AzAutomationRunbook
 
 ## Version 1.7.0
 * Added support for User Assigned Identities and PublicNetworkAccess flag

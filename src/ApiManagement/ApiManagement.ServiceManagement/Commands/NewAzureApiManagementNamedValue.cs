@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Name of the named value. Maximum length is 100 characters." +
                           " It may contain only letters, digits, period, dash, and underscore characters." +
                           " This parameter is required.")]
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Value of the named value. Can contain policy expressions. Maximum length is 1000 characters." +
                           " It may not be empty or consist only of whitespace. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -68,6 +68,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Tags to be associated with named value. This parameter is optional.")]
         public string[] Tag { get; set; }
 
+        [Parameter(
+             ValueFromPipelineByPropertyName = true,
+             Mandatory = false,
+             HelpMessage = "KeyVault used to fetch Namedvalue data." +
+                          "This parameter is required if Value not specified.")]
+        public PsApiManagementKeyVaultEntity KeyVault { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             string propertyId = NamedValueId ?? Guid.NewGuid().ToString("N");
@@ -77,10 +84,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 var prop = Client.NamedValueCreate(
                 Context,
                 propertyId,
+                Secret,
                 Name,
                 Value,
-                Secret,
-                Tag);
+                Tag,
+                KeyVault);
 
                 WriteObject(prop);
             }

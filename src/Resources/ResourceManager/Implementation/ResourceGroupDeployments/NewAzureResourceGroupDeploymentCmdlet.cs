@@ -72,6 +72,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation if there is no changes in the What-If result. Applicable when the -Confirm switch is set.")]
+        public SwitchParameter ProceedIfNoChange { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -138,5 +141,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     () => this.Mode == DeploymentMode.Complete);
             }
         }
+
+        protected override bool ShouldSkipConfirmationIfNoChange() => this.ProceedIfNoChange;
     }
 }

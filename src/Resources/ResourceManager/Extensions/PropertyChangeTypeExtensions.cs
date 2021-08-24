@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
     using Formatters;
     using Management.ResourceManager.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using System;
     using System.Collections.Generic;
 
@@ -27,7 +28,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 [PropertyChangeType.Create] = Color.Green,
                 [PropertyChangeType.Delete] = Color.Orange,
                 [PropertyChangeType.Modify] = Color.Purple,
-                [PropertyChangeType.Array] = Color.Purple
+                [PropertyChangeType.Array] = Color.Purple,
+                [PropertyChangeType.NoEffect] = Color.Gray,
             };
 
         private static readonly IReadOnlyDictionary<PropertyChangeType, Symbol> SymbolsByPropertyChangeType =
@@ -36,16 +38,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 [PropertyChangeType.Create] = Symbol.Plus,
                 [PropertyChangeType.Delete] = Symbol.Minus,
                 [PropertyChangeType.Modify] = Symbol.Tilde,
-                [PropertyChangeType.Array] = Symbol.Tilde
+                [PropertyChangeType.Array] = Symbol.Tilde,
+                [PropertyChangeType.NoEffect] = Symbol.Cross,
             };
 
-        private static readonly IReadOnlyDictionary<PropertyChangeType, ChangeType> ChangeTypesByPropertyChangeType =
-            new Dictionary<PropertyChangeType, ChangeType>
+        private static readonly IReadOnlyDictionary<PropertyChangeType, PSChangeType> PSChangeTypesByPropertyChangeType =
+            new Dictionary<PropertyChangeType, PSChangeType>
             {
-                [PropertyChangeType.Create] = ChangeType.Create,
-                [PropertyChangeType.Delete] = ChangeType.Delete,
-                [PropertyChangeType.Modify] = ChangeType.Modify,
-                [PropertyChangeType.Array] = ChangeType.Modify
+                [PropertyChangeType.Create] = PSChangeType.Create,
+                [PropertyChangeType.Delete] = PSChangeType.Delete,
+                [PropertyChangeType.Modify] = PSChangeType.Modify,
+                [PropertyChangeType.Array] = PSChangeType.Modify,
+                [PropertyChangeType.NoEffect] = PSChangeType.NoEffect,
             };
 
         public static Color ToColor(this PropertyChangeType propertyChangeType)
@@ -72,9 +76,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             return symbol;
         }
 
-        public static ChangeType ToChangeType(this PropertyChangeType propertyChangeType)
+        public static PSChangeType ToPSChangeType(this PropertyChangeType propertyChangeType)
         {
-            bool success = ChangeTypesByPropertyChangeType.TryGetValue(propertyChangeType, out ChangeType changeType);
+            bool success = PSChangeTypesByPropertyChangeType.TryGetValue(propertyChangeType, out PSChangeType changeType);
 
             if (!success)
             {

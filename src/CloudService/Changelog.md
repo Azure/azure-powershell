@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.5.0
+* Fixed the issue that RemoteDesktopExtension password is wrong setted.
+
+## Version 0.4.0
 * Introduced 2 additional parameter sets for `New-AzCloudService`.
 
 ## Version 0.3.0
