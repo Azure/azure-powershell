@@ -13,26 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSNotebookMetadata
+    public class PSDataFlowDebugCommandResponse
     {
-        public PSNotebookMetadata(NotebookMetadata notebookMetadata)
+        public PSDataFlowDebugCommandResponse(DataFlowDebugCommandResponse dataFlowDebugCommandResponse)
         {
-            this.Kernelspec = new PSNotebookKernelSpec(notebookMetadata?.Kernelspec);
-            this.LanguageInfo = new PSNotebookLanguageInfo(notebookMetadata?.LanguageInfo);
-            this.AdditionalProperties = notebookMetadata?.AdditionalProperties;
+            this.Status = dataFlowDebugCommandResponse?.Status;
+            this.Data = dataFlowDebugCommandResponse?.Data;
         }
 
-        public PSNotebookKernelSpec Kernelspec { get; set; }
+        public string Status { get; }
 
-        public PSNotebookLanguageInfo LanguageInfo { get; set; }
-
-        public IDictionary<string, object> AdditionalProperties { get; set; }
+        public string Data { get; }
     }
 }

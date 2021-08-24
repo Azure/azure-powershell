@@ -33,15 +33,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.NotebookFormat = notebook?.Nbformat;
             this.NotebookFormatMinor = notebook?.NbformatMinor;
             this.Cells = notebook?.Cells?.Select(element => new PSNotebookCell(element)).ToList();
-            var propertiesEnum = notebook?.GetEnumerator();
-            if (propertiesEnum != null)
-            {
-                this.AdditionalProperties = new Dictionary<string, object>();
-                while (propertiesEnum.MoveNext())
-                {
-                    this.AdditionalProperties.Add(propertiesEnum.Current);
-                }
-            }
+            this.AdditionalProperties = notebook?.AdditionalProperties;
         }
 
         public string Description { get; set; }

@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly TriggerRunClient _triggerRunClient;
         private readonly DatasetClient _datasetClient;
         private readonly DataFlowClient _dataFlowClient;
+        private readonly DataFlowDebugSessionClient _dataFlowDebugSessionClient;
         private readonly BigDataPoolsClient _bigDataPoolsClient;
         private readonly SparkJobDefinitionClient _sparkJobDefinitionClient;
 
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _triggerRunClient = new TriggerRunClient(uri, new AzureSessionCredential(context));
             _datasetClient = new DatasetClient(uri, new AzureSessionCredential(context));
             _dataFlowClient = new DataFlowClient(uri, new AzureSessionCredential(context));
+            _dataFlowDebugSessionClient = new DataFlowDebugSessionClient(uri, new AzureSessionCredential(context));
             _bigDataPoolsClient = new BigDataPoolsClient(uri, new AzureSessionCredential(context));
             _sparkJobDefinitionClient = new SparkJobDefinitionClient(uri, new AzureSessionCredential(context));
         }
@@ -285,6 +287,41 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public void DeleteDataFlow(string dataFlowName)
         {
             _dataFlowClient.StartDeleteDataFlow(dataFlowName).Poll();
+        }
+
+        #endregion
+
+        #region DataFlowDebugSession
+
+        public AddDataFlowToDebugSessionResponse AddDataFlowDebugSessionPackage(string rawJsonContent, string sessionId)
+        {
+            DataFlowDebugPackage package = JsonConvert.DeserializeObject<DataFlowDebugPackage>(rawJsonContent);
+            if (!string.IsNullOrWhiteSpace(sessionId))
+            {
+                package.SessionId = sessionId;
+            }
+            var operation = _dataFlowDebugSessionClient.AddDataFlow(package);
+            return operation.Value;
+        }
+
+        public Pageable<DataFlowDebugSessionInfo> GetDataFlowDebugSessionsByWorkspace()
+        {
+            return _dataFlowDebugSessionClient.QueryDataFlowDebugSessionsByWorkspace();
+        }
+     
+        public DataFlowDebugCommandResponse InvokeDataFlowDebugSessionCommand(DataFlowDebugCommandRequest request)
+        {
+           return _dataFlowDebugSessionClient.StartExecuteCommand(request).Poll().Value;
+        }
+
+        public void DeleteDataFlowDebugSession(DeleteDataFlowDebugSessionRequest request)
+        {
+            _dataFlowDebugSessionClient.DeleteDataFlowDebugSession(request);
+        }
+
+        public CreateDataFlowDebugSessionResponse CreateDataFlowDebugSession(CreateDataFlowDebugSessionRequest request)
+        {
+            return _dataFlowDebugSessionClient.StartCreateDataFlowDebugSession(request).Poll().Value;
         }
 
         #endregion

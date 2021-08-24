@@ -185,7 +185,12 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Start-AzSynapseIntegrationRuntime', 
                'Stop-AzSynapseIntegrationRuntime', 'Invoke-AzSynapseTriggerRun', 
                'Stop-AzSynapseTriggerRun', 
-               'New-AzSynapseLinkedServiceEncryptedCredential'
+               'New-AzSynapseLinkedServiceEncryptedCredential',
+               'Get-AzSynapseDataFlowDebugSession',
+               'Add-AzSynapseDataFlowDebugSessionPackage',
+               'Invoke-AzSynapseDataFlowDebugSessionCommand',
+               'Stop-AzSynapseDataFlowDebugSession',
+               'Start-AzSynapseDataFlowDebugSession'
 
 # Variables to export from this module
 # VariablesToExport = @()

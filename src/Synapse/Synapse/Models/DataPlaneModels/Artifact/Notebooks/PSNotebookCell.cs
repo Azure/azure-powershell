@@ -30,15 +30,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Source = notebookCell?.Source;
             this.Attachments = notebookCell?.Attachments;
             this.Outputs = notebookCell?.Outputs?.Select(element => new PSNotebookCellOutputItem(element)).ToList();
-            var propertiesEnum = notebookCell?.GetEnumerator();
-            if (propertiesEnum != null)
-            {
-                this.AdditionalProperties = new Dictionary<string, object>();
-                while (propertiesEnum.MoveNext())
-                {
-                    this.AdditionalProperties.Add(propertiesEnum.Current);
-                }
-            }
+            this.AdditionalProperties = notebookCell?.AdditionalProperties;
         }
 
         public string CellType { get; set; }
