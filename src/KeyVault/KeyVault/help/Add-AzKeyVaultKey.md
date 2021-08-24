@@ -16,8 +16,8 @@ Creates a key in a key vault or imports a key into a key vault.
 ### InteractiveCreate (Default)
 ```
 Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] [-KeyType <String>]
+ [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveImport
@@ -46,7 +46,8 @@ Add-AzKeyVaultKey -HsmName <String> [-Name] <String> -KeyFilePath <String> [-Key
 ```
 Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <String> [-Disable]
  [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyType <String>] [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectImport
@@ -75,8 +76,8 @@ Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> -KeyFilePath <Str
 ### ResourceIdCreate
 ```
 Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] [-KeyType <String>]
+ [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdImport
@@ -133,6 +134,8 @@ PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITSoftware' -Destination '
 
 Vault Name     : contoso
 Name           : ITSoftware
+Key Type       : RSA
+Key Size       :
 Version        : 67da57e9cadf48a2ad8d366b115843ab
 Id             : https://contoso.vault.azure.net:443/keys/ITSoftware/67da57e9cadf48a2ad8d366b115843ab
 Enabled        : True
@@ -294,7 +297,7 @@ Specifies the curve name of elliptic curve cryptography, this value is valid whe
 
 ```yaml
 Type: System.String
-Parameter Sets: InteractiveImport, HsmInteractiveCreate, InputObjectImport, HsmInputObjectCreate, ResourceIdImport, HsmResourceIdCreate
+Parameter Sets: InteractiveCreate, InteractiveImport, HsmInteractiveCreate, InputObjectCreate, InputObjectImport, HsmInputObjectCreate, ResourceIdCreate, ResourceIdImport, HsmResourceIdCreate
 Aliases:
 
 Required: False
@@ -522,7 +525,7 @@ Specifies the key type of this key. When importing BYOK keys, it defaults to 'RS
 
 ```yaml
 Type: System.String
-Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
+Parameter Sets: InteractiveCreate, InteractiveImport, InputObjectCreate, InputObjectImport, ResourceIdCreate, ResourceIdImport
 Aliases:
 
 Required: False

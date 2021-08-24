@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported adding EC keys in key vault [#15699]
 
 ## Version 3.4.5
 * Removed duplicate list item in `Get-AzKeyVault` [#15164]

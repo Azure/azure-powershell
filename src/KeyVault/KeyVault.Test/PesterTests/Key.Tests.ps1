@@ -1,7 +1,33 @@
-$vaultName = 'yemingkv27'
+$vaultName = 'bez-kv0824'
 
 
 . "$PSScriptRoot\..\Scripts\Common.ps1"
+
+Describe "Create key" {
+    It "should create RSA keys" {
+        $keyName = Get-KeyName
+        $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination Software
+        $key.KeyType | Should -Be "RSA"
+        $key.KeySize | Should -Be 2048
+
+        $keyName = Get-KeyName
+        $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination Software -Size 4096
+        $key.KeyType | Should -Be "RSA"
+        $key.KeySize | Should -Be 4096
+    }
+
+    It "should create EC keys" {
+        $keyName = Get-KeyName
+        $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination Software -KeyType EC
+        $key.KeyType | Should -Be "EC"
+        $key.Key.CurveName | Should -Be "P-256"
+
+        $keyName = Get-KeyName
+        $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination Software -KeyType EC -CurveName P-384
+        $key.KeyType | Should -Be "EC"
+        $key.Key.CurveName | Should -Be "P-384"
+    }
+}
 
 Describe "Update key" {
     It "should update multiple versions" {
@@ -18,7 +44,7 @@ Describe "Update key" {
     }
 }
 
-Describe "Add key" {
+Describe "Import key" {
     It "should throw when key type EC and curve name are not paired" {
         {
             Add-AzKeyVaultKey -VaultName veakkine-kv -Name PSECImportedKey -KeyFilePath E:\targetBlob.byok -KeyType EC -ErrorAction Stop
