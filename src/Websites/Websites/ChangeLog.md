@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Set-AzWebApp` to return a valid warning message when fails to add -Hostname #9316
+* Fixed `Get-AzWebApp` to return CustomDomainVerificationId in the response. #9316
+
+## Version 2.8.1
 * Fixed `Add-AzWebAppAccessRestrictionRule` failing when users does not have permissions to get Service Tag list #15316 and #14862
 
 ## Version 2.8.0

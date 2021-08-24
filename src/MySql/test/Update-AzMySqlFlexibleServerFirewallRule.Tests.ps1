@@ -12,30 +12,19 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzMySqlFlexibleServerFirewallRule' {
-    It 'UpdateExpanded' {
-        New-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-        $rule = Update-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
-        $rule.StartIPAddress | Should -Be 0.0.0.2
-        $rule.EndIPAddress | Should -Be 0.0.0.3
+    It 'UpdateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ClientIPAddress' {
-        $rule = Update-AzMySqlFlexibleServerFirewallRule -Name $env.firewallRuleName -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -ClientIPAddress 0.0.0.2
-        $rule.StartIPAddress | Should -Be 0.0.0.2
-        $rule.EndIPAddress | Should -Be 0.0.0.2
+    It 'ClientIPAddress' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
-        $rule = Update-AzMySqlFlexibleServerFirewallRule -InputObject $ID -EndIPAddress 0.0.0.5 -StartIPAddress 0.0.0.4
-        $rule.StartIPAddress | Should -Be 0.0.0.4
-        $rule.EndIPAddress | Should -Be 0.0.0.5
+    It 'UpdateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ClientIPAddressViaIdentity' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
-        $rule = Update-AzMySqlFlexibleServerFirewallRule -InputObject $ID -ClientIPAddress 0.0.0.9
-        $rule.StartIPAddress | Should -Be 0.0.0.9
-        $rule.EndIPAddress | Should -Be 0.0.0.9
+    It 'ClientIPAddressViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

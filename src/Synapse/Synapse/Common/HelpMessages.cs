@@ -30,6 +30,26 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string SqlAdministratorLoginCredential = "SQL administrator credentials.";
 
+        public const string GitRepository = "Git Repository Settings. Connect workspace to the repository for source control and collaboration for work on your workspace pipelines";
+
+        public const string RepositoryType = "Select the repository type that you want to use to store your artifacts for this Synapse Analytics workspace, the type include DevOps and GitHub.";
+
+        public const string HostName = "GitHub Enterprise host name. For example: https://github.mydomain.com";
+
+        public const string AccountName = "GitHub or DevOps account name used for the repository.";
+
+        public const string ProjectName = "The project name you are connecting, only specify it when you choose DevOps.";
+
+        public const string RepositoryName = "The name of the repository you are connecting.";
+
+        public const string CollaborationBranch = "Select the branch name where you will collaborate with others and from which you will publish.";
+
+        public const string PublishBranch = "The publish branch is the branch in your repository where publishing related ARM templates are stored and update. The default value is workspace_publish.";
+
+        public const string RootFolder = "Displays the name of the folder to the location of your Azure Data Factory JSON resources are imported. The default value is /";
+
+        public const string TenantId = "Select the tenant Id to use when signing in into the Azure DevOps Git repository.";
+
         public const string DoNotAssignManagedIdentity = "Do not assign the workspace's system-assigned managed identity CONTROL permissions to SQL pools for pipeline integration.";
 
         public const string SparkPoolName = "Name of Synapse Spark pool.";
@@ -230,6 +250,16 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string StorageKeyType = "Specifies which of the storage access keys to use.";
 
         public const string RetentionInDays = "The number of retention days for the audit logs.";
+
+        public const string EventHubTargetState = "Indicates whether event hub is a destination for audit records.";
+
+        public const string EventHubName = "The name of the event hub. If none is specified when providing EventHubAuthorizationRuleResourceId, the default event hub will be selected.";
+
+        public const string EventHubAuthorizationRuleId = "The resource Id for the event hub authorization rule";
+
+        public const string LogAnalyticsTargetState = "Indicates whether log analytics is a destination for audit records.";
+
+        public const string WorkspaceId = "The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Audit Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2";
 
         public const string NotificationRecipientsEmails = "A semicolon separated list of email addresses to send the alerts to.";
 
@@ -440,5 +470,11 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string AutoPauseTimer = "The period of inactivity in minutes before automatically pausing the sql pool.";
 
         public const string AutoResume = "Indicates whether the sql pool can automatically resume when connection attempts are made.";
+
+        public const string ManagedPrivateEndpointName = "The Synapse Managed Private Endpoint Name.";
+
+        public const string ManagedPrivateEndpointObject = "The Synapse Managed Private Endpoint Object.";
+
+        public const string DefaultVNetName = "Managed Virtual Network Name is 'default'.";
     }
 }

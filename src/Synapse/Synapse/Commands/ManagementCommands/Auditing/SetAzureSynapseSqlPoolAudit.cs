@@ -1,170 +1,199 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Properties;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.Synapse.Models.Auditing;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlPool + SynapseConstants.AuditSetting,
-        DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet(
+        VerbsCommon.Set,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + DefinitionsCommon.SqlPoolAuditCmdletsSuffix,
+        DefaultParameterSetName = DefinitionsCommon.SqlPoolParameterSetName,
+        SupportsShouldProcess = true),
+        OutputType(typeof(bool))]
     [Alias("Set-AzSynapseSqlPoolAudit")]
-    [OutputType(typeof(SqlPoolAuditModel))]
-    public class SetAzureSynapseSqlPoolAudit : SynapseManagementCmdletBase
+    public class SetAzureSynapseSqlPoolAudit : SynapseSqlPoolAuditCmdlet
     {
-        private const string SetByNameParameterSet = "SetByNameParameterSet";
-        private const string SetByParentObjectParameterSet = "SetByParentObjectParameterSet";
-        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
-        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.AuditActionGroup)]
+        public AuditActionGroups[] AuditActionGroup { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = SetByNameParameterSet, HelpMessage = HelpMessages.ResourceGroupName)]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet, HelpMessage = HelpMessages.WorkspaceName)]
-        [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
-        [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
-        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet, HelpMessage = HelpMessages.SqlPoolName)]
-        [ResourceNameCompleter(
-            ResourceTypes.SqlPool,
-            nameof(ResourceGroupName),
-            nameof(WorkspaceName))]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(ValueFromPipeline = true, ParameterSetName = SetByParentObjectParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [ValidateNotNull]
-        public PSSynapseWorkspace WorkspaceObject { get; set; }
-
-        [Parameter(ValueFromPipeline = true, ParameterSetName = SetByInputObjectParameterSet, Mandatory = true,
-            HelpMessage = HelpMessages.SqlPoolObject)]
-        [ValidateNotNull]
-        public PSSynapseSqlPool InputObject { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByResourceIdParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.SqlPoolResourceId)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AuditActionGroup)]
-        public AuditActionGroup[] AuditActionGroup { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AuditAction)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.AuditAction)]
         public string[] AuditAction { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.PredicateExpression)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.PredicateExpression)]
         [ValidateNotNull]
         public string PredicateExpression { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.BlobStorageTargetState)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.BlobStorageTargetState)]
         [ValidateSet(SynapseConstants.Security.Enabled, SynapseConstants.Security.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string BlobStorageTargetState { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AuditStorageAccountResourceId)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.AuditStorageAccountResourceId)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.StorageKeyType)]
-        [ValidateSet(SynapseConstants.Security.Primary, SynapseConstants.Security.Secondary, IgnoreCase = false)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.StorageKeyType)]
+        [ValidateSet(
+            SynapseConstants.Security.Primary,
+            SynapseConstants.Security.Secondary,
+            IgnoreCase = false)]
         public string StorageKeyType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.RetentionInDays)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.RetentionInDays)]
         [ValidateNotNullOrEmpty]
         public uint? RetentionInDays { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
-        public SwitchParameter AsJob { get; set; }
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.EventHubTargetState)]
+        [ValidateSet(SynapseConstants.Security.Enabled, SynapseConstants.Security.Disabled, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string EventHubTargetState { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.EventHubName)]
+        [ValidateNotNullOrEmpty]
+        public string EventHubName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.EventHubAuthorizationRuleId)]
+        [ValidateNotNullOrEmpty]
+        public string EventHubAuthorizationRuleResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.LogAnalyticsTargetState)]
+        [ValidateSet(SynapseConstants.Security.Enabled, SynapseConstants.Security.Disabled, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string LogAnalyticsTargetState { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.WorkspaceId)]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        public Guid RoleAssignmentId { get; set; } = default(Guid);
+
+        protected override SqlPoolAuditModel ApplyUserInputToModel(SqlPoolAuditModel model)
         {
-            if (this.IsParameterBound(c => c.WorkspaceObject))
+            base.ApplyUserInputToModel(model);
+
+            if (AuditAction != null)
             {
-                this.ResourceGroupName = new ResourceIdentifier(this.WorkspaceObject.Id).ResourceGroupName;
-                this.WorkspaceName = this.WorkspaceObject.Name;
+                model.AuditAction = AuditAction;
             }
 
-            if (this.IsParameterBound(c => c.InputObject))
+            if (AuditActionGroup != null)
             {
-                var resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.WorkspaceName = resourceIdentifier.ParentResource;
-                this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
-                this.Name = resourceIdentifier.ResourceName;
+                model.AuditActionGroup = AuditActionGroup;
             }
 
-            if (this.IsParameterBound(c => c.ResourceId))
+            if (PredicateExpression != null)
             {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.WorkspaceName = resourceIdentifier.ParentResource;
-                this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
-                this.Name = resourceIdentifier.ResourceName;
+                model.PredicateExpression = PredicateExpression;
             }
 
-            if (this.ShouldProcess(this.Name, string.Format(Resources.SettingSqlPoolAudit, this.Name, this.WorkspaceName)))
+            if (BlobStorageTargetState != null)
             {
-                SqlPoolAuditModel model = SynapseAnalyticsClient.GetSqlPoolAudit(this.ResourceGroupName, this.WorkspaceName, this.Name);
-
-                if(this.IsParameterBound(c => c.AuditAction))
-                {
-                    model.AuditAction = this.AuditAction;
-                }
-
-                if(this.IsParameterBound(c => c.AuditActionGroup))
-                {
-                    model.AuditActionGroup = this.AuditActionGroup;
-                }
-
-                if(this.IsParameterBound(c => c.PredicateExpression))
-                {
-                    model.PredicateExpression = this.PredicateExpression;
-                }
-
-                if(this.IsParameterBound(c => c.BlobStorageTargetState))
-                {
-                    model.BlobStorageTargetState = this.BlobStorageTargetState == SynapseConstants.Security.Enabled ?
-                        AuditStateType.Enabled : AuditStateType.Disabled;
-                }
-
-                if(this.IsParameterBound(c => c.StorageAccountResourceId))
-                {
-                    model.StorageAccountResourceId = this.StorageAccountResourceId;
-                }
-
-                if(this.IsParameterBound(c => c.StorageKeyType))
-                {
-                    model.StorageKeyType = (this.StorageKeyType == SynapseConstants.Security.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
-                }
-
-                if(this.IsParameterBound(c => c.RetentionInDays))
-                {
-                    model.RetentionInDays = this.RetentionInDays;
-                }
-
-                // check parameters
-                if (this.BlobStorageTargetState == SynapseConstants.Security.Enabled &&
-                    string.IsNullOrEmpty(this.StorageAccountResourceId))
-                {
-                    throw new PSArgumentException(Resources.StorageAccountNameParameterException, "StorageAccountName");
-                }
-
-                SynapseAnalyticsClient.CreateOrUpdateSqlPoolAudit(model);
-                if (PassThru)
-                {
-                    WriteObject(model);
-                }
+                model.BlobStorageTargetState = BlobStorageTargetState == SynapseConstants.Security.Enabled ?
+                    AuditStateType.Enabled : AuditStateType.Disabled;
             }
+
+            if (StorageAccountResourceId != null)
+            {
+                model.StorageAccountResourceId = StorageAccountResourceId;
+            }
+
+            if (this.IsParameterBound(c => c.StorageKeyType))
+            {
+                model.StorageKeyType = (StorageKeyType == SynapseConstants.Security.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
+            }
+
+            if (RetentionInDays != null)
+            {
+                model.RetentionInDays = RetentionInDays;
+            }
+
+            if (EventHubTargetState != null)
+            {
+                model.EventHubTargetState = EventHubTargetState == SynapseConstants.Security.Enabled ?
+                    AuditStateType.Enabled : AuditStateType.Disabled;
+            }
+
+            if (EventHubName != null)
+            {
+                model.EventHubName = EventHubName;
+            }
+
+            if (EventHubAuthorizationRuleResourceId != null)
+            {
+                model.EventHubAuthorizationRuleResourceId = EventHubAuthorizationRuleResourceId;
+            }
+
+            if (LogAnalyticsTargetState != null)
+            {
+                model.LogAnalyticsTargetState = LogAnalyticsTargetState == SynapseConstants.Security.Enabled ?
+                    AuditStateType.Enabled : AuditStateType.Disabled;
+            }
+
+            if (WorkspaceResourceId != null)
+            {
+                model.WorkspaceResourceId = WorkspaceResourceId;
+            }
+
+            return model;
         }
+
+        protected override SqlPoolAuditModel PersistChanges(SqlPoolAuditModel entity)
+        {
+            ModelAdapter.PersistAuditChanges(entity);
+            return null;
+        }
+
+        protected override SynapseSqlPoolAuditAdapter InitModelAdapter()
+        {
+            return new SynapseSqlPoolAuditAdapter(DefaultProfile.DefaultContext, SqlPoolName, RoleAssignmentId);
+        }
+
+        protected override bool WriteResult() => PassThru;
     }
 }

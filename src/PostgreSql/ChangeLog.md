@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for flexible server database
+    - Get-AzPostgreSqlFlexibleServerDatabase
+    - New-AzPostgreSqlFlexibleServerDatabase
+    - Remove-AzPostgreSqlFlexibleServerDatabase   
+
+## Version 0.6.0
+* Migrated from 20200214 preview API to 20210601 API
+* Changed default database create experience to public access from private access
 
 ## Version 0.5.0
 * Added maintenance windows parameter to Update-AzPostgreSqlFlexibleServer cmdlet

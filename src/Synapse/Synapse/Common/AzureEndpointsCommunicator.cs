@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Synapse.Models;
+using Microsoft.Azure.Commands.Synapse.Models.Auditing;
 using Microsoft.Azure.Commands.Synapse.Models.DataClassification;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;

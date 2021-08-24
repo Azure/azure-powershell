@@ -178,13 +178,13 @@ namespace Microsoft.Azure.Commands.Synapse
                 NodeCount = this.enableAutoScale ? (int?) null : this.NodeCount,
                 NodeSizeFamily = NodeSizeFamily.MemoryOptimized,
                 NodeSize = NodeSize,
-                AutoScale = !this.enableAutoScale ? null : new AutoScaleProperties
+                AutoScale = !this.enableAutoScale ? new AutoScaleProperties { Enabled = false } : new AutoScaleProperties
                 {
                     Enabled = this.enableAutoScale,
                     MinNodeCount = AutoScaleMinNodeCount,
                     MaxNodeCount = AutoScaleMaxNodeCount
                 },
-                AutoPause = !EnableAutoPause ? null : new AutoPauseProperties
+                AutoPause = !EnableAutoPause ? new AutoPauseProperties { Enabled = false } : new AutoPauseProperties
                 {
                     Enabled = EnableAutoPause.IsPresent,
                     DelayInMinutes = AutoPauseDelayInMinute

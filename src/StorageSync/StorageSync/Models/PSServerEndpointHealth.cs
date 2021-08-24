@@ -71,5 +71,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The offline data transfer status.</value>
         public string OfflineDataTransferStatus { get; set; }
+
+        public long? TotalPersistentFilesNotSyncingCount { get; set; }
+
+        public PSBackgroundDataDownloadActivity BackgroundDataDownloadActivity { get; set; }
+    }
+
+    public class PSBackgroundDataDownloadActivity
+    {
+        public DateTime? Timestamp { get; set; }
+
+        public DateTime? StartedTimestamp { get; set; }
+
+        public int? PercentProgress { get; set; }
+
+        public long? DownloadedBytes { get; set; }
     }
 }
+

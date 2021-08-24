@@ -20,6 +20,20 @@
 
 -->
 ## Upcoming Release
+* Added new parameters `-LinuxConfigurationPatchMode`, `-WindowsConfigurationPatchMode`, and `-LinuxConfigurationProvisionVMAgent` to `Set-AzVmssOSProfile`
+* Added new parameters `-SshKeyName` and `-GenerateSshKey` to `New-AzVM` to create a VM with SSH
+* Fixed a bug in `Add-AzVHD` on Linux that caused uploads to fail for certain destination URI
+* Added new cmdlets for Restore Points and Restore Point Collection:
+    - 'New-AzRestorePoint'
+    - 'New-AzRestorePointCollection'
+    - 'Get-AzRestorePoint'
+    - 'Get-AzRestorePointCollection'
+    - 'Update-AzRestorePointCollection'
+    - 'Remove-AzRestorePoint'
+    - 'Remove-AzRestorePointCollection'
+* Added new parameters '-EnableSpotRestore' and '-SpotRestoreTimeout' to 'New-AzVMSSConfig' to enable Spot Restore Policy 
+
+## Version 4.16.0
 * Fixed the warning in `New-AzVM` cmdlet stating the sku of the VM is being defaulted even if a sku size is provided by the user. Now it only occurs when the user does not provide a sku size.
 * Edited `Set-AzVmOperatingSystem` cmdlet to no longer overwrite any existing EnableAutomaticUpdates value on the passed in virtual machine if it exists.
 * Updated Compute module to use the latest .Net SDK version 48.0.0.
@@ -30,7 +44,7 @@
     - `New-AzCapacityReservation`
     - `Remove-AzCapacityReservation`
     - `Get-AzCapacityReservation`
-* Added a new parameter `-CapacityReservationGroupId` to the folloinwg cmdlets:
+* Added a new parameter `-CapacityReservationGroupId` to the following cmdlets:
     - `New-AzVm`
     - `New-AzVmConfig`
     - `New-AzVmss`
