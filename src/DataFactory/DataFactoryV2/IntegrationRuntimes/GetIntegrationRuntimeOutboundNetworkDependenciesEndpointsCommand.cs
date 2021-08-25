@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints", DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName), OutputType(typeof(List<PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint", DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName), OutputType(typeof(List<PSIntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>))]
     public class GetIntegrationRuntimeOutboundNetworkDependenciesEndpointsCommand: IntegrationRuntimeCmdlet
     {
 

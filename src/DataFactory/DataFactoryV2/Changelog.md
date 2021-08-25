@@ -18,11 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
 * Add subnetId support for command `Set-AzDataFactoryV2IntegrationRuntime` so that VNet RABC check can be done against subnet Resource Id instead of VNet resource ID.
 * Add command `Get-AzDataFactoryV2IntegrationRuntime` to support listing of outbound network dependencies for a given Azure-SSIS integration runtime.
-
-## Version 1.13.2
 * Updated ADF .Net SDK version to 4.23.0
 
 ## Version 1.13.1

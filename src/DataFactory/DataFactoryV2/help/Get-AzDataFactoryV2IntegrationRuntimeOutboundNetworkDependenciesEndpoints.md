@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints
+online version: https://docs.microsoft.com/powershell/module/az.datafactory/get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint
 schema: 2.0.0
 ---
 
-# Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints
+# Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint
 
 ## SYNOPSIS
 Gets the list of outbound network dependencies for a given Azure-SSIS integration runtime.
@@ -14,25 +14,25 @@ Gets the list of outbound network dependencies for a given Azure-SSIS integratio
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints [-Name] <String>
+Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint [-Name] <String>
  [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints [-ResourceId] <String>
+Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints [-InputObject] <PSIntegrationRuntime>
+Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint [-InputObject] <PSIntegrationRuntime>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoints cmdlet gets a list of outbound network dependencies for a given Azure-SSIS integration runtime in a data factory.
+The Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint cmdlet gets a list of outbound network dependencies for a given Azure-SSIS integration runtime in a data factory.
 
 ## EXAMPLES
 
