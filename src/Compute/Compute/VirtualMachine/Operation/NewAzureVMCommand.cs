@@ -324,6 +324,18 @@ namespace Microsoft.Azure.Commands.Compute
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        public string UserData { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -484,7 +496,8 @@ namespace Microsoft.Azure.Commands.Compute
                         sshPublicKeys: sshPublicKeyList,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
-                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
+                        userData: _cmdlet.UserData
                         );
                 }
                 else
@@ -515,7 +528,8 @@ namespace Microsoft.Azure.Commands.Compute
                         encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
-                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
+                        userData: _cmdlet.UserData
                     );
                 }
             }
