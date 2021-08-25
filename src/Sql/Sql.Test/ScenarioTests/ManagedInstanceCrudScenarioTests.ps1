@@ -213,7 +213,20 @@ function Test-SetManagedInstance
 		catch
 		{
 			$ErrorMessage = $_.Exception.Message
-			Assert-AreEqual True $ErrorMessage.Contains("Long running operation failed with status 'Failed'. Additional Info:'Subnet resource ID '"+$targetSubnetResourceId+"' is invalid. Please provide a correct resource Id for the target subnet.'")
+			# Because of a backend error mapping, current error message is wrong. Here is the correct error message to use when the backend fix gets deployed:
+			# "Long running operation failed with status 'Failed'. Additional Info:'Subnet resource ID '"+$targetSubnetResourceId+"' is invalid. Please provide a correct resource Id for the target subnet.'"
+			Assert-AreEqual True $ErrorMessage.Contains("Long running operation failed with status 'Failed'. Additional Info:'An unexpected error occured while processing the request.")
+		}
+
+		# Test zone redundant update SLO. Since the feature is still not rolled-out, the operation should fail.
+		try
+		{
+			Set-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName -ZoneRedundant -Force
+		}
+		catch
+		{
+			$ErrorMsg = $_.Exception.Message
+			Assert-AreEqual True $ErrorMsg.Contains("Long running operation failed with status 'Failed'. Additional Info:'Enabling zoneRedundant feature is not possible once managed instance is created.")
 		}
 	}
 	finally
@@ -233,15 +246,17 @@ function Test-GetManagedInstance
 	# Setup
 	$rg = Create-ResourceGroupForTest "westeurope"
 	$rg1 = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "MIVirtualNetwork"
-	$subnetName = "ManagedInsanceSubnet"
+	$vnetName = "vnet-portal-testing"
+	$subnetName = "ManagedInstance"
+	$vnetRgName = "portalrg"
+	$vCore = 4
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "v-urmila"
+	$virtualNetwork1 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetRgName
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
-	$managedInstance1 = Create-ManagedInstanceForTest $rg $subnetId
-	$managedInstance2 = Create-ManagedInstanceForTest $rg1 $subnetId
+	$managedInstance1 = Create-ManagedInstanceForTest $rg $subnetId $vCore
+	$managedInstance2 = Create-ManagedInstanceForTest $rg1 $subnetId $vCore
 
 	try
 	{
@@ -254,6 +269,7 @@ function Test-GetManagedInstance
 		Assert-AreEqual $managedInstance1.LicenseType $resp1.LicenseType
 		Assert-AreEqual $managedInstance1.VCores $resp1.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $resp1.StorageSizeInGB
+		Assert-AreEqual $false $managedInstance1.ZoneRedundant
 
 		$all = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name *
 		Assert-AreEqual 1 $all.Count
@@ -456,5 +472,44 @@ function Test-CreateManagedInstanceWithMaintenanceConfigurationId
 	finally
 	{
 		Remove-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstanceName -Force
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a managed instance with MultiAz enabled
+	.DESCRIPTION
+	SmokeTest
+#>
+function Test-CreateManagedInstanceWithMultiAzEnabled
+{
+# Setup
+	$rg = Create-ResourceGroupForTest "westeurope"
+	$vnetName = "vnet-portal-testing"
+	$subnetName = "ManagedInstance"
+	$vnetRgName = "portalrg"
+	$vCore = 4
+	$managedInstanceName = Get-ManagedInstanceName
+	$credentials = Get-ServerCredential
+	$skuName = "GP_Gen5"
+
+	# Setup VNET
+	$virtualNetwork1 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $vnetRgName
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+
+	try
+	{
+		$managedInstance1 = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
+			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
+			-Vcore $vCore -SkuName $skuName -ZoneRedundant -AssignIdentity
+	}
+	catch
+	{
+		$ErrorMsg = $_.Exception.Message
+		Assert-AreEqual True $ErrorMsg.Contains("ZoneRedundant feature is not supported for the selected service tier.")
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
 	}
 }

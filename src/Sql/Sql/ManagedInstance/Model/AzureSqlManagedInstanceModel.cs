@@ -159,5 +159,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets a CMK URI of the key to use for encryption.
         /// </summary>
         public string KeyId { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not the multi-az is enabled
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
     }
 }
