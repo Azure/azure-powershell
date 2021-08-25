@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
         }
 
-        public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress = null, Management.Network.Models.SubResource virtualHub = null)
+        public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress = null)
         {
             if (virtualNetwork == null)
             {
