@@ -14,14 +14,14 @@ Microsoft Azure PowerShell: VMware cmdlets
 ### [Get-AzVMwareAddon](Get-AzVMwareAddon.md)
 Get an addon by name in a private cloud
 
+### [Get-AzVMwareAuthorization](Get-AzVMwareAuthorization.md)
+Get an ExpressRoute Circuit Authorization by name in a private cloud
+
 ### [Get-AzVMwareCloudLink](Get-AzVMwareCloudLink.md)
 Get an cloud link by name in a private cloud
 
 ### [Get-AzVMwareCluster](Get-AzVMwareCluster.md)
 Get a cluster by name in a private cloud
-
-### [Get-AzVMwareExpressRouteAuthorization](Get-AzVMwareExpressRouteAuthorization.md)
-Get an ExpressRoute Circuit Authorization by name in a private cloud
 
 ### [Get-AzVMwareGlobalReachConnection](Get-AzVMwareGlobalReachConnection.md)
 Get a global reach connection by name in a private cloud
@@ -41,14 +41,14 @@ Create a in-memory object for AddonSrmProperties
 ### [New-AzVMwareAddonVrPropertiesObject](New-AzVMwareAddonVrPropertiesObject.md)
 Create a in-memory object for AddonVrProperties
 
+### [New-AzVMwareAuthorization](New-AzVMwareAuthorization.md)
+Create or update an ExpressRoute Circuit Authorization in a private cloud
+
 ### [New-AzVMwareCloudLink](New-AzVMwareCloudLink.md)
 Create or update a cloud link in a private cloud
 
 ### [New-AzVMwareCluster](New-AzVMwareCluster.md)
 Create or update a cluster in a private cloud
-
-### [New-AzVMwareExpressRouteAuthorization](New-AzVMwareExpressRouteAuthorization.md)
-Create or update an ExpressRoute Circuit Authorization in a private cloud
 
 ### [New-AzVMwareGlobalReachConnection](New-AzVMwareGlobalReachConnection.md)
 Create or update a global reach connection in a private cloud
@@ -74,14 +74,14 @@ Create a in-memory object for ScriptStringExecutionParameter
 ### [Remove-AzVMwareAddon](Remove-AzVMwareAddon.md)
 Delete a addon in a private cloud
 
+### [Remove-AzVMwareAuthorization](Remove-AzVMwareAuthorization.md)
+Delete an ExpressRoute Circuit Authorization in a private cloud
+
 ### [Remove-AzVMwareCloudLink](Remove-AzVMwareCloudLink.md)
 Delete a cloud link in a private cloud
 
 ### [Remove-AzVMwareCluster](Remove-AzVMwareCluster.md)
 Delete a cluster in a private cloud
-
-### [Remove-AzVMwareExpressRouteAuthorization](Remove-AzVMwareExpressRouteAuthorization.md)
-Delete an ExpressRoute Circuit Authorization in a private cloud
 
 ### [Remove-AzVMwareGlobalReachConnection](Remove-AzVMwareGlobalReachConnection.md)
 Delete a global reach connection in a private cloud

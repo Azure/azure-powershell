@@ -50,8 +50,8 @@
       "Headers": {
         "x-ms-unique-id": [ "199" ],
         "x-ms-client-request-id": [ "c61f68c2-036a-462d-8631-e8487d4ace25" ],
-        "CommandName": [ "Get-AzVMwareExpressRouteAuthorization" ],
-        "FullCommandName": [ "Get-AzVMwareExpressRouteAuthorization_Get" ],
+        "CommandName": [ "Get-AzVMwareAuthorization" ],
+        "FullCommandName": [ "Get-AzVMwareAuthorization_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]

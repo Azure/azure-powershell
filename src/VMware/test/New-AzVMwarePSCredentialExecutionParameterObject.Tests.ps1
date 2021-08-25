@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzVMwarePSCredentialExecutionParameterObject' {
     It 'Rotate' {
         {
-            $config = New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Type Credential -Password "passwordValue" -Username "usernameValue"
+            $config = New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
             $config.Type | Should -Be "Credential"
         } | Should -Not -Throw
     }

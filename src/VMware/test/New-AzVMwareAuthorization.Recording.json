@@ -1,5 +1,5 @@
 {
-  "New-AzVMwareExpressRouteAuthorization+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+1": {
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01",
@@ -32,11 +32,11 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic\",\"name\":\"ftr3ic\",\"properties\":{\"expressRouteAuthorizationId\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er/authorizations/avs_resource_ftr3ic\",\"expressRouteAuthorizationKey\":\"3f3519a7-a695-485c-b761-b61da6f3f0d1\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/authorizations\"}",
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic\",\"name\":\"ftr3ic\",\"properties\":{\"authorizationId\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er/authorizations/avs_resource_ftr3ic\",\"authorizationKey\":\"3f3519a7-a695-485c-b761-b61da6f3f0d1\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/authorizations\"}",
       "isContentBase64": false
     }
   },
-  "New-AzVMwareExpressRouteAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+2": {
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+2": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01",
@@ -46,8 +46,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "128" ],
         "x-ms-client-request-id": [ "78d30ad6-2eaf-49c7-ac15-3e4c928ec448" ],
-        "CommandName": [ "New-AzVMwareExpressRouteAuthorization" ],
-        "FullCommandName": [ "New-AzVMwareExpressRouteAuthorization_CreateExpanded" ],
+        "CommandName": [ "New-AzVMwareAuthorization" ],
+        "FullCommandName": [ "New-AzVMwareAuthorization_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
       },
@@ -74,11 +74,11 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic\",\"name\":\"ftr3ic\",\"properties\":{\"expressRouteAuthorizationId\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er/authorizations/avs_resource_ftr3ic\",\"expressRouteAuthorizationKey\":\"3f3519a7-a695-485c-b761-b61da6f3f0d1\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/authorizations\"}",
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic\",\"name\":\"ftr3ic\",\"properties\":{\"authorizationId\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er/authorizations/avs_resource_ftr3ic\",\"authorizationKey\":\"3f3519a7-a695-485c-b761-b61da6f3f0d1\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/authorizations\"}",
       "isContentBase64": false
     }
   },
-  "New-AzVMwareExpressRouteAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+3": {
+  "New-AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+3": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01",
@@ -88,8 +88,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "129" ],
         "x-ms-client-request-id": [ "78d30ad6-2eaf-49c7-ac15-3e4c928ec448" ],
-        "CommandName": [ "New-AzVMwareExpressRouteAuthorization" ],
-        "FullCommandName": [ "New-AzVMwareExpressRouteAuthorization_CreateExpanded" ],
+        "CommandName": [ "New-AzVMwareAuthorization" ],
+        "FullCommandName": [ "New-AzVMwareAuthorization_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
       },
@@ -116,7 +116,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic\",\"name\":\"ftr3ic\",\"properties\":{\"expressRouteAuthorizationId\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er/authorizations/avs_resource_ftr3ic\",\"expressRouteAuthorizationKey\":\"3f3519a7-a695-485c-b761-b61da6f3f0d1\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/authorizations\"}",
+      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic\",\"name\":\"ftr3ic\",\"properties\":{\"authorizationId\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt67-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt67-cust-mp01-mock01-er/authorizations/avs_resource_ftr3ic\",\"authorizationKey\":\"3f3519a7-a695-485c-b761-b61da6f3f0d1\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/authorizations\"}",
       "isContentBase64": false
     }
   }

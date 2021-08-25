@@ -13,7 +13,7 @@ Create a in-memory object for AddonVrProperties
 ## SYNTAX
 
 ```
-New-AzVMwareAddonVrPropertiesObject -AddonType <AddonType> -VrsCount <Int32> [<CommonParameters>]
+New-AzVMwareAddonVrPropertiesObject -VrsCount <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,21 +33,6 @@ VR                          2
 Create a in-memory object for AddonVrProperties
 
 ## PARAMETERS
-
-### -AddonType
-The type of private cloud addon.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AddonType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -VrsCount
 The vSphere Replication Server (VRS) count.

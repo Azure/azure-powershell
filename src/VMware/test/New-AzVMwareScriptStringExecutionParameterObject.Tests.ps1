@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzVMwareScriptStringExecutionParameterObject' {
     It 'Rotate' {
         {
-            $config = New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Type Value -Value "stringValue"
+            $config = New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Value "stringValue"
             $config.Type | Should -Be "Value"
         } | Should -Not -Throw
     }

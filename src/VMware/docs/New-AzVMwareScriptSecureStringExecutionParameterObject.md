@@ -13,8 +13,8 @@ Create a in-memory object for ScriptSecureStringExecutionParameter
 ## SYNTAX
 
 ```
-New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> -Type <ScriptExecutionParameterType>
- [-SecureValue <String>] [<CommonParameters>]
+New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> [-SecureValue <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Create a in-memory object for ScriptSecureStringExecutionParameter
 
 ### Example 1: Create a in-memory object for ScriptSecureStringExecutionParameter
 ```powershell
-PS C:\> New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -Type SecureValue -SecureValue "passwordValue"
+PS C:\> New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -SecureValue "passwordValue"
 
 Name                  Type        SecureValue
 ----                  ----        -----------
@@ -59,21 +59,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-The type of execution parameter.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ScriptExecutionParameterType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

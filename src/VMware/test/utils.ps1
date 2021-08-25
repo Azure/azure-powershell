@@ -49,19 +49,19 @@ function setupEnv() {
     New-AzVMwarePrivateCloud -Name $env.privateCloudName1 `
         -ResourceGroupName $env.resourceGroup1 -NetworkBlock 192.168.48.0/22 `
         -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
-    New-AzVMwareExpressRouteAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 `
+    New-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 `
         -ResourceGroupName $env.resourceGroup1
     
     New-AzVMwarePrivateCloud -Name $env.privateCloudName2 `
         -ResourceGroupName $env.resourceGroup2 -NetworkBlock 192.168.48.0/22 `
         -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
-    New-AzVMwareExpressRouteAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName2 `
+    New-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName2 `
         -ResourceGroupName $env.resourceGroup2
 
     New-AzVMwarePrivateCloud -Name $env.privateCloudName3 `
         -ResourceGroupName $env.resourceGroup3 -NetworkBlock 192.168.48.0/22 `
         -Sku av36 -ManagementClusterSize 3 -Location $env.location2 -AcceptEULA
-    New-AzVMwareExpressRouteAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName3 `
+    New-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName3 `
         -ResourceGroupName $env.resourceGroup3
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

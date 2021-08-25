@@ -13,8 +13,8 @@ Create a in-memory object for PSCredentialExecutionParameter
 ## SYNTAX
 
 ```
-New-AzVMwarePSCredentialExecutionParameterObject -Name <String> -Type <ScriptExecutionParameterType>
- [-Password <String>] [-Username <String>] [<CommonParameters>]
+New-AzVMwarePSCredentialExecutionParameterObject -Name <String> [-Password <String>] [-Username <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Create a in-memory object for PSCredentialExecutionParameter
 
 ### Example 1: Create a in-memory object for PSCredentialExecutionParameter
 ```powershell
-PS C:\> New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Type Credential -Password "passwordValue" -Username "usernameValue"
+PS C:\> New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
 
 Name                      Type       Password      Username
 ----                      ----       --------      --------
@@ -59,21 +59,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-The type of execution parameter.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ScriptExecutionParameterType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

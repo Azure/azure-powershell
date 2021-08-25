@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzVMwareGlobalReachConnection' {
     It 'CreateExpanded' {
         {
-            $keyValue = Get-AzVMwareExpressRouteAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
+            $keyValue = Get-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
             $circuitExpressRouteId = Get-AzVMwarePrivateCloud -Name $env.privateCloudName3 -ResourceGroupName $env.resourceGroup3
 
             $config = New-AzVMwareGlobalReachConnection -Name $env.rstr4 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -AuthorizationKey $keyValue.Key -PeerExpressRouteResourceId $circuitExpressRouteId.CircuitExpressRouteId

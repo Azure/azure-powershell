@@ -1,6 +1,6 @@
 ### Example 1: Create a in-memory object for AddonVrProperties
 ```powershell
-PS C:\> New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
+PS C:\> New-AzVMwareAddonVrPropertiesObject -VrsCount 2
 
 AddonType ProvisioningState VrsCount
 --------- ----------------- --------

@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzVMwareAddon' {
     It 'CreateExpanded' {
         {
-            $config = New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
+            $config = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
             $config = New-AzVMwareAddon -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGroup2 -Property $config
             $config.Name | Should -Be "VR"
         } | Should -Not -Throw

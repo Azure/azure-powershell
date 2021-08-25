@@ -146,11 +146,6 @@ directive:
     set:
       subject: WorkloadNetworkVM
   - where:
-      verb: New|Get|Remove
-      subject: ^Authorization$
-    set:
-      subject: ExpressRouteAuthorization
-  - where:
       verb: New|Get|Update|Remove
       subject: ^WorkloadNetworkDhcp$
       parameter-name: DhcpId

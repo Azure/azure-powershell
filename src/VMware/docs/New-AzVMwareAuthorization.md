@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareexpressrouteauthorization
+online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
 schema: 2.0.0
 ---
 
-# New-AzVMwareExpressRouteAuthorization
+# New-AzVMwareAuthorization
 
 ## SYNOPSIS
 Create or update an ExpressRoute Circuit Authorization in a private cloud
@@ -13,7 +13,7 @@ Create or update an ExpressRoute Circuit Authorization in a private cloud
 ## SYNTAX
 
 ```
-New-AzVMwareExpressRouteAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+New-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,16 +23,16 @@ Create or update an ExpressRoute Circuit Authorization in a private cloud
 
 ## EXAMPLES
 
-### Example 1: Create an ExpressRoute Circuit Authorization in a private cloud
+### Example 1: Create an  Circuit Authorization in a private cloud
 ```powershell
-PS C:\> New-AzVMwareExpressRouteAuthorization -Name azps_test_authorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+PS C:\> New-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
 Name                    Type
 ----                    ----
 azps_test_authorization Microsoft.AVS/privateClouds/authorizations
 ```
 
-Create an ExpressRoute Circuit Authorization in a private cloud
+Create an  Circuit Authorization in a private cloud
 
 ## PARAMETERS
 

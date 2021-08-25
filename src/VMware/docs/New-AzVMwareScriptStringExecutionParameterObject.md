@@ -13,8 +13,7 @@ Create a in-memory object for ScriptStringExecutionParameter
 ## SYNTAX
 
 ```
-New-AzVMwareScriptStringExecutionParameterObject -Name <String> -Type <ScriptExecutionParameterType>
- [-Value <String>] [<CommonParameters>]
+New-AzVMwareScriptStringExecutionParameterObject -Name <String> [-Value <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +23,7 @@ Create a in-memory object for ScriptStringExecutionParameter
 
 ### Example 1: Create a in-memory object for ScriptStringExecutionParameter
 ```powershell
-PS C:\> New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Type Value -Value "stringValue"
+PS C:\> New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Value "stringValue"
 
 Name                  Type   Value
 ----                  ----   -----
@@ -40,21 +39,6 @@ The parameter name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-The type of execution parameter.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ScriptExecutionParameterType
 Parameter Sets: (All)
 Aliases:
 

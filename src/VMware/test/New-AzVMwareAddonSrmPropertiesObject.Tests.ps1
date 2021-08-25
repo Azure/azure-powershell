@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'New-AzVMwareAddonSrmPropertiesObject' {
     It 'CreateExpanded' {
         {
-            $config = New-AzVMwareAddonSrmPropertiesObject  -AddonType SRM -LicenseKey "YourLicenseKeyValue"
+            $config = New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
             $config.AddonType | Should -Be "SRM"
         } | Should -Not -Throw
     }

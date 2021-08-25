@@ -1,6 +1,6 @@
 ### Example 1: Create a in-memory object for PSCredentialExecutionParameter
 ```powershell
-PS C:\> New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Type Credential -Password "passwordValue" -Username "usernameValue"
+PS C:\> New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
 
 Name                      Type       Password      Username
 ----                      ----       --------      --------

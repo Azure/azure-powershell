@@ -1,5 +1,5 @@
 {
-  "Remove-AzVMwareExpressRouteAuthorization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/azslrt?api-version=2021-06-01+1": {
+  "Remove-AzVMwareAuthorization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/azslrt?api-version=2021-06-01+1": {
     "Request": {
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/azslrt?api-version=2021-06-01",
@@ -8,8 +8,8 @@
       "Headers": {
         "x-ms-unique-id": [ "196" ],
         "x-ms-client-request-id": [ "d876fec5-a11c-4a51-9c98-35de788c5ca5" ],
-        "CommandName": [ "Remove-AzVMwareExpressRouteAuthorization" ],
-        "FullCommandName": [ "Remove-AzVMwareExpressRouteAuthorization_Delete" ],
+        "CommandName": [ "Remove-AzVMwareAuthorization" ],
+        "FullCommandName": [ "Remove-AzVMwareAuthorization_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
@@ -41,7 +41,7 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzVMwareExpressRouteAuthorization+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+1": {
+  "Remove-AzVMwareAuthorization+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+1": {
     "Request": {
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01",
@@ -50,8 +50,8 @@
       "Headers": {
         "x-ms-unique-id": [ "197" ],
         "x-ms-client-request-id": [ "d7bcf51c-74b7-44f8-83e7-8c777d4075f2" ],
-        "CommandName": [ "Remove-AzVMwareExpressRouteAuthorization" ],
-        "FullCommandName": [ "Remove-AzVMwareExpressRouteAuthorization_DeleteViaIdentity" ],
+        "CommandName": [ "Remove-AzVMwareAuthorization" ],
+        "FullCommandName": [ "Remove-AzVMwareAuthorization_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
