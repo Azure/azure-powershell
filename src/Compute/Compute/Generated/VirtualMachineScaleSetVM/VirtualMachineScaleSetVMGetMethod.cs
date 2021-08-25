@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSetVM))]
     public partial class GetAzureRmVmssVM : ComputeAutomationBaseCmdlet
     {
+        protected const string DefaultParameterSet = "DefaultParameter",
+                               FriendMethodParameterSet = "FriendMethod";
+        private InstanceViewTypes UserDataExpand = InstanceViewTypes.UserData;
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -52,6 +55,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         var result = VirtualMachineScaleSetVMsClient.GetInstanceView(resourceGroupName, vmScaleSetName, instanceId);
                         var psObject = new PSVirtualMachineScaleSetVMInstanceView();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVMInstanceView, PSVirtualMachineScaleSetVMInstanceView>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else if (this.UserData == true)
+                    {
+                        var result = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId, UserDataExpand);
+                        var psObject = new PSVirtualMachineScaleSetVM();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
                         WriteObject(psObject);
                     }
                     else
@@ -114,22 +124,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
+            ParameterSetName = DefaultParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
-            ParameterSetName = "FriendMethod",
+            ParameterSetName = FriendMethodParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
+            ParameterSetName = DefaultParameterSet,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
-            ParameterSetName = "FriendMethod",
+            ParameterSetName = FriendMethodParameterSet,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
@@ -137,29 +147,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
+            ParameterSetName = DefaultParameterSet,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
-            ParameterSetName = "FriendMethod",
+            ParameterSetName = FriendMethodParameterSet,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
         public string InstanceId { get; set; }
 
         [Parameter(
-            ParameterSetName = "FriendMethod",
+            ParameterSetName = FriendMethodParameterSet,
             Mandatory = true)]
         public SwitchParameter InstanceView { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "FriendMethod",
-            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ParameterSetName = DefaultParameterSet,
+            HelpMessage = "UserData for the Vmss, which will be base-64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipeline = true)]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "DefaultParameter",
-            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ParameterSetName = FriendMethodParameterSet,
+            HelpMessage = "UserData for the Vmss, which will be base-64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipeline = true)]
         public SwitchParameter UserData { get; set; }
     }

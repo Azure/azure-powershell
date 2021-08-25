@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class UpdateAzureRmVmss : ComputeAutomationBaseCmdlet
     {
+        protected const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -150,13 +151,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public bool EnableAutomaticUpdate { get; set; }
 
         [Parameter(
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] IdentityId { get; set; }
 
         [Parameter(
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
@@ -333,6 +334,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "UserData for the Vmss, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        public string UserData { get; set; }
 
 
         [Parameter(

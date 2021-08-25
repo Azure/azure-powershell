@@ -5198,11 +5198,10 @@ function Test-VMandVMSSUserData
         $defaultSize = "Standard_D2s_v3";
         $domainNameLabel = "d1" + $rgname;
 
-        $text = "this is encoded";
+        $text = "this isvm encoded";
         $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
         $encodedText = [Convert]::ToBase64String($bytes);
-
-        $userData = "";
+        $userData = $encodedText;
 
         # Creating a VM using simple parameter set
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
@@ -5211,7 +5210,18 @@ function Test-VMandVMSSUserData
 
         $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData;
 
+        $vmGet = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
+        # test removal Assert-AreEqual $userData $vmGet.UserData;
 
+        $text = "this is vm update";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedTextVMUp = [Convert]::ToBase64String($bytes);
+
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
+        Update-AzVM -ResourceGroupName $rgname -VM $vmGet; #test remove -UserData $encodedTextVMUp;
+
+        #$vmGet2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
+        #Assert-AreEqual $encodedTextVMUp $vmGet2.UserData;
     }
     finally 
     {

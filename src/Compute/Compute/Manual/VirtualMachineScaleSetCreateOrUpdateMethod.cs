@@ -351,7 +351,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
-                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null
+                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
+                    userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null
                     );
             }
         }
