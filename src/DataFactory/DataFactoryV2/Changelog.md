@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add subnetId support for command `Set-AzDataFactoryV2IntegrationRuntime` so that VNet RABC check can be done against subnet Resource Id instead of VNet resource ID.
-* Add command `Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint` to support listing of outbound network dependencies for a given Azure-SSIS integration runtime.
+* Added a subnetId argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to support RBAC checking for VNet injection against the subnet resource ID instead of the VNet resource ID.
+* Added the `Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint` cmdlet to provide a list of outbound network dependencies for SSIS integration runtime in Azure Data Factory that joins a virtual network.
 * Added PublicNetworkAccess to Data Factory.
 * Updated ADF .Net SDK version to 4.23.0
 

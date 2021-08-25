@@ -32,7 +32,7 @@ Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint [-Input
 ```
 
 ## DESCRIPTION
-The Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint cmdlet gets a list of outbound network dependencies for a given Azure-SSIS integration runtime in a data factory.
+The Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint cmdlet provides a list of outbound network dependencies for SSIS integration runtime in Azure Data Factory that joins a virtual network.
 
 ## EXAMPLES
 
