@@ -629,7 +629,7 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.TargetVMName = $TargetVMName
         if ($HasTargetVMSize) { $ProviderSpecificDetails.TargetVMSize = $TargetVMSize }
         $ProviderSpecificDetails.VmwareMachineId = $MachineId
-
+        $duplicateDiskUuid = New-Object System.Collections.Generic.HashSet[String]
 
         if ($parameterSet -match 'DefaultUser') {
             [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtDiskInput[]]$DiskToInclude = @()
@@ -638,6 +638,10 @@ public static int hashForArtifact(String artifact)
                     if ($onPremDisk.Uuid -ne $OSDiskID) {
                         $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtDiskInput]::new()
                         $DiskObject.DiskId = $onPremDisk.Uuid
+                        if ($duplicateDiskUuid.Contains($DiskObject.DiskId)) {
+                            throw "The disk uuid '$($DiskObject.DiskId)' is already taken."
+                        }
+                        $res = $duplicateDiskUuid.Add($DiskObject.DiskId)
                         $DiskObject.DiskType = "Standard_LRS"
                         $DiskObject.IsOSDisk = "false"
                         $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
@@ -651,6 +655,10 @@ public static int hashForArtifact(String artifact)
             }
             $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtDiskInput]::new()
             $DiskObject.DiskId = $OSDiskID
+            if ($duplicateDiskUuid.Contains($DiskObject.DiskId)) {
+                throw "The disk uuid '$($DiskObject.DiskId)' is already taken."
+            }
+            $res = $duplicateDiskUuid.Add($DiskObject.DiskId)
             $DiskObject.DiskType = $DiskType
             $DiskObject.IsOSDisk = "true"
             $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
@@ -658,15 +666,18 @@ public static int hashForArtifact(String artifact)
             if ($HasDiskEncryptionSetID) {
                 $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
             }
-                
+
             $DiskToInclude += $DiskObject
             $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
-                
         }
         else {
             foreach ($DiskObject in $DiskToInclude) {
                 $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
                 $DiskObject.LogStorageAccountId = $LogStorageAccountID
+                if ($duplicateDiskUuid.Contains($DiskObject.DiskId)) {
+                    throw "The disk uuid '$($DiskObject.DiskId)' is already taken."
+                }
+                $res = $duplicateDiskUuid.Add($DiskObject.DiskId)
             }
             $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
         }
