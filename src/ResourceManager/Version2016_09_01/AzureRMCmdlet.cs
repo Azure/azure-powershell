@@ -25,6 +25,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -111,7 +112,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 if (matchingSub != null)
                 {
                     // going to modify default context, so only shallow copying other stuff
-                    profile = GetDefaultProfile().CopyForContextOverriding();
+                    if (AzureSession.Instance.TryGetComponent<ISharedUtilities>(nameof(ISharedUtilities), out var sharedUtilities))
+                    {
+                        profile = sharedUtilities.CopyForContextOverriding(GetDefaultProfile());
+                    }
+                    else
+                    {
+                        throw new AzPSException(Resources.ProfileNotInitialized, Commands.Common.ErrorKind.InternalError);
+                    }
                     profile.DefaultContext = profile.DefaultContext.DeepCopy();
                     profile.DefaultContext.Subscription.CopyFrom(matchingSub);
                     profile.DefaultContext.Tenant.Id = matchingSub.GetTenant();
