@@ -4852,7 +4852,7 @@ function Test-NewAzVMDefaultingSize
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = "eastus";#Get-ComputeVMLocation;
+    $loc = "eastus";
 
     try
     {
@@ -5169,6 +5169,48 @@ function Test-VMwithSSHKey
 
         #assert compare 
         Assert-AreEqual $vm.OSProfile.LinuxConfiguration.Ssh.PublicKeys[0].KeyData $sshKey.publickey
+
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+} 
+
+<#
+.SYNOPSIS
+Windows machine test ensuring the EnableAutoUpdate value on the 
+provided VM is not overwritten. 
+#>
+function Test-VMandVMSSUserData
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'v' + $rgname;
+        $defaultSize = "Standard_D2s_v3";
+        $domainNameLabel = "d1" + $rgname;
+
+        $text = "this is encoded";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+
+        $userData = "";
+
+        # Creating a VM using simple parameter set
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData;
+
 
     }
     finally 
