@@ -5213,6 +5213,7 @@ function Test-VMUserData
         $vmGet = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
         Assert-AreEqual $userData $vmGet.UserData;
 
+        #Update Userdata test
         $text = "this is vm update";
         $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
         $encodedTextVMUp = [Convert]::ToBase64String($bytes);
@@ -5222,6 +5223,58 @@ function Test-VMUserData
         
         $vmGet2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
         Assert-AreEqual $encodedTextVMUp $vmGet2.UserData;
+
+        #Null UserData test
+        Update-AzVm -ResourceGroupName $rgname -VM $vmGet -UserData "";
+        $vmGet3 = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
+        Assert-Null $vmGet3.Userdata;
+
+        #New-AzVMConfig test
+        $vmname2 = 'vm' + $rgname;
+        $vmsize2 = "Standard_B1s";
+        $domainNameLabel2 = "d2" + $rgname;
+        $computerName2 = "v" + $rgname;
+        $identityType = "SystemAssigned";
+        $text3 = "this is vm third encoded";
+        $bytes3 = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText3 = [Convert]::ToBase64String($bytes);
+
+        # Creating a VM 
+        $p = New-AzVmConfig -VMName $vmname2 -vmsize $vmsize2 -Userdata $encodedText -IdentityType $identityType;
+        Assert-AreEqual $encodedText $p.UserData;
+
+        $publisherName = "MicrosoftWindowsServer"
+        $offer = "WindowsServer"
+        $sku = "2019-DataCenter"
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest'
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2;
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        #$p.UserData = $encodedText3;
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $p;
+        $vmGet2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2 -UserData;
+        Assert-AreEqual $encodedText $vmGet2.Userdata;
     }
     finally 
     {
