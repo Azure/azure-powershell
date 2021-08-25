@@ -5230,18 +5230,18 @@ function Test-VMUserData
         Assert-Null $vmGet3.Userdata;
 
         #New-AzVMConfig test
-        $vmname2 = 'vm' + $rgname;
+        $vmname2 = 'vm2' + $rgname;
         $vmsize2 = "Standard_B1s";
         $domainNameLabel2 = "d2" + $rgname;
-        $computerName2 = "v" + $rgname;
+        $computerName2 = "v2" + $rgname;
         $identityType = "SystemAssigned";
         $text3 = "this is vm third encoded";
-        $bytes3 = [System.Text.Encoding]::Unicode.GetBytes($text);
-        $encodedText3 = [Convert]::ToBase64String($bytes);
+        $bytes3 = [System.Text.Encoding]::Unicode.GetBytes($text3);
+        $encodedText3 = [Convert]::ToBase64String($bytes3);
 
         # Creating a VM 
-        $p = New-AzVmConfig -VMName $vmname2 -vmsize $vmsize2 -Userdata $encodedText -IdentityType $identityType;
-        Assert-AreEqual $encodedText $p.UserData;
+        $p = New-AzVmConfig -VMName $vmname2 -vmsize $vmsize2 -Userdata $encodedText3 -IdentityType $identityType;
+        Assert-AreEqual $encodedText3 $p.UserData;
 
         $publisherName = "MicrosoftWindowsServer"
         $offer = "WindowsServer"
@@ -5270,11 +5270,11 @@ function Test-VMUserData
         $computerName = 'test';
 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        #$p.UserData = $encodedText3;
+        $p.UserData = $encodedText3;
 
         $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $p;
         $vmGet2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2 -UserData;
-        Assert-AreEqual $encodedText $vmGet2.Userdata;
+        Assert-AreEqual $encodedText3 $vmGet2.Userdata;
     }
     finally 
     {
