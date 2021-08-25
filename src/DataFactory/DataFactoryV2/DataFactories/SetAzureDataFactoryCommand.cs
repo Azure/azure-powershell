@@ -105,6 +105,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string IdentityType { get; set; }
 
         #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpPublicNetworkAccess)]
+        #endregion
+        public string PublicNetworkAccess { get; set; }
+
+        #region Attributes
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpUserAssignedIdenty)]
         #endregion
         public IDictionary<string, object> UserAssignedIdentity { get; set; }
@@ -516,11 +521,18 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 encryption = new EncryptionConfiguration(this.EncryptionKeyName, this.EncryptionVaultBaseUrl, this.EncryptionKeyVersion, cmkIdentity);
             }
 
+            string publicNetworkAccess = Management.DataFactory.Models.PublicNetworkAccess.Enabled;
+            if (!string.IsNullOrWhiteSpace(this.PublicNetworkAccess))
+            {
+                publicNetworkAccess = this.PublicNetworkAccess;
+            }
+
             var parameters = new CreatePSDataFactoryParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = Name,
                 Location = Location,
+                PublicNetworkAccess = publicNetworkAccess,
                 EncryptionConfiguration = encryption,
                 FactoryIdentity = factoryIdentity,
                 Tags = Tag,
