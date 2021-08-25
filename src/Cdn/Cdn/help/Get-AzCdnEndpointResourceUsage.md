@@ -20,8 +20,8 @@ Get-AzCdnEndpointResourceUsage -EndpointName <String> -ProfileName <String> -Res
 
 ### ByObjectParameterSet
 ```
-Get-AzCdnEndpointResourceUsage -CdnEndpoint <PSEndpoint> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzCdnEndpointResourceUsage [-EndpointName <String>] -CdnEndpoint <PSEndpoint>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,6 +87,18 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

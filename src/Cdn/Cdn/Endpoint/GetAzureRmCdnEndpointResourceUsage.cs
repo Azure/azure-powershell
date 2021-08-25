@@ -21,6 +21,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Cdn.Models;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
@@ -28,6 +29,8 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
     public class GetAzureRmCdnEndpointResourceUsage : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Azure CDN endpoint name.", ParameterSetName = ObjectParameterSet)]
+        [CmdletParameterBreakingChange("EndpointName", ChangeDescription = "Parameter is being deprecated in ByObjectParameterSet without being replaced")]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
