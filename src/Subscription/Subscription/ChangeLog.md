@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Added examples for Update-AzSubscription
+
 ## Version 0.8.0
 * Added new cmdlets `New-AzSubscriptionAlias`,`Get-AzSubscriptionAlias`,`Remove-AzSubscriptionAlias` and Removed cmdlet `New-AzSubscription`
 

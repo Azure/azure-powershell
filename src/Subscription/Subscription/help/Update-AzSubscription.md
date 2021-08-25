@@ -29,10 +29,34 @@ PS C:\> Update-AzSubscription -SubscriptionId "86869d42-1782-4337-98b0-c905fb937
 Name        : My Subscription
 Id          : 86869d42-1782-4337-98b0-c905fb937d46
 TenantId    : a5dcb057-fd83-4384-9d49-5198004d33a5
+State       : Cancelled 
+```
+
+Cancels the subscription
+
+### Example 2
+```powershell
+PS C:\> Update-AzSubscription -SubscriptionId "86869d42-1782-4337-98b0-c905fb937d46" -Action "Enable"
+
+Name        : My Subscription
+Id          : 86869d42-1782-4337-98b0-c905fb937d46
+TenantId    : a5dcb057-fd83-4384-9d49-5198004d33a5
 State       : Enabled
 ```
 
-Updates the subscription
+Enables the subscription
+
+### Example 3
+```powershell
+PS C:\> Update-AzSubscription -SubscriptionId "86869d42-1782-4337-98b0-c905fb937d46" -Action "Rename" -Name "Updated Subscription Name"
+
+Name        : Updated Subscription Name
+Id          : 86869d42-1782-4337-98b0-c905fb937d46
+TenantId    : a5dcb057-fd83-4384-9d49-5198004d33a5
+State       : Enabled
+```
+
+Renames the subscription
 
 ## PARAMETERS
 
