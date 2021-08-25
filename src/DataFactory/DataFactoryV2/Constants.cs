@@ -266,6 +266,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpUserAssignedIdenty = "Dictionary of user assigned identities to use. { \"<UAMI Id>\" : {} }";
 
+        public const string HelpPublicNetworkAccess = "Whether or not public network access is allowed for the data factory. It can be 'Enabled' or 'Disabled'";
+
         public const string HelpEncryptionVaultBaseUrl = "The url of the Azure Key Vault used for encryption with CMK.";
 
         public const string HelpEncryptionKeyName = "The name of the key in Azure Key Vault to use as Customer Managed Key for encryption.";
