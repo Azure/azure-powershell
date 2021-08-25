@@ -149,6 +149,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ExecuteClientAction(() =>
                 {
+                    //todo: remove below for prod release
+                    string usdTest = this.IsParameterBound(c => c.UserData)
+                            ? this.UserData
+                            : this.VM.UserData;
+
                     var parameters = new VirtualMachine
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,

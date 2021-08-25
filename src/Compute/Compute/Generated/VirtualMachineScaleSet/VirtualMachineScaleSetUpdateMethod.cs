@@ -1787,6 +1787,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.ProximityPlacementGroup.Id = null;
             }
 
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
+            }
+
             if (this.VirtualMachineScaleSet != null
                 && this.VirtualMachineScaleSet.VirtualMachineProfile != null
                 && this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile != null

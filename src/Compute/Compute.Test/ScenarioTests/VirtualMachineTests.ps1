@@ -5183,11 +5183,11 @@ function Test-VMwithSSHKey
 Windows machine test ensuring the EnableAutoUpdate value on the 
 provided VM is not overwritten. 
 #>
-function Test-VMandVMSSUserData
+function Test-VMUserData
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = 'eastus2';
+    $loc = Get-ComputeVMLocation;
 
     try
     {
@@ -5211,17 +5211,17 @@ function Test-VMandVMSSUserData
         $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData;
 
         $vmGet = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
-        # test removal Assert-AreEqual $userData $vmGet.UserData;
+        Assert-AreEqual $userData $vmGet.UserData;
 
         $text = "this is vm update";
         $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
         $encodedTextVMUp = [Convert]::ToBase64String($bytes);
 
         Stop-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
-        Update-AzVM -ResourceGroupName $rgname -VM $vmGet; #test remove -UserData $encodedTextVMUp;
+        Update-AzVM -ResourceGroupName $rgname -VM $vmGet -UserData $encodedTextVMUp;
 
-        #$vmGet2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
-        #Assert-AreEqual $encodedTextVMUp $vmGet2.UserData;
+        $vmGet2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
+        Assert-AreEqual $encodedTextVMUp $vmGet2.UserData;
     }
     finally 
     {
@@ -5229,3 +5229,90 @@ function Test-VMandVMSSUserData
         Clean-ResourceGroup $rgname;
     }
 } 
+
+<#
+.SYNOPSIS
+Windows machine test ensuring the EnableAutoUpdate value on the 
+provided VM is not overwritten. 
+#>
+function Test-VMUserData2
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        #vmss:
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+
+        $adminUsername = 'Foo12';
+        $adminPassword = Get-PasswordForVM;
+
+        $text = "new vmss";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+        $userData = $encodedText;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+
+        # Create VMSS with managed disk
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        $vmss = New-AzVmssConfig -Location $loc -UserData $userData -OrchestrationMode "Flexible" -SkuCapacity 2 -SkuName 'Standard_A2_v2' -UpgradePolicyMode 'Automatic' -SpotRestoreTimeout 'PT35M' -PlatformFaultDomainCount 1 -Priority 'Spot'`
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName;
+
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView:$false -UserData;
+        Assert-AreEqual $vmss.VirtualMachineProfile.Userdata $userData;
+
+
+        #VM        
+                # VM Profile & Hardware
+        $vmname = 'v' + $rgname;
+        $defaultSize = "Standard_D2s_v3";
+        $domainNameLabel = "d1" + $rgname;
+
+        $text = "this is vm encoded";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+
+        $userData = $encodedText;
+
+        # Creating a VM using simple parameter set
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData -VmssId $vmss.Id;
+
+        $vmGet = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
+        Assert-AreEqual $userData $vmGet.UserData;
+
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

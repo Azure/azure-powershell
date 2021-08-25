@@ -163,8 +163,18 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else if (this.UserData == true)
                     {
-                        var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name, UserDataExpand);
-                        WriteObject(result);
+                        var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name, UserDataExpand)
+                            .GetAwaiter()
+                            .GetResult();
+
+                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+                        if (result.Body != null)
+                        {
+                            psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
+                        }
+                        psResult.DisplayHint = this.DisplayHint;
+
+                        WriteObject(psResult);
                     }
                     else
                     {
