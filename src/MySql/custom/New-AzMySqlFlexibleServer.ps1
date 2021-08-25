@@ -256,7 +256,7 @@ process {
             $null = $PSBoundParameters.Remove('StorageInMb')
         }
         else {
-            $PSBoundParameters.StorageProfileStorageMb = 10240
+            $PSBoundParameters.StorageProfileStorageMb = 32768
         }
 
         if (!$PSBoundParameters.ContainsKey('Version')) {

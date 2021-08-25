@@ -56,4 +56,4 @@ if ($ModuleMetadata.RootModule) {
   Add-PSM1Dependency -Path $moduleSourcePath 
 }
 
-Remove-ModuleDependencies -Path $moduleSourcePath
+Remove-ModuleDependencies -Path $moduleSourcePath -KeepRequiredModules

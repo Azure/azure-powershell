@@ -2,6 +2,7 @@ Az.ADDomainServices
 Az.AppConfiguration
 Az.Blockchain
 Az.BotService
+Az.ChangeAnalysis
 Az.CloudService
 Az.Communication
 Az.Confluent
@@ -24,6 +25,7 @@ Az.ImageBuilder
 Az.ImportExport
 Az.KubernetesConfiguration
 Az.Kusto
+Az.Maps
 Az.MariaDb
 Az.Migrate
 Az.MonitoringSolutions
@@ -31,12 +33,11 @@ Az.MySql
 Az.Portal
 Az.PostgreSql
 Az.ProviderHub
+Az.Purview
 Az.RedisEnterpriseCache
-Az.ResourceGraph
 Az.ResourceMover
 Az.SpringCloud
 Az.StreamAnalytics
 Az.TimeSeriesInsights
 Az.VMware
-Az.Websites
 Az.WindowsIotServices

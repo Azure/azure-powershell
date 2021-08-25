@@ -58,6 +58,11 @@ subject-prefix: 'Blockchain'
 identity-correction-for-post: true
 
 directive:
+  - where:
+      verb: (.*)
+    set:
+      breaking-change:
+        change-description: On September 10, 2021, Azure Blockchain will be retired.
   - from: swagger-document
     where: $.definitions..password
     transform: $.format = "password"
