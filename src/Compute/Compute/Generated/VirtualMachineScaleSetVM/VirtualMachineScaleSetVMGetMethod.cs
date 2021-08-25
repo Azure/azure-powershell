@@ -150,5 +150,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "FriendMethod",
             Mandatory = true)]
         public SwitchParameter InstanceView { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "FriendMethod",
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "DefaultParameter",
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        public SwitchParameter UserData { get; set; }
     }
 }
