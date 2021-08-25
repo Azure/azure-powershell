@@ -323,7 +323,8 @@ function Test-Azure-IntegrationRuntime-SubnetId
         $description = "Managed SSIS IR"
 
         # Get SubnetId from environment variable.
-        if (Test-Path env:SSIS_IR_SUBNETID) {
+        $IsSubnetIdSet = Test-Path env:SSIS_IR_SUBNETID
+        if ($IsSubnetIdSet) {
             $subnetId = $Env:SSIS_IR_SUBNETID
         } else {
             $subnetId = "fakeId"
@@ -346,7 +347,9 @@ function Test-Azure-IntegrationRuntime-SubnetId
             -DataFactoryName $dfname `
             -Name $irname
         Assert-AreEqual $actual.Name $expected.Name
-        Assert-AreEqual $subnetId $expected.SubnetId
+        if ($IsSubnetIdSet) {
+            Assert-AreEqual $subnetId $expected.SubnetId
+        }
         Get-AzDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
 
         Remove-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
