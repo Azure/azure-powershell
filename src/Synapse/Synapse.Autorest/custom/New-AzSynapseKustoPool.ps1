@@ -19,7 +19,7 @@ Create or update a Kusto pool.
 .Description
 Create or update a Kusto pool.
 .Example
-PS C:\> New-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -Location 'East US' -SkuName "Storage optimized" -SkuSize Medium -WorkspaceUid "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+PS C:\> New-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -Location 'East US' -SkuName "Storage optimized" -SkuSize Medium
 
 Location  Name                    Type                                    Etag
 --------  ----                    ----                                    ----

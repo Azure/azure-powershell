@@ -1,4 +1,4 @@
-Describe 'Remove-AzSynapseKustoPool' {
+Describe 'Remove-AzSynapseKustoPool' -Tag 'LiveOnly' {
     BeforeAll{
         $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
         . ($kustoCommonPath)
@@ -15,7 +15,7 @@ Describe 'Remove-AzSynapseKustoPool' {
         }
         . ($mockingPath | Select-Object -First 1).FullName
     }
-    It 'Delete' -skip {
+    It 'Delete' {
         $name = "testkustopool" + $env.rstr4
         $kustoPoolCreated = New-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $name -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize
         { Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $name } | Should -Not -Throw
