@@ -40,19 +40,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true)]
+            ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Compute/capacityReservationGroups/capacityReservations")]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the number of virtual machines in the scale set.")]
         public int CapacityToReserve { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "SKU of the resource for which capacity needs be reserved.")]
         [Alias("Size")]
         public string Sku { get; set; }

@@ -1,34 +1,59 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azcapacityreservation
+online version:
 schema: 2.0.0
 ---
 
-# New-AzCapacityReservation
+# Update-AzCapacityReservationGroup
 
 ## SYNOPSIS
-Creates a Capacity Reservation resource in a Capacity Reservation Group
+Update the Capacity Reservation Group.
 
 ## SYNTAX
 
+### DefaultParameter (Default)
 ```
-New-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> -Name <String>
- -Location <String> -CapacityToReserve <Int32> -Sku <String> [-AsJob] [-Tag <Hashtable>] [-Zone <String[]>]
+Update-AzCapacityReservationGroup [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DefaultParameterSet
+```
+Update-AzCapacityReservationGroup -ResourceGroupName <String> -Name <String> [-AsJob] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Update-AzCapacityReservationGroup -CapacityReservationGroup <PSCapacityReservationGroup> [-AsJob]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIDParameterSet
+```
+Update-AzCapacityReservationGroup -ResourceId <String> [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzCapacityReservation** cmdlet creates a Capacity Reservation resource in a Capacity Reservation Group
+Update the Capacity Reservation Group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCapacityReservation -ResourceGroupName "myRG" -Location "eastus" -ReservationGroupName "myCapacityReservationGroup" -Name "myCapacityReservation" -Sku "Standard_DS1_v2" -CapacityToReserve 4
+PS C:\> Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $capResGroup -Tag @{ CreatedBy = "John" }
 ```
 
-This command will create a Capacity Reservation resource with the provided sku and capacity in the Capacity Reservation Group named "myCapacityReservationGroup".
+Updating the Capacity Reservation Group's tags.
+
+### Example 2
+```powershell
+PS C:\> Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $capResGroup | Update-AzCapacityReservationGroup -Tag @{ CreatedBy = "John" }
+```
+
+Updating the Capacity Reservation Group's tags using the InputObject parameter set. 
 
 ## PARAMETERS
 
@@ -47,18 +72,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CapacityToReserve
-Specifies the number of virtual machines in the scale set.
+### -CapacityReservationGroup
+PSCapacityReservationGroup object to update.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSCapacityReservationGroup
+Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -77,49 +102,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Specifies the location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
-Specifies the name of the capacity reservation resource.
+Name of the Capacity Reservation Group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: CapacityReservationName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ReservationGroupName
-Specifies the name of the capacity reservation group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: CapacityReservationGroupName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
@@ -127,7 +122,7 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: True
@@ -137,13 +132,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Sku
-SKU of the resource for which capacity needs be reserved.
+### -ResourceId
+Resource ID for your Capacity Reservation Group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: Size
+Parameter Sets: ResourceIDParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -153,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies that resources and resource groups can be tagged with a set of name-value pairs. Adding tags to resources enables you to group resources together across resource groups and to create your own views. Each resource or resource group can have a maximum of 15 tags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -164,21 +159,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Zone
-Availability Zone to use for this capacity reservation.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -220,13 +200,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Int32
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSCapacityReservationGroup
 
 ### System.Collections.Hashtable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSCapacityReservation
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSCapacityReservationGroup
 
 ## NOTES
 

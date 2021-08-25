@@ -175,7 +175,8 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'New-AzCapacityReservationGroup', 
                'Remove-AzCapacityReservationGroup', 
                'Get-AzCapacityReservationGroup', 'New-AzCapacityReservation', 
-               'Get-AzCapacityReservation', 'Remove-AzCapacityReservation'
+               'Get-AzCapacityReservation', 'Remove-AzCapacityReservation', 'Update-AzCapacityReservationGroup',
+               'Update-AzCapacityReservation'
 
 # Variables to export from this module
 # VariablesToExport = @()
