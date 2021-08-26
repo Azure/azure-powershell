@@ -19,7 +19,6 @@
 --->
 
 ## Upcoming Release
-* Onboard API Management to Private Link Common Cmdlets
 * Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
     - `New-AzLoadBalancerBackendAddressConfig`
 
