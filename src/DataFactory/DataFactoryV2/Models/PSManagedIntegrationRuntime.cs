@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string Subnet => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.Subnet;
 
+        public string SubnetId => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.SubnetId;
+
         public string[] PublicIPs => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs == null ? null : new List<string>(ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs).ToArray();
 
         public int? DataFlowCoreCount => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.CoreCount;
