@@ -1,34 +1,60 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azcapacityreservation
+online version:
 schema: 2.0.0
 ---
 
-# New-AzCapacityReservation
+# Update-AzCapacityReservation
 
 ## SYNOPSIS
-Creates a Capacity Reservation resource in a Capacity Reservation Group
+Update the Capacity Reservation.
 
 ## SYNTAX
 
+### DefaultParameter (Default)
 ```
-New-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> -Name <String>
- -Location <String> -CapacityToReserve <Int32> -Sku <String> [-AsJob] [-Tag <Hashtable>] [-Zone <String[]>]
+Update-AzCapacityReservation [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DefaultParameterSet
+```
+Update-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> -Name <String>
+ [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Update-AzCapacityReservation -CapacityReservation <PSCapacityReservation> [-CapacityToReserve <Int32>] [-AsJob]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIDParameterSet
+```
+Update-AzCapacityReservation -ResourceId <String> [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzCapacityReservation** cmdlet creates a Capacity Reservation resource in a Capacity Reservation Group
+Update the Capacity Reservation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCapacityReservation -ResourceGroupName "myRG" -Location "eastus" -ReservationGroupName "myCapacityReservationGroup" -Name "myCapacityReservation" -Sku "Standard_DS1_v2" -CapacityToReserve 4
+PS C:\> Update-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $capResGroup -Name $capRes -CapacityToReserve 4
 ```
 
-This command will create a Capacity Reservation resource with the provided sku and capacity in the Capacity Reservation Group named "myCapacityReservationGroup".
+Updating the capacity reservation.
+
+### Example 2
+```powershell
+PS C:\> Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $capResGroup -Name $capRes | Update-AzCapacityReservation -CapacityToReserve 4
+```
+
+Updating the capacity reservation using the InputObject parameter set. 
 
 ## PARAMETERS
 
@@ -47,6 +73,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CapacityReservation
+PSCapacityReservation object to update.
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSCapacityReservation
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -CapacityToReserve
 Specifies the number of virtual machines in the scale set.
 
@@ -55,7 +96,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -77,27 +118,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Specifies the location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
-Specifies the name of the capacity reservation resource.
+Name of the Capacity Reservation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: CapacityReservationName
 
 Required: True
@@ -108,11 +134,11 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationGroupName
-Specifies the name of the capacity reservation group.
+Name of the Capacity Reservation Group that the capacity reservation resource is in.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases: CapacityReservationGroupName
 
 Required: True
@@ -127,7 +153,7 @@ Specifies the name of a resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: True
@@ -137,13 +163,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Sku
-SKU of the resource for which capacity needs be reserved.
+### -ResourceId
+Resource ID for your Capacity Reservation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: Size
+Parameter Sets: ResourceIDParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -153,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies that resources and resource groups can be tagged with a set of name-value pairs. Adding tags to resources enables you to group resources together across resource groups and to create your own views. Each resource or resource group can have a maximum of 15 tags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -164,21 +190,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Zone
-Availability Zone to use for this capacity reservation.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -219,6 +230,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSCapacityReservation
 
 ### System.Int32
 
