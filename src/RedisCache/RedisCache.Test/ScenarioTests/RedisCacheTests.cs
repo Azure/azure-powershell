@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
     {
         public XunitTracingInterceptor _logger;
 
-        public RedisCacheTests(ITestOutputHelper output)
+       public RedisCacheTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
