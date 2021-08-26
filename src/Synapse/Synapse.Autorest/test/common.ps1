@@ -36,3 +36,19 @@ function Validate_Cluster{
     $KustoPool.SkuSize | Should -Be $SkuSize
 	$KustoPool.SkuCapacity | Should -Be $Capacity
 }
+
+<#
+.SYNOPSIS
+Validate principal assignment
+#>
+function Validate_PrincipalAssignment {
+	Param ([Object]$PrincipalAssignment,
+		[string]$PrincipalAssignmentFullName,
+		[string]$PrincipalId,
+		[string]$PrincipalType,
+		[string]$Role)
+		$PrincipalAssignment.Name | Should -Be $PrincipalAssignmentFullName
+		$PrincipalAssignment.PrincipalId | Should -Be $PrincipalId
+		$PrincipalAssignment.PrincipalType | Should -Be $PrincipalType
+		$PrincipalAssignment.Role | Should -Be $Role
+}

@@ -55,6 +55,14 @@ function setupEnv() {
     Write-Host "Start to create a Kusto pool" $kustoPoolName
     $null = $env.Add("kustopoolName", $kustoPoolName)
     New-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $kustoPoolName -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize
+    # Note, for *Principal* tests, AzADApplication was created, see principalAssignmentName, principalId and principalAssignmentName1, principalId1 for details
+    New-AzSynapseKustoPoolPrincipalAssignment -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.principalRole
+
+    # # Deploy 2nd kusto pool for test
+    # $kustoPoolName = "testkustopool" + $rstr3
+    # Write-Host "Start to create 2nd Kusto pool" $kustoPoolName
+    # $null = $env.Add("plainKustoPoolName", $kustoPoolName)
+    # New-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $kustoPoolName -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -65,6 +73,7 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.kustoPoolName
+    # Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.plainKustoPoolName
     Remove-AzResourceGroup -Name $env.resourceGroupName
 }
 
