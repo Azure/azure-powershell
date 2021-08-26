@@ -1696,15 +1696,12 @@ function Test-AzureFirewallVirtualHubAllocateDeallocated {
         $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
 
         # Create firewall
-        $fw= New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier -HubIPAddress $hubIpAddresses
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier -HubIPAddress $hubIpAddresses
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
 
         # create virtual Hub
         $Vwan = New-AzVirtualWan -Name $virtualWanName -ResourceGroupName $rgname -Location $location -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic -VirtualWANType "Standard"
         $Hub = New-AzVirtualHub -Name $virtualHubName -ResourceGroupName $rgname -VirtualWan $Vwan -Location $Location -AddressPrefix "192.168.1.0/24" -Sku "Standard"
-
-        # Allocate Virtual Hub to Firewall
-        $getAzureFirewall.Allocate($Hub.Id)
 
         #verification
         Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
@@ -1714,11 +1711,19 @@ function Test-AzureFirewallVirtualHubAllocateDeallocated {
         Assert-NotNull $getAzureFirewall.Sku
         Assert-AreEqual $skuName $getAzureFirewall.Sku.Name
         Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
+        Assert-Null $getAzureFirewall.VirtualHub
+
+        # Allocate Virtual Hub to Firewall
+        $azureFirewall.Allocate($Hub.Id)
+        Set-AzFirewall -AzureFirewall $azureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
         Assert-NotNull $getAzureFirewall.VirtualHub
         Assert-AreEqual $Hub.Id $getAzureFirewall.VirtualHub.Id
 
         # Test Deallocate
-        $getAzureFirewall.Deallocate()
+        $azureFirewall.Deallocate()
+        Set-AzFirewall -AzureFirewall $azureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
         Assert-Null $getAzureFirewall.VirtualHub
     }
     finally {
