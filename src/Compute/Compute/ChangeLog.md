@@ -32,7 +32,6 @@
     - 'Remove-AzRestorePoint'
     - 'Remove-AzRestorePointCollection'
 * Added new parameters '-EnableSpotRestore' and '-SpotRestoreTimeout' to 'New-AzVMSSConfig' to enable Spot Restore Policy 
-* New parameters `-LinuxConfigurationPatchMode`, `-WindowsConfigurationPatchMode`, and `-LinuxConfigurationProvisionVMAgent` to `Set-AzVmssOSProfile`
 * Added new cmdlets: `Update-AzCapacityReservationGroup` and `Update-AzCapacityReservation`
 
 ## Version 4.16.0
