@@ -386,6 +386,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public Guid? ExternalAdminSID { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not the multi-az is enabled
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Use zone redundant storage")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -551,8 +557,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                     AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
-                }
-            });
+                },
+                ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null
+            }); ;
             return newEntity;
         }
 

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for flexible server database
+    - Get-AzPostgreSqlFlexibleServerDatabase
+    - New-AzPostgreSqlFlexibleServerDatabase
+    - Remove-AzPostgreSqlFlexibleServerDatabase   
 
 ## Version 0.6.0
 * Migrated from 20200214 preview API to 20210601 API

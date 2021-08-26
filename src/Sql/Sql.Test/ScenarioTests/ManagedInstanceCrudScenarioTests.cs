@@ -84,5 +84,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-CreateManagedInstanceWithMaintenanceConfigurationId");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedInstanceWithMultiAzEnabled()
+        {
+            RunPowerShellTest("Test-CreateManagedInstanceWithMultiAzEnabled");
+        }
     }
 }
