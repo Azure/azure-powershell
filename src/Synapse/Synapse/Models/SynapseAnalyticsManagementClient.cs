@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class SynapseAnalyticsManagementClient
     {
+        public const int GatewayMajorVersionWithIRSupport = 3;
         public IAzureContext Context;
         private readonly Guid _subscriptionId;
         private readonly Guid _tenantId;
@@ -1747,17 +1748,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string IntegrationRuntimeEncryptCredential(
             string resourceGroupName,
-            string WorkspaceName,
+            string workspaceName,
             string integrationRuntimeName,
             string linkedServiceJson)
         {
-            int GatewayMajorVersionWithIRSupport = 3;
 
             try
             {
                 if (string.IsNullOrEmpty(resourceGroupName))
                 {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(WorkspaceName);
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
             }
             catch (ErrorResponseException ex)
@@ -1765,7 +1765,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw GetAzurePowerShellException(ex);
             }
 
-            var response = _synapseManagementClient.IntegrationRuntimeConnectionInfos.Get(resourceGroupName, WorkspaceName, integrationRuntimeName);
+            var response = _synapseManagementClient.IntegrationRuntimeConnectionInfos.Get(resourceGroupName, workspaceName, integrationRuntimeName);
             var irVerStr = response.Version;
             var irVer = new Version(irVerStr);
             //Private preview customers can use 2.x gateways for this feature, below code change gateway version of 2.x to 3.0  to pass version check by gateway.
@@ -1787,8 +1787,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 };
             return GatewayEncryptionClient.Encrypt(linkedServiceJson, encryptionInfos);
         }
-
-
 
         public virtual async Task<List<PSIntegrationRuntime>> ListIntegrationRuntimesAsync(SynapseEntityFilterOptions filterOptions)
         {
@@ -2574,15 +2572,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string ReadJsonFileContent(string path)
         {
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException(path);
-            }
-
-            using (TextReader reader = new StreamReader(path))
-            {
-                return reader.ReadToEnd();
-            }
+            return Utils.ReadJsonFileContent(path);
         }
 
         #endregion

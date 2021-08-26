@@ -8,55 +8,47 @@ using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Globalization;
 using Microsoft.Azure.Commands.Synapse.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-namespace Microsoft.Azure.Commands.Synapse.Commands.DataPlaneCommands.Artifact.LinkedServices
+namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkedServiceEncryptedCredential,
-        DefaultParameterSetName = GetByName)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkedServiceEncryptedCredential,
+        DefaultParameterSetName = CreateByName)]
     [OutputType(typeof(string))]
     public class NewAzSynapseLinkedServiceEncryptedCredential : SynapseManagementCmdletBase
     {
-        private const string GetByName = "GetByName";
-        private const string GetByObject = "GetByObject";
+        private const string CreateByName = "CreateByName";
+        private const string CreateByObject = "CreateByObject";
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
-            Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByObject,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByName,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = CreateByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = GetByObject,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = CreateByObject,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
-            Mandatory = true, HelpMessage = HelpMessages.IntegrationRuntimeName)] //??
+        [Parameter(ValueFromPipelineByPropertyName = false,
+            Mandatory = true, HelpMessage = HelpMessages.IntegrationRuntimeName)]
         [ValidateNotNullOrEmpty]
         public string IntegrationRuntimeName { get; set; }
 
-
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
-            Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)] //??
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByObject,
-            HelpMessage = HelpMessages.JsonFilePath)]
+        [Parameter(ValueFromPipelineByPropertyName = false,
+            Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
         [ValidateNotNullOrEmpty]
         public string DefinitionFile { get; set; }
 
-
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.Force)]
         public SwitchParameter Force { get; set; }
-
 
         private static readonly Version supportedPSVersion = new Version(7, 0);
 
@@ -67,13 +59,18 @@ namespace Microsoft.Azure.Commands.Synapse.Commands.DataPlaneCommands.Artifact.L
                 throw new PSNotSupportedException($"PowerShell {supportedPSVersion} or higher is required");
             }
 
+            if (this.IsParameterBound(c => c.WorkspaceObject))
+            {
+                this.ResourceGroupName = new ResourceIdentifier(this.WorkspaceObject.Id).ResourceGroupName;
+                this.WorkspaceName = this.WorkspaceObject.Name;
+            }
+
             // ValidationNotNullOrEmpty doesn't handle whitespaces well
             if (IntegrationRuntimeName.IsEmptyOrWhiteSpace())
             {
                 throw new PSArgumentNullException("IntegrationRuntimeName");
             }
 
-            //SynapseAnalyticsManagementClient
             string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
             string encrypted = null;
 
@@ -92,8 +89,6 @@ namespace Microsoft.Azure.Commands.Synapse.Commands.DataPlaneCommands.Artifact.L
                 });
 
             WriteObject(encrypted);
-
-
         }
 
     }
