@@ -32,7 +32,7 @@ function Validate_Cluster{
 	$KustoPool.State | Should -Be $State
 	$KustoPool.ProvisioningState | Should -Be  $ProvisioningState
 	$KustoPool.Type | Should -Be $ResourceType
-    # $KustoPool.SkuName | Should -Be $SkuName
-    # $KustoPool.SkuSize | Should -Be $SkuSize
+    $KustoPool.SkuName | Should -Be $SkuName
+    $KustoPool.SkuSize | Should -Be $SkuSize
 	$KustoPool.SkuCapacity | Should -Be $Capacity
 }
