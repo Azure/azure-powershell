@@ -48,7 +48,7 @@ The above command lists all Kusto pools in the resource group "testrg".
 
 ### Example 2: Get a specific Kusto pool by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPool -ResourceGroupName testrg -Name testnewkustopool
+PS C:\> Get-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool
 
 Location  Name                    Type                                    Etag
 --------  ----                    ----                                    ----
