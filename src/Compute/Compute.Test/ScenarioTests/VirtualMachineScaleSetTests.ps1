@@ -2831,6 +2831,49 @@ function Test-VMSSUserdata
 
     # Setup
     $rgname = Get-ComputeTestResourceName
+    $loc = Get-ComputeVMLocation;
+    try
+    {
+
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+        $platformFaultDomain = 1;
+
+        $text = "new vmss";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+        $userData = $encodedText;
+
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        #VMSS in Flexible orchestration mode
+        $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomain -UserData $userData -OrchestrationMode "Flexible"; #-SkuName "Standard_D2s_v3";
+        $vmss = New-AzVmss -VirtualMachineScaleSet $vmssConfig -ResourceGroupName $rgname -Name $vmssName;
+        $vm = New-AzVm -ResourceGroupName $rgname -Location $loc -Name $vmssName -VmssId $vmss.Id -Credential $cred;
+
+        Assert-AreEqual $vmss.VirtualMachineProfile.UserData $userData;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test the VMSS spot restore policy 
+#>
+function Test-VMSSUserdata2
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName
     try
     {
 
@@ -2849,6 +2892,32 @@ function Test-VMSSUserdata
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
+        $networkApiVersion = "2021-02-01";
+        $publicIPAddressName = "pubipvmss";
+        $pubip = New-AzPublicIpAddress -Force -Name $publicIPAddressName -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name $publicIPAddressName -ResourceGroupName $rgname;
+
+        # Create LoadBalancer
+        $frontendName = Get-ResourceName
+        $backendAddressPoolName = Get-ResourceName
+        $probeName = Get-ResourceName
+        $inboundNatPoolName = Get-ResourceName
+        $lbruleName = Get-ResourceName
+        $lbName = Get-ResourceName
+
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $inboundNatPool = New-AzLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId `
+            $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3364 -BackendPort 3370;
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName `
+            -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool `
+            -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
+            -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP;
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $loc `
+            -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool `
+            -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool;
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname;
 
         # New VMSS Parameters
         $vmssName = 'vmss' + $rgname;
@@ -2864,16 +2933,23 @@ function Test-VMSSUserdata
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
 
+
+        #$ipCfg = New-AzVmssIPConfig -Name 'test' `
+        #    -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
+        #    -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
+        #    -SubnetId $subnetId;
         # Create VMSS with managed disk
-        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzVmssConfig -Location $loc -UserData $userData -SkuCapacity 2 -SkuName 'Standard_A2_v2' -UpgradePolicyMode 'Automatic' -EnableSpotRestore -SpotRestoreTimeout 'PT35M' -PlatformFaultDomainCount 1 -Priority 'Spot'`
-            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
+            -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id -SubnetId $subnetId;
+
+         #removed -EnableSpotRestore 
+        $vmss = New-AzVmssConfig -Location $loc -UserData $userData -OrchestrationMode "Flexible" -SkuCapacity 2 -SkuName 'Standard_A2_v2' -UpgradePolicyMode 'Automatic' -SpotRestoreTimeout 'PT35M' -PlatformFaultDomainCount 1 -Priority 'Spot'`
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg -NetworkApiVersion $networkApiVersion `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName;
 
-        #TODO: add userdata. 
         $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView:$false -UserData;
@@ -2883,7 +2959,7 @@ function Test-VMSSUserdata
         $bytes2 = [System.Text.Encoding]::Unicode.GetBytes($text2);
         $encodedText2 = [Convert]::ToBase64String($bytes2);
         $userData2 = $encodedText2;
-        $vmssUp2 = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Userdata $userData2; 
+        #$vmssUp2 = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Userdata $userData2; 
         #$vmss2 = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView:$false -Userdata;
         #Assert-AreEqual $vmss2.VirtualMachineProfile.Userdata $userData2;
 
