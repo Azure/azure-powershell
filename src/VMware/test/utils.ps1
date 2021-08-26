@@ -76,4 +76,3 @@ function cleanupEnv() {
     Remove-AzResourceGroup -Name $env.resourceGroup2
     Remove-AzResourceGroup -Name $env.resourceGroup3
 }
-
