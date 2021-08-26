@@ -187,6 +187,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string DefaultVNetName = "default";
 
+        public const string WorkspacePackage = nameof(WorkspacePackage);
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {

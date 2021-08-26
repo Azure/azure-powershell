@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Synapse.Commands.ManagementCommands
+namespace Microsoft.Azure.Commands.Synapse.Commands
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.WorkspaceKey, SupportsShouldProcess = true, DefaultParameterSetName = CreateByNameParameterSet)]
     [OutputType(typeof(PSWorkspaceKey))]

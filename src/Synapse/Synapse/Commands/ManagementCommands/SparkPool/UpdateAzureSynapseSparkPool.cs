@@ -17,12 +17,15 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
+using Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
@@ -120,6 +123,11 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.LibraryRequirementsFilePath)]
         public string LibraryRequirementsFilePath { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.WorkspacePackages)]
+        [Alias(SynapseConstants.WorkspacePackage)]
+        public List<PSSynapseWorkspacePackage> Package { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -197,6 +205,18 @@ namespace Microsoft.Azure.Commands.Synapse
                         ? this.AutoPauseDelayInMinute
                         : existingSparkPool.AutoPause?.DelayInMinutes ?? 0
                 };
+            }
+
+            if (this.IsParameterBound(c => c.Package))
+            {
+                existingSparkPool.CustomLibraries = this.Package?.Select(psPackage => new LibraryInfo
+                {
+                    Name = psPackage?.Name,
+                    Type = psPackage?.PackageType,
+                    Path = psPackage?.Path,
+                    ContainerName = psPackage?.ContainerName
+                    // TODO: set uploadedTimeStamp property after upgrading SDK otherwise we will see a incorrect property value from Azure portal.
+                }).ToList();
             }
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSparkPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))

@@ -18,6 +18,7 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
  [-Tag <Hashtable>] [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>]
  [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>]
  [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
+ [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,8 +27,9 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
 Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>]
  [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>]
- [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
+ [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -35,8 +37,9 @@ Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [
 Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [-EnableAutoScale <Boolean>]
  [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
  [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
- [-LibraryRequirementsFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-LibraryRequirementsFilePath <String>]
+ [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -44,8 +47,9 @@ Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [
 Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoScale <Boolean>]
  [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
  [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
- [-LibraryRequirementsFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-LibraryRequirementsFilePath <String>]
+ [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,6 +114,14 @@ PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoS
 ```
 
 This command disables auto-pause for an Azure Synapse Analytics Spark pool.
+
+### Example 9
+```powershell
+PS C:\> $packages = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -Package $packages
+```
+
+The first command retrieves workspace packages. The second command links these workspaces packages to an Azure Synapse Analytics Spark pool.
 
 ## PARAMETERS
 
@@ -289,6 +301,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Small, Medium, Large
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Package
+The workspace packages.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]
+Parameter Sets: (All)
+Aliases: WorkspacePackage
 
 Required: False
 Position: Named

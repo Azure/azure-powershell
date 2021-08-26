@@ -99,7 +99,13 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             return CreateAzurePowerShellException(ex.Response.StatusCode, message, ex);
         }
 
-        internal static Exception CreateAzurePowerShellException(HttpStatusCode statusCode, string message, Exception ex)
+        internal static Exception CreateAzurePowerShellException(RequestFailedException ex)
+        {
+            var message = GetAggregatedErrorMessage(ex.Message);
+            return CreateAzurePowerShellException((HttpStatusCode)ex.Status, message, ex);
+        }
+
+        private static Exception CreateAzurePowerShellException(HttpStatusCode statusCode, string message, Exception ex)
         {
             switch (statusCode)
             {
@@ -141,7 +147,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             }.ToString();
         }
 
-        private static string GetAggregatedErrorMessage(string message, string innerMessage, IEnumerable<string> detailedMessages)
+        private static string GetAggregatedErrorMessage(string message, string innerMessage = null, IEnumerable<string> detailedMessages = null)
         {
             string errorContent = message;
             if (innerMessage != null)

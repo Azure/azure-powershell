@@ -142,11 +142,29 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can not upload the directory &apos;{0}&apos; to Synapse. If you want to upload directory, please use &quot;ls -File -Recurse | New-AzSynapseWorkspacePackage&quot;..
+        /// </summary>
+        internal static string CannotSendDirectory {
+            get {
+                return ResourceManager.GetString("CannotSendDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Active Directory Administrator on workspace &apos;{0}&apos;?.
         /// </summary>
         internal static string ComfirmToRemoveSqlActiveDirectoryAdministrator {
             get {
                 return ResourceManager.GetString("ComfirmToRemoveSqlActiveDirectoryAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string ConfirmCaption {
+            get {
+                return ResourceManager.GetString("ConfirmCaption", resourceCulture);
             }
         }
         
@@ -521,6 +539,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Percent : {0}%..
+        /// </summary>
+        internal static string FileTransmitStatus {
+            get {
+                return ResourceManager.GetString("FileTransmitStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot perform the requested operation because the specified firewall rule &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string FirewallRuleDoesNotExist {
@@ -658,6 +685,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File name &apos;{0}&apos; is invalid..
+        /// </summary>
+        internal static string InvalidFileName {
+            get {
+                return ResourceManager.GetString("InvalidFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only self-hosted integration runtime can be shared..
         /// </summary>
         internal static string InvalidIntegrationRuntimeSharing {
@@ -780,6 +816,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string NoSubscriptionInContext {
             get {
                 return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package name should be empty when uploading multiple packages..
+        /// </summary>
+        internal static string PackageNameShouldBeEmptyWhenUploading {
+            get {
+                return ResourceManager.GetString("PackageNameShouldBeEmptyWhenUploading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prepare to upload workspace package..
+        /// </summary>
+        internal static string PrepareUploadingPackage {
+            get {
+                return ResourceManager.GetString("PrepareUploadingPackage", resourceCulture);
             }
         }
         
@@ -933,6 +987,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemoveSynapseWorkspace {
             get {
                 return ResourceManager.GetString("RemoveSynapseWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove workspace package &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseWorkspacePackage {
+            get {
+                return ResourceManager.GetString("RemoveSynapseWorkspacePackage", resourceCulture);
             }
         }
         
@@ -1149,6 +1212,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseWorkspace {
             get {
                 return ResourceManager.GetString("RemovingSynapseWorkspace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting workspace package &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseWorkspacePackage {
+            get {
+                return ResourceManager.GetString("RemovingSynapseWorkspacePackage", resourceCulture);
             }
         }
         
@@ -1558,6 +1630,37 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transfer Summary
+        ///--------------------------------
+        ///Total:  {0}.
+        ///Successful: {1}.
+        ///Failed: {2}..
+        /// </summary>
+        internal static string TransferSummary {
+            get {
+                return ResourceManager.GetString("TransferSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total: {0}. Successful: {1}. Failed: {2}. Active: {3}..
+        /// </summary>
+        internal static string TransmitActiveSummary {
+            get {
+                return ResourceManager.GetString("TransmitActiveSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} task status :.
+        /// </summary>
+        internal static string TransmitActivity {
+            get {
+                return ResourceManager.GetString("TransmitActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating the authentication key of linked integration runtime &apos;{0}&apos; is not allowed..
         /// </summary>
         internal static string UpdateAuthKeyNotAllowed {
@@ -1684,6 +1787,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uploading package &apos;{0}&apos; to workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string UploadingWorkspacePackage {
+            get {
+                return ResourceManager.GetString("UploadingWorkspacePackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload package &apos;{0}&apos;..
+        /// </summary>
+        internal static string UploadWorkspacePackageActivity {
+            get {
+                return ResourceManager.GetString("UploadWorkspacePackageActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User with Name &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string UserNameDoesNotExist {
@@ -1761,6 +1882,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string WorkspaceKeyExists {
             get {
                 return ResourceManager.GetString("WorkspaceKeyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A workspace package with name &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string WorkspacePackageExists {
+            get {
+                return ResourceManager.GetString("WorkspacePackageExists", resourceCulture);
             }
         }
         
