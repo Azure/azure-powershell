@@ -50,6 +50,16 @@ function Restore-AzMySqlFlexibleServer_PointInTimeRestore {
         [System.String]
         ${Zone},
 
+        [Parameter(HelpMessage = 'The id of an existing Subnet the private access server will created to. Please note that the subnet will be delegated to Microsoft.DBforPostgreSQL/flexibleServers. After delegation, this subnet cannot be used for any other type of Azure resources.')]
+        [System.String]
+        ${Subnet},
+
+        [Parameter(HelpMessage = 'The id of an existing private dns zone. You can use the
+        private dns zone from same resource group, different resource group, or
+        different subscription.')]
+        [System.String]
+        ${PrivateDnsZone},
+
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -118,6 +128,42 @@ function Restore-AzMySqlFlexibleServer_PointInTimeRestore {
             if ($PSBoundParameters.ContainsKey('Zone')) {
                 $PSBoundParameters.AvailabilityZone = $PSBoundParameters.Zone
                 $null = $PSBoundParameters.Remove('Zone')
+            }
+
+            if ($PSBoundParameters.ContainsKey('Subnet')){
+                $VnetId = [string]::Join("/",$PSBoundParameters.Subnet.split("/")[0..8])
+                $SubnetModel = Get-AzVirtualNetworkSubnetConfig -ResourceId $PSBoundParameters.Subnet
+                $Delegations = Get-AzDelegation -Subnet $SubnetModel
+                if ($null -ne $Delegations){ # Valid but incorrect delegation
+                    $Delegations | ForEach-Object {if ($PSItem.ServiceName -ne $DELEGATION_SERVICE_NAME) {
+                        $Msg = "Can not use subnet with existing delegations other than {0}" -f $DELEGATION_SERVICE_NAME
+                        throw $Msg
+                    }}
+                }
+                $PSBoundParameters.NetworkDelegatedSubnetResourceId = $PSBoundParameters.Subnet
+                $null = $PSBoundParameters.Remove('Subnet')
+            }
+
+            if ($PSBoundParameters.ContainsKey('PrivateDnsZone')){
+                if ([string]::IsNullOrEmpty($VnetId)){
+                    $VnetId = [string]::Join("/",$server.NetworkDelegatedSubnetResourceId.split("/")[0..8])
+                }
+                $ZoneName = $PSBoundParameters["PrivateDnsZone"].split("/")[-1]
+                $DnsResourceGroup = $PSBoundParameters["PrivateDnsZone"].split("/")[4]
+                $Links = Get-AzPrivateDnsVirtualNetworkLink -ZoneName $ZoneName -ResourceGroupName $DnsResourceGroup
+                $LinkedFlag = $false
+                foreach($Link in $Links){
+                    if ($Link.VirtualNetworkId -eq $VnetId){
+                        $LinkedFlag = $true
+                        break
+                    }
+                }
+                if (!$LinkedFlag){
+                    New-AzPrivateDnsVirtualNetworkLink -ZoneName $ZoneName -ResourceGroupName $DnsResourceGroup -Name $PSBoundParameters["Name"] -VirtualNetworkId $VnetId
+                }
+                $PSBoundParameters.NetworkPrivateDnsZoneResourceId = $PSBoundParameters.PrivateDnsZone
+                $null = $PSBoundParameters.Remove('PrivateDnsZone')
+
             }
             
             

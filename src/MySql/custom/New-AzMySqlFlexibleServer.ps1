@@ -150,6 +150,7 @@ param(
 
     [Parameter(HelpMessage = 'Enable or disable high availability feature.  Default value is Disabled. Default: Disabled.')]
     [Validateset('ZoneRedundant', 'SameZone', 'Disabled')]
+    [Alias('HaEnabled')]
     [System.String]
     ${HighAvailability},
 
