@@ -90,6 +90,5 @@ namespace Microsoft.Azure.Commands.Synapse
 
             WriteObject(encrypted);
         }
-
     }
 }
