@@ -99,7 +99,7 @@ Gets a Synapse Analytics Spark job.
 Gets a Spark job definition in workspace.
 
 ### [Get-AzSynapseSparkPool](Get-AzSynapseSparkPool.md)
-Gets a Synapse Analytics Spark pool.
+Gets a Apache Spark pool in Azure Synapse Analytics.
 
 ### [Get-AzSynapseSparkSession](Get-AzSynapseSparkSession.md)
 Gets a Synapse Analytics Spark session.
@@ -258,7 +258,7 @@ Deletes a Synapse Analytics role assignment.
 Removes a Spark job definition from workspace.
 
 ### [Remove-AzSynapseSparkPool](Remove-AzSynapseSparkPool.md)
-Deletes a Synapse Analytics Spark pool.
+Deletes a Apache Spark pool in Azure Synapse Analytics.
 
 ### [Remove-AzSynapseSqlActiveDirectoryAdministrator](Remove-AzSynapseSqlActiveDirectoryAdministrator.md)
 Removes an Azure AD administrator for Synapse Analytics Workspace.
@@ -420,7 +420,7 @@ Updates self-hosted integration runtime node.
 Updates managed virtual network configuration to workspace.
 
 ### [Update-AzSynapseSparkPool](Update-AzSynapseSparkPool.md)
-Updates a Synapse Analytics Spark pool.
+Updates a Apache Spark pool in Azure Synapse Analytics.
 
 ### [Update-AzSynapseSqlAdvancedThreatProtectionSetting](Update-AzSynapseSqlAdvancedThreatProtectionSetting.md)
 Updates an advanced threat protection settings on a workspace.
