@@ -1,25 +1,25 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools/testIaasPool/nodes?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcz9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
+      "RequestUri": "/pools/testIaasPool/nodes?api-version=2021-06-01.14.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcz9hcGktdmVyc2lvbj0yMDIxLTA2LTAxLjE0LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "78436500-031d-4c12-8d60-08d86cf1caa7"
+          "af8c2192-248f-4e0b-acd4-d16b7de2f3c0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:14:14 GMT"
+          "Fri, 27 Aug 2021 16:22:34 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.100.21.41103",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -31,7 +31,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "2bca7450-3476-4891-97c7-6941284c4fb9"
+          "4e1c6efa-6925-424d-afe3-4915329ab49d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,35 +43,38 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:14:35 GMT"
+          "Fri, 27 Aug 2021 16:22:33 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvmps_31497306144445317358e0cbf24e973b4f029f81492aeb3c0341627e7abde3ee_d\",\r\n      \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testIaasPool/nodes/tvmps_31497306144445317358e0cbf24e973b4f029f81492aeb3c0341627e7abde3ee_d\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2020-06-09T16:33:47.414158Z\",\r\n      \"lastBootTime\": \"2020-06-09T16:33:47.284122Z\",\r\n      \"allocationTime\": \"2020-06-09T16:33:02.8452129Z\",\r\n      \"ipAddress\": \"10.0.0.4\",\r\n      \"affinityId\": \"TVM:tvmps_31497306144445317358e0cbf24e973b4f029f81492aeb3c0341627e7abde3ee_d\",\r\n      \"vmSize\": \"standard_d2_v3\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"SSHRule.0\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"20.40.144.97\",\r\n            \"publicFQDN\": \"dnsb99480c8-2851-423d-9b57-8134a27c4e3e-azurebatch-cloudservice.francecentral.cloudapp.azure.com\",\r\n            \"frontendPort\": 50000,\r\n            \"backendPort\": 22\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2020-06-09T16:33:47.284122Z\",\r\n        \"version\": \"1.8.2\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvmps_7ff99415edb43b75ddf8180c9d013b96df6eee1bd7f56e96c16814fac6d7878a_d\",\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/pools/testIaasPool/nodes/tvmps_7ff99415edb43b75ddf8180c9d013b96df6eee1bd7f56e96c16814fac6d7878a_d\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2021-08-27T01:30:48.853814Z\",\r\n      \"lastBootTime\": \"2021-08-27T01:30:48.771764Z\",\r\n      \"allocationTime\": \"2021-08-27T01:28:47.3918216Z\",\r\n      \"ipAddress\": \"10.0.0.4\",\r\n      \"affinityId\": \"TVM:tvmps_7ff99415edb43b75ddf8180c9d013b96df6eee1bd7f56e96c16814fac6d7878a_d\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"runningTaskSlotsCount\": 0,\r\n      \"certificateReferences\": [],\r\n      \"isDedicated\": true,\r\n      \"endpointConfiguration\": {\r\n        \"inboundEndpoints\": [\r\n          {\r\n            \"name\": \"SSHRule.0\",\r\n            \"protocol\": \"tcp\",\r\n            \"publicIPAddress\": \"52.191.227.115\",\r\n            \"publicFQDN\": \"dns4bbf7224-1a06-451b-9c13-d2a8b45e8191-azurebatch-cloudservice.eastus.cloudapp.azure.com\",\r\n            \"frontendPort\": 50000,\r\n            \"backendPort\": 22\r\n          }\r\n        ]\r\n      },\r\n      \"nodeAgentInfo\": {\r\n        \"lastUpdateTime\": \"2021-08-27T01:30:48.771764Z\",\r\n        \"version\": \"1.9.14\"\r\n      },\r\n      \"virtualMachineInfo\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"16.04-LTS\",\r\n          \"version\": \"latest\",\r\n          \"exactVersion\": \"16.04.202106110\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testIaasPool/nodes/tvmps_31497306144445317358e0cbf24e973b4f029f81492aeb3c0341627e7abde3ee_d?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm1wc18zMTQ5NzMwNjE0NDQ0NTMxNzM1OGUwY2JmMjRlOTczYjRmMDI5ZjgxNDkyYWViM2MwMzQxNjI3ZTdhYmRlM2VlX2Q/YXBpLXZlcnNpb249MjAyMC0wMy0wMS4xMS4w",
+      "RequestUri": "/pools/testIaasPool/nodes/tvmps_7ff99415edb43b75ddf8180c9d013b96df6eee1bd7f56e96c16814fac6d7878a_d?api-version=2021-06-01.14.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm1wc183ZmY5OTQxNWVkYjQzYjc1ZGRmODE4MGM5ZDAxM2I5NmRmNmVlZTFiZDdmNTZlOTZjMTY4MTRmYWM2ZDc4NzhhX2Q/YXBpLXZlcnNpb249MjAyMS0wNi0wMS4xNC4w",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "7b6f7570-e87c-446b-a61c-3df8fc9a7eb7"
+          "0677f141-8aa6-472e-bdc2-b14ac1414a5a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:14:36 GMT"
+          "Fri, 27 Aug 2021 16:22:35 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "426e5f2e-02f3-4ccf-9801-99e7c07dfb5e"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.100.21.41103",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -83,7 +86,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "13a0c1a2-603c-45ae-81d0-00f395580501"
+          "66843882-7f9f-4e15-a60f-adbb9344cb30"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -95,35 +98,38 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:14:57 GMT"
+          "Fri, 27 Aug 2021 16:22:34 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_31497306144445317358e0cbf24e973b4f029f81492aeb3c0341627e7abde3ee_d\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/testIaasPool/nodes/tvmps_31497306144445317358e0cbf24e973b4f029f81492aeb3c0341627e7abde3ee_d\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2020-06-09T16:33:47.414158Z\",\r\n  \"lastBootTime\": \"2020-06-09T16:33:47.284122Z\",\r\n  \"allocationTime\": \"2020-06-09T16:33:02.8452129Z\",\r\n  \"ipAddress\": \"10.0.0.4\",\r\n  \"affinityId\": \"TVM:tvmps_31497306144445317358e0cbf24e973b4f029f81492aeb3c0341627e7abde3ee_d\",\r\n  \"vmSize\": \"standard_d2_v3\",\r\n  \"totalTasksRun\": 0,\r\n  \"totalTasksSucceeded\": 0,\r\n  \"runningTasksCount\": 0,\r\n  \"certificateReferences\": [],\r\n  \"isDedicated\": true,\r\n  \"endpointConfiguration\": {\r\n    \"inboundEndpoints\": [\r\n      {\r\n        \"name\": \"SSHRule.0\",\r\n        \"protocol\": \"tcp\",\r\n        \"publicIPAddress\": \"20.40.144.97\",\r\n        \"publicFQDN\": \"dnsb99480c8-2851-423d-9b57-8134a27c4e3e-azurebatch-cloudservice.francecentral.cloudapp.azure.com\",\r\n        \"frontendPort\": 50000,\r\n        \"backendPort\": 22\r\n      }\r\n    ]\r\n  },\r\n  \"nodeAgentInfo\": {\r\n    \"lastUpdateTime\": \"2020-06-09T16:33:47.284122Z\",\r\n    \"version\": \"1.8.2\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvmps_7ff99415edb43b75ddf8180c9d013b96df6eee1bd7f56e96c16814fac6d7878a_d\",\r\n  \"url\": \"https://mikeportal.eastus.batch.azure.com/pools/testIaasPool/nodes/tvmps_7ff99415edb43b75ddf8180c9d013b96df6eee1bd7f56e96c16814fac6d7878a_d\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2021-08-27T01:30:48.853814Z\",\r\n  \"lastBootTime\": \"2021-08-27T01:30:48.771764Z\",\r\n  \"allocationTime\": \"2021-08-27T01:28:47.3918216Z\",\r\n  \"ipAddress\": \"10.0.0.4\",\r\n  \"affinityId\": \"TVM:tvmps_7ff99415edb43b75ddf8180c9d013b96df6eee1bd7f56e96c16814fac6d7878a_d\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"totalTasksRun\": 0,\r\n  \"totalTasksSucceeded\": 0,\r\n  \"runningTasksCount\": 0,\r\n  \"runningTaskSlotsCount\": 0,\r\n  \"certificateReferences\": [],\r\n  \"isDedicated\": true,\r\n  \"endpointConfiguration\": {\r\n    \"inboundEndpoints\": [\r\n      {\r\n        \"name\": \"SSHRule.0\",\r\n        \"protocol\": \"tcp\",\r\n        \"publicIPAddress\": \"52.191.227.115\",\r\n        \"publicFQDN\": \"dns4bbf7224-1a06-451b-9c13-d2a8b45e8191-azurebatch-cloudservice.eastus.cloudapp.azure.com\",\r\n        \"frontendPort\": 50000,\r\n        \"backendPort\": 22\r\n      }\r\n    ]\r\n  },\r\n  \"nodeAgentInfo\": {\r\n    \"lastUpdateTime\": \"2021-08-27T01:30:48.771764Z\",\r\n    \"version\": \"1.9.14\"\r\n  },\r\n  \"virtualMachineInfo\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"Canonical\",\r\n      \"offer\": \"UbuntuServer\",\r\n      \"sku\": \"16.04-LTS\",\r\n      \"version\": \"latest\",\r\n      \"exactVersion\": \"16.04.202106110\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testIaasPool/nodes/tvmps_31497306144445317358e0cbf24e973b4f029f81492aeb3c0341627e7abde3ee_d/remoteloginsettings?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm1wc18zMTQ5NzMwNjE0NDQ0NTMxNzM1OGUwY2JmMjRlOTczYjRmMDI5ZjgxNDkyYWViM2MwMzQxNjI3ZTdhYmRlM2VlX2QvcmVtb3RlbG9naW5zZXR0aW5ncz9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
+      "RequestUri": "/pools/testIaasPool/nodes/tvmps_7ff99415edb43b75ddf8180c9d013b96df6eee1bd7f56e96c16814fac6d7878a_d/remoteloginsettings?api-version=2021-06-01.14.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm1wc183ZmY5OTQxNWVkYjQzYjc1ZGRmODE4MGM5ZDAxM2I5NmRmNmVlZTFiZDdmNTZlOTZjMTY4MTRmYWM2ZDc4NzhhX2QvcmVtb3RlbG9naW5zZXR0aW5ncz9hcGktdmVyc2lvbj0yMDIxLTA2LTAxLjE0LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "94d86846-54cc-4714-b6b8-c037e9c6cf6a"
+          "a87dce82-1fe5-4456-804b-4a449f5d1860"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:14:58 GMT"
+          "Fri, 27 Aug 2021 16:22:36 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "426e5f2e-02f3-4ccf-9801-99e7c07dfb5e"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.100.21.41103",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -135,7 +141,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "9def4b81-7277-4fa5-952f-1a04bb180107"
+          "93adf2f0-1e55-487e-a8bc-a7970dda0124"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -147,24 +153,24 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://prodtest6.francecentral.batch.azure.com/pools/testIaasPool/nodes/tvmps_31497306144445317358e0cbf24e973b4f029f81492aeb3c0341627e7abde3ee_d/remoteloginsettings"
+          "https://mikeportal.eastus.batch.azure.com/pools/testIaasPool/nodes/tvmps_7ff99415edb43b75ddf8180c9d013b96df6eee1bd7f56e96c16814fac6d7878a_d/remoteloginsettings"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:14:57 GMT"
+          "Fri, 27 Aug 2021 16:22:34 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.RemoteLoginSettings\",\r\n  \"remoteLoginIPAddress\": \"20.40.144.97\",\r\n  \"remoteLoginPort\": 50000\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.RemoteLoginSettings\",\r\n  \"remoteLoginIPAddress\": \"52.191.227.115\",\r\n  \"remoteLoginPort\": 50000\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
-    "AZURE_BATCH_ACCOUNT": "prodtest6",
-    "AZURE_BATCH_ENDPOINT": "https://prodtest6.francecentral.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "abc"
+    "SubscriptionId": "ba2358c2-42f2-4138-88df-7c68cf608bea",
+    "AZURE_BATCH_ACCOUNT": "mikeportal",
+    "AZURE_BATCH_ENDPOINT": "https://mikeportal.eastus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "batchportal"
   }
 }
