@@ -566,11 +566,17 @@ function Set-AzMigrateServerReplication {
             if ($HasDiskToUpdate) {
                 $diskNamePresentinRg = New-Object Collections.Generic.List[String]
                 $duplicateDiskName = New-Object System.Collections.Generic.HashSet[String]
+                $uniqueDiskUuids = [System.Collections.Generic.HashSet[String]]::new([StringComparer]::InvariantCultureIgnoreCase)
                 foreach($DiskObject in $DiskToUpdate) {
                     $diskNamePresent = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $DiskObject.TargetDiskName -ResourceType "Microsoft.Compute/disks" -ErrorVariable notPresent -ErrorAction SilentlyContinue
                     if($diskNamePresent) {
                          $diskNamePresentinRg.Add($DiskObject.TargetDiskName)
                     }
+
+                    if ($uniqueDiskUuids.Contains($DiskObject.DiskId)) {
+                        throw "The disk uuid '$($DiskObject.DiskId)' is already taken."
+                    }
+                    $res = $uniqueDiskUuids.Add($DiskObject.DiskId)
 
                     if ($duplicateDiskName.Contains($DiskObject.TargetDiskName)) {
                         throw "The disk name '$($DiskObject.TargetDiskName)' is already taken."
