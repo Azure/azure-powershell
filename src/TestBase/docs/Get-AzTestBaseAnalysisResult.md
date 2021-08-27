@@ -14,8 +14,8 @@ Gets an Analysis Result of a Test Result by name.
 
 ### Get (Default)
 ```
-Get-AzTestBaseAnalysisResult -Name <AnalysisResultName> -PackageName <String> -ResourceGroupName <String>
- -TestBaseAccountName <String> -TestResultName <String> [-SubscriptionId <String[]>]
+Get-AzTestBaseAnalysisResult -AccountName <String> -Name <AnalysisResultName> -PackageName <String>
+ -ResourceGroupName <String> -TestResultName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Get-AzTestBaseAnalysisResult -InputObject <ITestBaseIdentity> [-DefaultProfile <
 
 ### List
 ```
-Get-AzTestBaseAnalysisResult -PackageName <String> -ResourceGroupName <String> -TestBaseAccountName <String>
+Get-AzTestBaseAnalysisResult -AccountName <String> -PackageName <String> -ResourceGroupName <String>
  -TestResultName <String> -AnalysisResultType <AnalysisResultType> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -56,6 +56,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AccountName
+The resource name of the Test Base Account.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AnalysisResultType
 The type of the Analysis Result of a Test Result.
@@ -160,21 +175,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestBaseAccountName
-The resource name of the Test Base Account.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

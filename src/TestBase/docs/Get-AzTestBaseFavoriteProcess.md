@@ -14,14 +14,14 @@ Gets a favorite process for a Test Base Package.
 
 ### List (Default)
 ```
-Get-AzTestBaseFavoriteProcess -PackageName <String> -ResourceGroupName <String> -TestBaseAccountName <String>
+Get-AzTestBaseFavoriteProcess -AccountName <String> -PackageName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzTestBaseFavoriteProcess -PackageName <String> -ResourceGroupName <String> -ResourceName <String>
- -TestBaseAccountName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzTestBaseFavoriteProcess -AccountName <String> -Name <String> -PackageName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -55,6 +55,21 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AccountName
+The resource name of the Test Base Account.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -83,6 +98,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The resource name of a favorite process in a package.
+If the process name contains characters that are not allowed in Azure Resource Name, we use 'actualProcessName' in request body to submit the name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: FavoriteProcessResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -116,22 +147,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The resource name of a favorite process in a package.
-If the process name contains characters that are not allowed in Azure Resource Name, we use 'actualProcessName' in request body to submit the name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: FavoriteProcessResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The Azure subscription ID.
 This is a GUID-formatted string.
@@ -144,21 +159,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestBaseAccountName
-The resource name of the Test Base Account.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

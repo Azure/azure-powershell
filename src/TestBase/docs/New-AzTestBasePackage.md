@@ -13,10 +13,10 @@ Create or replace (overwrite/recreate, with potential downtime) a Test Base Pack
 ## SYNTAX
 
 ```
-New-AzTestBasePackage -Name <String> -ResourceGroupName <String> -TestBaseAccountName <String>
- -Location <String> [-SubscriptionId <String>] [-ApplicationName <String>] [-BlobPath <String>]
- [-FlightingRing <String>] [-Tag <Hashtable>] [-TargetOSList <ITargetOSInfo[]>] [-Test <ITest[]>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzTestBasePackage -AccountName <String> -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-ApplicationName <String>] [-BlobPath <String>] [-FlightingRing <String>]
+ [-Tag <Hashtable>] [-TargetOSList <ITargetOSInfo[]>] [-Test <ITest[]>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +43,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AccountName
+The resource name of the Test Base Account.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApplicationName
 Application name
@@ -236,21 +251,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestBaseAccountName
-The resource name of the Test Base Account.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

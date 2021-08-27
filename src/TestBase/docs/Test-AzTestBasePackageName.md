@@ -1,45 +1,46 @@
 ---
 external help file:
 Module Name: Az.TestBase
-online version: https://docs.microsoft.com/powershell/module/az.testbase/get-aztestbaseaccountfileuploadurl
+online version: https://docs.microsoft.com/powershell/module/az.testbase/test-aztestbasepackagename
 schema: 2.0.0
 ---
 
-# Get-AzTestBaseAccountFileUploadUrl
+# Test-AzTestBasePackageName
 
 ## SYNOPSIS
-Gets the file upload URL of a Test Base Account.
+Checks that the Test Base Package name and version is valid and is not already in use.
 
 ## SYNTAX
 
-### GetExpanded (Default)
+### CheckExpanded (Default)
 ```
-Get-AzTestBaseAccountFileUploadUrl -ResourceGroupName <String> -TestBaseAccountName <String>
- [-SubscriptionId <String[]>] [-BlobName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Test-AzTestBasePackageName -AccountName <String> -ResourceGroupName <String> -ApplicationName <String>
+ -Name <String> -Type <String> -Version <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Check
+```
+Test-AzTestBasePackageName -AccountName <String> -ResourceGroupName <String>
+ -Parameter <IPackageCheckNameAvailabilityParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaIdentity
+```
+Test-AzTestBasePackageName -InputObject <ITestBaseIdentity>
+ -Parameter <IPackageCheckNameAvailabilityParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### Get
+### CheckViaIdentityExpanded
 ```
-Get-AzTestBaseAccountFileUploadUrl -ResourceGroupName <String> -TestBaseAccountName <String>
- -Parameter <IGetFileUploadUrlParameters> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzTestBaseAccountFileUploadUrl -InputObject <ITestBaseIdentity> -Parameter <IGetFileUploadUrlParameters>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentityExpanded
-```
-Get-AzTestBaseAccountFileUploadUrl -InputObject <ITestBaseIdentity> [-BlobName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzTestBasePackageName -InputObject <ITestBaseIdentity> -ApplicationName <String> -Name <String>
+ -Type <String> -Version <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the file upload URL of a Test Base Account.
+Checks that the Test Base Package name and version is valid and is not already in use.
 
 ## EXAMPLES
 
@@ -63,15 +64,30 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -BlobName
-The custom file name of the uploaded blob.
+### -AccountName
+The resource name of the Test Base Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Parameter Sets: Check, CheckExpanded
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApplicationName
+Application name to verify.
+
+```yaml
+Type: System.String
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,7 +115,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.TestBase.Models.ITestBaseIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
+Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -109,13 +125,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Resource name to verify.
+
+```yaml
+Type: System.String
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Parameter
-The parameters supplied to the Test Base Account GetFileUploadURL action.
+Parameters body to pass for Test Base Package name availability check.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TestBase.Models.Api20201216Preview.IGetFileUploadUrlParameters
-Parameter Sets: Get, GetViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.TestBase.Models.Api20201216Preview.IPackageCheckNameAvailabilityParameters
+Parameter Sets: Check, CheckViaIdentity
 Aliases:
 
 Required: True
@@ -130,7 +161,7 @@ The name of the resource group that contains the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: Check, CheckExpanded
 Aliases:
 
 Required: True
@@ -145,8 +176,8 @@ The Azure subscription ID.
 This is a GUID-formatted string.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, GetExpanded
+Type: System.String
+Parameter Sets: Check, CheckExpanded
 Aliases:
 
 Required: False
@@ -156,12 +187,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TestBaseAccountName
-The resource name of the Test Base Account.
+### -Type
+fully qualified resource type which includes provider namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Version name to verify.
+
+```yaml
+Type: System.String
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -207,13 +253,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TestBase.Models.Api20201216Preview.IGetFileUploadUrlParameters
+### Microsoft.Azure.PowerShell.Cmdlets.TestBase.Models.Api20201216Preview.IPackageCheckNameAvailabilityParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.TestBase.Models.ITestBaseIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TestBase.Models.Api20201216Preview.IFileUploadUrlResponse
+### Microsoft.Azure.PowerShell.Cmdlets.TestBase.Models.Api20201216Preview.ICheckNameAvailabilityResult
 
 ## NOTES
 
@@ -241,8 +287,11 @@ INPUTOBJECT <ITestBaseIdentity>: Identity Parameter
   - `[TestSummaryName <String>]`: The name of the Test Summary.
   - `[TestTypeResourceName <String>]`: The resource name of a test type.
 
-PARAMETER <IGetFileUploadUrlParameters>: The parameters supplied to the Test Base Account GetFileUploadURL action.
-  - `[BlobName <String>]`: The custom file name of the uploaded blob.
+PARAMETER <IPackageCheckNameAvailabilityParameters>: Parameters body to pass for Test Base Package name availability check.
+  - `ApplicationName <String>`: Application name to verify.
+  - `Name <String>`: Resource name to verify.
+  - `Type <String>`: fully qualified resource type which includes provider namespace.
+  - `Version <String>`: Version name to verify.
 
 ## RELATED LINKS
 

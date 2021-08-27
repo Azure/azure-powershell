@@ -13,7 +13,7 @@ Create or replace a Test Base Customer Event.
 ## SYNTAX
 
 ```
-New-AzTestBaseCustomerEvent -Name <String> -ResourceGroupName <String> -TestBaseAccountName <String>
+New-AzTestBaseCustomerEvent -AccountName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-EventName <String>] [-Receiver <INotificationEventReceiver[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -42,6 +42,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AccountName
+The resource name of the Test Base Account.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -161,21 +176,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestBaseAccountName
-The resource name of the Test Base Account.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

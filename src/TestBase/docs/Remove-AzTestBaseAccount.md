@@ -8,24 +8,24 @@ schema: 2.0.0
 # Remove-AzTestBaseAccount
 
 ## SYNOPSIS
-Deletes a Test Base Account.
+Offboard a Test Base Account.
 
 ## SYNTAX
 
-### Delete (Default)
+### Offboard (Default)
 ```
-Remove-AzTestBaseAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzTestBaseAccount -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### OffboardViaIdentity
 ```
 Remove-AzTestBaseAccount -InputObject <ITestBaseIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a Test Base Account.
+Offboard a Test Base Account.
 
 ## EXAMPLES
 
@@ -48,6 +48,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AccountName
+The resource name of the Test Base Account.
+
+```yaml
+Type: System.String
+Parameter Sets: Offboard
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -85,28 +100,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.TestBase.Models.ITestBaseIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: OffboardViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The resource name of the Test Base Account.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: TestBaseAccountName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -145,7 +145,7 @@ The name of the resource group that contains the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Offboard
 Aliases:
 
 Required: True
@@ -161,7 +161,7 @@ This is a GUID-formatted string.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Offboard
 Aliases:
 
 Required: False

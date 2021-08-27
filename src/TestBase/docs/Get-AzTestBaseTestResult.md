@@ -14,8 +14,8 @@ Get the Test Result by Id with specified OS Update type for a Test Base Package.
 
 ### Get (Default)
 ```
-Get-AzTestBaseTestResult -Name <String> -PackageName <String> -ResourceGroupName <String>
- -TestBaseAccountName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzTestBaseTestResult -AccountName <String> -Name <String> -PackageName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -25,7 +25,7 @@ Get-AzTestBaseTestResult -InputObject <ITestBaseIdentity> [-DefaultProfile <PSOb
 
 ### List
 ```
-Get-AzTestBaseTestResult -PackageName <String> -ResourceGroupName <String> -TestBaseAccountName <String>
+Get-AzTestBaseTestResult -AccountName <String> -PackageName <String> -ResourceGroupName <String>
  -OSUpdateType <OSUpdateType> [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -54,6 +54,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AccountName
+The resource name of the Test Base Account.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -174,21 +189,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestBaseAccountName
-The resource name of the Test Base Account.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

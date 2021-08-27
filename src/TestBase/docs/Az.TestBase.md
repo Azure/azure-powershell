@@ -1,6 +1,6 @@
 ---
 Module Name: Az.TestBase
-Module Guid: 04b7d2c5-1072-49f1-b52c-6ad835c863cd
+Module Guid: 62eae3a9-f2d9-4b21-92de-407c7039a2a5
 Download Help Link: https://docs.microsoft.com/powershell/module/az.testbase
 Help Version: 1.0.0.0
 Locale: en-US
@@ -13,9 +13,6 @@ Microsoft Azure PowerShell: TestBase cmdlets
 ## Az.TestBase Cmdlets
 ### [Get-AzTestBaseAccount](Get-AzTestBaseAccount.md)
 Gets a Test Base Account.
-
-### [Get-AzTestBaseAccountFileUploadUrl](Get-AzTestBaseAccountFileUploadUrl.md)
-Gets the file upload URL of a Test Base Account.
 
 ### [Get-AzTestBaseAnalysisResult](Get-AzTestBaseAnalysisResult.md)
 Gets an Analysis Result of a Test Result by name.
@@ -41,6 +38,9 @@ Gets an OS Update by name in which the package was tested before.
 ### [Get-AzTestBasePackage](Get-AzTestBasePackage.md)
 Gets a Test Base Package.
 
+### [Get-AzTestBasePackageBlobPath](Get-AzTestBasePackageBlobPath.md)
+Gets the file upload URL of a Test Base Account.
+
 ### [Get-AzTestBasePackageDownloadUrl](Get-AzTestBasePackageDownloadUrl.md)
 Gets the download URL of a package.
 
@@ -65,9 +65,6 @@ Gets a test type of a Test Base Account.
 ### [Get-AzTestBaseUsage](Get-AzTestBaseUsage.md)
 Lists the usage data of a Test Base Account.
 
-### [Invoke-AzTestBaseOffboardTestBaseAccount](Invoke-AzTestBaseOffboardTestBaseAccount.md)
-Offboard a Test Base Account.
-
 ### [New-AzTestBaseAccount](New-AzTestBaseAccount.md)
 Create or replace (overwrite/recreate, with potential downtime) a Test Base Account in the specified subscription.
 
@@ -81,7 +78,7 @@ Create or replace a favorite process for a Test Base Package.
 Create or replace (overwrite/recreate, with potential downtime) a Test Base Package.
 
 ### [Remove-AzTestBaseAccount](Remove-AzTestBaseAccount.md)
-Deletes a Test Base Account.
+Offboard a Test Base Account.
 
 ### [Remove-AzTestBaseCustomerEvent](Remove-AzTestBaseCustomerEvent.md)
 Deletes a Test Base Customer Event.
@@ -95,7 +92,7 @@ Deletes a Test Base Package.
 ### [Remove-AzTestBasePackageHard](Remove-AzTestBasePackageHard.md)
 Hard Delete a Test Base Package.
 
-### [Test-AzTestBaseAccountPackageNameAvailability](Test-AzTestBaseAccountPackageNameAvailability.md)
+### [Test-AzTestBasePackageName](Test-AzTestBasePackageName.md)
 Checks that the Test Base Package name and version is valid and is not already in use.
 
 ### [Update-AzTestBaseAccount](Update-AzTestBaseAccount.md)

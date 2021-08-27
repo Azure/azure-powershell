@@ -14,7 +14,7 @@ Update an existing Test Base Package.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzTestBasePackage -Name <String> -ResourceGroupName <String> -TestBaseAccountName <String>
+Update-AzTestBasePackage -AccountName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-BlobPath <String>] [-FlightingRing <String>] [-IsEnabled] [-Tag <Hashtable>]
  [-TargetOSList <ITargetOSInfo[]>] [-Test <ITest[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -51,6 +51,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AccountName
+The resource name of the Test Base Account.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -246,21 +261,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestBaseAccountName
-The resource name of the Test Base Account.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

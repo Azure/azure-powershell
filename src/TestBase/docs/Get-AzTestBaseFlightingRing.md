@@ -14,13 +14,13 @@ Gets a flighting ring of a Test Base Account.
 
 ### List (Default)
 ```
-Get-AzTestBaseFlightingRing -ResourceGroupName <String> -TestBaseAccountName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzTestBaseFlightingRing -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzTestBaseFlightingRing -ResourceGroupName <String> -ResourceName <String> -TestBaseAccountName <String>
+Get-AzTestBaseFlightingRing -AccountName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -54,6 +54,21 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AccountName
+The resource name of the Test Base Account.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -85,13 +100,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group that contains the resource.
+### -Name
+The resource name of a flighting ring.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: Get
+Aliases: FlightingRingResourceName
 
 Required: True
 Position: Named
@@ -100,13 +115,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The resource name of a flighting ring.
+### -ResourceGroupName
+The name of the resource group that contains the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: FlightingRingResourceName
+Parameter Sets: Get, List
+Aliases:
 
 Required: True
 Position: Named
@@ -127,21 +142,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestBaseAccountName
-The resource name of the Test Base Account.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

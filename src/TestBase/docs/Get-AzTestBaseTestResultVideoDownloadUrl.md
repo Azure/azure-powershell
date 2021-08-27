@@ -14,8 +14,8 @@ Gets the download URL of the test execution screen recording.
 
 ### Get (Default)
 ```
-Get-AzTestBaseTestResultVideoDownloadUrl -PackageName <String> -ResourceGroupName <String>
- -TestBaseAccountName <String> -TestResultName <String> [-SubscriptionId <String[]>]
+Get-AzTestBaseTestResultVideoDownloadUrl -AccountName <String> -PackageName <String>
+ -ResourceGroupName <String> -TestResultName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -49,6 +49,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AccountName
+The resource name of the Test Base Account.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -123,21 +138,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestBaseAccountName
-The resource name of the Test Base Account.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -35,18 +35,60 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json
+   - $(this-folder)/testbase.json
+#  - $(repo)/specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/testbase.json
 
 module-version: 0.1.0
 title: TestBase
 subject-prefix: $(service-name)
 
 directive:
-- where:
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-  remove: true
-  # Remove the set-* cmdlet
-- where:
-    verb: Set
-  remove: true
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+    remove: true
+
+  - where:
+      subject: OrganizationOperation
+    hide: true
+
+  - where:
+      verb: Remove
+      subject: TestBaseAccount
+    remove: true
+
+  - where:
+      verb: Remove
+      subject: TestBasePackage
+    remove: true
+
+  - where:
+      parameter-name: TestBaseAccountName 
+    set:
+      parameter-name: AccountName
+
+  - where:
+      verb: Get
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Get
+      subject: TestBaseAccountFileUploadUrl
+    set:
+      subject: TestBasePackageBlobPath
+
+  - where:
+      verb: Invoke
+      subject: OffboardTestBaseAccount
+    set:
+      verb: Remove
+      subject: Account
+
+  - where:
+      verb: Test
+      subject: TestBaseAccountPackageNameAvailability
+    set:
+      subject: TestBasePackageName
+
 ```

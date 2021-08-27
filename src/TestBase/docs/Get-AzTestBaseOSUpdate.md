@@ -14,8 +14,8 @@ Gets an OS Update by name in which the package was tested before.
 
 ### Get (Default)
 ```
-Get-AzTestBaseOSUpdate -PackageName <String> -ResourceGroupName <String> -ResourceName <String>
- -TestBaseAccountName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzTestBaseOSUpdate -AccountName <String> -Name <String> -PackageName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -25,7 +25,7 @@ Get-AzTestBaseOSUpdate -InputObject <ITestBaseIdentity> [-DefaultProfile <PSObje
 
 ### List
 ```
-Get-AzTestBaseOSUpdate -PackageName <String> -ResourceGroupName <String> -TestBaseAccountName <String>
+Get-AzTestBaseOSUpdate -AccountName <String> -PackageName <String> -ResourceGroupName <String>
  -OSUpdateType <OSUpdateType> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -53,6 +53,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AccountName
+The resource name of the Test Base Account.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -82,6 +97,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The resource name of an OS Update.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: OSUpdateResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -130,21 +160,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The resource name of an OS Update.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: OSUpdateResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The Azure subscription ID.
 This is a GUID-formatted string.
@@ -157,21 +172,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestBaseAccountName
-The resource name of the Test Base Account.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
