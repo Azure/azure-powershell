@@ -526,8 +526,6 @@ function CreateVnetSubnet($Parameters){
 
     try {
         $Vnet = Get-AzVirtualNetwork -Name $Parameters.VnetName -ResourceGroupName $Parameters.ResourceGroupName -ErrorAction Stop
-        $Msg = "The provided vnet does exist."
-        Write-Host $Msg
         $prefixes = $Vnet.AddressSpace.AddressPrefixes
         if (!($prefixes -Contains $Parameters.VnetPrefix)){
             $prefixes.Add($Parameters.VnetPrefix)
@@ -552,8 +550,6 @@ function CreateAndDelegateSubnet($Parameters) {
     $Vnet = Get-AzVirtualNetwork -Name $Parameters.VnetName -ResourceGroupName $Parameters.ResourceGroupName -ErrorAction Stop
     try {
         $Subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $Vnet -Name $Parameters.SubnetName -ErrorAction Stop
-        $Msg = "The provided subnet does exist."
-        Write-Host $Msg
     }
     catch {
         $SubnetFlag = $false
