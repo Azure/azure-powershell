@@ -543,4 +543,7 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="TargetApplianceAlreadyMapped" xml:space="preserve">
     <value>The target appliance "{0}" is already mapped to the machine "{1}"</value>
   </data>
+  <data name="UnsupportedReplicationProviderOperation" xml:space="preserve">
+    <value>Unsupported replication provider {0} for this {1} operation</value>
+  </data>
 </root>

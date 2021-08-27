@@ -1209,6 +1209,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unsupported replication provider {0} for this {1} operation.
+        /// </summary>
+        internal static string UnsupportedReplicationProviderOperation {
+            get {
+                return ResourceManager.GetString("UnsupportedReplicationProviderOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unsupported Replication Reprotect Scenerio..
         /// </summary>
         internal static string UnsupportedReplicationReprotectScenerio {

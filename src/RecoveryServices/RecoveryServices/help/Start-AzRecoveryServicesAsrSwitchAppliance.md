@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzRecoveryServicesAsrSwitchAppliance
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Starts the switch appliance action for a Site Recovery object.
 
 ## SYNTAX
 
@@ -20,21 +20,22 @@ Start-AzRecoveryServicesAsrSwitchAppliance -Fabric <ASRFabric>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Start-AzRecoveryServicesAsrSwitchAppliance** cmdlet starts the switch appliance process for an Azure Site Recovery object.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Start-AzRecoveryServicesAsrSwitchAppliance -Fabric $Fabric
+ -ReplicationProtectedItem $RPI -TargetApplianceName $TargetApplianceName
 ```
 
-{{ Add example description here }}
+Starts the switch appliance for the specified replicated protected item and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -CredentialsToAccessVm
-{{ Fill CredentialsToAccessVm Description }}
+Specifies the name of credentials to be used to push install the Mobility service on source machine if needed.
 
 ```yaml
 Type: System.String
@@ -64,12 +65,12 @@ Accept wildcard characters: False
 ```
 
 ### -Fabric
-{{ Fill Fabric Description }}
+Specifies the ASR Fabric object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
 Parameter Sets: (All)
-Aliases: ConfigServer
+Aliases:
 
 Required: True
 Position: Named
@@ -79,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-{{ Fill ReplicationProtectedItem Description }}
+Specifies an ASR replication protected item object to be switched to new appliance.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
@@ -89,12 +90,12 @@ Aliases: ReplicatedItem
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -TargetApplianceName
-{{ Fill TargetApplianceName Description }}
+Specifies the name of appliance to be used to replicate this machine.
 
 ```yaml
 Type: System.String

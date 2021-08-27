@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ParameterSetName = ASRParameterSets.Default,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        [Alias("ConfigServer")]
         public ASRFabric Fabric { get; set; }
 
         /// <summary>
@@ -81,15 +80,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 // Set the Fabric Name and Protection Container Name.
                 string fabricName = this.Fabric.Name;
-                var protectionContainerList = this.RecoveryServicesClient
-                    .GetAzureSiteRecoveryProtectionContainer(fabricName);
-                string protectionContainerName = protectionContainerList[0].Name;
+                string protectionContainerName = Utilities.GetValueFromArmId(
+                    this.ReplicationProtectedItem.ID,
+                    ARMResourceTypeConstants.ReplicationProtectionContainers);
 
                 var updateApplianceInput = new UpdateApplianceForReplicationProtectedItemInputProperties();
                 if (this.ReplicationProtectedItem.ReplicationProvider.Equals(Constants.InMageRcm))
                 {
                     this.InMageRcmValidateSwitchApplianceInput();
                     this.InMageRcmSwitchAppliance(updateApplianceInput);
+                }
+                else
+                {
+                    throw new InvalidOperationException(
+                    string.Format(
+                        Resources.UnsupportedReplicationProviderOperation,
+                        this.ReplicationProtectedItem.ReplicationProvider,
+                        "SwitchAppliance"));
                 }
 
                 var input = new UpdateApplianceForReplicationProtectedItemInput
