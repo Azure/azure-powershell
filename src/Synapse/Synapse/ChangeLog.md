@@ -32,8 +32,8 @@
 	- Added `New-AzSynapseWorkspacePackage` cmdlet
 	- Added `Get-AzSynapseWorkspacePackage` cmdlet
 	- Added `Remove-AzSynapseWorkspacePackage` cmdlet
-	- Updated `New-AzSynapseSparkPool` cmdlet to add parameter `-Package`
-	- Updated `Updated-AzSynapseSparkPool` cmdlet to add parameter `-Package`
+	- Updated `New-AzSynapseSparkPool` cmdlet to drop parameter `-LibraryRequirementsFilePath`
+	- Updated `Updated-AzSynapseSparkPool` cmdlet to add parameter `-Package` and `-PackageAction`
 
 ## Version 0.14.0
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
