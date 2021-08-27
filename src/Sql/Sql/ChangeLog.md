@@ -25,6 +25,7 @@
       `Get-AzSqlServerOutboundFirewallRule`
       `New-AzSqlServerOutboundFirewallRule`
       `Remove-AzSqlServerOutboundFirewallRule`
+* Changed the underlying implementation of `Get-AzSqlDatabase` to support a paginated response from the server
 
 ## Version 3.3.0
 * Changed the type of parameter `AutoRotationEnabled` in `Set-AzSqlInstanceTransparentDataEncryptionProtector` to bool?.
