@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fixed a bug where the restore of deleted database accounts fail.
+* Fixed when a warning about the value of AnalyticalStorageSchemaType is displayed when no value was given.
 
 ## Version 1.3.0
 * This release introduces the cmdlets for the features of Continuous Backup(Point in time restore):
