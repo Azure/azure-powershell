@@ -530,6 +530,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -PackageAction and -Package must be specified at the same time or neither of them should be..
+        /// </summary>
+        internal static string FailedToValidatePackageParameter {
+            get {
+                return ResourceManager.GetString("FailedToValidatePackageParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file at path &apos;{0}&apos; does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible..
         /// </summary>
         internal static string FilePathDoesNotExist {

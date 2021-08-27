@@ -269,5 +269,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             public const string WorkspaceGitHubConfiguration = "WorkspaceGitHubConfiguration";
             public const string WorkspaceVSTSConfiguration = "WorkspaceVSTSConfiguration";
         }
+
+        public enum PackageActionType
+        {
+            Add,
+            Remove
+        }
     }
 }

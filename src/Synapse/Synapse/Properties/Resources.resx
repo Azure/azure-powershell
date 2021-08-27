@@ -740,4 +740,7 @@ Failed: {2}.</value>
   <data name="WorkspacePackageExists" xml:space="preserve">
     <value>A workspace package with name '{0}' already exists.</value>
   </data>
+  <data name="FailedToValidatePackageParameter" xml:space="preserve">
+    <value>-PackageAction and -Package must be specified at the same time or neither of them should be.</value>
+  </data>
 </root>

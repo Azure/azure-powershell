@@ -117,17 +117,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string SparkVersion { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.LibraryRequirementsFilePath)]
-        [ValidateNotNullOrEmpty]
-        public string LibraryRequirementsFilePath { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.WorkspacePackages)]
-        [Alias(SynapseConstants.WorkspacePackage)]
-        [ValidateNotNullOrEmpty]
-        public List<PSSynapseWorkspacePackage> Package { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -182,18 +171,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 throw new AzPSResourceNotFoundCloudException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
-            LibraryRequirements libraryRequirements = null;
-            if (this.IsParameterBound(c => c.LibraryRequirementsFilePath))
-            {
-                var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(LibraryRequirementsFilePath);
-
-                libraryRequirements = new LibraryRequirements
-                {
-                    Filename = Path.GetFileName(powerShellDestinationPath),
-                    Content = this.ReadFileAsText(powerShellDestinationPath),
-                };
-            }
-
             var createParams = new BigDataPoolResourceInfo
             {
                 Location = existingWorkspace.Location,
@@ -212,16 +189,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     Enabled = EnableAutoPause.IsPresent,
                     DelayInMinutes = AutoPauseDelayInMinute
                 },
-                SparkVersion = this.SparkVersion,
-                LibraryRequirements = libraryRequirements,
-                CustomLibraries = Package != null ? this.Package?.Select(psPackage => new LibraryInfo
-                {
-                    Name = psPackage?.Name,
-                    Type = psPackage?.PackageType,
-                    Path = psPackage?.Path,
-                    ContainerName = psPackage?.ContainerName
-                    // TODO: set uploadedTimeStamp property after upgrading SDK otherwise we will see a incorrect property value from Azure portal.
-                }).ToList() : null
+                SparkVersion = this.SparkVersion
             };
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSparkPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))

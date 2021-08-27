@@ -124,8 +124,13 @@ namespace Microsoft.Azure.Commands.Synapse
         public string LibraryRequirementsFilePath { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.PackageAction)]
+        public SynapseConstants.PackageActionType PackageAction { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.WorkspacePackages)]
         [Alias(SynapseConstants.WorkspacePackage)]
+        [ValidateNotNullOrEmpty]
         public List<PSSynapseWorkspacePackage> Package { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
@@ -207,16 +212,34 @@ namespace Microsoft.Azure.Commands.Synapse
                 };
             }
 
-            if (this.IsParameterBound(c => c.Package))
+            if ((!this.IsParameterBound(c => c.PackageAction) && this.IsParameterBound(c => c.Package))
+                || ((this.IsParameterBound(c => c.PackageAction) && !this.IsParameterBound(c => c.Package))))
             {
-                existingSparkPool.CustomLibraries = this.Package?.Select(psPackage => new LibraryInfo
+                throw new AzPSInvalidOperationException(Resources.FailedToValidatePackageParameter);
+            }
+
+            if (this.IsParameterBound(c => c.PackageAction) && this.IsParameterBound(c => c.Package))
+            {
+                if (this.PackageAction == SynapseConstants.PackageActionType.Add)
                 {
-                    Name = psPackage?.Name,
-                    Type = psPackage?.PackageType,
-                    Path = psPackage?.Path,
-                    ContainerName = psPackage?.ContainerName
-                    // TODO: set uploadedTimeStamp property after upgrading SDK otherwise we will see a incorrect property value from Azure portal.
-                }).ToList();
+                    if (existingSparkPool == null)
+                    {
+                        existingSparkPool.CustomLibraries = new List<LibraryInfo>();
+                    }
+
+                    existingSparkPool.CustomLibraries = existingSparkPool.CustomLibraries.Union(this.Package.Select(psPackage => new LibraryInfo
+                    {
+                        Name = psPackage?.Name,
+                        Type = psPackage?.PackageType,
+                        Path = psPackage?.Path,
+                        ContainerName = psPackage?.ContainerName
+                        // TODO: set uploadedTimeStamp property after upgrading SDK otherwise we will see a incorrect property value from Azure portal.
+                    })).ToList();
+                }
+                else if (this.PackageAction == SynapseConstants.PackageActionType.Remove)
+                {
+                    existingSparkPool.CustomLibraries = existingSparkPool.CustomLibraries.Where(lib => !this.Package.Any(p => lib.Path.Equals(p.Path, System.StringComparison.OrdinalIgnoreCase))).ToList();
+                }
             }
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSparkPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
