@@ -1,13 +1,13 @@
 # Authentication and Authorization in RDFE (Azure) and ARM (Az/AzureRM)
 ## RDFE Authorization
-In RDFE users are authorized on aper-subscription basis. Users who are authorized to access a subscription may perform any action within that subscription - on the subscription itself, or on any resources in the subscription. There is no mechanism for limiting the access of an authorized user within a subscription.
+In RDFE, users are authorized on a per-subscription basis. Users who are authorized to access a subscription may perform any action within that subscription - on the subscription itself, or on any resources in the subscription. There is no mechanism for limiting the access of an authorized user within a subscription.
 ## RDFE Authentication Mechanisms
 - Management Certificate Authentication
 - User Authentication
 ### RDFE Management Certificate Authentication
 Management certificate authentication is the most popular mechanism for authenticating RDFE calls for automation.  In this authentication mechanism, the public key of a management certificate is associated with one or more subscriptions.  Users in possession of the certificate private key use standard Http certificate authentication to negotiate an SSL session with the RDFE endpoint, and all subsequent calls in that session have access to any subscriptions associated with the certificate.
 
-To acquire management certificate credentials, you must download  a PublishingProfile from the portal (using Get-AzurePublishSettingsFile, or direct download from the portal), and importing using Import-AzurePublishSettingsFile.  This downloads a file containing management certificates for selected subscriptions, and importing will automatically add each certificate as an account.
+To acquire management certificate credentials, you must download  a PublishingProfile from the portal (using Get-AzurePublishSettingsFile, or direct download from the portal), and import it using Import-AzurePublishSettingsFile.  This downloads a file containing management certificates for selected subscriptions. Importing will automatically add each certificate as an account.
 
 ### RDFE User Authentication
 The Add-AzureAccount command can be used to acquire a token based on user credentials, and if the associated user is authorized for RDFE access to a subscription (they must be a classic administrator or co-admin of the subscription), they will have access to those subscriptions authorized to their account for classic administrator access
