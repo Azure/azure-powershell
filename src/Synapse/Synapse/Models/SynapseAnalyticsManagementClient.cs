@@ -1752,7 +1752,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             string integrationRuntimeName,
             string linkedServiceJson)
         {
-
             try
             {
                 if (string.IsNullOrEmpty(resourceGroupName))
