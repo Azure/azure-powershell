@@ -137,25 +137,27 @@ function Start-AzMigrateTestMigration {
             {
                 throw "Availability Set '$($AvSetId)' does not exist."
             }
-            $VminAvSet = $AvSet.VirtualMachinesReferences[0].Id
-            if ($VminAvSet)
+            if ($AvSet.VirtualMachineReferences -And ($AvSet.VirtualMachineReferences.Count -gt 0))
             {
-                $VmNameinAvSet = $VminAvSet.Split("/")[-1]
-                $VM = Get-AzVM -ResourceGroupName $AvSetRg -Name $VmNameinAvSet -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                if ($VM)
+                $VminAvSet = $AvSet.VirtualMachinesReferences[0].Id
+                if ($VminAvSet)
                 {
-                    $NicId = $VM.NetworkProfile.NetworkInterfaces[0].Id
-                    $Nic = Get-Aznetworkinterface -resourceid $NicId -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                    if($Nic -And ($Nic.IpConfigurations) -And ($Nic.IpConfigurations[0].Subnet) -And ($Nic.IpConfigurations[0].Subnet.Id))
+                    $VmNameinAvSet = $VminAvSet.Split("/")[-1]
+                    $VM = Get-AzVM -ResourceGroupName $AvSetRg -Name $VmNameinAvSet -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                    if ($VM)
                     {
-                        $Subnet = $Nic.IpConfigurations[0].Subnet.Id.Split("/")
-                        $VnetID = "/$($Subnet[1])/$($Subnet[2])/$($Subnet[3])/$($Subnet[4])/$($Subnet[5])/$($Subnet[6])/$($Subnet[7])/$($Subnet[8])"
-                    }
-                    $TestNetworkID = $TestNetworkID.TrimEnd("/")
+                        $NicId = $VM.NetworkProfile.NetworkInterfaces[0].Id
+                        $Nic = Get-Aznetworkinterface -resourceid $NicId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                        if($Nic -And ($Nic.IpConfigurations) -And ($Nic.IpConfigurations[0].Subnet) -And ($Nic.IpConfigurations[0].Subnet.Id))
+                        {
+                            $Subnet = $Nic.IpConfigurations[0].Subnet.Id.Split("/")
+                            $VnetID = "/$($Subnet[1])/$($Subnet[2])/$($Subnet[3])/$($Subnet[4])/$($Subnet[5])/$($Subnet[6])/$($Subnet[7])/$($Subnet[8])"
+                        }
 
-                    if ($TestNetworkID -ne $VnetID)
-                    {
-                        throw "Virtual Machines in the availability set '$AvSetName' can only be connected to virtual network '$VnetID'. Change the virtual network selected for the test or update the availability set for the machines, and retry the operation."
+                        if ($TestNetworkID -ne $VnetID)
+                        {
+                            throw "Virtual Machines in the availability set '$AvSetName' can only be connected to virtual network '$VnetID'. Change the virtual network selected for the test or update the availability set for the machines, and retry the operation."
+                        }
                     }
                 }
             }
