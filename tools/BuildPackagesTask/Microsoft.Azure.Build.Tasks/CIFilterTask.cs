@@ -422,7 +422,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             }
             else if (FilesChanged != null)
             {
-                if (FilesChanged.Length > 0 || FilesChanged.Length >= OCTOKIT_CHANGED_FILE_LIMIT)
+                if (FilesChanged.Length > 0 && FilesChanged.Length < OCTOKIT_CHANGED_FILE_LIMIT)
                 {
                     return ProcessFileChanged(csprojMap);
                 }
