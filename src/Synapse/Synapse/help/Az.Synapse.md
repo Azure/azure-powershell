@@ -206,6 +206,9 @@ Creates Git repository configuration.
 ### [New-AzSynapseIntegrationRuntimeKey](New-AzSynapseIntegrationRuntimeKey.md)
 Regenerate self-hosted integration runtime key.
 
+### [New-AzSynapseLinkedServiceEncryptedCredential](New-AzSynapseLinkedServiceEncryptedCredential.md)
+Encrypt credential in linked service with specified integration runtime.
+
 ### [New-AzSynapseManagedPrivateEndpoint](New-AzSynapseManagedPrivateEndpoint.md)
 Creates or updates a managed private endpoint in a workspace.
 
