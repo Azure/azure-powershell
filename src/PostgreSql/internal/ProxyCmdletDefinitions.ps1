@@ -154,6 +154,7 @@ begin {
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -224,7 +225,7 @@ Standard_E64s_v3 MemoryOptimized   6912    64
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ICapabilityProperties
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -245,7 +246,7 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverlocationbasedcapability
 #>
 function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ICapabilityProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityProperties])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -330,6 +331,7 @@ begin {
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -385,11 +387,11 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageParameter
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameter
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IDelegatedSubnetUsage
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -413,7 +415,7 @@ PARAMETER <IVirtualNetworkSubnetUsageParameter>: Virtual network subnet usage pa
 https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleservervirtualnetworksubnetusage
 #>
 function Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IDelegatedSubnetUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -442,7 +444,7 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageParameter]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameter]
     # Virtual network subnet usage parameter
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -518,6 +520,7 @@ begin {
         if (('Get', 'GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -655,6 +658,7 @@ begin {
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -799,6 +803,7 @@ begin {
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -856,12 +861,12 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IOperation
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IOperationListResultAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IOperationListResultAutoGenerated
 .Link
 https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqloperation
 #>
 function Get-AzPostgreSqlOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IOperationListResultAutoGenerated])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IOperationListResultAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -923,6 +928,7 @@ begin {
             List = 'Az.PostgreSql.private\Get-AzPostgreSqlOperation_List';
             List1 = 'Az.PostgreSql.private\Get-AzPostgreSqlOperation_List1';
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -1097,6 +1103,152 @@ begin {
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+List all the performance tiers for a PostgreSQL server.
+.Description
+List all the performance tiers for a PostgreSQL server.
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties
+.Link
+https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlserverbasedperformancetier
+#>
+function Get-AzPostgreSqlServerBasedPerformanceTier {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
+    [System.String]
+    # The name of the server.
+    ${ServerName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            List = 'Az.PostgreSql.private\Get-AzPostgreSqlServerBasedPerformanceTier_List';
+        }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -1179,6 +1331,7 @@ function Get-AzPostgreSqlServerSecurityAlertPolicy {
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -1186,12 +1339,14 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [System.String]
     # The name of the server.
     ${ServerName},
 
     [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -1269,10 +1424,12 @@ begin {
         $mapping = @{
             Get = 'Az.PostgreSql.private\Get-AzPostgreSqlServerSecurityAlertPolicy_Get';
             GetViaIdentity = 'Az.PostgreSql.private\Get-AzPostgreSqlServerSecurityAlertPolicy_GetViaIdentity';
+            List = 'Az.PostgreSql.private\Get-AzPostgreSqlServerSecurityAlertPolicy_List';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -1497,6 +1654,7 @@ begin {
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -1721,6 +1879,7 @@ begin {
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -1957,6 +2116,214 @@ begin {
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Creates a new database or updates an existing database.
+.Description
+Creates a new database or updates an existing database.
+.Example
+PS C:\> New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb -Charset utf8 -Collation en_US.utf8
+
+Name   Charset Collation
+----   ------- ---------
+testdb UTF8    en_US.utf8
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDatabaseAutoGenerated
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDatabaseAutoGenerated
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The name of the server configuration.
+  [DatabaseName <String>]: The name of the database.
+  [FirewallRuleName <String>]: The name of the server firewall rule.
+  [Id <String>]: Resource identity path
+  [LocationName <String>]: The name of the location.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
+  [ServerName <String>]: The name of the server.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
+
+PARAMETER <IDatabaseAutoGenerated>: Represents a Database.
+  [Charset <String>]: The charset of the database.
+  [Collation <String>]: The collation of the database.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+.Link
+https://docs.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlflexibleserverdatabase
+#>
+function New-AzPostgreSqlFlexibleServerDatabase {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDatabaseAutoGenerated])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Alias('DatabaseName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
+    [System.String]
+    # The name of the database.
+    ${Name},
+
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
+    [System.String]
+    # The name of the server.
+    ${ServerName},
+
+    [Parameter(ParameterSetName='Create')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDatabaseAutoGenerated]
+    # Represents a Database.
+    # To construct, see NOTES section for PARAMETER properties and create a hash table.
+    ${Parameter},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            Create = 'Az.PostgreSql.private\New-AzPostgreSqlFlexibleServerDatabase_Create';
+            CreateViaIdentity = 'Az.PostgreSql.private\New-AzPostgreSqlFlexibleServerDatabase_CreateViaIdentity';
+        }
+        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -2022,11 +2389,11 @@ Name                         StartIPAddress EndIPAddress
 AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2044,14 +2411,20 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
-PARAMETER <IFirewallRule>: Represents a server firewall rule.
+PARAMETER <IFirewallRuleAutoGenerated>: Represents a server firewall rule.
   EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
   StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
 https://docs.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlflexibleserverfirewallrule
 #>
 function New-AzPostgreSqlFlexibleServerFirewallRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -2096,7 +2469,7 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated]
     # Represents a server firewall rule.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2193,6 +2566,7 @@ begin {
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -2255,8 +2629,6 @@ postgresql-test eastus postgresqltest      12     10240                   Standa
 PS C:\> New-AzPostgreSqlFlexibleServer
 
 Creating resource group group00000000...
-Creating new vnet VNETserver00000000 in resource group group00000000
-Creating new subnet Subnetserver00000000 in resource group group00000000 and delegating it to Microsoft.DBforPostgreSQL/flexibleServers
 Creating PostgreSQL server server00000000 in group group00000000...
 Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 
@@ -2264,13 +2636,27 @@ Name          Location AdministratorLogin Version StorageProfileStorageMb SkuNam
 ----          -------- ------------------ ------- ----------------------- -------          -------        
 postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose 
 .Example
+PS C:\> $Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
+PS C:\> New-AzPostgreSqlFlexibleServer  -ResourceGroupName postgresqltest -ServerName testserver -Subnet $Subnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
+
+Resource group PowershellPostgreSqlTest exists ? : True
+You have supplied a subnet Id. Verifying its existence...
+Creating PostgreSQL server testserver in group PowershellPostgreSqlTest...
+Your server server00000000 is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
+----          -------- ------------------ ------- ----------------------- -------          -------        
+testserver     eastus   postgresqltest    12     131072                   Standard_D2s_v3 GeneralPurpose 
+
+.Example
 PS C:\> $Vnet = 'vnetname'
-PS C:\> New-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet
+PS C:\> New-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
 
 or
 
 PS C:\> $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
-PS C:\> New-AzPostgreSqlFlexibleServer  -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet
+PS C:\> New-AzPostgreSqlFlexibleServer  -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
 
 Resource group PowershellPostgreSqlTest exists ? : True
 You have supplied a vnet Id/name. Verifying its existence...
@@ -2285,7 +2671,7 @@ Name          Location AdministratorLogin Version StorageProfileStorageMb SkuNam
 postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose 
 
 .Example
-PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -Vnet postgresql-vnet -Subnet postgresql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24
+PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -Vnet postgresql-vnet -Subnet postgresql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24 -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/postgresql-test.private.postgres.database.azure.com
 
 Resource group PowershellPostgreSqlTest exists ? : True
 Creating new vnet postgresql-vnet in resource group PowershellPostgreSqlTest
@@ -2325,11 +2711,11 @@ postgresql-test eastus postgresqltest      12     131072                   Stand
 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2353,30 +2739,38 @@ PARAMETER <IServerAutoGenerated>: Represents a server.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AdministratorLogin <String>]: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   [AdministratorLoginPassword <SecureString>]: The administrator login password (required for server creation).
-  [AvailabilityZone <String>]: availability Zone information of the server.
+  [AvailabilityZone <String>]: availability zone information of the server.
+  [BackupGeoRedundantBackup <GeoRedundantBackupEnum?>]: A value indicating whether Geo-Redundant backup is enabled on the server.
+  [BackupRetentionDay <Int32?>]: Backup retention days for the server.
   [CreateMode <CreateMode?>]: The mode to create a new PostgreSQL server.
-  [DelegatedSubnetArgumentSubnetArmResourceId <String>]: delegated subnet arm resource id.
-  [DisplayName <String>]: The display name of a server.
-  [HaEnabled <HaEnabledEnum?>]: stand by count value can be either enabled or disabled
+  [HighAvailabilityMode <HighAvailabilityMode?>]: The HA mode for the server.
+  [HighAvailabilityStandbyAvailabilityZone <String>]: availability zone information of the standby.
   [IdentityType <ResourceIdentityType?>]: The identity type.
   [MaintenanceWindowCustomWindow <String>]: indicates whether custom window is enabled or disabled
   [MaintenanceWindowDayOfWeek <Int32?>]: day of week for maintenance window
   [MaintenanceWindowStartHour <Int32?>]: start hour for maintenance window
   [MaintenanceWindowStartMinute <Int32?>]: start minute for maintenance window
-  [PointInTimeUtc <DateTime?>]: Restore point creation time (ISO8601 format), specifying the time to restore from.
+  [NetworkDelegatedSubnetResourceId <String>]: delegated subnet arm resource id.
+  [NetworkPrivateDnsZoneArmResourceId <String>]: private dns zone arm resource id.
+  [PointInTimeUtc <DateTime?>]: Restore point creation time (ISO8601 format), specifying the time to restore from. It's required when 'createMode' is 'PointInTimeRestore'.
   [PropertiesTag <IServerPropertiesTags>]: Application-specific metadata in the form of key-value pairs.
     [(Any) <String>]: This indicates any property can be added to this object.
   [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. Standard_D4s_v3.
   [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Burstable.
-  [SourceServerName <String>]: The source PostgreSQL server name to restore from.
-  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
-  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
+  [SourceServerResourceId <String>]: The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore'.
+  [StorageSizeGb <Int32?>]: Max storage allowed for a server.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [Version <ServerVersion?>]: PostgreSQL Server version.
 .Link
 https://docs.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlflexibleserver
 #>
 function New-AzPostgreSqlFlexibleServer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -2414,7 +2808,7 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated]
     # Represents a server.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2445,8 +2839,23 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
-    # availability Zone information of the server.
+    # availability zone information of the server.
     ${AvailabilityZone},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.GeoRedundantBackupEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.GeoRedundantBackupEnum]
+    # A value indicating whether Geo-Redundant backup is enabled on the server.
+    ${BackupGeoRedundantBackup},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.Int32]
+    # Backup retention days for the server.
+    ${BackupRetentionDay},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -2458,25 +2867,18 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode])]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [System.String]
-    # delegated subnet arm resource id.
-    ${DelegatedSubnetArgumentSubnetArmResourceId},
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode]
+    # The HA mode for the server.
+    ${HighAvailabilityMode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
-    # The display name of a server.
-    ${DisplayName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HaEnabledEnum])]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HaEnabledEnum]
-    # stand by count value can be either enabled or disabled
-    ${HaEnabled},
+    # availability zone information of the standby.
+    ${HighAvailabilityStandbyAvailabilityZone},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -2517,14 +2919,29 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.String]
+    # delegated subnet arm resource id.
+    ${NetworkDelegatedSubnetResourceId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.String]
+    # private dns zone arm resource id.
+    ${NetworkPrivateDnsZoneArmResourceId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.DateTime]
     # Restore point creation time (ISO8601 format), specifying the time to restore from.
+    # It's required when 'createMode' is 'PointInTimeRestore'.
     ${PointInTimeUtc},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerPropertiesTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerPropertiesTags]))]
     [System.Collections.Hashtable]
     # Application-specific metadata in the form of key-value pairs.
     ${PropertiesTag},
@@ -2550,22 +2967,16 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
-    # The source PostgreSQL server name to restore from.
-    ${SourceServerName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [System.Int32]
-    # Backup retention days for the server.
-    ${StorageProfileBackupRetentionDay},
+    # The source server resource ID to restore from.
+    # It's required when 'createMode' is 'PointInTimeRestore'.
+    ${SourceServerResourceId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.Int32]
     # Max storage allowed for a server.
-    ${StorageProfileStorageMb},
+    ${StorageSizeGb},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -2659,6 +3070,7 @@ begin {
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -2885,6 +3297,7 @@ begin {
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -3018,6 +3431,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String[]]
     # Specifies an array of alerts that are disabled.
@@ -3033,6 +3447,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String[]]
     # Specifies an array of e-mail addresses to which the alert is sent.
@@ -3151,6 +3566,7 @@ begin {
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -3511,6 +3927,7 @@ begin {
         if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -3733,6 +4150,7 @@ begin {
         if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -3928,6 +4346,7 @@ begin {
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -4116,6 +4535,7 @@ begin {
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -4309,6 +4729,7 @@ begin {
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -4504,6 +4925,7 @@ begin {
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -4610,6 +5032,7 @@ param(
     ${Parameter},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String[]]
     # Specifies an array of alerts that are disabled.
@@ -4623,6 +5046,7 @@ param(
     ${EmailAccountAdmin},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String[]]
     # Specifies an array of e-mail addresses to which the alert is sent.
@@ -4735,6 +5159,7 @@ begin {
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -4796,7 +5221,7 @@ Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailability
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.INameAvailabilityAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INameAvailabilityAutoGenerated
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4821,7 +5246,7 @@ NAMEAVAILABILITYREQUEST <INameAvailabilityRequest>: Request from client to check
 https://docs.microsoft.com/powershell/module/az.postgresql/test-azpostgresqlnameavailability
 #>
 function Test-AzPostgreSqlNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailability], [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.INameAvailabilityAutoGenerated])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.INameAvailability], [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.INameAvailabilityAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='TestExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Test')]
@@ -4940,6 +5365,7 @@ begin {
         if (('Test', 'Test1', 'TestExpanded', 'TestExpanded1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -5169,6 +5595,7 @@ begin {
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -5407,6 +5834,7 @@ begin {
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -5467,11 +5895,11 @@ Name          Value   DefaultValue  Source        AllowedValues DataType
 work_mem       8192  4096         system-default  4096-2097151   Integer
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5491,14 +5919,22 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
 
 PARAMETER <IConfigurationAutoGenerated>: Represents a Configuration.
   [Source <String>]: Source of the configuration.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [Value <String>]: Value of the configuration.
 .Link
 https://docs.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlflexibleserverconfiguration
 #>
 function Update-AzPostgreSqlFlexibleServerConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated])]
+[CmdletBinding(DefaultParameterSetName='PutExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='Put', Mandatory)]
+    [Parameter(ParameterSetName='PutExpanded', Mandatory)]
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('ConfigurationName')]
@@ -5507,6 +5943,8 @@ param(
     # The name of the server configuration.
     ${Name},
 
+    [Parameter(ParameterSetName='Put', Mandatory)]
+    [Parameter(ParameterSetName='PutExpanded', Mandatory)]
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
@@ -5515,6 +5953,8 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='Put', Mandatory)]
+    [Parameter(ParameterSetName='PutExpanded', Mandatory)]
     [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
@@ -5522,6 +5962,8 @@ param(
     # The name of the server.
     ${ServerName},
 
+    [Parameter(ParameterSetName='Put')]
+    [Parameter(ParameterSetName='PutExpanded')]
     [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
@@ -5530,6 +5972,8 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='PutViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PutViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Path')]
@@ -5538,14 +5982,18 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='Put', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PutViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IConfigurationAutoGenerated]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IConfigurationAutoGenerated]
     # Represents a Configuration.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
+    [Parameter(ParameterSetName='PutExpanded')]
+    [Parameter(ParameterSetName='PutViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
@@ -5553,6 +6001,8 @@ param(
     # Source of the configuration.
     ${Source},
 
+    [Parameter(ParameterSetName='PutExpanded')]
+    [Parameter(ParameterSetName='PutViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
@@ -5628,14 +6078,19 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
+            Put = 'Az.PostgreSql.private\Update-AzPostgreSqlFlexibleServerConfiguration_Put';
+            PutExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlFlexibleServerConfiguration_PutExpanded';
+            PutViaIdentity = 'Az.PostgreSql.private\Update-AzPostgreSqlFlexibleServerConfiguration_PutViaIdentity';
+            PutViaIdentityExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlFlexibleServerConfiguration_PutViaIdentityExpanded';
             Update = 'Az.PostgreSql.private\Update-AzPostgreSqlFlexibleServerConfiguration_Update';
             UpdateExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlFlexibleServerConfiguration_UpdateExpanded';
             UpdateViaIdentity = 'Az.PostgreSql.private\Update-AzPostgreSqlFlexibleServerConfiguration_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.PostgreSql.private\Update-AzPostgreSqlFlexibleServerConfiguration_UpdateViaIdentityExpanded';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Put', 'PutExpanded', 'Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -5696,11 +6151,11 @@ Name StartIPAddress EndIPAddress
 rule 0.0.0.2        0.0.0.3
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5718,14 +6173,20 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
-PARAMETER <IFirewallRule>: Represents a server firewall rule.
+PARAMETER <IFirewallRuleAutoGenerated>: Represents a server firewall rule.
   EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
   StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
 https://docs.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlflexibleserverfirewallrule
 #>
 function Update-AzPostgreSqlFlexibleServerFirewallRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -5770,7 +6231,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IFirewallRuleAutoGenerated]
     # Represents a server firewall rule.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -5867,6 +6328,7 @@ begin {
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -5928,11 +6390,11 @@ Name            Location AdministratorLogin Version StorageProfileStorageMb SkuN
 postgresql-test eastus   postgresql_test     12     131072                  Standard_D2s_v3 GeneralPurpose
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerForUpdate
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerForUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5952,7 +6414,11 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
 
 PARAMETER <IServerForUpdate>: Represents a server to be updated.
   [AdministratorLoginPassword <SecureString>]: The password of the administrator login.
-  [HaEnabled <HaEnabledEnum?>]: stand by count value can be either enabled or disabled
+  [BackupGeoRedundantBackup <GeoRedundantBackupEnum?>]: A value indicating whether Geo-Redundant backup is enabled on the server.
+  [BackupRetentionDay <Int32?>]: Backup retention days for the server.
+  [CreateMode <CreateModeForUpdate?>]: The mode to update a new PostgreSQL server.
+  [HighAvailabilityMode <HighAvailabilityMode?>]: The HA mode for the server.
+  [HighAvailabilityStandbyAvailabilityZone <String>]: availability zone information of the standby.
   [Location <String>]: The location the resource resides in.
   [MaintenanceWindowCustomWindow <String>]: indicates whether custom window is enabled or disabled
   [MaintenanceWindowDayOfWeek <Int32?>]: day of week for maintenance window
@@ -5960,15 +6426,14 @@ PARAMETER <IServerForUpdate>: Represents a server to be updated.
   [MaintenanceWindowStartMinute <Int32?>]: start minute for maintenance window
   [SkuName <String>]: The name of the sku, typically, tier + family + cores, e.g. Standard_D4s_v3.
   [SkuTier <SkuTier?>]: The tier of the particular SKU, e.g. Burstable.
-  [StorageProfileBackupRetentionDay <Int32?>]: Backup retention days for the server.
-  [StorageProfileStorageMb <Int32?>]: Max storage allowed for a server.
+  [StorageSizeGb <Int32?>]: Max storage allowed for a server.
   [Tag <IServerForUpdateTags>]: Application-specific metadata in the form of key-value pairs.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://docs.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlflexibleserver
 #>
 function Update-AzPostgreSqlFlexibleServer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerAutoGenerated])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -6006,7 +6471,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerForUpdate]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerForUpdate]
     # Represents a server to be updated.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -6020,11 +6485,41 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HaEnabledEnum])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.GeoRedundantBackupEnum])]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HaEnabledEnum]
-    # stand by count value can be either enabled or disabled
-    ${HaEnabled},
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.GeoRedundantBackupEnum]
+    # A value indicating whether Geo-Redundant backup is enabled on the server.
+    ${BackupGeoRedundantBackup},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.Int32]
+    # Backup retention days for the server.
+    ${BackupRetentionDay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateModeForUpdate])]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateModeForUpdate]
+    # The mode to update a new PostgreSQL server.
+    ${CreateMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode]
+    # The HA mode for the server.
+    ${HighAvailabilityMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.String]
+    # availability zone information of the standby.
+    ${HighAvailabilityStandbyAvailabilityZone},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -6082,20 +6577,13 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.Int32]
-    # Backup retention days for the server.
-    ${StorageProfileBackupRetentionDay},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [System.Int32]
     # Max storage allowed for a server.
-    ${StorageProfileStorageMb},
+    ${StorageSizeGb},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IServerForUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IServerForUpdateTags]))]
     [System.Collections.Hashtable]
     # Application-specific metadata in the form of key-value pairs.
     ${Tag},
@@ -6176,6 +6664,7 @@ begin {
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -6534,6 +7023,7 @@ begin {
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
@@ -6749,6 +7239,7 @@ begin {
         if (('Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

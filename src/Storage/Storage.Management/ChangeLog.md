@@ -18,6 +18,47 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported get/set blob tags on a specific blob
+    -  `Get-AzStorageBlobTag`
+    -  `Set-AzStorageBlobTag`
+* Supported create destination blob with specific blob tags while upload/copy Blob
+    -  `Set-AzStorageBlobContent`
+    -  `Start-AzStorageBlobCopy`
+* Supported list blobs across containers with a blob tag filter sql expression
+    -  `Get-AzStorageBlobByTag`
+* Supported list blobs inside a container and include Blob Tags
+    -  `Get-AzStorageBlob`
+* Supported run blob operation with blob tag condition, and fail the cmdlet when blob tag condition not match
+    -  `Get-AzStorageBlob`
+    -  `Get-AzStorageBlobContent`
+    -  `Get-AzStorageBlobTag`
+    -  `Remove-AzStorageBlob`
+    -  `Set-AzStorageBlobContent`
+    -  `Set-AzStorageBlobTag`
+    -  `Start-AzStorageBlobCopy`
+    -  `Stop-AzStorageBlobCopy`
+* Generate blob sas token with new API version
+    -  `New-AzStorageBlobSASToken` 
+    -  `New-AzStorageContainerSASToken` 
+    -  `New-AzStorageAccountSASToken`
+* Fixed blob copy failure with OAuth credentail when client and server has time difference [#15644]
+    -  `Copy-AzStorageBlob` 
+* Fixed remove datalakegen2 item fail with readonly SAS token
+    -  `Remove-AzDataLakeGen2Item` 
+* Revised destination existing check in move datalakegen2 item
+    -  `Move-AzDataLakeGen2Item` 
+
+## Version 3.10.0
+* Supported Blob Last Access Time
+    -  `Enable-AzStorageBlobLastAccessTimeTracking`
+    -  `Disable-AzStorageBlobLastAccessTimeTracking`
+    -  `Add-AzStorageAccountManagementPolicyAction`
+* Made `Get-AzDataLakeGen2ChildItem` list all datalake gen2 items by default, instead of needing user to list chunk by chunk.
+* Fixed BlobProperties is empty issue when using sas without prefix '?' [#15460]
+* Fixed synchronously copy small blob failure [#15548]
+    - `Copy-AzStorageBlob`
+
+## Version 3.9.0
 * Supported enable/disable Blob container soft delete
     -  `Enable-AzStorageContainerDeleteRetentionPolicy`
     -  `Disable-AzStorageContainerDeleteRetentionPolicy`
@@ -30,6 +71,8 @@
     - `Update-AzStorageFileServiceProperty`
 * Supported create account with EnableNfsV3
     - `New-AzStorageAccount`
+* Supported input more copy blob parameters from pipeline [#15301]
+    -  `Start-AzStorageBlobCopy`
 
 ## Version 3.8.0
 * Supported create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash

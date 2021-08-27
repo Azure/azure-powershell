@@ -183,11 +183,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not recordable")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestShortTermRetentionPolicy()
         {
-            RunPowerShellTest("Test-ShortTermRetentionPolicy");
+            if (TestMockSupport.RunningMocked)
+            {
+                RunPowerShellTest("Test-ShortTermRetentionPolicy");
+            }
         }
     }
 }

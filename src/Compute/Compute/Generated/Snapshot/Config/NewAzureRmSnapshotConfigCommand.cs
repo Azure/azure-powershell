@@ -96,6 +96,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the Purchase Plan for the Snapshot.")]
+        public PSPurchasePlan PurchasePlan { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify if Disk Supports Hibernation with $true of $false")]
+        public bool? SupportsHibernation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public ImageDiskReference ImageReference { get; set; }
 
@@ -311,7 +323,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Encryption = vEncryption,
                 NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null,
-                DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null
+                DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null,
+                PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? this.PurchasePlan : null,
+                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null
             };
 
             WriteObject(vSnapshot);

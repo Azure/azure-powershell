@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `ZoneRedundant` parameter to `New-AzSqlInstance` and `Set-AzSqlInstance` to enable the creation and the update of zone - redundant instances.
+* Added ZoneRedundant field to the model of the managed instance so that it displays information about zone - redundancy for instance that are returned by `Get-AzSqlInstance`.
+* Extended AuditActionGroups enum in server & database audit. Added DBCC_GROUP, DATABASE_OWNERSHIP_CHANGE_GROUP and DATABASE_CHANGE_GROUP.
+* Added `AsJob` flag to `Remove-AzSqlInstance`
+* Added `SubnetId` parameter to `Set-AzSqlInstance` to support the cross-subnet update SLO
+* Upgraded to newest SDK version
+
+
+## Version 3.4.1
+* Fixed identity logic in `Set-AzSqlServer` and `Set-AzSqlInstance`
+
+## Version 3.4.0
 * Added `RestrictOutboundNetworkAccess` parameter to following cmdlets
     - `New-AzSqlServer`
     - `Set-AzSqlServer`
@@ -25,6 +37,11 @@
       `Get-AzSqlServerOutboundFirewallRule`
       `New-AzSqlServerOutboundFirewallRule`
       `Remove-AzSqlServerOutboundFirewallRule`
+* Fixed the identity logic for SystemAssigned,UserAssigned identities for New-AzSqlServer, New-AzSqlInstance
+* Updated cmdlets for getting and updating SQL database's differential backup frequency
+      `Get-AzSqlDatabaseBackupShortTermRetentionPolicy`
+      `Set-AzSqlDatabaseBackupShortTermRetentionPolicy`
+* Fixed Partial PUT issue for Azure Policy in `Set-AzSqlServer` and `Set-AzSqlInstance`
 * Changed the underlying implementation of `Get-AzSqlDatabase` to support a paginated response from the server
 
 ## Version 3.3.0

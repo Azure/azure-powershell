@@ -18,7 +18,8 @@ Creates a configurable virtual machine object.
 New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
  [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-MaxPrice <Double>] [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
- [-EncryptionAtHost] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EncryptionAtHost] [-CapacityReservationGroupId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -26,8 +27,8 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
 New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
  [-IdentityType] <ResourceIdentityType> [-IdentityId <String[]>] [-Zone <String[]>]
  [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>] [-MaxPrice <Double>]
- [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
- [-EncryptionAtHost] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD] [-EncryptionAtHost]
+ [-CapacityReservationGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +72,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -CapacityReservationGroupId
+Id of the capacity reservation Group that is used to allocate.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -100,6 +116,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EncryptionAtHost
+EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set.
+This will enable the encryption for all the disks including Resource/Temp disk at host itself.
+Default: The Encryption at host will be disabled unless this property is set to true for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -170,6 +203,7 @@ Specifies a license type, which indicates that the image or disk for the virtual
 Possible values for Windows Server are:
 - Windows_Client
 - Windows_Server
+
 Possible values for Linux Server operating system are:
 - RHEL_BYOS (for RHEL)
 - SLES_BYOS (for SUSE)
@@ -198,23 +232,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EncryptionAtHost
-EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set.
-This will enable the encryption for all the disks including Resource/Temp disk at host itself.
-Default: The Encryption at host will be disabled unless this property is set to true for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

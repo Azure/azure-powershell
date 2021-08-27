@@ -16,7 +16,8 @@ Creates or updates a notification registration.
 New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String>
  [-SubscriptionId <String>] [-IncludedEvent <String[]>] [-MessageScope <MessageScope>]
  [-NotificationEndpoint <INotificationEndpoint[]>] [-NotificationMode <NotificationMode>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningState>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,6 +149,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

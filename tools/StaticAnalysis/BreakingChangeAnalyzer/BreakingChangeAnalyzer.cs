@@ -130,6 +130,19 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     }
 
                     var psd1 = manifestFiles.FirstOrDefault();
+
+                    // Skip the modules whoes version is less than 1.0.0
+                    using (var ps = PowerShell.Create())
+                    {
+                        ps.AddCommand("Test-ModuleManifest").AddParameter("Path", psd1);
+                        var result = ps.Invoke();
+                        PSModuleInfo moduleInfo = result[0].BaseObject as PSModuleInfo;
+                        if (moduleInfo.Version.Major < 1)
+                        {
+                            continue;
+                        }
+                    }
+
                     var parentDirectory = Directory.GetParent(psd1).FullName;
                     var psd1FileName = Path.GetFileName(psd1);
 

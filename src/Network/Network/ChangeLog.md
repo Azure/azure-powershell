@@ -19,6 +19,12 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
+    - `New-AzLoadBalancerBackendAddressConfig`
+
+## Version 4.10.0
+* Added public ip address as an optional parameter to create route server
+    - `New-AzRouteServer`
 * Updated cmdlets to enable specification of edge zone
     - `New-AzPublicIpPrefix`
     - `New-AzLoadBalancer`
@@ -30,6 +36,8 @@
 * Added support for viewing extended location of public IP address in the console
     - `New-AzPublicIpAddress`
     - `Get-AzPublicIpAddress`
+    - `New-AzCustomIpPrefix`
+    - `Update-AzCustomIpPrefix`
 
 ## Version 4.9.0
 * Updated cmdlets for route server for a more stable way to add IP configuration.

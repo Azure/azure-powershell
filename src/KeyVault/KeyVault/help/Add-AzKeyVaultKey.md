@@ -131,8 +131,10 @@ backup of it that you can restore.
 ```powershell
 PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITSoftware' -Destination 'Software'
 
-Vault Name     : contoso
+Vault/HSM Name : contoso
 Name           : ITSoftware
+Key Type       : RSA
+Key Size       : 2048
 Version        : 67da57e9cadf48a2ad8d366b115843ab
 Id             : https://contoso.vault.azure.net:443/keys/ITSoftware/67da57e9cadf48a2ad8d366b115843ab
 Enabled        : True
@@ -173,8 +175,10 @@ PS C:\> $NotBefore = (Get-Date).ToUniversalTime()
 PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = "true"}
 PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITHsmNonDefault' -Destination 'HSM' -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable -Tag $Tags
 
-Vault Name     : contoso
+Vault/HSM Name : contoso
 Name           : ITHsmNonDefault
+Key Type       : RSA
+Key Size       : 2048
 Version        : 929bfc14db84439b823ffd1bedadaf5f
 Id             : https://contoso.vault.azure.net:443/keys/ITHsmNonDefault/929bfc14db84439b823ffd1bedadaf5f
 Enabled        : False
@@ -694,5 +698,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzKeyVaultKey](./Get-AzKeyVaultKey.md)
 
 [Remove-AzKeyVaultKey](./Remove-AzKeyVaultKey.md)
-
-[Set-AzKeyVaultKeyAttribute](./Set-AzKeyVaultKeyAttribute.md)

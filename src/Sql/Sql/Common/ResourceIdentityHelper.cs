@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent, string resourceIdentityType, List<string> userAssignedIdentities, Management.Sql.Models.ResourceIdentity existingResourceIdentity)
         {
             Management.Sql.Models.ResourceIdentity identityResult = null;
-
+            
             // If the user passes in IdentityType as None, then irrespective of previous config, we set the IdentityType to be None.
             //
             if (resourceIdentityType != null && resourceIdentityType.Equals(ResourceIdentityType.None.ToString()))
@@ -46,13 +46,14 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 return identityResult;
             }
 
-            if (resourceIdentityType != null && assignIdentityIsPresent && resourceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned.ToString()))
+            if (resourceIdentityType != null && assignIdentityIsPresent && 
+                (resourceIdentityType.Equals("SystemAssigned,UserAssigned") || resourceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned.ToString())))
             {
                 Dictionary<string, UserIdentity> umiDict = new Dictionary<string, UserIdentity>();
 
                 if (userAssignedIdentities == null)
                 {
-                    throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed if the IdentityType is UserAssigned or SystemAssignedUserAssigned");
+                    throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed if the IdentityType is UserAssigned or SystemAssigned,UserAssigned");
                 }
 
                 if (existingResourceIdentity != null && userAssignedIdentities.Any()
@@ -63,10 +64,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
                         existingResourceIdentity.UserAssignedIdentities.Add(identity, new UserIdentity());
                     }
 
-                    identityResult = new Management.Sql.Models.ResourceIdentity()
-                    {
-                        Type = ResourceIdentityType.SystemAssignedUserAssigned.ToString()
-                    };
+                    identityResult = existingResourceIdentity;
+                    identityResult.Type = "SystemAssigned,UserAssigned";
                 }
                 else if (userAssignedIdentities.Any())
                 {
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
                     identityResult = new Management.Sql.Models.ResourceIdentity()
                     {
-                        Type = ResourceIdentityType.SystemAssignedUserAssigned.ToString(),
+                        Type = "SystemAssigned,UserAssigned",
                         UserAssignedIdentities = umiDict
                     };
                 }
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
                 if (userAssignedIdentities == null)
                 {
-                    throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed if the IdentityType is UserAssigned or SystemAssignedUserAssigned");
+                    throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed if the IdentityType is UserAssigned or SystemAssigned,UserAssigned");
                 }
 
                 if (existingResourceIdentity != null && userAssignedIdentities.Any()
@@ -99,10 +98,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
                         existingResourceIdentity.UserAssignedIdentities.Add(identity, new UserIdentity());
                     }
 
-                    identityResult = new Management.Sql.Models.ResourceIdentity()
-                    {
-                        Type = ResourceIdentityType.UserAssigned.ToString()
-                    };
+                    identityResult = existingResourceIdentity;
+                    identityResult.Type = ResourceIdentityType.UserAssigned.ToString();
                 }
                 else if (userAssignedIdentities.Any())
                 {
@@ -120,18 +117,10 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
             else if (assignIdentityIsPresent)
             {
-                if (existingResourceIdentity != null)
+                identityResult = new Management.Sql.Models.ResourceIdentity()
                 {
-                    identityResult = existingResourceIdentity;
-                    identityResult.Type = ResourceIdentityType.SystemAssigned.ToString();
-                }
-                else
-                {
-                    identityResult = new Management.Sql.Models.ResourceIdentity()
-                    {
-                        Type = ResourceIdentityType.SystemAssigned.ToString()
-                    };
-                }       
+                    Type = ResourceIdentityType.SystemAssigned.ToString()
+                };  
             }
             
             if (!assignIdentityIsPresent && existingResourceIdentity != null && existingResourceIdentity.PrincipalId != null)

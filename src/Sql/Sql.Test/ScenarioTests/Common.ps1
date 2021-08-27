@@ -961,16 +961,27 @@ function Get-DNSNameBasedOnEnvironment ()
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql managed instance CRUD tests
 #>
-function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
+function Create-ManagedInstanceForTest ($resourceGroup, $subnetId, $vCore)
 {
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
- 	$vCore = 16
+	if($vCore -eq $null)
+	{
+		$vCore = 16
+	}
+
  	$skuName = "GP_Gen5"
 
 	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
  			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-Vcore $vCore -SkuName $skuName -AssignIdentity
+ 			-Vcore $vCore -SkuName $skuName -AssignIdentity
+
+	# The previous command keeps polling until managed instance becomes ready. However, it can happen that the managed instance
+	# becomes ready but the create operation is still in progress. Because of that, we should wait until the operation is completed.
+	if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
+		Start-Sleep -s 30
+	}
+
 
 	return $managedInstance
 }
@@ -1029,14 +1040,14 @@ function Get-InstancePoolTestProperties()
     $instancePoolTestProperties = @{
         resourceGroup = "ps3995"
         name = "myinstancepool1"
-        subnetName = "ManagedInsanceSubnet"
-        vnetName = "MIVirtualNetwork"
+        subnetName = "ManagedInstance"
+        vnetName = "vnet-portal-testing"
         tags = $tags
         computeGen = "Gen5"
         edition = "GeneralPurpose"
         location = "westeurope"
         licenseType = "LicenseIncluded"
-        vCores = 16
+        vCores = 4
     }
     return $instancePoolTestProperties
 }

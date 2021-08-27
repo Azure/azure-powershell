@@ -17,15 +17,15 @@ This command creates a new server endpoint on a registered server. This enables 
 New-AzStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> -Name <String> -ServerResourceId <String> -ServerLocalPath <String> [-CloudTiering]
  [-VolumeFreeSpacePercent <Int32>] [-TierFilesOlderThanDays <Int32>] [-InitialDownloadPolicy <String>]
- [-LocalCacheMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-LocalCacheMode <String>] [-InitialUploadPolicy <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameterSet
 ```
 New-AzStorageSyncServerEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -ServerResourceId <String>
  -ServerLocalPath <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>] [-TierFilesOlderThanDays <Int32>]
- [-InitialDownloadPolicy <String>] [-LocalCacheMode <String>] [-AsJob]
+ [-InitialDownloadPolicy <String>] [-LocalCacheMode <String>] [-InitialUploadPolicy <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzStorageSyncServerEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -Se
 ```
 New-AzStorageSyncServerEndpoint [-ParentResourceId] <String> -Name <String> -ServerResourceId <String>
  -ServerLocalPath <String> [-CloudTiering] [-VolumeFreeSpacePercent <Int32>] [-TierFilesOlderThanDays <Int32>]
- [-InitialDownloadPolicy <String>] [-LocalCacheMode <String>] [-AsJob]
+ [-InitialDownloadPolicy <String>] [-LocalCacheMode <String>] [-InitialUploadPolicy <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,13 +98,29 @@ Accept wildcard characters: False
 ```
 
 ### -InitialDownloadPolicy
-Local cache mode Parameter
+Initial download policy Parameter
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: AvoidTieredFiles, NamespaceOnly, NamespaceThenModifiedFiles
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InitialUploadPolicy
+Initial upload policy Parameter
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Merge, ServerAuthoritative
 
 Required: False
 Position: Named

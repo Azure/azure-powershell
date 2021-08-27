@@ -61,5 +61,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-PrivateEndpoint");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAnalyticalStorageSchemaTypeNewAccount()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AnalyticalStorageSchemaTypeNewAccount");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAnalyticalStorageSchemaTypeUpdateAccount()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AnalyticalStorageSchemaTypeUpdateAccount");
+        }
     }
 }

@@ -1,7 +1,7 @@
-﻿﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancerbackendaddresspool
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancerbackendaddresspool
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ Updates the backend pool on a loadbalancer
 
 ## SYNTAX
 
-### SetByNameParameterSet
+### SetByNameParameterSet (Default)
 ```
 Set-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
  -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-Force] [-PassThru]
@@ -58,6 +58,7 @@ PS C:\> $b2.LoadBalancerBackendAddresses.Add($ip3)
 
 PS C:\> Set-AzLoadBalancerBackendAddressPool -InputObject $b2
 ```
+
 ### Example 2
 ```powershell
 ###Set by specific backend from piped loadbalancer and set two IP's
@@ -76,7 +77,7 @@ PS C:\> Set-AzLoadBalancerBackendAddressPool -ResourceId b2.Id -LoadBalancerBack
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -91,7 +92,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -106,14 +107,14 @@ Accept wildcard characters: False
 The backend address pool to set
 
 ```yaml
-Type: PSBackendAddressPool
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -121,7 +122,7 @@ Accept wildcard characters: False
 The load balancer resource.
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: SetByParentObjectParameterSet
 Aliases:
 
@@ -136,7 +137,7 @@ Accept wildcard characters: False
 The backend addresses.
 
 ```yaml
-Type: PSLoadBalancerBackendAddress[]
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress[]
 Parameter Sets: SetByNameParameterSet, SetByParentObjectParameterSet, SetByResourceIdParameterSet
 Aliases:
 
@@ -151,7 +152,7 @@ Accept wildcard characters: False
 The name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -166,7 +167,7 @@ Accept wildcard characters: False
 The name of the backend pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet, SetByParentObjectParameterSet
 Aliases:
 
@@ -181,7 +182,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +197,7 @@ Accept wildcard characters: False
 The resource group name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -210,7 +211,7 @@ Accept wildcard characters: False
 ### -ResourceId
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
@@ -225,7 +226,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -241,7 +242,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

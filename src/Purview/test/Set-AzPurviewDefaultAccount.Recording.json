@@ -1,0 +1,38 @@
+{
+  "Set-AzPurviewDefaultAccount+[NoContext]+SetExpanded+$POST+https://management.azure.com/providers/Microsoft.Purview/setDefaultAccount?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Purview/setDefaultAccount?api-version=2021-07-01",
+      "Content": "{\r\n  \"accountName\": \"bez-test-pa\",\r\n  \"resourceGroupName\": \"test-rgzw9el\",\r\n  \"scopeTenantId\": \"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\r\n  \"subscriptionId\": \"0b1f6471-1bf0-4dda-aec3-cb9272f09590\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "197" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "1b26a3e3-ebee-42a9-8e5e-e60a7eca022a" ],
+        "x-ms-correlation-request-id": [ "1b26a3e3-ebee-42a9-8e5e-e60a7eca022a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210818T042639Z:1b26a3e3-ebee-42a9-8e5e-e60a7eca022a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 18 Aug 2021 04:26:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "243" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"scopeTenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"scopeType\":\"Tenant\",\"scope\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"accountName\":\"bez-test-pa\",\"resourceGroupName\":\"test-rgzw9el\",\"subscriptionId\":\"0b1f6471-1bf0-4dda-aec3-cb9272f09590\"}",
+      "isContentBase64": false
+    }
+  }
+}

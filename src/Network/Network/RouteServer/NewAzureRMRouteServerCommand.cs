@@ -51,6 +51,12 @@ namespace Microsoft.Azure.Commands.Network
         public string HostedSubnet { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The public ip address of ip configuration.")]
+        [ValidateNotNullOrEmpty]
+        public PSPublicIpAddress PublicIpAddress { get; set; }
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "The location.",
             ValueFromPipelineByPropertyName = true)]
@@ -114,11 +120,13 @@ namespace Microsoft.Azure.Commands.Network
                         Location = this.Location
                     };
 
+                    var publicIpAddressModel = NetworkResourceManagerProfile.Mapper.Map<PublicIPAddress>(this.PublicIpAddress);
                     virtualHub.RouteTables = new List<PSVirtualHubRouteTable>();
                     string ipConfigName = "ipconfig1";
                     HubIpConfiguration ipconfig = new HubIpConfiguration
                     {
-                        Subnet = new Subnet() { Id = this.HostedSubnet }
+                        Subnet = new Subnet() { Id = this.HostedSubnet },
+                        PublicIPAddress = publicIpAddressModel
                     };
 
                     var virtualHubModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualHub>(virtualHub);

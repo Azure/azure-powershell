@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Synapse Managed Private Endpoint
+	- Added `New-AzSynapseManagedPrivateEndpoint` cmdlet
+	- Added `Get-AzSynapseManagedPrivateEndpoint` cmdlet
+	- Added `Remove-AzSynapseManagedPrivateEndpoint` cmdlet
+* Fixed the blank page issue of pause setting and scale setting for Apache Spark pool through management API
+* Updated `Set-AzSynapseSqlActiveDirectoryAdministrator` to support for setting SQL Admin by `DisplayName` or by `ObjectId`
+* Renamed `Update-AzSynapseWorkspaceKey` to `Enable-AzSynapseWorkspace` to activate a new synapse workspace without `-Activate` parameter
+* Added `New-AzSynapseGitRepositoryConfig` cmdlet to create Git repository configuration
+* Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for connecting a workspace to a Git reposirory
+  - Added parameters `-GitRepositoryType`
+
+## Version 0.14.0
+* Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
+* Added support for event hub and log analytics to `Set-AzSynapseSqlAuditSetting` and `Set-AzSynapseSqlPoolAuditSetting`
+  - Added parameters `-EventHubTargetState -EventHubName -EventHubAuthorizationRuleResourceId -LogAnalyticsTargetState -WorkspaceResourceId`
+
+## Version 0.13.0
 * Add support for Synapse Spark job definition
 	- Add `New-AzSynapseSparkJobDefinition` cmdlet
     - Add `Get-AzSynapseSparkJobDefinition` cmdlet

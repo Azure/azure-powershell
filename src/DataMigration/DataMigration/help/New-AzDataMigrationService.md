@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-The sku for the Azure Database Migration Service instance. Possible values currently are Basic_1vCore,Basic_2vCores,GeneralPurpose_4vCores
+The sku for the Azure Database Migration Service instance. Possible values currently are Standard_1vCores, Standard_2vCores, Standard_4vCores, Premium_4vCores.
 
 ```yaml
 Type: System.String

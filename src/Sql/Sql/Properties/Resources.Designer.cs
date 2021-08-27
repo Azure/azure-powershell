@@ -1422,6 +1422,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; and &apos;{1}&apos; both being null is not allowed..
+        /// </summary>
+        internal static string SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters {
+            get {
+                return ResourceManager.GetString("SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting Azure Sql Database Managed Instance &apos;{0}&apos;..
         /// </summary>
         internal static string SetAzureSqlInstanceDescription {

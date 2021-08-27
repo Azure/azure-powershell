@@ -58,6 +58,17 @@ testResourceType1           Microsoft.ProviderHub/providerRegistrations/resource
 
 Gets a resource type by name.
 
+### Example 3: Gets a nested resource type by name.
+```powershell
+PS C:\> Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType1/nestedResourceType"
+
+Name                                      Type
+----                                      ----
+testResourceType1/nestedResourceType      Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations
+```
+
+Gets a resource type by name.
+
 ## PARAMETERS
 
 ### -DefaultProfile

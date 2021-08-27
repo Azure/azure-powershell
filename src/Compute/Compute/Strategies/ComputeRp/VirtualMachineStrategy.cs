@@ -55,11 +55,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Func<IEngine, SubResource> proximityPlacementGroup,
             string hostId,
             string hostGroupId,
+            string capacityReservationGroupId,
             string VmssId,
             string priority,
             string evictionPolicy,
             double? maxPrice,
             bool encryptionAtHostPresent,
+            List<SshPublicKey> sshPublicKeys,
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
             string dataDiskDeleteOption = null)
@@ -72,8 +74,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     OsProfile = new OSProfile
                     {
                         ComputerName = name,
-                        WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
-                        LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
+                        WindowsConfiguration = imageAndOsType?.CreateWindowsConfiguration(),
+                        LinuxConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Linux) ? null : new LinuxConfiguration
+                        {
+                            Ssh = new SshConfiguration(sshPublicKeys)
+                        },
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     },
@@ -105,7 +110,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null
+                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                    CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                    {
+                        CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                    }
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -123,6 +132,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Func<IEngine, SubResource> proximityPlacementGroup,
             string hostId,
             string hostGroupId,
+            string capacityReservationGroupId,
             string VmssId,
             string priority,
             string evictionPolicy,
@@ -171,7 +181,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null
+                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                    CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
+                    {
+                        CapacityReservationGroup = new SubResource(capacityReservationGroupId)
+                    }
                 });
     }
 }

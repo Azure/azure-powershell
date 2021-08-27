@@ -28,11 +28,11 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageParameter
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameter
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IDelegatedSubnetUsage
+Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ PARAMETER <IVirtualNetworkSubnetUsageParameter>: Virtual network subnet usage pa
 https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleservervirtualnetworksubnetusage
 #>
 function Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IDelegatedSubnetUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IDelegatedSubnetUsage])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -85,7 +85,7 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.IVirtualNetworkSubnetUsageParameter]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IVirtualNetworkSubnetUsageParameter]
     # Virtual network subnet usage parameter
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -161,6 +161,7 @@ begin {
         if (('Get', 'GetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

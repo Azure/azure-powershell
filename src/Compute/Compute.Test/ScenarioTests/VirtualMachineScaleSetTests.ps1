@@ -2596,19 +2596,55 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         $vmssName = 'vmssOrchestrationMode' + $rgname;
         $vmName = 'vm' + $rgname;
         $domainName = 'domain' + $rgname;
+        
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
-
         $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
 
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $vneid = $vnet.Id
+        $subnetId = $vnet.Subnets[0].Id;
 
-        $VmssConfigWithoutVmProfile = new-azvmssconfig -location $loc -platformfaultdomain 1
-        $VmssWithoutVmProfile = new-azvmss -resourcegroupname $rgname -vmscalesetname $vmssName -virtualmachinescaleset $VmssConfigWithoutVmProfile
+        $ipConfig = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId
 
-        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainName -vmssid $VmssWithoutVmProfile.id
+        $vmssConfig = New-AzVmssConfig `
+            -Location $loc `
+            -SkuCapacity 2 `
+            -SkuName "Standard_DS1_v2" `
+            -OrchestrationMode 'Flexible' `
+            -PlatformFaultDomainCount 2
 
-        Assert-AreEqual $VmssWithoutVmProfile.id $vm.virtualmachinescaleset.id
+        Set-AzVmssStorageProfile $vmssConfig `
+          -OsDiskCreateOption "FromImage" `
+          -ImageReferencePublisher "Canonical" `
+          -ImageReferenceOffer "UbuntuServer" `
+          -ImageReferenceSku "18.04-LTS" `
+          -ImageReferenceVersion "latest"
+
+        Set-AzVmssOsProfile $vmssConfig `
+          -AdminUsername $cred.UserName `
+          -AdminPassword $cred.Password `
+          -ComputerNamePrefix $vmname 
+
+        Add-AzVmssNetworkInterfaceConfiguration `
+          -VirtualMachineScaleSet $vmssConfig `
+          -Name 'test' `
+          -Primary $true `
+          -IPConfiguration $ipConfig `
+          -networkApiVersion "2020-11-01"
+
+        $VmssFlex = New-AzVmss `
+          -ResourceGroupName $rgname `
+          -Name $vmssName `
+          -VirtualMachineScaleSet $vmssConfig
+
+        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainName -vmssid $VmssFlex.id
+
+        Assert-AreEqual $VmssFlex.id $vm.virtualmachinescaleset.id
+        Assert-AreEqual $VmssFlex.orchestrationMode "Flexible"
 
         # Test PlatformFaultDomainCount parameter
         $vmssNameSimple = $vmssname + "Simple";
@@ -2721,5 +2757,67 @@ function Test-VirtualMachineScaleSetExtRollingUpgrade
     finally
     {
         
+    }
+}
+
+<#
+.SYNOPSIS
+Test the VMSS spot restore policy 
+#>
+function Test-VirtualMachineScaleSetSpotRestorePolicy
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+        
+        # Common
+        [string]$loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+
+        $adminUsername = 'Foo12';
+        $adminPassword = Get-PasswordForVM;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+
+        # Create VMSS with managed disk
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A2_v2' -UpgradePolicyMode 'Automatic' -EnableSpotRestore -SpotRestoreTimeout 'PT35M' -PlatformFaultDomainCount 1 -Priority 'Spot'`
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName;
+
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual True $vmss.SpotRestorePolicy.Enabled;
+        Assert-AreEqual 'PT35M' $vmss.SpotRestorePolicy.RestoreTimeout;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
     }
 }

@@ -1,4 +1,18 @@
-﻿using Azure;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Azure;
 using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -73,7 +87,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             return AzureSession.Instance.DataStore.ReadFileAsText(powerShellDestinationPath);
         }
 
-        internal static Exception CreateAzurePowerShellException(ErrorContractException ex)
+        internal static Exception CreateAzurePowerShellException(ErrorResponseException ex)
         {
             var message = GetAggregatedErrorMessage(ex.Message, ex.Body?.Error?.Message, ex.Body?.Error?.Details?.Select(d => d.Message));
             return CreateAzurePowerShellException(ex.Response.StatusCode, message, ex);

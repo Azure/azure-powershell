@@ -12,28 +12,28 @@ Removes the auditing settings of an Azure Synapse Analytics SQL pool.
 
 ## SYNTAX
 
-### RemoveByNameParameterSet (Default)
+### SqlPoolParameterSet (Default)
 ```
-Reset-AzSynapseSqlPoolAuditSetting [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
- [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzSynapseSqlPoolAuditSetting [[-ResourceGroupName] <String>] [-WorkspaceName] <String>
+ -SqlPoolName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByParentObjectParameterSet
+### SqlPoolParentObjectParameterSet
 ```
-Reset-AzSynapseSqlPoolAuditSetting -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-AsJob] [-PassThru]
+Reset-AzSynapseSqlPoolAuditSetting -WorkspaceObject <PSSynapseWorkspace> -SqlPoolName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByInputObjectParameterSet
+### SqlPoolObjectParameterSet
 ```
-Reset-AzSynapseSqlPoolAuditSetting -InputObject <PSSynapseSqlPool> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzSynapseSqlPoolAuditSetting -SqlPoolObject <PSSynapseSqlPool> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByResourceIdParameterSet
+### SqlPoolResourceIdParameterSet
 ```
-Reset-AzSynapseSqlPoolAuditSetting -ResourceId <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzSynapseSqlPoolAuditSetting -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,21 +57,6 @@ This command removes the auditing settings of a SQL pool called ContosoSqlPool i
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -87,62 +72,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-SQL pool input object, usually passed through the pipeline.
-
-```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
-Parameter Sets: RemoveByInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of Synapse SQL pool.
-
-```yaml
-Type: System.String
-Parameter Sets: RemoveByNameParameterSet, RemoveByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-This Cmdlet does not return an object by default.
-If this switch is specified, it returns true if successful.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveByNameParameterSet
+Parameter Sets: SqlPoolParameterSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -153,7 +92,7 @@ Resource identifier of Synapse SQL Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveByResourceIdParameterSet
+Parameter Sets: SqlPoolResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -163,16 +102,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SqlPoolName
+Name of Synapse SQL pool.
+
+```yaml
+Type: System.String
+Parameter Sets: SqlPoolParameterSet, SqlPoolParentObjectParameterSet
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlPoolObject
+SQL pool input object, usually passed through the pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
+Parameter Sets: SqlPoolObjectParameterSet
+Aliases: InputObject
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveByNameParameterSet
+Parameter Sets: SqlPoolParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -183,7 +152,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: RemoveByParentObjectParameterSet
+Parameter Sets: SqlPoolParentObjectParameterSet
 Aliases:
 
 Required: True

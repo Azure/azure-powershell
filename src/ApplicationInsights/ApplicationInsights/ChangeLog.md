@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Added read only property `ConnectionString` and `ApplicationId` to applicationinsights component
+
 ## Version 1.1.1
 * Fixed issue that `ResourcegroupName` is missed when executing below cmdlets with `InputObject` parameter [#14848]
   * `Get-AzApplicationInsightsLinkedStorageAccount`

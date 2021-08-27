@@ -13,8 +13,8 @@ Creates an object to update NIC properties of a replicating server.
 ## SYNTAX
 
 ```
-New-AzMigrateNicMapping -NicID <String> [-TargetNicIP <String>] [-TargetNicSelectionType <String>]
- [-TargetNicSubnet <String>] [<CommonParameters>]
+New-AzMigrateNicMapping -NicID <String> [-TargetNicIP <String>] [-TargetNicName <String>]
+ [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +66,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetNicName
+Specifies the name of the NIC to be created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetNicSelectionType
 Specifies whether the NIC to be updated will be the primary, secondary or not migrated.
 
@@ -103,7 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput
 
 ## NOTES
 

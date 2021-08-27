@@ -31,6 +31,10 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using NewStorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
 using Microsoft.Azure.Management.Storage;
+using SDKMonitor = Microsoft.Azure.Management.Monitor;
+using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
+using Microsoft.Azure.Management.OperationalInsights;
+using Microsoft.Azure.Management.EventHub;
 
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
@@ -50,6 +54,14 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         public SynapseClient SynapseClient { get; private set; }
 
         public StorageManagementClient StorageManagementClient { get; private set; }
+
+        public CommonMonitor.MonitorManagementClient CommonMonitorManagementClient { get; private set; }
+
+        public SDKMonitor.MonitorManagementClient SDKMonitorManagementClient { get; private set; }
+
+        public OperationalInsightsManagementClient OperationalInsightsManagementClient { get; private set; }
+
+        public EventHubManagementClient EventHubManagementClient { get; private set; }
 
         public static SynapseTestBase NewInstance => new SynapseTestBase();
 
@@ -111,7 +123,10 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"Az.Synapse.psd1"),
                     "AzureRM.Resources.ps1",
-                    _helper.GetRMModulePath(@"Az.Storage.psd1"));
+                    _helper.GetRMModulePath(@"Az.Storage.psd1"),
+                    _helper.RMOperationalInsightsModule,
+                    _helper.RMEventHubModule,
+                    _helper.RMMonitorModule);
 
                 try
                 {
@@ -134,12 +149,20 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
             SynapseClient = GetSynapseClient(context);
             StorageManagementClient = GetStorageManagementClient(context);
             NewResourceManagementClient = GetResourceManagementClient(context);
+            CommonMonitorManagementClient = GetCommonMonitorManagementClient(context);
+            SDKMonitorManagementClient = GetMonitorManagementClient(context);
+            OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
+            EventHubManagementClient = GetEventHubManagementClient(context);
             _helper.SetupManagementClients(
                 SynapseManagementClient,
                 SynapseSqlV3ManagementClient,
                 SynapseClient,
                 StorageManagementClient,
                 NewResourceManagementClient,
+                CommonMonitorManagementClient,
+                SDKMonitorManagementClient,
+                OperationalInsightsManagementClient,
+                EventHubManagementClient,
                 GetNewSynapseManagementClient(context)
             );
 
@@ -180,6 +203,26 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         protected static SynapseSqlV3ManagementClient GetSynapseSqlV3ManagementClient(MockContext context)
         {
             return context.GetServiceClient<SynapseSqlV3ManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected static CommonMonitor.MonitorManagementClient GetCommonMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<CommonMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected static SDKMonitor.MonitorManagementClient GetMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<SDKMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected static OperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected static EventHubManagementClient GetEventHubManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected static SynapseClient GetSynapseClient(MockContext context)

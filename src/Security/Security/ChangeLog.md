@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.0.0
+* General availability of `Az.Security` module
 * Changed the name of `Get-AzRegulatoryComplainceAssessment` to `Get-AzRegulatoryComplianceAssessment` to fix typo
 
 ## Version 0.11.0
