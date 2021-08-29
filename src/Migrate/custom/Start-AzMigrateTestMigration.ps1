@@ -137,7 +137,7 @@ function Start-AzMigrateTestMigration {
             {
                 throw "Availability Set '$($AvSetId)' does not exist."
             }
-            if ($AvSet.VirtualMachineReferences -And ($AvSet.VirtualMachineReferences.Count -gt 0))
+            if ($AvSet.VirtualMachinesReferences -And ($AvSet.VirtualMachinesReferences.Count -gt 0))
             {
                 $VminAvSet = $AvSet.VirtualMachinesReferences[0].Id
                 if ($VminAvSet)
