@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
             else if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
             {
-                options = new CreateEcKeyOptions(keyName, isHsm) { CurveName = string.IsNullOrEmpty(curveName) ? null : new KeyCurveName(curveName) };
+                options = new CreateEcKeyOptions(keyName, isHsm) { CurveName = string.IsNullOrEmpty(curveName) ? (KeyCurveName?) null : new KeyCurveName(curveName) };
             }
             else
             {
