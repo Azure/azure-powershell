@@ -358,6 +358,10 @@ function New-AzMigrateServerReplication {
 
             # Get the VCenter object.
             $vcenterId = $discoveredVMwareMachine.VCenterId
+            if ($null -eq $vcenterId){
+                throw "Cannot find Vcenter ID in discovered machine."
+            }
+
             $vCenterIdArray = $vcenterId.Split("/")
             $vCenterName = $vCenterIdArray[10] 
             $vCenterSite = $vCenterIdArray[8]
@@ -376,7 +380,7 @@ function New-AzMigrateServerReplication {
             # Get the run as account Id.
             $VMWarerunasaccountID = $vCenter.RunAsAccountId
             if ($VMWarerunasaccountID -eq "") {
-                throw "Run As Account missing"
+                throw "Run As Account missing."
             } 
         }
 
