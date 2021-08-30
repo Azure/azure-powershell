@@ -186,10 +186,11 @@ class TypeMetadata : BaseMetadata
 
         $_Properties = $InputType.GetProperties() | Sort-Object -Property PropertyType
         $_Methods = @()
+        $_Constructors = @()
         if ($ExcludeMethod -ne $true) {
             $_Methods = $InputType.GetMethods() | Where-Object { -not $_.IsSpecialName }
+            $_Constructors = $InputType.GetConstructors()
         }
-        $_Constructors = $InputType.GetConstructors()
 
         if ($InputType.HasElementType)
         {

@@ -276,7 +276,7 @@ namespace VersionController.Models
         /// </summary>
         /// <param name="serialize">Whether or not the module metadata should be serialized.</param>
         /// <returns>Version enum representing the version bump to be applied.</returns>
-        public Version GetVersionBumpUsingSerialized(bool serialize = true)
+        public Version GetVersionBumpUsingSerialized()
         {
             Console.WriteLine("Comparing the cmdlet assemblies with metadata from JSON file...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
@@ -319,11 +319,6 @@ namespace VersionController.Models
             else if (!oldModuleMetadata.Equals(newModuleMetadata))
             {
                 tempVersionBump = Version.MINOR;
-            }
-
-            if (serialize)
-            {
-                SerializeCmdlets(serializedCmdletFile, newModuleMetadata);
             }
 
             return tempVersionBump;

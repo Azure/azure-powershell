@@ -61,17 +61,7 @@ namespace VersionController.Models
                 _newVersion = MinimalVersion.ToString();
             }
 
-            if (_oldVersion == _newVersion)
-            {
-                Console.WriteLine(_fileHelper.ModuleName + " is a new module. Keeping the version at " + _oldVersion);
-
-                if (!_newVersion.StartsWith("0"))
-                {
-                    // Generate the serialized module metadata file
-                    _metadataHelper.SerializeModule();
-                }
-            }
-            else
+            if (_oldVersion != _newVersion)
             {
                 Console.WriteLine("Updating version for " + _fileHelper.ModuleName + " from " + _oldVersion + " to " + _newVersion);
             }
