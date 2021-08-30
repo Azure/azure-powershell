@@ -144,6 +144,7 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Start-AzRecoveryServicesAsrCommitFailoverJob', 
                'Start-AzRecoveryServicesAsrPlannedFailoverJob', 
                'Start-AzRecoveryServicesAsrResynchronizeReplicationJob', 
+               'Start-AzRecoveryServicesAsrSwitchAppliance', 
                'Start-AzRecoveryServicesAsrSwitchProcessServerJob', 
                'Start-AzRecoveryServicesAsrTestFailoverCleanupJob', 
                'Start-AzRecoveryServicesAsrTestFailoverJob', 
@@ -245,7 +246,7 @@ AliasesToExport = 'Get-AzRecoveryServicesBackupProperties',
                'Update-ASRProtectionDirection', 'Update-ASRRecoveryPlan', 
                'Update-ASRServicesProvider', 'Update-ASRvCenter', 
                'New-ASRInMageRcmDiskInput', 'Start-ASRCancelFailover', 
-               'Start-ASRCancelFailoverJob'
+               'Start-ASRCancelFailoverJob', 'Start-ASRSwitchAppliance'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

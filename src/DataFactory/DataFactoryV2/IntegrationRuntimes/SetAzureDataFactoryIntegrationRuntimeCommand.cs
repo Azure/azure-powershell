@@ -247,6 +247,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSubnetId)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSubnetId)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeSubnetId)]
+        [ValidateNotNull]
+        public string SubnetId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimePublicIP)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
@@ -721,12 +736,44 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntime.SsisProperties.CatalogInfo.CatalogPricingTier = CatalogPricingTier;
             }
 
+            if (!string.IsNullOrWhiteSpace(SubnetId))
+            {
+                // When subnetId as VNet property of Azure - SSIS integration runtime is provided, the other subnet and vnetId properties must be empty.
+                if (!string.IsNullOrWhiteSpace(VNetId) || !string.IsNullOrWhiteSpace(Subnet))
+                {
+                    throw new PSArgumentException(string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.AzureSSISIRSubnetAndVnetIdMustBeEmpty));
+                }
+
+                integrationRuntime.ComputeProperties.VNetProperties = new IntegrationRuntimeVNetProperties
+                {
+                    SubnetId = SubnetId
+                };
+            }
+            else if (string.IsNullOrWhiteSpace(VNetId) ^ string.IsNullOrWhiteSpace(Subnet))
+            {
+                // Only one of the two pramaters is set
+                throw new PSArgumentException(string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.IntegrationRuntimeInvalidVnet),
+                    "Type");
+            }
+
             if (integrationRuntime.ComputeProperties?.VNetProperties == null
                 || (string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.VNetId)
-                    && string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.Subnet)))
+                    && string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.Subnet)
+                    && string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.SubnetId)))
             {
-                // When no previous VNet set, both VNetId and Subnet must be present
-                if (!string.IsNullOrWhiteSpace(VNetId) && !string.IsNullOrWhiteSpace(Subnet))
+                // When no previous VNet set, subnetId or both VNetId and Subnet must be present
+                if (!string.IsNullOrWhiteSpace(SubnetId))
+                {
+                    integrationRuntime.ComputeProperties.VNetProperties = new IntegrationRuntimeVNetProperties
+                    {
+                        SubnetId = SubnetId
+                    };
+                }
+                else if (!string.IsNullOrWhiteSpace(VNetId) && !string.IsNullOrWhiteSpace(Subnet))
                 {
                     // Both VNetId and Subnet are set
                     if (integrationRuntime.ComputeProperties == null)
@@ -740,14 +787,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         Subnet = Subnet
                     };
                 }
-                else if (string.IsNullOrWhiteSpace(VNetId) ^ string.IsNullOrWhiteSpace(Subnet))
-                {
-                    // Only one of the two pramaters is set
-                    throw new PSArgumentException(string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.IntegrationRuntimeInvalidVnet),
-                        "Type");
-                }
+                
             }
             else
             {
@@ -760,6 +800,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 if (Subnet != null)
                 {
                     integrationRuntime.ComputeProperties.VNetProperties.Subnet = Subnet.IsEmptyOrWhiteSpace() ? null : Subnet;
+                }
+                if (SubnetId != null)
+                {
+                    integrationRuntime.ComputeProperties.VNetProperties.SubnetId = SubnetId.IsEmptyOrWhiteSpace() ? null : SubnetId;
                 }
 
                 // Make sure both VNetId and Subnet are present, or both null
@@ -791,12 +835,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
             if (PublicIPs != null)
             {
-                if (string.IsNullOrWhiteSpace(VNetId))
+                if (string.IsNullOrWhiteSpace(VNetId) && string.IsNullOrWhiteSpace(SubnetId))
                 {
                     throw new PSArgumentException(string.Format(
                             CultureInfo.InvariantCulture,
-                            Resources.IntegrationRuntimeVNetNotProvided),
-                        "VNetId");
+                            Resources.IntegrationRuntimeSubnetNotProvided),
+                        "SubnetId");
                 }
 
                 if (PublicIPs.Length != 2)

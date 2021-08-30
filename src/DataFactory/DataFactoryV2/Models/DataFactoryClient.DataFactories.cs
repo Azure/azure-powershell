@@ -137,6 +137,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         new Factory
                         {
                             Location = parameters.Location,
+                            PublicNetworkAccess = parameters.PublicNetworkAccess,
                             Tags = parameters.Tags?.ToDictionary(),
                             RepoConfiguration = parameters.RepoConfiguration,
                             Identity = parameters.FactoryIdentity,

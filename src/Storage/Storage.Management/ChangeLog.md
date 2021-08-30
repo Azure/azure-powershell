@@ -18,15 +18,34 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported get/set blob tags on a specific blob
+    -  `Get-AzStorageBlobTag`
+    -  `Set-AzStorageBlobTag`
+* Supported create destination blob with specific blob tags while upload/copy Blob
+    -  `Set-AzStorageBlobContent`
+    -  `Start-AzStorageBlobCopy`
+* Supported list blobs across containers with a blob tag filter sql expression
+    -  `Get-AzStorageBlobByTag`
+* Supported list blobs inside a container and include Blob Tags
+    -  `Get-AzStorageBlob`
+* Supported run blob operation with blob tag condition, and fail the cmdlet when blob tag condition not match
+    -  `Get-AzStorageBlob`
+    -  `Get-AzStorageBlobContent`
+    -  `Get-AzStorageBlobTag`
+    -  `Remove-AzStorageBlob`
+    -  `Set-AzStorageBlobContent`
+    -  `Set-AzStorageBlobTag`
+    -  `Start-AzStorageBlobCopy`
+    -  `Stop-AzStorageBlobCopy`
 * Generate blob sas token with new API version
     -  `New-AzStorageBlobSASToken` 
     -  `New-AzStorageContainerSASToken` 
     -  `New-AzStorageAccountSASToken`
-* Fixed blob copy failure with OAuth credentail when client and server has time difference [#15644]
+* Fixed blob copy failure with OAuth credential when client and server has time difference [#15644]
     -  `Copy-AzStorageBlob` 
-* Fixed remove datalakegen2 item fail with readonly SAS token
+* Fixed remove Data Lake Gen2 item fail with readonly SAS token
     -  `Remove-AzDataLakeGen2Item` 
-* Revised destination existing check in move datalakegen2 item
+* Revised destination existing check in move Data Lake Gen2 item
     -  `Move-AzDataLakeGen2Item` 
 
 ## Version 3.10.0

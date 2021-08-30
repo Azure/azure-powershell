@@ -20,6 +20,10 @@
 ## Upcoming Release
 * Added parameter sets to `Invoke-AzStorageSyncChangeDetection`
     - Can call the cmdlet without -DirectoryPath and -Path parameters to trigger change detection on an entire file share
+* Added support for authoritative upload as part of New-AzStorageSyncServerEndpoint.
+* Added cloud change enumeration status information in Cloud Endpoint object.
+* Updated Server Endpoint object with various health properties
+* Added "ServerName" property in Server Endpoint and Registered Server objects to support showing the current FQDN of a server.
 
 ## Version 1.5.0
 * Deprecated `Invoke-AzStorageSyncFileRecall`

@@ -570,5 +570,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
+
+        /// <summary>
+        ///     Switch appliance of a replication protected item.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="replicationProtectedItemName">Replication Protected Item.</param>
+        /// <param name="input">Input for update appliance.</param>
+        /// <returns>Job Response.</returns>
+        public PSSiteRecoveryLongRunningOperation SwitchAppliance(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
+            UpdateApplianceForReplicationProtectedItemInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginUpdateApplianceWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectedItemName,
+                    input,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
     }
 }

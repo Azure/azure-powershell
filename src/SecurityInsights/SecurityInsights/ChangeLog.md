@@ -19,10 +19,10 @@
 -->
 
 ## Upcoming Release
-* Updated to Get-AzSentinelIncident parameters
-    - Added -Filter to support OData filter
-    - Added -OrderBy to suppoert OData ordering
-    - Added -Max to support retrieving more than the default of 1000 incidents.
+* Updated to `Get-AzSentinelIncident` parameters
+    - Added `-Filter` to support OData filter
+    - Added `-OrderBy` to support OData ordering
+    - Added `-Max` to support retrieving more than the default of 1000 incidents.
 
 ## Version 1.0.0
 * GA release for `Az.SecurityInsights`.
