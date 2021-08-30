@@ -278,7 +278,6 @@ namespace VersionController.Models
         /// <returns>Version enum representing the version bump to be applied.</returns>
         public Version GetVersionBumpUsingSerialized()
         {
-            Console.WriteLine("Comparing the cmdlet assemblies with metadata from JSON file...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;

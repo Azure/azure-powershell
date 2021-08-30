@@ -351,7 +351,7 @@ switch ($PSCmdlet.ParameterSetName)
             $ModuleName = $JsonFile.Replace('.json', '')
             if (!$ExpectJsonHashSet.Contains($JsonFile))
             {
-                Write-Warning "Module ${ModuleName} is not GA yet. The json file: ${JsonFile} is for reference"
+                Write-Host "Module ${ModuleName} is not GA yet. The json file: ${JsonFile} is for reference"
             }
         }
         try
