@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     storageSyncServiceName = StorageSyncServiceName;
                 }
 
-                var triggerChangeDetectionParameters = default(TriggerChangeDetectionParameters);
+                var triggerChangeDetectionParameters = new TriggerChangeDetectionParameters();
                 if (this.IsParameterBound(c => c.DirectoryPath))
                 {
                     if (this.DirectoryPath == null)
@@ -316,9 +316,8 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                         throw new PSArgumentException(nameof(this.DirectoryPath));
                     }
 
-                    triggerChangeDetectionParameters = new TriggerChangeDetectionParameters(
-                        directoryPath: this.DirectoryPath,
-                        changeDetectionMode: this.Recursive.IsPresent ? ChangeDetectionMode.Recursive : ChangeDetectionMode.Default);
+                    triggerChangeDetectionParameters.DirectoryPath = this.DirectoryPath;
+                    triggerChangeDetectionParameters.ChangeDetectionMode = this.Recursive.IsPresent ? ChangeDetectionMode.Recursive : ChangeDetectionMode.Default;
                 }
                 else if (this.IsParameterBound(c => c.Path))
                 {
@@ -327,8 +326,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                         throw new PSArgumentException(nameof(this.Path));
                     }
 
-                    triggerChangeDetectionParameters = new TriggerChangeDetectionParameters(
-                        paths: this.Path.ToList());
+                    triggerChangeDetectionParameters.Paths = this.Path.ToList();
                 }
 
                 string target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
