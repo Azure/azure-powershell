@@ -52,12 +52,30 @@ function setupEnv() {
     
     # Deploy kusto pool
     $kustoPoolName = "testkustopool" + $rstr1
+    $databaseName = "testdatabase" + $rstr1
     Write-Host "Start to create a Kusto pool" $kustoPoolName
     $null = $env.Add("kustopoolName", $kustoPoolName)
+    $null = $env.Add("databaseName", $databaseName)
     New-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $kustoPoolName -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize
+    Write-Host "Start to create a database" $databaseName
+    $softDeletePeriodInDaysUpdated = New-TimeSpan -Days 4
+    $hotCachePeriodInDaysUpdated = New-TimeSpan -Days 2
+    New-AzSynapseKustoDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
+
     # Note, for *Principal* tests, AzADApplication was created, see principalAssignmentName, principalId and principalAssignmentName1, principalId1 for details
     New-AzSynapseKustoPoolPrincipalAssignment -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.principalRole
+    New-AzSynapseKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -PrincipalAssignmentName $env.principalAssignmentName -DatabaseName $databaseName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.databasePrincipalRole
 
+    # Deploy follower kusto pool for test
+    $followerKustoPoolName = "testfkustopool" + $rstr2
+    $attachedDatabaseConfigurationName = "testdbconf" + $rstr2
+    Write-Host "Start to create a follower kusto pool" $followerKustoPoolName
+    $null = $env.Add("followerKustoPoolName", $followerKustoPoolName)
+    $null = $env.Add("attachedDatabaseConfigurationName", $attachedDatabaseConfigurationName)
+    New-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $followerKustoPoolName -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize
+    $clusterResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
+    New-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $followerKustoPoolName -Name $attachedDatabaseConfigurationName -Location $env.location -KustoPoolResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $env.defaultPrincipalsModificationKind
+    
     # # Deploy 2nd kusto pool for test
     # $kustoPoolName = "testkustopool" + $rstr3
     # Write-Host "Start to create 2nd Kusto pool" $kustoPoolName
@@ -73,6 +91,7 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.kustoPoolName
+    Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.followerKustoPoolName
     # Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.plainKustoPoolName
     Remove-AzResourceGroup -Name $env.resourceGroupName
 }

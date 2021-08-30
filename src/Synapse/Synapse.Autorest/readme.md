@@ -81,7 +81,7 @@ directive:
     remove: true
   # Remove the unexpanded parameter set for specific commands
   - where:
-      subject: ^KustoAttachedDatabaseConfiguration$|^KustoPoolPrincipalAssignment$|^KustoDatabasePrincipalAssignment$
+      subject: ^KustoPoolAttachedDatabaseConfiguration$|^KustoPoolPrincipalAssignment$|^KustoDatabasePrincipalAssignment$
       variant: ^Create$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
@@ -117,6 +117,19 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection Property');
+  # set alias for some name
+  - where:
+      verb: Get|Remove
+      subject: KustoDatabase
+      parameter-name: DatabaseName
+    set:
+      alias: Name
+  - where:
+      verb: New|Get|Remove
+      subject: KustoPoolAttachedDatabaseConfiguration
+      parameter-name: AttachedDatabaseConfigurationName
+    set:
+      alias: Name
   # - where:
   #     verb: New
   #     subject: ^KqlScript$

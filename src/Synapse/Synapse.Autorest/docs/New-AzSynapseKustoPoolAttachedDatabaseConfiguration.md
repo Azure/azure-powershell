@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustoattacheddatabaseconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolattacheddatabaseconfiguration
 schema: 2.0.0
 ---
 
-# New-AzSynapseKustoAttachedDatabaseConfiguration
+# New-AzSynapseKustoPoolAttachedDatabaseConfiguration
 
 ## SYNOPSIS
 Creates or updates an attached database configuration.
@@ -13,10 +13,10 @@ Creates or updates an attached database configuration.
 ## SYNTAX
 
 ```
-New-AzSynapseKustoAttachedDatabaseConfiguration -AttachedDatabaseConfigurationName <String>
+New-AzSynapseKustoPoolAttachedDatabaseConfiguration -AttachedDatabaseConfigurationName <String>
  -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-ClusterResourceId <String>] [-DatabaseName <String>]
- [-DefaultPrincipalsModificationKind <DefaultPrincipalsModificationKind>] [-Location <String>]
+ [-DatabaseName <String>] [-DefaultPrincipalsModificationKind <DefaultPrincipalsModificationKind>]
+ [-KustoPoolResourceId <String>] [-Location <String>]
  [-TableLevelSharingPropertyExternalTablesToExclude <String[]>]
  [-TableLevelSharingPropertyExternalTablesToInclude <String[]>]
  [-TableLevelSharingPropertyMaterializedViewsToExclude <String[]>]
@@ -71,24 +71,9 @@ The name of the attached database configuration.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterResourceId
-The resource id of the kusto pool where the databases you would like to attach reside.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -149,6 +134,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KustoPoolResourceId
+The resource id of the kusto pool where the databases you would like to attach reside.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

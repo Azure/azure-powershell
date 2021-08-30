@@ -1,0 +1,43 @@
+{
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupibo20m/providers/Microsoft.Synapse/workspaces/workspaceibo20m/kustoPools/testkustopoolibo20m/listLanguageExtensions?api-version=2021-06-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupibo20m/providers/Microsoft.Synapse/workspaces/workspaceibo20m/kustoPools/testkustopoolibo20m/listLanguageExtensions?api-version=2021-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "e21e1649-a435-4a2e-9792-bd9b36f3c269" ],
+        "CommandName": [ "Get-AzSynapseKustoPoolLanguageExtension" ],
+        "FullCommandName": [ "Get-AzSynapseKustoPoolLanguageExtension_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "2e0d43b9-1edd-4dd7-b4e8-a0b738b725bc" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "efebab17-4f8f-4047-91bf-3c239760de45" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210827T065837Z:efebab17-4f8f-4047-91bf-3c239760de45" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 27 Aug 2021 06:58:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "76" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"languageExtensionName\":\"PYTHON\"},{\"languageExtensionName\":\"R\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

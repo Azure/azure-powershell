@@ -1,4 +1,4 @@
-Describe 'Remove-AzSynapseKustoDatabase' {
+Describe 'New-AzSynapseKustoDatabase' {
     BeforeAll{
         $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
         . ($kustoCommonPath)
@@ -7,7 +7,7 @@ Describe 'Remove-AzSynapseKustoDatabase' {
             $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
         }
         . ($loadEnvPath)
-        $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzSynapseKustoDatabase.Recording.json'
+        $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzSynapseKustoDatabase.Recording.json'
         $currentPath = $PSScriptRoot
         while (-not $mockingPath) {
             $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -15,9 +15,14 @@ Describe 'Remove-AzSynapseKustoDatabase' {
         }
         . ($mockingPath | Select-Object -First 1).FullName
     }
-    It 'Delete' {
+
+    It 'CreateExpanded' {
+        $hotCachePeriodInDays = Get-Hot-Cache-Period-In-Days
         $name = "testdatabase" + $env.rstr4
-        New-AzSynapseKustoDatabase -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -KustoPoolName $env.kustoPoolName -Name $name -Location $env.location -Kind ReadWrite
+        $databaseFullName = $env.workspaceName + "/" + $env.kustoPoolName + "/" + $name
+
+        $databaseCreated = New-AzSynapseKustoDatabase -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -KustoPoolName $env.kustoPoolName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays
+        Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $null $hotCachePeriodInDays
         { Remove-AzSynapseKustoDatabase -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -KustoPoolName $env.kustoPoolName -Name $name } | Should -Not -Throw
     }
 }

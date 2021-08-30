@@ -1,32 +1,34 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustodatabase
+online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustodataconnection
 schema: 2.0.0
 ---
 
-# Remove-AzSynapseKustoDatabase
+# New-AzSynapseKustoDataConnection
 
 ## SYNOPSIS
-Deletes the database with the given name.
+Creates or updates a data connection.
 
 ## SYNTAX
 
-### Delete (Default)
+### CreateExpanded (Default)
 ```
-Remove-AzSynapseKustoDatabase -DatabaseName <String> -KustoPoolName <String> -ResourceGroupName <String>
- -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSynapseKustoDataConnection -DatabaseName <String> -DataConnectionName <String> -KustoPoolName <String>
+ -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectionKind> [-SubscriptionId <String>]
+ [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Create
 ```
-Remove-AzSynapseKustoDatabase -InputObject <ISynapseIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSynapseKustoDataConnection -DatabaseName <String> -DataConnectionName <String> -KustoPoolName <String>
+ -ResourceGroupName <String> -WorkspaceName <String> -Parameter <IDataConnection> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the database with the given name.
+Creates or updates a data connection.
 
 ## EXAMPLES
 
@@ -70,8 +72,23 @@ The name of the database in the Kusto pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: Name
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataConnectionName
+The name of the data connection.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -95,19 +112,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Kind
+Kind of the endpoint for the data connection
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentity
-Parameter Sets: DeleteViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DataConnectionKind
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -116,10 +132,25 @@ The name of the Kusto pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Resource location.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,18 +172,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Parameter
+Class representing a data connection.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection
+Parameter Sets: Create
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -162,7 +194,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -177,7 +209,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -192,7 +224,7 @@ The name of the workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -238,11 +270,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection
 
 ## NOTES
 
@@ -253,17 +285,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISynapseIdentity>: Identity Parameter
-  - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
-  - `[DataConnectionName <String>]`: The name of the data connection.
-  - `[DatabaseName <String>]`: The name of the database in the Kusto pool.
-  - `[Id <String>]`: Resource identity path
-  - `[KustoPoolName <String>]`: The name of the Kusto pool.
-  - `[Location <String>]`: The name of Azure region.
-  - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace
+PARAMETER <IDataConnection>: Class representing a data connection.
+  - `Kind <DataConnectionKind>`: Kind of the endpoint for the data connection
+  - `[Location <String>]`: Resource location.
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 ## RELATED LINKS
 

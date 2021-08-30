@@ -15,7 +15,7 @@ Detaches all followers of a database owned by this Kusto Pool.
 ### DetachExpanded (Default)
 ```
 Invoke-AzSynapseDetachKustoPoolFollowerDatabase -KustoPoolName <String> -ResourceGroupName <String>
- -WorkspaceName <String> -AttachedDatabaseConfigurationName <String> -ClusterResourceId <String>
+ -WorkspaceName <String> -AttachedDatabaseConfigurationName <String> -KustoPoolResourceId <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,8 +23,8 @@ Invoke-AzSynapseDetachKustoPoolFollowerDatabase -KustoPoolName <String> -Resourc
 ### DetachViaIdentityExpanded
 ```
 Invoke-AzSynapseDetachKustoPoolFollowerDatabase -InputObject <ISynapseIdentity>
- -AttachedDatabaseConfigurationName <String> -ClusterResourceId <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -AttachedDatabaseConfigurationName <String> -KustoPoolResourceId <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,21 +82,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterResourceId
-Resource id of the cluster that follows a database owned by this cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -134,6 +119,21 @@ The name of the Kusto pool.
 ```yaml
 Type: System.String
 Parameter Sets: DetachExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KustoPoolResourceId
+Resource id of the cluster that follows a database owned by this cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True

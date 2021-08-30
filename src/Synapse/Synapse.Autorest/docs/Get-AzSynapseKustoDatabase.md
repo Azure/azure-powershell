@@ -60,7 +60,7 @@ The name of the database in the Kusto pool.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
