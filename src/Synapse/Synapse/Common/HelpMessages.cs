@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.Synapse.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Synapse.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Common
 {
@@ -476,5 +490,15 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string ManagedPrivateEndpointObject = "The Synapse Managed Private Endpoint Object.";
 
         public const string DefaultVNetName = "Managed Virtual Network Name is 'default'.";
+
+        public const string WorkspacePackageFile = "Specifies a local file path for a file to upload as workspace package.";
+
+        public const string WorkspacePackageName = "The workspace package name.";
+
+        public const string WorkspacePackageObject = "The workspace package object.";
+
+        public const string WorkspacePackages = "The workspace packages.";
+
+        public const string PackageAction = "Package action must be specified when you add or remove a workspace package from a Apache Spark pool.";
     }
 }
