@@ -40,7 +40,11 @@ function ValidateRestoreOptions {
 		[Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [System.Boolean]
-        $ItemLevelRecovery
+        $ItemLevelRecovery,
+
+		[Parameter(Mandatory=$false)]        
+        [System.String]
+        $SecretStoreURI
 	)
 
 	process
@@ -66,8 +70,19 @@ function ValidateRestoreOptions {
 		}
 
 		if(!($manifest.itemLevelRecoveyEnabled) -and $ItemLevelRecovery){
-			$errormsg = "Specified DatasourceType " + $DatasourceType + " doesn't support Item Level Recovery"
+			$errormsg = "Specified DatasourceType " + $DatasourceType + " doesn't support item level recovery"
 			throw $errormsg
-		}		
+		}
+		
+		#  if RestoreAsFiles and itemLevelRecovey passed together
+		if(($RestoreTargetType -eq "RestoreAsFiles") -and $ItemLevelRecovery){
+			$errormsg = "RestoreType RestoreAsFiles doesn't support item level recovey"
+			throw $errormsg
+		}
+
+		if(($RestoreTargetType -eq "RestoreAsFiles") -and ($SecretStoreURI -ne $null) -and ($SecretStoreURI -ne "")){
+			$errormsg = "RestoreType RestoreAsFiles doesn't support secret store authentication"
+			throw $errormsg
+		}
 	}
 }
