@@ -490,5 +490,15 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string ManagedPrivateEndpointObject = "The Synapse Managed Private Endpoint Object.";
 
         public const string DefaultVNetName = "Managed Virtual Network Name is 'default'.";
+
+        public const string WorkspacePackageFile = "Specifies a local file path for a file to upload as workspace package.";
+
+        public const string WorkspacePackageName = "The workspace package name.";
+
+        public const string WorkspacePackageObject = "The workspace package object.";
+
+        public const string WorkspacePackages = "The workspace packages.";
+
+        public const string PackageAction = "Package action must be specified when you add or remove a workspace package from a Apache Spark pool.";
     }
 }

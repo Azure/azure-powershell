@@ -1,75 +1,54 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsesparkpool
+online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapseworkspacepackage
 schema: 2.0.0
 ---
 
-# Remove-AzSynapseSparkPool
+# Remove-AzSynapseWorkspacePackage
 
 ## SYNOPSIS
-Deletes a Apache Spark pool in Azure Synapse Analytics.
+Deletes a workspace package.
 
 ## SYNTAX
 
-### DeleteByNameParameterSet (Default)
+### RemoveByName (Default)
 ```
-Remove-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-PassThru]
- [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteByParentObjectParameterSet
-```
-Remove-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-PassThru] [-AsJob] [-Force]
+Remove-AzSynapseWorkspacePackage -WorkspaceName <String> -Name <String> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteByInputObjectParameterSet
+### RemoveByObject
 ```
-Remove-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSynapseWorkspacePackage -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-PassThru] [-AsJob]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteByResourceIdParameterSet
+### RemoveByInputObject
 ```
-Remove-AzSynapseSparkPool -ResourceId <String> [-PassThru] [-AsJob] [-Force]
+Remove-AzSynapseWorkspacePackage -InputObject <PSSynapseWorkspacePackage> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSynapseSparkPool** cmdlet permanently deletes an Apache Spark pool in Azure Synapse Analytics.
+The **Remove-AzSynapseWorkspacePackage** removes a workspace package
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+PS C:\> Remove-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Name ContosoPackageName
 ```
 
-This command deletes an Apache Spark pool in Azure Synapse Analytics.
+This command deletes a workspace package under an Azure Synapse Analytics workspace.
 
 ### Example 2
 ```powershell
-PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
-PS C:\> $pool | Remove-AzSynapseSparkPool
-```
-
-This command deletes an Apache Spark pool in Azure Synapse Analytics through pipeline.
-
-### Example 3
-```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseSparkPool -Name ContosoSparkPool
+PS C:\> $ws | Remove-AzSynapseWorkspacePackage -Name ContosoPackageName
 ```
 
-This command deletes an Apache Spark pool in Azure Synapse Analytics through pipeline.
-
-### Example 4
-```powershell
-PS C:\> Remove-AzSynapseSparkPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/bigDataPools/ContosoSparkPool
-```
-
-This command deletes an Apache Spark pool in Azure Synapse Analytics with a resource ID.
+This command deletes a workspace package under an Azure Synapse Analytics workspace through pipeline.
 
 ## PARAMETERS
 
@@ -119,11 +98,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Spark pool input object, usually passed through the pipeline.
+The workspace package object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSparkPool
-Parameter Sets: DeleteByInputObjectParameterSet
+Type: Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage
+Parameter Sets: RemoveByInputObject
 Aliases:
 
 Required: True
@@ -134,12 +113,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of Synapse Spark pool.
+The workspace package name.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByNameParameterSet, DeleteByParentObjectParameterSet
-Aliases: SparkPoolName
+Parameter Sets: RemoveByName, RemoveByObject
+Aliases: PackageName, Package
 
 Required: True
 Position: Named
@@ -149,7 +128,8 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
+This Cmdlet does not return an object by default.
+If this switch is specified, it returns true if successful.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -163,42 +143,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: DeleteByNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource identifier of Synapse Spark pool.
-
-```yaml
-Type: System.String
-Parameter Sets: DeleteByResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WorkspaceName
 Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByNameParameterSet
+Parameter Sets: RemoveByName
 Aliases:
 
 Required: True
@@ -213,7 +163,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: DeleteByParentObjectParameterSet
+Parameter Sets: RemoveByObject
 Aliases:
 
 Required: True
@@ -261,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 
-### Microsoft.Azure.Commands.Synapse.Models.PSSynapseSparkPool
+### Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage
 
 ## OUTPUTS
 

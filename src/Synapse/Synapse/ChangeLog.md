@@ -28,6 +28,12 @@
 * Added `New-AzSynapseGitRepositoryConfig` cmdlet to create Git repository configuration
 * Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for connecting a workspace to a Git reposirory
   - Added parameters `-GitRepositoryType`
+* Added support for workspace package
+	- Added `New-AzSynapseWorkspacePackage` cmdlet
+	- Added `Get-AzSynapseWorkspacePackage` cmdlet
+	- Added `Remove-AzSynapseWorkspacePackage` cmdlet
+	- Updated `New-AzSynapseSparkPool` cmdlet to drop parameter `-LibraryRequirementsFilePath`
+	- Updated `Updated-AzSynapseSparkPool` cmdlet to add parameter `-Package` and `-PackageAction`
 
 ## Version 0.14.0
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet

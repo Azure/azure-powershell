@@ -55,5 +55,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
             return client;
         }
+
+        /// <summary>
+        /// Write log in debug mode
+        /// </summary>
+        /// <param name="msg">Debug log</param>
+        internal void WriteDebugLog(string msg)
+        {
+            WriteDebugWithTimestamp(msg);
+        }
     }
 }

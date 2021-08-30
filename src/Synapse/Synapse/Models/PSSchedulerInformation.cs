@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-
 using Azure.Analytics.Synapse.Spark.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models

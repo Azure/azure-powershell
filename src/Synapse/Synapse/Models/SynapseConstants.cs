@@ -187,6 +187,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string DefaultVNetName = "default";
 
+        public const string WorkspacePackage = nameof(WorkspacePackage);
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {
@@ -266,6 +268,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             public const string AzureDevOpsGit = "AzureDevOpsGit";
             public const string WorkspaceGitHubConfiguration = "WorkspaceGitHubConfiguration";
             public const string WorkspaceVSTSConfiguration = "WorkspaceVSTSConfiguration";
+        }
+
+        public enum PackageActionType
+        {
+            Add,
+            Remove
         }
     }
 }
