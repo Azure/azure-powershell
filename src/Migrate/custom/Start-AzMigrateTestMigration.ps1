@@ -147,7 +147,7 @@ function Start-AzMigrateTestMigration {
                     if ($VM)
                     {
                         $NicId = $VM.NetworkProfile.NetworkInterfaces[0].Id
-                        $Nic = Get-Aznetworkinterface -resourceid $NicId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                        $Nic = Get-AzNetworkInterface -resourceid $NicId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                         if($Nic -And ($Nic.IpConfigurations) -And ($Nic.IpConfigurations[0].Subnet) -And ($Nic.IpConfigurations[0].Subnet.Id))
                         {
                             $Subnet = $Nic.IpConfigurations[0].Subnet.Id.Split("/")

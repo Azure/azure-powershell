@@ -638,10 +638,6 @@ public static int hashForArtifact(String artifact)
                     if ($onPremDisk.Uuid -ne $OSDiskID) {
                         $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtDiskInput]::new()
                         $DiskObject.DiskId = $onPremDisk.Uuid
-                        if ($uniqueDiskUuids.Contains($DiskObject.DiskId)) {
-                            throw "The disk uuid '$($DiskObject.DiskId)' is already taken."
-                        }
-                        $res = $uniqueDiskUuids.Add($DiskObject.DiskId)
                         $DiskObject.DiskType = "Standard_LRS"
                         $DiskObject.IsOSDisk = "false"
                         $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
@@ -655,10 +651,6 @@ public static int hashForArtifact(String artifact)
             }
             $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtDiskInput]::new()
             $DiskObject.DiskId = $OSDiskID
-            if ($uniqueDiskUuids.Contains($DiskObject.DiskId)) {
-                throw "The disk uuid '$($DiskObject.DiskId)' is already taken."
-            }
-            $res = $uniqueDiskUuids.Add($DiskObject.DiskId)
             $DiskObject.DiskType = $DiskType
             $DiskObject.IsOSDisk = "true"
             $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
@@ -672,14 +664,18 @@ public static int hashForArtifact(String artifact)
         }
         else {
             foreach ($DiskObject in $DiskToInclude) {
-                if ($uniqueDiskUuids.Contains($DiskObject.DiskId)) {
-                    throw "The disk uuid '$($DiskObject.DiskId)' is already taken."
-                }
-                $res = $uniqueDiskUuids.Add($DiskObject.DiskId)
                 $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
                 $DiskObject.LogStorageAccountId = $LogStorageAccountID
             }
             $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
+        }
+
+        foreach ($disk in $ProviderSpecificDetails.DisksToInclude)
+        {
+            if ($uniqueDiskUuids.Contains($disk.DiskId)) {
+                throw "The disk uuid '$($disk.DiskId)' is already taken."
+            }
+            $res = $uniqueDiskUuids.Add($disk.DiskId)
         }
 
         $null = $PSBoundParameters.add('ProviderSpecificDetail', $ProviderSpecificDetails)
