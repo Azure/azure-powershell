@@ -212,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRecoveryPointResource
 
 ### System.Management.Automation.PSObject
 
@@ -226,7 +226,6 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
-  - `[BackupInstance <String>]`: 
   - `[BackupInstanceName <String>]`: The name of the backup instance
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
@@ -234,7 +233,9 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[Location <String>]`: The location in which uniqueness will be verified.
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
+  - `[RequestName <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
+  - `[ResourceGuardsName <String>]`: The name of ResourceGuard
   - `[SubscriptionId <String>]`: The subscription Id.
   - `[VaultName <String>]`: The name of the backup vault.
 
