@@ -57,4 +57,4 @@ Task                             : {UpdateVmPropertiesTask}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 ```
 
-By id.
+Updating disk name by id.
