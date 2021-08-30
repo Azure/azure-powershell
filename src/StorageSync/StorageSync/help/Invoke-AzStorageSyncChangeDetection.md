@@ -8,15 +8,15 @@ schema: 2.0.0
 # Invoke-AzStorageSyncChangeDetection
 
 ## SYNOPSIS
-This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. A maximum of 10,000 items can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 item limit.
+This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. When running the command with the -DirectoryPath or -Path parameters, a maximum of 10,000 items can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 item limit. Alternatively, you can avoid the item limit by running the cmdlet without these parameters, invoking share-level change detection. 
 
 > [!Note]  
-> The Invoke-AzStorageSyncChangeDetection cmdlet will not detect the following changes in the Azure file share:
+> If run with -DirectoryPath or -Path parameters, the command will not detect the following changes in the Azure file share:
 > - Files that are deleted. 
 > - Files that are moved out of the share.
 > - Files that are deleted and created with the same name.  
 > 
->  These changes will be detected when the [change detection job](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
+>  If share-level change detection is invoked, all of these changes will be detected. These changes will also be detected when the scheduled [change detection job](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
 
 ## SYNTAX
 
@@ -78,7 +78,7 @@ Invoke-AzStorageSyncChangeDetection [-InputObject] <PSCloudEndpoint> [-PassThru]
 ```
 
 ## DESCRIPTION
-Periodically, Azure File Sync checks the namespace inside a syncing Azure file share for changes that came into the file share by other means than sync. The goal is to identify these changes and ultimately sync them to connected servers. This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 items limit.
+Periodically, Azure File Sync checks the namespace inside a syncing Azure file share for changes that came into the file share by other means than sync. The goal is to identify these changes and ultimately sync them to connected servers. This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so individual item change detection can finish quickly and within the 10,000 items limit. Otherwise, run the command without the -DirectoryPath or -Path parameters to invoke full share-level change detection.
 
 ## EXAMPLES
 
