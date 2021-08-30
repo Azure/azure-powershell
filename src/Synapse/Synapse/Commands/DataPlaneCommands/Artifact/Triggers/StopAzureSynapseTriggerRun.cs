@@ -12,7 +12,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.TriggerRun,
-        DefaultParameterSetName = StopByName)]
+        DefaultParameterSetName = StopByName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class StopAzureSynapseTriggerRun : SynapseArtifactsCmdletBase
     {

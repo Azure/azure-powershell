@@ -2,6 +2,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
+using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.TriggerRun,
-        DefaultParameterSetName = InvokeByName)]
+        DefaultParameterSetName = InvokeByName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class InvokeAzureSynapseTriggerRun : SynapseArtifactsCmdletBase
     {
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.TriggerRunId = this.InputObject.TriggerRunId;
             }
 
-            if (ShouldProcess(TriggerRunId))
+            if (ShouldProcess(String.Format(Resources.RerunSynapseTriggerRun, TriggerRunId)))
             {
                 SynapseAnalyticsClient.RerunTriggerRun(Name, TriggerRunId);
             }

@@ -696,4 +696,7 @@ Are you sure you want to continue?</value>
   <data name="StoppingSynapseTriggerRun" xml:space="preserve">
     <value>Stopping trigger run with Id: '{0}'</value>
   </data>
+  <data name="RerunSynapseTriggerRun" xml:space="preserve">
+    <value>Rerunning trigger run with Id: '{0}'</value>
+  </data>
 </root>
