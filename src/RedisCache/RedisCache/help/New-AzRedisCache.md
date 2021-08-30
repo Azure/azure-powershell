@@ -78,6 +78,64 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
 
 This command creates a Redis Cache.
 
+### Example 3: Create a Zone Redundant Cache
+
+```
+PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -Zone @("1","2")
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300]...} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : {1, 2}
+```
+
+### Example 4: Create a Virtual Network enable Cache
+    
+    You can create virtual network using this link (https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-portal). 
+    Example Format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}
+
+```
+PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -SubnetId "/subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/MyNet/subnets/MySubnet"
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300]...} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          SubnetId           : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/MyNet/subnets/MySubnet
+          StaticIP           : 10.0.0.4  
+          Tag                : {}
+          Zone               : []
+```
+
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -356,6 +414,9 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetId
+Required When you want to deploy Virtual network enabled Azure Cache for Redis. 
+Example Format: -SubnetId "/subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}"
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -399,7 +460,7 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-List of zones.
+List of Azure regions with Availability zones (https://docs.microsoft.com/en-us/azure/availability-zones/az-region#azure-services-supporting-availability-zones).
 
 ```yaml
 Type: System.String[]
