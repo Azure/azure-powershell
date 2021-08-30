@@ -630,7 +630,7 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.TargetVMName = $TargetVMName
         if ($HasTargetVMSize) { $ProviderSpecificDetails.TargetVMSize = $TargetVMSize }
         $ProviderSpecificDetails.VmwareMachineId = $MachineId
-
+        $uniqueDiskUuids = [System.Collections.Generic.HashSet[String]]::new([StringComparer]::InvariantCultureIgnoreCase)
 
         if ($parameterSet -match 'DefaultUser') {
             [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtDiskInput[]]$DiskToInclude = @()
@@ -657,10 +657,9 @@ public static int hashForArtifact(String artifact)
             if ($HasDiskEncryptionSetID) {
                 $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
             }
-                
+
             $DiskToInclude += $DiskObject
             $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
-                
         }
         else {
             foreach ($DiskObject in $DiskToInclude) {
@@ -670,9 +669,16 @@ public static int hashForArtifact(String artifact)
             $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
         }
 
-        # Check for duplicate disk UUID in user input/discovered VM.
 
-        # Create job.
+        # Check for duplicate disk UUID in user input/discovered VM.
+        foreach ($disk in $ProviderSpecificDetails.DisksToInclude)
+        {
+            if ($uniqueDiskUuids.Contains($disk.DiskId)) {
+                throw "The disk uuid '$($disk.DiskId)' is already taken."
+            }
+            $res = $uniqueDiskUuids.Add($disk.DiskId)
+        }
+
         $null = $PSBoundParameters.add('ProviderSpecificDetail', $ProviderSpecificDetails)
         $null = $PSBoundParameters.Add('NoWait', $true)
         $output = Az.Migrate.internal\New-AzMigrateReplicationMigrationItem @PSBoundParameters
