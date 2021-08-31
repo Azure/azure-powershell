@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Removed New-AzConfluentMarketplaceAgreement
     - Set-AzMarketplaceTerms (Az.MarketplaceOrdering) has same function.
-Add feature for Remove-AzConfluentOrganization
+* Added feature for Remove-AzConfluentOrganization
 * Enabled interactive to get consent from user to confirm invoke remove operation.
 
 ## Version 0.1.0
