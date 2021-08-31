@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Synapse.Properties;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.IntegrationRuntime,
-        DefaultParameterSetName = StartByNameParameterSet)]
+        DefaultParameterSetName = StartByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSManagedIntegrationRuntimeStatus))]
     public class StartAzureSynapseIntegrationRuntime : SynapseManagementCmdletBase
     {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     WorkspaceName),
                 string.Format(
                     CultureInfo.InvariantCulture,
-                    Resources.IntegrationRuntimeExists,
+                    Resources.StartingIntegrationRuntime,
                     Name,
                     WorkspaceName),
                 Name,

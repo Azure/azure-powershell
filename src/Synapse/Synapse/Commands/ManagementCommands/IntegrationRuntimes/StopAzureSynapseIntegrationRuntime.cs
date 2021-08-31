@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Synapse.Properties;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.IntegrationRuntime,
-        DefaultParameterSetName = StopByNameParameterSet)]
+        DefaultParameterSetName = StopByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
     public class StopAzureSynapseIntegrationRuntime : SynapseManagementCmdletBase
     {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Synapse
         public PSIntegrationRuntime InputObject { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.HelpDontAskConfirmation)]
+            HelpMessage = HelpMessages.Force)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -115,11 +115,15 @@ namespace Microsoft.Azure.Commands.Synapse
                     WorkspaceName),
                 string.Format(
                     CultureInfo.InvariantCulture,
-                    Resources.IntegrationRuntimeExists,
+                    Resources.StopingIntegrationRuntime,
                     Name,
                     WorkspaceName),
                 Name,
-                stoptIntegrationRuntime);
+                stoptIntegrationRuntime,
+                () => this.SynapseAnalyticsClient.CheckIntegrationRuntimeExistsAsync(
+                    ResourceGroupName,
+                    WorkspaceName,
+                    Name).ConfigureAwait(true).GetAwaiter().GetResult());
         }
     }
 }
