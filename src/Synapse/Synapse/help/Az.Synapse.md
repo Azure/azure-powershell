@@ -33,7 +33,7 @@ Enables Advanced Data Security on a workspace.
 Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the SQL pool.
 
 ### [Enable-AzSynapseWorkspace](Enable-AzSynapseWorkspace.md)
-Activate a new Azure Synapse Analytics workspace.
+When creating an Azure Synapse Analytics workspace, you can choose to encrypt all data at rest in the workspace `with a customer-managed key which will provide double encryption to the workspace.You may need to set up the encryption environment firstly, such as to create a key vault with purge protection enable and specify Access Polices to the key vault. Then use this cmdlet to activate the new Azure Synapse Analytics workspace which double encryption is enabled using a customer-managed key.
 
 ### [Export-AzSynapseNotebook](Export-AzSynapseNotebook.md)
 Exports notbooks.
@@ -72,7 +72,7 @@ Gets information about linked services in workspace.
 Gets Managed Identity Sql Control Settings.
 
 ### [Get-AzSynapseManagedPrivateEndpoint](Get-AzSynapseManagedPrivateEndpoint.md)
-Gets a Synapse managed private endpoint.
+Gets information about mananged private endpoints in a workspace
 
 ### [Get-AzSynapseNotebook](Get-AzSynapseNotebook.md)
 Gets information about notebooks in a workspace.
@@ -192,7 +192,7 @@ Creates Git repository configuration.
 Regenerate self-hosted integration runtime key.
 
 ### [New-AzSynapseManagedPrivateEndpoint](New-AzSynapseManagedPrivateEndpoint.md)
-Creates a Synapse managed private endpoint.
+Creates or updates a managed private endpoint in a workspace.
 
 ### [New-AzSynapseManagedVirtualNetworkConfig](New-AzSynapseManagedVirtualNetworkConfig.md)
 Creates managed virtual network configuration.
@@ -237,7 +237,7 @@ Remove a node with the given name on an integration runtime.
 Removes a linked service from workspace.
 
 ### [Remove-AzSynapseManagedPrivateEndpoint](Remove-AzSynapseManagedPrivateEndpoint.md)
-Removes a Synape managed private endpoint.
+Removes a managed private endpoint from a workspace.
 
 ### [Remove-AzSynapseNotebook](Remove-AzSynapseNotebook.md)
 Removes a notebook from a workspace.
