@@ -182,6 +182,9 @@ Invokes a pipeline to start a run for it.
 ### [Invoke-AzSynapseSparkStatement](Invoke-AzSynapseSparkStatement.md)
 Invokes a Synapse Analytics Spark statement.
 
+### [Invoke-AzSynapseTriggerRun](Invoke-AzSynapseTriggerRun.md)
+Invokes another instance of a trigger run.
+
 ### [New-AzSynapseFirewallRule](New-AzSynapseFirewallRule.md)
 Creates a Synapse Analytics Firewall Rule.
 
@@ -376,6 +379,9 @@ Cancels a Synapse Analytics Spark statement.
 
 ### [Stop-AzSynapseTrigger](Stop-AzSynapseTrigger.md)
 Stops a trigger in a workspace.
+
+### [Stop-AzSynapseTriggerRun](Stop-AzSynapseTriggerRun.md)
+Stops a trigger run in a synapse workspace.
 
 ### [Submit-AzSynapseSparkJob](Submit-AzSynapseSparkJob.md)
 Submits a Synapse Analytics Spark job.

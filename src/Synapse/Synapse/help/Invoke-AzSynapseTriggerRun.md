@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.synapse/invoke-azsynapsetriggerrun
 schema: 2.0.0
 ---
 
 # Invoke-AzSynapseTriggerRun
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Invokes another instance of a trigger run.
 
 ## SYNTAX
 
@@ -31,16 +31,32 @@ Invoke-AzSynapseTriggerRun -WorkspaceObject <PSSynapseWorkspace> -Name <String> 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Invoke-AzSynapseTriggerRun command starts another instance of a trigger run with a new trigger run id.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Invoke-AzSynapseTriggerRun -WorkspaceName ContosoWorkspace -Name ContosoTrigger -TriggerRunId 000111222333abc
 ```
 
-{{ Add example description here }}
+Starts another instance of a trigger run with a new trigger run id, keeping the same windowStartTime and windowEndTime as the original trigger run.
+
+## Example 2
+```powershell
+PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+PS C:\> $ws | Invoke-AzSynapseTriggerRun -Name ContosoTrigger -TriggerRunId 000111222333abc
+```
+
+Starts another instance of a trigger run with a new trigger run id in the Synapse workspace ContosoWorkspace through pipeline.
+
+### Example 3
+```powershell
+PS C:\> $triggerun = Get-AzSynapseTriggerRun -WorkspaceName ContosoWorkspace -Name ContosoTrigger -RunStartedAfter "2018-09-01T21:00" -RunStartedBefore "2019-09-01T21:00"
+PS C:\> $triggerun | Invoke-AzSynapseTriggerRun
+```
+
+Starts another instance of a trigger run with a new trigger run id in the Synapse workspace ContosoWorkspace through pipeline.
 
 ## PARAMETERS
 

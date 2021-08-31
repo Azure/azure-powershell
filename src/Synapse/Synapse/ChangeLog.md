@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for Synapse trigger run
+	- Added `Stop-AzSynapseTriggerRun` cmdlet
+	- Added `Invoke-AzSynapseTriggerRun` cmdlet
 * Added support for Synapse Managed Private Endpoint
 	- Added `New-AzSynapseManagedPrivateEndpoint` cmdlet
 	- Added `Get-AzSynapseManagedPrivateEndpoint` cmdlet
