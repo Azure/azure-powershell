@@ -1243,7 +1243,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove Synapse SQL Script &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        ///   Looks up a localized string similar to Deleting Synapse SQL Script &apos;{0}&apos; under workspace &apos;{1}&apos;.
         /// </summary>
         internal static string RemovingSynapseSqlScript {
             get {

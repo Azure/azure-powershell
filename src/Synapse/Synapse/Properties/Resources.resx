@@ -780,6 +780,6 @@ Failed: {2}.</value>
     <value>Are you sure you want to remove Synapse SQL Script '{0}' under workspace '{1}'</value>
   </data>
   <data name="RemovingSynapseSqlScript" xml:space="preserve">
-    <value>Are you sure you want to remove Synapse SQL Script '{0}' under workspace '{1}'</value>
+    <value>Deleting Synapse SQL Script '{0}' under workspace '{1}'</value>
   </data>
 </root>

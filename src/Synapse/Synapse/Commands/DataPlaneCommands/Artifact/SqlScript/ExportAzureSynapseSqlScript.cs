@@ -9,7 +9,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse.Commands
 {
-    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlScript,
+    [Cmdlet(VerbsData.Export, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlScript,
            DefaultParameterSetName = ExportByName)]
     [OutputType(typeof(PSSqlScriptResource))]
     public class ExportAzureSynapseSqlScript: SynapseArtifactsCmdletBase
