@@ -89,7 +89,7 @@ namespace Tools.Common.Models
                            this.ValidateRangeMax == other.ValidateRangeMax &&
                            this.ValidateNotNullOrEmpty == other.ValidateNotNullOrEmpty &&
                            this.ValidateSet.Count == other.ValidateSet.Count &&
-                           this.Type.Equals(other.Type);
+                           this.Type.Equals(other.Type, true);
             return paramsEqual;
         }
 
