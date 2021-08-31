@@ -776,4 +776,10 @@ Failed: {2}.</value>
   <data name="StopSynapseDataFlowDebugSession" xml:space="preserve">
     <value>Are you sure you want to stop data flow debug session '{0}' in workspace '{1}'?</value>
   </data>
+  <data name="RemoveSynapseSqlScript" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse SQL Script '{0}' under workspace '{1}'</value>
+  </data>
+  <data name="RemovingSynapseSqlScript" xml:space="preserve">
+    <value>Are you sure you want to remove Synapse SQL Script '{0}' under workspace '{1}'</value>
+  </data>
 </root>

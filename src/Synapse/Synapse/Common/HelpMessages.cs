@@ -520,5 +520,11 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string DebugSessionColumns = "The columns list for data flow statistics preview.";
 
         public const string DataFlowDebugSessionFilePath = "File path for Synapse data flow debug session";
+
+        public const string SqlScriptName = "The sql script name.";
+
+        public const string SqlScriptObject = "The sql script object.";
+
+        public const string SqlScriptOutputFolder = "The folder where the sql scripts should be placed.";
     }
 }

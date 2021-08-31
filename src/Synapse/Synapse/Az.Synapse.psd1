@@ -181,6 +181,7 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'New-AzSynapseManagedPrivateEndpoint', 
                'Remove-AzSynapseManagedPrivateEndpoint', 
                'New-AzSynapseGitRepositoryConfig', 'New-AzSynapseWorkspacePackage', 
+<<<<<<< HEAD
                'Get-AzSynapseWorkspacePackage', 'Remove-AzSynapseWorkspacePackage', 
                'Start-AzSynapseIntegrationRuntime', 
                'Stop-AzSynapseIntegrationRuntime', 'Invoke-AzSynapseTriggerRun', 
