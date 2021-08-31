@@ -15,80 +15,69 @@
 
 <#
 .Synopsis
-Accept marketplace terms.
+Delete Organization resource
 .Description
-Accept marketplace terms.
+Delete Organization resource
 .Example
-PS C:\> New-AzConfluentMarketplaceAgreement -Accepted
+PS C:\> Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01-portal
+- This action cannot be undone.
+- This will permanently delete ‘<resource_name>’ and its Azure subscription
+- Stop billing for the selected Confluent organization through Azure Marketplace
+Do you want to proceed (Y/N)?: y
+.Example
+PS C:\>  Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Remove-AzConfluentOrganization
+- This action cannot be undone.
+- This will permanently delete ‘<resource_name>’ and its Azure subscription
+- Stop billing for the selected Confluent organization through Azure Marketplace
+Do you want to proceed (Y/N)?: y
 
-Name    Type
-----    ----
-default Microsoft.Confluent/agreement
-
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResource
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IConfluentIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [OrganizationName <String>]: Organization resource name
+  [ResourceGroupName <String>]: Resource group name
+  [SubscriptionId <String>]: Microsoft Azure subscription id
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/new-azconfluentmarketplaceagreement
+https://docs.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 #>
-function New-AzConfluentMarketplaceAgreement {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResource])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Remove-AzConfluentOrganization {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter()]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Alias('OrganizationName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+    [System.String]
+    # Organization resource name
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+    [System.String]
+    # Resource group name
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Microsoft Azure subscription id
     ${SubscriptionId},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # If any version of the terms have been accepted, otherwise false.
-    ${Accepted},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
-    [System.String]
-    # Link to HTML with Microsoft and Publisher terms.
-    ${LicenseTextLink},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
-    [System.String]
-    # Plan identifier string.
-    ${Plan},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
-    [System.String]
-    # Link to the privacy policy of the publisher.
-    ${PrivacyPolicyLink},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
-    [System.String]
-    # Product identifier string.
-    ${Product},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
-    [System.String]
-    # Publisher identifier string.
-    ${Publisher},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
-    [System.DateTime]
-    # Date and time in UTC of when the terms were accepted.
-    # This is empty if Accepted is false.
-    ${RetrieveDatetime},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Body')]
-    [System.String]
-    # Terms signature.
-    ${Signature},
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -97,6 +86,12 @@ param(
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
@@ -117,6 +112,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
@@ -146,11 +153,13 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            CreateExpanded = 'Az.Confluent.private\New-AzConfluentMarketplaceAgreement_CreateExpanded';
+            Delete = 'Az.Confluent.private\Remove-AzConfluentOrganization_Delete';
+            DeleteViaIdentity = 'Az.Confluent.private\Remove-AzConfluentOrganization_DeleteViaIdentity';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
