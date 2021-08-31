@@ -5270,7 +5270,6 @@ function Test-VMUserData
         $computerName = 'test';
 
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p.UserData = $encodedText3;
 
         $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $p;
         $vmGet2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2 -UserData;
