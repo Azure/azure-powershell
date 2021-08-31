@@ -1756,7 +1756,7 @@ function Test-StorageBlobInventory
         #create rule objects
         $rule1 = New-AzStorageBlobInventoryPolicyRule -Name test1 -Disabled -BlobType blockBlob,appendBlob -PrefixMatch abc,edf,eqwewqe,eqwewqreewqe,qwewqewqewqewqewadasd -IncludeSnapshot -IncludeBlobVersion `
 					-Destination $containerName -Format Parquet -Schedule Weekly `
-					-BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Metadata
+					-BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Metadata,AccessTierInferred,Tags
         $rule2 = New-AzStorageBlobInventoryPolicyRule -Name test2 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
         $rule3 = New-AzStorageBlobInventoryPolicyRule -Name test3 -Destination $containerName -BlobType appendBlob -PrefixMatch abc1,edf1 -Format Csv -Schedule Weekly -BlobSchemaField Name
 
@@ -1775,7 +1775,7 @@ function Test-StorageBlobInventory
 		Assert-AreEqual "Parquet" $policy1.Rules[0].Definition.Format
 		Assert-AreEqual "Weekly" $policy1.Rules[0].Definition.Schedule
 		Assert-AreEqual "Blob" $policy1.Rules[0].Definition.ObjectType
-		Assert-AreEqual 12 $policy1.Rules[0].Definition.SchemaFields.Count
+		Assert-AreEqual 14 $policy1.Rules[0].Definition.SchemaFields.Count
 		Assert-AreEqual $true $policy1.Rules[0].Definition.Filters.IncludeSnapshots
 		Assert-AreEqual $true $policy1.Rules[0].Definition.Filters.IncludeBlobVersions
 		Assert-AreEqual 2 $policy1.Rules[0].Definition.Filters.BlobTypes.Count
@@ -1881,7 +1881,7 @@ function Test-StorageBlobInventory
 		Assert-AreEqual "Parquet" $policy3.Rules[0].Definition.Format
 		Assert-AreEqual "Weekly" $policy3.Rules[0].Definition.Schedule
 		Assert-AreEqual "Blob" $policy3.Rules[0].Definition.ObjectType
-		Assert-AreEqual 12 $policy3.Rules[0].Definition.SchemaFields.Count
+		Assert-AreEqual 14 $policy3.Rules[0].Definition.SchemaFields.Count
 		Assert-AreEqual $true $policy3.Rules[0].Definition.Filters.IncludeSnapshots
 		Assert-AreEqual $true $policy3.Rules[0].Definition.Filters.IncludeBlobVersions
 		Assert-AreEqual 2 $policy3.Rules[0].Definition.Filters.BlobTypes.Count

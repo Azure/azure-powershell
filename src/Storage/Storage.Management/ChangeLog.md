@@ -25,6 +25,8 @@
 * Supported upgrade storage account to enable HierarchicalNamespace
     -  `Invoke-AzStorageAccountHierarchicalNamespaceUpgrade`
     -  `Stop-AzStorageAccountHierarchicalNamespaceUpgrade`
+* Supported AccessTierInferred, Tags in blob inventory policy schema
+    - `New-AzStorageBlobInventoryPolicyRule`
 
 ## Version 3.11.0
 * Supported get/set blob tags on a specific blob
