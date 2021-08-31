@@ -1009,6 +1009,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse SQL Script &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveSynapseSqlScript {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove trigger &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseTrigger {
@@ -1230,6 +1239,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseSqlPoolRestorePoint {
             get {
                 return ResourceManager.GetString("RemovingSynapseSqlPoolRestorePoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse SQL Script &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemovingSynapseSqlScript {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSqlScript", resourceCulture);
             }
         }
         
