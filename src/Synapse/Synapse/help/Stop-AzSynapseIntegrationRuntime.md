@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzSynapseIntegrationRuntime
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Stops a managed dedicated integration runtime.
 
 ## SYNTAX
 
@@ -37,16 +37,39 @@ Stop-AzSynapseIntegrationRuntime -InputObject <PSIntegrationRuntime> [-Force]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Stop-AzSynapseIntegrationRuntime cmdlet stops a managed dedicated integration runtime in 'Started' state, which was started by the Start-AzSynapseIntegrationRuntime cmdlet. The resources are released and the state transfers to 'Stopped'.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Stop-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-dedicated-ir'
 ```
 
-{{ Add example description here }}
+This cmdlet Stops a managed dedicated integration runtime named 'test-dedicated-ir'in workspace ContosoWorkspace.
+
+### Example 2
+```powershell
+PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+PS C:\> $ws | Stop-AzSynapseIntegrationRuntime -Name 'test-dedicated-ir'
+```
+
+This cmdlet Stops a managed dedicated integration runtime named 'test-dedicated-ir'in workspace ContosoWorkspace through pipeline.
+
+### Example 3
+```powershell
+PS C:\> Stop-AzSynapseIntegrationRuntime -ResourceId '/subscriptions/0000xxxx-000/resourceGroups/Contosorg/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/integrationruntimes/test-dedicated-ir'
+```
+
+This cmdlet Stops a managed dedicated integration runtime using ResourceId in workspace ContosoWorkspace.
+
+### Example 4
+```powershell
+PS C:\> $ir = Get-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name test-dedicated-ir -ResourceGroupName Contosorg
+PS C:\> $ir | Stop-AzSynapseIntegrationRuntime 
+```
+
+This cmdlet Stops a managed dedicated integration runtime named 'test-dedicated-ir'in workspace ContosoWorkspace through pipeline.
 
 ## PARAMETERS
 
@@ -54,7 +77,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -69,7 +92,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +107,7 @@ Accept wildcard characters: False
 The integration runtime object.
 
 ```yaml
-Type: PSIntegrationRuntime
+Type: Microsoft.Azure.Commands.Synapse.Models.PSIntegrationRuntime
 Parameter Sets: StopByInputObjectParameterSet
 Aliases:
 
@@ -99,7 +122,7 @@ Accept wildcard characters: False
 The integration runtime name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByNameParameterSet, StopByParentObjectParameterSet
 Aliases: IntegrationRuntimeName
 
@@ -114,7 +137,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByNameParameterSet
 Aliases:
 
@@ -129,7 +152,7 @@ Accept wildcard characters: False
 Resource identifier of Synapse integration runtime.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByResourceIdParameterSet
 Aliases:
 
@@ -144,7 +167,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByNameParameterSet
 Aliases:
 
@@ -159,7 +182,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: StopByParentObjectParameterSet
 Aliases:
 
@@ -174,7 +197,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -190,7 +213,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

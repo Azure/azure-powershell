@@ -353,6 +353,9 @@ Sets the vulnerability assessment rule baseline.
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.
 
+### [Start-AzSynapseIntegrationRuntime](Start-AzSynapseIntegrationRuntime.md)
+Starts a managed dedicated integration runtime.
+
 ### [Start-AzSynapseSparkSession](Start-AzSynapseSparkSession.md)
 Starts a Synapse Analytics Spark session.
 
@@ -361,6 +364,9 @@ Starts a vulnerability assessment scan.
 
 ### [Start-AzSynapseTrigger](Start-AzSynapseTrigger.md)
 Starts a trigger in a workspace.
+
+### [Stop-AzSynapseIntegrationRuntime](Stop-AzSynapseIntegrationRuntime.md)
+Stops a managed dedicated integration runtime.
 
 ### [Stop-AzSynapsePipelineRun](Stop-AzSynapsePipelineRun.md)
 Stops a pipeline run in a workspace.
