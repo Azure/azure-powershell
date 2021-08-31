@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzStorageSyncChangeDetection
 
 ## SYNOPSIS
-This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. When running the command with the -DirectoryPath or -Path parameters, a maximum of 10,000 items can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 item limit. Alternatively, you can avoid the item limit by running the cmdlet without these parameters, invoking share-level change detection. 
+This command can be used to manually initiate the detection of namespace changes. It can be targeted to the entire share, subfolder or set of files. When running the command with the -DirectoryPath or -Path parameters, a maximum of 10,000 items can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 item limit. Alternatively, you can avoid the item limit by running the cmdlet without these parameters, invoking share-level change detection. 
 
 > [!Note]  
 > If run with -DirectoryPath or -Path parameters, the command will not detect the following changes in the Azure file share:
