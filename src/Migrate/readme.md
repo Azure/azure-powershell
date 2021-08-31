@@ -236,7 +236,7 @@ directive:
     remove: true
   - from: Microsoft.RecoveryServices/stable/2021-02-10/service.json
     where:
-      subject: ^ReplicationRecoveryPlan|ReplicationRecoveryServiceProvider$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage|RecoveryPoint$|ProtectableItem$|FabricGateway$|FabricToAad$|ReplicationEligibilityResult$|ReplicationProtectionIntent$|ReplicationVaultSetting$|ReplicationvCenter$|SupportedOperatingSystem$
+      subject: ^ReplicationRecoveryPlan|ReplicationRecoveryServiceProvider$|ReplicationEvent$|ReplicationAlertSetting$|ReplicationLogicalNetwork$|^ReplicationProtectedItem|^ReplicationNetwork|^ReplicationStorage|RecoveryPoint$|ProtectableItem$|FabricGateway$|FabricToAad$|ReplicationvCenter$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2021-02-10/service.json
     where:
