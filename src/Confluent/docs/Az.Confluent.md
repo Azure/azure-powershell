@@ -17,9 +17,6 @@ List Confluent marketplace agreements in the subscription.
 ### [Get-AzConfluentOrganization](Get-AzConfluentOrganization.md)
 Get the properties of a specific Organization resource.
 
-### [New-AzConfluentMarketplaceAgreement](New-AzConfluentMarketplaceAgreement.md)
-Accept marketplace terms.
-
 ### [New-AzConfluentOrganization](New-AzConfluentOrganization.md)
 Create Organization resource
 

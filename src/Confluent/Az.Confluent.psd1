@@ -1,7 +1,7 @@
 @{
   GUID = '957f617c-6cbe-4ea3-b46c-ab3ae8eddb3c'
   RootModule = './Az.Confluent.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Confluent.private.dll'
   FormatsToProcess = './Az.Confluent.format.ps1xml'
-  FunctionsToExport = 'Get-AzConfluentMarketplaceAgreement', 'Get-AzConfluentOrganization', 'New-AzConfluentMarketplaceAgreement', 'New-AzConfluentOrganization', 'Remove-AzConfluentOrganization', 'Update-AzConfluentOrganization', '*'
+  FunctionsToExport = 'Get-AzConfluentMarketplaceAgreement', 'Get-AzConfluentOrganization', 'New-AzConfluentOrganization', 'Remove-AzConfluentOrganization', 'Update-AzConfluentOrganization', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
