@@ -23,6 +23,8 @@ New-AzAksCluster ... -SubscriptionId "00000000-0000-0000-0000-000000000000"
 
 The new design does not only simplify scripts, but also runs more efficiently, as it saves 1 cmdlet execution per subscription switching.
 
+## Limitation
+
 ## Steps
 
 Here are the two simple steps to enable this for your module:
