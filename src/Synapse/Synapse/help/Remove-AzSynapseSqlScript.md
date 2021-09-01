@@ -44,20 +44,13 @@ Remove a sql script called ContosoSqlScript from the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzSynapseSqlScript -WorkspaceName ContosoWorkspace
-```
-
-Remove all sql scripts from the workspace ContosoWorkspace.
-
-### Example 3
-```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Remove-AzSynapseSqlScript -Name ContosoSqlScript
 ```
 
 Remove a sql script called ContosoSqlScript from the workspace ContosoWorkspace through pipeline.
 
-### Example 4
+### Example 3
 ```powershell
 PS C:\> $sqlscript = Get-AzSynapseSqlScript -WorkspaceName ContosoWorkspace -Name ContosoSqlScript
 PS C:\> $sqlscript | Remove-AzSynapseSqlScript
