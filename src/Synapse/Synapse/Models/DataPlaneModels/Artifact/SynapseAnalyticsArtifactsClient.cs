@@ -385,6 +385,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             return _sqlScriptClient.GetSqlScriptsByWorkspace();
         }
+
+        public SqlScriptResource CreateOrUpdateSqlScript(string sqlScriptName, SqlScriptResource resource)
+        {
+            return _sqlScriptClient.StartCreateOrUpdateSqlScript(sqlScriptName, resource).Poll().Value;
+        }
         #endregion
 
         #region helpers
