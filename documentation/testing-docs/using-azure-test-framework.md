@@ -21,7 +21,7 @@
 
 ## Getting Started
 -  Install the latest Az.Resources from the [PSGallery](https://www.powershellgallery.com/)
-    - Start Windows PowerShell with administrator rights. Run the following command. The `AllUsers` scope installs modules in a location(`$env:ProgramFiles\PowerShell\Modules`) that is loaded by PowerShell started by `PS-VSPrompt`
+    - Run Windows PowerShell as administrator and execute following command
         - `Install-Module -Name Az.Resources -Scope AllUsers -AllowClobber` 
 -  Double click `.\tools\PS-VSPrompt` shortcut
 	- This starts the VS Developer command prompt in PowerShell inside the `azure-powershell/tools` directory
