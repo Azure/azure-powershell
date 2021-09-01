@@ -624,6 +624,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.Health = psDetails.Health;
             this.HistoricHealth = psDetails.HistoricHealth;
             this.HealthErrors = psDetails.HealthErrors;
+            this.IpAddresses = psDetails.IpAddresses;
         }
 
         /// <summary>
@@ -650,6 +651,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the process server fqdn.
         /// </summary>
         public string Fqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of IP addresses for communicating with the RCM component.
+        /// </summary>
+        public IList<string> IpAddresses { get; set; }
 
         /// <summary>
         ///     Gets or sets the version.
@@ -989,6 +995,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.LastHeartbeatUtc = reprotectAgentDetails.LastHeartbeatUtc;
             this.Health = reprotectAgentDetails.Health;
             this.HealthErrors = reprotectAgentDetails.HealthErrors;
+            this.AccessibleDatastores = reprotectAgentDetails.AccessibleDatastores.ToList();
+            this.VcenterId = reprotectAgentDetails.VcenterId;
+            this.LastDiscoveryInUtc = reprotectAgentDetails.LastDiscoveryInUtc;
         }
 
         /// <summary>
@@ -1035,6 +1044,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the health errors.
         /// </summary>
         public IList<HealthError> HealthErrors { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of accessible datastores fetched from discovery.
+        /// </summary>
+        public List<string> AccessibleDatastores { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the vCenter Id.
+        /// </summary>
+        public string VcenterId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last time when SDS information discovered.
+        /// </summary>
+        public DateTime? LastDiscoveryInUtc { get; set; }
     }
 
     /// <summary>
@@ -1121,6 +1145,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.LastHeartbeatUtc = draDetails.LastHeartbeatUtc;
             this.Health = draDetails.Health;
             this.HealthErrors = draDetails.HealthErrors;
+            this.ForwardProtectedItemCount = draDetails.ForwardProtectedItemCount;
+            this.ReverseProtectedItemCount = draDetails.ReverseProtectedItemCount;
         }
 
         /// <summary>
@@ -1157,6 +1183,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the health errors.
         /// </summary>
         public IList<HealthError> HealthErrors { get; set; }
+
+        /// <summary>
+        /// Gets the count of protected items which are protected in forward direction.
+        /// </summary>
+        public int? ForwardProtectedItemCount { get; }
+
+        /// <summary>
+        /// Gets the count of protected items which are protected in reverse direction.
+        /// </summary>
+        public int? ReverseProtectedItemCount { get; }
     }
 
     /// <summary>
@@ -2340,6 +2376,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 details.MobilityAgentDetails != null ?
                     new ASRInMageRcmMobilityAgentDetails(details.MobilityAgentDetails) :
                     null;
+            this.DiscoveredVmDetails =
+                details.DiscoveredVmDetails != null ?
+                    new ASRInMageRcmDiscoveredProtectedVmDetails(details.DiscoveredVmDetails) :
+                    null;
+            this.IsAgentRegistrationSuccessfulAfterFailover =
+                details.IsAgentRegistrationSuccessfulAfterFailover;
 
             if (details.ProtectedDisks != null && details.ProtectedDisks.Any())
             {
@@ -2615,6 +2657,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the agent upgrade blocking error information.
         /// </summary>
         public List<ASRInMageRcmAgentUpgradeBlockingErrorDetails> AgentUpgradeBlockingErrorDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether agent registration was successful after failover.
+        /// </summary>
+        public bool? IsAgentRegistrationSuccessfulAfterFailover { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the discovered VM information.
+        /// </summary>
+        public ASRInMageRcmDiscoveredProtectedVmDetails DiscoveredVmDetails { get; set; }
     }
 
     /// <summary>
@@ -2651,6 +2703,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 details.MobilityAgentDetails != null ?
                     new ASRInMageRcmFailbackMobilityAgentDetails(details.MobilityAgentDetails) :
                     null;
+            this.DiscoveredVmDetails =
+                details.DiscoveredVmDetails != null ?
+                    new ASRInMageRcmFailbackDiscoveredProtectedVmDetails(details.DiscoveredVmDetails) :
+                    null;
+            this.LastPlannedFailoverStartTime = details.LastPlannedFailoverStartTime;
+            this.LastPlannedFailoverStatus = details.LastPlannedFailoverStatus;
+            this.LastUsedPolicyId = details.LastUsedPolicyId;
+            this.LastUsedPolicyFriendlyName = details.LastUsedPolicyFriendlyName;
+            this.IsAgentRegistrationSuccessfulAfterFailover =
+                details.IsAgentRegistrationSuccessfulAfterFailover;
 
             if (details.ProtectedDisks != null && details.ProtectedDisks.Any())
             {
@@ -2788,6 +2850,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the network details.
         /// </summary>
         public List<ASRInMageRcmFailbackNicDetails> VmNics { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last planned failover status.
+        /// </summary>
+        public string LastPlannedFailoverStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last planned failover start time.
+        /// </summary>
+        public DateTime? LastPlannedFailoverStartTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the policy Id used by the forward replication.
+        /// </summary>
+        public string LastUsedPolicyId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the discovered VM information.
+        /// </summary>
+        public ASRInMageRcmFailbackDiscoveredProtectedVmDetails DiscoveredVmDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the policy friendly name used by the forward replication.
+        /// </summary>
+        public string LastUsedPolicyFriendlyName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether agent registration
+        ///     was successful after failover.
+        /// </summary>
+        public bool? IsAgentRegistrationSuccessfulAfterFailover { get; set; }
     }
 
     //

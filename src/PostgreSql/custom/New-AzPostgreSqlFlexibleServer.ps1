@@ -319,7 +319,7 @@ function New-AzPostgreSqlFlexibleServer {
                 $VnetId = [string]::Join("/",$SubnetId.split("/")[0..8])
                 $PSBoundParameters.NetworkDelegatedSubnetResourceId = $SubnetId
                 if ([string]::IsNullOrEmpty($PSBoundParameters.NetworkDelegatedSubnetResourceId)) {
-                    $null = $PSBoundParameters.Remove('DelegatedSubnetArgumentSubnetArmResourceId')
+                    $null = $PSBoundParameters.Remove('NetworkDelegatedSubnetResourceId')
                 }
                 if ($NetworkParameters.ContainsKey('PrivateDnsZone')){
                     $ZoneName = $NetworkParameters["PrivateDnsZone"].split("/")[-1]
@@ -337,6 +337,9 @@ function New-AzPostgreSqlFlexibleServer {
                     }
                     $PSBoundParameters.NetworkPrivateDnsZoneArmResourceId = $NetworkParameters["PrivateDnsZone"]
                     $null = $PSBoundParameters.Remove('PrivateDnsZone')
+                }
+                else{
+                    throw "To provision a server with private access, you need to provide private DNS zone."
                 }
             }
             else{

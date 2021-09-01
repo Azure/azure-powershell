@@ -369,6 +369,56 @@ function Test-LoadBalancerBackendPoolUpdate
     }
 }
 
+<#
+.SYNOPSIS
+Tests Set-LoadBalancerBackendPoolCRUDWithAddTunnelInterface
+#>
+function Test-LoadBalancerBackendPoolCRUDWithAddTunnelInterface
+{
+
+     # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = "eastus2euap"
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 172.20.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 172.20.0.0/16 -Subnet $subnet
+
+        # Create LoadBalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0]
+        $tunnelInterface1 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol Vxlan -Type Internal -Port 2000 -Identifier 800
+        $tunnelInterface2 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol Vxlan -Type External -Port 2001 -Identifier 801
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName -TunnelInterface $tunnelInterface1, $tunnelInterface2
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol All -FrontendPort 0 -BackendPort 0 -LoadDistribution SourceIP -DisableOutboundSNAT
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule -Sku Gateway
+
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # Set backendPool change port
+        $getBackendPoolByName = $expectedLb | Get-AzLoadBalancerBackendAddressPool -Name $backendAddressPoolName
+
+        $modified1 = Set-AzLoadBalancerBackendAddressPool -InputObject $getBackendPoolByName -TunnelInterface $tunnelInterface1, $tunnelInterface2
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
 
 <#
 .SYNOPSIS

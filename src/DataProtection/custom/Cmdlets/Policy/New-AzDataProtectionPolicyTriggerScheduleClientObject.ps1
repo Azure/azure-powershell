@@ -36,6 +36,7 @@ function New-AzDataProtectionPolicyTriggerScheduleClientObject{
             }
         }
 
+        # this completely ignores the timeZone given by user and anyway adds the offset as per time zone
         $timezone = Get-TimeZone
         $offset = $timezone.BaseUtcOffset.ToString()
         $offset = $offset.Substring(0, 5)

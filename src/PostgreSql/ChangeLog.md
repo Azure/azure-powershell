@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Changed default New-AzMySqlFlexibleServer network option from private access to public access
+* Migrated to 2020-07-01-preview API version to 2021-05-01-preview version
+* Added subnet , private DNS zone parameters for Restore-AzMySqlFlexibleServer cmdlet
 * Added cmdlets for flexible server database
     - Get-AzPostgreSqlFlexibleServerDatabase
     - New-AzPostgreSqlFlexibleServerDatabase

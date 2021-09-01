@@ -291,6 +291,9 @@ Starts a planned failover operation.
 ### [Start-AzRecoveryServicesAsrResynchronizeReplicationJob](Start-AzRecoveryServicesAsrResynchronizeReplicationJob.md)
 Starts replication resynchronization.
 
+### [Start-AzRecoveryServicesAsrSwitchAppliance](Start-AzRecoveryServicesAsrSwitchAppliance.md)
+Starts the switch appliance action for a Site Recovery object.
+
 ### [Start-AzRecoveryServicesAsrSwitchProcessServerJob](Start-AzRecoveryServicesAsrSwitchProcessServerJob.md)
 Switch replication from one Process server to another for load balancing.
 

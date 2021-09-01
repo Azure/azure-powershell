@@ -80,7 +80,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     keySize: size,
                     keyOps: keyAttributes.KeyOps == null ? null : new List<string>(keyAttributes.KeyOps),
                     keyAttributes: attributes,
-                    tags: keyAttributes.TagsDirectionary).GetAwaiter().GetResult();
+                    tags: keyAttributes.TagsDirectionary,
+                    curve: curveName).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
