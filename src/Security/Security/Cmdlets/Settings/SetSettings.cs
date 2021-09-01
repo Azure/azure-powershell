@@ -24,13 +24,11 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecuritySetting", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.GeneralScope), OutputType(typeof(PSSecuritySetting))]
     public class SetSettings : SecurityCenterCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingName)]
-        [Parameter(ParameterSetName = ParameterSetNames.AlertSynceSettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingName)]
+        [Parameter(ParameterSetName = ParameterSetNames.SettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingName)]
         [ValidateNotNullOrEmpty]
         public string SettingName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingKind)]
-        [Parameter(ParameterSetName = ParameterSetNames.AlertSynceSettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingKind)]
+        [Parameter(ParameterSetName = ParameterSetNames.SettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.SettingKind)]
         [ValidateNotNullOrEmpty]
         public string SettingKind { get; set; }
 
@@ -38,8 +36,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
         [ValidateNotNullOrEmpty]
         public PSSecuritySetting InputObject { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.DataExportSettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Enabled)]
-        [Parameter(ParameterSetName = ParameterSetNames.AlertSynceSettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Enabled)]
+        [Parameter(ParameterSetName = ParameterSetNames.SettingsScope, Mandatory = true, HelpMessage = ParameterHelpMessages.Enabled)]
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = false, ValueFromPipeline = false, HelpMessage = ParameterHelpMessages.Enabled)]
         [ValidateNotNullOrEmpty]
         public bool Enabled { get; set; }
@@ -50,8 +47,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Settings
 
             switch (ParameterSetName)
             {
-                case ParameterSetNames.DataExportSettingsScope:
-                case ParameterSetNames.AlertSynceSettingsScope:
+                case ParameterSetNames.SettingsScope:
                     break;
                 case ParameterSetNames.InputObject:
                     if (InputObject.GetType().Name == nameof(PSSecurityDataExportSetting))

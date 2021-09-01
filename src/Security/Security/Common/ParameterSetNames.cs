@@ -34,8 +34,7 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         #region Settings
 
-        public const string DataExportSettingsScope = "DataExportSettingsScope";
-        public const string AlertSynceSettingsScope = "AlertSynceSettingsScope";
+        public const string SettingsScope = "SettingsScope";
 
         #endregion
 
