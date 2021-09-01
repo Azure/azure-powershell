@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSqlPool,
         Mandatory = true, HelpMessage = HelpMessages.SqlScriptDatabaseName)]
         [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
+        public string SqlDatabaseName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.SqlScriptName)]
         [ValidateNotNullOrEmpty]
@@ -87,13 +87,13 @@ namespace Microsoft.Azure.Commands.Synapse
                 {                    
                     if(SqlPoolName.ToLower() == "built-in")
                     {
-                        CurrentConnection = new SqlConnection(SqlConnectionType.SqlOnDemand, this.DatabaseName);
+                        CurrentConnection = new SqlConnection(SqlConnectionType.SqlOnDemand, this.SqlDatabaseName);
                     }
                     else
                     {
-                        CurrentConnection = new SqlConnection(SqlConnectionType.SqlPool, this.DatabaseName);
+                        CurrentConnection = new SqlConnection(SqlConnectionType.SqlPool, this.SqlDatabaseName);
                         CurrentConnection.Add("poolName", this.SqlPoolName);
-                        CurrentConnection.Add("databaseName", this.DatabaseName);
+                        CurrentConnection.Add("databaseName", this.SqlDatabaseName);
                     }                
                 }
                 else
@@ -106,8 +106,11 @@ namespace Microsoft.Azure.Commands.Synapse
                     Language = "sql"
                 };
 
-                SqlScriptContent content = new SqlScriptContent(query, CurrentConnection);
-
+                SqlScriptContent content = new SqlScriptContent(query, CurrentConnection)
+                {
+                    Metadata = metadata
+                };
+                
                 SqlScript sqlscript = new SqlScript(content)
                 {
                     Type = SqlScriptType.SqlQuery
