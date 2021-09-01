@@ -1513,6 +1513,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting Synapse Sql Script &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string SettingSynapseSqlScript {
+            get {
+                return ResourceManager.GetString("SettingSynapseSqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseTrigger {
