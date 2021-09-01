@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.2.0
 * Switched folowing cmdlets to generated
     - Get-AzDataBoxCredential
     - Get-AzDataBoxJob

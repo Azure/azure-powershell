@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.17.0
 * Added new parameters `-LinuxConfigurationPatchMode`, `-WindowsConfigurationPatchMode`, and `-LinuxConfigurationProvisionVMAgent` to `Set-AzVmssOSProfile`
 * Added new parameters `-SshKeyName` and `-GenerateSshKey` to `New-AzVM` to create a VM with SSH
 * Fixed a bug in `Add-AzVHD` on Linux that caused uploads to fail for certain destination URI

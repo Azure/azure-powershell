@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.15.0
 * Added support for Synapse Managed Private Endpoint
 	- Added `New-AzSynapseManagedPrivateEndpoint` cmdlet
 	- Added `Get-AzSynapseManagedPrivateEndpoint` cmdlet

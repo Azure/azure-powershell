@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.6.0
 * Azure Site Recovery multi appliance support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
 * Azure Backup fixed targetPhysicalPath issue with SQL CRR
 * Azure Backup fixed disable protection for SQL workload
