@@ -57,8 +57,7 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Synapse.dll',
                'Azure.Analytics.Synapse.Spark.dll', 
                'Azure.Analytics.Synapse.AccessControl.dll', 
                'Azure.Analytics.Synapse.Artifacts.dll',
-               'Azure.Analytics.Synapse.ManagedPrivateEndpoints.dll',
-               'Synapse.Autorest\bin\Az.Synapse.private.dll'
+               'Azure.Analytics.Synapse.ManagedPrivateEndpoints.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -67,14 +66,13 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Synapse.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'Synapse.format.ps1xml', 'Synapse.Autorest\Az.Synapse.format.ps1xml'
+FormatsToProcess = 'Synapse.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll', 'Synapse.Autorest\Az.Synapse.psm1')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Get-AzSynapseKustoPool', 'New-AzSynapseKustoPool', 
-'Remove-AzSynapseKustoPool', 'Update-AzSynapseKustoPool')
+FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob', 
