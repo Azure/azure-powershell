@@ -20,7 +20,7 @@
 - [Environment Variable Reference](#supported-environment-in-test-framework)
 
 ## Getting Started
--  Install the latest Az.Resources from the [PSGallery](https://www.powershellgallery.com/)
+-  Install the latest Az.Resources from the [PSGallery](https://www.powershellgallery.com/) into Windows PowerShell
     - Run Windows PowerShell as administrator and execute following command
         - `Install-Module -Name Az.Resources -Scope AllUsers -AllowClobber` 
 -  Double click `.\tools\PS-VSPrompt` shortcut
