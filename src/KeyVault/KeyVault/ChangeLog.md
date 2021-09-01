@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Enabled managing resources in other subscriptions without switching the context by adding `-Subscription <String>`.
 * Supported adding EC keys in key vault [#15699]
 
 ## Version 3.4.5
