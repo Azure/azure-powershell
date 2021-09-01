@@ -30,6 +30,7 @@ The feature was designed to balance between "supporting more login scenarios" an
 
 - **One subscription, multiple accounts**: when you login Azure PowerShell with multiple user accounts, and there is one subscription owned by more than one of them, it is obvious that `-SubscriptionId` is not enough to tell which context you wish to use, but we do not want to introduce more parameters, so this is not supported.
   - Work-around is to log in with only 1 user account.
+- **Management-plane only**: as subscription may not make as much sense in data-plane as in management-plane, this feature is suggested to be applied to management-plane cmdlets only.
 
 ## Steps
 
