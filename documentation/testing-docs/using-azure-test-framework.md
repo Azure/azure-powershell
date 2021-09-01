@@ -20,6 +20,9 @@
 - [Environment Variable Reference](#supported-environment-in-test-framework)
 
 ## Getting Started
+-  Install the latest Az.Resources from the [PSGallery](https://www.powershellgallery.com/)
+    - Start Windows PowerShell with administrator rights. Run the following command. The `AllUsers` scope installs modules in a location(`$env:ProgramFiles\PowerShell\Modules`) that is loaded by PowerShell started by `PS-VSPrompt`
+        - `Install-Module -Name Az.Resources -Scope AllUsers -AllowClobber` 
 -  Double click `.\tools\PS-VSPrompt` shortcut
 	- This starts the VS Developer command prompt in PowerShell inside the `azure-powershell/tools` directory
 - Import the `Repo-Tasks` module that helps to perform basic repository tasks
