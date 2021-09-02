@@ -23,7 +23,7 @@ Describe 'Get-AzSynapseKustoPoolFollowerDatabase' {
         $databaseName = $env.databaseName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerKustoPoolName = $env.followerKustoPoolName
-        $kustoPoolResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$followerKustoPoolName"
+        $kustoPoolResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$followerKustoPoolName"
 
         [array]$kustoPoolFollowerDatabaseGet = Get-AzSynapseKustoPoolFollowerDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName
         $kustoPoolFollowerDatabase = $kustoPoolFollowerDatabaseGet[0]

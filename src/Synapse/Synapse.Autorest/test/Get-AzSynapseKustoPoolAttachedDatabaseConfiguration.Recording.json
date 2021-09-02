@@ -1,0 +1,84 @@
+{
+  "[NoDescription]+[NoContext]+List+$GET+https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testfkustopoolyhav3s/attachedDatabaseConfigurations?api-version=2021-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testfkustopoolyhav3s/attachedDatabaseConfigurations?api-version=2021-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "6e595c4e-c86c-488a-a543-c7de70e9aa5b" ],
+        "CommandName": [ "Get-AzSynapseKustoPoolAttachedDatabaseConfiguration" ],
+        "FullCommandName": [ "Get-AzSynapseKustoPoolAttachedDatabaseConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "33c83ac7-2388-4888-ac7c-68cffcf7095c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11946" ],
+        "x-ms-correlation-request-id": [ "7db5fd72-2d9a-4791-89dd-862609b5e79b" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210830T112846Z:7db5fd72-2d9a-4791-89dd-862609b5e79b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Aug 2021 11:28:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "804" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testfkustopoolyhav3s/AttachedDatabaseConfigurations/testdbconfyhav3s\",\"name\":\"workspaceoqj4ni/testfkustopoolyhav3s/testdbconfyhav3s\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools/AttachedDatabaseConfigurations\",\"location\":\"East US 2\",\"properties\":{\"clusterResourceId\":\"/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testkustopooloqj4ni\",\"databaseName\":\"testdatabaseoqj4ni\",\"attachedDatabaseNames\":[\"testdatabaseoqj4ni\"],\"defaultPrincipalsModificationKind\":\"Union\",\"tableLevelSharingProperties\":null,\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testfkustopoolyhav3s/attachedDatabaseConfigurations/testdbconfyhav3s?api-version=2021-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testfkustopoolyhav3s/attachedDatabaseConfigurations/testdbconfyhav3s?api-version=2021-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "d122c92a-28f1-41a6-ae29-3dbdc3f82b1f" ],
+        "CommandName": [ "Get-AzSynapseKustoPoolAttachedDatabaseConfiguration" ],
+        "FullCommandName": [ "Get-AzSynapseKustoPoolAttachedDatabaseConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a8b62ce6-ebcb-41ff-b32d-5dae6b1b3003" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11945" ],
+        "x-ms-correlation-request-id": [ "a1a00fdb-ff29-472b-82d3-37b8b48bbbab" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210830T112847Z:a1a00fdb-ff29-472b-82d3-37b8b48bbbab" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Aug 2021 11:28:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "792" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testfkustopoolyhav3s/AttachedDatabaseConfigurations/testdbconfyhav3s\",\"name\":\"workspaceoqj4ni/testfkustopoolyhav3s/testdbconfyhav3s\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools/AttachedDatabaseConfigurations\",\"location\":\"East US 2\",\"properties\":{\"clusterResourceId\":\"/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testkustopooloqj4ni\",\"databaseName\":\"testdatabaseoqj4ni\",\"attachedDatabaseNames\":[\"testdatabaseoqj4ni\"],\"defaultPrincipalsModificationKind\":\"Union\",\"tableLevelSharingProperties\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

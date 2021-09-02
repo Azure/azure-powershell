@@ -22,8 +22,9 @@ Describe 'Invoke-AzSynapseDetachKustoPoolFollowerDatabase' {
         $workspaceName = $env.workspaceName
         $kustoPoolName = $env.kustoPoolName
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
-        $followerKustoPoolName = $env.followerKustoPoolNakustoPool = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
-        $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$followerKustoPoolName"
+        $followerKustoPoolName = $env.followerKustoPoolName
+        $kustoPoolResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
+        $followerClusterResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$followerKustoPoolName"
         $databaseName = "testdatabase" + $env.rstr4
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
 
@@ -41,8 +42,9 @@ Describe 'Invoke-AzSynapseDetachKustoPoolFollowerDatabase' {
         $workspaceName = $env.workspaceName
         $kustoPoolName = $env.kustoPoolName
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr5
-        $followerKustoPoolName = $env.followerKustoPoolNakustoPool = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
-        $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$followerKustoPoolName"
+        $followerKustoPoolName = $env.followerKustoPoolName
+        $kustoPoolResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
+        $followerClusterResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$followerKustoPoolName"
         $databaseName = "testdatabase" + $env.rstr5
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
 

@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {
-      "value": "workspacem51ejs"
+      "value": "workspacezqspwi"
     },
     "defaultDataLakeStorageAccountName": {
-      "value": "storagem51ejs"
+      "value": "storagezqspwi"
     },
     "defaultDataLakeStorageFilesystemName": {
-      "value": "filesystemm51ejs"
+      "value": "filesystemzqspwi"
     }
   }
 }

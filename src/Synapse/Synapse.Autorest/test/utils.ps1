@@ -67,6 +67,7 @@ function setupEnv() {
     New-AzSynapseKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -PrincipalAssignmentName $env.principalAssignmentName -DatabaseName $databaseName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.databasePrincipalRole
 
     # Deploy follower kusto pool for test
+    $subscriptionId = $env.SubscriptionId
     $followerKustoPoolName = "testfkustopool" + $rstr2
     $attachedDatabaseConfigurationName = "testdbconf" + $rstr2
     Write-Host "Start to create a follower kusto pool" $followerKustoPoolName
@@ -75,12 +76,37 @@ function setupEnv() {
     New-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $followerKustoPoolName -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize
     $clusterResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
     New-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $followerKustoPoolName -Name $attachedDatabaseConfigurationName -Location $env.location -KustoPoolResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $env.defaultPrincipalsModificationKind
+
+    # Deploy 2nd kusto pool for test
+    $kustoPoolName = "testkustopool" + $rstr3
+    Write-Host "Start to create 2nd Kusto pool" $kustoPoolName
+    $null = $env.Add("plainKustoPoolName", $kustoPoolName)
+    New-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $kustoPoolName -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize
     
-    # # Deploy 2nd kusto pool for test
-    # $kustoPoolName = "testkustopool" + $rstr3
-    # Write-Host "Start to create 2nd Kusto pool" $kustoPoolName
-    # $null = $env.Add("plainKustoPoolName", $kustoPoolName)
-    # New-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $kustoPoolName -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize
+    # Create event hub and Iot hub to test data connection
+    $eventhubNS = "eventhubNS" + $rstr1
+    $eventhub = "eventhub" + $rstr1
+    $eventgrid = "eventgrid" + $rstr1
+    Write-Host "Start to create Event Hub under" $eventhubNS
+    $null = $env.Add("eventhubNS", $eventhubNS)
+    $null = $env.Add("eventhub", $eventhub)
+    $null = $env.Add("eventgrid", $eventgrid)
+    $eventhubParams = Get-Content .\test\deployment-templates\event-hub\parameters.json | ConvertFrom-Json
+    $eventhubParams.parameters.eventhub_namespace.value = $eventhubNS
+    $eventhubParams.parameters.eventhub_name.value = $eventhub
+    $eventhubParams.parameters.eventgrid_name.value = $eventgrid
+    set-content -Path .\test\deployment-templates\event-hub\parameters.json -Value (ConvertTo-Json $eventhubParams)
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\event-hub\template.json -TemplateParameterFile .\test\deployment-templates\event-hub\parameters.json -Name eventhub -ResourceGroupName $resourceGroupName
+
+    $iothub = "iothub" + $rstr1
+    Write-Host "Start to create Iot Hub" $iothub
+    $null = $env.Add("iothub", $iothub)
+    $iothubParams = Get-Content .\test\deployment-templates\iot-hub\parameters.json | ConvertFrom-Json
+    $iothubParams.parameters.hubname.value = $iothub
+    set-content -Path .\test\deployment-templates\iot-hub\parameters.json -Value (ConvertTo-Json $iothubParams)
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\iot-hub\template.json -TemplateParameterFile .\test\deployment-templates\iot-hub\parameters.json -Name iothub -ResourceGroupName $resourceGroupName
+    
+    $null = $env.Add("dataConnectionName", "testdataconnection" + $rstr1)
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -90,9 +116,9 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.kustoPoolName
     Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.followerKustoPoolName
-    # Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.plainKustoPoolName
+    Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.kustoPoolName
+    Remove-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.plainKustoPoolName
     Remove-AzResourceGroup -Name $env.resourceGroupName
 }
 

@@ -25,7 +25,7 @@ Describe 'Get-AzSynapseKustoPoolAttachedDatabaseConfiguration' {
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerKustoPoolName = $env.followerKustoPoolName
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
-        $kustoPoolResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
+        $kustoPoolResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
         $attachedDatabaseConfigurationFullName = $workspaceName + "/" + $followerKustoPoolName + "/" + $attachedDatabaseConfigurationName
 
         [array]$attachedDatabaseConfigurationGet = Get-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $followerKustoPoolName
@@ -43,7 +43,7 @@ Describe 'Get-AzSynapseKustoPoolAttachedDatabaseConfiguration' {
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerKustoPoolName = $env.followerKustoPoolName
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
-        $kustoPoolResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
+        $kustoPoolResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
         $attachedDatabaseConfigurationFullName = $workspaceName + "/" + $followerKustoPoolName + "/" + $attachedDatabaseConfigurationName
 
         $attachedDatabaseConfiguration = Get-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $followerKustoPoolName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName

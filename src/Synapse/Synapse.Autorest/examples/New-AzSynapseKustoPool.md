@@ -1,10 +1,18 @@
-### Example 1: Create a new Kusto pool
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -Location 'East US' -SkuName "Storage optimized" -SkuSize Medium
+PS C:\> {{ Add code here }}
 
-Location  Name                    Type                                    Etag
---------  ----                    ----                                    ----
-East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools 
+{{ Add output here }}
 ```
 
-The above command creates a new Kusto pool named "testnewkustopool" in the workspace "testws".
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

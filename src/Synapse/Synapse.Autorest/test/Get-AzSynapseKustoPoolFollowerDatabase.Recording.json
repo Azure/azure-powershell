@@ -1,0 +1,43 @@
+{
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testkustopooloqj4ni/listFollowerDatabases?api-version=2021-06-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testkustopooloqj4ni/listFollowerDatabases?api-version=2021-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "85d6d21a-86a0-4fd2-8c1d-01da7a5a581d" ],
+        "CommandName": [ "Get-AzSynapseKustoPoolFollowerDatabase" ],
+        "FullCommandName": [ "Get-AzSynapseKustoPoolFollowerDatabase_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "c42aefdb-79da-44d5-88b6-82ef85727e58" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "0aa5ff93-7c95-4214-bc38-37689490dfc1" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210830T112847Z:0aa5ff93-7c95-4214-bc38-37689490dfc1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Aug 2021 11:28:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "296" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"clusterResourceId\":\"/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupoqj4ni/providers/Microsoft.Synapse/workspaces/workspaceoqj4ni/kustoPools/testfkustopoolyhav3s\",\"attachedDatabaseConfigurationName\":\"testdbconfyhav3s\",\"databaseName\":\"testdatabaseoqj4ni\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

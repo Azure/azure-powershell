@@ -53,7 +53,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - D:\code\azure-rest-api-specs\specification\synapse\resource-manager\Microsoft.Synapse\preview\2021-06-01-preview\kustoPool.json
+  - https://github.com/wonner/azure-rest-api-specs/blob/rename-kusto/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
   # - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/synapse/data-plane/Microsoft.Synapse/preview/2021-06-01-preview/kqlScripts.json
 
 ```
@@ -75,13 +75,20 @@ output-folder: .
 ``` yaml
 identity-correction-for-post: true
 directive:
+  # Fix the case mismatch between swagger and RP
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/databases\//g, "/Databases/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/dataConnections\//g, "/DataConnections/")
   # Remove the unexpanded parameter set
   - where:
       variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Detach$|^DetachViaIdentity$
     remove: true
   # Remove the unexpanded parameter set for specific commands
   - where:
-      subject: ^KustoPoolAttachedDatabaseConfiguration$|^KustoPoolPrincipalAssignment$|^KustoDatabasePrincipalAssignment$
+      subject: ^KustoPoolAttachedDatabaseConfiguration$|^KustoPoolPrincipalAssignment$|^KustoPoolDatabasePrincipalAssignment$
       variant: ^Create$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
@@ -99,10 +106,10 @@ directive:
       variant: ^Create$|^CreateExpanded$
     hide: true
   - where:
-      subject: ^DataKustoDataConnectionValidation$
+      subject: ^DataKustoPoolDataConnectionValidation$
     hide: true
   - where:
-      subject: ^KustoDatabase$|^KustoDataConnection$
+      subject: ^KustoPoolDatabase$|^KustoPoolDataConnection$
       variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
     hide: true
   # Hide the operation API
@@ -120,7 +127,7 @@ directive:
   # set alias for some name
   - where:
       verb: Get|Remove
-      subject: KustoDatabase
+      subject: KustoPoolDatabase
       parameter-name: DatabaseName
     set:
       alias: Name
@@ -128,6 +135,12 @@ directive:
       verb: New|Get|Remove
       subject: KustoPoolAttachedDatabaseConfiguration
       parameter-name: AttachedDatabaseConfigurationName
+    set:
+      alias: Name
+  - where:
+      verb: Get|Remove
+      subject: KustoPoolDataConnection
+      parameter-name: DataConnectionName
     set:
       alias: Name
   # - where:

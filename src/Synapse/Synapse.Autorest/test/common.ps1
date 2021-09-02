@@ -112,3 +112,55 @@ function Validate_ClusterFollowerDatabase {
 		$ClusterFollowerDatabase.KustoPoolResourceId | Should -Be $FollowerClusterResourceId
 		$ClusterFollowerDatabase.DatabaseName | Should -Be $DatabaseName
 }
+
+<#
+.SYNOPSIS
+Validate if data connection is valid for EventHub
+#>
+function Validate_EventHubDataConnection {
+	Param ([Object]$DataConnection,
+		[string]$dataConnectionFullName,
+		[string]$location,
+		[string]$eventHubResourceId,
+		[string]$kind)
+		$DataConnection.Name | Should -Be $dataConnectionFullName
+		$DataConnection.Location | Should -Be $location
+		$DataConnection.EventHubResourceId | Should -Be $eventHubResourceId
+		$DataConnection.Kind | Should -Be $kind
+}
+
+<#
+.SYNOPSIS
+Validate if data connection is valid for EventGrid
+#>
+function Validate_EventGridDataConnection {
+	Param ([Object]$DataConnection,
+		[string]$dataConnectionFullName,
+		[string]$location,
+		[string]$eventHubResourceId,
+		[string]$storageAccountResourceId,
+		[string]$kind)
+		$DataConnection.Name | Should -Be $dataConnectionFullName
+		$DataConnection.Location | Should -Be $location
+		$DataConnection.EventHubResourceId | Should -Be $eventHubResourceId
+		$DataConnection.StorageAccountResourceId | Should -Be $storageAccountResourceId
+		$DataConnection.Kind | Should -Be $kind
+}
+
+<#
+.SYNOPSIS
+Validate if data connection is valid for IotHub
+#>
+function Validate_IotHubDataConnection {
+	Param ([Object]$DataConnection,
+		[string]$dataConnectionFullName,
+		[string]$location,
+		[string]$iotHubResourceId,
+		[string]$sharedAccessPolicyName,
+		[string]$kind)
+		$DataConnection.Name | Should -Be $dataConnectionFullName
+		$DataConnection.Location | Should -Be $location
+		$DataConnection.IotHubResourceId | Should -Be $iotHubResourceId
+		$DataConnection.SharedAccessPolicyName | Should -Be $sharedAccessPolicyName
+		$DataConnection.Kind | Should -Be $kind
+}

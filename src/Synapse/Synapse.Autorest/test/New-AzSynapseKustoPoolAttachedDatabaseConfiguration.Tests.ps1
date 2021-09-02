@@ -25,8 +25,8 @@ Describe 'New-AzSynapseKustoPoolAttachedDatabaseConfiguration' {
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
         $followerKustoPoolName = $env.followerKustoPoolName
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
-        $kustoPoolResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
-        $followerKustoPoolResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$followerKustoPoolName"
+        $kustoPoolResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$kustoPoolName"
+        $followerKustoPoolResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$followerKustoPoolName"
         $attachedDatabaseConfigurationFullName = $workspaceName + "/" + $followerKustoPoolName + "/" + $attachedDatabaseConfigurationName
 
         New-AzSynapseKustoDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName -Kind ReadWrite -Location $location
