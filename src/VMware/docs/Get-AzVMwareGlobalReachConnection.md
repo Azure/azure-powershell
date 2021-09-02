@@ -57,16 +57,16 @@ azps_test_grc Microsoft.AVS/privateClouds/globalReachConnections
 
 Get a global reach connection by name in a private cloud
 
-### Example 3: Get a global reach connection by InputObject in a private cloud
+### Example 3: Get a global reach connection by resource id in a private cloud
 ```powershell
-PS C:\>  Get-AzVMwareGlobalReachConnection -InputObject "/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/globalReachConnections/azps_test_grc"
+PS C:\>  Get-AzVMwareGlobalReachConnection -InputObject "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/globalReachConnections/azps_test_grc"
 
 Name          Type
 ----          ----
 azps_test_grc Microsoft.AVS/privateClouds/globalReachConnections
 ```
 
-Get a global reach connection by InputObject in a private cloud
+Get a global reach connection by resource id in a private cloud
 
 ## PARAMETERS
 

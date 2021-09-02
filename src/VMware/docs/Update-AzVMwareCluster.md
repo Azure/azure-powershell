@@ -41,16 +41,16 @@ azps_test_cluster Microsoft.AVS/privateClouds/clusters
 
 Update cluster size by name
 
-### Example 2: Update cluster size by input object
+### Example 2: Update cluster size by resource id
 ```powershell
-PS C:\> Update-AzVMwareCluster -InputObject "/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/clusters/azps_test_cluster" -ClusterSize 4
+PS C:\> Update-AzVMwareCluster -InputObject "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/clusters/azps_test_cluster" -ClusterSize 4
 
 Name              Type
 ----              ----
 azps_test_cluster Microsoft.AVS/privateClouds/clusters
 ```
 
-Update cluster size by input object
+Update cluster size by resource id
 
 ## PARAMETERS
 

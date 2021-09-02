@@ -6,10 +6,10 @@ PS C:\> Remove-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudNa
 
 Delete a global reach connection in a private cloud
 
-### Example 2: Delete a global reach connection in a private cloud
+### Example 2: Delete a global reach connection by resource id in a private cloud
 ```powershell
-PS C:\> Remove-AzVMwareGlobalReachConnection -InputObject "/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/globalReachConnections/azps_test_grc"
+PS C:\> Remove-AzVMwareGlobalReachConnection -InputObject "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/globalReachConnections/azps_test_grc"
 
 ```
 
-Delete a global reach connection in a private cloud
+Delete a global reach connection by resource id in a private cloud
