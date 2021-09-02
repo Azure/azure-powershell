@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version:
+online version:https://docs.microsoft.com/powershell/module/az.synapse/start-azsynapseintegrationruntime
 schema: 2.0.0
 ---
 
@@ -46,7 +46,7 @@ The Start-AzSynapseIntegrationRuntime cmdlet starts a managed dedicated integrat
 PS C:\> Start-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-dedicated-ir'
 ```
 
-This cmdlet starts a managed dedicated integration runtime named 'test-dedicated-ir'in workspace ContosoWorkspace.
+This cmdlet starts a managed dedicated integration runtime named 'test-dedicated-ir' in workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
@@ -54,11 +54,11 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Start-AzSynapseIntegrationRuntime -Name 'test-dedicated-ir'
 ```
 
-This cmdlet starts a managed dedicated integration runtime named 'test-dedicated-ir'in workspace ContosoWorkspace through pipeline.
+This cmdlet starts a managed dedicated integration runtime named 'test-dedicated-ir' in workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> Start-AzSynapseIntegrationRuntime -ResourceId '/subscriptions/0000xxxx-000/resourceGroups/Contosorg/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/integrationruntimes/test-dedicated-ir'
+PS C:\> Start-AzSynapseIntegrationRuntime -ResourceId '/subscriptions/0000abcd-1a1b-12ab-1234-0000abcd00aa/resourceGroups/Contosorg/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/integrationruntimes/test-dedicated-ir'
 ```
 
 This cmdlet starts a managed dedicated integration runtime using ResourceId in workspace ContosoWorkspace.
@@ -69,7 +69,7 @@ PS C:\> $ir = Get-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -N
 PS C:\> $ir | Start-AzSynapseIntegrationRuntime 
 ```
 
-This cmdlet starts a managed dedicated integration runtime named 'test-dedicated-ir'in workspace ContosoWorkspace through pipeline.
+This cmdlet starts a managed dedicated integration runtime named 'test-dedicated-ir' in workspace ContosoWorkspace through pipeline.
 
 ## PARAMETERS
 
