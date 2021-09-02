@@ -36,10 +36,10 @@ List the admin credentials for the private cloud
 Create or update a addon in a private cloud
 
 ### [New-AzVMwareAddonSrmPropertiesObject](New-AzVMwareAddonSrmPropertiesObject.md)
-Create a in-memory object for AddonSrmProperties
+Create a Srm object for AddonSrmProperties
 
 ### [New-AzVMwareAddonVrPropertiesObject](New-AzVMwareAddonVrPropertiesObject.md)
-Create a in-memory object for AddonVrProperties
+Create a Vr object for AddonVrProperties
 
 ### [New-AzVMwareAuthorization](New-AzVMwareAuthorization.md)
 Create or update an ExpressRoute Circuit Authorization in a private cloud
@@ -63,13 +63,13 @@ Rotate the NSX-T Manager password
 Rotate the vCenter password
 
 ### [New-AzVMwarePSCredentialExecutionParameterObject](New-AzVMwarePSCredentialExecutionParameterObject.md)
-Create a in-memory object for PSCredentialExecutionParameter
+Create a PS Credential Execution object for PSCredentialExecutionParameter
 
 ### [New-AzVMwareScriptSecureStringExecutionParameterObject](New-AzVMwareScriptSecureStringExecutionParameterObject.md)
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create a Script Secure String Execution object for ScriptSecureStringExecutionParameter
 
 ### [New-AzVMwareScriptStringExecutionParameterObject](New-AzVMwareScriptStringExecutionParameterObject.md)
-Create a in-memory object for ScriptStringExecutionParameter
+Create a Script String Execution object for ScriptStringExecutionParameter
 
 ### [Remove-AzVMwareAddon](Remove-AzVMwareAddon.md)
 Delete a addon in a private cloud

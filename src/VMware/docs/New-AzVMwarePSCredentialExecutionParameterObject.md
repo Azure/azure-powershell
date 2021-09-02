@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwarePSCredentialExecutionParameterObject
 
 ## SYNOPSIS
-Create a in-memory object for PSCredentialExecutionParameter
+Create a PS Credential Execution object
 
 ## SYNTAX
 
@@ -18,11 +18,11 @@ New-AzVMwarePSCredentialExecutionParameterObject -Name <String> [-Password <Stri
 ```
 
 ## DESCRIPTION
-Create a in-memory object for PSCredentialExecutionParameter
+Create a PS Credential Execution object
 
 ## EXAMPLES
 
-### Example 1: Create a in-memory object for PSCredentialExecutionParameter
+### Example 1: Create a PS Credential Execution object
 ```powershell
 PS C:\> New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
 
@@ -31,7 +31,7 @@ Name                      Type       Password      Username
 azps_test_credentialvalue Credential passwordValue usernameValue
 ```
 
-Create a in-memory object for PSCredentialExecutionParameter
+Create a PS Credential Execution object
 
 ## PARAMETERS
 

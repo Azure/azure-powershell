@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareAddonVrPropertiesObject
 
 ## SYNOPSIS
-Create a in-memory object for AddonVrProperties
+Create a Vr object for Addon
 
 ## SYNTAX
 
@@ -17,11 +17,11 @@ New-AzVMwareAddonVrPropertiesObject -VrsCount <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for AddonVrProperties
+Create a Vr object for Addon
 
 ## EXAMPLES
 
-### Example 1: Create a in-memory object for AddonVrProperties
+### Example 1: Create a Vr object for Addon
 ```powershell
 PS C:\> New-AzVMwareAddonVrPropertiesObject -AddonType VR -VrsCount 2
 
@@ -30,7 +30,7 @@ AddonType ProvisioningState VrsCount
 VR                          2
 ```
 
-Create a in-memory object for AddonVrProperties
+Create a Vr object for Addon
 
 ## PARAMETERS
 

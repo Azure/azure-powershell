@@ -1,4 +1,4 @@
-### Example 1: Create a in-memory object for ScriptStringExecutionParameter
+### Example 1: Create a Script String Execution object
 ```powershell
 PS C:\> New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Value "stringValue"
 
@@ -7,4 +7,4 @@ Name                  Type   Value
 azps_test_stringvalue Value  stringValue
 ```
 
-Create a in-memory object for ScriptStringExecutionParameter
+Create a Script String Execution object

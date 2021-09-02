@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareScriptSecureStringExecutionParameterObject
 
 ## SYNOPSIS
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create a Script Secure String Execution object
 
 ## SYNTAX
 
@@ -18,11 +18,11 @@ New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> [-SecureVa
 ```
 
 ## DESCRIPTION
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create a Script Secure String Execution object
 
 ## EXAMPLES
 
-### Example 1: Create a in-memory object for ScriptSecureStringExecutionParameter
+### Example 1: Create a Script Secure String Execution object
 ```powershell
 PS C:\> New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -SecureValue "passwordValue"
 
@@ -31,7 +31,7 @@ Name                  Type        SecureValue
 azps_test_securevalue SecureValue passwordValue
 ```
 
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create a Script Secure String Execution object
 
 ## PARAMETERS
 
