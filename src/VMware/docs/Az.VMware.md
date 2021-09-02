@@ -36,7 +36,7 @@ List the admin credentials for the private cloud
 Create or update a addon in a private cloud
 
 ### [New-AzVMwareAddonSrmPropertiesObject](New-AzVMwareAddonSrmPropertiesObject.md)
-Create a Srm object for AddonSrmProperties
+Create an Srm object for AddonSrmProperties
 
 ### [New-AzVMwareAddonVrPropertiesObject](New-AzVMwareAddonVrPropertiesObject.md)
 Create a Vr object for AddonVrProperties

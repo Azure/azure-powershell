@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareAddonSrmPropertiesObject
 
 ## SYNOPSIS
-Create a Srm object for Addon
+Create an Srm object for Addon
 
 ## SYNTAX
 
@@ -17,11 +17,11 @@ New-AzVMwareAddonSrmPropertiesObject -LicenseKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a Srm object for Addon
+Create an Srm object for Addon
 
 ## EXAMPLES
 
-### Example 1: Create a Srm object for Addon
+### Example 1: Create an Srm object for Addon
 ```powershell
 PS C:\> New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
 
@@ -30,7 +30,7 @@ AddonType ProvisioningState LicenseKey
 SRM                         YourLicenseKeyValue
 ```
 
-Create a Srm object for Addon
+Create an Srm object for Addon
 
 ## PARAMETERS
 

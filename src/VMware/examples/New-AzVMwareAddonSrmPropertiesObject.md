@@ -1,4 +1,4 @@
-### Example 1: Create a Srm object for Addon
+### Example 1: Create an Srm object for Addon
 ```powershell
 PS C:\> New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
 
@@ -7,4 +7,4 @@ AddonType ProvisioningState LicenseKey
 SRM                         YourLicenseKeyValue
 ```
 
-Create a Srm object for Addon
+Create an Srm object for Addon
