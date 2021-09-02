@@ -149,12 +149,6 @@ function Test-AzureSSIS-IntegrationRuntime
 {
 	# Setup
 	$testSuffix = getAssetName
-    try{
-    Remove-WorkspaceTestEnvironment $testSuffix
-    }
-    finally
-    {
-    }
 	Create-WorkspaceTestEnvironment $testSuffix
 	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
 
