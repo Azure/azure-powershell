@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.KeyPolicy = storageAccount.KeyPolicy;
             this.SasPolicy = storageAccount.SasPolicy;
             this.AllowCrossTenantReplication = storageAccount.AllowCrossTenantReplication;
+            this.PublicNetworkAccess = storageAccount.PublicNetworkAccess;
 
         }
         public bool? AllowCrossTenantReplication { get; set; }
@@ -151,6 +152,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? AllowSharedKeyAccess { get; set; }
 
         public PSExtendedLocation ExtendedLocation { get; set; }
+
+        public string PublicNetworkAccess { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {

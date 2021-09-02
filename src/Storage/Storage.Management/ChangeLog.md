@@ -27,6 +27,9 @@
     -  `Stop-AzStorageAccountHierarchicalNamespaceUpgrade`
 * Supported AccessTierInferred, Tags in blob inventory policy schema
     - `New-AzStorageBlobInventoryPolicyRule`
+* Supported PublicNetworkAccess enabled/disabled in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 
 ## Version 3.11.0
 * Supported get/set blob tags on a specific blob

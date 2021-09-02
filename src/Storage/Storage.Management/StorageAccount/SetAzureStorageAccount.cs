@@ -451,6 +451,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             IgnoreCase = true)]
         public string DefaultSharePermission { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Enable or disable public network access to the storage account. Enabled by default. Possible values include: 'Enabled', 'Disabled'.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        [ValidateNotNullOrEmpty]
+        public string PublicNetworkAccess { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -682,6 +687,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (allowCrossTenantReplication != null)
                     {
                         updateParameters.AllowCrossTenantReplication = allowCrossTenantReplication;
+                    }
+                    if (this.PublicNetworkAccess != null)
+                    {
+                        updateParameters.PublicNetworkAccess = this.PublicNetworkAccess;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

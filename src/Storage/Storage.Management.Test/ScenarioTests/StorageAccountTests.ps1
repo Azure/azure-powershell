@@ -204,11 +204,11 @@ function Test-SetAzureStorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true  -EnableHierarchicalNamespace $true;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true  -EnableHierarchicalNamespace $true -PublicNetworkAccess Disabled;
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -217,6 +217,7 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
+        Assert-AreEqual Disabled $sto.PublicNetworkAccess;
         
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stoname $stos[0].StorageAccountName;
@@ -225,13 +226,15 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
+        Assert-AreEqual Disabled $sto.PublicNetworkAccess;
 
         $stotype = 'Standard_LRS';
         # TODO: Still need to do retry for Set-, even after Get- returns it.
-        Retry-IfException { Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -EnableHttpsTrafficOnly $false }
+        Retry-IfException { Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -EnableHttpsTrafficOnly $false -PublicNetworkAccess Enabled }
         $stotype = 'Standard_RAGRS';
         $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
+        Assert-AreEqual Enabled $sto.PublicNetworkAccess;
 
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -240,6 +243,7 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
+        Assert-AreEqual Enabled $sto.PublicNetworkAccess;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
