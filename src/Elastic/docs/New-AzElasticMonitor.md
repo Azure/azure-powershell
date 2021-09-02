@@ -16,7 +16,7 @@ Create a monitor resource.
 New-AzElasticMonitor -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-CompanyInfoBusiness <String>] [-CompanyInfoCountry <String>] [-CompanyInfoDomain <String>]
  [-CompanyInfoEmployeesNumber <String>] [-CompanyInfoState <String>] [-IdentityType <ManagedIdentityTypes>]
- [-MonitoringStatus <MonitoringStatus>] [-ProvisioningState <ProvisioningState>] [-SkuName <String>]
+ [-MonitoringStatus <MonitoringStatus>] [-ProvisioningState <ProvisioningState>] [-Sku <String>]
  [-Tag <Hashtable>] [-UserInfoCompanyName <String>] [-UserInfoEmailAddress <String>]
  [-UserInfoFirstName <String>] [-UserInfoLastName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -29,18 +29,11 @@ Create a monitor resource.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -SkuName "ess-monthly-consumption_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com'
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Location Name           Type
+-------- ----           ----
+westus2  elastic-pwsh02 microsoft.elastic/monitors
 ```
 
 {{ Add description here }}
@@ -257,7 +250,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
+### -Sku
 Name of the SKU.
 
 ```yaml

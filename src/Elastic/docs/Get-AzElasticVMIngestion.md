@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.elastic/invoke-azelasticdetailvmingestion
+online version: https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticvmingestion
 schema: 2.0.0
 ---
 
-# Invoke-AzElasticDetailVMIngestion
+# Get-AzElasticVMIngestion
 
 ## SYNOPSIS
 List the vm ingestion details that will be monitored by the Elastic monitor resource.
@@ -14,14 +14,14 @@ List the vm ingestion details that will be monitored by the Elastic monitor reso
 
 ### Details (Default)
 ```
-Invoke-AzElasticDetailVMIngestion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzElasticVMIngestion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DetailsViaIdentity
 ```
-Invoke-AzElasticDetailVMIngestion -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzElasticVMIngestion -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,18 +31,22 @@ List the vm ingestion details that will be monitored by the Elastic monitor reso
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzElasticVMIngestion -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02
 
-{{ Add output here }}
+CloudId 					  IngestionKey
+------- 					  ------------
+elastic-pwsh02:xxxxxxxxxxxxxx xxxxxxxxxxxxxx
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 | Get-AzElasticVMIngestion
 
-{{ Add output here }}
+CloudId 					  IngestionKey
+------- 					  ------------
+elastic-pwsh02:xxxxxxxxxxxxxx xxxxxxxxxxxxxx
 ```
 
 {{ Add description here }}
@@ -116,7 +120,7 @@ This is a GUID-formatted string (e.g.
 00000000-0000-0000-0000-000000000000)
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: Details
 Aliases:
 

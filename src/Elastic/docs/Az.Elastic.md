@@ -26,8 +26,11 @@ Get a tag rule set for a given monitor resource.
 ### [Get-AzElasticVMHost](Get-AzElasticVMHost.md)
 List the vm resources currently being monitored by the Elastic monitor resource.
 
-### [Invoke-AzElasticDetailVMIngestion](Invoke-AzElasticDetailVMIngestion.md)
+### [Get-AzElasticVMIngestion](Get-AzElasticVMIngestion.md)
 List the vm ingestion details that will be monitored by the Elastic monitor resource.
+
+### [New-AzElasticFilteringTagObject](New-AzElasticFilteringTagObject.md)
+Create a in-memory object for FilteringTag
 
 ### [New-AzElasticMonitor](New-AzElasticMonitor.md)
 Create a monitor resource.
@@ -40,9 +43,6 @@ Delete a monitor resource.
 
 ### [Remove-AzElasticTagRule](Remove-AzElasticTagRule.md)
 Delete a tag rule set for a given monitor resource.
-
-### [Set-AzElasticTagRule](Set-AzElasticTagRule.md)
-Create or update a tag rule set for a given monitor resource.
 
 ### [Update-AzElasticMonitor](Update-AzElasticMonitor.md)
 Update a monitor resource.

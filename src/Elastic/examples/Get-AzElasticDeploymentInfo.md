@@ -1,8 +1,10 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzElasticDeploymentInfo -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02
 
-{{ Add output here }}
+DiskCapacity MemoryCapacity Status  Version
+------------ -------------- ------  -------
+491520       16384          Healthy 7.14.1
 ```
 
 {{ Add description here }}

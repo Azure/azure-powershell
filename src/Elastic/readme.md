@@ -45,12 +45,21 @@ identity-correction-for-post: true
 
 directive:
   - where:
+      verb: Set
+    remove: true
+
+  - where:
       verb: Get|New|Update|Remove|Invoke
       subject: DeploymentInfo|MonitoredResource|VMHost|DetailVMIngestion|VMCollection
       parameter-name: MonitorName
     set:
       parameter-name: Name
 
+  - where:
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
+      
   - where:
       verb: Get|New|Update|Remove|Set
       subject: TagRule
@@ -60,11 +69,16 @@ directive:
 
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      subject: Monitor
+      subject: Monitor|VMCollection|TagRule
     remove: true
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$
-      subject: TagRule
-    remove: true
+      verb: Invoke
+      subject: DetailVMIngestion
+    set:
+      verb: Get
+      subject: VMIngestion
+  
+  # - model-cmdlet:
+  #   - FilteringTag
 ```
