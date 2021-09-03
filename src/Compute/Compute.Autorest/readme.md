@@ -64,21 +64,21 @@ directive:
   # Remove existing cmdlets
   - select: command
     where:
-      subject: VirtualMachine|AvailabilitySet|DedicatedHost|Image|Operation|ProximityPlacementGroup|RestorePoint|RestorePointCollection|SshPublicKey|Usage
+      subject: VirtualMachine|AvailabilitySet|DedicatedHost|Image|Operation|ProximityPlacementGroup|RestorePoint|RestorePointCollection|Usage|CapacityReservationGroup|CapacityReservation
     remove: true
 
-  - select: parameter
-    where:
-      subject: CapacityReservationGroup
-      parameter-name: Expand
-    remove: true
+  #- select: parameter
+  #  where:
+  #    subject: CapacityReservationGroup
+  #    parameter-name: Expand
+  #  remove: true
+  #- select: command
+  #  where:
+  #    subject: CapacityReservation
+  #  remove: true
   - select: command
     where:
-      subject: CapacityReservation
-    remove: true
-  - select: command
-    where:
-      subject: CapacityReservationGroup
+      subject: SshPublicKey   
       verb: New|Remove|Update
     remove: true
 
