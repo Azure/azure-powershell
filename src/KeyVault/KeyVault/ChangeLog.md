@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.5.0
 * Supported adding EC keys in key vault [#15699]
 
 ## Version 3.4.5

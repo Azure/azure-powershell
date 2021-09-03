@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.11.0
 * Supported get/set blob tags on a specific blob
     -  `Get-AzStorageBlobTag`
     -  `Set-AzStorageBlobTag`
