@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.1.0
 * Updated to `Get-AzSentinelIncident` parameters
     - Added `-Filter` to support OData filter
     - Added `-OrderBy` to support OData ordering
