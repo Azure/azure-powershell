@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new AttachedDatabaseConfiguration
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName "testrg" -WorkspaceName "testws" -KustoPoolName "testkustopool" -AttachedDatabaseConfigurationName "myfollowerconfiguration" -Location "East US" -KustoPoolResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Synapse/workspace/testws" -DatabaseName "mykustodatabase" -DefaultPrincipalsModificationKind "Union"
 
-{{ Add output here }}
+Name                                          Location
+----                                -         -------
+testws/testkustopool/myfollowerconfiguration  East US
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+The above command creates a ReadOnly database "mykustodatabase" in workspace "testws". It follows the database "mykustodatabase" from workspace "testws"

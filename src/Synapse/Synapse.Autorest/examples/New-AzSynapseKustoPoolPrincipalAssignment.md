@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Kusto pool principalAssignment
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzSynapseKustoPoolPrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -PrincipalAssignmentName kustoprincipal1
 ```
 
-{{ Add description here }}
+The above command creates a Kusto Pool principalAssignment
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates a new kusto database in a workspace
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzSynapseKustoPoolDatabase -ResourceGroupName "testrg" -WorkspaceName "testws" -KustoPoolName "testkustopool" -DatabaseName "mykustodatabase" -Kind "ReadWrite" -Location "East US 2"
 
-{{ Add output here }}
+Kind      Location  Name                                                                                   
+----      --------  ----                              
+ReadWrite East US 2 testws/testkustopool/mykustodatabase
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates or updates a kusto database "mykustodatabase" in Kusto Pool "testkustopool" in the workspace "testws" found in the resource group "testrg".
 
