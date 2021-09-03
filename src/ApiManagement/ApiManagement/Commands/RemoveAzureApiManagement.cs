@@ -20,10 +20,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement", SupportsShouldProcess = true)]
+    [OutputType(typeof(bool), ParameterSetName = new[] { InDeletedParameterSetName, ResourceGroupParameterSetName })]
     public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
     {
+        internal const string InDeletedParameterSetName = "InDeleted";
+        internal const string ResourceGroupParameterSetName = "DeleteByResourceGroup";
+
         [Parameter(
+            ParameterSetName = ResourceGroupParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group under which API Management service exists.")]
@@ -32,11 +37,31 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            ParameterSetName = ResourceGroupParameterSetName,
             ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Name of API Management service.")]
+        [Parameter(
+            ParameterSetName = InDeletedParameterSetName,
             Mandatory = true,
             HelpMessage = "Name of API Management service.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(
+            ParameterSetName = InDeletedParameterSetName,
+            Mandatory = true,
+            HelpMessage = "Flag only meant to be used for Deleted ApiManagement Service")]
+        public bool InRemovedState { get; set; }
+
+        [Parameter(
+            ParameterSetName = InDeletedParameterSetName,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Location where want to Get API Management.")]
+        [LocationCompleter("Microsoft.ApiManagement/service")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -62,9 +87,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 return;
             }
 
-            ExecuteCmdLetWrap(
-                () => Client.DeleteApiManagement(ResourceGroupName, Name),
-                PassThru.IsPresent);
+            if (ParameterSetName.Equals(InDeletedParameterSetName) && InRemovedState)
+            {
+                ExecuteCmdLetWrap(
+                    () => Client.PurgeApiManagement(Name, Location),
+                    PassThru.IsPresent);
+            }
+            else
+            {
+                ExecuteCmdLetWrap(
+                    () => Client.DeleteApiManagement(ResourceGroupName, Name),
+                    PassThru.IsPresent);
+            }
         }
     }
 }

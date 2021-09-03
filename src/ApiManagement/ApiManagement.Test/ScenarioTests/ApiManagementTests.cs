@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
@@ -106,6 +107,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         public void TestCrudApiManagementWithAdditionalRegions()
         {
             RunPowerShellTest("Test-ApiManagementWithAdditionalRegionsCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestApiManagementDeletedServices()
+        {
+            RunPowerShellTest("Test-ApiManagementDeletedServices");
         }
 
         private void RunPowerShellTest(params string[] scripts)

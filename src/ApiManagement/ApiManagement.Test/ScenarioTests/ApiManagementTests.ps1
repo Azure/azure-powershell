@@ -617,3 +617,60 @@ function Test-CrudApiManagementWithExternalVpn {
         Clean-ResourceGroup $resourceGroupName
     }
 }
+
+<#
+.SYNOPSIS
+Tests API Management Deleted Services.
+#>
+function Test-ApiManagementDeletedServices {
+    # Setup
+    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"
+    $resourceGroupName = Get-ResourceGroupName
+    $apiManagementName = Get-ApiManagementServiceName
+    $organization = "apimpowershellorg"
+    $adminEmail = "apim@powershell.org"
+
+    try {
+        # Create Resource Group
+        New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+        
+        # Create API Management service
+        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail
+        Assert-NotNull $result
+
+        # Delete service 
+        $delete = Remove-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+
+        # Get soft deleted service
+        $softdeleted = Get-AzApiManagement -Location $location -Name $apiManagementName -InRemovedState $true
+        Assert-NotNull $softdeleted
+#green
+        # undo Delete
+        $undo = Undo-AzApiManagementRemoval -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName
+
+        # Get restored service by name
+        #$softdeleted = Get-AzApiManagement -Location $location -Name $apiManagementName -InRemovedState $true
+        #Assert-Null $softdeleted
+
+        #$restored = Get-AzApiManagement -Name $apiManagementName -ResourceGroupName $resourceGroupName
+        #Assert-NotNull $softdeleted
+
+        # Purge
+        #Remove-AzApiManagement -Name $apiManagementName -ResourceGroupName $resourceGroupName
+        #Remove-AzApiManagement -Location $location -Name $apiManagementName -InRemovedState $true 
+
+        # Get service in deleted state, null
+        #$deletedService = Get-AzApiManagement -InRemovedState $true -Location $location -Name $apiManagementName
+        #Assert-Null $deletedService
+    }
+    finally {
+        # Cleanup
+        # Delete listed services in the ResourceGroup
+        #Get-AzApiManagement -ResourceGroupName $resourceGroupName | Remove-AzApiManagement
+
+        #$allServices = Get-AzApiManagement -ResourceGroupName $resourceGroupName
+        #Assert-AreEqual 0 $allServices.Count
+
+        Clean-ResourceGroup $resourceGroupName
+    }
+}

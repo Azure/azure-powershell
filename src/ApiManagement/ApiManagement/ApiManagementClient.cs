@@ -102,6 +102,22 @@ namespace Microsoft.Azure.Commands.ApiManagement
             }
             return response.Select(resource => new PsApiManagement(resource));
         }
+        public PsApiManagementDeletedService GetDeletedApiManagement(string serviceName, string location)
+        {
+            var response = Client.DeletedServices.GetByName(serviceName, location);
+            return new PsApiManagementDeletedService(response);
+        }
+
+        public IEnumerable<PsApiManagementDeletedService> ListDeletedApiManagements()
+        {
+            IList<DeletedServiceContract> response;
+
+            response = ListPaged(
+            () => Client.DeletedServices.ListBySubscription(),
+            nextLink => Client.DeletedServices.ListBySubscriptionNext(nextLink));
+
+            return response.Select(resource => new PsApiManagementDeletedService(resource));
+        }
 
         private static IList<T> ListPaged<T>(
             Func<Rest.Azure.IPage<T>> listFirstPage,
@@ -141,7 +157,8 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string[] userAssignedIdentity = null,
             string[] zone = null,
             bool? disableGateway = null,
-            string minimalControlPlaneApiVersion = null)
+            string minimalControlPlaneApiVersion = null,
+            bool restore = false)
         {
             string skuType = Mappers.MapSku(sku);
 
@@ -221,6 +238,11 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 };
             }
 
+            if(restore != false)
+            {
+                parameters.Restore = restore;
+            }
+
             parameters.Identity = Mappers.MapAssignedIdentity(createSystemResourceIdentity, userAssignedIdentity);
 
             var apiManagementResource = Client.ApiManagementService.CreateOrUpdate(resourceGroupName, serviceName, parameters);
@@ -269,6 +291,13 @@ namespace Microsoft.Azure.Commands.ApiManagement
         public bool DeleteApiManagement(string resourceGroupName, string serviceName)
         {
             Client.ApiManagementService.Delete(resourceGroupName, serviceName);
+
+            return true;
+        }
+
+        public bool PurgeApiManagement(string serviceName, string location)
+        {
+            Client.DeletedServices.Purge(serviceName, location);
 
             return true;
         }

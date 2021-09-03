@@ -21,13 +21,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement", DefaultParameterSetName = BaseParameterSetName)]
-    [OutputType(typeof(PsApiManagement), ParameterSetName = new[] { BaseParameterSetName, ResourceGroupParameterSetName, ApiManagementParameterSetName, ByResourceIdParameterSetName })]
+    [OutputType(typeof(PsApiManagement), ParameterSetName = new[] { BaseParameterSetName, ResourceGroupParameterSetName, ApiManagementParameterSetName, ByResourceIdParameterSetName, InDeletedParameterSetName })]
     public class GetAzureApiManagement : AzureApiManagementCmdletBase
     {
         internal const string BaseParameterSetName = "GetBySubscription";
         internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
         internal const string ApiManagementParameterSetName = "GetByResource";
         internal const string ByResourceIdParameterSetName = "ByResourceId";
+        internal const string InDeletedParameterSetName = "InDeleted";
 
         [Parameter(
             ParameterSetName = ResourceGroupParameterSetName,
@@ -47,6 +48,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of API Management service.")]
+        [Parameter(
+            ParameterSetName = InDeletedParameterSetName,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Name of API Management service.")]
         public string Name { get; set; }
 
         [Parameter(
@@ -56,25 +62,57 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Arm ResourceId of the API Management service.")]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            ParameterSetName = InDeletedParameterSetName,
+            Mandatory = false,
+            HelpMessage = "Flag only meant to be used for Deleted ApiManagement Service")]
+        public bool InRemovedState { get; set; }
+
+        [Parameter(
+            ParameterSetName = InDeletedParameterSetName,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Location where want to Get API Management.")]
+        [LocationCompleter("Microsoft.ApiManagement/service")]
+        public string Location { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+            if (ParameterSetName.Equals(InDeletedParameterSetName) && InRemovedState)
             {
-                // Get for single API Management service
-                var attributes = Client.GetApiManagement(ResourceGroupName, Name);
-                WriteObject(attributes);
-            }
-            else if (ParameterSetName.Equals(ByResourceIdParameterSetName))
-            {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                var apimService = Client.GetApiManagement(resourceIdentifier.ResourceGroupName, resourceIdentifier.ResourceName);
-                WriteObject(apimService);
+                if (!string.IsNullOrEmpty(Location) && !string.IsNullOrEmpty(Name))
+                {
+                    // Get for single API Management service
+                    var attributes = Client.GetDeletedApiManagement(Name, Location);
+                    WriteObject(attributes);
+                }
+                else
+                {
+                    // List all services in given subscription
+                    var enumeration = Client.ListDeletedApiManagements();
+                    WriteObject(enumeration.ToList(), true);
+                }
             }
             else
             {
-                // List all services in given resource group if avaliable otherwise all services in given subscription
-                var enumeration = Client.ListApiManagements(ResourceGroupName);
-                WriteObject(enumeration.ToList(), true);
+                if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+                {
+                    // Get for single API Management service
+                    var attributes = Client.GetApiManagement(ResourceGroupName, Name);
+                    WriteObject(attributes);
+                }
+                else if (ParameterSetName.Equals(ByResourceIdParameterSetName))
+                {
+                    var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                    var apimService = Client.GetApiManagement(resourceIdentifier.ResourceGroupName, resourceIdentifier.ResourceName);
+                    WriteObject(apimService);
+                }
+                else
+                {
+                    // List all services in given resource group if avaliable otherwise all services in given subscription
+                    var enumeration = Client.ListApiManagements(ResourceGroupName);
+                    WriteObject(enumeration.ToList(), true);
+                }
             }
         }
     }

@@ -173,7 +173,8 @@ CmdletsToExport = 'Add-AzApiManagementApiToGateway',
                'Set-AzApiManagementTenantAccess', 'Set-AzApiManagementUser', 
                'Update-AzApiManagementApiRelease', 'Update-AzApiManagementCache', 
                'Update-AzApiManagementRegion', 
-               'Sync-AzApiManagementKeyVaultSecret', 'New-AzApiManagementKeyVaultObject'
+               'Sync-AzApiManagementKeyVaultSecret', 'New-AzApiManagementKeyVaultObject',
+               'Undo-AzApiManagementRemoval'
 
 # Variables to export from this module
 # VariablesToExport = @()
