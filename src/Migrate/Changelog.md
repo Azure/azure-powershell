@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Supported duplicate disk UUID in source disk.
 * Supported subnets in same VNet for AVSet.
 * Supported runAsAccount fetching for multiple Vcenters in same site.

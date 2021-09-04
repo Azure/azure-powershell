@@ -14,18 +14,6 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Synap
 ### [Add-AzSynapseTriggerSubscription](Add-AzSynapseTriggerSubscription.md)
 Subscribe the event trigger to external service events.
 
-### [Get-AzSynapseKustoPool](Get-AzSynapseKustoPool.md)
-Gets a Kusto pool.
-
-### [New-AzSynapseKustoPool](New-AzSynapseKustoPool.md)
-Create or update a Kusto pool.
-
-### [Remove-AzSynapseKustoPool](Remove-AzSynapseKustoPool.md)
-Deletes a Kusto pool.
-
-### [Update-AzSynapseKustoPool](Update-AzSynapseKustoPool.md)
-Update a Kusto Kusto Pool.
-
 ### [Clear-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Clear-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
 Clears the vulnerability assessment rule baseline.
 

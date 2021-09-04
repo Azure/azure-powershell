@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.3.1
 * Use JsonExtensions to serialize deserialize JSON objects to ensure the use of custom serialization settings [#15552]
 * Added support for `Unsupported` and `NoEffect` change types to deployment What-If cmdlets.
 
