@@ -18,6 +18,6 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
     {
         public string DeviceId { get; set; }
 
-        public int? AlertsCount { get; set; }
+        public long? AlertsCount { get; set; }
     }
 }

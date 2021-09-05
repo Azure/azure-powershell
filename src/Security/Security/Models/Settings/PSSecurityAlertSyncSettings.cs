@@ -11,25 +11,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
+namespace Microsoft.Azure.Commands.Security.Models.Settings
 {
-    public class PSIotSecuritySolutionAnalytics : PSResource
+    public class PSSecurityAlertSyncSettings : PSSecuritySetting
     {
-        public PSIoTSeverityMetrics Metrics {get; set;}
-
-        public long? UnhealthyDeviceCount { get; set; }
-
-        public IList<PSDevicesMetrics> DevicesMetrics { get; set; }
-
-        public IList<PSIoTSecurityAlertedDevice> TopAlertedDevices { get; set; }
-
-        public IList<PSIoTSecurityDeviceAlert> MostPrevalentDeviceAlerts { get; set; }
-
-        public IList<PSIoTSecurityDeviceRecommendation> MostPrevalentDeviceRecommendations { get; set; }
-
+        public bool Enabled { get; set; }
     }
 }
