@@ -89,6 +89,8 @@ function Set-AzureRmSecurityAlert-ResourceGroupLevelResource
 	$location = Extract-ResourceLocation -ResourceId $alert.Id
 	$rgName = Extract-ResourceGroup -ResourceId $alert.Id
 
+	Set-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name -ActionType "Activate"
+
 	$fetchedAlert = Get-AzSecurityAlert -ResourceGroupName $rgName -Location $location -Name $alert.Name
 
 	Validate-AlertActivity -alert $fetchedAlert
@@ -104,6 +106,8 @@ function Set-AzureRmSecurityAlert-SubscriptionLevelResource
 	$alert = $alerts | where { $_.Id -notlike "*resourceGroups*" } | Select -First 1
 	$location = Extract-ResourceLocation -ResourceId $alert.Id
 
+	Set-AzSecurityAlert -Location $location -Name $alert.Name -ActionType "Activate"
+
 	$fetchedAlert = Get-AzSecurityAlert -Location $location -Name $alert.Name
 
 	Validate-AlertActivity -alert $fetchedAlert
@@ -118,6 +122,7 @@ function Set-AzureRmSecurityAlert-ResourceId
 	$alerts = Get-AzSecurityAlert
 	$alert = $alerts | Select -First 1
 
+	Set-AzSecurityAlert -ResourceId $alert.Id -ActionType "Activate"
 	$fetchedAlert = Get-AzSecurityAlert -ResourceId $alert.Id
 
 	Validate-AlertActivity -alert $fetchedAlert
