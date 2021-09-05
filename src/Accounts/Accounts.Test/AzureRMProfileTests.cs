@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Test;
@@ -1101,7 +1102,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subscriptions = new List<string> { DefaultSubscription.ToString() };
             var profile = SetupLogin(tenants, subscriptions, subscriptions);
 
-            var copy = profile.CopyForContextOverriding() as AzureRmProfile;
+            var utilities = new AzureRmSharedUtilities();
+            var copy = utilities.CopyForContextOverriding(profile) as AzureRmProfile;
 
             // Should act as shallow copy
             // except for that `Contexts` should be a new dictionary

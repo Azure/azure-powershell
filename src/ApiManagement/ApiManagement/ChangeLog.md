@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * Added new `Sync-AzApiManagementKeyVaultSecret` cmdlet.
 * Added new `New-AzApiManagementKeyVaultObject` cmdlet.
 * Added new optional [-useFromLocation] parameter to the `Get-ApiManagementCache` `New-ApiManagementCache``Update-ApiManagementCache` cmdlet.
