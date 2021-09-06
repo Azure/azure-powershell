@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Kusto pool principalAssignment
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzKustoPoolPrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testnewkustopool -PrincipalAssignmentName kustoprincipal -PrincipalId "00000000-0000-0000-0000-000000000000" -PrincipalType App -Role AllDatabasesAdmin
 
-{{ Add output here }}
+Name                                   Type
+----                                   ----
+testws/testnewkustopool/kustoprincipal Microsoft.Synapse/workspaces/kustoPools/PrincipalAssignments
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+The above command creates a Kusto pool principalAssignment

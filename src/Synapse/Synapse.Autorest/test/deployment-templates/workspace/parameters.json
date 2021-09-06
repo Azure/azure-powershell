@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {
-      "value": "workspacezqspwi"
+      "value": "workspacebs6ond"
     },
     "defaultDataLakeStorageAccountName": {
-      "value": "storagezqspwi"
+      "value": "storagebs6ond"
     },
     "defaultDataLakeStorageFilesystemName": {
-      "value": "filesystemzqspwi"
+      "value": "filesystembs6ond"
     }
   }
 }

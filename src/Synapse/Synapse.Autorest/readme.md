@@ -53,8 +53,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/wonner/azure-rest-api-specs/blob/rename-kusto/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
-  # - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/synapse/data-plane/Microsoft.Synapse/preview/2021-06-01-preview/kqlScripts.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/57e4490a06aad262ca9154dc15b40f5a11bf7af5/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
 
 ```
 
@@ -106,9 +105,6 @@ directive:
       variant: ^Create$|^CreateExpanded$
     hide: true
   - where:
-      subject: ^DataKustoPoolDataConnectionValidation$
-    hide: true
-  - where:
       subject: ^KustoPoolDatabase$|^KustoPoolDataConnection$
       variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
     hide: true
@@ -116,9 +112,12 @@ directive:
   - where:
       subject: KustoOperation
     hide: true
-  # Remove the set-* cmdlet
+  # Remove the set-* and test-* cmdlet
   - where:
-      verb: Set
+      verb: Set|Test
+    remove: true
+  - where:
+      subject: ^DataKustoPoolDataConnectionValidation$
     remove: true
   # Correct some generated code
   - from: source-file-csharp
@@ -143,9 +142,4 @@ directive:
       parameter-name: DataConnectionName
     set:
       alias: Name
-  # - where:
-  #     verb: New
-  #     subject: ^KqlScript$
-  #     parameter-name: KqlScriptName
-  #   remove: true
 ```

@@ -15,7 +15,7 @@ Describe 'Get-AzSynapseKustoPoolSku' {
     }
     It 'List' {
         [array]$kustoPoolSku = Get-AzSynapseKustoPoolSku
-        $kustoPoolSku.Count | Should -Be 292
+        $kustoPoolSku.Count | Should -Be 298
     }
 
     It 'List1' {

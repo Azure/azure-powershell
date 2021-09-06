@@ -1,13 +1,13 @@
 {
-  "[NoDescription]+[NoContext]+List+$GET+https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupv1bh6g/providers/Microsoft.Synapse/workspaces/workspacev1bh6g/kustoPools?api-version=2021-06-01-preview+1": {
+  "[NoDescription]+[NoContext]+List+$GET+https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools?api-version=2021-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupv1bh6g/providers/Microsoft.Synapse/workspaces/workspacev1bh6g/kustoPools?api-version=2021-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools?api-version=2021-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "34" ],
-        "x-ms-client-request-id": [ "417cefdf-fefb-449b-9f7a-2dce5d4813d8" ],
+        "x-ms-unique-id": [ "170" ],
+        "x-ms-client-request-id": [ "c31022c0-8858-414e-9e5b-674042c3db27" ],
         "CommandName": [ "Get-AzSynapseKustoPool" ],
         "FullCommandName": [ "Get-AzSynapseKustoPool_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,33 +22,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "c39c5bd7-2499-4993-b0c4-9f728f8c0d7a" ],
+        "x-ms-request-id": [ "607afa6f-3e27-4bdf-8fe2-731b7482c7d4" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
-        "x-ms-correlation-request-id": [ "0418e7e4-fc33-4a1b-bc95-cf7fa0146dc0" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20210823T034830Z:0418e7e4-fc33-4a1b-bc95-cf7fa0146dc0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11960" ],
+        "x-ms-correlation-request-id": [ "30e54ba3-ad33-4a4b-9cc5-bbb0fafffcec" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210903T064800Z:30e54ba3-ad33-4a4b-9cc5-bbb0fafffcec" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 23 Aug 2021 03:48:30 GMT" ]
+        "Date": [ "Fri, 03 Sep 2021 06:48:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "914" ],
+        "Content-Length": [ "2854" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupv1bh6g/providers/Microsoft.Synapse/workspaces/workspacev1bh6g/kustoPools/testkustopoolv1bh6g\",\"name\":\"workspacev1bh6g/testkustopoolv1bh6g\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools\",\"etag\":\"\\\"2021-08-23T03:48:24.7045125Z\\\"\",\"location\":\"East US 2\",\"sku\":{\"name\":\"Storage optimized\",\"size\":\"Medium\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testkustopoolv1bh6g.workspacev1bh6g.kusto.azuresynapse.net\",\"dataIngestionUri\":\"https://ingest-testkustopoolv1bh6g.workspacev1bh6g.kusto.azuresynapse.net\",\"trustedExternalTenants\":[],\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"engineType\":\"V3\",\"workspaceUID\":\"13dc60a0-3abd-4afb-9585-5ca705673e89\",\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond\",\"name\":\"workspacebs6ond/testkustopoolbs6ond\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools\",\"etag\":\"\\\"2021-09-03T06:47:36.0518650Z\\\"\",\"location\":\"East US 2\",\"sku\":{\"name\":\"Storage optimized\",\"size\":\"Medium\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testkustopoolbs6ond.workspacebs6ond.kusto.azuresynapse.net\",\"dataIngestionUri\":\"https://ingest-testkustopoolbs6ond.workspacebs6ond.kusto.azuresynapse.net\",\"trustedExternalTenants\":[],\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"languageExtensions\":{\"value\":[{\"languageExtensionName\":\"PYTHON\"},{\"languageExtensionName\":\"R\"}]},\"enablePurge\":null,\"engineType\":\"V3\",\"workspaceUID\":\"cb8aca28-3884-4740-b367-bda905fc6d2d\",\"provisioningState\":\"Succeeded\"},\"zones\":[\"1\",\"3\",\"2\"]},{\"id\":\"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testfkustopoolvm2ugs\",\"name\":\"workspacebs6ond/testfkustopoolvm2ugs\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools\",\"etag\":\"\\\"2021-09-03T06:06:37.8650113Z\\\"\",\"location\":\"East US 2\",\"sku\":{\"name\":\"Storage optimized\",\"size\":\"Medium\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testfkustopoolvm2ugs.workspacebs6ond.kusto.azuresynapse.net\",\"dataIngestionUri\":\"https://ingest-testfkustopoolvm2ugs.workspacebs6ond.kusto.azuresynapse.net\",\"trustedExternalTenants\":[],\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"engineType\":\"V3\",\"workspaceUID\":\"cb8aca28-3884-4740-b367-bda905fc6d2d\",\"provisioningState\":\"Succeeded\"},\"zones\":[\"1\",\"3\",\"2\"]},{\"id\":\"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolovxw80\",\"name\":\"workspacebs6ond/testkustopoolovxw80\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools\",\"etag\":\"\\\"2021-09-03T06:19:51.2201105Z\\\"\",\"location\":\"East US 2\",\"sku\":{\"name\":\"Storage optimized\",\"size\":\"Medium\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testkustopoolovxw80.workspacebs6ond.kusto.azuresynapse.net\",\"dataIngestionUri\":\"https://ingest-testkustopoolovxw80.workspacebs6ond.kusto.azuresynapse.net\",\"trustedExternalTenants\":[],\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"engineType\":\"V3\",\"workspaceUID\":\"cb8aca28-3884-4740-b367-bda905fc6d2d\",\"provisioningState\":\"Succeeded\"},\"zones\":[\"1\",\"3\",\"2\"]}]}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupv1bh6g/providers/Microsoft.Synapse/workspaces/workspacev1bh6g/kustoPools/testkustopoolv1bh6g?api-version=2021-06-01-preview+1": {
+  "[NoDescription]+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond?api-version=2021-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupv1bh6g/providers/Microsoft.Synapse/workspaces/workspacev1bh6g/kustoPools/testkustopoolv1bh6g?api-version=2021-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond?api-version=2021-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "d7beaa54-36b1-4fb0-96b9-9505f1927b93" ],
+        "x-ms-unique-id": [ "171" ],
+        "x-ms-client-request-id": [ "e6c24049-4082-4442-99a5-85042f328c79" ],
         "CommandName": [ "Get-AzSynapseKustoPool" ],
         "FullCommandName": [ "Get-AzSynapseKustoPool_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -63,22 +63,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2021-08-23T03:48:24.7045125Z\"" ],
-        "x-ms-request-id": [ "ebeb440d-3026-441d-8263-1a3d148576ab" ],
+        "ETag": [ "\"2021-09-03T06:47:36.0518650Z\"" ],
+        "x-ms-request-id": [ "a0764131-1486-41d4-8612-4b2b7b657d48" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
-        "x-ms-correlation-request-id": [ "d5ad6f1c-a6ed-4a5d-b883-f3a564e8b6fd" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20210823T034830Z:d5ad6f1c-a6ed-4a5d-b883-f3a564e8b6fd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
+        "x-ms-correlation-request-id": [ "7ab80f7e-07a9-48ff-b7e4-5aefdb33096a" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210903T064801Z:7ab80f7e-07a9-48ff-b7e4-5aefdb33096a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 23 Aug 2021 03:48:30 GMT" ]
+        "Date": [ "Fri, 03 Sep 2021 06:48:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "902" ],
+        "Content-Length": [ "988" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/8b3b8a60-1dd0-4824-8770-2ed6a55d8e27/resourceGroups/testgroupv1bh6g/providers/Microsoft.Synapse/workspaces/workspacev1bh6g/kustoPools/testkustopoolv1bh6g\",\"name\":\"workspacev1bh6g/testkustopoolv1bh6g\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools\",\"etag\":\"\\\"2021-08-23T03:48:24.7045125Z\\\"\",\"location\":\"East US 2\",\"sku\":{\"name\":\"Storage optimized\",\"size\":\"Medium\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testkustopoolv1bh6g.workspacev1bh6g.kusto.azuresynapse.net\",\"dataIngestionUri\":\"https://ingest-testkustopoolv1bh6g.workspacev1bh6g.kusto.azuresynapse.net\",\"trustedExternalTenants\":[],\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"engineType\":\"V3\",\"workspaceUID\":\"13dc60a0-3abd-4afb-9585-5ca705673e89\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond\",\"name\":\"workspacebs6ond/testkustopoolbs6ond\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools\",\"etag\":\"\\\"2021-09-03T06:47:36.0518650Z\\\"\",\"location\":\"East US 2\",\"sku\":{\"name\":\"Storage optimized\",\"size\":\"Medium\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testkustopoolbs6ond.workspacebs6ond.kusto.azuresynapse.net\",\"dataIngestionUri\":\"https://ingest-testkustopoolbs6ond.workspacebs6ond.kusto.azuresynapse.net\",\"trustedExternalTenants\":[],\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"languageExtensions\":{\"value\":[{\"languageExtensionName\":\"PYTHON\"},{\"languageExtensionName\":\"R\"}]},\"enablePurge\":null,\"engineType\":\"V3\",\"workspaceUID\":\"cb8aca28-3884-4740-b367-bda905fc6d2d\",\"provisioningState\":\"Succeeded\"},\"zones\":[\"1\",\"3\",\"2\"]}",
       "isContentBase64": false
     }
   }

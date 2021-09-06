@@ -1,13 +1,13 @@
 {
-  "[NoDescription]+[NoContext]+List+$GET+https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupptgbxn/providers/Microsoft.Synapse/workspaces/workspaceptgbxn/kustoPools/testkustopoolptgbxn/principalAssignments?api-version=2021-06-01-preview+1": {
+  "[NoDescription]+[NoContext]+List+$GET+https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond/principalAssignments?api-version=2021-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupptgbxn/providers/Microsoft.Synapse/workspaces/workspaceptgbxn/kustoPools/testkustopoolptgbxn/principalAssignments?api-version=2021-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond/principalAssignments?api-version=2021-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "5b4d4166-2794-4a7e-b711-23484402d03a" ],
+        "x-ms-unique-id": [ "195" ],
+        "x-ms-client-request-id": [ "e080d6b6-bec8-417e-95b9-677f8e219b65" ],
         "CommandName": [ "Get-AzSynapseKustoPoolPrincipalAssignment" ],
         "FullCommandName": [ "Get-AzSynapseKustoPoolPrincipalAssignment_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,33 +22,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a5fbb5ba-a815-40e7-baeb-6820f0119461" ],
+        "x-ms-request-id": [ "2f01de65-561f-4525-be73-f529a272c156" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
-        "x-ms-correlation-request-id": [ "0f658a01-96b4-40d1-b8ba-12ff0ec4bb2f" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20210826T062951Z:0f658a01-96b4-40d1-b8ba-12ff0ec4bb2f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11941" ],
+        "x-ms-correlation-request-id": [ "b5756727-ee57-4fb7-8447-ea6703cc28ac" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210903T065048Z:b5756727-ee57-4fb7-8447-ea6703cc28ac" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 26 Aug 2021 06:29:50 GMT" ]
+        "Date": [ "Fri, 03 Sep 2021 06:50:48 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1259" ],
+        "Content-Length": [ "1280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupptgbxn/providers/Microsoft.Synapse/workspaces/workspaceptgbxn/kustoPools/testkustopoolptgbxn/PrincipalAssignments/f41e24ab-8cec-4986-be44-5093c3a5d750\",\"name\":\"workspaceptgbxn/testkustopoolptgbxn/f41e24ab-8cec-4986-be44-5093c3a5d750\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools/PrincipalAssignments\",\"properties\":{\"principalId\":\"wanyang@microsoft.com\",\"role\":\"AllDatabasesAdmin\",\"principalType\":\"User\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"tenantName\":\"Microsoft\",\"principalName\":\"Wan Yang\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupptgbxn/providers/Microsoft.Synapse/workspaces/workspaceptgbxn/kustoPools/testkustopoolptgbxn/PrincipalAssignments/KustoPoolScenarioTest\",\"name\":\"workspaceptgbxn/testkustopoolptgbxn/KustoPoolScenarioTest\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools/PrincipalAssignments\",\"properties\":{\"principalId\":\"f94e1c61-c7e1-43ef-9047-048c5086e3c9\",\"role\":\"AllDatabasesViewer\",\"principalType\":\"App\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"tenantName\":\"Microsoft\",\"principalName\":\"KustoPoolScenarioTest\",\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond/PrincipalAssignments/f8681ed2-fed4-4bb7-817a-2bdc90da3368\",\"name\":\"workspacebs6ond/testkustopoolbs6ond/f8681ed2-fed4-4bb7-817a-2bdc90da3368\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools/PrincipalAssignments\",\"properties\":{\"principalId\":\"d5a4bec7-e5d1-415a-87ac-64fa3ecbca3f\",\"role\":\"AllDatabasesAdmin\",\"principalType\":\"App\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"tenantName\":\"Microsoft\",\"principalName\":\"workspacebs6ond\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond/PrincipalAssignments/KustoPoolScenarioTest\",\"name\":\"workspacebs6ond/testkustopoolbs6ond/KustoPoolScenarioTest\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools/PrincipalAssignments\",\"properties\":{\"principalId\":\"f94e1c61-c7e1-43ef-9047-048c5086e3c9\",\"role\":\"AllDatabasesViewer\",\"principalType\":\"App\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"tenantName\":\"Microsoft\",\"principalName\":\"KustoPoolScenarioTest\",\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupptgbxn/providers/Microsoft.Synapse/workspaces/workspaceptgbxn/kustoPools/testkustopoolptgbxn/principalAssignments/KustoPoolScenarioTest?api-version=2021-06-01-preview+1": {
+  "[NoDescription]+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond/principalAssignments/KustoPoolScenarioTest?api-version=2021-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupptgbxn/providers/Microsoft.Synapse/workspaces/workspaceptgbxn/kustoPools/testkustopoolptgbxn/principalAssignments/KustoPoolScenarioTest?api-version=2021-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond/principalAssignments/KustoPoolScenarioTest?api-version=2021-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "41" ],
-        "x-ms-client-request-id": [ "23dd61e7-a74f-4ee2-8639-e2113f4e6ac9" ],
+        "x-ms-unique-id": [ "196" ],
+        "x-ms-client-request-id": [ "b8ad4f0f-ce20-47d4-b1d0-59a7e1aca140" ],
         "CommandName": [ "Get-AzSynapseKustoPoolPrincipalAssignment" ],
         "FullCommandName": [ "Get-AzSynapseKustoPoolPrincipalAssignment_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -63,21 +63,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "fc21085e-d680-4e31-9a8d-f2736ac33a17" ],
+        "x-ms-request-id": [ "30147967-8323-4bd8-b10c-f238b1b8d2e4" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
-        "x-ms-correlation-request-id": [ "94324c5c-fc6f-4af6-b2b2-417a882edc58" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20210826T062952Z:94324c5c-fc6f-4af6-b2b2-417a882edc58" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11940" ],
+        "x-ms-correlation-request-id": [ "c94af4a4-d936-4f64-ba52-ef1ec07466ce" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210903T065048Z:c94af4a4-d936-4f64-ba52-ef1ec07466ce" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 26 Aug 2021 06:29:51 GMT" ]
+        "Date": [ "Fri, 03 Sep 2021 06:50:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "622" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupptgbxn/providers/Microsoft.Synapse/workspaces/workspaceptgbxn/kustoPools/testkustopoolptgbxn/PrincipalAssignments/KustoPoolScenarioTest\",\"name\":\"workspaceptgbxn/testkustopoolptgbxn/KustoPoolScenarioTest\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools/PrincipalAssignments\",\"properties\":{\"principalId\":\"f94e1c61-c7e1-43ef-9047-048c5086e3c9\",\"role\":\"AllDatabasesViewer\",\"principalType\":\"App\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"tenantName\":\"Microsoft\",\"principalName\":\"KustoPoolScenarioTest\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testgroupbs6ond/providers/Microsoft.Synapse/workspaces/workspacebs6ond/kustoPools/testkustopoolbs6ond/PrincipalAssignments/KustoPoolScenarioTest\",\"name\":\"workspacebs6ond/testkustopoolbs6ond/KustoPoolScenarioTest\",\"type\":\"Microsoft.Synapse/workspaces/kustoPools/PrincipalAssignments\",\"properties\":{\"principalId\":\"f94e1c61-c7e1-43ef-9047-048c5086e3c9\",\"role\":\"AllDatabasesViewer\",\"principalType\":\"App\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"tenantName\":\"Microsoft\",\"principalName\":\"KustoPoolScenarioTest\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

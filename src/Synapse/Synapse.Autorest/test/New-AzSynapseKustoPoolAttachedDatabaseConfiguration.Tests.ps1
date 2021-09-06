@@ -29,10 +29,10 @@ Describe 'New-AzSynapseKustoPoolAttachedDatabaseConfiguration' {
         $followerKustoPoolResourceId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Synapse/workspaces/$workspaceName/kustoPools/$followerKustoPoolName"
         $attachedDatabaseConfigurationFullName = $workspaceName + "/" + $followerKustoPoolName + "/" + $attachedDatabaseConfigurationName
 
-        New-AzSynapseKustoDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName -Kind ReadWrite -Location $location
+        New-AzSynapseKustoPoolDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName -Kind ReadWrite -Location $location
         $attachedDatabaseConfigurationCreated = New-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $followerKustoPoolName -Name $attachedDatabaseConfigurationName -Location $location -KustoPoolResourceId $kustoPoolResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $defaultPrincipalsModificationKind
         Validate_AttachedDatabaseConfiguration $attachedDatabaseConfigurationCreated $attachedDatabaseConfigurationFullName  $location $kustoPoolResourceId $databaseName $defaultPrincipalsModificationKind
         { Invoke-AzSynapseDetachKustoPoolFollowerDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -KustoPoolResourceId $followerKustoPoolResourceId } | Should -Not -Throw
-        Remove-AzSynapseKustoDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName
+        Remove-AzSynapseKustoPoolDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName
     }
 }

@@ -89,21 +89,6 @@ Starts a Kusto pool.
 ### [Stop-AzSynapseKustoPool](Stop-AzSynapseKustoPool.md)
 Stops a Kusto pool.
 
-### [Test-AzSynapseKustoPoolChildResourceNameAvailability](Test-AzSynapseKustoPoolChildResourceNameAvailability.md)
-Checks that the Kusto Pool child resource name is valid and is not already in use.
-
-### [Test-AzSynapseKustoPoolDatabasePrincipalAssignmentNameAvailability](Test-AzSynapseKustoPoolDatabasePrincipalAssignmentNameAvailability.md)
-Checks that the database principal assignment is valid and is not already in use.
-
-### [Test-AzSynapseKustoPoolDataConnectionNameAvailability](Test-AzSynapseKustoPoolDataConnectionNameAvailability.md)
-Checks that the data connection name is valid and is not already in use.
-
-### [Test-AzSynapseKustoPoolNameAvailability](Test-AzSynapseKustoPoolNameAvailability.md)
-Checks that the kusto pool name is valid and is not already in use.
-
-### [Test-AzSynapseKustoPoolPrincipalAssignmentNameAvailability](Test-AzSynapseKustoPoolPrincipalAssignmentNameAvailability.md)
-Checks that the principal assignment name is valid and is not already in use.
-
 ### [Update-AzSynapseKustoPool](Update-AzSynapseKustoPool.md)
 Update a Kusto Kusto Pool.
 

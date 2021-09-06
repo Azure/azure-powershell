@@ -28,11 +28,11 @@ Describe 'Invoke-AzSynapseDetachKustoPoolFollowerDatabase' {
         $databaseName = "testdatabase" + $env.rstr4
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
 
-        New-AzSynapseKustoDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName -Kind ReadWrite -Location $location
+        New-AzSynapseKustoPoolDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName -Kind ReadWrite -Location $location
         New-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $followerKustoPoolName -Name $attachedDatabaseConfigurationName -Location $location -KustoPoolResourceId $kustoPoolResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $defaultPrincipalsModificationKind
         Start-Sleep -Seconds 180
         { Invoke-AzSynapseDetachKustoPoolFollowerDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -KustoPoolResourceId $followerClusterResourceId } | Should -Not -Throw
-        Remove-AzSynapseKustoDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName
+        Remove-AzSynapseKustoPoolDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName
     }
 
     It 'DetachViaIdentityExpanded' {
@@ -48,10 +48,10 @@ Describe 'Invoke-AzSynapseDetachKustoPoolFollowerDatabase' {
         $databaseName = "testdatabase" + $env.rstr5
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
 
-        New-AzSynapseKustoDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName -Kind ReadWrite -Location $location
+        New-AzSynapseKustoPoolDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName -Kind ReadWrite -Location $location
         New-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $followerKustoPoolName -Name $attachedDatabaseConfigurationName -Location $location -KustoPoolResourceId $kustoPoolResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $defaultPrincipalsModificationKind
         $kustopool = Get-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $kustoPoolName
         { Invoke-AzSynapseDetachKustoPoolFollowerDatabase -InputObject $kustopool -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -KustoPoolResourceId $followerClusterResourceId } | Should -Not -Throw
-        Remove-AzSynapseKustoDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName
+        Remove-AzSynapseKustoPoolDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName
     }
 }
