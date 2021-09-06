@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.keyvault/invoke-azkeyvaultkeyoperation
 schema: 2.0.0
 ---
 
