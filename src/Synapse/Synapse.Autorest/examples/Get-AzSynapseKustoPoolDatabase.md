@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all Kusto databases in a workspace by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
 
-{{ Add output here }}
+Kind      Location  Name                                                                                                                                                                                                
+----      --------  ----                                  
+ReadWrite East US 2 testws/testnewkustopool/mykustodatabase
 ```
 
-{{ Add description here }}
+The above command returns all Kusto databases in Kusto Pool "testkustopool" in the workspace "testws" found in the resource group "testrg".
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific Kusto database by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
 
-{{ Add output here }}
+Kind      Location  Name                                                                                            
+----      --------  ----                                  
+ReadWrite East US 2 testws/testnewkustopool/mykustodatabase
 ```
 
-{{ Add description here }}
+The above command returns the Kusto database named "mykustodatabase" in Kusto Pool "testkustopool" in the WorkspaceName "testws" found in the resource group "testrg".
 

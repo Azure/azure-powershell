@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all followed databases
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> AzSynapseKustoPoolFollowerDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
 
-{{ Add output here }}
+AttachedDatabaseConfigurationName DatabaseName KustoPoolResourceId
+--------------------------------- ------------ -------------------
+conf1                             testdatabase /subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/testrg/providers/Microsoft.Synapse/workspaces/testsw/kustoPools/followerpool
 ```
 
-{{ Add description here }}
+The above command returns a list of databases that are owned by this Kusto Pool and were followed by another Kusto Pool.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

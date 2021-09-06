@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete an existing Kusto database PrincipalAssignment by name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -DatabaseName mykustodatabase -PrincipalAssignmentName kustoprincipal1
 ```
 
-{{ Add description here }}
+The above command deletes the PrincipalAssignment named "kustoprincipal1" in the Kusto database "mykustodatabase" in workspace "testws" found in resource group "testrg".
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
