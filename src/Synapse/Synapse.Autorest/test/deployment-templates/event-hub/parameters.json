@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "eventhub_namespace": {
-      "value": "eventhubNSbs6ond"
+      "value": "eventhubNS4lvzne"
     },
     "eventhub_name": {
-      "value": "eventhubbs6ond"
+      "value": "eventhub4lvzne"
     },
     "eventgrid_name": {
-      "value": "eventgridbs6ond"
+      "value": "eventgrid4lvzne"
     }
   }
 }

@@ -23,23 +23,16 @@ Returns a list of language extensions that can run within KQL queries.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all language extensions set for a workspace
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSynapseKustoPoolLanguageExtension -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testpool
 
-{{ Add output here }}
+Name
+----
+PYTHON
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The above command returns a list of language extensions that can run within KQL queries.
 
 ## PARAMETERS
 

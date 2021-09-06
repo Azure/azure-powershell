@@ -19,13 +19,11 @@ Creates or updates a database.
 .Description
 Creates or updates a database.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzSynapseKustoPoolDatabase -ResourceGroupName "testrg" -WorkspaceName "testws" -KustoPoolName "testkustopool" -DatabaseName "mykustodatabase" -Kind "ReadWrite" -Location "East US 2"
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Kind      Location  Name                                                                                   
+----      --------  ----                              
+ReadWrite East US 2 testws/testkustopool/mykustodatabase
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase

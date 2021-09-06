@@ -32,23 +32,13 @@ Detaches all followers of a database owned by this Kusto Pool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Detach a follower database
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Invoke-AzSynapseDetachKustoPoolFollowerDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -AttachedDatabaseConfigurationName "myfollowerconfiguration" -KustoPoolResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Synapse/workspaces/testws/kustoPools/testfollowerkustopool"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The above command detaches the follower database defined in AttachedDatabaseConfiguration "myfollowerconfiguration" from Kusto Pool "testfollowerkustopool".
 
 ## PARAMETERS
 

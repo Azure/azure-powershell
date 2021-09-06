@@ -30,23 +30,17 @@ Creates or updates an attached database configuration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new AttachedDatabaseConfiguration
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool -Name followerconfiguration -KustoPoolResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Synapse/workspaces/testws/kustoPools/testkustopool -DatabaseName testdatabase -DefaultPrincipalsModificationKind Union -Location eastus2
 
-{{ Add output here }}
+Name                                               Type                                                                   Location
+----                                               ----                                                                   --------
+testws/testfollowerkustopool/followerconfiguration Microsoft.Synapse/workspaces/kustoPools/AttachedDatabaseConfigurations East US 2
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The above command creates a ReadOnly database "testdatabase" in cluster "testfollowerkustopool".
+It follows the database "testdatabase" from cluster "testkustopool"
 
 ## PARAMETERS
 

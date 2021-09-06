@@ -23,23 +23,16 @@ Returns a list of databases that are owned by this Kusto Pool and were followed 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all followed databases
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSynapseKustoPoolFollowerDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
 
-{{ Add output here }}
+AttachedDatabaseConfigurationName DatabaseName KustoPoolResourceId
+--------------------------------- ------------ -------------------
+conf1                             testdatabase /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Synapse/workspaces/testws/kustoPools/followerpool
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The above command returns a list of databases that are owned by this Kusto Pool and were followed by another Kusto Pool.
 
 ## PARAMETERS
 

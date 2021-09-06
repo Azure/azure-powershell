@@ -19,13 +19,13 @@ Updates a database.
 .Description
 Updates a database.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> $2ds = New-TimeSpan -Days 2
+PS C:\> $4ds = New-TimeSpan -Days 4
+PS C:\> Update-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -Kind ReadWrite -SoftDeletePeriod $4ds -HotCachePeriod $2ds -Location 'East US'
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Kind      Location Name                                
+----      -------- ----                                
+ReadWrite East US  testws/testkustopool/mykustodatabase
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentity

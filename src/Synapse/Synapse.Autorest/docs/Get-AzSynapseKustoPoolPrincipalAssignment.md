@@ -36,23 +36,27 @@ Gets a Kusto pool principalAssignment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all Kusto principalAssignments
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSynapseKustoPoolPrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
 
-{{ Add output here }}
+Name                                 Type
+----                                 ----
+testws/testkustopool/kustoprincipal1 Microsoft.Synapse/workspaces/kustoPools/PrincipalAssignments
 ```
 
-{{ Add description here }}
+The above command lists all principalAssignments in the workspace "testws".
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets a Kusto principalAssignment by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzSynapseKustoPoolPrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -PrincipalAssignmentName kustoprincipal1
 
-{{ Add output here }}
+Name                                 Type
+----                                 ----
+testws/testkustopool/kustoprincipal1 Microsoft.Synapse/workspaces/kustoPools/PrincipalAssignments
 ```
 
-{{ Add description here }}
+The above command returns the Kusto principalAssignment named "kustoprincipal1" in the workspace "testws".
 
 ## PARAMETERS
 
