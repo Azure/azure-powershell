@@ -66,7 +66,8 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.Options.dll', 
                'Microsoft.Extensions.Primitives.dll', 
                'Microsoft.Azure.Graph.RBAC.dll', 
-               'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll'
+               'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll',
+               'MSGraph\bin\Az.Resources.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -81,10 +82,11 @@ FormatsToProcess = 'Resources.format.ps1xml', 'ResourceManager.format.ps1xml',
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Resources.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.Tags.dll')
+               'Microsoft.Azure.PowerShell.Cmdlets.Tags.dll', 'MSGraph\bin\Az.Resources.private.dll' 
+               'MSGraph\MSGraph.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = 'Get-AzMgUser', 'New-AzMgUser', 'Remove-AzMgUser', 'Update-AzMgUser'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment', 
