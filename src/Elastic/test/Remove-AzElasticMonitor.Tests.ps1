@@ -15,11 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzElasticMonitor'))
 }
 
 Describe 'Remove-AzElasticMonitor' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        New-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName04 -Location $env.location -Sku $env.sku -UserInfoEmailAddress $env.userEmail
+        Remove-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName04
+        $elasticList = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup
+        $elasticList.Name | Should -Not -Contain $env.elasticName04
+        
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'DeleteViaIdentity' {
+        $elastic = New-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName05 -Location $env.location -Sku $env.sku -UserInfoEmailAddress $env.userEmail
+        Remove-AzElasticMonitor -InputObject $elastic
+        $elasticList = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup
+        $elasticList.Name | Should -Not -Contain $env.elasticName05   
+     }
 }

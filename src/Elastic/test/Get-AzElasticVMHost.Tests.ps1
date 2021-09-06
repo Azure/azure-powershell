@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticVMHost'))
 }
 
 Describe 'Get-AzElasticVMHost' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzElasticVMHost -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 } | Should -Not -Throw
     }
 }

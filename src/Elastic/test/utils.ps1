@@ -19,6 +19,33 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+
+    $env.location = "westus2"
+    $env.userEmail = (Get-AzContext).Account.Id
+    $env.sku = "ess-monthly-consumption_Monthly"
+
+    $env.elasticName01 = 'elastic-' + (RandomString -allChars $false -len 6)
+    $env.elasticName02 = 'elastic-' + (RandomString -allChars $false -len 6)
+    $env.elasticName03 = 'elastic-' + (RandomString -allChars $false -len 6)
+    $env.elasticName04 = 'elastic-' + (RandomString -allChars $false -len 6)
+    $env.elasticName05 = 'elastic-' + (RandomString -allChars $false -len 6)
+
+    # Create the test group
+    Write-Host -ForegroundColor Green "start to create test group"
+    $env.resourceGroup = 'elastic-rg-' + (RandomString -allChars $false -len 6)
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
+    # Create two elastics for use in the test.
+    Write-Host -ForegroundColor Green "Create two elastics for use in the test"
+    New-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 -Location $env.location -Sku $env.sku -UserInfoEmailAddress $env.userEmail
+    New-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName02 -Location $env.location -Sku $env.sku -UserInfoEmailAddress $env.userEmail
+
+    Write-Host -ForegroundColor Green "Create two tagrules for use in the test"
+    Write-Host -ForegroundColor Yellow "The only name allowed for a rule set is 'default'"
+    New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01 -Name default
+    New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName02 -Name default
+
+    # Create 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -27,5 +54,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

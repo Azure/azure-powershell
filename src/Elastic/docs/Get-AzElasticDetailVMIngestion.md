@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticvmingestion
+online version: https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticdetailvmingestion
 schema: 2.0.0
 ---
 
-# Get-AzElasticVMIngestion
+# Get-AzElasticDetailVMIngestion
 
 ## SYNOPSIS
 List the vm ingestion details that will be monitored by the Elastic monitor resource.
@@ -14,14 +14,14 @@ List the vm ingestion details that will be monitored by the Elastic monitor reso
 
 ### Details (Default)
 ```
-Get-AzElasticVMIngestion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzElasticDetailVMIngestion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DetailsViaIdentity
 ```
-Get-AzElasticVMIngestion -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzElasticDetailVMIngestion -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,22 +31,22 @@ List the vm ingestion details that will be monitored by the Elastic monitor reso
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzElasticVMIngestion -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02
+PS C:\> Get-AzElasticDetailVMIngestion -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
 
-CloudId 					  IngestionKey
-------- 					  ------------
-elastic-pwsh02:xxxxxxxxxxxxxx xxxxxxxxxxxxxx
+CloudId                                  IngestionKey
+-------                                  ------------
+elastic-rhqz1v:xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 | Get-AzElasticVMIngestion
+PS C:\> Get-AzElasticMonitor -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v | Get-AzElasticDetailVMIngestion
 
-CloudId 					  IngestionKey
-------- 					  ------------
-elastic-pwsh02:xxxxxxxxxxxxxx xxxxxxxxxxxxxx
+CloudId                                  IngestionKey
+-------                                  ------------
+elastic-rhqz1v:xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 {{ Add description here }}

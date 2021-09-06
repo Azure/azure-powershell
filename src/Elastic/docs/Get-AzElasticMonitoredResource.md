@@ -24,16 +24,7 @@ List the resources currently being monitored by the Elastic monitor resource.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzElasticMonitoredResource -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02
 
 {{ Add output here }}
 ```

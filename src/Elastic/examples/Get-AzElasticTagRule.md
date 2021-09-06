@@ -2,9 +2,9 @@
 ```powershell
 PS C:\> Get-AzElasticTagRule -ResourceGroupName lucas-elastic-test -MonitorName elastic-pwsh02 -Name default
 
-Name    Type
-----    ----
-default microsoft.elastic/monitors/tagrules
+Name    ProvisioningState ResourceGroupName
+----    ----------------- -----------------
+default Succeeded         lucas-elastic-test
 ```
 
 {{ Add description here }}
@@ -13,9 +13,9 @@ default microsoft.elastic/monitors/tagrules
 ```powershell
 PS C:\> New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -Name default | Get-AzElasticTagRule
 
-Name    Type
-----    ----
-default microsoft.elastic/monitors/tagrules
+Name    ProvisioningState ResourceGroupName
+----    ----------------- -----------------
+default Succeeded         lucas-elastic-test
 ```
 
 {{ Add description here }}

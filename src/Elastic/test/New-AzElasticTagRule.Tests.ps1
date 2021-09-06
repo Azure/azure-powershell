@@ -15,11 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzElasticTagRule'))
 }
 
 Describe 'New-AzElasticTagRule' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {    
+        $tagRule = New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01 -Name default
+        $tagRule.Name | Should -Be 'default'
     }
 }

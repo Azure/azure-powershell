@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzElasticMonitor'))
 }
 
 Describe 'Update-AzElasticMonitor' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $elastic = Update-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 -Tag @{'key01' = 1; 'key02' = 2; 'key03' = 3}
+        $elastic.Tag.Count | Should -Be 3
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $elastic = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName01
+        $elastic = Update-AzElasticMonitor -InputObject $elastic -Tag @{'key01' = 1; 'key02' = 2; 'key03' = 3; 'key04' = 4}
+        $elastic.Tag.Count | Should -Be 4
     }
 }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticDeploymentInfo')
 }
 
 Describe 'Get-AzElasticDeploymentInfo' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzElasticDeploymentInfo -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 } | Should -Not -Throw
     }
 }

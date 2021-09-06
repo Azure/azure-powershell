@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzElasticMonitor'))
 }
 
 Describe 'New-AzElasticMonitor' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $elastic = New-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName03 -Location $env.location -Sku $env.sku -UserInfoEmailAddress $env.userEmail
+        $elastic.ProvisioningState | Should -Be 'Succeeded'
     }
 }

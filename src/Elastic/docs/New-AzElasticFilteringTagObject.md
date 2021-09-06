@@ -13,7 +13,7 @@ Create a in-memory object for FilteringTag
 ## SYNTAX
 
 ```
-New-AzElasticFilteringTagObject [-Action <Object>] [-Name <String>] [-Value <String>] [<CommonParameters>]
+New-AzElasticFilteringTagObject [-Action <TagAction>] [-Name <String>] [-Value <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,9 +23,12 @@ Create a in-memory object for FilteringTag
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $ft = New-AzElasticFilteringTagObject -Action Include -Name key -Value '1'
+PS C:\> New-AzElasticTagRule -ResourceGroupName lucas-elastic-test -MonitorName elastic-pwsh02 -Name default -LogRuleFilteringTag $ft
 
-{{ Add output here }}
+Name    Type
+----    ----
+default microsoft.elastic/monitors/tagrules
 ```
 
 {{ Add description here }}
@@ -36,7 +39,7 @@ PS C:\> {{ Add code here }}
 Valid actions for a filtering tag.
 
 ```yaml
-Type: System.Object
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.TagAction
 Parameter Sets: (All)
 Aliases:
 

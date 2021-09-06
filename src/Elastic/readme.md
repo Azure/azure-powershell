@@ -42,6 +42,7 @@ module-version: 0.1.0
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
+resourcegroup-append: true
 
 directive:
   - where:
@@ -74,11 +75,24 @@ directive:
 
   - where:
       verb: Invoke
-      subject: DetailVMIngestion
     set:
       verb: Get
-      subject: VMIngestion
-  
+  - where:
+      model-name: ElasticMonitorResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - SkuName
+          - MonitoringStatus
+          - Location
+  - where:
+      model-name: MonitoringTagRules
+    set:
+      format-table:
+        properties:
+          - Name
+          - ProvisioningState
   # - model-cmdlet:
   #   - FilteringTag
 ```

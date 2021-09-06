@@ -15,19 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticMonitor'))
 }
 
 Describe 'Get-AzElasticMonitor' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $elasticList = Get-AzElasticMonitor 
+        $elasticList.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $elastic = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName01
+        $elastic.Name | Should -Be $env.elasticName01
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $elasticList = Get-AzElasticMonitor -ResourceGroup $env.resourceGroup
+        $elasticList.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $elastic = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName01
+        Get-AzElasticMonitor -InputObject $elastic
+        $elastic.Name | Should -Be $env.elasticName01
     }
 }

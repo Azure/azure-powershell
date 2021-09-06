@@ -31,6 +31,7 @@
     
             [Parameter(HelpMessage="Valid actions for a filtering tag.")]
             [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.TagAction])]
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.TagAction]
             $Action,
             [Parameter(HelpMessage="The name (also known as the key) of the tag.")]
             [string]

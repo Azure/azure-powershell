@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzElasticTagRule'))
 }
 
 Describe 'Remove-AzElasticTagRule' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    # The only name allowed for a rule set is 'default' and the default Not allowed to delete.
+    # We try delete no-exsit tag rule for test api.
+    It 'Delete' {
+       {Remove-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01 -Name default01} | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

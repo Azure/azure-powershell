@@ -14,6 +14,9 @@ Microsoft Azure PowerShell: Elastic cmdlets
 ### [Get-AzElasticDeploymentInfo](Get-AzElasticDeploymentInfo.md)
 Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
 
+### [Get-AzElasticDetailVMIngestion](Get-AzElasticDetailVMIngestion.md)
+List the vm ingestion details that will be monitored by the Elastic monitor resource.
+
 ### [Get-AzElasticMonitor](Get-AzElasticMonitor.md)
 Get the properties of a specific monitor resource.
 
@@ -25,9 +28,6 @@ Get a tag rule set for a given monitor resource.
 
 ### [Get-AzElasticVMHost](Get-AzElasticVMHost.md)
 List the vm resources currently being monitored by the Elastic monitor resource.
-
-### [Get-AzElasticVMIngestion](Get-AzElasticVMIngestion.md)
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
 
 ### [New-AzElasticFilteringTagObject](New-AzElasticFilteringTagObject.md)
 Create a in-memory object for FilteringTag

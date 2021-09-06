@@ -1,6 +1,6 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzElasticDeploymentInfo -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02
+PS C:\> Get-AzElasticDeploymentInfo -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
 
 DiskCapacity MemoryCapacity Status  Version
 ------------ -------------- ------  -------
@@ -8,13 +8,3 @@ DiskCapacity MemoryCapacity Status  Version
 ```
 
 {{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-

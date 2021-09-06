@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticMonitoredResourc
 }
 
 Describe 'Get-AzElasticMonitoredResource' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzElasticMonitoredResource -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 } | Should -Not -Throw
     }
 }
