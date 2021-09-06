@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareScriptStringExecutionParameterObject
 
 ## SYNOPSIS
-Create a Script String Execution object
+Create a local Script String Execution object
 
 ## SYNTAX
 
@@ -17,11 +17,11 @@ New-AzVMwareScriptStringExecutionParameterObject -Name <String> [-Value <String>
 ```
 
 ## DESCRIPTION
-Create a Script String Execution object
+Create a local Script String Execution object
 
 ## EXAMPLES
 
-### Example 1: Create a Script String Execution object
+### Example 1: Create a local Script String Execution object
 ```powershell
 PS C:\> New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Value "stringValue"
 
@@ -30,7 +30,7 @@ Name                  Type   Value
 azps_test_stringvalue Value  stringValue
 ```
 
-Create a Script String Execution object
+Create a local Script String Execution object
 
 ## PARAMETERS
 
