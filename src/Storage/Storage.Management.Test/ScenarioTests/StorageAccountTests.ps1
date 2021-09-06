@@ -1985,7 +1985,7 @@ function Test-NewAzureStorageAccountEnableNfsV3
 				-EnableNfsV3 $true `
 				-EnableHierarchicalNamespace $true `
 				-EnableHttpsTrafficOnly $false `
-				-NetworkRuleSet (@{bypass="Logging,Metrics";defaultAction="allow";virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"})}) 
+				-NetworkRuleSet (@{bypass="Logging,Metrics";defaultAction="deny";virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"})}) 
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -1995,6 +1995,18 @@ function Test-NewAzureStorageAccountEnableNfsV3
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace
         Assert-AreEqual $false $sto.EnableHttpsTrafficOnly
         Assert-AreEqual $true $sto.EnableNfsV3
+
+        # valid create container with NFSv3 properties		
+        $containerName = "container"+ $rgname
+        $con = New-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -RootSquash RootSquash
+        Assert-AreEqual $false $con.EnableNfsV3AllSquash
+        Assert-AreEqual $true $con.EnableNfsV3RootSquash
+        $con = Update-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -RootSquash NoRootSquash
+        Assert-AreEqual $false $con.EnableNfsV3AllSquash
+        Assert-AreEqual $false $con.EnableNfsV3RootSquash
+        $con = Update-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -RootSquash AllSquash
+        Assert-AreEqual $true $con.EnableNfsV3AllSquash
+        Assert-AreEqual $false $con.EnableNfsV3RootSquash
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

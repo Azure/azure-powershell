@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.RemainingRetentionDays = container.RemainingRetentionDays;
             this.DeletedTime = container.DeletedTime;
             this.Version = container.Version;
+            this.EnableNfsV3AllSquash = container.EnableNfsV3AllSquash;
+            this.EnableNfsV3RootSquash = container.EnableNfsV3RootSquash;
         }
 
         public PSContainer(BlobContainer container)
@@ -77,6 +79,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.RemainingRetentionDays = container.RemainingRetentionDays;
             this.DeletedTime = container.DeletedTime;
             this.Version = container.Version;
+            this.EnableNfsV3AllSquash = container.EnableNfsV3AllSquash;
+            this.EnableNfsV3RootSquash = container.EnableNfsV3RootSquash;
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.List, Position = 0)]
@@ -129,6 +133,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? Deleted { get; }
 
         public string Version { get; }
+
+        public bool? EnableNfsV3RootSquash { get; set; }
+
+        public bool? EnableNfsV3AllSquash { get; set; }
 
 
         public static string ParseResourceGroupFromId(string idFromServer)
