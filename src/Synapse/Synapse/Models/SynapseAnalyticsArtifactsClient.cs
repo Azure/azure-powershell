@@ -1,4 +1,18 @@
-﻿using Azure;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Azure;
 using Azure.Analytics.Synapse.Artifacts;
 using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -8,11 +22,15 @@ using Microsoft.Azure.Commands.Synapse.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class SynapseAnalyticsArtifactsClient
+    public partial class SynapseAnalyticsArtifactsClient
     {
+        private static readonly object _lock = new object();
+        private readonly IAzureContext _context;
+        private readonly Uri _endpoint;
         private readonly PipelineClient _pipelineClient;
         private readonly PipelineRunClient _pipelineRunClient;
         private readonly LinkedServiceClient _linkedServiceClient;
@@ -31,8 +49,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new AzPSInvalidOperationException(Resources.InvalidDefaultSubscription);
             }
 
+            _context = context;
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
+            _endpoint = uri;
             _pipelineClient = new PipelineClient(uri, new AzureSessionCredential(context));
             _pipelineRunClient = new PipelineRunClient(uri, new AzureSessionCredential(context));
             _linkedServiceClient = new LinkedServiceClient(uri, new AzureSessionCredential(context));
@@ -315,6 +335,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return reader.ReadToEnd();
             }
+        }
+
+        internal Exception CreateAzurePowerShellException(RequestFailedException ex)
+        {
+            return Utils.CreateAzurePowerShellException(ex);
         }
 
         #endregion

@@ -12,20 +12,19 @@ Triggers restore for a BackupInstance
 
 ## SYNTAX
 
-### TriggerExpanded (Default)
-```
-Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> -ObjectType <String> -RestoreTargetInfoObjectType <String>
- -SourceDataStoreType <SourceDataStoreType> [-SubscriptionId <String>]
- [-RestoreTargetInfoRestoreLocation <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Trigger
+### Trigger (Default)
 ```
 Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ResourceGroupName <String>
  -VaultName <String> -Parameter <IAzureBackupRestoreRequest> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### TriggerExpanded
+```
+Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> -ObjectType <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
+ -SourceDataStoreType <SourceDataStoreType> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +41,57 @@ PS C:\> Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instanc
 
 ```
 
-this command triggers restore for a protected azure disk backup instance.
+
+
+### Example 2: Trigger restore as DB for protected AzureDatabaseForPostgreSQL using secret store.
+```powershell
+PS C:\> $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+PS C:\> $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+PS C:\> $targetResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.DBforPostgreSQL/servers/serverName/databases/targetDbName"
+PS C:\> $secretURI = "https://oss-keyvault.vault.azure.net/secrets/oss-secret"
+PS C:\> $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation "westus" -RestoreType AlternateLocation -TargetResourceId $targetResourceId -RecoveryPoint $rp[0].Property.RecoveryPointId -SecretStoreURI $secretURI -SecretStoreType AzureKeyVault
+PS C:\> $restoreJob = Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.BackupInstanceName -ResourceGroupName resourceGroupName -VaultName vaultName -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Parameter $restorerequest
+PS C:\> $jobid = $restoreJob.JobId.Split("/")[-1]
+PS C:\> $jobstatus = "InProgress"
+PS C:\> while($jobstatus -ne "Completed")
+{
+    Start-Sleep -Seconds 10
+    $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+    $jobstatus = $currentjob.Status
+}
+
+```
+
+The first, second commands fetch the instance and recovery point for the instance.
+The third command initializes the $targetResourceId with the Id of target postgre database (targetDbName should be the new database name).
+The fourth command initializes the secret URI.
+The fifth, sixth command initializes and triggers the restore request for AzureDatabaseForPostgreSQL with secret store.
+The seventh, eight, ninth  commands track the restore job to completion.
+
+### Example 3: Trigger restore as Files for protected AzureDatabaseForPostgreSQL.
+```powershell
+PS C:\> $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+PS C:\> $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+PS C:\> $targetContainerURI = ""https://targetStorageAccount.blob.core.windows.net/targetContainerName""
+PS C:\> $fileNamePrefix = "restore_as_files_12345"
+PS C:\> $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation "westus" -RestoreType RestoreAsFiles -RecoveryPoint $rp[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI -FileNamePrefix $fileNamePrefix
+PS C:\> $restoreJob = Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.BackupInstanceName -ResourceGroupName resourceGroupName -VaultName vaultName -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Parameter $restorerequest
+PS C:\> $jobid = $restoreJob.JobId.Split("/")[-1]
+PS C:\> $jobstatus = "InProgress"
+PS C:\> while($jobstatus -ne "Completed")
+{
+    Start-Sleep -Seconds 10
+    $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+    $jobstatus = $currentjob.Status
+}
+
+```
+
+The first, second commands fetch the instance and recovery point for the instance.
+The third command initializes the $targetContainerURI with the Id of target storage account container.
+The fourth command initializes the file name prefix for restore.
+The fifth, sixth command initializes and triggers the restore request for AzureDatabaseForPostgreSQL with secret store.
+The seventh, eight, ninth  commands track the restore job to completion.
 
 ## PARAMETERS
 
@@ -126,7 +175,7 @@ Azure backup restore request
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -152,30 +201,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RestoreTargetInfoObjectType
-Type of Datasource object, used to initialize the right inherited type
+### -RestoreTargetInfo
+Gets or sets the restore target information.
+To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RestoreTargetInfoRestoreLocation
-Target Restore region
-
-```yaml
-Type: System.String
-Parameter Sets: TriggerExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -263,11 +298,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IOperationJobExtendedInfo
 
 ## NOTES
 
@@ -280,9 +315,14 @@ To create the parameters described below, construct a hash table containing the 
 
 PARAMETER <IAzureBackupRestoreRequest>: Azure backup restore request
   - `ObjectType <String>`: 
-  - `RestoreTargetInfoObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
+  - `RestoreTargetInfo <IRestoreTargetInfoBase>`: Gets or sets the restore target information.
+    - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
+    - `[RestoreLocation <String>]`: Target Restore region
   - `SourceDataStoreType <SourceDataStoreType>`: Gets or sets the type of the source data store.
-  - `[RestoreTargetInfoRestoreLocation <String>]`: Target Restore region
+
+RESTORETARGETINFO <IRestoreTargetInfoBase>: Gets or sets the restore target information.
+  - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
+  - `[RestoreLocation <String>]`: Target Restore region
 
 ## RELATED LINKS
 

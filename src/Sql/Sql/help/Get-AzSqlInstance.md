@@ -65,6 +65,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -81,6 +82,7 @@ LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
+ZoneRedundant            : false
 ```
 
 This command gets information about all instances assigned to the resource group ResourceGroup01.
@@ -103,6 +105,7 @@ LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
+ZoneRedundant            : false
 ```
 
 This command gets information about the instance named managedInstance1.
@@ -125,6 +128,7 @@ LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -141,6 +145,7 @@ LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
+ZoneRedundant            : false
 ```
 
 This command gets information about all instances assigned to the resource group ResourceGroup01 that start with "managedInstance".
@@ -164,6 +169,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -181,6 +187,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 ```
 
 This command gets information about all instances within the instance pool "instancePool0".
@@ -205,6 +212,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -222,6 +230,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 ```
 
 This command gets information about all instances within the instance pool "instancePool0".
@@ -245,6 +254,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -262,6 +272,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         : instancePool0
+ZoneRedundant            : false
 ```
 
 This command gets information about all instances within the instance pool "instancePool0".
@@ -285,6 +296,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 InstancePoolName         :
+ZoneRedundant            : false
 ```
 
 This command gets information about the instance named managedInstance1.
@@ -307,6 +319,7 @@ LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
 Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
+ZoneRedundant            : false
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -324,6 +337,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
+ZoneRedundant            : false
 
 PS C:\> $val.Administrators
 AdministratorType         : ActiveDirectory
@@ -362,6 +376,7 @@ VCores                   : 8
 StorageSizeInGB          : 512
 DnsZone                  : ad35cna0mw
 Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
+ZoneRedundant            : false
 
 PS C:\> $val.Administrators
 AdministratorType         : ActiveDirectory
@@ -371,6 +386,7 @@ Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
 TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
 AzureADOnlyAuthentication : True
 ```
+
 This command gets information about the instance named managedInstance1.
 
 ## PARAMETERS

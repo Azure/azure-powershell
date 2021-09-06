@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -38,6 +39,7 @@ using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -665,6 +667,9 @@ namespace Microsoft.Azure.Commands.Profile
                 }
                 IAzureEventListenerFactory azureEventListenerFactory = new AzureEventListenerFactory();
                 AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => new CommonUtilities());
+                // It's tricky to register a component as an Interface
+                // Make sure componentInitializer return the Interface, not the derived type
+                AzureSession.Instance.RegisterComponent(nameof(ISharedUtilities), () => new AzureRmSharedUtilities() as ISharedUtilities);
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());

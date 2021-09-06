@@ -279,6 +279,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
         [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
             ParameterSetName = InteractiveImportParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectImportParameterSet)]
@@ -294,6 +300,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = InteractiveImportParameterSet)]
         [Parameter(Mandatory = false,
@@ -364,12 +376,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (string.IsNullOrEmpty(KeyFilePath))
             {
-                return this.DataServiceClient.CreateKey(
+                return this.Track2DataClient.CreateKey(
                         VaultName,
                         Name,
                         CreateKeyAttributes(),
                         Size,
-                        null);
+                        CurveName);
             }
             else
             {
@@ -405,7 +417,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (!string.IsNullOrEmpty(VaultName) && !string.IsNullOrEmpty(Destination))
             {
-                KeyType = (HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase)) ? JsonWebKeyType.RsaHsm : JsonWebKeyType.Rsa;
+                if (string.IsNullOrEmpty(KeyType))
+                {
+                    // Set default value as RSA
+                    KeyType = JsonWebKeyType.Rsa;
+                }
+                if(HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase))
+                {
+                    if (KeyType == JsonWebKeyType.Rsa) KeyType = JsonWebKeyType.RsaHsm;
+                    else if (KeyType == JsonWebKeyType.EllipticCurve) KeyType = JsonWebKeyType.EllipticCurveHsm;
+                    // oct (AES) is only supported by managed HSM
+                }
             }
 
             return new Models.PSKeyVaultKeyAttributes(

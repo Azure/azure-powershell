@@ -30,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub", "..\EventHub\Eve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor", "..\Monitor\Monitor\Monitor.csproj", "{84E78482-7C4B-4851-A21F-F4A6C3E1655B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Synapse", "Synapse.Autorest\Az.Synapse.csproj", "{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
