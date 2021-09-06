@@ -9,7 +9,7 @@
   Description = 'Microsoft Azure PowerShell: Users cmdlets'
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
-  RequiredAssemblies = './bin/Az.Resources.MSGraph.private.dll'
+  RequiredAssemblies = './bin/Az.Resources.private.dll'
   FormatsToProcess = 'MSGraph.format.ps1xml'
   FunctionsToExport = 'Get-AzMgUser', 'New-AzMgUser', 'Remove-AzMgUser', 'Update-AzMgUser', '*'
   AliasesToExport = '*'
