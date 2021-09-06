@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string KeyId { get; }
 
         // Summary: encryted result or wraped result is base64 format. decryted result or unwraped result is plain text
-        public string result { get; }
+        public string Result { get; }
 
         // Summary: Algorithm used.
         public string Algorithm { get; }
@@ -19,28 +19,28 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyOperationResult(WrapResult wrapResult)
         {
             this.KeyId = wrapResult.KeyId;
-            this.result = System.Convert.ToBase64String(wrapResult.EncryptedKey);
+            this.Result = System.Convert.ToBase64String(wrapResult.EncryptedKey);
             this.Algorithm = wrapResult.Algorithm.ToString();
         }
 
         public PSKeyOperationResult(UnwrapResult unwrapResult)
         {
             this.KeyId = unwrapResult.KeyId;
-            this.result = System.Text.Encoding.Default.GetString(unwrapResult.Key);
+            this.Result = System.Text.Encoding.Default.GetString(unwrapResult.Key);
             this.Algorithm = unwrapResult.Algorithm.ToString();
         }
 
         public PSKeyOperationResult(EncryptResult encryptResult)
         {
             this.KeyId = encryptResult.KeyId;
-            this.result = System.Convert.ToBase64String(encryptResult.Ciphertext);
+            this.Result = System.Convert.ToBase64String(encryptResult.Ciphertext);
             this.Algorithm = encryptResult.Algorithm.ToString();
         }
 
         public PSKeyOperationResult(DecryptResult decryptResult)
         {
             this.KeyId = decryptResult.KeyId;
-            this.result = System.Text.Encoding.Default.GetString(decryptResult.Plaintext);
+            this.Result = System.Text.Encoding.Default.GetString(decryptResult.Plaintext);
             this.Algorithm = decryptResult.Algorithm.ToString();
         }
     }

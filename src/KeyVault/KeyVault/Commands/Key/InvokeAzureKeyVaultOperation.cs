@@ -11,8 +11,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
     /// <summary>
     /// 1. Encrypts an arbitrary sequence of bytes using an encryption key that is stored in a key vault.
     /// 2. Decrypts a single block of encrypted data.
-    /// 3. 
-    /// 4. 
+    /// 3. Wraps a symmetric key using a specified key.
+    /// 4. Unwraps a symmetric key using the specified key that was initially used for wrapping that key.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyOperation", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyOperationResult))]
