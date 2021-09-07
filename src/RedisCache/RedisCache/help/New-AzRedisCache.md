@@ -135,6 +135,68 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
           Zone               : []
 ```
 
+### Example 5: Configure data persistence for a Premium Azure Cache for Redis
+
+    Persistence writes Redis data into an Azure Storage account that you own and manage. So before configuring data persistence you need storage account (https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal). Choose a storage account in the same region and subscription as the cache, and a Premium Storage account is recommended because premium storage has higher throughput.
+    For setting up data persistence, need to specifies Redis Configuration settings.
+   
+    For RDB back up enabled :-
+       - rdb-backup-enabled (Set true or false)
+       - rdb-storage-connection-string (Go to your Storage account. In left coloumn select Access keys. Then click on Show keys and copy any connection string from there.)
+       - rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)  
+    
+```
+PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=demoaccount;AccountKey=QdcckhAuPxEPKOSrw6vGv4MG+Nqm+tOuLOMncQfS0tYLl05auuo00zemdO70EMgTkAZhAHR7eUwHZA31K2oLQQ==;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300], [rdb-backup-enabled, true]....} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : []
+```
+
+    For AOF back up enabled :-
+       - aof-backup-enabled (Set true or false),
+       - aof-storage-connection-string-0 (Go to your Storage account. In left coloumn select Access keys. Then click on Show keys and copy any connection string from there.)
+       - aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.) 
+
+```
+PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"aof-backup-enabled" = "true"; "aof-storage-connection-string-0" = "DefaultEndpointsProtocol=https;AccountName=demoaccount;AccountKey=QdcckhAuPxEPKOSrw6vGv4MG+Nqm+tOuLOMncQfS0tYLl05auuo00zemdO70EMgTkAZhAHR7eUwHZA31K2oLQQ==;EndpointSuffix=core.windows.net"}
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300], [aof-backup-enabled, true]...} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : []
+```
 
 ## PARAMETERS
 
