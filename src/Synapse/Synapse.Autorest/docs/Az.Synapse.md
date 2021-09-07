@@ -97,4 +97,3 @@ Updates a database.
 
 ### [Update-AzSynapseKustoPoolDataConnection](Update-AzSynapseKustoPoolDataConnection.md)
 Updates a data connection.
-
