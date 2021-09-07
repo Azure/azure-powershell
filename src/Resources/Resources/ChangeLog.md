@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed typos with ManagementGroups breaking change descriptions [#15819].
 
 ## Version 4.3.1
 * Use JsonExtensions to serialize deserialize JSON objects to ensure the use of custom serialization settings [#15552]
