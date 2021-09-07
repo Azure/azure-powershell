@@ -41,9 +41,6 @@ Create or update a tag rule set for a given monitor resource.
 ### [Remove-AzElasticMonitor](Remove-AzElasticMonitor.md)
 Delete a monitor resource.
 
-### [Remove-AzElasticTagRule](Remove-AzElasticTagRule.md)
-Delete a tag rule set for a given monitor resource.
-
 ### [Update-AzElasticMonitor](Update-AzElasticMonitor.md)
 Update a monitor resource.
 

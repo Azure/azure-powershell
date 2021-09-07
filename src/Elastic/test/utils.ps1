@@ -42,8 +42,8 @@ function setupEnv() {
 
     Write-Host -ForegroundColor Green "Create two tagrules for use in the test"
     Write-Host -ForegroundColor Yellow "The only name allowed for a rule set is 'default'"
-    New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01 -Name default
-    New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName02 -Name default
+    New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01
+    New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName02
 
     # Create 
     $envFile = 'env.json'

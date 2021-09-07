@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzElasticTagRule'))
 
 Describe 'New-AzElasticTagRule' {
     It 'CreateExpanded' {    
-        $tagRule = New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01 -Name default
+        $tagRule = New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01
         $tagRule.Name | Should -Be 'default'
     }
 }

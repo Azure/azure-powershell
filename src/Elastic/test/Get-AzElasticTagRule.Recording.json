@@ -1,45 +1,4 @@
 {
-  "Get-AzElasticTagRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/tagRules?api-version=2020-07-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/tagRules?api-version=2020-07-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "57f9dffd-96b0-4c16-b67e-bdd8ac2c1bd8" ],
-        "CommandName": [ "Get-AzElasticTagRule" ],
-        "FullCommandName": [ "Get-AzElasticTagRule_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "e933fa40-ea70-417d-bf41-8c79bba38bd6" ],
-        "x-ms-correlation-request-id": [ "1cf73790-186f-475d-a8b7-50b06df3c533" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210906T082339Z:1cf73790-186f-475d-a8b7-50b06df3c533" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 06 Sep 2021 08:23:38 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "619" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-06T07:13:47.527095Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-09-06T07:13:47.527095Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}]}",
-      "isContentBase64": false
-    }
-  },
   "Get-AzElasticTagRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/tagRules/default?api-version=2020-07-01+1": {
     "Request": {
       "Method": "GET",
@@ -47,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "f8943d55-e65a-4a6b-8d46-98d669bc4e09" ],
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "bee72613-7f79-402e-b0bb-183131059e4a" ],
         "CommandName": [ "Get-AzElasticTagRule" ],
         "FullCommandName": [ "Get-AzElasticTagRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -63,15 +22,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1600075d-0000-0800-0000-6135bfac0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "ETag": [ "\"1600ce86-0000-0800-0000-6135d1970000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "ea57e48e-8e68-4784-ac34-4029cc164d2b" ],
-        "x-ms-correlation-request-id": [ "27cd6f33-3810-405a-8613-21a8aa90dc8c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210906T082339Z:27cd6f33-3810-405a-8613-21a8aa90dc8c" ],
+        "x-ms-request-id": [ "cd0f7d54-8441-4011-8b6f-06d6c78dbdee" ],
+        "x-ms-correlation-request-id": [ "09782f47-6df0-4c86-9339-e9f8488bd686" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210907T071601Z:09782f47-6df0-4c86-9339-e9f8488bd686" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 06 Sep 2021 08:23:38 GMT" ]
+        "Date": [ "Tue, 07 Sep 2021 07:16:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "607" ],
@@ -89,8 +48,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "554e990e-ac3c-4f8c-bc27-e366b2962833" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "8329b8b6-2e4e-4c8b-b8bd-7d60aacb2a91" ],
         "CommandName": [ "Get-AzElasticTagRule" ],
         "FullCommandName": [ "Get-AzElasticTagRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -105,15 +64,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1600075d-0000-0800-0000-6135bfac0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "ETag": [ "\"1600ce86-0000-0800-0000-6135d1970000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "0cb0c9e7-2cfc-4e1c-baa9-7b2cd1032189" ],
-        "x-ms-correlation-request-id": [ "f15ae809-0569-4e80-aa0a-ba737e64f225" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210906T082339Z:f15ae809-0569-4e80-aa0a-ba737e64f225" ],
+        "x-ms-request-id": [ "4238b28c-4e7f-4eb5-a440-2f024fa5cfa4" ],
+        "x-ms-correlation-request-id": [ "baed26d7-c1b2-4c75-94cd-a07e29567193" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210907T071601Z:baed26d7-c1b2-4c75-94cd-a07e29567193" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 06 Sep 2021 08:23:39 GMT" ]
+        "Date": [ "Tue, 07 Sep 2021 07:16:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "607" ],
@@ -131,8 +90,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "35cce818-522b-4acb-a9b2-17bd65e2d916" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "f9fc87e5-f2d0-4dd7-8a05-d465f2b29c9f" ],
         "CommandName": [ "Get-AzElasticTagRule" ],
         "FullCommandName": [ "Get-AzElasticTagRule_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -147,15 +106,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1600075d-0000-0800-0000-6135bfac0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "ETag": [ "\"1600ce86-0000-0800-0000-6135d1970000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "8a774a1d-e48f-46dd-b7b0-a97d8b0acad8" ],
-        "x-ms-correlation-request-id": [ "bcb49bbc-e4fb-4d61-89ca-dfc7759124a9" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210906T082340Z:bcb49bbc-e4fb-4d61-89ca-dfc7759124a9" ],
+        "x-ms-request-id": [ "04675e8f-35ab-47e9-b610-7293630872da" ],
+        "x-ms-correlation-request-id": [ "69d24e46-8965-4215-8336-0400391909eb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210907T071601Z:69d24e46-8965-4215-8336-0400391909eb" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 06 Sep 2021 08:23:39 GMT" ]
+        "Date": [ "Tue, 07 Sep 2021 07:16:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "607" ],

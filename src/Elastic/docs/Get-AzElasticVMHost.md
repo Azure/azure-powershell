@@ -22,16 +22,16 @@ List the vm resources currently being monitored by the Elastic monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the vm resources currently being monitored by the Elastic monitor resource
 ```powershell
-PS C:\> Get-AzElasticVMHost -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02
+PS C:\> Get-AzElasticVMHost -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 
 VMResourceId
 ------------
-/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS
+/subscriptions/xxxxxx-xxxxx-xxxx-xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS
 ```
 
-{{ Add description here }}
+This command lists the vm resources currently being monitored by the Elastic monitor resource.
 
 ## PARAMETERS
 

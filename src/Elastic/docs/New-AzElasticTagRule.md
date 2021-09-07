@@ -13,10 +13,9 @@ Create or update a tag rule set for a given monitor resource.
 ## SYNTAX
 
 ```
-New-AzElasticTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog]
- [-LogRuleSendActivityLog] [-LogRuleSendSubscriptionLog] [-ProvisioningState <ProvisioningState>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzElasticTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog] [-LogRuleSendActivityLog]
+ [-LogRuleSendSubscriptionLog] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,16 +23,16 @@ Create or update a tag rule set for a given monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a tag rule set for a given monitor resource
 ```powershell
-PS C:\> New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -Name default
+PS C:\> New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
 
-Name    Type
-----    ----
-default microsoft.elastic/monitors/tagrules
+Name    ProvisioningState ResourceGroupName
+----    ----------------- -----------------
+default Succeeded         azps-elastic-test
 ```
 
-{{ Add description here }}
+This command creates or updates a tag rule set for a given monitor resource.
 
 ## PARAMETERS
 
@@ -126,36 +125,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Tag Rule Set resource name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningState
-Provisioning state of the monitoring tag rules.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ProvisioningState
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

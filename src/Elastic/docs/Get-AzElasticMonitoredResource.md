@@ -22,14 +22,13 @@ List the resources currently being monitored by the Elastic monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the resources currently being monitored by the Elastic monitor resource
 ```powershell
-PS C:\> Get-AzElasticMonitoredResource -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02
+PS C:\> Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command lists the resources currently being monitored by the Elastic monitor resource.
 
 ## PARAMETERS
 

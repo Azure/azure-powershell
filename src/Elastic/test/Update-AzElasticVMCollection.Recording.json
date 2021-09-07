@@ -3,7 +3,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/vmCollectionUpdate?api-version=2020-07-01",
-      "Content": "{\r\n  \"vmResourceId\": \"/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\r\n  \"operationName\": \"Add\"\r\n}",
+      "Content": "{\r\n  \"vmResourceId\": \"/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\r\n  \"operationName\": \"Add\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -32,7 +32,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"deploymentId\":\"5db78d5cb624424eb1283d8d7b4a8150\",\"vmResourceId\":\"/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\"installDate\":\"2021-09-06T08:52:26.5994617Z\"}",
+      "Content": "{\"deploymentId\":\"5db78d5cb624424eb1283d8d7b4a8150\",\"vmResourceId\":\"/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\"installDate\":\"2021-09-06T08:52:26.5994617Z\"}",
       "isContentBase64": false
     }
   },
@@ -82,7 +82,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/vmCollectionUpdate?api-version=2020-07-01",
-      "Content": "{\r\n  \"vmResourceId\": \"/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\r\n  \"operationName\": \"Delete\"\r\n}",
+      "Content": "{\r\n  \"vmResourceId\": \"/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS\",\r\n  \"operationName\": \"Delete\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },

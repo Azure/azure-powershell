@@ -1,12 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a tag rule set for a given monitor resource
 ```powershell
-PS C:\> New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -Name default
+PS C:\> New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
 
-Name    Type
-----    ----
-default microsoft.elastic/monitors/tagrules
+Name    ProvisioningState ResourceGroupName
+----    ----------------- -----------------
+default Succeeded         azps-elastic-test
 ```
 
-{{ Add description here }}
+This command creates or updates a tag rule set for a given monitor resource.
 
 

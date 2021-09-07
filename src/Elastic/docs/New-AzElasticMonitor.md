@@ -16,10 +16,9 @@ Create a monitor resource.
 New-AzElasticMonitor -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-CompanyInfoBusiness <String>] [-CompanyInfoCountry <String>] [-CompanyInfoDomain <String>]
  [-CompanyInfoEmployeesNumber <String>] [-CompanyInfoState <String>] [-IdentityType <ManagedIdentityTypes>]
- [-MonitoringStatus <MonitoringStatus>] [-ProvisioningState <ProvisioningState>] [-Sku <String>]
- [-Tag <Hashtable>] [-UserInfoCompanyName <String>] [-UserInfoEmailAddress <String>]
- [-UserInfoFirstName <String>] [-UserInfoLastName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MonitoringStatus <MonitoringStatus>] [-Sku <String>] [-Tag <Hashtable>] [-UserInfoCompanyName <String>]
+ [-UserInfoEmailAddress <String>] [-UserInfoFirstName <String>] [-UserInfoLastName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,16 +26,16 @@ Create a monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a monitor resource
 ```powershell
 PS C:\> New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -SkuName "ess-monthly-consumption_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com'
 
-Location Name           Type
--------- ----           ----
-westus2  elastic-pwsh02 microsoft.elastic/monitors
+Name           SkuName                         MonitoringStatus Location ResourceGroupName
+----           -------                         ---------------- -------- -----------------
+elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
 ```
 
-{{ Add description here }}
+This command creates a monitor resource.
 
 ## PARAMETERS
 
@@ -210,21 +209,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningState
-Provisioning state of the monitor resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ProvisioningState
 Parameter Sets: (All)
 Aliases:
 

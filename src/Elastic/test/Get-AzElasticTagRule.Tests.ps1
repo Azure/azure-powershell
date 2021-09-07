@@ -15,19 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticTagRule'))
 }
 
 Describe 'Get-AzElasticTagRule' {
-    It 'List' {
-        { 
-            Get-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01
-        } | Should -Not -Throw
-    }
 
     It 'Get' {
-        $tagRule = Get-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01 -Name default
+        $tagRule = Get-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01
         $tagRule.Name | Should -Be 'default'
     }
 
     It 'GetViaIdentity' {
-        $tagrule = Get-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01 -Name default
+        $tagrule = Get-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01
         $tagrule = Get-AzElasticTagRule -InputObject $tagrule
         $tagRule.Name | Should -Be 'default'
     }

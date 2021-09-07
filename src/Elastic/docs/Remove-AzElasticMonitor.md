@@ -29,23 +29,21 @@ Delete a monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a monitor resource
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzElasticMonitor -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command delete a monitor resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a monitor resource by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzElasticMonitor -ResourceGroupName azure-elastic-test -Name elastic-pwsh03 | Remove-AzElasticMonitor
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command delete a monitor resource by pipeline.
 
 ## PARAMETERS
 

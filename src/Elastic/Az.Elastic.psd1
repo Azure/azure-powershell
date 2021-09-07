@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Elastic.private.dll'
   FormatsToProcess = './Az.Elastic.format.ps1xml'
-  FunctionsToExport = 'Get-AzElasticDeploymentInfo', 'Get-AzElasticDetailVMIngestion', 'Get-AzElasticMonitor', 'Get-AzElasticMonitoredResource', 'Get-AzElasticTagRule', 'Get-AzElasticVMHost', 'New-AzElasticFilteringTagObject', 'New-AzElasticMonitor', 'New-AzElasticTagRule', 'Remove-AzElasticMonitor', 'Remove-AzElasticTagRule', 'Update-AzElasticMonitor', 'Update-AzElasticVMCollection', '*'
+  FunctionsToExport = 'Get-AzElasticDeploymentInfo', 'Get-AzElasticDetailVMIngestion', 'Get-AzElasticMonitor', 'Get-AzElasticMonitoredResource', 'Get-AzElasticTagRule', 'Get-AzElasticVMHost', 'New-AzElasticFilteringTagObject', 'New-AzElasticMonitor', 'New-AzElasticTagRule', 'Remove-AzElasticMonitor', 'Update-AzElasticMonitor', 'Update-AzElasticVMCollection', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

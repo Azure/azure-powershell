@@ -12,16 +12,10 @@ Get a tag rule set for a given monitor resource.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
 Get-AzElasticTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzElasticTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -34,27 +28,27 @@ Get a tag rule set for a given monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a tag rule set for a given monitor resource
 ```powershell
-PS C:\> Get-AzElasticTagRule -ResourceGroupName lucas-elastic-test -MonitorName elastic-pwsh02 -Name default
+PS C:\> Get-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 
-Name    Type
-----    ----
-default microsoft.elastic/monitors/tagrules
+Name    ProvisioningState ResourceGroupName
+----    ----------------- -----------------
+default Succeeded         azure-elastic-test
 ```
 
-{{ Add description here }}
+This command gets a tag rule set for a given monitor resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a tag rule set for a given monitor resource by pipeline
 ```powershell
-PS C:\> New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -Name default | Get-AzElasticTagRule
+PS C:\> New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 | Get-AzElasticTagRule
 
-Name    Type
-----    ----
-default microsoft.elastic/monitors/tagrules
+Name    ProvisioningState ResourceGroupName
+----    ----------------- -----------------
+default Succeeded         azure-elastic-test
 ```
 
-{{ Add description here }}
+This command gets a tag rule set for a given monitor resource by pipeline.
 
 ## PARAMETERS
 
@@ -94,21 +88,6 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Tag Rule Set resource name
-
-```yaml
-Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -124,7 +103,7 @@ The name of the resource group to which the Elastic resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -141,7 +120,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False

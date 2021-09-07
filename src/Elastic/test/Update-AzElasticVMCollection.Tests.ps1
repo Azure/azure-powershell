@@ -17,14 +17,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzElasticVMCollection'
 Describe 'Update-AzElasticVMCollection' {
     It 'UpdateExpanded' {
         { 
-          Update-AzElasticVMCollection -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 -OperationName Add -VMResourceId '/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS' 
+          Update-AzElasticVMCollection -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 -OperationName Add -VMResourceId '/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS' 
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {          
             $elastic = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 
-            Update-AzElasticVMCollection -InputObject $elastic -OperationName Delete -VMResourceId '/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS' 
+            Update-AzElasticVMCollection -InputObject $elastic -OperationName Delete -VMResourceId '/subscriptions/xxxxxx/resourceGroups/vidhi-rg/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS' 
         } | Should -Not -Throw
     }
 }
