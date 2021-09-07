@@ -5,3 +5,11 @@ PS C:\> Remove-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azp
 ```
 
 Delete private cloud
+
+### Example 2: Delete private cloud
+```powershell
+PS C:\> Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud | Remove-AzVMwarePrivateCloud
+
+```
+
+Delete private cloud

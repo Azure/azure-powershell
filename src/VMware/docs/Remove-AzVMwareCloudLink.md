@@ -38,13 +38,13 @@ PS C:\> Remove-AzVMwareCloudLink -Name azps_test_cloudlink -PrivateCloudName azp
 
 Delete a cloud link
 
-### Example 2: Delete a cloud link by resource id
+### Example 2: Delete a cloud link
 ```powershell
-PS C:\> Remove-AzVMwareCloudLink -InputObject "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.AVS/privateClouds/azps_test_cloud/cloudLinks/azps_test_cloudlink"
+PS C:\> Get-AzVMwareCloudLink -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_cloudlink | Remove-AzVMwareCloudLink
 
 ```
 
-Delete a cloud link by resource id
+Delete a cloud link
 
 ## PARAMETERS
 
