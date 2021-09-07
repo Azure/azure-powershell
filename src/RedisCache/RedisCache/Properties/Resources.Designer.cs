@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -223,6 +223,15 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cache &apos;{0}&apos; does not have a Private Endpoint Name &apos;{1}&apos;..
+        /// </summary>
+        internal static string PrivateEndpointNameNotFound {
+            get {
+                return ResourceManager.GetString("PrivateEndpointNameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to reboot redis cache &apos;{0}&apos; {1}?.
         /// </summary>
         internal static string RebootingRedisCache {
@@ -313,6 +322,15 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing redis Private Endpoint Connection &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveRedisPrivateEndpointConnection {
+            get {
+                return ResourceManager.GetString("RemoveRedisPrivateEndpointConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove redis cache &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingRedisCache {
@@ -331,11 +349,29 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove redis private endpoint connection &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingRedisPrivateEndpointConnection {
+            get {
+                return ResourceManager.GetString("RemovingRedisPrivateEndpointConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enabling diagnostics on redis cache &apos;{0}&apos; ....
         /// </summary>
         internal static string SetRedisCacheDiagnostics {
             get {
                 return ResourceManager.GetString("SetRedisCacheDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting connection status on redis private endpoint &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetRedisPrivateEndpoint {
+            get {
+                return ResourceManager.GetString("SetRedisPrivateEndpoint", resourceCulture);
             }
         }
         

@@ -869,6 +869,35 @@ function Test-Zones
 
 <#
 .SYNOPSIS
+Tests redis private endpoints connection.
+#>
+function Test-PrivateEndpoint
+{
+    # Setup - Create private endpoint connection in Redis Cache already.
+
+    # Below example is manually created cache and private endpoint connection.
+    $resourceGroupName = "anshullahoti"
+    $cacheName = "AnshulDns"
+    $privateEndpointConnectionName = "PrivateDemo.245430db-e3e8-4472-b2eb-35c332c3f257"
+    $connectionStatus = "Approved"
+
+     # Listing the private endpoint connections  
+     Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName} " Listing all Private Endpoint Connection."
+
+     # Get the details of private endpoint connection
+     Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName} " Private Endpoint Properties."
+
+     # Set the connection status of Private Endpoint
+     Assert-True {Set-AzRedisPrivateEndpointConnectionStatus -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -ConnectionStatus $connectionStatus} "Setting Private Endpoint connection Status."
+   
+     # Delete the prviate endpoint connection    
+     Assert-True {Remove-AzRedisPrivateEndpointConnection -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -Force -PassThru} "Removing Private Endpoint Name failed."
+}
+
+
+
+<#
+.SYNOPSIS
 Sleeps but only during recording.
 #>
 function Start-TestSleep($milliseconds)

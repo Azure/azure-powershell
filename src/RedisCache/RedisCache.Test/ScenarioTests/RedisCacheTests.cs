@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFirewallRule()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-FirewallRule");
+            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-FirewallRule ");
         }
 
         [Fact]
@@ -102,6 +102,13 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         public void TestZones()
         {
             RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-Zones");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateEndpoints()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-PrivateEndpoint");
         }
     }
 }
