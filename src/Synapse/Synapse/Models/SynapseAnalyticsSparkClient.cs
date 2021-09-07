@@ -46,23 +46,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public SparkBatchJob SubmitSparkBatchJob(SparkBatchJobOptions sparkBatchJobOptions, bool waitForCompletion)
         {
-            var batch = _sparkBatchClient.CreateSparkBatchJob(sparkBatchJobOptions, detailed: true);
+            var batch = _sparkBatchClient.StartCreateSparkBatchJob(sparkBatchJobOptions, detailed: true);
             if (!waitForCompletion)
             {
-                return batch;
+                return batch.Value;
             }
 
-            return PollSparkBatchJobSubmission(batch);
-        }
-
-        public SparkBatchJob PollSparkBatchJobSubmission(SparkBatchJob batch)
-        {
-            return Poll(
-                batch,
-                b => b.Result.ToString(),
-                b => b.State,
-                b => this.GetSparkBatchJob(b.Id),
-                SparkJobLivyState.BatchSubmissionFinalStates);
+            return batch.Poll().Value;
         }
 
         public SparkBatchJob PollSparkBatchJobExecution(
@@ -119,13 +109,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public SparkSession CreateSparkSession(SparkSessionOptions sparkSessionOptions, bool waitForCompletion)
         {
-            var session = _sparkSessionClient.CreateSparkSession(sparkSessionOptions);
+            var session = _sparkSessionClient.StartCreateSparkSession(sparkSessionOptions);
             if (!waitForCompletion)
             {
-                return session;
+                return session.Value;
             }
 
-            return PollSparkSession(session);
+            return session.Poll().Value;
         }
 
         public SparkSession PollSparkSession(
@@ -193,24 +183,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public SparkStatement SubmitSparkSessionStatement(int sessionId, SparkStatementOptions sparkStatementOptions, bool waitForCompletion)
         {
-            var statement = _sparkSessionClient.CreateSparkStatement(sessionId, sparkStatementOptions);
+            var statement = _sparkSessionClient.StartCreateSparkStatement(sessionId, sparkStatementOptions);
             if (!waitForCompletion)
             {
-                return statement;
+                return statement.Value;
             }
 
-            return PollSparkSessionStatement(sessionId, statement);
-        }
-
-        public SparkStatement PollSparkSessionStatement(int sessionId, SparkStatement statement)
-        {
-            return Poll(
-                statement,
-                s => null,
-                s => s.State,
-                s => this.GetSparkSessionStatement(sessionId, s.Id),
-                SparkSessionStatementLivyState.ExecutingStates,
-                isFinalState: false);
+            return statement.Poll().Value;
         }
 
         public SparkStatement GetSparkSessionStatement(int sessionId, int statementId)

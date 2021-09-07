@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
-            _managedPrivateEndpointClient = new ManagedPrivateEndpointsClient(uri, new AzureSessionCredential(context));
+            _managedPrivateEndpointClient = new ManagedPrivateEndpointsClient(uri, new AzureSessionCredential(context), new ManagedPrivateEndpointsClientOptions(ManagedPrivateEndpointsClientOptions.ServiceVersion.V2020_12_01));
         }
 
         public ManagedPrivateEndpoint CreateManagedPrivateEndpoint(string managedPrivateEndpointName, string rawJsonContent, string managedVirtualNetworkName = "default")
