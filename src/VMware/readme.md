@@ -56,6 +56,7 @@ input-file:
 module-version: 0.3.0
 title: VMware
 subject-prefix: $(service-name)
+resourcegroup-append: true
 
 identity-correction-for-post: true
 

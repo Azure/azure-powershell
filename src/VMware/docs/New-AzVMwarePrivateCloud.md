@@ -28,9 +28,9 @@ Create or update a private cloud
 ```powershell
 PS C:\> New-AzVMwarePrivateCloud -Name azps_test_cloud -ResourceGroupName azps_test_group -NetworkBlock 192.168.48.0/22 -Sku av36 -ManagementClusterSize 3 -Location australiaeast
 
-Location      Name            Type
---------      ----            ----
-australiaeast azps_test_cloud Microsoft.AVS/privateClouds
+Location      Name            Type                        ResourceGroupName
+--------      ----            ----                        -----------------
+australiaeast azps_test_cloud Microsoft.AVS/privateClouds azps_test_group
 ```
 
 Create a private cloud

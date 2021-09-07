@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareAddonVrPropertiesObject
 
 ## SYNOPSIS
-Create a local VR object for the Addon Property parameter
+Create a in-memory object for AddonVrProperties
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzVMwareAddonVrPropertiesObject -VrsCount <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a local VR object for the Addon Property parameter
+Create a in-memory object for AddonVrProperties
 
 ## EXAMPLES
 

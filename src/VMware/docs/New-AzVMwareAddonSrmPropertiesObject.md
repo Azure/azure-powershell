@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareAddonSrmPropertiesObject
 
 ## SYNOPSIS
-Create a local SRM object for the Addon Property parameter
+Create a in-memory object for AddonSrmProperties
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzVMwareAddonSrmPropertiesObject -LicenseKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a local SRM object for the Addon Property parameter
+Create a in-memory object for AddonSrmProperties
 
 ## EXAMPLES
 

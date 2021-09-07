@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwarePSCredentialExecutionParameterObject
 
 ## SYNOPSIS
-Create a local PS Credential Execution object
+Create a in-memory object for PSCredentialExecutionParameter
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzVMwarePSCredentialExecutionParameterObject -Name <String> [-Password <Stri
 ```
 
 ## DESCRIPTION
-Create a local PS Credential Execution object
+Create a in-memory object for PSCredentialExecutionParameter
 
 ## EXAMPLES
 

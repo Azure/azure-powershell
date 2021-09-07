@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareScriptSecureStringExecutionParameterObject
 
 ## SYNOPSIS
-Create a local Script Secure String Execution object
+Create a in-memory object for ScriptSecureStringExecutionParameter
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> [-SecureVa
 ```
 
 ## DESCRIPTION
-Create a local Script Secure String Execution object
+Create a in-memory object for ScriptSecureStringExecutionParameter
 
 ## EXAMPLES
 

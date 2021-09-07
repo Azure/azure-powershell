@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareScriptStringExecutionParameterObject
 
 ## SYNOPSIS
-Create a local Script String Execution object
+Create a in-memory object for ScriptStringExecutionParameter
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzVMwareScriptStringExecutionParameterObject -Name <String> [-Value <String>
 ```
 
 ## DESCRIPTION
-Create a local Script String Execution object
+Create a in-memory object for ScriptStringExecutionParameter
 
 ## EXAMPLES
 
