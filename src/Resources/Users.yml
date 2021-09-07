@@ -899,6 +899,7 @@ components:
               type: array
               items:
                 type: string
+              readOnly: true
               description: The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced from on-premises directory. Supports $filter (eq and NOT).
             city:
               type: string
@@ -980,6 +981,7 @@ components:
               items:
                 type: string
                 nullable: true
+              readOnly: true
               description: 'The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only. Supports $filter (eq, NOT, ge, le, startsWith).'
             isResourceAccount:
               type: boolean
@@ -992,17 +994,20 @@ components:
             lastPasswordChangeDateTime:
               pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
               type: string
+              readOnly: true
               description: 'The time when this Azure AD user last changed their password. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select.'
               format: date-time
               nullable: true
             legalAgeGroupClassification:
               type: string
+              readOnly: true
               description: 'Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult and adult. Refer to the legal age group property definitions for further information. Returned only on $select.'
               nullable: true
             licenseAssignmentStates:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.licenseAssignmentState'
+              readOnly: true
               description: State of license assignments for this user. Read-only. Returned only on $select.
             mail:
               type: string
@@ -1022,9 +1027,11 @@ components:
               nullable: true
             onPremisesDistinguishedName:
               type: string
+              readOnly: true
               description: Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only.
               nullable: true
             onPremisesDomainName:
+              readOnly: true
               type: string
               description: 'Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only.'
               nullable: true
@@ -1037,6 +1044,7 @@ components:
             onPremisesLastSyncDateTime:
               pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
               type: string
+              readOnly: true
               description: 'Indicates the last time at which the object was synced with the on-premises directory; for example: ''2013-02-16T03:04:54Z''. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, NOT, ge, le, in).'
               format: date-time
               nullable: true
@@ -1047,18 +1055,22 @@ components:
               description: 'Errors when using Microsoft synchronization product during provisioning.  Supports $filter (eq, NOT, ge, le).'
             onPremisesSamAccountName:
               type: string
+              readOnly: true
               description: 'Contains the on-premises sAMAccountName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
               nullable: true
             onPremisesSecurityIdentifier:
               type: string
+              readOnly: true
               description: Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only.
               nullable: true
             onPremisesSyncEnabled:
               type: boolean
+              readOnly: true
               description: 'true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, NOT, in).'
               nullable: true
             onPremisesUserPrincipalName:
               type: string
+              readOnly: true
               description: 'Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
               nullable: true
             otherMails:
@@ -1084,11 +1096,13 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.provisionedPlan'
+              readOnly: true
               description: 'The plans that are provisioned for the user. Read-only. Not nullable. Supports $filter (eq, NOT, ge, le).'
             proxyAddresses:
               type: array
               items:
                 type: string
+              readOnly: true
               description: 'For example: [''SMTP: bob@contoso.com'', ''smtp: bob@sales.contoso.com'']. Read-only, Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).'
             showInAddressList:
               type: boolean
@@ -1097,6 +1111,7 @@ components:
             signInSessionsValidFromDateTime:
               pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
               type: string
+              readOnly: true
               description: 'Any refresh tokens or sessions tokens (session cookies) issued before this time are invalid, and applications will get an error when using an invalid refresh or sessions token to acquire a delegated access token (to access APIs such as Microsoft Graph).  If this happens, the application will need to acquire a new refresh token by making a request to the authorize endpoint. Read-only. Use revokeSignInSessions to reset.'
               format: date-time
               nullable: true
@@ -1193,16 +1208,19 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
               description: Directory objects that were created by the user. Read-only. Nullable.
             directReports:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
               description: The users and contacts that report to the user. (The users and contacts that have their manager property set to this user.) Read-only. Nullable. Supports $expand.
             licenseDetails:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.licenseDetails'
+              readOnly: true
               description: A collection of this user's license details. Read-only.
             manager:
               $ref: '#/components/schemas/microsoft.graph.directoryObject'
@@ -1210,6 +1228,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
               description: 'The groups, directory roles and administrative units that the user is a member of. Read-only. Nullable. Supports $expand.'
             oauth2PermissionGrants:
               type: array
@@ -1219,21 +1238,25 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
               description: Devices that are owned by the user. Read-only. Nullable. Supports $expand.
             ownedObjects:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
               description: Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
             registeredDevices:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
               description: Devices that are registered for the user. Read-only. Nullable. Supports $expand.
             scopedRoleMemberOf:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.scopedRoleMembership'
+              readOnly: true
               description: The scoped-role administrative unit memberships for this user. Read-only. Nullable.
             transitiveMemberOf:
               type: array
@@ -1245,31 +1268,37 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.calendarGroup'
+              readOnly: true
               description: The user's calendar groups. Read-only. Nullable.
             calendars:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.calendar'
+              readOnly: true
               description: The user's calendars. Read-only. Nullable.
             calendarView:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.event'
+              readOnly: true
               description: The calendar view for the calendar. Read-only. Nullable.
             contactFolders:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.contactFolder'
+              readOnly: true
               description: The user's contacts folders. Read-only. Nullable.
             contacts:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.contact'
+              readOnly: true
               description: The user's contacts. Read-only. Nullable.
             events:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.event'
+              readOnly: true
               description: The user's events. Default is to show events under the Default Calendar. Read-only. Nullable.
             inferenceClassification:
               $ref: '#/components/schemas/microsoft.graph.inferenceClassification'
@@ -1277,11 +1306,13 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.mailFolder'
+              readOnly: true
               description: The user's mail folders. Read-only. Nullable.
             messages:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.message'
+              readOnly: true
               description: The messages in a mailbox or folder. Read-only. Nullable.
             outlook:
               $ref: '#/components/schemas/microsoft.graph.outlookUser'
@@ -1289,6 +1320,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.person'
+              readOnly: true
               description: 'Read-only. The most relevant people to the user. The collection is ordered by their relevance to the user, which is determined by the user''s communication, collaboration and business relationships. A person is an aggregation of information from across mail, contacts and social networks.'
             photo:
               $ref: '#/components/schemas/microsoft.graph.profilePhoto'
@@ -1296,6 +1328,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.profilePhoto'
+              readOnly: true
               description: Read-only. Nullable.
             drive:
               $ref: '#/components/schemas/microsoft.graph.drive'
@@ -1303,6 +1336,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.drive'
+              readOnly: true
               description: A collection of drives available for this user. Read-only.
             followedSites:
               type: array
@@ -1317,6 +1351,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.agreementAcceptance'
+              readOnly: true
               description: The user's terms of use acceptance statuses. Read-only. Nullable.
             managedDevices:
               type: array
@@ -1345,6 +1380,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.userActivity'
+              readOnly: true
               description: The user's activities across devices. Read-only. Nullable.
             onlineMeetings:
               type: array
@@ -1362,13 +1398,12 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.team'
+              readOnly: true
               description: The Microsoft Teams teams that the user is a member of. Read-only. Nullable.
             teamwork:
               $ref: '#/components/schemas/microsoft.graph.userTeamwork'
             todo:
               $ref: '#/components/schemas/microsoft.graph.todo'
-          additionalProperties:
-            type: object
           description: Represents an Azure Active Directory user object.
     microsoft.graph.directoryObject:
       allOf:
@@ -1381,8 +1416,6 @@ components:
               type: string
               format: date-time
               nullable: true
-          additionalProperties:
-            type: object
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.extension:
       allOf:
@@ -3410,8 +3443,6 @@ components:
               type: string
               description: 'The base presence information for a user. Possible values are Available, AvailableIdle,  Away, BeRightBack, Busy, BusyIdle, DoNotDisturb, Offline, PresenceUnknown'
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.authentication:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3434,8 +3465,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.windowsHelloForBusinessAuthenticationMethod'
-          additionalProperties:
-            type: object
     microsoft.graph.chat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3479,8 +3508,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.teamsTab'
-          additionalProperties:
-            type: object
     microsoft.graph.team:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3570,17 +3597,17 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.userScopeTeamsAppInstallation'
               description: The apps installed in the personal scope of this user.
-          additionalProperties:
-            type: object
     microsoft.graph.entity:
       title: entity
       type: object
       properties:
         id:
           type: string
+          readOnly: true
           description: Read-only.
-      additionalProperties:
-        type: object
+        additionalProperties:
+          type: object
+          readOnly: true
     microsoft.graph.servicePlanInfo:
       title: servicePlanInfo
       type: object

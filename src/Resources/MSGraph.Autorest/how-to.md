@@ -19,7 +19,7 @@ To pack `Az.Resources` for distribution, run the `pack-module.ps1` script. This 
 ## Module Script Details
 There are multiple scripts created for performing different actions for developing `Az.Resources`.
 - `build-module.ps1`
-  - Builds the module DLL (`./bin/Az.Resources.private.dll`), creates the exported cmdlets and documentation, generates custom cmdlet test stubs and exported cmdlet example stubs, and updates `./Az.Resources.psd1` with Azure profile information.
+  - Builds the module DLL (`./bin/Az.Resources.MSGraph.private.dll`), creates the exported cmdlets and documentation, generates custom cmdlet test stubs and exported cmdlet example stubs, and updates `./Az.Resources.psd1` with Azure profile information.
   - **Parameters**: [`Switch` parameters]
     - `-Run`: After building, creates an isolated PowerShell session and loads `Az.Resources`.
     - `-Test`: After building, runs the `Pester` tests defined in the `test` folder.
