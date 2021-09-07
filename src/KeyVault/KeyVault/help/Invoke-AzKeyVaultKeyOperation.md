@@ -14,21 +14,21 @@ Performes operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specif
 
 ### ByVaultName (Default)
 ```
-Invoke-AzKeyVaultKeyOperation [-Operation] <String> [-Algorithm] <String> [-Value] <SecureString>
+Invoke-AzKeyVaultKeyOperation -Operation <String> -Algorithm <String> -Value <SecureString>
  [-VaultName] <String> [-Name] <String> [-Version <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHsmName
 ```
-Invoke-AzKeyVaultKeyOperation [-Operation] <String> [-Algorithm] <String> [-Value] <SecureString>
- [-HsmName] <String> [-Name] <String> [-Version <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzKeyVaultKeyOperation -Operation <String> -Algorithm <String> -Value <SecureString> [-HsmName] <String>
+ [-Name] <String> [-Version <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
-Invoke-AzKeyVaultKeyOperation [-Operation] <String> [-Algorithm] <String> [-Value] <SecureString>
+Invoke-AzKeyVaultKeyOperation -Operation <String> -Algorithm <String> -Value <SecureString>
  [-InputObject] <PSKeyVaultKeyIdentityItem> [-Version <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -112,7 +112,7 @@ Parameter Sets: (All)
 Aliases: EncryptionAlgorithm, WrapAlgorithm
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -187,7 +187,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -202,7 +202,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

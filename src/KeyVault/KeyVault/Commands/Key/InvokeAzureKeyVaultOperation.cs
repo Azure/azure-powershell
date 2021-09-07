@@ -32,14 +32,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         #region Input Parameter Definitions
 
         [Parameter(Mandatory = true,
-            Position = 2,
             HelpMessage = "Algorithm identifier")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Encrypt", "Decrypt", "Wrap", "Unwrap")]
         public string Operation { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 3,
             HelpMessage = "Algorithm identifier")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("RSA-OAEP", "RSA-OAEP-256", "RSA1_5")]
@@ -47,7 +45,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         public string Algorithm { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 4,
             HelpMessage = "The value to be operated")]
         [ValidateNotNullOrEmpty]
         public SecureString Value { get; set; }
