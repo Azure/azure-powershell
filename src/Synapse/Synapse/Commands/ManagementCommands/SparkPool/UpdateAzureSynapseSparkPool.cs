@@ -124,6 +124,10 @@ namespace Microsoft.Azure.Commands.Synapse
         public string LibraryRequirementsFilePath { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+           HelpMessage = HelpMessages.SparkConfigPropertiesFilePath)]
+        public string SparkConfigFilePath { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.PackageAction)]
         public SynapseConstants.PackageActionType PackageAction { get; set; }
 
@@ -187,6 +191,7 @@ namespace Microsoft.Azure.Commands.Synapse
             existingSparkPool.NodeSizeFamily = NodeSizeFamily.MemoryOptimized;
             existingSparkPool.NodeSize = this.IsParameterBound(c => c.NodeSize) ? this.NodeSize : existingSparkPool.NodeSize;
             existingSparkPool.LibraryRequirements = this.IsParameterBound(c => c.LibraryRequirementsFilePath) ? CreateLibraryRequirements() : existingSparkPool.LibraryRequirements;
+            existingSparkPool.SparkConfigProperties = this.IsParameterBound(c => c.SparkConfigFilePath) ? CreateSparkConfigProperties() : existingSparkPool.SparkConfigProperties;
 
             if (this.IsParameterBound(c => c.EnableAutoScale)
                 || this.IsParameterBound(c => c.AutoScaleMinNodeCount)
@@ -259,6 +264,17 @@ namespace Microsoft.Azure.Commands.Synapse
             var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(LibraryRequirementsFilePath);
 
             return new LibraryRequirements
+            {
+                Filename = Path.GetFileName(powerShellDestinationPath),
+                Content = this.ReadFileAsText(powerShellDestinationPath)
+            };
+        }
+
+        private SparkConfigProperties CreateSparkConfigProperties()
+        {
+            var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(SparkConfigFilePath);
+
+            return new SparkConfigProperties
             {
                 Filename = Path.GetFileName(powerShellDestinationPath),
                 Content = this.ReadFileAsText(powerShellDestinationPath)

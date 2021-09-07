@@ -94,6 +94,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string LibraryRequirementsFilePath = "Environment configuration file (\"PIP freeze\" output).";
 
+        public const string SparkConfigPropertiesFilePath = "Spark pool properties configuration file.";
+
         public const string Batch = "Indicates Spark batch.";
 
         public const string SparkJobName = "Name of Spark job.";
