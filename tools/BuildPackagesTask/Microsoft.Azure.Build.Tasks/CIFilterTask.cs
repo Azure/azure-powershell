@@ -78,6 +78,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private const string MODULE_NAME_PLACEHOLDER = "ModuleName";
 
+        private const int OCTOKIT_CHANGED_FILE_LIMIT = 3000; // Octokit only can get the first 3000 changed files in a PR.
+
         private Dictionary<string, string[]> ReadMapFile(string mapFilePath, string mapFileName)
         {
             if (mapFilePath == null)
@@ -420,7 +422,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             }
             else if (FilesChanged != null)
             {
-                if (FilesChanged.Length > 0)
+                if (FilesChanged.Length > 0 && FilesChanged.Length < OCTOKIT_CHANGED_FILE_LIMIT)
                 {
                     return ProcessFileChanged(csprojMap);
                 }

@@ -1,11 +1,11 @@
 ﻿function Edit-AzDataProtectionPolicyTriggerClientObject{
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates Backup schedule of an existing backup policy.')]
 
     param (
         [Parameter(Mandatory, HelpMessage='Backup Policy object.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicy]
         ${Policy},
 
         [Parameter(Mandatory, HelpMessage='Schedule to be associated to backup policy.')]
@@ -24,8 +24,12 @@
             }
         }
 
-        if($index -ne -1)
+        if($index -ne -1) # here $backupRuleIndex -ne -1
         {
+            # set Local TimeZone for policy Schedule
+            $timezone = Get-TimeZone
+            $Policy.PolicyRule[$backupRuleIndex].Trigger.ScheduleTimeZone = $timezone.StandardName
+
             $Policy.PolicyRule[$backupRuleIndex].Trigger.ScheduleRepeatingTimeInterval = $Schedule
             $Policy.PolicyRule[$backupRuleIndex].Name = GetBackupFrequenceFromTimeInterval -RepeatingTimeInterval $Schedule
             return $Policy

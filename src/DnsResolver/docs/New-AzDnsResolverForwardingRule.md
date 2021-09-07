@@ -271,7 +271,7 @@ To create the parameters described below, construct a hash table containing the 
 
 TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
   - `[IPAddress <String>]`: DNS server IP address.
-  - `[Port <Int64?>]`: DNS server port.
+  - `[Port <Int32?>]`: DNS server port.
 
 ## RELATED LINKS
 

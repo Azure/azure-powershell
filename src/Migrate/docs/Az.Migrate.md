@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Migrate
-Module Guid: 0c6767dd-6ea1-4d31-871e-628463dcbee8
+Module Guid: c638312b-9fd1-4611-a5cc-11a8caa5b698
 Download Help Link: https://docs.microsoft.com/powershell/module/az.migrate
 Help Version: 1.0.0.0
 Locale: en-US
@@ -100,6 +100,9 @@ The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrate
 
 ### [Restart-AzMigrateServerReplication](Restart-AzMigrateServerReplication.md)
 The Restart-AzMigrateServerReplication cmdlet repairs the replication for the specified server.
+
+### [Set-AzMigrateDiskMapping](Set-AzMigrateDiskMapping.md)
+The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attached to the server to be migrated
 
 ### [Set-AzMigrateServerReplication](Set-AzMigrateServerReplication.md)
 The Set-AzMigrateServerReplication cmdlet updates the target properties for the replicating server.
