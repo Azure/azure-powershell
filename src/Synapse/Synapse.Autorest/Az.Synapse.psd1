@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Synapse.private.dll'
   FormatsToProcess = './Az.Synapse.format.ps1xml'
-  FunctionsToExport = 'Get-AzSynapseKustoPool', 'New-AzSynapseKustoPool', 'Remove-AzSynapseKustoPool', 'Update-AzSynapseKustoPool', '*'
+  FunctionsToExport = 'Add-AzSynapseKustoPoolLanguageExtension', 'Get-AzSynapseKustoPool', 'Get-AzSynapseKustoPoolAttachedDatabaseConfiguration', 'Get-AzSynapseKustoPoolDatabase', 'Get-AzSynapseKustoPoolDatabasePrincipalAssignment', 'Get-AzSynapseKustoPoolDataConnection', 'Get-AzSynapseKustoPoolFollowerDatabase', 'Get-AzSynapseKustoPoolLanguageExtension', 'Get-AzSynapseKustoPoolPrincipalAssignment', 'Get-AzSynapseKustoPoolSku', 'Invoke-AzSynapseDetachKustoPoolFollowerDatabase', 'New-AzSynapseKustoPool', 'New-AzSynapseKustoPoolAttachedDatabaseConfiguration', 'New-AzSynapseKustoPoolDatabase', 'New-AzSynapseKustoPoolDatabasePrincipalAssignment', 'New-AzSynapseKustoPoolDataConnection', 'New-AzSynapseKustoPoolPrincipalAssignment', 'Remove-AzSynapseKustoPool', 'Remove-AzSynapseKustoPoolAttachedDatabaseConfiguration', 'Remove-AzSynapseKustoPoolDatabase', 'Remove-AzSynapseKustoPoolDatabasePrincipalAssignment', 'Remove-AzSynapseKustoPoolDataConnection', 'Remove-AzSynapseKustoPoolLanguageExtension', 'Remove-AzSynapseKustoPoolPrincipalAssignment', 'Start-AzSynapseKustoPool', 'Stop-AzSynapseKustoPool', 'Update-AzSynapseKustoPool', 'Update-AzSynapseKustoPoolDatabase', 'Update-AzSynapseKustoPoolDataConnection', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
