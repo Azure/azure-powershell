@@ -104,6 +104,9 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
 
         #region Incidents
         public const string IncidentId = "Incident Id.";
+        public const string Filter = "Filters the results, based on a Boolean condition.";
+        public const string OrderBy = "Sorts the results";
+        public const string Max = "Maximum number of records to return";
         public const string Classificaton = "Incident Classificaiton.";
         public const string ClassificationComment = "Incident Classificaiton Comment.";
         public const string ClassificationReason = "Incident Classificaiton Reason.";

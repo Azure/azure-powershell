@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             return;
         }
 
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
             if (FromPointInTimeBackup)
             {

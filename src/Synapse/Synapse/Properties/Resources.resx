@@ -693,12 +693,6 @@ Are you sure you want to continue?</value>
   <data name="WorkspaceGitRepoParameterException" xml:space="preserve">
     <value>'{0}' is not provided.</value>
   </data>
-  <data name="StartingIntegrationRuntime" xml:space="preserve">
-    <value>Starting integration runtime '{0}' in workspace '{1}'</value>
-  </data>
-  <data name="StopingIntegrationRuntime" xml:space="preserve">
-    <value>Stoping integration runtime '{0}' in workspace '{1}'</value>
-  </data>
   <data name="CannotSendDirectory" xml:space="preserve">
     <value>Can not upload the directory '{0}' to Synapse. If you want to upload directory, please use "ls -File -Recurse | New-AzSynapseWorkspacePackage".</value>
   </data>

@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the instance Subnet Id
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The Subnet Id to use for instance update.")]
+            HelpMessage = "ID of a subnet to move the managed instance to.")]
         public string SubnetId { get; set; }
 
         /// <summary>
@@ -247,6 +247,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not the multi-az is enabled
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Use zone redundant storage")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
+        /// <summary>
         /// Get the instance to update
         /// </summary>
         /// <returns>The instance being updated</returns>
@@ -330,6 +336,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].SubnetId = this.SubnetId ?? model.FirstOrDefault().SubnetId;
+            updateData[0].ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null;
             return updateData;
         }
 

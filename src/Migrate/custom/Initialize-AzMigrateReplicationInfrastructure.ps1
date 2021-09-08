@@ -42,7 +42,7 @@ function Initialize-AzMigrateReplicationInfrastructure {
 
         [Parameter(Mandatory)]
         [ValidateSet("agentlessVMware")]
-        [ArgumentCompleter({"agentlessVMware"})]
+        [ArgumentCompleter( { "agentlessVMware" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the server migration scenario for which the replication infrastructure needs to be initialized.
@@ -169,15 +169,14 @@ function Initialize-AzMigrateReplicationInfrastructure {
             $mailNickname = "{0}#EXT#" -f $($context.Account.Id -replace '@', '_')
 
             $userObject = Get-AzADUser | 
-                Where-Object {$_.MailNickname -eq $mailNickname}
+            Where-Object { $_.MailNickname -eq $mailNickname }
         }
 
         if (-not $userObject) {
             $userObject = Get-AzADServicePrincipal -ApplicationID $context.Account.Id
         }
 
-        if (-not $userObject)
-        {
+        if (-not $userObject) {
             throw 'User Object Id Not Found!'
         }
 
@@ -229,7 +228,7 @@ public static int hashForArtifact(String artifact)
         }
 
         if ($null -eq $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] -And
-             $null -eq $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] ) {
+            $null -eq $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] ) {
             throw "Server Discovery Solution missing Appliance Details. Invalid Solution."           
         }
 

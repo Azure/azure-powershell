@@ -66,7 +66,7 @@ AzureBackupRecoveryTimeBasedRestoreRequest itemLevelRestoreTargetInfo  FailIfExi
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRestoreRequest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -82,7 +82,6 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
       [ResourceType <String>]: Resource Type of Datasource.
       [ResourceUri <String>]: Uri of the resource.
       [Type <String>]: DatasourceType of the resource.
-    FriendlyName <String>: Gets or sets the Backup Instance friendly name.
     ObjectType <String>: 
     PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
       PolicyId <String>: 
@@ -98,11 +97,14 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
       [ResourceName <String>]: Unique identifier of the resource in the context of parent.
       [ResourceType <String>]: Resource Type of Datasource.
       [ResourceUri <String>]: Uri of the resource.
+    [DatasourceAuthCredentials <IAuthCredentials>]: Credentials to use to authenticate with data source provider.
+      ObjectType <String>: Type of the specific object - used for deserializing
+    [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
 .Link
 https://docs.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionrestorerequest
 #>
 function Initialize-AzDataProtectionRestoreRequest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRestoreRequest])]
 [CmdletBinding(DefaultParameterSetName='AlternateLocationFullRecovery', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -129,10 +131,55 @@ param(
     # Restore Target Type
     ${RestoreType},
 
+    [Parameter(ParameterSetName='RestoreAsFiles', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Target storage account container Id to which backup data will be restored as files.
+    ${TargetContainerURI},
+
+    [Parameter(ParameterSetName='RestoreAsFiles', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # File name to be prefixed to the restored backup data.
+    ${FileNamePrefix},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Id of the recovery point to be restored.
+    ${RecoveryPoint},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Rehydration duration for the archived recovery point to stay rehydrated, default value for rehydration duration is 15.
+    ${RehydrationDuration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Rehydration priority for archived recovery point.
+    # This parameter is mandatory for rehydrate restore of archived points.
+    ${RehydrationPriority},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Secret uri for secret store authentication of data source.
+    # This parameter is only supported for AzureDatabaseForPostgreSQL currently.
+    ${SecretStoreURI},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes]
+    # Secret store type for secret store authentication of data source.
+    # This parameter is only supported for AzureDatabaseForPostgreSQL currently.
+    ${SecretStoreType},
+
     [Parameter(ParameterSetName='OriginalLocationILR', Mandatory)]
     [Parameter(ParameterSetName='OriginalLocationFullRecovery', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.BackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupInstanceResource]
     # Backup Instance object to trigger original localtion restore.
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},
@@ -143,13 +190,9 @@ param(
     # Switch Parameter to enable item level recovery.
     ${ItemLevelRecovery},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # Id of the recovery point to be restored.
-    ${RecoveryPoint},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='OriginalLocationILR')]
+    [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
+    [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.DateTime]
     # Point In Time for restore.
@@ -188,10 +231,13 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
+            RestoreAsFiles = 'Az.DataProtection.custom\Initialize-AzDataProtectionRestoreRequest';
             OriginalLocationILR = 'Az.DataProtection.custom\Initialize-AzDataProtectionRestoreRequest';
             AlternateLocationFullRecovery = 'Az.DataProtection.custom\Initialize-AzDataProtectionRestoreRequest';
             OriginalLocationFullRecovery = 'Az.DataProtection.custom\Initialize-AzDataProtectionRestoreRequest';
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

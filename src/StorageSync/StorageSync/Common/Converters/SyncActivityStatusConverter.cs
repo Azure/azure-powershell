@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.StorageSync.Models;
+using System;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
-    /// Class SyncProgressStatusConvertor.
+    /// Class SyncActivityStatusConverter.
     /// Implements the <see cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
     /// </summary>
     /// <seealso cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
@@ -28,19 +29,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.SyncProgressStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncActivityStatus Transform(PSSyncActivityStatus source) => new StorageSyncModels.ServerEndpointSyncActivityStatus(
-            source.Timestamp,
-            source.PerItemErrorCount,
-            source.AppliedItemCount,
-            source.TotalItemCount,
-            source.AppliedBytes,source.TotalBytes);
+        /// <returns>StorageSyncModels.ServerEndpointSyncActivityStatus.</returns>
+        protected override StorageSyncModels.ServerEndpointSyncActivityStatus Transform(PSSyncActivityStatus source)
+        {
+            // Sync activity properties are read-only from the RP
+            throw new NotSupportedException();
+        }
 
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>PSSyncProgressStatus.</returns>
+        /// <returns>PSSyncActivityStatus.</returns>
         protected override PSSyncActivityStatus Transform(StorageSyncModels.ServerEndpointSyncActivityStatus source)
         {
             return new PSSyncActivityStatus()

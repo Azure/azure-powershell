@@ -12,12 +12,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal
     {
 
-        /// <summary>Backing field for <see cref="BackupInstance" /> property.</summary>
-        private string _backupInstance;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
-        public string BackupInstance { get => this._backupInstance; set => this._backupInstance = value; }
-
         /// <summary>Backing field for <see cref="BackupInstanceName" /> property.</summary>
         private string _backupInstanceName;
 
@@ -66,12 +60,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string RecoveryPointId { get => this._recoveryPointId; set => this._recoveryPointId = value; }
 
+        /// <summary>Backing field for <see cref="RequestName" /> property.</summary>
+        private string _requestName;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
+        public string RequestName { get => this._requestName; set => this._requestName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
         /// <summary>The name of the resource group where the backup vault is present.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="ResourceGuardsName" /> property.</summary>
+        private string _resourceGuardsName;
+
+        /// <summary>The name of ResourceGuard</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
+        public string ResourceGuardsName { get => this._resourceGuardsName; set => this._resourceGuardsName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -96,13 +103,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
     public partial interface IDataProtectionIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IJsonSerializable
     {
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"backupInstances",
-        PossibleTypes = new [] { typeof(string) })]
-        string BackupInstance { get; set; }
         /// <summary>The name of the backup instance</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -161,6 +161,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         SerializedName = @"recoveryPointId",
         PossibleTypes = new [] { typeof(string) })]
         string RecoveryPointId { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"requestName",
+        PossibleTypes = new [] { typeof(string) })]
+        string RequestName { get; set; }
         /// <summary>The name of the resource group where the backup vault is present.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -169,6 +177,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>The name of ResourceGuard</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of ResourceGuard",
+        SerializedName = @"resourceGuardsName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceGuardsName { get; set; }
         /// <summary>The subscription Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -190,7 +206,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
     internal partial interface IDataProtectionIdentityInternal
 
     {
-        string BackupInstance { get; set; }
         /// <summary>The name of the backup instance</summary>
         string BackupInstanceName { get; set; }
 
@@ -207,8 +222,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         string OperationId { get; set; }
 
         string RecoveryPointId { get; set; }
+
+        string RequestName { get; set; }
         /// <summary>The name of the resource group where the backup vault is present.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>The name of ResourceGuard</summary>
+        string ResourceGuardsName { get; set; }
         /// <summary>The subscription Id.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The name of the backup vault.</summary>
