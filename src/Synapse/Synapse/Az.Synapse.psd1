@@ -175,13 +175,15 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Update-AzSynapseManagedVirtualNetworkConfig', 
                'Get-AzSynapseSparkJobDefinition', 
                'Remove-AzSynapseSparkJobDefinition', 
-               'Set-AzSynapseSparkJobDefinition',
-               'Get-AzSynapseManagedPrivateEndpoint',
-               'New-AzSynapseManagedPrivateEndpoint',
-               'Remove-AzSynapseManagedPrivateEndpoint',
-               'New-AzSynapseGitRepositoryConfig',
+               'Set-AzSynapseSparkJobDefinition', 
+               'Get-AzSynapseManagedPrivateEndpoint', 
+               'New-AzSynapseManagedPrivateEndpoint', 
+               'Remove-AzSynapseManagedPrivateEndpoint', 
+               'New-AzSynapseGitRepositoryConfig', 'New-AzSynapseWorkspacePackage', 
+               'Get-AzSynapseWorkspacePackage', 'Remove-AzSynapseWorkspacePackage',
                'Start-AzSynapseIntegrationRuntime',
                'Stop-AzSynapseIntegrationRuntime'
+
 
 # Variables to export from this module
 # VariablesToExport = @()
