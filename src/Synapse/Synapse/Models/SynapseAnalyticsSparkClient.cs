@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             var batch = _sparkBatchClient.StartCreateSparkBatchJob(sparkBatchJobOptions, detailed: true);
             if (!waitForCompletion)
             {
-                return batch.Value;
+                return _sparkBatchClient.GetSparkBatchJob(int.Parse(batch.Id));
             }
 
             return batch.Poll().Value;
@@ -107,14 +107,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region Spark session operations
 
-        public SparkSession CreateSparkSession(SparkSessionOptions sparkSessionOptions, bool waitForCompletion)
+        public SparkSession CreateSparkSession(SparkSessionOptions sparkSessionOptions)
         {
             var session = _sparkSessionClient.StartCreateSparkSession(sparkSessionOptions);
-            if (!waitForCompletion)
-            {
-                return session.Value;
-            }
-
             return session.Poll().Value;
         }
 
@@ -181,14 +176,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region Spark session statement operations
 
-        public SparkStatement SubmitSparkSessionStatement(int sessionId, SparkStatementOptions sparkStatementOptions, bool waitForCompletion)
+        public SparkStatement SubmitSparkSessionStatement(int sessionId, SparkStatementOptions sparkStatementOptions)
         {
             var statement = _sparkSessionClient.StartCreateSparkStatement(sessionId, sparkStatementOptions);
-            if (!waitForCompletion)
-            {
-                return statement.Value;
-            }
-
             return statement.Poll().Value;
         }
 
