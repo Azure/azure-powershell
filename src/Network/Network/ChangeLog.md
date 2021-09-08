@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.11.0
 * Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
     - `New-AzLoadBalancerBackendAddressConfig`
 * Updated cmdlet to add 'TunnelInterface' property for backend pool related operations.

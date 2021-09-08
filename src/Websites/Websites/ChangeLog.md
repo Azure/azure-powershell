@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.8.2
 * Fixed `Set-AzWebApp` to return a valid warning message when fails to add -Hostname #9316
 * Fixed `Get-AzWebApp` to return CustomDomainVerificationId in the response. #9316
 

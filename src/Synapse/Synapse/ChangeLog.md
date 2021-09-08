@@ -18,11 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added cmdlets for kusto pool
-    - `New-AzSynapseKustoPool`
-    - `Get-AzSynapseKustoPool`
-    - `Update-AzSynapseKustoPool`
-    - `Remove-AzSynapseKustoPool`
+
+## Version 0.15.0
 * Added support for Synapse Managed Private Endpoint
 	- Added `New-AzSynapseManagedPrivateEndpoint` cmdlet
 	- Added `Get-AzSynapseManagedPrivateEndpoint` cmdlet
