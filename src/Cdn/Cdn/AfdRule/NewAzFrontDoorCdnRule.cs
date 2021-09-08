@@ -125,10 +125,9 @@ namespace Microsoft.Azure.Commands.Cdn.AfdRule
                                 Value = psHeaderAction.HeaderValue
                             }
                         };
-
                         afdRuleActions.Add(requestHeaderAction);
                     }
-                    else if (psHeaderAction.HeaderType == "ModifyResponeHeader")
+                    else if (psHeaderAction.HeaderType == "ModifyResponseHeader")
                     {
                         DeliveryRuleResponseHeaderAction responseHeaderAction = new DeliveryRuleResponseHeaderAction
                         {
@@ -139,7 +138,6 @@ namespace Microsoft.Azure.Commands.Cdn.AfdRule
                                 Value = psHeaderAction.HeaderValue
                             }
                         };
-
                         afdRuleActions.Add(responseHeaderAction);
                     }
                 }
@@ -219,6 +217,11 @@ namespace Microsoft.Azure.Commands.Cdn.AfdRule
         private List<DeliveryRuleCondition> CreateAfdRuleConditions()
         {
             List<DeliveryRuleCondition> afdRuleConditions = new List<DeliveryRuleCondition>();
+
+            if (!MyInvocation.BoundParameters.ContainsKey("Condition"))
+            {
+                return afdRuleConditions;
+            }
 
             foreach (PSAfdRuleCondition afdRuleCondition in this.Condition)
             {
