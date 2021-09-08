@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Removed New-AzConfluentMarketplaceAgreement
     - Set-AzMarketplaceTerms (Az.MarketplaceOrdering) has same function.
 * Added feature for Remove-AzConfluentOrganization
