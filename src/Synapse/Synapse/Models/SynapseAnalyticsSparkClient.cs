@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             var batch = _sparkBatchClient.StartCreateSparkBatchJob(sparkBatchJobOptions, detailed: true);
             if (!waitForCompletion)
             {
-                return _sparkBatchClient.GetSparkBatchJob(int.Parse(batch.Id));
+                return GetSparkBatchJob(int.Parse(batch.Id));
             }
 
             return batch.Poll().Value;
