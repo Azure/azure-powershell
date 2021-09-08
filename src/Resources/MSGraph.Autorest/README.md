@@ -135,6 +135,10 @@ directive:
       property-name: Items
 
   - where:
+      subject: application$|applicationpassword$|serviceprincipal$|serviceprincipalpassword$|groupmember$|user$|group$
+    hide: true
+
+  - where:
       verb: Get
       variant: ^List(.*)
     set:
