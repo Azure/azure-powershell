@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Install-AzModule {
+function Install-AzModuleV1 {
 
 <#
     .Synopsis
@@ -33,22 +33,22 @@ function Install-AzModule {
     param(
         [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Maximum Az Version.')]
         [ValidateNotNullOrEmpty()]
-        [String]
+        [string]
         ${MaximumVersion},
 
         [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Minimum Az Version.')]
         [ValidateNotNullOrEmpty()]
-        [String]
+        [string]
         ${MinimumVersion},
 
         [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Required Az Version.')]
         [ValidateNotNullOrEmpty()]
-        [String]
+        [string]
         ${RequiredVersion},
 
         [Parameter(Mandatory, HelpMessage = 'The Registered Repostory.')]
         [ValidateNotNullOrEmpty()]
-        [String]
+        [string]
         ${Repository},
 
         [Parameter(HelpMessage = 'Remove given module installed previously.')]
@@ -73,7 +73,7 @@ function Install-AzModule {
 
         [Parameter(HelpMessage = 'Az modules to install.', ValueFromPipelineByPropertyName = $true)]
         [ValidateNotNullOrEmpty()]
-        [String[]]
+        [string[]]
         ${Name},
 
         [Parameter(HelpMessage = 'Skip publisher check.')]

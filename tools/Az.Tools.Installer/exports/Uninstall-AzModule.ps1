@@ -31,17 +31,17 @@ function Uninstall-AzModule {
     param(
         [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Maximum Az Version.')]
         [ValidateNotNullOrEmpty()]
-        [String]
+        [string]
         ${MaximumVersion},
 
         [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Minimum Az Version.')]
         [ValidateNotNullOrEmpty()]
-        [String]
+        [string]
         ${MinimumVersion},
 
         [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Required Az Version.')]
         [ValidateNotNullOrEmpty()]
-        [String]
+        [string]
         ${RequiredVersion},
 
         [Parameter(HelpMessage = 'Remove all AzureRm modules.')]
@@ -62,7 +62,7 @@ function Uninstall-AzModule {
 
         [Parameter(HelpMessage = 'Az modules to install.', ValueFromPipelineByPropertyName = $true)]
         [ValidateNotNullOrEmpty()]
-        [String[]]
+        [string[]]
         ${Name},
 
         [Parameter(ParameterSetName = 'WithPreviewAndAllVersion', Mandatory, HelpMessage = 'Remove all versions')]
@@ -73,11 +73,12 @@ function Uninstall-AzModule {
         [Parameter(ParameterSetName = 'WithoutPreview', Mandatory, HelpMessage = 'The Registered Repostory.')]
         [Parameter(ParameterSetName = 'WithoutPreviewAndAllVersion', Mandatory, HelpMessage = 'The Registered Repostory.')]
         [ValidateNotNullOrEmpty()]
-        [String]
+        [string]
         ${Repository}
     )
 
-    process {
+    process
+     {
 
         $cmdStarted = Get-Date
 
