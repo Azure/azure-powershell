@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 if (this.PackageAction == SynapseConstants.PackageActionType.Add)
                 {
-                    if (existingSparkPool == null)
+                    if (existingSparkPool.CustomLibraries == null)
                     {
                         existingSparkPool.CustomLibraries = new List<LibraryInfo>();
                     }
