@@ -28,7 +28,7 @@
 * Added `New-AzSynapseLinkedServiceEncryptedCredential` cmdlet to encrypt credential in linked service
 * Upgraded some package version
     - Upgraded Azure.Analytics.Synapse.AccessControl to 1.0.0-preview.5
-    - Upgraded Azure.Analytics.Synapse.ManagedPrivateEndpoints to 1.0.0-beta.4
+    - Upgraded Azure.Analytics.Synapse.ManagedPrivateEndpoints to 1.0.0-beta.5
     - Upgraded Azure.Analytics.Synapse.Spark to 1.0.0-preview.7
     - Upgraded Microsoft.Azure.Management.Synapse to 2.2.0-preview
 
