@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.11.0
 * Supported get/set blob tags on a specific blob
     -  `Get-AzStorageBlobTag`
     -  `Set-AzStorageBlobTag`
@@ -41,11 +43,11 @@
     -  `New-AzStorageBlobSASToken` 
     -  `New-AzStorageContainerSASToken` 
     -  `New-AzStorageAccountSASToken`
-* Fixed blob copy failure with OAuth credentail when client and server has time difference [#15644]
+* Fixed blob copy failure with OAuth credential when client and server has time difference [#15644]
     -  `Copy-AzStorageBlob` 
-* Fixed remove datalakegen2 item fail with readonly SAS token
+* Fixed remove Data Lake Gen2 item fail with readonly SAS token
     -  `Remove-AzDataLakeGen2Item` 
-* Revised destination existing check in move datalakegen2 item
+* Revised destination existing check in move Data Lake Gen2 item
     -  `Move-AzDataLakeGen2Item` 
 
 ## Version 3.10.0

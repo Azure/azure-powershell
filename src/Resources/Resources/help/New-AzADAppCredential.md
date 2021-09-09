@@ -87,8 +87,7 @@ A new password credential is added to the existing application with object id '1
 ### Example 2 - Create a new application credential using a certificate
 
 ```
-PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-PS C:\> $cer.Import("C:\myapp.cer")
+PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("C:\myapp.cer")
 PS C:\> $binCert = $cer.GetRawCertData()
 PS C:\> $credValue = [System.Convert]::ToBase64String($binCert)
 PS C:\> New-AzADAppCredential -ApplicationId 4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58 -CertValue $credValue -StartDate $cer.NotBefore -EndDate $cer.NotAfter

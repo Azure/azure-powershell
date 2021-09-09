@@ -25,56 +25,75 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
-        #region Key actions
+        #region KeyVault key actions
+        string BackupKey(string vaultName, string keyName, string outputBlobPath);
+
         PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName);
-       
-        PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName);
 
-        PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
-
-        PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, Track2Sdk.JsonWebKey webKey);
-
-        PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
-
-        PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
-
-        PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion);
-
-        PSKeyVaultKey GetManagedHsmKey(string managedHsmName, string keyName, string keyVersion);
-
-        PSDeletedKeyVaultKey GetDeletedKey(string managedHsmName, string keyName);
-
-        PSDeletedKeyVaultKey GetManagedHsmDeletedKey(string managedHsmName, string keyName);
-
-        IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
-
-        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(string managedHsmName);
-
-        IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
-
-        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyAllVersions(string managedHsmName, string keyName);
-
-        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
-
-        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(string managedHsmName);
+        PSKeyOperationResult Decrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm);
 
         PSDeletedKeyVaultKey DeleteKey(string vaultName, string keyName);
 
-        PSDeletedKeyVaultKey DeleteManagedHsmKey(string ManagedHsm, string keyName);
+        PSKeyOperationResult Encrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm);
+
+        PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion);
+
+        PSDeletedKeyVaultKey GetDeletedKey(string managedHsmName, string keyName);
+
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
+
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
+
+        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
+
+        PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
+
+        PSKeyOperationResult UnwrapKey(string vaultName, string keyName, string keyVersion, byte[] value, string wrapAlgorithm);
+
+        PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
+
+        PSKeyOperationResult WrapKey(string vaultName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm);
 
         void PurgeKey(string vaultName, string name);
 
-        void PurgeManagedHsmKey(string managedHsmName, string keyName);
-
         PSKeyVaultKey RecoverKey(string vaultName, string keyName);
 
-        PSKeyVaultKey RecoverManagedHsmKey(string managedHsmName, string keyName);
+        PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath);
+        #endregion
 
-        string BackupKey(string vaultName, string keyName, string outputBlobPath);
+        #region Managed Hsm key actions
 
         string BackupManagedHsmKey(string managedHsmName, string keyName, string outputBlobPath);
 
-        PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath);
+        PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName);
+
+        PSDeletedKeyVaultKey DeleteManagedHsmKey(string ManagedHsm, string keyName);
+
+        PSKeyVaultKey GetManagedHsmKey(string managedHsmName, string keyName, string keyVersion);
+
+        PSDeletedKeyVaultKey GetManagedHsmDeletedKey(string managedHsmName, string keyName);
+
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeys(string managedHsmName);
+
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetManagedHsmKeyAllVersions(string managedHsmName, string keyName);
+
+        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetManagedHsmDeletedKeys(string managedHsmName);
+
+        PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, Track2Sdk.JsonWebKey webKey);
+
+        PSKeyOperationResult ManagedHsmKeyDecrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm);
+
+        PSKeyOperationResult ManagedHsmKeyEncrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm);
+
+        PSKeyOperationResult ManagedHsmUnwrapKey(string vaultName, string keyName, string keyVersion, byte[] value, string wrapAlgorithm);
+
+        PSKeyOperationResult ManagedHsmWrapKey(string vaultName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm);
+
+        PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
+
+        void PurgeManagedHsmKey(string managedHsmName, string keyName);
+
+        PSKeyVaultKey RecoverManagedHsmKey(string managedHsmName, string keyName);
 
         PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath);
         #endregion

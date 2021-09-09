@@ -18,13 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.5.0
+* Changed the underlying implementation of `Get-AzSqlDatabase` to support a paginated response from the server
 * Added `ZoneRedundant` parameter to `New-AzSqlInstance` and `Set-AzSqlInstance` to enable the creation and the update of zone - redundant instances.
 * Added ZoneRedundant field to the model of the managed instance so that it displays information about zone - redundancy for instance that are returned by `Get-AzSqlInstance`.
 * Extended AuditActionGroups enum in server & database audit. Added DBCC_GROUP, DATABASE_OWNERSHIP_CHANGE_GROUP and DATABASE_CHANGE_GROUP.
 * Added `AsJob` flag to `Remove-AzSqlInstance`
 * Added `SubnetId` parameter to `Set-AzSqlInstance` to support the cross-subnet update SLO
 * Upgraded to newest SDK version
-
 
 ## Version 3.4.1
 * Fixed identity logic in `Set-AzSqlServer` and `Set-AzSqlInstance`
