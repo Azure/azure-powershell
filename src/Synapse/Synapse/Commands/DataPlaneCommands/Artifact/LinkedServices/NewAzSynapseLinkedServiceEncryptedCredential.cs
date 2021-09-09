@@ -27,7 +27,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.LinkedServiceEncryptedCredential,
-        DefaultParameterSetName = CreateByName)]
+        DefaultParameterSetName = CreateByName, SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class NewAzSynapseLinkedServiceEncryptedCredential : SynapseManagementCmdletBase
     {
