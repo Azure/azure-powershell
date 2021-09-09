@@ -323,7 +323,9 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+The Azure subscription ID.
+This is a GUID-formatted string (e.g.
+00000000-0000-0000-0000-000000000000)
 
 ```yaml
 Type: System.String

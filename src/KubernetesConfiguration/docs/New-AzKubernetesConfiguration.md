@@ -98,7 +98,6 @@ Accept wildcard characters: False
 
 ### -ConfigurationProtectedSetting
 Name-value pairs of protected configuration settings for the configuration
-To construct, see NOTES section for CONFIGURATIONPROTECTEDSETTING properties and create a hash table.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -331,23 +330,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IResourceProviderOperation
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-CONFIGURATIONPROTECTEDSETTING <Hashtable>: Name-value pairs of protected configuration settings for the configuration
-  - `[DisplayDescription <String>]`: Description of this operation.
-  - `[DisplayOperation <String>]`: Type of operation: get, read, delete, etc.
-  - `[DisplayProvider <String>]`: Resource provider: Microsoft KubernetesConfiguration.
-  - `[DisplayResource <String>]`: Resource on which the operation is performed.
-  - `[Name <String>]`: Operation name, in format of {provider}/{resource}/{operation}
 
 ## RELATED LINKS
 

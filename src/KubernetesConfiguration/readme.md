@@ -51,6 +51,7 @@ branch: ce530ccff065a7342c97a28c8eea79d83fc2e67d
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-03-01/kubernetesconfiguration.json
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-09-01/extensions.json
 
 title: KubernetesConfiguration
@@ -58,6 +59,7 @@ module-version: 0.1.0
 subject-prefix: ''
 
 identity-correction-for-post: true
+resourcegroup-append: true
 
 directive:
   - from: swagger-document

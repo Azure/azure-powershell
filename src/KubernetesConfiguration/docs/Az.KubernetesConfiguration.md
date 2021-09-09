@@ -14,6 +14,9 @@ Microsoft Azure PowerShell: KubernetesConfiguration cmdlets
 ### [Get-AzExtension](Get-AzExtension.md)
 Gets Kubernetes Cluster Extension.
 
+### [Get-AzKubernetesConfiguration](Get-AzKubernetesConfiguration.md)
+Gets details of the Source Control Configuration.
+
 ### [Get-AzOperationStatus](Get-AzOperationStatus.md)
 Get Async Operation status
 
