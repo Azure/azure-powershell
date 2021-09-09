@@ -11,12 +11,25 @@ Locale: en-US
 Microsoft Azure PowerShell: KubernetesConfiguration cmdlets
 
 ## Az.KubernetesConfiguration Cmdlets
-### [Get-AzKubernetesConfiguration](Get-AzKubernetesConfiguration.md)
-Gets details of the Source Control Configuration.
+### [Get-AzExtension](Get-AzExtension.md)
+Gets Kubernetes Cluster Extension.
+
+### [Get-AzOperationStatus](Get-AzOperationStatus.md)
+Get Async Operation status
+
+### [New-AzExtension](New-AzExtension.md)
+Create a new Kubernetes Cluster Extension.
 
 ### [New-AzKubernetesConfiguration](New-AzKubernetesConfiguration.md)
 Create a new Kubernetes Source Control Configuration.
 
+### [Remove-AzExtension](Remove-AzExtension.md)
+Delete a Kubernetes Cluster Extension.
+This will cause the Agent to Uninstall the extension from the cluster.
+
 ### [Remove-AzKubernetesConfiguration](Remove-AzKubernetesConfiguration.md)
 This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
+
+### [Update-AzExtension](Update-AzExtension.md)
+Patch an existing Kubernetes Cluster Extension.
 

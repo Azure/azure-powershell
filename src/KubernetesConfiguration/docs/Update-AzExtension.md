@@ -1,51 +1,54 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azextension
 schema: 2.0.0
 ---
 
-# Remove-AzKubernetesConfiguration
+# Update-AzExtension
 
 ## SYNOPSIS
-This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
+Patch an existing Kubernetes Cluster Extension.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzExtension -ClusterName <String> -ClusterRp <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>] [-ReleaseTrain <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzKubernetesConfiguration -InputObject <IKubernetesConfigurationIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzExtension -InputObject <IKubernetesConfigurationIdentity> [-AutoUpgradeMinorVersion]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>] [-ReleaseTrain <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
+Patch an existing Kubernetes Cluster Extension.
 
 ## EXAMPLES
 
-### Example 1: Remove a configuation of kubernetes cluster by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -Name  k8sconfig-t02 -ClusterType ConnectedClusters
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command removes a configuation of kubernetes cluster by name.
+{{ Add description here }}
 
-### Example 2: Remove a configuation of kubernetes cluster by object
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName connaks-dkc29c -ClusterType ConnectedClusters -ResourceGroupName connaks-rg-w9vlnp -Name conf-test02 -ClusterRp Microsoft.Kubernetes
-PS C:\> Remove-AzKubernetesConfiguration -InputObject $kubConf
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command removes a configuation of kubernetes cluster by object.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -64,12 +67,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AutoUpgradeMinorVersion
+Flag to note if this extension participates in auto upgrade of minor version, or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterRp
+The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -84,10 +117,40 @@ The Kubernetes cluster resource name - either managedClusters (for AKS clusters)
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationProtectedSetting
+Configuration settings that are sensitive, as name-value pairs for configuring this extension.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationSetting
+Configuration settings, as name-value pairs for configuring this extension.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -115,7 +178,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -126,12 +189,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Source Control Configuration.
+Name of the Extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: SourceControlConfigurationName
+Parameter Sets: UpdateExpanded
+Aliases: ExtensionName
 
 Required: True
 Position: Named
@@ -155,11 +218,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -ReleaseTrain
+ReleaseTrain this extension participates in for auto-upgrade (e.g.
+Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -172,10 +236,11 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -186,16 +251,32 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Version of the extension for this extension, if it is 'pinned' to a specific version.
+autoUpgradeMinorVersion must be 'false'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
