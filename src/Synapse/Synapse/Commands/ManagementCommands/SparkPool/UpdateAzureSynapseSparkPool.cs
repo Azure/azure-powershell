@@ -251,6 +251,11 @@ namespace Microsoft.Azure.Commands.Synapse
 
         private LibraryRequirements CreateLibraryRequirements()
         {
+            if (string.IsNullOrEmpty(LibraryRequirementsFilePath))
+            {
+                return null;
+            }
+
             var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(LibraryRequirementsFilePath);
 
             return new LibraryRequirements
