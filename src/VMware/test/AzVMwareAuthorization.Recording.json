@@ -204,48 +204,6 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAuthorization+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/azslrt?api-version=2021-06-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/azslrt?api-version=2021-06-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "88" ],
-        "x-ms-client-request-id": [ "05d853b8-6286-4f86-bd50-fbf3a205a423" ],
-        "CommandName": [ "Get-AzVMwareAuthorization" ],
-        "FullCommandName": [ "Get-AzVMwareAuthorization_GetViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14966" ],
-        "x-ms-request-id": [ "4a12f067-760f-44c1-a541-abadd9594d13" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "6308935b-eed0-4638-b9cb-548fb6b2f202" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T040134Z:6308935b-eed0-4638-b9cb-548fb6b2f202" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 635A863756C1416397D9E34234CCE0DD Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:01:33Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:01:33 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "588" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/authorizations/azslrt\",\"name\":\"azslrt\",\"properties\":{\"authorizationId\":\"/subscriptions/7f1fae41-7708-4fa4-89b3-f6552cad2fc1/resourceGroups/tnt38-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt38-cust-mp01-mock01-er/authorizations/avs_resource_azslrt\",\"authorizationKey\":\"db0abb09-17a5-41e3-88b0-d0bc0afadc9d\",\"provisioningState\":\"Succeeded\"},\"type\":\"Microsoft.AVS/privateClouds/authorizations\"}",
-      "isContentBase64": false
-    }
-  },
 
   "AzVMwareAuthorization+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+1": {
     "Request": {
@@ -401,48 +359,6 @@
         "X-Cache": [ "CONFIG_NOCACHE" ],
         "X-MSEdge-Ref": [ "Ref A: 583F483C0BE848E8AC905673EA1CA7BD Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:16:51Z" ],
         "Date": [ "Thu, 29 Jul 2021 04:16:54 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "text/html" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null,
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareAuthorization+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01+1": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_3/providers/Microsoft.AVS/privateClouds/azps_test_cloud_3/authorizations/ftr3ic?api-version=2021-06-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "197" ],
-        "x-ms-client-request-id": [ "d7bcf51c-74b7-44f8-83e7-8c777d4075f2" ],
-        "CommandName": [ "Remove-AzVMwareAuthorization" ],
-        "FullCommandName": [ "Remove-AzVMwareAuthorization_DeleteViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14991" ],
-        "x-ms-request-id": [ "9d519d96-04ff-4f54-b3fd-957e2f397fe8" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "e8f6e108-5b5a-4ddd-b450-24a5e4e501b8" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041656Z:e8f6e108-5b5a-4ddd-b450-24a5e4e501b8" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9A574BE0E0374CF1AC5FA7ADCBA000AF Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:16:55Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:16:56 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "text/html" ],

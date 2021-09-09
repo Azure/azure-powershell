@@ -18,12 +18,4 @@ Describe 'AzVMwarePrivateCloudVcenterPassword' {
             $config | Should -Be True
         } | Should -Not -Throw
     }
-
-    It 'RotateViaIdentity' {
-        {
-            $Id = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)"
-            $config = New-AzVMwarePrivateCloudVcenterPassword -InputObject $Id -PassThru
-            $config | Should -Be True
-        } | Should -Not -Throw
-    }
 }

@@ -29,14 +29,6 @@ Describe 'AzVMwareAuthorization' {
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        {
-            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/authorizations/$($env.rstr3)"
-            $config = Get-AzVMwareAuthorization -InputObject $Id1
-            $config.Name | Should -Be $env.rstr3
-        } | Should -Not -Throw
-    }
-
     It 'CreateExpanded' {
         {
             $config = New-AzVMwareAuthorization -Name $env.rstr4 -PrivateCloudName $env.privateCloudName3 -ResourceGroupName $env.resourceGroup3
@@ -47,13 +39,6 @@ Describe 'AzVMwareAuthorization' {
     It 'Delete' {
         {
             Remove-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-        } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' {
-        {
-            $Id3 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup3)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName3)/authorizations/$($env.rstr4)"
-            Remove-AzVMwareAuthorization -InputObject $Id3
         } | Should -Not -Throw
     }
 }

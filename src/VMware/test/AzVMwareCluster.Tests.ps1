@@ -29,16 +29,6 @@ Describe 'AzVMwareCluster' {
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        {
-            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/clusters/$($env.rstr1)"
-            $config = Get-AzVMwareCluster -InputObject $Id1
-            $config.SkuName | Should -Be "av20"
-
-            Remove-AzVMwareCluster -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
-        } | Should -Not -Throw
-    }
-
     It 'CreateExpanded' {
         {
             $config = New-AzVMwareCluster -Name $env.rstr2 -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGroup2 -ClusterSize 3 -SkuName av36
@@ -58,32 +48,9 @@ Describe 'AzVMwareCluster' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        {
-            $config = New-AzVMwareCluster -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -ClusterSize 3 -SkuName av20
-            $config.Name | Should -Be $env.rstr1
-
-            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/clusters/$($env.rstr1)"
-            $config = Update-AzVMwareCluster -InputObject $Id1 -ClusterSize 4
-            $config.Name | Should -Be $env.rstr1
-
-            Remove-AzVMwareCluster -InputObject $Id1
-        } | Should -Not -Throw
-    }
-
     It 'Delete' {
         {
             Remove-AzVMwareCluster -Name $env.rstr2 -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGroup2
-        } | Should -Not -Throw
-    }
-    
-    It 'DeleteViaIdentity' {
-        {
-            $config = New-AzVMwareCluster -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -ClusterSize 3 -SkuName av20
-            $config.Name | Should -Be $env.rstr1
-
-            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/clusters/$($env.rstr1)"
-            Remove-AzVMwareCluster -InputObject $Id1
         } | Should -Not -Throw
     }
 }

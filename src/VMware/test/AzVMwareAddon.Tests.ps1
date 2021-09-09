@@ -30,14 +30,6 @@ Describe 'AzVMwareAddon' {
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        {
-            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/addons/vr"
-            $config = Get-AzVMwareAddon -InputObject $Id1
-            $config.Type | Should -Be "Microsoft.AVS/privateClouds/addons"
-        } | Should -Not -Throw
-    }
-
     It 'CreateExpanded' {
         {
             $config = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
@@ -49,13 +41,6 @@ Describe 'AzVMwareAddon' {
     It 'Delete' {
         {
             Remove-AzVMwareAddon -AddonType vr -PrivateCloudName $env.privateCloudName2 -ResourceGroupName $env.resourceGroup2
-        } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' {
-        {
-            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName1)/addons/vr"
-            Remove-AzVMwareAddon -InputObject $Id1
         } | Should -Not -Throw
     }
 }

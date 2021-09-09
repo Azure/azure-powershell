@@ -36,14 +36,6 @@ Describe 'AzVMwarePrivateCloud' {
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        {
-            $Id1 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.rstr1)"
-            $config = Get-AzVMwarePrivateCloud -InputObject $Id1
-            $config.Name | Should -Be $env.rstr1
-        } | Should -Not -Throw
-    }
-
     It 'CreateExpanded' {
         {
             $config = New-AzVMwarePrivateCloud -Name $env.rstr2 -ResourceGroupName $env.resourceGroup2 -NetworkBlock 192.168.48.0/22 -Sku av20 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
@@ -69,13 +61,6 @@ Describe 'AzVMwarePrivateCloud' {
     It 'Delete' {
         {
             Remove-AzVMwarePrivateCloud -ResourceGroupName $env.resourceGroup2 -Name $env.rstr2 -Confirm:$false
-        } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' {
-        {
-            $Id2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup1)/providers/Microsoft.AVS/privateClouds/$($env.rstr1)"
-            Remove-AzVMwarePrivateCloud -InputObject $Id2 -Confirm:$false
         } | Should -Not -Throw
     }
 }
