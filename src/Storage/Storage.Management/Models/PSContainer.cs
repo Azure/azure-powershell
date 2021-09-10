@@ -198,10 +198,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 {
                     Tags = ((List<string>)legalHold.Tags).ToArray();
                 }
+                this.AllowProtectedAppendWritesAll = legalHold.AllowProtectedAppendWritesAll;
             }
         }
         public bool? HasLegalHold { get; set; }
         public string[] Tags { get; set; }
+        public bool? AllowProtectedAppendWritesAll { get; set; }
 
     }
 
@@ -221,9 +223,23 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 }
             }
             this.Tags = tagList.ToArray();
+            this.ProtectedAppendWritesHistory = legalHoldProperty.ProtectedAppendWritesHistory is null ? null : new PSProtectedAppendWritesHistory(legalHoldProperty.ProtectedAppendWritesHistory);
         }
         public bool? HasLegalHold { get; set; }
         public PSTagProperty[] Tags { get; set; }
+        public PSProtectedAppendWritesHistory ProtectedAppendWritesHistory { get; set; }
+    }
+
+    public class PSProtectedAppendWritesHistory
+    {
+        public PSProtectedAppendWritesHistory(ProtectedAppendWritesHistory history)
+        {
+            this.AllowProtectedAppendWritesAll = history.AllowProtectedAppendWritesAll;
+            this.Timestamp = history.Timestamp;
+        }
+
+        public bool? AllowProtectedAppendWritesAll { get; set; }
+        public DateTime? Timestamp { get; }
     }
 
     public class PSTagProperty
@@ -255,6 +271,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Type = policy.Type;
             this.Id = policy.Id;
             this.AllowProtectedAppendWrites = policy.AllowProtectedAppendWrites;
+            this.AllowProtectedAppendWritesAll = policy.AllowProtectedAppendWritesAll;
         }
 
         public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
@@ -264,6 +281,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Type { get; set; }
         public string Etag { get; set; }
         public bool? AllowProtectedAppendWrites { get; set; }
+        public bool? AllowProtectedAppendWritesAll { get; set; }
     }
 
     public class PSImmutabilityPolicyProperties
@@ -274,6 +292,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.State = policy.State;
             this.Etag = policy.Etag;
             this.AllowProtectedAppendWrites = policy.AllowProtectedAppendWrites;
+            this.AllowProtectedAppendWritesAll = policy.AllowProtectedAppendWritesAll;
 
             List<PSUpdateHistoryProperty> updateHistoryList = new List<PSUpdateHistoryProperty>();
             if (policy.UpdateHistory != null && policy.UpdateHistory.Count != 0)
@@ -291,6 +310,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Etag { get; set; }
         public PSUpdateHistoryProperty[] UpdateHistory { get; set; }
         public bool? AllowProtectedAppendWrites { get; set; }
+        public bool? AllowProtectedAppendWritesAll { get; set; }
     }
 
     public enum PSPublicAccess
@@ -310,6 +330,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.ObjectIdentifier = updateHistory.ObjectIdentifier;
             this.TenantId = updateHistory.TenantId;
             this.Upn = updateHistory.Upn;
+            this.AllowProtectedAppendWrites = updateHistory.AllowProtectedAppendWrites;
+            this.AllowProtectedAppendWritesAll = updateHistory.AllowProtectedAppendWritesAll;
         }
         
         public string Update { get; set; }
@@ -318,5 +340,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string ObjectIdentifier { get; set; }
         public string TenantId { get; set; }
         public string Upn { get; set; }
+        public bool? AllowProtectedAppendWrites { get; set; }
+        public bool? AllowProtectedAppendWritesAll { get; set; }
     }
 }
