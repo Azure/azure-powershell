@@ -122,7 +122,7 @@ PS C:\> $packages = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspac
 PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Add -Package $packages
 ```
 
-The first command retrieves workspace packages. The second command links these workspaces packages to an Apache Spark pool in Azure Synapse Analytics.
+The first command retrieves workspace packages. The second command links these workspace packages to an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 10
 ```powershell
@@ -130,7 +130,15 @@ PS C:\> $package = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace
 PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Remove -Package $package
 ```
 
-The first command retrieves workspace packages named ContosoPackage. The second command removes the workspaces package from an Apache Spark pool in Azure Synapse Analytics.
+The first command retrieves workspace packages named ContosoPackage. The second command removes the workspace package from an Apache Spark pool in Azure Synapse Analytics.
+
+### Example 11
+```powershell
+PS C:\> $pool = Get-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+PS C:\> $pool | Update-AzSynapseSparkPool -PackageAction Remove -Package $pool.WorkspacePackages
+```
+
+The first command retrieves an Apache Spark pool in Azure Synapse Analytics. The second command removes all workspace packages that are linked to that Apache Spark pool.
 
 ## PARAMETERS
 
