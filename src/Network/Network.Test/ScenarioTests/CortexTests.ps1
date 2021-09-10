@@ -149,13 +149,9 @@ function Test-CortexCRUD
 		$vpnSitesAll = Get-AzVpnSite -ResourceGroupName "*" -Name "*"
 		Assert-NotNull $vpnSitesAll
 
-		# Create the VpnGateway
-		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3 -EnableRoutingPreferenceInternetFlag -EnableBgpRouteTranslationForNat #-VpnGatewayNatRule $natRule
-		Assert-AreEqual $True $createdVpnGateway.EnableBgpRouteTranslationForNat
-
-		# Update VpnGateway with new NatRule2
+		# Create a NATRule object
 		$natRule = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnGatewayNatRule
-		$natRule.Name = "NatRule2"
+		$natRule.Name = "NatRule1"
 		$natRule.Mode = "EgressSnat"
 		$natRule.VpnGatewayNatRulePropertiesType = "Static"
 		$natRuleInternalMapping = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnNatRuleMapping
@@ -168,7 +164,18 @@ function Test-CortexCRUD
 		$natRule.ExternalMappings[0] = $natRuleExternalMapping
 		$vpnGatewayNatRules = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnGatewayNatRule[] 1
 		$vpnGatewayNatRules[0] = $natRule
-		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 4 -VpnGatewayNatRule $vpnGatewayNatRules -DisableBgpRouteTranslationForNat
+
+		# Create the VpnGateway
+		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3 -EnableRoutingPreferenceInternetFlag -EnableBgpRouteTranslationForNat -VpnGatewayNatRule $vpnGatewayNatRules
+		
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual $True $vpnGateway.EnableBgpRouteTranslationForNat
+		Assert-AreEqual 1 $vpnGateway.NatRules.Count
+		Assert-AreEqual "NatRule1" $vpnGateway.NatRules[0].Name
+
+		# Update VpnGateway with new NatRule2
+		$vpnGatewayNatRules[0]..Name = "NatRule2"
+		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 4 -VpnGatewayNatRule $vpnGatewayNatRules -EnableBgpRouteTranslationForNat $false
 
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
@@ -645,7 +652,7 @@ function Test-CortexExpressRouteCRUD
 		$vpnClientAddressSpaces[1] = "192.168.3.0/24"
 		$customDnsServers = New-Object string[] 1
 		$customDnsServers[0] = "7.7.7.7"
-		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers -EnableInternetSecurityFlag -EnableRoutingPreferenceInternetFlag
+		$createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers -EnableRoutingPreferenceInternetFlag
 		Assert-AreEqual "Succeeded" $createdP2SVpnGateway.ProvisioningState
 
 		# Get the created P2SVpnGateway using Get-AzP2sVpnGateway
@@ -655,7 +662,7 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $vpnServerConfig1.Id $P2SVpnGateway.VpnServerConfiguration.Id
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 		Assert-AreEqual 1 @($P2SVpnGateway.CustomDnsServers).Count
-        	Assert-AreEqual "7.7.7.7" $P2SVpnGateway.CustomDnsServers[0]
+        Assert-AreEqual "7.7.7.7" $P2SVpnGateway.CustomDnsServers[0]
 		Assert-AreEqual $True $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
 		Assert-AreEqual $True $P2SVpnGateway.IsRoutingPreferenceInternet
 
@@ -750,21 +757,22 @@ function Test-CortexExpressRouteCRUD
 		$vpnClientAddressSpaces[1] = "192.168.4.0/24"
 		$updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VpnClientAddressPool $vpnClientAddressSpaces -CustomDnsServer 9.9.9.9 -DisableInternetSecurityFlag
 
-        	$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+        $P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
 		Assert-AreEqual $P2SvpnGatewayName $P2SVpnGateway.Name
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 		Assert-AreEqual $vpnServerConfig1.Id $P2SVpnGateway.VpnServerConfiguration.Id
 		$setVpnClientAddressSpacesString = [system.String]::Join(" ", $vpnClientAddressSpaces)
-        	Assert-AreEqual $setVpnClientAddressSpacesString $P2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes
+        Assert-AreEqual $setVpnClientAddressSpacesString $P2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes
 		Assert-AreEqual 1 @($P2SVpnGateway.CustomDnsServers).Count
-        	Assert-AreEqual "9.9.9.9" $P2SVpnGateway.CustomDnsServers[0]
+        Assert-AreEqual "9.9.9.9" $P2SVpnGateway.CustomDnsServers[0]
 		Assert-AreEqual $false $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
 
-		# Update existing P2SVpnGateway to remove the CustomDnsServers
+		# Update existing P2SVpnGateway to remove the CustomDnsServers & EnableInternetSecurityFlag
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
-		Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -CustomDnsServer @()
+		Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -CustomDnsServer @() -EnableInternetSecurityFlag
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
 		Assert-AreEqual 0 @($P2SVpnGateway.CustomDnsServers).Count
+		Assert-AreEqual $true $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
 
 		$associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -ResourceId $virtualWan.Id
 		Assert-NotNull $associatedVpnServerConfigs
