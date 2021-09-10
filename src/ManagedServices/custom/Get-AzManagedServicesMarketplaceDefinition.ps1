@@ -137,23 +137,23 @@ function Get-AzManagedServicesMarketplaceDefinition {
     process {
         try {
             if ($PSCmdlet.ParameterSetName -eq 'GetWithScope') {
-                Az.ManagedServices.internal\Get-AzManagedServicesMarketplaceDefinition @PSBoundParameters
+                return Az.ManagedServices.internal\Get-AzManagedServicesMarketplaceDefinition @PSBoundParameters
             }
 
             if (($PSCmdlet.ParameterSetName -eq 'ListWithoutScope') -or ($PSCmdlet.ParameterSetName -eq 'GetWithoutScope')) {
                 $PSBoundParameters.Remove("Tenant") | Out-Null;
-                Az.ManagedServices.internal\Get-AzManagedServicesMarketplaceDefinitionsWithoutScope @PSBoundParameters
+                return Az.ManagedServices.internal\Get-AzManagedServicesMarketplaceDefinitionsWithoutScope @PSBoundParameters
             }
 
             if ($PSCmdlet.ParameterSetName -eq 'GetViaIdentity') {
                 if ($InputObject.Id -match "^/providers/.*") {
-                    Az.ManagedServices.internal\Get-AzManagedServicesMarketplaceDefinitionsWithoutScope @PSBoundParameters
+                    return Az.ManagedServices.internal\Get-AzManagedServicesMarketplaceDefinitionsWithoutScope @PSBoundParameters
                 } else {
-                    Az.ManagedServices.internal\Get-AzManagedServicesMarketplaceDefinition @PSBoundParameters
+                    return Az.ManagedServices.internal\Get-AzManagedServicesMarketplaceDefinition @PSBoundParameters
                 }
             }
             # Default ParameterSetName(ListWithScope)
-            Az.ManagedServices.internal\Get-AzManagedServicesMarketplaceDefinition @PSBoundParameters
+            return Az.ManagedServices.internal\Get-AzManagedServicesMarketplaceDefinition @PSBoundParameters
         } catch {
             throw
         }
