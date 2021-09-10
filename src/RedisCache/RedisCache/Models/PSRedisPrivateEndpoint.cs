@@ -8,10 +8,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
     {
         public string ResourceGroupName { get; set; }
         public string Name { get; set; }
-
-        public string PrivateEndpointName { get; set; }
+        public string PrivateEndpointConnectionName { get; set; }
         public string ConnectionStatus { get; set; }
-        
 
        // public PSRedisPrivateEndpoint() { }
 
@@ -19,8 +17,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         {
             ResourceGroupName = resourceGroupName;
             Name = cacheName;
-
-            PrivateEndpointName = redisPrivateEndpoint.Name;
+            PrivateEndpointConnectionName = redisPrivateEndpoint.Name;
             ConnectionStatus = redisPrivateEndpoint.PrivateLinkServiceConnectionState.Status;
         }
     }

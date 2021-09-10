@@ -78,7 +78,7 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
 
 This command creates a Redis Cache.
 
-### Example 3: Create a Zone Redundant Cache
+### Example 3: Create a Zone Redundant Cache 
 
 ```
 PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -Zone @("1","2")
@@ -103,11 +103,16 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
           Tag                : {}
           Zone               : {1, 2}
 ```
+This command creates Redis cache instance in mutliple zones.
 
 ### Example 4: Create a Virtual Network enable Cache
-    
-    You can create virtual network using this link (https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-portal). 
-    Example Format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}
+   
+Requirements for creating Virtual Network enable cache:-
+    1. Create the virtual network in same resource group in which you want to create your redis cache.
+    2. You will need SubnetID for VNET enable cache. Syntax of SubnetID is given below.
+ 
+You can create virtual network from powershell command [New-AzVirtualNetwork](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetwork?view=azps-6.4.0). 
+    Syntax of SubnetID: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}
 
 ```
 PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -SubnetId "/subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/MyNet/subnets/MySubnet"
@@ -137,13 +142,13 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
 
 ### Example 5: Configure data persistence for a Premium Azure Cache for Redis
 
-    Persistence writes Redis data into an Azure Storage account that you own and manage. So before configuring data persistence you need storage account (https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal). Choose a storage account in the same region and subscription as the cache, and a Premium Storage account is recommended because premium storage has higher throughput.
-    For setting up data persistence, need to specifies Redis Configuration settings.
-   
-    For RDB back up enabled :-
-       - rdb-backup-enabled (Set true or false)
-       - rdb-storage-connection-string (Go to your Storage account. In left coloumn select Access keys. Then click on Show keys and copy any connection string from there.)
-       - rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)  
+Persistence writes Redis data into an Azure Storage account that you own and manage. So before configuring data persistence you need to have [storage account] (https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-powershell) in same resource group. Choose a storage account in the same region and subscription as the cache, and a Premium Storage account is recommended because premium storage has higher throughput.
+
+For setting up data persistence, there is need to specifies Redis Configuration settings.   
+For RDB back up enabled :-
+    - rdb-backup-enabled (Set true or false)
+    - rdb-storage-connection-string (Go to your **Storage account** on portal. In left coloumn select **Access keys**. Then click on **Show keys** and copy any **connection string** from there.)
+    - rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)  
     
 ```
 PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=demoaccount;AccountKey=QdcckhAuPxEPKOSrw6vGv4MG+Nqm+tOuLOMncQfS0tYLl05auuo00zemdO70EMgTkAZhAHR7eUwHZA31K2oLQQ==;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
@@ -169,10 +174,10 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
           Zone               : []
 ```
 
-    For AOF back up enabled :-
-       - aof-backup-enabled (Set true or false),
-       - aof-storage-connection-string-0 (Go to your Storage account. In left coloumn select Access keys. Then click on Show keys and copy any connection string from there.)
-       - aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.) 
+For AOF back up enabled :-
+    - aof-backup-enabled (Set true or false),
+    - aof-storage-connection-string-0 (Go to your **Storage account** on portal. In left coloumn select **Access keys**. Then click on **Show keys** and copy any **connection string** from there.)
+    - aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.) 
 
 ```
 PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"aof-backup-enabled" = "true"; "aof-storage-connection-string-0" = "DefaultEndpointsProtocol=https;AccountName=demoaccount;AccountKey=QdcckhAuPxEPKOSrw6vGv4MG+Nqm+tOuLOMncQfS0tYLl05auuo00zemdO70EMgTkAZhAHR7eUwHZA31K2oLQQ==;EndpointSuffix=core.windows.net"}
@@ -476,8 +481,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetId
-Required When you want to deploy Virtual network enabled Azure Cache for Redis. 
-Example Format: -SubnetId "/subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}"
+This parameter is required when you want to create Virtual network enabled Azure Cache for Redis. 
+Syntax: **-SubnetId "/subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}"**
 
 ```yaml
 Type: System.String
@@ -522,7 +527,7 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-List of Azure regions with Availability zones (https://docs.microsoft.com/en-us/azure/availability-zones/az-region#azure-services-supporting-availability-zones).
+List of Azure regions with [Availability zones] (https://docs.microsoft.com/en-us/azure/availability-zones/az-region#azure-services-supporting-availability-zones).
 
 ```yaml
 Type: System.String[]

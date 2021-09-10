@@ -27,10 +27,12 @@ If **PrivateEndpointConnectionName** parameter if provided, **Get-AzRedisPrivate
 
 ### Example 1: Get a private endpoint connection
 ```
-PS C:\>Get-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "privateDemo.abcd1234e56"
+PS C:\>Get-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45"
 
-
-
+		ResourceGroupName					:		myGroup
+		Name								:		myCache
+		PrivateEndpointConnectionName		:		MyPrivateEndpoint.abcd123e45	
+		ConnectionStatus					:		Approved
 ```
 
 This command gets a private endpoint connection named privateDemo.abcd1234e56 from Redis Cache named mycache. 

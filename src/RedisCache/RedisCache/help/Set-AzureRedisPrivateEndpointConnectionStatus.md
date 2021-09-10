@@ -26,7 +26,7 @@ The **Set-AzRedisPrivateEndpointConnectionStatus** cmdlet reject private endpoin
 
 ### Example 1: Set a private endpoint connection (Currently only support reject)
 ```
-PS C:\>Set-AzRedisPrivateEndpointConnectionStatus -Name "mycache" -PrivateEndpointConnectionName "privateDemo.abcd1234e56" -ConnectionStatus "Rejected"
+PS C:\>Set-AzRedisPrivateEndpointConnectionStatus -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -ConnectionStatus "Rejected"
 ```
 
 This command rejects private endpoint connection for an Azure Redis cache.

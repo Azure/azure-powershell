@@ -876,25 +876,62 @@ function Test-PrivateEndpoint
     # Setup - Create private endpoint connection in Redis Cache already.
 
     # Below example is manually created cache and private endpoint connection.
-    $resourceGroupName = "anshullahoti"
-    $cacheName = "AnshulDns"
-    $privateEndpointConnectionName = "PrivateDemo.245430db-e3e8-4472-b2eb-35c332c3f257"
-    $connectionStatus = "Approved"
+    #$resourceGroupName = "anshullahoti"
+    #$cacheName = "AnshulDns"
+    #$privateEndpointConnectionName = "temptest.70cced5c-405a-4137-a551-ffe313bca47d"
+    #$connectionStatus = "Approved"
 
+    #Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName > A.txt
      # Listing the private endpoint connections  
-     Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName} " Listing all Private Endpoint Connection."
+     #Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName} " Listing all Private Endpoint Connection."
 
      # Get the details of private endpoint connection
-     Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName} " Private Endpoint Properties."
+     #Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName} " Private Endpoint Properties."
 
      # Set the connection status of Private Endpoint
-     Assert-True {Set-AzRedisPrivateEndpointConnectionStatus -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -ConnectionStatus $connectionStatus} "Setting Private Endpoint connection Status."
+     #Assert-True {Set-AzRedisPrivateEndpointConnectionStatus -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -ConnectionStatus $connectionStatus} "Setting Private Endpoint connection Status."
    
      # Delete the prviate endpoint connection    
-     Assert-True {Remove-AzRedisPrivateEndpointConnection -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -Force -PassThru} "Removing Private Endpoint Name failed."
+     #Assert-True {Remove-AzRedisPrivateEndpointConnection -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -Force -PassThru} "Removing Private Endpoint Name failed."
 }
 
+#function Test-temp
+{
+    # Setup
+    #resourceGroupName = "PowerShellTest-10"
+    #$cacheName = "redisteam011"
+    #$vnetName = "vnetsteam"
+    #$location =  "Central US"
+    #$addressPrefix =  "10.0.0.0/16"
 
+    # Create resource group
+    #New-AzResourceGroup -Name $resourceGroupName -Location $location    
+
+    # Creating Cache
+    #$cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -Tag @{"example-key" = "example-value"}
+
+    #Creating Virtual Network
+    #$virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name $vnetName -Location $location -AddressPrefix $addressPrefix
+
+    #Add a Subnet
+    #$subnetConfig = Add-AzVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.0.0/24"
+
+    #Associate the subnet to the virtual network
+    #$virtualNetwork | Set-AzVirtualNetwork
+
+    #Waiting for cache creation - 30 min
+    #for ($i = 0; $i -le 60; $i++)
+    {
+        #Start-TestSleep 30000
+        #$cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        #if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            #Creating Private Endpoint
+            #$plsConnection = New-AzPrivateLinkServiceConnection -Name "myprivatedemo" -PrivateLinkServiceId $cacheCreated.Id -RequestMessage 'Please Approve my request'
+            #New-AzPrivateEndpoint -Name "AnshulPrivateEndpoint" -ResourceGroupName $resourceGroupName -Location $location -PrivateLinkServiceConnection $plsConnection -Subnet  $vnet.Subnets[0]
+        }
+    }
+}
 
 <#
 .SYNOPSIS

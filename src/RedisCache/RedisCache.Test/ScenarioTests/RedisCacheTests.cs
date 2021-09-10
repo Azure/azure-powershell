@@ -110,5 +110,11 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-PrivateEndpoint");
         }
+        /*[Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Testtemp()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-temp");
+        }*/
     }
 }

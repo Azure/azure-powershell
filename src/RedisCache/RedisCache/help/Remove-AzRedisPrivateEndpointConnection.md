@@ -26,18 +26,18 @@ Remove a private endpoint connection from a Redis Cache.
 
 ### Example 1: Remove a private endpoint connection and return the result
 ```
-PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "privateDemo.abcd1234e56" -Force -PassThru
+PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -Force -PassThru
 True
 ```
 
-This command removes a private endpoint connection named privateDemo.abcd1234e56 from Redis Cache named mycache and displays whether the operation is successful. 
+This command removes a private endpoint connection named MyPrivateEndpoint.abcd123e45 from Redis Cache named mycache and displays whether the operation is successful. 
 
 ### Example 2: Remove a private endpoint connection and do not display the result
 ```
-PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "privateDemo.abcd1234e56" -Force
+PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -Force
 ```
 
-This command removes a private endpoint connection named privateDemo.abcd1234e56 from Redis Cache named mycache.
+This command removes a private endpoint connection named MyPrivateEndpoint.abcd123e45 from Redis Cache named mycache.
 Because the *PassThru* parameter is not specified, the result of the operation is not displayed.
 
 ## PARAMETERS

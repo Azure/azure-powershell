@@ -37,35 +37,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Commands
                         resourceGroupName: ResourceGroupName,
                         cacheName: Name,
                         privateEndpointConnectionName: PrivateEndpointConnectionName);
-                /*if(redisPrivateEndpointConnection==null)
-                {
-                    throw new CloudException(string.Format(Resources.PrivateEndpointNameNotFound, Name, PrivateEndpointConnectionName));
-                }*/
                 WriteObject(new PSRedisPrivateEndpoint(ResourceGroupName, Name, redisPrivateEndpointConnection));
-
-            }
-            else
-            {
-                IEnumerable<PrivateEndpointConnection> response = CacheClient.ListPrivateEndpoints(ResourceGroupName, Name);
-                //IPage<PrivateEndpointConnection> response = CacheClient.ListPrivateEndpoints(ResourceGroupName,Name);
-                List<PSRedisPrivateEndpoint> list = new List<PSRedisPrivateEndpoint>();
-                foreach (PrivateEndpointConnection redisPrivateEndpoint in response)
-                {
-                    list.Add(new PSRedisPrivateEndpoint(ResourceGroupName, Name, redisPrivateEndpoint));
-                }
-                WriteObject(list, true);
-
-               /* while (!string.IsNullOrEmpty(response.NextPageLink))
-                {
-                    // List using next link
-                    response = CacheClient.ListPrivateEndpoints(response.NextPageLink);
-                    list = new List<PSRedisPrivateEndpoint>();
-                    foreach (PrivateEndpointConnection redisPrivateEndpoint in response)
-                    {
-                        list.Add(new PSRedisPrivateEndpoint(ResourceGroupName, Name, redisPrivateEndpoint));
-                    }
-                    WriteObject(list, true);
-                }*/
             }
         }
     }
