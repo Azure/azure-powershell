@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Initialize-AzDataProtectionRestoreRequest' {
     It '__AllParameterSets' {
-        $sub = $env.SubscriptionId
+        $sub = $env.TestBlobsRestore.SubscriptionId
         $rgName = $env.TestBlobsRestore.ResourceGroupName
         $vaultName = $env.TestBlobsRestore.VaultName
         

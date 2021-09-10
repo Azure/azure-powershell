@@ -15,21 +15,20 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using global::Azure;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
+    using global::Azure.Storage.Blobs.Specialized;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
+    using System.Collections.Generic;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
-    using global::Azure.Storage.Blobs;
-    using global::Azure.Storage.Blobs.Models;
-    using global::Azure;
-    using System.Collections.Generic;
-    using global::Azure.Storage.Blobs.Specialized;
-    using global::Azure.Storage;
-    using Microsoft.WindowsAzure.Commands.Common;
 
     /// <summary>
     /// list azure blobs in specified azure container
@@ -123,6 +122,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public SwitchParameter IncludeVersion { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Include blob tags, by default get blob won't include blob tags.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter IncludeTag { get; set; }
+
         [Parameter(HelpMessage = "Blob SnapshotTime", Mandatory = true, ParameterSetName = SingleBlobSnapshotTimeParameterSet)]
         [ValidateNotNullOrEmpty]
         public DateTimeOffset? SnapshotTime { get; set; }
@@ -155,9 +158,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private bool NeedWarningForContinuationToken = false;
 
+        // Overwrite the parameter, function
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = NameParameterSet)]
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = SingleBlobSnapshotTimeParameterSet)]
+        [Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false, ParameterSetName = SingleBlobVersionIDParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public override string TagCondition { get; set; }
+
         protected override bool UseTrack2Sdk()
         {
-            if (this.IncludeVersion.IsPresent || this.VersionId != null)
+            if (this.IncludeVersion.IsPresent || this.IncludeTag.IsPresent || this.VersionId != null)
             {
                 return true;
             }
@@ -236,6 +246,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, blobProperties.IsLatestVersion, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"), ClientOptions, blobProperties.BlobType);
 
                     AzureStorageBlob outputBlob = new AzureStorageBlob(blobClient, localChannel.StorageContext, blobProperties, ClientOptions);
+                    if (this.IncludeTag.IsPresent)
+                    {
+                        IDictionary<string, string> tags = (await blobClient.GetTagsAsync(null, this.CmdletCancellationToken).ConfigureAwait(false)).Value.Tags;
+                        if (tags != null)
+                        {
+                            outputBlob.Tags = tags.ToHashtable();
+                            outputBlob.TagCount = tags.Count;
+                        }
+                    }
                     OutputStream.WriteObject(taskId, outputBlob);
                 }
                 else // Use Track1 SDK
@@ -283,6 +302,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (includeVersion)
                 {
                     blobStates = blobStates | BlobStates.Version;
+                }
+                if (IncludeTag.IsPresent)
+                {
+                    blobTraits = blobTraits | BlobTraits.Tags;
                 }
 
                 do

@@ -1,0 +1,5 @@
+- The action cannot be undone and will permanently delete this resource
+- Resource deletion is a permanent action. All the resources, contract purchased and its Azure integration will be permanently deleted and will unsubscribe you from this service. 
+- If you delete the resource you will not be able to restore the commit contract and create Confluent cloud resource once again with this contract 
+- If you are deleting the Confluent cloud resource after 14 days into the contract term you will not get a refund for this service. 
+- The resource is also associated with other non-dependent resources like clusters, environments, topics etc. Such associated resources on Confluent cloud will be scheduled for deletion. For more information on the Confluent Cloud cluster deletion process and timeline, please contact Confluent Support (hyperlink - https://support.confluent.io/ )

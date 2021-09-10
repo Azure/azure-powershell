@@ -68,6 +68,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
+        public string PublicNetworkAccess
+        {
+            get { return dataFactory.PublicNetworkAccess; }
+        }
+
         public IDictionary<string, string> Tags
         {
             get

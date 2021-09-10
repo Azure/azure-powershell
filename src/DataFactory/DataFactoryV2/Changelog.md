@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated ADF .Net SDK version to 4.22.0
+* Updated ADF .Net SDK version to 4.24.0
+
+## Version 1.14.0
+* Added a subnetId argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to support RBAC checking for VNet injection against the subnet resource ID instead of the VNet resource ID.
+* Added the `Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint` cmdlet to provide a list of outbound network dependencies for SSIS integration runtime in Azure Data Factory that joins a virtual network.
+* Added PublicNetworkAccess to Data Factory.
+* Updated ADF .Net SDK version to 4.23.0
 
 ## Version 1.13.1
 * Updated ADF .Net SDK version to 4.21.0

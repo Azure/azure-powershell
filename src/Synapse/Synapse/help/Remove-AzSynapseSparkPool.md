@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSynapseSparkPool
 
 ## SYNOPSIS
-Deletes a Synapse Analytics Spark pool.
+Deletes a Apache Spark pool in Azure Synapse Analytics.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Remove-AzSynapseSparkPool -ResourceId <String> [-PassThru] [-AsJob] [-Force]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSynapseSparkPool** cmdlet permanently deletes an Azure Synapse Analytics Spark pool.
+The **Remove-AzSynapseSparkPool** cmdlet permanently deletes an Apache Spark pool in Azure Synapse Analytics.
 
 ## EXAMPLES
 
@@ -46,7 +46,7 @@ The **Remove-AzSynapseSparkPool** cmdlet permanently deletes an Azure Synapse An
 PS C:\> Remove-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
 ```
 
-This command deletes an Azure Synapse Analytics Spark pool.
+This command deletes an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 2
 ```powershell
@@ -54,7 +54,7 @@ PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name Con
 PS C:\> $pool | Remove-AzSynapseSparkPool
 ```
 
-This command deletes an Azure Synapse Analytics Spark pool through pipeline.
+This command deletes an Apache Spark pool in Azure Synapse Analytics through pipeline.
 
 ### Example 3
 ```powershell
@@ -62,14 +62,14 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Remove-AzSynapseSparkPool -Name ContosoSparkPool
 ```
 
-This command deletes an Azure Synapse Analytics Spark pool through pipeline.
+This command deletes an Apache Spark pool in Azure Synapse Analytics through pipeline.
 
 ### Example 4
 ```powershell
 PS C:\> Remove-AzSynapseSparkPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/bigDataPools/ContosoSparkPool
 ```
 
-This command deletes an Azure Synapse Analytics Spark pool with a resource ID.
+This command deletes an Apache Spark pool in Azure Synapse Analytics with a resource ID.
 
 ## PARAMETERS
 

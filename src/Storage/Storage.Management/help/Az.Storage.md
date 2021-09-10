@@ -98,6 +98,9 @@ Get the NetWorkRule property of a Storage account
 ### [Get-AzStorageBlob](Get-AzStorageBlob.md)
 Lists blobs in a container.
 
+### [Get-AzStorageBlobByTag](Get-AzStorageBlobByTag.md)
+Lists blobs in a storage account across containers, with a blob tag filter sql expression.
+
 ### [Get-AzStorageBlobContent](Get-AzStorageBlobContent.md)
 Downloads a storage blob.
 
@@ -112,6 +115,9 @@ Applies a simple Structured Query Language (SQL) statement on a blob's contents 
 
 ### [Get-AzStorageBlobServiceProperty](Get-AzStorageBlobServiceProperty.md)
 Gets service properties for Azure Storage Blob services.
+
+### [Get-AzStorageBlobTag](Get-AzStorageBlobTag.md)
+Get blob tags of a specific blob.
 
 ### [Get-AzStorageContainer](Get-AzStorageContainer.md)
 Lists the storage containers.
@@ -373,6 +379,9 @@ Uploads a local file to an Azure Storage blob.
 
 ### [Set-AzStorageBlobInventoryPolicy](Set-AzStorageBlobInventoryPolicy.md)
 Creates or updates blob inventory policy in a Storage account.
+
+### [Set-AzStorageBlobTag](Set-AzStorageBlobTag.md)
+Set blob tags of a specific blob.
 
 ### [Set-AzStorageContainerAcl](Set-AzStorageContainerAcl.md)
 Sets the public access permission to a storage container.

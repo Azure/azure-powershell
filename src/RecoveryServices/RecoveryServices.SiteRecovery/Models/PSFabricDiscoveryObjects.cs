@@ -158,6 +158,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the credential type of the run as account.
         /// </summary>
         public string CredentialType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential type of the run as account.
+        /// </summary>
+        public string ApplianceName { get; set; }
     }
 
     /// <summary>
