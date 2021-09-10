@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
 
 ## Version 0.15.0
 * Added support for Synapse Managed Private Endpoint
