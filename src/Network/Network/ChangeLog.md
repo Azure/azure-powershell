@@ -19,6 +19,18 @@
 --->
 
 ## Upcoming Release
+* Added support for allocate/deallocate hub firewalls
+    - Added method Allocate on PSAzureFirewall object - requires virtual hub resource ID as input
+    - Modified method Deallocate on PSAzureFirewall object to handle deallocation of hub firewalls by removing reference to the virtual hub - no input parameter required
+    - Added example in Set-AzFirewall for allocate/deallocate hub firewalls
+* Updated cmdlets to enable processing of available zones on AzureFirewalll
+    - `New-AzFirewall`
+* Updated cmdlets to add properties for new BYOIP features.
+    - `New-AzPublicIpAddress`
+    - `New-AzCustomIpPrefix`
+    - `Update-AzCustomIpPrefix`
+
+## Version 4.9.0
 * Updated cmdlets for route server for a more stable way to add IP configuration.
 * Added support for getting a single private link resource.
 * Added more detailed description about GroupId in `New-AzPrivateLinkServiceConnection`

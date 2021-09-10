@@ -1556,6 +1556,10 @@
                 <Label>IpTags</Label>
                 <PropertyName>IpTagsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>PublicIpPrefix</Label>
+                <PropertyName>PublicIpPrefixText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1632,13 +1636,29 @@
                 <Label>CommissionedState</Label>
                 <PropertyName>CommissionedState</PropertyName>
               </ListItem>
-			        <ListItem>
+              <ListItem>
                 <Label>PublicIpPrefixes</Label>
                 <PropertyName>PublicIpPrefixesText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Zones</Label>
                 <PropertyName>Zones</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SignedMessage</Label>
+                <PropertyName>SignedMessage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AuthorizationMessage</Label>
+                <PropertyName>AuthorizationMessage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CustomIpPrefixParent</Label>
+                <PropertyName>CustomIpPrefixParentText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ChildCustomIpPrefixes</Label>
+                <PropertyName>childCustomIpPrefixesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
