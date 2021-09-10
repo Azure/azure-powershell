@@ -125,6 +125,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The device vendor of the remote vpn device.")]
         public string DeviceVendor { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "if vpn site is a security site.")]
+        public bool? IsSecuritySite { get; set; }
+
         [Parameter(Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteIpAddress,
             HelpMessage = "Link Speed In Mbps.")]
@@ -200,7 +205,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
+
             PSVpnSite vpnSiteToCreate = new PSVpnSite();
             vpnSiteToCreate.ResourceGroupName = this.ResourceGroupName;
             vpnSiteToCreate.Name = this.Name;
@@ -283,6 +288,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.O365Policy != null )
             {
                 vpnSiteToCreate.O365Policy = this.O365Policy;
+            }
+
+            if (this.IsSecuritySite != null)
+            {
+                vpnSiteToCreate.IsSecuritySite = this.IsSecuritySite;
             }
 
             ConfirmAction(

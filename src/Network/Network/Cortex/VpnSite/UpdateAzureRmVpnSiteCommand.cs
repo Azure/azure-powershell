@@ -231,6 +231,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "if vpn site is a security site.")]
+        public bool? IsSecuritySite { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The office 365 traffic breakout policy for this VpnSite.")]
         [ValidateNotNullOrEmpty]
         public PSO365PolicyProperties O365Policy { get; set; }
@@ -376,6 +381,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 vpnSiteToUpdate.VpnSiteLinks = new List<PSVpnSiteLink>();
                 vpnSiteToUpdate.VpnSiteLinks.AddRange(this.VpnSiteLink);
+            }
+
+            if (this.IsSecuritySite != null)
+            {
+                vpnSiteToUpdate.IsSecuritySite = this.IsSecuritySite;
             }
 
             if (this.O365Policy != null)
