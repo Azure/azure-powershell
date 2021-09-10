@@ -12,22 +12,34 @@ Get the marketplace registration definition for the marketplace identifier.
 
 ## SYNTAX
 
-### List (Default)
+### ListWithScope (Default)
 ```
 Get-AzManagedServicesMarketplaceDefinition [-Scope <String>] [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier <String> [-Scope <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzManagedServicesMarketplaceDefinition -InputObject <IManagedServicesIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetWithoutScope
+```
+Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier <String> -Tenant
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetWithScope
+```
+Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier <String> [-Scope <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListWithoutScope
+```
+Get-AzManagedServicesMarketplaceDefinition -Tenant [-Filter <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +87,7 @@ The filter query parameter to filter marketplace registration definitions by pla
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: ListWithoutScope, ListWithScope
 Aliases:
 
 Required: False
@@ -107,7 +119,7 @@ Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publi
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetWithoutScope, GetWithScope
 Aliases:
 
 Required: True
@@ -122,12 +134,27 @@ The scope of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: GetWithScope, ListWithScope
 Aliases:
 
 Required: False
 Position: Named
 Default value: "subscriptions/" + (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tenant
+The filter query parameter to filter marketplace registration definitions by plan identifier, publisher, version etc.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetWithoutScope, ListWithoutScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

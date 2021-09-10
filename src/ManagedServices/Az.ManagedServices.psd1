@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ManagedServices.private.dll'
   FormatsToProcess = './Az.ManagedServices.format.ps1xml'
-  FunctionsToExport = 'Get-AzManagedServicesAssignment', 'Get-AzManagedServicesDefinition', 'Get-AzManagedServicesMarketplaceDefinition', 'Get-AzManagedServicesMarketplaceDefinitionsWithoutScope', 'New-AzManagedServicesAssignment', 'New-AzManagedServicesAuthorizationObject', 'New-AzManagedServicesDefinition', 'New-AzManagedServicesEligibleApproverObject', 'New-AzManagedServicesEligibleAuthorizationObject', 'Remove-AzManagedServicesAssignment', 'Remove-AzManagedServicesDefinition', '*'
+  FunctionsToExport = 'Get-AzManagedServicesAssignment', 'Get-AzManagedServicesDefinition', 'Get-AzManagedServicesMarketplaceDefinition', 'New-AzManagedServicesAssignment', 'New-AzManagedServicesAuthorizationObject', 'New-AzManagedServicesDefinition', 'New-AzManagedServicesEligibleApproverObject', 'New-AzManagedServicesEligibleAuthorizationObject', 'Remove-AzManagedServicesAssignment', 'Remove-AzManagedServicesDefinition', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

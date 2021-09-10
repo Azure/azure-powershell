@@ -73,6 +73,12 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
+  # Hide cmdlet
+  - where:
+      verb: Get
+      subject: MarketplaceDefinitionsWithoutScope|MarketplaceDefinition
+    hide: true
+
   # Change parameter Id to Name
   - where:
       parameter-name: Id
@@ -85,6 +91,12 @@ directive:
     set:
       default:
         script: '"subscriptions/" + (Get-AzContext).Subscription.Id'
+
+  # The regex(^/(?<scope>[^/]+)/) mathch failed because the scope inlcude '/' character.
+  # Replace regex to fixed it. 
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/global::System.Text.RegularExpressions.Regex\(\"\^\/\(\?\<scope\>\[\^\/\]\+\)/g, 'global::System.Text.RegularExpressions.Regex("^/(?<scope>.+)');
 
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:

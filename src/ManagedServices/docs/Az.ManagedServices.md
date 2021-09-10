@@ -20,9 +20,6 @@ Gets the registration definition details.
 ### [Get-AzManagedServicesMarketplaceDefinition](Get-AzManagedServicesMarketplaceDefinition.md)
 Get the marketplace registration definition for the marketplace identifier.
 
-### [Get-AzManagedServicesMarketplaceDefinitionsWithoutScope](Get-AzManagedServicesMarketplaceDefinitionsWithoutScope.md)
-Get the marketplace registration definition for the marketplace identifier.
-
 ### [New-AzManagedServicesAssignment](New-AzManagedServicesAssignment.md)
 Creates or updates a registration assignment.
 
