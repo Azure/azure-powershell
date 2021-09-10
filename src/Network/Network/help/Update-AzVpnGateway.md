@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableBgpRouteTranslationForNat
-Flag to enable Bgp route translation for NAT on this VpnGateway.
+Flag to enable/disable Bgp route translation for NAT on this VpnGateway.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

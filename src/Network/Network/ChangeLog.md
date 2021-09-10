@@ -29,6 +29,11 @@
     - `New-AzPublicIpAddress`
     - `New-AzCustomIpPrefix`
     - `Update-AzCustomIpPrefix`
+* Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.
+    - `New-AzVpnGateway'
+    - `Update-AzVpnGateway`	
+* Updated cmdlet to add property to disable InternetSecurity for P2SVpnGateway.
+    - `New-AzP2sVpnGateway'
 
 ## Version 4.9.0
 * Updated cmdlets for route server for a more stable way to add IP configuration.
