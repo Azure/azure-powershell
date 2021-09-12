@@ -124,20 +124,25 @@ function Install-AzModuleV2 {
                 PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop'
                 PowerShellGet\Set-PSRepository -Name $script:AzTempRepoName -InstallationPolicy Trusted
 
-                $downloader = [PSParallelDownloader]::new($Repository)
+                $url = Get-RepositoryUrl $Repository
+                $downloader = [ParallelDownloader]::new($url)
                 $module = $null
     
                 try {
                     foreach ($module in $modules) {
+                        Write-Debug "[$($MyInvocation.MyCommand)] start to download $($module.Name) version $($module.Version)"
                         $null = $downloader.Download($module.Name, $module.Version, $tempRepo)
                     }
                     $downloader.WaitForAllTasks()
+                    Write-Debug "[$($MyInvocation.MyCommand)] All download tasks finish."
                 }
                 finally {
                     $downloader.Dispose()
                 }
             }
             
+            $InstallStarted = Get-Date
+
             Write-Debug "[$($MyInvocation.MyCommand)] Installing modules $($modules.Name)"
             $installModuleParams = @{
                 Scope = 'CurrentUser'
@@ -157,7 +162,7 @@ function Install-AzModuleV2 {
             $module = $null
             $result = @()
             $find = @()
-            $max_job_count = 5
+            $max_job_count = 10
             foreach ($module in $modules) {
                 $running = @(Get-Job -State 'Running')
                 if ($running -and $running.Count -eq $max_job_count) {
@@ -169,8 +174,10 @@ function Install-AzModuleV2 {
                 }
 
                 if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
-                    $null = Start-Job {
-                        PowerShellGet\Install-Module -Name $($using:module.Name) -RequiredVersion $($using:module.Version) @using:installModuleParams
+                    $v = $module.Version
+                    $n = $module.Name
+                    $null = Start-ThreadJob {
+                        PowerShellGet\Install-Module -Name $using:n -RequiredVersion $using:v @using:installModuleParams
                     }
                 }
             }
@@ -181,6 +188,8 @@ function Install-AzModuleV2 {
                 Remove-Job $_ -Confirm:$false
             }
             Write-Debug "[$($MyInvocation.MyCommand)] Modules install complete"
+            $durationInstallation = (Get-Date) - $InstallStarted
+            Write-Debug "Time Elapsed Total: $($durationInstallation.TotalSeconds)s"
         }
         finally {
             if ($Force -or !$WhatIfPreference) {

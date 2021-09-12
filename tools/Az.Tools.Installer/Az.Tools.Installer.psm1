@@ -15,9 +15,12 @@ using namespace System
 using namespace System.Collections.Generic
 using namespace System.IO
 using namespace System.IO.Compression
+using namespace System.Linq
 using namespace System.Management.Automation
 using namespace System.Net
+
 using namespace System.Net.Http
+using namespace System.Threading
 using namespace System.Threading.Tasks
 
 Microsoft.PowerShell.Core\Set-StrictMode -Version 3
@@ -28,24 +31,34 @@ $script:ExpectedModuleCompanyName = 'azure-sdk'
 $script:MaxModulesToFindIndividually = 3
 $script:ParallelDownloaderClassCode = @"
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
 public class ParallelDownloader
 {
-    private readonly HttpClient Client;
+    private HttpClientHandler httpClientHandler = new HttpClientHandler();
+    private HttpClient client = null;
+    private string urlRepository = null;
     private readonly CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
 
-    public ParallelDownloader(HttpClient client)
+    IList<Task> tasks;
+    IList<string> modules;
+
+    public ParallelDownloader(string url)
     {
-        Client = client;
+        client = new HttpClient(httpClientHandler);
+        this.urlRepository = url;
+        tasks = new List<Task>();
+        modules = new List<string>();
     }
 
-    public async Task DownloadToFile(string uri, string filePath)
+    private async Task DownloadToFile(string uri, string filePath)
     {
-        using (var httpResponseMessage = await Client.GetAsync(uri, CancellationTokenSource.Token))
+        using (var httpResponseMessage = await client.GetAsync(uri, CancellationTokenSource.Token))
         using (var stream = await httpResponseMessage.EnsureSuccessStatusCode().Content.ReadAsStreamAsync())
         using (var fileStream = new FileStream(filePath, FileMode.Create))
         {
@@ -53,24 +66,61 @@ public class ParallelDownloader
         }
     }
 
-    public void Cancel()
+    public void Download(string module, Version version, string path)
     {
-        CancellationTokenSource.Cancel();
+        var nupkgFile = Path.Join(path, $"{module}.{version}.nupkg");
+        Task task = DownloadToFile($"{urlRepository}/package/{module}/{version}", nupkgFile.ToString());
+        tasks.Add(task);
+        modules.Add(module);
+    }
+
+    public void WaitForAllTasks()
+    {
+        while (tasks.Count() > 0)
+        {
+            int taskIndex = Task.WaitAny(tasks.ToArray());
+            var task = tasks[taskIndex];
+            tasks.Remove(task);
+            modules.Remove(modules[taskIndex]);
+            if (!task.IsCompleted)
+            {
+                throw new Exception($"Error downloading {modules[taskIndex]} {task.Exception}");
+            }
+        }
+    }
+
+    public void Dispose()
+    {
+        if (tasks.Count() > 0)
+        {
+            CancellationTokenSource.Cancel();
+            try
+            {
+                Task.WaitAll(tasks.ToArray());
+            }
+            catch
+            {
+
+            }
+        }
+
+        if (client != null)
+        {
+            client.Dispose();
+        }
+
+        if (httpClientHandler != null)
+        {
+            httpClientHandler.Dispose();
+        }
     }
 }
 "@
 
-Add-Type $script:ParallelDownloaderClassCode -ReferencedAssemblies System.Net.Http,System.Threading.Tasks
-
-function Test-Class {
-    param ()
-
-    process {
-        [ParallelDownloaderClassCode] | Get-Member
-    }
-}
-
-[ParallelDownloader] | Get-Member
+Write-Warning "Start to add type of ParallelDownloaderClassCode"
+Add-Type -AssemblyName System.Net.Http -ErrorAction Stop
+Add-Type $script:ParallelDownloaderClassCode -ReferencedAssemblies System.Net.Http,System.Threading.Tasks,System.Linq,System.Collections,System.Runtime.Extensions
+Write-Warning "Add-Type finish."
 
 $getModule = Get-Module -Name "PowerShellGet"
 if ($null -ne $getModule -and $getModule.Version -lt [System.Version]"2.1.3") { 
@@ -79,27 +129,6 @@ if ($null -ne $getModule -and $getModule.Version -lt [System.Version]"2.1.3") {
 elseif ($null -eq $getModule) { 
     Import-Module PowerShellGet -MinimumVersion 2.1.3 -Scope Global 
 }
-
-$exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse -ErrorAction SilentlyContinue )
-$internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction SilentlyContinue )
-
-$allFunctions = $exportedFunctions + $internalFunctions
-foreach($function in $allFunctions) {
-    try {
-        . $function.Fullname
-    }
-    catch {
-        Write-Error -Message "Failed to import function $($function.fullname): $_"
-    }
-}
-Export-ModuleMember -Function $exportedFunctions.Basename
-
-$commandsWithRepositoryParameter = @(
-    "Install-AzModule",
-    "Uninstall-AzModule"
-)
-
-Add-RepositoryArgumentCompleter -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"
 
 function Get-AllAzModule {
     param (
@@ -214,7 +243,7 @@ function Get-AzModuleFromRemote {
             }
         }
 
-        Write-Debug "Get-AzModuleFromRemote: find$($modulesWithVersion.Length)"
+        Write-Debug "Get-AzModuleFromRemote: find $($modulesWithVersion.Length)"
 
         if (!$containValidModule -and !$Name) {
             @()
@@ -262,9 +291,23 @@ function Uninstall-Az {
     }
 }
 
+function Get-RepositoryUrl {
+    param (
+        [Parameter()]
+        [string]
+        ${Repository}
+    )
+
+    process {
+        $url = (Get-PSRepository -Name $repository).SourceLocation
+        $url
+    }
+}
+
+<#--------------------------------------------------------------------------
 class PSParallelDownloader
 {
-    [ParallelDownloader] hidden $ppDownloader = $null
+    #[ParallelDownloader] hidden $ppDownloader = $null
     [HttpClient] hidden $psHttpClient = $null
     [HttpClientHandler] hidden $psHttpClientHandler = $null
     [List[PSCustomObject]] hidden $tasks = @()
@@ -275,7 +318,7 @@ class PSParallelDownloader
 
         $this.psHttpClientHandler = [HttpClientHandler]::new()
         $this.psHttpClient = [HttpClient]::new($this.psHttpClientHandler)
-        this.$ppDownloader = [ParallelDownloader]::new($this.psHttpClient)
+        $ppDownloader = [ParallelDownloader]::new($this.psHttpClient)
         $this.url = (Get-PSRepository -Name $repository).SourceLocation
 
         #Test-Class
@@ -325,8 +368,28 @@ class PSParallelDownloader
         }
     }
 }
+#>
 
+$exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse -ErrorAction SilentlyContinue )
+$internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction SilentlyContinue )
 
+$allFunctions = $exportedFunctions + $internalFunctions
+foreach($function in $allFunctions) {
+    try {
+        . $function.Fullname
+    }
+    catch {
+        Write-Error -Message "Failed to import function $($function.fullname): $_"
+    }
+}
+Export-ModuleMember -Function $exportedFunctions.Basename
+
+$commandsWithRepositoryParameter = @(
+    "Install-AzModule",
+    "Uninstall-AzModule"
+)
+
+Add-RepositoryArgumentCompleter -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"
 <#--------------------------------------------------------------#>
 
 function Test-Downloader {
@@ -337,7 +400,8 @@ function Test-Downloader {
         $tempRepo = Join-Path 'D:/PSLocalRepo/' (Get-Date -Format "yyyyddMM-HHmm")
         $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false
 
-        $downloader = [PSParallelDownloader]::new("PSGallery")
+        $url = Get-RepositoryUrl 'PSGallery'
+        $downloader = [ParallelDownloader]::new($url)
         $downloader
         try
         {
