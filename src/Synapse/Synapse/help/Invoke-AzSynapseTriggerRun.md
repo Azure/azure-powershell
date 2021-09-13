@@ -42,7 +42,7 @@ PS C:\> Invoke-AzSynapseTriggerRun -WorkspaceName ContosoWorkspace -Name Contoso
 
 Starts another instance of a trigger run with a new trigger run id, keeping the same windowStartTime and windowEndTime as the original trigger run.
 
-## Example 2
+### Example 2
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Invoke-AzSynapseTriggerRun -Name ContosoTrigger -TriggerRunId 000111222333abc
