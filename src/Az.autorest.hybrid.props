@@ -54,11 +54,11 @@
   </ItemGroup>
 
   <ItemGroup>
-        <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName)\custom\**\*.*"/>
-        <ModuleHelpFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName)\help\**\*.*"/>
-        <ModuleGeneratedFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName)\generated\**\*.*"/>
-        <ModuleTestFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName)\test\**\*.*"/>
-        <UtilsFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName)\utils\**\*.*"/>
+        <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName).Autorest\custom\**\*.*"/>
+        <ModuleHelpFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName).Autorest\help\**\*.*"/>
+        <ModuleGeneratedFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName).Autorest\generated\**\*.*"/>
+        <ModuleTestFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName).Autorest\test\**\*.*"/>
+        <UtilsFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\$(MSBuildProjectName).Autorest\utils\**\*.*"/>
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
