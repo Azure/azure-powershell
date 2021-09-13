@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 if (this.PackageAction == SynapseConstants.PackageActionType.Add)
                 {
-                    if (existingSparkPool == null)
+                    if (existingSparkPool.CustomLibraries == null)
                     {
                         existingSparkPool.CustomLibraries = new List<LibraryInfo>();
                     }
@@ -251,6 +251,11 @@ namespace Microsoft.Azure.Commands.Synapse
 
         private LibraryRequirements CreateLibraryRequirements()
         {
+            if (string.IsNullOrEmpty(LibraryRequirementsFilePath))
+            {
+                return null;
+            }
+
             var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(LibraryRequirementsFilePath);
 
             return new LibraryRequirements

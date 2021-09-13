@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added `New-AzSynapseLinkedServiceEncryptedCredential` cmdlet to encrypt credential in linked service
+* Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
 
 ## Version 0.15.0
 * Added support for Synapse Managed Private Endpoint
