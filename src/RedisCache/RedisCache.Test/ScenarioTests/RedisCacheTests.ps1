@@ -873,51 +873,52 @@ Tests redis private endpoints connection.
 #>
 function Test-PrivateEndpoint
 {
-    # Setup - Create private endpoint connection in Redis Cache already.
+    # Important - Test Private Endpoint not support live testing.
+    # Setup - For testing Private Endpoint Connection you have to create private endpoint connection manually.
 
-    # Below example is manually created cache and private endpoint connection.
-    #$resourceGroupName = "anshullahoti"
-    #$cacheName = "AnshulDns"
-    #$privateEndpointConnectionName = "temptest.70cced5c-405a-4137-a551-ffe313bca47d"
-    #$connectionStatus = "Approved"
+    # In Below example manually created cache and private endpoint connection.
+    $resourceGroupName = "PowerShellTest-10"
+    $cacheName = "redisteam010"
+    $privateEndpointConnectionName = "MyPrivateEndpoint.741ed8da-d23e-4eb8-bf38-c13bb1b886c3"
+    $connectionStatus = "Rejected"
 
-    #Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName > A.txt
+    
      # Listing the private endpoint connections  
      #Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName} " Listing all Private Endpoint Connection."
 
      # Get the details of private endpoint connection
-     #Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName} " Private Endpoint Properties."
+     Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName} " Private Endpoint Properties."
 
      # Set the connection status of Private Endpoint
-     #Assert-True {Set-AzRedisPrivateEndpointConnectionStatus -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -ConnectionStatus $connectionStatus} "Setting Private Endpoint connection Status."
+     Assert-True {Set-AzRedisPrivateEndpointConnectionStatus -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -ConnectionStatus $connectionStatus} "Setting Private Endpoint connection Status."
    
      # Delete the prviate endpoint connection    
-     #Assert-True {Remove-AzRedisPrivateEndpointConnection -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -Force -PassThru} "Removing Private Endpoint Name failed."
+     Assert-True {Remove-AzRedisPrivateEndpointConnection -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -Force -PassThru} "Removing Private Endpoint Name failed."
 }
 
-#function Test-temp
+function Test-temp
 {
     # Setup
-    #resourceGroupName = "PowerShellTest-10"
-    #$cacheName = "redisteam011"
-    #$vnetName = "vnetsteam"
-    #$location =  "Central US"
-    #$addressPrefix =  "10.0.0.0/16"
+    $resourceGroupName = "PowerShellTest-10"
+    $cacheName = "redisteam011"
+    $vnetName = "vnetsteam"
+    $location =  "Central US"
+    $addressPrefix =  "10.0.0.0/16"
 
     # Create resource group
-    #New-AzResourceGroup -Name $resourceGroupName -Location $location    
+    New-AzResourceGroup -Name $resourceGroupName -Location $location    
 
     # Creating Cache
     #$cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -Tag @{"example-key" = "example-value"}
 
     #Creating Virtual Network
-    #$virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name $vnetName -Location $location -AddressPrefix $addressPrefix
+    $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name $vnetName -Location $location -AddressPrefix $addressPrefix
 
     #Add a Subnet
-    #$subnetConfig = Add-AzVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.0.0/24"
+    $subnetConfig = Add-AzVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.0.0/24"
 
     #Associate the subnet to the virtual network
-    #$virtualNetwork | Set-AzVirtualNetwork
+    $virtualNetwork | Set-AzVirtualNetwork
 
     #Waiting for cache creation - 30 min
     #for ($i = 0; $i -le 60; $i++)
