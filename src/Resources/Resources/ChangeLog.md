@@ -24,6 +24,7 @@
 ## Version 4.3.1
 * Use JsonExtensions to serialize deserialize JSON objects to ensure the use of custom serialization settings [#15552]
 * Added support for `Unsupported` and `NoEffect` change types to deployment What-If cmdlets.
+* Added support for `ConsentToPermissions` Boolean parameter to Register-AzResourceProvider cmdlet.
 
 ## Version 4.3.0
 * Fixed bug with `PSResource` where some constructors left `SubscriptionId` property unassigned/null.  [#10783]
