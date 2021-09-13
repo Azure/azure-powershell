@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `New-AzSynapseLinkedServiceEncryptedCredential` cmdlet to encrypt credential in linked service
 * Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
 
 ## Version 0.15.0
