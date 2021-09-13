@@ -272,6 +272,11 @@ namespace Microsoft.Azure.Commands.Synapse
 
         private SparkConfigProperties CreateSparkConfigProperties()
         {
+            if (string.IsNullOrEmpty(SparkConfigFilePath))
+            {
+                return null;
+            }
+
             var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(SparkConfigFilePath);
 
             return new SparkConfigProperties
