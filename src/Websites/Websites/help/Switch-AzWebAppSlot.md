@@ -9,7 +9,7 @@ schema: 2.0.0
 # Switch-AzWebAppSlot
 
 ## SYNOPSIS
-Swap two slots with a Web App
+Swap two slots within a Web App
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Switch-AzWebAppSlot [-SourceSlotName] <String> [[-DestinationSlotName] <String>]
 ```
 
 ## DESCRIPTION
-The **Switch-AzWebAppSlot** switches two slots associated with an Azure Web App.
+The **Switch-AzWebAppSlot** cmdlet switches two slots associated with an Azure Web App.
 
 ## EXAMPLES
 
@@ -37,7 +37,10 @@ The **Switch-AzWebAppSlot** switches two slots associated with an Azure Web App.
 PS C:\> Switch-AzWebAppSlot -SourceSlotName "sourceslot" -DestinationSlotName "destinationslot" -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
-This command will switch slot "sourceslot" slot with "destinationslot" the Web App ContosoWebApp associated with the resource group Default-Web-WestUS
+This command will switch slot "sourceslot" slot with "destinationslot" on the Web App ContosoWebApp in the resource group Default-Web-WestUS.
+
+> [!NOTE]
+> Please use "production" as the slot name when the either the source or destination slot is intended to be the production slot.
 
 ## PARAMETERS
 
