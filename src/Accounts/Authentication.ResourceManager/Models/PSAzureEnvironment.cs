@@ -123,6 +123,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 other.GetProperty<string>(nameof(AzureSynapseAnalyticsEndpointResourceId));
             AzureSynapseAnalyticsEndpointSuffix = other.GetProperty<string>(nameof(AzureSynapseAnalyticsEndpointSuffix));
             VersionProfiles.Populate(nameof(VersionProfiles), other);
+            MicrosoftGraphUrl = other.GetProperty<string>(nameof(MicrosoftGraphUrl));
+            MicrosoftGraphEndpointResourceId = other.GetProperty<string>(nameof(MicrosoftGraphEndpointResourceId));
             this.PopulateExtensions(other);
         }
 
@@ -251,6 +253,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The domain name suffix for Azure Container Registry
         /// </summary>
         public string ContainerRegistryEndpointSuffix { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Uri of the MSGraph endpoint.
+        /// </summary>
+        public string MicrosoftGraphUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Uri of the MSGraph audience.
+        /// </summary>
+        public string MicrosoftGraphEndpointResourceId { get; set; }
 
         /// <summary>
         /// The token audience required for communicating with the Azure Log Analytics query service in this environment

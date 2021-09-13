@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.MicrosoftGraph;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Aks
         private IResourceManagementClient _rmClient;
         private IAuthorizationManagementClient _authClient;
         private IGraphRbacManagementClient _graphClient;
+        private IMicrosoftGraphClient _microsoftGraphClient;
 
         protected const string KubeNounStr = "AzureRmAks";
         protected const string NameValueFormatString = "{0}({1})";
@@ -60,6 +62,13 @@ namespace Microsoft.Azure.Commands.Aks
 
         protected IGraphRbacManagementClient GraphClient =>
             _graphClient ?? (_graphClient = BuildClient<GraphRbacManagementClient>(endpoint: AzureEnvironment.Endpoint.Graph, postBuild: instance =>
+            {
+                instance.TenantID = DefaultContext.Tenant.Id;
+                return instance;
+            }));
+
+        protected IMicrosoftGraphClient MicrosoftGraphClient =>
+            _microsoftGraphClient ?? (_microsoftGraphClient = BuildClient<MicrosoftGraphClient>(endpoint: AzureEnvironment.Endpoint.MicrosoftGraphUrl, postBuild: instance =>
             {
                 instance.TenantID = DefaultContext.Tenant.Id;
                 return instance;

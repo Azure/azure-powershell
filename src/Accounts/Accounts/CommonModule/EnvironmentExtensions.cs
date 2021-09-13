@@ -121,6 +121,10 @@ namespace Microsoft.Azure.Commands.Common
             {
                 return environment.GraphEndpointResourceId;
             }
+            if (baseEnvironment.MicrosoftGraphUrl.IsMatch(baseEndpoint) || environment.MicrosoftGraphUrl.IsMatch(baseEndpoint))
+            {
+                return environment.MicrosoftGraphEndpointResourceId;
+            }
 
             if (baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint].IsMatch(baseEndpoint)
                 || (environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint) 
