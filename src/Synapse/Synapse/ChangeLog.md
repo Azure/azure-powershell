@@ -18,9 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
 * Added cmdlets for Synapse trigger run
 	- Added `Stop-AzSynapseTriggerRun` cmdlet
 	- Added `Invoke-AzSynapseTriggerRun` cmdlet
+* Added `New-AzSynapseLinkedServiceEncryptedCredential` cmdlet to encrypt credential in linked service
+* Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
 
 ## Version 0.15.0
 * Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package

@@ -50,11 +50,13 @@ using Microsoft.Azure.Commands.Synapse.Model;
 using Microsoft.Azure.Commands.Synapse.Models.ManagedIdentitySqlControl;
 using ErrorResponseException = Microsoft.Azure.Management.Synapse.Models.ErrorResponseException;
 using Microsoft.Azure.Commands.Synapse.Models.Auditing;
+using Microsoft.DataTransfer.Gateway.Encryption;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class SynapseAnalyticsManagementClient
     {
+        public const int GatewayMajorVersionWithIRSupport = 3;
         public IAzureContext Context;
         private readonly Guid _subscriptionId;
         private readonly Guid _tenantId;
@@ -1744,6 +1746,47 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region integration runtime operations
 
+        public string IntegrationRuntimeEncryptCredential(
+            string resourceGroupName,
+            string workspaceName,
+            string integrationRuntimeName,
+            string linkedServiceJson)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+
+            var response = _synapseManagementClient.IntegrationRuntimeConnectionInfos.Get(resourceGroupName, workspaceName, integrationRuntimeName);
+            var irVerStr = response.Version;
+            var irVer = new Version(irVerStr);
+            //Private preview customers can use 2.x gateways for this feature, below code change gateway version of 2.x to 3.0  to pass version check by gateway.
+            if (irVer.Major < GatewayMajorVersionWithIRSupport)
+            {
+                irVer = new Version(GatewayMajorVersionWithIRSupport, 0);
+                irVerStr = irVer.ToString();
+            }
+            var encryptionInfos = new[]
+                {
+                    new GatewayEncryptionInfo
+                    {
+                        HostServiceUri = new Uri(response.HostServiceUri),
+                        IdentityCertThumbprint = response.IdentityCertThumbprint,
+                        PublicKey = response.PublicKey,
+                        ServiceToken = response.ServiceToken,
+                        InstanceVersionString = irVerStr
+                    }
+                };
+            return GatewayEncryptionClient.Encrypt(linkedServiceJson, encryptionInfos);
+        }
+
         public virtual async Task<List<PSIntegrationRuntime>> ListIntegrationRuntimesAsync(SynapseEntityFilterOptions filterOptions)
         {
             try
@@ -2524,6 +2567,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return resourceUri + $"/sqlPools/{sqlPoolName}";
             }
+        }
+
+        public string ReadJsonFileContent(string path)
+        {
+            return Utils.ReadJsonFileContent(path);
         }
 
         #endregion

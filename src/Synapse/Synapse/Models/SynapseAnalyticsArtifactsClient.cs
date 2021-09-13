@@ -335,15 +335,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public virtual string ReadJsonFileContent(string path)
         {
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException(path);
-            }
-
-            using (TextReader reader = new StreamReader(path))
-            {
-                return reader.ReadToEnd();
-            }
+            return Utils.ReadJsonFileContent(path);
         }
 
         internal Exception CreateAzurePowerShellException(RequestFailedException ex)

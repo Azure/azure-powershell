@@ -368,6 +368,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to encrypt the connection string of the linked service?.
+        /// </summary>
+        internal static string EncryptConfirm {
+            get {
+                return ResourceManager.GetString("EncryptConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encrypting the connection string..
+        /// </summary>
+        internal static string Encrypting {
+            get {
+                return ResourceManager.GetString("Encrypting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to add Role Assignment for Storage Account &apos;{0}&apos;. Response Status Code {1}. Response Content: {2}.
         /// </summary>
         internal static string FailedToAddRoleAssignmentForStorageAccount {
