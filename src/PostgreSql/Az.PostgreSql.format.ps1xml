@@ -72,6 +72,58 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20.SystemData</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.Configuration</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.Configuration</TypeName>
@@ -180,10 +232,7 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Charset</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Collation</Label>
+            <Label>Type</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -193,10 +242,7 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Charset</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Collation</PropertyName>
+                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -498,6 +544,58 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.PerformanceTierProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.PerformanceTierProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaxBackupRetentionDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxLargeStorageMb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxStorageMb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinBackupRetentionDay</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinLargeStorageMb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinStorageMb</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaxBackupRetentionDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxLargeStorageMb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxStorageMb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinBackupRetentionDay</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinLargeStorageMb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinStorageMb</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.PerformanceTierServiceLevelObjectives</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.PerformanceTierServiceLevelObjectives</TypeName>
@@ -549,6 +647,86 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>VCore</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.RecoverableServerProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.RecoverableServerProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Edition</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HardwareGeneration</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastAvailableBackupDateTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ServiceLevelObjective</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VCore</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Edition</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HardwareGeneration</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastAvailableBackupDateTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ServiceLevelObjective</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VCore</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.RecoverableServerResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.RecoverableServerResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1388,6 +1566,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerSecurityAlertPolicyListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerSecurityAlertPolicyListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerUpdateParametersProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerUpdateParametersProperties</TypeName>
@@ -1828,9 +2028,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1851,9 +2051,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Version</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StorageProfileStorageMb</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1877,8 +2074,39 @@
               <TableColumnItem>
                 <PropertyName>Version</PropertyName>
               </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.Backup</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.Backup</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EarliestRestoreDate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GeoRedundantBackup</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RetentionDay</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>StorageProfileStorageMb</PropertyName>
+                <PropertyName>EarliestRestoreDate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GeoRedundantBackup</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RetentionDay</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1886,9 +2114,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.CapabilitiesListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.CapabilitiesListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.CapabilitiesListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.CapabilitiesListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1908,21 +2136,45 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.CapabilityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.CapabilityProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.CapabilityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.CapabilityProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>GeoBackupSupported</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Zone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ZoneRedundantHaAndGeoBackupSupported</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ZoneRedundantHaSupported</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>GeoBackupSupported</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Zone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ZoneRedundantHaAndGeoBackupSupported</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ZoneRedundantHaSupported</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1930,9 +2182,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ConfigurationAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ConfigurationAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ConfigurationAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ConfigurationAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1976,9 +2228,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ConfigurationListResultAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ConfigurationListResultAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ConfigurationListResultAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ConfigurationListResultAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1998,9 +2250,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ConfigurationPropertiesAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ConfigurationPropertiesAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ConfigurationPropertiesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ConfigurationPropertiesAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2050,9 +2302,65 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.DelegatedSubnetUsage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.DatabaseAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.DelegatedSubnetUsage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.DatabaseAutoGenerated</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Charset</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Collation</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Charset</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Collation</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.DatabaseListResultAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.DatabaseListResultAutoGenerated</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.DelegatedSubnetUsage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.DelegatedSubnetUsage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2078,9 +2386,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.FirewallRuleListResultAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FirewallRuleAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.FirewallRuleListResultAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FirewallRuleAutoGenerated</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FirewallRuleListResultAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FirewallRuleListResultAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2100,9 +2436,99 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.MaintenanceWindow</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FlexibleServerEditionCapability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.MaintenanceWindow</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.FlexibleServerEditionCapability</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.HighAvailability</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.HighAvailability</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StandbyAvailabilityZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>State</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StandbyAvailabilityZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.HyperscaleNodeEditionCapability</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.HyperscaleNodeEditionCapability</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.MaintenanceWindow</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.MaintenanceWindow</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2140,9 +2566,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.NameAvailabilityAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.NameAvailabilityAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.NameAvailabilityAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.NameAvailabilityAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2180,9 +2606,77 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.OperationAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.Network</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.OperationAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.Network</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DelegatedSubnetResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrivateDnsZoneArmResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicNetworkAccess</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DelegatedSubnetResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrivateDnsZoneArmResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicNetworkAccess</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.NodeTypeCapability</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.NodeTypeCapability</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NodeType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NodeType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.OperationAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.OperationAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2214,9 +2708,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.OperationListResultAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.OperationListResultAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.OperationListResultAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.OperationListResultAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2236,21 +2730,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerEditionCapability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.RestartParameter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerEditionCapability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.RestartParameter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>FailoverMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RestartWithFailover</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>FailoverMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RestartWithFailover</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2258,9 +2758,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerForUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerForUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerForUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerForUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2280,9 +2780,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerForUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerForUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerForUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerForUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2302,9 +2802,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerListResultAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerListResultAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerListResultAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerListResultAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2324,9 +2824,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerPropertiesAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerPropertiesAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerPropertiesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerPropertiesAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2337,34 +2837,19 @@
             <Label>AvailabilityZone</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ByokEnforcement</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>CreateMode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>FullyQualifiedDomainName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>HaEnabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>HaState</Label>
+            <Label>MinorVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PointInTimeUtc</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>PublicNetworkAccess</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SourceServerName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StandbyAvailabilityZone</Label>
+            <Label>SourceServerResourceId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>State</Label>
@@ -2383,34 +2868,19 @@
                 <PropertyName>AvailabilityZone</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ByokEnforcement</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>CreateMode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FullyQualifiedDomainName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>HaEnabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>HaState</PropertyName>
+                <PropertyName>MinorVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PointInTimeUtc</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>PublicNetworkAccess</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SourceServerName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StandbyAvailabilityZone</PropertyName>
+                <PropertyName>SourceServerResourceId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>State</PropertyName>
@@ -2424,21 +2894,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerPropertiesDelegatedSubnetArguments</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerPropertiesForUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerPropertiesDelegatedSubnetArguments</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerPropertiesForUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>SubnetArmResourceId</Label>
+            <Label>CreateMode</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>SubnetArmResourceId</PropertyName>
+                <PropertyName>CreateMode</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2446,31 +2916,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerPropertiesForUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerPropertiesTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerPropertiesForUpdate</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>HaEnabled</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>HaEnabled</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerPropertiesTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerPropertiesTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerPropertiesTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2490,14 +2938,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerVersionCapability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerVersionCapability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ServerVersionCapability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ServerVersionCapability</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2506,15 +2957,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.SkuAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.SkuAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.SkuAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.SkuAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2540,14 +2994,39 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.StorageEditionCapability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.Storage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.StorageEditionCapability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.Storage</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SizeGb</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SizeGb</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.StorageEditionCapability</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.StorageEditionCapability</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2556,20 +3035,26 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.StorageMbCapability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.StorageMbCapability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.StorageMbCapability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.StorageMbCapability</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>StorageSizeMb</Label>
@@ -2585,6 +3070,9 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>StorageSizeMb</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2596,42 +3084,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.StorageProfileAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.VcoreCapability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.StorageProfileAutoGenerated</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>BackupRetentionDay</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StorageMb</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>BackupRetentionDay</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StorageMb</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.VcoreCapability</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.VcoreCapability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.VcoreCapability</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SupportedIop</Label>
@@ -2650,6 +3113,9 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SupportedIop</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2664,9 +3130,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.VirtualNetworkSubnetUsageParameter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.VirtualNetworkSubnetUsageParameter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.VirtualNetworkSubnetUsageParameter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.VirtualNetworkSubnetUsageParameter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

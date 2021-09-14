@@ -27,6 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     {
         protected const int size4MB = 4 * 1024 * 1024;
 
+        protected const int size8MB = 8 * 1024 * 1024;
+
         /// <summary>
         /// block blob type
         /// </summary>
@@ -178,12 +180,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         public static long GetBlockLength(long contentLength)
         {
-            long blockLength = contentLength / 50000;
-            if (blockLength % (8 * 1024 * 1024) != 0)
+            if (contentLength <= size8MB)
             {
-                blockLength = (blockLength / (8 * 1024 * 1024) + 1) * (8 * 1024 * 1024);
+                return contentLength;
             }
-            return blockLength;
+            long blockLength = contentLength / 50000;
+            if (blockLength % (size8MB) != 0)
+            {
+                blockLength = (blockLength / (size8MB) + 1) * (size8MB);
+            }
+            return blockLength > 0 ? blockLength : contentLength;
         }
 
         /// <summary>

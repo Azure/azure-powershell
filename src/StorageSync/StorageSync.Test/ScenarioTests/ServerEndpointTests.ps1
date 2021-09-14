@@ -41,7 +41,7 @@ function Test-ServerEndpoint2
         $tierFilesOlderThanDays = 10
         $volumeFreeSpacePercent = 60
         $volumeFreeSpacePercent2 = 80
-
+        $initialUploadPolicy = "ServerAuthoritative"
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
@@ -71,7 +71,7 @@ function Test-ServerEndpoint2
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
         Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
-        $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -VolumeFreeSpacePercent $volumeFreeSpacePercent -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
+        $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -VolumeFreeSpacePercent $volumeFreeSpacePercent -TierFilesOlderThanDays $tierFilesOlderThanDays -InitialUploadPolicy $initialUploadPolicy -Verbose -AsJob 
 
         $job | Wait-Job
         $serverEndpoint = get-job -Id $job.Id | receive-job -Keep
@@ -88,6 +88,7 @@ function Test-ServerEndpoint2
         Assert-AreEqual $serverEndpointName $serverEndpoint.ServerEndpointName
         Assert-AreEqual $serverLocalPath $serverEndpoint.ServerLocalPath
         Assert-AreEqual $volumeFreeSpacePercent $serverEndpoint.VolumeFreeSpacePercent
+        Assert-AreEqual $initialUploadPolicy $serverEndpoint.InitialUploadPolicy
 
         Write-Verbose "Get ServerEndpoint by ParentObject"
         $serverEndpoint = Get-AzStorageSyncServerEndpoint -ParentObject $syncGroup -Name $serverEndpointName -Verbose
@@ -95,6 +96,7 @@ function Test-ServerEndpoint2
         Assert-AreEqual $serverEndpointName $serverEndpoint.ServerEndpointName
         Assert-AreEqual $serverLocalPath $serverEndpoint.ServerLocalPath
         Assert-AreEqual $volumeFreeSpacePercent $serverEndpoint.VolumeFreeSpacePercent
+        Assert-AreEqual $initialUploadPolicy $serverEndpoint.InitialUploadPolicy
 
         Write-Verbose "Get ServerEndpoint by ParentResourceId"
         $serverEndpoint = Get-AzStorageSyncServerEndpoint -ParentResourceId $syncGroup.ResourceId -Name $serverEndpointName -Verbose
@@ -102,6 +104,7 @@ function Test-ServerEndpoint2
         Assert-AreEqual $serverEndpointName $serverEndpoint.ServerEndpointName
         Assert-AreEqual $serverLocalPath $serverEndpoint.ServerLocalPath
         Assert-AreEqual $volumeFreeSpacePercent $serverEndpoint.VolumeFreeSpacePercent
+        Assert-AreEqual $initialUploadPolicy $serverEndpoint.InitialUploadPolicy
 
         Write-Verbose "Patch ServerEndpoint by Name"
         $job = Set-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName  $syncGroupName -Name $serverEndpointName -VolumeFreeSpacePercent $volumeFreeSpacePercent2 -Verbose -AsJob 
@@ -190,6 +193,7 @@ function Test-ServerEndpoint
         $tierFilesOlderThanDays = 10
         $volumeFreeSpacePercent = 60
         $volumeFreeSpacePercent2 = 80
+        $initialUploadPolicy = "Merge"
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
@@ -222,7 +226,7 @@ function Test-ServerEndpoint
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
         Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
-        $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -VolumeFreeSpacePercent $volumeFreeSpacePercent -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
+        $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -VolumeFreeSpacePercent $volumeFreeSpacePercent -TierFilesOlderThanDays $tierFilesOlderThanDays -InitialUploadPolicy $initialUploadPolicy -Verbose -AsJob 
         $job | Wait-Job
         $serverEndpoint = get-job -Id $job.Id | receive-job -Keep
 

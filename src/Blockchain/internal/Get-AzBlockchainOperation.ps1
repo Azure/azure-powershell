@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IResourceProviderOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.blockchain/get-azblockchainoperation
+https://docs.microsoft.com/powershell/module/az.blockchain/get-azblockchainoperation
 #>
 function Get-AzBlockchainOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IResourceProviderOperation])]
@@ -94,6 +94,7 @@ begin {
         $mapping = @{
             List = 'Az.Blockchain.private\Get-AzBlockchainOperation_List';
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

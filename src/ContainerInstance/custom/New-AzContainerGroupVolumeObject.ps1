@@ -70,7 +70,6 @@ function New-AzContainerGroupVolumeObject {
             $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AzureFileStorageAccountKey']
         }
         $Object.AzureFileStorageAccountKey = $psTxt
-        Write-host $psTxt
         $Object.AzureFileStorageAccountName = $AzureFileStorageAccountName
         # $Object.EmptyDir = $EmptyDir
         $Object.GitRepoDirectory = $GitRepoDirectoryName

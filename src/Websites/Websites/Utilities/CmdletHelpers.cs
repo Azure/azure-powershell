@@ -1,9 +1,4 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.WebApps.Models;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+﻿using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;
@@ -53,6 +48,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         private static readonly Regex AppServicePlanResourceIdRegex =
            new Regex(@"^\/subscriptions\/(?<subscriptionName>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.Web\/serverFarms\/(?<serverFarmName>[^\/]+)$", RegexOptions.IgnoreCase);
+
+        private static readonly Regex KeyVaultResourceIdRegex =
+            new Regex(@"^\/subscriptions\/(?<subscriptionName>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.KeyVault\/vaults\/(?<vaultName>[^\/]+)$", RegexOptions.IgnoreCase);
 
         private static readonly Dictionary<string, int> WorkerSizes = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) { { "Small", 1 }, { "Medium", 2 }, { "Large", 3 }, { "ExtraLarge", 4 } };
 
@@ -178,7 +176,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             return result;
         }
-                
+
         internal static HostingEnvironmentProfile CreateHostingEnvironmentProfile(string subscriptionId, string resourceGroupName, string aseResourceGroupName, string aseName)
         {
             var rg = string.IsNullOrEmpty(aseResourceGroupName) ? resourceGroupName : aseResourceGroupName;
@@ -222,7 +220,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             return filter;
         }
-                
+
         internal static bool TryParseWebAppMetadataFromResourceId(string resourceId, out string resourceGroupName,
             out string webAppName, out string slotName, bool failIfSlot = false)
         {
@@ -271,6 +269,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return false;
         }
 
+        internal static bool IsValidAKVResourceId(string resourceId)
+        {
+            return KeyVaultResourceIdRegex.Match(resourceId).Success;
+        }
         internal static string GetSkuName(string tier, int workerSize)
         {
             string sku;
@@ -309,7 +311,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         internal static string GetSkuName(string tier, string workerSize)
         {
-            return GetSkuName(tier, WorkerSizes[workerSize]);            
+            return GetSkuName(tier, WorkerSizes[workerSize]);
         }
 
         internal static bool IsDeploymentSlot(string name)
@@ -373,6 +375,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return new ResourceIdentifier(resourceId).Subscription;
         }
 
+        internal static ResourceIdentifier GetResourceDetailsFromResourceId(string resourceId)
+        {
+            return new ResourceIdentifier(resourceId);
+        }
+
         internal static void ExtractWebAppPropertiesFromWebApp(Site webapp, out string resourceGroupName, out string webAppName, out string slot)
         {
             resourceGroupName = GetResourceGroupFromResourceId(webapp.Id);
@@ -414,26 +421,23 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return certificates.ToArray();
         }
 
-        internal static string CheckServicePrincipalPermissions(ResourceClient resourceClient, KeyVaultClient keyVaultClient, string resourceGroupName, string keyVault)
+        internal static string CheckServicePrincipalPermissions(ResourceClient resourceClient, KeyVaultClient keyVaultClient, string resourceGroupName, string keyVault, string kvSubscriptionId)
         {
-            var perm1 = " ";
-            var kv2 = keyVaultClient.GetKeyVault(resourceGroupName, keyVault);
-            foreach (var policy in kv2.Properties.AccessPolicies)
+            var kv = keyVaultClient.GetKeyVault(resourceGroupName, keyVault, kvSubscriptionId);
+            foreach (var policy in kv.Properties.AccessPolicies)
             {
                 if (policy.ObjectId == ("f8daea97-62e7-4026-becf-13c2ea98e8b4"))
                 {
                     foreach (var perm in policy.Permissions.Secrets)
                     {
-                        if ((perm == "Get") || (perm == "get"))
+                        if (perm.ToLower() == "get")
                         {
-                            perm1 = perm;
-                            Console.WriteLine("Success");
-                            break;
+                            return perm;
                         }
                     }
                 }
             }
-            return perm1.ToString();
+            return string.Empty;
         }
 
         internal static SiteConfigResource ConvertToSiteConfigResource(this SiteConfig config)

@@ -12,7 +12,7 @@ Copies data from a vault in one region to a vault in another region.
 
 ## SYNTAX
 
-### AzureRSVaultDataMoveParameterSet
+### AzureRSVaultDataMoveParameterSet (Default)
 ```
 Copy-AzRecoveryServicesVault [-Force] [-DefaultProfile <IAzureContextContainer>] [-SourceVault] <ARSVault>
  [-TargetVault] <ARSVault> [-RetryOnlyFailed] [-WhatIf] [-Confirm] [<CommonParameters>]

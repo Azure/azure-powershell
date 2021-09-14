@@ -187,6 +187,17 @@
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>LastModified</Label>
+            <Width>30</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IsDeleted</Label>
+            <Width>10</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VersionId</Label>
+            <Width>17</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -204,13 +215,21 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>LastModified</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IsDeleted</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>VersionId</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
       <GroupBy>
-        <ScriptBlock>$_.CloudBlobContainer.ServiceClient.BaseUri</ScriptBlock>
-        <Label>Blob End Point</Label>
+        <ScriptBlock>$_.BlobContainerClient.AccountName</ScriptBlock>
+        <Label>Storage Account Name</Label>
       </GroupBy>
     </View>
     <View>
@@ -275,11 +294,11 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>BlobType</PropertyName>
+                <ScriptBlock>if ($_.BlobType -ne "Unspecified") {$_.BlobType}</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>Length</PropertyName>
+                <ScriptBlock>if (($_.BlobType -ne "Unspecified") -or ($_.Length -ne 0 )) {$_.Length}</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

@@ -76,7 +76,12 @@ This command gets information about the linked service named LinkedServiceCurate
 
 ### Example 3: Get information about a specific linked service by specifying the DataFactory parameter
 ```
-PS C:\>$DataFactory = Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "ContosoFactory"PS C:\> Get-AzDataFactoryV2LinkedService -DataFactory $DataFactory | Format-Table -Property LinkedServiceName, DataFactoryName, ResourceGroupName
+PS C:\> $DataFactory = Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "ContosoFactory"
+PS C:\> Get-AzDataFactoryV2LinkedService -DataFactory $DataFactory | Format-Table -Property Name, DataFactoryName, ResourceGroupName
+
+     Name                          DataFactoryName ResourceGroupName
+     ----                          --------------- -----------------
+     LinkedServiceCuratedWikiData  ContosoFactory  ADF
 ```
 
 The first command uses the Get-AzDataFactoryV2 cmdlet to get the data factory named ContosoFactory, and then stores it in the $DataFactory variable.

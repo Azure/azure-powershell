@@ -1557,8 +1557,8 @@
                 <PropertyName>IpTagsText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>PublicIpPrefix</Label>
-                <PropertyName>PublicIpPrefixText</PropertyName>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1738,6 +1738,10 @@
                 <Label>PublicIpAddresses</Label>
                 <PropertyName>PublicIpAddressesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1841,6 +1845,10 @@
               <ListItem>
                 <Label>MacAddress</Label>
                 <PropertyName>MacAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2470,6 +2478,10 @@
                 <Label>Sku</Label>
                 <PropertyName>SkuText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -2713,6 +2725,10 @@
               <ListItem>
                 <Label>VirtualNetwork</Label>
                 <PropertyName>VirtualNetworkIdText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Subnet</Label>
+                <PropertyName>SubnetIdText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>LoadBalancerFrontendIPConfiguration</Label>
@@ -5133,6 +5149,10 @@
                 <Label>CustomDnsConfigs</Label>
                 <PropertyName>CustomDnsConfigsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -5320,6 +5340,10 @@
               <ListItem>
                 <Label>NetworkInterfaces</Label>
                 <PropertyName>NetworkInterfacesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

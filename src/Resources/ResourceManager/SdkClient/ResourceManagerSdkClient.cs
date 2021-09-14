@@ -453,11 +453,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 if (!string.IsNullOrEmpty(parameters.TemplateFile))
                 {
-                    deployment.Properties.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
+                    // NOTE(jcotillo): JsonExtensions.FromJson<> extension uses a custom serialization settings
+                    // that preserves DateTime values as string (DateParseHandling = DateParseHandling.None),
+                    // plus other custom settings (see: JsonExtensions.JsonObjectTypeSerializer)
+                    deployment.Properties.Template =
+                        FileUtilities.DataStore.ReadFileAsStream(parameters.TemplateFile).FromJson<JObject>();
                 }
                 else
                 {
-                    deployment.Properties.Template = JObject.Parse(PSJsonSerializer.Serialize(parameters.TemplateObject));
+                    deployment.Properties.Template = 
+                        PSJsonSerializer.Serialize(parameters.TemplateObject).FromJson<JObject>();
                 }
             }
 
@@ -475,8 +480,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 string parametersContent = parametersDictionary != null
                     ? PSJsonSerializer.Serialize(parametersDictionary)
                     : null;
+                // NOTE(jcotillo): Adding FromJson<> to parameters as well 
                 deployment.Properties.Parameters = !string.IsNullOrEmpty(parametersContent)
-                    ? JObject.Parse(parametersContent)
+                    ? parametersContent.FromJson<JObject>()
                     : null;
             }
 

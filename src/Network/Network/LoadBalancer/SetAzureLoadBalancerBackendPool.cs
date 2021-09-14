@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The backend address pool to set",
+            ValueFromPipeline = true,
             ParameterSetName = SetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSBackendAddressPool InputObject { get; set; }
@@ -98,6 +99,11 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = SetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gateway Load Balancer provider configurations.")]
+        public PSTunnelInterface[] TunnelInterface { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -159,6 +165,8 @@ namespace Microsoft.Azure.Commands.Network
                 backendAddressPool = SetupBackendPoolWithLoadBalancerAddresses();
             }
 
+            AddTunnelInterfacesToPool(backendAddressPool);
+
             if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
             {
                 var loadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.CreateOrUpdate(
@@ -167,6 +175,19 @@ namespace Microsoft.Azure.Commands.Network
                 var loadBalancerBackendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(loadBalancerBackendAddressPool);
 
                 WriteObject(loadBalancerBackendAddressPoolModel);
+            }
+        }
+
+        private void AddTunnelInterfacesToPool(BackendAddressPool backendAddressPool)
+        {
+            if (this.TunnelInterface != null)
+            {
+                backendAddressPool.TunnelInterfaces = new List<GatewayLoadBalancerTunnelInterface>();
+                foreach (var tun in this.TunnelInterface)
+                {
+                    var tunnelinterface = NetworkResourceManagerProfile.Mapper.Map<GatewayLoadBalancerTunnelInterface>(tun);
+                    backendAddressPool.TunnelInterfaces.Add(tunnelinterface);
+                }
             }
         }
 

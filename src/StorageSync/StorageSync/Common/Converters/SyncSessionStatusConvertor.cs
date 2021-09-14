@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.StorageSync.Models;
+using System;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
@@ -29,9 +30,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.SyncSessionStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncSessionStatus Transform(PSSyncSessionStatus source) => new StorageSyncModels.ServerEndpointSyncSessionStatus(
-            source.LastSyncResult, source.LastSyncTimestamp, source.LastSyncSuccessTimestamp, source.LastSyncPerItemErrorCount);
+        /// <returns>StorageSyncModels.ServerEndpointSyncSessionStatus.</returns>
+        protected override StorageSyncModels.ServerEndpointSyncSessionStatus Transform(PSSyncSessionStatus source)
+        {
+            // Sync activity properties are read-only from the RP
+            throw new NotSupportedException();
+        }
 
         /// <summary>
         /// Transforms the specified source.

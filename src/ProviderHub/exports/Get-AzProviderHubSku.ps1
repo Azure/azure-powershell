@@ -21,6 +21,16 @@ Gets the sku details for the given resource type and sku name.
 .Example
 PS C:\> Get-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default"
 
+Name                        Type
+----                        ----
+testResourceType            Microsoft.ProviderHub/providerRegistrations/skus
+.Example
+PS C:\> Get-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType/nestedResourceType" -Sku "default"
+
+Name                                        Type
+----                                        ----
+testResourceType/nestedResourceType         Microsoft.ProviderHub/providerRegistrations/skus
+
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
 .Outputs
@@ -48,60 +58,47 @@ function Get-AzProviderHubSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
-    [Parameter(ParameterSetName='List2', Mandatory)]
     [Parameter(ParameterSetName='List3', Mandatory)]
+    [Parameter(ParameterSetName='List2', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The name of the resource provider hosted within ProviderHub.
     ${ProviderNamespace},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
-    [Parameter(ParameterSetName='List2', Mandatory)]
     [Parameter(ParameterSetName='List3', Mandatory)]
+    [Parameter(ParameterSetName='List2', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The resource type.
     ${ResourceType},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [System.String]
-    # The SKU.
-    ${Sku},
-
-    [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='List1')]
-    [Parameter(ParameterSetName='List2')]
     [Parameter(ParameterSetName='List3')]
+    [Parameter(ParameterSetName='List2')]
+    [Parameter(ParameterSetName='List1')]
+    [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='List1', Mandatory)]
-    [Parameter(ParameterSetName='List2', Mandatory)]
     [Parameter(ParameterSetName='List3', Mandatory)]
+    [Parameter(ParameterSetName='List2', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The first child resource type.
     ${NestedResourceTypeFirst},
 
-    [Parameter(ParameterSetName='List2', Mandatory)]
     [Parameter(ParameterSetName='List3', Mandatory)]
+    [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
     [System.String]
     # The second child resource type.
@@ -112,6 +109,19 @@ param(
     [System.String]
     # The third child resource type.
     ${NestedResourceTypeThird},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [System.String]
+    # The SKU.
+    ${Sku},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -169,16 +179,18 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'Az.ProviderHub.private\Get-AzProviderHubSku_Get';
-            GetViaIdentity = 'Az.ProviderHub.private\Get-AzProviderHubSku_GetViaIdentity';
-            List = 'Az.ProviderHub.private\Get-AzProviderHubSku_List';
-            List1 = 'Az.ProviderHub.private\Get-AzProviderHubSku_List1';
-            List2 = 'Az.ProviderHub.private\Get-AzProviderHubSku_List2';
-            List3 = 'Az.ProviderHub.private\Get-AzProviderHubSku_List3';
+            List = 'Az.ProviderHub.custom\Get-AzProviderHubSku';
+            List3 = 'Az.ProviderHub.custom\Get-AzProviderHubSku';
+            List2 = 'Az.ProviderHub.custom\Get-AzProviderHubSku';
+            List1 = 'Az.ProviderHub.custom\Get-AzProviderHubSku';
+            Get = 'Az.ProviderHub.custom\Get-AzProviderHubSku';
+            GetViaIdentity = 'Az.ProviderHub.custom\Get-AzProviderHubSku';
         }
-        if (('Get', 'List', 'List1', 'List2', 'List3') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List', 'List3', 'List2', 'List1', 'Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

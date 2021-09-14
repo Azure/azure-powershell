@@ -15,22 +15,22 @@ updates a cache in Api Management service.
 ### ExpandedParameter (Default)
 ```
 Update-AzApiManagementCache -Context <PsApiManagementContext> -CacheId <String> [-ConnectionString <String>]
- [-AzureRedisResourceId <String>] [-Description <String>] [-PassThru]
+ [-AzureRedisResourceId <String>] [-Description <String>] [-UseFromLocation <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Update-AzApiManagementCache -InputObject <PsApiManagementCache> [-ConnectionString <String>]
- [-AzureRedisResourceId <String>] [-Description <String>] [-PassThru]
+ [-AzureRedisResourceId <String>] [-Description <String>] [-UseFromLocation <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Update-AzApiManagementCache -ResourceId <String> [-ConnectionString <String>] [-AzureRedisResourceId <String>]
- [-Description <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Description <String>] [-UseFromLocation <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -194,6 +194,21 @@ Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UseFromLocation
+Cache UseFromLocation. This parameter is optional, default value 'default'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

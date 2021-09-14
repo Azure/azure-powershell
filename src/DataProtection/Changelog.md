@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.0
+* Added support for AzureDatabaseForPostgreSQL workload
+
 ## Version 0.2.0
 * OnBoarded workload AzureBlobs
 

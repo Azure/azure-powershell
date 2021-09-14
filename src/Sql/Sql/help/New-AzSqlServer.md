@@ -16,9 +16,10 @@ Creates a SQL Database server.
 ```
 New-AzSqlServer -ServerName <String> [-SqlAdministratorCredentials <PSCredential>] -Location <String>
  [-Tags <Hashtable>] [-ServerVersion <String>] [-AssignIdentity] [-PublicNetworkAccess <String>]
- [-MinimalTlsVersion <String>] [-AsJob] [-EnableActiveDirectoryOnlyAuthentication]
- [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MinimalTlsVersion <String>] [-RestrictOutboundNetworkAccess <String>] [-AsJob] 
+ [-EnableActiveDirectoryOnlyAuthentication] [-ExternalAdminName <String>] [-ExternalAdminSID <Guid>] 
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] 
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -212,6 +213,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RestrictOutboundNetworkAccess
+When enabled, only outbound connections allowed by the outbound firewall rules will succeed.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group to which this cmdlet assigns the server.
 
@@ -321,7 +337,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of identity to be assigned to the server. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.
+Type of identity to be assigned to the server. Possible values are SystemAsssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.
 
 ```yaml
 Type: System.String

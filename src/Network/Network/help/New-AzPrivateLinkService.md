@@ -15,9 +15,9 @@ Creates a private link service
 ```
 New-AzPrivateLinkService -Name <String> -ResourceGroupName <String> -Location <String>
  -LoadBalancerFrontendIpConfiguration <PSFrontendIPConfiguration[]>
- -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]> [-Visibility <String[]>] [-AutoApproval <String[]>] [-EnableProxyProtocol]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]> [-Visibility <String[]>] [-AutoApproval <String[]>]
+ [-EnableProxyProtocol] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,6 +87,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeZone
+The edge zone of the private link service
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableProxyProtocol
 Enable proxy protocol for the private link service.
 
@@ -98,7 +113,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

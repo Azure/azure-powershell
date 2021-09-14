@@ -57,7 +57,7 @@ INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
   [SubscriptionId <String>]: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
   [TransactionNodeName <String>]: Transaction node name.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.blockchain/update-azblockchainmember
+https://docs.microsoft.com/powershell/module/az.blockchain/update-azblockchainmember
 #>
 function Update-AzBlockchainMember {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember])]
@@ -99,6 +99,7 @@ param(
     ${ConsortiumManagementAccountPassword},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IFirewallRule[]]
     # Gets or sets the firewall rules.
@@ -174,12 +175,14 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            UpdateExpanded = 'Az.Blockchain.custom\Update-AzBlockchainMember';
-            UpdateViaIdentityExpanded = 'Az.Blockchain.custom\Update-AzBlockchainMember';
+            UpdateExpanded = 'Az.Blockchain.private\Update-AzBlockchainMember_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Blockchain.private\Update-AzBlockchainMember_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

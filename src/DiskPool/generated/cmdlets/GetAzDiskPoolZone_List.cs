@@ -11,7 +11,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
     /// <remarks>
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/diskPoolZones"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDiskPoolZone_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolZoneInfo))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Description(@"Lists available Disk Pool Skus in an Azure location.")]

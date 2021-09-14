@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.8.2
+* Fixed `Set-AzWebApp` to return a valid warning message when fails to add -Hostname #9316
+* Fixed `Get-AzWebApp` to return CustomDomainVerificationId in the response. #9316
+
+## Version 2.8.1
+* Fixed `Add-AzWebAppAccessRestrictionRule` failing when users does not have permissions to get Service Tag list #15316 and #14862
+
+## Version 2.8.0
+* Fixed `Import-AzWebAppKeyVaultCertificate` to support ServerFarmId [#15091] 
+* Fixed `Added an optional parameter to delete or keep Appservice plan when the last WebApp is removing from plan`
+
+## Version 2.7.0
 * Fixed issue that prevented removing rules by name and unique identifier in `Remove-AzWebAppAccessRestrictionRule`
 * Fixed issue that defaults AlwaysOn to false in `Set-AzWebAppSlot`
 

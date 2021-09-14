@@ -46,7 +46,8 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisCacheClient() { }
 
         public RedisResource CreateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId, string staticIP, Hashtable tags, IList<string> zones)
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId,
+                string staticIP, Hashtable tags, IList<string> zones, String redisVersion)
         {
             try
             {
@@ -63,7 +64,8 @@ namespace Microsoft.Azure.Commands.RedisCache
                     Name = skuName,
                     Family = skuFamily,
                     Capacity = skuCapacity
-                }
+                },
+                RedisVersion = redisVersion
             };
 
             if (zones != null && zones.Count != 0)
@@ -128,7 +130,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
 
         public RedisResource UpdateCache(string resourceGroupName, string cacheName, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion, Hashtable tags)
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion, string redisVersion, Hashtable tags)
         {
             try
             {
@@ -166,6 +168,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
 
             parameters.EnableNonSslPort = enableNonSslPort;
+            parameters.RedisVersion = redisVersion;
 
             if (tenantSettings != null)
             {
@@ -230,7 +233,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
-                return _client.Redis.List();
+                return _client.Redis.ListBySubscription();
             }
             else
             {
@@ -242,7 +245,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
-                return _client.Redis.ListNext(nextPageLink: nextLink);
+                return _client.Redis.ListBySubscriptionNext(nextPageLink: nextLink);
             }
             else
             {
@@ -339,12 +342,12 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         internal IPage<RedisFirewallRule> ListFirewallRules(string resourceGroupName, string cacheName)
         {
-            return _client.FirewallRules.ListByRedisResource(resourceGroupName, cacheName);
+            return _client.FirewallRules.List(resourceGroupName, cacheName);
         }
 
         internal IPage<RedisFirewallRule> ListFirewallRules(string nextLink)
         {
-            return _client.FirewallRules.ListByRedisResourceNext(nextLink);
+            return _client.FirewallRules.ListNext(nextLink);
         }
 
         internal void RemoveFirewallRule(string resourceGroupName, string cacheName, string ruleName)

@@ -15,14 +15,16 @@ Modifies an API Management certificate which is configured for mutual authentica
 
 ### LoadFromFile (Default)
 ```
-Set-AzApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String> -PfxFilePath <String>
- -PfxPassword <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String>
+ [-PfxFilePath <String>] [-PfxPassword <String>] [-PassThru] [-KeyVault <PsApiManagementKeyVaultEntity>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Raw
 ```
-Set-AzApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String> -PfxBytes <Byte[]>
- -PfxPassword <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzApiManagementCertificate -Context <PsApiManagementContext> -CertificateId <String> [-PfxBytes <Byte[]>]
+ [-PfxPassword <String>] [-PassThru] [-KeyVault <PsApiManagementKeyVaultEntity>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,6 +87,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KeyVault
+KeyVault used to fetch certificate data.This parameter is required if -PfxFilePath not specified.
+
+```yaml
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementKeyVaultEntity
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 passthru
 
@@ -109,7 +126,7 @@ Type: System.Byte[]
 Parameter Sets: Raw
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -125,7 +142,7 @@ Type: System.String
 Parameter Sets: LoadFromFile
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -140,7 +157,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

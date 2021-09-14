@@ -65,6 +65,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateChangeTypes]
         public string[] WhatIfExcludeChangeType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation if there is no changes in the What-If result. Applicable when the -Confirm switch is set.")]
+        public SwitchParameter ProceedIfNoChange { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -103,5 +106,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
             resultFormat: this.WhatIfResultFormat,
             excludeChangeTypes: this.WhatIfExcludeChangeType);
+
+        protected override bool ShouldSkipConfirmationIfNoChange() => this.ProceedIfNoChange;
     }
 }

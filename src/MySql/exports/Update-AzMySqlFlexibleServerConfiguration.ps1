@@ -19,14 +19,14 @@ Updates information about a configuration of a MySQL flexible server.
 .Description
 Updates information about a configuration of a MySQL flexible server.
 .Example
-PS C:\> Update-AzMySqlFlexibleServer -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
+PS C:\> Update-AzMySqlFlexibleServerConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
 
 Name          Value   DefaultValue  Source        AllowedValues DataType
 ----          ------  ------------  -------       ------------- ---------
 net_retry_count 15    10            user-override  1-4294967295   Integer
 .Example
 PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/flexibleServers/mysql-test/configurations/wait_timeout"
-PS C:\> Update-AzMySqlFlexibleServer -InputObject $ID -Value 150
+PS C:\> Update-AzMySqlFlexibleServerConfiguration -InputObject $ID -Value 150
 
 Name          Value   DefaultValue  Source        AllowedValues DataType
 ----          ------  ------------  -------       ------------- ---------
@@ -181,6 +181,8 @@ begin {
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

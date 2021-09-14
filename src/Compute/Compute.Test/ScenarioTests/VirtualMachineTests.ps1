@@ -4947,3 +4947,233 @@ function Test-InvokeAzVMInstallPatch
         Clean-ResourceGroup $rgname;
 	}
 }
+
+<#
+.SYNOPSIS
+Windows machine enable hot patching, linux machines patchmode
+#>
+function Test-VirtualMachineAssessmentMode
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'vm' + $rgname;
+        $vmsize = "Standard_B1s";
+        $domainNameLabel = "d1" + $rgname;
+
+        # Creating a VM 
+        $p = New-AzVmConfig -VMName $vmname -vmsize $vmsize 
+
+        $publisherName = "MicrosoftWindowsServer"
+        $offer = "WindowsServer"
+        $sku = "2019-DataCenter"
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest'
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel;
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $assessmentMode = "AutomaticByPlatform";
+
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -AssessmentMode $assessmentMode;
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $p;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        
+        Assert-NotNull $vm;
+
+        Assert-AreEqual $vm.osProfile.WindowsConfiguration.PatchSettings.AssessmentMode "AutomaticByPlatform";
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Windows machine test ensuring the EnableAutoUpdate value on the 
+provided VM is not overwritten. 
+#>
+function Test-VirtualMachineEnableAutoUpdate
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'vm' + $rgname;
+        $vmsize = "Standard_B1s";
+        $domainNameLabel = "d1" + $rgname;
+        $computerName = "v" + $rgname;
+
+        # VM Credential
+        $user = "usertest";
+        $password = "Testing1234567";
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Creating a VM 
+        $vmConfig = New-AzVmConfig -VMName $vmname -vmsize $vmsize;
+        
+        $vmSet = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred -provisionVMAgent -EnableAutoUpdate:$false;
+        Assert-AreEqual $vmSet.OSProfile.WindowsConfiguration.EnableAutomaticUpdates $false;
+        
+        $vmSet2 = Set-AzVMOperatingSystem -VM $vmSet -Windows -ComputerName $computerName -Credential $cred -provisionVMAgent -EnableAutoUpdate;
+        Assert-AreEqual $vmSet2.OSProfile.WindowsConfiguration.EnableAutomaticUpdates $true;
+
+        $vmSet3 = Set-AzVMOperatingSystem -VM $vmSet2 -Windows -ComputerName $computerName -Credential $cred -provisionVMAgent;
+        Assert-AreEqual $vmSet3.OSProfile.WindowsConfiguration.EnableAutomaticUpdates $true;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+} 
+
+<#
+.SYNOPSIS
+Windows machine test ensuring the EnableAutoUpdate value on the 
+provided VM is not overwritten. 
+#>
+function Test-CapacityReservation
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'eastus2euap';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # create a CRG
+        $CRGName = 'CRG' + $rgname
+        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -Location $loc
+
+        # Create 2 CR in CRG with two different skus
+        $CRName1 = "cr1" + $rgname
+        $Sku1 = "Standard_DS1_v2"
+        $CRName2 = "cr2" + $rgname
+        $Sku2 = "Standard_A2_v2"
+        $cr1 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1 -Sku $Sku1 -CapacityToReserve 4 -location $loc
+        $cr2 = New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2 -Sku $Sku2 -CapacityToReserve 4 -location $loc
+        
+        # try Get-CRG with InstanceView
+        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -InstanceView
+        Assert-AreEqual 2 $crg.InstanceView.CapacityReservations.count
+
+        # try Get-CR  count == 2 
+        $CR = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName 
+        Assert-AreEqual 2 $CR.count
+        
+        # create credential 
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Add one VM from creation 
+        $vmname1 = '1' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        $vm1 = New-AzVM -ResourceGroupName $rgname -Name $vmname1 -Credential $cred -DomainNameLabel $domainNameLabel1 -CapacityReservationGroupId $CRG.id -Size $Sku1 -Location $loc
+
+        # Create one VM then update to associate with CRG
+        $vmname2 = '2' + $rgname;
+        $domainNameLabel2 = "d2" + $rgname;
+        $vm2 = New-AzVM -ResourceGroupName $rgname -Name $vmname2 -Credential $cred -DomainNameLabel $domainNameLabel2 -Size $Sku2 -Location $loc
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname2 -Force
+        Update-AzVm -ResourceGroupName $rgname -vm $vm2 -CapacityReservationGroupId $CRG.id
+
+        # get instance view of CR. verify
+        $vm2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2
+        $cr1 = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1 -InstanceView
+        $cr2 = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2 -InstanceView
+        Assert-AreEqual $vm2.CapacityReservation.CapacityReservationGroup.id $CRG.id
+        Assert-AreEqual $cr1.InstanceView.UtilizationInfo.VirtualMachinesAllocated.id $vm1.id
+        Assert-AreEqual $cr2.VirtualMachinesAssociated[0].id $vm2.id
+
+        # remove VMs
+        Remove-AzVm -ResourceGroupName $rgname -Name $vmname1 -Force
+        Remove-AzVm -ResourceGroupName $rgname -Name $vmname2 -Force
+
+        # remove CRs
+        Remove-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName1
+        Remove-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName -Name $CRName2
+        $CR = Get-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $CRGName 
+        Assert-AreEqual 0 $CR.count
+
+        # remove CRG
+        Remove-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName 
+        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname
+        Assert-AreEqual 0 $CRG.count
+
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+} 
+
+function Test-VMwithSSHKey
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        
+        # create credential 
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Add one VM from creation 
+        $vmname = '1' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $sshKeyName = "s" + $rgname
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image CentOS -DomainNameLabel $domainNameLabel -SshKeyname $sshKeyName -generateSshkey 
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname
+        $sshKey = Get-AzSshKey -ResourceGroupName $rgname -Name $sshKeyName
+
+        #assert compare 
+        Assert-AreEqual $vm.OSProfile.LinuxConfiguration.Ssh.PublicKeys[0].KeyData $sshKey.publickey
+
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+} 

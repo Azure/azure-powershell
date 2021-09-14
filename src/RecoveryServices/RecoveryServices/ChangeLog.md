@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.6.0
+* Azure Site Recovery multi appliance support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
+* Azure Backup fixed targetPhysicalPath issue with SQL CRR
+* Azure Backup fixed disable protection for SQL workload
+* Azure Backup resolved bug in setting CMK properties in latest release
+* Azure Backup removed special characters from register-azrecoveryservicesbackupcontainer command help text
+
+## Version 4.5.0
+* Added MSI based restore for managed virtual machines.
+
+## Version 4.4.0
+* Added Archive for V1 vaults.
+* Added ProtectedItemsCount in Get-AzRecoveryServicesBackupProtectionPolicy.
+* Azure site recovery bug fix for azure to azure in update vm properties.
+
+## Version 4.3.0
+* Fixed Disable SQL AG AutoProtection.
+
+## Version 4.2.0
 * Added cross tenant DS Move.
 * Removed restriction to fetch recovery points only for a 30 days time range.
 * Enabled CRR for new regions.

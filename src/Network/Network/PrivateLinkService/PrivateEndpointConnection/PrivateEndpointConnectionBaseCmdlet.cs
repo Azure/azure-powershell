@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public const string privateEndpointTypeName = "PrivateLinkResourceType";
         string NamedContextParameterSet = "ByResource";
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
             var parameters = new RuntimeDefinedParameterDictionary();
             RuntimeDefinedParameter namedParameter;

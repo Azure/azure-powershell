@@ -174,6 +174,7 @@ param(
     ${Reserved},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[]]
     # Capabilities of the SKU, e.g., is traffic manager enabled
@@ -211,6 +212,7 @@ param(
     ${SkuFamily},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String[]]
     # Locations of the SKU.
