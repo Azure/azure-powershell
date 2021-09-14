@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 DnsZonePartner = this.DnsZonePartner,
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
-                BackupStorageRedundancy = this.BackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = this.BackupStorageRedundancy,
                 MaintenanceConfigurationId = this.MaintenanceConfigurationId,
                 PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
                 KeyId = this.KeyId,
