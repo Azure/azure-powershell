@@ -37,7 +37,15 @@ namespace Microsoft.Azure.Commands.RedisCache.Commands
                         resourceGroupName: ResourceGroupName,
                         cacheName: Name,
                         privateEndpointConnectionName: PrivateEndpointConnectionName);
+                if (redisPrivateEndpointConnection == null)
+                {
+                    throw new CloudException(string.Format(Resources.PrivateEndpointNameNotFound, Name,PrivateEndpointConnectionName));
+                }
                 WriteObject(new PSRedisPrivateEndpoint(ResourceGroupName, Name, redisPrivateEndpointConnection));
+            }
+            else
+            {
+                throw new System.Exception("PrivateEndpointConnectionName parameter cannot be NULL or empty.");
             }
         }
     }

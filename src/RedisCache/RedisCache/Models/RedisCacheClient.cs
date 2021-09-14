@@ -359,10 +359,6 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             _client.PrivateEndpointConnections.Delete(resourceGroupName, cacheName, privateEndpointConnectionName);
         }
-        internal IEnumerable<PrivateEndpointConnection> ListPrivateEndpoints(string resourceGroupName, string cacheName)
-        {
-            return _client.PrivateEndpointConnections.List(resourceGroupName, cacheName);
-        }
         internal PrivateEndpointConnection GetRedisPrivateEndpointConnection(string resourceGroupName, string cacheName, string privateEndpointConnectionName)
         {
             return _client.PrivateEndpointConnections.Get(resourceGroupName, cacheName, privateEndpointConnectionName);   
@@ -379,11 +375,15 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 properties = new PrivateEndpointConnection(new PrivateLinkServiceConnectionState(PrivateEndpointServiceConnectionStatus.Rejected));
             }
-            else
+            else if (connectionStatus == "Pending")
             {
                 properties = new PrivateEndpointConnection(new PrivateLinkServiceConnectionState(PrivateEndpointServiceConnectionStatus.Pending));
             }
-            var response= _client.PrivateEndpointConnections.Put(resourceGroupName, cacheName, privateEndpointConnectionName,properties);
+            else
+            {
+                throw new Exception("Connection Status type not found");
+            }
+            var response = _client.PrivateEndpointConnections.Put(resourceGroupName, cacheName, privateEndpointConnectionName,properties);
             return response;
         }
 

@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 #if NETSTANDARD
         [Fact(Skip = "Needs investigation: Storage Id cannot be null")]
 #else
-        [Fact]
+         [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticOperations()
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFirewallRule()
         {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-FirewallRule ");
+            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-FirewallRule");
         }
 
         [Fact]
@@ -110,11 +110,5 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-PrivateEndpoint");
         }
-        /*[Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Testtemp()
-        {
-            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-temp");
-        }*/
     }
 }

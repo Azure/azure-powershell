@@ -873,7 +873,7 @@ Tests redis private endpoints connection.
 #>
 function Test-PrivateEndpoint
 {
-    # Important - Test Private Endpoint not support live testing.
+    # Important - Test Private Endpoint currently does not support live testing.
     # Setup - For testing Private Endpoint Connection you have to create private endpoint connection manually.
 
     # In Below example manually created cache and private endpoint connection.
@@ -882,9 +882,6 @@ function Test-PrivateEndpoint
     $privateEndpointConnectionName = "MyPrivateEndpoint.741ed8da-d23e-4eb8-bf38-c13bb1b886c3"
     $connectionStatus = "Rejected"
 
-    
-     # Listing the private endpoint connections  
-     #Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName} " Listing all Private Endpoint Connection."
 
      # Get the details of private endpoint connection
      Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName} " Private Endpoint Properties."
@@ -893,45 +890,7 @@ function Test-PrivateEndpoint
      Assert-True {Set-AzRedisPrivateEndpointConnectionStatus -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -ConnectionStatus $connectionStatus} "Setting Private Endpoint connection Status."
    
      # Delete the prviate endpoint connection    
-     Assert-True {Remove-AzRedisPrivateEndpointConnection -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -Force -PassThru} "Removing Private Endpoint Name failed."
-}
-
-function Test-temp
-{
-    # Setup
-    $resourceGroupName = "PowerShellTest-10"
-    $cacheName = "redisteam011"
-    $vnetName = "vnetsteam"
-    $location =  "Central US"
-    $addressPrefix =  "10.0.0.0/16"
-
-    # Create resource group
-    New-AzResourceGroup -Name $resourceGroupName -Location $location    
-
-    # Creating Cache
-    #$cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -Tag @{"example-key" = "example-value"}
-
-    #Creating Virtual Network
-    $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name $vnetName -Location $location -AddressPrefix $addressPrefix
-
-    #Add a Subnet
-    $subnetConfig = Add-AzVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.0.0/24"
-
-    #Associate the subnet to the virtual network
-    $virtualNetwork | Set-AzVirtualNetwork
-
-    #Waiting for cache creation - 30 min
-    #for ($i = 0; $i -le 60; $i++)
-    {
-        #Start-TestSleep 30000
-        #$cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
-        #if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
-        {
-            #Creating Private Endpoint
-            #$plsConnection = New-AzPrivateLinkServiceConnection -Name "myprivatedemo" -PrivateLinkServiceId $cacheCreated.Id -RequestMessage 'Please Approve my request'
-            #New-AzPrivateEndpoint -Name "AnshulPrivateEndpoint" -ResourceGroupName $resourceGroupName -Location $location -PrivateLinkServiceConnection $plsConnection -Subnet  $vnet.Subnets[0]
-        }
-    }
+     Assert-True {Remove-AzRedisPrivateEndpointConnection -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -Force -PassThru} "Removing Private Endpoint Name."
 }
 
 <#
