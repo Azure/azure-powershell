@@ -295,6 +295,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        public bool? DataFlowEnableQuickReuse { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeDataFlowCoreCount)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
