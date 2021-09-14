@@ -166,6 +166,7 @@ https://docs.microsoft.com/powershell/module/az.resources/update-azmgapplication
 #>
 function Update-AzMgApplication {
 [OutputType([System.Boolean])]
+<<<<<<< HEAD
 [CmdletBinding(DefaultParameterSetName='ApplicationObjectIdWithUpdateParamsParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ApplicationObjectIdWithUpdateParamsParameterSet', Mandatory)]
@@ -174,6 +175,16 @@ param(
     [System.String]
     # key: id of application
     ${ObjectId},
+=======
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ApplicationId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [System.String]
+    # key: id of application
+    ${Id},
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -192,6 +203,7 @@ param(
     # To construct, see NOTES section for API properties and create a hash table.
     ${Api},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationIdWithUpdateParamsParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
@@ -204,6 +216,8 @@ param(
     # key: application object
     ${InputObject}
 
+=======
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]

@@ -294,9 +294,23 @@ https://docs.microsoft.com/powershell/module/az.resources/new-azmgapplication
 #>
 function New-AzMgApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
+<<<<<<< HEAD
 [CmdletBinding(DefaultParameterSetName='ApplicationWithoutCredentialParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
+    # Represents an Azure Active Directory object.
+    # The directoryObject type is the base type for many other directory entity types.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn1[]]
@@ -306,14 +320,22 @@ param(
     # To construct, see NOTES section for ADDIN properties and create a hash table.
     ${AddIn},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApiApplication1]
     # apiApplication
     # To construct, see NOTES section for API properties and create a hash table.
     ${Api},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole1[]]
@@ -323,25 +345,41 @@ param(
     # To construct, see NOTES section for APPROLE properties and create a hash table.
     ${AppRole},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Unique identifier of the applicationTemplate.
     ${ApplicationTemplateId},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${CreatedOnBehalfOfDeletedDateTime},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # An optional description of the application.
@@ -349,7 +387,11 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
     ${Description},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies whether Microsoft has disabled the registered application.
@@ -357,21 +399,33 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${DisabledByMicrosoftStatus},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet', Mandatory)]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The display name for the application.
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
     ${DisplayName},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects.
     # To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
     ${GroupMembershipClaim},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy1[]]
@@ -379,7 +433,11 @@ param(
     # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -390,21 +448,33 @@ param(
     # Supports $filter (eq, ne, ge, le, startsWith).
     ${IdentifierUri},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl1]
     # informationalUrl
     # To construct, see NOTES section for INFO properties and create a hash table.
     ${Info},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether this application supports device authentication without a user.
     # The default is false.
     ${IsDeviceOnlyAuthSupported},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies the fallback application type as public client, such as an installed application running on a mobile device.
@@ -414,7 +484,11 @@ param(
     # In those cases Azure AD interprets the application type based on the value of this property.
     ${IsFallbackPublicClient},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential1[]]
@@ -424,40 +498,64 @@ param(
     # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
     ${KeyCredentials},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Input File for Logo (The main logo for the application.
     # Not nullable.)
     ${LogoInputFile},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Notes relevant for the management of the application.
     ${Note},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${Oauth2RequirePostResponse},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOptionalClaims1]
     # optionalClaims
     # To construct, see NOTES section for OPTIONALCLAIM properties and create a hash table.
     ${OptionalClaim},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettings1]
     # parentalControlSettings
     # To construct, see NOTES section for PARENTALCONTROLSETTING properties and create a hash table.
     ${ParentalControlSetting},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential1[]]
@@ -466,14 +564,22 @@ param(
     # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPublicClientApplication1]
     # publicClientApplication
     # To construct, see NOTES section for PUBLICCLIENT properties and create a hash table.
     ${PublicClient},
 
+<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+=======
+    [Parameter(ParameterSetName='CreateExpanded')]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess1[]]
@@ -596,7 +702,6 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
-
 
         $parameterSet = 'Az.Resources.MSGraph.private\New-AzMgApplication_CreateExpanded'
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($parameterSet, [System.Management.Automation.CommandTypes]::Cmdlet)

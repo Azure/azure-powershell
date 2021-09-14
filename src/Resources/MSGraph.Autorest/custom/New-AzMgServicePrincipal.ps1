@@ -588,6 +588,7 @@ param(
     # The supported values are password, saml, notSupported, and oidc.
     ${PreferredSingleSignOnMode},
 
+
     [Parameter(ParameterSetName='SimpleParameterSet')]
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
     [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
