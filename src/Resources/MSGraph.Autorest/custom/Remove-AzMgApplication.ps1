@@ -125,7 +125,6 @@ begin {
         }
 
         $parameterSet = $PSCmdlet.ParameterSetName
-        $key2Add = 'Id'
         switch ($parameterSet) {
             'ObjectIdParameterSet' {
                 $key2Remove = 'ObjectId'
@@ -140,7 +139,7 @@ begin {
             'ApplicationDisplayNameParameterSet' {
                 $key2Remove = 'DisplayName'
                 try {
-                    $id = (Get-AzMgApplication @PSBoundParameters).Id
+                    $id = (Get-AzMgApplication -DisplayName $PSBoundParameters[$key2Remove]).Id
                 } catch {
                     throw
                 }
@@ -149,7 +148,7 @@ begin {
             'ApplicationIdParameterSet' {
                 $key2Remove = 'ApplicationId'
                 try {
-                    $id = (Get-AzMgApplication @PSBoundParameters).Id
+                    $id = (Get-AzMgApplication -ApplicationId $PSBoundParameters[$key2Remove]).Id
                 } catch {
                     throw
                 }
@@ -157,13 +156,11 @@ begin {
             }
         }
         $null = $PSBoundParameters.Remove($key2Remove)
-        $PSBoundParameters[$key2Add] = $id
+        $PSBoundParameters['Id'] = $id
 
-        $mapping = @{
-            Delete = 'Az.Resources.MSGraph.private\Remove-AzMgApplication_Delete';
-        }
+        $parameterSet = 'Az.Resources.MSGraph.private\Remove-AzMgApplication_Delete'
 
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($parameterSet, [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

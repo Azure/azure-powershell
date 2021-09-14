@@ -166,14 +166,14 @@ https://docs.microsoft.com/powershell/module/az.resources/update-azmgapplication
 #>
 function Update-AzMgApplication {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='ApplicationObjectIdWithUpdateParamsParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('ApplicationId')]
+    [Parameter(ParameterSetName='ApplicationObjectIdWithUpdateParamsParameterSet', Mandatory)]
+    [Alias('Id')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of application
-    ${Id},
+    ${ObjectId},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -191,6 +191,18 @@ param(
     # apiApplication
     # To construct, see NOTES section for API properties and create a hash table.
     ${Api},
+
+    [Parameter(ParameterSetName='ApplicationIdWithUpdateParamsParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [System.String]
+    # key: application id
+    ${AppId}
+
+    [Parameter(ParameterSetName='InputObjectWithUpdateParamsParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
+    # key: application object
+    ${InputObject}
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -481,11 +493,34 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            UpdateExpanded = 'Az.Resources.MSGraph.private\Update-AzMgApplication_UpdateExpanded';
+        switch ($parameterSet) {
+          case 'ApplicationObjectIdWithUpdateParamsParameterSet' {
+              $val = $PSBoundParameters['ObjectId']
+              $null = $PSBoundParameters.Remove('ObjectId')
+              break
+          }
+          case 'ApplicationIdWithUpdateParamsParameterSet' {
+              try {
+                  $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['AppId']
+              } catch {
+                  throw
+              }
+              $val = $app.Id
+              $null = $PSBoundParameters.Remove('AppId')
+              break
+          }
+          case 'InputObjectWithUpdateParamsParameterSet' {
+              $val = $PSBoundParameters['InputObject'].Id
+              $null = $PSBoundParameters.Remove('InputObject')
+          }
+          default {
+              break
+          }
         }
+        $PSBoundParameters['Id'] = $val
 
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $parameterSet = 'Az.Resources.MSGraph.private\Update-AzMgApplication_UpdateExpanded'
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($parameterSet, [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
