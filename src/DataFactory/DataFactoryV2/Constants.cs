@@ -148,6 +148,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeDataFlowComputeType = "Compute type of the data flow cluster which will execute data flow job.";
 
+        public const string HelpIntegrationRuntimeDataFlowQuickReuseEnabled = "Enable data flow flow cluster reuse in the next data flow activity run.";
+
         public const string HelpIntegrationRuntimeDataFlowTimeToLive = "Time to live (in minutes) setting of the data flow cluster which will execute data flow job.";
 
         public const string HelpIntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
