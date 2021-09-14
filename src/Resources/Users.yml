@@ -1445,8 +1445,6 @@ components:
               type: string
               description: 'Unique SKU display name. Equal to the skuPartNumber on the related SubscribedSku object; for example: ''AAD_Premium''. Read-only'
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.oAuth2PermissionGrant:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -1471,8 +1469,6 @@ components:
               type: string
               description: 'A space-separated list of the claim values for delegated permissions which should be included in access tokens for the resource application (the API). For example, openid User.Read GroupMember.Read.All. Each claim value should match the value field of one of the delegated permissions defined by the API, listed in the publishedPermissionScopes property of the resource service principal.'
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.outlookUser:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -1484,8 +1480,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.outlookCategory'
               description: A list of categories defined for the user.
-          additionalProperties:
-            type: object
     microsoft.graph.outlookCategory:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -1498,8 +1492,6 @@ components:
               type: string
               description: 'A unique name that identifies a category in the user''s mailbox. After a category is created, the name cannot be changed. Read-only.'
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.profilePhoto:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -1520,8 +1512,6 @@ components:
               description: The width of the photo. Read-only.
               format: int32
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.userSettings:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -1536,8 +1526,6 @@ components:
               description: 'When set to true, documents in the user''s Office Delve are disabled. Users can control this setting in Office Delve.'
             shiftPreferences:
               $ref: '#/components/schemas/microsoft.graph.shiftPreferences'
-          additionalProperties:
-            type: object
     microsoft.graph.shiftPreferences:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.changeTrackedEntity'
@@ -1549,8 +1537,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.shiftAvailability'
               description: Availability of the user to be scheduled for work and its recurrence pattern.
-          additionalProperties:
-            type: object
     microsoft.graph.todo:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -1562,8 +1548,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.todoTaskList'
               description: The task lists in the users mailbox.
-          additionalProperties:
-            type: object
     microsoft.graph.todoTaskList:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -1592,8 +1576,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.todoTask'
               description: The tasks in this task list. Read-only. Nullable.
-          additionalProperties:
-            type: object
     microsoft.graph.todoTask:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -1646,8 +1628,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.linkedResource'
               description: A collection of resources linked to the task.
-          additionalProperties:
-            type: object
     microsoft.graph.linkedResource:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -1670,8 +1650,6 @@ components:
               type: string
               description: Deep link to the linkedResource.
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.assignedLicense:
       title: assignedLicense
       type: object
@@ -1689,8 +1667,6 @@ components:
           description: The unique identifier for the SKU.
           format: uuid
           nullable: true
-      additionalProperties:
-        type: object
     microsoft.graph.assignedPlan:
       title: assignedPlan
       type: object
@@ -1715,8 +1691,6 @@ components:
           description: A GUID that identifies the service plan.
           format: uuid
           nullable: true
-      additionalProperties:
-        type: object
     microsoft.graph.employeeOrgData:
       title: employeeOrgData
       type: object
@@ -1729,8 +1703,6 @@ components:
           type: string
           description: The name of the division in which the user works. Returned only on $select. Supports $filter.
           nullable: true
-      additionalProperties:
-        type: object
     microsoft.graph.objectIdentity:
       title: objectIdentity
       type: object
@@ -1747,8 +1719,6 @@ components:
           type: string
           description: 'Specifies the user sign-in types in your directory, such as emailAddress, userName or federated. Here, federated represents a unique identifier for a user from an issuer, that can be in any format chosen by the issuer. Additional validation is enforced on issuerAssignedId when the sign-in type is set to emailAddress or userName. This property can also be set to any custom string.'
           nullable: true
-      additionalProperties:
-        type: object
     microsoft.graph.licenseAssignmentState:
       title: licenseAssignmentState
       type: object
@@ -1779,8 +1749,6 @@ components:
           type: string
           description: 'Indicate the current state of this assignment. Read-Only. Possible values: Active, ActiveWithError, Disabled and Error.'
           nullable: true
-      additionalProperties:
-        type: object
     microsoft.graph.onPremisesExtensionAttributes:
       title: onPremisesExtensionAttributes
       type: object
@@ -1845,8 +1813,6 @@ components:
           type: string
           description: Ninth customizable extension attribute.
           nullable: true
-      additionalProperties:
-        type: object
     microsoft.graph.onPremisesProvisioningError:
       title: onPremisesProvisioningError
       type: object
@@ -1869,8 +1835,6 @@ components:
           type: string
           description: Value of the property causing the error.
           nullable: true
-      additionalProperties:
-        type: object
     microsoft.graph.passwordProfile:
       title: passwordProfile
       type: object
@@ -1887,8 +1851,6 @@ components:
           type: string
           description: 'The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.'
           nullable: true
-      additionalProperties:
-        type: object
     microsoft.graph.provisionedPlan:
       title: provisionedPlan
       type: object
@@ -1905,8 +1867,6 @@ components:
           type: string
           description: 'The name of the service; for example, ''AccessControlS2S'''
           nullable: true
-      additionalProperties:
-        type: object
     microsoft.graph.mailboxSettings:
       title: mailboxSettings
       type: object
@@ -1978,8 +1938,6 @@ components:
               description: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
               format: uuid
               nullable: true
-          additionalProperties:
-            type: object
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.scopedRoleMembership:
       allOf:
@@ -1995,8 +1953,6 @@ components:
               description: Unique identifier for the directory role that the member is in.
             roleMemberInfo:
               $ref: '#/components/schemas/microsoft.graph.identity'
-          additionalProperties:
-            type: object
     microsoft.graph.calendar:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -2075,8 +2031,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
               description: The collection of single-value extended properties defined for the calendar. Read-only. Nullable.
-          additionalProperties:
-            type: object
     microsoft.graph.calendarGroup:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -2102,8 +2056,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.calendar'
               description: The calendars in the calendar group. Navigation property. Read-only. Nullable.
-          additionalProperties:
-            type: object
     microsoft.graph.event:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.outlookItem'
@@ -2262,8 +2214,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
               description: The collection of single-value extended properties defined for the event. Read-only. Nullable.
-          additionalProperties:
-            type: object
     microsoft.graph.contactFolder:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -2298,8 +2248,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
               description: The collection of single-value extended properties defined for the contactFolder. Read-only. Nullable.
-          additionalProperties:
-            type: object
     microsoft.graph.contact:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.outlookItem'
@@ -2460,8 +2408,7 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
               description: The collection of single-value extended properties defined for the contact. Read-only. Nullable.
-          additionalProperties:
-            type: object
+
     microsoft.graph.inferenceClassification:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -2473,8 +2420,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.inferenceClassificationOverride'
               description: 'A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.'
-          additionalProperties:
-            type: object
     microsoft.graph.mailFolder:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -2539,8 +2484,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
               description: The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-          additionalProperties:
-            type: object
     microsoft.graph.message:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.outlookItem'
@@ -2667,8 +2610,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
               description: The collection of single-value extended properties defined for the message. Nullable.
-          additionalProperties:
-            type: object
     microsoft.graph.person:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -2753,8 +2694,6 @@ components:
               type: string
               description: The phonetic Japanese name of the person's company.
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.drive:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.baseItem'
@@ -2792,8 +2731,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.driveItem'
               description: Collection of common folders available in OneDrive. Read-only. Nullable.
-          additionalProperties:
-            type: object
     microsoft.graph.site:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.baseItem'
@@ -2853,8 +2790,6 @@ components:
               description: The collection of the sub-sites under this site.
             onenote:
               $ref: '#/components/schemas/microsoft.graph.onenote'
-          additionalProperties:
-            type: object
     microsoft.graph.agreementAcceptance:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -2915,8 +2850,6 @@ components:
               type: string
               description: UPN of the user when the acceptance was recorded.
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.managedDevice:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3122,8 +3055,6 @@ components:
               description: Device configuration states for this device.
             deviceCategory:
               $ref: '#/components/schemas/microsoft.graph.deviceCategory'
-          additionalProperties:
-            type: object
           description: Devices that are managed or pre-enrolled through Intune
     microsoft.graph.managedAppRegistration:
       allOf:
@@ -3195,8 +3126,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.managedAppOperation'
               description: Zero or more long running operations triggered on the app registration.
-          additionalProperties:
-            type: object
           description: The ManagedAppEntity is the base entity type for all other entity types under app management workflow.
     microsoft.graph.deviceManagementTroubleshootingEvent:
       allOf:
@@ -3213,8 +3142,6 @@ components:
               type: string
               description: Time when the event occurred .
               format: date-time
-          additionalProperties:
-            type: object
           description: Event representing an general failure.
     microsoft.graph.plannerUser:
       allOf:
@@ -3232,8 +3159,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.plannerTask'
               description: Read-only. Nullable. Returns the plannerTasks assigned to the user.
-          additionalProperties:
-            type: object
     microsoft.graph.officeGraphInsights:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3255,8 +3180,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.usedInsight'
               description: Access this property from the derived type itemInsights.
-          additionalProperties:
-            type: object
     microsoft.graph.onenote:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3293,8 +3216,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.onenoteSection'
               description: The sections in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
-          additionalProperties:
-            type: object
     microsoft.graph.userActivity:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3355,8 +3276,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.activityHistoryItem'
               description: Optional. NavigationProperty/Containment; navigation property to the activity's historyItems.
-          additionalProperties:
-            type: object
     microsoft.graph.onlineMeeting:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3427,8 +3346,6 @@ components:
               type: string
               description: The video teleconferencing ID. Read-only.
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.presence:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3584,8 +3501,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.channel'
             template:
               $ref: '#/components/schemas/microsoft.graph.teamsTemplate'
-          additionalProperties:
-            type: object
     microsoft.graph.userTeamwork:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3682,8 +3597,6 @@ components:
               description: 'The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z'
               format: date-time
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.shiftAvailability:
       title: shiftAvailability
       type: object
@@ -3911,8 +3824,6 @@ components:
               nullable: true
             role:
               $ref: '#/components/schemas/microsoft.graph.calendarRoleType'
-          additionalProperties:
-            type: object
     microsoft.graph.multiValueLegacyExtendedProperty:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3925,8 +3836,6 @@ components:
                 type: string
                 nullable: true
               description: A collection of property values.
-          additionalProperties:
-            type: object
     microsoft.graph.singleValueLegacyExtendedProperty:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3937,8 +3846,6 @@ components:
               type: string
               description: A property value.
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.outlookItem:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'

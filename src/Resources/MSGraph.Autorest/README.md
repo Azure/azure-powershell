@@ -61,6 +61,7 @@ dll-name: Az.Resources.MSGraph.private
 csproj: MSGraph.csproj
 psm1: MSGraph.psm1
 psm1-internal: internal/MSGraph.internal.psm1
+psm1-custom: custom/MSGraph.custom.psm1
 format-ps1xml: MSGraph.format.ps1xml
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 subject-prefix: Mg
