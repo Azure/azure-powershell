@@ -162,6 +162,16 @@ https://docs.microsoft.com/powershell/module/az.resources/update-azmgserviceprin
 #>
 function Update-AzMgServicePrincipal {
 [OutputType([System.Boolean])]
+<<<<<<< HEAD
+[CmdletBinding(DefaultParameterSetName='SpObjectIdWithDisplayNameParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='SpObjectIdWithDisplayNameParameterSet', Mandatory)]
+    [Alias('ServicePrincipalId', 'Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [System.String]
+    # key: id of servicePrincipal
+    ${ObjectId},
+=======
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -170,6 +180,7 @@ param(
     [System.String]
     # key: id of servicePrincipal
     ${Id},
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -202,6 +213,20 @@ param(
     # The description exposed by the associated application.
     ${AppDescription},
 
+<<<<<<< HEAD
+    [Parameter(ParameterSetName='SpApplicationIdWithDisplayNameParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Alias('AppId')]
+    [System.String]
+    # The unique identifier for the associated application (its appId property).
+    ${ApplicationId},
+
+    [Parameter(ParameterSetName='InputObjectWithDisplayNameParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
+    # service principal object
+    ${InputObject},
+=======
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -213,6 +238,7 @@ param(
     [System.String]
     # The unique identifier for the associated application (its appId property).
     ${AppId},
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -426,10 +452,17 @@ param(
     # To construct, see NOTES section for SAMLSINGLESIGNONSETTING properties and create a hash table.
     ${SamlSingleSignOnSetting},
 
+<<<<<<< HEAD
+    [Parameter(ParameterSetName='SPNWithDisplayNameParameterSet', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+=======
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
+>>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     # Contains the list of identifiersUris, copied over from the associated application.
     # Additional values can be added to hybrid applications.
     # These values can be used to identify the permissions exposed by this app within Azure AD.
@@ -551,11 +584,36 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            UpdateExpanded = 'Az.Resources.MSGraph.private\Update-AzMgServicePrincipal_UpdateExpanded';
+        
+        switch ($parameterSet) {
+            case 'SpObjectIdWithDisplayNameParameterSet' {
+                $val = $PSBoundParameters['ObjectId']
+                $null = $PSBoundParameters.Remove('ObjectId')
+            } 
+            case 'SpApplicationIdWithDisplayNameParameterSet' {
+                try {
+                    $sp = Get-AzMgServicePrincipal -ApplicationId $PSBoundParameters['AppId']
+                } catch {
+                    throw
+                }
+                $val = $sp.Id
+                $null = $PSBoundParameters.Remove('AppId')
+            }
+            case 'SPNWithDisplayNameParameterSet' {
+                try {
+                    $sp = Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName']
+                } catch {
+                    throw
+                }
+                $val = $sp.Id
+                $null = $PSBoundParameters.Remove('ServicePrincipalName')
+            }
         }
 
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $PSBoundParameters['Id'] = $val
+        
+        $parameterSet = 'Az.Resources.MSGraph.private\Update-AzMgServicePrincipal_UpdateExpanded'
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($parameterSet, [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
