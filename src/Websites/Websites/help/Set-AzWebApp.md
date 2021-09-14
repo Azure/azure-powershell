@@ -572,7 +572,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 Below provided cmdlet will help you to update Azure Web App to **DOTNETCORE**
-```
+```powershell
 $PropertiesObject = @{
     "CURRENT_STACK" =  "dotnetcore"
 }
