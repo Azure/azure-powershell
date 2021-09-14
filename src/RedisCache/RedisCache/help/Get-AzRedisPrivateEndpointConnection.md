@@ -28,13 +28,13 @@ Get-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <String
 ```
 PS C:\>Get-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45"
 
-		ResourceGroupName	:	myGroup
-		Name	:	myCache
-		PrivateEndpointConnectionName	:	MyPrivateEndpoint.abcd123e45	
-		ConnectionStatus	:	Approved
+		ResourceGroupName				: myGroup
+		Name							: myCache
+		PrivateEndpointConnectionName	: MyPrivateEndpoint.abcd123e45	
+		ConnectionStatus				: Approved
 ```
 
-This command gets a private endpoint connection named privateDemo.abcd1234e56 from Redis Cache named mycache. 
+This command gets a private endpoint connection named **privateDemo.abcd1234e56** from Redis Cache named mycache. 
 
 ## PARAMETERS
 

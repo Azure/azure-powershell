@@ -108,8 +108,8 @@ This command creates Redis cache instance in mutliple zones.
 ### Example 4: Create a Virtual Network enable Cache
    
 Requirements for creating Virtual Network enable cache.
-    1. Create the virtual network in same resource group in which you want to create your redis cache. You can create virtual network from [New-AzVirtualNetwork](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetwork?view=azps-6.4.0) powershell command.
-    2. You will need SubnetID for VNET enable cache. Syntax of SubnetID is given below.
+1. Create the virtual network in same resource group in which you want to create your redis cache. You can create virtual network from [New-AzVirtualNetwork](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetwork?view=azps-6.4.0) powershell command.
+1. You will need SubnetID for VNET enable cache. Syntax of SubnetID is given below.
 
 ```
 Format of SubnetID: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}
@@ -152,14 +152,14 @@ After creating Storage account get storage account connection string. Steps to g
 1. Put the storage account key and the storage account name in below format to get connection string of Storage account.
 
 ```
-**Connection String Format** :- "DefaultEndpointsProtocol=https;AccountName={storageAccountName};AccountKey={storageAccountKey};EndpointSuffix=core.windows.net"
+Connection String Format :- "DefaultEndpointsProtocol=https;AccountName={storageAccountName};AccountKey={storageAccountKey};EndpointSuffix=core.windows.net"
 ```
 There is need to specifies Redis configuration settings to enable data persistence. 
 
 For RDB backup enable
-- - rdb-backup-enabled (Set true or false)
-- - rdb-storage-connection-string (Give connection string in above format.)    
-- - rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)  
+-  rdb-backup-enabled (Set true or false)
+-  rdb-storage-connection-string (Give connection string in above format.)    
+-  rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)  
     
 ```
 PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
@@ -186,9 +186,9 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
 ```
 
 For AOF back up enabled.
-- - aof-backup-enabled (Set true or false),
-- - aof-storage-connection-string-0 (Give connection string in above format.)
-- - aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.) 
+-  aof-backup-enabled (Set true or false),
+-  aof-storage-connection-string-0 (Give connection string in above format.)
+-  aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.) 
 
 ```
 PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"aof-backup-enabled" = "true"; "aof-storage-connection-string-0" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"}
@@ -494,7 +494,7 @@ Accept wildcard characters: False
 ### -SubnetId
 This parameter is required when you want to create Virtual network enabled Azure Cache for Redis. 
 ```
-Syntax: **-SubnetId "/subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}"**
+Syntax: -SubnetId "/subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}"
 ```
 ```yaml
 Type: System.String

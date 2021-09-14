@@ -162,7 +162,7 @@ This command helps in changing persistence method.
 
 ### Example 6: Scale an Azure Cache for Redis Instance
 
-####Update to different size and tier
+**Update to different size and tier**
 
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P2" -Sku "Premium"
@@ -215,7 +215,7 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium"
 This command will help you in changing tier of your cache (Basic to Standard or Standard to Premium).
 
 
-####Use Redis Cluster to scale in/out
+**Use Redis Cluster to scale in/out**
 
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 1
