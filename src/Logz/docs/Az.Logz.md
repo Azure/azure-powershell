@@ -1,0 +1,96 @@
+---
+Module Name: Az.Logz
+Module Guid: 66d504a5-3bf8-4570-92f4-620ec297b16a
+Download Help Link: https://docs.microsoft.com/powershell/module/az.logz
+Help Version: 1.0.0.0
+Locale: en-US
+---
+
+# Az.Logz Module
+## Description
+Microsoft Azure PowerShell: Logz cmdlets
+
+## Az.Logz Cmdlets
+### [Get-AzLogzAccount](Get-AzLogzAccount.md)
+Get the properties of a specific monitor resource.
+
+### [Get-AzLogzAccountMonitoredResource](Get-AzLogzAccountMonitoredResource.md)
+List the resources currently being monitored by the Logz monitor resource.
+
+### [Get-AzLogzAccountSSOConfiguration](Get-AzLogzAccountSSOConfiguration.md)
+Gets the Logz single sign-on resource for the given Monitor.
+
+### [Get-AzLogzAccountTagRule](Get-AzLogzAccountTagRule.md)
+Get a tag rule set for a given monitor resource.
+
+### [Get-AzLogzAccountUserRole](Get-AzLogzAccountUserRole.md)
+List the user's roles configured on Logz.io side for the account corresponding to the monitor resource.
+
+### [Get-AzLogzAccountVMHost](Get-AzLogzAccountVMHost.md)
+List the compute resources currently being monitored by the Logz main account resource.
+
+### [Get-AzLogzAccountVMHostUpdate](Get-AzLogzAccountVMHostUpdate.md)
+Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
+
+### [Get-AzLogzSubAccount](Get-AzLogzSubAccount.md)
+Get a sub account under a given monitor resource.
+
+### [Get-AzLogzSubAccountTagRule](Get-AzLogzSubAccountTagRule.md)
+Get a tag rule set for a given monitor resource.
+
+### [Get-AzLogzSubAccountVMHost](Get-AzLogzSubAccountVMHost.md)
+List the compute resources currently being monitored by the Logz sub account resource.
+
+### [Get-AzLogzSubAccountVMHostUpdate](Get-AzLogzSubAccountVMHostUpdate.md)
+Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
+
+### [Invoke-AzLogzHostAccount](Invoke-AzLogzHostAccount.md)
+Returns the payload that needs to be passed in the request body for installing Logz.io agent on a VM.
+
+### [Invoke-AzLogzHostSubAccount](Invoke-AzLogzHostSubAccount.md)
+Returns the payload that needs to be passed as a request for installing Logz.io agent on a VM.
+
+### [New-AzLogzAccount](New-AzLogzAccount.md)
+Create a monitor resource.
+This create operation can take upto 10 minutes to complete.
+
+### [New-AzLogzAccountSSOConfiguration](New-AzLogzAccountSSOConfiguration.md)
+Configures single-sign-on for this resource.
+This operation can take upto 10 minutes to complete.
+
+### [New-AzLogzAccountTagRule](New-AzLogzAccountTagRule.md)
+Create or update a tag rule set for a given monitor resource.
+
+### [New-AzLogzFilteringTagObject](New-AzLogzFilteringTagObject.md)
+Create a in-memory object for FilteringTag
+
+### [New-AzLogzSubAccount](New-AzLogzSubAccount.md)
+Create sub account under a given monitor resource.
+This create operation can take upto 10 minutes to complete.
+
+### [New-AzLogzSubAccountTagRule](New-AzLogzSubAccountTagRule.md)
+Create or update a tag rule set for a given sub account resource.
+
+### [New-AzLogzVMResourcesObject](New-AzLogzVMResourcesObject.md)
+Create a in-memory object for VMResources
+
+### [Remove-AzLogzAccount](Remove-AzLogzAccount.md)
+Delete a monitor resource.
+This delete operation can take upto 10 minutes to complete.
+
+### [Remove-AzLogzAccountTagRule](Remove-AzLogzAccountTagRule.md)
+Delete a tag rule set for a given monitor resource.
+
+### [Remove-AzLogzSubAccount](Remove-AzLogzSubAccount.md)
+Delete a sub account resource.
+This delete operation can take upto 10 minutes to complete.
+
+### [Remove-AzLogzSubAccountTagRule](Remove-AzLogzSubAccountTagRule.md)
+Delete a tag rule set for a given monitor resource.
+
+### [Update-AzLogzAccount](Update-AzLogzAccount.md)
+Update a monitor resource.
+
+### [Update-AzLogzSubAccount](Update-AzLogzSubAccount.md)
+Update a monitor resource.
+
