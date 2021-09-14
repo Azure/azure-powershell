@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             }
         }
 
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
             RuntimeDefinedParameterDictionary dynamicParams = null;
 

@@ -94,6 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSkuInternal)this).SkuSetting = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuSetting[]) content.GetValueForProperty("SkuSetting",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSkuInternal)this).SkuSetting, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuSetting>(__y, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.SkuSettingTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSkuInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSkuInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState.CreateFrom);
             AfterDeserializeDictionary(content);
         }
 
@@ -112,6 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSkuInternal)this).SkuSetting = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuSetting[]) content.GetValueForProperty("SkuSetting",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSkuInternal)this).SkuSetting, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuSetting>(__y, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.SkuSettingTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSkuInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSkuInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState.CreateFrom);
             AfterDeserializePSObject(content);
         }
 

@@ -77,6 +77,12 @@ Export logs that show total throttled Api requests for this subscription in the 
 ### [Get-AzAvailabilitySet](Get-AzAvailabilitySet.md)
 Gets Azure availability sets in a resource group.
 
+### [Get-AzCapacityReservation](Get-AzCapacityReservation.md)
+Gets the properties of Capacity Reservation resources from a Capacity Reservation Group
+
+### [Get-AzCapacityReservationGroup](Get-AzCapacityReservationGroup.md)
+Gets the properties of Capacity Reservation Groups
+
 ### [Get-AzComputeResourceSku](Get-AzComputeResourceSku.md)
 List all compute resource Skus
 
@@ -120,7 +126,7 @@ Gets an .rdp file.
 Gets the properties of a snapshot
 
 ### [Get-AzSshKey](Get-AzSshKey.md)
-{{ Fill in the Synopsis }}
+Gets the properties of SSH Public Key resources.
 
 ### [Get-AzVM](Get-AzVM.md)
 Gets the properties of a virtual machine.
@@ -230,6 +236,12 @@ Run command on the Virtual Machine Scale Set VM.
 ### [New-AzAvailabilitySet](New-AzAvailabilitySet.md)
 Creates an Azure availability set.
 
+### [New-AzCapacityReservation](New-AzCapacityReservation.md)
+Creates a Capacity Reservation resource in a Capacity Reservation Group
+
+### [New-AzCapacityReservationGroup](New-AzCapacityReservationGroup.md)
+Creates a Capacity Reservation Group
+
 ### [New-AzDisk](New-AzDisk.md)
 Creates a managed disk.
 
@@ -244,6 +256,9 @@ Creates a disk encryption set.
 
 ### [New-AzDiskEncryptionSetConfig](New-AzDiskEncryptionSetConfig.md)
 Creates a configurable disk encryption set object.
+
+### [New-AzDiskPurchasePlanConfig](New-AzDiskPurchasePlanConfig.md)
+Creates a PurchasePlan Object
 
 ### [New-AzDiskUpdateConfig](New-AzDiskUpdateConfig.md)
 Creates a configurable disk update object.
@@ -282,7 +297,7 @@ Creates a configurable snapshot object.
 Creates a configurable snapshot update object.
 
 ### [New-AzSshKey](New-AzSshKey.md)
-{{ Fill in the Synopsis }}
+Create a SSH Public Key resource.
 
 ### [New-AzVM](New-AzVM.md)
 Creates a virtual machine.
@@ -323,6 +338,12 @@ Uploads a DSC script to Azure blob storage.
 ### [Remove-AzAvailabilitySet](Remove-AzAvailabilitySet.md)
 Removes an availability set from Azure.
 
+### [Remove-AzCapacityReservation](Remove-AzCapacityReservation.md)
+Removes a Capacity Reservation resource
+
+### [Remove-AzCapacityReservationGroup](Remove-AzCapacityReservationGroup.md)
+Removes a Capacity Reservation Group
+
 ### [Remove-AzDisk](Remove-AzDisk.md)
 Removes a disk.
 
@@ -360,7 +381,7 @@ Delete Proximity Placement Group resource.
 Removes a snapshot.
 
 ### [Remove-AzSshKey](Remove-AzSshKey.md)
-{{ Fill in the Synopsis }}
+Delete a SSH Public Key resource.
 
 ### [Remove-AzVM](Remove-AzVM.md)
 Removes a virtual machine from Azure.
@@ -451,6 +472,9 @@ Sets the image reference properties on a disk object.
 
 ### [Set-AzDiskKeyEncryptionKey](Set-AzDiskKeyEncryptionKey.md)
 Sets the key encryption key properties on a disk object.
+
+### [Set-AzDiskSecurityProfile](Set-AzDiskSecurityProfile.md)
+Set SecurityProfile on managed disk
 
 ### [Set-AzDiskUpdateDiskEncryptionKey](Set-AzDiskUpdateDiskEncryptionKey.md)
 Sets the disk encryption key properties on a disk update object.
@@ -596,6 +620,12 @@ Checks the configuration of the AEM extension.
 ### [Update-AzAvailabilitySet](Update-AzAvailabilitySet.md)
 Updates an availability set.
 
+### [Update-AzCapacityReservation](Update-AzCapacityReservation.md)
+Update the Capacity Reservation.
+
+### [Update-AzCapacityReservationGroup](Update-AzCapacityReservationGroup.md)
+Update the Capacity Reservation Group.
+
 ### [Update-AzDisk](Update-AzDisk.md)
 Updates a disk.
 
@@ -618,7 +648,7 @@ Updates an image.
 Updates a snapshot.
 
 ### [Update-AzSshKey](Update-AzSshKey.md)
-{{ Fill in the Synopsis }}
+Update a SSH Public Key resource.
 
 ### [Update-AzVM](Update-AzVM.md)
 Updates the state of an Azure virtual machine.

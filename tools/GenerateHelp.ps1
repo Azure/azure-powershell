@@ -11,7 +11,7 @@ Param(
     [string]$FilteredModules
 )
 
-$ResourceManagerFolders = Get-ChildItem -Directory -Path "$PSScriptRoot\..\src" | Where-Object { $_.Name -ne 'lib' -and $_.Name -ne 'Package' -and $_.Name -ne 'packages' }
+$ResourceManagerFolders = Get-ChildItem -Directory -Path "$PSScriptRoot\..\src" | Where-Object { $_.Name -ne 'lib' -and $_.Name -ne 'Package' -and $_.Name -ne 'packages' } | Where-Object { (Get-ChildItem -Directory -Path $_ -Filter *.psd1).Count -ne 0 }
 Import-Module "$PSScriptRoot\HelpGeneration\HelpGeneration.psm1"
 
 .($PSScriptRoot + "\PreloadToolDll.ps1")
@@ -83,10 +83,9 @@ if ($ValidateMarkdownHelp)
 
 # We need to define new version of module instead of hardcode here
 $GeneratedModuleListPath = [System.IO.Path]::Combine($PSScriptRoot, "GeneratedModuleList.txt")
-$NewModules = Get-Content $GeneratedModuleListPath
+$GeneratedModules = Get-Content $GeneratedModuleListPath
 if ($GenerateMamlHelp)
 {
-    $FilteredMamlHelpFolders = @()
     foreach ($HelpFolder in $FilteredHelpFolders)
     {
         $ModuleName = "" 
@@ -98,11 +97,10 @@ if ($GenerateMamlHelp)
         {
             $ModuleName = $Matches["module"]
         }
-        if($NewModules -notcontains $ModuleName)
+        if($GeneratedModules -notcontains $ModuleName)
         {
-            $FilteredMamlHelpFolders += $HelpFolder
-        }
+            New-AzMamlHelp $HelpFolder.FullName
 
+        }
     }
-    $FilteredMamlHelpFolders | foreach { New-AzMamlHelp $_.FullName }
 }

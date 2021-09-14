@@ -55,7 +55,7 @@ This command lists the direct sub items from a Filesystem
 
 ### Example 3: List items recursively from a Filesystem in multiple batches
 ```
-PS C:\> $MaxReturn = 10000
+PS C:\> $MaxReturn = 1000
 PS C:\> $FileSystemName = "filesystem1"
 PS C:\> $Total = 0
 PS C:\> $Token = $Null
@@ -71,6 +71,7 @@ PS C:\> Echo "Total $Total items in Filesystem $FileSystemName"
 ```
 
 This example uses the *MaxCount* and *ContinuationToken* parameters to list items recursively from a Filesystem in multiple batches.
+A small *MaxCount* can limit the items acount returned from single requst, may help on operation times out error, and limit the memory usage of Powershell.
 The first four commands assign values to variables to use in the example.
 The fifth command specifies a **Do-While** statement that uses the **Get-AzDataLakeGen2ChildItem** cmdlet to list items.
 The statement includes the continuation token stored in the $Token variable.

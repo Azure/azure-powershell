@@ -1,0 +1,3 @@
+- This action cannot be undone.
+- This will permanently delete ‘<resource_name>’ and its Azure subscription
+- Stop billing for the selected Confluent organization through Azure Marketplace

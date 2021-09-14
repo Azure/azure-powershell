@@ -14,9 +14,11 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
+using Microsoft.Azure.Management.DataFactory.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
@@ -34,6 +36,36 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Alias(Constants.DataFactoryName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpIdentityType)]
+        #endregion
+        public string IdentityType { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpUserAssignedIdenty)]
+        #endregion
+        public IDictionary<string, object> UserAssignedIdentity { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpEncryptionVaultBaseUrl)]
+        #endregion
+        public string EncryptionVaultBaseUrl { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpEncryptionKeyName)]
+        #endregion
+        public string EncryptionKeyName { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpEncryptionKeyVersion)]
+        #endregion
+        public string EncryptionKeyVersion { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpEncryptionUserAssignedIdentity)]
+        #endregion
+        public string EncryptionUserAssignedIdentity { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = Constants.HelpFactoryObject)]
@@ -63,10 +95,38 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
+            string factoryIdentityType = FactoryIdentityType.SystemAssigned;
+            if (!string.IsNullOrWhiteSpace(this.IdentityType))
+            {
+                factoryIdentityType = this.IdentityType;
+            }
+
+            if (this.UserAssignedIdentity != null && this.UserAssignedIdentity.Count > 0)
+            {
+                if (!factoryIdentityType.ToLower().Contains(FactoryIdentityType.UserAssigned.ToLower()))
+                {
+                    factoryIdentityType = FactoryIdentityType.SystemAssignedUserAssigned;
+                }
+            }
+            FactoryIdentity factoryIdentity = new FactoryIdentity(factoryIdentityType, userAssignedIdentities: this.UserAssignedIdentity);
+
+            EncryptionConfiguration encryption = null;
+            if (!string.IsNullOrWhiteSpace(this.EncryptionVaultBaseUrl) && !string.IsNullOrWhiteSpace(this.EncryptionKeyName))
+            {
+                CMKIdentityDefinition cmkIdentity = null;
+                if (!string.IsNullOrWhiteSpace(this.EncryptionUserAssignedIdentity))
+                {
+                    cmkIdentity = new CMKIdentityDefinition(this.EncryptionUserAssignedIdentity);
+                }
+                encryption = new EncryptionConfiguration(this.EncryptionKeyName, this.EncryptionVaultBaseUrl, this.EncryptionKeyVersion, cmkIdentity);
+            }
+
             var parameters = new UpdatePSDataFactoryParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = Name,
+                EncryptionConfiguration = encryption,
+                FactoryIdentity = factoryIdentity,
                 Tags = Tag
             };
 

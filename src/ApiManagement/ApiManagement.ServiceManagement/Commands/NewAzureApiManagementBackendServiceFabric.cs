@@ -30,9 +30,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
            ValueFromPipelineByPropertyName = true,
-           Mandatory = true,
+           Mandatory = false,
            HelpMessage = "Client Certificate Thumbprint for the management endpoint. This parameter is required.")]
         public string ClientCertificateThumbprint { get; set; }
+
+        [Parameter(
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false,
+           HelpMessage = "Client Certificate Id for the management endpoint. This parameter is optional.")]
+        public string ClientCertificateId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false,
@@ -58,6 +64,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             var serviceFabricObject = new PsApiManagementServiceFabric();
             serviceFabricObject.ManagementEndpoints = ManagementEndpoint;
+            serviceFabricObject.ClientCertificateId = ClientCertificateId;
             serviceFabricObject.ClientCertificateThumbprint = ClientCertificateThumbprint;
             if (MaxPartitionResolutionRetry.HasValue)
             {

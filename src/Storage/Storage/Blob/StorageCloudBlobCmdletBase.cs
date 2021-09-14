@@ -15,36 +15,35 @@
 namespace Microsoft.WindowsAzure.Commands.Storage
 {
     using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using global::Azure;
+    using global::Azure.Core;
+    using global::Azure.Storage;
+    using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Specialized;
+    using global::Azure.Storage.Files.DataLake;
+    using global::Azure.Storage.Files.DataLake.Models;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Threading.Tasks;
-    using System.Collections;
-    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using global::Azure.Storage.Blobs;
-    using global::Azure.Storage.Files.DataLake;
-    using global::Azure.Storage;
-    using global::Azure;
-    using global::Azure.Storage.Files.DataLake.Models;
-    using global::Azure.Core;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using Track2blobModel = global::Azure.Storage.Blobs.Models;
-    using global::Azure.Storage.Blobs.Specialized;
     using System.Management.Automation;
+    using System.Threading.Tasks;
+    using Track2blobModel = global::Azure.Storage.Blobs.Models;
 
     /// <summary>
     /// Base cmdlet for storage blob/container cmdlet
     /// </summary>
     public class StorageCloudBlobCmdletBase : StorageCloudCmdletBase<IStorageBlobManagement>
     {
-        //[Parameter(HelpMessage = "Optional Query statement to apply to the Tags of the Blob. The blob request will fail when the blob tags not match the given tag conditions.", Mandatory = false)]
-        //[ValidateNotNullOrEmpty]
-        //public virtual string TagCondition { get; set; }        
+        [Parameter(HelpMessage = "Optional Tag expression statement to check match condition. The blob request will fail when the blob tags does not match the given expression." +
+            "See details in https://docs.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public virtual string TagCondition { get; set; }        
 
         /// <summary>
         /// Initializes a new instance of the StorageCloudBlobCmdletBase class.
@@ -114,6 +113,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             get
             {
                 global::Azure.Storage.Blobs.Models.BlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.BlobRequestConditions();
+                if (this.TagCondition != null)
+                {
+                    requestConditions.TagConditions = this.TagCondition;
+                }
                 return requestConditions;
             }
         }
@@ -123,6 +126,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             get
             {
                 global::Azure.Storage.Blobs.Models.PageBlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.PageBlobRequestConditions();
+                if (this.TagCondition != null)
+                {
+                    requestConditions.TagConditions = this.TagCondition;
+                }
                 return requestConditions;
             }
         }
@@ -132,6 +139,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             get
             {
                 global::Azure.Storage.Blobs.Models.AppendBlobRequestConditions requestConditions = new global::Azure.Storage.Blobs.Models.AppendBlobRequestConditions();
+                if (this.TagCondition != null)
+                {
+                    requestConditions.TagConditions = this.TagCondition;
+                }
                 return requestConditions;
             }
         }
@@ -656,7 +667,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
             else if (localChannel.StorageContext.StorageAccount.Credentials.IsSAS) //SAS
             {
-                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + localChannel.StorageContext.StorageAccount.Credentials.SASToken));
+                fileSystem = new DataLakeFileSystemClient(new Uri (fileSystemUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(localChannel.StorageContext.StorageAccount.Credentials.SASToken)));
             }
             else if (localChannel.StorageContext.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
@@ -897,15 +908,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
             else if (cloubBlob.ServiceClient.Credentials.IsSAS) //SAS
             {
+                string sas = Util.GetSASStringWithoutQuestionMark(cloubBlob.ServiceClient.Credentials.SASToken);
                 string fullUri = cloubBlob.SnapshotQualifiedUri.ToString();
                 if (cloubBlob.IsSnapshot)
                 {
                     // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + cloubBlob.ServiceClient.Credentials.SASToken.Substring(1);
+                    fullUri = fullUri + "&" + sas;
                 }
                 else
                 {
-                    fullUri = fullUri + cloubBlob.ServiceClient.Credentials.SASToken;
+                    fullUri = fullUri + "?" + sas;
                 }
                 blobClient = new BlobClient(new Uri(fullUri), options);
             }
@@ -947,6 +959,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage
 
         protected virtual bool UseTrack2Sdk()
         {
+            if (!string.IsNullOrEmpty(TagCondition))
+            {
+                return true;
+            }
             return false;
         }
     }

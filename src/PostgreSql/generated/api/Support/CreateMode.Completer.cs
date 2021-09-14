@@ -42,6 +42,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("Replica", "Replica", global::System.Management.Automation.CompletionResultType.ParameterValue, "Replica");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Create".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("Create", "Create", global::System.Management.Automation.CompletionResultType.ParameterValue, "Create");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Update".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("Update", "Update", global::System.Management.Automation.CompletionResultType.ParameterValue, "Update");
+            }
         }
     }
 }

@@ -704,21 +704,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     List<A2AVmManagedDiskUpdateDetails> managedDiskUpdateDetails = null;
 
                     // ManagedDisk case
-                    if (this.AzureToAzureUpdateReplicationConfiguration == null && providerSpecificDetails.ProtectedManagedDisks != null)
-                    {
-                        managedDiskUpdateDetails = new List<A2AVmManagedDiskUpdateDetails>();
-                        foreach (var managedDisk in providerSpecificDetails.ProtectedManagedDisks)
-                        {
-                            managedDiskUpdateDetails.Add(
-                                new A2AVmManagedDiskUpdateDetails(
-                                    managedDisk.DiskId,
-                                    managedDisk.RecoveryTargetDiskAccountType,
-                                    managedDisk.RecoveryReplicaDiskAccountType,
-                                    failoverDiskName: managedDisk.FailoverDiskName,
-                                    tfoDiskName: managedDisk.TfoDiskName));
-                        }
-                    }
-                    else if (this.AzureToAzureUpdateReplicationConfiguration != null && this.AzureToAzureUpdateReplicationConfiguration[0].IsManagedDisk)
+                    if (this.AzureToAzureUpdateReplicationConfiguration != null && this.AzureToAzureUpdateReplicationConfiguration[0].IsManagedDisk)
                     {
                         managedDiskUpdateDetails = new List<A2AVmManagedDiskUpdateDetails>();
                         foreach (var managedDisk in this.AzureToAzureUpdateReplicationConfiguration)

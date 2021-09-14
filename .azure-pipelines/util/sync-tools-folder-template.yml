@@ -1,0 +1,80 @@
+parameters:
+  BranchName: ''
+
+steps:
+- checkout: self
+- task: PowerShell@2
+  displayName: Save folders need to be sync
+  inputs:
+    targetType: inline
+    script: >-
+      cp .azure-pipelines .azure-pipelines-tmp -r
+
+      cp src/lib src/lib-tmp -r
+
+      cp tools tools-tmp -r
+
+      cp build.proj build-tmp.proj
+    pwsh: true
+- task: PowerShell@2
+  displayName: Config git
+  inputs:
+    targetType: inline
+    script: >-
+      git config --global user.email "azurepowershell@ms.com"
+
+      git config --global user.name "azurepowershell"
+
+      git checkout -b syncToolsFolder-${{ parameters.BranchName }} origin/${{ parameters.BranchName }}
+    pwsh: true
+- task: PowerShell@2
+  displayName: Sync build.proj folder from main to ${{ parameters.BranchName }}
+  inputs:
+    targetType: inline
+    script: >-
+      rm build.proj
+
+      mv build-tmp.proj build.proj
+
+      git add build.proj
+    pwsh: true
+- task: PowerShell@2
+  displayName: Sync .azure-pipelines folder from main to ${{ parameters.BranchName }}
+  inputs:
+    targetType: inline
+    script: >-
+      rm .azure-pipelines -r
+
+      mv .azure-pipelines-tmp .azure-pipelines
+
+      git add .azure-pipelines
+    pwsh: true
+- task: PowerShell@2
+  displayName: Sync src/lib folder from main to ${{ parameters.BranchName }}
+  inputs:
+    targetType: inline
+    script: >-
+      rm src/lib -r
+
+      mv src/lib-tmp src/lib
+
+      git add src/lib
+    pwsh: true
+- task: PowerShell@2
+  displayName: Sync tools folder from main to ${{ parameters.BranchName }}
+  inputs:
+    targetType: inline
+    script: >-
+      rm tools -r
+
+      mv tools-tmp tools
+
+      git add tools
+
+      git commit -m "Sync tools folder from main branch to ${{ parameters.BranchName }} branch"
+
+      git remote set-url origin https://$env:GITHUB_TOKEN@github.com/Azure/azure-powershell.git
+
+      git push origin syncToolsFolder-${{ parameters.BranchName }} --force
+    pwsh: true
+

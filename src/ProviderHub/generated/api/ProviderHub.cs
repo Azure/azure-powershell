@@ -4809,7 +4809,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusCreateOrUpdate(string subscriptionId, string providerNamespace, string resourceType, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusCreateOrUpdate(string subscriptionId, string providerNamespace, string resourceType, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-11-20";
             // Constant Parameters
@@ -4861,7 +4861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeFirst(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeFirst(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-11-20";
             // Constant Parameters
@@ -4911,7 +4911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeFirstViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeFirstViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-11-20";
             // Constant Parameters
@@ -5029,7 +5029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeFirst_Validate(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeFirst_Validate(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5060,7 +5060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeSecond(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeSecond(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-11-20";
             // Constant Parameters
@@ -5112,7 +5112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeSecondViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeSecondViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-11-20";
             // Constant Parameters
@@ -5234,7 +5234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeSecond_Validate(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeSecond_Validate(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5267,7 +5267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeThird(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeThird(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-11-20";
             // Constant Parameters
@@ -5321,7 +5321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeThirdViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeThirdViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-11-20";
             // Constant Parameters
@@ -5447,7 +5447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeThird_Validate(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SkusCreateOrUpdateNestedResourceTypeThird_Validate(string subscriptionId, string providerNamespace, string resourceType, string nestedResourceTypeFirst, string nestedResourceTypeSecond, string nestedResourceTypeThird, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5475,7 +5475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-11-20";
             // Constant Parameters
@@ -5587,7 +5587,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SkusCreateOrUpdate_Validate(string subscriptionId, string providerNamespace, string resourceType, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku body, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SkusCreateOrUpdate_Validate(string subscriptionId, string providerNamespace, string resourceType, string sku, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource body, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

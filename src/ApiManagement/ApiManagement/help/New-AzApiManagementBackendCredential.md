@@ -13,9 +13,9 @@ Creates a new Backend Credential contract.
 ## SYNTAX
 
 ```
-New-AzApiManagementBackendCredential [-CertificateThumbprint <String[]>] [-Query <Hashtable>]
- [-Header <Hashtable>] [-AuthorizationHeaderScheme <String>] [-AuthorizationHeaderParameter <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApiManagementBackendCredential [-CertificateThumbprint <String[]>] [-CertificateId <String[]>]
+ [-Query <Hashtable>] [-Header <Hashtable>] [-AuthorizationHeaderScheme <String>]
+ [-AuthorizationHeaderParameter <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +57,21 @@ This parameter is optional.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateId
+Client Certificate Id. This parameter is optional.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

@@ -13,6 +13,7 @@ Please note some properties can be set only during cloud service creation.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzCloudService -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AllowModelOverride] [-Configuration <String>] [-ConfigurationUrl <String>]
@@ -20,6 +21,24 @@ New-AzCloudService -Name <String> -ResourceGroupName <String> -Location <String>
  [-OSProfile <ICloudServiceOSProfile>] [-PackageUrl <String>] [-RoleProfile <ICloudServiceRoleProfile>]
  [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### quickCreateParameterSetWithoutStorage
+```
+New-AzCloudService -Name <String> -ResourceGroupName <String> -ConfigurationFile <String>
+ -DefinitionFile <String> -Location <String> -PackageUrl <String> [-SubscriptionId <String>]
+ [-DnsName <String>] [-ExtensionProfile <ICloudServiceExtensionProfile>] [-KeyVaultName <String>]
+ [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### quickCreateParameterSetWithStorage
+```
+New-AzCloudService -Name <String> -ResourceGroupName <String> -ConfigurationFile <String>
+ -DefinitionFile <String> -Location <String> -PackageFile <String> -StorageAccount <String>
+ [-SubscriptionId <String>] [-DnsName <String>] [-ExtensionProfile <ICloudServiceExtensionProfile>]
+ [-KeyVaultName <String>] [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,19 +60,19 @@ PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject 
 PS C:\> $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
 
 # Read Configuration File
-$cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile | Out-String
+PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
+PS C:\> $cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-$cloudService = New-AzCloudService                                              `
-                  -Name ContosoCS                                               `
-                  -ResourceGroupName ContosOrg                                  `
-                  -Location EastUS                                              `
-                  -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
-                  -Configuration $cscfgContent                                  `
-                  -UpgradeMode 'Auto'                                           `
-                  -RoleProfile $roleProfile                                     `
-                  -NetworkProfile $networkProfile
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
+                          -Configuration $cscfgContent                                  `
+                          -UpgradeMode 'Auto'                                           `
+                          -RoleProfile $roleProfile                                     `
+                          -NetworkProfile $networkProfile
 ```
 
 Above set of commands creates a cloud service with single role
@@ -77,20 +96,20 @@ PS C:\> $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPEx
 PS C:\> $extensionProfile = @{extension = @($extension)}
 
 # Read Configuration File
-$cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile | Out-String
+PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
+PS C:\> $cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-$cloudService = New-AzCloudService                                              `
-                  -Name ContosoCS                                               `
-                  -ResourceGroupName ContosOrg                                  `
-                  -Location EastUS                                              `
-                  -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
-                  -Configuration $cscfgContent                                  `
-                  -UpgradeMode 'Auto'                                           `
-                  -RoleProfile $roleProfile                                     `
-                  -NetworkProfile $networkProfile                               `
-                  -ExtensionProfile $extensionProfile
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
+                          -Configuration $cscfgContent                                  `
+                          -UpgradeMode 'Auto'                                           `
+                          -RoleProfile $roleProfile                                     `
+                          -NetworkProfile $networkProfile                               `
+                          -ExtensionProfile $extensionProfile
 ```
 
 Above set of commands creates a cloud service with single role and RDP extension
@@ -102,10 +121,10 @@ PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFront
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create OS profile object
-$keyVault = Get-AzKeyVault -ResourceGroupName ContosOrg -VaultName ContosKeyVault
-$certificate=Get-AzKeyVaultCertificate -VaultName ContosKeyVault -Name ContosCert
-$secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certificate.SecretId
-$osProfile = @{secret = @($secretGroup)}
+PS C:\> $keyVault = Get-AzKeyVault -ResourceGroupName ContosOrg -VaultName ContosKeyVault
+PS C:\> $certificate=Get-AzKeyVaultCertificate -VaultName ContosKeyVault -Name ContosCert
+PS C:\> $secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certificate.SecretId
+PS C:\> $osProfile = @{secret = @($secretGroup)}
 
 # Create network profile object
 PS C:\> $publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp
@@ -114,20 +133,20 @@ PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject 
 PS C:\> $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
 
 # Read Configuration File
-$cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile | Out-String
+PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
+PS C:\>  = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-$cloudService = New-AzCloudService                                              `
-                  -Name ContosoCS                                               `
-                  -ResourceGroupName ContosOrg                                  `
-                  -Location EastUS                                              `
-                  -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
-                  -Configuration $cscfgContent                                  `
-                  -UpgradeMode 'Auto'                                           `
-                  -RoleProfile $roleProfile                                     `
-                  -NetworkProfile $networkProfile                               `
-                  -OSProfile $osProfile
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
+                          -Configuration $cscfgContent                                  `
+                          -UpgradeMode 'Auto'                                           `
+                          -RoleProfile $roleProfile                                     `
+                          -NetworkProfile $networkProfile                               `
+                          -OSProfile $osProfile
 ```
 
 Above set of commands creates a cloud service with single role and certificate from key vault.
@@ -155,27 +174,75 @@ PS C:\> $genevaExtension = New-AzCloudServiceExtensionObject -Name GenevaExtensi
 PS C:\> $extensionProfile = @{extension = @($rdpExtension, $genevaExtension)}
 
 # Add tags
-$tag=@{"Owner" = "Contoso"}
+PS C:\> $tag=@{"Owner" = "Contoso"}
 
 # Read Configuration File
-$cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile | Out-String
+PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
+PS C:\> $cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-$cloudService = New-AzCloudService                                              `
-                  -Name ContosoCS                                               `
-                  -ResourceGroupName ContosOrg                                  `
-                  -Location EastUS                                              `
-                  -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
-                  -Configuration $cscfgContent                                  `
-                  -UpgradeMode 'Auto'                                           `
-                  -RoleProfile $roleProfile                                     `
-                  -NetworkProfile $networkProfile                               `
-                  -ExtensionProfile $extensionProfile                           `
-                  -Tag $tag
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
+                          -Configuration $cscfgContent                                  `
+                          -UpgradeMode 'Auto'                                           `
+                          -RoleProfile $roleProfile                                     `
+                          -NetworkProfile $networkProfile                               `
+                          -ExtensionProfile $extensionProfile                           `
+                          -Tag $tag
 ```
 
 Above set of commands creates a cloud service with single role and certificate from key vault.
+
+### Example 5: Create new cloud service with CsCfg, CsDef, and Cspkg files using 'quickCreateParameterSetWithStorage' parameter set.
+```powershell
+# Set up a storage account if you have not
+PS C:\> $storageAccount = New-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc -Location "East US" -SkuName "Standard_RAGRS" -Kind "StorageV2"
+
+# Create cloud service
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -ConfigurationFile C:\files\CS.cscfg                          `
+                          -DefinitionFile C:\files\CS.csdef                             `
+                          -PackageFile C:\CS.cspkg                                      `
+                          -StorageAccount ContosoStorAcc                                `
+                          -KeyVaultName ContosoKV
+
+```
+
+Above set of commands creates a cloud service by extracting NetworkProfile and RoleProfile information from the .CsCfg and .CsDef files.
+
+Those files will also provide OSProfile information along with the Certificates from the keyvault provided in the '-KeyVaultName' parameter.
+This parameter set also uploads the .CsPkg file to the provided StorageAccount.
+
+### Example 6: Create new cloud service with CsCfg, CsDef, and Cspkg files using 'quickCreateParameterSetWithoutStorage' parameter set.
+```powershell
+# getting Package URL
+PS C:\> $tokenStartTime = Get-Date 
+PS C:\> $tokenEndTime = $tokenStartTime.AddYears(1) 
+PS C:\> $storAcc = Get-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc
+PS C:\> $csPkgBlob = Get-AzStorageBlob -Container Contoso-Container -Blob ContosoBlob.cspkg -Context $storAcc.Context
+PS C:\> $csPkgToken = New-AzStorageBlobSASToken -Container Contoso-Container -Blob ContosoBlob.cspkg -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storAcc.Context
+PS C:\> $cspkgUrl = $csPkgBlob.ICloudBlob.Uri.AbsoluteUri + $csPkgToken 
+
+# Create cloud service
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -ConfigurationFile C:\files\CS.cscfg                          `
+                          -DefinitionFile C:\files\CS.csdef                             `
+                          -packageUrl $cspkgUrl                                         `
+
+```
+
+Above set of commands creates a cloud service by extracting NetworkProfile and RoleProfile information from the .CsCfg and .CsDef files.
+
+Those files will also provide OSProfile information along with the Certificates from the keyvault provided in the '-KeyVaultName' parameter.
 
 ## PARAMETERS
 
@@ -184,7 +251,7 @@ Above set of commands creates a cloud service with single role and certificate f
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -199,7 +266,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -214,10 +281,25 @@ Specifies the XML service configuration (.cscfg) for the cloud service.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationFile
+Specifies the XML service configuration (.cscfg) for the cloud service.
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -230,7 +312,7 @@ The service package URL can be Shared Access Signature (SAS) URI from any storag
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -245,8 +327,38 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefinitionFile
+Path to .csdef file.
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsName
+Name of Dns to be used for the CloudService resource.
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
+Aliases:
 
 Required: False
 Position: Named
@@ -262,6 +374,21 @@ To construct, see NOTES section for EXTENSIONPROFILE properties and create a has
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceExtensionProfile
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultName
+Name of the KeyVault to be used for the CloudService resource.
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
 Aliases:
 
 Required: False
@@ -307,7 +434,7 @@ To construct, see NOTES section for NETWORKPROFILE properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceNetworkProfile
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -322,7 +449,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -338,10 +465,26 @@ To construct, see NOTES section for OSPROFILE properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceOSProfile
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PackageFile
+Path to .cspkg file.
+It will be uploaded to a blob
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithStorage
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -354,10 +497,10 @@ The service package URL can be Shared Access Signature (SAS) URI from any storag
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, quickCreateParameterSetWithoutStorage
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -385,7 +528,7 @@ To construct, see NOTES section for ROLEPROFILE properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleProfile
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -407,6 +550,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccount
+Name of the storage account that will store the Package file.
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithStorage
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

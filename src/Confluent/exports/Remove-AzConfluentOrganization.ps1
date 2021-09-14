@@ -20,10 +20,16 @@ Delete Organization resource
 Delete Organization resource
 .Example
 PS C:\> Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-01-portal
-
+- This action cannot be undone.
+- This will permanently delete ‘<resource_name>’ and its Azure subscription
+- Stop billing for the selected Confluent organization through Azure Marketplace
+Do you want to proceed (Y/N)?: y
 .Example
 PS C:\>  Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Remove-AzConfluentOrganization
-
+- This action cannot be undone.
+- This will permanently delete ‘<resource_name>’ and its Azure subscription
+- Stop billing for the selected Confluent organization through Azure Marketplace
+Do you want to proceed (Y/N)?: y
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentity
@@ -147,12 +153,14 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'Az.Confluent.private\Remove-AzConfluentOrganization_Delete';
-            DeleteViaIdentity = 'Az.Confluent.private\Remove-AzConfluentOrganization_DeleteViaIdentity';
+            Delete = 'Az.Confluent.custom\Remove-AzConfluentOrganization';
+            DeleteViaIdentity = 'Az.Confluent.custom\Remove-AzConfluentOrganization';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

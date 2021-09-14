@@ -1,5 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
-#
+﻿#
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,12 +16,12 @@ function Test-AccountRelatedCmdlets
   $rgName = "CosmosDBResourceGroup91"
   $location = "East US"
   $locationlist = "East US", "West US"
-  $locationlist2 = "East US", "UK South", "UK West", "South India"
+  $locationlist2 = "East US", "UK South", "UK West", "South India"                                                                                     
   $locationlist3 = "West US", "East US"
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
 
-  $cosmosDBAccountName = "cosmosdb678901"
+  $cosmosDBAccountName = "cosmosdb678903"
 
   #use an existing account with the following information for Account Update Operations
   $cosmosDBExistingAccountName = "dbaccount30" 
@@ -32,7 +31,7 @@ function Test-AccountRelatedCmdlets
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
   $publicNetworkAccess = "Enabled"
   $networkAclBypass = "AzureServices"
-  $networkAclBypassResourceId = "/subscriptions/subId/resourcegroups/rgName/providers/Microsoft.Synapse/workspaces/workspaceName"
+  $networkAclBypassResourceId = @("/subscriptions/subId/resourcegroups/rgName/providers/Microsoft.Synapse/workspaces/workspaceName")
 
   $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2" -NetworkAclBypass $NetworkAclBypass -BackupRetentionIntervalInHours 16 -BackupIntervalInMinutes 480
   
@@ -60,7 +59,7 @@ function Test-AccountRelatedCmdlets
     Assert-AreEqual $_.Exception.Message ("Resource with Name " + $cosmosDBAccountName + " already exists.")
   }
 
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypass $NetworkAclBypass -NetworkAclBypassResourceId $networkAclBypassResourceId -BackupRetentionIntervalInHours 8 -BackupIntervalInMinutes 240
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypassResourceId $networkAclBypassResourceId
 
   Assert-AreEqual $cosmosDBAccountName $updatedCosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -71,8 +70,8 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.PublicNetworkAccess $publicNetworkAccess
   Assert-AreEqual $updatedCosmosDBAccount.NetworkAclBypass $NetworkAclBypass
   Assert-AreEqual $updatedCosmosDBAccount.NetworkAclBypassResourceIds.Count 1
-  Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 240
-  Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 8
+  Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
+  Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
 
   $cosmosDBAccountKey = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname
   Assert-NotNull $cosmosDBAccountKey
@@ -94,15 +93,17 @@ function Test-AccountRelatedCmdletsUsingRid
 {
   $FailoverPolicy = "UK West", "East US", "UK South", "South India"
   $locationlist2 = "UK South"
-
+  $location = "East US"
   #use an existing account with the following properties
   $cosmosDBExistingAccountName = "dbaccount27" 
-  $existingResourceGroupName = "CosmosDBResourceGroup27"
+  $existingResourceGroupName = "CosmosDBResourceGroup28"
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $existingResourceGroupName  -Location   $location
 
   $IpRule = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
-  $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
   $cosmosDBAccountByRid = Get-AzCosmosDBAccount -ResourceId $cosmosDBAccount.Id
 
   Assert-AreEqual $cosmosDBAccountByRid.Name $cosmosDBAccount.Name
@@ -142,11 +143,14 @@ function Test-AccountRelatedCmdletsUsingRid
 function Test-AccountRelatedCmdletsUsingObject
 {
   #use an existing account with the following properties
-  $cosmosDBExistingAccountName = "dbaccount27" 
-  $existingResourceGroupName = "CosmosDBResourceGroup27"
-
+  $cosmosDBExistingAccountName = "dbaccount31" 
+  $existingResourceGroupName = "CosmosDBResourceGroup28"
+  $location = "East US"
   $IpRule = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $existingResourceGroupName  -Location   $location
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
 
   $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
  
@@ -181,10 +185,10 @@ function Test-AccountRelatedCmdletsUsingObject
 
 function Test-AddRegionOperation
 {
-  $rgName = "CosmosDBResourceGroup4"
+  $rgName = "CosmosDBResourceGroup5"
   $location = "East US"
   $locationlist = "East US", "West US"
-  $cosmosDBAccountName = "testupdateregionpowershell"
+  $cosmosDBAccountName = "testupdateregionpowershell1"
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
 
   try {
@@ -201,7 +205,7 @@ function Test-AddRegionOperation
 
     $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
     $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-    Assert-AreEqual $cosmosDBAccount.Locations.Count $updatedCosmosDBAccount.Locations.Count - 1 
+    Assert-AreEqual $updatedCosmosDBAccount.Locations.Count 2
    }
   finally{
       #unable to delete account immediately after adding region
@@ -212,15 +216,18 @@ function Test-AddRegionOperation
 function Test-PrivateEndpoint
 {
   # Setup
-  $location = "East US"
+  $location = "East US 2"
   $peName = "mype";
   $storageAccount = "xdmsa2";
   $vnetName = "MyVnetPE"
 	
-  $cosmosDBAccountName = "db945" 
+  $cosmosDBAccountName = "db946" 
   $rgname = "CosmosDBResourceGroup9507"
 
   try{
+
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgname -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $location  -EnableMultipleWriteLocations  -EnableAutomaticFailover
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName
       $resourceId = $cosmosDBAccount.Id
 
@@ -257,5 +264,58 @@ function Test-PrivateEndpoint
   finally{
       Remove-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Force
       Remove-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Force
+  }
+}
+
+
+function Test-AnalyticalStorageSchemaTypeNewAccount
+{
+  $resourceGroupName = "cdbrg-asst1"
+  $accountName = "cdbacct-asst1"
+  $location = "East US 2"
+  $schemaType = "FullFidelity"
+
+  try
+  {
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    $account = New-AzCosmosDBAccount -ResourceGroupname $resourceGroupName -Name $accountName -Location $location -AnalyticalStorageSchemaType $schemaType
+    do 
+    {
+        $account = Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
+    } while ($account.ProvisioningState -ne "Succeeded")
+    Assert-AreEqual $account.AnalyticalStorageConfiguration.SchemaType $schemaType
+  }
+  finally
+  {
+    Remove-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
+    Remove-AzResourceGroup -Name $resourceGroupName
+  }
+}
+
+
+function Test-AnalyticalStorageSchemaTypeUpdateAccount
+{ 
+  $resourceGroupName = "cdbrg-asst3"
+  $accountName = "cdbacct-asst3"
+  $location = "East US 2"
+  $schemaType = "FullFidelity"
+
+  try
+  {
+    New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
+    $account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    Assert-AreEqual $account.AnalyticalStorageConfiguration.SchemaType "WellDefined"
+
+    Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -AnalyticalStorageSchemaType $schemaType
+    do 
+    {
+        $account = Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
+    } while ($account.ProvisioningState -ne "Succeeded")
+    Assert-AreEqual $account.AnalyticalStorageConfiguration.SchemaType $schemaType
+  }
+  finally
+  {
+    Remove-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
+    Remove-AzResourceGroup -Name $resourceGroupName
   }
 }

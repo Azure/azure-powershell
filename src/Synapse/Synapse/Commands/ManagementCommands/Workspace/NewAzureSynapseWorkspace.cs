@@ -1,3 +1,17 @@
+// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Models;
@@ -9,7 +23,7 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.Synaspe
+namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Workspace, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSynapseWorkspace))]
@@ -69,6 +83,16 @@ namespace Microsoft.Azure.Commands.Synaspe
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = HelpMessages.ManagedResourceGroupName)]
+        [ResourceGroupCompleter()]
+        [ValidateNotNullOrEmpty]
+        public string ManagedResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.GitRepository)]
+        [ValidateNotNull]
+        public PSWorkspaceRepositoryConfiguration GitRepository { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -80,7 +104,7 @@ namespace Microsoft.Azure.Commands.Synaspe
             }
             catch (AzPSResourceNotFoundCloudException ex)
             {
-                var innerException = ex.InnerException as ErrorContractException;
+                var innerException = ex.InnerException as ErrorResponseException;
                 if (innerException.Body?.Error?.Code == "ResourceNotFound" || innerException.Body?.Error?.Message.Contains("ResourceNotFound") == true)
                 {
                     // account does not exists so go ahead and create one
@@ -117,6 +141,7 @@ namespace Microsoft.Azure.Commands.Synaspe
                 ManagedVirtualNetwork = this.IsParameterBound(c => c.ManagedVirtualNetwork) ? SynapseConstants.DefaultName : null,
                 Location = this.Location,
                 ManagedVirtualNetworkSettings = this.IsParameterBound(c => c.ManagedVirtualNetwork) ? this.ManagedVirtualNetwork?.ToSdkObject() : null,
+                ManagedResourceGroupName = this.ManagedResourceGroupName,
                 Encryption = this.IsParameterBound(c => c.EncryptionKeyIdentifier) ? new EncryptionDetails
                 {
                     Cmk = new CustomerManagedKeyDetails
@@ -127,7 +152,8 @@ namespace Microsoft.Azure.Commands.Synaspe
                             KeyVaultUrl = this.EncryptionKeyIdentifier
                         }
                     }
-                } : null
+                } : null,
+                WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null
             };
 
             if (ShouldProcess(Name, string.Format(Resources.CreatingSynapseWorkspace, this.ResourceGroupName, this.Name)))

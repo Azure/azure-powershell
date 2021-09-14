@@ -53,7 +53,7 @@ $tools = Join-Path $PSScriptRoot 'tools'
 $resourceDir = Join-Path $tools 'Resources'
 $resourceModule = Join-Path $HOME '.PSSharedModules\Resources\Az.Resources.TestSupport.psm1'
 
-if ($Resources.IsPresent -and (-not (Test-Path -Path $resourceModule))) {
+if ($Resources.IsPresent -and ((-not (Test-Path -Path $resourceModule)) -or $RegenerateSupportModule.IsPresent)) {
   Write-Host -ForegroundColor Green "Building local Resource module used for test..."
   Set-Location $resourceDir
   $null = autorest .\readme.md --use:@autorest/powershell@3.0.414 --output-folder=$HOME/.PSSharedModules/Resources

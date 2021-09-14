@@ -1,9 +1,9 @@
+using Microsoft.PowerShell;
 using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Runtime.InteropServices;
-using Microsoft.PowerShell;
 
 namespace MockPSConsole
 {
@@ -108,7 +108,7 @@ namespace MockPSConsole
                     ps.Commands.Clear();
                     Console.Write(string.Join("", ps.AddCommand("prompt").Invoke<string>()));
 
-                    var line = PSConsoleReadLine.ReadLine(rs, executionContext);
+                    var line = PSConsoleReadLine.ReadLine(rs, executionContext, true);
                     Console.WriteLine(line);
                     line = line.Trim().ToLower();
                     if (line.Equals("exit"))

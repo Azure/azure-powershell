@@ -80,5 +80,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-LoadBalancerBackendAddressConfig");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerBackendPoolCRUDWithAddTunnelInterface()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerBackendPoolCRUDWithAddTunnelInterface");
+        }
     }
 }

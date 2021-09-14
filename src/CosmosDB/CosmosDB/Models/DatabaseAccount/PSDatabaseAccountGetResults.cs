@@ -60,7 +60,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableAnalyticalStorage = databaseAccountGetResults.EnableAnalyticalStorage;
             NetworkAclBypass = databaseAccountGetResults.NetworkAclBypass;
             NetworkAclBypassResourceIds = databaseAccountGetResults.NetworkAclBypassResourceIds;
+            InstanceId = databaseAccountGetResults.InstanceId;
             BackupPolicy = new PSBackupPolicy(databaseAccountGetResults.BackupPolicy);
+            RestoreParameters = new PSRestoreParameters(databaseAccountGetResults.RestoreParameters);
+            CreateMode = databaseAccountGetResults.CreateMode;
+            AnalyticalStorageConfiguration = new PSAnalyticalStorageConfiguration(databaseAccountGetResults.AnalyticalStorageConfiguration);
         }
 
         //
@@ -193,7 +197,26 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public IList<string> NetworkAclBypassResourceIds { get; set; }
         //
         // Summary:
-        //     Gets or sets the backup policy of the database account.
+        //     Gets or sets the InstanceId of the CosmosDB Account
+        public string InstanceId { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the Backup Policy of the CosmosDB Account
         public PSBackupPolicy BackupPolicy { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the RestoreParameters of the CosmosDB Account
+        public PSRestoreParameters RestoreParameters { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the CreateMode of the CosmosDB Account
+        public string CreateMode { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the AnalyticalStorageConfiguration of the CosmosDB Account
+        public PSAnalyticalStorageConfiguration AnalyticalStorageConfiguration { get; set; }
     }
 }

@@ -63,7 +63,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool doNotRunExtensionsOnOverprovisionedVMs,
             bool encryptionAtHost,
             int? platformFaultDomainCount,
-            string edgeZone
+            string edgeZone,
+            string orchestrationMode,
+            string capacityReservationId
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -114,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                         new VirtualMachineScaleSetIPConfiguration
                                         {
                                             Name = name,
-                                            LoadBalancerBackendAddressPools = new [] 
+                                            LoadBalancerBackendAddressPools = new []
                                             {
                                                 engine.GetReference(backendAdressPool)
                                             },
@@ -131,7 +133,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
-                        BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
+                        BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
+                        CapacityReservation = (capacityReservationId == null) ? null : new CapacityReservationProfile
+                        {
+                            CapacityReservationGroup = new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId)
+                        }
                     },
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
                     HostGroup = hostGroup(engine),
@@ -139,7 +145,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         Rules = scaleInPolicy
                     },
-                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null
+                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
+                    OrchestrationMode = orchestrationMode
                 });
     }
 }

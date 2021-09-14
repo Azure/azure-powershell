@@ -107,6 +107,12 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The Id of Host")]
         public string HostId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -152,7 +158,8 @@ namespace Microsoft.Azure.Commands.Compute
                         VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
                         AdditionalCapabilities = this.VM.AdditionalCapabilities,
                         EvictionPolicy = this.VM.EvictionPolicy,
-                        Priority = this.VM.Priority
+                        Priority = this.VM.Priority,
+                        CapacityReservation = this.VM.CapacityReservation
                     };
 
                     if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
@@ -224,6 +231,20 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.SecurityProfile = new SecurityProfile();
                         }
                         parameters.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
+                    }
+
+                    if (this.IsParameterBound(c => c.CapacityReservationGroupId))
+                    {
+                        if (parameters.CapacityReservation == null)
+                        {
+                            parameters.CapacityReservation = new CapacityReservationProfile();
+                        }
+                        parameters.CapacityReservation.CapacityReservationGroup = new SubResource(CapacityReservationGroupId);
+                    }
+
+                    if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)
+                    {
+                        parameters.StorageProfile.ImageReference.Id = null;
                     }
 
                     if (NoWait.IsPresent)

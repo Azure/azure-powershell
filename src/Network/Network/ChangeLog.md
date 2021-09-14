@@ -19,14 +19,28 @@
 --->
 
 ## Upcoming Release
-* Added support for allocate/deallocate hub firewalls
-    - Added method Allocate on PSAzureFirewall object - requires virtual hub resource ID as input
-    - Modified method Deallocate on PSAzureFirewall object to handle deallocation of hub firewalls by removing reference to the virtual hub - no input parameter required
-    - Added example in Set-AzFirewall for allocate/deallocate hub firewalls
-* Updated cmdlets to enable processing of available zones on AzureFirewalll
-    - `New-AzFirewall`
-* Updated cmdlets to add properties for new BYOIP features.
+
+## Version 4.11.0
+* Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
+    - `New-AzLoadBalancerBackendAddressConfig`
+* Updated cmdlet to add 'TunnelInterface' property for backend pool related operations.
+    - `New-AzLoadBalancerBackendAddressPool`
+    - `Set-AzLoadBalancerBackendAddressPool`
+
+## Version 4.10.0
+* Added public ip address as an optional parameter to create route server
+    - `New-AzRouteServer`
+* Updated cmdlets to enable specification of edge zone
+    - `New-AzPublicIpPrefix`
+    - `New-AzLoadBalancer`
+    - `New-AzPrivateLinkService`
+    - `New-AzPrivateEndpoint`
+* Added support for viewing extended location of virtual network in the console
+    - `New-AzVirtualNetwork`
+    - `Get-AzVirtualNetwork`
+* Added support for viewing extended location of public IP address in the console
     - `New-AzPublicIpAddress`
+    - `Get-AzPublicIpAddress`
     - `New-AzCustomIpPrefix`
     - `Update-AzCustomIpPrefix`
 * Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                BackupResourceEncryptionConfigResource vaultEncryptionSetting = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
+                BackupResourceEncryptionConfigExtendedResource vaultEncryptionSetting = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
                 BackupResourceVaultConfigResource vaultConfigResource = ServiceClientAdapter.GetVaultProperty(vaultName, resourceGroupName);
                 
                 VaultProperty vaultProperty = new VaultProperty(vaultConfigResource.Properties, vaultEncryptionSetting);

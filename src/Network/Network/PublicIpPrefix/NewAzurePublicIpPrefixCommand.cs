@@ -116,6 +116,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edge zone of the public IP prefix")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -189,6 +195,11 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             publicIpPrefix.CustomIpPrefix = this.CustomIpPrefix;
+
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                publicIpPrefix.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
 
             var theModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPPrefix>(publicIpPrefix);
 

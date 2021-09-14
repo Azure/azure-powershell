@@ -12,22 +12,22 @@ Removes the auditing settings of an Azure Synapse Analytics Workspace.
 
 ## SYNTAX
 
-### RemoveByNameParameterSet (Default)
+### WorkspaceParameterSet (Default)
 ```
-Reset-AzSynapseSqlAuditSetting [-ResourceGroupName <String>] -WorkspaceName <String> [-AsJob] [-PassThru]
+Reset-AzSynapseSqlAuditSetting [[-ResourceGroupName] <String>] [-WorkspaceName] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByInputObjectParameterSet
+### WorkspaceObjectParameterSet
 ```
-Reset-AzSynapseSqlAuditSetting -InputObject <PSSynapseWorkspace> [-AsJob] [-PassThru]
+Reset-AzSynapseSqlAuditSetting -WorkspaceObject <PSSynapseWorkspace> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByResourceIdParameterSet
+### WorkspaceResourceIdParameterSetName
 ```
-Reset-AzSynapseSqlAuditSetting -ResourceId <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzSynapseSqlAuditSetting -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,47 +81,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-workspace input object, usually passed through the pipeline.
-
-```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: RemoveByInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PassThru
-This Cmdlet does not return an object by default.
-If this switch is specified, it returns true if successful.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveByNameParameterSet
+Parameter Sets: WorkspaceParameterSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -132,7 +101,7 @@ Resource identifier of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveByResourceIdParameterSet
+Parameter Sets: WorkspaceResourceIdParameterSetName
 Aliases:
 
 Required: True
@@ -147,13 +116,28 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveByNameParameterSet
+Parameter Sets: WorkspaceParameterSet
 Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceObject
+workspace input object, usually passed through the pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
+Parameter Sets: WorkspaceObjectParameterSet
+Aliases: InputObject
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

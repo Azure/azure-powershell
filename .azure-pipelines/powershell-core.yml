@@ -9,6 +9,9 @@ variables:
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
+  IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
+  BuildTimeoutInMinutes: 120
+  AnalysisTimeoutInMinutes: 120
 
 trigger: none
 
@@ -23,6 +26,7 @@ jobs:
 - job: Build
   displayName: Build
   condition: succeeded()
+  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
   strategy:
     matrix:
       windows:
@@ -31,8 +35,8 @@ jobs:
       linux:
         OSName: ${{ variables.LinuxName }}
         ImageName: ${{ variables.LinuxImage }}
-      macOS:	
-        OSName: ${{ variables.MacOSName }}	
+      macOS:
+        OSName: ${{ variables.MacOSName }}
         ImageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(ImageName)
@@ -48,7 +52,7 @@ jobs:
   displayName: Analyze
   dependsOn: Build
   condition: succeeded()
-  timeoutInMinutes: 90
+  timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
   strategy:
     matrix:
       windows:

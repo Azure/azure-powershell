@@ -8,17 +8,17 @@ schema: 2.0.0
 # Get-AzDataProtectionBackupVault
 
 ## SYNOPSIS
-Returns a resource belonging to a resource group.
+Returns resource collection belonging to a resource group.
 
 ## SYNTAX
 
-### list (Default)
+### Get1 (Default)
 ```
-Get-AzDataProtectionBackupVault [-ResourceGroupName <String>] [-SubscriptionId <String[]>]
+Get-AzDataProtectionBackupVault -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
+### Get2
 ```
 Get-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -31,7 +31,7 @@ Get-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Default
 ```
 
 ## DESCRIPTION
-Returns a resource belonging to a resource group.
+Returns resource collection belonging to a resource group.
 
 ## EXAMPLES
 
@@ -111,7 +111,7 @@ The name of the resource group where the backup vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, list
+Parameter Sets: Get1, Get2
 Aliases:
 
 Required: True
@@ -126,7 +126,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, list
+Parameter Sets: Get1, Get2
 Aliases:
 
 Required: False
@@ -141,7 +141,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get2
 Aliases:
 
 Required: True
@@ -160,9 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
-
-### System.Management.Automation.PSObject
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource
 
 ## NOTES
 
@@ -174,7 +172,6 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
-  - `[BackupInstance <String>]`: 
   - `[BackupInstanceName <String>]`: The name of the backup instance
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
@@ -182,7 +179,9 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[Location <String>]`: The location in which uniqueness will be verified.
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
+  - `[RequestName <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
+  - `[ResourceGuardsName <String>]`: The name of ResourceGuard
   - `[SubscriptionId <String>]`: The subscription Id.
   - `[VaultName <String>]`: The name of the backup vault.
 

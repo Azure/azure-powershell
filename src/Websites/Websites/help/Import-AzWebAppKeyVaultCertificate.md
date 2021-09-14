@@ -25,7 +25,7 @@ The **Import-AzWebAppKeyVaultCertificate** cmdlet imports an SSL certificate to 
 
 ### Example 1
 ```powershell
-PS C:\> Import-AzWebAppKeyVaultCertificate -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" 
+PS C:\> Import-AzWebAppKeyVaultCertificate -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoWebApp" 
 -KeyVaultName "ContosoKeyVault" -CertName "ContosoCertname"
 ```
 
@@ -33,7 +33,7 @@ This command imports an SSL certificate to a web app from Key Vault.
 
 ### Example 2
 ```powershell
-PS C:\> Import-AzWebAppKeyVaultCertificate -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" 
+PS C:\> Import-AzWebAppKeyVaultCertificate -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoWebApp" 
 -KeyVaultName  '/subscriptions/[sub id]/resourceGroups/[rg]/providers/Microsoft.KeyVault/vaults/[vault name]' 
 -CertName "ContosoCertname"
 ```
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultName
-The name of the keyvault.
+The name of the keyvault or Id of the KeyVault.
 
 ```yaml
 Type: System.String
