@@ -2,7 +2,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: [Remove-AzRedisPrivateEndpointConnection](./Remove-AzRedisPrivateEndpointConnection)
+online version: https://docs.microsoft.com/powershell/module/az.rediscache/remove-azredisprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -30,15 +30,14 @@ PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointC
 True
 ```
 
-This command removes a private endpoint connection named MyPrivateEndpoint.abcd123e45 from Redis Cache named mycache and displays whether the operation is successful. 
+This command removes a private endpoint connection named **MyPrivateEndpoint.abcd123e45** from Redis Cache named **mycache** and displays whether the operation is successful. 
 
 ### Example 2: Remove a private endpoint connection and do not display the result
 ```
 PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -Force
 ```
 
-This command removes a private endpoint connection named MyPrivateEndpoint.abcd123e45 from Redis Cache named mycache.
-Because the *PassThru* parameter is not specified, the result of the operation is not displayed.
+This command removes a private endpoint connection named **MyPrivateEndpoint.abcd123e45** from Redis Cache named **mycache**. Since the *PassThru* parameter is not specified, the result of the operation is not displayed.
 
 ## PARAMETERS
 

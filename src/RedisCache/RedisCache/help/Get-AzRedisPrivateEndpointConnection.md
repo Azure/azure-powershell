@@ -2,7 +2,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: [Get-AzRedisPrivateEndpointConnection](./Get-AzRedisPrivateEndpointConnection)
+online version: https://docs.microsoft.com/powershell/module/az.rediscache/get-azredisprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -15,13 +15,12 @@ Get Private Endpoint Connection from a Redis Cache.
 
 ### NormalParameterSet (Default)
 ```
-Get-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <String> [-PrivateEndpointConnectionName <String>]
+Get-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <String> -PrivateEndpointConnectionName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-If **PrivateEndpointConnectionName** parameter if provided, **Get-AzRedisPrivateEndpointConnection** cmdlet gets detail about the specified private endpoint connection on Azure Redis Cache. If only **Name** is specified this operation gets all private endpoint connections available on that Redis Cache.
-
+**Get-AzRedisPrivateEndpointConnection** cmdlet will get detail about the specified private endpoint connection on Azure Redis Cache.
 
 ## EXAMPLES
 
@@ -36,16 +35,6 @@ PS C:\>Get-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConn
 ```
 
 This command gets a private endpoint connection named privateDemo.abcd1234e56 from Redis Cache named mycache. 
-
-### Example 2: Get all private endpoint connections
-```
-PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache"
-
-
-
-```
-
-This command gets all private endpoint connections from Redis Cache named mycache.
 
 ## PARAMETERS
 

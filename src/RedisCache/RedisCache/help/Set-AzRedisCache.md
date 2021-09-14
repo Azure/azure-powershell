@@ -80,7 +80,7 @@ This command disable RDB backup data persistence for redis cache. Similarly you 
 
 ### Example 3: Modify Redis Cache - If you want to add data persistence after azure redis cache created.
 ```
-PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=demoaccount;AccountKey=QdcckhAuPxEPKOSrw6vGv4MG+Nqm+tOuLOMncQfS0tYLl05auuo00zemdO70EMgTkAZhAHR7eUwHZA31K2oLQQ==;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
+PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
 
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -135,7 +135,7 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-freque
 ### Example 5: Modify Redis Cache - If you want to change AOF back up data persistence to RDB back up.
 
 ```
-PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"aof-backup-enabled"= "false"; "rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=demoaccount;AccountKey=QdcckhAuPxEPKOSrw4vGv4MG+Nqm+tOuLOMncQfS0tYLl05auuo00zemdO570EMgThAHRxr7eUwHZA31K2oLQQ==;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
+PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"aof-backup-enabled"= "false"; "rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
 
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -162,6 +162,8 @@ This command helps in changing persistence method.
 
 ### Example 6: Scale an Azure Cache for Redis Instance
 
+**Update to different size and tier**
+
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P2" -Sku "Premium"
 
@@ -185,7 +187,7 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P2" -Sku "Premium"
           Tag                : {}
           Zone               : []
 ```
-This command increases or decreases the memory size of your redis instance. This will work for all type of caches (Basic, Standard or Premium)
+This command increases or decreases the memory size of your redis instance. 
 
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium" 
@@ -213,6 +215,8 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium"
 This command will help you in changing tier of your cache (Basic to Standard or Standard to Premium).
 
 
+**Use Redis Cluster to scale in/out
+
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 1
 
@@ -237,8 +241,34 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 1
           Tag                : {}
           Zone               : []
 ```
-This command helps you in enable clustering for your Azure Cache for Redis instance. For increasing the **shard count** you have to enable clustering first and then you can increase the **ShardCount**.
+This command helps you in enable clustering for your Azure Cache for Redis instance. For increasing the Shard Count you have to enable clustering first.
 
+
+```
+PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 2
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : Scaling
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300]....} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          ShardCount         : 1
+          Tag                : {}
+          Zone               : []
+```
+This command increases or decreases the cluster size.
 
 ## PARAMETERS
 

@@ -2,34 +2,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: [Set-AzRedisPrivateEndpointConnectionStatus](./Set-AzRedisPrivateEndpointConnectionStatus)
+online version: https://docs.microsoft.com/powershell/module/az.rediscache/set-azredisprivateendpointconnectionstatus
 schema: 2.0.0
 ---
 
 # Set-AzRedisPrivateEndpointConnectionStatus
 
 ## SYNOPSIS
-Reject Private Endpoint Connection Status from a Redis Cache.
+Set Private Endpoint Connection Status from a Redis Cache.
 
 ## SYNTAX
 
 ### NormalParameterSet (Default)
 ```
-Set-AzRedisPrivateEndpointConnectionStatus [-ResourceGroupName <String>] -Name <String> [-PrivateEndpointConnectionName <String>] -ConnectionStatus <String>
+Set-AzRedisPrivateEndpointConnectionStatus [-ResourceGroupName <String>] -Name <String> -PrivateEndpointConnectionName <String> -ConnectionStatus <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzRedisPrivateEndpointConnectionStatus** cmdlet reject private endpoint connection for an Azure Redis Cache.
+The **Set-AzRedisPrivateEndpointConnectionStatus** cmdlet will set private endpoint connection status for an Azure Redis Cache
 
 ## EXAMPLES
 
-### Example 1: Set a private endpoint connection (Currently only support reject)
+### Example 1: Set a private endpoint connection (It only support "rejected")
 ```
 PS C:\>Set-AzRedisPrivateEndpointConnectionStatus -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -ConnectionStatus "Rejected"
 ```
 
-This command rejects private endpoint connection for an Azure Redis cache.
+This command sets a private endpoint connection for an Azure Redis cache.
 
 ## PARAMETERS
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionStatus
-Connection Status (Approved, Rejected or Pending) of Private Endpoint Connection.
+Connection Status of Private Endpoint Connection.
 
 ```yaml
 Type: System.String
@@ -104,6 +104,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Allowed value: Rejected
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
