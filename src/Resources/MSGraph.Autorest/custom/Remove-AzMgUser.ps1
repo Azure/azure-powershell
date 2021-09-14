@@ -33,157 +33,114 @@ System.Boolean
 https://docs.microsoft.com/powershell/module/az.resources/remove-azmguser
 #>
 function Remove-AzMgUser {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName = 'ObjectIdParameterSet', Mandatory)]
-    [Alias('UserId', 'Id')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [System.String]
-    # key: id of user
-    ${ObjectId},
-
-    [Parameter(ParameterSetName = 'UPNParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [System.String]
-    # user principal name
-    ${UserPrincipalName},
-
-    [Parameter(ParameterSetName = 'DisplayNameParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [System.String]
-    # user display name
-    ${DisplayName},
-
-    [Parameter(ParameterSetName = 'InputObjectParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser1]
-    # user input object
-    ${InputObject},
-
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $key2Add = 'Id'
-        switch ($parameterSet) {
+    [OutputType([System.Boolean])]
+    [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    param(
+        [Parameter(ParameterSetName = 'ObjectIdParameterSet', Mandatory)]
+        [Alias('UserId', 'Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+        [System.String]
+        # key: id of user
+        ${ObjectId},
+    
+        [Parameter(ParameterSetName = 'UPNParameterSet', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+        [System.String]
+        # user principal name
+        ${UserPrincipalName},
+    
+        [Parameter(ParameterSetName = 'DisplayNameParameterSet', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+        [System.String]
+        # user display name
+        ${DisplayName},
+    
+        [Parameter(ParameterSetName = 'InputObjectParameterSet', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser1]
+        # user input object
+        ${InputObject},
+    
+    
+        [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The credentials, account, tenant, and subscription used for communication with Azure.
+        ${DefaultProfile},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
+        ${Break},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}
+    )
+    
+    process {
+        switch ($PSCmdlet.ParameterSetName) {
             'ObjectIdParameterSet' {
-                $key2Remove = 'ObjectId'
                 $id = $PSBoundParameters['ObjectId']
+                $null = $PSBoundParameters.Remove('ObjectId')
                 break
             }
             'InputObjectParameterSet' {
-                $key2Remove = 'InputObject'
-                $id = $PSBoundParameters[$key2Remove].Id
+                $id = $PSBoundParameters['InputObject'].Id
+                $null = $PSBoundParameters.Remove('InputObject')
                 break
             }
             'DisplayNameParameterSet' {
-                $key2Remove = 'DisplayName'
-                try {
-                    $id = (Get-AzMgUser @PSBoundParameters).Id
-                } catch {
-                    throw
-                }
+                $id = (Get-AzMgUser -DisplayName $PSBoundParameters['DisplayName'])[0].Id
+                $null = $PSBoundParameters.Remove('DisplayName')
                 break
             }
             'UPNParameterSet' {
-                $key2Remove = 'UserPrincipalName'
-                try {
-                    $id = (Get-AzMgUser @PSBoundParameters).Id
-                } catch {
-                    throw
-                }
+                $id = (Get-AzMgUser -UserPrincipalName $PSBoundParameters['UserPrincipalName'])[0].Id
+                $null = $PSBoundParameters.Remove('UserPrincipalName')
                 break
             }
         }
-        $null = $PSBoundParameters.Remove($key2Remove)
-        $PSBoundParameters[$key2Add] = $id
+        $PSBoundParameters['Id'] = $id
 
-        $mapping = @{
-            Delete = 'Az.Resources.MSGraph.private\Remove-AzMgUser_Delete';
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
+        MSGraph.internal\Remove-AzMgUser @PSBoundParameters
     }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
-}
+}    
