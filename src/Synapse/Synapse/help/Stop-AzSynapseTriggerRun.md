@@ -64,7 +64,7 @@ Stops the trigger run in the Synapse workspace ContosoWorkspace through pipeline
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The information about the trigger run.
 
 ```yaml
-Type: PSTriggerRun
+Type: Microsoft.Azure.Commands.Synapse.Models.PSTriggerRun
 Parameter Sets: StopByInputObject
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The trigger name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByName, StopByWorkspaceObject
 Aliases: TriggerName
 
@@ -106,10 +106,10 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 The Run ID of the trigger.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByName, StopByWorkspaceObject
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByName
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: StopByWorkspaceObject
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +185,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
