@@ -2,39 +2,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: https://docs.microsoft.com/powershell/module/az.rediscache/get-azredisprivateendpointconnection
+online version: https://docs.microsoft.com/powershell/module/az.rediscache/set-azredisprivateendpointconnectionstatus
 schema: 2.0.0
 ---
 
-# Get-AzRedisPrivateEndpointConnection
+# Set-AzRedisPrivateEndpointConnectionStatus
 
 ## SYNOPSIS
-Get Private Endpoint Connection from a Redis Cache.
+Set Private Endpoint Connection Status from a Redis Cache.
 
 ## SYNTAX
 
 ### NormalParameterSet (Default)
 ```
-Get-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <String> -PrivateEndpointConnectionName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzRedisPrivateEndpointConnectionStatus [-ResourceGroupName <String>] -Name <String> -PrivateEndpointConnectionName <String> -ConnectionStatus <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**Get-AzRedisPrivateEndpointConnection** cmdlet will get detail about the specified private endpoint connection on Azure Redis Cache.
+The **Set-AzRedisPrivateEndpointConnectionStatus** cmdlet will set private endpoint connection status for an Azure Redis Cache.
 
 ## EXAMPLES
 
-### Example 1: Get a private endpoint connection
+### Example 1: Set a private endpoint connection (It only support "rejected")
 ```
-PS C:\>Get-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45"
-
-		ResourceGroupName	:	myGroup
-		Name	:	myCache
-		PrivateEndpointConnectionName	:	MyPrivateEndpoint.abcd123e45	
-		ConnectionStatus	:	Approved
+PS C:\>Set-AzRedisPrivateEndpointConnectionStatus -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -ConnectionStatus "Rejected"
 ```
 
-This command gets a private endpoint connection named privateDemo.abcd1234e56 from Redis Cache named mycache. 
+This command sets a private endpoint connection for an Azure Redis cache.
 
 ## PARAMETERS
 
@@ -98,6 +93,51 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ConnectionStatus
+Connection Status of Private Endpoint Connection.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Allowed value: Rejected
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 
 ### CommonParameters
@@ -117,4 +157,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzRedisPrivateEndpointConnection](./Remove-AzRedisPrivateEndpointConnection.md)
 
-[Set-AzRedisPrivateEndpointConnectionStatus](./Set-AzRedisPrivateEndpointConnectionStatus.md)
+[Get-AzRedisPrivateEndpointConnection](./Get-AzRedisPrivateEndpointConnection.md)

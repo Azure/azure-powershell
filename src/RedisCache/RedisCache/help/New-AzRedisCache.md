@@ -110,8 +110,10 @@ This command creates Redis cache instance in mutliple zones.
 Requirements for creating Virtual Network enable cache.
     1. Create the virtual network in same resource group in which you want to create your redis cache. You can create virtual network from [New-AzVirtualNetwork](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetwork?view=azps-6.4.0) powershell command.
     2. You will need SubnetID for VNET enable cache. Syntax of SubnetID is given below.
-  
+
+```
 Format of SubnetID: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}
+```
 
 ```
 PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -SubnetId "/subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/MyNet/subnets/MySubnet"
@@ -145,16 +147,19 @@ Persistence writes Redis data into an Azure Storage account that you own and man
 
 After creating Storage account get storage account connection string. Steps to getting connection string from storage account.
 
-1. Run this command **Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName** in powershell.
-2. Copy any key from output.
-3. **Connection String Format** :- "DefaultEndpointsProtocol=https;AccountName=storageAccountName;AccountKey=storageAccountKey;EndpointSuffix=core.windows.net"
+1. Run this command ** "Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName"** in powershell.
+1. From the output of above command copy any key.
+1. Put the storage account key and the storage account name in below format to get connection string of Storage account.
 
-For setting up data persistence, there is need to specifies Redis Configuration settings.   
+```
+**Connection String Format** :- "DefaultEndpointsProtocol=https;AccountName={storageAccountName};AccountKey={storageAccountKey};EndpointSuffix=core.windows.net"
+```
+There is need to specifies Redis configuration settings to enable data persistence. 
 
-For RDB back up enabled.
-    - rdb-backup-enabled (Set true or false)
-    - rdb-storage-connection-string (Give connection string in above format only.)    
-    - rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)  
+For RDB backup enable
+- - rdb-backup-enabled (Set true or false)
+- - rdb-storage-connection-string (Give connection string in above format.)    
+- - rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)  
     
 ```
 PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
@@ -181,9 +186,9 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
 ```
 
 For AOF back up enabled.
-    - aof-backup-enabled (Set true or false),
-    - aof-storage-connection-string-0 (Give connection string in above format.)
-    - aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.) 
+- - aof-backup-enabled (Set true or false),
+- - aof-storage-connection-string-0 (Give connection string in above format.)
+- - aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.) 
 
 ```
 PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"aof-backup-enabled" = "true"; "aof-storage-connection-string-0" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"}
@@ -488,9 +493,9 @@ Accept wildcard characters: False
 
 ### -SubnetId
 This parameter is required when you want to create Virtual network enabled Azure Cache for Redis. 
-
+```
 Syntax: **-SubnetId "/subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}"**
-
+```
 ```yaml
 Type: System.String
 Parameter Sets: (All)
