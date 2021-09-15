@@ -755,59 +755,63 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ('SimpleParameterSet', 'DisplayNameWithoutCredentialParameterSet' -Contains $parameterSet) {
-            if ($PSBoundParameters.ContainsKey('DisplayName')) {
-                $AppName = $PSBoundParameters['DisplayName']
-                $null = $PSBoundParameters.Remove('DisplayName')
-            } else {
-                $AppName = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
-            }
-            try {
-                $app = New-AzMgApplication -DisplayName $AppName
-                $PSBoundParameters['AppId'] = $app.AppId               
-            } catch {
-                throw
-            }
-        } elseif ('ApplicationObjectWithoutCredentialParameterSet' -eq $parameterSet) {
-            $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
-            $null = $PSBoundParameters.Remove('ApplicationObject')
-        } elseif ('ApplicationWithoutCredentialParameterSet' -eq $parameterSet) {
-            $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
-            $null = $PSBoundParameters.Remove('ApplicationId')
-        }
-
-        $parameterSet = 'Az.Resources.MSGraph.private\New-AzMgServicePrincipal_CreateExpanded'
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($parameterSet, [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
 process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
+  if ('SimpleParameterSet', 'DisplayNameWithoutCredentialParameterSet' -Contains $PSCmdlet.ParameterSetName) {
+      if ($PSBoundParameters.ContainsKey('DisplayName')) {
+          $AppName = $PSBoundParameters['DisplayName']
+          $null = $PSBoundParameters.Remove('DisplayName')
+      } else {
+          $AppName = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
+      }
+      try {
+          $app = New-AzMgApplication -DisplayName $AppName
+          $PSBoundParameters['AppId'] = $app.AppId               
+      } catch {
+          throw
+      }
+  } elseif ('ApplicationObjectWithoutCredentialParameterSet' -eq $PSCmdlet.ParameterSetName) {
+      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
+      $null = $PSBoundParameters.Remove('ApplicationObject')
+  } elseif ('ApplicationWithoutCredentialParameterSet' -eq $PSCmdlet.ParameterSetName) {
+      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
+      $null = $PSBoundParameters.Remove('ApplicationId')
+  }
 
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
+  switch ($PSCmdlet.ParameterSetName) {
+      'SimpleParameterSet' {
+          try {
+              $appName = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
+              $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $AppName).AppId
+          } catch {
+              throw
+          }
+          break
+      }
+      'DisplayNameWithoutCredentialParameterSet' {
+          try {
+              $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']).AppId
+              
+          } catch {
+              throw
+          }
+          $null = $PSBoundParameters.Remove('DisplayName')
+          break
+      }
+      'ApplicationObjectWithoutCredentialParameterSet' {
+          $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
+          $null = $PSBoundParameters.Remove('ApplicationObject')
+          break
+      }
+      'ApplicationWithoutCredentialParameterSet' {
+          $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
+          $null = $PSBoundParameters['ApplicationId']
+          break
+      }
+      default {
+          break
+      }
+  }
+
+  MSGraph.internal/New-AzMgServicePrincipal @PSBoundParameters
 }
 }
