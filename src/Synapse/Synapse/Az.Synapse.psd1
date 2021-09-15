@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.15.0'
+ModuleVersion = '0.16.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -184,6 +184,9 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Get-AzSynapseWorkspacePackage', 'Remove-AzSynapseWorkspacePackage',
                'Start-AzSynapseIntegrationRuntime',
                'Stop-AzSynapseIntegrationRuntime',
+               'New-AzSynapseGitRepositoryConfig',
+               'Invoke-AzSynapseTriggerRun',
+               'Stop-AzSynapseTriggerRun',
                'New-AzSynapseLinkedServiceEncryptedCredential'
 
 # Variables to export from this module

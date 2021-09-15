@@ -693,6 +693,12 @@ Are you sure you want to continue?</value>
   <data name="WorkspaceGitRepoParameterException" xml:space="preserve">
     <value>'{0}' is not provided.</value>
   </data>
+  <data name="StoppingSynapseTriggerRun" xml:space="preserve">
+    <value>Stopping trigger run with Id: '{0}'</value>
+  </data>
+  <data name="RerunSynapseTriggerRun" xml:space="preserve">
+    <value>Rerunning trigger run with Id: '{0}'</value>
+  </data>  
   <data name="CannotSendDirectory" xml:space="preserve">
     <value>Can not upload the directory '{0}' to Synapse. If you want to upload directory, please use "ls -File -Recurse | New-AzSynapseWorkspacePackage".</value>
   </data>

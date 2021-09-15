@@ -491,6 +491,10 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string DefaultVNetName = "Managed Virtual Network Name is 'default'.";
 
+        public const string HelpTriggerRun = "The information about the trigger run.";
+
+        public const string TriggerRunId = "The Run ID of the trigger.";
+
         public const string WorkspacePackageFile = "Specifies a local file path for a file to upload as workspace package.";
 
         public const string WorkspacePackageName = "The workspace package name.";

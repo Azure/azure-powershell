@@ -226,6 +226,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return _triggerRunClient.QueryTriggerRunsByWorkspace(filterParameters).Value.Value;
         }
 
+        public void StopTriggerRun(string triggerName, string triggerRunId)
+        {
+            _triggerRunClient.CancelTriggerInstance(triggerName, triggerRunId);
+        }
+
+        public void RerunTriggerRun(string triggerName, string triggerRunId)
+        {
+            _triggerRunClient.RerunTriggerInstance(triggerName, triggerRunId);
+        }
         #endregion
 
         #region Dataset
