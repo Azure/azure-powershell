@@ -325,6 +325,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             httpResponseMessage.EnsureSuccessStatusCode();
                             var reply = await httpResponseMessage.Content.ReadAsStringAsync();
                             var commandsReply = JsonSerializer.Deserialize<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
+                            commandsReply.Add(new PredictiveCommand()
+                                    {
+                                        Command = "Open-AzPredictorSurvey",
+                                        Description = "Run this command to tell us about your experience with Az Predictor",
+                                    });
+                            commandsReply.Add(new PredictiveCommand()
+                                    {
+                                        Command = "Send-AzPredictorRating -Rating 5",
+                                        Description = "Run this command to tell us about your experience with Az Predictor",
+                                    });
                             SetFallbackPredictor(commandsReply);
                         }
                         catch (Exception e) when (!(e is OperationCanceledException))
