@@ -180,6 +180,8 @@ PS C:\> $secretText = Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret'
 
 The cmdlet returns the secret as a string when `-AsPlainText` is applied.
 
+**Note:** When listing secrets, i.e. not providing `-Name`, the `-AsPlainText` is ignored.
+
 ### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
 ```powershell
 PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -InRemovedState
@@ -358,7 +360,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ```yaml
@@ -370,7 +372,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceId

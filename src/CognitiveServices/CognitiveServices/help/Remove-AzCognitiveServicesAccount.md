@@ -13,9 +13,17 @@ Deletes a Cognitive Services account.
 
 ## SYNTAX
 
+### AccountParameterSet (Default)
 ```
 Remove-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeletedAccountParameterSet
+```
+Remove-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-InRemovedState]
+ [-Location] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +66,36 @@ Aliases:
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Specifies whether to only show the deleted accounts in the output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DeletedAccountParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Cognitive Services Account Location.
+
+```yaml
+Type: System.String
+Parameter Sets: DeletedAccountParameterSet
+Aliases:
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

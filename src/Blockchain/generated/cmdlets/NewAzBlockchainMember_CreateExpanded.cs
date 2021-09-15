@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzBlockchainMember_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.CmdletBreakingChange(ChangeDescription="On September 10, 2021, Azure Blockchain will be retired.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.IBlockchainMember))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Description(@"Create a blockchain member.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Generated]
@@ -73,8 +74,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
         ReadOnly = false,
         Description = @"Sets the managed consortium management account password.",
         SerializedName = @"consortiumManagementAccountPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ConsortiumManagementAccountPassword { get => BlockchainMemberBody.ConsortiumManagementAccountPassword ?? null; set => BlockchainMemberBody.ConsortiumManagementAccountPassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString ConsortiumManagementAccountPassword { get => BlockchainMemberBody.ConsortiumManagementAccountPassword ?? null; set => BlockchainMemberBody.ConsortiumManagementAccountPassword = value; }
 
         /// <summary>Gets the display name of the member in the consortium.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets the display name of the member in the consortium.")]
@@ -184,8 +185,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Cmdlets
         ReadOnly = false,
         Description = @"Sets the basic auth password of the blockchain member.",
         SerializedName = @"password",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Password { get => BlockchainMemberBody.Password ?? null; set => BlockchainMemberBody.Password = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString Password { get => BlockchainMemberBody.Password ?? null; set => BlockchainMemberBody.Password = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.HttpPipeline" /> that the remote call will use.

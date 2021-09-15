@@ -264,6 +264,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             var serviceTagList = serviceTags.Split(',');
             var supportedServiceTagList = NetworkClient.GetServiceTags(location);
+            // User does not have subscription level permissions - final validation happens at ARM level.
+            if (supportedServiceTagList == null)
+            {
+                WriteWarning("Not able to get full Service Tag list. Cannot validate Service Tag.");
+                return;
+            }
+
             foreach (var tag in serviceTagList)
             {
                 if (!supportedServiceTagList.Any(t => t.Name.Equals(tag, StringComparison.OrdinalIgnoreCase)))

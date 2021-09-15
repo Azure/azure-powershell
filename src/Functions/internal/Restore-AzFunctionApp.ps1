@@ -196,6 +196,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDatabaseBackupSetting[]]
     # Collection of databases which should be restored.

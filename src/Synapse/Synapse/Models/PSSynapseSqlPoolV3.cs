@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Management.Synapse.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Management.Synapse.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
@@ -15,6 +29,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.SqlPoolGuid = sqlPool?.SqlPoolGuid;
             this.SystemData = sqlPool?.SystemData != null ? new PSSystemData(sqlPool.SystemData) : null;
             this.Status = sqlPool?.Status;
+            this.MaxServiceObjectiveName = sqlPool?.MaxServiceObjectiveName;
+            this.AutoPauseTimer = sqlPool?.AutoPauseTimer;
+            this.AutoResume = sqlPool?.AutoResume;
         }
 
         /// <summary>
@@ -51,5 +68,22 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets resource status
         /// </summary>
         public string Status { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the max service level objective name of the sql pool.
+        /// </summary>
+        public string MaxServiceObjectiveName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the period of inactivity in minutes before
+        /// automatically pausing the sql pool.
+        /// </summary>
+        public int? AutoPauseTimer { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether the sql pool can automatically
+        /// resume when connection attempts are made.
+        /// </summary>
+        public bool? AutoResume { get; set; }
     }
 }

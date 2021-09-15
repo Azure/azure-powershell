@@ -19,7 +19,7 @@ Describe 'DiskBackupScenario' {
         $snapshotRg = $env.TestDiskBackupScenario.SnapshotRG
         $restoreDiskId = $env.TestDiskBackupScenario.RestoreDiskId
         $policyName = $env.TestDiskBackupScenario.NewPolicyName
-        $sub = $env.SubscriptionId
+        $sub = $env.TestDiskBackupScenario.SubscriptionId
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
         $defaultPolicy = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
@@ -40,7 +40,11 @@ Describe 'DiskBackupScenario' {
             $protectionStatus = $instance.Property.ProtectionStatus.Status
         }
 
-        $job = Backup-AzDataProtectionBackupInstanceAdhoc -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupInstanceName $backupInstanceName -BackupRuleOptionRuleName "BackupHourly" -TriggerOptionRetentionTagOverride "Default"
+        $backupPolicyId = $instance.Property.PolicyInfo.PolicyId 
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object { $_.Id -eq $backupPolicyId  }
+        
+        $job = Backup-AzDataProtectionBackupInstanceAdhoc -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupInstanceName $backupInstanceName -BackupRuleOptionRuleName  $policy.Property.PolicyRule[0].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[0].Trigger.TaggingCriterion[0].TagInfoTagName
+
         $jobid = $job.JobId.Split("/")[-1]
         $jobstatus = "InProgress"
         while($jobstatus -ne "Completed")

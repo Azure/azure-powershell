@@ -117,7 +117,7 @@ Specifies a destination address prefix.
 The acceptable values for this parameter are:
 - A Classless Interdomain Routing (CIDR) address
 - A destination IP address range
-- A wildcard character (*) to match any IP address
+- A wildcard character (*) to match any IP address.
 You can use tags such as VirtualNetwork, AzureLoadBalancer, and Internet.
 
 ```yaml

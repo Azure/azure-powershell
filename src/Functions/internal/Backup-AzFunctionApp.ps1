@@ -211,6 +211,7 @@ param(
 
     [Parameter(ParameterSetName='BackupExpanded')]
     [Parameter(ParameterSetName='BackupViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDatabaseBackupSetting[]]
     # Databases included in the backup.

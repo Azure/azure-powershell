@@ -5,6 +5,7 @@
 Description                           | Module Name                             | PowerShell Gallery Link
 ------------------------------------- | --------------------------------------- | -----------------------
 Azure PowerShell                      | `Az`                                    | [![Az]][AzGallery]
+Azure PowerShell with preview modules | `AzPreview`                             | [![AzPreview]][AzPreviewGallery]
 
 ## Service Modules
 
@@ -42,6 +43,7 @@ Custom Resource Providers             | `Az.CustomProviders`                    
 Data Box                              | `Az.DataBox`                            | [![DataBox]][DataBoxGallery]
 Data Box Edge (Stack Edge)            | `Az.DataBoxEdge`                        | [![DataBoxEdge]][DataBoxEdgeGallery]
 Databricks                            | `Az.Databricks`                         | [![Databricks]][DatabricksGallery]
+Datadog                               | `Az.Datadog`                            | [![Datadog]][DatadogGallery]
 Data Factory                          | `Az.DataFactory`                        | [![DataFactory]][DataFactoryGallery]
 Data Lake Analytics                   | `Az.DataLakeAnalytics`                  | [![DataLakeAnalytics]][DataLakeAnalyticsGallery]
 Data Lake Store                       | `Az.DataLakeStore`                      | [![DataLakeStore]][DataLakeStoreGallery]
@@ -135,6 +137,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 
 <!-- Shields -->
 [Az]:                         https://img.shields.io/powershellgallery/v/Az.svg?style=flat-square&label=Az
+[AzPreview]:                  https://img.shields.io/powershellgallery/v/AzPreview.svg?style=flat-square&label=AzPreview
 [Accounts]:                   https://img.shields.io/powershellgallery/v/Az.Accounts.svg?style=flat-square&label=Az.Accounts
 [ADDomainServices]:           https://img.shields.io/powershellgallery/v/Az.ADDomainServices.svg?style=flat-square&label=Az.ADDomainServices
 [Advisor]:                    https://img.shields.io/powershellgallery/v/Az.Advisor.svg?style=flat-square&label=Az.Advisor
@@ -167,6 +170,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DataBox]:                    https://img.shields.io/powershellgallery/v/Az.DataBox.svg?style=flat-square&label=Az.DataBox
 [DataBoxEdge]:                https://img.shields.io/powershellgallery/v/Az.DataBoxEdge.svg?style=flat-square&label=Az.DataBoxEdge
 [Databricks]:                 https://img.shields.io/powershellgallery/v/Az.Databricks.svg?style=flat-square&label=Az.Databricks
+[Datadog]:                    https://img.shields.io/powershellgallery/v/Az.Datadog.svg?style=flat-square&label=Az.Datadog
 [DataFactory]:                https://img.shields.io/powershellgallery/v/Az.DataFactory.svg?style=flat-square&label=Az.DataFactory
 [DataLakeAnalytics]:          https://img.shields.io/powershellgallery/v/Az.DataLakeAnalytics.svg?style=flat-square&label=Az.DataLakeAnalytics
 [DataLakeStore]:              https://img.shields.io/powershellgallery/v/Az.DataLakeStore.svg?style=flat-square&label=Az.DataLakeStore
@@ -258,6 +262,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
+[AzPreviewGallery]:                  https://www.powershellgallery.com/packages/AzPreview/
 [AccountsGallery]:                   https://www.powershellgallery.com/packages/Az.Accounts/
 [ADDomainServicesGallery]:           https://www.powershellgallery.com/packages/Az.ADDomainServices/
 [AdvisorGallery]:                    https://www.powershellgallery.com/packages/Az.Advisor/
@@ -290,6 +295,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DataBoxGallery]:                    https://www.powershellgallery.com/packages/Az.DataBox/
 [DataBoxEdgeGallery]:                https://www.powershellgallery.com/packages/Az.DataBoxEdge/
 [DatabricksGallery]:                 https://www.powershellgallery.com/packages/Az.Databricks/
+[DatadogGallery]:                    https://www.powershellgallery.com/packages/Az.Datadog/
 [DataFactoryGallery]:                https://www.powershellgallery.com/packages/Az.DataFactory/
 [DataLakeAnalyticsGallery]:          https://www.powershellgallery.com/packages/Az.DataLakeAnalytics/
 [DataLakeStoreGallery]:              https://www.powershellgallery.com/packages/Az.DataLakeStore/

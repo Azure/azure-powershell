@@ -18,9 +18,39 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
+
+## Version 0.15.0
+* Added support for Synapse Managed Private Endpoint
+	- Added `New-AzSynapseManagedPrivateEndpoint` cmdlet
+	- Added `Get-AzSynapseManagedPrivateEndpoint` cmdlet
+	- Added `Remove-AzSynapseManagedPrivateEndpoint` cmdlet
+* Fixed the blank page issue of pause setting and scale setting for Apache Spark pool through management API
+* Updated `Set-AzSynapseSqlActiveDirectoryAdministrator` to support for setting SQL Admin by `DisplayName` or by `ObjectId`
+* Renamed `Update-AzSynapseWorkspaceKey` to `Enable-AzSynapseWorkspace` to activate a new synapse workspace without `-Activate` parameter
+* Added `New-AzSynapseGitRepositoryConfig` cmdlet to create Git repository configuration
+* Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for connecting a workspace to a Git reposirory
+  - Added parameters `-GitRepositoryType`
+* Added support for workspace package
+	- Added `New-AzSynapseWorkspacePackage` cmdlet
+	- Added `Get-AzSynapseWorkspacePackage` cmdlet
+	- Added `Remove-AzSynapseWorkspacePackage` cmdlet
+	- Updated `New-AzSynapseSparkPool` cmdlet to drop parameter `-LibraryRequirementsFilePath`
+	- Updated `Updated-AzSynapseSparkPool` cmdlet to add parameter `-Package` and `-PackageAction`
+
+## Version 0.14.0
+* Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
+* Added support for event hub and log analytics to `Set-AzSynapseSqlAuditSetting` and `Set-AzSynapseSqlPoolAuditSetting`
+  - Added parameters `-EventHubTargetState -EventHubName -EventHubAuthorizationRuleResourceId -LogAnalyticsTargetState -WorkspaceResourceId`
+
+## Version 0.13.0
+* Add support for Synapse Spark job definition
+	- Add `New-AzSynapseSparkJobDefinition` cmdlet
+    - Add `Get-AzSynapseSparkJobDefinition` cmdlet
+    - Add `Remove-AzSynapseSparkJobDefinition` cmdlet
 
 ## Version 0.12.0
-Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.9
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.9
 
 ## Version 0.11.0
 * Removed principaltype in Synapse Role-based access control

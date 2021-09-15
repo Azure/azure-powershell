@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzHDInsightMonitoring
 
 ## SYNOPSIS
-Gets the status of monitoring installation on the cluster.
+Gets the status of the Classic Azure Monitor logs integration on an HDInsight cluster.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzHDInsightMonitoring [-Name] <String> [-ResourceGroupName <String>]
 ```
 
 ## DESCRIPTION
-The **Get-AzHDInsightMonitoring** cmdlet gets the status of monitoring installation in an Azure HDInsight cluster. If monitoring is enabled then it will also return the log analytics workspace id.
+The **Get-AzHDInsightMonitoring** cmdlet gets the status of the Classic Azure Monitor logs integration on an HDInsight cluster. If monitoring is enabled then it will also return the log analytics workspace id.
 
 ## EXAMPLES
 

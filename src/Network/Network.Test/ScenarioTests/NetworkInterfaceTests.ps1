@@ -1154,35 +1154,39 @@ function Test-NetworkInterfaceVmss
 
 <#
 .SYNOPSIS
-Test that network interface can be put in an edge zone.
+Test that network interface can be put in an edge zone. Subscriptions need to be explicitly whitelisted for access to edge zones.
 #>
 function Test-NetworkInterfaceInEdgeZone
 {
-    $ResourceGroup = Get-ResourceGroupName;
-    $LocationName = "westus";
-    $EdgeZone = "microsoftlosangeles1";
-    $VMName = "MyVM";
+    $resourceGroup = Get-ResourceGroupName
+    $locationName = "westus"
+    $edgeZone = "microsoftlosangeles1"
 
     try
     {
-        New-AzResourceGroup -Name $ResourceGroup -Location $LocationName -Force;
-        
-        $NetworkName = "MyNet";
-        $NICName = "MyNIC";
-        $SubnetName = "MySubnet";
-        $SubnetAddressPrefix = "10.0.0.0/24";
-        $VnetAddressPrefix = "10.0.0.0/16";
+        New-AzResourceGroup -Name $resourceGroup -Location $locationName -Force
 
-        $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
-        $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet;
-        New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -SubnetId $Vnet.Subnets[0].Id;
+        $networkName = "MyNet"
+        $nicName = "MyNIC"
+        $subnetName = "MySubnet"
+        $subnetAddressPrefix = "10.0.0.0/24"
+        $vnetAddressPrefix = "10.0.0.0/16"
 
-		$NIC = Get-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroup
-        Assert-AreEqual $NIC.ExtendedLocation.Name $EdgeZone
+        $singleSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $subnetAddressPrefix
+        $vnet = New-AzVirtualNetwork -Name $networkName -ResourceGroupName $resourceGroup -Location $locationName -EdgeZone $edgeZone -AddressPrefix $vnetAddressPrefix -Subnet $singleSubnet
+        New-AzNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup -Location $locationName -EdgeZone $edgeZone -SubnetId $vnet.Subnets[0].Id
+
+		$nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup
+        Assert-AreEqual $nic.ExtendedLocation.Name $edgeZone
+        Assert-AreEqual $nic.ExtendedLocation.Type "EdgeZone"
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $ResourceGroup;
+        Clean-ResourceGroup $resourceGroup
     }
 }

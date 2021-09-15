@@ -13,14 +13,14 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzDataProtectionBackupInstance' {
     It 'GetAll' {
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupInstance.ResourceGroupName -VaultName $env.TestBackupInstance.VaultName
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $env.TestBackupInstance.SubscriptionId -ResourceGroupName $env.TestBackupInstance.ResourceGroupName -VaultName $env.TestBackupInstance.VaultName
         $assert = $instance.Count -gt 0
         $assert | Should be $true
     }
 
     It 'Get' {
-        $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupInstance.ResourceGroupName -VaultName $env.TestBackupInstance.VaultName
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupInstance.ResourceGroupName -VaultName $env.TestBackupInstance.VaultName -Name $instances[0].Name
+        $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $env.TestBackupInstance.SubscriptionId -ResourceGroupName $env.TestBackupInstance.ResourceGroupName -VaultName $env.TestBackupInstance.VaultName
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $env.TestBackupInstance.SubscriptionId -ResourceGroupName $env.TestBackupInstance.ResourceGroupName -VaultName $env.TestBackupInstance.VaultName -Name $instances[0].Name
         $instance.Name | should be $instances[0].Name
     }
 }

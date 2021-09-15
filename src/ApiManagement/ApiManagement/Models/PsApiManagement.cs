@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             PrivateIPAddresses = apiServiceResource.PrivateIPAddresses != null ? apiServiceResource.PrivateIPAddresses.ToArray() : null;
             EnableClientCertificate = apiServiceResource.EnableClientCertificate;
 
-            VpnType = ApiManagementClient.Mapper.Map<string, PsApiManagementVpnType>(apiServiceResource.VirtualNetworkType);            
+            VpnType = ApiManagementClient.Mapper.Map<string, PsApiManagementVpnType>(apiServiceResource.VirtualNetworkType);
 
             if (apiServiceResource.AdditionalLocations != null)
             {
@@ -140,6 +140,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 this.Identity = new PsApiManagementServiceIdentity(apiServiceResource.Identity);
             }
+
+            Zone = apiServiceResource.Zones?.ToArray();
+            MinimalControlPlaneApiVersion = apiServiceResource.ApiVersionConstraint?.MinApiVersion;
+            DisableGateway = apiServiceResource.DisableGateway;
         }
 
         public string[] PublicIPAddresses { get; private set; }
@@ -204,6 +208,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public bool? EnableClientCertificate { get; private set; }
 
+        public string[] Zone { get; set; }
+
+        public bool? DisableGateway { get; set; }
+
+        public string MinimalControlPlaneApiVersion { get; set; }
+
         public string ResourceGroupName
         {
             get
@@ -231,7 +241,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             string location,
             PsApiManagementSku sku = PsApiManagementSku.Developer,
             int capacity = 1,
-            PsApiManagementVirtualNetwork virtualNetwork = null)
+            PsApiManagementVirtualNetwork virtualNetwork = null,
+            string[] zone = null,
+            bool? disableGateway = null)
         {
             if (location == null)
             {
@@ -248,7 +260,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 Location = location,
                 Sku = sku,
                 Capacity = capacity,
-                VirtualNetwork = virtualNetwork
+                VirtualNetwork = virtualNetwork,
+                Zone = zone,
+                DisableGateway = disableGateway
             };
 
             AdditionalRegions.Add(newRegion);
@@ -275,25 +289,37 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             return regionToRemove != null && AdditionalRegions.Remove(regionToRemove);
         }
 
-        public void UpdateRegion(string location, PsApiManagementSku sku, int capacity, PsApiManagementVirtualNetwork virtualNetwork)
+        public void UpdateRegion(
+            string location, 
+            PsApiManagementSku sku,
+            int capacity, 
+            PsApiManagementVirtualNetwork virtualNetwork,
+            string[] zone,
+            bool? disableGateway)
         {
             if (location == null)
             {
                 throw new ArgumentNullException("location");
             }
 
-            var regionToUpdate = AdditionalRegions.FirstOrDefault(r => location.Equals(r.Location));
+            var regionToUpdate = AdditionalRegions.FirstOrDefault(r => location.Trim().Equals(r.Location, StringComparison.OrdinalIgnoreCase));
             if (regionToUpdate != null)
             {
+                // if this is additional region
                 regionToUpdate.Sku = sku;
                 regionToUpdate.Capacity = capacity;
                 regionToUpdate.VirtualNetwork = virtualNetwork;
+                regionToUpdate.Zone = zone;
+                regionToUpdate.DisableGateway = disableGateway;
             }
             else if (location.Equals(Location))
             {
+                // if this is master region
                 Sku = sku;
                 Capacity = capacity;
                 VirtualNetwork = virtualNetwork;
+                Zone = zone;
+                DisableGateway = disableGateway;
             }
             else
             {

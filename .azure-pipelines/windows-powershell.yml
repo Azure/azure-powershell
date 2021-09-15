@@ -5,6 +5,7 @@ variables:
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
+  IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
 
 trigger: none
 
@@ -18,7 +19,7 @@ pr:
 jobs:
 - job: Build
   displayName: Build
-  condition: succeeded()
+  condition: and(eq(variables.IsGenerateBased, false), succeeded())
   pool:
     vmImage: ${{ variables.WindowsImage }}
 
@@ -35,7 +36,7 @@ jobs:
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
-  condition: succeeded()
+  condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: 90
   pool:
     vmImage: ${{ variables.WindowsImage }}
@@ -66,7 +67,7 @@ jobs:
 - job: Test
   displayName: Test
   dependsOn: Build
-  condition: succeeded()
+  condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: 180
   pool:
     vmImage: ${{ variables.WindowsImage }}

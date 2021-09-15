@@ -1,0 +1,35 @@
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: main
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - .azure-pipelines
+      - tools
+      - src/lib
+      
+variables:
+  GenerationBranchName: generation
+  AzureStackBranchName: Azs-tzl
+
+jobs:
+- job: Sync
+  displayName: Sync task
+  condition: succeeded()
+  strategy:
+    matrix:
+      Generation:
+        BranchName: ${{ variables.GenerationBranchName }}
+      AzureStack:
+        BranchName: ${{ variables.AzureStackBranchName }}
+
+  steps:
+  - template: util/sync-tools-folder-template.yml
+    parameters:
+      BranchName: $(BranchName)

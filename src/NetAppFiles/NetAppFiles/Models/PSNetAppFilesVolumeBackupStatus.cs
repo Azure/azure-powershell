@@ -56,5 +56,29 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Displays error message if the backup is in an error state
         /// </remarks>
         public string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// Gets or sets LastTransferSize
+        /// </summary>
+        /// <remarks>
+        /// Displays the last transfer size
+        /// </remarks>
+        public long? LastTransferSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets LastTransferType
+        /// </summary>
+        /// <remarks>
+        /// Displays the last transfer type
+        /// </remarks>
+        public string LastTransferType { get; set; }
+
+        /// <summary>
+        /// Gets or sets TotalTransferBytes
+        /// </summary>
+        /// <remarks>
+        /// Displays the total bytes transferred
+        /// </remarks>
+        public long? TotalTransferBytes { get; set; }
     }
 }

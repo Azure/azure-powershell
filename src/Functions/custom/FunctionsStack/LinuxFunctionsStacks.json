@@ -236,6 +236,40 @@
                 "frameworks": [],
                 "isDeprecated": null
             }
+        },
+        {
+            "id": null,
+            "name": "powershell",
+            "type": "Microsoft.Web/availableStacks?osTypeSelected=LinuxFunctions",
+            "properties": {
+                "name": "powershell",
+                "display": "PowerShell Core",
+                "dependency": null,
+                "majorVersions": [
+                    {
+                        "displayVersion": "7.0",
+                        "runtimeVersion": "PowerShell|7",
+                        "supportedFunctionsExtensionVersions": [
+                            "~3"
+                        ],
+                        "isDefault": true,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "powershell"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": false,
+                            "linuxFxVersion": "PowerShell|7"
+                        },
+                        "isPreview": true,
+                        "isDeprecated": false,
+                        "isHidden": true
+                    }
+                ],
+                "frameworks": [],
+                "isDeprecated": null
+            }
         }
     ],
     "nextLink": null,

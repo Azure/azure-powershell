@@ -47,7 +47,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    dnsName: cluster.DnsName,
                    applicationTypeVersionsCleanupPolicy: cluster.ApplicationTypeVersionsCleanupPolicy,
                    sku: cluster.Sku,
-                   zonalResiliency: cluster.ZonalResiliency)
+                   zonalResiliency: cluster.ZonalResiliency,
+                   allowRdpAccess: cluster.AllowRdpAccess,
+                   enableAutoOSUpgrade: cluster.EnableAutoOSUpgrade)
         {
         }
     }

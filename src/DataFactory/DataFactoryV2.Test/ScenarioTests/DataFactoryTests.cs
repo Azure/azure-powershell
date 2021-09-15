@@ -51,6 +51,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDataFactoryV2WithCMK()
+        {
+            RunPowerShellTest(_logger, "Test-CreateDataFactoryV2WithCMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataFactoryV2()
         {
             RunPowerShellTest(_logger, "Test-GetNonExistingDataFactory");

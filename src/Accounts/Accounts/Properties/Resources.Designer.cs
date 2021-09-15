@@ -1168,6 +1168,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Persistence check fails due to unknown error.
+        /// </summary>
+        internal static string TokenCachePersistenceCheckError {
+            get {
+                return ResourceManager.GetString("TokenCachePersistenceCheckError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To create an access token credential, you must provide an access token account..
         /// </summary>
         internal static string TypeNotAccessToken {

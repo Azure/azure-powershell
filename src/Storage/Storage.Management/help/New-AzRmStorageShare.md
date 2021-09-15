@@ -233,6 +233,7 @@ Create a snapshot of existing share with same name.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+Accepted values: NoRootSquash, RootSquash, AllSquash
 
 Required: False
 Position: Named

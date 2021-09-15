@@ -13,9 +13,18 @@ while(-not $mockingPath) {
 
 Describe 'Restore-AzPostgreSqlFlexibleServer' {
     It 'PointInTimeRestore' {
-        {
-            $restorePointInTime = (Get-Date).AddMinutes(-10)
-            Restore-AzPostgreSqlFlexibleServer -SourceServerName $env.flexibleServerName -Location $env.location -Name $env.restoreName -ResourceGroupName $env.resourceGroup -RestorePointInTime $restorePointInTime
-        } | Should -Not -Throw
+        If ($TestMode -eq 'live' -Or $TestMode -eq 'record') {
+            { 
+                $subnet = '/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.Network/virtualNetworks/postgresqltestvnet/subnets/secondsubnet'
+                $dnszone = '/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourcegroups/PostgreSqlTest/providers/Microsoft.Network/privateDnsZones/daeunyim-powershell-test.postgres.database.azure.com'
+                $sourceServer = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
+                $server = Restore-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.restoreName -SourceServerName $env.flexibleServerName -RestorePointInTime 2021-08-23T22:20:00 -Zone 1 -Subnet $subnet -PrivateDnsZone $dnszone
+
+                $server.NetworkDelegatedSubnetResourceId | Should -Be $subnet
+                $server.NetworkPrivateDnsZoneArmResourceId | Should -Be $dnszone
+                $server.SourceServerResourceId | Should -Be $sourceServer.Id
+                $server.AvailabilityZone | Should -Be 1
+            } | Should -Not -Throw
+        }
     }
 }

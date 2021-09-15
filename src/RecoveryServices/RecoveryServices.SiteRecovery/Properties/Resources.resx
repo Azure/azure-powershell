@@ -526,7 +526,7 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
     <value>Site Id {0} is not valid. Please try again with the correct site details.</value>
   </data>
   <data name="RunAsAccountNotFound" xml:space="preserve">
-    <value>Credentials to access source machine: {0} not found in the Site {1}.</value>
+    <value>Credentials to access source machine: {0} not found for the appliance {1} in the Site {2}</value>
   </data>
   <data name="NoProtectableMachinesInSite" xml:space="preserve">
     <value>No protectable machine found in the Site {1}.</value>
@@ -539,5 +539,11 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   </data>
   <data name="ApplianceNotFound" xml:space="preserve">
     <value>No appliance found with the name {0}.</value>
+  </data>
+  <data name="TargetApplianceAlreadyMapped" xml:space="preserve">
+    <value>The target appliance "{0}" is already mapped to the machine "{1}"</value>
+  </data>
+  <data name="UnsupportedReplicationProviderOperation" xml:space="preserve">
+    <value>Unsupported replication provider {0} for this {1} operation</value>
   </data>
 </root>

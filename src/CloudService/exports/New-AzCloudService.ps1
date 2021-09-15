@@ -32,19 +32,19 @@ PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject 
 PS C:\> $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
 
 # Read Configuration File
-$cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile | Out-String
+PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
+PS C:\> $cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-$cloudService = New-AzCloudService                                              `
-                  -Name ContosoCS                                               `
-                  -ResourceGroupName ContosOrg                                  `
-                  -Location EastUS                                              `
-                  -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
-                  -Configuration $cscfgContent                                  `
-                  -UpgradeMode 'Auto'                                           `
-                  -RoleProfile $roleProfile                                     `
-                  -NetworkProfile $networkProfile
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
+                          -Configuration $cscfgContent                                  `
+                          -UpgradeMode 'Auto'                                           `
+                          -RoleProfile $roleProfile                                     `
+                          -NetworkProfile $networkProfile
 .Example
 # Create role profile object
 PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
@@ -63,30 +63,30 @@ PS C:\> $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPEx
 PS C:\> $extensionProfile = @{extension = @($extension)}
 
 # Read Configuration File
-$cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile | Out-String
+PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
+PS C:\> $cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-$cloudService = New-AzCloudService                                              `
-                  -Name ContosoCS                                               `
-                  -ResourceGroupName ContosOrg                                  `
-                  -Location EastUS                                              `
-                  -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
-                  -Configuration $cscfgContent                                  `
-                  -UpgradeMode 'Auto'                                           `
-                  -RoleProfile $roleProfile                                     `
-                  -NetworkProfile $networkProfile                               `
-                  -ExtensionProfile $extensionProfile
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
+                          -Configuration $cscfgContent                                  `
+                          -UpgradeMode 'Auto'                                           `
+                          -RoleProfile $roleProfile                                     `
+                          -NetworkProfile $networkProfile                               `
+                          -ExtensionProfile $extensionProfile
 .Example
 # Create role profile object
 PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create OS profile object
-$keyVault = Get-AzKeyVault -ResourceGroupName ContosOrg -VaultName ContosKeyVault
-$certificate=Get-AzKeyVaultCertificate -VaultName ContosKeyVault -Name ContosCert
-$secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certificate.SecretId
-$osProfile = @{secret = @($secretGroup)}
+PS C:\> $keyVault = Get-AzKeyVault -ResourceGroupName ContosOrg -VaultName ContosKeyVault
+PS C:\> $certificate=Get-AzKeyVaultCertificate -VaultName ContosKeyVault -Name ContosCert
+PS C:\> $secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certificate.SecretId
+PS C:\> $osProfile = @{secret = @($secretGroup)}
 
 # Create network profile object
 PS C:\> $publicIp = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp
@@ -95,20 +95,20 @@ PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject 
 PS C:\> $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
 
 # Read Configuration File
-$cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile | Out-String
+PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
+PS C:\>  = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-$cloudService = New-AzCloudService                                              `
-                  -Name ContosoCS                                               `
-                  -ResourceGroupName ContosOrg                                  `
-                  -Location EastUS                                              `
-                  -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
-                  -Configuration $cscfgContent                                  `
-                  -UpgradeMode 'Auto'                                           `
-                  -RoleProfile $roleProfile                                     `
-                  -NetworkProfile $networkProfile                               `
-                  -OSProfile $osProfile
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
+                          -Configuration $cscfgContent                                  `
+                          -UpgradeMode 'Auto'                                           `
+                          -RoleProfile $roleProfile                                     `
+                          -NetworkProfile $networkProfile                               `
+                          -OSProfile $osProfile
 .Example
 # Create role profile object
 PS C:\> $role1 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
@@ -131,24 +131,57 @@ PS C:\> $genevaExtension = New-AzCloudServiceExtensionObject -Name GenevaExtensi
 PS C:\> $extensionProfile = @{extension = @($rdpExtension, $genevaExtension)}
 
 # Add tags
-$tag=@{"Owner" = "Contoso"}
+PS C:\> $tag=@{"Owner" = "Contoso"}
 
 # Read Configuration File
-$cscfgFile = "<Path to cscfg configuration file>"
-$cscfgContent = Get-Content $cscfgFile | Out-String
+PS C:\> $cscfgFile = "<Path to cscfg configuration file>"
+PS C:\> $cscfgContent = Get-Content $cscfgFile | Out-String
 
 # Create cloud service
-$cloudService = New-AzCloudService                                              `
-                  -Name ContosoCS                                               `
-                  -ResourceGroupName ContosOrg                                  `
-                  -Location EastUS                                              `
-                  -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
-                  -Configuration $cscfgContent                                  `
-                  -UpgradeMode 'Auto'                                           `
-                  -RoleProfile $roleProfile                                     `
-                  -NetworkProfile $networkProfile                               `
-                  -ExtensionProfile $extensionProfile                           `
-                  -Tag $tag
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -PackageUrl "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"    `
+                          -Configuration $cscfgContent                                  `
+                          -UpgradeMode 'Auto'                                           `
+                          -RoleProfile $roleProfile                                     `
+                          -NetworkProfile $networkProfile                               `
+                          -ExtensionProfile $extensionProfile                           `
+                          -Tag $tag
+.Example
+# Set up a storage account if you have not
+PS C:\> $storageAccount = New-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc -Location "East US" -SkuName "Standard_RAGRS" -Kind "StorageV2"
+
+# Create cloud service
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -ConfigurationFile C:\files\CS.cscfg                          `
+                          -DefinitionFile C:\files\CS.csdef                             `
+                          -PackageFile C:\CS.cspkg                                      `
+                          -StorageAccount ContosoStorAcc                                `
+                          -KeyVaultName ContosoKV
+
+.Example
+# getting Package URL
+PS C:\> $tokenStartTime = Get-Date 
+PS C:\> $tokenEndTime = $tokenStartTime.AddYears(1) 
+PS C:\> $storAcc = Get-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc
+PS C:\> $csPkgBlob = Get-AzStorageBlob -Container Contoso-Container -Blob ContosoBlob.cspkg -Context $storAcc.Context
+PS C:\> $csPkgToken = New-AzStorageBlobSASToken -Container Contoso-Container -Blob ContosoBlob.cspkg -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storAcc.Context
+PS C:\> $cspkgUrl = $csPkgBlob.ICloudBlob.Uri.AbsoluteUri + $csPkgToken 
+
+# Create cloud service
+PS C:\> $cloudService = New-AzCloudService                                              `
+                          -Name ContosoCS                                               `
+                          -ResourceGroupName ContosOrg                                  `
+                          -Location EastUS                                              `
+                          -ConfigurationFile C:\files\CS.cscfg                          `
+                          -DefinitionFile C:\files\CS.csdef                             `
+                          -packageUrl $cspkgUrl                                         `
+
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
@@ -229,19 +262,19 @@ param(
     # Resource location.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.The default value is `false`.
     ${AllowModelOverride},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
     # Specifies the XML service configuration (.cscfg) for the cloud service.
     ${Configuration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
     # Specifies a URL that refers to the location of the service configuration in the Blob service.
@@ -255,28 +288,29 @@ param(
     # To construct, see NOTES section for EXTENSIONPROFILE properties and create a hash table.
     ${ExtensionProfile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceNetworkProfile]
     # Network Profile for the cloud service.
     # To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
     ${NetworkProfile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceOSProfile]
     # Describes the OS profile for the cloud service.
     # To construct, see NOTES section for OSPROFILE properties and create a hash table.
     ${OSProfile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
     # Specifies a URL that refers to the location of the service package in the Blob service.
     # The service package URL can be Shared Access Signature (SAS) URI from any storage account.This is a write-only property and is not returned in GET calls.
     ${PackageUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleProfile]
     # Describes the role profile for the cloud service.
@@ -310,7 +344,48 @@ param(
     # If set to Auto, the update is automatically applied to each update domain in sequence.
     ${UpgradeMode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage', Mandatory)]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.String]
+    # Specifies the XML service configuration (.cscfg) for the cloud service.
+    ${ConfigurationFile},
+
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage', Mandatory)]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.String]
+    # Path to .csdef file.
+    ${DefinitionFile},
+
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.String]
+    # Path to .cspkg file.
+    # It will be uploaded to a blob
+    ${PackageFile},
+
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.String]
+    # Name of the storage account that will store the Package file.
+    ${StorageAccount},
+
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.String]
+    # Name of Dns to be used for the CloudService resource.
+    ${DnsName},
+
+    [Parameter(ParameterSetName='quickCreateParameterSetWithStorage')]
+    [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.String]
+    # Name of the KeyVault to be used for the CloudService resource.
+    ${KeyVaultName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Azure')]
@@ -318,52 +393,52 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateExpanded', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateExpanded', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateExpanded', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateExpanded', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateExpanded', DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='CreateExpanded', DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
@@ -379,10 +454,14 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             CreateExpanded = 'Az.CloudService.private\New-AzCloudService_CreateExpanded';
+            quickCreateParameterSetWithStorage = 'Az.CloudService.custom\New-AzCloudService';
+            quickCreateParameterSetWithoutStorage = 'Az.CloudService.custom\New-AzCloudService';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'quickCreateParameterSetWithStorage', 'quickCreateParameterSetWithoutStorage') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

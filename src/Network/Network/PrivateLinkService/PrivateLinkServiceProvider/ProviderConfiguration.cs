@@ -14,43 +14,58 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         static ProviderConfiguration()
         {
+            RegisterConfiguration("Microsoft.ApiManagement/service", "2021-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2020-06-01", true, true);
+            RegisterConfiguration("Microsoft.Attestation/attestationProviders", "2020-10-01", true, true);
             RegisterConfiguration("Microsoft.Automation/automationAccounts", "2020-01-13-preview", true, false);
             RegisterConfiguration("Microsoft.Batch/batchAccounts", "2020-03-01", true, true);
+            RegisterConfiguration("Microsoft.Cache/Redis", "2020-12-01", true, true);
             RegisterConfiguration("Microsoft.Cache/redisEnterprise", "2021-03-01", true, false);
             RegisterConfiguration("Microsoft.CognitiveServices/accounts", "2017-04-18", true, false);
             RegisterConfiguration("Microsoft.Compute/diskAccesses", "2020-09-30", true, false);
             RegisterConfiguration("Microsoft.ContainerRegistry/registries", "2019-12-01-preview", true, false);
+            RegisterConfiguration("Microsoft.ContainerService/managedClusters", "2021-07-01", true, false);
+            RegisterConfiguration("Microsoft.DataFactory/factories", "2018-06-01", true, false);
             RegisterConfiguration("Microsoft.DBforMariaDB/servers", "2018-06-01", true, true);
             RegisterConfiguration("Microsoft.DBforMySQL/servers", "2018-06-01", true, true);
             RegisterConfiguration("Microsoft.DBforPostgreSQL/servers", "2018-06-01", true, true);
             RegisterConfiguration("Microsoft.Devices/IotHubs", "2020-03-01", true, true);
+            RegisterConfiguration("Microsoft.Devices/ProvisioningServices", "2020-03-01", true, true);
             RegisterConfiguration("Microsoft.DigitalTwins/digitalTwinsInstances", "2020-12-01", true, true);
             RegisterConfiguration("Microsoft.DocumentDB/databaseAccounts", "2019-08-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventGrid/topics", "2020-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview", true, true); 
             RegisterConfiguration("Microsoft.EventHub/namespaces", "2018-01-01-preview", true, false);
             RegisterConfiguration("Microsoft.HealthcareApis/services", "2020-03-30", false, true);
+            RegisterConfiguration("Microsoft.HybridCompute/privateLinkScopes", "2021-05-20",true, true);
             RegisterConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview", true, true);
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2018-02-14", false, false);
+            RegisterConfiguration("Microsoft.Keyvault/managedHSMs", "2021-06-01-preview", true, false);
+            RegisterConfiguration("Microsoft.MachineLearningServices/workspaces", "2021-07-01", true, false);
             RegisterConfiguration("Microsoft.Media/mediaservices", "2020-05-01", true, true);
             RegisterConfiguration("Microsoft.Migrate/assessmentProjects", "2020-05-01-preview", false, false);
             RegisterConfiguration("Microsoft.Migrate/migrateProjects", "2020-06-01-preview", false, false);
             RegisterConfiguration("Microsoft.Network/applicationgateways", "2020-05-01", true, false);
             RegisterConfiguration("Microsoft.OffAzure/masterSites", "2020-07-07", false, false);
+            RegisterConfiguration("Microsoft.PowerBI/privateLinkServicesForPowerBI", "2020-06-01", false, true);
             RegisterConfiguration("Microsoft.Purview/accounts", "2020-12-01-preview", true, true);
+            RegisterConfiguration("Microsoft.RecoveryServices/vaults","2021-07-01", false, true);
+            RegisterConfiguration("Microsoft.Relay/namespaces", "2018-01-01-preview", true, false);
             RegisterConfiguration("Microsoft.Search/searchServices", "2020-08-01", true, false);
             RegisterConfiguration("Microsoft.ServiceBus/namespaces", "2018-01-01-preview", true, false);
             RegisterConfiguration("Microsoft.SignalRService/signalr", "2020-05-01", false, false);
+            RegisterConfiguration("Microsoft.SignalRService/webPubSub", "2021-09-01-preview", true, false);
             RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false, false);
             RegisterConfiguration("Microsoft.StorageSync/storageSyncServices", "2020-03-01", true, false);
+            RegisterConfiguration("Microsoft.Synapse/privateLinkHubs", "2021-05-01", true, true);
             RegisterConfiguration("Microsoft.Synapse/workspaces", "2019-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.Web/sites", "2019-08-01", true, false);
+            RegisterConfiguration("Microsoft.Web/staticSites", "2021-02-01", true, false);
             RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01", true, false);
         }
 
-        private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = true, bool hasResourceURI = true)
+        private static void RegisterConfiguration(string type, string apiVersion, bool hasConnectionsURI = false, bool hasResourceURI = false)
         {
             ProviderConfiguration configuration = new ProviderConfiguration
             {

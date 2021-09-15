@@ -21,7 +21,7 @@ Adds a job step to a job
 Adds a target to a target group
 
 ### [Add-AzSqlInstanceKeyVaultKey](Add-AzSqlInstanceKeyVaultKey.md)
-Adds a key vault key to the provided Managed Instance. 
+Adds a key vault key to the provided Managed Instance.
 
 ### [Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
@@ -66,7 +66,7 @@ Converts a vulnerability assessment scan results to Excel format.
 Converts a vulnerability assessment scan results to Excel format.
 
 ### [Copy-AzSqlDatabaseLongTermRetentionBackup](Copy-AzSqlDatabaseLongTermRetentionBackup.md)
-Copies a long term retention backup to a target database. 
+Copies a long term retention backup to a target database.
 
 ### [Disable-AzSqlDatabaseLedgerDigestUpload](Disable-AzSqlDatabaseLedgerDigestUpload.md)
 Disables uploading ledger digests to Azure Blob storage or to Azure Confidential Ledger.
@@ -353,6 +353,9 @@ Gets a SQL server's Key Vault keys.
 ### [Get-AzSqlServerMSSupportAudit](Get-AzSqlServerMSSupportAudit.md)
 Gets the Microsoft support operations auditing settings of an Azure SQL server.
 
+### [Get-AzSqlServerOutboundFirewallRule](Get-AzSqlServerOutboundFirewallRule.md)
+Gets the allowed FQDN from the list of Outbound Firewall Rules for a SQL server.
+
 ### [Get-AzSqlServerRecommendedAction](Get-AzSqlServerRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Server Advisor.
 
@@ -470,11 +473,14 @@ This command creates a new Azure SQL Server DNS Alias.
 ### [New-AzSqlServerFirewallRule](New-AzSqlServerFirewallRule.md)
 Creates a firewall rule for a SQL Database server.
 
+### [New-AzSqlServerOutboundFirewallRule](New-AzSqlServerOutboundFirewallRule.md)
+Creates a new Outbound Firewall Rule by adding the new allowed FQDN to list.
+
 ### [New-AzSqlServerTrustGroup](New-AzSqlServerTrustGroup.md)
 Creates a new Server Trust Group.
 
 ### [New-AzSqlServerVirtualNetworkRule](New-AzSqlServerVirtualNetworkRule.md)
-Creates an Azure SQL Server Virtual Network Rule. 
+Creates an Azure SQL Server Virtual Network Rule.
 
 ### [New-AzSqlSyncAgent](New-AzSqlSyncAgent.md)
 Creates an Azure SQL Sync Agent.
@@ -586,6 +592,9 @@ Removes a Key Vault key from a SQL server.
 
 ### [Remove-AzSqlServerMSSupportAudit](Remove-AzSqlServerMSSupportAudit.md)
 Removes the Microsoft support operations auditing settings of an Azure SQL server.
+
+### [Remove-AzSqlServerOutboundFirewallRule](Remove-AzSqlServerOutboundFirewallRule.md)
+Removes the allowed FQDN from the list of Outbound Firewall Rules for a SQL server.
 
 ### [Remove-AzSqlServerTrustGroup](Remove-AzSqlServerTrustGroup.md)
 Deletes a Server Trust Group.
@@ -816,4 +825,3 @@ Updates an Azure SQL Database Sync Member.
 Update the sync schema for a sync member database or a sync hub database.
 It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
-

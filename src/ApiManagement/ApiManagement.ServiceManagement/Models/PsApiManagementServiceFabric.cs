@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     {
         public string ClientCertificateThumbprint { get; set; }
 
+        public string ClientCertificateId { get; set; }
+
         public int? MaxPartitionResolutionRetries { get; set; }
 
         public string[] ManagementEndpoints { get; set; }
