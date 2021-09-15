@@ -1522,6 +1522,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Starting integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string StartingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("StartingIntegrationRuntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
         internal static string StartingSynapseSparkSession {
@@ -1536,6 +1545,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StartingSynapseTrigger {
             get {
                 return ResourceManager.GetString("StartingSynapseTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stoping integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string StopingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("StopingIntegrationRuntime", resourceCulture);
             }
         }
         
