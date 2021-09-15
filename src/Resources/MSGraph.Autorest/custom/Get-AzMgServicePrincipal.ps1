@@ -180,7 +180,7 @@ begin {
         $cmdName = 'Az.Resources.MSGraph.private\Get-AzMgServicePrincipal_List'
         if ($parameterSet -ne "EmptyParameterSet") {
             if ($parameterSet -eq "ObjectIdParameterSet") {
-                    $cmdletName = 'Az.Resources.MSGraph.private\Get-AzMgServicePrincipal_Get';
+                    $cmdName = 'Az.Resources.MSGraph.private\Get-AzMgServicePrincipal_Get';
                     $id = $PSBoundParameters['ObjectId']
                     $null = $PSBoundParameters.Remove('ObjectId')
                     $PSBoundParameters.Add('Id', $id)

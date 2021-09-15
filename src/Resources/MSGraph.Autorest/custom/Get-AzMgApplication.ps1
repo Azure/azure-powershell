@@ -174,7 +174,7 @@ begin {
         $cmdName = 'Az.Resources.MSGraph.private\Get-AzMgApplication_List'
         if ($parameterSet -ne "EmptyParameterSet") {
             if ($parameterSet -eq "ApplicationObjectIdParameterSet") {
-                    $cmdletName = 'Az.Resources.MSGraph.private\Get-AzMgApplication_Get';
+                    $cmdName = 'Az.Resources.MSGraph.private\Get-AzMgApplication_Get';
                     $id = $PSBoundParameters['ObjectId']
                     $null = $PSBoundParameters.Remove('ObjectId')
                     $PSBoundParameters.Add('Id', $id)
