@@ -1288,6 +1288,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rerunning trigger run with Id: &apos;{0}&apos;.
+        /// </summary>
+        internal static string RerunSynapseTriggerRun {
+            get {
+                return ResourceManager.GetString("RerunSynapseTriggerRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resetting timeout for Spark session with Id: &apos;{0}&apos; ....
         /// </summary>
         internal static string ResettingSynapseSparkSessionTimeout {
@@ -1572,6 +1581,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StoppingSynapseTrigger {
             get {
                 return ResourceManager.GetString("StoppingSynapseTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping trigger run with Id: &apos;{0}&apos;.
+        /// </summary>
+        internal static string StoppingSynapseTriggerRun {
+            get {
+                return ResourceManager.GetString("StoppingSynapseTriggerRun", resourceCulture);
             }
         }
         
