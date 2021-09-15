@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added a clearer error message for a case in which TemplateUri do not accept bicep file.
 * Fixed typos with ManagementGroups breaking change descriptions [#15819].
 
 ## Version 4.3.1
