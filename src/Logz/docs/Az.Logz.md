@@ -11,25 +11,25 @@ Locale: en-US
 Microsoft Azure PowerShell: Logz cmdlets
 
 ## Az.Logz Cmdlets
-### [Get-AzLogzAccount](Get-AzLogzAccount.md)
+### [Get-AzLogzMonitor](Get-AzLogzMonitor.md)
 Get the properties of a specific monitor resource.
 
-### [Get-AzLogzAccountMonitoredResource](Get-AzLogzAccountMonitoredResource.md)
+### [Get-AzLogzMonitoredResource](Get-AzLogzMonitoredResource.md)
 List the resources currently being monitored by the Logz monitor resource.
 
-### [Get-AzLogzAccountSSOConfiguration](Get-AzLogzAccountSSOConfiguration.md)
+### [Get-AzLogzMonitorSSOConfiguration](Get-AzLogzMonitorSSOConfiguration.md)
 Gets the Logz single sign-on resource for the given Monitor.
 
-### [Get-AzLogzAccountTagRule](Get-AzLogzAccountTagRule.md)
+### [Get-AzLogzMonitorTagRule](Get-AzLogzMonitorTagRule.md)
 Get a tag rule set for a given monitor resource.
 
-### [Get-AzLogzAccountUserRole](Get-AzLogzAccountUserRole.md)
+### [Get-AzLogzMonitorUserRole](Get-AzLogzMonitorUserRole.md)
 List the user's roles configured on Logz.io side for the account corresponding to the monitor resource.
 
-### [Get-AzLogzAccountVMHost](Get-AzLogzAccountVMHost.md)
+### [Get-AzLogzMonitorVMHost](Get-AzLogzMonitorVMHost.md)
 List the compute resources currently being monitored by the Logz main account resource.
 
-### [Get-AzLogzAccountVMHostUpdate](Get-AzLogzAccountVMHostUpdate.md)
+### [Get-AzLogzMonitorVMHostUpdate](Get-AzLogzMonitorVMHostUpdate.md)
 Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
 
 ### [Get-AzLogzSubAccount](Get-AzLogzSubAccount.md)
@@ -44,25 +44,25 @@ List the compute resources currently being monitored by the Logz sub account res
 ### [Get-AzLogzSubAccountVMHostUpdate](Get-AzLogzSubAccountVMHostUpdate.md)
 Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
 
-### [Invoke-AzLogzHostAccount](Invoke-AzLogzHostAccount.md)
+### [Invoke-AzLogzHostMonitor](Invoke-AzLogzHostMonitor.md)
 Returns the payload that needs to be passed in the request body for installing Logz.io agent on a VM.
 
 ### [Invoke-AzLogzHostSubAccount](Invoke-AzLogzHostSubAccount.md)
 Returns the payload that needs to be passed as a request for installing Logz.io agent on a VM.
 
-### [New-AzLogzAccount](New-AzLogzAccount.md)
+### [New-AzLogzFilteringTagObject](New-AzLogzFilteringTagObject.md)
+Create a in-memory object for FilteringTag
+
+### [New-AzLogzMonitor](New-AzLogzMonitor.md)
 Create a monitor resource.
 This create operation can take upto 10 minutes to complete.
 
-### [New-AzLogzAccountSSOConfiguration](New-AzLogzAccountSSOConfiguration.md)
+### [New-AzLogzMonitorSSOConfiguration](New-AzLogzMonitorSSOConfiguration.md)
 Configures single-sign-on for this resource.
 This operation can take upto 10 minutes to complete.
 
-### [New-AzLogzAccountTagRule](New-AzLogzAccountTagRule.md)
+### [New-AzLogzMonitorTagRule](New-AzLogzMonitorTagRule.md)
 Create or update a tag rule set for a given monitor resource.
-
-### [New-AzLogzFilteringTagObject](New-AzLogzFilteringTagObject.md)
-Create a in-memory object for FilteringTag
 
 ### [New-AzLogzSubAccount](New-AzLogzSubAccount.md)
 Create sub account under a given monitor resource.
@@ -74,21 +74,15 @@ Create or update a tag rule set for a given sub account resource.
 ### [New-AzLogzVMResourcesObject](New-AzLogzVMResourcesObject.md)
 Create a in-memory object for VMResources
 
-### [Remove-AzLogzAccount](Remove-AzLogzAccount.md)
+### [Remove-AzLogzMonitor](Remove-AzLogzMonitor.md)
 Delete a monitor resource.
 This delete operation can take upto 10 minutes to complete.
-
-### [Remove-AzLogzAccountTagRule](Remove-AzLogzAccountTagRule.md)
-Delete a tag rule set for a given monitor resource.
 
 ### [Remove-AzLogzSubAccount](Remove-AzLogzSubAccount.md)
 Delete a sub account resource.
 This delete operation can take upto 10 minutes to complete.
 
-### [Remove-AzLogzSubAccountTagRule](Remove-AzLogzSubAccountTagRule.md)
-Delete a tag rule set for a given monitor resource.
-
-### [Update-AzLogzAccount](Update-AzLogzAccount.md)
+### [Update-AzLogzMonitor](Update-AzLogzMonitor.md)
 Update a monitor resource.
 
 ### [Update-AzLogzSubAccount](Update-AzLogzSubAccount.md)

@@ -14,7 +14,7 @@ Returns the payload that needs to be passed as a request for installing Logz.io 
 
 ### Host (Default)
 ```
-Invoke-AzLogzHostSubAccount -AccountName <String> -ResourceGroupName <String> -SubAccountName <String>
+Invoke-AzLogzHostSubAccount -MonitorName <String> -ResourceGroupName <String> -SubAccountName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -49,21 +49,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AccountName
-Monitor resource name
-
-```yaml
-Type: System.String
-Parameter Sets: Host
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -92,6 +77,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorName
+Monitor resource name
+
+```yaml
+Type: System.String
+Parameter Sets: Host
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

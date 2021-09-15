@@ -1,47 +1,86 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccounttagrule
+online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitor
 schema: 2.0.0
 ---
 
-# Get-AzLogzSubAccountTagRule
+# Get-AzLogzMonitor
 
 ## SYNOPSIS
-Get a tag rule set for a given monitor resource.
+Get the properties of a specific monitor resource.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzLogzSubAccountTagRule -MonitorName <String> -ResourceGroupName <String> -SubAccountName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLogzMonitor [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzLogzMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzLogzSubAccountTagRule -InputObject <ILogzIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLogzMonitor -InputObject <ILogzIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzLogzMonitor -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a tag rule set for a given monitor resource.
+Get the properties of a specific monitor resource.
 
 ## EXAMPLES
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLogzMonitor
 
-{{ Add output here }}
+Name                            MonitoringStatus Location      ResourceGroupName
+----                            ---------------- --------      -----------------
+ssoMultipleTest03               Enabled          westus2       koyTest
+saurgupta_logz_001              Enabled          westus2       saurgTest
+saurg-test-logz-01              Enabled          westus2       saurgTest
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLogzMonitor -ResourceGroupName lucas-rg-test
 
-{{ Add output here }}
+Name          MonitoringStatus Location ResourceGroupName
+----          ---------------- -------- -----------------
+logz-pwsh01 Enabled          westus2  lucas-rg-test
+```
+
+{{ Add description here }}
+
+### Example 3: {{ Add title here }}
+```powershell
+PS C:\> Get-AzLogzMonitor -ResourceGroupName lucas-rg-test -Name logz-pwsh01
+
+Name          MonitoringStatus Location ResourceGroupName
+----          ---------------- -------- -----------------
+logz-pwsh01 Enabled          westus2  lucas-rg-test
+```
+
+{{ Add description here }}
+
+### Example 4: {{ Add title here }}
+```powershell
+PS C:\> New-AzLogzMonitor -ResourceGroupName lucas-rg-test -Name logz-pwsh01 -Location 'westus2' -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress 'xxxxx@microsoft.com' -UserInfoPhoneNumber 'xxxxxxxx' -UserInfoFirstName 'xxx' -UserInfoLastName 'xxx' | Get-AzLogzMonitor
+
+Name          MonitoringStatus Location ResourceGroupName
+----          ---------------- -------- -----------------
+logz-pwsh01 Enabled          westus2  lucas-rg-test
 ```
 
 {{ Add description here }}
@@ -79,13 +118,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MonitorName
+### -Name
 Monitor resource name
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: MonitorName
 
 Required: True
 Position: Named
@@ -100,22 +139,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubAccountName
-Sub Account resource name
-
-```yaml
-Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -130,7 +154,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -149,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRules
+### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource
 
 ## NOTES
 

@@ -1,26 +1,32 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccounttagrule
+online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitortagrule
 schema: 2.0.0
 ---
 
-# Get-AzLogzSubAccountTagRule
+# Get-AzLogzMonitorTagRule
 
 ## SYNOPSIS
 Get a tag rule set for a given monitor resource.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzLogzSubAccountTagRule -MonitorName <String> -ResourceGroupName <String> -SubAccountName <String>
+Get-AzLogzMonitorTagRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzLogzMonitorTagRule -Name <String> -ResourceGroupName <String> -RuleSetName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzLogzSubAccountTagRule -InputObject <ILogzIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLogzMonitorTagRule -InputObject <ILogzIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,12 +85,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MonitorName
+### -Name
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -100,7 +106,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -110,8 +116,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubAccountName
-Sub Account resource name
+### -RuleSetName
+.
 
 ```yaml
 Type: System.String
@@ -130,7 +136,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False

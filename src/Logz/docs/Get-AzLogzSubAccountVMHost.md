@@ -13,7 +13,7 @@ List the compute resources currently being monitored by the Logz sub account res
 ## SYNTAX
 
 ```
-Get-AzLogzSubAccountVMHost -AccountName <String> -Name <String> -ResourceGroupName <String>
+Get-AzLogzSubAccountVMHost -MonitorName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -42,21 +42,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AccountName
-Monitor resource name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -66,6 +51,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorName
+Monitor resource name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

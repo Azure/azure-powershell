@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccountvmhostupdate
+online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitorvmhostupdate
 schema: 2.0.0
 ---
 
-# Get-AzLogzSubAccountVMHostUpdate
+# Get-AzLogzMonitorVMHostUpdate
 
 ## SYNOPSIS
 Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
@@ -13,9 +13,9 @@ Sending request to update the collection when Logz.io agent has been installed o
 ## SYNTAX
 
 ```
-Get-AzLogzSubAccountVMHostUpdate -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-State <VMHostUpdateStates>] [-VMResourceId <IVMResources[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzLogzMonitorVMHostUpdate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-State <VMHostUpdateStates>] [-VMResourceId <IVMResources[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,23 +58,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MonitorName
-Monitor resource name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-Sub Account resource name
+Monitor resource name
 
 ```yaml
 Type: System.String

@@ -50,37 +50,42 @@ directive:
   - where:
       verb: Set
     remove: true
-  # Change monitor sub resource  to Account for be consistent with the logz display in the azure portal
-  - where:
-      subject: ^Monitor(.*)
-    set:
-      subject: Account$1
-
-  - where:
-      subject: ^HostMonitor$
-    set:
-      subject: HostAccount
 
   - where:
       subject: ^SingleSignOn$
     set:
-      subject: AccountSSOConfiguration
+      subject: MonitorSSOConfiguration
 
   - where:
       subject: ^TagRule$
     set:
-      subject: AccountTagRule
+      subject: MonitorTagRule
 
   # Rename parameter
   - where:
       verb: Get
-      subject: ^AccountMonitoredResource$|^AccountUserRole$|^AccountVMHost$|^AccountVMHost$|^AccountVMHostUpdate$|^AccountTagRule$|^HostAccount$
+      subject: ^MonitorMonitoredResource$|^MonitorUserRole$|^MonitorVMHost$|^MonitorVMHost$|^MonitorVMHostUpdate$|^MonitorTagRule$|^HostMonitor$
       parameter-name: MonitorName
     set:
       parameter-name: Name
 
   - where:
-      subject: ^AccountSSOConfiguration$
+      parameter-name: LogzOrganizationProperty(.*)
+    set:
+      parameter-name: $1
+
+  - where:
+      parameter-name: PlanData(.*)
+    set:
+      parameter-name: Plan$1
+
+  - where:
+      parameter-name: PlanPlanDetail
+    set:
+      parameter-name: PlanDetail
+
+  - where:
+      subject: ^SSOConfiguration$
       parameter-name: ConfigurationName
     set:
       parameter-name: Name
@@ -96,28 +101,22 @@ directive:
   # Remove List variant because parameters include Body <IVMHostUpdateRequest> parameter
   - where:
       verb: Get
-      subject: ^AccountUserRole$|^AccountVMHostUpdate$|^SubAccountVMHostUpdate$
+      subject: ^MonitorUserRole$|^MonitorVMHostUpdate$|^SubAccountVMHostUpdate$
       variant: List
     remove: true
 
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      subject: ^Account$|^AccountSSOConfiguration$|^SubAccount$|^SubAccountTagRule$|^AccountTagRule$
+      subject: ^Monitor$|^SSOConfiguration$|^SubAccount$|^SubAccountTagRule$|^TagRule$
     remove: true
 
   # Only name allowed for a tag rule is default.
   - where: 
       verb: Get
-      subject: ^SubAccountTagRule$|^AccountTagRule$
+      subject: ^SubAccountTagRule$|^TagRule$
       variant: List
     remove: true
   
-  # Rename MonitorName to AccountName
-  - where:
-      parameter-name: MonitorName
-    set:
-      parameter-name: AccountName
-
   # Rename verb name
   # - where:
   #     verb: Invoke
@@ -128,12 +127,17 @@ directive:
   # The service not planning to support it in the near future.
   - where:
       verb: Remove
-      subject: TagRule
+      subject: MonitorTagRule
     remove: true
+  - where:
+      verb: Remove
+      subject: SubAccountTagRule
+    remove: true
+    
 # Only name allowed for a tag rule is default.
   - where:
       verb: Get|New
-      subject: ^SubAccountTagRule$|^AccountTagRule$
+      subject: ^SubAccountTagRule$|^TagRule$
       parameter-name: RuleSetName
     hide: true
     set:
@@ -148,10 +152,10 @@ directive:
           - Name
           - MonitoringStatus
           - Location
-  # Hide cmdlet for merge Get-AzLogzSubAccountMonitoredResource and Get-AzLogzSubAccountMonitoredResource into Get-AzLogzAccountMonitoredResource
+  # Hide cmdlet for merge Get-AzLogzMonitorMonitoredResource and Get-AzLogzSubAccountMonitoredResource into Get-AzLogzMonitorMonitoredResource
   - where:
       verb: Get
-      subject: ^AccountMonitoredResource$|^SubAccountMonitoredResource$
+      subject: ^MonitorMonitoredResource$|^SubAccountMonitoredResource$
     hide: true
 
   - model-cmdlet:

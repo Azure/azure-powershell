@@ -1,25 +1,33 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccountvmhostupdate
+online version: https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzmonitor
 schema: 2.0.0
 ---
 
-# Get-AzLogzSubAccountVMHostUpdate
+# Remove-AzLogzMonitor
 
 ## SYNOPSIS
-Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
+Delete a monitor resource.
+This delete operation can take upto 10 minutes to complete.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-Get-AzLogzSubAccountVMHostUpdate -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-State <VMHostUpdateStates>] [-VMResourceId <IVMResources[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzLogzMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzLogzMonitor -InputObject <ILogzIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
+Delete a monitor resource.
+This delete operation can take upto 10 minutes to complete.
 
 ## EXAMPLES
 
@@ -43,6 +51,21 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -58,13 +81,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MonitorName
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Delete
+Aliases: MonitorName
 
 Required: True
 Position: Named
@@ -73,15 +112,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Sub Account resource name
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -94,25 +148,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -State
-Specifies the state of the operation - install/ delete.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.VMHostUpdateStates
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -123,29 +162,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VMResourceId
-Request of a list vm host update operation.
-To construct, see NOTES section for VMRESOURCEID properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -186,9 +209,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources
+### System.Boolean
 
 ## NOTES
 
@@ -199,9 +224,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-VMRESOURCEID <IVMResources[]>: Request of a list vm host update operation.
-  - `[AgentVersion <String>]`: Version of the Logz agent installed on the VM.
-  - `[Id <String>]`: Request of a list vm host update operation.
+INPUTOBJECT <ILogzIdentity>: Identity Parameter
+  - `[ConfigurationName <String>]`: 
+  - `[Id <String>]`: Resource identity path
+  - `[MonitorName <String>]`: Monitor resource name
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: 
+  - `[SubAccountName <String>]`: Sub Account resource name
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

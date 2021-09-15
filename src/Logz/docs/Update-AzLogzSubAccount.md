@@ -14,7 +14,7 @@ Update a monitor resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzLogzSubAccount -AccountName <String> -Name <String> -ResourceGroupName <String>
+Update-AzLogzSubAccount -MonitorName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-MonitoringStatus <MonitoringStatus>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -49,21 +49,6 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -AccountName
-Monitor resource name
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -105,6 +90,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorName
+Monitor resource name
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

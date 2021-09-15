@@ -1,47 +1,37 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/new-azlogzsubaccount
+online version: https://docs.microsoft.com/powershell/module/az.logz/new-azlogzmonitor
 schema: 2.0.0
 ---
 
-# New-AzLogzSubAccount
+# New-AzLogzMonitor
 
 ## SYNOPSIS
-Create sub account under a given monitor resource.
+Create a monitor resource.
 This create operation can take upto 10 minutes to complete.
 
 ## SYNTAX
 
 ```
-New-AzLogzSubAccount -MonitorName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CompanyName <String>] [-EnterpriseAppId <String>]
- [-IdentityType <ManagedIdentityTypes>] [-MarketplaceSubscriptionStatus <MarketplaceSubscriptionStatus>]
- [-MonitoringStatus <MonitoringStatus>] [-PlanBillingCycle <String>] [-PlanDetail <String>]
- [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>] [-SingleSignOnUrl <String>] [-Tag <Hashtable>]
- [-UserInfoEmailAddress <String>] [-UserInfoFirstName <String>] [-UserInfoLastName <String>]
- [-UserInfoPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzLogzMonitor -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-CompanyName <String>] [-EnterpriseAppId <String>] [-IdentityType <ManagedIdentityTypes>]
+ [-MarketplaceSubscriptionStatus <MarketplaceSubscriptionStatus>] [-MonitoringStatus <MonitoringStatus>]
+ [-PlanBillingCycle <String>] [-PlanDetail <String>] [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>]
+ [-SingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserInfoEmailAddress <String>] [-UserInfoFirstName <String>]
+ [-UserInfoLastName <String>] [-UserInfoPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create sub account under a given monitor resource.
+Create a monitor resource.
 This create operation can take upto 10 minutes to complete.
 
 ## EXAMPLES
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzLogzMonitor -ResourceGroupName lucas-rg-test -Name pwsh-logz05 -Location 'westus2' -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress 'xxxxx@microsoft.com' -UserInfoPhoneNumber 'xxxxxxxx' -UserInfoFirstName 'xxx' -UserInfoLastName 'xxx'
 
 {{ Add output here }}
 ```
@@ -171,28 +161,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MonitorName
+### -Name
 Monitor resource name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Sub Account resource name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: SubAccountName
+Aliases: MonitorName
 
 Required: True
 Position: Named

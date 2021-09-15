@@ -1,30 +1,31 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccounttagrule
+online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzaccountmonitoredresource
 schema: 2.0.0
 ---
 
-# Get-AzLogzSubAccountTagRule
+# Get-AzLogzMonitoredResource
 
 ## SYNOPSIS
-Get a tag rule set for a given monitor resource.
+List the resources currently being monitored by the Logz monitor resource.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzLogzSubAccountTagRule -MonitorName <String> -ResourceGroupName <String> -SubAccountName <String>
+Get-AzLogzMonitoredResource -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListBySubAccount
+```
+Get-AzLogzMonitoredResource -MonitorName <String> -ResourceGroupName <String> -SubAccountName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzLogzSubAccountTagRule -InputObject <ILogzIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Get a tag rule set for a given monitor resource.
+List the resources currently being monitored by the Logz monitor resource.
 
 ## EXAMPLES
 
@@ -63,28 +64,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -100,7 +85,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -111,11 +96,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubAccountName
-Sub Account resource name
+Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: ListBySubAccount
 Aliases:
 
 Required: True
@@ -130,7 +115,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -145,29 +130,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRules
+### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <ILogzIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: 
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: 
-  - `[SubAccountName <String>]`: Sub Account resource name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
