@@ -337,9 +337,10 @@ param(
 
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Alias('AppId')]
     [System.String]
     # The unique identifier for the associated application (its appId property).
-    ${AppId},
+    ${ApplicationId},
 
     [Parameter(ParameterSetName='SimpleParameterSet')]
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
@@ -763,7 +764,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ('SimpleParameterSet', 'DisplayNameWithoutCredentialParameterSet' -Contains $parameterSet) {
-            if ($PSBoundParameters.Contains('DisplayName')) {
+            if ($PSBoundParameters.ContainsKey('DisplayName')) {
                 $AppName = $PSBoundParameters['DisplayName']
                 $null = $PSBoundParameters.Remove('DisplayName')
             } else {
@@ -776,8 +777,11 @@ begin {
                 throw
             }
         } elseif ('ApplicationObjectWithoutCredentialParameterSet' -eq $parameterSet) {
-            $PSBoundParameters['AppId'] = @PSBoundParameters['ApplicationObject'].AppId
+            $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
             $null = $PSBoundParameters.Remove('ApplicationObject')
+        } elseif ('ApplicationWithoutCredentialParameterSet' -eq $parameterSet) {
+            $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
+            $null = $PSBoundParameters.Remove('ApplicationId')
         }
 
         $parameterSet = 'Az.Resources.MSGraph.private\New-AzMgServicePrincipal_CreateExpanded'

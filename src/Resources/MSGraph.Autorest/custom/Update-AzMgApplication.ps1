@@ -166,7 +166,6 @@ https://docs.microsoft.com/powershell/module/az.resources/update-azmgapplication
 #>
 function Update-AzMgApplication {
 [OutputType([System.Boolean])]
-<<<<<<< HEAD
 [CmdletBinding(DefaultParameterSetName='ApplicationObjectIdWithUpdateParamsParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ApplicationObjectIdWithUpdateParamsParameterSet', Mandatory)]
@@ -175,16 +174,6 @@ param(
     [System.String]
     # key: id of application
     ${ObjectId},
-=======
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('ApplicationId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [System.String]
-    # key: id of application
-    ${Id},
->>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -203,21 +192,18 @@ param(
     # To construct, see NOTES section for API properties and create a hash table.
     ${Api},
 
-<<<<<<< HEAD
     [Parameter(ParameterSetName='ApplicationIdWithUpdateParamsParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: application id
-    ${AppId}
+    ${AppId},
 
     [Parameter(ParameterSetName='InputObjectWithUpdateParamsParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     # key: application object
-    ${InputObject}
+    ${InputObject},
 
-=======
->>>>>>> 673e7eb1261bd6b192026ec000f2801685510134
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -508,12 +494,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         switch ($parameterSet) {
-          case 'ApplicationObjectIdWithUpdateParamsParameterSet' {
+          'ApplicationObjectIdWithUpdateParamsParameterSet' {
               $val = $PSBoundParameters['ObjectId']
               $null = $PSBoundParameters.Remove('ObjectId')
               break
           }
-          case 'ApplicationIdWithUpdateParamsParameterSet' {
+          'ApplicationIdWithUpdateParamsParameterSet' {
               try {
                   $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['AppId']
               } catch {
@@ -523,7 +509,7 @@ begin {
               $null = $PSBoundParameters.Remove('AppId')
               break
           }
-          case 'InputObjectWithUpdateParamsParameterSet' {
+          'InputObjectWithUpdateParamsParameterSet' {
               $val = $PSBoundParameters['InputObject'].Id
               $null = $PSBoundParameters.Remove('InputObject')
           }
