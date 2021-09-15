@@ -33,7 +33,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
-  [BackupInstance <String>]: 
   [BackupInstanceName <String>]: The name of the backup instance
   [BackupPolicyName <String>]: 
   [Id <String>]: Resource identity path
@@ -41,7 +40,9 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [Location <String>]: The location in which uniqueness will be verified.
   [OperationId <String>]: 
   [RecoveryPointId <String>]: 
+  [RequestName <String>]: 
   [ResourceGroupName <String>]: The name of the resource group where the backup vault is present.
+  [ResourceGuardsName <String>]: The name of ResourceGuard
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
@@ -164,6 +165,8 @@ begin {
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

@@ -14,28 +14,30 @@ Creates a data factory.
 
 ### ByFactoryName (Default)
 ```
-Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>]
- [-Force]
- [-IdentityType] <String>
+Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-IdentityType <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
- [-IdentityType] <String>
+Set-AzDataFactoryV2 [-ResourceId] <String> [-IdentityType <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdFactoryRepoVstsConfig
 ```
-Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
- [-IdentityType] <String>
+Set-AzDataFactoryV2 [-ResourceId] <String> [-IdentityType <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
  [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
@@ -44,9 +46,10 @@ Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtab
 
 ### ByResourceIdFactoryRepoGitConfig
 ```
-Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
- [-IdentityType] <String>
+Set-AzDataFactoryV2 [-ResourceId] <String> [-IdentityType <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
  [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -55,10 +58,10 @@ Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtab
 
 ### ByFactoryNameFactoryRepoGitConfig
 ```
-Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>]
- [-Force]
- [-IdentityType] <String>
+Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-IdentityType <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
  [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -67,10 +70,10 @@ Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <
 
 ### ByFactoryNameFactoryRepoVstsConfig
 ```
-Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>]
- [-Force]
- [-IdentityType] <String>
+Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-IdentityType <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-Location] <String> [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
  [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
@@ -79,18 +82,22 @@ Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <
 
 ### ByInputObject
 ```
-Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] <Hashtable>] [-Force]
- [-IdentityType] <String>
+Set-AzDataFactoryV2 [-IdentityType <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] -InputObject <PSDataFactory> [[-Location] <String>]
+ [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectFactoryRepoVstsConfig
 ```
-Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] <Hashtable>] [-Force]
- [-IdentityType] <String>
+Set-AzDataFactoryV2 [-IdentityType <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] -InputObject <PSDataFactory> [[-Location] <String>]
+ [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-AccountName <String>] [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>]
  [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
@@ -99,9 +106,11 @@ Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] 
 
 ### ByInputObjectFactoryRepoGitConfig
 ```
-Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] <Hashtable>] [-Force]
- [-IdentityType] <String>
+Set-AzDataFactoryV2 [-IdentityType <String>]
  [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] -InputObject <PSDataFactory> [[-Location] <String>]
+ [[-Tag] <Hashtable>] [-Force]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-AccountName <String>] [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>]
  [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -235,23 +244,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Runs the cmdlet without prompting for confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The Identity type that will be associated with your DataFactory. Options are 'SystemAssigned', 'UserAssigned' or 'SystemAssigned,UserAssigned'
+### -EncryptionKeyName
+The name of the key in Azure Key Vault to use as Customer Managed Key for encryption.
 
 ```yaml
 Type: System.String
@@ -265,11 +259,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentity
-The dictionary containing the user assigned identities of the data factory.
+### -EncryptionKeyVersion
+The version of the key used for CMK. If not provided, latest version will be used.
 
 ```yaml
-Type: System.Collections.Generic.IDictionary`2[System.String,System.Object]
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionUserAssignedIdentity
+User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionVaultBaseUrl
+The url of the Azure Key Vault used for encryption with CMK.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Runs the cmdlet without prompting for confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -306,6 +345,35 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The Identity type that will be associated with your DataFactory. Options are 'SystemAssigned', 'UserAssigned' or 'SystemAssigned,UserAssigned'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public network access is allowed for the data factory. Options are 'Enabled' or 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: Enabled
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -514,6 +582,21 @@ The tenant id for Azure DevOps repo configuration.
 ```yaml
 Type: System.String
 Parameter Sets: ByResourceIdFactoryRepoVstsConfig, ByFactoryNameFactoryRepoVstsConfig, ByInputObjectFactoryRepoVstsConfig
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The dictionary containing the user assigned identities of the data factory.
+
+```yaml
+Type: System.Collections.Generic.IDictionary`2[System.String,System.Object]
+Parameter Sets: (All)
 Aliases:
 
 Required: False

@@ -83,6 +83,7 @@ $resourceTestCommands = @(
     @{Name = "Az.Storage [Management]";       Command = {New-AzStorageAccount -Name $storageAccountName -SkuName Standard_LRS -Location westus -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
     @{Name = "Az.Storage [Data]";             Command = {New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey 12345678 -ErrorAction Stop}},
     @{Name = "Az.Accounts";                   Command = {Get-AzDomain -ErrorAction Stop}},
+    @{Name = "Az.Accounts [DefaultProfile]";  Command = {Get-AzSubscription -DefaultProfile (Get-AzContext)}},
     @{Name = "Az.Advisor";                    Command = {Get-AzAdvisorConfiguration -ErrorAction Stop}},
     @{Name = "Az.Aks";                        Command = {Get-AzAksCluster -ErrorAction Stop}},
     @{Name = "Az.AnalysisServices";           Command = {Get-AzAnalysisServicesServer -ErrorAction Stop}},
@@ -120,7 +121,7 @@ $resourceTestCommands = @(
     @{Name = "Az.Kusto";                      Command = {Get-AzKustoCluster -ErrorAction Stop}},
     @{Name = "Az.LogicApp";                   Command = {Get-AzIntegrationAccount -ErrorAction Stop}},
     @{Name = "Az.MachineLearning";            Command = {Get-AzMlWebService -ErrorAction Stop}},
-    @{Name = "Az.Maintenance";                Command = {Get-AzMaintenanceConfiguration -ErrorAction Stop}},
+    @{Name = "Az.Maintenance";                Command = {Retry-AzCommand -Command "Get-AzMaintenanceConfiguration -ErrorAction Stop" -RetryCount 30 -Sleep 30}},
     @{Name = "Az.ManagedServices";            Command = {Get-AzManagedServicesAssignment -ErrorAction Stop}},
     # Machine learning compute cmdlets are removed. The following line are to be commented until they are brought back
     # @{Name = "Az.MachineLearning [Compute]";  Command = {Get-AzMlOpCluster -ErrorAction Stop}},
@@ -130,7 +131,7 @@ $resourceTestCommands = @(
     @{Name = "Az.Network";                    Command = {Get-AzNetworkInterface -ErrorAction Stop}},
     @{Name = "Az.NotificationHubs";           Command = {Get-AzNotificationHubsNamespace -ErrorAction Stop}},
     @{Name = "Az.OperationalInsights";        Command = {Get-AzOperationalInsightsWorkspace -ErrorAction Stop}},
-    @{Name = "Az.PolicyInsights";             Command = {Get-AzPolicyEvent -ErrorAction Stop}},
+    @{Name = "Az.PolicyInsights";             Command = {Get-AzPolicyEvent -Top 10 -ErrorAction Stop}}, # without -Top service may return 400: ResponseTooLarge
     @{Name = "Az.PowerBIEmbedded";            Command = {Get-AzPowerBIEmbeddedCapacity -ErrorAction Stop}},
     @{Name = "Az.PowerBIUEmbedded";           Command = {Get-AzPowerBIWorkspaceCollection -ErrorAction Stop}},
     @{Name = "Az.PrivateDns";                 Command = {Get-AzPrivateDnsZone -ErrorAction Stop}},

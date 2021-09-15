@@ -348,8 +348,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Type of identity to be assigned to the server..
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
-        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "\"SystemAssigned,UserAssigned\"", "None")]
         public string IdentityType { get; set; }
 
         /// <summary>
@@ -384,6 +384,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies the object ID of the user, group or application which is the Azure Active Directory administrator.")]
         public Guid? ExternalAdminSID { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not the multi-az is enabled
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Use zone redundant storage")]
+        public SwitchParameter ZoneRedundant { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -551,8 +557,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                     AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
-                }
-            });
+                },
+                ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null
+            }); ;
             return newEntity;
         }
 

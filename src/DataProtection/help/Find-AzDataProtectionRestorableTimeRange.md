@@ -8,18 +8,19 @@ schema: 2.0.0
 # Find-AzDataProtectionRestorableTimeRange
 
 ## SYNOPSIS
-Find restorable time ranges
+
 
 ## SYNTAX
 
 ```
 Find-AzDataProtectionRestorableTimeRange -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> -EndTime <String> -SourceDataStoreType <RestoreSourceDataStoreType> -StartTime <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VaultName <String> -SourceDataStoreType <RestoreSourceDataStoreType> [-SubscriptionId <String>]
+ [-EndTime <String>] [-StartTime <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Find restorable time ranges
+
 
 ## EXAMPLES
 
@@ -44,7 +45,7 @@ Dispaly RestorableTimeRange, note that this can be multiple dicrete ranges.
 ## PARAMETERS
 
 ### -BackupInstanceName
-.
+The name of the backup instance
 
 ```yaml
 Type: System.String
@@ -74,14 +75,15 @@ Accept wildcard characters: False
 ```
 
 ### -EndTime
-End time for the List Restore Ranges request
+End time for the List Restore Ranges request.
+ISO 8601 format.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,14 +121,15 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Start time for the List Restore Ranges request
+Start time for the List Restore Ranges request.
+ISO 8601 format.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -201,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupFindRestorableTimeRangesResponseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupFindRestorableTimeRangesResponseResource
 
 ## NOTES
 

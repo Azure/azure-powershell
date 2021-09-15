@@ -62,6 +62,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [PSArgumentCompleter(TlsStrings.OneFullStopZero, TlsStrings.OneFullStopOne, TlsStrings.OneFullStopTwo)]
         public string MinimumTlsVersion { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version. Valid values: 4, 6")]
+        public string RedisVersion { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents tags.")]
         public Hashtable Tag { get; set; }
 
@@ -116,7 +119,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               () =>
               {
                   var redisResource = CacheClient.UpdateCache(ResourceGroupName, Name, skuFamily, skuCapacity,
-                      skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, Tag);
+                      skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, RedisVersion, Tag);
                   var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
                   WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
               });

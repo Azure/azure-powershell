@@ -1,0 +1,154 @@
+{
+  "Remove-AzMapsAccount+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9?api-version=2021-02-01",
+      "Content": "{\r\n  \"location\": \"westcentralus\",\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "71" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-request-id": [ "461031ae-f95d-490d-aada-6661bc283adc" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "e3035406-b0d1-4278-b85c-0fc43d194536" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070405Z:e3035406-b0d1-4278-b85c-0fc43d194536" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:04:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "469" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"9ed933b7-dfac-4cc0-83e5-d2ab31dd2248\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9\",\r\n  \"name\": \"mapsblkmj9\",\r\n  \"location\": \"westcentralus\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMapsAccount+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9?api-version=2021-02-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "8e698a21-9819-4d22-b26d-7f1053977910" ],
+        "CommandName": [ "Remove-AzMapsAccount" ],
+        "FullCommandName": [ "Remove-AzMapsAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "4d51ab44-08e0-49f8-8fae-8f58fa9dcfaa" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "a8daafdb-e66a-462d-98bc-8c2d1aa0eeb6" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070410Z:a8daafdb-e66a-462d-98bc-8c2d1aa0eeb6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:04:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMapsAccount+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9?api-version=2021-02-01",
+      "Content": "{\r\n  \"location\": \"westcentralus\",\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "71" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
+        "x-ms-request-id": [ "3a191973-e710-4b98-931a-9b3c67a3e5c3" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "a7db0266-bd27-40d4-926e-99fc0a62e8a3" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070413Z:a7db0266-bd27-40d4-926e-99fc0a62e8a3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:04:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "469" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"124b5b07-4d77-44c5-b4cd-7d7eff80969c\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9\",\r\n  \"name\": \"mapsblkmj9\",\r\n  \"location\": \"westcentralus\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMapsAccount+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9?api-version=2021-02-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsblkmj9?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "50f3b7f1-7929-4818-8039-e8f9906cf299" ],
+        "CommandName": [ "Remove-AzMapsAccount" ],
+        "FullCommandName": [ "Remove-AzMapsAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "dfbd9a2e-2a3c-4e81-a074-74efca4efd33" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "f567ab88-2dfb-43a4-af12-44c51c65039f" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070415Z:f567ab88-2dfb-43a4-af12-44c51c65039f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:04:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

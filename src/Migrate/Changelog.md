@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Supported duplicate disk UUID in source disk.
+* Supported subnets in same VNet for AVSet.
+* Supported runAsAccount fetching for multiple Vcenters in same site.
+
+## Version 1.1.0
+* Added SQL Server license type.
+* Added CRN feature.
+* Added resource tags feature.
+* Updated to 2021-02-10 api version.
+
 ## Version 1.0.2
 * Fixed an issue in Initialize-AzMigrateReplicationInfrastructure.ps1
 

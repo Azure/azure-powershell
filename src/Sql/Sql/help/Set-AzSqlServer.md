@@ -15,8 +15,9 @@ Modifies properties of a SQL Database server.
 
 ```
 Set-AzSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>] [-Tags <Hashtable>]
- [-ServerVersion <String>] [-AssignIdentity] [-PublicNetworkAccess <String>] [-MinimalTlsVersion <String>]
- [-Force] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ServerVersion <String>] [-AssignIdentity] [-PublicNetworkAccess <String>] [-MinimalTlsVersion <String>] 
+ [-RestrictOutboundNetworkAccess <String>] [-Force] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] 
+ [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -118,6 +119,21 @@ Accept wildcard characters: False
 ### -PublicNetworkAccess
 Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not.
 When disabled, only connections made through Private Links can reach this server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestrictOutboundNetworkAccess
+When enabled, only outbound connections allowed by the outbound firewall rules will succeed.
 
 ```yaml
 Type: System.String
@@ -240,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of identity to be assigned to the server. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.
+Type of identity to be assigned to the server. Possible values are SystemAsssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.
 
 ```yaml
 Type: System.String

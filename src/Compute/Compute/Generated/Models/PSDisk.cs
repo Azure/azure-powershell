@@ -70,10 +70,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //     Gets or sets possible values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
         public string NetworkAccessPolicy { get; set; }
         public string DiskAccessId { get; set; }
-
         public string Tier { get; set; }
-
         public bool? BurstingEnabled { get; set; }
-
+        public PSPurchasePlan PurchasePlan { get; set; }
+        public bool? SupportsHibernation { get; set; }
+        public DiskSecurityProfile SecurityProfile { get; set; }
     }
 }

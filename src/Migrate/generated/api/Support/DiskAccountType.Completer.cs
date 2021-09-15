@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>The disk type.</summary>
+    /// <summary>The DiskType.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountTypeTypeConverter))]
     public partial struct DiskAccountType :
         System.Management.Automation.IArgumentCompleter

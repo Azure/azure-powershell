@@ -9,11 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
     /// <summary>The operation to initiate test migration of the item.</summary>
     /// <remarks>
-    /// [OpenAPI] TestMigrate=>POST:"/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/testMigrate"
+    /// [OpenAPI] TestMigrate=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/testMigrate"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"AzMigrateReplicationMigrationItemMigrate_TestExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"The operation to initiate test migration of the item.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
     public partial class TestAzMigrateReplicationMigrationItemMigrate_TestExpanded : global::System.Management.Automation.PSCmdlet,
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         ReadOnly = false,
         Description = @"The provider specific details.",
         SerializedName = @"providerSpecificDetails",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ITestMigrateProviderSpecificInput) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ITestMigrateProviderSpecificInput ProviderSpecificDetail { get => TestMigrateInputBody.ProviderSpecificDetail ?? null /* object */; set => TestMigrateInputBody.ProviderSpecificDetail = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITestMigrateProviderSpecificInput) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITestMigrateProviderSpecificInput ProviderSpecificDetail { get => TestMigrateInputBody.ProviderSpecificDetail ?? null /* object */; set => TestMigrateInputBody.ProviderSpecificDetail = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -207,22 +207,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>Backing field for <see cref="TestMigrateInputBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ITestMigrateInput _testMigrateInputBody= new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.TestMigrateInput();
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITestMigrateInput _testMigrateInputBody= new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.TestMigrateInput();
 
         /// <summary>Input for test migrate.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.ITestMigrateInput TestMigrateInputBody { get => this._testMigrateInputBody; set => this._testMigrateInputBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITestMigrateInput TestMigrateInputBody { get => this._testMigrateInputBody; set => this._testMigrateInputBody = value; }
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -451,12 +451,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem> response)
         {
             using( NoSynchronizationContext )
             {
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem
                 WriteObject((await response));
             }
         }

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateManagedInstanceWithIdentity");
         }
 
-        [Fact(Skip = "Skip due to bug in backend which is currently deploying")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateUpdateManagedInstanceWithMinimalTlsVersion()
         {
@@ -83,6 +83,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestCreateManagedInstanceWithMaintenanceConfigurationId()
         {
             RunPowerShellTest("Test-CreateManagedInstanceWithMaintenanceConfigurationId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedInstanceWithMultiAzEnabled()
+        {
+            RunPowerShellTest("Test-CreateManagedInstanceWithMultiAzEnabled");
         }
     }
 }

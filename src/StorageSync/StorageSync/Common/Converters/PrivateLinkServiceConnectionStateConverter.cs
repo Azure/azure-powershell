@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         protected override StorageSyncModels.PrivateLinkServiceConnectionState Transform(PSPrivateLinkServiceConnectionState source) => new StorageSyncModels.PrivateLinkServiceConnectionState(
             source.Status,
             source.Description,
-            source.ActionRequired);
+            source.ActionsRequired);
 
         /// <summary>
         /// Transforms the specified source.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             {
                 Status = source.Status,
                 Description = source.Description,
-                ActionRequired = source.ActionRequired,
+                ActionsRequired = source.ActionsRequired,
             };
         }
     }

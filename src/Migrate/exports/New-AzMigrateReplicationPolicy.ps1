@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-The operation to create a replication policy
+The operation to create a replication policy.
 .Description
-The operation to create a replication policy
+The operation to create a replication policy.
 .Example
 PS C:\> $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtPolicyCreationInput]::new()
 PS C:\> $providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
@@ -32,7 +32,7 @@ Location Name       Type
          
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,13 +44,13 @@ PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: The ReplicationProviderSet
 https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
 #>
 function New-AzMigrateReplicationPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Replication policy name
+    # Replication policy name.
     ${PolicyName},
 
     [Parameter(Mandatory)]
@@ -74,7 +74,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IPolicyProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicyProviderSpecificInput]
     # The ReplicationProviderSettings.
     # To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
     ${ProviderSpecificInput},
@@ -152,6 +152,8 @@ begin {
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

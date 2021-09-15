@@ -22,6 +22,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Insights.TransitionalClasses;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Gets or sets the InputObject parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The complete spec of an AutoscaleSetting")]
+        [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The complete spec of an AutoscaleSetting")]
         [ValidateNotNullOrEmpty]
         [Alias("SettingSpec")]
         public PSAutoscaleSetting InputObject { get; set; }
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Gets or set the resource group name
         /// </summary>
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
-        [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceGroup")]
@@ -90,6 +91,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id for the setting")]
         [ValidateNotNullOrEmpty]
+        [Alias("TargetResourceUri")]
         public string TargetResourceId { get; set; }
 
         /// <summary>
@@ -142,6 +144,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
 
                 this.Location = this.InputObject.Location;
                 this.Name = this.InputObject.Name;
+                this.ResourceGroupName = this.ResourceGroupName ?? new ResourceIdentifier(this.InputObject.Id).ResourceGroupName;
 
                 // The semantics is if AutoscaleProfiles is given it will replace the existing Profiles
                 this.AutoscaleProfile = this.AutoscaleProfile ?? property.Profiles.ToList();

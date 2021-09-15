@@ -28,7 +28,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                   version: app.Version,
                   parameters: app.Parameters,
                   upgradePolicy: app.UpgradePolicy,
-                  provisioningState: app.ProvisioningState)
+                  provisioningState: app.ProvisioningState,
+                  identity: app.Identity,
+                  managedIdentities: app.ManagedIdentities)
         {
         }
     }

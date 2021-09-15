@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         {
             base.ExecuteCmdlet();
 
-            var account = this.CognitiveServicesClient.Accounts.GetProperties(
+            var account = this.CognitiveServicesClient.Accounts.Get(
                 this.ResourceGroupName,
                 this.Name);
 

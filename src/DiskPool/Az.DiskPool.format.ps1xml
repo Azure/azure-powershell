@@ -83,26 +83,38 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AvailabilityZone</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Type</PropertyName>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AvailabilityZone</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -297,20 +309,32 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AdditionalCapability</Label>
+            <Label>SkuName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SkuTier</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>AvailabilityZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AdditionalCapability</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AdditionalCapability</PropertyName>
+                <PropertyName>SkuName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SkuTier</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>AvailabilityZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AdditionalCapability</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -687,12 +711,18 @@
           <TableColumnHeader>
             <Label>Category</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Endpoint</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Category</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Endpoint</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

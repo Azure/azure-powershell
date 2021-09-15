@@ -1,12 +1,13 @@
 {
-  "Get-AzMigrateSolution+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/BugBashAVSVMware/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview+1": {
+  "Get-AzMigrateSolution+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Migrate/migrateProjects/cbtsignoff2105project/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/migrateProjects/BugBashAVSVMware/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Migrate/migrateProjects/cbtsignoff2105project/solutions/Servers-Migration-ServerMigration?api-version=2018-09-01-preview",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "ff15ca16-6c2c-4416-a113-51815bd94d37" ],
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "296b6e3a-6903-4e5f-9863-c33538577eea" ],
         "CommandName": [ "Get-AzMigrateSolution" ],
         "FullCommandName": [ "Get-AzMigrateSolution_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,20 +22,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "adf83548-7dd0-401d-831c-8b3372401985" ],
+        "x-ms-request-id": [ "0f128bb9-130c-4276-8d89-051687bd1dc9" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
-        "x-ms-correlation-request-id": [ "1301ceeb-8bc6-4900-a296-ce6359f7eecd" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20200925T191233Z:1301ceeb-8bc6-4900-a296-ce6359f7eecd" ],
-        "Date": [ "Fri, 25 Sep 2020 19:12:33 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "e02f5036-6674-4938-b3d8-5d1ccbdda3eb" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20210720T114948Z:e02f5036-6674-4938-b3d8-5d1ccbdda3eb" ],
+        "Date": [ "Tue, 20 Jul 2021 11:49:47 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1269" ],
+        "Content-Length": [ "999" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/MigrateProjects/BugBashAVSVMware/Solutions/Servers-Migration-ServerMigration\",\"name\":\"Servers-Migration-ServerMigration\",\"type\":\"Microsoft.Migrate/MigrateProjects/Solutions\",\"etag\":\"\\\"010097f1-0000-1800-0000-5ee9ae2b0000\\\"\",\"properties\":{\"tool\":\"ServerMigration\",\"purpose\":\"Migration\",\"goal\":\"Servers\",\"status\":\"Active\",\"cleanupState\":\"None\",\"summary\":{\"instanceType\":\"Servers\",\"discoveredCount\":0,\"assessedCount\":0,\"replicatingCount\":0,\"testMigratedCount\":0,\"migratedCount\":0},\"details\":{\"groupCount\":0,\"assessmentCount\":0,\"extendedDetails\":{\"applianceNameToSiteIdMapV2\":\"[\\r\\n  {\\r\\n    \\\"ApplianceName\\\": \\\"BBVMwareAVS\\\",\\r\\n    \\\"SiteId\\\": \\\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.OffAzure/VMwareSites/BBVMwareAVScbbcsite\\\"\\r\\n  }\\r\\n]\",\"projectId\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.Migrate/assessmentprojects/BugBashAVSVMwarea7fdproject\",\"vaultId\":\"/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/BugBashAVSVMware/providers/Microsoft.RecoveryServices/vaults/BugBashAVSVMwarea7fdrsvault\"}}}}"
+      "Content": "{\"id\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Migrate/MigrateProjects/cbtsignoff2105project/Solutions/Servers-Migration-ServerMigration\",\"name\":\"Servers-Migration-ServerMigration\",\"type\":\"Microsoft.Migrate/MigrateProjects/Solutions\",\"etag\":\"\\\"0100757e-0000-3300-0000-60adf2ed0000\\\"\",\"properties\":{\"tool\":\"ServerMigration\",\"purpose\":\"Migration\",\"goal\":\"Servers\",\"status\":\"Active\",\"cleanupState\":\"None\",\"summary\":{\"instanceType\":\"Servers\",\"discoveredCount\":0,\"assessedCount\":0,\"replicatingCount\":3,\"testMigratedCount\":2,\"migratedCount\":2},\"details\":{\"groupCount\":0,\"assessmentCount\":0,\"extendedDetails\":{\"serversOnWindows\":\"0\",\"serversOnLinux\":\"0\",\"serversOnOther\":\"0\",\"dependencyEnabledMachines\":\"0\",\"machinesHavingSqlServers\":\"0\",\"machinesHavingWebServers\":\"0\",\"vaultId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault\"}}}}",
+      "isContentBase64": false
     }
   }
 }

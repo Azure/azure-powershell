@@ -79,6 +79,11 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "Takes a flag, enabled/disabled, to specify whether public network access to server is allowed or not. When disabled, only connections made through Private Links can reach this server.")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
+        
+        [Parameter(Mandatory = false,
+            HelpMessage = "When enabled, only outbound connections allowed by the outbound firewall rules will succeed.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string RestrictOutboundNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets or sets the managed instance minimal tls version
@@ -114,8 +119,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Type of identity to be assigned to the server..
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
-        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "\"SystemAssigned,UserAssigned\"", "None")]
         public string IdentityType { get; set; }
 
         /// <summary>
@@ -216,6 +221,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, null),
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 PublicNetworkAccess = this.PublicNetworkAccess,
+                RestrictOutboundNetworkAccess = this.RestrictOutboundNetworkAccess,
                 PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
                 KeyId = this.KeyId,
                 Administrators = new Management.Sql.Models.ServerExternalAdministrator()

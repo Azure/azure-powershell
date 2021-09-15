@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
 
             if (this is PSManagedStatefulService)
             {
-                var statefullService = this as PSManagedStatefulService;
+                var statefulService = this as PSManagedStatefulService;
 
                 serviceResource.Properties = new StatefulServiceProperties(
                     provisioningState: this.ProvisioningState,
@@ -97,17 +97,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                     servicePlacementPolicies: this.ServicePlacementPolicies,
                     defaultMoveCost: this.DefaultMoveCost,
                     scalingPolicies: this.ScalingPolicies,
-                    hasPersistedState: statefullService.HasPersistedState,
-                    targetReplicaSetSize: statefullService.TargetReplicaSetSize,
-                    minReplicaSetSize: statefullService.MinReplicaSetSize,
-                    replicaRestartWaitDuration: statefullService.ReplicaRestartWaitDuration,
-                    quorumLossWaitDuration: statefullService.QuorumLossWaitDuration,
-                    standByReplicaKeepDuration: statefullService.StandByReplicaKeepDuration,
-                    servicePlacementTimeLimit: statefullService.ServicePlacementTimeLimit);
+                    hasPersistedState: statefulService.HasPersistedState,
+                    targetReplicaSetSize: statefulService.TargetReplicaSetSize,
+                    minReplicaSetSize: statefulService.MinReplicaSetSize,
+                    replicaRestartWaitDuration: statefulService.ReplicaRestartWaitDuration,
+                    quorumLossWaitDuration: statefulService.QuorumLossWaitDuration,
+                    standByReplicaKeepDuration: statefulService.StandByReplicaKeepDuration,
+                    servicePlacementTimeLimit: statefulService.ServicePlacementTimeLimit);
             }
             else if (this is PSManagedStatelessService)
             {
-                var statefullService = this as PSManagedStatelessService;
+                var statelessService = this as PSManagedStatelessService;
 
                 serviceResource.Properties = new StatelessServiceProperties(
                     provisioningState: this.ProvisioningState,
@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                     servicePlacementPolicies: this.ServicePlacementPolicies,
                     defaultMoveCost: this.DefaultMoveCost,
                     scalingPolicies: this.ScalingPolicies,
-                    instanceCount: statefullService.InstanceCount,
-                    minInstanceCount: statefullService.MinInstanceCount,
-                    minInstancePercentage: statefullService.MinInstancePercentage);
+                    instanceCount: statelessService.InstanceCount,
+                    minInstanceCount: statelessService.MinInstanceCount,
+                    minInstancePercentage: statelessService.MinInstancePercentage);
             }
             else
             {

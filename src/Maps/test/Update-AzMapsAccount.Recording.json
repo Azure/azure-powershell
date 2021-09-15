@@ -1,0 +1,115 @@
+{
+  "Update-AzMapsAccount+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "67" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
+        "x-ms-request-id": [ "10d22d35-a5f4-46a8-910b-df8add2cba51" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "69c39d7c-85ed-4f1c-8d15-57dbbb44fa71" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070424Z:69c39d7c-85ed-4f1c-8d15-57dbbb44fa71" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:04:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "533" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"8e667b11-ea54-41a5-a4c0-c0fa98db5da8\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3\",\r\n  \"name\": \"mapsim1yk3\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzMapsAccount+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "850196e1-3fd0-46b1-a08d-5f1a2abe67b1" ],
+        "CommandName": [ "Get-AzMapsAccount" ],
+        "FullCommandName": [ "Get-AzMapsAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "x-ms-request-id": [ "ed42c488-6824-4387-939b-f3f3dd0edc17" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "bca1e9f1-9f73-41c4-9b6d-3af85006a5cf" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070425Z:bca1e9f1-9f73-41c4-9b6d-3af85006a5cf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:04:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "533" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"8e667b11-ea54-41a5-a4c0-c0fa98db5da8\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3\",\r\n  \"name\": \"mapsim1yk3\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzMapsAccount+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "67" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
+        "x-ms-request-id": [ "1a94072c-98ed-4b9c-ba5f-a5e9bbf8dc96" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "a5dbc19a-4857-4b57-83f9-a487c3388942" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070427Z:a5dbc19a-4857-4b57-83f9-a487c3388942" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 23 Jun 2021 07:04:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "533" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"8e667b11-ea54-41a5-a4c0-c0fa98db5da8\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3\",\r\n  \"name\": \"mapsim1yk3\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

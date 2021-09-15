@@ -23,6 +23,12 @@ List Kubernetes managed clusters.
 ### [Get-AzAksNodePool](Get-AzAksNodePool.md)
 List node pools in specified cluster.
 
+### [Get-AzAksNodePoolUpgradeProfile](Get-AzAksNodePoolUpgradeProfile.md)
+Gets the details of the upgrade profile for an agent pool with a specified resource group and managed cluster name.
+
+### [Get-AzAksUpgradeProfile](Get-AzAksUpgradeProfile.md)
+Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.
+
 ### [Get-AzAksVersion](Get-AzAksVersion.md)
 List available version for creating managed Kubernetes cluster.
 
@@ -48,10 +54,16 @@ Delete node pool from managed cluster.
 Update or create a managed Kubernetes cluster.
 
 ### [Set-AzAksClusterCredential](Set-AzAksClusterCredential.md)
-Reset the ServicePrincipal of a existing aks cluster.
+Reset the ServicePrincipal of an existing AKS cluster.
+
+### [Start-AzAksCluster](Start-AzAksCluster.md)
+Starts a Stopped Managed Cluster
 
 ### [Start-AzAksDashboard](Start-AzAksDashboard.md)
 Create a Kubectl SSH tunnel to the managed cluster's dashboard.
+
+### [Stop-AzAksCluster](Stop-AzAksCluster.md)
+Stops a Running Managed Cluster
 
 ### [Stop-AzAksDashboard](Stop-AzAksDashboard.md)
 Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.

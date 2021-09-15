@@ -621,8 +621,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var runbook = this.CreateRunbookByName(resourceGroupName, automationAccountName, runbookName, description, tags, type, logProgress, logVerbose, overwrite);
 
-                FileStream SourceStream = File.Open(runbookPath, FileMode.Open);
-                this.automationManagementClient.RunbookDraft.ReplaceContent(resourceGroupName, automationAccountName, runbookName, SourceStream);
+                using(FileStream SourceStream = File.Open(runbookPath, FileMode.Open))
+                {
+                    this.automationManagementClient.RunbookDraft.ReplaceContent(resourceGroupName, automationAccountName, runbookName, SourceStream);
+                }
 
                 if (published)
                 {

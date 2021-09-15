@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             SetObjectIdentifier(vaultUriHelper, new Microsoft.Azure.KeyVault.KeyIdentifier(key.Id.ToString()));
 
             Key = key.Key.ToTrack1JsonWebKey();
+            KeySize = JwkHelper.ConvertToRSAKey(Key)?.KeySize;
             Attributes = new PSKeyVaultKeyAttributes(
                 key.Properties.Enabled,
                 /// see https://docs.microsoft.com/en-us/dotnet/standard/datetime/converting-between-datetime-and-offset#conversions-from-datetimeoffset-to-datetime
@@ -105,6 +106,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             get { return Key.Kty; }
         }
 
+        public string CurveName
+        {
+            get { return Key.CurveName; }
+        }
+        
         public int? KeySize;
 
     }

@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzDataProtectionBackupVault' {
     It 'Get' {
-        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.VaultName
+        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $env.TestBackupVault.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.VaultName
         $vault.Name | Should be $env.TestBackupVault.VaultName
     }
 }

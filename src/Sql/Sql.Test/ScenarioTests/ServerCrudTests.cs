@@ -82,11 +82,32 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateAndGetServerWithPublicNetworkAccess");
         }
 
-        [Fact(Skip = "Test needs to be rewritten, skipping until owning team can update")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdateWithPublicNetworkAccess()
         {
             RunPowerShellTest("Test-UpdateServerWithPublicNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestOutboundFirewallRulesCRUD()
+        {
+            RunPowerShellTest("Test-OutboundFirewallRulesCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateAndGetWithRestrictOutboundNetworkAccess()
+        {
+            RunPowerShellTest("Test-CreateAndGetServerWithRestrictOutboundNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdateWithRestrictOutboundNetworkAccess()
+        {
+            RunPowerShellTest("Test-UpdateServerWithRestrictOutboundNetworkAccess");
         }
 
         [Fact]
