@@ -1968,7 +1968,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/8514c794-de23-4be0-a220-3349e38b00a8/resourceGroups/PowerShellTest-9/providers/Microsoft.Cache/Redis/redisteam009\",\r\n  \"location\": \"East US\",\r\n  \"name\": \"redisteam009\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {\r\n    \"example-key\": \"example-value\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"4.0.14\",\r\n    \"sku\": {\r\n      \"name\": \"Premium\",\r\n      \"family\": \"P\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"instances\": [\r\n      {\r\n        \"sslPort\": 15000,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      },\r\n      {\r\n        \"sslPort\": 15001,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      }\r\n    ],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"7500\",\r\n      \"maxmemory-reserved\": \"200\",\r\n      \"maxfragmentationmemory-reserved\": \"300\",\r\n      \"maxmemory-delta\": \"200\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"EuhrzjxK18jYxHsswtXq3remQ4WeAC8FrCWdmI3zBck=\",\r\n      \"secondaryKey\": \"3Ie+tmslJdroxRa+JPz3drwvC7LTaVZRAAVba1ptKu8=\"\r\n    },\r\n    \"hostName\": \"redisteam009.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"replicasPerMaster\": 1,\r\n    \"linkedServers\": [],\r\n    \"replicasPerPrimary\": 1\r\n  },\r\n  \"zones\": [\r\n    \"1\",\r\n    \"2\"\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/8514c794-de23-4be0-a220-3349e38b00a8/resourceGroups/PowerShellTest-9/providers/Microsoft.Cache/Redis/redisteam009\",\r\n  \"location\": \"East US\",\r\n  \"name\": \"redisteam009\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {\r\n    \"example-key\": \"example-value\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"4.0.14\",\r\n    \"sku\": {\r\n      \"name\": \"Premium\",\r\n      \"family\": \"P\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"instances\": [\r\n      {\r\n        \"sslPort\": 15000,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      },\r\n      {\r\n        \"sslPort\": 15001,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      }\r\n    ],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"7500\",\r\n      \"maxmemory-reserved\": \"200\",\r\n      \"maxfragmentationmemory-reserved\": \"300\",\r\n      \"maxmemory-delta\": \"200\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"*****\",\r\n      \"secondaryKey\": \"*****\"\r\n    },\r\n    \"hostName\": \"redisteam009.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"replicasPerMaster\": 1,\r\n    \"linkedServers\": [],\r\n    \"replicasPerPrimary\": 1\r\n  },\r\n  \"zones\": [\r\n    \"1\",\r\n    \"2\"\r\n  ]\r\n}",
       "StatusCode": 201
     },
     {
@@ -2034,7 +2034,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"EuhrzjxK18jYxHsswtXq3remQ4WeAC8FrCWdmI3zBck=\",\r\n  \"secondaryKey\": \"3Ie+tmslJdroxRa+JPz3drwvC7LTaVZRAAVba1ptKu8=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"*****\",\r\n  \"secondaryKey\": \"*****\"\r\n}",
       "StatusCode": 200
     },
     {
