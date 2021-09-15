@@ -193,10 +193,11 @@ param(
     ${Api},
 
     [Parameter(ParameterSetName='ApplicationIdWithUpdateParamsParameterSet', Mandatory)]
+    [Alias('AppId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: application id
-    ${AppId},
+    ${ApplicationId},
 
     [Parameter(ParameterSetName='InputObjectWithUpdateParamsParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
@@ -484,64 +485,34 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        switch ($parameterSet) {
-          'ApplicationObjectIdWithUpdateParamsParameterSet' {
-              $val = $PSBoundParameters['ObjectId']
-              $null = $PSBoundParameters.Remove('ObjectId')
-              break
-          }
-          'ApplicationIdWithUpdateParamsParameterSet' {
-              try {
-                  $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['AppId']
-              } catch {
-                  throw
-              }
-              $val = $app.Id
-              $null = $PSBoundParameters.Remove('AppId')
-              break
-          }
-          'InputObjectWithUpdateParamsParameterSet' {
-              $val = $PSBoundParameters['InputObject'].Id
-              $null = $PSBoundParameters.Remove('InputObject')
-          }
-          default {
-              break
-          }
-        }
-        $PSBoundParameters['Id'] = $val
-
-        $parameterSet = 'Az.Resources.MSGraph.private\Update-AzMgApplication_UpdateExpanded'
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($parameterSet, [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
+)  
 
 process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
+    switch ($PSCmdlet.ParameterSetName) {
+      'ApplicationObjectIdWithUpdateParamsParameterSet' {
+        $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
+          $null = $PSBoundParameters.Remove('ObjectId')
+          break
+      }
+      'ApplicationIdWithUpdateParamsParameterSet' {
+          try {
+            $PSBoundParameters['Id'] = (Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId']).Id
+          } catch {
+              throw
+          }
+          $null = $PSBoundParameters.Remove('ApplicationId')
+          break
+      }
+      'InputObjectWithUpdateParamsParameterSet' {
+          $PSBoundParameters['Id'] = $PSBoundParameters['InputObject'].Id
+          $null = $PSBoundParameters.Remove('InputObject')
+          break
+      }
+      default {
+          break
+      }
     }
-}
 
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
+    MSGraph.internal/Update-AzMgApplication @PSBoundParameters
 }
 }

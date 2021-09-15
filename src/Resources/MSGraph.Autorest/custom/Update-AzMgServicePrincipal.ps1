@@ -545,64 +545,32 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        switch ($parameterSet) {
-            'SpObjectIdWithDisplayNameParameterSet' {
-                $val = $PSBoundParameters['ObjectId']
-                $null = $PSBoundParameters.Remove('ObjectId')
-            } 
-            'SpApplicationIdWithDisplayNameParameterSet' {
-                try {
-                    $sp = Get-AzMgServicePrincipal -ApplicationId $PSBoundParameters['AppId']
-                } catch {
-                    throw
-                }
-                $val = $sp.Id
-                $null = $PSBoundParameters.Remove('AppId')
-            }
-            'SPNWithDisplayNameParameterSet' {
-                try {
-                    $sp = Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName']
-                } catch {
-                    throw
-                }
-                $val = $sp.Id
-                $null = $PSBoundParameters.Remove('ServicePrincipalName')
-            }
-        }
-
-        $PSBoundParameters['Id'] = $val
-        
-        $parameterSet = 'Az.Resources.MSGraph.private\Update-AzMgServicePrincipal_UpdateExpanded'
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($parameterSet, [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
 process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
+  switch ($PSCmdlet.ParameterSetName) {
+      'SpObjectIdWithDisplayNameParameterSet' {
+            $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
+            $null = $PSBoundParameters.Remove('ObjectId')
+              break
+      } 
+      'SpApplicationIdWithDisplayNameParameterSet' {
+          try {
+              $PSBoundParameters['Id'] =(Get-AzMgServicePrincipal -ApplicationId $PSBoundParameters['ApplicationId']).Id
+          } catch {
+              throw
+          }
+          $null = $PSBoundParameters.Remove('ApplicationId')
+          break
+      }
+      'SPNWithDisplayNameParameterSet' {
+          try {
+              $PSBoundParameters['Id']  = (Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName']).Id
+          } catch {
+              throw
+          }
+          $null = $PSBoundParameters.Remove('ServicePrincipalName')
+      }
+  }
 
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
+  MSGraph.internal/Update-AzMgServicePrincipal @PSBoundParameters
 }
 }

@@ -36,14 +36,45 @@ https://docs.microsoft.com/powershell/module/az.resources/remove-azmgserviceprin
 #>
 function Remove-AzMgServicePrincipal {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('ServicePrincipalId')]
+    [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]
+    [Alias('ServicePrincipalId', 'Id')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of servicePrincipal
-    ${Id},
+    ${ObjectId},
+
+    [Parameter(ParameterSetName='ApplicationIdParameterSet', Mandatory)]
+    [Alias('AppId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [System.String]
+    # key: application id
+    ${ApplicationId},
+
+    [Parameter(ParameterSetName='SPNParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [System.String]
+    # key: service principal name
+    ${ServicePrincipalName},
+
+    [Parameter(ParameterSetName='DisplayNameParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [System.String]
+    # key: display name
+    ${DisplayName},
+
+    [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
+    # key: service principal object
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ApplicationObjectParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
+    # key: application object
+    ${ApplicationObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
@@ -105,39 +136,59 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Delete = 'Az.Resources.MSGraph.private\Remove-AzMgServicePrincipal_Delete';
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
 process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
+    switch ($PSCmdlet.ParameterSetName) {
+        'ObjectIdParameterSet' {
+            $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
+            $null = $PSBoundParameters.Remove('ObjectId')
+            break
+        }
+        'ApplicationIdParameterSet' {
+            try {
+                $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal -ApplicationId $PSBoundParameters['ApplicationId']).Id
+            } catch {
+                throw
+            }
+            $null = $PSBoundParameters.Remove('ApplicationId')
+            break
+        }
+        'SPNParameterSet' {
+            try {
+                $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName']).Id
+            } catch {
+                throw
+            }
+            $null = $PSBoundParameters['ServicePrincipalName']
+            break
+        }
+        'DisplayNameParameterSet' {
+            try {
+                $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal -DisplayName $PSBoundParameters['DisplayName']).Id
+            } catch {
+                throw
+            }
+            $null = $PSBoundParameters.Remove['DisplayName']
+            break
+        }
+        'InputObjectParameterSet' {
+            $PSBoundParameters['Id'] = $PSBoundParameters['InputObject'].Id
+            $null = $PSBoundParameters.Remove('InputObject')
+            break
+        }
+        'ApplicationObjectParameterSet' {
+            try {
+                $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal -ApplicationId $PSBoundParameters['ApplicationObject'].AppId).Id
+            } catch {
+                throw
+            }
+            $null = $PSBoundParameters.Remove('ApplicationObject')
+            break
+        }
+        default {
+            break
+        }
     }
-}
 
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
+    MsGraph.Internal/Remove-AzMgServicePrincipal @PSBoundParameters
 }
 }

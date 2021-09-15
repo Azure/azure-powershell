@@ -589,37 +589,7 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $parameterSet = 'Az.Resources.MSGraph.private\New-AzMgApplication_CreateExpanded'
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($parameterSet, [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
 process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
+    MSGraph.internal/New-AzMgApplication @PSBoundParameters
 }
 }

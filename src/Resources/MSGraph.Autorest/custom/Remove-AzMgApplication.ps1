@@ -117,71 +117,41 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-
-        $parameterSet = $PSCmdlet.ParameterSetName
-        switch ($parameterSet) {
-            'ObjectIdParameterSet' {
-                $key2Remove = 'ObjectId'
-                $id = $PSBoundParameters['ObjectId']
-                break
-            }
-            'InputObjectParameterSet' {
-                $key2Remove = 'InputObject'
-                $id = $PSBoundParameters[$key2Remove].Id
-                break
-            }
-            'ApplicationDisplayNameParameterSet' {
-                $key2Remove = 'DisplayName'
-                try {
-                    $id = (Get-AzMgApplication -DisplayName $PSBoundParameters[$key2Remove]).Id
-                } catch {
-                    throw
-                }
-                break
-            }
-            'ApplicationIdParameterSet' {
-                $key2Remove = 'ApplicationId'
-                try {
-                    $id = (Get-AzMgApplication -ApplicationId $PSBoundParameters[$key2Remove]).Id
-                } catch {
-                    throw
-                }
-                break
-            }
-        }
-        $null = $PSBoundParameters.Remove($key2Remove)
-        $PSBoundParameters['Id'] = $id
-
-        $parameterSet = 'Az.Resources.MSGraph.private\Remove-AzMgApplication_Delete'
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($parameterSet, [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
 process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
+    switch ($PSCmdlet.ParameterSetName) {
+        'ObjectIdParameterSet' {
+            $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
+            $null = $PSBoundParameters.Remove('ObjectId')
+            break
+        }
+        'InputObjectParameterSet' {
+            $PSBoundParameters['Id'] = $PSBoundParameters['InputObject'].Id
+            $null = $PSBoundParameters.Remove('InputObject')
+            break
+        }
+        'ApplicationDisplayNameParameterSet' {
+            try {
+                $PSBoundParameters['Id'] = (Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']).Id
+            } catch {
+                throw
+            }
+            $null = $PSBoundParameters.Remove('DisplayName')
+            break
+        }
+        'ApplicationIdParameterSet' {
+            try {
+                $PSBoundParameters['Id'] = (Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId']).Id
+            } catch {
+                throw
+            }
+            $null = $PSBoundParameters.Remove('ApplicationId')
+            break
+        }
+        default {
+            break
+        }
     }
-}
 
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
+    MSGraph.internal/Remove-AzMgApplication @PSBoundParameters
 }
 }

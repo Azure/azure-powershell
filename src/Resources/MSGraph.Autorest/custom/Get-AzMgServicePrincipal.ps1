@@ -47,9 +47,10 @@ param(
 
     [Parameter(ParameterSetName='SearchStringParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [Alias('DisplayNameStartsWith')]
     [System.String]
     # serviceprincipal display name starts with
-    ${DisplayNameStartWith},
+    ${DisplayNameBeginsWith},
 
     [Parameter(ParameterSetName='DisplayNameParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
@@ -59,6 +60,7 @@ param(
 
     [Parameter(ParameterSetName='ApplicationIdParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [Alias('AppId')]
     [System.String]
     # application id of serviceprincipal
     ${ApplicationId},
@@ -169,84 +171,48 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $cmdName = 'Az.Resources.MSGraph.private\Get-AzMgServicePrincipal_List'
-        if ($parameterSet -ne "EmptyParameterSet") {
-            if ($parameterSet -eq "ObjectIdParameterSet") {
-                    $cmdName = 'Az.Resources.MSGraph.private\Get-AzMgServicePrincipal_Get';
-                    $id = $PSBoundParameters['ObjectId']
-                    $null = $PSBoundParameters.Remove('ObjectId')
-                    $PSBoundParameters.Add('Id', $id)
-            } else {
-                switch ($parameterSet) {
-                    "SearchStringParameterSet" {
-                        $key2Remove = "DisplayNameStartWith"
-                        $key2Search = "DisplayName"
-                        break
-                    }
-                    "DisplayNameParameterSet" {
-                        $key2Remove = "DisplayName"
-                        $key2Search = $key2Remove
-                        break
-                    }
-                    "ApplicationObjectParameterSet" {
-                        $obj = $PSBoundParameters["ApplicationObject"]
-                        $null = $PSBoundParameters.Remove("ApplicationObject")
-                        $key2Remove = "ApplicationId"
-                        $key2Search = 'AppId'
-                        $PSBoundParameters[$key2Remove] = $obj.AppId
-                        break;
-                    }
-                    "ApplicationIdParameterSet" {
-                        $key2Remove = "ApplicationId"
-                        $key2Search = 'AppId'
-                        break
-                    }
-                    "SPNParameterSet" {
-                        $key2Remove = "ServicePrincipalName"
-                        $key2Search = 'ServicePrincipalNames'
-                    }
-                    default {
-                        break
-                    }
-                }
-
-                $val = $key2Search + ":" + $PSBoundParameters[$key2Remove]
-                $null = $PSBoundParameters.Remove($key2Remove)
-                $PSBOundParameters["Search"] = $val
-                $PSBoundParameters['ConsistencyLevel'] = 'eventual'
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($cmdName, [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
-    }
-}
-
 process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
+    switch ($PSCmdlet.ParameterSetName) {
+        "ObjectIdParameterSet" {
+            $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
+            $null = $PSBoundParameters.Remove('ObjectId')
+            break
+        }
+        'SearchStringParameterSet' {
+            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
+            $PSBoundParameters['Search'] = "DisplayName:$($PSBoundParameters['DisplayNameBeginsWith'])"
+            $null = $PSBoundParameters.Remove('DisplayNameBeginsWith')
+            break
+        }
+        'DisplayNameParameterSet' {
+            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
+            $PSBoundParameters['Search'] = "DisplayName:$($PSBoundParameters['DisplayName'])"
+            $null = $PSBoundParameters.Remove('DisplayName')
+            break
+        }
+        'ApplicationObjectParameterSet' {
+            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
+            $PSBoundParameters['Search'] = "AppId:$($PSBoundParameters['ApplicationObject'].AppId)"
+            $null = $PSBoundParameters.Remove('ApplicationObject')
+            break
+        }
+        'ApplicationIdParameterSet' {
+            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
+            $PSBoundParameters['Search'] = "AppId:$($PSBoundParameters['ApplicationId'])"
+            $null = $PSBoundParameters.Remove('ApplicationId')
+            break
+        }
+        'SPNParameterSet' {
+            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
+            $PSBoundParameters['Search'] = "ServicePrincipalName:$($PSBoundParameters['ServicePrincipalName'])"
+            $null = $PSBoundParameters.Remove('ServicePrincipalName')
+            break
+        }
+        default {
+            break
+        }
     }
-}
 
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
+    MSGraph.internal/Get-AzMgServicePrincipal @PSBoundParameters
 }
 }
