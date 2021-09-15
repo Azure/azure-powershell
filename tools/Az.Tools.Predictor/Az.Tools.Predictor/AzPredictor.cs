@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Common.Share;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
@@ -164,6 +165,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void OnCommandLineAccepted(PredictionClient client, IReadOnlyList<string> history)
         {
             _commandLineExecutedCompletion = new TaskCompletionSource();
+
+            SharedVariable.PredictorCorrelationId = _telemetryClient.CommandId;
 
             if (history.Count > 0)
             {

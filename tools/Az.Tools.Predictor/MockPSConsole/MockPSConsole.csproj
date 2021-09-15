@@ -2,11 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-    <Authors>Microsoft Corporation</Authors>
     <Product>A mock PowerShell console with PSReadLine that echos the command back</Product>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
     <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\MockPSConsole\</OutputPath>
   </PropertyGroup>

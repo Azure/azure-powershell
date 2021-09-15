@@ -44,10 +44,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
         private readonly IAzContext _azContext;
 
-        /// <summary>
-        /// The id to identify the events proceeding to a CommandHistory
-        /// </summary>
-        private string _commandId = Guid.NewGuid().ToString();
+        /// <inheritdoc/>
+        public string CommandId { get; private set; } = Guid.NewGuid().ToString();
 
         /// <summary>
         /// The action to handle the <see cref="ITelemetryData"/> in a thread pool.
@@ -80,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         {
             PostTelemetryData(telemetryData);
 
-            _commandId = Guid.NewGuid().ToString();
+            CommandId = Guid.NewGuid().ToString();
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording CommandHistory");
@@ -209,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
             telemetryData.SessionId = SessionId;
             telemetryData.RequestId = RequestId;
-            telemetryData.CommandId = _commandId;
+            telemetryData.CommandId = CommandId;
 
             _telemetryDispatcher.Post(telemetryData);
         }
