@@ -26,6 +26,7 @@
 * Updated cmdlet to add 'TunnelInterface' property for backend pool related operations.
     - `New-AzLoadBalancerBackendAddressPool`
     - `Set-AzLoadBalancerBackendAddressPool`
+* Onboard Azure Resource Manager to Private Link Common Cmdlets
 
 ## Version 4.10.0
 * Added public ip address as an optional parameter to create route server
