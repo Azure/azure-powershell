@@ -13,7 +13,7 @@ Updates the Bastion Resource.
 ## SYNTAX
 
 ```
-Set-AzBastion -InputObject <PSBastion> [-Sku <String>] [-ScaleUnits <Int32>] [-Tag <Hashtable>] [-Force]
+Set-AzBastion -InputObject <PSBastion> [-Sku <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The **Set-AzBastion** cmdlet can be used to update the Sku, Scale Units or Tags 
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzBastion -InputObject $bastionObj -Sku "Standard" -ScaleUnits 10 -Force
+PS C:\> Set-AzBastion -InputObject $bastionObj -Sku "Standard" -ScaleUnit 10 -Force
 Name                 : MyBastion
 Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyRg/providers/Microsoft.Network/bastionHosts/MyBastion
 Etag                 : W/"000"
@@ -95,7 +95,7 @@ Sku                  : {
 Scale Units          : 2
 
 PS C:\> $bastionObj.Sku.Name = "Standard"
-PS C:\> $bastionObj.ScaleUnits = 50
+PS C:\> $bastionObj.ScaleUnit = 50
 PS C:\> Set-AzBastion -InputObject $bastionObj -Force
 Name                 : MyBastion
 Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyRg/providers/Microsoft.Network/bastionHosts/MyBastion
@@ -193,7 +193,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ScaleUnits
+### -ScaleUnit
 The Bastion Scale Units
 
 ```yaml

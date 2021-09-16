@@ -1,6 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.Network.Models.Bastion
 {
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using MNM = Management.Network.Models;
 
     public class PSBastionSku
     {
@@ -9,7 +10,7 @@
 
         public PSBastionSku()
         {
-            this.Name = "Basic";
+            this.Name = MNM.BastionHostSkuName.Basic;
         }
 
         public PSBastionSku(string skuName)

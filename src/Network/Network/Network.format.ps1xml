@@ -6570,7 +6570,7 @@
               </ListItem>
               <ListItem>
                 <Label>Scale Units</Label>
-                <PropertyName>ScaleUnits</PropertyName>
+                <PropertyName>ScaleUnit</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -6698,7 +6698,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>ScaleUnits</PropertyName>
+                <PropertyName>ScaleUnit</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

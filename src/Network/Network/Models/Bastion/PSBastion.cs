@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSBastionSku Sku { get; set; }
 
         [Ps1Xml(Label = "Scale Units", Target = ViewControl.List)]
-        public int? ScaleUnits { get; set; }
+        public int? ScaleUnit { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText

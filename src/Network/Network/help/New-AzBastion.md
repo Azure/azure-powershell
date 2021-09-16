@@ -15,49 +15,49 @@ Creates a bastion resource.
 ### ByPublicIpAddressByVirtualNetwork (Default)
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddress <PSPublicIpAddress>
- -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnits <Int32>] [-AsJob] [-Tag <Hashtable>]
+ -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnit <Int32>] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressByVirtualNetworkRGNameByVirtualNetworkName
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddress <PSPublicIpAddress>
- -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Sku <String>] [-ScaleUnits <Int32>] [-AsJob]
+ -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Sku <String>] [-ScaleUnit <Int32>] [-AsJob]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressByVirtualNetworkId
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddress <PSPublicIpAddress>
- -VirtualNetworkId <String> [-Sku <String>] [-ScaleUnits <Int32>] [-AsJob] [-Tag <Hashtable>]
+ -VirtualNetworkId <String> [-Sku <String>] [-ScaleUnit <Int32>] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressIdByVirtualNetwork
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressId <String>
- -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnits <Int32>] [-AsJob] [-Tag <Hashtable>]
+ -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnit <Int32>] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressIdByVirtualNetworkRGNameByVirtualNetworkName
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressId <String>
- -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Sku <String>] [-ScaleUnits <Int32>] [-AsJob]
+ -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Sku <String>] [-ScaleUnit <Int32>] [-AsJob]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressIdByVirtualNetworkId
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressId <String> -VirtualNetworkId <String>
- [-Sku <String>] [-ScaleUnits <Int32>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-Sku <String>] [-ScaleUnit <Int32>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetwork
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName <String>
- -PublicIpAddressName <String> -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnits <Int32>]
+ -PublicIpAddressName <String> -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnit <Int32>]
  [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -66,14 +66,14 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName 
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName <String>
  -PublicIpAddressName <String> -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Sku <String>]
- [-ScaleUnits <Int32>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-ScaleUnit <Int32>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkId
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName <String>
- -PublicIpAddressName <String> -VirtualNetworkId <String> [-Sku <String>] [-ScaleUnits <Int32>] [-AsJob]
+ -PublicIpAddressName <String> -VirtualNetworkId <String> [-Sku <String>] [-ScaleUnit <Int32>] [-AsJob]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -172,7 +172,7 @@ Scale Units          : 2
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "BastionPowershellTest" -Name "testVnet2"
 Add-AzVirtualNetworkSubnetConfig -Name "AzureBastionSubnet" -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/24"
 $vnet| Set-AzVirtualNetwork
-New-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion2" -PublicIpAddressRgName "BastionPowershellTest" -PublicIpAddressName "testIp2" -VirtualNetworkRgName "BastionPowershellTest" -VirtualNetworkName "testVnet2" -Sku "Standard" -ScaleUnits 3
+New-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion2" -PublicIpAddressRgName "BastionPowershellTest" -PublicIpAddressName "testIp2" -VirtualNetworkRgName "BastionPowershellTest" -VirtualNetworkName "testVnet2" -Sku "Standard" -ScaleUnit 3
 
 IpConfigurations     : {IpConf}
 DnsName              : bst-53757658-c4fd-4908-b1a7-0849e555d489.bastion.azure.com
@@ -331,7 +331,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScaleUnits
+### -ScaleUnit
 The Scale Units for BastionHost
 
 ```yaml

@@ -40,7 +40,7 @@
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "The Bastion Scale Units")]
-        public int? ScaleUnits { get; set; }
+        public int? ScaleUnit { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -102,13 +102,13 @@
                         this.InputObject.Sku = new PSBastionSku(getBastionHost.Sku.Name);
                     }
 
-                    if (this.ScaleUnits.HasValue)
+                    if (this.ScaleUnit.HasValue)
                     {
                         if(this.InputObject.Sku.Name.Equals(MNM.BastionHostSkuName.Standard))
                         {
-                            if (this.ScaleUnits >= 2 && this.ScaleUnits <= 50)
+                            if (this.ScaleUnit >= 2 && this.ScaleUnit <= 50)
                             {
-                                this.InputObject.ScaleUnits = this.ScaleUnits;
+                                this.InputObject.ScaleUnit = this.ScaleUnit;
                             }
                             else
                             {
@@ -122,13 +122,14 @@
                     }
                     else
                     {
-                        if (this.InputObject.ScaleUnits < 2 || this.InputObject.ScaleUnits > 50)
+                        if (this.InputObject.ScaleUnit < 2 || this.InputObject.ScaleUnit > 50)
                         {
                             throw new ArgumentException("Please select scale units value between 2 and 50");
                         }
                     }
 
                     MNM.BastionHost bastionHostModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BastionHost>(this.InputObject);
+                    bastionHostModel.ScaleUnits = this.InputObject.ScaleUnit;
                     bastionHostModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
                     this.BastionClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.Name, bastionHostModel);
