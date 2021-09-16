@@ -330,6 +330,66 @@ function Test-CortexCRUD
 
 <#
 .SYNOPSIS
+VpnSiteIsSecurity
+#>
+function Test-VpnSiteIsSecurity
+{
+ # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+	$virtualWanName = Get-ResourceName
+	$vpnSiteName1 = Get-ResourceName
+	$vpnSiteName2 = Get-ResourceName
+    
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the VpnSite
+		$vpnSiteAddressSpaces1 = New-Object string[] 1
+		$vpnSiteAddressSpaces1[0] = "192.168.2.0/24"
+		$ip1 = "1.2.3.4"
+		$createdVpnSite1 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1 -Location $rglocation -VirtualWan $virtualWan -IpAddress $ip1 -AddressSpace $vpnSiteAddressSpaces1 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps 10
+		$vpnSite1 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1
+		Assert-AreEqual $rgName $vpnSite1.ResourceGroupName
+		Assert-AreEqual $vpnSiteName1 $vpnSite1.Name
+		Assert-AreEqual $ip1 $vpnSite1.IpAddress
+		Assert-AreEqual $false $vpnSite1.IsSecuritySite
+
+		$ip2 = "2.3.4.5"
+		$vpnSiteAddressSpaces2 = New-Object string[] 1
+		$vpnSiteAddressSpaces2[0] = "192.168.3.0/24"
+		$createdVpnSite2 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2 -Location $rglocation -VirtualWan $virtualWan -IpAddress $ip2 -AddressSpace $vpnSiteAddressSpaces2 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps 10 -IsSecuritySite
+		$vpnSite2 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2
+		Assert-AreEqual $rgName $vpnSite2.ResourceGroupName
+		Assert-AreEqual $vpnSiteName2 $vpnSite2.Name
+		Assert-AreEqual $ip2 $vpnSite2.IpAddress
+		Assert-AreEqual $true $vpnSite2.IsSecuritySite
+
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1 -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2 -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
 CortexDownloadConfig
 #>
 function Test-CortexDownloadConfig

@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.Network
                 vpnSiteToCreate.O365Policy = this.O365Policy;
             }
 
-            vpnSiteToCreate.IsSecuritySite = (this.IsSecuritySite.IsPresent) ? this.IsSecuritySite.ToBool() : false;
+            vpnSiteToCreate.IsSecuritySite = this.IsSecuritySite.IsPresent;
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
