@@ -152,6 +152,6 @@ process {
         }
     }
 
-    MSGraph.internal/Remove-AzMgApplication @PSBoundParameters
+    MSGraph.internal\Remove-AzMgApplication @PSBoundParameters
 }
 }

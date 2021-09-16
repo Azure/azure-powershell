@@ -812,6 +812,6 @@ process {
       }
   }
 
-  MSGraph.internal/New-AzMgServicePrincipal @PSBoundParameters
+  MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
 }
 }

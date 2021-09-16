@@ -200,6 +200,6 @@ process {
             break
         }
     }
-    MSGraph.internal/Get-AzMgApplication @PSBoundParameters
+    MSGraph.internal\Get-AzMgApplication @PSBoundParameters
 }
 }

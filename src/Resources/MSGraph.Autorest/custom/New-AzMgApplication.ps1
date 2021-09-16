@@ -590,6 +590,6 @@ param(
 )
 
 process {
-    MSGraph.internal/New-AzMgApplication @PSBoundParameters
+    MSGraph.internal\New-AzMgApplication @PSBoundParameters
 }
 }
