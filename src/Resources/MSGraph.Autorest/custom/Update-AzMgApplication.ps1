@@ -513,6 +513,6 @@ process {
       }
     }
 
-    MSGraph.internal/Update-AzMgApplication @PSBoundParameters
+    MSGraph.internal\Update-AzMgApplication @PSBoundParameters
 }
 }

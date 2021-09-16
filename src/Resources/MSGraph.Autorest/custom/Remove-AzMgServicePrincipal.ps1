@@ -189,6 +189,6 @@ process {
         }
     }
 
-    MsGraph.Internal/Remove-AzMgServicePrincipal @PSBoundParameters
+    MsGraph.Internal\Remove-AzMgServicePrincipal @PSBoundParameters
 }
 }
