@@ -1,51 +1,46 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitortagrule
+online version: https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzmonitortagrule
 schema: 2.0.0
 ---
 
-# Get-AzLogzMonitorTagRule
+# Remove-AzLogzMonitorTagRule
 
 ## SYNOPSIS
-Get a tag rule set for a given monitor resource.
+Delete a tag rule set for a given monitor resource.
 
 ## SYNTAX
 
-### Get (Default)
+### Delete (Default)
 ```
-Get-AzLogzMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzLogzMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzLogzMonitorTagRule -InputObject <ILogzIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzLogzMonitorTagRule -InputObject <ILogzIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a tag rule set for a given monitor resource.
+Delete a tag rule set for a given monitor resource.
 
 ## EXAMPLES
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzLogzMonitorTagRule -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04
+PS C:\> Remove-AzLogzMonitorTagRule -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04
 
-Name    ProvisioningState ResourceGroupName
-----    ----------------- -----------------
-default Succeeded         lucas-rg-test
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzLogzMonitorTagRule -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 | Get-AzLogzMonitorTagRule
+PS C:\> Get-AzLogzMonitorTagRule -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 | Remove-AzLogzMonitorTagRule
 
-Name    ProvisioningState ResourceGroupName
-----    ----------------- -----------------
-default Succeeded         lucas-rg-test
 ```
 
 {{ Add description here }}
@@ -73,7 +68,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -88,10 +83,25 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,7 +114,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -118,13 +128,44 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -138,7 +179,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRules
+### System.Boolean
 
 ## NOTES
 

@@ -1,18 +1,10 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzLogzMonitorSSOConfiguration -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04
 
-{{ Add output here }}
+Name    ProvisioningState SingleSignOnState SingleSignOnUrl             ResourceGroupName
+----    ----------------- ----------------- ---------------             -----------------
+default Succeeded         Disable           https://app.logz.io/        lucas-rg-test
 ```
 
 {{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-

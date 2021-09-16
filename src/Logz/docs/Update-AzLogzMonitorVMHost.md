@@ -1,52 +1,36 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/invoke-azlogzhostsubaccount
+online version: https://docs.microsoft.com/powershell/module/az.logz/update-azlogzmonitorvmhost
 schema: 2.0.0
 ---
 
-# Invoke-AzLogzHostSubAccount
+# Update-AzLogzMonitorVMHost
 
 ## SYNOPSIS
-Returns the payload that needs to be passed as a request for installing Logz.io agent on a VM.
+Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
 
 ## SYNTAX
 
-### Host (Default)
 ```
-Invoke-AzLogzHostSubAccount -MonitorName <String> -ResourceGroupName <String> -SubAccountName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### HostViaIdentity
-```
-Invoke-AzLogzHostSubAccount -InputObject <ILogzIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzLogzMonitorVMHost -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-State <VMHostUpdateStates>] [-VMResource <IVMResources[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the payload that needs to be passed as a request for installing Logz.io agent on a VM.
+Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
 
 ## EXAMPLES
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Invoke-AzLogzHostSubAccount -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01
+PS C:\> $vmResource = New-AzLogzVMResourcesObject -AgentVersion '1.0' -Id '/SUBSCRIPTIONS/CE37D538-DFA3-49C3-B3CD-149B4B7DB48A/RESOURCEGROUPS/KOYTEST/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/TEST-VM-1'
+PS C:\> Update-AzLogzMonitorVMHost -ResourceGroupName lucas-rg-test -Name pwsh-logz04 -State 'Install' -VMResource $vmResource
 
-ApiKey                           Region
-------                           ------
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   westus2
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> Get-AzLogzSubAccount -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01 | Invoke-AzLogzHostSubAccount
-
-ApiKey                           Region
-------                           ------
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   westus2
+AgentVersion Id
+------------ --
+1.0          /SUBSCRIPTIONS/CE37D538-DFA3-49C3-B3CD-149B4B7DB48A/RESOURCEGROUPS/KOYTEST/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/TEST-VM-1
 ```
 
 {{ Add description here }}
@@ -68,28 +52,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentity
-Parameter Sets: HostViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MonitorName
+### -Name
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Host
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -105,7 +73,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Host
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -115,15 +83,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubAccountName
-Sub Account resource name
+### -State
+Specifies the state of the operation - install/ delete.
 
 ```yaml
-Type: System.String
-Parameter Sets: Host
+Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.VMHostUpdateStates
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -135,12 +103,28 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Host
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMResource
+Request of a list vm host update operation.
+To construct, see NOTES section for VMRESOURCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -181,11 +165,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMExtensionPayload
+### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources
 
 ## NOTES
 
@@ -196,14 +178,9 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ILogzIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: 
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: 
-  - `[SubAccountName <String>]`: Sub Account resource name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
+VMRESOURCE <IVMResources[]>: Request of a list vm host update operation.
+  - `[AgentVersion <String>]`: Version of the Logz agent installed on the VM.
+  - `[Id <String>]`: Request of a list vm host update operation.
 
 ## RELATED LINKS
 

@@ -29,9 +29,6 @@ List the user's roles configured on Logz.io side for the account corresponding t
 ### [Get-AzLogzMonitorVMHost](Get-AzLogzMonitorVMHost.md)
 List the compute resources currently being monitored by the Logz main account resource.
 
-### [Get-AzLogzMonitorVMHostUpdate](Get-AzLogzMonitorVMHostUpdate.md)
-Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
-
 ### [Get-AzLogzSubAccount](Get-AzLogzSubAccount.md)
 Get a sub account under a given monitor resource.
 
@@ -40,9 +37,6 @@ Get a tag rule set for a given monitor resource.
 
 ### [Get-AzLogzSubAccountVMHost](Get-AzLogzSubAccountVMHost.md)
 List the compute resources currently being monitored by the Logz sub account resource.
-
-### [Get-AzLogzSubAccountVMHostUpdate](Get-AzLogzSubAccountVMHostUpdate.md)
-Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
 
 ### [Invoke-AzLogzHostMonitor](Invoke-AzLogzHostMonitor.md)
 Returns the payload that needs to be passed in the request body for installing Logz.io agent on a VM.
@@ -78,13 +72,25 @@ Create a in-memory object for VMResources
 Delete a monitor resource.
 This delete operation can take upto 10 minutes to complete.
 
+### [Remove-AzLogzMonitorTagRule](Remove-AzLogzMonitorTagRule.md)
+Delete a tag rule set for a given monitor resource.
+
 ### [Remove-AzLogzSubAccount](Remove-AzLogzSubAccount.md)
 Delete a sub account resource.
 This delete operation can take upto 10 minutes to complete.
 
+### [Remove-AzLogzSubAccountTagRule](Remove-AzLogzSubAccountTagRule.md)
+Delete a tag rule set for a given monitor resource.
+
 ### [Update-AzLogzMonitor](Update-AzLogzMonitor.md)
 Update a monitor resource.
 
+### [Update-AzLogzMonitorVMHost](Update-AzLogzMonitorVMHost.md)
+Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
+
 ### [Update-AzLogzSubAccount](Update-AzLogzSubAccount.md)
 Update a monitor resource.
+
+### [Update-AzLogzSubAccountVMHost](Update-AzLogzSubAccountVMHost.md)
+Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
 

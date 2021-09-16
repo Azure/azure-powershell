@@ -1,17 +1,11 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $filter = New-AzLogzFilteringTagObject -Action 'Include' -Name 'Env' -Value "Prod"
+PS C:\> New-AzLogzMonitorTagRule -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 -LogRuleFilteringTag $filter
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name    ProvisioningState ResourceGroupName
+----    ----------------- -----------------
+default Succeeded         lucas-rg-test
 ```
 
 {{ Add description here }}

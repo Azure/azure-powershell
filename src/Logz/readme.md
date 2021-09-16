@@ -64,7 +64,7 @@ directive:
   # Rename parameter
   - where:
       verb: Get
-      subject: ^MonitorMonitoredResource$|^MonitorUserRole$|^MonitorVMHost$|^MonitorVMHost$|^MonitorVMHostUpdate$|^MonitorTagRule$|^HostMonitor$
+      subject: ^MonitorUserRole$|^MonitorVMHost$|^MonitorVMHost$|^MonitorVMHostUpdate$|^HostMonitor$
       parameter-name: MonitorName
     set:
       parameter-name: Name
@@ -85,12 +85,6 @@ directive:
       parameter-name: PlanDetail
 
   - where:
-      subject: ^SSOConfiguration$
-      parameter-name: ConfigurationName
-    set:
-      parameter-name: Name
-
-  - where:
       verb: Get
       subject: ^SubAccountMonitoredResource$|^SubAccountVMHost$|^SubAccountVMHostUpdate$|^HostSubAccount$
       parameter-name: SubAccountName
@@ -107,43 +101,55 @@ directive:
 
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      subject: ^Monitor$|^SSOConfiguration$|^SubAccount$|^SubAccountTagRule$|^TagRule$
+      subject: ^Monitor$|^MonitorSSOConfiguration$|^SubAccount$|^SubAccountTagRule$|^MonitorTagRule$
     remove: true
 
   # Only name allowed for a tag rule is default.
   - where: 
       verb: Get
-      subject: ^SubAccountTagRule$|^TagRule$
+      subject: ^SubAccountTagRule$|^MonitorTagRule$|^MonitorSSOConfiguration$
       variant: List
     remove: true
   
+  # The command set request to install or delete vm.
+  - where:
+      verb: Get
+      subject: (.*)VMHostUpdate$
+    set:
+      verb: Update
+      subject: $1VMHost
+  - where: 
+      verb: Update
+      subject: (.*)VMHost$
+      parameter-name: VMResourceId
+    set:
+      parameter-name: VMResource
+
   # Rename verb name
   # - where:
   #     verb: Invoke
   #     subject: ^HostMonitor$|^HostSubAccount$
   #   set:
   #     verb: Get
-
-  # The service not planning to support it in the near future.
-  - where:
-      verb: Remove
-      subject: MonitorTagRule
-    remove: true
-  - where:
-      verb: Remove
-      subject: SubAccountTagRule
-    remove: true
     
 # Only name allowed for a tag rule is default.
   - where:
-      verb: Get|New
-      subject: ^SubAccountTagRule$|^TagRule$
+      verb: Get|New|Remove
+      subject: ^SubAccountTagRule$|^MonitorTagRule$
       parameter-name: RuleSetName
     hide: true
     set:
       default:
         script: '"default"'
-
+  - where:
+      verb: Get|New
+      subject: MonitorSSOConfiguration
+      parameter-name: ConfigurationName
+    hide: true
+    set:
+      default:
+        script: '"default"'
+        
   - where:
       model-name: LogzMonitorResource
     set:
@@ -152,7 +158,30 @@ directive:
           - Name
           - MonitoringStatus
           - Location
-  # Hide cmdlet for merge Get-AzLogzMonitorMonitoredResource and Get-AzLogzSubAccountMonitoredResource into Get-AzLogzMonitorMonitoredResource
+  - where:
+      model-name: LogzSingleSignOnResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ProvisioningState
+          - SingleSignOnState
+          - SingleSignOnUrl
+  - where:
+      model-name: VMResources
+    set:
+      format-table:
+        properties:
+          - Id
+  - where:
+      model-name: MonitoringTagRules
+    set:
+      format-table:
+        properties:
+          - Name
+          - ProvisioningState
+
+# Hide cmdlet for merge Get-AzLogzMonitorMonitoredResource and Get-AzLogzSubAccountMonitoredResource into Get-AzLogzMonitorMonitoredResource
   - where:
       verb: Get
       subject: ^MonitorMonitoredResource$|^SubAccountMonitoredResource$

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitorvmhostupdate
+online version: https://docs.microsoft.com/powershell/module/az.logz/update-azlogzsubaccountvmhost
 schema: 2.0.0
 ---
 
-# Get-AzLogzMonitorVMHostUpdate
+# Update-AzLogzSubAccountVMHost
 
 ## SYNOPSIS
 Sending request to update the collection when Logz.io agent has been installed on a VM for a given monitor.
@@ -13,9 +13,9 @@ Sending request to update the collection when Logz.io agent has been installed o
 ## SYNTAX
 
 ```
-Get-AzLogzMonitorVMHostUpdate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-State <VMHostUpdateStates>] [-VMResourceId <IVMResources[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzLogzSubAccountVMHost -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-State <VMHostUpdateStates>] [-VMResource <IVMResources[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Sending request to update the collection when Logz.io agent has been installed o
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzLogzSubAccountVMHost -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01 -VMResource $vmResource -State 'Install'
 
 {{ Add output here }}
 ```
@@ -58,8 +58,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MonitorName
 Monitor resource name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Sub Account resource name
 
 ```yaml
 Type: System.String
@@ -108,7 +123,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,9 +134,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMResourceId
+### -VMResource
 Request of a list vm host update operation.
-To construct, see NOTES section for VMRESOURCEID properties and create a hash table.
+To construct, see NOTES section for VMRESOURCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources[]
@@ -184,7 +199,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-VMRESOURCEID <IVMResources[]>: Request of a list vm host update operation.
+VMRESOURCE <IVMResources[]>: Request of a list vm host update operation.
   - `[AgentVersion <String>]`: Version of the Logz agent installed on the VM.
   - `[Id <String>]`: Request of a list vm host update operation.
 

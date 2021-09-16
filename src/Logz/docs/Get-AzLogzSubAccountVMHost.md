@@ -24,18 +24,11 @@ List the compute resources currently being monitored by the Logz sub account res
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLogzSubAccountVMHost -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+AgentVersion Id
+------------ --
+1.0          /SUBSCRIPTIONS/CE37D538-DFA3-49C3-B3CD-149B4B7DB48A/RESOURCEGROUPS/KOYTEST/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/TEST-VM-1
 ```
 
 {{ Add description here }}

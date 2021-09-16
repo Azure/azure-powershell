@@ -33,18 +33,16 @@ This delete operation can take upto 10 minutes to complete.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzLogzMonitor -ResourceGroupName lucas-rg-test -Name logz-portal01
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLogzMonitor -ResourceGroupName lucas-rg-test -Name logz-portal01 | Remove-AzLogzMonitor
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}

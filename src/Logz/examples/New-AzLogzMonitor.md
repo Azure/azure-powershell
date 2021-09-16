@@ -2,7 +2,9 @@
 ```powershell
 PS C:\> New-AzLogzMonitor -ResourceGroupName lucas-rg-test -Name pwsh-logz05 -Location 'westus2' -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress 'xxxxx@microsoft.com' -UserInfoPhoneNumber 'xxxxxxxx' -UserInfoFirstName 'xxx' -UserInfoLastName 'xxx'
 
-{{ Add output here }}
+Name          MonitoringStatus Location ResourceGroupName
+----          ---------------- -------- -----------------
+logz-pwsh01 Enabled          westus2  lucas-rg-test
 ```
 
 {{ Add description here }}

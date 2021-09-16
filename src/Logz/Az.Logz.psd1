@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Logz.private.dll'
   FormatsToProcess = './Az.Logz.format.ps1xml'
-  FunctionsToExport = 'Get-AzLogzMonitor', 'Get-AzLogzMonitoredResource', 'Get-AzLogzMonitorSSOConfiguration', 'Get-AzLogzMonitorTagRule', 'Get-AzLogzMonitorUserRole', 'Get-AzLogzMonitorVMHost', 'Get-AzLogzMonitorVMHostUpdate', 'Get-AzLogzSubAccount', 'Get-AzLogzSubAccountTagRule', 'Get-AzLogzSubAccountVMHost', 'Get-AzLogzSubAccountVMHostUpdate', 'Invoke-AzLogzHostMonitor', 'Invoke-AzLogzHostSubAccount', 'New-AzLogzFilteringTagObject', 'New-AzLogzMonitor', 'New-AzLogzMonitorSSOConfiguration', 'New-AzLogzMonitorTagRule', 'New-AzLogzSubAccount', 'New-AzLogzSubAccountTagRule', 'New-AzLogzVMResourcesObject', 'Remove-AzLogzMonitor', 'Remove-AzLogzSubAccount', 'Update-AzLogzMonitor', 'Update-AzLogzSubAccount', '*'
+  FunctionsToExport = 'Get-AzLogzMonitor', 'Get-AzLogzMonitoredResource', 'Get-AzLogzMonitorSSOConfiguration', 'Get-AzLogzMonitorTagRule', 'Get-AzLogzMonitorUserRole', 'Get-AzLogzMonitorVMHost', 'Get-AzLogzSubAccount', 'Get-AzLogzSubAccountTagRule', 'Get-AzLogzSubAccountVMHost', 'Invoke-AzLogzHostMonitor', 'Invoke-AzLogzHostSubAccount', 'New-AzLogzFilteringTagObject', 'New-AzLogzMonitor', 'New-AzLogzMonitorSSOConfiguration', 'New-AzLogzMonitorTagRule', 'New-AzLogzSubAccount', 'New-AzLogzSubAccountTagRule', 'New-AzLogzVMResourcesObject', 'Remove-AzLogzMonitor', 'Remove-AzLogzMonitorTagRule', 'Remove-AzLogzSubAccount', 'Remove-AzLogzSubAccountTagRule', 'Update-AzLogzMonitor', 'Update-AzLogzMonitorVMHost', 'Update-AzLogzSubAccount', 'Update-AzLogzSubAccountVMHost', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

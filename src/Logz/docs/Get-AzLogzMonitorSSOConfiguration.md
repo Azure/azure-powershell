@@ -12,16 +12,10 @@ Gets the Logz single sign-on resource for the given Monitor.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
 Get-AzLogzMonitorSSOConfiguration -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzLogzMonitorSSOConfiguration -ConfigurationName <String> -MonitorName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -37,38 +31,27 @@ Gets the Logz single sign-on resource for the given Monitor.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLogzMonitorSSOConfiguration -ResourceGroupName LPTrials -MonitorName lpatlogz
 
-{{ Add output here }}
+Name    ProvisioningState SingleSignOnState SingleSignOnUrl                                ResourceGroupName
+----    ----------------- ----------------- ---------------                                -----------------
+default Succeeded         Existing          https://api-wa.logz.io/auth/azure/325420/login LPTrials
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzLogzMonitorSSOConfiguration -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 | Get-AzLogzMonitorSSOConfiguration
 
-{{ Add output here }}
+Name    ProvisioningState SingleSignOnState SingleSignOnUrl             ResourceGroupName
+----    ----------------- ----------------- ---------------             -----------------
+default Succeeded         Disable           https://app.logz.io/        lucas-rg-test
 ```
 
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -ConfigurationName
-.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -106,7 +89,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -122,7 +105,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -137,7 +120,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False

@@ -1,17 +1,21 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Invoke-AzLogzHostMonitor -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04
 
-{{ Add output here }}
+ApiKey                           Region
+------                           ------
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   westus2
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLogzMonitor -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 | Invoke-AzLogzHostMonitor
 
-{{ Add output here }}
+ApiKey                           Region
+------                           ------
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   westus2
 ```
 
 {{ Add description here }}

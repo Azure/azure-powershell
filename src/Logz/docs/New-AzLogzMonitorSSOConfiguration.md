@@ -13,32 +13,10 @@ This operation can take upto 10 minutes to complete.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzLogzMonitorSSOConfiguration -ConfigurationName <String> -MonitorName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-EnterpriseAppId <String>]
- [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzLogzMonitorSSOConfiguration -ConfigurationName <String> -MonitorName <String>
- -ResourceGroupName <String> -Body <ILogzSingleSignOnResource> [-SubscriptionId <String>]
+New-AzLogzMonitorSSOConfiguration -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-EnterpriseAppId <String>] [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzLogzMonitorSSOConfiguration -InputObject <ILogzIdentity> -Body <ILogzSingleSignOnResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzLogzMonitorSSOConfiguration -InputObject <ILogzIdentity> [-EnterpriseAppId <String>]
- [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,18 +27,11 @@ This operation can take upto 10 minutes to complete.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzLogzMonitorSSOConfiguration -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name    ProvisioningState SingleSignOnState SingleSignOnUrl             ResourceGroupName
+----    ----------------- ----------------- ---------------             -----------------
+default Succeeded         Disable           https://app.logz.io/        lucas-rg-test
 ```
 
 {{ Add description here }}
@@ -76,37 +47,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnResource
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ConfigurationName
-.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -133,7 +73,7 @@ The Id of the Enterprise App used for Single sign-on.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -143,28 +83,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -195,7 +119,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -210,7 +134,7 @@ Various states of the SSO resource
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.SingleSignOnStates
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -225,7 +149,7 @@ The login URL specific to this Logz Organization.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -240,7 +164,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -286,10 +210,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnResource
-
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnResource
@@ -297,31 +217,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-BODY <ILogzSingleSignOnResource>: .
-  - `[EnterpriseAppId <String>]`: The Id of the Enterprise App used for Single sign-on.
-  - `[SingleSignOnState <SingleSignOnStates?>]`: Various states of the SSO resource
-  - `[SingleSignOnUrl <String>]`: The login URL specific to this Logz Organization.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
-INPUTOBJECT <ILogzIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: 
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: 
-  - `[SubAccountName <String>]`: Sub Account resource name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
