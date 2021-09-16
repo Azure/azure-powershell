@@ -19,6 +19,40 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $env.location = 'westus2'
+    $env.userEmail = 'v-diya@microsoft.com'
+    $env.userFirstName = 'Lucas'
+    $env.userLastName = 'Yao'
+    $env.userPhone = '1111111111'
+
+    $env.monitorName01 = "monitor-" + (RandomString -allChars $false -len 6)
+    $env.monitorName02 = "monitor-" + (RandomString -allChars $false -len 6)
+    $env.monitorName03 = "monitor-" + (RandomString -allChars $false -len 6)
+
+    $env.subAccountName01 = "subAccount" + (RandomString -allChars $false -len 6)
+    $env.subAccountName02 = "subAccount" + (RandomString -allChars $false -len 6)
+    $env.subAccountName03 = "subAccount" + (RandomString -allChars $false -len 6)
+    $env.subAccountName04 = "subAccount" + (RandomString -allChars $false -len 6)
+
+    # Create the test group
+    Write-Host -ForegroundColor Green "start to create test group"
+    $env.resourceGroup = 'elastic-rg-' + (RandomString -allChars $false -len 6)
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
+    # Create logz for use in the test.
+    Write-Host -ForegroundColor Green "Create logz monitor and sub account for use in the test"
+    New-AzLogzMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanEffectiveDate (Get-Date -AsUTC) `
+                      -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
+    
+    New-AzLogzSubAccount -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name $env.subAccountName01 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanEffectiveDate (Get-Date -AsUTC) `
+                        -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
+    New-AzLogzSubAccount -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name $env.subAccountName02 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanEffectiveDate (Get-Date -AsUTC) `
+                        -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
+    
+    New-AzLogzMonitorTagRule -ResourceGroupName $env.resourceGroup-MonitorName $env.monitorName01
+    New-AzLogzMonitorSSOConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01
+    New-AzLogzSubAccountTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -SubAccountName $env.subAccountName01
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
