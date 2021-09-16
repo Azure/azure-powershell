@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Network.Bastion
 {
     using Microsoft.Azure.Commands.Network.Models;
+    using Microsoft.Azure.Commands.Network.Models.Bastion;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -176,6 +177,23 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The Bastion Sku Tier")]
+        [PSArgumentCompleter("Basic", "Standard")]
+        [ValidateSet(
+            MNM.BastionHostSkuName.Basic,
+            MNM.BastionHostSkuName.Standard,
+            IgnoreCase = false)]
+        public string Sku { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The Scale Units for BastionHost")]
+        public int? ScaleUnits { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -213,8 +231,48 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             {
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
-                Location = this.VirtualNetwork.Location
+                Location = this.VirtualNetwork.Location,
             };
+
+            bastion.Sku = new PSBastionSku();
+
+            if (!String.IsNullOrEmpty(this.Sku) || !String.IsNullOrWhiteSpace(this.Sku))
+            {
+                bastion.Sku.Name = this.Sku;
+            }
+
+            if (this.ScaleUnits.HasValue)
+            {
+                if (bastion.Sku.Name.Equals(MNM.BastionHostSkuName.Standard))
+                {
+                    if (this.ScaleUnits >= 2 && this.ScaleUnits <= 50)
+                    {
+                        bastion.ScaleUnits = this.ScaleUnits;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Please select scale units value between 2 and 50");
+                    }
+                }
+                else if (bastion.Sku.Name.Equals(MNM.BastionHostSkuName.Basic))
+                {
+                    if(this.ScaleUnits == 2)
+                    {
+                        bastion.ScaleUnits = this.ScaleUnits;
+                    }
+                    throw new ArgumentException("Scale Units cannot be updated with Basic Sku");
+                }
+            }
+            else
+            {
+                if (bastion.ScaleUnits < 2 || bastion.ScaleUnits > 50)
+                {
+                    throw new ArgumentException("Please select scale units value between 2 and 50");
+                }
+
+                // Default value
+                bastion.ScaleUnits = 2;
+            }
 
             if (this.VirtualNetwork != null)
             {

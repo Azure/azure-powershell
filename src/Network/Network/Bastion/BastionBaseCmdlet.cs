@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             var psBastion = NetworkResourceManagerProfile.Mapper.Map<PSBastion>(bastion);
             psBastion.ResourceGroupName = resourceGroupName;
+            psBastion.Sku.Name = bastion.Sku.Name;
             psBastion.Tag = TagsConversionHelper.CreateTagHashtable(bastion.Tags);
 
             return psBastion;
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         public PSBastion ToPsBastion(MNM.BastionHost host)
         {
             var bastion = NetworkResourceManagerProfile.Mapper.Map<PSBastion>(host);
-
+            bastion.Sku.Name = host.Sku.Name;
             bastion.Tag = TagsConversionHelper.CreateTagHashtable(host.Tags);
 
             return bastion;
