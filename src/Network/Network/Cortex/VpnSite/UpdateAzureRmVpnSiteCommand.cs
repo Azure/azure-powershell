@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "if vpn site is a security site.")]
-        public bool? IsSecuritySite { get; set; }
+        public SwitchParameter IsSecuritySite { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -383,10 +383,7 @@ namespace Microsoft.Azure.Commands.Network
                 vpnSiteToUpdate.VpnSiteLinks.AddRange(this.VpnSiteLink);
             }
 
-            if (this.IsSecuritySite != null)
-            {
-                vpnSiteToUpdate.IsSecuritySite = this.IsSecuritySite;
-            }
+            vpnSiteToUpdate.IsSecuritySite = (this.IsSecuritySite.IsPresent) ? this.IsSecuritySite.ToBool() : false;
 
             if (this.O365Policy != null)
             {

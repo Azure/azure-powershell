@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "if vpn site is a security site.")]
-        public bool? IsSecuritySite { get; set; }
+        public SwitchParameter IsSecuritySite { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteIpAddress,
@@ -290,10 +290,7 @@ namespace Microsoft.Azure.Commands.Network
                 vpnSiteToCreate.O365Policy = this.O365Policy;
             }
 
-            if (this.IsSecuritySite != null)
-            {
-                vpnSiteToCreate.IsSecuritySite = this.IsSecuritySite;
-            }
+            vpnSiteToCreate.IsSecuritySite = (this.IsSecuritySite.IsPresent) ? this.IsSecuritySite.ToBool() : false;
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
