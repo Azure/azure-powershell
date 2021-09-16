@@ -10932,6 +10932,7 @@ components:
       description: Filter items by property values
       schema:
         type: string
+        x-ms-skip-url-encoding: true
     count:
       name: $count
       in: query

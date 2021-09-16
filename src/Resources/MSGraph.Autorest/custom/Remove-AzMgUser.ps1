@@ -129,7 +129,16 @@ function Remove-AzMgUser {
                 break
             }
             'DisplayNameParameterSet' {
-                $id = (Get-AzMgUser -DisplayName $PSBoundParameters['DisplayName'])[0].Id
+                $list = Get-AzMgUser -DisplayName $PSBoundParameters['DisplayName'] -Select Id
+                if(1 -lt $list.Count) {
+                    Write-Error "More than one user found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzADUser cmdlet to get the object id of the desired user."
+                    return
+                } elseif (1 -eq $list.Count) {
+                    $id = $list[0].Id
+                } else {
+                    Write-Error "User with display name '$($PSBoundParameters['DisplayName'])' does not exist."
+                    return
+                }
                 $null = $PSBoundParameters.Remove('DisplayName')
                 break
             }
@@ -143,4 +152,4 @@ function Remove-AzMgUser {
 
         MSGraph.internal\Remove-AzMgUser @PSBoundParameters
     }
-}    
+}

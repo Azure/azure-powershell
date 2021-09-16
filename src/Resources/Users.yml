@@ -9993,8 +9993,6 @@ components:
               type: integer
               description: Count of the number of slots for the given open shift.
               format: int32
-          additionalProperties:
-            type: object
     microsoft.graph.shiftItem:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.scheduleEntity'
@@ -10014,8 +10012,6 @@ components:
               type: string
               description: The shift notes for the shiftItem.
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.timeOffReasonIconType:
       title: timeOffReasonIconType
       enum:
@@ -10052,8 +10048,6 @@ components:
               type: string
               description: ID of the timeOffReason for this timeOffItem. Required.
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.settingValue:
       title: settingValue
       type: object
@@ -10123,8 +10117,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
               description: The collection of single-value extended properties defined for the post. Read-only. Nullable.
-          additionalProperties:
-            type: object
     microsoft.graph.workbookCommentReply:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10138,8 +10130,6 @@ components:
             contentType:
               type: string
               description: Indicates the type for the replied comment.
-          additionalProperties:
-            type: object
     microsoft.graph.workbookOperationError:
       title: workbookOperationError
       type: object
@@ -10184,8 +10174,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.Json'
             filter:
               $ref: '#/components/schemas/microsoft.graph.workbookFilter'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookTableRow:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10200,8 +10188,6 @@ components:
               format: int32
             values:
               $ref: '#/components/schemas/microsoft.graph.Json'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookTableSort:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10219,8 +10205,6 @@ components:
             method:
               type: string
               description: 'Represents Chinese character ordering method last used to sort the table. Possible values are: PinYin, StrokeCount. Read-only.'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChart:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10264,8 +10248,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.workbookChartTitle'
             worksheet:
               $ref: '#/components/schemas/microsoft.graph.workbookWorksheet'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookPivotTable:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10278,8 +10260,6 @@ components:
               nullable: true
             worksheet:
               $ref: '#/components/schemas/microsoft.graph.workbookWorksheet'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookWorksheetProtection:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10291,8 +10271,6 @@ components:
             protected:
               type: boolean
               description: Indicates if the worksheet is protected.  Read-only.
-          additionalProperties:
-            type: object
     microsoft.graph.accessAction:
       title: accessAction
       type: object
@@ -10306,8 +10284,6 @@ components:
           properties:
             conversationIdentityType:
               $ref: '#/components/schemas/microsoft.graph.teamworkConversationIdentityType'
-          additionalProperties:
-            type: object
     microsoft.graph.scheduleChangeRequestActor:
       title: scheduleChangeRequestActor
       enum:
@@ -10383,8 +10359,6 @@ components:
           properties:
             criteria:
               $ref: '#/components/schemas/microsoft.graph.workbookFilterCriteria'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookSortField:
       title: workbookSortField
       type: object
@@ -10424,8 +10398,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.workbookChartAxis'
             valueAxis:
               $ref: '#/components/schemas/microsoft.graph.workbookChartAxis'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartDataLabels:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10466,8 +10438,6 @@ components:
               nullable: true
             format:
               $ref: '#/components/schemas/microsoft.graph.workbookChartDataLabelFormat'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartAreaFormat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10478,8 +10448,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFill'
             font:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFont'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartLegend:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10499,8 +10467,6 @@ components:
               description: A boolean value the represents the visibility of a ChartLegend object.
             format:
               $ref: '#/components/schemas/microsoft.graph.workbookChartLegendFormat'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartSeries:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10518,8 +10484,6 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.workbookChartPoint'
               description: Represents a collection of all points in the series. Read-only.
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartTitle:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10539,8 +10503,6 @@ components:
               description: A boolean value the represents the visibility of a chart title object.
             format:
               $ref: '#/components/schemas/microsoft.graph.workbookChartTitleFormat'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookWorksheetProtectionOptions:
       title: workbookWorksheetProtectionOptions
       type: object
@@ -10667,8 +10629,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.workbookChartGridlines'
             title:
               $ref: '#/components/schemas/microsoft.graph.workbookChartAxisTitle'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartDataLabelFormat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10679,15 +10639,11 @@ components:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFill'
             font:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFont'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartFill:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
         - title: workbookChartFill
           type: object
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartFont:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10719,8 +10675,6 @@ components:
               type: string
               description: 'Type of underline applied to the font. The possible values are: None, Single.'
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartLegendFormat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10731,8 +10685,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFill'
             font:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFont'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartSeriesFormat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10743,8 +10695,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFill'
             line:
               $ref: '#/components/schemas/microsoft.graph.workbookChartLineFormat'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartPoint:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10755,8 +10705,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.Json'
             format:
               $ref: '#/components/schemas/microsoft.graph.workbookChartPointFormat'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartTitleFormat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10767,8 +10715,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFill'
             font:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFont'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartAxisFormat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10779,8 +10725,6 @@ components:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFont'
             line:
               $ref: '#/components/schemas/microsoft.graph.workbookChartLineFormat'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartGridlines:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10792,8 +10736,6 @@ components:
               description: Boolean value representing if the axis gridlines are visible or not.
             format:
               $ref: '#/components/schemas/microsoft.graph.workbookChartGridlinesFormat'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartAxisTitle:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10809,8 +10751,6 @@ components:
               description: A boolean that specifies the visibility of an axis title.
             format:
               $ref: '#/components/schemas/microsoft.graph.workbookChartAxisTitleFormat'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartLineFormat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10821,8 +10761,6 @@ components:
               type: string
               description: HTML color code representing the color of lines in the chart.
               nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartPointFormat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10831,8 +10769,6 @@ components:
           properties:
             fill:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFill'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartGridlinesFormat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10841,8 +10777,6 @@ components:
           properties:
             line:
               $ref: '#/components/schemas/microsoft.graph.workbookChartLineFormat'
-          additionalProperties:
-            type: object
     microsoft.graph.workbookChartAxisTitleFormat:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -10851,8 +10785,6 @@ components:
           properties:
             font:
               $ref: '#/components/schemas/microsoft.graph.workbookChartFont'
-          additionalProperties:
-            type: object
   responses:
     error:
       description: error
@@ -10888,6 +10820,7 @@ components:
       description: Filter items by property values
       schema:
         type: string
+        x-ms-skip-url-encoding: true
     count:
       name: $count
       in: query
