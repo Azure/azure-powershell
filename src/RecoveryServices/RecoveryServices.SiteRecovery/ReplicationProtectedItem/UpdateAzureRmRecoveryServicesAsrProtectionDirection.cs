@@ -684,6 +684,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RunAsAccountId = runAsAccount.Id
                     };
                     input.Properties.ProviderSpecificDetails = reprotectInput;
+                    input.Properties.FailoverDirection = null;
                 }
                 else
                 {
