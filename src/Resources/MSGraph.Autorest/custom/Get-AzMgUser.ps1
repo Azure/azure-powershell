@@ -83,6 +83,11 @@ function Get-AzMgUser {
         # Ignores the first 'n' objects and then gets the remaining objects.
         ${Skip},
     
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        # Reports the number of objects in the data set. Currently, this parameter does nothing.
+        ${IncludeTotalCount},
+    
         [Parameter(ParameterSetName='EmptyParameterSet')]
         [System.Management.Automation.SwitchParameter]
         # Include count of items
@@ -159,25 +164,22 @@ function Get-AzMgUser {
                 break
             }
             'StartsWithParameterSet' {
-                $PSBOundParameters['Filter'] = "startsWith(DisplayName, '$($PSBOundParameters['StartsWith'])'"
+                $PSBOundParameters['Filter'] = "startsWith(DisplayName, '$($PSBOundParameters['StartsWith'])')"
                 $null = $PSBoundParameters.Remove('StartsWith')
                 break
             }
             'DisplayNameParameterSet' {
-                $PSBOundParameters['Search'] = "DisplayName:$($PSBOundParameters['DisplayName'])"
-                $PSBOundParameters['ConsistencyLevel'] = 'eventual'
+                $PSBOundParameters['Filter'] = "displayName eq '$($PSBOundParameters['DisplayName'])'"
                 $null = $PSBoundParameters.Remove('DisplayName')
                 break
             }
             'UPNParameterSet' {
-                $PSBOundParameters['Search'] = "UserPrincipalName:$($PSBOundParameters['UserPrincipalName'])"
-                $PSBOundParameters['ConsistencyLevel'] = 'eventual'
+                $PSBOundParameters['Filter'] = "userPrincipalName eq '$($PSBOundParameters['UserPrincipalName'])'"
                 $null = $PSBoundParameters.Remove('UserPrincipalName')
                 break
             }
             'MailParameterSet' {
-                $PSBOundParameters['Search'] = "Mail:$($PSBOundParameters['Mail'])"
-                $PSBOundParameters['ConsistencyLevel'] = 'eventual'
+                $PSBOundParameters['Filter'] = "mail eq '$($PSBOundParameters['Mail'])'"
                 $null = $PSBoundParameters.Remove('Mail')
                 break
             }
@@ -185,7 +187,13 @@ function Get-AzMgUser {
                 break
             }
         }
-        
+
+        if ($PSBoundParameters.ContainsKey('IncludeTotalCount')) {
+            $PSBOundParameters['Count'] = $PSBoundParameters['IncludeTotalCount']
+            $null = $PSBoundParameters.Remove('IncludeTotalCount')
+        }
+
         MSGraph.internal\Get-AzMgUser @PSBoundParameters
     }
 }
+    
