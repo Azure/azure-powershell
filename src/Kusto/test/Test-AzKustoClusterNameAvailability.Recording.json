@@ -1,9 +1,9 @@
 {
-  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2021-01-01+1": {
+  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2021-08-27+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2021-01-01",
-      "Content": "{\r\n  \"name\": \"testclusterqlp6ob\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2021-08-27",
+      "Content": "{\r\n  \"name\": \"testclusterpazj5i\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -15,23 +15,23 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "0916b8dc-4466-45dd-940c-a7b989446f2b" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "a272080e-ae02-4edd-9068-c09002f1a645" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T130940Z:a272080e-ae02-4edd-9068-c09002f1a645" ],
+        "x-ms-request-id": [ "9af675f1-7ab2-4655-88f5-20095b044d9c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-correlation-request-id": [ "d2ead968-eeda-424a-878a-f05260830de5" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20210917T185343Z:d2ead968-eeda-424a-878a-f05260830de5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 13:09:39 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Fri, 17 Sep 2021 18:53:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "154" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"testclusterqlp6ob\",\"nameAvailable\":false,\"message\":\"Name \u0027testclusterqlp6ob\u0027 with type Engine is already taken. Please specify a different name\"}",
+      "Content": "{\"name\":\"testclusterpazj5i\",\"nameAvailable\":false,\"message\":\"Name \u0027testclusterpazj5i\u0027 with type Engine is already taken. Please specify a different name\"}",
       "isContentBase64": false
     }
   }
