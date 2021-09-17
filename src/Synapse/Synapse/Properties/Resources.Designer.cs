@@ -368,6 +368,24 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to encrypt the connection string of the linked service?.
+        /// </summary>
+        internal static string EncryptConfirm {
+            get {
+                return ResourceManager.GetString("EncryptConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encrypting the connection string..
+        /// </summary>
+        internal static string Encrypting {
+            get {
+                return ResourceManager.GetString("Encrypting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to add Role Assignment for Storage Account &apos;{0}&apos;. Response Status Code {1}. Response Content: {2}.
         /// </summary>
         internal static string FailedToAddRoleAssignmentForStorageAccount {
@@ -1270,6 +1288,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rerunning trigger run with Id: &apos;{0}&apos;.
+        /// </summary>
+        internal static string RerunSynapseTriggerRun {
+            get {
+                return ResourceManager.GetString("RerunSynapseTriggerRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resetting timeout for Spark session with Id: &apos;{0}&apos; ....
         /// </summary>
         internal static string ResettingSynapseSparkSessionTimeout {
@@ -1495,6 +1522,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Starting integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string StartingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("StartingIntegrationRuntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
         internal static string StartingSynapseSparkSession {
@@ -1509,6 +1545,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StartingSynapseTrigger {
             get {
                 return ResourceManager.GetString("StartingSynapseTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stoping integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string StopingIntegrationRuntime {
+            get {
+                return ResourceManager.GetString("StopingIntegrationRuntime", resourceCulture);
             }
         }
         
@@ -1554,6 +1599,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StoppingSynapseTrigger {
             get {
                 return ResourceManager.GetString("StoppingSynapseTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping trigger run with Id: &apos;{0}&apos;.
+        /// </summary>
+        internal static string StoppingSynapseTriggerRun {
+            get {
+                return ResourceManager.GetString("StoppingSynapseTriggerRun", resourceCulture);
             }
         }
         

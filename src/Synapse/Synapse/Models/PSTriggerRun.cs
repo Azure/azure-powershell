@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSTriggerRun
     {
-        public PSTriggerRun(TriggerRun triggerRun)
+        public PSTriggerRun(TriggerRun triggerRun, string workspaceName)
         {
             this.TriggerRunId = triggerRun?.TriggerRunId;
             this.TriggerName = triggerRun?.TriggerName;
@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.TriggeredPipelines = triggerRun?.TriggeredPipelines;
             this.Keys = triggerRun?.Keys;
             this.Values = triggerRun?.Values;
+            this.WorkspaceName = workspaceName;
         }
 
         public string TriggerRunId { get; }
@@ -54,5 +55,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public IEnumerable<string> Keys { get; }
 
         public IEnumerable<object> Values { get; }
+
+        public string WorkspaceName { get; set; }
     }
 }

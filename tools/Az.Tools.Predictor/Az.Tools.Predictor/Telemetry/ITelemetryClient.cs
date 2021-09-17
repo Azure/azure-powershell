@@ -20,6 +20,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public interface ITelemetryClient
     {
         /// <summary>
+        /// Gets the id to identify the events proceeding to a CommandHistory
+        /// </summary>
+        public string CommandId { get; }
+
+        /// <summary>
         /// Gets and sets the id to correlate the request and the server.
         /// </summary>
         public string RequestId { get; set; }
