@@ -116,10 +116,6 @@ directive:
     remove: true
 
   - where:
-      subject: \b(?!application$|applicationpassword$|serviceprincipal$|serviceprincipalpassword$|groupmember$|user$|group$)\S+
-    remove: true
-
-  - where:
       subject: ^application$|^group$|^serviceprincipal$
       variant: GetExpanded
     remove: true
