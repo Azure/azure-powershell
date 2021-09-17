@@ -87,7 +87,9 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Resources.dll',
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzMgUser', 'New-AzMgUser', 'Remove-AzMgUser', 'Update-AzMgUser',
-                    'Get-AzMgGroup', 'New-AzMgGroup', 'Remove-AzMgGroup', 'Update-AzMgGroup'
+                    'Get-AzMgGroup', 'New-AzMgGroup', 'Remove-AzMgGroup', 'Update-AzMgGroup', 
+                    'Get-AzMgApplication', 'New-AzMgApplication', 'Remove-AzMgApplication', 'Update-AzMgApplication', 
+                    'Get-AzMgServicePrincipal', 'New-AzMgServicePrincipal', 'Remove-AzMgServicePrincipal', 'Update-AzMgServicePrincipal'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment', 
