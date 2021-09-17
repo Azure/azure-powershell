@@ -163,6 +163,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        $resourceTypePath = $ResourceType
         $mapping = @{
             CreateExpanded = 'Az.ProviderHub.private\New-AzProviderHubSku_CreateExpanded';
         }
@@ -173,6 +174,7 @@ begin {
             $resourceTypePath = $PSBoundParameters['ResourceType'] -Split "/" -Join "/resourcetyperegistrations/"
             $PSBoundParameters['ResourceType'] = $resourceTypePath
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
