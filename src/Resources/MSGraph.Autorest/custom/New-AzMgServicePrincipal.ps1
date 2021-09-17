@@ -336,8 +336,8 @@ param(
     ${ApplicationObject},
 
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Alias('AppId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The unique identifier for the associated application (its appId property).
     ${ApplicationId},
@@ -783,7 +783,7 @@ process {
       }
       'ApplicationWithoutCredentialParameterSet' {
           $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
-          $null = $PSBoundParameters['ApplicationId']
+          $null = $PSBoundParameters.Remove('ApplicationId')
           break
       }
       default {
