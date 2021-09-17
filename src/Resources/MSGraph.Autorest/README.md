@@ -105,6 +105,11 @@ directive:
     where: '$.paths.*.*'
     transform: '$.parameters = $.parameters.filter(x=> !(!!x.$ref && (x.$ref.endsWith("#/components/parameters/top") || x.$ref.endsWith("#/components/parameters/skip"))))'
 
+    # Boolean value for count should be true or false in lower case
+  - from: source-file-csharp
+    where: $
+    transform: if ($documentPath.endsWith("MSGraph.cs")) {$ = $.replace(/Count.ToString\(\)/g, "Count.ToString().ToLower()")}
+  
   # remove pipe support support since data plane does not have resource Id.
   - where:
       variant: (.*)ViaIdentity(.*)
