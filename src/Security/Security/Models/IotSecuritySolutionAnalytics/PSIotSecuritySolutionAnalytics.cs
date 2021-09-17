@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
     {
         public PSIoTSeverityMetrics Metrics {get; set;}
 
-        public long? UnhealthyDeviceCount { get; set; }
+        public int? UnhealthyDeviceCount { get; set; }
 
         public IList<PSDevicesMetrics> DevicesMetrics { get; set; }
 

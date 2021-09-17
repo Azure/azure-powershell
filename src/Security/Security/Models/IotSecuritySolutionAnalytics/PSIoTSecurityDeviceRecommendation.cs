@@ -20,6 +20,6 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutionAnalytics
 
         public string ReportedSeverity { get; set; }
 
-        public long? DevicesCount { get; set; }
+        public int? DevicesCount { get; set; }
     }
 }
