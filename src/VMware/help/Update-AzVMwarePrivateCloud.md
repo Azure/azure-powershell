@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMWare
+Module Name: Az.VMware
 online version: https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareprivatecloud
 schema: 2.0.0
 ---
 
-# Update-AzVMWarePrivateCloud
+# Update-AzVMwarePrivateCloud
 
 ## SYNOPSIS
 Update a private cloud
@@ -14,14 +14,14 @@ Update a private cloud
 
 ### UpdateExpanded (Default)
 ```
-Update-AzVMWarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IdentitySource <IIdentitySource[]>] [-Internet <InternetEnum>] [-ManagementClusterSize <Int32>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMWarePrivateCloud -InputObject <IVMWareIdentity> [-IdentitySource <IIdentitySource[]>]
+Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-IdentitySource <IIdentitySource[]>]
  [-Internet <InternetEnum>] [-ManagementClusterSize <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -33,25 +33,25 @@ Update a private cloud
 
 ### Example 1: Update size of private cloud by name
 ```powershell
-PS C:\> Update-AzVMWarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -ManagementClusterSize 4
+PS C:\> Update-AzVMwarePrivateCloud -Name azps_test_cloud -ResourceGroupName azps_test_group -ManagementClusterSize 4
 
-Location      Name            Type
---------      ----            ----
-australiaeast azps-test-cloud Microsoft.AVS/privateClouds
+Location      Name            Type                        ResourceGroupName
+--------      ----            ----                        -----------------
+australiaeast azps_test_cloud Microsoft.AVS/privateClouds azps_test_group
 ```
 
 Update size of private cloud by name
 
-### Example 2: Update size of private cloud by input object
+### Example 2: Update size of private cloud
 ```powershell
-PS C:\> Get-AzVMWarePrivateCloud -ResourceGroupName azps-test-group -Name azps-test-cloud | Update-AzVMWarePrivateCloud -ManagementClusterSize 4
+PS C:\> Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud | Update-AzVMwarePrivateCloud -ManagementClusterSize 4
 
-Location      Name            Type
---------      ----            ----
-australiaeast azps-test-cloud Microsoft.AVS/privateClouds
+Location      Name            Type                        ResourceGroupName
+--------      ----            ----                        -----------------
+australiaeast azps_test_cloud Microsoft.AVS/privateClouds azps_test_group
 ```
 
-Update size of private cloud by input object
+Update size of private cloud
 
 ## PARAMETERS
 
@@ -90,7 +90,7 @@ vCenter Single Sign On Identity Sources
 To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IIdentitySource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IIdentitySource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Connectivity to internet is enabled or disabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Support.InternetEnum
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum
 Parameter Sets: (All)
 Aliases:
 
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -259,11 +259,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.Api20200320.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IPrivateCloud
 
 ## NOTES
 
@@ -286,15 +286,31 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   - `[Ssl <SslEnum?>]`: Protect LDAP communication using SSL certificate (LDAPS)
   - `[Username <String>]`: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
 
-INPUTOBJECT <IVMWareIdentity>: Identity Parameter
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  - `[AddonName <String>]`: Name of the addon for the private cloud
   - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
+  - `[CloudLinkName <String>]`: Name of the cloud link resource
   - `[ClusterName <String>]`: Name of the cluster in the private cloud
+  - `[DatastoreName <String>]`: Name of the datastore in the private cloud cluster
+  - `[DhcpId <String>]`: NSX DHCP identifier. Generally the same as the DHCP display name
+  - `[DnsServiceId <String>]`: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  - `[DnsZoneId <String>]`: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  - `[GatewayId <String>]`: NSX Gateway identifier. Generally the same as the Gateway's display name
+  - `[GlobalReachConnectionName <String>]`: Name of the global reach connection in the private cloud
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Azure region
+  - `[PortMirroringId <String>]`: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
   - `[PrivateCloudName <String>]`: Name of the private cloud
+  - `[PublicIPId <String>]`: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ScriptCmdletName <String>]`: Name of the script cmdlet resource in the script package in the private cloud
+  - `[ScriptExecutionName <String>]`: Name of the user-invoked script execution resource
+  - `[ScriptPackageName <String>]`: Name of the script package in the private cloud
+  - `[SegmentId <String>]`: NSX Segment identifier. Generally the same as the Segment's display name
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[VMGroupId <String>]`: NSX VM Group identifier. Generally the same as the VM Group's display name
+  - `[VirtualMachineId <String>]`: Virtual Machine identifier
 
 ## RELATED LINKS
 
