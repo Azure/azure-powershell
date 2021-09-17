@@ -24,6 +24,7 @@ using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -33,6 +34,19 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 {
     public static class Utils
     {
+        public static string ReadJsonFileContent(string path)
+        {
+            if (!File.Exists(path))
+            {
+                throw new FileNotFoundException(path);
+            }
+
+            using (TextReader reader = new StreamReader(path))
+            {
+                return reader.ReadToEnd();
+            }
+        }
+
         public static Dictionary<string, string> ToDictionary(this Hashtable table)
         {
             if (table == null)

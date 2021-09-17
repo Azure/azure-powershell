@@ -255,6 +255,97 @@ function Test-FrontDoorCrudWithPiping
     Assert-ThrowsContains { Get-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName } "does not exist"
 }
 
+function Test-FrontDoorRulesEngineCrud
+{
+	# Create Azure Front Door
+    $frontDoorName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceGroupName = $resourceGroup.ResourceGroupName
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $hostName = "$frontDoorName.azurefd.net"
+
+    $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $frontDoorName -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
+    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
+    $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1"
+    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
+    $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
+    $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $frontDoorName -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
+    $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject
+	New-AzFrontDoor -Name $frontDoorName -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
+
+    $frontDoor = Get-AzFrontDoor -Name $frontDoorName -ResourceGroupName $resourceGroupName
+
+	# Create rules engine
+	$conditions = New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable RequestHeader -Operator Equal -MatchValue "forward" -Transform "LowerCase" -Selector Rules-Engine-Route-Forward -NegateCondition $false
+	$headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Append" -HeaderName "X-Content-Type-Options" -Value "nosniff"
+	$ruleEngineResponseHeaderAction = New-AzFrontDoorRulesEngineActionObject -ResponseHeaderAction $headerActions	
+	$ruleEngineResponseHeaderRule = New-AzFrontDoorRulesEngineRuleObject -Name rule101 -Priority 1 -Action $ruleEngineResponseHeaderAction -MatchCondition $conditions
+
+	$ruleEngineForwardAction = New-AzFrontDoorRulesEngineActionObject -ForwardingProtocol HttpsOnly -BackendPoolName "backendpool1" -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -QueryParameterStripDirective StripNone -DynamicCompression Disabled -EnableCaching $true
+	$ruleEngineForwardRule = New-AzFrontDoorRulesEngineRuleObject -Name rule102 -Priority 2 -Action $ruleEngineForwardAction -MatchCondition $conditions
+
+	$redirectConditions = New-AzFrontDoorRulesEngineMatchConditionObject -MatchVariable RequestHeader -Operator Equal -MatchValue "redirect" -Transform "LowerCase" -Selector Rules-Engine-Route-Forward -NegateCondition $false
+	$ruleEngineRedirectAction = New-AzFrontDoorRulesEngineActionObject -RedirectProtocol MatchRequest -CustomHost "www.contoso.com" -RedirectType Moved
+	$ruleEngineRedirectRule = New-AzFrontDoorRulesEngineRuleObject -Name rule103 -Priority 3 -Action $ruleEngineRedirectAction -MatchCondition $redirectConditions
+
+	New-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -Rule $ruleEngineResponseHeaderRule,$ruleEngineForwardRule,$ruleEngineRedirectRule -FrontDoorName $frontDoorName -Name engine101
+	$ruleEngine = Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name engine101
+	
+	# Verify Conditions
+	Assert-AreEqual "RequestHeader" $ruleEngine.RulesEngineRules[0].MatchConditions[0].RulesEngineMatchVariable
+	Assert-AreEqual "Equal" $ruleEngine.RulesEngineRules[0].MatchConditions[0].RulesEngineOperator
+	Assert-AreEqual "forward" $ruleEngine.RulesEngineRules[0].MatchConditions[0].RulesEngineMatchValue[0]
+	Assert-AreEqual "Lowercase" $ruleEngine.RulesEngineRules[0].MatchConditions[0].Transforms[0]
+	Assert-AreEqual "Rules-Engine-Route-Forward" $ruleEngine.RulesEngineRules[0].MatchConditions[0].Selector
+	Assert-AreEqual $false $ruleEngine.RulesEngineRules[0].MatchConditions[0].NegateCondition
+
+	Assert-AreEqual "RequestHeader" $ruleEngine.RulesEngineRules[2].MatchConditions[0].RulesEngineMatchVariable
+	Assert-AreEqual "Equal" $ruleEngine.RulesEngineRules[2].MatchConditions[0].RulesEngineOperator
+	Assert-AreEqual "redirect" $ruleEngine.RulesEngineRules[2].MatchConditions[0].RulesEngineMatchValue[0]
+	Assert-AreEqual "Lowercase" $ruleEngine.RulesEngineRules[2].MatchConditions[0].Transforms[0]
+	Assert-AreEqual "Rules-Engine-Route-Forward" $ruleEngine.RulesEngineRules[2].MatchConditions[0].Selector
+	Assert-AreEqual $false $ruleEngine.RulesEngineRules[2].MatchConditions[0].NegateCondition
+
+	# Verify Actions 
+	Assert-AreEqual "X-Content-Type-Options" $ruleEngine.RulesEngineRules[0].Action.ResponseHeaderActions[0].HeaderName
+	Assert-AreEqual "Append" $ruleEngine.RulesEngineRules[0].Action.ResponseHeaderActions[0].HeaderActionType
+	Assert-AreEqual "nosniff" $ruleEngine.RulesEngineRules[0].Action.ResponseHeaderActions[0].Value
+
+	Assert-AreEqual "HttpsOnly" $ruleEngine.RulesEngineRules[1].Action.RouteConfigurationOverride.ForwardingProtocol
+	Assert-AreEqual $frontDoor.BackendPools[0].Id $ruleEngine.RulesEngineRules[1].Action.RouteConfigurationOverride.BackendPoolId
+	Assert-AreEqual "StripNone" $ruleEngine.RulesEngineRules[1].Action.RouteConfigurationOverride.QueryParameterStripDirective
+	Assert-AreEqual "Disabled" $ruleEngine.RulesEngineRules[1].Action.RouteConfigurationOverride.DynamicCompression
+	Assert-AreEqual $true $ruleEngine.RulesEngineRules[1].Action.RouteConfigurationOverride.EnableCaching
+
+	Assert-AreEqual "Moved" $ruleEngine.RulesEngineRules[2].Action.RouteConfigurationOverride.RedirectType
+	Assert-AreEqual "MatchRequest" $ruleEngine.RulesEngineRules[2].Action.RouteConfigurationOverride.RedirectProtocol
+	Assert-AreEqual "www.contoso.com" $ruleEngine.RulesEngineRules[2].Action.RouteConfigurationOverride.CustomHost
+
+	# Update rule engine
+	$headerActions = New-AzFrontDoorHeaderActionObject -HeaderActionType "Overwrite" -HeaderName "Strict-Transport-Security" -Value "max-age=63072000; includeSubDomains; preload"
+	$ruleEngine.RulesEngineRules[0].Action.ResponseHeaderActions.Add($headerActions)
+	$ruleEngine | Set-AzFrontDoorRulesEngine
+
+	# Verify again
+	$ruleEngine = Get-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name engine101
+	Assert-AreEqual "X-Content-Type-Options" $ruleEngine.RulesEngineRules[0].Action.ResponseHeaderActions[0].HeaderName
+	Assert-AreEqual "Append" $ruleEngine.RulesEngineRules[0].Action.ResponseHeaderActions[0].HeaderActionType
+	Assert-AreEqual "nosniff" $ruleEngine.RulesEngineRules[0].Action.ResponseHeaderActions[0].Value
+
+	Assert-AreEqual "Strict-Transport-Security" $ruleEngine.RulesEngineRules[0].Action.ResponseHeaderActions[1].HeaderName
+	Assert-AreEqual "Overwrite" $ruleEngine.RulesEngineRules[0].Action.ResponseHeaderActions[1].HeaderActionType
+	Assert-AreEqual "max-age=63072000; includeSubDomains; preload" $ruleEngine.RulesEngineRules[0].Action.ResponseHeaderActions[1].Value
+
+	Remove-AzFrontDoorRulesEngine -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -Name engine101
+
+	## Delete Azure Front Door
+    $removed = Remove-AzFrontDoor -Name $frontDoorName -ResourceGroupName $resourceGroupName -PassThru
+    Assert-True { $removed }
+    Assert-ThrowsContains { Get-AzFrontDoor -Name $frontDoorName -ResourceGroupName $resourceGroupName } "does not exist"
+
+    Remove-AzResourceGroup -Name $ResourceGroupName -Force
+}
+
 <#
 .SYNOPSIS
 Set custom domain configuration for FrontDoor endpoint.

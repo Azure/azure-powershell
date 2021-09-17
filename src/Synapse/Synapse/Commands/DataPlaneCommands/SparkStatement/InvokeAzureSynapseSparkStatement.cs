@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.SparkPoolName, string.Format(Resources.InvokingSparkStatement, this.SparkPoolName, this.WorkspaceName)))
             {
-                var sessionStmt = SynapseAnalyticsClient.SubmitSparkSessionStatement(this.SessionId, livyRequest, waitForCompletion:true);
+                var sessionStmt = SynapseAnalyticsClient.SubmitSparkSessionStatement(this.SessionId, livyRequest);
                 var psSessionStmt = new PSSynapseExtendedSparkStatement(sessionStmt);
                 WriteObject(psSessionStmt);
             }

@@ -54,3 +54,17 @@ Describe "Import key" {
         } | Should -Throw "KeyType"
     }
 }
+
+Describe "Invoke key operation" {
+    It "Encrypt and Decrypt a sequence using key" {
+        $encryptedResult = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force) 
+        $decryptedResult = Invoke-AzKeyVaultKeyOperation -Operation Decrypt -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -Value (ConvertTo-SecureString -String $$encryptedResult.result -AsPlainText -Force) 
+        $decryptedResult.result | Should -Be "test"
+    }
+
+    It "Wrap and Unwrap a sequence using key" {
+        $wrappedResult = Invoke-AzKeyVaultKeyOperation -Operation Wrap -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force) 
+        $unwrappedResult = Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -Value (ConvertTo-SecureString -String $wrappedResult.result -AsPlainText -Force) 
+        $unwrappedResult.result | Should -Be "test"
+    }
+}

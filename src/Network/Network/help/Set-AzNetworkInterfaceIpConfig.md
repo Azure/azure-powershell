@@ -71,7 +71,7 @@ The first two commands get a virtual network called myvnet and a subnet called m
 ```
 $vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
-$asg = Get-ApplicationSecurityGroup -Name myasg -ResourceGroupName myrg
+$asg = Get-AzApplicationSecurityGroup -Name myasg -ResourceGroupName myrg
 
 $nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
 

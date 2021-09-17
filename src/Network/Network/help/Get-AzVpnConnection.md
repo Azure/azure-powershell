@@ -10,6 +10,9 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets a vpn connection by name or lists all vpn connections connected to a VpnGateway.
 
+>[!NOTE]
+> This Powershell command is for customers using Virtual WAN Site-to-site VPN Gateway only. 
+
 ## SYNTAX
 
 ### ByVpnGatewayName (Default)
