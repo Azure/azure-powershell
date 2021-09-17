@@ -1,10 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a monitor resource
 ```powershell
-PS C:\> New-AzLogzMonitor -ResourceGroupName lucas-rg-test -Name pwsh-logz05 -Location 'westus2' -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress 'xxxxx@microsoft.com' -UserInfoPhoneNumber 'xxxxxxxx' -UserInfoFirstName 'xxx' -UserInfoLastName 'xxx'
+PS C:\> New-AzLogzMonitor -ResourceGroupName logz-rg-test -Name pwsh-logz05 -Location 'westus2' -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanEffectiveDate (Get-Date -AsUTC) -PlanDetail '100gb14days' -UserInfoEmailAddress 'xxxxx@microsoft.com' -UserInfoPhoneNumber 'xxxxxxxx' -UserInfoFirstName 'xxx' -UserInfoLastName 'xxx'
 
 Name          MonitoringStatus Location ResourceGroupName
 ----          ---------------- -------- -----------------
-logz-pwsh01 Enabled          westus2  lucas-rg-test
+logz-pwsh01 Enabled          westus2  logz-rg-test
 ```
 
-{{ Add description here }}
+This command creates a monitor resource.

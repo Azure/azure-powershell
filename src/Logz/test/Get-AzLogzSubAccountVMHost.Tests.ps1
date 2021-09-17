@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzLogzSubAccountVMHost'))
 }
 
 Describe 'Get-AzLogzSubAccountVMHost' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzLogzSubAccountVMHost -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name $env.subAccountName01 } | Should -Not -Throw
     }
 }

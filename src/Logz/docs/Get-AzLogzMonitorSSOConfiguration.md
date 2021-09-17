@@ -29,7 +29,7 @@ Gets the Logz single sign-on resource for the given Monitor.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets the default Logz single sign-on resource for the given Monitor
 ```powershell
 PS C:\> Get-AzLogzMonitorSSOConfiguration -ResourceGroupName LPTrials -MonitorName lpatlogz
 
@@ -38,18 +38,18 @@ Name    ProvisioningState SingleSignOnState SingleSignOnUrl                     
 default Succeeded         Existing          https://api-wa.logz.io/auth/azure/325420/login LPTrials
 ```
 
-{{ Add description here }}
+This command gets the default Logz single sign-on resource for the given Monitor.
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets the default Logz single sign-on resource for the given Monitor by pipeline
 ```powershell
-PS C:\> New-AzLogzMonitorSSOConfiguration -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 | Get-AzLogzMonitorSSOConfiguration
+PS C:\> New-AzLogzMonitorSSOConfiguration -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 | Get-AzLogzMonitorSSOConfiguration
 
 Name    ProvisioningState SingleSignOnState SingleSignOnUrl             ResourceGroupName
 ----    ----------------- ----------------- ---------------             -----------------
-default Succeeded         Disable           https://app.logz.io/        lucas-rg-test
+default Succeeded         Disable           https://app.logz.io/        logz-rg-test
 ```
 
-{{ Add description here }}
+This command gets the default Logz single sign-on resource for the given Monitor by pipeline.
 
 ## PARAMETERS
 

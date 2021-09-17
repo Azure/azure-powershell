@@ -30,16 +30,16 @@ This create operation can take upto 10 minutes to complete.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create sub account under a given monitor resource
 ```powershell
-PS C:\> New-AzLogzSubAccount -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01 -Location 'westus2' -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress 'xxxxx@microsoft.com' -UserInfoPhoneNumber 'xxxxxx' -UserInfoFirstName 'xxx' -UserInfoLastName 'xxx'
+PS C:\> New-AzLogzSubAccount -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01 -Location 'westus2' -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress 'xxxxx@microsoft.com' -UserInfoPhoneNumber 'xxxxxx' -UserInfoFirstName 'xxx' -UserInfoLastName 'xxx'
 
 Name           MonitoringStatus Location ResourceGroupName
 ----           ---------------- -------- -----------------
-logz-pwshsub01 Enabled          westus2  lucas-rg-test
+logz-pwshsub01 Enabled          westus2  logz-rg-test
 ```
 
-{{ Add description here }}
+This command creates sub account under a given monitor resource.
 
 ## PARAMETERS
 

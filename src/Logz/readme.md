@@ -125,7 +125,7 @@ directive:
     set:
       parameter-name: VMResource
 
-  # Rename verb name
+  # Wait confirm from the service team.
   # - where:
   #     verb: Invoke
   #     subject: ^HostMonitor$|^HostSubAccount$
@@ -141,6 +141,8 @@ directive:
     set:
       default:
         script: '"default"'
+
+# Only name allowed for a sso configuration is default.
   - where:
       verb: Get|New
       subject: MonitorSSOConfiguration

@@ -15,19 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzLogzMonitor'))
 }
 
 Describe 'Get-AzLogzMonitor' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $monitorList = Get-AzLogzMonitor
+        $monitorList.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $monitor = Get-AzLogzMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01
+        $monitor.Name | Should -Be $env.monitorName01
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $monitorList = Get-AzLogzMonitor -ResourceGroupName $env.resourceGroup
+        $monitorList.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $monitor = Get-AzLogzMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01
+        $monitor = Get-AzLogzMonitor -InputObject $monitor
+        $monitor.Name | Should -Be $env.monitorName01
     }
 }

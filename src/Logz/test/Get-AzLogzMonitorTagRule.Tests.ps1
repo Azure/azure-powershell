@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzLogzMonitorTagRule'))
 }
 
 Describe 'Get-AzLogzMonitorTagRule' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $tagRule = Get-AzLogzMonitorTagRule -ResourceGroupName $env.resourceGroup-MonitorName $env.monitorName01
+        $tagRule.Name | Should -Be 'default'
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $tagRule = Get-AzLogzMonitorTagRule -ResourceGroupName $env.resourceGroup-MonitorName $env.monitorName01
+        $tagRule = Get-AzLogzMonitorTagRule -InputObject $tagRule
+        $tagRule.Name | Should -Be 'default'
     }
 }

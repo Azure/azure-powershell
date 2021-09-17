@@ -1,16 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a tag rule set for a given logz sub account resource
 ```powershell
-PS C:\> Remove-AzLogzSubAccountTagRule -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01
+PS C:\> Remove-AzLogzSubAccountTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01
 
 ```
 
-{{ Add description here }}
+This command deletes a tag rule set for a given logz sub account resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a tag rule set for a given logz sub account resource by pipeline
 ```powershell
-PS C:\> Get-AzLogzSubAccountTagRule -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01 | Remove-AzLogzSubAccountTagRule
+PS C:\> Get-AzLogzSubAccountTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -SubAccountName logz-pwshsub01 | Remove-AzLogzSubAccountTagRule
 
 ```
 
-{{ Add description here }}
+This command deletes a tag rule set for a given logz sub account resource by pipeline.
 

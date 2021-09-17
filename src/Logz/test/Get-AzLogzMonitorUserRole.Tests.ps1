@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzLogzMonitorUserRole'))
 }
 
 Describe 'Get-AzLogzMonitorUserRole' {
-    It 'ListExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListExpanded' {
+        { Get-AzLogzMonitorUserRole -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 } | Should -Not -Throw
     }
 }

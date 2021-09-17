@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzLogzSubAccount'))
 }
 
 Describe 'Remove-AzLogzSubAccount' {
+    # Case code be merge into New-AzLogzMonitor test case.
     It 'Delete' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

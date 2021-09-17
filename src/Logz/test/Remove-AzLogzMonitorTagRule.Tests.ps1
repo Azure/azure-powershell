@@ -15,11 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzLogzMonitorTagRule')
 }
 
 Describe 'Remove-AzLogzMonitorTagRule' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { 
+            New-AzLogzMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01
+            Remove-AzLogzMonitorTagRule -ResourceGroupName $env.resourceGroup-MonitorName $env.monitorName01  
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        { 
+            $tagRule = New-AzLogzMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01
+            Remove-AzLogzMonitorTagRule -InputObject $tagRule 
+        } | Should -Not -Throw
     }
 }

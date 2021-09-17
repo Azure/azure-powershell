@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzLogzSubAccountVMHost
 }
 
 Describe 'Update-AzLogzSubAccountVMHost' {
-    It 'ListExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Update' {
+        $vmResource = New-AzLogzVMResourcesObject -AgentVersion '1.0' -Id '/SUBSCRIPTIONS/CE37D538-DFA3-49C3-B3CD-149B4B7DB48A/RESOURCEGROUPS/KOYTEST/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/TEST-VM-1'
+        $vm = Update-AzLogzSubAccountVMHost -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name $env.subAccountName01 -State 'Install' -VMResource $vmResource
+        $vm.Id | Should -be '/SUBSCRIPTIONS/CE37D538-DFA3-49C3-B3CD-149B4B7DB48A/RESOURCEGROUPS/KOYTEST/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/TEST-VM-1'
     }
 }

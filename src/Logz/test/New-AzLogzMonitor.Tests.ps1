@@ -15,7 +15,37 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzLogzMonitor'))
 }
 
 Describe 'New-AzLogzMonitor' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CRUCase' {
+        # New case
+        $monitor = New-AzLogzMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName03 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) `
+                            -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
+        $monitor.Name | Should -Be $env.monitorName03
+
+        # Update case
+        $monitor = Update-AzLogzMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName03 -Tag @{'key01'=1;'key02'=2;'key03'=3}
+        $monitor.Tag.Count | Should -Be 3
+
+        # Remove case
+        Remove-AzLogzMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName03
+
+        $monitorList = Get-AzLogzMonitor -ResourceGroupName $env.resourceGroup
+        $monitorList.Name | Should -Not -Contain $env.monitorName03
+    }
+
+    It 'CRUViaIdentityCase' {
+        # New case
+        $monitor = New-AzLogzMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName04 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) `
+                            -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
+        $monitor.Name | Should -Be $env.monitorName04
+
+        # Update case
+        $monitor = Update-AzLogzMonitor -InputObject $monitor -Tag @{'key01'=1;'key02'=2;'key03'=3}
+        $monitor.Tag.Count | Should -Be 3
+        
+        # Remove case
+        Remove-AzLogzMonitor -InputObject $monitor
+
+        $monitorList = Get-AzLogzMonitor -ResourceGroupName $env.resourceGroup
+        $monitorList.Name | Should -Not -Contain $env.monitorName04
     }
 }

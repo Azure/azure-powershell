@@ -15,15 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzLogzSubAccount'))
 }
 
 Describe 'Get-AzLogzSubAccount' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $subAccountList = Get-AzLogzSubAccount -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01
+        $subAccountList.Count | Should -Be 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $subAccount = Get-AzLogzSubAccount -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name $env.subAccountName01
+        $subAccount.Name | Should -Be $env.subAccountName01
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $subAccount = Get-AzLogzSubAccount -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name $env.subAccountName01
+        $subAccount = Get-AzLogzSubAccount -InputObject $subAccount
+        $subAccount.Name | Should -Be $env.subAccountName01
     }
 }

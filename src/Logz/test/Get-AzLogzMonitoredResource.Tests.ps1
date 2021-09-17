@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzLogzMonitoredResource')
 }
 
 Describe 'Get-AzLogzMonitoredResource' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzLogzMonitoredResource -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01} | Should -Not -Throw
     }
 
-    It 'ListBySubAccount' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListBySubAccount' {
+        {  Get-AzLogzMonitoredResource -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -SubAccountName $env.subAccountName01  } | Should -Not -Throw
     }
 }

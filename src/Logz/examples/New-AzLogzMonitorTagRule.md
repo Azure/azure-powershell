@@ -1,10 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a tag rule set for a given monitor resource
 ```powershell
-PS C:\> New-AzLogzMonitorTagRule -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04
+PS C:\> New-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
 
 Name    ProvisioningState ResourceGroupName
 ----    ----------------- -----------------
-default Succeeded         lucas-rg-test
+default Succeeded         logz-rg-test
 ```
 
-{{ Add description here }}
+This command creates or update a tag rule set for a given monitor resource.

@@ -25,16 +25,16 @@ This operation can take upto 10 minutes to complete.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Configures single-sign-on for this resource
 ```powershell
-PS C:\> New-AzLogzMonitorSSOConfiguration -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04
+PS C:\> New-AzLogzMonitorSSOConfiguration -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
 
 Name    ProvisioningState SingleSignOnState SingleSignOnUrl             ResourceGroupName
 ----    ----------------- ----------------- ---------------             -----------------
-default Succeeded         Disable           https://app.logz.io/        lucas-rg-test
+default Succeeded         Disable           https://app.logz.io/        logz-rg-test
 ```
 
-{{ Add description here }}
+This command configures single-sign-on for this resource.
 
 ## PARAMETERS
 

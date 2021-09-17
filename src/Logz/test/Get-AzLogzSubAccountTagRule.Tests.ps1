@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzLogzSubAccountTagRule')
 }
 
 Describe 'Get-AzLogzSubAccountTagRule' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $tagRule = Get-AzLogzSubAccountTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -SubAccountName $env.subAccountName01
+        $tagRule.Name | Should -Be 'default'
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $tagRule = Get-AzLogzSubAccountTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -SubAccountName $env.subAccountName01
+        $tagRule = Get-AzLogzSubAccountTagRule -InputObject $tagRule
+        $tagRule.Name | Should -Be 'default'
     }
 }

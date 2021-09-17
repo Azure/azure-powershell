@@ -1,16 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a monitor resource
 ```powershell
-PS C:\> Remove-AzLogzMonitor -ResourceGroupName lucas-rg-test -Name logz-portal01
+PS C:\> Remove-AzLogzMonitor -ResourceGroupName logz-rg-test -Name logz-portal01
 
 ```
 
-{{ Add description here }}
+This command deletes a monitor resource
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a monitor resource by pipeline
 ```powershell
-PS C:\> Get-AzLogzMonitor -ResourceGroupName lucas-rg-test -Name logz-portal01 | Remove-AzLogzMonitor
+PS C:\> Get-AzLogzMonitor -ResourceGroupName logz-rg-test -Name logz-portal01 | Remove-AzLogzMonitor
 
 ```
 
-{{ Add description here }}
+This command deletes a monitor resource by pipeline
 

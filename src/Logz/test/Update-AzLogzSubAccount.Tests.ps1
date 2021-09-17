@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzLogzSubAccount'))
 }
 
 Describe 'Update-AzLogzSubAccount' {
+    # Case code be merge into New-AzLogzMonitor test case.
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

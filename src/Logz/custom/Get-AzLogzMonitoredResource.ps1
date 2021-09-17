@@ -122,8 +122,6 @@ process {
             return Az.Logz.internal\Get-AzLogzSubAccountMonitoredResource @PSBoundParameters
         }
 
-        $PSBoundParameters.Add('Name', $MonitorName)
-        $PSBoundParameters.Remove('MonitorName') | Out-Null
         return Az.Logz.internal\Get-AzLogzMonitorMonitoredResource @PSBoundParameters
     } catch {
         throw

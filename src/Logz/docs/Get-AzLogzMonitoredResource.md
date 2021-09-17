@@ -29,7 +29,7 @@ List the resources currently being monitored by the Logz monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the resources currently being monitored by the Logz monitor resource
 ```powershell
 PS C:\> Get-AzLogzMonitoredResource -ResourceGroupName LPTrials -MonitorName lpatlogz
 
@@ -42,9 +42,9 @@ CapturedByRules                                       True
 CapturedByRules                                       True
 ```
 
-{{ Add description here }}
+This command lists the resources currently being monitored by the Logz monitor resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: List the resources currently being monitored by the Logz sub account
 ```powershell
 PS C:\> Get-AzLogzMonitoredResource -ResourceGroupName LPTrials -MonitorName lpatlogz -SubAccountName lpslogzsubaccount
 
@@ -53,7 +53,7 @@ ReasonForLogsStatus ReasonForMetricsStatus SendingLog SendingMetric
 Other                                      False
 ```
 
-{{ Add description here }}
+This command lists the resources currently being monitored by the Logz sub account
 
 ## PARAMETERS
 

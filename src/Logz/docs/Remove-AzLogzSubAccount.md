@@ -32,21 +32,21 @@ This delete operation can take upto 10 minutes to complete.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a sub account resource
 ```powershell
-PS C:\> Remove-AzLogzSubAccount -ResourceGroupName lucas-rg-test -MonitorName logz-portal01 -Name logz01-subaccount01
+PS C:\> Remove-AzLogzSubAccount -ResourceGroupName logz-rg-test -MonitorName logz-portal01 -Name logz01-subaccount01
 
 ```
 
-{{ Add description here }}
+This command deletes a sub account resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a sub account resource by pipeline
 ```powershell
-PS C:\> Get-AzLogzSubAccount -ResourceGroupName lucas-rg-test -MonitorName logz-portal01 -Name logz01-subaccount02 | Remove-AzLogzSubAccount
+PS C:\> Get-AzLogzSubAccount -ResourceGroupName logz-rg-test -MonitorName logz-portal01 -Name logz01-subaccount02 | Remove-AzLogzSubAccount
 
 ```
 
-{{ Add description here }}
+This command deletes a sub account resource by pipeline.
 
 ## PARAMETERS
 

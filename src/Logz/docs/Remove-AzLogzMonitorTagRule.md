@@ -29,21 +29,21 @@ Delete a tag rule set for a given monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a tag rule set for a given monitor resource
 ```powershell
-PS C:\> Remove-AzLogzMonitorTagRule -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04
+PS C:\> Remove-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
 
 ```
 
-{{ Add description here }}
+This command deletes a tag rule set for a given monitor resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a tag rule set for a given monitor resource by pipeline
 ```powershell
-PS C:\> Get-AzLogzMonitorTagRule -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 | Remove-AzLogzMonitorTagRule
+PS C:\> Get-AzLogzMonitorTagRule -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 | Remove-AzLogzMonitorTagRule
 
 ```
 
-{{ Add description here }}
+This command deletes a tag rule set for a given monitor resource by pipeline.
 
 ## PARAMETERS
 

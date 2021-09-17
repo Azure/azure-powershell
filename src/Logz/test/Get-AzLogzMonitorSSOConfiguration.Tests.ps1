@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzLogzMonitorSSOConfigura
 }
 
 Describe 'Get-AzLogzMonitorSSOConfiguration' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $sso = Get-AzLogzMonitorSSOConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01
+        $sso.Name | Should -Be 'default'
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $sso = Get-AzLogzMonitorSSOConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01
+        $sso = Get-AzLogzMonitorSSOConfiguration -InputObject $sso
+        $sso.Name | Should -Be 'default'
     }
 }

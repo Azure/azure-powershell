@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzLogzHostMonitor'))
 }
 
 Describe 'Invoke-AzLogzHostMonitor' {
-    It 'Host' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Host' {
+        { Invoke-AzLogzHostMonitor -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 } | Should -Not -Throw
     }
 
-    It 'HostViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'HostViaIdentity' {
+        { 
+            $monitor = Get-AzLogzMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01
+            Invoke-AzLogzHostMonitor -InputObject $monitor
+        } | Should -Not -Throw
     }
 }

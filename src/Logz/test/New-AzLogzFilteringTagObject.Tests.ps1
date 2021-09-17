@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzLogzFilteringTagObject'
 }
 
 Describe 'New-AzLogzFilteringTagObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        { New-AzLogzFilteringTagObject -Action 'Include' -Name 'Env' -Value "Prod" } | Should -Not -Throw
     }
 }

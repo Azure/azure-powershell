@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Returns the payload that needs to be passed in the request body for installing Logz.io agent on a VM
 ```powershell
-PS C:\> Invoke-AzLogzHostMonitor -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04
+PS C:\> Invoke-AzLogzHostMonitor -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
 
 ApiKey                           Region
 ------                           ------
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   westus2
 ```
 
-{{ Add description here }}
+This command returns the payload that needs to be passed in the request body for installing Logz.io agent on a VM.
 
-### Example 2: {{ Add title here }}
+### Example 2: Returns the payload that needs to be passed in the request body for installing Logz.io agent on a VM by pipeline
 ```powershell
-PS C:\> Get-AzLogzMonitor -ResourceGroupName lucas-rg-test -MonitorName pwsh-logz04 | Invoke-AzLogzHostMonitor
+PS C:\> Get-AzLogzMonitor -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 | Invoke-AzLogzHostMonitor
 
 ApiKey                           Region
 ------                           ------
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   westus2
 ```
 
-{{ Add description here }}
+This command returns the payload that needs to be passed in the request body for installing Logz.io agent on a VM by pipeline.
 

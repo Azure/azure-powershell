@@ -22,16 +22,16 @@ List the user's roles configured on Logz.io side for the account corresponding t
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the user's roles configured on Logz.io side for the account corresponding to the monitor resource
 ```powershell
-PS C:\> Get-AzLogzMonitorUserRole -ResourceGroupName lucas-rg-test -Name pwsh-logz04
+PS C:\> Get-AzLogzMonitorUserRole -ResourceGroupName logz-rg-test -Name pwsh-logz04
 
 Role
 ----
 None
 ```
 
-{{ Add description here }}
+This command lists the user's roles configured on Logz.io side for the account corresponding to the monitor resource.
 
 ## PARAMETERS
 
