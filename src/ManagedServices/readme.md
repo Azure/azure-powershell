@@ -103,4 +103,14 @@ directive:
     - Authorization
     - EligibleAuthorization
     - EligibleApprover
+  
+  # The function invalid for memory cmdlet.
+  # Custom cmdlet.
+  # - where:
+  #     verb: New
+  #     subject: EligibleAuthorizationObject
+  #     parameter-name: JustInTimeAccessPolicyMultiFactorAuthProvider
+  #   set:
+  #     default:
+  #       script: '"None"'
 ```
