@@ -127,6 +127,7 @@ PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName testgroup `
     VNetId                            : 
     Subnet                            : 
     SubnetId                          : 
+    ProvisionMethod                   : Express
     PublicIPs                         : 
     State                             : Initial
     LicenseType                       : LicenseIncluded
