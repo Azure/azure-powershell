@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+## Version 1.14.1
 * Updated ADF .Net SDK version to 4.25.0
+* Added a ProvisionMethod argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to support Express Azure-SSIS Integration Runtime provision.
 
 ## Version 1.14.0
 * Added a subnetId argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to support RBAC checking for VNet injection against the subnet resource ID instead of the VNet resource ID.
