@@ -16,21 +16,8 @@ Updates a Custom Location with the specified Resource Name in the specified Reso
 ```
 Update-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
  [-AuthenticationType <String>] [-AuthenticationValue <String>] [-ClusterExtensionId <String[]>]
- [-DisplayName <String>] [-HostResourceId <String>] [-HostType <HostType>] [-Namespace <String>]
- [-ProvisioningState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzCustomLocation -ResourceGroupName <String> -ResourceName <String>
- -Parameter <IPatchableCustomLocations> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzCustomLocation -InputObject <ICustomLocationIdentity> -Parameter <IPatchableCustomLocations>
+ [-DisplayName <String>] [-HostResourceId <String>] [-HostType <HostType>]
+ [-IdentityType <ResourceIdentityType>] [-Namespace <String>] [-ProvisioningState <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,8 +25,9 @@ Update-AzCustomLocation -InputObject <ICustomLocationIdentity> -Parameter <IPatc
 ```
 Update-AzCustomLocation -InputObject <ICustomLocationIdentity> [-AuthenticationType <String>]
  [-AuthenticationValue <String>] [-ClusterExtensionId <String[]>] [-DisplayName <String>]
- [-HostResourceId <String>] [-HostType <HostType>] [-Namespace <String>] [-ProvisioningState <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-HostResourceId <String>] [-HostType <HostType>] [-IdentityType <ResourceIdentityType>]
+ [-Namespace <String>] [-ProvisioningState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +60,7 @@ The type of the Custom Locations authentication
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -87,7 +75,7 @@ The kubeconfig value.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -102,7 +90,7 @@ Contains the reference to the add-on that contains charts to deploy CRDs and ope
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -132,7 +120,7 @@ Display name for the Custom Locations location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -148,7 +136,7 @@ The Custom Locations RP will perform a checkAccess API for listAdminCredentials 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -163,7 +151,22 @@ Type of host the Custom Locations is referencing (Kubernetes, etc...).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.HostType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: "Kubernetes"
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The identity type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.ResourceIdentityType
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -179,7 +182,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -194,7 +197,7 @@ Kubernetes namespace that will be created on the specified cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -204,28 +207,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-The Custom Locations patchable resource definition.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210315Preview.IPatchableCustomLocations
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ProvisioningState
 Provisioning State for the Custom Location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -241,7 +228,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -256,7 +243,7 @@ Custom Locations name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -271,7 +258,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -286,7 +273,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -332,13 +319,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210315Preview.IPatchableCustomLocations
-
 ### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210315Preview.ICustomLocation
+### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
 
 ## NOTES
 
@@ -354,18 +339,6 @@ INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceName <String>]`: Custom Locations name.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-PARAMETER <IPatchableCustomLocations>: The Custom Locations patchable resource definition.
-  - `[AuthenticationType <String>]`: The type of the Custom Locations authentication
-  - `[AuthenticationValue <String>]`: The kubeconfig value.
-  - `[ClusterExtensionId <String[]>]`: Contains the reference to the add-on that contains charts to deploy CRDs and operators.
-  - `[DisplayName <String>]`: Display name for the Custom Locations location.
-  - `[HostResourceId <String>]`: Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
-  - `[HostType <HostType?>]`: Type of host the Custom Locations is referencing (Kubernetes, etc...).
-  - `[Namespace <String>]`: Kubernetes namespace that will be created on the specified cluster.
-  - `[ProvisioningState <String>]`: Provisioning State for the Custom Location.
-  - `[Tag <IPatchableCustomLocationsTags>]`: Resource tags
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

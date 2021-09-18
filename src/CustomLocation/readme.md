@@ -30,20 +30,38 @@ For information on how to develop for `Az.CustomLocation`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 70b5215249735bc56df6d9fc20a535f24f655117
+branch: 382987fbc0f7f2465b99a86045b0ef18e1af3ecd
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 
-  - $(repo)/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/preview/2021-03-15-preview/customlocations.json
+  - $(repo)/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/stable/2021-08-15/customlocations.json
 
 module-version: 0.1.0
 title: CustomLocation
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
+resourcegroup-append: true
 
 directive:
   - where:
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+    remove: true
+
+  - where:
       verb: Set
     remove: true
+
+  - where:
+      verb: New|Update
+      subject: ^CustomLocation$
+      parameter-name: HostType
+    hide: true
+    set:
+      default:
+        script: '"Kubernetes"'
+
+  - where:
+      subject: CustomLocationOperation
+    hide: true
 ```

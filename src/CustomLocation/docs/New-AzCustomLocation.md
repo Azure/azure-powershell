@@ -12,34 +12,12 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> -Location <String>
  [-SubscriptionId <String>] [-AuthenticationType <String>] [-AuthenticationValue <String>]
  [-ClusterExtensionId <String[]>] [-DisplayName <String>] [-HostResourceId <String>] [-HostType <HostType>]
- [-Namespace <String>] [-ProvisioningState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> -Parameter <ICustomLocation>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzCustomLocation -InputObject <ICustomLocationIdentity> -Parameter <ICustomLocation>
+ [-IdentityType <ResourceIdentityType>] [-Namespace <String>] [-ProvisioningState <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzCustomLocation -InputObject <ICustomLocationIdentity> -Location <String> [-AuthenticationType <String>]
- [-AuthenticationValue <String>] [-ClusterExtensionId <String[]>] [-DisplayName <String>]
- [-HostResourceId <String>] [-HostType <HostType>] [-Namespace <String>] [-ProvisioningState <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +65,7 @@ The type of the Custom Locations authentication
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -102,7 +80,7 @@ The kubeconfig value.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -117,7 +95,7 @@ Contains the reference to the add-on that contains charts to deploy CRDs and ope
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -147,7 +125,7 @@ Display name for the Custom Locations location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -163,7 +141,7 @@ The Custom Locations RP will perform a checkAccess API for listAdminCredentials 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -178,7 +156,22 @@ Type of host the Custom Locations is referencing (Kubernetes, etc...).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.HostType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: "Kubernetes"
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The identity type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.ResourceIdentityType
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -188,28 +181,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -224,7 +201,7 @@ Kubernetes namespace that will be created on the specified cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -249,28 +226,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Custom Locations definition.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210315Preview.ICustomLocation
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ProvisioningState
 Provisioning State for the Custom Location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -286,7 +247,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -301,7 +262,7 @@ Custom Locations name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -316,7 +277,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -331,7 +292,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -377,47 +338,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210315Preview.ICustomLocation
-
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210315Preview.ICustomLocation
+### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: Custom Locations name.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-PARAMETER <ICustomLocation>: Custom Locations definition.
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AuthenticationType <String>]`: The type of the Custom Locations authentication
-  - `[AuthenticationValue <String>]`: The kubeconfig value.
-  - `[ClusterExtensionId <String[]>]`: Contains the reference to the add-on that contains charts to deploy CRDs and operators.
-  - `[DisplayName <String>]`: Display name for the Custom Locations location.
-  - `[HostResourceId <String>]`: Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
-  - `[HostType <HostType?>]`: Type of host the Custom Locations is referencing (Kubernetes, etc...).
-  - `[Namespace <String>]`: Kubernetes namespace that will be created on the specified cluster.
-  - `[ProvisioningState <String>]`: Provisioning State for the Custom Location.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 ## RELATED LINKS
 

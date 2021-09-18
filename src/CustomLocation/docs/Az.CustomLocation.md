@@ -17,9 +17,6 @@ Gets the details of the customLocation with a specified resource group and name.
 ### [Get-AzCustomLocationEnabledResourceType](Get-AzCustomLocationEnabledResourceType.md)
 Gets the list of the Enabled Resource Types.
 
-### [Get-AzCustomLocationOperation](Get-AzCustomLocationOperation.md)
-Lists all available Custom Locations operations.
-
 ### [New-AzCustomLocation](New-AzCustomLocation.md)
 Creates or updates a Custom Location in the specified Subscription and Resource Group
 

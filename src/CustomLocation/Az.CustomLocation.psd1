@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.CustomLocation.private.dll'
   FormatsToProcess = './Az.CustomLocation.format.ps1xml'
-  FunctionsToExport = 'Get-AzCustomLocation', 'Get-AzCustomLocationEnabledResourceType', 'Get-AzCustomLocationOperation', 'New-AzCustomLocation', 'Remove-AzCustomLocation', 'Update-AzCustomLocation', '*'
+  FunctionsToExport = 'Get-AzCustomLocation', 'Get-AzCustomLocationEnabledResourceType', 'New-AzCustomLocation', 'Remove-AzCustomLocation', 'Update-AzCustomLocation', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
