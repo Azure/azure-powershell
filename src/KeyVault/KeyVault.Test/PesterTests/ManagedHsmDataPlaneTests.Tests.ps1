@@ -2,7 +2,7 @@ $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
 . "$here\$sut"
 
-. $PSScriptRoot/ManagedHsmDatePlaneTests.ps1
+. $PSScriptRoot/ManagedHsmDataPlaneTests.ps1
 # ImportModules
 $hsmName = 'bezmhsm'
 $signInName = 'yeliu@microsoft.com'

@@ -179,6 +179,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public new virtual object GetDynamicParameters()
         {
+            if (BicepUtility.IsBicepFile(TemplateUri))
+            {
+                throw new NotSupportedException($"'-TemplateUri {TemplateUri}' is not supported. Please download the bicep file and pass it using -TemplateFile.");
+            }
+
             if (BicepUtility.IsBicepFile(TemplateFile))
                 BuildAndUseBicepTemplate();
 

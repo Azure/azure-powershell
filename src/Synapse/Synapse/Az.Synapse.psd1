@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.15.0'
+ModuleVersion = '0.16.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -60,7 +60,8 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Synapse.dll',
                'Azure.Analytics.Synapse.Spark.dll', 
                'Azure.Analytics.Synapse.AccessControl.dll', 
                'Azure.Analytics.Synapse.Artifacts.dll', 
-               'Azure.Analytics.Synapse.ManagedPrivateEndpoints.dll'
+               'Azure.Analytics.Synapse.ManagedPrivateEndpoints.dll',
+               'Microsoft.DataTransfer.Gateway.Encryption.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -175,12 +176,18 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Update-AzSynapseManagedVirtualNetworkConfig', 
                'Get-AzSynapseSparkJobDefinition', 
                'Remove-AzSynapseSparkJobDefinition', 
-               'Set-AzSynapseSparkJobDefinition', 
-               'Get-AzSynapseManagedPrivateEndpoint', 
-               'New-AzSynapseManagedPrivateEndpoint', 
-               'Remove-AzSynapseManagedPrivateEndpoint', 
+               'Set-AzSynapseSparkJobDefinition',
+               'Get-AzSynapseManagedPrivateEndpoint',
+               'New-AzSynapseManagedPrivateEndpoint',
+               'Remove-AzSynapseManagedPrivateEndpoint',
                'New-AzSynapseGitRepositoryConfig', 'New-AzSynapseWorkspacePackage', 
-               'Get-AzSynapseWorkspacePackage', 'Remove-AzSynapseWorkspacePackage'
+               'Get-AzSynapseWorkspacePackage', 'Remove-AzSynapseWorkspacePackage',
+               'Start-AzSynapseIntegrationRuntime',
+               'Stop-AzSynapseIntegrationRuntime',
+               'New-AzSynapseGitRepositoryConfig',
+               'Invoke-AzSynapseTriggerRun',
+               'Stop-AzSynapseTriggerRun',
+               'New-AzSynapseLinkedServiceEncryptedCredential'
 
 # Variables to export from this module
 # VariablesToExport = @()
