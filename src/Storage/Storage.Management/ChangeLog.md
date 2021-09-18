@@ -22,6 +22,9 @@
 * Upgraded Azure.Storage.Files.Shares to 12.8.0
 * Upgraded Azure.Storage.Files.DataLake to 12.8.0
 * Upgraded Azure.Storage.Queues to 12.8.0
+* Supported upgrade storage account to enable HierarchicalNamespace
+    -  `Invoke-AzStorageAccountHierarchicalNamespaceUpgrade`
+    -  `Stop-AzStorageAccountHierarchicalNamespaceUpgrade`
 
 ## Version 3.11.0
 * Supported get/set blob tags on a specific blob
