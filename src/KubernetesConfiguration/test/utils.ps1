@@ -6,28 +6,18 @@ function RandomString([bool]$allChars, [int32]$len) {
     }
 }
 $env = @{}
+if ($UsePreviousConfigForRecord) {
+    $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
+    $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
+}
+# Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
+# example: $val = $env.AddWithCache('key', $val, $true)
+$env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    Write-Host -ForegroundColor Yellow "WARNNING: Plese provide resource group with Azure Arc enabled Kubernetes."
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.location = 'eastus'
-
-    # Can't Azure Arc enabled Kubernetes via powershell(Kubernetes model not released) and New-AzDeployment(The template file Can't exported.)
-    # TODO: Kubernetes model be release or The template file can be export.
-    $env.resourceGroup = 'connaks-rg-w9vlnp' # 'kubconfig-rg-' + (RandomString -allChars $false -len 6)
-    # kubernetes in connaks-rg-w9vlnp
-    $env.kubernetesName00 = 'connaks-d983yc' 
-    $env.kubernetesName01 = 'connaks-dkc29c'
-
-    $env.kubConf00 = 'kubconf-' + (RandomString -allChars $false -len 6) + '-test'
-    $env.kubConf01 = 'kubconf-' + (RandomString -allChars $false -len 6) + '-test'
-
-
-    Write-Host -ForegroundColor Green "Start creating kubernetes connected for test..."
-    New-AzKubernetesConfiguration -Name $env.kubConf00 -ClusterName $env.kubernetesName00 -ResourceGroupName $env.resourceGroup -RepositoryUrl http://github.com/xxxx
-    Write-Host -ForegroundColor Green "Kubernetes connected created successfully."
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -37,6 +27,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

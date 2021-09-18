@@ -1,4 +1,4 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzKubernetesConfiguration'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzExtensionTypeVersion'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -14,16 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzKubernetesConfiguration
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzKubernetesConfiguration' {
+Describe 'Get-AzExtensionTypeVersion' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

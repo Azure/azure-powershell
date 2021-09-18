@@ -1,6 +1,6 @@
 ---
 Module Name: Az.KubernetesConfiguration
-Module Guid: 5775d46c-778c-4011-b1be-d7d7b9a98fe8
+Module Guid: 07c5ca4f-c0e2-4321-aa6d-a6bafff9f43d
 Download Help Link: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration
 Help Version: 1.0.0.0
 Locale: en-US
@@ -16,9 +16,6 @@ Gets Kubernetes Cluster Extension.
 
 ### [Get-AzKubernetesConfiguration](Get-AzKubernetesConfiguration.md)
 Gets details of the Source Control Configuration.
-
-### [Get-AzOperationStatus](Get-AzOperationStatus.md)
-Get Async Operation status
 
 ### [New-AzExtension](New-AzExtension.md)
 Create a new Kubernetes Cluster Extension.

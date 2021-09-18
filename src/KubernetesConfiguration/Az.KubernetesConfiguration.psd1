@@ -1,5 +1,5 @@
 @{
-  GUID = '5775d46c-778c-4011-b1be-d7d7b9a98fe8'
+  GUID = '07c5ca4f-c0e2-4321-aa6d-a6bafff9f43d'
   RootModule = './Az.KubernetesConfiguration.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.KubernetesConfiguration.private.dll'
   FormatsToProcess = './Az.KubernetesConfiguration.format.ps1xml'
-  FunctionsToExport = 'Get-AzExtension', 'Get-AzKubernetesConfiguration', 'Get-AzOperationStatus', 'New-AzExtension', 'New-AzKubernetesConfiguration', 'Remove-AzExtension', 'Remove-AzKubernetesConfiguration', 'Update-AzExtension', '*'
+  FunctionsToExport = 'Get-AzExtension', 'Get-AzKubernetesConfiguration', 'New-AzExtension', 'New-AzKubernetesConfiguration', 'Remove-AzExtension', 'Remove-AzKubernetesConfiguration', 'Update-AzExtension', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
