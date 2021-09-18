@@ -121,6 +121,13 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestV2ARCM540Reprotect()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCM540Reprotect");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMRecoveryPlan()
         {

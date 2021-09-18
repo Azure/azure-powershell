@@ -467,6 +467,46 @@ function Test-V2ARCMCancelFailover {
 }
 
 <#
+.SYNOPSIS
+	Site Recovery V2A RCM Reprotect Test.
+#>
+function Test-V2ARCM540Reprotect {
+
+    # Set vault context.
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    
+    # Get fabric.
+    $Fabric = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
+    Assert-NotNull($Fabric)
+    Assert-true { $Fabric.name -eq $primaryFabricName }
+    Assert-NotNull($Fabric.FabricSpecificDetails.ProcessServers)
+    Assert-NotNull($Fabric.FabricSpecificDetails.ProcessServers[0].ID)
+    Assert-NotNull($Fabric.FabricSpecificDetails.ReprotectAgents[0].ID)
+
+    # Get container.
+    $Container = Get-AzRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $Fabric
+    Assert-NotNull($Container)
+    Assert-true { $Container.name -eq $primaryContainerName }
+
+    # Get mapping.
+    $Mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $Container `
+        -Name $primaryContainerMappingName
+    Assert-NotNull($Mapping)
+
+    # Get protected item.
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $reprotectVmName
+    Assert-NotNull($RPI)
+    Assert-NotNull($RPI.providerSpecificDetails)
+
+    # Reprotect.
+    $Job = Update-AzRecoveryServicesAsrProtectionDirection -ReplicateVMwareToAzure -ProtectionContainerMapping $Mapping `
+        -ReplicationProtectedItem $RPI -Direction PrimaryToRecovery -CredentialsToAccessVm $credentialsName `
+        -ApplianceName $Fabric.FabricSpecificDetails.ProcessServers[0].Name -Fabric $Fabric `
+        -SiteId $Fabric.FabricSpecificDetails.VmwareSiteId
+}
+
+<#
 .SYNOPSIS 
     Site Recovery V2A RCM Recovery Plan Test
 #>
