@@ -96,6 +96,7 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 	VNetId                       : 
 	Subnet                       : 
 	SubnetId                     : 
+	ProvisionMethod              : Standard
 	PublicIPs                    : 
 	ResourceGroupName            : rg-test-dfv2
 	DataFactoryName              : test-df-eu2
