@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
+using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
@@ -113,6 +114,11 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string SparkVersion { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.SparkConfigPropertiesFilePath)]
+        [ValidateNotNullOrEmpty]
+        public string SparkConfigFilePath { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -167,6 +173,18 @@ namespace Microsoft.Azure.Commands.Synapse
                 throw new AzPSResourceNotFoundCloudException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
+            SparkConfigProperties sparkConfigProperties = null;
+            if (this.IsParameterBound(c => c.SparkConfigFilePath))
+            {
+                string path = this.TryResolvePath(SparkConfigFilePath);
+                string filename = Path.GetFileNameWithoutExtension(path);
+                sparkConfigProperties = new SparkConfigProperties()
+                {
+                    Content = this.ReadFileAsText(this.SparkConfigFilePath),
+                    Filename = filename
+                };
+            }
+
             var createParams = new BigDataPoolResourceInfo
             {
                 Location = existingWorkspace.Location,
@@ -185,7 +203,8 @@ namespace Microsoft.Azure.Commands.Synapse
                     Enabled = EnableAutoPause.IsPresent,
                     DelayInMinutes = AutoPauseDelayInMinute
                 },
-                SparkVersion = this.SparkVersion
+                SparkVersion = this.SparkVersion,
+                SparkConfigProperties = sparkConfigProperties
             };
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSparkPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))
