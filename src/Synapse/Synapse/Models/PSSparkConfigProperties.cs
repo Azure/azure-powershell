@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Time = sparkConfigProperties?.Time;
             this.Content = sparkConfigProperties?.Content;
-            this.Filename = sparkConfigProperties?.Filename;            this.ConfigurationType = sparkConfigProperties?.ConfigurationType;        }
+            this.Filename = sparkConfigProperties?.Filename;
+            this.ConfigurationType = sparkConfigProperties?.ConfigurationType;
+        }
 
         public System.DateTime? Time { get; set; }
 
