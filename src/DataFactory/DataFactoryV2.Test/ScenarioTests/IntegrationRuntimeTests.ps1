@@ -362,6 +362,72 @@ function Test-Azure-IntegrationRuntime-SubnetId
 
 <#
 .SYNOPSIS
+Creates a express azure integration runtime with subnetId.
+Deletes the created integration runtime at the end.
+
+To record this test, please prepare a subnet, to which the Azure SSIS IR could join.
+#>
+function Test-Azure-Express-IntegrationRuntime
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        
+        Set-AzDataFactoryV2 -ResourceGroupName $rgname `
+            -Name $dfname `
+            -Location $dflocation `
+            -Force
+
+        $irname = "test-Azure-Express-SSIS-IR"
+        $description = "Managed SSIS IR"
+
+        # Get SubnetId from environment variable.
+        $IsSubnetIdSet = Test-Path env:SSIS_IR_SUBNETID
+        if ($IsSubnetIdSet) {
+            $subnetId = $Env:SSIS_IR_SUBNETID
+        } else {
+            $subnetId = "fakeId"
+        }
+
+        $actual = Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname `
+            -Type Managed `
+            -Description $description `
+            -Location $dflocation `
+            -NodeSize Standard_A4_v2 `
+            -NodeCount 1 `
+            -MaxParallelExecutionsPerNode 1 `
+            -Edition standard `
+            -subnetId $subnetId `
+            -ProvisionMethod 'Express' `
+            -Force
+
+        $expected = Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname
+        Assert-AreEqual $actual.Name $expected.Name
+        if ($IsSubnetIdSet) {
+            Assert-AreEqual $subnetId $expected.SubnetId
+        }
+        Get-AzDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
+
+        Remove-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
 Creates a self-hosted integration runtime and then does piping operations.
 #>
 function Test-IntegrationRuntime-Piping
