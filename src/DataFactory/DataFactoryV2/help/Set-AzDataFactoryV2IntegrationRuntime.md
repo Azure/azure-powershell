@@ -495,7 +495,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProvisionMethod
-The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.
+The provision method for SSIS integration runtime which could be Standard or Express, default is Standard if it is not specified.
 
 ```yaml
 Type: System.String

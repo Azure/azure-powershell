@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
-            HelpMessage = Constants.HelpIntegrationRuntimeEdition)]
+            HelpMessage = Constants.HelpIntegrationRuntimeProvisionMethod)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             Constants.IntegrationRuntimeProvisionStandard,

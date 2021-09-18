@@ -158,6 +158,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";
 
+        public const string HelpIntegrationRuntimeProvisionMethod= "The provision method for SSIS integration runtime which could be Standard or Express, default is Standard if it is not specified.";
+
         public const string HelpIntegrationRuntimeExpressCustomSetup = "The express custom setup for SSIS integration runtime which could be used to setup configurations and 3rd party components without custom setup script.";
 
         public const string HelpIntegrationRuntimeDataProxyIntegrationRuntimeName = "The Self-Hosted Integration Runtime name which is used as a proxy.";
