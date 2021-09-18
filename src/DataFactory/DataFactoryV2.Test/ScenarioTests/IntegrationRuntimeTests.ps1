@@ -395,6 +395,8 @@ function Test-Azure-Express-IntegrationRuntime
             $subnetId = "fakeId"
         }
 
+        Write-Output $subnetId
+
         $actual = Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
@@ -416,7 +418,8 @@ function Test-Azure-Express-IntegrationRuntime
         if ($IsSubnetIdSet) {
             Assert-AreEqual $subnetId $expected.SubnetId
         }
-        Get-AzDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
+
+        Assert-AreEqual $expected.ProvisionMethod 'Express'
 
         Remove-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
     }
