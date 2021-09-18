@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated ADF .Net SDK version to 4.24.0
+* Updated ADF .Net SDK version to 4.25.0
 
 ## Version 1.14.0
 * Added a subnetId argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to support RBAC checking for VNet injection against the subnet resource ID instead of the VNet resource ID.
