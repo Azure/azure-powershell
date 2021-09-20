@@ -848,10 +848,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 if (DataFlowEnableQuickReuse.IsPresent)
                 {
                     integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = false;
-                } else
+                } 
+                else
                 {
                     integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = null;
-
                 }
 
             }
