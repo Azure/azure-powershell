@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMSSUserdata3()
         {
-           //TestRunner.RunTestScript("Test-VMSSUserdata3");
+           TestRunner.RunTestScript("Test-VMSSUserdata3");
         }
     }
 }

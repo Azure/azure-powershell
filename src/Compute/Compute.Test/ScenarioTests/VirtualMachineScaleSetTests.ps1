@@ -3126,9 +3126,13 @@ function Test-VMSSUserdata3
         $vmss = New-AzVmss `
              -ResourceGroupName $rg.ResourceGroupName `
              -Name $vmssName `
-             -VirtualMachineScaleSet $vmssConfig;
+             -VirtualMachineScaleSet $vmssConfig `
+             -AsJob;######trying this
+        
+        $result = $vmss | Wait-Job;
 
         $vmssGet = Get-AzVmss -ResourceGroupName $rg.ResourcegroupName -Name $vmssName -Userdata -InstanceView:$false;
+        ###$result = $vmssGet | Wait-Job;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
 
         $text2 = "update vmss";
@@ -3137,9 +3141,11 @@ function Test-VMSSUserdata3
         $userData2 = $encodedText2;
 
         # Update VMSS Userdata
-        $vmssUp = Update-AzVmss -resourcegroupName $rg.ResourcegroupName -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssGet -Userdata $userData2; # -SkipExtensionsOnOverprovisionedVMs $true;
-        #$vmssGet2 = Get-AzVmss -ResourceGroupName $rg.ResourcegroupName -Name $vmssName -Userdata -InstanceView:$false;
-        #Assert-AreEqual $vmssGet2.VirtualMachineProfile.UserData $userData2;
+        $vmssUp = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssGet -AsJob -Userdata $userData2; # -SkipExtensionsOnOverprovisionedVMs $true;
+        #succeeded until here
+        $result = $vmssUp | Wait-Job;
+        $vmssGet2 = Get-AzVmss -ResourceGroupName $rg.ResourcegroupName -Name $vmssName -Userdata -InstanceView:$false;
+        Assert-AreEqual $vmssGet2.VirtualMachineProfile.UserData $userData2;
 
         #Assign VM to the VMSS.
         #$vmName = "vm" + $rg.ResourceGroupName;
