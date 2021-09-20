@@ -23,8 +23,21 @@
     <EmbeddedResource Include="Strategies\ComputeRp\Images.json" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <ModuleAlcEntryAssembly>Microsoft.Azure.Commands.Compute.AlcWrapper</ModuleAlcEntryAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ModuleAlcRefAssembly Include="Azure.Storage.Blobs" />
+    <ModuleAlcRefAssembly Include="Azure.Storage.Common" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Compute.AlcWrapper\Compute.AlcWrapper.csproj" />
   </ItemGroup>
 
 </Project>
