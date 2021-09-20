@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+* Utilized [AssemblyLoadContext](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext) to resolve assembly conflicts in PowerShell.
+* todo:
+    1. Use named ALC
+    2. add debug message
+    3. refine dev doc
+    4. resolve any other todo's
+    5. how the process of update shared assembly (azure.core) is affected by this?
 
 ## Version 2.5.3
 * Corrected the URLs to Azure Portal in the results of `Get-AzEnvironment` and `Get-AzContext`. [#15429]
