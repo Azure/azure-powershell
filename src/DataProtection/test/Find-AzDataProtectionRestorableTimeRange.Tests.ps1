@@ -13,15 +13,10 @@ while(-not $mockingPath) {
 
 Describe 'Find-AzDataProtectionRestorableTimeRange' {
     It 'PostExpanded' {
-        $sub = $env.SubscriptionId
+        $sub = $env.TestBlobsRestore.SubscriptionId
         $rgName = $env.TestBlobsRestore.ResourceGroupName
         $vaultName = $env.TestBlobsRestore.VaultName
         
-        # $Debug preference = "Continue"
-        Write-Debug  -Message $sub
-        Write-Debug  -Message $rgName
-        Write-Debug  -Message $vaultName
-
         $instances  = Get-AzDataProtectionBackupInstance -Subscription $sub -ResourceGroup $rgName -Vault $vaultName | Where-Object {($_.Property.DataSourceInfo.Type -eq "Microsoft.Storage/storageAccounts/blobServices") -and ($_.Property.CurrentProtectionState -eq "ProtectionConfigured")}
         
         if($instances.Count -gt 0){

@@ -153,5 +153,3 @@ function Remove-AzVMwarePrivateCloud {
         }
     }
 }
-    
-    
