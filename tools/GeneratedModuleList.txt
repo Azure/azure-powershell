@@ -11,6 +11,7 @@ Az.ConnectedMachine
 Az.ContainerInstance
 Az.CostManagement
 Az.CustomProviders
+Az.DataBox
 Az.Databricks
 Az.Datadog
 Az.DataProtection

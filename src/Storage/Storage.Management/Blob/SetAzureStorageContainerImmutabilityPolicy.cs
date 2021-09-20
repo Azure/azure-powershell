@@ -256,9 +256,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 this.ResourceGroupName,
                                 this.StorageAccountName,
                                 this.ContainerName,
-                                this.Etag,
-                                immutabilityPeriod,
-                                this.allowProtectedAppendWrite);
+                                new ImmutabilityPolicy(
+                                    immutabilityPeriodSinceCreationInDays: immutabilityPeriod,
+                                    allowProtectedAppendWrites: this.allowProtectedAppendWrite),
+                                this.Etag);
                 }
                 else
                 {
@@ -267,7 +268,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 this.StorageAccountName,
                                 this.ContainerName,
                                 this.Etag,
-                                immutabilityPeriod);
+                                new ImmutabilityPolicy(
+                                    immutabilityPeriodSinceCreationInDays: immutabilityPeriod));
                 }
                 WriteObject(new PSImmutabilityPolicy(policy));
             }

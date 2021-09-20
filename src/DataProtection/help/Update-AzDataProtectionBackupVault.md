@@ -13,14 +13,14 @@ For example, updating tags for a resource.
 
 ## SYNTAX
 
-### PatchExpanded (Default)
+### UpdateExpanded (Default)
 ```
 Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
  [-IdentityType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### PatchViaIdentityExpanded
+### UpdateViaIdentityExpanded
 ```
 Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-IdentityType <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -98,7 +98,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: PatchViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -128,7 +128,7 @@ The name of the resource group where the backup vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -143,7 +143,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -173,7 +173,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -223,7 +223,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource
 
 ## NOTES
 
@@ -235,7 +235,6 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
-  - `[BackupInstance <String>]`: 
   - `[BackupInstanceName <String>]`: The name of the backup instance
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path
@@ -243,7 +242,9 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   - `[Location <String>]`: The location in which uniqueness will be verified.
   - `[OperationId <String>]`: 
   - `[RecoveryPointId <String>]`: 
+  - `[RequestName <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group where the backup vault is present.
+  - `[ResourceGuardsName <String>]`: The name of ResourceGuard
   - `[SubscriptionId <String>]`: The subscription Id.
   - `[VaultName <String>]`: The name of the backup vault.
 

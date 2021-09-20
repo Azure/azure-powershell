@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Site Recovery bug fixes for VMware to Azure Reprotect and Disable scenarios.
+
+## Version 4.6.0
+* Azure Site Recovery multi appliance support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
+* Azure Backup fixed targetPhysicalPath issue with SQL CRR
+* Azure Backup fixed disable protection for SQL workload
+* Azure Backup resolved bug in setting CMK properties in latest release
+* Azure Backup removed special characters from register-azrecoveryservicesbackupcontainer command help text
 
 ## Version 4.5.0
 * Added MSI based restore for managed virtual machines.

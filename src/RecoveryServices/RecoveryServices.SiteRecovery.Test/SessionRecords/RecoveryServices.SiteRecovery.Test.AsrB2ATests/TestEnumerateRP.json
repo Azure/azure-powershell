@@ -19,7 +19,7 @@
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"eastus\",\r\n      \"name\": \"E2ETest\",\r\n      \"etag\": \"W/\\\"datetime'2017-09-18T12%3A02%3A17.7839455Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"eastus\",\r\n      \"name\": \"E2ETest\",\r\n      \"etag\": \"W/\\\"datetime\u00272017-09-18T12%3A02%3A17.7839455Z\u0027\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "369"
@@ -55,7 +55,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 20 Sep 2017 12:40:25 GMT"
+          "Thu, 26 Aug 2021 04:38:47 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -85,7 +85,7 @@
           "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.SiteRecoveryManagementClient/1.0.2.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Specified resource with name 'RPSwag96' does not exist.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"ArmResourceDoesNotExist\",\r\n        \"message\": \"Specified resource with name 'RPSwag96' does not exist.\",\r\n        \"possibleCauses\": \"Ensure correct resource name was specified.\",\r\n        \"recommendedAction\": \"Verify ARM resource name details.\",\r\n        \"clientRequestId\": \"8ed077fd-8a4f-4d30-9a82-0b3c185b0911-2017-09-20 12:40:26Z-P\",\r\n        \"activityId\": \"9b5875f3-f738-4ac9-9160-c378e29768d1\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Specified resource with name \u0027RPSwag96\u0027 does not exist.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"ArmResourceDoesNotExist\",\r\n        \"message\": \"Specified resource with name \u0027RPSwag96\u0027 does not exist.\",\r\n        \"possibleCauses\": \"Ensure correct resource name was specified.\",\r\n        \"recommendedAction\": \"Verify ARM resource name details.\",\r\n        \"clientRequestId\": \"8ed077fd-8a4f-4d30-9a82-0b3c185b0911-2017-09-20 12:40:26Z-P\",\r\n        \"activityId\": \"9b5875f3-f738-4ac9-9160-c378e29768d1\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "463"
@@ -131,13 +131,15 @@
           "CENTRALINDIA:20170920T124027Z:84bda79d-cabf-4f88-8903-e5a3550e40ec"
         ],
         "Date": [
-          "Wed, 20 Sep 2017 12:40:27 GMT"
+          "Thu, 26 Aug 2021 04:38:47 GMT"
         ]
       },
       "StatusCode": 404
     }
   ],
-  "Names": {},
+  "Names": {
+
+  },
   "Variables": {
     "SubscriptionId": "7c943c1b-5122-4097-90c8-861411bdd574"
   }

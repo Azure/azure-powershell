@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSynapseSparkPool
 
 ## SYNOPSIS
-Gets a Synapse Analytics Spark pool.
+Gets a Apache Spark pool in Azure Synapse Analytics.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzSynapseSparkPool -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-The **Get-AzSynapseSparkPool** cmdlet gets information about an Azure Synapse Analytics Spark pool.
+The **Get-AzSynapseSparkPool** cmdlet gets information about an Apache Spark pool in Azure Synapse Analytics.
 
 ## EXAMPLES
 

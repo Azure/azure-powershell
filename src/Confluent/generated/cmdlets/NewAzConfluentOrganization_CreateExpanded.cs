@@ -161,18 +161,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string OfferDetailPublisherId { get => Body.OfferDetailPublisherId ?? null; set => Body.OfferDetailPublisherId = value; }
 
-        /// <summary>SaaS Offer Status</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SaaS Offer Status")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"SaaS Offer Status",
-        SerializedName = @"status",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus OfferDetailStatus { get => Body.OfferDetailStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus)""); set => Body.OfferDetailStatus = value; }
-
         /// <summary>Offer Plan Term unit</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Offer Plan Term unit")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.ParameterCategory.Body)]

@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="48.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="49.1.0" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.4.1" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
@@ -23,8 +23,21 @@
     <EmbeddedResource Include="Strategies\ComputeRp\Images.json" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <ModuleAlcEntryAssembly>Microsoft.Azure.Commands.Compute.AlcWrapper</ModuleAlcEntryAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ModuleAlcRefAssembly Include="Azure.Storage.Blobs" />
+    <ModuleAlcRefAssembly Include="Azure.Storage.Common" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Compute.AlcWrapper\Compute.AlcWrapper.csproj" />
   </ItemGroup>
 
 </Project>

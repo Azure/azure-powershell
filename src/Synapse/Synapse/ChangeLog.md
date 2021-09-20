@@ -17,7 +17,27 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+* Added cmdlets for Synapse Integration Runtime
+	- Added `Start-AzSynapseIntegrationRuntime` cmdlet
+	- Added `Stop-AzSynapseIntegrationRuntime` cmdlet
+* Added cmdlets for Synapse trigger run
+	- Added `Stop-AzSynapseTriggerRun` cmdlet
+	- Added `Invoke-AzSynapseTriggerRun` cmdlet
+* Added `New-AzSynapseLinkedServiceEncryptedCredential` cmdlet to encrypt credential in linked service
+* Upgraded some package version
+    - Upgraded Azure.Analytics.Synapse.AccessControl to 1.0.0-preview.5
+    - Upgraded Azure.Analytics.Synapse.ManagedPrivateEndpoints to 1.0.0-beta.5
+    - Upgraded Azure.Analytics.Synapse.Spark to 1.0.0-preview.7
+    - Upgraded Microsoft.Azure.Management.Synapse to 2.2.0-preview
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for uploading spark configuration properties file by `SparkConfigFilePath`
+
+## Version 0.16.0
+* Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
+
+## Version 0.15.0
+* Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
 * Added support for Synapse Managed Private Endpoint
 	- Added `New-AzSynapseManagedPrivateEndpoint` cmdlet
 	- Added `Get-AzSynapseManagedPrivateEndpoint` cmdlet
@@ -28,6 +48,12 @@
 * Added `New-AzSynapseGitRepositoryConfig` cmdlet to create Git repository configuration
 * Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for connecting a workspace to a Git reposirory
   - Added parameters `-GitRepositoryType`
+* Added support for workspace package
+	- Added `New-AzSynapseWorkspacePackage` cmdlet
+	- Added `Get-AzSynapseWorkspacePackage` cmdlet
+	- Added `Remove-AzSynapseWorkspacePackage` cmdlet
+	- Updated `New-AzSynapseSparkPool` cmdlet to drop parameter `-LibraryRequirementsFilePath`
+	- Updated `Updated-AzSynapseSparkPool` cmdlet to add parameter `-Package` and `-PackageAction`
 
 ## Version 0.14.0
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
