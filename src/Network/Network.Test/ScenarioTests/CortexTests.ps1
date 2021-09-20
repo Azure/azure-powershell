@@ -340,7 +340,9 @@ function Test-VpnSiteIsSecurity
 	$virtualWanName = Get-ResourceName
 	$vpnSiteName1 = Get-ResourceName
 	$vpnSiteName2 = Get-ResourceName
-    
+    $vpnSiteLinkName1 = Get-ResourceName
+	$vpnSiteLinkName2 = Get-ResourceName
+
 	try
 	{
 		# Create the resource group
@@ -356,21 +358,24 @@ function Test-VpnSiteIsSecurity
 		$vpnSiteAddressSpaces1 = New-Object string[] 1
 		$vpnSiteAddressSpaces1[0] = "192.168.2.0/24"
 		$ip1 = "1.2.3.4"
-		$createdVpnSite1 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1 -Location $rglocation -VirtualWan $virtualWan -IpAddress $ip1 -AddressSpace $vpnSiteAddressSpaces1 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps 10
+		$createdVpnSite1 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1 -Location $rglocation -VirtualWan $virtualWan -IpAddress $ip1 -AddressSpace $vpnSiteAddressSpaces1 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -IsSecuritySite -LinkSpeedInMbps 10
 		$vpnSite1 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1
 		Assert-AreEqual $rgName $vpnSite1.ResourceGroupName
 		Assert-AreEqual $vpnSiteName1 $vpnSite1.Name
 		Assert-AreEqual $ip1 $vpnSite1.IpAddress
-		Assert-AreEqual $false $vpnSite1.IsSecuritySite
+		Assert-AreEqual $true $vpnSite1.IsSecuritySite
 
-		$ip2 = "2.3.4.5"
-		$vpnSiteAddressSpaces2 = New-Object string[] 1
-		$vpnSiteAddressSpaces2[0] = "192.168.3.0/24"
-		$createdVpnSite2 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2 -Location $rglocation -VirtualWan $virtualWan -IpAddress $ip2 -AddressSpace $vpnSiteAddressSpaces2 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps 10 -IsSecuritySite
+		# Create the VpnSite with Links
+		$vpnSiteAddressSpaces2 = New-Object string[] 2
+		$vpnSiteAddressSpaces2[0] = "192.168.2.0/24"
+		$vpnSiteAddressSpaces2[1] = "192.168.3.0/24"
+		$vpnSiteLink1 = New-AzVpnSiteLink -Name $vpnSiteLinkName1 -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10"
+		$vpnSiteLink2 = New-AzVpnSiteLink -Name $vpnSiteLinkName2 -IpAddress "5.5.5.6" -LinkProviderName "SomeTelecomProvider2" -LinkSpeedInMbps "10"
+
+		$createdVpnSite2 = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2 -Location $rglocation -VirtualWan $virtualWan -AddressSpace $vpnSiteAddressSpaces2 -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($vpnSiteLink1, $vpnSiteLink2) -IsSecuritySite
 		$vpnSite2 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName2
 		Assert-AreEqual $rgName $vpnSite2.ResourceGroupName
 		Assert-AreEqual $vpnSiteName2 $vpnSite2.Name
-		Assert-AreEqual $ip2 $vpnSite2.IpAddress
 		Assert-AreEqual $true $vpnSite2.IsSecuritySite
 
 		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName1 -Force -PassThru
