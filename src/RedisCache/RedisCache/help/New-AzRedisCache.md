@@ -76,7 +76,7 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
           Zone               : []
 ```
 
-This command creates a Redis Cache.
+This cmdlet creates a cache using Azure Cache for Redis.
 
 ### Example 3: Create a Zone Redundant Cache 
 
@@ -103,7 +103,7 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
           Tag                : {}
           Zone               : {1, 2}
 ```
-This command creates Redis cache instance in mutliple zones.
+This command creates Azure cache for Redis instance in mutliple zones.
 
 ### Example 4: Create a Virtual Network enable Cache
    
@@ -145,16 +145,16 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
 
 Persistence writes Redis data into an Azure Storage account that you own and manage. So before configuring data persistence you need to have [storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-powershell) in same resource group. Choose a storage account in the same region and subscription as the cache, and a Premium Storage account is recommended because premium storage has higher throughput.
 
-After creating Storage account get storage account connection string. Steps to getting connection string from storage account.
+After creating a storage account, get the storage account connection string using this procedure.
 
 1. Run this command ** "Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName"** in powershell.
-1. From the output of above command copy any key.
+1. From the output of above, copy any key.
 1. Put the storage account key and the storage account name in below format to get connection string of Storage account.
 
 ```
 Connection String Format :- "DefaultEndpointsProtocol=https;AccountName={storageAccountName};AccountKey={storageAccountKey};EndpointSuffix=core.windows.net"
 ```
-There is need to specifies Redis configuration settings to enable data persistence. 
+You must have the specific Redis configuration settings to enable data persistence.  
 
 For RDB backup enable
 -  rdb-backup-enabled (Set true or false)

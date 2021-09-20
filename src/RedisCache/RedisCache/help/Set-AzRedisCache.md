@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzRedisCache
 
 ## SYNOPSIS
-Modifies a Redis Cache.
+Modifies an Azure Cache for Redis.
 
 ## SYNTAX
 
@@ -21,11 +21,11 @@ Set-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-Size <String>] [
 ```
 
 ## DESCRIPTION
-The **Set-AzRedisCache** cmdlet modifies an Azure Redis Cache.
+The **Set-AzRedisCache** cmdlet modifies an Azure Cache for Redis.
 
 ## EXAMPLES
 
-### Example 1: Modify a Redis Cache
+### Example 1: Modify Azure Cache for Redis
 ```
 PS C:\>Set-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
 
@@ -49,9 +49,9 @@ PS C:\>Set-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -RedisConfi
           Zone               : []
 ```
 
-This command updates the maxmemory-policy for the Redis Cache named MyCache.
+This command updates the maxmemory-policy for your Azure Cache fo Redis named *MyCache*.
 
-### Example 2: Modify Redis Cache - If you want to Disable RDB or AOF Data Persistence.
+### Example 2: Modify Azure Cache for Redis - If you want to Disable RDB or AOF Data Persistence.
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"rdb-backup-enabled" = "false"}
 
@@ -76,9 +76,9 @@ PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"rdb-backup-enabl
           Zone               : []
 ```    
 
-This command disable RDB backup data persistence for redis cache. Similarly you can also disable AOF backup persistent cache.
+This cmdlet disables RDB backup data persistence for Azure Cache for Redis. You can also disable AOF backup persistent cache.
 
-### Example 3: Modify Redis Cache - If you want to add data persistence after azure redis cache created.
+### Example 3: Modify Azure Cache for Redis - If you want to add data persistence after azure redis cache created.
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
 
@@ -102,11 +102,11 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-enable
           Tag                : {}
           Zone               : []
 ```
-This command enable rdb-backup persistence on already existing cache. You can similarly enable aof-backup persistence.
+This cmdlet enables rdb-backup persistence on an already existing cache. You can also enable aof-backup persistence.
 
-### Example 4: Modify Redis Cache - If you want to change rdb back up frequency.
+### Example 4: Modify Azure Cache for Redis - If you want to change rdb back up frequency.
 
-For example - Currently you are taking RDB snapshot in every 30 minute but now you want to take snapshot in every 15 minute.
+For example - Currently you are taking RDB snapshot in every 30 minute, but you want to change to take snapshot 15 minutes.
 
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-frequency" = "15"}
@@ -132,7 +132,7 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-freque
           Zone               : []
 ``` 
 
-### Example 5: Modify Redis Cache - If you want to change AOF back up data persistence to RDB back up.
+### Example 5: Modify Azure Cache for Redis - If you want to change AOF back up data persistence to RDB back up.
 
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"aof-backup-enabled"= "false"; "rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
@@ -157,7 +157,7 @@ PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"aof-backup-enabl
           Tag                : {}
           Zone               : []
 ``` 
-This command helps in changing persistence method.
+This cmdlet helps in changing persistence method.
 
 
 ### Example 6: Scale an Azure Cache for Redis Instance
@@ -187,7 +187,7 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P2" -Sku "Premium"
           Tag                : {}
           Zone               : []
 ```
-This command increases or decreases the memory size of your redis instance. 
+This command increases or decreases the memory size of your instance. 
 
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium" 
@@ -212,7 +212,7 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium"
           Tag                : {}
           Zone               : []
 ```
-This command will help you in changing tier of your cache (Basic to Standard or Standard to Premium).
+This command helps you change the tier of your cache. You can change from Basic to Standard, or Standard to Premium.
 
 
 **Use Redis Cluster to scale in/out**
@@ -241,7 +241,7 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 1
           Tag                : {}
           Zone               : []
 ```
-This command helps you in enable clustering for your Azure Cache for Redis instance. For increasing the Shard Count you have to enable clustering first.
+This cmdlet helps you in enable clustering for your Azure Cache for Redis instance. For increasing the shard count, must enable clustering first.
 
 
 ```
@@ -319,7 +319,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Redis Cache to update.
+Specifies the name of the Azure Cache for Redis to update.
 
 ```yaml
 Type: System.String

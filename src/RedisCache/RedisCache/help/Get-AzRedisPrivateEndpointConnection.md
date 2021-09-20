@@ -20,7 +20,7 @@ Get-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <String
 ```
 
 ## DESCRIPTION
-**Get-AzRedisPrivateEndpointConnection** cmdlet will get detail about the specified private endpoint connection on Azure Redis Cache.
+**Get-AzRedisPrivateEndpointConnection** cmdlet get details about the specified private endpoint connection on Azure Cache for Redis.
 
 ## EXAMPLES
 
@@ -34,7 +34,7 @@ PS C:\>Get-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConn
 		ConnectionStatus                : Approved
 ```
 
-This command gets a private endpoint connection named **privateDemo.abcd1234e56** from Redis Cache named mycache. 
+This cmdlet gets a private endpoint connection named **privateDemo.abcd1234e56** from Azure Cache for Redis named **mycache**. 
 
 ## PARAMETERS
 

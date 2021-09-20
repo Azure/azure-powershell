@@ -9,7 +9,7 @@ schema: 2.0.0
 # Remove-AzRedisPrivateEndpointConnection
 
 ## SYNOPSIS
-Remove a Private Endpoint Connection from a Redis Cache.
+Remove a private endpoint connection from Azure Cache for Redis.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Remove-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <Str
 ```
 
 ## DESCRIPTION
-Remove a private endpoint connection from a Redis Cache.
+Remove a private endpoint connection from Azure Cache for Redis.
 
 ## EXAMPLES
 
@@ -30,14 +30,14 @@ PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointC
 True
 ```
 
-This command removes a private endpoint connection named **MyPrivateEndpoint.abcd123e45** from Redis Cache named **mycache** and displays whether the operation is successful. 
+This cmdlet removes a private endpoint connection named *MyPrivateEndpoint.abcd123e45* from a cache named *mycache* and displays if the operation is successful. 
 
 ### Example 2: Remove a private endpoint connection and do not display the result
 ```
 PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -Force
 ```
 
-This command removes a private endpoint connection named **MyPrivateEndpoint.abcd123e45** from Redis Cache named **mycache**. Since the *PassThru* parameter is not specified, the result of the operation is not displayed.
+This cmdlet removes a private endpoint connection named *MyPrivateEndpoint.abcd123e45* from Azure Cache for Redis named *mycache*. Because the **PassThru** parameter is not specified, the result of the operation is not displayed.
 
 ## PARAMETERS
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Forces the cmdlet to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
+Returns an object representing the item you are working with.
 By default, this cmdlet does not generate any output.
 
 ```yaml
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateEndpointConnectionName
-Name of Private Endpoint Connection.
+Name of private endpoint connection.
 
 ```yaml
 Type: System.String
