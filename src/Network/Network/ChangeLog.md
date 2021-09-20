@@ -22,6 +22,11 @@
 * Support for Sku, ScaleUnits parameters of BastionHost resource.
     - `New-AzBastion`
     - `Set-AzBastion`
+* Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.
+    - `New-AzVpnGateway'
+    - `Update-AzVpnGateway`	
+* Updated cmdlet to add property to disable InternetSecurity for P2SVpnGateway.
+    - `New-AzP2sVpnGateway'
 
 ## Version 4.11.0
 * Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
@@ -30,11 +35,6 @@
     - `New-AzLoadBalancerBackendAddressPool`
     - `Set-AzLoadBalancerBackendAddressPool`
 * Onboard Azure Resource Manager to Private Link Common Cmdlets
-* Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.
-    - `New-AzVpnGateway'
-    - `Update-AzVpnGateway`	
-* Updated cmdlet to add property to disable InternetSecurity for P2SVpnGateway.
-    - `New-AzP2sVpnGateway'
 
 ## Version 4.10.0
 * Added public ip address as an optional parameter to create route server
