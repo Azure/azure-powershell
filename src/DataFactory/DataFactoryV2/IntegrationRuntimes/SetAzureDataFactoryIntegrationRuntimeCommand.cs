@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
-        public bool? DataFlowEnableQuickReuse { get; set; }
+        public SwitchParameter DataFlowEnableQuickReuse { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null)
+            if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null || DataFlowEnableQuickReuse != null)
             {
                 if (integrationRuntime.ComputeProperties == null)
                 {
@@ -845,6 +845,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType = DataFlowComputeType ?? integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType;
                 integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount = DataFlowCoreCount ?? integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount;
                 integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive = DataFlowTimeToLive ?? integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive;
+                if (DataFlowEnableQuickReuse.IsPresent)
+                {
+                    integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = false;
+                } else
+                {
+                    integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = null;
+
+                }
+
             }
 
             if (PublicIPs != null)
