@@ -205,6 +205,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
             PSVpnSite vpnSiteToCreate = new PSVpnSite();
             vpnSiteToCreate.ResourceGroupName = this.ResourceGroupName;
             vpnSiteToCreate.Name = this.Name;
