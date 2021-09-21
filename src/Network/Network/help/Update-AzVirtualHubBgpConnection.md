@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVirtualHubBgpConnection
 
 ## SYNOPSIS
-The Update-AzVirtualHubBgpConnection cmdlet updates an existing HubBgpConnection resource.
+The Update-AzVirtualHubBgpConnection cmdlet updates an existing HubBgpConnection resource (Virtual WAN Hub BGP Connection).
 
 ## SYNTAX
 
@@ -83,7 +83,7 @@ Update-AzVirtualHubBgpConnection [-PeerIp <String>] [-PeerAsn <UInt32>]
 ```
 
 ## DESCRIPTION
-The Update-AzVirtualHubBgpConnection cmdlet updates an existing HubBgpConnection resource.
+The Update-AzVirtualHubBgpConnection cmdlet updates an existing HubBgpConnection resource (Virtual WAN Hub BGP Connection).
 
 ## EXAMPLES
 
@@ -106,7 +106,7 @@ PeerAsn                     : 20000
 PeerIp                      : 192.168.1.6
 ```
 
-The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US and connect the Virtual Network to the Virtual Hub in that resource group in Azure. A Virtual Hub BGP Connection will be created thereafter which will peer the Virtual Hub with the network appliance deployed in the Virtual Network. This Virtual Hub BGP Connection is then updated to have different Peer IP.
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual WAN Hub in West US and connect the Virtual Network to the Virtual WAN Hub in that resource group in Azure. A Virtual WAN Hub BGP Connection will be created thereafter which will peer the Virtual WAN Hub with the network appliance deployed in the Virtual Network. This Virtual WAN Hub BGP Connection is then updated to have a different Peer IP.
 
 ## PARAMETERS
 

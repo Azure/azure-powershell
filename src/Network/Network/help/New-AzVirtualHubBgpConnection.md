@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVirtualHubBgpConnection
 
 ## SYNOPSIS
-The New-AzVirtualHubBgpConnection cmdlet creates a HubBgpConnection resource that peers Azure Virtual Hub Router with a BGP-enabled peer in virtual network connected to the Virtual Hub.
+The New-AzVirtualHubBgpConnection cmdlet creates a HubBgpConnection resource that peers the Azure Virtual WAN Hub Router with a BGP-enabled peer in a virtual network connected to the Virtual WAN Hub.
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ New-AzVirtualHubBgpConnection -PeerIp <String> -PeerAsn <UInt32> -Name <String>
 ```
 
 ## DESCRIPTION
-The New-AzVirtualHubBgpConnection cmdlet creates a HubBgpConnection resource that peers Azure Virtual Hub Router with a BGP-enabled peer in virtual network connected to the Virtual Hub.
+The New-AzVirtualHubBgpConnection cmdlet creates a HubBgpConnection resource that peers Azure Virtual WAN Hub Router with a BGP-enabled peer in virtual network connected to the Virtual WAN Hub.
 
 ## EXAMPLES
 
@@ -83,7 +83,7 @@ PeerAsn                     : 20000
 PeerIp                      : 192.168.1.5
 ```
 
-The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US and connect the Virtual Network to the Virtual Hub in that resource group in Azure. A Virtual Hub BGP Connection will be created thereafter which will peer the Virtual Hub with the network appliance deployed in the Virtual Network.
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual WAN Hub in West US and connect the Virtual Network to the Virtual WAN Hub in that resource group in Azure. A Virtual WAN Hub BGP Connection will be created thereafter which will peer the Virtual WAN Hub with the network appliance deployed in the Virtual Network.
 
 ### Example 2
 ```powershell
@@ -97,7 +97,7 @@ PeerAsn                     : 20000
 PeerIp                      : 192.168.1.5
 ```
 
-The above will create Virtual Hub BGP Connection for existing Virtual Hub and Virtual Hub Vnet Connection using powershell piping on the output from Get-AzVirtualHub.
+The above will create a Virtual WAN Hub BGP Connection for existing Virtual WAN Hub and Virtual WAN Hub Vnet Connection using powershell piping on the output from Get-AzVirtualHub.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVirtualHubBgpConnection
 
 ## SYNOPSIS
-The Get-AzVirtualHubBgpConnection cmdlet gets a Virtual Hub BGP Connection in a Virtual Hub or lists all Virtual Hub BGP Connections in a Virtual Hub.
+The Get-AzVirtualHubBgpConnection cmdlet gets a Virtual WAN Hub BGP Connection in a Virtual WAN Hub or lists all Virtual WAN Hub BGP Connections in a Virtual WAN Hub.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzVirtualHubBgpConnection -ResourceId <String> [-DefaultProfile <IAzureConte
 ```
 
 ## DESCRIPTION
-The Get-AzVirtualHubBgpConnection cmdlet gets a Virtual Hub BGP Connection in a Virtual Hub or lists all Virtual Hub BGP Connections in a Virtual Hub.
+The Get-AzVirtualHubBgpConnection cmdlet gets a Virtual WAN Hub BGP Connection in a Virtual WAN Hub or lists all Virtual WAN Hub BGP Connections in a Virtual WAN Hub.
 
 ## EXAMPLES
 
@@ -56,9 +56,9 @@ PeerAsn                     : 20000
 PeerIp                      : 192.168.1.5
 ```
 
-The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US and connect the Virtual Network to the Virtual Hub in that resource group in Azure. A Virtual Hub BGP Connection will be created thereafter which will peer the Virtual Hub with the network appliance deployed in the Virtual Network.
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual WAN Hub in West US and connect the Virtual Network to the Virtual WAN Hub in that resource group in Azure. A Virtual WAN Hub BGP Connection will be created thereafter which will peer the Virtual WAN Hub with the network appliance deployed in the Virtual Network.
 
-After the Virtual Hub BGP Connection is created, it gets the BGP Connection using its resource group name, the Virtual Hub name and the BGP Connection name.
+After the Virtual WAN Hub BGP Connection is created, it gets the BGP Connection using its resource group name, the Virtual WAN Hub name and the BGP Connection name.
 
 ### Example 2
 
@@ -78,7 +78,7 @@ PeerAsn                     : 20000
 PeerIp                      : 192.168.1.6
 ```
 
-This cmdlet lists all the Virtual Hub BGP Connections starting with "test" using its resource group name and the Virtual Hub name.
+This cmdlet lists all the Virtual WAN Hub BGP Connections starting with "test" using its resource group name and the Virtual WAN Hub name.
 
 ## PARAMETERS
 
