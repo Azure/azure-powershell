@@ -851,6 +851,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 } 
                 else
                 {
+                    // setting it as null as the default value for the cleanup variable is false, and the backend endpoint treats null value as true.
                     integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = null;
                 }
 

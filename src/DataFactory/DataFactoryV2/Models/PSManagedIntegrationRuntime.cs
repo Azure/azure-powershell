@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public int? DataFlowTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.TimeToLive;
 
-        public bool? DataFlowEnableCleanUp => ManagedIntegrationRuntime.ComputeProperties.DataFlowProperties.Cleanup;
+        public bool? DataFlowEnableCleanUp => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties.Cleanup;
 
         public string State => ManagedIntegrationRuntime.State;
 
