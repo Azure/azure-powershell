@@ -137,7 +137,7 @@ directive:
       property-name: Items
 
   - where:
-      subject: application$|applicationpassword$|serviceprincipal$|serviceprincipalpassword$|groupmember$|user$|group$
+      subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|group$
     hide: true
 
   - where:
