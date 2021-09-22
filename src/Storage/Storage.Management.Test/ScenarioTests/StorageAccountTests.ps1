@@ -2000,3 +2000,53 @@ function Test-NewAzureStorageAccountEnableNfsV3
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Test Test-AzureStorageAccountHierarchicalNamespaceUpgrade
+.DESCRIPTION
+SmokeTest
+#>
+function Test-AzureStorageAccountHierarchicalNamespaceUpgrade
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        $rg = New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+		# Create Storage account
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype 
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $null $sto.EnableHierarchicalNamespace
+
+		# HierarchicalNamespace upgrade validation and execute upgrade
+		Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $rgname -Name $stoname -RequestType Validation		
+		$task = Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $rgname -Name $stoname -RequestType Upgrade -Force -AsJob
+		$task | Wait-Job
+
+		$sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $true $sto.EnableHierarchicalNamespace
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

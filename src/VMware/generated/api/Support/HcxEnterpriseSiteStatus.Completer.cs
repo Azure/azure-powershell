@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Available".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Available", "Available", global::System.Management.Automation.CompletionResultType.ParameterValue, "Available");
+                yield return new global::System.Management.Automation.CompletionResult("'Available'", "Available", global::System.Management.Automation.CompletionResultType.ParameterValue, "Available");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Consumed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Consumed", "Consumed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Consumed");
+                yield return new global::System.Management.Automation.CompletionResult("'Consumed'", "Consumed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Consumed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deactivated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deactivated", "Deactivated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deactivated");
+                yield return new global::System.Management.Automation.CompletionResult("'Deactivated'", "Deactivated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deactivated");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deleted", "Deleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleted");
+                yield return new global::System.Management.Automation.CompletionResult("'Deleted'", "Deleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleted");
             }
         }
     }

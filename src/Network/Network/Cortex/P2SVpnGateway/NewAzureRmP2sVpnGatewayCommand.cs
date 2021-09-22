@@ -149,6 +149,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to disable internet security feature on this P2SVpnGateway P2SConnectionConfiguration.")]
+        public SwitchParameter DisableInternetSecurityFlag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Flag to enable Routing Preference Internet on this P2SVpnGateway.")]
         public SwitchParameter EnableRoutingPreferenceInternetFlag { get; set; }
 
@@ -213,9 +218,20 @@ namespace Microsoft.Azure.Commands.Network
                 VpnClientAddressPool = new PSAddressSpace()
                 {
                     AddressPrefixes = new List<string>(this.VpnClientAddressPool)
-                },
-                EnableInternetSecurity = this.EnableInternetSecurityFlag.IsPresent
+                },                
             };
+
+            // By default EnableInternetSecurity will be true if not specified explicitly by customer.
+            p2sConnectionConfig.EnableInternetSecurity = true;
+
+            if (this.EnableInternetSecurityFlag.IsPresent)
+            {
+                p2sConnectionConfig.EnableInternetSecurity = true;
+            }
+            if (this.DisableInternetSecurityFlag.IsPresent)
+            {
+                p2sConnectionConfig.EnableInternetSecurity = false;
+            }
 
             if (this.RoutingConfiguration != null)
             {

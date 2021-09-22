@@ -20,7 +20,7 @@ Create or update a private cloud
 Create or update a private cloud
 .Example
 ```powershell
-PS C:\> New-AzVMwarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location australiaeast
+PS C:\> New-AzVMwarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -NetworkBlock 192.168.48.0/22 -Sku av36 -ManagementClusterSize 3 -Location australiaeast
 
 Location      Name            Type
 --------      ----            ----
@@ -28,7 +28,7 @@ australiaeast azps-test-cloud Microsoft.AVS/privateClouds
 ```
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IPrivateCloud
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,10 +46,10 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [Ssl <SslEnum?>]: Protect LDAP communication using SSL certificate (LDAPS)
   [Username <String>]: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.VMware/new-azVMwareprivatecloud
+https://docs.microsoft.com/powershell/module/az.VMware/new-azVMwareprivatecloud
 #>
 function New-AzVMwarePrivateCloud {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IPrivateCloud])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -113,7 +113,7 @@ function New-AzVMwarePrivateCloud {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},
