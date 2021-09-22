@@ -108,7 +108,7 @@ This command creates Azure cache for Redis instance in mutliple zones.
 ### Example 4: Create a Virtual Network enable Cache
    
 Requirements for creating Virtual Network enable cache.
-1. Create the virtual network in same resource group in which you want to create your redis cache. You can create virtual network from [New-AzVirtualNetwork](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualnetwork?view=azps-6.4.0) powershell command.
+1. Create the virtual network in same resource group in which you want to create your redis cache. You can create virtual network from [New-AzVirtualNetwork](./../../../Network/Network/help/New-AzVirtualNetwork.md) powershell command.
 1. You will need SubnetID for VNET enable cache. Syntax of SubnetID is given below.
 
 ```
