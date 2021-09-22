@@ -174,7 +174,7 @@ process {
         'DisplayNameParameterSet' {
             $PSBoundParameters['ConsistencyLevel'] = 'eventual'
             $PSBoundParameters['Search'] = "DisplayName:$($PSBoundParameters['DisplayName'])"
-            $null = $PSBoundParameters.Remove('DisplayNameh')
+            $null = $PSBoundParameters.Remove('DisplayName')
             break
         }
         'ApplicationIdentifierUriParameterSet' {
@@ -193,6 +193,6 @@ process {
             break
         }
     }
-    MSGraph.internal/Get-AzMgApplication @PSBoundParameters
+    MSGraph.internal\Get-AzMgApplication @PSBoundParameters
 }
 }

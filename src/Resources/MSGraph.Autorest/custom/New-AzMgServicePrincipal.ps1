@@ -336,8 +336,8 @@ param(
     ${ApplicationObject},
 
     [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Alias('AppId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The unique identifier for the associated application (its appId property).
     ${ApplicationId},
@@ -756,27 +756,6 @@ param(
 )
 
 process {
-  if ('SimpleParameterSet', 'DisplayNameWithoutCredentialParameterSet' -Contains $PSCmdlet.ParameterSetName) {
-      if ($PSBoundParameters.ContainsKey('DisplayName')) {
-          $AppName = $PSBoundParameters['DisplayName']
-          $null = $PSBoundParameters.Remove('DisplayName')
-      } else {
-          $AppName = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
-      }
-      try {
-          $app = New-AzMgApplication -DisplayName $AppName
-          $PSBoundParameters['AppId'] = $app.AppId               
-      } catch {
-          throw
-      }
-  } elseif ('ApplicationObjectWithoutCredentialParameterSet' -eq $PSCmdlet.ParameterSetName) {
-      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
-      $null = $PSBoundParameters.Remove('ApplicationObject')
-  } elseif ('ApplicationWithoutCredentialParameterSet' -eq $PSCmdlet.ParameterSetName) {
-      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
-      $null = $PSBoundParameters.Remove('ApplicationId')
-  }
-
   switch ($PSCmdlet.ParameterSetName) {
       'SimpleParameterSet' {
           try {
@@ -804,7 +783,7 @@ process {
       }
       'ApplicationWithoutCredentialParameterSet' {
           $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
-          $null = $PSBoundParameters['ApplicationId']
+          $null = $PSBoundParameters.Remove('ApplicationId')
           break
       }
       default {
@@ -812,6 +791,6 @@ process {
       }
   }
 
-  MSGraph.internal/New-AzMgServicePrincipal @PSBoundParameters
+  MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
 }
 }

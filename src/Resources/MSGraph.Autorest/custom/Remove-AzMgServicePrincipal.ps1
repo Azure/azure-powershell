@@ -64,13 +64,13 @@ param(
     # key: display name
     ${DisplayName},
 
-    [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
     # key: service principal object
     ${InputObject},
 
-    [Parameter(ParameterSetName='ApplicationObjectParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     # key: application object
@@ -189,6 +189,6 @@ process {
         }
     }
 
-    MsGraph.Internal/Remove-AzMgServicePrincipal @PSBoundParameters
+    MsGraph.Internal\Remove-AzMgServicePrincipal @PSBoundParameters
 }
 }

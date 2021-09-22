@@ -213,6 +213,6 @@ process {
         }
     }
 
-    MSGraph.internal/Get-AzMgServicePrincipal @PSBoundParameters
+    MSGraph.internal\Get-AzMgServicePrincipal @PSBoundParameters
 }
 }

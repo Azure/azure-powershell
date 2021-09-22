@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Resources.MSGraph.private.dll'
   FormatsToProcess = 'MSGraph.format.ps1xml'
-  FunctionsToExport = 'Get-AzMgApplication', 'Get-AzMgGroup', 'Get-AzMgServicePrincipal', 'Get-AzMgUser', 'New-AzMgApplication', 'New-AzMgGroup', 'New-AzMgServicePrincipal', 'New-AzMgUser', 'Remove-AzMgApplication', 'Remove-AzMgGroup', 'Remove-AzMgServicePrincipal', 'Remove-AzMgUser', 'Update-AzMgApplication', 'Update-AzMgGroup', 'Update-AzMgServicePrincipal', 'Update-AzMgUser', '*'
+  FunctionsToExport = 'Add-AzMgApplicationPassword', 'Add-AzMgServicePrincipalPassword', 'Get-AzMgApplication', 'Get-AzMgGroup', 'Get-AzMgServicePrincipal', 'Get-AzMgUser', 'New-AzMgApplication', 'New-AzMgGroup', 'New-AzMgServicePrincipal', 'New-AzMgUser', 'Remove-AzMgApplication', 'Remove-AzMgGroup', 'Remove-AzMgServicePrincipal', 'Remove-AzMgUser', 'Update-AzMgApplication', 'Update-AzMgGroup', 'Update-AzMgServicePrincipal', 'Update-AzMgUser', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
