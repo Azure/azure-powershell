@@ -405,7 +405,7 @@ function Update-AzMgApplication {
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
-    ${SPARedirectUri}
+    ${SPARedirectUri},
 
     [Parameter()]
     [AllowEmptyCollection()]
