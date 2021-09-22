@@ -510,7 +510,7 @@ param(
     # See more in the table below.
     # Supports $filter (eq, ne, NOT).
     ${SignInAudience},
-HEAD
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
