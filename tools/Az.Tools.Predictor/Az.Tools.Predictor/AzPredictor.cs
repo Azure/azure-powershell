@@ -77,6 +77,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private List<IDisposable> _externalDisposableObjects = new List<IDisposable>();
 
+        private ISurveyHelper _surveyHelper;
+
         private bool _isInitialized;
 
         /// <summary>
@@ -88,20 +90,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // Slow initialization may make opening a PowerShell window slow if "Import-Module" is added to the user's profile.
             Task.Run(() =>
                     {
+                        
+                        var powerShellRuntime = new PowerShellRuntime();
+                        RegisterDisposableObject(powerShellRuntime);
+
                         _settings = Settings.GetSettings();
-                        var azContext = new AzContext()
+                        _azContext = new AzContext(powerShellRuntime)
                         {
                             IsInternal = (_settings.SetAsInternal == true) ? true : false,
                             SurveyId = _settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
                         };
 
-                        RegisterDisposableObject(azContext);
-
-                        _azContext = azContext;
-
                         _azContext.UpdateContext();
                         _telemetryClient = new AzPredictorTelemetryClient(_azContext);
                         _service = new AzPredictorService(_settings.ServiceUri, _telemetryClient, _azContext);
+                        _surveyHelper = new AzPredictorSurveyHelper(powerShellRuntime);
                         _isInitialized = true;
                     });
         }
@@ -295,6 +298,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 // OnCommandLineAccepted.
                 _parsedCommandLineHistory.Clear();
                 parsedResult = GetAstAndMaskedCommandLine(commandLine);
+            }
+
+            if (parsedResult.IsSupported && _surveyHelper?.ShouldPromptSurvey() == true)
+            {
+                _surveyHelper.PromptSurvey();
             }
 
             _telemetryClient.OnHistory(new HistoryTelemetryData(client, parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder, success));
