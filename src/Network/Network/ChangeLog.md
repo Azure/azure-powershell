@@ -28,6 +28,11 @@
     - `Update-AzVpnGateway`	
 * Updated cmdlet to add property to disable InternetSecurity for P2SVpnGateway.
     - `New-AzP2sVpnGateway'
+* Added new cmdlets for HubBgpConnection child resource of VirtualHub.
+    - `Get-AzVirtualHubBgpConnection`
+    - `New-AzVirtualHubBgpConnection`
+    - `Update-AzVirtualHubBgpConnection`
+    - `Remove-AzVirtualHubBgpConnection`
 
 ## Version 4.11.0
 * Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
