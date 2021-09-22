@@ -331,7 +331,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Boolean]
+    [System.Boolean]
     ${AvailableToOtherTenants},
 
     [Parameter()]
