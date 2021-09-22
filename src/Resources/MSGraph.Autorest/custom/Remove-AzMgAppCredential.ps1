@@ -16,7 +16,7 @@
 
 function Remove-AzMgAppCredential {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='ApplicationObjectIdWithKeyIdParameterSet  ', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ApplicationObjectIdWithKeyIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ApplicationObjectIdWithKeyIdParameterSet', Mandatory)]
         [Alias('Id')]
@@ -105,7 +105,7 @@ function Remove-AzMgAppCredential {
             'ApplicationIdWithKeyIdParameterSet' {
                 $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId']
                 if (!$app) {
-                    Write-Error "application with id '$($PSBoundParameters['ApplicationId'])' does not exist."
+                    Write-Error "application with app id '$($PSBoundParameters['ApplicationId'])' does not exist."
                     return
                 }
                 break
@@ -124,9 +124,9 @@ function Remove-AzMgAppCredential {
                 break
             }
             'ApplicationObjectWithKeyIdParameterSet' {
-                $app = Get-AzMgApplication -ObjectId $PSBoundParameters['ObjectId']
+                $app = Get-AzMgApplication -ObjectId $PSBoundParameters['ApplicationObject'].Id
                 if (!$app) {
-                    Write-Error "application with id '$($PSBoundParameters['ObjectId'])' does not exist."
+                    Write-Error "application with id '$($PSBoundParameters['ApplicationObject'].Id)' does not exist."
                     return
                 }
                 break

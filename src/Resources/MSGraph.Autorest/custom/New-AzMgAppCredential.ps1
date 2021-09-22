@@ -125,22 +125,18 @@ function New-AzMgAppCredential {
     process {
         if ($PSBoundParameters.ContainsKey('Password')) {
             $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential" -Property @{'SecretText'=(Unprotect-SecureString -SecureString $PSBoundParameters['Password'])}
-            $null = $PSBoundParameters.Remove('Password')
         }
         if ($PSBoundParameters.ContainsKey('CertValue')) {
             $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" -Property @{'Key'=([System.Convert]::FromBase64String($PSBoundParameters['CertValue']))}
-            $null = $PSBoundParameters.Remove('CertValue')
         }
         if ($PSBoundParameters.ContainsKey('CustomKeyIdentifier')) {
             $credential.CustomKeyIdentifier = [System.Convert]::FromBase64String($PSBoundParameters['CustomKeyIdentifier'])
         }
         if ($PSBoundParameters.ContainsKey('StartDate')) {
             $credential.StartDateTime = $PSBoundParameters['StartDate']
-            $PSBoundParameters.Remove('StartDate')
         }
         if ($PSBoundParameters.ContainsKey('EndDate')) {
             $credential.EndDateTime = $PSBoundParameters['EndDate']
-            $null = $PSBoundParameters.Remove('EndDate')
         }
 
         switch ($PSCmdlet.ParameterSetName) {
@@ -199,11 +195,11 @@ function New-AzMgAppCredential {
                 break
             }
             'ApplicationObjectWithPasswordParameterSet' {
-                MSGraph.internal\Add-AzMgApplicationPassword -ObjectId $PSBoundParameters['ApplicationObject'].Id -PasswordCredential $credential
+                MSGraph.internal\Add-AzMgApplicationPassword -ApplicationId $PSBoundParameters['ApplicationObject'].Id -PasswordCredential $credential
                 break
             }
             'ApplicationObjectWithCertValueParameterSet' {
-                MSGraph.internal\Add-AzMgApplicationKey -ObjectId $PSBoundParameters['ApplicationObject'].Id -KeyCredential $credential
+                MSGraph.internal\Add-AzMgApplicationKey -ApplicationId $PSBoundParameters['ApplicationObject'].Id -KeyCredential $credential
                 break
             }
             default {

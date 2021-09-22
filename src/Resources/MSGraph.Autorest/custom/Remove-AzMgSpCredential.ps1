@@ -14,30 +14,35 @@
 # ----------------------------------------------------------------------------------
 
 
-function Get-AzMgAppCredential {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
-    [CmdletBinding(DefaultParameterSetName='ApplicationObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Remove-AzMgSpCredential {
+    [OutputType([System.Boolean])]
+    [CmdletBinding(DefaultParameterSetName='ObjectIdWithKeyIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ApplicationObjectIdParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='ObjectIdWithKeyIdParameterSet', Mandatory)]
         [Alias('Id')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${ObjectId},
 
-        [Parameter(ParameterSetName='ApplicationIdParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='SPNWithKeyIdParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
-        ${ApplicationId},
+        ${ServicePrincipalName},
 
-        [Parameter(ParameterSetName='DisplayNameParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='DisplayNameWithKeyIdParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${DisplayName},
 
-        [Parameter(ParameterSetName='ApplicationObjectParameterSet', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='ServicePrincipalObjectParameterSet', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
-        ${ApplicationObject},
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
+        ${ServicePrincipalObject},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+        [System.String]
+        ${KeyId},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -89,39 +94,39 @@ function Get-AzMgAppCredential {
     
     process {
         switch ($PSCmdlet.ParameterSetName) {
-            'ApplicationObjectIdParameterSet' {
-                $app = Get-AzMgApplication -ObjectId $PSBoundParameters['ObjectId']
-                if (!$app) {
-                    Write-Error "application with id '$($PSBoundParameters['ObjectId'])' does not exist."
+            'ObjectIdWithKeyIdParameterSet' {
+                $sp = Get-AzMgServicePrincipal -ObjectId $PSBoundParameters['ObjectId']
+                if (!$sp) {
+                    Write-Error "service principal with id '$($PSBoundParameters['ObjectId'])' does not exist."
                     return
                 }
                 break
             }
-            'ApplicationIdParameterSet' {
-                $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId']
-                if (!$app) {
-                    Write-Error "application with id '$($PSBoundParameters['ApplicationId'])' does not exist."
+            'SPNWithKeyIdParameterSet' {
+                $sp = Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName']
+                if (!$sp) {
+                    Write-Error "service principal with name '$($PSBoundParameters['ServicePrincipalName'])' does not exist."
                     return
                 }
                 break
             }
-            'DisplayNameParameterSet' {
-                $app = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']
-                if (0 -eq $app.Count) {
-                    Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
+            'DisplayNameWithKeyIdParameterSet' {
+                $sp = Get-AzMgServicePrincipal -DisplayName $PSBoundParameters['DisplayName']
+                if (0 -eq $sp.Count) {
+                    Write-Error "service principal with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
                     return
-                } elseif (1 -eq $app.Count) {
-                    $app = $app[0]
+                } elseif (1 -eq $sp.Count) {
+                    $sp = $sp[0]
                 } else {
-                    Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
+                    Write-Error "More than one service principal found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgServicePrincipal cmdlet to get the object id of the desired service principal."
                     return
                 }
                 break
             }
-            'ApplicationObjectParameterSet' {
-                $app = Get-AzMgApplication -ObjectId $PSBoundParameters['ApplicationObject'].Id
-                if (!$app) {
-                    Write-Error "application with id '$($PSBoundParameters['ApplicationObject'].Id)' does not exist."
+            'ServicePrincipalObjectParameterSet' {
+                $sp = Get-AzMgServicePrincipal -ObjectId $PSBoundParameters['ServicePrincipalObject'].Id
+                if (!$sp) {
+                    Write-Error "service principal with id '$($PSBoundParameters['ServicePrincipalObject'].Id)' does not exist."
                     return
                 }
                 break
@@ -130,11 +135,23 @@ function Get-AzMgAppCredential {
                 break
             }
         }
-        if ($app.KeyCredentials) {
-            $PSCmdlet.WriteObject($app.KeyCredentials, $true)
+        if (!$PSBoundParameters.ContainsKey('KeyId')) {
+            MSGraph.internal\Remove-AzMgServicePrincipalKey -ServicePrincipalId $sp.Id
+            MSGraph.internal\Remove-AzMgServicePrincipalPassword -ServicePrincipalId $sp.Id
+        } else {
+            foreach ($key in $sp.KeyCredentials) {
+                if ($key.KeyId -eq $PSBoundParameters['KeyId']) {
+                    MSGraph.internal\Remove-AzMgServicePrincipalKey -ServicePrincipal $sp.Id -KeyId $key.KeyId
+                    return
+                }
+            }
+            foreach ($password in $sp.PasswordCredentials) {
+                if ($password.KeyId -eq $PSBoundParameters['KeyId']) {
+                    MSGraph.internal\Remove-AzMgServicePrincipalPassword -ServicePrincipal $sp.Id -KeyId $key.KeyId
+                    return
+                }
+            }
+            Write-Error "service principal '$($sp.Id)' does not contains credential with key id: '$($PSBoundParameters['KeyId'])'."
         }
-        if ($app.PasswordCredentials) {
-            $PSCmdlet.WriteObject($app.PasswordCredentials, $true)
-        }       
     }
 }
