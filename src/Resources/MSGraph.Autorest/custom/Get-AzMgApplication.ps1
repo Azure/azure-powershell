@@ -166,26 +166,22 @@ process {
             break
         }
         'SearchStringParameterSet' {
-            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
-            $PSBoundParameters['Search'] = "DisplayName:$($PSBoundParameters['DisplayNameStartWith'])"
+            $PSBoundParameters['Filter'] = "startsWith(DisplayName, '$($PSBOundParameters['DisplayNameStartWith'])')"
             $null = $PSBoundParameters.Remove('DisplayNameStartWith')
             break
         }
         'DisplayNameParameterSet' {
-            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
-            $PSBoundParameters['Search'] = "DisplayName:$($PSBoundParameters['DisplayName'])"
+            $PSBOundParameters['Filter'] = "displayName eq '$($PSBOundParameters['DisplayName'])'"
             $null = $PSBoundParameters.Remove('DisplayName')
             break
         }
         'ApplicationIdentifierUriParameterSet' {
-            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
-            $PSBoundParameters['Search'] = "IdentifierUri:$($PSBoundParameters['IdentifierUri'])"
+            $PSBOundParameters['Filter'] = "identifierUri eq '$($PSBOundParameters['IdentifierUri'])'"
             $null = $PSBoundParameters.Remove('IdentifierUri')
             break
         }
         'ApplicationIdParameterSet' {
-            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
-            $PSBoundParameters['Search'] = "AppId:$($PSBoundParameters['ApplicationId'])"
+            $PSBOundParameters['Filter'] = "appId eq '$($PSBOundParameters['ApplicationId'])'"
             $null = $PSBoundParameters.Remove('ApplicationId')
             break
         }

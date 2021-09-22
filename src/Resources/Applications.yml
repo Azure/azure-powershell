@@ -388,6 +388,46 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
+  '/applications/{application-id}/microsoft.graph.addKey':
+    post:
+      tags:
+        - applications.Actions
+      summary: Invoke action addKey
+      operationId: applications_addKey
+      parameters:
+        - name: application-id
+          in: path
+          description: 'key: id of application'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: application
+      requestBody:
+        description: Action parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyCredential:
+                  $ref: '#/components/schemas/microsoft.graph.keyCredential'
+                passwordCredential:
+                  $ref: '#/components/schemas/microsoft.graph.passwordCredential'
+                proof:
+                  type: string
+              additionalProperties:
+                type: object
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.keyCredential'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
   '/applications/{application-id}/microsoft.graph.addPassword':
     post:
       tags:
@@ -421,6 +461,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.passwordCredential'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
+  '/applications/{application-id}/microsoft.graph.removeKey':
+    post:
+      tags:
+        - applications.Actions
+      summary: Invoke action removeKey
+      operationId: applications_removeKey
+      parameters:
+        - name: application-id
+          in: path
+          description: 'key: id of application'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: application
+      requestBody:
+        description: Action parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyId:
+                  pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+                  type: string
+                  format: uuid
+                proof:
+                  type: string
+              additionalProperties:
+                type: object
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
+  '/applications/{application-id}/microsoft.graph.removePassword':
+    post:
+      tags:
+        - applications.Actions
+      summary: Invoke action removePassword
+      operationId: applications_removePassword
+      parameters:
+        - name: application-id
+          in: path
+          description: 'key: id of application'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: application
+      requestBody:
+        description: Action parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyId:
+                  pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+                  type: string
+                  format: uuid
+              additionalProperties:
+                type: object
+        required: true
+      responses:
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action
@@ -878,6 +988,46 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
+  '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.addKey':
+    post:
+      tags:
+        - servicePrincipals.Actions
+      summary: Invoke action addKey
+      operationId: servicePrincipals_addKey
+      parameters:
+        - name: servicePrincipal-id
+          in: path
+          description: 'key: id of servicePrincipal'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+      requestBody:
+        description: Action parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyCredential:
+                  $ref: '#/components/schemas/microsoft.graph.keyCredential'
+                passwordCredential:
+                  $ref: '#/components/schemas/microsoft.graph.passwordCredential'
+                proof:
+                  type: string
+              additionalProperties:
+                type: object
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.keyCredential'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
   '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.addPassword':
     post:
       tags:
@@ -911,6 +1061,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.passwordCredential'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
+  '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.removeKey':
+    post:
+      tags:
+        - servicePrincipals.Actions
+      summary: Invoke action removeKey
+      operationId: servicePrincipals_removeKey
+      parameters:
+        - name: servicePrincipal-id
+          in: path
+          description: 'key: id of servicePrincipal'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+      requestBody:
+        description: Action parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyId:
+                  pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+                  type: string
+                  format: uuid
+                proof:
+                  type: string
+              additionalProperties:
+                type: object
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
+  '/servicePrincipals/{servicePrincipal-id}/microsoft.graph.removePassword':
+    post:
+      tags:
+        - servicePrincipals.Actions
+      summary: Invoke action removePassword
+      operationId: servicePrincipals_removePassword
+      parameters:
+        - name: servicePrincipal-id
+          in: path
+          description: 'key: id of servicePrincipal'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+      requestBody:
+        description: Action parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyId:
+                  pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+                  type: string
+                  format: uuid
+              additionalProperties:
+                type: object
+        required: true
+      responses:
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action

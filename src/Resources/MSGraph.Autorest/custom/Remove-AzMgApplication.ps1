@@ -131,7 +131,16 @@ process {
         }
         'ApplicationDisplayNameParameterSet' {
             try {
-                $PSBoundParameters['Id'] = (Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']).Id
+                $list = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName'] -Select Id
+                if(1 -lt $list.Count) {
+                    Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
+                    return
+                } elseif (1 -eq $list.Count) {
+                    $PSBoundParameters['Id'] = $list[0].Id
+                } else {
+                    Write-Error "Application with display name '$($PSBoundParameters['DisplayName'])' does not exist."
+                    return
+                }
             } catch {
                 throw
             }
@@ -140,7 +149,7 @@ process {
         }
         'ApplicationIdParameterSet' {
             try {
-                $PSBoundParameters['Id'] = (Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId']).Id
+                $PSBoundParameters['Id'] = (Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id).Id
             } catch {
                 throw
             }
