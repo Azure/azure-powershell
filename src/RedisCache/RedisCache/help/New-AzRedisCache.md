@@ -149,7 +149,7 @@ After creating a storage account, get the storage account connection string usin
 
 1. Run this command ** "Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName"** in powershell.
 1. From the output of above, copy any key.
-1. Put the storage account key and the storage account name in below format to get connection string of Storage account.
+1. Put the storage account key and the storage account name in format below to get the connection string of your storage account.
 
 ```
 Connection String Format :- "DefaultEndpointsProtocol=https;AccountName={storageAccountName};AccountKey={storageAccountKey};EndpointSuffix=core.windows.net"
