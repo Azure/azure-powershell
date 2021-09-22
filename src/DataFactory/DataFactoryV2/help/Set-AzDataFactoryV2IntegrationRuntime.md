@@ -20,7 +20,7 @@ Set-AzDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactor
  [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] [-SubnetId <String>]
  [-PublicIPs <String[]>] [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>]
  [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
- [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
+ [-ProvisionMethod <String>] [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
  [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
  [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -33,7 +33,7 @@ Set-AzDataFactoryV2IntegrationRuntime [-ResourceId] <String> [-Type <String>] [-
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
  [-SubnetId <String>] [-PublicIPs <String[]>] [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>]
  [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
- [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
+ [-ProvisionMethod <String>] [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
  [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
  [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -60,11 +60,11 @@ Set-AzDataFactoryV2IntegrationRuntime [-InputObject] <PSIntegrationRuntime> [-Ty
  [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>]
  [-VNetId <String>] [-Subnet <String>] [-SubnetId <String>] [-PublicIPs <String[]>]
  [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>] [-DataFlowTimeToLive <Int32>]
- [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-ExpressCustomSetup <ArrayList>]
- [-DataProxyIntegrationRuntimeName <String>] [-DataProxyStagingLinkedServiceName <String>]
- [-DataProxyStagingPath <String>] [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>]
- [-AuthKey <SecureString>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-ProvisionMethod <String>]
+ [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
+ [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByLinkedIntegrationRuntimeObject
@@ -127,6 +127,7 @@ PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName testgroup `
     VNetId                            : 
     Subnet                            : 
     SubnetId                          : 
+    ProvisionMethod                   : Express
     PublicIPs                         : 
     State                             : Initial
     LicenseType                       : LicenseIncluded
@@ -358,6 +359,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExpressCustomSetup
+The express custom setup for SSIS integration runtime which could be used to setup configurations and 3rd party components without custom setup script.
+
+```yaml
+Type: System.Collections.ArrayList
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Runs the cmdlet without prompting for confirmation.
 
@@ -479,6 +495,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProvisionMethod
+The provision method for SSIS integration runtime which could be Standard or Express, default is Standard if it is not specified.
+
+```yaml
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+Accepted values: Standard, Express
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicIPs
 The static public IP addresses which the integration runtime will use.
 
@@ -584,13 +616,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VNetId
-The ID of the VNet that the integration runtime joins.
+### -Type
+The integration runtime type.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Parameter Sets: (All)
 Aliases:
+Accepted values: Managed, SelfHosted
 
 Required: False
 Position: Named
@@ -598,13 +631,14 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-### -SubnetId
-The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
+
+### -VNetId
+The ID of the VNet that the integration runtime joins.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
