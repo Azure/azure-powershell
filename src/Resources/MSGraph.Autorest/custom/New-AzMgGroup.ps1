@@ -9324,7 +9324,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
     ${Description},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The display name for the group.
@@ -9427,7 +9427,7 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${MailEnabled},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The mail alias for the group, unique in the organization.
@@ -9663,40 +9663,29 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+  process {
+
+    if ($PSBoundParameters.ContainsKey('ObjectId')) {
+        $PSBOundParameters['Id'] = $PSBoundParameters['ObjectId']
+        $null = $PSBoundParameters.Remove('ObjectId')
+    }
+
+    switch ($PSCmdlet.ParameterSetName) {
+        'StartsWithDisplayName' {
+            $PSBOundParameters['Filter'] = "startsWith(displayName, '$($PSBOundParameters['DisplayNameStartsWith'])'"
+            $null = $PSBoundParameters.Remove('DisplayNameStartsWith')
+            break
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Create = 'Az.Resources.MSGraph.private\New-AzMgGroup_Create';
-            CreateExpanded = 'Az.Resources.MSGraph.private\New-AzMgGroup_CreateExpanded';
+        'ByDisplayName' {
+            $PSBOundParameters['Filter'] = "displayName eq '$($PSBOundParameters['DisplayName'])'"
+            $null = $PSBoundParameters.Remove('DisplayName')
+            break
         }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
+        default {
+            break
+        }
     }
-}
 
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
+    MSGraph.internal\New-AzMgGroup @PSBoundParameters
+  }
 }
