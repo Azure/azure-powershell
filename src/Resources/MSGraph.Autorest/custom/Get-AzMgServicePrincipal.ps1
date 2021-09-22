@@ -81,13 +81,6 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String[]]
-    # Expand related entities
-    ${Expand},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [System.String[]]
     # Select properties to be returned
     ${Select},
 
@@ -116,7 +109,7 @@ param(
     # Search items by search phrases
     ${Search},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
     [System.String]
     # Indicates the requested consistency level.
@@ -179,32 +172,27 @@ process {
             break
         }
         'SearchStringParameterSet' {
-            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
-            $PSBoundParameters['Search'] = "DisplayName:$($PSBoundParameters['DisplayNameBeginsWith'])"
+            $PSBoundParameters['Filter'] = "startsWith(DisplayName, '$($PSBOundParameters['DisplayNameBeginsWith'])')"
             $null = $PSBoundParameters.Remove('DisplayNameBeginsWith')
             break
         }
         'DisplayNameParameterSet' {
-            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
-            $PSBoundParameters['Search'] = "DisplayName:$($PSBoundParameters['DisplayName'])"
+            $PSBOundParameters['Filter'] = "displayName eq '$($PSBOundParameters['DisplayName'])'"
             $null = $PSBoundParameters.Remove('DisplayName')
             break
         }
         'ApplicationObjectParameterSet' {
-            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
-            $PSBoundParameters['Search'] = "AppId:$($PSBoundParameters['ApplicationObject'].AppId)"
+            $PSBoundParameters['Filter'] = "AppId eq '$($PSBoundParameters['ApplicationObject'].AppId)'"
             $null = $PSBoundParameters.Remove('ApplicationObject')
             break
         }
         'ApplicationIdParameterSet' {
-            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
-            $PSBoundParameters['Search'] = "AppId:$($PSBoundParameters['ApplicationId'])"
+            $PSBoundParameters['Filter'] = "AppId eq '$($PSBoundParameters['ApplicationId'].AppId)'"
             $null = $PSBoundParameters.Remove('ApplicationId')
             break
         }
         'SPNParameterSet' {
-            $PSBoundParameters['ConsistencyLevel'] = 'eventual'
-            $PSBoundParameters['Search'] = "ServicePrincipalName:$($PSBoundParameters['ServicePrincipalName'])"
+            $PSBoundParameters['Filter'] = "ServicePrincipalName eq '$($PSBoundParameters['ServicePrincipalName'])'"
             $null = $PSBoundParameters.Remove('ServicePrincipalName')
             break
         }
