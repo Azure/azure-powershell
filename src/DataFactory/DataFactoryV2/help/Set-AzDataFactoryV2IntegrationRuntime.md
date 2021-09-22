@@ -267,6 +267,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DataFlowEnableQuickReuse
+To whether enable data flow cluster to be reused in the next dataflow activity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataProxyIntegrationRuntimeName
 The Self-Hosted Integration Runtime name which is used as a proxy
 
