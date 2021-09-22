@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Fixed `Get-AzSqlDatabaseImportExportStatus` to report the error encountered
+
 ## Version 3.5.0
 * Changed the underlying implementation of `Get-AzSqlDatabase` to support a paginated response from the server
 * Added `ZoneRedundant` parameter to `New-AzSqlInstance` and `Set-AzSqlInstance` to enable the creation and the update of zone - redundant instances.

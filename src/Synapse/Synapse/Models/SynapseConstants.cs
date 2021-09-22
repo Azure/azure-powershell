@@ -142,6 +142,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string LinkedService = nameof(LinkedService);
 
+        public const string LinkedServiceEncryptedCredential = nameof(LinkedServiceEncryptedCredential);
+
         public const string Notebook = nameof(Notebook);
 
         // TODO: In future, we should expose the default version string of Spark SDK and use that value here.

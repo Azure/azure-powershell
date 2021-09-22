@@ -60,7 +60,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string Subnet => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.Subnet;
 
-        public string SubnetId => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.SubnetId;
+        public string SubnetId => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.SubnetId ?? ManagedIntegrationRuntime.CustomerVirtualNetwork?.SubnetId;
+
+        public string ProvisionMethod => ManagedIntegrationRuntime.CustomerVirtualNetwork?.SubnetId == null ? Constants.IntegrationRuntimeProvisionStandard : Constants.IntegrationRuntimeProvisionExpress;
 
         public string[] PublicIPs => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs == null ? null : new List<string>(ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.PublicIPs).ToArray();
 

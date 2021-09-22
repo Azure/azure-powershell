@@ -1,22 +1,21 @@
-### Example 1: Get cluster
+### Example 1: List clusters under resource group
 ```powershell
-PS C:\> Get-AzVMwareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwareCluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
-Name              Type
-----              ----
-azps-test-cluster Microsoft.AVS/privateClouds/clusters
+Name              Type                                 ResourceGroupName
+----              ----                                 -----------------
+azps_test_cluster Microsoft.AVS/privateClouds/clusters azps_test_group
 ```
 
-Get cluster
+List clusters under resource group
 
-### Example 2: List clusters
+### Example 2: Get cluster by name in a private cloud
 ```powershell
-PS C:\> Get-AzVMwareCluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwareCluster -Name azps_test_cluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
-Name              Type
-----              ----
-azps-test-cluster Microsoft.AVS/privateClouds/clusters
+Name              Type                                 ResourceGroupName
+----              ----                                 -----------------
+azps_test_cluster Microsoft.AVS/privateClouds/clusters azps_test_group
 ```
 
-List clusters
-
+Get cluster by name in a private cloud

@@ -17,6 +17,7 @@ using System;
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using System.Management.Automation;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
@@ -34,14 +35,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ProviderNamespace { get; set; }
 
         /// <summary>
+        /// Gets or sets the consent to permissions flag.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A value indicating whether permissions are consented or not.")]
+        public bool ConsentToPermissions { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet
         /// </summary>
         protected override void OnProcessRecord()
         {
+            ProviderRegistrationRequest providerRegistrationRequest = default;
+
+            if (ConsentToPermissions)
+            {
+                providerRegistrationRequest = new ProviderRegistrationRequest(new ProviderConsentDefinition(this.ConsentToPermissions));
+            }
+
             this.ConfirmAction(
                 processMessage: ProjectResources.RegisterProviderMessage,
                 target: this.ProviderNamespace,
-                action: () => this.WriteObject(this.ResourceManagerSdkClient.RegisterProvider(providerName: this.ProviderNamespace)));
+                action: () => this.WriteObject(this.ResourceManagerSdkClient.RegisterProvider(providerName: this.ProviderNamespace, providerRegistrationRequest: providerRegistrationRequest)));
         }
     }
 }
