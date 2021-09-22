@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingKind
-Setting kind. (DataExportSettings)
+Setting kind. (DataExportSettings/AlertSyncSettings)
 
 ```yaml
 Type: System.String
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingName
-Setting name. (MCAS/WDATP)
+Setting name. (MCAS/WDATP/Sentinel)
 
 ```yaml
 Type: System.String
@@ -174,6 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 ### Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
 ### Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityAlertSyncSettings
 
 ### System.Boolean
 
@@ -181,6 +182,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Security.Models.Settings.PSSecuritySetting
 ### Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityDataExportSetting
+### Microsoft.Azure.Commands.Security.Models.Settings.PSSecurityAlertSyncSettings
 
 ## NOTES
 

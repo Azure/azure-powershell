@@ -693,6 +693,12 @@ Are you sure you want to continue?</value>
   <data name="WorkspaceGitRepoParameterException" xml:space="preserve">
     <value>'{0}' is not provided.</value>
   </data>
+  <data name="StoppingSynapseTriggerRun" xml:space="preserve">
+    <value>Stopping trigger run with Id: '{0}'</value>
+  </data>
+  <data name="RerunSynapseTriggerRun" xml:space="preserve">
+    <value>Rerunning trigger run with Id: '{0}'</value>
+  </data>  
   <data name="CannotSendDirectory" xml:space="preserve">
     <value>Can not upload the directory '{0}' to Synapse. If you want to upload directory, please use "ls -File -Recurse | New-AzSynapseWorkspacePackage".</value>
   </data>
@@ -742,5 +748,17 @@ Failed: {2}.</value>
   </data>
   <data name="FailedToValidatePackageParameter" xml:space="preserve">
     <value>-PackageAction and -Package must be specified at the same time or neither of them should be.</value>
+  </data>
+  <data name="StartingIntegrationRuntime" xml:space="preserve">
+    <value>Starting integration runtime '{0}' in workspace '{1}'</value>
+  </data>
+  <data name="StopingIntegrationRuntime" xml:space="preserve">
+    <value>Stoping integration runtime '{0}' in workspace '{1}'</value>
+  </data>
+  <data name="EncryptConfirm" xml:space="preserve">
+    <value>Are you sure you want to encrypt the connection string of the linked service?</value>
+  </data>
+  <data name="Encrypting" xml:space="preserve">
+    <value>Encrypting the connection string.</value>
   </data>
 </root>

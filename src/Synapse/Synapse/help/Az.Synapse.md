@@ -185,6 +185,9 @@ Invokes a pipeline to start a run for it.
 ### [Invoke-AzSynapseSparkStatement](Invoke-AzSynapseSparkStatement.md)
 Invokes a Synapse Analytics Spark statement.
 
+### [Invoke-AzSynapseTriggerRun](Invoke-AzSynapseTriggerRun.md)
+Invokes another instance of a trigger run.
+
 ### [New-AzSynapseFirewallRule](New-AzSynapseFirewallRule.md)
 Creates a Synapse Analytics Firewall Rule.
 
@@ -193,6 +196,9 @@ Creates Git repository configuration.
 
 ### [New-AzSynapseIntegrationRuntimeKey](New-AzSynapseIntegrationRuntimeKey.md)
 Regenerate self-hosted integration runtime key.
+
+### [New-AzSynapseLinkedServiceEncryptedCredential](New-AzSynapseLinkedServiceEncryptedCredential.md)
+Encrypt credential in linked service with specified integration runtime.
 
 ### [New-AzSynapseManagedPrivateEndpoint](New-AzSynapseManagedPrivateEndpoint.md)
 Creates or updates a managed private endpoint in a workspace.
@@ -362,6 +368,9 @@ Sets the vulnerability assessment rule baseline.
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.
 
+### [Start-AzSynapseIntegrationRuntime](Start-AzSynapseIntegrationRuntime.md)
+Starts a managed dedicated integration runtime.
+
 ### [Start-AzSynapseSparkSession](Start-AzSynapseSparkSession.md)
 Starts a Synapse Analytics Spark session.
 
@@ -370,6 +379,9 @@ Starts a vulnerability assessment scan.
 
 ### [Start-AzSynapseTrigger](Start-AzSynapseTrigger.md)
 Starts a trigger in a workspace.
+
+### [Stop-AzSynapseIntegrationRuntime](Stop-AzSynapseIntegrationRuntime.md)
+Stops a managed dedicated integration runtime.
 
 ### [Stop-AzSynapsePipelineRun](Stop-AzSynapsePipelineRun.md)
 Stops a pipeline run in a workspace.
@@ -385,6 +397,9 @@ Cancels a Synapse Analytics Spark statement.
 
 ### [Stop-AzSynapseTrigger](Stop-AzSynapseTrigger.md)
 Stops a trigger in a workspace.
+
+### [Stop-AzSynapseTriggerRun](Stop-AzSynapseTriggerRun.md)
+Stops a trigger run in a synapse workspace.
 
 ### [Submit-AzSynapseSparkJob](Submit-AzSynapseSparkJob.md)
 Submits a Synapse Analytics Spark job.

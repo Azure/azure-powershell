@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.SparkEventsFolder = sparkPool?.SparkEventsFolder;
             this.NodeCount = sparkPool?.NodeCount;
             this.LibraryRequirements = sparkPool?.LibraryRequirements != null ? new PSLibraryRequirements(sparkPool.LibraryRequirements) : null;
+            this.SparkConfigProperties = sparkPool?.SparkConfigProperties != null ? new PSSparkConfigProperties(sparkPool.SparkConfigProperties) : null;
             this.SparkVersion = sparkPool?.SparkVersion;
             this.DefaultSparkLogFolder = sparkPool?.DefaultSparkLogFolder;
             this.NodeSize = sparkPool?.NodeSize;
@@ -131,5 +132,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets the time when the Big Data pool was updated successfully.
         /// </summary>
         public System.DateTime? LastSucceededTimestamp { get; private set; }
+
+        /// <summary>
+        /// Gets the spark configuration properties.
+        /// </summary>
+        public PSSparkConfigProperties SparkConfigProperties { get; set; }
     }
 }
