@@ -75,13 +75,6 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String[]]
-    # Expand related entities
-    ${Expand},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [System.String[]]
     # Select properties to be returned
     ${Select},
 
@@ -110,7 +103,7 @@ param(
     # Search items by search phrases
     ${Search},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
     [System.String]
     # Indicates the requested consistency level.
