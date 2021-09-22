@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string IntegrationRuntimeNode = "AzureRmDataFactoryV2IntegrationRuntimeNode";
 
-        public const string IntegrationRuntimeProvisionStandard = "Standard";
+        public const string IntegrationRuntimeVNetInjectionStandard = "Standard";
 
-        public const string IntegrationRuntimeProvisionExpress = "Express";
+        public const string IntegrationRuntimeVNectInjectionExpress = "Express";
 
         public const string IntegrationRuntimeMetric = "AzureRmDataFactoryV2IntegrationRuntimeMetric";
 

@@ -368,8 +368,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpIntegrationRuntimeVNetInjectionMethod)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            Constants.IntegrationRuntimeProvisionStandard,
-            Constants.IntegrationRuntimeProvisionExpress,
+            Constants.IntegrationRuntimeVNetInjectionStandard,
+            Constants.IntegrationRuntimeVNectInjectionExpress,
             IgnoreCase = true)]
         public string VNetInjectionMethod { get; set; }
 
