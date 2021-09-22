@@ -223,6 +223,11 @@ function Update-AzMgApplication {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Boolean]
+    ${AvailableToOtherTenants},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${CreatedOnBehalfOfDeletedDateTime},
@@ -270,6 +275,13 @@ function Update-AzMgApplication {
     # .
     # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
+
+    [Parameter()]
+    [Alias('WebHomePageUrl')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # home page url for web
+    ${HomePage},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -360,10 +372,14 @@ function Update-AzMgApplication {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPublicClientApplication]
-    # publicClientApplication
-    # To construct, see NOTES section for PUBLICCLIENT properties and create a hash table.
-    ${PublicClient},
+    [System.String[]]
+    ${PublicClientRedirectUri},
+
+    [Parameter()]
+    [Alias('WebRedirectUri')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String[]]
+    ${ReplyUrls},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -388,10 +404,8 @@ function Update-AzMgApplication {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplication]
-    # spaApplication
-    # To construct, see NOTES section for SPA properties and create a hash table.
-    ${Spa},
+    [System.String[]]
+    ${SPARedirectUri},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -425,13 +439,6 @@ function Update-AzMgApplication {
     # Supports $expand.
     # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
     ${TokenLifetimePolicy},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplication]
-    # webApplication
-    # To construct, see NOTES section for WEB properties and create a hash table.
-    ${Web},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -514,6 +521,31 @@ function Update-AzMgApplication {
       }
     }
 
+    if ($PSBoundParameters.ContainsKey('AvailableToOtherTenants') -and !$PSBoundParameters.ContainsKey('SignInAudience')) {
+      $PSBoundParameters['SignInAudience'] = 'AzureADMultipleOrgs'
+      $null = $PSBoundParameters.Remove('AvailableToOtherTenants')
+    }
+    # even if payload contains all three redirect options, only one will be added in the actual app, the order is
+    # web -> spa -> public client
+    if ($PSBoundParameters.ContainsKey('HomePage') -or $PSBoundParameters.ContainsKey('RedirectUrls')) {
+        $props = @{}
+        if ($PSBoundParameters.ContainsKey('HomePage')) {
+            $props['HomePageUrl'] = $PSBoundParameters['HomePage']
+            $null = $PSBoundParameters.Remove('HomePage')
+        }
+        if ($PSBoundParameters.ContainsKey('RedirectUrls')) {
+            $props['RedirectUri'] = $PSBoundParameters['RedirectUrls']
+            $null = $PSBoundParameters.Remove('RedirectUrls')
+        }
+        $PSBoundParameters['Web'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphWebApplication" -Property $props
+    } elseif ($PSBoundParameters.ContainsKey('SPARedirectUri')) {
+        $PSBoundParameters['SPA'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphSPAApplication" -Property @{'RedirectUri'=$PSBoundParameters['SPARedirectUri']}
+        $null = $PSBoundParameters.Remove('SPARedirectUri')
+    } elseif ($PSBoundParameters.ContainsKey('PublicClientRedirectUri')) {
+      $PSBoundParameters['PublicClient'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPublicClientApplication" -Property @{'RedirectUri'=$PSBoundParameters['PublicClientRedirectUri']}
+      $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
+    }
+    
     MSGraph.internal\Update-AzMgApplication @PSBoundParameters
   }
 }
