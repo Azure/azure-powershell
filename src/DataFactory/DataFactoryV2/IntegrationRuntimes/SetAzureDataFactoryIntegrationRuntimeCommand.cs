@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             Constants.IntegrationRuntimeProvisionStandard,
             Constants.IntegrationRuntimeProvisionExpress,
             IgnoreCase = true)]
-        public string ProvisionMethod { get; set; }
+        public string VNetInjectionMethod { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -756,7 +756,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
 
             SetAzureDataFactoryIntegrationRuntimeCommandHelper.SetSubnetId(
-                integrationRuntime, ProvisionMethod, SubnetId, Subnet, VNetId
+                integrationRuntime, VNetInjectionMethod, SubnetId, Subnet, VNetId
                 );
 
             if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null)
