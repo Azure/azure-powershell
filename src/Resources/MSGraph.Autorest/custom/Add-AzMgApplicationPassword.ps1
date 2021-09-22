@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IPaths141Ryo0ApplicationsApplicationIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential1
+Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,7 +38,7 @@ To create the parameters described below, construct a hash table containing the 
 
 BODY <IPaths141Ryo0ApplicationsApplicationIdMicrosoftGraphAddpasswordPostRequestbodyContentApplicationJsonSchema>: .
   [(Any) <Object>]: This indicates any property can be added to this object.
-  [PasswordCredential <IMicrosoftGraphPasswordCredential1>]: passwordCredential
+  [PasswordCredential <IMicrosoftGraphPasswordCredential>]: passwordCredential
     [(Any) <Object>]: This indicates any property can be added to this object.
     [CustomKeyIdentifier <Byte[]>]: Do not use.
     [DisplayName <String>]: Friendly name for the password. Optional.
@@ -46,7 +46,7 @@ BODY <IPaths141Ryo0ApplicationsApplicationIdMicrosoftGraphAddpasswordPostRequest
     [KeyId <String>]: The unique identifier for the password.
     [StartDateTime <DateTime?>]: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 
-PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential1>: passwordCredential
+PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential>: passwordCredential
   [(Any) <Object>]: This indicates any property can be added to this object.
   [CustomKeyIdentifier <Byte[]>]: Do not use.
   [DisplayName <String>]: Friendly name for the password. Optional.
@@ -57,7 +57,7 @@ PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential1>: passwordCredential
 https://docs.microsoft.com/powershell/module/az.resources/add-azmgapplicationpassword
 #>
 function Add-AzMgApplicationPassword {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential1])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
 [CmdletBinding(DefaultParameterSetName='AddExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -81,7 +81,7 @@ param(
 
     [Parameter(ParameterSetName='AddExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential1]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential]
     # passwordCredential
     # To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a hash table.
     ${PasswordCredential},
