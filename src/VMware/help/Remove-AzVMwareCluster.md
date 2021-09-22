@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.VMWare
+Module Name: Az.VMware
 online version: https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwarecluster
 schema: 2.0.0
 ---
 
-# Remove-AzVMWareCluster
+# Remove-AzVMwareCluster
 
 ## SYNOPSIS
 Delete a cluster in a private cloud
@@ -14,14 +14,14 @@ Delete a cluster in a private cloud
 
 ### Delete (Default)
 ```
-Remove-AzVMWareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Remove-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzVMWareCluster -InputObject <IVMWareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzVMwareCluster -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,15 @@ Delete a cluster in a private cloud
 
 ### Example 1: Delete cluster in private cloud
 ```powershell
-PS C:\> Remove-AzVMWareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Remove-AzVMwareCluster -Name azps_test_cluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+
+```
+
+Delete cluster in private cloud
+
+### Example 2: Delete cluster in private cloud
+```powershell
+PS C:\> Get-AzVMwareCluster -Name azps_test_cluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group | Remove-AzVMwareCluster
 
 ```
 
@@ -75,7 +83,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -213,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMWare.Models.IVMWareIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 
 ## OUTPUTS
 
@@ -228,15 +236,31 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IVMWareIdentity>: Identity Parameter
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  - `[AddonName <String>]`: Name of the addon for the private cloud
   - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
+  - `[CloudLinkName <String>]`: Name of the cloud link resource
   - `[ClusterName <String>]`: Name of the cluster in the private cloud
+  - `[DatastoreName <String>]`: Name of the datastore in the private cloud cluster
+  - `[DhcpId <String>]`: NSX DHCP identifier. Generally the same as the DHCP display name
+  - `[DnsServiceId <String>]`: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  - `[DnsZoneId <String>]`: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  - `[GatewayId <String>]`: NSX Gateway identifier. Generally the same as the Gateway's display name
+  - `[GlobalReachConnectionName <String>]`: Name of the global reach connection in the private cloud
   - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Azure region
+  - `[PortMirroringId <String>]`: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
   - `[PrivateCloudName <String>]`: Name of the private cloud
+  - `[PublicIPId <String>]`: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ScriptCmdletName <String>]`: Name of the script cmdlet resource in the script package in the private cloud
+  - `[ScriptExecutionName <String>]`: Name of the user-invoked script execution resource
+  - `[ScriptPackageName <String>]`: Name of the script package in the private cloud
+  - `[SegmentId <String>]`: NSX Segment identifier. Generally the same as the Segment's display name
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[VMGroupId <String>]`: NSX VM Group identifier. Generally the same as the VM Group's display name
+  - `[VirtualMachineId <String>]`: Virtual Machine identifier
 
 ## RELATED LINKS
 

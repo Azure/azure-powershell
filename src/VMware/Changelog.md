@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated api version to `2021-06-01`.
+* Created some new cmdlets:
+  * `New-AzVMwareAddon`, `Get-AzVMwareAddon`, `Remove-AzVMwareAddon`
+  * `New-AzVMwareAddonSrmPropertiesObject`
+  * `New-AzVMwareAddonVrPropertiesObject`
+  * `New-AzVMwareCloudLink`, `Get-AzVMwareCloudLink`, `Remove-AzVMwareCloudLink`
+  * `New-AzVMwareGlobalReachConnection`, `Get-AzVMwareGlobalReachConnection`, `Remove-AzVMwareGlobalReachConnection`
+  * `New-AzVMwarePrivateCloudAdminCredential`
+  * `New-AzVMwarePrivateCloudNsxtPassword`
+  * `New-AzVMwarePrivateCloudVcenterPassword`
+  * `New-AzVMwarePSCredentialExecutionParameterObject`
+  * `New-AzVMwareScriptSecureStringExecutionParameterObject`
 
 ## Version 0.2.0
 * [BreakingChange] Renamed module to Az.VMware
