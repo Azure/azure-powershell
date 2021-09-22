@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-## Version 1.14.1
 * Updated ADF .Net SDK version to 4.25.0
 * Added a ProvisionMethod argument for the `Set-AzDataFactoryV2IntegrationRuntime` cmdlet to support Express Azure-SSIS Integration Runtime provision.
 
