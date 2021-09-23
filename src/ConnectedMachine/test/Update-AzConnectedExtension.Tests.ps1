@@ -12,4 +12,5 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzConnectedExtension' {
+    #Tested in Remove-AzConnectedExtension
 }

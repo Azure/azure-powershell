@@ -120,27 +120,22 @@ directive:
           - PropertiesType
           - ProvisioningState
   - where:
-       model-name: PrivateLinkScope
+       model-name: HybridComputePrivateLinkScope
     set:
       format-table:
         properties:
           - Name
           - Location
+          - PublicNetworkAccess
+          - ProvisioningState
           - Tag
-  - where:
-       model-name: PrivateEndpointConnection
-    set:
-      format-table:
-        properties:
-          - Name
-          - Location
-          - Property.PrivateLinkServiceConnectionStateDescription
-          - Property.PrivateLinkServiceConnectionStateStatus
 
   # Removing cmlets
   - where:
-      verb: New
       subject: PrivateEndpointConnection
+    remove: true
+  - where:
+      subject: PrivateLinkResource
     remove: true
   - where:
       verb: Get

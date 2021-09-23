@@ -20,12 +20,6 @@ Retrieves information about the model view or the instance view of a hybrid mach
 ### [Get-AzConnectedMachineExtension](Get-AzConnectedMachineExtension.md)
 The operation to get the extension.
 
-### [Get-AzConnectedPrivateEndpointConnection](Get-AzConnectedPrivateEndpointConnection.md)
-Gets a private endpoint connection.
-
-### [Get-AzConnectedPrivateLinkResource](Get-AzConnectedPrivateLinkResource.md)
-Gets the private link resources that need to be created for a Azure Monitor PrivateLinkScope.
-
 ### [Get-AzConnectedPrivateLinkScope](Get-AzConnectedPrivateLinkScope.md)
 Returns a Azure Arc PrivateLinkScope.
 
@@ -42,17 +36,11 @@ The operation to remove a hybrid machine identity in Azure.
 ### [Remove-AzConnectedMachineExtension](Remove-AzConnectedMachineExtension.md)
 The operation to delete the extension.
 
-### [Remove-AzConnectedPrivateEndpointConnection](Remove-AzConnectedPrivateEndpointConnection.md)
-Deletes a private endpoint connection with a given name.
-
 ### [Remove-AzConnectedPrivateLinkScope](Remove-AzConnectedPrivateLinkScope.md)
 Deletes a Azure Arc PrivateLinkScope.
 
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
-
-### [Set-AzConnectedPrivateEndpointConnection](Set-AzConnectedPrivateEndpointConnection.md)
-Approve or reject a private endpoint connection with a given name.
 
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.

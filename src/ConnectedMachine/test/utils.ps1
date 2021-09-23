@@ -15,8 +15,7 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $env.ResourceGroupName = 'test-az-powershell-rg-' + (RandomString -allChars $false -len 6)
     $env.Location = 'eastus2euap'
-    $env.MachineName1 = (RandomString -allChars $false -len 6)
-    $env.MachineName2 = (RandomString -allChars $false -len 6)
+    $env.MachineName = (RandomString -allChars $false -len 6)
     $env.PrivateLinkScopeName = 'scope-' + (RandomString -allChars $false -len 6)
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 

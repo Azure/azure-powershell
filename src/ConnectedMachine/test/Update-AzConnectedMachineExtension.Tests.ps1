@@ -15,7 +15,7 @@ Import-Module "$PSScriptRoot/helper.psm1" -Force
 
 Describe 'Update-AzConnectedMachineExtension' {
     BeforeAll {
-        $machineName = $env.MachineName1
+        $machineName = $env.MachineName
 
         if ($TestMode -ne 'playback' -and $IsMacOS) {
             Write-Host "Live tests can only be run on Windows and Linux. Skipping..."
