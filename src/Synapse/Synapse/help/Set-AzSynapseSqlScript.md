@@ -14,28 +14,31 @@ Creates or updates a SQL script in a workspace.
 
 ### SetByName (Default)
 ```
-Set-AzSynapseSqlScript -WorkspaceName <String> [-Name <String>] -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSynapseSqlScript -WorkspaceName <String> [-Name <String>] -DefinitionFile <String> [-ResultLimit <Int32>]
+ [-FolderName <String>] [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByNameAndSqlPool
 ```
 Set-AzSynapseSqlScript -WorkspaceName <String> -SqlPoolName <String> -SqlDatabaseName <String> [-Name <String>]
- -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -DefinitionFile <String> [-ResultLimit <Int32>] [-FolderName <String>] [-Description <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObject
 ```
-Set-AzSynapseSqlScript -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -DefinitionFile <String> [-AsJob]
+Set-AzSynapseSqlScript -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -DefinitionFile <String>
+ [-ResultLimit <Int32>] [-FolderName <String>] [-Description <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObjectAndSqlPool
 ```
 Set-AzSynapseSqlScript -WorkspaceObject <PSSynapseWorkspace> -SqlPoolName <String> -SqlDatabaseName <String>
- [-Name <String>] -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Name <String>] -DefinitionFile <String> [-ResultLimit <Int32>] [-FolderName <String>]
+ [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,10 +66,7 @@ This command creates or updates a SQL script from SQL script file sqlscript.sql 
 PS C:\> Set-AzSynapseSqlScript -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\sqlscript.sql"  -SqlPoolName Contososqlpool -SqlDatabaseName Contosodatabase
 ```
 
-This command creates or updates a SQL script from SQL script file sqlscript.sql which connects to ContosoSparkPool and uses the database named Contosodatabase in the workspace named ContosoWorkspace.
-
-## PARAMETERS
-
+This command creates or updates a SQL script from SQL script file sqlscript.sql which connects to ContosoSqlPool and uses the database named Contosodatabase in the workspace named ContosoWorkspace.
 
 ## PARAMETERS
 
@@ -74,7 +74,7 @@ This command creates or updates a SQL script from SQL script file sqlscript.sql 
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -101,10 +101,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefinitionFile
-The JSON file path.
+The SQL file path.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: File
 
@@ -115,13 +115,59 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+The description of the SQL script.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FolderName
+The folder that this SQL script is in.
+If not specified, this SQL script will appear at the root level.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The sql script name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: SqlScriptName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResultLimit
+Limit of results, '-1' for no limit.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -134,7 +180,7 @@ Accept wildcard characters: False
 Which database the sql script is going to use.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByNameAndSqlPool, SetByObjectAndSqlPool
 Aliases:
 
@@ -149,7 +195,7 @@ Accept wildcard characters: False
 Which sql pool the sql script is going to connect to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByNameAndSqlPool, SetByObjectAndSqlPool
 Aliases:
 
@@ -164,7 +210,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByName, SetByNameAndSqlPool
 Aliases:
 
@@ -179,7 +225,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
+Type: PSSynapseWorkspace
 Parameter Sets: SetByObject, SetByObjectAndSqlPool
 Aliases:
 
@@ -194,7 +240,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -210,7 +256,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

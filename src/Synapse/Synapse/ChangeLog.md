@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added support for Synapse sql script
+	- Added `Get-AzSynapseSqlScript` cmdlet
+	- Added `Remove-AzSynapseSqlScript` cmdlet
+	- Added `Export-AzSynapseSqlScript` cmdlet
+    - Added `Set-AzSynapseSqlScript` cmdlet
 
 ## Version 0.17.0
 * Added cmdlets for Synapse Integration Runtime

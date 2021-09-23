@@ -74,9 +74,6 @@ Gets metric data for an integration runtime.
 ### [Get-AzSynapseIntegrationRuntimeNode](Get-AzSynapseIntegrationRuntimeNode.md)
 Gets an integration runtime node information.
 
-### [Get-AzSynapseKustoPool](Get-AzSynapseKustoPool.md)
-Gets a Kusto pool.
-
 ### [Get-AzSynapseLinkedService](Get-AzSynapseLinkedService.md)
 Gets information about linked services in workspace.
 
@@ -263,9 +260,6 @@ Removes an integration runtime.
 ### [Remove-AzSynapseIntegrationRuntimeNode](Remove-AzSynapseIntegrationRuntimeNode.md)
 Remove a node with the given name on an integration runtime.
 
-### [Remove-AzSynapseKustoPool](Remove-AzSynapseKustoPool.md)
-Deletes a Kusto pool.
-
 ### [Remove-AzSynapseLinkedService](Remove-AzSynapseLinkedService.md)
 Removes a linked service from workspace.
 
@@ -389,9 +383,6 @@ Modifies TDE property for a SQL pool.
 ### [Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
-### [Set-AzSynapseSqlScript](Set-AzSynapseSqlScript.md)
-Creates or updates a sqlscript in a workspace.
-
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.
 
@@ -463,9 +454,6 @@ Updates an integration runtime.
 
 ### [Update-AzSynapseIntegrationRuntimeNode](Update-AzSynapseIntegrationRuntimeNode.md)
 Updates self-hosted integration runtime node.
-
-### [Update-AzSynapseKustoPool](Update-AzSynapseKustoPool.md)
-Update a Kusto Kusto Pool.
 
 ### [Update-AzSynapseManagedVirtualNetworkConfig](Update-AzSynapseManagedVirtualNetworkConfig.md)
 Updates managed virtual network configuration to workspace.
