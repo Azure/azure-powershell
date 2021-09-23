@@ -104,3 +104,4 @@ steps:
   inputs:
     PathtoPublish: artifacts/Package/Release/
     ArtifactName: aitifacts
+  condition: succeededOrFailed()
