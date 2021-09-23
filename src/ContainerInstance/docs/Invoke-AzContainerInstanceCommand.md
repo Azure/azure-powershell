@@ -14,8 +14,8 @@ Executes a command for a specific container instance in a specified resource gro
 
 ```
 Invoke-AzContainerInstanceCommand -ContainerGroupName <String> -ContainerName <String>
- -ResourceGroupName <String> -Command <String> -TerminalSizeCol <Int32> -TerminalSizeRow <Int32>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -Command <String> [-SubscriptionId <String>] [-TerminalSizeCol <Int32>]
+ [-TerminalSizeRow <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,7 +135,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,7 +150,7 @@ Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

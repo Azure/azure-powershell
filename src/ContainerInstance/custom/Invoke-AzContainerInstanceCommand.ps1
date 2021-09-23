@@ -66,13 +66,13 @@ function Invoke-AzContainerInstanceCommand {
       # The command to be executed.
       ${Command},
   
-      [Parameter(Mandatory)]
+      [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
       [System.Int32]
       # The column size of the terminal
       ${TerminalSizeCol},
   
-      [Parameter(Mandatory)]
+      [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
       [System.Int32]
       # The row size of the terminal
