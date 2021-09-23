@@ -86,7 +86,7 @@ This cmdlet lists all the Virtual WAN Hub BGP Connections starting with "test" u
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubName, ByVirtualHubObject
 Aliases: ResourceName, BgpConnectionName
 
@@ -116,7 +116,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubName
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 The resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByHubBgpConnectionResourceId
 Aliases: BgpConnectionId
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The virtual hub name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubName
 Aliases: ParentResourceName, ParentVirtualHubName
 

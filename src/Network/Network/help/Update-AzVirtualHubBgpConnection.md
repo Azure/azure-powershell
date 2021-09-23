@@ -12,13 +12,7 @@ The Update-AzVirtualHubBgpConnection cmdlet updates an existing HubBgpConnection
 
 ## SYNTAX
 
-### ByVirtualHubName (Default)
-```
-Update-AzVirtualHubBgpConnection [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByVirtualHubNameByHubVirtualNetworkConnectionObject
+### ByVirtualHubNameByHubVirtualNetworkConnectionObject (Default)
 ```
 Update-AzVirtualHubBgpConnection -ResourceGroupName <String> -VirtualHubName <String> -Name <String>
  -PeerIp <String> -PeerAsn <UInt32> -VirtualHubVnetConnection <PSHubVirtualNetworkConnection> [-AsJob]
@@ -114,24 +108,9 @@ The above will create a resource group, Virtual WAN, Virtual Network, Virtual WA
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -144,7 +123,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -159,7 +138,7 @@ Accept wildcard characters: False
 The virtual hub bgp connection resource.
 
 ```yaml
-Type: PSBgpConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSBgpConnection
 Parameter Sets: ByHubBgpConnectionObjectByHubVirtualNetworkConnectionObject, ByHubBgpConnectionObjectByHubVirtualNetworkConnectionResourceId, ByHubBgpConnectionObject
 Aliases: VirtualHubBgpConnection
 
@@ -174,7 +153,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubNameByHubVirtualNetworkConnectionObject, ByVirtualHubNameByHubVirtualNetworkConnectionResourceId, ByVirtualHubObjectByHubVirtualNetworkConnectionObject, ByVirtualHubObjectByHubVirtualNetworkConnectionResourceId
 Aliases: ResourceName, BgpConnectionName
 
@@ -189,7 +168,7 @@ Accept wildcard characters: False
 The peer ASN.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: ByVirtualHubNameByHubVirtualNetworkConnectionObject, ByVirtualHubNameByHubVirtualNetworkConnectionResourceId, ByVirtualHubObjectByHubVirtualNetworkConnectionObject, ByVirtualHubObjectByHubVirtualNetworkConnectionResourceId, ByHubBgpConnectionResourceIdByHubVirtualNetworkConnectionObject, ByHubBgpConnectionResourceIdByHubVirtualNetworkConnectionResourceId
 Aliases:
 
@@ -201,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: ByHubBgpConnectionObjectByHubVirtualNetworkConnectionObject, ByHubBgpConnectionObjectByHubVirtualNetworkConnectionResourceId, ByHubBgpConnectionObject
 Aliases:
 
@@ -216,7 +195,7 @@ Accept wildcard characters: False
 The peer IP.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubNameByHubVirtualNetworkConnectionObject, ByVirtualHubNameByHubVirtualNetworkConnectionResourceId, ByVirtualHubObjectByHubVirtualNetworkConnectionObject, ByVirtualHubObjectByHubVirtualNetworkConnectionResourceId, ByHubBgpConnectionResourceIdByHubVirtualNetworkConnectionObject, ByHubBgpConnectionResourceIdByHubVirtualNetworkConnectionResourceId
 Aliases:
 
@@ -228,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByHubBgpConnectionObjectByHubVirtualNetworkConnectionObject, ByHubBgpConnectionObjectByHubVirtualNetworkConnectionResourceId, ByHubBgpConnectionObject
 Aliases:
 
@@ -243,7 +222,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubNameByHubVirtualNetworkConnectionObject, ByVirtualHubNameByHubVirtualNetworkConnectionResourceId
 Aliases:
 
@@ -258,7 +237,7 @@ Accept wildcard characters: False
 The resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByHubBgpConnectionResourceIdByHubVirtualNetworkConnectionObject, ByHubBgpConnectionResourceIdByHubVirtualNetworkConnectionResourceId
 Aliases: BgpConnectionId
 
@@ -288,7 +267,7 @@ Accept wildcard characters: False
 The virtual hub name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubNameByHubVirtualNetworkConnectionObject, ByVirtualHubNameByHubVirtualNetworkConnectionResourceId
 Aliases: ParentResourceName, ParentVirtualHubName
 
@@ -303,7 +282,7 @@ Accept wildcard characters: False
 The VirtualHubVnetConnection resource.
 
 ```yaml
-Type: PSHubVirtualNetworkConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection
 Parameter Sets: ByVirtualHubNameByHubVirtualNetworkConnectionObject, ByVirtualHubObjectByHubVirtualNetworkConnectionObject, ByHubBgpConnectionResourceIdByHubVirtualNetworkConnectionObject, ByHubBgpConnectionObjectByHubVirtualNetworkConnectionObject
 Aliases:
 
@@ -315,7 +294,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSHubVirtualNetworkConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection
 Parameter Sets: ByHubBgpConnectionObject
 Aliases:
 
@@ -330,7 +309,7 @@ Accept wildcard characters: False
 The VirtualHubVnetConnection resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubNameByHubVirtualNetworkConnectionResourceId, ByVirtualHubObjectByHubVirtualNetworkConnectionResourceId, ByHubBgpConnectionResourceIdByHubVirtualNetworkConnectionResourceId, ByHubBgpConnectionObjectByHubVirtualNetworkConnectionResourceId
 Aliases:
 
@@ -342,9 +321,24 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByHubBgpConnectionObject
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -358,7 +352,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
