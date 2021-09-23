@@ -91,7 +91,7 @@ steps:
   condition: and(succeeded(), ne(variables['publish'], 'false'))
   inputs:
     command: push
-    packagesToPush: 'artifacts/Package/Release/Microsoft.Azure.PowerShell.*.nupkg; !artifacts/Package/Release/*.symbols.nupkg'
+    packagesToPush: 'artifacts/Package/Release/Microsoft.Azure.PowerShell.*.nupkg'
     publishVstsFeed: public/azure-powershell
 
 - powershell: |
