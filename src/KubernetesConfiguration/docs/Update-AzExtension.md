@@ -14,10 +14,10 @@ Patch an existing Kubernetes Cluster Extension.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzExtension -ClusterName <String> -ClusterRp <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion]
- [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>] [-ReleaseTrain <String>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzExtension -ClusterName <String> -ClusterType <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-ConfigurationProtectedSetting <Hashtable>]
+ [-ConfigurationSetting <Hashtable>] [-ReleaseTrain <String>] [-Version <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -84,21 +84,6 @@ Accept wildcard characters: False
 
 ### -ClusterName
 The name of the kubernetes cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterRp
-The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
 
 ```yaml
 Type: System.String

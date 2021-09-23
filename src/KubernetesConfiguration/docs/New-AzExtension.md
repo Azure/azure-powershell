@@ -13,9 +13,9 @@ Create a new Kubernetes Cluster Extension.
 ## SYNTAX
 
 ```
-New-AzExtension -ClusterName <String> -ClusterRp <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AkAssignedIdentityType <ResourceIdentityType>]
- [-AutoUpgradeMinorVersion] [-ClusterReleaseNamespace <String>] [-ConfigurationProtectedSetting <Hashtable>]
+New-AzExtension -ClusterName <String> -ClusterType <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-AkAssignedIdentityType <ResourceIdentityType>] [-AutoUpgradeMinorVersion]
+ [-ClusterReleaseNamespace <String>] [-ConfigurationProtectedSetting <Hashtable>]
  [-ConfigurationSetting <Hashtable>] [-ExtensionType <String>] [-IdentityType <ResourceIdentityType>]
  [-NamespaceTargetNamespace <String>] [-ReleaseTrain <String>] [-Statuses <IExtensionStatus[]>]
  [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -116,21 +116,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterRp
-The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

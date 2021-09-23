@@ -17,9 +17,6 @@ Gets Kubernetes Cluster Extension.
 ### [Get-AzKubernetesConfiguration](Get-AzKubernetesConfiguration.md)
 Gets details of the Source Control Configuration.
 
-### [Get-AzOperationStatus](Get-AzOperationStatus.md)
-Get Async Operation status
-
 ### [New-AzExtension](New-AzExtension.md)
 Create a new Kubernetes Cluster Extension.
 
