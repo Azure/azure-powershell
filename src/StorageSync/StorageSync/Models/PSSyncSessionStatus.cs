@@ -42,23 +42,45 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The last sync per item error count.</value>
         public long? LastSyncPerItemErrorCount { get; set; }
-
-        public long? PersistentFilesNotSyncingCount { get; }
-
-        public long? TransientFilesNotSyncingCount { get; }
-
-        public IList<PSServerEndpointFilesNotSyncingError> FilesNotSyncingErrors { get; }
-
-        public string LastSyncMode { get; }
+        /// <summary>
+        /// Gets or sets the persistent files not syncing count.
+        /// </summary>
+        /// <value>The persistent files not syncing count</value>
+        public long? PersistentFilesNotSyncingCount { get; set; }
+        /// <summary>
+        /// Gets or sets the transient files not syncing count.
+        /// </summary>
+        /// <value>The transient files not syncing count</value>
+        public long? TransientFilesNotSyncingCount { get; set; }
+        /// <summary>
+        /// Gets or sets the files not syncing errors
+        /// </summary>
+        /// <value>The list of files not syncing errors</value>
+        public IList<PSServerEndpointFilesNotSyncingError> FilesNotSyncingErrors { get; set; }
+        /// <summary>
+        /// Gets or sets the last sync mode.
+        /// </summary>
+        /// <value>The last sync mode.</value>
+        public string LastSyncMode { get; set; }
     }
 
     public class PSServerEndpointFilesNotSyncingError
     {
-        public int? ErrorCode { get; }
-
-        public long? PersistentCount { get; }
-
-        public long? TransientCount { get; }
+        /// <summary>
+        /// Gets or sets the error code.
+        /// </summary>
+        /// <value>The error code.</value>
+        public int? ErrorCode { get; set; }
+        /// <summary>
+        /// Gets or sets the persistent files count.
+        /// </summary>
+        /// <value>The persistent files count.</value>
+        public long? PersistentCount { get; set; }
+        /// <summary>
+        /// Gets or sets the transient files count.
+        /// </summary>
+        /// <value>The transient files count.</value>
+        public long? TransientCount { get; set; }
 
     }
 }

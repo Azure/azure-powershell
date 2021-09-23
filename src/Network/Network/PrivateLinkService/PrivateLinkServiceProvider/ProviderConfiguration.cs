@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview", true, true); 
             RegisterConfiguration("Microsoft.EventHub/namespaces", "2018-01-01-preview", true, false);
             RegisterConfiguration("Microsoft.HealthcareApis/services", "2020-03-30", false, true);
+            RegisterConfiguration("Microsoft.HDInsight/clusters", "2018-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.HybridCompute/privateLinkScopes", "2021-05-20",true, true);
             RegisterConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview", true, true);
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2018-02-14", false, false);

@@ -67,5 +67,8 @@ namespace Commands.Network.Test
 
         // Azure Network Billing and Telemetry team
         public const string billingandtelemetry = "azurenetworkbilling";
+
+        // Virtual WAN team
+        public const string virtualwan = "routeservicedev";
     }
 }
