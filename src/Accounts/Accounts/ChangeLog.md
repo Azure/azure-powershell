@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-
 * Updated Azure.Core from 1.16.0 to 1.19.0.
 
 ## Version 2.5.3
