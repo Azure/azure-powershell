@@ -284,23 +284,17 @@ TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
 https://docs.microsoft.com/powershell/module/az.resources/new-azmgserviceprincipal
 #>
 function New-AzMgServicePrincipal {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]
-[CmdletBinding(DefaultParameterSetName='SimpleParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]
+  [CmdletBinding(DefaultParameterSetName = 'SimpleParameterSet', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  param(
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if the service principal account is enabled; otherwise, false.
     # Supports $filter (eq, ne, NOT, in).
     ${AccountEnabled},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[]]
@@ -310,10 +304,7 @@ param(
     # To construct, see NOTES section for ADDIN properties and create a hash table.
     ${AddIn},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -321,41 +312,40 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${AlternativeName},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The description exposed by the associated application.
     ${AppDescription},
 
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithoutCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     ${ApplicationObject},
 
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationWithoutCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
     [Alias('AppId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The unique identifier for the associated application (its appId property).
     ${ApplicationId},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Contains the tenant id where the application is registered.
     # This is applicable only to service principals backed by applications.Supports $filter (eq, ne, NOT, ge, le).
     ${AppOwnerOrganizationId},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[]]
@@ -365,10 +355,7 @@ param(
     # To construct, see NOTES section for APPROLE properties and create a hash table.
     ${AppRole},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]]
@@ -376,10 +363,7 @@ param(
     # To construct, see NOTES section for APPROLEASSIGNEDTO properties and create a hash table.
     ${AppRoleAssignedTo},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]]
@@ -388,11 +372,8 @@ param(
     # To construct, see NOTES section for APPROLEASSIGNMENT properties and create a hash table.
     ${AppRoleAssignment},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether users or other service principals need to be granted an app role assignment for this service principal before users can sign in or apps can get tokens.
     # The default value is false.
@@ -400,10 +381,7 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${AppRoleAssignmentRequired},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphClaimsMappingPolicy[]]
@@ -412,10 +390,7 @@ param(
     # To construct, see NOTES section for CLAIMSMAPPINGPOLICY properties and create a hash table.
     ${ClaimsMappingPolicy},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDelegatedPermissionClassification[]]
@@ -424,17 +399,13 @@ param(
     # To construct, see NOTES section for DELEGATEDPERMISSIONCLASSIFICATION properties and create a hash table.
     ${DelegatedPermissionClassification},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Free text field to provide an internal end-user facing description of the service principal.
@@ -443,10 +414,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
     ${Description},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies whether Microsoft has disabled the registered application.
@@ -454,17 +422,18 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${DisabledByMicrosoftStatus},
 
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithoutCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The display name for the service principal.
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
     ${DisplayName},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[]]
@@ -473,10 +442,7 @@ param(
     # To construct, see NOTES section for ENDPOINT properties and create a hash table.
     ${Endpoint},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
@@ -485,26 +451,22 @@ param(
     # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Home page or landing page of the application.
     ${Homepage},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl]
     # informationalUrl
     # To construct, see NOTES section for INFO properties and create a hash table.
     ${Info},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
@@ -514,10 +476,7 @@ param(
     # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
     ${KeyCredentials},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the URL where the service provider redirects the user to Azure AD to authenticate.
@@ -526,29 +485,20 @@ param(
     # The user launches the application from Microsoft 365, the Azure AD My Apps, or the Azure AD SSO URL.
     ${LoginUrl},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols.
     ${LogoutUrl},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Free text field to capture information about the service principal, typically used for operational purposes.
     # Maximum allowed size is 1024 characters.
     ${Note},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -556,10 +506,7 @@ param(
     # This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
     ${NotificationEmailAddress},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPermissionScope[]]
@@ -569,7 +516,9 @@ param(
     # To construct, see NOTES section for OAUTH2PERMISSIONSCOPE properties and create a hash table.
     ${Oauth2PermissionScope},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
@@ -578,10 +527,7 @@ param(
     # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the single sign-on mode configured for this application.
@@ -589,11 +535,7 @@ param(
     # The supported values are password, saml, notSupported, and oidc.
     ${PreferredSingleSignOnMode},
 
-
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Reserved for internal use only.
@@ -601,10 +543,7 @@ param(
     # May be removed in future versions.
     ${PreferredTokenSigningKeyThumbprint},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -612,20 +551,14 @@ param(
     # Not nullable.
     ${ReplyUrl},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings]
     # samlSingleSignOnSettings
     # To construct, see NOTES section for SAMLSINGLESIGNONSETTING properties and create a hash table.
     ${SamlSingleSignOnSetting},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -637,10 +570,7 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${ServicePrincipalName},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Identifies if the service principal represents an application or a managed identity.
@@ -649,10 +579,7 @@ param(
     # For a service principal that represent a managed identity this is set as ManagedIdentity.
     ${ServicePrincipalType},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -661,10 +588,7 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${Tag},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the keyId of a public key from the keyCredentials collection.
@@ -672,10 +596,7 @@ param(
     # The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
     ${TokenEncryptionKeyId},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]]
@@ -684,10 +605,7 @@ param(
     # To construct, see NOTES section for TOKENISSUANCEPOLICY properties and create a hash table.
     ${TokenIssuancePolicy},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]]
@@ -696,16 +614,47 @@ param(
     # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
     ${TokenLifetimePolicy},
 
-    [Parameter(ParameterSetName='SimpleParameterSet')]
-    [Parameter(ParameterSetName='ApplicationWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithoutCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithoutCredentialParameterSet')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[]]
     # .
     # To construct, see NOTES section for TRANSITIVEMEMBEROF properties and create a hash table.
     ${TransitiveMemberOf},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Security.SecureString]
+    ${Password},
+
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    ${CertValue},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet')]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    ${StartDate},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet')]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    ${EndDate},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -753,44 +702,102 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-)
+  )
 
-process {
-  switch ($PSCmdlet.ParameterSetName) {
+  process {
+    switch ($PSCmdlet.ParameterSetName) {
       'SimpleParameterSet' {
-          try {
-              $appName = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
-              $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $AppName).AppId
-          } catch {
-              throw
-          }
-          break
+        try {
+          $appName = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
+          $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $AppName).AppId
+        }
+        catch {
+          throw
+        }
+        break
       }
       'DisplayNameWithoutCredentialParameterSet' {
-          try {
-              $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']).AppId
+        try {
+          $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']).AppId
               
-          } catch {
-              throw
-          }
-          $null = $PSBoundParameters.Remove('DisplayName')
-          break
+        }
+        catch {
+          throw
+        }
+        $null = $PSBoundParameters.Remove('DisplayName')
+        break
       }
       'ApplicationObjectWithoutCredentialParameterSet' {
-          $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
-          $null = $PSBoundParameters.Remove('ApplicationObject')
-          break
+        $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
+        $null = $PSBoundParameters.Remove('ApplicationObject')
+        break
       }
       'ApplicationWithoutCredentialParameterSet' {
-          $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
-          $null = $PSBoundParameters.Remove('ApplicationId')
-          break
+        $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
+        $null = $PSBoundParameters.Remove('ApplicationId')
+        break
+      }
+      {'ApplicationWithPasswordPlainParameterSet' -or 'ApplicationObjectWithPasswordPlainParameterSet' -or 'DisplayNameWithPasswordPlainParameterSet'} {
+        $pw = $PSBoundParameters['Password']
+        $null = $PSBoundParameters.Remove('Password')
+        break
+      }
+      {'ApplicationWithKeyPlainParameterSet' -or 'ApplicationObjectWithKeyPlainParameterSet' -or 'DisplayNameWithKeyPlainParameterSet'} {
+        $cv = $PSBoundParameters['CertValue']
+        $null = $PSBoundParameters.Remove('CertValue')
+        break
+      }
+      {'ApplicationWithPasswordCredentialParameterSet' -or 'ApplicationObjectWithPasswordCredentialParameterSet' -or 'DisplayNameWithPasswordCredentialParameterSet'} {
+        $pc = $PSBoundParameters['PasswordCredentials']
+        $null = $PSBoundParameters.Remove('PasswordCredentials')
+        break
+      }
+      {'ApplicationWithKeyCredentialParameterSet' -or 'ApplicationObjectWithKeyCredentialParameterSet' -or 'DisplayNameWithKeyCredentialParameterSet'} {
+        $pc = $PSBoundParameters['KeyCredentials']
+        $null = $PSBoundParameters.Remove('KeyCredentials')
+        break
       }
       default {
-          break
+        break
       }
-  }
+    }
 
-  MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
-}
+    if ($PSBoundParameters['StartDate']) {
+      $sd = $PSBoundParameters['StartDate']
+      $null = $PSBoundParameters.Remove('StartDate')
+    }
+
+    if ($PSBoundParameters['EndDate']) {
+      $ed = $PSBoundParameters['EndDate']
+      $null = $PSBoundParameters.Remove('EndDate')
+    }
+
+    $sp = MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
+    $param = @{'ObjectId' = $sp.Id }
+    
+    if ($pc) {
+      foreach ($cred in $pc) {
+        $param['PasswordCredential'] = $cred
+        $null = New-AzMgSpCredential @param
+      }
+    }
+    elseif ($kc) {
+      foreach ($cred in $kc) {
+        $param['KeyCredential'] = $cred
+        $null = New-AzMgSpCredential @param
+      }
+    }
+    elseif ($pw -or $cv) {
+      if ($pw) {
+        $param['Password'] = $pw
+      }
+      else {
+        $param['CertValue'] = $cv
+      }
+      $param['StartDate'] = $sd
+      $param['EndDate'] = $ed
+      $null = New-AzMgSpCredential @param
+    }
+    $PSCmdlet.WriteObject($sp)
+  }
 }
