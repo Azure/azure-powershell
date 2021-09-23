@@ -55,7 +55,7 @@ Restore-AzSynapseSqlPool [-FromDroppedSqlPool] -WorkspaceObject <PSSynapseWorksp
 ```
 
 ## DESCRIPTION
-The **Restore-AzSynapseSqlPool** cmdlet restores an Azure Synapse Analytics SQL pool from a backup or a restore point of any SQL pool.
+The **Restore-AzSynapseSqlPool** cmdlet restores an Azure Synapse Analytics SQL pool from a geo-redundant backup, a backup of a deleted SQL pool or a restore point of any SQL pool.
 The restored SQL pool is created as a new SQL pool.
 
 ## EXAMPLES
