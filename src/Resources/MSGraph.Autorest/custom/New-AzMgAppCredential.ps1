@@ -124,10 +124,14 @@ function New-AzMgAppCredential {
     
     process {
         if ($PSBoundParameters.ContainsKey('Password')) {
-            $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential" -Property @{'SecretText'=(Unprotect-SecureString -SecureString $PSBoundParameters['Password'])}
+            $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential" 
+                                     -Property @{'SecretText'=(Unprotect-SecureString -SecureString $PSBoundParameters['Password'])}
         }
         if ($PSBoundParameters.ContainsKey('CertValue')) {
-            $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" -Property @{'Key'=([System.Convert]::FromBase64String($PSBoundParameters['CertValue']))}
+            $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" 
+                                     -Property @{'Key'=([System.Convert]::FromBase64String($PSBoundParameters['CertValue']));
+                                                 'Usage'='Verify'; 
+                                                 'Type'='AsymmetricX509Cert'}
         }
         if ($PSBoundParameters.ContainsKey('CustomKeyIdentifier')) {
             $credential.CustomKeyIdentifier = [System.Convert]::FromBase64String($PSBoundParameters['CustomKeyIdentifier'])
@@ -138,6 +142,7 @@ function New-AzMgAppCredential {
         if ($PSBoundParameters.ContainsKey('EndDate')) {
             $credential.EndDateTime = $PSBoundParameters['EndDate']
         }
+        $credential.KeyId = (New-Guid).ToString()
 
         switch ($PSCmdlet.ParameterSetName) {
             'ApplicationObjectIdWithPasswordParameterSet' {
