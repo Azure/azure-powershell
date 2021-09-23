@@ -199,6 +199,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string SqlScript = nameof(SqlScript);
 
+        public const int DefaultResultLimit = 5000;
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {

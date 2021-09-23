@@ -1,5 +1,4 @@
 ﻿using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
@@ -57,10 +56,23 @@ namespace Microsoft.Azure.Commands.Synapse
         [Alias("SqlScriptName")]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.SqlFilePath)]
         [ValidateNotNullOrEmpty]
         [Alias("File")]
         public string DefinitionFile { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.ResultLimit)]
+        [ValidateNotNullOrEmpty]
+        [PSDefaultValue(Help = HelpMessages.DefaultResultLimit, Value = SynapseConstants.DefaultResultLimit)]
+        public int ResultLimit { get; set; } = SynapseConstants.DefaultResultLimit;
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.FolderName)]
+        [ValidateNotNullOrEmpty]
+        public string FolderName { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.Description)]
+        [ValidateNotNullOrEmpty]
+        public string Description { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -81,40 +93,53 @@ namespace Microsoft.Azure.Commands.Synapse
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseSqlScript, this.Name, this.WorkspaceName)))
             {
                 string query = this.ReadFileAsText(DefinitionFile); 
-                SqlConnection CurrentConnection = null;
+                SqlConnection currentConnection = new SqlConnection();
 
                 if (this.IsParameterBound(c => c.SqlPoolName))
                 {                    
                     if(SqlPoolName.ToLower() == "built-in")
                     {
-                        CurrentConnection = new SqlConnection(SqlConnectionType.SqlOnDemand, this.SqlDatabaseName);
+                        currentConnection.PoolName = "Built-in";
+                        currentConnection.Type = SqlConnectionType.SqlOnDemand;
+                        currentConnection.DatabaseName = this.SqlDatabaseName;
                     }
                     else
                     {
-                        CurrentConnection = new SqlConnection(SqlConnectionType.SqlPool, this.SqlDatabaseName);
-                        CurrentConnection.Add("poolName", this.SqlPoolName);
-                        CurrentConnection.Add("databaseName", this.SqlDatabaseName);
+                        currentConnection.Type = SqlConnectionType.SqlPool;
+                        currentConnection.PoolName = this.SqlPoolName;
+                        currentConnection.DatabaseName = this.SqlDatabaseName;
                     }                
                 }
                 else
                 {
-                    CurrentConnection = new SqlConnection(SqlConnectionType.SqlOnDemand, "master");
+                    currentConnection.PoolName = "Built-in";
+                    currentConnection.Type = SqlConnectionType.SqlOnDemand;
+                    currentConnection.DatabaseName = "master";
                 }
-
+                 
                 SqlScriptMetadata metadata = new SqlScriptMetadata
                 {
                     Language = "sql"
                 };
 
-                SqlScriptContent content = new SqlScriptContent(query, CurrentConnection)
+                SqlScriptContent content = new SqlScriptContent(query);
+                content.CurrentConnection = currentConnection;
+                content.Metadata = metadata;
+                content.ResultLimit = ResultLimit;
+
+                SqlScript sqlscript = new SqlScript(content);
+                sqlscript.Type = SqlScriptType.SqlQuery;  
+                if (this.IsParameterBound(c => c.FolderName)) 
                 {
-                    Metadata = metadata
-                };
-                
-                SqlScript sqlscript = new SqlScript(content)
+                    SqlScriptFolder folder = new SqlScriptFolder();
+                    folder.Name = FolderName;
+                    sqlscript.Folder = folder;
+                }
+                if (this.IsParameterBound(c => c.Description)) 
                 {
-                    Type = SqlScriptType.SqlQuery
-                };
+                    sqlscript.Description = Description;
+                }
+                    
                 SqlScriptResource sqlscriptResource = new SqlScriptResource(this.Name, sqlscript);
 
                 WriteObject(new PSSqlScriptResource(SynapseAnalyticsClient.CreateOrUpdateSqlScript(this.Name, sqlscriptResource), this.WorkspaceName));

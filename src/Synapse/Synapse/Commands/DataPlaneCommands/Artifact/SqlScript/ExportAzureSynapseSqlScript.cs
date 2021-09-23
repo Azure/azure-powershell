@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Synapse.Commands
+namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsData.Export, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlScript,
            DefaultParameterSetName = ExportByName)]
