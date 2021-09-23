@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to enable Bgp route translation for NAT on this VpnGateway.")]
+        public bool? EnableBgpRouteTranslationForNat { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -125,6 +130,12 @@ namespace Microsoft.Azure.Commands.Network
             if (existingVpnGateway == null)
             {
                 throw new PSArgumentException(Properties.Resources.VpnGatewayNotFound);
+            }
+
+            // Enable the Bgp route translation for NAT on this VpnGateway, if specified by the customer.
+            if (this.EnableBgpRouteTranslationForNat.HasValue)
+            {
+                existingVpnGateway.EnableBgpRouteTranslationForNat = this.EnableBgpRouteTranslationForNat.Value;
             }
 
             //// Modify scale unit if specified
