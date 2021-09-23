@@ -293,9 +293,9 @@ WEB <IMicrosoftGraphWebApplication>: webApplication
 https://docs.microsoft.com/powershell/module/az.resources/new-azmgapplication
 #>
 function New-AzMgApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
-[CmdletBinding(DefaultParameterSetName = 'ApplicationWithoutCredentialParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
+  [CmdletBinding(DefaultParameterSetName = 'ApplicationWithoutCredentialParameterSet', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -362,7 +362,7 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${DisabledByMicrosoftStatus},
 
-    [Parameter(ParameterSetName = 'ApplicationWithoutCredentialParameterSet', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The display name for the application.
@@ -426,7 +426,7 @@ param(
     # In those cases Azure AD interprets the application type based on the value of this property.
     ${IsFallbackPublicClient},
 
-    [Parameter()]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
@@ -469,7 +469,7 @@ param(
     # To construct, see NOTES section for PARENTALCONTROLSETTING properties and create a hash table.
     ${ParentalControlSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
@@ -549,6 +549,28 @@ param(
     # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
     ${TokenLifetimePolicy},
 
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Security.SecureString]
+    ${Password},
+
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    ${CertValue},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    ${StartDate},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    ${EndDate},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -597,32 +619,98 @@ param(
     ${ProxyUseDefaultCredentials}
   )
 
-process {
+  process {
     if ($PSBoundParameters.ContainsKey('AvailableToOtherTenants') -and !$PSBoundParameters.ContainsKey('SignInAudience')) {
-        $PSBoundParameters['SignInAudience'] = 'AzureADMultipleOrgs'
-        $null = $PSBoundParameters.Remove('AvailableToOtherTenants')
+      $PSBoundParameters['SignInAudience'] = 'AzureADMultipleOrgs'
+      $null = $PSBoundParameters.Remove('AvailableToOtherTenants')
     }
     # even if payload contains all three redirect options, only one will be added in the actual app, the order is
     # web -> spa -> public client
     if ($PSBoundParameters.ContainsKey('HomePage') -or $PSBoundParameters.ContainsKey('RedirectUrls')) {
-        $props = @{}
-        if ($PSBoundParameters.ContainsKey('HomePage')) {
-            $props['HomePageUrl'] = $PSBoundParameters['HomePage']
-            $null = $PSBoundParameters.Remove('HomePage')
-        }
-        if ($PSBoundParameters.ContainsKey('RedirectUrls')) {
-            $props['RedirectUri'] = $PSBoundParameters['RedirectUrls']
-            $null = $PSBoundParameters.Remove('RedirectUrls')
-        }
-        $PSBoundParameters['Web'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphWebApplication" -Property $props
-    } elseif ($PSBoundParameters.ContainsKey('SPARedirectUri')) {
-        $PSBoundParameters['SPA'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphSPAApplication" -Property @{'RedirectUri'=$PSBoundParameters['SPARedirectUri']}
-        $null = $PSBoundParameters.Remove('SPARedirectUri')
-    } elseif ($PSBoundParameters.ContainsKey('PublicClientRedirectUri')) {
-      $PSBoundParameters['PublicClient'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPublicClientApplication" -Property @{'RedirectUri'=$PSBoundParameters['PublicClientRedirectUri']}
+      $props = @{}
+      if ($PSBoundParameters.ContainsKey('HomePage')) {
+        $props['HomePageUrl'] = $PSBoundParameters['HomePage']
+        $null = $PSBoundParameters.Remove('HomePage')
+      }
+      if ($PSBoundParameters.ContainsKey('RedirectUrls')) {
+        $props['RedirectUri'] = $PSBoundParameters['RedirectUrls']
+        $null = $PSBoundParameters.Remove('RedirectUrls')
+      }
+      $PSBoundParameters['Web'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphWebApplication" -Property $props
+    }
+    elseif ($PSBoundParameters.ContainsKey('SPARedirectUri')) {
+      $PSBoundParameters['SPA'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphSPAApplication" -Property @{'RedirectUri' = $PSBoundParameters['SPARedirectUri'] }
+      $null = $PSBoundParameters.Remove('SPARedirectUri')
+    }
+    elseif ($PSBoundParameters.ContainsKey('PublicClientRedirectUri')) {
+      $PSBoundParameters['PublicClient'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPublicClientApplication" -Property @{'RedirectUri' = $PSBoundParameters['PublicClientRedirectUri'] }
       $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
     }
 
-    MSGraph.internal\New-AzMgApplication @PSBoundParameters
+    switch ($PSCmdlet.ParameterSetName) {
+      'ApplicationWithPasswordPlainParameterSet' {
+        $pw = $PSBoundParameters['Password']
+        $null = $PSBoundParameters.Remove('Password')
+        break
+      }
+      'ApplicationWithPasswordCredentialParameterSet' {
+        $pc = $PSBoundParameters['PasswordCredentials']
+        $null = $PSBoundParameters.Remove('PasswordCredentials')
+        break
+      }
+      'ApplicationWithKeyPlainParameterSet' {
+        $cv = $PSBoundParameters['CertValue']
+        $null = $PSBoundParameters.Remove('CertValue')
+        break
+      }
+      'ApplicationWithKeyCredentialParameterSet' {
+        $kc = $PSBoundParameters['KeyCredentials']
+        $null = $PSBoundParameters.Remove('KeyCredentials')
+        break
+      }
+      default {
+        break
+      }
+    }
+
+    if ($PSBoundParameters['StartDate']) {
+      $sd = $PSBoundParameters['StartDate']
+      $null = $PSBoundParameters.Remove('StartDate')
+    }
+
+    if ($PSBoundParameters['EndDate']) {
+      $ed = $PSBoundParameters['EndDate']
+      $null = $PSBoundParameters.Remove('EndDate')
+    }
+
+    $app = MSGraph.internal\New-AzMgApplication @PSBoundParameters
+    $param = @{'ObjectId' = $app.Id }
+    
+    if ($pc) {
+      foreach ($cred in $pc) {
+        $param['PasswordCredential'] = $cred
+        $null = New-AzMgAppCredential @param
+      }
+    }
+    elseif ($kc) {
+      foreach ($cred in $kc) {
+        $param['KeyCredential'] = $cred
+        $null = New-AzMgAppCredential @param
+      }
+    }
+    else {
+      if ($pw -or $cv) {
+        if ($pw) {
+          $param['Password'] = $pw
+        }
+        else {
+          $param['CertValue'] = $cv
+        }
+        $param['StartDate'] = $sd
+        $param['EndDate'] = $ed
+        $null = New-AzMgAppCredential @param
+      }
+    }
+    $PSCmdlet.WriteObject($app)
   }
 }

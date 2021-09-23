@@ -16,59 +16,97 @@
 
 function New-AzMgAppCredential {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
-    [CmdletBinding(DefaultParameterSetName='ApplicationObjectIdWithPasswordParameterSet ', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'ApplicationObjectIdWithPasswordParameterSet ', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        [Parameter(ParameterSetName='ApplicationObjectIdWithPasswordParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='ApplicationObjectIdWithCertValueParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithPasswordParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithCertValueParameterSet', Mandatory)]
         [Alias('Id')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${ObjectId},
 
-        [Parameter(ParameterSetName='ApplicationIdWithCertValueParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='ApplicationIdWithPasswordParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationIdWithCertValueParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationIdWithPasswordParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${ApplicationId},
 
-        [Parameter(ParameterSetName='DisplayNameWithPasswordParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='DisplayNameWithCertValueParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'DisplayNameWithPasswordParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'DisplayNameWithCertValueParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${DisplayName},
 
-        [Parameter(ParameterSetName='ApplicationObjectWithPasswordParameterSet', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='ApplicationObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordParameterSet', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
         ${ApplicationObject},
 
-        [Parameter(ParameterSetName='ApplicationObjectIdWithCertValueParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='ApplicationIdWithCertValueParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='DisplayNameWithCertValueParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='ApplicationObjectWithCertValueParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithCertValueParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationIdWithCertValueParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'DisplayNameWithCertValueParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithCertValueParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${CertValue},
 
-        [Parameter(ParameterSetName='ApplicationObjectIdWithPasswordParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='ApplicationIdWithPasswordParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='DisplayNameWithPasswordParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='ApplicationObjectWithPasswordParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithPasswordParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationIdWithPasswordParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'DisplayNameWithPasswordParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.Security.SecureString]
         ${Password},
 
-        [Parameter()]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithKeyCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationIdWithKeyCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential]
+        ${KeyCredential},
+
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithPasswordCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationIdWithPasswordCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential]
+        ${PasswordCredential},
+
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationIdWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'DisplayNameWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithPasswordParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationIdWithPasswordParameterSet')]
+        [Parameter(ParameterSetName = 'DisplayNameWithPasswordParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordParameterSet')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.DateTime]
         ${StartDate},
 
-        [Parameter()]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationIdWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'DisplayNameWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithPasswordParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationIdWithPasswordParameterSet')]
+        [Parameter(ParameterSetName = 'DisplayNameWithPasswordParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordParameterSet')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.DateTime]
         ${EndDate},
 
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationIdWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'DisplayNameWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithCertValueParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithPasswordParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationIdWithPasswordParameterSet')]
+        [Parameter(ParameterSetName = 'DisplayNameWithPasswordParameterSet')]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordParameterSet')]
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
@@ -120,90 +158,105 @@ function New-AzMgAppCredential {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-      )
+    )
     
     process {
-        if ($PSBoundParameters.ContainsKey('Password')) {
-            $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential" 
-                                     -Property @{'SecretText'=(Unprotect-SecureString -SecureString $PSBoundParameters['Password'])}
+        if ($PSBoundParameters.ContainsKey('KeyCredential')) {
+            $credential = $PSBoundParameters['KeyCredential']
         }
-        if ($PSBoundParameters.ContainsKey('CertValue')) {
-            $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" 
-                                     -Property @{'Key'=([System.Convert]::FromBase64String($PSBoundParameters['CertValue']));
-                                                 'Usage'='Verify'; 
-                                                 'Type'='AsymmetricX509Cert'}
+        elseif ($PSBoundParameters.ContainsKey('PasswordCredential')) {
+            $credential = $PSBoundParameters['PasswordCredential']
         }
-        if ($PSBoundParameters.ContainsKey('CustomKeyIdentifier')) {
-            $credential.CustomKeyIdentifier = [System.Convert]::FromBase64String($PSBoundParameters['CustomKeyIdentifier'])
+        else {
+            if ($PSBoundParameters.ContainsKey('Password')) {
+                $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential" 
+                -Property @{'SecretText' = (Unprotect-SecureString -SecureString $PSBoundParameters['Password']) }
+            }
+            if ($PSBoundParameters.ContainsKey('CertValue')) {
+                $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" 
+                -Property @{'Key' = ([System.Convert]::FromBase64String($PSBoundParameters['CertValue']));
+                    'Usage'       = 'Verify'; 
+                    'Type'        = 'AsymmetricX509Cert'
+                }
+            }
+            if ($PSBoundParameters.ContainsKey('CustomKeyIdentifier')) {
+                $credential.CustomKeyIdentifier = [System.Convert]::FromBase64String($PSBoundParameters['CustomKeyIdentifier'])
+            }
+            if ($PSBoundParameters.ContainsKey('StartDate')) {
+                $credential.StartDateTime = $PSBoundParameters['StartDate']
+            }
+            if ($PSBoundParameters.ContainsKey('EndDate')) {
+                $credential.EndDateTime = $PSBoundParameters['EndDate']
+            }
+            $credential.KeyId = (New-Guid).ToString()
         }
-        if ($PSBoundParameters.ContainsKey('StartDate')) {
-            $credential.StartDateTime = $PSBoundParameters['StartDate']
-        }
-        if ($PSBoundParameters.ContainsKey('EndDate')) {
-            $credential.EndDateTime = $PSBoundParameters['EndDate']
-        }
-        $credential.KeyId = (New-Guid).ToString()
 
         switch ($PSCmdlet.ParameterSetName) {
-            'ApplicationObjectIdWithPasswordParameterSet' {
+            { 'ApplicationObjectIdWithPasswordParameterSet' -or 'ApplicationObjectIdWithPasswordCredentialParameterSet' } {
                 MSGraph.internal\Add-AzMgApplicationPassword -ApplicationId $PSBoundParameters['ObjectId'] -PasswordCredential $credential
                 break
             }
-            'ApplicationObjectIdWithCertValueParameterSet' {
+            { 'ApplicationObjectIdWithCertValueParameterSet' -or 'ApplicationObjectIdWithKeyCredentialParameterSet' } {
                 MSGraph.internal\Add-AzMgApplicationKey -ApplicationId $PSBoundParameters['ObjectId'] -KeyCredential $credential
                 break
             }
-            'ApplicationIdWithPasswordParameterSet' {
+            { 'ApplicationIdWithPasswordParameterSet' -or 'ApplicationIdWithPasswordCredentialParameterSet' } {
                 $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id
-                if($app) {
+                if ($app) {
                     MSGraph.internal\Add-AzMgApplicationPassword -ApplicationId $app.Id -PasswordCredential $credential    
-                } else {
+                }
+                else {
                     Write-Error "application with application id '$($PSBoundParameters['ApplicationId'])' does not exist."
                     return
                 }
                 break
             }
-            'ApplicationIdWithCertValueParameterSet' {
+            { 'ApplicationIdWithCertValueParameterSet' -or 'ApplicationIdWithKeyCredentialParameterSet' } {
                 $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id
-                if($app) {
+                if ($app) {
                     MSGraph.internal\Add-AzMgApplicationKey -ApplicationId $app.Id -KeyCredential $credential 
-                } else {
+                }
+                else {
                     Write-Error "application with application id '$($PSBoundParameters['ApplicationId'])' does not exist."
                     return
                 }
                 break
             }
-            'DisplayNameWithPasswordParameterSet' {
+            { 'DisplayNameWithPasswordParameterSet' -or 'DisplayNameWithPasswordCredentialParameterSet' } {
                 $app = Get-AzMgApplication DisplayName $PSBoundParameters['DisplayName'] -Select Id
                 if (0 -eq $app.Count) {
                     Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
                     return
-                } elseif (1 -eq $app.Count) {
+                }
+                elseif (1 -eq $app.Count) {
                     MSGraph.internal\Add-AzMgApplicationPassword -ApplicationId $app[0].Id -PasswordCredential $credential
-                } else {
+                }
+                else {
                     Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
                     return
                 }
                 break
             }
-            'DisplayNameWithCertValueParameterSet' {
+            { 'DisplayNameWithCertValueParameterSet' -or 'DisplayNameWithKeyCredentialParameterSet' } {
                 $app = Get-AzMgApplication DisplayName $PSBoundParameters['DisplayName'] -Select Id
                 if (0 -eq $app.Count) {
                     Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
                     return
-                } elseif (1 -eq $app.Count) {
+                }
+                elseif (1 -eq $app.Count) {
                     MSGraph.internal\Add-AzMgApplicationkey -ApplicationId $app[0].Id -KeyCredential $credential
-                } else {
+                }
+                else {
                     Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
                     return
                 }
                 break
             }
-            'ApplicationObjectWithPasswordParameterSet' {
+            { 'ApplicationObjectWithPasswordParameterSet' -or 'ApplicationObjectWithPasswordParameterSet' } {
                 MSGraph.internal\Add-AzMgApplicationPassword -ApplicationId $PSBoundParameters['ApplicationObject'].Id -PasswordCredential $credential
                 break
             }
-            'ApplicationObjectWithCertValueParameterSet' {
+            { 'ApplicationObjectWithCertValueParameterSet' -or 'ApplicationObjectWithCertValueParameterSet' } {
                 MSGraph.internal\Add-AzMgApplicationKey -ApplicationId $PSBoundParameters['ApplicationObject'].Id -KeyCredential $credential
                 break
             }
