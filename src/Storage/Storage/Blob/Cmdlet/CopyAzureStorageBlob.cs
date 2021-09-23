@@ -407,7 +407,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                             {
                                 blocksize = srcProperties.ContentLength - copyoffset;
                             }
-                            destBlockBlob.StageBlockFromUri(srcUri, id, new global::Azure.HttpRange(copyoffset, blocksize), cancellationToken: this.CmdletCancellationToken);
+                            destBlockBlob.StageBlockFromUri(srcUri, id, new global::Azure.HttpRange(copyoffset, blocksize), null, null, null, cancellationToken: this.CmdletCancellationToken);
                             copyoffset += blocksize;
                             progressHandler.Report(copyoffset);
 

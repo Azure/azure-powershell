@@ -190,7 +190,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Enable-AzStorageBlobLastAccessTimeTracking', 
                'Disable-AzStorageBlobLastAccessTimeTracking', 
                'Set-AzStorageBlobTag', 'Get-AzStorageBlobTag', 
-               'Get-AzStorageBlobByTag'
+               'Get-AzStorageBlobByTag',
+               'Invoke-AzStorageAccountHierarchicalNamespaceUpgrade',
+               'Stop-AzStorageAccountHierarchicalNamespaceUpgrade'
 
 # Variables to export from this module
 # VariablesToExport = @()

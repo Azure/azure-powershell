@@ -488,7 +488,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Deny-AzPrivateEndpointConnection', 
                'Get-AzAvailablePrivateEndpointType', 'Get-AzAvailableServiceAlias', 
                'Get-AzPrivateLinkResource', 'New-AzBastion', 'Get-AzBastion', 
-               'Remove-AzBastion', 'Start-AzVirtualNetworkGatewayPacketCapture', 
+               'Remove-AzBastion', 'Set-AzBastion', 'Start-AzVirtualNetworkGatewayPacketCapture', 
                'Stop-AzVirtualNetworkGatewayPacketCapture', 
                'Start-AzVirtualNetworkGatewayConnectionPacketCapture', 
                'Stop-AzVirtualNetworkGatewayConnectionPacketCapture', 
@@ -539,7 +539,11 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzO365PolicyProperty', 'Get-AzVirtualNetworkGatewayNatRule', 
                'New-AzVirtualNetworkGatewayNatRule', 
                'Update-AzVirtualNetworkGatewayNatRule', 
-               'Remove-AzVirtualNetworkGatewayNatRule'
+               'Remove-AzVirtualNetworkGatewayNatRule',
+               'Get-AzVirtualHubBgpConnection',
+               'New-AzVirtualHubBgpConnection',
+               'Remove-AzVirtualHubBgpConnection',
+               'Update-AzVirtualHubBgpConnection'
 
 # Variables to export from this module
 # VariablesToExport = @()

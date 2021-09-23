@@ -226,6 +226,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return _triggerRunClient.QueryTriggerRunsByWorkspace(filterParameters).Value.Value;
         }
 
+        public void StopTriggerRun(string triggerName, string triggerRunId)
+        {
+            _triggerRunClient.CancelTriggerInstance(triggerName, triggerRunId);
+        }
+
+        public void RerunTriggerRun(string triggerName, string triggerRunId)
+        {
+            _triggerRunClient.RerunTriggerInstance(triggerName, triggerRunId);
+        }
         #endregion
 
         #region Dataset
@@ -326,15 +335,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public virtual string ReadJsonFileContent(string path)
         {
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException(path);
-            }
-
-            using (TextReader reader = new StreamReader(path))
-            {
-                return reader.ReadToEnd();
-            }
+            return Utils.ReadJsonFileContent(path);
         }
 
         internal Exception CreateAzurePowerShellException(RequestFailedException ex)
