@@ -64,4 +64,9 @@ directive:
   - where:
       subject: CustomLocationOperation
     hide: true
+
+  - where:
+      verb: New|Update
+      subject: CustomLocation
+    hide: true
 ```

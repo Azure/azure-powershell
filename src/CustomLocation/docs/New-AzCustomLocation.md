@@ -13,11 +13,11 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 ## SYNTAX
 
 ```
-New-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> -Location <String>
+New-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> -ClusterExtensionId <String[]>
+ -DisplayName <String> -HostResourceId <String> -Location <String> -Namespace <String>
  [-SubscriptionId <String>] [-AuthenticationType <String>] [-AuthenticationValue <String>]
- [-ClusterExtensionId <String[]>] [-DisplayName <String>] [-HostResourceId <String>] [-HostType <HostType>]
- [-IdentityType <ResourceIdentityType>] [-Namespace <String>] [-ProvisioningState <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-HostType <HostType>] [-IdentityType <ResourceIdentityType>] [-ProvisioningState <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +98,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,7 +128,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,7 +144,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -204,7 +204,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

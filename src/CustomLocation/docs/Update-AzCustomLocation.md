@@ -14,20 +14,20 @@ Updates a Custom Location with the specified Resource Name in the specified Reso
 
 ### UpdateExpanded (Default)
 ```
-Update-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-AuthenticationType <String>] [-AuthenticationValue <String>] [-ClusterExtensionId <String[]>]
- [-DisplayName <String>] [-HostResourceId <String>] [-HostType <HostType>]
- [-IdentityType <ResourceIdentityType>] [-Namespace <String>] [-ProvisioningState <String>] [-Tag <Hashtable>]
+Update-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> -ClusterExtensionId <String[]>
+ -DisplayName <String> -HostResourceId <String> -Namespace <String> [-SubscriptionId <String>]
+ [-AuthenticationType <String>] [-AuthenticationValue <String>] [-HostType <HostType>]
+ [-IdentityType <ResourceIdentityType>] [-ProvisioningState <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzCustomLocation -InputObject <ICustomLocationIdentity> [-AuthenticationType <String>]
- [-AuthenticationValue <String>] [-ClusterExtensionId <String[]>] [-DisplayName <String>]
- [-HostResourceId <String>] [-HostType <HostType>] [-IdentityType <ResourceIdentityType>]
- [-Namespace <String>] [-ProvisioningState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzCustomLocation -InputObject <ICustomLocationIdentity> -ClusterExtensionId <String[]>
+ -DisplayName <String> -HostResourceId <String> -Namespace <String> [-AuthenticationType <String>]
+ [-AuthenticationValue <String>] [-HostType <HostType>] [-IdentityType <ResourceIdentityType>]
+ [-ProvisioningState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +93,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -123,7 +123,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -139,7 +139,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -200,7 +200,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
