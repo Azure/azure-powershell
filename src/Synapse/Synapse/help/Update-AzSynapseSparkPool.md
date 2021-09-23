@@ -356,6 +356,7 @@ Package action must be specified when you add or remove a workspace package from
 Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+PackageActionType
 Parameter Sets: (All)
 Aliases:
+Accepted values: Add, Remove
 
 Required: False
 Position: Named
