@@ -365,13 +365,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
-            HelpMessage = Constants.HelpIntegrationRuntimeProvisionMethod)]
+            HelpMessage = Constants.HelpIntegrationRuntimeVNetInjectionMethod)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            Constants.IntegrationRuntimeProvisionStandard,
-            Constants.IntegrationRuntimeProvisionExpress,
+            Constants.IntegrationRuntimeVNetInjectionStandard,
+            Constants.IntegrationRuntimeVNectInjectionExpress,
             IgnoreCase = true)]
-        public string ProvisionMethod { get; set; }
+        public string VNetInjectionMethod { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -756,7 +756,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
 
             SetAzureDataFactoryIntegrationRuntimeCommandHelper.SetSubnetId(
-                integrationRuntime, ProvisionMethod, SubnetId, Subnet, VNetId
+                integrationRuntime, VNetInjectionMethod, SubnetId, Subnet, VNetId
                 );
 
             if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null)
