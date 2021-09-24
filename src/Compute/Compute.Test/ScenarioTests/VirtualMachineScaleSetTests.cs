@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -212,27 +212,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineScaleSetSpotRestorePolicy()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSpotRestorePolicy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVMSSUserdata()
-        {
-            //TestRunner.RunTestScript("Test-VMSSUserdata");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVMSSUserdata2()
-        {
-            //TestRunner.RunTestScript("Test-VMSSUserdata2");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVMSSUserdata3()
-        {
-           TestRunner.RunTestScript("Test-VMSSUserdata3");
         }
     }
 }
