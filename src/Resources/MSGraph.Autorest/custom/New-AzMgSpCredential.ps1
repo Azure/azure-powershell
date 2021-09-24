@@ -16,9 +16,9 @@
 
 function New-AzMgSpCredential {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
-    [CmdletBinding(DefaultParameterSetName='SpObjectIdWithPasswordParameterSet  ', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='SpObjectIdWithPasswordParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet ', Mandatory)]
+        [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet', Mandatory)]
         [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory)]
         [Alias('Id')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -140,7 +140,7 @@ function New-AzMgSpCredential {
             $credential = $PSBoundParameters['PasswordCredential']
         } else {
             if ($PSBoundParameters.ContainsKey('CertValue')) {
-                $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" 
+                $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
                                          -Property @{'Key'=([System.Convert]::FromBase64String($PSBoundParameters['CertValue']));
                                                      'Usage'='Verify'; 
                                                      'Type'='AsymmetricX509Cert'}
@@ -150,8 +150,8 @@ function New-AzMgSpCredential {
                 } else {
                     $val = (New-Guid).ToString()
                 }
-                $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential" 
-                                     -Property @{'SecretText'=$val}
+                $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential" `
+                                         -Property @{'SecretText'=$val}
             }
 
             if ($PSBoundParameters.ContainsKey('StartDate')) {
