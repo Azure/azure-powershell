@@ -622,13 +622,6 @@ function New-AzMgServicePrincipal {
     # To construct, see NOTES section for TRANSITIVEMEMBEROF properties and create a hash table.
     ${TransitiveMemberOf},
 
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'DisplayNameWithPasswordParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Security.SecureString]
-    ${Password},
-
     [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
     [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', Mandatory)]
     [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', Mandatory)]
@@ -705,43 +698,21 @@ function New-AzMgServicePrincipal {
   )
 
   process {
+    if ($PSBoundParameters['DisplayName']) {
+      $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']).AppId
+      $null = $PSBoundParameters.Remove('DisplayName')
+    } elseif ($PSBoundParameters['ApplicationObject']) {
+      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
+      $null = $PSBoundParameters.Remove('ApplicationObject')
+    } elseif ($PSBoundParameters['ApplicationId']) {
+      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
+      $null = $PSBoundParameters.Remove('ApplicationId')
+    } else {
+      $appName = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
+      $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $AppName).AppId
+    }
+
     switch ($PSCmdlet.ParameterSetName) {
-      'SimpleParameterSet' {
-        try {
-          $appName = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
-          $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $AppName).AppId
-        }
-        catch {
-          throw
-        }
-        break
-      }
-      'DisplayNameWithoutCredentialParameterSet' {
-        try {
-          $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']).AppId
-              
-        }
-        catch {
-          throw
-        }
-        $null = $PSBoundParameters.Remove('DisplayName')
-        break
-      }
-      'ApplicationObjectWithoutCredentialParameterSet' {
-        $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
-        $null = $PSBoundParameters.Remove('ApplicationObject')
-        break
-      }
-      'ApplicationWithoutCredentialParameterSet' {
-        $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
-        $null = $PSBoundParameters.Remove('ApplicationId')
-        break
-      }
-      {'ApplicationWithPasswordPlainParameterSet' -or 'ApplicationObjectWithPasswordPlainParameterSet' -or 'DisplayNameWithPasswordPlainParameterSet'} {
-        $pw = $PSBoundParameters['Password']
-        $null = $PSBoundParameters.Remove('Password')
-        break
-      }
       {'ApplicationWithKeyPlainParameterSet' -or 'ApplicationObjectWithKeyPlainParameterSet' -or 'DisplayNameWithKeyPlainParameterSet'} {
         $cv = $PSBoundParameters['CertValue']
         $null = $PSBoundParameters.Remove('CertValue')
@@ -774,30 +745,40 @@ function New-AzMgServicePrincipal {
 
     $sp = MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
     $param = @{'ObjectId' = $sp.Id }
-    
-    if ($pc) {
-      foreach ($cred in $pc) {
-        $param['PasswordCredential'] = $cred
+
+    switch ($PSCmdlet.ParameterSetName) {
+      {'ApplicationWithPasswordPlainParameterSet' -or 'ApplicationObjectWithPasswordPlainParameterSet' -or 'DisplayNameWithPasswordPlainParameterSet'} {
+        $param['StartDate'] = $sd
+        $param['EndDate'] = $ed
         $null = New-AzMgSpCredential @param
+        break
       }
-    }
-    elseif ($kc) {
-      foreach ($cred in $kc) {
-        $param['KeyCredential'] = $cred
-        $null = New-AzMgSpCredential @param
-      }
-    }
-    elseif ($pw -or $cv) {
-      if ($pw) {
-        $param['Password'] = $pw
-      }
-      else {
+      {'ApplicationWithKeyPlainParameterSet' -or 'ApplicationObjectWithKeyPlainParameterSet' -or 'DisplayNameWithKeyPlainParameterSet'} {
         $param['CertValue'] = $cv
+        $param['StartDate'] = $sd
+        $param['EndDate'] = $ed
+        $null = New-AzMgSpCredential @param
+        break
       }
-      $param['StartDate'] = $sd
-      $param['EndDate'] = $ed
-      $null = New-AzMgSpCredential @param
+      {'ApplicationWithPasswordCredentialParameterSet' -or 'ApplicationObjectWithPasswordCredentialParameterSet' -or 'DisplayNameWithPasswordCredentialParameterSet'} {
+        foreach ($cred in $pc) {
+          $param['PasswordCredential'] = $cred
+          $null = New-AzMgSpCredential @param
+        }
+        break
+      }
+      {'ApplicationWithKeyCredentialParameterSet' -or 'ApplicationObjectWithKeyCredentialParameterSet' -or 'DisplayNameWithKeyCredentialParameterSet'} {
+        foreach ($cred in $kc) {
+          $param['KeyCredential'] = $cred
+          $null = New-AzMgSpCredential @param
+        }
+        break
+      }
+      default {
+        break
+      }
     }
+    
     $PSCmdlet.WriteObject($sp)
   }
 }
