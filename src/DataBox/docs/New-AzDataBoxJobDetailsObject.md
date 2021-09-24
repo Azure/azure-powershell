@@ -24,7 +24,7 @@ Create a in-memory object for DataBoxJobDetails
 
 ## EXAMPLES
 
-### Example 1: {{ Creates a databox job detail in memory object }}
+### Example 1:  Creates a databox job detail in memory object 
 ```powershell
 PS C:\> $details = New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
 PS C:\> $details
@@ -49,7 +49,7 @@ ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.A
 Type                       : DataBox
 ```
 
-{{ Create a in-memory object for DataBoxJobDetails }}
+ Create a in-memory object for DataBoxJobDetails 
 
 ## PARAMETERS
 
