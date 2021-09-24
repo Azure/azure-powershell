@@ -1307,6 +1307,7 @@ components:
               readOnly: true
               description: Display name of the application object on which this extension property is defined. Read-only.
               nullable: true
+              readOnly: true
             dataType:
               type: string
               description: Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum
@@ -1315,6 +1316,7 @@ components:
               readOnly: true
               description: Indicates if this extension property was sycned from onpremises directory using Azure AD Connect. Read-only.
               nullable: true
+              readOnly: true
             name:
               type: string
               description: Name of the extension property. Not nullable.
@@ -1791,22 +1793,27 @@ components:
           type: object
           properties:
             capability:
+              readOnly: true
               type: string
               description: 'Describes the capability that is associated with this resource. (e.g. Messages, Conversations, etc.)  Not nullable. Read-only.'
             providerId:
               type: string
+              readOnly: true
               description: Application id of the publishing underlying service. Not nullable. Read-only.
               nullable: true
             providerName:
               type: string
+              readOnly: true
               description: Name of the publishing underlying service. Read-only.
               nullable: true
             providerResourceId:
               type: string
+              readOnly: true
               description: 'For Microsoft 365 groups, this is set to a well-known name for the resource (e.g. Yammer.FeedURL etc.). Not nullable. Read-only.'
               nullable: true
             uri:
               type: string
+              readOnly: true
               description: URL of the published resource. Not nullable. Read-only.
           additionalProperties:
             type: object
@@ -1916,6 +1923,7 @@ components:
           description: 'When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.'
         origin:
           type: string
+          readOnly: true
           description: Specifies if the app role is defined on the application object or on the servicePrincipal entity. Must not be included in any POST or PATCH requests. Read-only.
           nullable: true
         value:
@@ -1930,6 +1938,7 @@ components:
       properties:
         logoUrl:
           type: string
+          readOnly: true
           description: 'CDN URL to the application''s logo, Read-only.'
           nullable: true
         marketingUrl:
