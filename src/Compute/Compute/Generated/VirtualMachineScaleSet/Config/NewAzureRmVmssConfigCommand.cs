@@ -38,8 +38,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
-        private const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet",
-                             DefaultParameterSetName = "DefaultParameterSet";
         [Parameter(
             Mandatory = false,
             Position = 0,
@@ -249,13 +247,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ExplicitIdentityParameterSet,
+            ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = ExplicitIdentityParameterSet,
+            ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 
@@ -276,18 +274,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = ExplicitIdentityParameterSet,
-            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = DefaultParameterSetName,
-            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
-        public string UserData { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -682,16 +668,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (this.IsParameterBound(c => c.EdgeZone))
             {
                 vExtendedLocation = new CM.PSExtendedLocation(this.EdgeZone);
-            }
-
-            if (this.IsParameterBound(c => c.UserData))
-            {
-                if (vVirtualMachineProfile == null)
-                {
-                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
-                }
-                vVirtualMachineProfile.UserData = this.UserData;
-
             }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
