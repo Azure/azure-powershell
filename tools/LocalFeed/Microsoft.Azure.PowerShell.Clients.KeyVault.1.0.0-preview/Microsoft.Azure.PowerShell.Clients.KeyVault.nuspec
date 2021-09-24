@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Azure.PowerShell.Clients.KeyVault</id>
+    <version>1.0.0-preview</version>
+    <title>Microsoft Azure PowerShell Clients KeyVault</title>
+    <authors>Microsoft Corporation</authors>
+    <owners>Microsoft Corporation</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/Azure/azure-powershell-common</projectUrl>
+    <description>Microsoft Azure PowerShell Clients KeyVault library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</description>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <tags>azure powershell clients keyvault</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Rest.ClientRuntime" version="2.3.23" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Rest.ClientRuntime.Azure" version="3.3.19" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="10.0.3" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.NonGeneric" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Collections.Specialized" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Reflection" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Security.SecureString" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Xml.XmlDocument" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Xml.XmlSerializer" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

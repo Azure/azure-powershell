@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Microsoft.Azure.PowerShell.Clients.Graph.Rbac.nuspec" Id="R55d8683a364c4f27" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/18dda098fcf045c58cccc85d831e2443.psmdcp" Id="Re6da864597b84644" />
+</Relationships>

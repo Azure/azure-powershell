@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IncludeHyak>true</IncludeHyak>
+    <IsCmdletProject>true</IsCmdletProject>
+  </PropertyGroup>
+  <Import Project="$(ProjectDir)..\Dependencies.Client.targets" />
+  
+    <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Common.Share</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Common.Share</RootNamespace>
+    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Title>Microsoft Azure PowerShell Share</Title>
+    <Description>Microsoft Azure PowerShell Share library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;share</PackageTags>
+    <Authors>Microsoft Corporation</Authors>
+    <Copyright>Copyright © Microsoft Corporation</Copyright>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
+    <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt" Link="LICENSE.txt" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+</Project>
