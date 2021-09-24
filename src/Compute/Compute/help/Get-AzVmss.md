@@ -21,7 +21,7 @@ Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>]
 
 ### FriendMethod
 ```
-Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-InstanceView] [-UserData]
+Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-InstanceView]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -210,21 +210,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -UserData
-UserData for the Vmss, which will be base-64 encoded. Customer should not pass any secrets in here.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: FriendMethod
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -VMScaleSetName
 Species the name of the VMSS.
 
@@ -268,5 +253,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Stop-AzVmss](./Stop-AzVmss.md)
 
 [Update-AzVmss](./Update-AzVmss.md)
-
 
