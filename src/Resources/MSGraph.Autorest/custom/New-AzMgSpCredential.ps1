@@ -44,13 +44,6 @@ function New-AzMgSpCredential {
         [System.String]
         ${CertValue},
 
-        [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet')]
-        [Parameter(ParameterSetName='SPNWithPasswordParameterSet')]
-        [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordParameterSet')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [System.Security.SecureString]
-        ${Password},
-
         [Parameter(ParameterSetName='SpObjectIdWithKeyCredentialParameterSet', Mandatory)]
         [Parameter(ParameterSetName='SPNWithKeyCredentialParameterSet', Mandatory)]
         [Parameter(ParameterSetName='ServicePrincipalObjectWithKeyCredentialParameterSet', Mandatory)]
@@ -145,13 +138,7 @@ function New-AzMgSpCredential {
                                                      'Usage'='Verify'; 
                                                      'Type'='AsymmetricX509Cert'}
             } else {
-                if ($PSBoundParameters.ContainsKey('Password')) {
-                    $val = (Unprotect-SecureString -SecureString $PSBoundParameters['Password'])
-                } else {
-                    $val = (New-Guid).ToString()
-                }
-                $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential" `
-                                         -Property @{'SecretText'=$val}
+                $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential"
             }
 
             if ($PSBoundParameters.ContainsKey('StartDate')) {

@@ -549,11 +549,6 @@ function New-AzMgApplication {
     # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
     ${TokenLifetimePolicy},
 
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Security.SecureString]
-    ${Password},
-
     [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -648,11 +643,6 @@ function New-AzMgApplication {
     }
 
     switch ($PSCmdlet.ParameterSetName) {
-      'ApplicationWithPasswordPlainParameterSet' {
-        $pw = $PSBoundParameters['Password']
-        $null = $PSBoundParameters.Remove('Password')
-        break
-      }
       'ApplicationWithPasswordCredentialParameterSet' {
         $pc = $PSBoundParameters['PasswordCredentials']
         $null = $PSBoundParameters.Remove('PasswordCredentials')
@@ -686,31 +676,40 @@ function New-AzMgApplication {
     $app = MSGraph.internal\New-AzMgApplication @PSBoundParameters
     $param = @{'ObjectId' = $app.Id }
     
-    if ($pc) {
-      foreach ($cred in $pc) {
-        $param['PasswordCredential'] = $cred
-        $null = New-AzMgAppCredential @param
-      }
-    }
-    elseif ($kc) {
-      foreach ($cred in $kc) {
-        $param['KeyCredential'] = $cred
-        $null = New-AzMgAppCredential @param
-      }
-    }
-    else {
-      if ($pw -or $cv) {
-        if ($pw) {
-          $param['Password'] = $pw
-        }
-        else {
-          $param['CertValue'] = $cv
-        }
+    switch ($PSCmdlet.ParameterSetName) {
+      'ApplicationWithPasswordPlainParameterSet' {
+        $param['Password'] = $pw
         $param['StartDate'] = $sd
         $param['EndDate'] = $ed
         $null = New-AzMgAppCredential @param
+        break
+      }
+      'ApplicationWithPasswordCredentialParameterSet' {
+        foreach ($cred in $pc) {
+          $param['PasswordCredential'] = $cred
+          $null = New-AzMgAppCredential @param
+        }
+        break
+      }
+      'ApplicationWithKeyPlainParameterSet' {
+        $param['CertValue'] = $cv
+        $param['StartDate'] = $sd
+        $param['EndDate'] = $ed
+        $null = New-AzMgAppCredential @param
+        break
+      }
+      'ApplicationWithKeyCredentialParameterSet' {
+        foreach ($cred in $kc) {
+          $param['KeyCredential'] = $cred
+          $null = New-AzMgAppCredential @param
+        }
+        break
+      }
+      default {
+        break
       }
     }
+
     $PSCmdlet.WriteObject($app)
   }
 }
