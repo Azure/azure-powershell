@@ -1404,6 +1404,8 @@ components:
               $ref: '#/components/schemas/microsoft.graph.userTeamwork'
             todo:
               $ref: '#/components/schemas/microsoft.graph.todo'
+          additionalProperties:
+            type: object
           description: Represents an Azure Active Directory user object.
     microsoft.graph.directoryObject:
       allOf:
@@ -3520,9 +3522,6 @@ components:
           type: string
           readOnly: true
           description: Read-only.
-        additionalProperties:
-          type: object
-          readOnly: true
     microsoft.graph.servicePlanInfo:
       title: servicePlanInfo
       type: object

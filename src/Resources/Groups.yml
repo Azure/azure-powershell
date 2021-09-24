@@ -921,6 +921,8 @@ components:
               $ref: '#/components/schemas/microsoft.graph.onenote'
             team:
               $ref: '#/components/schemas/microsoft.graph.team'
+          additionalProperties:
+            type: object
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.directoryObject:
       allOf:
@@ -1587,9 +1589,6 @@ components:
           type: string
           readOnly: true
           description: Read-only.
-      additionalProperties:
-        type: object
-        readOnly: true
     microsoft.graph.assignedLabel:
       title: assignedLabel
       type: object
