@@ -36,9 +36,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSetVM))]
     public partial class UpdateAzureRmVmssVM : ComputeAutomationBaseCmdlet
     {
-        protected const string DefaultParameterSetName = "DefaultParameter",
-                               ResourceIdParameterSet = "ResourceIdParameter",
-                               ObjectParameterSet = "ObjectParameter";
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -51,12 +48,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string instanceId;
                     switch (this.ParameterSetName)
                     {
-                        case ResourceIdParameterSet:
+                        case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
                             vmScaleSetName = GetResourceName(this.ResourceId, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
                             instanceId = GetInstanceId(this.ResourceId, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
                             break;
-                        case ObjectParameterSet:
+                        case "ObjectParameter":
                             resourceGroupName = GetResourceGroupName(this.VirtualMachineScaleSetVM.Id);
                             vmScaleSetName = GetResourceName(this.VirtualMachineScaleSetVM.Id, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
                             instanceId = GetInstanceId(this.VirtualMachineScaleSetVM.Id, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
@@ -70,7 +67,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     VirtualMachineScaleSetVM parameters = new VirtualMachineScaleSetVM();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSetVM, VirtualMachineScaleSetVM>(this.VirtualMachineScaleSetVM, parameters);
 
-                    if (this.ParameterSetName != ObjectParameterSet)
+                    if (this.ParameterSetName != "ObjectParameter")
                     {
                         parameters = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId);
                     }
@@ -122,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
 
         [Parameter(
-            ParameterSetName = DefaultParameterSetName,
+            ParameterSetName = "DefaultParameter",
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
@@ -130,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefaultParameterSetName,
+            ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
@@ -139,7 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefaultParameterSetName,
+            ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
@@ -156,34 +153,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public bool ProtectFromScaleSetAction { get; set; }
 
         [Parameter(
-            ParameterSetName = ResourceIdParameterSet,
+            ParameterSetName = "ResourceIdParameter",
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = ObjectParameterSet,
+            ParameterSetName = "ObjectParameter",
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachineScaleSetVM VirtualMachineScaleSetVM { get; set; }
 
-        [Parameter(Mandatory = false, 
-            HelpMessage = "Run cmdlet in the background")]
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "DefaultParameter",
-            HelpMessage = "UserData for the Vmss Vm, which will be base-64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "ResourceIdParameter",
-            HelpMessage = "UserData for the Vmss Vm, which will be base-64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipeline = true)]
-        public string UserData { get; set; }
     }
 }
