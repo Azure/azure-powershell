@@ -48,6 +48,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudWithPiping");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFrontDoorRulesEngineCrud()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorRulesEngineCrud");
+        }
+
         //[Fact]
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
         //public void TestFrontDoorEndpointCustomDomainHTTPSFrontDoor()

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Common.Share;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
@@ -61,12 +62,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     "Connect-AzAccount", "Clear-AzContext", "Disconnect-AzAccount", "Import-AzContext", "Remove-AzContext", "Set-AzContext"
                 },
                 StringComparer.InvariantCultureIgnoreCase);
-
-        private static readonly PredictiveSuggestion[] _surveySuggestions = new PredictiveSuggestion[AzPredictorConstants.CohortCount]
-        {
-            new PredictiveSuggestion("Open-AzPredictorSurvey # Run this command to tell us about your experience with Az Predictor"),
-            new PredictiveSuggestion("Send-AzPredictorRating # Run this command followed by your rating of Az Predictor: 1 (poor) - 5 (great)"),
-        };
 
         private IAzPredictorService _service;
         private ITelemetryClient _telemetryClient;
@@ -165,6 +160,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             _commandLineExecutedCompletion = new TaskCompletionSource();
 
+            SharedVariable.PredictorCorrelationId = _telemetryClient.CommandId;
+
             if (history.Count > 0)
             {
                 // We try to find the commands to request predictions for.
@@ -182,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 // workflow. We want to predict only by Az commands. So we don't send the request until the command 4.
                 // That's to use commands 1 and 4 to request prediction.
 
-                bool ShouldRequestPrediction = false;
+                bool shouldRequestPrediction = false;
 
                 if (_lastTwoMaskedCommands.Count == 0)
                 {
@@ -207,7 +204,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         // So we don't need to do that for a placeholder.
                     }
 
-                    ShouldRequestPrediction = true;
+                    shouldRequestPrediction = true;
                 }
 
                 string lastLine = history.Last();
@@ -225,20 +222,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     }
 
                     _lastTwoMaskedCommands.Enqueue(lastCommand.MaskedCommandLine);
-                    ShouldRequestPrediction = true;
+                    shouldRequestPrediction = true;
 
                     _service.RecordHistory(lastCommand.Ast);
                 }
                 else if (_lastTwoMaskedCommands.Count == 1)
                 {
-                    ShouldRequestPrediction = true;
+                    shouldRequestPrediction = true;
                     var existingInQueue = _lastTwoMaskedCommands.Dequeue();
                     _lastTwoMaskedCommands.Enqueue(AzPredictorConstants.CommandPlaceholder);
                     _lastTwoMaskedCommands.Enqueue(existingInQueue);
                 }
 
 
-                if (ShouldRequestPrediction)
+                if (shouldRequestPrediction)
                 {
                     // When it's called multiple times, we only need to keep the one for the latest command.
 
@@ -345,17 +342,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 if ((suggestions == null) || (suggestions.Count == 0))
                 {
                     return default(SuggestionPackage);
-                }
-
-                // Replace the last suggestion with "Open-AzPredictorSurvey".
-
-                if (suggestions.Count == _settings.SuggestionCount.Value)
-                {
-                    suggestions[suggestions.Count - 1] = _surveySuggestions[_azContext?.Cohort ?? 0];
-                }
-                else
-                {
-                    suggestions.Add(_surveySuggestions[_azContext?.Cohort ?? 0]);
                 }
 
                 return new SuggestionPackage(localSuggestionSessionId, suggestions);

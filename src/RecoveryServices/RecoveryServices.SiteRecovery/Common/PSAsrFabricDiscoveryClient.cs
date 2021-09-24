@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Api version.
         /// </summary>
-        private static readonly string ApiVersion = "2020-01-01";
+        private static readonly string ApiVersion = "2020-09-09-preview";
 
         /// <summary>
         ///     ARM resource path for VMware sites.

@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="AddonName" /> property.</summary>
+        private string _addonName;
+
+        /// <summary>Name of the addon for the private cloud</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string AddonName { get => this._addonName; set => this._addonName = value; }
+
         /// <summary>Backing field for <see cref="AuthorizationName" /> property.</summary>
         private string _authorizationName;
 
@@ -19,12 +26,63 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string AuthorizationName { get => this._authorizationName; set => this._authorizationName = value; }
 
+        /// <summary>Backing field for <see cref="CloudLinkName" /> property.</summary>
+        private string _cloudLinkName;
+
+        /// <summary>Name of the cloud link resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string CloudLinkName { get => this._cloudLinkName; set => this._cloudLinkName = value; }
+
         /// <summary>Backing field for <see cref="ClusterName" /> property.</summary>
         private string _clusterName;
 
         /// <summary>Name of the cluster in the private cloud</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string ClusterName { get => this._clusterName; set => this._clusterName = value; }
+
+        /// <summary>Backing field for <see cref="DatastoreName" /> property.</summary>
+        private string _datastoreName;
+
+        /// <summary>Name of the datastore in the private cloud cluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string DatastoreName { get => this._datastoreName; set => this._datastoreName = value; }
+
+        /// <summary>Backing field for <see cref="DhcpId" /> property.</summary>
+        private string _dhcpId;
+
+        /// <summary>NSX DHCP identifier. Generally the same as the DHCP display name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string DhcpId { get => this._dhcpId; set => this._dhcpId = value; }
+
+        /// <summary>Backing field for <see cref="DnsServiceId" /> property.</summary>
+        private string _dnsServiceId;
+
+        /// <summary>
+        /// NSX DNS Service identifier. Generally the same as the DNS Service's display name
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string DnsServiceId { get => this._dnsServiceId; set => this._dnsServiceId = value; }
+
+        /// <summary>Backing field for <see cref="DnsZoneId" /> property.</summary>
+        private string _dnsZoneId;
+
+        /// <summary>NSX DNS Zone identifier. Generally the same as the DNS Zone's display name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string DnsZoneId { get => this._dnsZoneId; set => this._dnsZoneId = value; }
+
+        /// <summary>Backing field for <see cref="GatewayId" /> property.</summary>
+        private string _gatewayId;
+
+        /// <summary>NSX Gateway identifier. Generally the same as the Gateway's display name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string GatewayId { get => this._gatewayId; set => this._gatewayId = value; }
+
+        /// <summary>Backing field for <see cref="GlobalReachConnectionName" /> property.</summary>
+        private string _globalReachConnectionName;
+
+        /// <summary>Name of the global reach connection in the private cloud</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string GlobalReachConnectionName { get => this._globalReachConnectionName; set => this._globalReachConnectionName = value; }
 
         /// <summary>Backing field for <see cref="HcxEnterpriseSiteName" /> property.</summary>
         private string _hcxEnterpriseSiteName;
@@ -47,12 +105,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
+        /// <summary>Backing field for <see cref="PortMirroringId" /> property.</summary>
+        private string _portMirroringId;
+
+        /// <summary>
+        /// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string PortMirroringId { get => this._portMirroringId; set => this._portMirroringId = value; }
+
         /// <summary>Backing field for <see cref="PrivateCloudName" /> property.</summary>
         private string _privateCloudName;
 
         /// <summary>Name of the private cloud</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string PrivateCloudName { get => this._privateCloudName; set => this._privateCloudName = value; }
+
+        /// <summary>Backing field for <see cref="PublicIPId" /> property.</summary>
+        private string _publicIPId;
+
+        /// <summary>
+        /// NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string PublicIPId { get => this._publicIPId; set => this._publicIPId = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -61,12 +137,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Backing field for <see cref="ScriptCmdletName" /> property.</summary>
+        private string _scriptCmdletName;
+
+        /// <summary>Name of the script cmdlet resource in the script package in the private cloud</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ScriptCmdletName { get => this._scriptCmdletName; set => this._scriptCmdletName = value; }
+
+        /// <summary>Backing field for <see cref="ScriptExecutionName" /> property.</summary>
+        private string _scriptExecutionName;
+
+        /// <summary>Name of the user-invoked script execution resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ScriptExecutionName { get => this._scriptExecutionName; set => this._scriptExecutionName = value; }
+
+        /// <summary>Backing field for <see cref="ScriptPackageName" /> property.</summary>
+        private string _scriptPackageName;
+
+        /// <summary>Name of the script package in the private cloud</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ScriptPackageName { get => this._scriptPackageName; set => this._scriptPackageName = value; }
+
+        /// <summary>Backing field for <see cref="SegmentId" /> property.</summary>
+        private string _segmentId;
+
+        /// <summary>NSX Segment identifier. Generally the same as the Segment's display name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string SegmentId { get => this._segmentId; set => this._segmentId = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>Backing field for <see cref="VMGroupId" /> property.</summary>
+        private string _vMGroupId;
+
+        /// <summary>NSX VM Group identifier. Generally the same as the VM Group's display name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string VMGroupId { get => this._vMGroupId; set => this._vMGroupId = value; }
+
+        /// <summary>Backing field for <see cref="VirtualMachineId" /> property.</summary>
+        private string _virtualMachineId;
+
+        /// <summary>Virtual Machine identifier</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string VirtualMachineId { get => this._virtualMachineId; set => this._virtualMachineId = value; }
 
         /// <summary>Creates an new <see cref="VMwareIdentity" /> instance.</summary>
         public VMwareIdentity()
@@ -77,6 +195,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     public partial interface IVMwareIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable
     {
+        /// <summary>Name of the addon for the private cloud</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the addon for the private cloud",
+        SerializedName = @"addonName",
+        PossibleTypes = new [] { typeof(string) })]
+        string AddonName { get; set; }
         /// <summary>Name of the ExpressRoute Circuit Authorization in the private cloud</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -85,6 +211,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"authorizationName",
         PossibleTypes = new [] { typeof(string) })]
         string AuthorizationName { get; set; }
+        /// <summary>Name of the cloud link resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the cloud link resource",
+        SerializedName = @"cloudLinkName",
+        PossibleTypes = new [] { typeof(string) })]
+        string CloudLinkName { get; set; }
         /// <summary>Name of the cluster in the private cloud</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -93,6 +227,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
         string ClusterName { get; set; }
+        /// <summary>Name of the datastore in the private cloud cluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the datastore in the private cloud cluster",
+        SerializedName = @"datastoreName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatastoreName { get; set; }
+        /// <summary>NSX DHCP identifier. Generally the same as the DHCP display name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"NSX DHCP identifier. Generally the same as the DHCP display name",
+        SerializedName = @"dhcpId",
+        PossibleTypes = new [] { typeof(string) })]
+        string DhcpId { get; set; }
+        /// <summary>
+        /// NSX DNS Service identifier. Generally the same as the DNS Service's display name
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"NSX DNS Service identifier. Generally the same as the DNS Service's display name",
+        SerializedName = @"dnsServiceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string DnsServiceId { get; set; }
+        /// <summary>NSX DNS Zone identifier. Generally the same as the DNS Zone's display name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"NSX DNS Zone identifier. Generally the same as the DNS Zone's display name",
+        SerializedName = @"dnsZoneId",
+        PossibleTypes = new [] { typeof(string) })]
+        string DnsZoneId { get; set; }
+        /// <summary>NSX Gateway identifier. Generally the same as the Gateway's display name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"NSX Gateway identifier. Generally the same as the Gateway's display name",
+        SerializedName = @"gatewayId",
+        PossibleTypes = new [] { typeof(string) })]
+        string GatewayId { get; set; }
+        /// <summary>Name of the global reach connection in the private cloud</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the global reach connection in the private cloud",
+        SerializedName = @"globalReachConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GlobalReachConnectionName { get; set; }
         /// <summary>Name of the HCX Enterprise Site in the private cloud</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -117,6 +301,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
+        /// <summary>
+        /// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name",
+        SerializedName = @"portMirroringId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PortMirroringId { get; set; }
         /// <summary>Name of the private cloud</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -125,6 +319,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"privateCloudName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateCloudName { get; set; }
+        /// <summary>
+        /// NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"NSX Public IP Block identifier. Generally the same as the Public IP Block's display name",
+        SerializedName = @"publicIPId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PublicIPId { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -133,6 +337,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>Name of the script cmdlet resource in the script package in the private cloud</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the script cmdlet resource in the script package in the private cloud",
+        SerializedName = @"scriptCmdletName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScriptCmdletName { get; set; }
+        /// <summary>Name of the user-invoked script execution resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the user-invoked script execution resource",
+        SerializedName = @"scriptExecutionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScriptExecutionName { get; set; }
+        /// <summary>Name of the script package in the private cloud</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the script package in the private cloud",
+        SerializedName = @"scriptPackageName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScriptPackageName { get; set; }
+        /// <summary>NSX Segment identifier. Generally the same as the Segment's display name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"NSX Segment identifier. Generally the same as the Segment's display name",
+        SerializedName = @"segmentId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SegmentId { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -141,27 +377,81 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>NSX VM Group identifier. Generally the same as the VM Group's display name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"NSX VM Group identifier. Generally the same as the VM Group's display name",
+        SerializedName = @"vmGroupId",
+        PossibleTypes = new [] { typeof(string) })]
+        string VMGroupId { get; set; }
+        /// <summary>Virtual Machine identifier</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Virtual Machine identifier",
+        SerializedName = @"virtualMachineId",
+        PossibleTypes = new [] { typeof(string) })]
+        string VirtualMachineId { get; set; }
 
     }
     internal partial interface IVMwareIdentityInternal
 
     {
+        /// <summary>Name of the addon for the private cloud</summary>
+        string AddonName { get; set; }
         /// <summary>Name of the ExpressRoute Circuit Authorization in the private cloud</summary>
         string AuthorizationName { get; set; }
+        /// <summary>Name of the cloud link resource</summary>
+        string CloudLinkName { get; set; }
         /// <summary>Name of the cluster in the private cloud</summary>
         string ClusterName { get; set; }
+        /// <summary>Name of the datastore in the private cloud cluster</summary>
+        string DatastoreName { get; set; }
+        /// <summary>NSX DHCP identifier. Generally the same as the DHCP display name</summary>
+        string DhcpId { get; set; }
+        /// <summary>
+        /// NSX DNS Service identifier. Generally the same as the DNS Service's display name
+        /// </summary>
+        string DnsServiceId { get; set; }
+        /// <summary>NSX DNS Zone identifier. Generally the same as the DNS Zone's display name</summary>
+        string DnsZoneId { get; set; }
+        /// <summary>NSX Gateway identifier. Generally the same as the Gateway's display name</summary>
+        string GatewayId { get; set; }
+        /// <summary>Name of the global reach connection in the private cloud</summary>
+        string GlobalReachConnectionName { get; set; }
         /// <summary>Name of the HCX Enterprise Site in the private cloud</summary>
         string HcxEnterpriseSiteName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>Azure region</summary>
         string Location { get; set; }
+        /// <summary>
+        /// NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+        /// </summary>
+        string PortMirroringId { get; set; }
         /// <summary>Name of the private cloud</summary>
         string PrivateCloudName { get; set; }
+        /// <summary>
+        /// NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+        /// </summary>
+        string PublicIPId { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>Name of the script cmdlet resource in the script package in the private cloud</summary>
+        string ScriptCmdletName { get; set; }
+        /// <summary>Name of the user-invoked script execution resource</summary>
+        string ScriptExecutionName { get; set; }
+        /// <summary>Name of the script package in the private cloud</summary>
+        string ScriptPackageName { get; set; }
+        /// <summary>NSX Segment identifier. Generally the same as the Segment's display name</summary>
+        string SegmentId { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
+        /// <summary>NSX VM Group identifier. Generally the same as the VM Group's display name</summary>
+        string VMGroupId { get; set; }
+        /// <summary>Virtual Machine identifier</summary>
+        string VirtualMachineId { get; set; }
 
     }
 }

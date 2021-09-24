@@ -1,4 +1,18 @@
-﻿using Azure.Analytics.Synapse.Spark;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Azure.Analytics.Synapse.Spark;
 using Azure.Analytics.Synapse.Spark.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -32,23 +46,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public SparkBatchJob SubmitSparkBatchJob(SparkBatchJobOptions sparkBatchJobOptions, bool waitForCompletion)
         {
-            var batch = _sparkBatchClient.CreateSparkBatchJob(sparkBatchJobOptions, detailed: true);
+            var batch = _sparkBatchClient.StartCreateSparkBatchJob(sparkBatchJobOptions, detailed: true);
             if (!waitForCompletion)
             {
-                return batch;
+                return GetSparkBatchJob(int.Parse(batch.Id));
             }
 
-            return PollSparkBatchJobSubmission(batch);
-        }
-
-        public SparkBatchJob PollSparkBatchJobSubmission(SparkBatchJob batch)
-        {
-            return Poll(
-                batch,
-                b => b.Result.ToString(),
-                b => b.State,
-                b => this.GetSparkBatchJob(b.Id),
-                SparkJobLivyState.BatchSubmissionFinalStates);
+            return batch.Poll().Value;
         }
 
         public SparkBatchJob PollSparkBatchJobExecution(
@@ -103,15 +107,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region Spark session operations
 
-        public SparkSession CreateSparkSession(SparkSessionOptions sparkSessionOptions, bool waitForCompletion)
+        public SparkSession CreateSparkSession(SparkSessionOptions sparkSessionOptions)
         {
-            var session = _sparkSessionClient.CreateSparkSession(sparkSessionOptions);
-            if (!waitForCompletion)
-            {
-                return session;
-            }
-
-            return PollSparkSession(session);
+            var session = _sparkSessionClient.StartCreateSparkSession(sparkSessionOptions);
+            return session.Poll().Value;
         }
 
         public SparkSession PollSparkSession(
@@ -177,26 +176,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region Spark session statement operations
 
-        public SparkStatement SubmitSparkSessionStatement(int sessionId, SparkStatementOptions sparkStatementOptions, bool waitForCompletion)
+        public SparkStatement SubmitSparkSessionStatement(int sessionId, SparkStatementOptions sparkStatementOptions)
         {
-            var statement = _sparkSessionClient.CreateSparkStatement(sessionId, sparkStatementOptions);
-            if (!waitForCompletion)
-            {
-                return statement;
-            }
-
-            return PollSparkSessionStatement(sessionId, statement);
-        }
-
-        public SparkStatement PollSparkSessionStatement(int sessionId, SparkStatement statement)
-        {
-            return Poll(
-                statement,
-                s => null,
-                s => s.State,
-                s => this.GetSparkSessionStatement(sessionId, s.Id),
-                SparkSessionStatementLivyState.ExecutingStates,
-                isFinalState: false);
+            var statement = _sparkSessionClient.StartCreateSparkStatement(sessionId, sparkStatementOptions);
+            return statement.Poll().Value;
         }
 
         public SparkStatement GetSparkSessionStatement(int sessionId, int statementId)

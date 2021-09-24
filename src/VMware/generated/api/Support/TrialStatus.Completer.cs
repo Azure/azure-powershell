@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TrialAvailable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TrialAvailable", "TrialAvailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "TrialAvailable");
+                yield return new global::System.Management.Automation.CompletionResult("'TrialAvailable'", "TrialAvailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "TrialAvailable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TrialUsed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TrialUsed", "TrialUsed", global::System.Management.Automation.CompletionResultType.ParameterValue, "TrialUsed");
+                yield return new global::System.Management.Automation.CompletionResult("'TrialUsed'", "TrialUsed", global::System.Management.Automation.CompletionResultType.ParameterValue, "TrialUsed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TrialDisabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TrialDisabled", "TrialDisabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "TrialDisabled");
+                yield return new global::System.Management.Automation.CompletionResult("'TrialDisabled'", "TrialDisabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "TrialDisabled");
             }
         }
     }

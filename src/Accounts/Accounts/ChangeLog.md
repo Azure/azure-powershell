@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core from 1.16.0 to 1.19.0.
+
+## Version 2.5.3
 * Corrected the URLs to Azure Portal in the results of `Get-AzEnvironment` and `Get-AzContext`. [#15429]
 * Made infrastructural changes to support overriding default subscription via a `-SubscriptionId <String>` parameter.
     - [Az.Aks](https://docs.microsoft.com/powershell/module/az.aks/get-azakscluster) is the first module that supports it.

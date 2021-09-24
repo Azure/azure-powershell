@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Update Compute .NET SDK package reference to version 49.1.0
+
+## Version 4.17.0
 * Added new parameters `-LinuxConfigurationPatchMode`, `-WindowsConfigurationPatchMode`, and `-LinuxConfigurationProvisionVMAgent` to `Set-AzVmssOSProfile`
 * Added new parameters `-SshKeyName` and `-GenerateSshKey` to `New-AzVM` to create a VM with SSH
 * Fixed a bug in `Add-AzVHD` on Linux that caused uploads to fail for certain destination URI
@@ -32,6 +35,7 @@
     - 'Remove-AzRestorePoint'
     - 'Remove-AzRestorePointCollection'
 * Added new parameters '-EnableSpotRestore' and '-SpotRestoreTimeout' to 'New-AzVMSSConfig' to enable Spot Restore Policy 
+* Added new cmdlets: `Update-AzCapacityReservationGroup` and `Update-AzCapacityReservation`
 * Added `UserData` parameter to the following cmdlets:
     - `Get-AzVm`
     - `Get-AzVmss`

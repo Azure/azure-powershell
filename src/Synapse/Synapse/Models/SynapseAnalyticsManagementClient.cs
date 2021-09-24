@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Strategies;
@@ -36,11 +50,13 @@ using Microsoft.Azure.Commands.Synapse.Model;
 using Microsoft.Azure.Commands.Synapse.Models.ManagedIdentitySqlControl;
 using ErrorResponseException = Microsoft.Azure.Management.Synapse.Models.ErrorResponseException;
 using Microsoft.Azure.Commands.Synapse.Models.Auditing;
+using Microsoft.DataTransfer.Gateway.Encryption;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class SynapseAnalyticsManagementClient
     {
+        public const int GatewayMajorVersionWithIRSupport = 3;
         public IAzureContext Context;
         private readonly Guid _subscriptionId;
         private readonly Guid _tenantId;
@@ -1730,6 +1746,47 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region integration runtime operations
 
+        public string IntegrationRuntimeEncryptCredential(
+            string resourceGroupName,
+            string workspaceName,
+            string integrationRuntimeName,
+            string linkedServiceJson)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+
+            var response = _synapseManagementClient.IntegrationRuntimeConnectionInfos.Get(resourceGroupName, workspaceName, integrationRuntimeName);
+            var irVerStr = response.Version;
+            var irVer = new Version(irVerStr);
+            //Private preview customers can use 2.x gateways for this feature, below code change gateway version of 2.x to 3.0  to pass version check by gateway.
+            if (irVer.Major < GatewayMajorVersionWithIRSupport)
+            {
+                irVer = new Version(GatewayMajorVersionWithIRSupport, 0);
+                irVerStr = irVer.ToString();
+            }
+            var encryptionInfos = new[]
+                {
+                    new GatewayEncryptionInfo
+                    {
+                        HostServiceUri = new Uri(response.HostServiceUri),
+                        IdentityCertThumbprint = response.IdentityCertThumbprint,
+                        PublicKey = response.PublicKey,
+                        ServiceToken = response.ServiceToken,
+                        InstanceVersionString = irVerStr
+                    }
+                };
+            return GatewayEncryptionClient.Encrypt(linkedServiceJson, encryptionInfos);
+        }
+
         public virtual async Task<List<PSIntegrationRuntime>> ListIntegrationRuntimesAsync(SynapseEntityFilterOptions filterOptions)
         {
             try
@@ -2326,6 +2383,74 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 request);
         }
 
+        public virtual async Task<PSManagedIntegrationRuntimeStatus> StartIntegrationRuntimeAsync(
+            string resourceGroupName,
+            string workspaceName,
+            string integrationRuntimeName,
+            IntegrationRuntimeResource integrationRuntime)
+        { 
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+
+            var response = await this._synapseManagementClient.IntegrationRuntimes.BeginStartWithHttpMessagesAsync(
+                resourceGroupName,
+                workspaceName,
+                integrationRuntimeName);
+
+            try
+            {
+                var result = await this._synapseManagementClient.GetLongRunningOperationResultAsync(response, null, default(CancellationToken));
+                return (PSManagedIntegrationRuntimeStatus)GenerateIntegraionRuntimeObject(integrationRuntime,
+                    result.Body,
+                    resourceGroupName,
+                    workspaceName);
+            }
+            catch (Exception e)
+            {
+                throw RethrowLongingRunningException(e);
+            }
+        }
+
+        public virtual async Task StopIntegrationRuntimeAsync(
+            string resourceGroupName,
+            string workspaceName,
+            string integrationRuntimeName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+            }
+            catch (ErrorResponseException ex)
+            { 
+                throw GetAzurePowerShellException(ex); 
+            }
+
+            var response = await this._synapseManagementClient.IntegrationRuntimes.BeginStopWithHttpMessagesAsync(
+                resourceGroupName,
+                workspaceName,
+                integrationRuntimeName);
+
+            try
+            {
+                await this._synapseManagementClient.GetLongRunningOperationResultAsync(response, null, default(CancellationToken));
+            }
+            catch (Exception e)
+            {
+                throw RethrowLongingRunningException(e);
+            }
+        }
         #endregion
 
         #region Managed Identity Sql Control
@@ -2512,6 +2637,33 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        private Exception RethrowLongingRunningException(Exception e)
+        {
+            var ce = e as CloudException;
+            if (ce?.Body != null)
+            {
+                return new CloudException()
+                {
+                    Body = new CloudError()
+                    {
+                        Code = ce.Body.Code,
+                        Message = Resources.LongRunningStatusError + "\n" + ce.Body.Message,
+                        Target = ce.Body.Target
+                    },
+                    Request = ce.Request,
+                    Response = ce.Response,
+                    RequestId = ce.RequestId
+                };
+            }
+
+            return new Exception(Resources.LongRunningStatusError, e);
+        }
+
+        public string ReadJsonFileContent(string path)
+        {
+            return Utils.ReadJsonFileContent(path);
+        }
+      
         #endregion
     }
 }

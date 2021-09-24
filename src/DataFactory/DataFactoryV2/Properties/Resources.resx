@@ -415,4 +415,13 @@ Are you sure you want to continue?</value>
   <data name="InvalidPublicIPCount" xml:space="preserve">
     <value>Please provide two static public IP addresses for your Azure-SSIS Integration Runtime.</value>
   </data>
+  <data name="AzureSSISIRSubnetAndVnetIdMustBeEmpty" xml:space="preserve">
+    <value>When subnetId as VNet property of Azure - SSIS integration runtime is provided, the other subnet and vnetId properties must be empty.</value>
+  </data>
+  <data name="IntegrationRuntimeSubnetNotProvided" xml:space="preserve">
+    <value>Please provide a subnet resource ID to bring static public IP addresses for your Azure-SSIS Integration Runtime.</value>
+  </data>
+  <data name="AzureExpressSSISIRSubnetIdMustBePresent" xml:space="preserve">
+    <value>SubnetId must be set for the express virtual network injection of Azure-SSIS Integration Runtime.</value>
+  </data>
 </root>

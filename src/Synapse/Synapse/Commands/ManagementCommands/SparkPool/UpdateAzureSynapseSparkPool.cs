@@ -1,14 +1,31 @@
-﻿using Microsoft.Azure.Commands.Common.Exceptions;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
+using Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
@@ -106,6 +123,20 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.LibraryRequirementsFilePath)]
         public string LibraryRequirementsFilePath { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+           HelpMessage = HelpMessages.SparkConfigPropertiesFilePath)]
+        public string SparkConfigFilePath { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.PackageAction)]
+        public SynapseConstants.PackageActionType PackageAction { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.WorkspacePackages)]
+        [Alias(SynapseConstants.WorkspacePackage)]
+        [ValidateNotNullOrEmpty]
+        public List<PSSynapseWorkspacePackage> Package { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -160,6 +191,7 @@ namespace Microsoft.Azure.Commands.Synapse
             existingSparkPool.NodeSizeFamily = NodeSizeFamily.MemoryOptimized;
             existingSparkPool.NodeSize = this.IsParameterBound(c => c.NodeSize) ? this.NodeSize : existingSparkPool.NodeSize;
             existingSparkPool.LibraryRequirements = this.IsParameterBound(c => c.LibraryRequirementsFilePath) ? CreateLibraryRequirements() : existingSparkPool.LibraryRequirements;
+            existingSparkPool.SparkConfigProperties = this.IsParameterBound(c => c.SparkConfigFilePath) ? CreateSparkConfigProperties() : existingSparkPool.SparkConfigProperties;
 
             if (this.IsParameterBound(c => c.EnableAutoScale)
                 || this.IsParameterBound(c => c.AutoScaleMinNodeCount)
@@ -185,6 +217,36 @@ namespace Microsoft.Azure.Commands.Synapse
                 };
             }
 
+            if ((!this.IsParameterBound(c => c.PackageAction) && this.IsParameterBound(c => c.Package))
+                || ((this.IsParameterBound(c => c.PackageAction) && !this.IsParameterBound(c => c.Package))))
+            {
+                throw new AzPSInvalidOperationException(Resources.FailedToValidatePackageParameter);
+            }
+
+            if (this.IsParameterBound(c => c.PackageAction) && this.IsParameterBound(c => c.Package))
+            {
+                if (this.PackageAction == SynapseConstants.PackageActionType.Add)
+                {
+                    if (existingSparkPool.CustomLibraries == null)
+                    {
+                        existingSparkPool.CustomLibraries = new List<LibraryInfo>();
+                    }
+
+                    existingSparkPool.CustomLibraries = existingSparkPool.CustomLibraries.Union(this.Package.Select(psPackage => new LibraryInfo
+                    {
+                        Name = psPackage?.Name,
+                        Type = psPackage?.PackageType,
+                        Path = psPackage?.Path,
+                        ContainerName = psPackage?.ContainerName
+                        // TODO: set uploadedTimeStamp property after upgrading SDK otherwise we will see a incorrect property value from Azure portal.
+                    })).ToList();
+                }
+                else if (this.PackageAction == SynapseConstants.PackageActionType.Remove)
+                {
+                    existingSparkPool.CustomLibraries = existingSparkPool.CustomLibraries.Where(lib => !this.Package.Any(p => lib.Path.Equals(p.Path, System.StringComparison.OrdinalIgnoreCase))).ToList();
+                }
+            }
+
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSparkPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {
                 var result = new PSSynapseSparkPool(this.SynapseAnalyticsClient.CreateOrUpdateSparkPool(this.ResourceGroupName, this.WorkspaceName, this.Name, existingSparkPool));
@@ -194,9 +256,30 @@ namespace Microsoft.Azure.Commands.Synapse
 
         private LibraryRequirements CreateLibraryRequirements()
         {
+            if (string.IsNullOrEmpty(LibraryRequirementsFilePath))
+            {
+                return null;
+            }
+
             var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(LibraryRequirementsFilePath);
 
             return new LibraryRequirements
+            {
+                Filename = Path.GetFileName(powerShellDestinationPath),
+                Content = this.ReadFileAsText(powerShellDestinationPath)
+            };
+        }
+
+        private SparkConfigProperties CreateSparkConfigProperties()
+        {
+            if (string.IsNullOrEmpty(SparkConfigFilePath))
+            {
+                return null;
+            }
+
+            var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(SparkConfigFilePath);
+
+            return new SparkConfigProperties
             {
                 Filename = Path.GetFileName(powerShellDestinationPath),
                 Content = this.ReadFileAsText(powerShellDestinationPath)

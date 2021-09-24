@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Fixed null reference exception and typos in `New-AzFrontDoorCdnRule` cmdlet
+
+## Version 1.8.0
+* Fixed mandatory parameters issue in `Get-AzCdnEndpointResourceUsage` cmdlet
 
 ## Version 1.7.1
 * Fixed profile missing issue in `Remove-AzCdnProfile` cmdlet

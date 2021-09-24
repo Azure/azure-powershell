@@ -47,7 +47,7 @@ param(
     ${ProjectName},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({"agentlessVMware"})]
+    [ArgumentCompleter({ "agentlessVMware" })]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the server migration scenario for which the replication infrastructure needs to be initialized.
