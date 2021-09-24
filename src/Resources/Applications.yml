@@ -1283,6 +1283,8 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.tokenLifetimePolicy'
               description: The tokenLifetimePolicies assigned to this application. Supports $expand.
+          additionalProperties:
+            type: object
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.directoryObject:
       allOf:
@@ -1759,6 +1761,8 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.directoryObject'
+          additionalProperties:
+            type: object
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.claimsMappingPolicy:
       allOf:
@@ -2061,9 +2065,6 @@ components:
           type: string
           readOnly: true
           description: Read-only.
-      additionalProperties:
-        type: object
-        readOnly: true
     microsoft.graph.stsPolicy:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.policyBase'
