@@ -3,6 +3,6 @@
 PS C:\> Remove-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName"
 ```
 
-{{Deletes a job 
+Deletes a job 
 
 
