@@ -737,7 +737,6 @@ function New-AzMgServicePrincipal {
       $sd = $PSBoundParameters['StartDate']
       $null = $PSBoundParameters.Remove('StartDate')
     }
-
     if ($PSBoundParameters['EndDate']) {
       $ed = $PSBoundParameters['EndDate']
       $null = $PSBoundParameters.Remove('EndDate')
@@ -745,19 +744,26 @@ function New-AzMgServicePrincipal {
 
     $sp = MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
     $param = @{'ObjectId' = $sp.Id }
-    $param['Debug'] = $PSBoundParameters['Debug']
 
     switch ($PSCmdlet.ParameterSetName) {
       {$_ -in 'ApplicationWithPasswordPlainParameterSet', 'ApplicationObjectWithPasswordPlainParameterSet', 'DisplayNameWithPasswordPlainParameterSet'} {
-        $param['StartDate'] = $sd
-        $param['EndDate'] = $ed
+        if ($sd) {
+          $param['StartDate'] = $sd
+        }
+        if ($ed) {
+          $param['EndDate'] = $ed
+        }
         $null = New-AzMgSpCredential @param
         break
       }
       {$_ -in 'ApplicationWithKeyPlainParameterSet', 'ApplicationObjectWithKeyPlainParameterSet', 'DisplayNameWithKeyPlainParameterSet'} {
         $param['CertValue'] = $cv
-        $param['StartDate'] = $sd
-        $param['EndDate'] = $ed
+        if ($sd) {
+          $param['StartDate'] = $sd
+        }
+        if ($ed) {
+          $param['EndDate'] = $ed
+        }
         $null = New-AzMgSpCredential @param
         break
       }
