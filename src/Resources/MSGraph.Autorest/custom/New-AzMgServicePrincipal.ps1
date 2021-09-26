@@ -713,17 +713,17 @@ function New-AzMgServicePrincipal {
     }
 
     switch ($PSCmdlet.ParameterSetName) {
-      {'ApplicationWithKeyPlainParameterSet' -or 'ApplicationObjectWithKeyPlainParameterSet' -or 'DisplayNameWithKeyPlainParameterSet'} {
+      {$_ -in 'ApplicationWithKeyPlainParameterSet', 'ApplicationObjectWithKeyPlainParameterSet', 'DisplayNameWithKeyPlainParameterSet'} {
         $cv = $PSBoundParameters['CertValue']
         $null = $PSBoundParameters.Remove('CertValue')
         break
       }
-      {'ApplicationWithPasswordCredentialParameterSet' -or 'ApplicationObjectWithPasswordCredentialParameterSet' -or 'DisplayNameWithPasswordCredentialParameterSet'} {
+      {$_ -in 'ApplicationWithPasswordCredentialParameterSet', 'ApplicationObjectWithPasswordCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
         $pc = $PSBoundParameters['PasswordCredentials']
         $null = $PSBoundParameters.Remove('PasswordCredentials')
         break
       }
-      {'ApplicationWithKeyCredentialParameterSet' -or 'ApplicationObjectWithKeyCredentialParameterSet' -or 'DisplayNameWithKeyCredentialParameterSet'} {
+      {$_ -in 'ApplicationWithKeyCredentialParameterSet', 'ApplicationObjectWithKeyCredentialParameterSet', 'DisplayNameWithKeyCredentialParameterSet'} {
         $pc = $PSBoundParameters['KeyCredentials']
         $null = $PSBoundParameters.Remove('KeyCredentials')
         break
@@ -747,27 +747,27 @@ function New-AzMgServicePrincipal {
     $param = @{'ObjectId' = $sp.Id }
 
     switch ($PSCmdlet.ParameterSetName) {
-      {'ApplicationWithPasswordPlainParameterSet' -or 'ApplicationObjectWithPasswordPlainParameterSet' -or 'DisplayNameWithPasswordPlainParameterSet'} {
+      {$_ -in 'ApplicationWithPasswordPlainParameterSet', 'ApplicationObjectWithPasswordPlainParameterSet', 'DisplayNameWithPasswordPlainParameterSet'} {
         $param['StartDate'] = $sd
         $param['EndDate'] = $ed
         $null = New-AzMgSpCredential @param
         break
       }
-      {'ApplicationWithKeyPlainParameterSet' -or 'ApplicationObjectWithKeyPlainParameterSet' -or 'DisplayNameWithKeyPlainParameterSet'} {
+      {$_ -in 'ApplicationWithKeyPlainParameterSet', 'ApplicationObjectWithKeyPlainParameterSet', 'DisplayNameWithKeyPlainParameterSet'} {
         $param['CertValue'] = $cv
         $param['StartDate'] = $sd
         $param['EndDate'] = $ed
         $null = New-AzMgSpCredential @param
         break
       }
-      {'ApplicationWithPasswordCredentialParameterSet' -or 'ApplicationObjectWithPasswordCredentialParameterSet' -or 'DisplayNameWithPasswordCredentialParameterSet'} {
+      {$_ -in 'ApplicationWithPasswordCredentialParameterSet', 'ApplicationObjectWithPasswordCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
         foreach ($cred in $pc) {
           $param['PasswordCredential'] = $cred
           $null = New-AzMgSpCredential @param
         }
         break
       }
-      {'ApplicationWithKeyCredentialParameterSet' -or 'ApplicationObjectWithKeyCredentialParameterSet' -or 'DisplayNameWithKeyCredentialParameterSet'} {
+      {$_ -in 'ApplicationWithKeyCredentialParameterSet', 'ApplicationObjectWithKeyCredentialParameterSet', 'DisplayNameWithKeyCredentialParameterSet'} {
         foreach ($cred in $kc) {
           $param['KeyCredential'] = $cred
           $null = New-AzMgSpCredential @param
