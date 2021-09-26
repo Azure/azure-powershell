@@ -172,6 +172,34 @@ function Validate_PrincipalAssignment {
 
 <#
 .SYNOPSIS
+Validate if script is valid
+#>
+function Validate_Script {
+	Param ([Object]$Script,
+		[string]$ScriptUrl,
+		[string]$forceUpdateTag,
+		[bool]$continueOnErros,
+		[string]$clusterName,
+		[string]$databaseName,
+		[string]$scriptName)
+		$ScriptFullName = "$clusterName/$databaseName/$scriptName"
+		$Script.Name | Should -Be $ScriptFullName
+		$Script.ForceUpdateTag | Should -Be $forceUpdateTag
+		$Script.Url | Should -Be $ScriptUrl
+}
+
+<#
+.SYNOPSIS
+Validate if managed private endpoint is valid
+#>
+function Validate_ManagedPrivateEndpoint {
+	Param ([Object]$ManagedPrivateEndpoint,
+		[string]$Name)
+		$ManagedPrivateEndpoint.Name | Should -Be $Name
+}
+
+<#
+.SYNOPSIS
 Validate if data connection is valid for EventHub
 #>
 function Validate_EventHubDataConnection {
