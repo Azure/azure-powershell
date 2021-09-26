@@ -133,7 +133,6 @@ function New-AzMgSpCredential {
                                          -Property @{'Key'=([System.Convert]::FromBase64String($PSBoundParameters['CertValue']));
                                                      'Usage'='Verify'; 
                                                      'Type'='AsymmetricX509Cert'}
-                $null = $PSBoundParameters.Remove('CertValue')
             } else {
                 $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential"
             }
@@ -150,6 +149,7 @@ function New-AzMgSpCredential {
             $credential.KeyId = (New-Guid).ToString()
             if ($PSBoundParameters.ContainsKey('CertValue')) {
                 $PSBoundParameters['KeyCredential'] = $credential
+                $null = $PSBoundParameters.Remove('CertValue')
             } else {
                 $PSBoundParameters['PasswordCredential'] = $credential
             }
