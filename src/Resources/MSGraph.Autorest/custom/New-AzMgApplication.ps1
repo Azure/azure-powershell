@@ -621,15 +621,15 @@ function New-AzMgApplication {
     }
     # even if payload contains all three redirect options, only one will be added in the actual app, the order is
     # web -> spa -> public client
-    if ($PSBoundParameters.ContainsKey('HomePage') -or $PSBoundParameters.ContainsKey('RedirectUrls')) {
+    if ($PSBoundParameters.ContainsKey('HomePage') -or $PSBoundParameters.ContainsKey('ReplyUrls')) {
       $props = @{}
       if ($PSBoundParameters.ContainsKey('HomePage')) {
         $props['HomePageUrl'] = $PSBoundParameters['HomePage']
         $null = $PSBoundParameters.Remove('HomePage')
       }
-      if ($PSBoundParameters.ContainsKey('RedirectUrls')) {
-        $props['RedirectUri'] = $PSBoundParameters['RedirectUrls']
-        $null = $PSBoundParameters.Remove('RedirectUrls')
+      if ($PSBoundParameters.ContainsKey('ReplyUrls')) {
+        $props['RedirectUri'] = $PSBoundParameters['ReplyUrls']
+        $null = $PSBoundParameters.Remove('ReplyUrls')
       }
       $PSBoundParameters['Web'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphWebApplication" -Property $props
     }
@@ -667,7 +667,6 @@ function New-AzMgApplication {
       $sd = $PSBoundParameters['StartDate']
       $null = $PSBoundParameters.Remove('StartDate')
     }
-
     if ($PSBoundParameters['EndDate']) {
       $ed = $PSBoundParameters['EndDate']
       $null = $PSBoundParameters.Remove('EndDate')
@@ -675,13 +674,15 @@ function New-AzMgApplication {
 
     $app = MSGraph.internal\New-AzMgApplication @PSBoundParameters
     $param = @{'ObjectId' = $app.Id }
-    $param['Debug'] = $PSBoundParameters['Debug']
     
     switch ($PSCmdlet.ParameterSetName) {
       'ApplicationWithPasswordPlainParameterSet' {
-        $param['Password'] = $pw
-        $param['StartDate'] = $sd
-        $param['EndDate'] = $ed
+        if ($sd) {
+          $param['StartDate'] = $sd
+        }
+        if ($ed) {
+          $param['EndDate'] = $ed
+        }
         $null = New-AzMgAppCredential @param
         break
       }
@@ -694,8 +695,12 @@ function New-AzMgApplication {
       }
       'ApplicationWithKeyPlainParameterSet' {
         $param['CertValue'] = $cv
-        $param['StartDate'] = $sd
-        $param['EndDate'] = $ed
+        if ($sd) {
+          $param['StartDate'] = $sd
+        }
+        if ($ed) {
+          $param['EndDate'] = $ed
+        }
         $null = New-AzMgAppCredential @param
         break
       }

@@ -89,7 +89,7 @@ function Get-AzMgSpCredential {
     
     process {
         switch ($PSCmdlet.ParameterSetName) {
-            'ObjectIdParameterSet ' {
+            'ObjectIdParameterSet' {
                 $sp = Get-AzMgServicePrincipal -ObjectId $PSBoundParameters['ObjectId']
                 if (!$sp) {
                     Write-Error "service principal with id '$($PSBoundParameters['ObjectId'])' does not exist."

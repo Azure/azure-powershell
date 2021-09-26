@@ -187,7 +187,7 @@ process {
             break
         }
         'ApplicationIdParameterSet' {
-            $PSBoundParameters['Filter'] = "AppId eq '$($PSBoundParameters['ApplicationId'].AppId)'"
+            $PSBoundParameters['Filter'] = "AppId eq '$($PSBoundParameters['ApplicationId'])'"
             $null = $PSBoundParameters.Remove('ApplicationId')
             break
         }

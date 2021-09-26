@@ -20,6 +20,8 @@ function New-AzMgSpCredential {
     param(
         [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet', Mandatory)]
         [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='SpObjectIdWithKeyCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='SpObjectIdWithPasswordCredentialParameterSet', Mandatory)]
         [Alias('Id')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
@@ -27,12 +29,16 @@ function New-AzMgSpCredential {
 
         [Parameter(ParameterSetName='SPNWithCertValueParameterSet', Mandatory)]
         [Parameter(ParameterSetName='SPNWithPasswordParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='SPNWithKeyCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='SPNWithPasswordCredentialParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${ServicePrincipalName},
 
         [Parameter(ParameterSetName='ServicePrincipalObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordParameterSet', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='ServicePrincipalObjectWithKeyCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordCredentialParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
         ${ServicePrincipalObject},

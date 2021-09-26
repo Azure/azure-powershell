@@ -20,6 +20,8 @@ function New-AzMgAppCredential {
     param(
         [Parameter(ParameterSetName = 'ApplicationObjectIdWithPasswordParameterSet', Mandatory)]
         [Parameter(ParameterSetName = 'ApplicationObjectIdWithCertValueParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithKeyCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationObjectIdWithPasswordCredentialParameterSet', Mandatory)]
         [Alias('Id')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
@@ -27,18 +29,24 @@ function New-AzMgAppCredential {
 
         [Parameter(ParameterSetName = 'ApplicationIdWithCertValueParameterSet', Mandatory)]
         [Parameter(ParameterSetName = 'ApplicationIdWithPasswordParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationIdWithKeyCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'ApplicationIdWithPasswordCredentialParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${ApplicationId},
 
         [Parameter(ParameterSetName = 'DisplayNameWithPasswordParameterSet', Mandatory)]
         [Parameter(ParameterSetName = 'DisplayNameWithCertValueParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${DisplayName},
 
         [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordParameterSet', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'ApplicationObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
         ${ApplicationObject},
@@ -189,7 +197,7 @@ function New-AzMgAppCredential {
             { $_ -in 'ApplicationObjectIdWithPasswordParameterSet', 'ApplicationObjectIdWithPasswordCredentialParameterSet'} {
                 $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ObjectId']
                 $null = $PSBoundParameters.Remove('ObjectId')
-                MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameter
+                MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters
                 break
             }
             { $_ -in 'ApplicationObjectIdWithCertValueParameterSet', 'ApplicationObjectIdWithKeyCredentialParameterSet' } {
@@ -223,7 +231,7 @@ function New-AzMgAppCredential {
                 break
             }
             { $_ -in 'DisplayNameWithPasswordParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
-                $app = Get-AzMgApplication DisplayName $PSBoundParameters['DisplayName'] -Select Id
+                $app = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName'] -Select Id
                 if (0 -eq $app.Count) {
                     Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
                     return
@@ -240,7 +248,7 @@ function New-AzMgAppCredential {
                 break
             }
             { $_ -in 'DisplayNameWithCertValueParameterSet', 'DisplayNameWithKeyCredentialParameterSet'} {
-                $app = Get-AzMgApplication DisplayName $PSBoundParameters['DisplayName'] -Select Id
+                $app = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName'] -Select Id
                 if (0 -eq $app.Count) {
                     Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
                     return
