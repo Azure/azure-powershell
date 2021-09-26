@@ -186,6 +186,11 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.")]
         public string AzureSynapseAnalyticsEndpointResourceId { get; set; }
 
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 23, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The audience for tokens authenticating with the MS Graph Endpoint.")]
+        [Alias("MicrosoftGraphEndpointResourceId", "GraphResourceId")]
+        public string MSGraphAudience { get; set; }
+
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -309,8 +314,10 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(ActiveDirectoryServiceEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.Gallery, nameof(GalleryEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.Graph, nameof(GraphEndpoint));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
+                                    nameof(MSGraphAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix,
-                                   nameof(AzureKeyVaultDnsSuffix));
+                                    nameof(AzureKeyVaultDnsSuffix));
                                 SetEndpointIfBound(newEnvironment,
                                     AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId,
                                     nameof(AzureKeyVaultServiceEndpointResourceId));
@@ -326,7 +333,7 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(AzureDataLakeStoreFileSystemEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.AdTenant, nameof(AdTenant));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId,
-                                   nameof(GraphAudience));
+                                    nameof(GraphAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.DataLakeEndpointResourceId,
                                     nameof(DataLakeAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.BatchEndpointResourceId,
@@ -336,9 +343,9 @@ namespace Microsoft.Azure.Commands.Profile
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint,
                                     nameof(AzureOperationalInsightsEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix,
-                                   nameof(AzureAnalysisServicesEndpointSuffix));
+                                    nameof(AzureAnalysisServicesEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId,
-                                   nameof(AzureAnalysisServicesEndpointResourceId));
+                                    nameof(AzureAnalysisServicesEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix,
                                     nameof(AzureAttestationServiceEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId,
