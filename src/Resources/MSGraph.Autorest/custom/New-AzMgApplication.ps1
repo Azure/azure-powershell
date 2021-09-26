@@ -675,6 +675,7 @@ function New-AzMgApplication {
 
     $app = MSGraph.internal\New-AzMgApplication @PSBoundParameters
     $param = @{'ObjectId' = $app.Id }
+    $param['Debug'] = $PSBoundParameters['Debug']
     
     switch ($PSCmdlet.ParameterSetName) {
       'ApplicationWithPasswordPlainParameterSet' {

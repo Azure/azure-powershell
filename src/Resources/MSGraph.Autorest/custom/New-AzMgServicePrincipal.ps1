@@ -745,6 +745,7 @@ function New-AzMgServicePrincipal {
 
     $sp = MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
     $param = @{'ObjectId' = $sp.Id }
+    $param['Debug'] = $PSBoundParameters['Debug']
 
     switch ($PSCmdlet.ParameterSetName) {
       {$_ -in 'ApplicationWithPasswordPlainParameterSet', 'ApplicationObjectWithPasswordPlainParameterSet', 'DisplayNameWithPasswordPlainParameterSet'} {
