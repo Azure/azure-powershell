@@ -182,15 +182,15 @@ function New-AzMgAppCredential {
         }
 
         switch ($PSCmdlet.ParameterSetName) {
-            { 'ApplicationObjectIdWithPasswordParameterSet' -or 'ApplicationObjectIdWithPasswordCredentialParameterSet' } {
+            { $_ -in 'ApplicationObjectIdWithPasswordParameterSet', 'ApplicationObjectIdWithPasswordCredentialParameterSet'} {
                 MSGraph.internal\Add-AzMgApplicationPassword -ApplicationId $PSBoundParameters['ObjectId'] -PasswordCredential $credential
                 break
             }
-            { 'ApplicationObjectIdWithCertValueParameterSet' -or 'ApplicationObjectIdWithKeyCredentialParameterSet' } {
+            { $_ -in 'ApplicationObjectIdWithCertValueParameterSet', 'ApplicationObjectIdWithKeyCredentialParameterSet' } {
                 MSGraph.internal\Add-AzMgApplicationKey -ApplicationId $PSBoundParameters['ObjectId'] -KeyCredential $credential
                 break
             }
-            { 'ApplicationIdWithPasswordParameterSet' -or 'ApplicationIdWithPasswordCredentialParameterSet' } {
+            { $_ -in 'ApplicationIdWithPasswordParameterSet', 'ApplicationIdWithPasswordCredentialParameterSet'} {
                 $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id
                 if ($app) {
                     MSGraph.internal\Add-AzMgApplicationPassword -ApplicationId $app.Id -PasswordCredential $credential    
@@ -201,7 +201,7 @@ function New-AzMgAppCredential {
                 }
                 break
             }
-            { 'ApplicationIdWithCertValueParameterSet' -or 'ApplicationIdWithKeyCredentialParameterSet' } {
+            { $_ -in 'ApplicationIdWithCertValueParameterSet', 'ApplicationIdWithKeyCredentialParameterSet'} {
                 $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id
                 if ($app) {
                     MSGraph.internal\Add-AzMgApplicationKey -ApplicationId $app.Id -KeyCredential $credential 
@@ -212,7 +212,7 @@ function New-AzMgAppCredential {
                 }
                 break
             }
-            { 'DisplayNameWithPasswordParameterSet' -or 'DisplayNameWithPasswordCredentialParameterSet' } {
+            { $_ -in 'DisplayNameWithPasswordParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
                 $app = Get-AzMgApplication DisplayName $PSBoundParameters['DisplayName'] -Select Id
                 if (0 -eq $app.Count) {
                     Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
@@ -227,7 +227,7 @@ function New-AzMgAppCredential {
                 }
                 break
             }
-            { 'DisplayNameWithCertValueParameterSet' -or 'DisplayNameWithKeyCredentialParameterSet' } {
+            { $_ -in 'DisplayNameWithCertValueParameterSet', 'DisplayNameWithKeyCredentialParameterSet'} {
                 $app = Get-AzMgApplication DisplayName $PSBoundParameters['DisplayName'] -Select Id
                 if (0 -eq $app.Count) {
                     Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
@@ -242,11 +242,11 @@ function New-AzMgAppCredential {
                 }
                 break
             }
-            { 'ApplicationObjectWithPasswordParameterSet' -or 'ApplicationObjectWithPasswordParameterSet' } {
+            { $_ -in 'ApplicationObjectWithPasswordParameterSet', 'ApplicationObjectWithPasswordParameterSet'} {
                 MSGraph.internal\Add-AzMgApplicationPassword -ApplicationId $PSBoundParameters['ApplicationObject'].Id -PasswordCredential $credential
                 break
             }
-            { 'ApplicationObjectWithCertValueParameterSet' -or 'ApplicationObjectWithCertValueParameterSet' } {
+            { $_ -in 'ApplicationObjectWithCertValueParameterSet', 'ApplicationObjectWithCertValueParameterSet'} {
                 MSGraph.internal\Add-AzMgApplicationKey -ApplicationId $PSBoundParameters['ApplicationObject'].Id -KeyCredential $credential
                 break
             }
