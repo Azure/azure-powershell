@@ -220,5 +220,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string AzureContainerRegistryEndpointSuffix = "azurecr.io";
         public const string ChinaContainerRegistryEndpointSuffix = "azurecr.cn";
         public const string USGovernmentContainerRegistryEndpointSuffix = "azurecr.us";
+
+        /// <summary>
+        /// MSGraph endpoints.
+        /// </summary>
+        public const string AzureMicrosoftGraphUrl = "https://graph.microsoft.com";
+        public const string ChinaMicrosoftGraphUrl = "https://microsoftgraph.chinacloudapi.cn";
+        public const string USGovernmentMicrosoftGraphUrl = "https://graph.microsoft.us";
+        public const string GermanMicrosoftGraphUrl = "https://graph.microsoft.de";
+
+        /// <summary>
+        /// MSGraph Resource Url
+        /// </summary>
+        public const string AzureMicrosoftGraphEndpointResourceId = "https://graph.microsoft.com/";
+        public const string ChinaMicrosoftGraphEndpointResourceId = "https://microsoftgraph.chinacloudapi.cn/";
+        public const string USGovernmentMicrosoftGraphEndpointResourceId = "https://graph.microsoft.us/";
+        public const string GermanMicrosoftGraphEndpointResourceId = "https://graph.microsoft.de/";
     }
 }
