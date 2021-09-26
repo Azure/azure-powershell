@@ -59,5 +59,14 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 _logger,
                 "Test-RestoreFromBackup");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreFromDroppedSqlPool()
+        {
+            NewInstance.RunPsTest(
+                _logger,
+                "Test-RestoreFromDroppedSqlPool");
+        }
     }
 }

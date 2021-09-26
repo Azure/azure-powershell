@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version:https://docs.microsoft.com/powershell/module/az.synapse/stop-azsynapseintegrationruntime
+online version: https://docs.microsoft.com/powershell/module/az.synapse/stop-azsynapseintegrationruntime
 schema: 2.0.0
 ---
 
@@ -66,7 +66,7 @@ This cmdlet stops a managed dedicated integration runtime using ResourceId in wo
 ### Example 4
 ```powershell
 PS C:\> $ir = Get-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name test-dedicated-ir -ResourceGroupName Contosorg
-PS C:\> $ir | Stop-AzSynapseIntegrationRuntime 
+PS C:\> $ir | Stop-AzSynapseIntegrationRuntime
 ```
 
 This cmdlet stops a managed dedicated integration runtime named 'test-dedicated-ir' in workspace ContosoWorkspace through pipeline.

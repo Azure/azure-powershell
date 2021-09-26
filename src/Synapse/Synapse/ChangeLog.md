@@ -32,6 +32,7 @@
     - Upgraded Azure.Analytics.Synapse.Spark to 1.0.0-preview.7
     - Upgraded Microsoft.Azure.Management.Synapse to 2.2.0-preview
 * Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for uploading spark configuration properties file by `SparkConfigFilePath`
+* Updated `Restore-AzSynapseSqlPool` to support for restoring SQL pool from a backup of a deleted SQL pool.
 
 ## Version 0.16.0
 * Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
