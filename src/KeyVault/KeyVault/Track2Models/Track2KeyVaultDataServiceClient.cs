@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion)
         {
-           return VaultClient.GetKey(vaultName, keyName, keyVersion);
+            return VaultClient.GetKey(vaultName, keyName, keyVersion);
         }
 
         public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
@@ -417,21 +417,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         #region Full backup restore
         public Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken)
         {
-            return HsmClient.BackupHsm(hsmName, blobStorageUri, sasToken);
+            return HsmClient.BackupHsm(hsmName, blobStorageUri, sasToken).FolderUri;
         }
 
         public void RestoreHsm(string hsmName, Uri backupLocation, string sasToken, string backupFolder)
         {
-            HsmClient.RestoreHsm(hsmName, backupLocation, sasToken, backupFolder);
+            var backupUri = new Uri(System.IO.Path.Combine(backupLocation.ToString(), backupFolder));
+            HsmClient.RestoreHsm(hsmName, backupUri, sasToken);
         }
 
         public void SelectiveRestoreHsm(string hsmName, string keyName, Uri backupLocation, string sasToken, string backupFolder)
         {
-            HsmClient.SelectiveRestoreHsm(hsmName, keyName, backupLocation, sasToken, backupFolder);
+            var backupUri = new Uri(System.IO.Path.Combine(backupLocation.ToString(), backupFolder));
+            HsmClient.SelectiveRestoreHsm(hsmName, keyName, backupUri, sasToken);
         }
         #endregion
 
         #region RBAC
+        public PSKeyVaultRoleDefinition CreateOrUpdateHsmRoleDefinition(string hsmName, string scope, PSKeyVaultRoleDefinition role)
+        {
+            return HsmClient.CreateOrUpdateHsmRoleDefinition(hsmName, scope, role);
+        }
 
         public PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string hsmName, string scope)
         {
@@ -457,7 +463,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             HsmClient.RemoveHsmRoleAssignment(hsmName, scope, roleAssignmentName);
         }
-        # endregion RBAC
+
+        /// <summary>
+        /// Remove a custom role definition from an HSM.
+        /// </summary>
+        /// <param name="name">Name of the role. A GUID.</param>
+        public void RemoveHsmRoleDefinition(string hsmName, string scope, string name)
+        {
+            HsmClient.RemoveHsmRoleDefinition(hsmName, scope, name);
+        }
+        #endregion
 
         #region ManagedHsm key methods
 

@@ -110,6 +110,9 @@ Create an object representing the network rule settings.
 ### [New-AzKeyVaultRoleAssignment](New-AzKeyVaultRoleAssignment.md)
 Assigns the specified RBAC role to the specified principal, at the specified scope.
 
+### [New-AzKeyVaultRoleDefinition](New-AzKeyVaultRoleDefinition.md)
+Creates a custom role definition on an HSM.
+
 ### [Remove-AzKeyVault](Remove-AzKeyVault.md)
 Deletes a key vault.
 
@@ -145,6 +148,9 @@ Removes a network rule from a key vault.
 
 ### [Remove-AzKeyVaultRoleAssignment](Remove-AzKeyVaultRoleAssignment.md)
 Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope.
+
+### [Remove-AzKeyVaultRoleDefinition](Remove-AzKeyVaultRoleDefinition.md)
+Removes a custom role definition from an HSM.
 
 ### [Remove-AzKeyVaultSecret](Remove-AzKeyVaultSecret.md)
 Deletes a secret in a key vault.
