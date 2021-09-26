@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVaultRoleDefinition, DefaultParameterSetName = InputObjectParameterSet)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVaultRoleDefinition, DefaultParameterSetName = InputObjectParameterSet, SupportsShouldProcess = true)]
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVaultRoleDefinition)]
     [OutputType(typeof(PSKeyVaultRoleDefinition))]
     public class NewAzureKeyVaultRoleDefinition : RbacCmdletBase

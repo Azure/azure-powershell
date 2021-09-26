@@ -63,7 +63,7 @@ Gets the status of a certificate operation.
 Gets the policy for a certificate in a key vault.
 
 ### [Get-AzKeyVaultKey](Get-AzKeyVaultKey.md)
-Gets Key Vault keys. Please notes that detailed information about a key, like key type or key size, only available when querying a key in a certain version.
+Gets Key Vault keys. Please notes that detailed information about a key, like key type or key size, only available when querying a specific key version.
 
 ### [Get-AzKeyVaultManagedHsm](Get-AzKeyVaultManagedHsm.md)
 Get managed HSMs.
@@ -88,6 +88,9 @@ Imports a certificate to a key vault.
 
 ### [Import-AzKeyVaultSecurityDomain](Import-AzKeyVaultSecurityDomain.md)
 Imports previously exported security domain data to a managed HSM.
+
+### [Invoke-AzKeyVaultKeyOperation](Invoke-AzKeyVaultKeyOperation.md)
+Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specified key stored in a key vault or managed hsm.
 
 ### [New-AzKeyVault](New-AzKeyVault.md)
 Creates a key vault.
