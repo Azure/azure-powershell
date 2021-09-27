@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "The resource identifier of the Azure Synapse Analytics that is the recipient of the requested token.")]
         public string AzureSynapseAnalyticsEndpointResourceId { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 23, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false,
             HelpMessage = "The audience for tokens authenticating with the MS Graph Endpoint.")]
         [Alias("MicrosoftGraphEndpointResourceId", "GraphResourceId")]
         public string MSGraphAudience { get; set; }

@@ -216,10 +216,10 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "Specifies URI of the internet resource to fetch environments.")]
         public Uri Uri { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 23, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false,
             HelpMessage = "The audience for tokens authenticating with the MS Graph Endpoint.")]
-        [Alias("MSGraphEndpointResourceId", "GraphResourceId")]
-        public string MSGraphAudience { get; set; }
+        [Alias("MicrosoftGraphEndpointResourceId", "MicrosoftGraphResourceId")]
+        public string MicrosoftGraphAudience { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Commands.Profile
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId,
                                     nameof(GraphAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
-                                    nameof(MSGraphAudience));
+                                    nameof(MicrosoftGraphAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.DataLakeEndpointResourceId,
                                     nameof(DataLakeAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.BatchEndpointResourceId,
