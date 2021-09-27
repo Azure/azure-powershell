@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Azure Site Recovery bug fixes for VMware to Azure Reprotect, Update policy and Disable scenarios.
+* Azure Backup added the support for UserAssigned MSI in RecoveryServices Vault.
 
 ## Version 4.6.0
 * Azure Site Recovery multi appliance support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
