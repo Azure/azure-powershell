@@ -12,13 +12,7 @@ The New-AzVirtualHubBgpConnection cmdlet creates a HubBgpConnection resource tha
 
 ## SYNTAX
 
-### ByVirtualHubName (Default)
-```
-New-AzVirtualHubBgpConnection -PeerIp <String> -PeerAsn <UInt32> -Name <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVirtualHubNameByHubVirtualNetworkConnectionObject
+### ByVirtualHubNameByHubVirtualNetworkConnectionObject (Default)
 ```
 New-AzVirtualHubBgpConnection -ResourceGroupName <String> -VirtualHubName <String> -PeerIp <String>
  -PeerAsn <UInt32> -Name <String> -VirtualHubVnetConnection <PSHubVirtualNetworkConnection> [-AsJob]

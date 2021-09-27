@@ -225,14 +225,50 @@ function Test-RestoreFromBackup
 	{
         # Transform Synapse SQL pool resource ID to SQL database ID because 
         # currently the command only accepts the SQL databse ID
-        $pool = Get-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
+        $pool = Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
         $databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
             -replace "workspaces", "servers" `
-            -replace "sqlPools", "databases"
 
         # Restore to same workspace with source SQL database
         $restoredPool = Restore-AzSynapseSqlPool -FromBackup -TargetSqlPoolName $params.restoredSqlPoolName -ResourceGroupName $params.rgname `
             -WorkspaceName $params.workspaceName -ResourceId $databaseId
+
+        Assert-AreEqual $params.rgname $restoredPool.ResourceGroupName
+        Assert-AreEqual $params.workspaceName $restoredPool.WorkspaceName
+        Assert-AreEqual $params.restoredSqlPoolName $restoredPool.SqlPoolName
+	}
+	finally
+	{
+		# Cleanup
+		Remove-SqlPoolBackupTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests for restoring from dropped sql pool
+#>
+function Test-RestoreFromDroppedSqlPool
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-SqlPoolBackupTestEnvironment $testSuffix
+	$params = Get-SqlPoolBackupTestEnvironmentParameters $testSuffix
+
+	try
+	{
+        Remove-AzSynapseSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName -Force
+
+        Wait-Seconds 300
+
+	    $pool = Get-AzSynapseDroppedSqlPool -ResourceGroupName $params.rgname -WorkspaceName $params.workspaceName -Name $params.sqlPoolName
+        # Transform Synapse Dropped SQL pool resource ID to SQL pool resource ID
+        $poolId = $pool.Id.Split(",")[0]
+        $poolId = $poolId -replace "restorableDroppedSqlPools", "sqlPools"
+
+        # Restore to same workspace with source SQL database
+        $restoredPool = Restore-AzSynapseSqlPool -FromDroppedSqlPool -TargetSqlPoolName $params.restoredSqlPoolName -ResourceGroupName $params.rgname `
+            -WorkspaceName $params.workspaceName -ResourceId $poolId -DeletionDate $pool.DeletionDate
 
         Assert-AreEqual $params.rgname $restoredPool.ResourceGroupName
         Assert-AreEqual $params.workspaceName $restoredPool.WorkspaceName

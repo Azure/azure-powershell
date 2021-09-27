@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Supports Encrypt/Decrypt/Wrap/Unwrap using keys [#15679]
+* Supported custom role definitions on managed HSM:
+    - Create via `New-AzKeyVaultRoleDefinition`,
+    - Delete via `Remove-AzKeyVaultRoleDefinition`,
+    - Filter all custom roles via `Get-AzKeyVaultRoleDefinition -Custom`.
+* Supported Encrypt/Decrypt/Wrap/Unwrap using keys [#15679]
 * Enabled managing resources in other subscriptions without switching the context by adding `-Subscription <String>`.
 
 ## Version 3.5.0

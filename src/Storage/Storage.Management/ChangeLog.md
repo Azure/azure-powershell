@@ -25,6 +25,17 @@
 * Supported upgrade storage account to enable HierarchicalNamespace
     -  `Invoke-AzStorageAccountHierarchicalNamespaceUpgrade`
     -  `Stop-AzStorageAccountHierarchicalNamespaceUpgrade`
+* Supported AccessTierInferred, Tags in blob inventory policy schema
+    - `New-AzStorageBlobInventoryPolicyRule`
+* Supported create/update storage account with PublicNetworkAccess enabled/disabled 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported create/update storage blob container with RootSquash
+    - `New-AzRmStorageContainer`
+    - `Update-AzRmStorageContainer`
+* Supported AllowProtectedAppendWriteAll in set container Immutability Policy, and add container LegalHold
+    - `Set-AzRmStorageContainerImmutabilityPolicy`
+    - `Add-AzRmStorageContainerLegalHold`
 
 ## Version 3.11.0
 * Supported get/set blob tags on a specific blob

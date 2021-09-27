@@ -20,7 +20,7 @@ Set-AzDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactor
  [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] [-SubnetId <String>]
  [-PublicIPs <String[]>] [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>]
  [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
- [-ProvisionMethod <String>] [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
+ [-VNetInjectionMethod <String>] [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
  [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
  [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -33,7 +33,7 @@ Set-AzDataFactoryV2IntegrationRuntime [-ResourceId] <String> [-Type <String>] [-
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
  [-SubnetId <String>] [-PublicIPs <String[]>] [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>]
  [-DataFlowTimeToLive <Int32>] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
- [-ProvisionMethod <String>] [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
+ [-VNetInjectionMethod <String>] [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
  [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
  [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -60,7 +60,7 @@ Set-AzDataFactoryV2IntegrationRuntime [-InputObject] <PSIntegrationRuntime> [-Ty
  [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>]
  [-VNetId <String>] [-Subnet <String>] [-SubnetId <String>] [-PublicIPs <String[]>]
  [-DataFlowComputeType <String>] [-DataFlowCoreCount <Int32>] [-DataFlowTimeToLive <Int32>]
- [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-ProvisionMethod <String>]
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-VNetInjectionMethod <String>]
  [-ExpressCustomSetup <ArrayList>] [-DataProxyIntegrationRuntimeName <String>]
  [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
  [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
@@ -127,7 +127,7 @@ PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName testgroup `
     VNetId                            : 
     Subnet                            : 
     SubnetId                          : 
-    ProvisionMethod                   : Express
+    VNetInjectionMethod               : Express
     PublicIPs                         : 
     State                             : Initial
     LicenseType                       : LicenseIncluded
@@ -259,6 +259,21 @@ Time to live (in minutes) setting of the data flow cluster which will execute da
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataFlowEnableQuickReuse
+To whether enable data flow cluster to be reused in the next dataflow activity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -495,22 +510,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProvisionMethod
-The provision method for SSIS integration runtime which could be Standard or Express, default is Standard if it is not specified.
-
-```yaml
-Type: System.String
-Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
-Aliases:
-Accepted values: Standard, Express
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublicIPs
 The static public IP addresses which the integration runtime will use.
 
@@ -639,6 +638,22 @@ The ID of the VNet that the integration runtime joins.
 Type: System.String
 Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VNetInjectionMethod
+The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.
+
+```yaml
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+Accepted values: Standard, Express
 
 Required: False
 Position: Named
