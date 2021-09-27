@@ -31,10 +31,16 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 
         internal static AzAssemblyLoadContext GetForDirectory(string directoryPath)
         {
-            return DependencyLoadContexts.GetOrAdd(directoryPath, (path) => new AzAssemblyLoadContext(path));
+            return DependencyLoadContexts.GetOrAdd(directoryPath, (path) => new AzAssemblyLoadContext(path, path));
         }
 
-        public AzAssemblyLoadContext(string directory)
+        /// <summary>
+        /// Initialize an `AzAssemblyLoadContext` instance.
+        /// </summary>
+        /// <param name="name">Name of the ALC (for debugging).</param>
+        /// <param name="directory">Root directory to look for assembly.</param>
+        /// <returns></returns>
+        public AzAssemblyLoadContext(string name, string directory) : base(name)
         {
             AssemblyDirectory = directory;
         }
@@ -43,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
         {
             if (AssemblyCache.TryGetValue(requestedAssemblyName.Name, out Assembly assembly))
             {
-                if(IsAssemblyMatching(requestedAssemblyName, assembly.GetName()))
+                if (IsAssemblyMatching(requestedAssemblyName, assembly.GetName()))
                 {
                     return assembly;
                 }
@@ -58,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
                 //Assembly.ReflectionOnlyLoadFrom
                 var loadedAssembly = LoadFromAssemblyPath(dependencyAsmPath);
                 var loadedAssemblyName = loadedAssembly.GetName();
-                if(IsAssemblyMatching(requestedAssemblyName, loadedAssemblyName))
+                if (IsAssemblyMatching(requestedAssemblyName, loadedAssemblyName))
                 {
                     AssemblyCache.TryAdd(loadedAssemblyName.Name, loadedAssembly);
                 }

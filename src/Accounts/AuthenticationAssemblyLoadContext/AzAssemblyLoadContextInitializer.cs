@@ -45,14 +45,22 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
             ModuleAlcEntryAssemblyMap = new ConcurrentDictionary<string, string>();
         }
 
+        /// <summary>
+        /// Registers the shared ALC and listen to assembly resolving event of the default ALC.
+        /// </summary>
+        /// <param name="azSharedAssemblyDirectory">Root directory to look for assemblies.</param>
         public static void RegisterAzSharedAssemblyLoadContext(string azSharedAssemblyDirectory)
         {
-            
+
             AzSharedAssemblyDirectory = azSharedAssemblyDirectory;
             AssemblyLoadContext.Default.Resolving += Default_Resolving;
         }
 
-        //Entry assembly name for each module ALC must be unique
+        /// <summary>
+        /// Registers an ALC to be instanciated later.
+        /// </summary>
+        /// <param name="contextEntryAssembly">Name of the entry assembly. Typically "{Module}.AlcWrapper.dll" It must be unique for each module.</param>
+        /// <param name="directory">Root directory to look for assemblies.</param>
         public static void RegisterModuleAssemblyLoadContext(string contextEntryAssembly, string directory)
         {
             ModuleAlcEntryAssemblyMap.TryAdd(contextEntryAssembly, directory);
