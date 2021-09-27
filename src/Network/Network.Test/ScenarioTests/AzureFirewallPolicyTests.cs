@@ -140,5 +140,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyPrivateRangeCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyExplicitProxy()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyExplicitProxy");
+        }
     }
 }

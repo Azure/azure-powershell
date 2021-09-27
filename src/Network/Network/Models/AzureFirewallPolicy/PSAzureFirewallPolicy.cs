@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(PrivateRange, Formatting.Indented); }
         }
 
+        public PSAzureFirewallPolicyExplicitProxy ExplicitProxySettings { get; set; }
+
         #region Private Range Validation
         private void ValidatePrivateRange(string[] privateRange)
         {

@@ -1462,3 +1462,64 @@ function Test-AzureFirewallPolicyPrivateRangeCRUD {
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Tests AzureFirewall Policy Explicit Proxy
+#>
+function Test-AzureFirewallPolicyExplicitProxy {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyName2 = Get-ResourceName
+    $location = "westus2"
+    $pacFile = "https://tinawstorage.file.core.windows.net/?sv=2020-02-10&ss=bfqt&srt=sco&sp=rwdlacuptfx&se=2021-06-04T07:01:12Z&st=2021-06-03T23:01:12Z&sip=68.65.171.11&spr=https&sig=Plsa0RRVpGbY0IETZZOT6znOHcSro71LLTTbzquYPgs%3D"
+    $port = 8087
+
+    try {
+
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # New AzureFirewallPolicy (with Explicit Proxy)
+        $enableProxy = New-AzFirewallPolicyExplicitProxySetting -EnableExplicitProxy -HttpPort $port -HttpsPort $port -PacFilePort $port -PacFile pacFile
+        $azureFirewallPolicy2 = New-AzFirewallPolicy -Name $azureFirewallPolicyName2 -ResourceGroupName $rgname -Location $location -ExplicitProxySettings $enableProxy
+        $getAzureFirewallPolicy2 = Get-AzFirewallPolicy -Name $azureFirewallPolicyName2 -ResourceGroupName $rgname
+        Assert-NotNull $getAzureFirewallPolicy2.ExplicitProxySettings
+        Assert-AreEqual true $getAzureFirewallPolicy2.ExplicitProxySettings
+        
+        # New AzureFirewallPolicy (with no Explicit Proxy)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+        Assert-Null $getAzureFirewallPolicy.ExplicitProxySettings
+
+        # Set AzureFirewallPolicy (with Explicit Proxy)
+        $enableProxy = New-AzFirewallPolicyExplicitProxySetting -EnableExplicitProxy -HttpPort $port -HttpsPort $port -PacFilePort $port -PacFile pacFile
+        $azureFirewallPolicy = Set-AzFirewallPolicy -InputObject $azureFirewallPolicy -ExplicitProxySettings $enableProxy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+        Assert-NotNull $getAzureFirewallPolicy.ExplicitProxySettings
+        Assert-AreEqual true $getAzureFirewallPolicy.ExplicitProxySettings
+
+        # Set AzureFirewallPolicy (with no Explicit Proxy)
+        $disableProxy = New-AzFirewallPolicyExplicitProxySetting 
+        $azureFirewallPolicy = Set-AzFirewallPolicy -InputObject $azureFirewallPolicy -ExplicitProxySettings $disableProxy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+        Assert-Null $getAzureFirewallPolicy.ExplicitProxySettings
+
+        # New AzureFirewallPolicy (with Explicit Proxy)
+        $azureFirewallPolicy2 = New-AzFirewallPolicy -Name $azureFirewallPolicyName2 -ResourceGroupName $rgname -Location $location -ExplicitProxySettings $enableProxy
+        $getAzureFirewallPolicy2 = Get-AzFirewallPolicy -Name $azureFirewallPolicyName2 -ResourceGroupName $rgname
+        Assert-NotNull $getAzureFirewallPolicy2.ExplicitProxySettings
+        Assert-AreEqual true $getAzureFirewallPolicy2.ExplicitProxySettings
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

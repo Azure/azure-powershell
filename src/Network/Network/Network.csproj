@@ -10,6 +10,7 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
     <ApplicationIcon />
     <Win32Resource />
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
