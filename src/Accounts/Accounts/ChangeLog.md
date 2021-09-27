@@ -26,6 +26,7 @@
     3. refine dev doc
     4. resolve any other todo's
     5. how the process of update shared assembly (azure.core) is affected by this?
+* Updated Azure.Core from 1.16.0 to 1.19.0.
 
 ## Version 2.5.3
 * Corrected the URLs to Azure Portal in the results of `Get-AzEnvironment` and `Get-AzContext`. [#15429]

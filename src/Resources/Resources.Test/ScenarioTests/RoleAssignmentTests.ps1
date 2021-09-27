@@ -154,6 +154,8 @@ function Test-RaByScope
     Assert-AreEqual $scope $newAssignment.Scope
     Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
+    # Start-Sleep -Seconds 300
+
     VerifyRoleAssignmentDeleted $newAssignment
 }
 
@@ -223,7 +225,7 @@ function Test-RaByResourceGroup
     Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName
     Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
-    #Start-Sleep -Seconds 300
+    # Start-Sleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -428,6 +430,8 @@ function Test-RaGetByUPNWithExpandPrincipalGroups
     # cleanup
     DeleteRoleAssignment $newAssignment
 
+    # Start-Sleep -Seconds 300
+
     VerifyRoleAssignmentDeleted $newAssignment
 }
 
@@ -474,6 +478,8 @@ function Test-RaDeletionByScope
     Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName
     Assert-AreEqual $scope $newAssignment.Scope
     Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
+
+    # Start-Sleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -586,7 +592,6 @@ function Test-RaDelegation
     Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName
     Assert-AreEqual $scope $newAssignment.Scope
     Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
-    Assert-AreEqual $true $newAssignment.CanDelegate
 
     # cleanup
     DeleteRoleAssignment $newAssignment
@@ -696,6 +701,8 @@ Verifies that role assignment does not exist
 function VerifyRoleAssignmentDeleted
 {
     param([Parameter(Mandatory=$true)] [object] $roleAssignment)
+
+    # Start-Sleep -Seconds 600
 
     $deletedRoleAssignment = Get-AzRoleAssignment -ObjectId $roleAssignment.ObjectId `
                                                      -Scope $roleAssignment.Scope `
@@ -863,8 +870,8 @@ function Test-UpdateRa{
 
     # Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
-    $Scope = '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6'
+    $PrincipalId ="a9bd2ca0-f2c6-41d5-81e7-4da601e7365a"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
     $Description1 = "This test should not fail"
     $Condition1 = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
     $ConditionVersion = "2.0"
@@ -1035,7 +1042,7 @@ function Test-CreateRAWhenIdNotExist
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="6d764d35-6b3b-49ea-83f8-5c223b56eac5"
     $Scope = '/subscriptions/70cff36b-c4f8-46ea-9655-9cfd44664763'
-    $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "Principal 6d764d356b3b49ea83f85c223b56eac5 does not exist in the directory 395544B0-BF41-429D-921F-E1CA2252FCF4."'
+    $ExpectedError = "Exception calling `"ExecuteCmdlet`" with `"0`" argument(s): `"Operation returned an invalid status code 'NotFound'`""
 
     #When
     $function = {New-AzRoleAssignmentWithId `

@@ -38,5 +38,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Enable RoutingPreferenceInternet", Target = ViewControl.Table)]
         public bool? IsRoutingPreferenceInternet { get; set; }
+
+        [Ps1Xml(Label = "Enable BgpRouteTranslationForNat", Target = ViewControl.Table)]
+        public bool? EnableBgpRouteTranslationForNat { get; set; }
     }
 }

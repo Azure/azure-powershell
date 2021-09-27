@@ -40,7 +40,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.vmware/remove-azvmwareprivatecloud
+https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
 #>
 function Remove-AzVMwarePrivateCloud {
     [OutputType([System.Boolean])]
@@ -153,5 +153,3 @@ function Remove-AzVMwarePrivateCloud {
         }
     }
 }
-    
-    

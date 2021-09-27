@@ -96,8 +96,8 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate',
                'Update-AzKeyVaultManagedHsm', 'Get-AzKeyVault', 'New-AzKeyVault', 
                'Remove-AzKeyVault', 'Undo-AzKeyVaultRemoval', 'Backup-AzKeyVault', 
                'Restore-AzKeyVault', 'Get-AzKeyVaultRoleDefinition', 
-               'Get-AzKeyVaultRoleAssignment', 'New-AzKeyVaultRoleAssignment', 
-               'Remove-AzKeyVaultRoleAssignment', 'Remove-AzKeyVaultAccessPolicy', 
+               'Get-AzKeyVaultRoleAssignment', 'New-AzKeyVaultRoleAssignment', 'New-AzKeyVaultRoleDefinition', 
+               'Remove-AzKeyVaultRoleDefinition', 'Remove-AzKeyVaultRoleAssignment', 'Remove-AzKeyVaultAccessPolicy', 
                'Set-AzKeyVaultAccessPolicy', 'Backup-AzKeyVaultKey', 
                'Get-AzKeyVaultKey', 'Get-AzKeyVaultSecret', 
                'Undo-AzKeyVaultKeyRemoval', 'Undo-AzKeyVaultSecretRemoval', 
@@ -132,7 +132,7 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Set-AzKeyVaultKey', 'Set-AzKeyVaultSecretAttribute', 
+AliasesToExport = 'Set-AzKeyVaultKey', 'Set-AzKeyVaultRoleDefinition', 'Set-AzKeyVaultSecretAttribute', 
                'Set-AzKeyVaultKeyAttribute', 'Set-AzKeyVaultCertificateAttribute'
 
 # DSC resources to export from this module

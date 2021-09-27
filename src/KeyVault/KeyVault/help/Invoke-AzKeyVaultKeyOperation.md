@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzKeyVaultKeyOperation
 
 ## SYNOPSIS
-Performes operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specified key stored in a key vault or managed hsm.
+Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specified key stored in a key vault or managed hsm.
 
 ## SYNTAX
 

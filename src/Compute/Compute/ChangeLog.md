@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Update Compute .NET SDK package reference to version 49.1.0
+* Fixed a bug in `Get-AzVM` that caused incorrect power status output.
 
 ## Version 4.17.0
 * Added new parameters `-LinuxConfigurationPatchMode`, `-WindowsConfigurationPatchMode`, and `-LinuxConfigurationProvisionVMAgent` to `Set-AzVmssOSProfile`
