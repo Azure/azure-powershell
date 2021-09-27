@@ -307,4 +307,19 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="MissingCertificateForNetStandard" xml:space="preserve">
     <value>Pass self signed certificate to get vaultcreds file.</value>
   </data>
+  <data name="IdentityIdRequired" xml:space="preserve">
+    <value>IdentityId can't be empty for UserAssigned Identities</value>
+  </data>
+  <data name="InvalidIdentityId" xml:space="preserve">
+    <value>IdentityId '{0}' is invalid</value>
+  </data>
+  <data name="InvalidIdentityRemove" xml:space="preserve">
+    <value>UserAssigned and SystemAssigned identities can't be removed together</value>
+  </data>
+  <data name="InvalidParameterIdentityId" xml:space="preserve">
+    <value>Invalid parameter IdentityId. IdentityId can't be set for SystemAssigned Identities</value>
+  </data>
+  <data name="InvalidParameterSet" xml:space="preserve">
+    <value>Invalid parameter set</value>
+  </data>
 </root>

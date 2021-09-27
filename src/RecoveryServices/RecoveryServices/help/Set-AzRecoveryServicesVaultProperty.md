@@ -22,7 +22,8 @@ Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState <String> [-VaultId <
 ### AzureRSVaultCMKParameterSet
 ```
 Set-AzRecoveryServicesVaultProperty [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- -EncryptionKeyId <String> -KeyVaultSubscriptionId <String> [-InfrastructureEncryption] [-WhatIf] [-Confirm]
+ -EncryptionKeyId <String> [-KeyVaultSubscriptionId <String>] [-InfrastructureEncryption]
+ [-UseSystemAssignedIdentity <Boolean>] [-UserAssignedIdentity <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -41,17 +42,29 @@ PS C:\> $props = Set-AzRecoveryServicesVaultProperty -VaultId $vault.Id -SoftDel
 The first command gets a Vault object and then stores it in the $vault variable.
 The second command Updates the SoftDeleteFeatureState property of the vault to "Enabled" state.
 
-### Example 2: Update CMK encryption of a vault
+### Example 2: Update CMK encryption of a vault to use SystemAssigned MSIdentity
 
 ```
 PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"
 PS C:\> $keyVault = Get-AzKeyVault -VaultName "keyVaultName" -ResourceGroupName "RGName" 
 PS C:\> $key = Get-AzKeyVaultKey -VaultName "keyVaultName" -Name "keyName" 
-PS C:\> Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "f870818k-5h28-4t48-8961-37458592348r" -InfrastructureEncryption -VaultId $vault.ID
+PS C:\> Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -InfrastructureEncryption -VaultId $vault.ID -UseSystemAssignedIdentity $true
 ```
 
-First cmdlet gets the RSVault to update encryption properties. Second cmdlet gets the azure key vault. Third cmdlet get the key from the key vault.
-Fourth cmdlet updates the customer managed encryption key within the RSVault. Use -InfrastructureEncryption param to enable infrastructure encryption for the first time update. 
+First cmdlet gets the RSVault to update encryption properties. Second cmdlet gets the azure key vault. Third cmdlet gets the key from the key vault.
+Fourth cmdlet updates the customer managed encryption key within the RSVault to be accessed via SystemAssigned identity. Use -InfrastructureEncryption param to enable infrastructure encryption for the first time update. 
+
+### Example 3: Update CMK encryption of a vault to use userAssigned MSIdentity
+
+```
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"
+PS C:\> $keyVault = Get-AzKeyVault -VaultName "keyVaultName" -ResourceGroupName "RGName" 
+PS C:\> $key = Get-AzKeyVaultKey -VaultName "keyVaultName" -Name "keyName" 
+PS C:\> Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -VaultId $vault.ID -UseSystemAssignedIdentity $false -UserAssignedIdentity $vault.Identity.UserAssignedIdentities.Keys[0]
+```
+
+First cmdlet gets the RSVault to update encryption properties. Second cmdlet gets the azure key vault. Third cmdlet gets the key from the key vault.
+Fourth cmdlet updates the customer managed encryption key within the RSVault to be accessed via UserAssigned identity.
 
 ## PARAMETERS
 
@@ -108,7 +121,7 @@ Type: System.String
 Parameter Sets: AzureRSVaultCMKParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -125,6 +138,36 @@ Aliases:
 Accepted values: Enable, Disable
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+ARM Id of UserAssigned Identity to be used for CMK encryption. Provide this parameter if UseSystemAssignedIdentity is $false.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureRSVaultCMKParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSystemAssignedIdentity
+Boolean flag to indicate if SystemAssigned Identity will be used for CMK encryption. Accepted Vaules: $true, $false
+
+```yaml
+Type: System.Boolean
+Parameter Sets: AzureRSVaultCMKParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
