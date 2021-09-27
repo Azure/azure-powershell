@@ -13,7 +13,15 @@ function Add-RepositoryDefaultValue()
     try
     {
         foreach($cmdlet in $cmdlets) {
-            $defaultValueMap.Add("${cmdlet}:$parameterName", {(Get-PSRepository).Where( {$_.SourceLocation.Contains('www.powershellgallery.com')}).Name})
+            $defaultValueMap.Add("${cmdlet}:$parameterName", {
+                $repos = Get-PSRepository
+                if ($repos.Length -eq 1) {
+                    $repos.Name
+                }
+                else {
+                    throw "There are multiple resgistered repositories:$($repos.Name). Please specify one explicitly."
+                }
+            })
         }
     }
     catch 

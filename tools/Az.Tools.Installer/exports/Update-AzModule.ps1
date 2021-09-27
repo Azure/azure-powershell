@@ -53,111 +53,113 @@ function Update-AzModule {
     [OutputType([PSCustomObject[]])]
     [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess = $true)]
     param(
-        [Parameter(HelpMessage = 'The module names.')]
+        [Parameter(HelpMessage = 'The Registered Repostory.')]
         [ValidateNotNullOrEmpty()]
+        [string]
+        ${Repository},
+
+        [Parameter(HelpMessage = 'The module names.')]
+        #[ValidateNotNullOrEmpty()]
         [string[]]
         ${Name},
 
-        [Parameter(HelpMessage = 'Present to decide whether to remove the previous versions of the modules.')]
+        [Parameter(HelpMessage = 'Present to keep the previous versions of the modules.')]
         [switch]
-        ${RemovePrevious},
+        ${KeepPrevious},
 
-        [Parameter(HelpMessage = 'Update modules and override warning messages about module installation conflicts. If a module with the same name already exists on the computer, Force allows for multiple versions to be installed. If there is an existing module with the same name and version, Force overwrites that version.')]
-        [ValidateNotNullOrEmpty()]
+        [Parameter(HelpMessage = 'Installs modules and overrides warning messages about module installation conflicts. If a module with the same name already exists on the computer, Force allows for multiple versions to be installed. If there is an existing module with the same name and version, Force overwrites that version.')]
         [Switch]
         ${Force}
     )
 
     process {
         $cmdStarted = Get-Date
-
-        $WhatIf = $PSBoundParameters.ContainsKey('WhatIf')
-
+        $Invoker = $MyInvocation.MyCommand
+        $preErrorActionPreference =  $ErrorActionPreference
+        $ErrorActionPreference = 'Stop'
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
-        if ($ppsedition -eq "Core") {
-            $allPahts = (Microsoft.PowerShell.Core\Get-Module -Name "Az*" -ListAvailable -ErrorAction Stop | Where-Object {$_.Author -eq "Microsoft Corporation" -and $_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}).Path
-            $allPahts = ($allPahts | Select-String -Pattern "WindowsPowerShell")
-            if ($allPahts) {
-                Write-Warning "Az modules are also installed in WindowsPowerShell. Please update them using WindowsPowerShell."
-            }
-        }
+        $Name = Normalize-ModuleName $Name
 
-        $parameters = @{}
+        $allInstalled = Get-AllAzModule
+        $intersection = $allInstalled
+
         if ($Name) {
-            $Name = $Name.Foreach({"Az." + $_}) | Sort-Object -Unique
-            $parameters['Name'] = $Name
+            $intersection = $intersection | Where-Object {$_.Name -eq "Az.Accounts" -or $Name.Contains($_.Name)}
+            $modulesNotInstalled = $Name | Where-Object {!$allInstalled.Name.Contains($_)}
+            if ($modulesNotInstalled) {
+                Write-Warning "[$Invoker] $modulesNotInstalled are not installed. Please firstly install them before update."
+                #If Az.Accounts is in modulesNotInstalled，it will be warned but installed anyway.
+            }
         }
-        
-        $totalSeconds = (Measure-Command { $allToUpdate = Get-AzModuleUpdateList @parameters }).TotalSeconds
-        Write-Debug "Time Elapsed: ${totalSeconds}s"
 
-        if($allToUpdate) {
-            Write-Host -ForegroundColor DarkGreen "The modules to Update:$($allToUpdate | Out-String)"
+        $groupSet = @{}
+        $group = $intersection | Group-Object -Property Name
+        $group | Foreach-Object {$groupSet[$_.Name] = ($_.Group.Version | Sort-Object -Descending) }
 
-            $allToUpdateReordered = @() + ($allToUpdate | Where-Object {$_.Name -eq "Az"})
-            $allToUpdateReordered += $allToUpdate | Where-Object {$_.Name -ne "Az" -and $_.Name -ne "Az.Accounts"}
-            $allToUpdateReordered += $allToUpdate | Where-Object {$_.Name -eq "Az.Accounts"}
+        $modulesToUpdate = Get-AzModuleFromRemote -Name $intersection.Name -Repository $Repository -AllowPrerelease:$true -Invoker $Invoker
+        $moduleUpdateTable = $modulesToUpdate | Foreach-Object { [PSCustomObject]@{
+            Name = $_.Name
+            VersionBeforeUpdate = [Version] ($groupSet[$_.Name] | Select-Object -First 1)
+            VersionUpdate = [Version] $_.Version
+        } }
 
-            foreach ($module in $allToUpdateReordered) {
-                if (-not $module) {
-                    continue
+        $module = $null
+        $modulesAlreadyLatest = @()
+        $moduleUpdateTable = $moduleUpdateTable | Foreach-Object {
+            if ($_.VersionUpdate -gt $_.VersionBeforeUpdate) {
+                $_
+            }
+            else {
+                $modulesAlreadyLatest += $_.Name
+            }
+        }
+        if ($moduleUpdateTable) {
+            Write-Host "[$Invoker] Update $($moduleUpdateTable.Name) to the latest version(s) on $Repository."
+        }
+        if ($modulesAlreadyLatest) {
+            Write-Host "[$Invoker] $modulesAlreadyLatest are already in their latest version(s) with reference to $Repository."
+        }
+ 
+        if ($WhatIfPreference) {
+            $module = $null
+            foreach($module in $moduleUpdateTable) {
+                Write-Host "WhatIf: Update $($module.Name) from $($module.VersionBeforeUpdate) to $($module.VersionUpdate)"
+            }
+        }
+
+        if (!$WhatIfPreference) {
+            $installModuleParams = @{}
+            foreach ($key in $PSBoundParameters.Keys) {
+                if ($key -eq 'KeepPrevious') {
+                    $installModuleParams.Add('RemovePrevious', !$KeepPrevious) 
                 }
-                if ($RemovePrevious) {
-                    if ($module.InstalledVersion -and ($Force -or $PSCmdlet.ShouldProcess("Remove $($module.Name) of the versions: $($module.InstalledVersion)", $module.Name, "Remove"))) {
-                        if ($Force) {
-                            Write-Debug "Remove $($module.Name) of versions $($module.InstalledVersion)."
-                        }
-                        foreach ($version in $module.InstalledVersion) {
-                            PowerShellGet\Uninstall-Module -Name $module.Name -RequiredVersion $version
-                        }
-                    }
-                }
-                
-                if ($Force -or $PSCmdlet.ShouldProcess("Update $($module.Name) to the latest version $($module.VersionToUpgrade) from $($module.Repository)", $module.Name, "Update")) {
-                    if ($Force) {
-                        Write-Debug "Update $($module.Name) to the latest version $($module.VersionToUpgrade) from $($module.Repository)."
-                    }
-
-                    $moduleInstalled = $null
-                    try {
-                        $moduleInstalled = Get-InstalledModule -Name $module.Name -RequiredVersion $module.VersionToUpgrade -ErrorAction Stop
-                    }
-                    catch {
-                        Write-Debug $_
-                    }
-                    if (-not $moduleInstalled -or $moduleInstalled.Repository -ne $module.Repository) {
-                        $parameters = @{}
-                        $parameters['Name'] = $module.Name
-                        $parameters['Repository'] = $module.Repository
-                        $parameters['RequiredVersion'] = $module.VersionToUpgrade
-                        $parameters['Force'] = $Force -or ($moduleInstalled -ne $null -and $moduleInstalled.Repository -ne $module.Repository)
-                        PowerShellGet\Install-Module @parameters
-                    }
-                }
-            } 
-
-            $output = @()
-            if (-not $WhatIf) {
-                foreach($n in $allToUpdate.Name) {
-                    try {
-                        $output += (Get-InstalledModule -Name $n -ErrorAction Stop)
-                    }
-                    catch {
-                        Write-Warning $_
-                    }
+                elseif($key -ne 'Name'){
+                    $installModuleParams.Add($key, $PSBoundParameters[$key]) 
                 }
             }
-            Write-Output $output
+            $installModuleParams.Add('AllowPrerelease', $true)
+            $modules = $moduleUpdateTable | Foreach-Object {
+                $m = New-Object ModuleInfo
+                $m.Name = $_.Name
+                $m.Version += [Version] $_.VersionUpdate
+                $m
+            }
+            $installModuleParams.Add('ModuleList', $modules)
+            $installModuleParams.Add('Invoker', $MyInvocation.MyCommand)
+            $null = Install-AzModuleInternal @installModuleParams
+
+            Write-Output $moduleUpdateTable
         }
 
-        $Duration = (Get-Date) - $cmdStarted
-        Write-Debug "Time Elapsed Total: $($Duration.TotalSeconds)s"
-
+        <#
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
         -IsSuccess $true `
         -StartDateTime $cmdStarted `
         -Duration $Duration
+        #>
+
+        $ErrorActionPreference = $preErrorActionPreference 
     }
 }

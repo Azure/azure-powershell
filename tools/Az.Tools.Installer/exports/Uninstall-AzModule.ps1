@@ -27,23 +27,23 @@ function Uninstall-AzModule {
 #>
 
     [OutputType()]
-    [CmdletBinding(DefaultParameterSetName = 'RemoveAll', PositionalBinding = $false, SupportsShouldProcess = $true)]
+    [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess = $true)]
     param(
-        [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Maximum Az Version.')]
+        [Parameter(ParameterSetName = 'ByName', Mandatory, HelpMessage = 'Az modules to uninstall.', ValueFromPipelineByPropertyName = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
-        ${MaximumVersion},
+        [string[]]
+        ${Name},
 
-        [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Minimum Az Version.')]
+        [Parameter(ParameterSetName = 'Default',HelpMessage = 'Az modules to exclude from uninstall.', ValueFromPipelineByPropertyName = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
-        ${MinimumVersion},
+        [string[]]
+        ${ExcludeModule},
 
-        [Parameter(ParameterSetName = 'WithoutPreview',HelpMessage = 'Required Az Version.')]
+        [Parameter(ParameterSetName = 'Default', HelpMessage = 'Specify to uninstall prerelease modules only.')]
         [ValidateNotNullOrEmpty()]
-        [string]
-        ${RequiredVersion},
-
+        [Switch]
+        ${PrereleaseOnly},
+        
         [Parameter(HelpMessage = 'Remove all AzureRm modules.')]
         [ValidateNotNullOrEmpty()]
         [Switch]
@@ -52,174 +52,109 @@ function Uninstall-AzModule {
         [Parameter(HelpMessage = 'Installs modules and overrides warning messages about module installation conflicts. If a module with the same name already exists on the computer, Force allows for multiple versions to be installed. If there is an existing module with the same name and version, Force overwrites that version.')]
         [ValidateNotNullOrEmpty()]
         [Switch]
-        ${Force},
-
-        [Parameter(ParameterSetName = 'WithPreview', Mandatory, HelpMessage = 'Allow preview modules to be installed.')]
-        [Parameter(ParameterSetName = 'WithPreviewAndAllVersion', Mandatory, HelpMessage = 'Allow preview modules to be installed.')]
-        [ValidateNotNullOrEmpty()]
-        [Switch]
-        ${AllowPrerelease},
-
-        [Parameter(HelpMessage = 'Az modules to install.', ValueFromPipelineByPropertyName = $true)]
-        [ValidateNotNullOrEmpty()]
-        [string[]]
-        ${Name},
-
-        [Parameter(ParameterSetName = 'WithPreviewAndAllVersion', Mandatory, HelpMessage = 'Remove all versions')]
-        [Parameter(ParameterSetName = 'WithoutPreviewAndAllVersion', Mandatory, HelpMessage = 'Remove all versions')]
-        [Switch]
-        ${AllVersion},
-
-        [Parameter(ParameterSetName = 'WithoutPreview', Mandatory, HelpMessage = 'The Registered Repostory.')]
-        [Parameter(ParameterSetName = 'WithoutPreviewAndAllVersion', Mandatory, HelpMessage = 'The Registered Repostory.')]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        ${Repository}
+        ${Force}
     )
 
     process
-     {
-
+    {
         $cmdStarted = Get-Date
 
-        $author = 'Microsoft Corporation'
-        $company_name = 'azure-sdk'
+        $Invoker = $MyInvocation.MyCommand
+        $preErrorActionPreference =  $ErrorActionPreference
+        $ErrorActionPreference = 'Stop'
+        $ppsedition = $PSVersionTable.PSEdition
+        Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
-        [System.Collections.ArrayList]$module_name = @()
-        $module = @{}
-        $result = @()
-        $installed = @()
-        $latest = ''
-        $max_job_count = 5
-
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Name = $Name.Foreach({"Az." + $_})
-            $Name | Foreach-Object {
-                $module_name += $_
-            }
+        if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
+            Uninstall-AzureRM
         }
 
+        if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
+            Uninstall-Az -AzOnly -Invoker $Invoker
+        }
+
+        $allInstalled = Get-AllAzModule -PrereleaseOnly:$PrereleaseOnly
+
+        $moduleToUninstall = $allInstalled | Foreach-Object {[PSCustomObject]@{Name = $_.Name; Version = $_.Version}}
+        if ($Name) {
+            $Name = Normalize-ModuleName $Name
+            $moduleToUninstall = $moduleToUninstall | Where-Object {!$Name -or $Name.Contains($_.Name)}
+            $modulesNotInstalled = $Name | Where-Object {!$allInstalled.Name.Contains($_)}
+            if ($modulesNotInstalled) {
+                Write-Warning "[$Invoker] $modulesNotInstalled are not installed."
+            }         
+        }
+        else {
+            if ($ExcludeModule) {
+                $ExcludeModule = Normalize-ModuleName $ExcludeModule
+                $moduleToUninstall = $moduleToUninstall | Where-Object {!$ExcludeModule.Contains($_.Name)}
+            }      
+        }
+
+        $groupSet = @{}
+        $moduleToUninstall | Group-Object -Property Name | Foreach-Object {$groupSet[$_.Name] = ($_.Group.Version | Sort-Object -Descending) }
+
+        $modules = $groupSet.Keys | ForEach-Object {
+            $m = New-Object ModuleInfo
+            $m.Name = $_
+            $m.Version = $groupSet[$_]
+            $m
+        }
+        $s = {
+            param($module)
+            Write-Output "$($module.Name) ver $($module.Version)"
+            PowerShellGet\Uninstall-Module -Name $module.Name -AllVersions -ErrorAction SilentlyContinue
+        }
+
+        if ($modules) {
+            $JobParams = @{
+                ModuleList = $modules
+                Snippet = $s
+                Operation = 'Uninstalling'
+                JobName = 'Az.Tools.Installer'
+                Invoker = $Invoker
+            }
+    
+            if ($PSBoundParameters.ContainsKey('Force'))
+            {
+                $JobParams.Add('Confirm', $false)
+            }
+    
+            if ($PSBoundParameters.ContainsKey('Confirm'))
+            {
+                $JobParams.Add('Confirm', $PSBoundParameters['Confirm'])
+            }
+    
+            if ($PSBoundParameters.ContainsKey('WhatIf'))
+            {
+                $JobParams.Add('WhatIf', $PSBoundParameters['WhatIf'])
+            }
+
+            Write-Host "[$Invoker] Uninstalling $($modules.Name)"
+            $InstallStarted = Get-Date
+
+            #Invoke-ThreadJob @JobParams
+
+            $module = $null
+            foreach ($module in $modules) {
+                if ($PSCmdlet.ShouldProcess("Uninstall module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Uninstall")) {
+                    PowerShellGet\Uninstall-Module -Name $module.Name -AllVersions -ErrorAction SilentlyContinue
+                    Write-Host  "[$Invoker] Uninstalling $($module.Name) ver $($module.Version) is completed"
+                }
+            }
+
+            $durationInstallation = (Get-Date) - $InstallStarted
+            Write-Host "[$Invoker] All uninstallation tasks are finished; Time Elapsed Total: $($durationInstallation.TotalSeconds)s"
+        }
         
-        try {
-            $installed = Get-InstalledModule -Name 'Az.*','Az' -ErrorAction SilentlyContinue
-        } catch {
-            
-        }
-
-        if (!$PSBoundParameters.ContainsKey("AllowPrerelease") -and ($PSCmdlet.ParameterSetName -ne 'RemoveAll')) {
-
-            #Without preview
-            $parameter = @{}
-            $parameter.Add('Repository', $Repository)
-            $parameter.Add('Name', 'Az')
-            $parameter.Add('ErrorAction', 'Stop')
-            $index = @{}         
-            if ($PSBoundParameters.ContainsKey('MaximumVersion')) {
-                $parameter.Add('MaximumVersion', $MaximumVersion)
-            }
-    
-            if ($PSBoundParameters.ContainsKey('MinimumVersion')) {
-                $parameter.Add('MinimumVersion', $MinimumVersion)
-            }
-    
-            if ($PSBoundParameters.ContainsKey('RequiredVersion')) {
-                $parameter.Add('RequiredVersion', $RequiredVersion)
-            }
-
-            try {
-                $az = Find-Module @parameter
-            } catch {
-                Write-Error "No related Az modules were found in $Repository, $_"
-                break
-            }
-
-            $installed_name = ($installed | Foreach-Object{$_.Name})
-
-            $version = $az.Version
-            $az.Dependencies | Foreach-Object {
-                if ($_.Name -ne 'Az.Accounts') {
-                    $index.Add($_.Name, $_.RequiredVersion)
-                } else {
-                    $index.Add($_.Name, $_.MinimumVersion)
-                }
-                if (!$PSBoundParameters.ContainsKey('Name') -and ($installed_name -contains $_.Name)) {
-                    $module_name += $_.Name
-                }
-            }
-
-            #Uninstall Az modules by name
-            $module_name | Foreach-Object {
-                if (!$index.ContainsKey($_)) {
-                    Write-Warning "module $_ will not be uninstalled since it is not a GAed Az module in Az $version, please try adding -AllowPrerelease option."
-                } else {
-                    $module.Add($_, $index[$_])
-                }
-            }
-
-        } else {
-            
-            #With preview
-            $latest = ' latest version of'
-
-            if (!$PSBoundParameters.ContainsKey('Name')) {
-                # all latest modules
-                $installed | ForEach-Object {
-                    if (($_.Author -eq $author) -and ($_.CompanyName -eq $company_name) -and (!$_.Name.StartsWith('Az.Tools'))) {
-                        $module_name += $_.Name
-                    }
-                }
-            }
-
-            $module_name | Foreach-Object {$module.Add($_, '')}
-        }
-
-        if ($PSBoundParameters.ContainsKey('RemoveAzureRm') -and ($PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
-            Uninstall-Module -Name 'AzureRm*' -AllVersion -ErrorAction SilentlyContinue
-            Uninstall-Module -Name 'Azure.*' -AllVersion -ErrorAction SilentlyContinue
-        }
-
-        $module.Keys | Foreach-Object {
-            $version = $module[$_]
-
-            $running = Get-Job -State 'Running'
-            if ($running.Count -eq $max_job_count) {
-                $null = ($running | Wait-Job -Any)
-            }
-
-            Get-Job -State 'Completed' | Foreach-Object {
-                $result += Receive-Job $_
-                Remove-Job $_ -Confirm:$false
-            }
-
-            if ($PSCmdlet.ShouldProcess("Uninstall$latest $_ $version", "$latest $_ $version", "Uninstall")) {
-                Write-Debug "Uninstall$latest $_ $version"
-                $parameter = @{'Name' = $_}
-                $parameter.Add('ErrorAction', 'SilentlyContinue')
-                if ($PSBoundParameters.ContainsKey('AllVersion')) {
-                    $parameter.Add('AllVersion', $AllVersion)
-                } elseif ($PSCmdlet.ParameterSetName -eq 'WithPreview') {
-                    $parameter.Add('AllowPrerelease', $AllowPrerelease)
-                } elseif ($PSCmdlet.ParameterSetName -eq 'WithoutPreview') {
-                    $parameter.Add('RequiredVersion', $version)
-                } else {
-                    $parameter.Add('AllVersion', $AllVersion)
-                    $parameter.Add('AllowPrerelease', $AllowPrerelease)
-                }
-                $null = Start-Job {
-                    Uninstall-Module @using:parameter
-                }
-            }
-        }
-
-        $null = Get-Job | Wait-Job
-        Get-Job | Foreach-Object {
-            $result += Receive-Job $_
-            Remove-Job $_ -Confirm:$false
-        }
-
+        <#
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
             -IsSuccess $true `
             -StartDateTime $cmdStarted `
             -Duration ((Get-Date) - $cmdStarted)
+
+        #>
+
+        $ErrorActionPreference = $preErrorActionPreference 
     }
 }

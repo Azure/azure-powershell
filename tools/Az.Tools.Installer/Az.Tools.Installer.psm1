@@ -68,8 +68,8 @@ public class ParallelDownloader
 
     public void Download(string module, Version version, string path)
     {
-        var nupkgFile = Path.Join(path, $"{module}.{version}.nupkg");
-        Task task = DownloadToFile($"{urlRepository}/package/{module}/{version}", nupkgFile.ToString());
+        var nupkgFile = Path.Combine(path, String.Format("{0}.{1}.nupkg", module, version));
+        Task task = DownloadToFile(String.Format("{0}/package/{1}/{2}", urlRepository, module, version), nupkgFile.ToString());
         tasks.Add(task);
         modules.Add(module);
     }
@@ -84,7 +84,7 @@ public class ParallelDownloader
             modules.Remove(modules[taskIndex]);
             if (!task.IsCompleted)
             {
-                throw new Exception($"Error downloading {modules[taskIndex]} {task.Exception}");
+                throw new Exception(String.Format("Error downloading {0} {1}", modules[taskIndex], task.Exception));
             }
         }
     }
@@ -139,7 +139,7 @@ function Get-AllAzModule {
 
     process {
         $allmodules = Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name Az*,Az | Where-Object {
-            !$PrereleaseOnly -or ($_.PrivateData -and $_.PrivateData.ContainsKey('PSData') -and $_.PrivateData.PSData.ContainsKey('PreRelease') -and $_.PrivateData.PSData.Prerelease -eq 'preview')
+            !$PrereleaseOnly -or ($_.PrivateData -and $_.PrivateData.ContainsKey('PSData') -and $_.PrivateData.PSData.ContainsKey('PreRelease') -and $_.PrivateData.PSData.Prerelease -eq 'preview') -or ($_.Version -lt [Version] "1.0")
         }
         $allmodules
     }
@@ -184,7 +184,7 @@ function Get-AzModuleFromRemote {
         [string[]]
         ${Name},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [string]
         ${Repository},
 
@@ -199,19 +199,35 @@ function Get-AzModuleFromRemote {
 
         [Parameter()]
         [Switch]
-        ${UseExactAccountVersion}
+        ${UseExactAccountVersion},
+
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${Invoker}
     )
 
     process {
+        $azModule = $null
+        if ($AllowPrerelease) {
+            if ($RequiredVersion -and $RequiredVersion -lt [Version] "6.0.0") {
+                write-warning "Prerelease version cannot be lower than 6.0.0. Will only install GA modules."
+                $azModule = "Az"
+            }
+            else {
+                $azModule = "AzPreview"
+            }
+        }
+        else {
+            $azModule = "Az"
+        }
         $findModuleParams = @{
-            Name = if ($AllowPrerelease) {'AzPreview'} else {'Az'} 
+            Name =  $azModule
             Repository = $Repository
             RequiredVersion = $RequiredVersion
         }
 
         $modules = PowerShellGet\Find-Module @findModuleParams
-
-        Write-Debug 'Get-AzModuleFromRemote'
 
         $accountVersion = 0
         if (!$UseExactAccountVersion) {
@@ -243,13 +259,88 @@ function Get-AzModuleFromRemote {
             }
         }
 
-        Write-Debug "Get-AzModuleFromRemote: find $($modulesWithVersion.Length)"
+        Write-Debug "[$Invoker] find $($modulesWithVersion.Length) modules."
 
-        if (!$containValidModule -and !$Name) {
-            @()
+        if (!$containValidModule) {
+            $modulesWithVersion = $modulesWithVersion | Where-Object {$_.Name -ne "Az.Accounts"}
         }
         else {
             $modulesWithVersion
+        }
+    }
+}
+
+Write-Warning "Start to add type of ModuleInfo"
+class ModuleInfo
+{
+    [string] $Name = $null
+    [Version[]] $Version = @()
+}
+
+function Invoke-ThreadJob {
+    [CmdletBinding(SupportsShouldProcess)]
+    param (
+        [Parameter(Mandatory)]
+        [ModuleInfo[]]
+        ${ModuleList},
+
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [ScriptBlock]
+        ${Snippet},
+
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${Operation},
+
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${JobName},
+
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${Invoker}
+    )
+
+    process {
+        #Write-Debug ($PSBoundParameters | Out-String)
+        try
+        {
+            $jobs = @()
+            $module = $null
+            foreach ($module in $ModuleList) {
+                if ($PSCmdlet.ShouldProcess("$Operation module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", $Operation)) {
+                    $jobs  += Start-ThreadJob -Name $JobName -ScriptBlock $Snippet -ArgumentList $module -ThrottleLimit 5
+                    #-StreamingHost $Host
+                }
+            }
+    
+            if (!$WhatIfPreference) {
+                $result = $null
+                $job = $null
+                foreach ($job in $jobs) {
+                    $job = Wait-Job $job
+                    $result = Receive-Job $job
+                    if ($job.State -eq 'Completed') {
+                        Write-Debug  "[$Invoker] $Operation $result is completed"
+                    }
+                    else {
+                        Write-Warning  "[$Invoker] $Operation $result is failed"
+                    }
+                    Remove-Job $job -Confirm:$false
+                }
+            }
+        }
+        finally
+        {
+            $jobs = Get-Job -Name $JobName -ErrorAction 'SilentlyContinue'
+            if ($jobs) {
+                Stop-Job $jobs
+                Remove-Job $jobs -Confirm:$false
+            }
         }
     }
 }
@@ -272,16 +363,39 @@ function Uninstall-Az {
     param (
         [Parameter()]
         [Switch]
-        ${AzOnly}
+        ${AzOnly},
+
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${Invoker}
     )
     
     process {
         try {
             if (!$AzOnly) {
                 $azModuleNames = (Get-InstalledModule -Name Az.* -ErrorAction Stop).Name | Where-Object {$_ -match "Az(\.[a-zA-Z0-9]+)?$"}
-                foreach($module in $azModuleNames) {
-                    Uninstall-Module -Name $module -AllVersion -ErrorAction SilentlyContinue
+                $modules = $azModuleNames | ForEach-Object {
+                    $m = New-Object ModuleInfo
+                    $m.Name = $_
+                    $m
                 }
+                $s = {
+                    param($module)
+                    Write-Output "$($module.Name)"
+                    PowerShellGet\Uninstall-Module -Name $module.Name -AllVersions -ErrorAction SilentlyContinue
+                }        
+                if ($modules) {
+                    $JobParams = @{
+                        ModuleList = $modules
+                        Snippet = $s
+                        Operation = 'Uninstalling'
+                        JobName = 'Az.Tools.Installer'
+                        Invoker = $Invoker
+                    }
+                    Invoke-ThreadJob @JobParams
+                }
+        
             }
             Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue
         }
@@ -304,92 +418,30 @@ function Get-RepositoryUrl {
     }
 }
 
-<#--------------------------------------------------------------------------
-class PSParallelDownloader
-{
-    #[ParallelDownloader] hidden $ppDownloader = $null
-    [HttpClient] hidden $psHttpClient = $null
-    [HttpClientHandler] hidden $psHttpClientHandler = $null
-    [List[PSCustomObject]] hidden $tasks = @()
-    [string] $url = ""
-
-    PSParallelDownloader([string]$repository) {
-        #Add-Type $script:ParallelDownloaderClassCode -ReferencedAssemblies System.Net.Http,System.Threading.Tasks
-
-        $this.psHttpClientHandler = [HttpClientHandler]::new()
-        $this.psHttpClient = [HttpClient]::new($this.psHttpClientHandler)
-        $ppDownloader = [ParallelDownloader]::new($this.psHttpClient)
-        $this.url = (Get-PSRepository -Name $repository).SourceLocation
-
-        #Test-Class
-    }
-
-    [PSCustomObject] Download([string]$module, [version]$version, [string]$path) {
-        Write-Host "[$($MyInvocation.MyCommand)] Downloading module $module version $version to $path"
-        $this.url
-        [string]$nupkgFilePath = Join-Path $path "$module.$($version).nupkg"
-        $task = [PSCustomObject]@{
-            Task       = $this.ppDownloader.DownloadToFile("$($this.url)/package/$module/$version", $nupkgFilePath)
-            ModuleName = $module
-            Path       = $nupkgFilePath
-        }
-        $this.tasks += $task
-        return $task
-    }
-    
-    [void] WaitForAllTasks() {
-        while ($this.tasks) {
-            [int]$taskIndex = [Task]::WaitAny($this.tasks.Task)
-            Write-Host "[$($MyInvocation.MyCommand)] wait for task $taskIndex."
-            [PSObject]$task = $this.tasks[$taskIndex]
-            $this.tasks.RemoveAt($taskIndex)
-            if (!$task.Task.IsCompleted) {
-                throw "Error downloading $($task.ModuleName): $($task.Task.Exception)"
-            }
-        }
-    }
-    
-    [void] Dispose() {
-        if ($this.tasks) {
-            Write-Host "[$($MyInvocation.MyCommand)] Cancelling $($this.tasks.Count) tasks"
-            $this.ppDownloader.Cancel()
-            try {
-                [Task]::WaitAll($this.tasks.Task)
-            } catch {
-
-            }
-        }
-
-        if ($this.psHttpClient) {
-            $this.psHttpClient.Dispose()
-        }
-        if ($this.psHttpClientHandler) {
-            $this.psHttpClientHandler.Dispose()
-        }
-    }
-}
-#>
-
 $exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse -ErrorAction SilentlyContinue )
 $internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction SilentlyContinue )
 
-$allFunctions = $exportedFunctions + $internalFunctions
+$allFunctions = $internalFunctions + $exportedFunctions
 foreach($function in $allFunctions) {
     try {
         . $function.Fullname
+        Write-Warning "$($function.Fullname)"
     }
     catch {
         Write-Error -Message "Failed to import function $($function.fullname): $_"
     }
 }
+
+Write-Warning "$($exportedFunctions.Basename)"
 Export-ModuleMember -Function $exportedFunctions.Basename
 
 $commandsWithRepositoryParameter = @(
     "Install-AzModule",
-    "Uninstall-AzModule"
+    "Update-AzModule"
 )
 
 Add-RepositoryArgumentCompleter -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"
+Add-RepositoryDefaultValue -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"
 <#--------------------------------------------------------------#>
 
 function Test-Downloader {
