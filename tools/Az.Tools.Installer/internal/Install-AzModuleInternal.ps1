@@ -78,24 +78,22 @@ function Install-AzModuleInternal {
             return
         }
 
-        $DontClean = $true
-
         $modules = $ModuleList
         try {
             [string]$tempRepo = Join-Path ([Path]::GetTempPath()) (Get-Date -Format "yyyyddMM-HHmm")
-            $tempRepo = Join-Path 'D:/PSLocalRepo/' (Get-Date -Format "yyyyddMM-HHmm")
+            #$tempRepo = Join-Path 'D:/PSLocalRepo/' (Get-Date -Format "yyyyddMM-HHmm")
             
             if ($Force -or !$WhatIfPreference) {
                 if (Test-Path -Path $tempRepo) {
                     Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false
                 }
-                Write-Debug "[$Invoker] Create repository folder $tempRepo"
                 $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false
+                Write-Debug "[$Invoker] The repository folder $tempRepo is created."
 
                 PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
-                Write-Debug "[$Invoker] Registering temporary repository $script:AzTempRepoName"
                 PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop'
                 PowerShellGet\Set-PSRepository -Name $script:AzTempRepoName -InstallationPolicy Trusted
+                Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is registered."
 
                 $InstallStarted = Get-Date
                 $url = Get-RepositoryUrl $Repository
@@ -104,7 +102,7 @@ function Install-AzModuleInternal {
     
                 try {
                     foreach ($module in $modules) {
-                        Write-Debug "[$Invoker] Downloading $($module.Name) version $($module.Version)"
+                        Write-Debug "[$Invoker] Downloading $($module.Name) version $($module.Version)."
                         $null = $downloader.Download($module.Name, [string] $module.Version, $tempRepo)
                     }
                     $downloader.WaitForAllTasks()
@@ -117,7 +115,7 @@ function Install-AzModuleInternal {
             }
             
             $InstallStarted = Get-Date
-            Write-Host "[$Invoker] Installing modules $($modules.Name)."
+            Write-Debug "[$Invoker] Will install modules $($modules.Name)."
             $installModuleParams = @{
                 Scope = 'CurrentUser'
                 Repository = $script:AzTempRepoName
@@ -139,14 +137,39 @@ function Install-AzModuleInternal {
             {
                 $jobs = @()
                 $module = $null
+                $maxJobCount = 5
+                $index = 0
                 foreach ($module in $modules) {
-                    if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
-                        $jobs  += Start-ThreadJob -Name "Az.Tools.Installer" {
-                            $tmodule = $using:module
-                            Write-Output "$($tmodule.Name) ver $($tmodule.Version)"
-                            PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
-                        } -ThrottleLimit 5 
-                        #-StreamingHost $Host
+                    if ($PSVersionTable.PSEdition -eq "Core") {
+                        if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
+                            $jobs  += Start-ThreadJob -Name "Az.Tools.Installer" {
+                                $tmodule = $using:module
+                                Write-Output "$($tmodule.Name) version $($tmodule.Version)"
+                                PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
+                            } -ThrottleLimit $maxJobCount
+                            #-StreamingHost $Host
+                        }
+                    }
+                    else {
+                        $runningJob = Get-Job -State Running
+                        $count = 0
+                        if ($runningJob -and $runningJob.PSObject.Properties.Name.Contains('Count')) {
+                            $count = (Get-Job -State Running).Count
+                        }
+                        if($count -lt $maxJobCount) {
+                            if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
+                                $jobs += Start-Job -Name "Az.Tools.Installer" {
+                                    $tmodule = $using:module
+                                    Write-Output "$($tmodule.Name) version $($tmodule.Version)"
+                                    PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
+                                }
+                                Write-Progress -Activity "Install Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
+                                $index += 1
+                            }
+                        }
+                        else {
+                            Get-Job -State Running | Wait-Job -Any
+                        }
                     }
                 }
     
@@ -163,14 +186,16 @@ function Install-AzModuleInternal {
                             Write-Warning $_
                         }
                         if ($job.State -eq 'Completed') {
-                            Write-Debug  "[$Invoker] $result installation complete"
+                            Write-Debug  "[$Invoker] Installing $result is complete."
                         }
                         else {
-                            Write-Warning  "[$Invoker] $result installation fail"
+                            Write-Warning  "[$Invoker] Uninstalling $result is failed."
                         }
                         Remove-Job $job -Confirm:$false
-                        Write-Progress -Activity "Install Module" -CurrentOperation "$result" -PercentComplete ($index / $jobs.Count * 100)
-                        $index += 1
+                        if ($PSVersionTable.PSEdition -eq "Core") {
+                            Write-Progress -Activity "Install Module" -CurrentOperation "$result" -PercentComplete ($index / $jobs.Count * 100)
+                            $index += 1
+                        }
                     }
                 }
             }
@@ -184,15 +209,15 @@ function Install-AzModuleInternal {
             }
 
             $durationInstallation = (Get-Date) - $InstallStarted
-            Write-Host "[$Invoker] All installing tasks are completed; Time Elapsed Total: $($durationInstallation.TotalSeconds)s"
+            Write-Debug "[$Invoker] All installing tasks are completed; Time Elapsed Total: $($durationInstallation.TotalSeconds)s."
         }
         finally {
             if ($Force -or !$WhatIfPreference) {
                 if (!$DontClean) {
-                    Write-Debug "[$Invoker] Unregistering temporary repository $script:AzTempRepoName"
+                    Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is unregistered."
                     PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue'
 
-                    Write-Debug "[$Invoker] Delete repository folder $tempRepo"
+                    Write-Debug "[$Invoker] The Repository folder $tempRepo is removed."
                     Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false
                 }
             }

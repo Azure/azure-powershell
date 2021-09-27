@@ -59,7 +59,6 @@ function Update-AzModule {
         ${Repository},
 
         [Parameter(HelpMessage = 'The module names.')]
-        #[ValidateNotNullOrEmpty()]
         [string[]]
         ${Name},
 
@@ -116,20 +115,19 @@ function Update-AzModule {
             }
         }
         if ($moduleUpdateTable) {
-            Write-Host "[$Invoker] Update $($moduleUpdateTable.Name) to the latest version(s) on $Repository."
+            Write-Debug "[$Invoker] Will update $($moduleUpdateTable.Name) to the latest version(s) on $Repository."
         }
         if ($modulesAlreadyLatest) {
-            Write-Host "[$Invoker] $modulesAlreadyLatest are already in their latest version(s) with reference to $Repository."
+            Write-Debug "[$Invoker] $modulesAlreadyLatest are already in their latest version(s) with reference to $Repository."
         }
  
         if ($WhatIfPreference) {
             $module = $null
             foreach($module in $moduleUpdateTable) {
-                Write-Host "WhatIf: Update $($module.Name) from $($module.VersionBeforeUpdate) to $($module.VersionUpdate)"
+                Write-Host "WhatIf: Wiil update $($module.Name) from $($module.VersionBeforeUpdate) to $($module.VersionUpdate)."
             }
         }
-
-        if (!$WhatIfPreference) {
+        else {
             $installModuleParams = @{}
             foreach ($key in $PSBoundParameters.Keys) {
                 if ($key -eq 'KeepPrevious') {
@@ -153,13 +151,13 @@ function Update-AzModule {
             Write-Output $moduleUpdateTable
         }
 
+        $ErrorActionPreference = $preErrorActionPreference
+
         <#
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
         -IsSuccess $true `
         -StartDateTime $cmdStarted `
         -Duration $Duration
         #>
-
-        $ErrorActionPreference = $preErrorActionPreference 
     }
 }

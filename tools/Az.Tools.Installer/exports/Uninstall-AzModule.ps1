@@ -26,7 +26,6 @@ function Uninstall-AzModule {
 
 #>
 
-    [OutputType()]
     [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess = $true)]
     param(
         [Parameter(ParameterSetName = 'ByName', Mandatory, HelpMessage = 'Az modules to uninstall.', ValueFromPipelineByPropertyName = $true)]
@@ -100,6 +99,27 @@ function Uninstall-AzModule {
             $m.Version = $groupSet[$_]
             $m
         }
+
+        $started = Get-Date
+        $referencePaths = Get-ReferencePath
+
+        if ($modules) {
+            $module = $null
+            $index = 0
+            foreach ($module in $modules) {
+                if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Uninstall")) {
+                    Uninstall-SingleModule -ModuleName $module.Name -ReferencePath $referencePaths -Invoker $Invoker
+                    Write-Progress -Activity "Uninstall Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
+                    $index += 1
+                }
+            }
+        }
+        $duration = (Get-Date) - $started
+        Write-Debug "[$Invoker] All uninstallation tasks are finished; Time Elapsed Total: $($duration.TotalSeconds)s."
+
+        $ErrorActionPreference = $preErrorActionPreference
+
+        <#
         $s = {
             param($module)
             Write-Output "$($module.Name) ver $($module.Version)"
@@ -131,20 +151,9 @@ function Uninstall-AzModule {
             }
 
             Write-Host "[$Invoker] Uninstalling $($modules.Name)"
-            $InstallStarted = Get-Date
 
-            #Invoke-ThreadJob @JobParams
 
-            $module = $null
-            foreach ($module in $modules) {
-                if ($PSCmdlet.ShouldProcess("Uninstall module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Uninstall")) {
-                    PowerShellGet\Uninstall-Module -Name $module.Name -AllVersions -ErrorAction SilentlyContinue
-                    Write-Host  "[$Invoker] Uninstalling $($module.Name) ver $($module.Version) is completed"
-                }
-            }
-
-            $durationInstallation = (Get-Date) - $InstallStarted
-            Write-Host "[$Invoker] All uninstallation tasks are finished; Time Elapsed Total: $($durationInstallation.TotalSeconds)s"
+            Invoke-ThreadJob @JobParams
         }
         
         <#
@@ -155,6 +164,5 @@ function Uninstall-AzModule {
 
         #>
 
-        $ErrorActionPreference = $preErrorActionPreference 
     }
 }
