@@ -75,6 +75,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Premium Namespace in regions supported availability zones.")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public bool? ZoneRedundant { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Disable/Enable SAS authentication for the Service Bus namespace")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public bool? DisableLocalAuth { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -87,7 +97,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             {
                 try
                 {
-                    WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity));
+                    PSNamespaceAttributes createresponse = Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, ZoneRedundant, DisableLocalAuth, SkuCapacity);
+                    WriteObject(createresponse);
                 }
                 catch (ErrorResponseException ex)
                 {

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags, int? skuCapacity = null)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags, bool? zoneRedundant, bool? disableLocalAuth, int? skuCapacity = null)
         {
             SBNamespace parameter = new SBNamespace();
             parameter.Location = location;
@@ -97,13 +97,15 @@ namespace Microsoft.Azure.Commands.ServiceBus
                     parameter.Sku.Capacity = skuCapacity;
                 }
             }
+            parameter.ZoneRedundant = zoneRedundant;
+            parameter.DisableLocalAuth = disableLocalAuth;
 
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
         }
 
 
-        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags)
+        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? zoneRedundant, bool? disableLocalAuth)
         {
 
             var parameter = new SBNamespace()
@@ -132,6 +134,16 @@ namespace Microsoft.Azure.Commands.ServiceBus
             }
 
             parameter.Sku = tempSku;
+            if (zoneRedundant != null)
+            {
+                parameter.ZoneRedundant = zoneRedundant;
+            }
+
+            if (disableLocalAuth != null)
+            {
+                parameter.DisableLocalAuth = disableLocalAuth;
+            }
+            
 
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
