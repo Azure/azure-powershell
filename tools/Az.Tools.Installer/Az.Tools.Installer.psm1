@@ -120,7 +120,7 @@ public class ParallelDownloader
 Write-Warning "Start to add type of ParallelDownloaderClassCode"
 Add-Type -AssemblyName System.Net.Http -ErrorAction Stop
 Add-Type $script:ParallelDownloaderClassCode -ReferencedAssemblies System.Net.Http,System.Threading.Tasks,System.Linq,System.Collections,System.Runtime.Extensions
-Write-Warning "Add-Type finish."
+Write-Warning "Add-Type finished."
 
 $getModule = Get-Module -Name "PowerShellGet"
 if ($null -ne $getModule -and $getModule.Version -lt [System.Version]"2.1.3") { 
@@ -178,7 +178,22 @@ function Normalize-ModuleName {
     }
 }
 
+function Get-ReferencePath {
+    [OutputType([string[]])]
+    param()
+    process {
+        $allAzModules = Get-Module -ListAvailable | Where-Object {$_ -match "Az(\.[a-zA-Z0-9]+)?$"}
+        $pathList = $allAzModules.Path -split 'Az.' | Sort-Object -Property Length -Descending | Select-Object -First $allAzModules.Count | Select-Object -Unique
+        $isAdmin = [Security.Principal.WindowsIdentity]::GetCurrent().Groups -contains 'S-1-5-32-544'
+        if (!$isAdmin) {
+            $pathList = $pathList | Where-Object {$_.Contains($env:UserName)}
+        }
+        Write-Output $pathList
+    }
+}
+
 function Get-AzModuleFromRemote {
+    [OutputType([PSCustomObject[]])]
     param (
         [Parameter()]
         [string[]]
@@ -259,7 +274,7 @@ function Get-AzModuleFromRemote {
             }
         }
 
-        Write-Debug "[$Invoker] find $($modulesWithVersion.Length) modules."
+        Write-Debug "[$Invoker] $($modulesWithVersion.Count) module(s) are found."
 
         if (!$containValidModule) {
             $modulesWithVersion = $modulesWithVersion | Where-Object {$_.Name -ne "Az.Accounts"}
@@ -359,6 +374,47 @@ function Uninstall-AzureRM {
     }
 }
 
+function Uninstall-SingleModule {
+    param (
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${ModuleName},
+
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string[]]
+        ${ReferencePath},
+
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${Invoker}
+    )
+
+    process {
+        try {
+            $modules = Get-Module -Name $moduleName -ListAvailable
+            if ($modules) {
+                foreach ($path in $ReferencePath){
+                    $path = Join-Path $path $moduleName
+                    if (Test-Path -Path $path) {
+                        Microsoft.PowerShell.Management\Remove-Item -Path $path -Recurse -Force -WhatIf:$false
+                        Write-Debug "[$Invoker] Uninstalling $ModuleName version $($modules.Version) is completed."
+                    }
+                }
+
+            }
+            else {
+                Write-Warning "[$Invoker] $moduleName is not installed so that cannot be uninstalled."
+            }
+        }
+        catch {
+            Write-Warning $_
+        }
+    }
+}
+
 function Uninstall-Az {
     param (
         [Parameter()]
@@ -374,28 +430,12 @@ function Uninstall-Az {
     process {
         try {
             if (!$AzOnly) {
-                $azModuleNames = (Get-InstalledModule -Name Az.* -ErrorAction Stop).Name | Where-Object {$_ -match "Az(\.[a-zA-Z0-9]+)?$"}
-                $modules = $azModuleNames | ForEach-Object {
-                    $m = New-Object ModuleInfo
-                    $m.Name = $_
-                    $m
+                $azModuleNames = Get-InstalledModule -Name Az.* -ErrorAction Stop | Where-Object {$_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}
+                $module = $null
+                foreach ($module in $azModuleNames) {
+                    $referencePath = $module.InstalledLocation -Split $module.Name | Sort-Object -Property Length -Descending | Select-Object -First 1
+                    Uninstall-SingleModule -ModuleName $module.Name -ReferencePath $referencePath -Invoker $Invoker
                 }
-                $s = {
-                    param($module)
-                    Write-Output "$($module.Name)"
-                    PowerShellGet\Uninstall-Module -Name $module.Name -AllVersions -ErrorAction SilentlyContinue
-                }        
-                if ($modules) {
-                    $JobParams = @{
-                        ModuleList = $modules
-                        Snippet = $s
-                        Operation = 'Uninstalling'
-                        JobName = 'Az.Tools.Installer'
-                        Invoker = $Invoker
-                    }
-                    Invoke-ThreadJob @JobParams
-                }
-        
             }
             Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue
         }
@@ -432,7 +472,6 @@ foreach($function in $allFunctions) {
     }
 }
 
-Write-Warning "$($exportedFunctions.Basename)"
 Export-ModuleMember -Function $exportedFunctions.Basename
 
 $commandsWithRepositoryParameter = @(

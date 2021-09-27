@@ -28,7 +28,7 @@ function Install-AzModule {
 
 #>
 
-    [OutputType()]
+    [OutputType([PSCustomObject[]])]
     [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess)]
     param(
         [Parameter(HelpMessage = 'Az modules to install.', ValueFromPipelineByPropertyName = $true)]
@@ -100,7 +100,6 @@ function Install-AzModule {
             }
         }
 
-        #fixme: exclude Az.Account
         $installModuleParams = @{}
         foreach ($key in $PSBoundParameters.Keys) {
             if($key -ne 'Name'){
@@ -123,13 +122,13 @@ function Install-AzModule {
             Write-Output $modules
         }
 
+        $ErrorActionPreference = $preErrorActionPreference
+
         <#
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
             -IsSuccess $true `
             -StartDateTime $cmdStarted `
             -Duration ((Get-Date) - $cmdStarted)
         #>
-
-        $ErrorActionPreference = $preErrorActionPreference 
     }
 }
