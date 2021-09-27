@@ -129,9 +129,10 @@ function Update-AzModule {
         }
         else {
             $installModuleParams = @{}
+            $installModuleParams.Add('RemovePrevious', $true)
             foreach ($key in $PSBoundParameters.Keys) {
                 if ($key -eq 'KeepPrevious') {
-                    $installModuleParams.Add('RemovePrevious', !$KeepPrevious) 
+                    $installModuleParams['RemovePrevious'] = $false
                 }
                 elseif($key -ne 'Name'){
                     $installModuleParams.Add($key, $PSBoundParameters[$key]) 

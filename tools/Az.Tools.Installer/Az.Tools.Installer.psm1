@@ -138,7 +138,9 @@ function Get-AllAzModule {
     )
 
     process {
-        $allmodules = Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name Az*,Az | Where-Object {
+        $allmodules = Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name Az*,Az `
+         | Where-Object {$_.Name -match "Az(\.[a-zA-Z0-9]+)?$"} `
+         | Where-Object {
             !$PrereleaseOnly -or ($_.PrivateData -and $_.PrivateData.ContainsKey('PSData') -and $_.PrivateData.PSData.ContainsKey('PreRelease') -and $_.PrivateData.PSData.Prerelease -eq 'preview') -or ($_.Version -lt [Version] "1.0")
         }
         $allmodules
