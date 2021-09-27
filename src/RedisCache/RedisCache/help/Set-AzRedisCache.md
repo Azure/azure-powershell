@@ -160,9 +160,7 @@ PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"aof-backup-enabl
 This cmdlet helps in changing persistence method.
 
 
-### Example 6: Scale an Azure Cache for Redis Instance
-
-**Update to different size and tier**
+### Example 6: Scale an Azure Cache for Redis Instance - Update to different size and tier
 
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P2" -Sku "Premium"
@@ -186,10 +184,9 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P2" -Sku "Premium"
           Sku                : Premium
           Tag                : {}
           Zone               : []
-```
+
 This command increases or decreases the memory size of your instance. 
 
-```
 PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium" 
 
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -211,11 +208,11 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium"
           Sku                : Standard
           Tag                : {}
           Zone               : []
-```
+
 This command helps you change the tier of your cache. You can change from Basic to Standard, or Standard to Premium.
+```
 
-
-**Use Redis Cluster to scale in/out**
+### Example 7: Scale an Azure Cache for Redis Instance - Use Redis Cluster to scale in/out
 
 ```
 PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 1
@@ -240,11 +237,9 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 1
           ShardCount         :
           Tag                : {}
           Zone               : []
-```
+
 This cmdlet helps you in enable clustering for your Azure Cache for Redis instance. For increasing the shard count, must enable clustering first.
 
-
-```
 PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 2
 
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -267,8 +262,9 @@ PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 2
           ShardCount         : 1
           Tag                : {}
           Zone               : []
-```
+
 This command increases or decreases the cluster size.
+```
 
 ## PARAMETERS
 
