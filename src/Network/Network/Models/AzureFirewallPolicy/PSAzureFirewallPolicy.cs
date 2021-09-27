@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSAzureFirewallPolicySNAT Snat { get; set; }
 
         private const string IANAPrivateRanges = "IANAPrivateRanges";
+        public PSAzureFirewallPolicySQL SQL { get; set; }
 
         public string[] PrivateRange
         {

@@ -138,6 +138,11 @@ namespace Microsoft.Azure.Commands.Network
         )]
         public string[] PrivateRange { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Firewall policy SQL setting")]
+        public PSAzureFirewallPolicySQL SQL { get; set; }
+
         public override void Execute()
         {
 
@@ -169,7 +174,8 @@ namespace Microsoft.Azure.Commands.Network
                     Tier = this.SkuTier ?? MNM.FirewallPolicySkuTier.Standard
                 },
                 IntrusionDetection = this.IntrusionDetection,
-                PrivateRange = this.PrivateRange
+                PrivateRange = this.PrivateRange,
+                SQL = this.SQL
             };
 
             if (this.UserAssignedIdentityId != null)

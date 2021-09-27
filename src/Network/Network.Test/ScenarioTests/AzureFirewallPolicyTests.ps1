@@ -1462,3 +1462,52 @@ function Test-AzureFirewallPolicyPrivateRangeCRUD {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests AzureFirewall Policy PrivateRange
+#>
+function Test-AzureFirewallPolicySqlCRUD {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyName2 = Get-ResourceName
+    $location = "eastus2euap"
+
+    try {
+
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # test new AzureFirewallPolicy with sql redirect
+        $allowSQL = New-AzFirewallPolicySQL -AllowSqlRedirect
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -Sql $allowSQL
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+        Assert-NotNull $getAzureFirewallPolicy.SQL
+        Assert-AreEqual true $getAzureFirewallPolicy.SQL.AllowSqlRedirect
+
+        # test set AzureFirewallPolicy without sql redirect
+        $disAllowSQL = New-AzFirewallPolicySQL
+        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SQL $disAllowSQL
+        Assert-Null $getAzureFirewallPolicy.SQL.AllowSqlRedirect
+
+        # test set AzureFirewallPolicy with sql redirect
+        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SQL $allowSQL
+        Assert-NotNull $getAzureFirewallPolicy.SQL
+        Assert-AreEqual true $getAzureFirewallPolicy.SQL
+
+        # test new AzureFirewallPolicy without sql redirect
+        $azureFirewallPolicy2 = New-AzFirewallPolicy -Name $azureFirewallPolicyName2 -ResourceGroupName $rgname -Location $location
+        $getAzureFirewallPolicy2 = Get-AzFirewallPolicy -Name $azureFirewallPolicyName2 -ResourceGroupName $rgname
+        Assert-Null $getAzureFirewallPolicy2.SQL
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
