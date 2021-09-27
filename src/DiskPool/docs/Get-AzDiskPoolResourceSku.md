@@ -1,39 +1,44 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolzone
+online version: https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolresourcesku
 schema: 2.0.0
 ---
 
-# Get-AzDiskPoolZone
+# Get-AzDiskPoolResourceSku
 
 ## SYNOPSIS
-Lists available Disk Pool Skus in an Azure location.
+Lists available StoragePool resources and skus in an Azure location.
 
 ## SYNTAX
 
 ```
-Get-AzDiskPoolZone -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzDiskPoolResourceSku -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists available Disk Pool Skus in an Azure location.
+Lists available StoragePool resources and skus in an Azure location.
 
 ## EXAMPLES
 
-### Example 1: List availability zones for a location
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzDiskPoolZone -Location eastus
+PS C:\> {{ Add code here }}
 
-SkuName  SkuTier  AvailabilityZone AdditionalCapability
--------  -------  ---------------- --------------------
-Basic    Basic    {3, 1, 2}
-Standard Standard {3, 1, 2}
-Premium  Premium  {3, 1, 2}
+{{ Add output here }}
 ```
 
-The command lists all availability zones for a location.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -89,7 +94,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolZoneInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuInfo
 
 ## NOTES
 
