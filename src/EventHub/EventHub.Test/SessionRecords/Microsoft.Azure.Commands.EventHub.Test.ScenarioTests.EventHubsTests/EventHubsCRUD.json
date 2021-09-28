@@ -127,7 +127,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0P2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
@@ -200,7 +200,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0P2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -261,7 +261,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0P2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -322,7 +322,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0P2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -389,7 +389,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/EventHub-6641?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/EventHub-6641?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0L2V2ZW50aHVicy9FdmVudEh1Yi02NjQxP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{}",
@@ -462,7 +462,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/EventHub-6641?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/EventHub-6641?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0L2V2ZW50aHVicy9FdmVudEh1Yi02NjQxP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"messageRetentionInDays\": 3,\r\n    \"partitionCount\": 4,\r\n    \"status\": \"Active\"\r\n  }\r\n}",
@@ -535,7 +535,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/EventHub-6641?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/EventHub-6641?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0L2V2ZW50aHVicy9FdmVudEh1Yi02NjQxP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"messageRetentionInDays\": 4,\r\n    \"partitionCount\": 4,\r\n    \"status\": \"Active\",\r\n    \"captureDescription\": {\r\n      \"enabled\": true,\r\n      \"encoding\": \"Avro\",\r\n      \"intervalInSeconds\": 120,\r\n      \"sizeLimitInBytes\": 10485763,\r\n      \"destination\": {\r\n        \"name\": \"EventHubArchive.AzureBlockBlob\",\r\n        \"properties\": {\r\n          \"storageAccountResourceId\": \"/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourcegroups/APIMRG/providers/Microsoft.Storage/storageAccounts/devportalapim\",\r\n          \"blobContainer\": \"container01\",\r\n          \"archiveNameFormat\": \"{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}\"\r\n        }\r\n      },\r\n      \"skipEmptyArchives\": true\r\n    }\r\n  }\r\n}",
@@ -608,7 +608,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/EventHub-6641?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/EventHub-6641?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0L2V2ZW50aHVicy9FdmVudEh1Yi02NjQxP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"messageRetentionInDays\": 4,\r\n    \"partitionCount\": 4,\r\n    \"status\": \"Active\",\r\n    \"captureDescription\": {\r\n      \"enabled\": true,\r\n      \"encoding\": \"Avro\",\r\n      \"intervalInSeconds\": 120,\r\n      \"sizeLimitInBytes\": 10485763,\r\n      \"destination\": {\r\n        \"name\": \"EventHubArchive.AzureBlockBlob\",\r\n        \"properties\": {\r\n          \"storageAccountResourceId\": \"/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourcegroups/APIMRG/providers/Microsoft.Storage/storageAccounts/devportalapim\",\r\n          \"blobContainer\": \"container01\",\r\n          \"archiveNameFormat\": \"{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}\"\r\n        }\r\n      },\r\n      \"skipEmptyArchives\": true\r\n    }\r\n  }\r\n}",
@@ -681,7 +681,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/EventHub-6641?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/EventHub-6641?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0L2V2ZW50aHVicy9FdmVudEh1Yi02NjQxP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -748,7 +748,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0L2V2ZW50aHVicz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -818,7 +818,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/eventhub-6641?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/eventhubs/eventhub-6641?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0L2V2ZW50aHVicy9ldmVudGh1Yi02NjQxP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -882,7 +882,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2I3MjkzNjMtODExNS00MzMzLWFjMGYtOTllNGI2NGQyNjM0L3Jlc291cmNlR3JvdXBzL1JTRzYyNjcvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS05OTI0P2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -908,7 +908,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/operationresults/Eventhub-Namespace-9924?api-version=2018-01-01-preview"
+          "https://management.azure.com/subscriptions/cb729363-8115-4333-ac0f-99e4b64d2634/resourceGroups/RSG6267/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-9924/operationresults/Eventhub-Namespace-9924?api-version=2021-06-01-preview"
         ],
         "x-ms-request-id": [
           "eefd6c9c-69ad-4fe0-b125-372f804eb55a_M10SN1_M10SN1"

@@ -127,7 +127,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0VoLU5hbWVzcGFjZUthZmthLTU1MjM/YXBpLXZlcnNpb249MjAxOC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"kafkaEnabled\": true\r\n  },\r\n  \"location\": \"westus\"\r\n}",
@@ -200,7 +200,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0VoLU5hbWVzcGFjZUthZmthLTU1MjM/YXBpLXZlcnNpb249MjAxOC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -261,7 +261,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0VoLU5hbWVzcGFjZUthZmthLTU1MjM/YXBpLXZlcnNpb249MjAxOC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -322,7 +322,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
@@ -395,7 +395,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -456,7 +456,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -517,7 +517,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -584,7 +584,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1Mz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
@@ -657,7 +657,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1Mz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
@@ -730,7 +730,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1Mz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\"\r\n    ]\r\n  }\r\n}",
@@ -803,7 +803,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-6862?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-6862?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNjg2Mj9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\"\r\n    ]\r\n  }\r\n}",
@@ -876,7 +876,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-199?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-199?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtMTk5P2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
@@ -949,7 +949,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-8466?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-8466?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtODQ2Nj9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
@@ -1022,7 +1022,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1Mz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1089,7 +1089,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/RootManageSharedAccessKey?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/RootManageSharedAccessKey?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9Sb290TWFuYWdlU2hhcmVkQWNjZXNzS2V5P2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1156,7 +1156,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1223,7 +1223,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/listKeys?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/listKeys?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1My9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "POST",
       "RequestBody": "",
@@ -1290,7 +1290,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/listKeys?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/listKeys?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1My9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "POST",
       "RequestBody": "",
@@ -1357,7 +1357,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/listKeys?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/listKeys?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1My9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "POST",
       "RequestBody": "",
@@ -1424,7 +1424,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/regenerateKeys?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/regenerateKeys?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1My9yZWdlbmVyYXRlS2V5cz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"keyType\": \"PrimaryKey\"\r\n}",
@@ -1497,7 +1497,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/regenerateKeys?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/regenerateKeys?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1My9yZWdlbmVyYXRlS2V5cz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"keyType\": \"PrimaryKey\",\r\n  \"key\": \"joibXeISfg24xCLEU/wJPcENPeLgSMkiOjXeBDy9gWE=\"\r\n}",
@@ -1570,7 +1570,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/regenerateKeys?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/regenerateKeys?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1My9yZWdlbmVyYXRlS2V5cz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"keyType\": \"SecondaryKey\",\r\n  \"key\": \"joibXeISfg24xCLEU/wJPcENPeLgSMkiOjXeBDy9gWE=\"\r\n}",
@@ -1643,7 +1643,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/regenerateKeys?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653/regenerateKeys?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1My9yZWdlbmVyYXRlS2V5cz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"keyType\": \"SecondaryKey\"\r\n}",
@@ -1716,7 +1716,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/authorizationRules/authorule-5653?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL2F1dGhvcml6YXRpb25SdWxlcy9hdXRob3J1bGUtNTY1Mz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1843,7 +1843,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0VoLU5hbWVzcGFjZUthZmthLTU1MjM/YXBpLXZlcnNpb249MjAxOC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1869,7 +1869,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523/operationresults/Eh-NamespaceKafka-5523?api-version=2018-01-01-preview"
+          "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523/operationresults/Eh-NamespaceKafka-5523?api-version=2021-06-01-preview"
         ],
         "x-ms-request-id": [
           "5fc34a2a-31d6-4b6e-886b-8036d6dbabf0_M3SN1_M3SN1"
@@ -1910,7 +1910,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -1936,7 +1936,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/operationresults/Eventhub-Namespace-7940?api-version=2018-01-01-preview"
+          "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/operationresults/Eventhub-Namespace-7940?api-version=2021-06-01-preview"
         ],
         "x-ms-request-id": [
           "cd881b84-4d68-4674-a210-7dabc7a600a2_M5SN1_M5SN1"
@@ -2421,7 +2421,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523/operationresults/Eh-NamespaceKafka-5523?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523/operationresults/Eh-NamespaceKafka-5523?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0VoLU5hbWVzcGFjZUthZmthLTU1MjMvb3BlcmF0aW9ucmVzdWx0cy9FaC1OYW1lc3BhY2VLYWZrYS01NTIzP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2479,7 +2479,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523/operationresults/Eh-NamespaceKafka-5523?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eh-NamespaceKafka-5523/operationresults/Eh-NamespaceKafka-5523?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0VoLU5hbWVzcGFjZUthZmthLTU1MjMvb3BlcmF0aW9ucmVzdWx0cy9FaC1OYW1lc3BhY2VLYWZrYS01NTIzP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2537,7 +2537,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/operationresults/Eventhub-Namespace-7940?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/operationresults/Eventhub-Namespace-7940?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL29wZXJhdGlvbnJlc3VsdHMvRXZlbnRodWItTmFtZXNwYWNlLTc5NDA/YXBpLXZlcnNpb249MjAxOC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -2595,7 +2595,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/operationresults/Eventhub-Namespace-7940?api-version=2018-01-01-preview",
+      "RequestUri": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RGName4672/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-7940/operationresults/Eventhub-Namespace-7940?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzI2MTAwZTItZjY5ZC00MjY4LTg1MDMtMDc1Mzc0ZjYyYjZlL3Jlc291cmNlR3JvdXBzL1JHTmFtZTQ2NzIvcHJvdmlkZXJzL01pY3Jvc29mdC5FdmVudEh1Yi9uYW1lc3BhY2VzL0V2ZW50aHViLU5hbWVzcGFjZS03OTQwL29wZXJhdGlvbnJlc3VsdHMvRXZlbnRodWItTmFtZXNwYWNlLTc5NDA/YXBpLXZlcnNpb249MjAxOC0wMS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",

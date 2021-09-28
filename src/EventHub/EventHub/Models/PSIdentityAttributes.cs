@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// currently supports only 'SystemAssigned'. Possible values include:
         /// 'SystemAssigned'
         /// </summary>
-        public IdentityType? Type { get; set; }
+        public ManagedServiceIdentityType? Type { get; set; }
 
     }
 }
