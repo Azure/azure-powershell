@@ -184,11 +184,15 @@ function Get-ReferencePath {
     [OutputType([string[]])]
     param()
     process {
-        $allAzModules = Get-Module -ListAvailable | Where-Object {$_ -match "Az(\.[a-zA-Z0-9]+)?$"}
-        $pathList = $allAzModules.Path -split 'Az.' | Sort-Object -Property Length -Descending | Select-Object -First $allAzModules.Count | Select-Object -Unique
-        $isAdmin = [Security.Principal.WindowsIdentity]::GetCurrent().Groups -contains 'S-1-5-32-544'
-        if (!$isAdmin) {
-            $pathList = $pathList | Where-Object {$_.Contains($env:UserName)}
+        $allAzModules = @()
+        $allAzModules += Get-Module -ListAvailable | Where-Object {$_ -match "Az(\.[a-zA-Z0-9]+)?$"}
+        $pathList = $null
+        if ($allAzModules) {
+            $pathList = $allAzModules.Path -split 'Az.' | Sort-Object -Property Length -Descending | Select-Object -First $allAzModules.Count | Select-Object -Unique
+            $isAdmin = [Security.Principal.WindowsIdentity]::GetCurrent().Groups -contains 'S-1-5-32-544'
+            if (!$isAdmin) {
+                $pathList = $pathList | Where-Object {$_.Contains($env:UserName)}
+            }
         }
         Write-Output $pathList
     }
@@ -225,18 +229,14 @@ function Get-AzModuleFromRemote {
     )
 
     process {
-        $azModule = $null
+        $azModule = "Az"
         if ($AllowPrerelease) {
-            if ($RequiredVersion -and $RequiredVersion -lt [Version] "6.0.0") {
-                write-warning "Prerelease version cannot be lower than 6.0.0. Will only install GA modules."
-                $azModule = "Az"
+            if ($RequiredVersion -and $RequiredVersion -lt [Version] "6.0") {
+                write-warning "[$Invoker] Prerelease version cannot be lower than 6.0. Will only install GA modules."
             }
             else {
                 $azModule = "AzPreview"
             }
-        }
-        else {
-            $azModule = "Az"
         }
         $findModuleParams = @{
             Name =  $azModule
@@ -257,7 +257,7 @@ function Get-AzModuleFromRemote {
         }
 
         $modulesWithVersion = @()
-        $containValidModule = if ($Name) {$Name.Contains('Az.Accounts')} else {$false}
+        $containValidModule = if ($Name) {$Name -Contains 'Az.Accounts'} else {$false}
         foreach($module in $modules.Dependencies) {
             if ($module.Name -eq 'Az.Accounts') {
                 if ($UseExactAccountVersion) {
@@ -267,7 +267,7 @@ function Get-AzModuleFromRemote {
                     $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $accountVersion}
                 }
             }
-            elseif (!$Name -or $Name.Contains($module.Name))
+            elseif (!$Name -or $Name -Contains $module.Name)
             {
                 if ($module.RequiredVersion) {
                     $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $module.RequiredVersion}
@@ -276,14 +276,12 @@ function Get-AzModuleFromRemote {
             }
         }
 
-        Write-Debug "[$Invoker] $($modulesWithVersion.Count) module(s) are found."
-
         if (!$containValidModule) {
             $modulesWithVersion = $modulesWithVersion | Where-Object {$_.Name -ne "Az.Accounts"}
         }
-        else {
-            $modulesWithVersion
-        }
+        $count = if ($modulesWithVersion) {$modulesWithVersion.Count} else {0}
+        Write-Debug "[$Invoker] $count module(s) are found."
+        $modulesWithVersion
     }
 }
 

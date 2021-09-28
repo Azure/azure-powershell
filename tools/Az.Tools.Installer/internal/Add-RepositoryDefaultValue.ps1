@@ -19,7 +19,7 @@ function Add-RepositoryDefaultValue()
                     $repos.Name
                 }
                 else {
-                    throw "There are multiple resgistered repositories:$($repos.Name). Please specify one explicitly."
+                    throw "There are multiple registered repositories:$($repos.Name). Please specify one explicitly."
                 }
             })
         }

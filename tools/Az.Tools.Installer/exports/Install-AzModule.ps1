@@ -72,7 +72,7 @@ function Install-AzModule {
 
         $Invoker = $MyInvocation.MyCommand
         $preErrorActionPreference =  $ErrorActionPreference
-        $ErrorActionPreference = 'Stop'
+        $ErrorActionPreference = 'Continue'
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
@@ -93,7 +93,7 @@ function Install-AzModule {
         $modules = Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
 
         if($Name) {
-            $moduleExcluded = $Name | Where-Object {$modules -and !$modules.Name.Contains($_)}
+            $moduleExcluded = $Name | Where-Object {$modules -and $modules.Name -NotContains $_}
             if ($moduleExcluded) {
                 $azVersion = if ($RequiredAzVersion) {$RequiredAzVersion} else {"Latest"}
                 Write-Warning "The following specified modules:$moduleExcluded cannot be found in $Repository with the $azVersion version."

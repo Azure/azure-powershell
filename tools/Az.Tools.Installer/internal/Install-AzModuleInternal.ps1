@@ -73,7 +73,7 @@ function Install-AzModuleInternal {
                 Uninstall-Az -AzOnly -Invoker $Invoker
             }
         }
-
+        Write-Host "Install-AzModuleInternal"
         if (!$ModuleList) {
             return
         }
@@ -121,7 +121,7 @@ function Install-AzModuleInternal {
                 Repository = $script:AzTempRepoName
                 AllowClobber = $true
                 Confirm = $false
-                ErrorAction = 'Continue'
+                ErrorAction = 'Stop'
                 SkipPublisherCheck = $true
                 AllowPrerelease = if ($AllowPrerelease) {$AllowPrerelease} else {$false}
             }
@@ -145,6 +145,7 @@ function Install-AzModuleInternal {
                             $jobs  += Start-ThreadJob -Name "Az.Tools.Installer" {
                                 $tmodule = $using:module
                                 Write-Output "$($tmodule.Name) version $($tmodule.Version)"
+                                Import-Module PowerShellGet
                                 PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
                             } -ThrottleLimit $maxJobCount
                             #-StreamingHost $Host
@@ -161,6 +162,7 @@ function Install-AzModuleInternal {
                                 $jobs += Start-Job -Name "Az.Tools.Installer" {
                                     $tmodule = $using:module
                                     Write-Output "$($tmodule.Name) version $($tmodule.Version)"
+                                    Import-Module PowerShellGet
                                     PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
                                 }
                                 Write-Progress -Activity "Install Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
@@ -168,7 +170,10 @@ function Install-AzModuleInternal {
                             }
                         }
                         else {
-                            Get-Job -State Running | Wait-Job -Any
+                            Get-Job -State Running | Wait-Job -Any -Timeout 120
+                            if ((Get-Job -State Running).Count -ge $maxJobCount) {
+                                Throw "[$Inovker] Some background jobs are blocked. Please use 'Get-Job -State Running' to check them."
+                            }
                         }
                     }
                 }
@@ -181,14 +186,15 @@ function Install-AzModuleInternal {
                         $job = Wait-Job $job
                         try {
                             $result = Receive-Job $job
+                            if ($job.State -eq 'Completed') {
+                                Write-Debug  "[$Invoker] Installing $result is complete."
+                            }
+                            else {
+                                Write-Warning  "[$Invoker] Uninstalling $result is failed."
+                            }
                         }
                         catch {
                             Write-Warning $_
-                        }
-                        if ($job.State -eq 'Completed') {
-                            Write-Debug  "[$Invoker] Installing $result is complete."
-                        }
-                        else {
                             Write-Warning  "[$Invoker] Uninstalling $result is failed."
                         }
                         Remove-Job $job -Confirm:$false

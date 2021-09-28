@@ -75,7 +75,7 @@ function Update-AzModule {
         $cmdStarted = Get-Date
         $Invoker = $MyInvocation.MyCommand
         $preErrorActionPreference =  $ErrorActionPreference
-        $ErrorActionPreference = 'Stop'
+        $ErrorActionPreference = 'Continue'
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
@@ -85,8 +85,8 @@ function Update-AzModule {
         $intersection = $allInstalled
 
         if ($Name) {
-            $intersection = $intersection | Where-Object {$_.Name -eq "Az.Accounts" -or $Name.Contains($_.Name)}
-            $modulesNotInstalled = $Name | Where-Object {!$allInstalled.Name.Contains($_)}
+            $intersection = $intersection | Where-Object {$_.Name -eq "Az.Accounts" -or $Name -Contains $_.Name}
+            $modulesNotInstalled = $Name | Where-Object {$allInstalled.Name -NotContains $_}
             if ($modulesNotInstalled) {
                 Write-Warning "[$Invoker] $modulesNotInstalled are not installed. Please firstly install them before update."
                 #If Az.Accounts is in modulesNotInstalled，it will be warned but installed anyway.
@@ -128,13 +128,20 @@ function Update-AzModule {
             }
         }
         else {
-            $installModuleParams = @{}
-            $installModuleParams.Add('RemovePrevious', $true)
-            foreach ($key in $PSBoundParameters.Keys) {
-                if ($key -eq 'KeepPrevious') {
-                    $installModuleParams['RemovePrevious'] = $false
+            if ($moduleUpdateTable) {
+                $referencePaths = Get-ReferencePath
+                if ($referencePaths) {
+                    $module = $null
+                    foreach($module in $moduleUpdateTable) {
+                        if (!$KeepPrevious) {
+                            Uninstall-SingleModule -ModuleName $module.Name -ReferencePath $referencePaths -Invoker $Invoker
+                        }
+                    }
                 }
-                elseif($key -ne 'Name'){
+            }
+            $installModuleParams = @{}
+            foreach ($key in $PSBoundParameters.Keys) {
+                if($key -ne 'Name'){
                     $installModuleParams.Add($key, $PSBoundParameters[$key]) 
                 }
             }

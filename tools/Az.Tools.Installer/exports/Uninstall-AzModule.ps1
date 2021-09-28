@@ -60,7 +60,7 @@ function Uninstall-AzModule {
 
         $Invoker = $MyInvocation.MyCommand
         $preErrorActionPreference =  $ErrorActionPreference
-        $ErrorActionPreference = 'Stop'
+        $ErrorActionPreference = 'Continue'
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
@@ -77,8 +77,8 @@ function Uninstall-AzModule {
         $moduleToUninstall = $allInstalled | Foreach-Object {[PSCustomObject]@{Name = $_.Name; Version = $_.Version}}
         if ($Name) {
             $Name = Normalize-ModuleName $Name
-            $moduleToUninstall = $moduleToUninstall | Where-Object {!$Name -or $Name.Contains($_.Name)}
-            $modulesNotInstalled = $Name | Where-Object {!$allInstalled.Name.Contains($_)}
+            $moduleToUninstall = $moduleToUninstall | Where-Object {!$Name -or $Name -Contains $_.Name}
+            $modulesNotInstalled = $Name | Where-Object {$allInstalled.Name -NotContains$_}
             if ($modulesNotInstalled) {
                 Write-Warning "[$Invoker] $modulesNotInstalled are not installed."
             }         
@@ -86,7 +86,7 @@ function Uninstall-AzModule {
         else {
             if ($ExcludeModule) {
                 $ExcludeModule = Normalize-ModuleName $ExcludeModule
-                $moduleToUninstall = $moduleToUninstall | Where-Object {!$ExcludeModule.Contains($_.Name)}
+                $moduleToUninstall = $moduleToUninstall | Where-Object {$ExcludeModule -NotContains $_.Name}
             }      
         }
 
@@ -103,7 +103,7 @@ function Uninstall-AzModule {
         $started = Get-Date
         $referencePaths = Get-ReferencePath
 
-        if ($modules) {
+        if ($modules -and $referencePaths) {
             $module = $null
             $index = 0
             foreach ($module in $modules) {
