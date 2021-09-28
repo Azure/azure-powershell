@@ -67,7 +67,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3P2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westcentralus\"\r\n}",
@@ -140,7 +140,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3P2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -201,7 +201,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3P2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -262,7 +262,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3P2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -329,7 +329,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3P2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -396,7 +396,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/queues/sbqueuename-ps3859?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/queues/sbqueuename-ps3859?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3L3F1ZXVlcy9zYnF1ZXVlbmFtZS1wczM4NTk/YXBpLXZlcnNpb249MjAxNy0wNC0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"requiresSession\": false,\r\n    \"defaultMessageTimeToLive\": \"PT1M\",\r\n    \"enableBatchedOperations\": false,\r\n    \"enablePartitioning\": true\r\n  }\r\n}",
@@ -469,7 +469,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/topics/sbtopicname-ps9677?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/topics/sbtopicname-ps9677?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3L3RvcGljcy9zYnRvcGljbmFtZS1wczk2Nzc/YXBpLXZlcnNpb249MjAxNy0wNC0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"enablePartitioning\": true\r\n  }\r\n}",
@@ -4352,7 +4352,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/queues/sbqueuename-ps3859?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/queues/sbqueuename-ps3859?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3L3F1ZXVlcy9zYnF1ZXVlbmFtZS1wczM4NTk/YXBpLXZlcnNpb249MjAxNy0wNC0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -4416,7 +4416,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/topics/sbtopicname-ps9677?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/topics/sbtopicname-ps9677?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3L3RvcGljcy9zYnRvcGljbmFtZS1wczk2Nzc/YXBpLXZlcnNpb249MjAxNy0wNC0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -4480,7 +4480,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3P2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -4506,7 +4506,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/operationresults/sbnamespace-ps7177?api-version=2017-04-01"
+          "https://management.azure.com/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/operationresults/sbnamespace-ps7177?api-version=2021-06-01-preview"
         ],
         "x-ms-request-id": [
           "ff1d5610-959b-4579-85f1-bc4949ddfd9f_M0SN1_M0SN1"
@@ -5054,7 +5054,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/operationresults/sbnamespace-ps7177?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/operationresults/sbnamespace-ps7177?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3L29wZXJhdGlvbnJlc3VsdHMvc2JuYW1lc3BhY2UtcHM3MTc3P2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -5112,7 +5112,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/operationresults/sbnamespace-ps7177?api-version=2017-04-01",
+      "RequestUri": "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/RGName-ps1753/providers/Microsoft.ServiceBus/namespaces/sbnamespace-ps7177/operationresults/sbnamespace-ps7177?api-version=2021-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWI0YjY1MGUtMjhiOS00NzkwLWIzYWItZGRiZDg4ZDcyN2M0L3Jlc291cmNlR3JvdXBzL1JHTmFtZS1wczE3NTMvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2aWNlQnVzL25hbWVzcGFjZXMvc2JuYW1lc3BhY2UtcHM3MTc3L29wZXJhdGlvbnJlc3VsdHMvc2JuYW1lc3BhY2UtcHM3MTc3P2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
