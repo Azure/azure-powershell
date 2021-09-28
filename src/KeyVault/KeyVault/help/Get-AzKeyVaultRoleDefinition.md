@@ -18,6 +18,12 @@ Get-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] [-DefaultProf
  [<CommonParameters>]
 ```
 
+### CustomOnly
+```
+Get-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] [-Custom]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ByName
 ```
 Get-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] -RoleDefinitionName <String>
@@ -75,7 +81,29 @@ Managed HSM Backup                                1 permission(s)
 
 The example gets the "Managed HSM Backup" role and inspects its permissions.
 
+### Example 3
+```powershell
+Get-AzKeyVaultRoleDefinition -HsmName myHsm -Custom
+```
+
+This example lists all the custom role definitions belong to "myHsm".
+
 ## PARAMETERS
+
+### -Custom
+If specified, only displays the custom created roles in the directory.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CustomOnly
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

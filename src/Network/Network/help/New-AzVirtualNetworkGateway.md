@@ -160,7 +160,7 @@ The gateway will be called "gateway1" within the resource group "resourcegroup1r
 with the previously created IP configurations Bgppeering address saved in the variable "gw1ipconfBgp1," the
 gateway type of "VPN", the vpn type "RouteBased", the sku "VpnGw4" and VpnGatewayGeneration Generation2 enabled.
 
-### Example 6: Create a Virtual Network Gateway with NatRules
+### Example 7: Create a Virtual Network Gateway with NatRules
 ```powershell
 New-AzResourceGroup -Location "UK West" -Name "resourcegroup1"
 $subnet = New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'

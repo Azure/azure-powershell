@@ -41,25 +41,25 @@ This command will retrieve all of the credential properties (but not the credent
 
 ## EXAMPLES
 
-### Example 1 - List credentials by SPN
+### Example 1: List credentials by SPN
 
-```
+```powershell
 PS C:\> Get-AzADSpCredential -ServicePrincipalName http://test12345
 ```
 
 Returns a list of credentials associated with the service principal with SPN 'http://test12345'.
 
-### Example 2 - List credentials by object id
+### Example 2: List credentials by object id
 
-```
+```powershell
 PS C:\> Get-AzADSpCredential -ObjectId 58e28616-99cc-4da4-b705-7672130e1047
 ```
 
 Returns a list of credentials associated with the service principal with object id "58e28616-99cc-4da4-b705-7672130e1047".
 
-### Example 3 - List credentials by piping
+### Example 3: List credentials by piping
 
-```
+```powershell
 PS C:\> Get-AzADServicePrincipal -ObjectId 58e28616-99cc-4da4-b705-7672130e1047 | Get-AzADSpCredential
 ```
 
