@@ -28,6 +28,7 @@ function setupEnv() {
     $replicaName = "postgresql-test-100-replica"
     $firewallRuleName = "postgresqlrule01"
     $firewallRuleName2 = "postgresqlrule02"
+    $databaseName = "postgresqldb"
     $VNetName = "postgresqlvnet"
     $SubnetName = "postgresql-subnet"
     $resourceGroup = "PostgreSqlTest"
@@ -49,6 +50,7 @@ function setupEnv() {
         $restoreName = $PowershellPrefix + "restore-server" + $RandomNumbers
         $restoreName2 = $PowershellPrefix + "2-restore-server" + $RandomNumbers
         $firewallRuleName = $PowershellPrefix + "firewallrule" + $RandomNumbers
+        $databaseName = $PowershellPrefix + "database" + $RandomNumbers
     }
 
     $env.Add("serverName", $serverName)
@@ -63,6 +65,7 @@ function setupEnv() {
     $env.Add("replicaName", $replicaName)
     $env.Add("firewallRuleName", $firewallRuleName)
     $env.Add("firewallRuleName2", $firewallRuleName2)
+    $env.Add("databaseName", $databaseName)
     $env.Add("VNetName", $VNetName)
     $env.Add("SubnetName", $SubnetName)
     $env.Add("resourceGroup", $resourceGroup)

@@ -14,8 +14,7 @@ Create a new Azure Firewall Policy Nat Rule Collection
 
 ```
 New-AzFirewallPolicyNatRuleCollection -Name <String> -Priority <UInt32>
- -Rule <PSAzureFirewallPolicyNetworkRule> -ActionType <String> -TranslatedAddress <String>
- -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Rule <PSAzureFirewallPolicyNetworkRule[]> -ActionType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +24,8 @@ The **New-AzFirewallPolicyNatRuleCollection** cmdlet creates a Nat rule collecti
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyNatRuleCollection -Name NatRule1 -Priority 200 -Rule $netRule1 -ActionType "Dnat" -TranslatedAddress "192.168.0.1" -TranslatedPort "100"
+PS C:\> $netRule1 = New-AzFirewallPolicyNatRule -Name NatRule1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress 10.20.30.40 -DestinationPort 1000 -TranslatedAddress "192.168.0.1" -TranslatedPort "100"
+PS C:\> New-AzFirewallPolicyNatRuleCollection -Name NatRC1 -Priority 200 -Rule $netRule1 -ActionType "Dnat"
 ```
 
 This example creates a nat rule collection with a network rule
@@ -98,36 +98,6 @@ The list of network rules
 
 ```yaml
 Type: PSAzureFirewallPolicyNetworkRule
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TranslatedAddress
-The translated address for this NAT rule
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TranslatedPort
-The translated port for this NAT rule
-
-```yaml
-Type: String
 Parameter Sets: (All)
 Aliases:
 

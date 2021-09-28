@@ -283,11 +283,6 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
             {
                 RoleDefinitionId = roleDefinition.Id,
                 PrincipalId = Constants.StorageCacheResourceProviderPrincipalId,
-
-                // The principal ID assigned to the role.
-                // This maps to the ID inside the Active Directory.
-                // It can point to a user, service principal, or security group.
-                CanDelegate = false,
             };
 
             authorizationManagementClient.RoleAssignments.Create(scope, assignmentName, newRoleAssignment);

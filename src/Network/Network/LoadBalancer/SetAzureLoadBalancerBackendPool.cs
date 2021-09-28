@@ -101,6 +101,11 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gateway Load Balancer provider configurations.")]
+        public PSTunnelInterface[] TunnelInterface { get; set; }
+
+        [Parameter(
            Mandatory = false,
            HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -160,6 +165,8 @@ namespace Microsoft.Azure.Commands.Network
                 backendAddressPool = SetupBackendPoolWithLoadBalancerAddresses();
             }
 
+            AddTunnelInterfacesToPool(backendAddressPool);
+
             if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
             {
                 var loadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.CreateOrUpdate(
@@ -168,6 +175,19 @@ namespace Microsoft.Azure.Commands.Network
                 var loadBalancerBackendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(loadBalancerBackendAddressPool);
 
                 WriteObject(loadBalancerBackendAddressPoolModel);
+            }
+        }
+
+        private void AddTunnelInterfacesToPool(BackendAddressPool backendAddressPool)
+        {
+            if (this.TunnelInterface != null)
+            {
+                backendAddressPool.TunnelInterfaces = new List<GatewayLoadBalancerTunnelInterface>();
+                foreach (var tun in this.TunnelInterface)
+                {
+                    var tunnelinterface = NetworkResourceManagerProfile.Mapper.Map<GatewayLoadBalancerTunnelInterface>(tun);
+                    backendAddressPool.TunnelInterfaces.Add(tunnelinterface);
+                }
             }
         }
 

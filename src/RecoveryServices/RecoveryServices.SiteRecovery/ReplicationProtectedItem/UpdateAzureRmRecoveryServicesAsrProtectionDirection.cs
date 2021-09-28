@@ -641,13 +641,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 // Validate the direction as PrimaryToRecovery.
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
-                    var fabricSpecificDetails = (InMageRcmFabricSpecificDetails)this.RecoveryServicesClient
+                    var fabricSpecificDetails =
+                        (InMageRcmFabricSpecificDetails)this.RecoveryServicesClient
                         .GetAzureSiteRecoveryFabric(this.Fabric.Name)
                         .Properties
                         .CustomDetails;
                     var processServer = fabricSpecificDetails
                         .ProcessServers
-                        .Where(x => x.Name == this.ApplianceName)
+                        .Where(x => x.Name.Equals(
+                            this.ApplianceName, StringComparison.OrdinalIgnoreCase))
                         .FirstOrDefault();
                     if (processServer == null)
                     {
@@ -659,7 +661,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                     var runAsAccount =
                         this.FabricDiscoveryClient.GetAzureSiteRecoveryRunAsAccounts(this.SiteId)
-                        .Where(x => x.Properties.DisplayName == this.CredentialsToAccessVm)
+                        .Where(x => x.Properties.DisplayName.Equals(
+                            this.CredentialsToAccessVm, StringComparison.OrdinalIgnoreCase) &&
+                            x.Properties.ApplianceName.Equals(
+                                this.ApplianceName, StringComparison.OrdinalIgnoreCase))
                         .FirstOrDefault();
                     if (runAsAccount == null)
                     {
@@ -667,6 +672,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             string.Format(
                                 Resources.RunAsAccountNotFound,
                                 this.CredentialsToAccessVm,
+                                this.ApplianceName,
                                 this.SiteId));
                     }
 
@@ -678,6 +684,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RunAsAccountId = runAsAccount.Id
                     };
                     input.Properties.ProviderSpecificDetails = reprotectInput;
+                    input.Properties.FailoverDirection = null;
                 }
                 else
                 {

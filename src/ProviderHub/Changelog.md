@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Supported nested resource types for Resource Type Registration and Sku Resource via customization.
+
 ## Version 0.1.0
 * First preview release for module Az.ProviderHub
 

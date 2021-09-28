@@ -35,6 +35,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     {
         private const string ClientType = "AzurePowerShell";
 
+        private static readonly PredictiveCommand[] _surveyCmdlets = new PredictiveCommand[AzPredictorConstants.CohortCount]
+        {
+            new PredictiveCommand()
+                    {
+                        Command = "Open-AzPredictorSurvey",
+                        Description = "Run this command to tell us about your experience with Az Predictor",
+                    },
+            new PredictiveCommand()
+                    {
+                        Command = "Send-AzPredictorRating -Rating 5",
+                        Description = "Run this command followed by your rating of Az Predictor: 1 (poor) - 5 (great)"
+                    },
+        };
+
         private sealed class PredictionRequestBody
         {
             public sealed class RequestContext
@@ -173,6 +187,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             cancellationToken.ThrowIfCancellationRequested();
 
+            // We want to show a survey/feedback cmdlet at the end of the suggestion list. We try to find one less
+            // suggestions to make room for that cmdlet and avoid too much computation.
+            // But if only one suggestion is requested, we don't replace it with the survey cmdlets.
+            var suggestionFromPredictorCount = (suggestionCount == 1) ? 1 : (suggestionCount - 1);
+
             var rawUserInput = context.InputAst.ToString();
             var presentCommands = new Dictionary<string, int>();
             var commandBasedPredictor = _commandBasedPredictor;
@@ -182,7 +201,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     inputParameterSet,
                     rawUserInput,
                     presentCommands,
-                    suggestionCount,
+                    suggestionFromPredictorCount,
                     maxAllowedCommandDuplicate,
                     cancellationToken);
 
@@ -201,10 +220,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
-            if ((result == null) || (result.Count < suggestionCount))
+            if ((result == null) || (result.Count < suggestionFromPredictorCount))
             {
                 var fallbackPredictor = _fallbackPredictor;
-                var suggestionCountToRequest = (result == null) ? suggestionCount : suggestionCount - result.Count;
+                var suggestionCountToRequest = (result == null) ? suggestionFromPredictorCount : suggestionFromPredictorCount - result.Count;
                 var resultsFromFallback = fallbackPredictor?.GetSuggestion(commandName,
                         inputParameterSet,
                         rawUserInput,
@@ -228,6 +247,35 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         result.AddSuggestion(resultsFromFallback.PredictiveSuggestions[i], resultsFromFallback.SourceTexts[i], SuggestionSource.StaticCommands);
                     }
+                }
+            }
+
+            if (suggestionCount > 1)
+            {
+                // Add the survey/feedback cmdlet at the end if the user isn't typing it.
+                bool isSurveyCmdletFound = false;
+
+                if (result != null)
+                {
+                    foreach (var predictiveCommand in result.SourceTexts)
+                    {
+                        if (string.Equals(predictiveCommand, _surveyCmdlets[_azContext.Cohort].Command, StringComparison.Ordinal))
+                        {
+                            isSurveyCmdletFound = true;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    result = new CommandLineSuggestion();
+                }
+
+                if (!isSurveyCmdletFound)
+                {
+                    var toAddCmdlet = _surveyCmdlets[_azContext.Cohort].Command;
+                    var toAddDescription = _surveyCmdlets[_azContext.Cohort].Description;
+                    result.AddSuggestion(new PredictiveSuggestion($"{toAddCmdlet} # {toAddDescription}", toAddCmdlet), toAddCmdlet, SuggestionSource.StaticCommands);
                 }
             }
 
@@ -300,7 +348,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd) && (_allPredictiveCommands?.Contains(cmd) == true);
+        public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd)
+            && !_surveyCmdlets.Any(cmdlet => cmdlet.Command.StartsWith(cmd, StringComparison.OrdinalIgnoreCase)) // the survey cmdlets aren't in the normal az command flow, so mark them as unsupported.
+            && (_allPredictiveCommands?.Contains(cmd) == true);
 
         /// <summary>
         /// Requests a list of popular commands from service. These commands are used as fall back suggestion
@@ -324,7 +374,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                             httpResponseMessage.EnsureSuccessStatusCode();
                             var reply = await httpResponseMessage.Content.ReadAsStringAsync();
-                            var commandsReply = JsonSerializer.Deserialize<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
+                            var commandsReply = JsonSerializer.Deserialize<List<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
+                            commandsReply.AddRange(_surveyCmdlets);
                             SetFallbackPredictor(commandsReply);
                         }
                         catch (Exception e) when (!(e is OperationCanceledException))

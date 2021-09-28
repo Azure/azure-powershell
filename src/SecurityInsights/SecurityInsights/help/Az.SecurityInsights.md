@@ -2,15 +2,13 @@
 Module Name: Az.SecurityInsights
 Module Guid: 453d4fb9-65ec-4cf1-8358-6a0fbd995d19
 Download Help Link: https://docs.microsoft.com/powershell/module/az.securityinsights
-Help Version: 0.1.0
+Help Version: 1.1.0
 Locale: en-US
 ---
 
 # Az.SecurityInsights Module
 ## Description
-Microsoft Azure Sentinel is a scalable, cloud-native, security information event management (SIEM) and security orchestration automated response (SOAR) solution. Azure Sentinel delivers intelligent security analytics and threat intelligence across the enterprise, providing a single solution for alert detection, threat visibility, proactive hunting, and threat response.<br/>
-The Azure Sentinel PowerShell module (Az.SecurityInsights) allows you to interact with the following  components: * Incidents
-* Analytics Rules (Alert Rules)
+Microsoft Azure Sentinel is a scalable, cloud-native, security information event management (SIEM) and security orchestration automated response (SOAR) solution. Azure Sentinel delivers intelligent security analytics and threat intelligence across the enterprise, providing a single solution for alert detection, threat visibility, proactive hunting, and threat response.<br/> The Azure Sentinel PowerShell module (Az.SecurityInsights) allows you to interact with the following  components: * Incidents * Analytics Rules (Alert Rules)
 * Analytics Rules Templates
 * Analytics Rules Actions (like attaching an Azure Logic Apps Playbooks to your rule)
 * Bookmarks

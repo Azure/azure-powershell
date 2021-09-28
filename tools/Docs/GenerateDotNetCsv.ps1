@@ -15,7 +15,7 @@ $dotnetCsvContent = ""
 for ($index = 0; $index -lt $modules.Count; $index++){
     $moduleName = $modules[$index].ModuleName
     $moduleVersion = [string]::IsNullOrEmpty($modules[$index].RequiredVersion) ? $modules[$index].ModuleVersion : $modules[$index].RequiredVersion
-    $dotnetCsvContent += "pac$index,[ps=true;customSource=$CustomSource],$moduleName,$moduleVersion`n"
+    $dotnetCsvContent += "pac$index,[ps=true;customSource=$CustomSource]$moduleName,$moduleVersion`n"
 }
 Set-Content -Path $dotnetCsv.FullName -Value $dotnetCsvContent -Encoding UTF8
 

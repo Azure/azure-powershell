@@ -764,9 +764,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public PSResourceProvider RegisterProvider(string providerName)
+        public PSResourceProvider RegisterProvider(string providerName, ProviderRegistrationRequest providerRegistrationRequest = null)
         {
-            var response = this.ResourceManagementClient.Providers.Register(providerName);
+            var response = this.ResourceManagementClient.Providers.Register(providerName, providerRegistrationRequest);
 
             if (response == null)
             {

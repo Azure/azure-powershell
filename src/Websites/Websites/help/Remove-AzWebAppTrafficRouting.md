@@ -21,7 +21,7 @@ The **Remove-AzWebAppTrafficRouting** cmdlet removes a routing rule from an Azur
 
 ## EXAMPLES
 
-### Example 1 Removes the specific routing rule from webapp slot
+### Example 1: Removes the specific routing rule from webapp slot
 ```powershell
 PS C:\> Remove-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite"  -RuleName 'Stg'
 ```

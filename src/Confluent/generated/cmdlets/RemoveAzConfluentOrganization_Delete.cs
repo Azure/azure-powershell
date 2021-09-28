@@ -11,6 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Cmdlets
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzConfluentOrganization_Delete", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Confluent.Description(@"Delete Organization resource")]

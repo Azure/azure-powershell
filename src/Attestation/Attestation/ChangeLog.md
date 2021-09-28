@@ -20,6 +20,7 @@
 
 
 ## Upcoming Release
+* General availability of `Az.Attestation` module
 
 ## Version 0.1.8
 * Added default provider support to `Az.Attestation` module
