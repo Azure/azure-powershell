@@ -40,9 +40,7 @@ namespace Microsoft.Azure.Commands.Maintenance
                 if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(name))
                 {
                     var result = MaintenanceConfigurationsClient.Get(resourceGroupName, name);
-                    PSMaintenanceConfiguration psMaintenanceConfiguration = new PSMaintenanceConfiguration();
-                    MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(result, psMaintenanceConfiguration);
-                    WriteObject(psMaintenanceConfiguration);
+                    WriteObject(result);
                 }
 
                 else
