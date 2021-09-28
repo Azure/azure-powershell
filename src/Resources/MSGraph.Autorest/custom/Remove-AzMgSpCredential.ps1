@@ -96,25 +96,24 @@ function Remove-AzMgSpCredential {
         switch ($PSCmdlet.ParameterSetName) {
             'ObjectIdWithKeyIdParameterSet' {
                 $sp = Get-AzMgServicePrincipal -ObjectId $PSBoundParameters['ObjectId']
-                $null = $PSBoundParameters.Remove('ObjectId')
                 if (!$sp) {
                     Write-Error "service principal with id '$($PSBoundParameters['ObjectId'])' does not exist."
                     return
                 }
+                $null = $PSBoundParameters.Remove('ObjectId')
                 break
             }
             'SPNWithKeyIdParameterSet' {
                 $sp = Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName']
-                $null = $PSBoundParameters.Remove('ServicePrincipalName')
                 if (!$sp) {
                     Write-Error "service principal with name '$($PSBoundParameters['ServicePrincipalName'])' does not exist."
                     return
                 }
+                $null = $PSBoundParameters.Remove('ServicePrincipalName')
                 break
             }
             'DisplayNameWithKeyIdParameterSet' {
                 $sp = Get-AzMgServicePrincipal -DisplayName $PSBoundParameters['DisplayName']
-                $null = $PSBoundParameters.Remove('DisplayName')
                 if (0 -eq $sp.Count) {
                     Write-Error "service principal with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
                     return
@@ -124,40 +123,51 @@ function Remove-AzMgSpCredential {
                     Write-Error "More than one service principal found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgServicePrincipal cmdlet to get the object id of the desired service principal."
                     return
                 }
+                $null = $PSBoundParameters.Remove('DisplayName')
                 break
             }
             'ServicePrincipalObjectParameterSet' {
                 $sp = Get-AzMgServicePrincipal -ObjectId $PSBoundParameters['ServicePrincipalObject'].Id
-                $null = $PSBoundParameters.Remove('ServicePrincipalObject')
                 if (!$sp) {
                     Write-Error "service principal with id '$($PSBoundParameters['ServicePrincipalObject'].Id)' does not exist."
                     return
                 }
+                $null = $PSBoundParameters.Remove('ServicePrincipalObject')
                 break
             }
             default {
                 break
             }
         }
-        $PSBoundParameters['ServicePrincipalId'] = $sp.Id
+        
         if (!$PSBoundParameters['KeyId']) {
-            foreach ($key in $sp.KeyCredentials) {
-                $PSBoundParameters['KeyId'] = $key.KeyId
-                MSGraph.internal\Remove-AzMgAServicePrincipalKey @PSBoundParameters
-            }
+            $PSBoundParameters['Id'] = $sp.Id
+            $PSBoundParameters['KeyCredentials'] = @()
+            MSGraph.internal\Update-AzMgServicePrincipal @PSBoundParameters
+            $null = $PSBoundParameters.Remove('KeyCredentials')
+            $null = $PSBoundParameters.Remove('Id')
+            $PSBoundParameters['ServicePrincipalId'] = $sp.Id
             foreach ($password in $sp.PasswordCredentials) {
                 $PSBoundParameters['KeyId'] = $password.KeyId
                 MSGraph.internal\Remove-AzMgServicePrincipalPassword @PSBoundParameters
             }
         } else {
+            $list = @()
             foreach ($key in $sp.KeyCredentials) {
-                if ($key.KeyId -eq $PSBoundParameters['KeyId']) {
-                    MSGraph.internal\Remove-AzMgServicePrincipalKey @PSBoundParameters
+                if ($key.KeyId -ne $PSBoundParameters['KeyId']) {
+                    $list += $key
+                }
+                if ($list.Count -ne $sp.KeyCredentials.Count) {
+                    $null = $PSBoundParameters.Remove('KeyId')
+                    $PSBoundParameters['Id'] = $sp.Id
+                    $PSBoundParameters['KeyCredentials'] = $list
+                    MSGraph.internal\Update-AzMgServicePrincipal @PSBoundParameters
                     return
                 }
             }
             foreach ($password in $sp.PasswordCredentials) {
                 if ($password.KeyId -eq $PSBoundParameters['KeyId']) {
+                    $PSBoundParameters['ServicePrincipalId'] = $sp.Id
                     MSGraph.internal\Remove-AzMgServicePrincipalPassword @PSBoundParameters
                     return
                 }

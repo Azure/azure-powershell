@@ -712,27 +712,6 @@ function New-AzMgServicePrincipal {
       $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $AppName).AppId
     }
 
-    switch ($PSCmdlet.ParameterSetName) {
-      {$_ -in 'ApplicationWithKeyPlainParameterSet', 'ApplicationObjectWithKeyPlainParameterSet', 'DisplayNameWithKeyPlainParameterSet'} {
-        $cv = $PSBoundParameters['CertValue']
-        $null = $PSBoundParameters.Remove('CertValue')
-        break
-      }
-      {$_ -in 'ApplicationWithPasswordCredentialParameterSet', 'ApplicationObjectWithPasswordCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
-        $pc = $PSBoundParameters['PasswordCredentials']
-        $null = $PSBoundParameters.Remove('PasswordCredentials')
-        break
-      }
-      {$_ -in 'ApplicationWithKeyCredentialParameterSet', 'ApplicationObjectWithKeyCredentialParameterSet', 'DisplayNameWithKeyCredentialParameterSet'} {
-        $pc = $PSBoundParameters['KeyCredentials']
-        $null = $PSBoundParameters.Remove('KeyCredentials')
-        break
-      }
-      default {
-        break
-      }
-    }
-
     if ($PSBoundParameters['StartDate']) {
       $sd = $PSBoundParameters['StartDate']
       $null = $PSBoundParameters.Remove('StartDate')
@@ -742,8 +721,36 @@ function New-AzMgServicePrincipal {
       $null = $PSBoundParameters.Remove('EndDate')
     }
 
+    switch ($PSCmdlet.ParameterSetName) {
+      {$_ -in 'ApplicationWithKeyPlainParameterSet', 'ApplicationObjectWithKeyPlainParameterSet', 'DisplayNameWithKeyPlainParameterSet'} {
+        $kc = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+                                         -Property @{'Key' = ([System.Convert]::FromBase64String($PSBoundParameters['CertValue']));
+                                            'Usage'       = 'Verify'; 
+                                            'Type'        = 'AsymmetricX509Cert'
+                                         }
+        $null = $PSBoundParameters.Remove('CertValue')
+        $kc.StartDateTime = $sd
+        $kc.EndDateTime = $ed
+        $PSBoundParameters['KeyCredentials'] = $kc
+        break
+      }
+      {$_ -in 'ApplicationWithPasswordCredentialParameterSet', 'ApplicationObjectWithPasswordCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
+        $pc = $PSBoundParameters['PasswordCredentials']
+        $null = $PSBoundParameters.Remove('PasswordCredentials')
+        break
+      }
+      default {
+        break
+      }
+    }
+
+    
+
     $sp = MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
     $param = @{'ObjectId' = $sp.Id }
+    if ($PSBoundParameters['KeyCredentials']) {
+      $null = $PSBoundParameters.Remove('KeyCredentials')
+    }
 
     switch ($PSCmdlet.ParameterSetName) {
       {$_ -in 'ApplicationWithPasswordPlainParameterSet', 'ApplicationObjectWithPasswordPlainParameterSet', 'DisplayNameWithPasswordPlainParameterSet'} {
@@ -756,29 +763,9 @@ function New-AzMgServicePrincipal {
         $null = New-AzMgSpCredential @param
         break
       }
-      {$_ -in 'ApplicationWithKeyPlainParameterSet', 'ApplicationObjectWithKeyPlainParameterSet', 'DisplayNameWithKeyPlainParameterSet'} {
-        $param['CertValue'] = $cv
-        if ($sd) {
-          $param['StartDate'] = $sd
-        }
-        if ($ed) {
-          $param['EndDate'] = $ed
-        }
-        $null = New-AzMgSpCredential @param
-        break
-      }
       {$_ -in 'ApplicationWithPasswordCredentialParameterSet', 'ApplicationObjectWithPasswordCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
-        foreach ($cred in $pc) {
-          $param['PasswordCredential'] = $cred
-          $null = New-AzMgSpCredential @param
-        }
-        break
-      }
-      {$_ -in 'ApplicationWithKeyCredentialParameterSet', 'ApplicationObjectWithKeyCredentialParameterSet', 'DisplayNameWithKeyCredentialParameterSet'} {
-        foreach ($cred in $kc) {
-          $param['KeyCredential'] = $cred
-          $null = New-AzMgSpCredential @param
-        }
+        $PSBoundParameters['PasswordCredentials'] = $pc
+        $null = New-AzMgSpCredential @param
         break
       }
       default {
