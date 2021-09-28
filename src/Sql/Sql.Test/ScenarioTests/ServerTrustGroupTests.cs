@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 			Helper.SetupSomeOfManagementClients(newResourcesClient, sqlClient, networkClient, graphClient);
 		}
 
-		[Fact(Skip = "Cannot re-record.")]
+		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void TestServerTrustGroup()
 		{

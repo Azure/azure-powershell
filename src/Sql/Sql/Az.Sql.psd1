@@ -276,7 +276,8 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication', 
                'Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication', 
                'Get-AzSqlInstanceActiveDirectoryOnlyAuthentication', 
-               'Get-AzSqlServerTrustGroup', 'New-AzSqlServerTrustGroup', 
+               'Get-AzSqlServerTrustGroup', 
+               'New-AzSqlServerTrustGroup', 
                'Remove-AzSqlServerTrustGroup', 
                'Enable-AzSqlDatabaseLedgerDigestUpload', 
                'Disable-AzSqlDatabaseLedgerDigestUpload', 
@@ -307,7 +308,8 @@ AliasesToExport = 'Get-AzSqlDatabaseServerAuditingPolicy',
                'Get-AzSqlDatabaseThreatDetectionSetting', 
                'Set-AzSqlDatabaseThreatDetectionSetting', 
                'Remove-AzSqlDatabaseThreatDetectionSetting', 
-               'Set-AzSqlInstanceTDEProtector', 'Get-AzSqlInstanceTDEProtector'
+               'Set-AzSqlInstanceTDEProtector', 'Get-AzSqlInstanceTDEProtector',
+               'Set-AzSqlServerTrustGroup'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
