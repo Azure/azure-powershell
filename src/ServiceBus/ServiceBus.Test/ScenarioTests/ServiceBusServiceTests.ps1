@@ -64,7 +64,7 @@ function ServiceBusTests {
 
     # for ZoneRedundant and DisableLocalAuth 
     Write-Debug "NamespaceName : $namespaceName3"
-    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName3 -SkuName "Premium" -ZoneRedundant $TRUE -DisableLocalAuth $TRUE
+    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName3 -SkuName "Premium" -ZoneRedundant -DisableLocalAuth
     # Assert
     Assert-AreEqual $result.Name $namespaceName3
     Assert-True {$result.ZoneRedundant}

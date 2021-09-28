@@ -75,15 +75,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags")]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Premium Namespace in regions supported availability zones.")]
-        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? ZoneRedundant { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Disable/Enable SAS authentication for the Service Bus namespace")]
-        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? DisableLocalAuth { get; set; }
+        /// <summary>
+        /// Indicates whether DisableLocalAuth is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "enabling or disabling SAS authentication for the Service Bus namespace")]
+        public SwitchParameter DisableLocalAuth { get; set; }
 
         /// <summary>
         /// 
@@ -97,7 +93,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             {
                 try
                 {
-                    WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, ZoneRedundant, DisableLocalAuth));
+                    WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, DisableLocalAuth.IsPresent));
                 }
                 catch (Management.ServiceBus.Models.ErrorResponseException ex)
                 {
