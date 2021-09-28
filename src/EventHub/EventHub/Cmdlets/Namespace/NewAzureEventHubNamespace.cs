@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         public SwitchParameter Identity { get; set; }
 
         /// <summary>
-        /// Indicates whether ZoneRedundant is enabled.
+        /// Indicates whether DisableLocalAuth is enabled.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling  SAS authentication for namespace")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling SAS authentication for namespace")]
