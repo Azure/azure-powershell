@@ -1,8 +1,7 @@
-﻿
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: https://docs.microsoft.com/powershell/module/az.rediscache/get-azredisprivateendpointconnection
+online version:
 schema: 2.0.0
 ---
 
@@ -13,10 +12,9 @@ Get Private Endpoint Connection from a Redis Cache.
 
 ## SYNTAX
 
-### NormalParameterSet (Default)
 ```
-Get-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <String> -PrivateEndpointConnectionName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <String>
+ -PrivateEndpointConnectionName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,8 +23,8 @@ Get-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <String
 ## EXAMPLES
 
 ### Example 1: Get a private endpoint connection
-```
-PS C:\>Get-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45"
+```powershell
+PS C:\> Get-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45"
 
 		ResourceGroupName               : myGroup
 		Name                            : myCache
@@ -39,7 +37,7 @@ This cmdlet gets a private endpoint connection named **privateDemo.abcd1234e56**
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used when you communicate with Azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -68,23 +66,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of resource group in which cache exists.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -PrivateEndpointConnectionName
-Name of Private Endpoint Connection.
+Name of private endpoint connection.
 
 ```yaml
 Type: System.String
@@ -98,10 +81,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+The resource group name of the private endpoint.
 
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -109,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.RedisCache.Models.PSRedisPrivateEndpoint
 
 ## NOTES
 

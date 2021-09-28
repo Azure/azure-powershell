@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.0
+* Added `Private Endpoint Connection` cmdlets (Get-AzRedisPrivateEndpointConnection, Set-AzRedisPrivateEndpointConnectionStatus, Remove-AzRedisPrivateEndpointConnection) for Azure cache for Redis. 
+* Updated test cases for zone redundancy. Created new examples in documentation of `New-AzRedisCache` and `Set-AzRedisCache`.
+
 ## Version 1.5.0
 * Added `RedisVersion` parameter in `New-AzRedisCache` and `Set-AzRedisCache`
 

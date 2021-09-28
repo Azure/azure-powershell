@@ -1,8 +1,7 @@
-﻿
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: https://docs.microsoft.com/powershell/module/az.rediscache/remove-azredisprivateendpointconnection
+online version:
 schema: 2.0.0
 ---
 
@@ -13,10 +12,10 @@ Remove a private endpoint connection from Azure Cache for Redis.
 
 ## SYNTAX
 
-### NormalParameterSet (Default)
 ```
-Remove-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <String> -PrivateEndpointConnectionName <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzRedisPrivateEndpointConnection [-ResourceGroupName <String>] -Name <String>
+ -PrivateEndpointConnectionName <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,16 +24,16 @@ Remove a private endpoint connection from Azure Cache for Redis.
 ## EXAMPLES
 
 ### Example 1: Remove a private endpoint connection and return the result
-```
-PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -Force -PassThru
+```powershell
+PS C:\> Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -Force -PassThru
 True
 ```
 
-This cmdlet removes a private endpoint connection named *MyPrivateEndpoint.abcd123e45* from a cache named *mycache* and displays if the operation is successful. 
+This cmdlet removes a private endpoint connection named *MyPrivateEndpoint.abcd123e45* from a cache named *mycache* and displays if the operation is successful.
 
 ### Example 2: Remove a private endpoint connection and do not display the result
-```
-PS C:\>Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -Force
+```powershell
+PS C:\> Remove-AzRedisPrivateEndpointConnection -Name "mycache" -PrivateEndpointConnectionName "MyPrivateEndpoint.abcd123e45" -Force
 ```
 
 This cmdlet removes a private endpoint connection named *MyPrivateEndpoint.abcd123e45* from Azure Cache for Redis named *mycache*. Because the **PassThru** parameter is not specified, the result of the operation is not displayed.
@@ -42,7 +41,7 @@ This cmdlet removes a private endpoint connection named *MyPrivateEndpoint.abcd1
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -57,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the cmdlet to run without asking for user confirmation.
+Do not ask for confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -72,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of redis cache.
+Name of Azure redis cache from private endpoint connection is deleted .
 
 ```yaml
 Type: System.String
@@ -102,23 +101,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of resource group in which cache exists.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -PrivateEndpointConnectionName
-Name of private endpoint connection.
+Name of private endpoint connection to be deleted.
 
 ```yaml
 Type: System.String
@@ -126,6 +110,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name of the private endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -142,7 +141,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -158,13 +157,13 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
