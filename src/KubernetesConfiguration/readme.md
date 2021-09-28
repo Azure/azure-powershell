@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ce530ccff065a7342c97a28c8eea79d83fc2e67d
+branch: fa0a95854a551be7fdb04367e2e7b6500ab2e341
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -59,7 +59,6 @@ module-version: 0.1.0
 subject-prefix: ''
 
 identity-correction-for-post: true
-resourcegroup-append: true
 
 directive:
   - from: swagger-document
@@ -116,4 +115,7 @@ directive:
   - where:
       subject: OperationStatus
     remove: true
+  - where:
+      subject: Extension
+    hide: true
 ```
