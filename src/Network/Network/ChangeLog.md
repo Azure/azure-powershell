@@ -21,6 +21,9 @@
 ## Upcoming Release
 * Added optional parameter `-IsSecuritySite` to the following cmdlet:
     - `New-AzVpnSite`
+* Support for Sku, ScaleUnits parameters of BastionHost resource. [#15885]
+    - `New-AzBastion`
+    - `Set-AzBastion`
 
 ## Version 4.11.0
 * Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
