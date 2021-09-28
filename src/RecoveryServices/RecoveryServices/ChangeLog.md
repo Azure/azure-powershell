@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Azure Site Recovery bug fixes for VMware to Azure Reprotect and Disable scenarios.
+* Azure Site Recovery bug fixes for VMware to Azure Reprotect, Update policy and Disable scenarios.
 * Azure Backup added the support for UserAssigned MSI in RecoveryServices Vault.
 
 ## Version 4.6.0
