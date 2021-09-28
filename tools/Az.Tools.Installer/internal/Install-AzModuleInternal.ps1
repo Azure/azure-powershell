@@ -137,14 +137,39 @@ function Install-AzModuleInternal {
             {
                 $jobs = @()
                 $module = $null
+                $maxJobCount = 5
+                $index = 0
                 foreach ($module in $modules) {
-                    if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
-                        $jobs  += Start-ThreadJob -Name "Az.Tools.Installer" {
-                            $tmodule = $using:module
-                            Write-Output "$($tmodule.Name) version $($tmodule.Version)"
-                            PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
-                        } -ThrottleLimit 5 
-                        #-StreamingHost $Host
+                    if ($PSVersionTable.PSEdition -eq "Core") {
+                        if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
+                            $jobs  += Start-ThreadJob -Name "Az.Tools.Installer" {
+                                $tmodule = $using:module
+                                Write-Output "$($tmodule.Name) version $($tmodule.Version)"
+                                PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
+                            } -ThrottleLimit $maxJobCount
+                            #-StreamingHost $Host
+                        }
+                    }
+                    else {
+                        $runningJob = Get-Job -State Running
+                        $count = 0
+                        if ($runningJob -and $runningJob.PSObject.Properties.Name.Contains('Count')) {
+                            $count = (Get-Job -State Running).Count
+                        }
+                        if($count -lt $maxJobCount) {
+                            if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
+                                $jobs += Start-Job -Name "Az.Tools.Installer" {
+                                    $tmodule = $using:module
+                                    Write-Output "$($tmodule.Name) version $($tmodule.Version)"
+                                    PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
+                                }
+                                Write-Progress -Activity "Install Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
+                                $index += 1
+                            }
+                        }
+                        else {
+                            Get-Job -State Running | Wait-Job -Any
+                        }
                     }
                 }
     
@@ -167,8 +192,10 @@ function Install-AzModuleInternal {
                             Write-Warning  "[$Invoker] Uninstalling $result is failed."
                         }
                         Remove-Job $job -Confirm:$false
-                        Write-Progress -Activity "Install Module" -CurrentOperation "$result" -PercentComplete ($index / $jobs.Count * 100)
-                        $index += 1
+                        if ($PSVersionTable.PSEdition -eq "Core") {
+                            Write-Progress -Activity "Install Module" -CurrentOperation "$result" -PercentComplete ($index / $jobs.Count * 100)
+                            $index += 1
+                        }
                     }
                 }
             }
