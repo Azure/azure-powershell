@@ -80,6 +80,23 @@ param(
     ${Location},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.String]
+    # The id of an existing Subnet the private access server will created to.
+    # Please note that the subnet will be delegated to Microsoft.DBforPostgreSQL/flexibleServers.
+    # After delegation, this subnet cannot be used for any other type of Azure resources.
+    ${Subnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.String]
+    # The id of an existing private dns zone.
+    # You can use the
+    #         private dns zone from same resource group, different resource group, or
+    #         different subscription.
+    ${PrivateDnsZone},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Azure')]

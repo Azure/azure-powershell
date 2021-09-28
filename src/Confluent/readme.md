@@ -47,18 +47,24 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: c35467e04efa830ca3a15c8cafcd2db5e10d55fe
+branch: a71245db9eb5b27e3d95f266422c65be4df8789e
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
   - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/stable/2020-03-01/confluent.json
 
-module-version: 0.1.0
+module-version: 0.2.0
 title: Confluent
 subject-prefix: $(service-name)
 
 directive:
+  # New-AzConfluentMarketplaceAgreeemt has  be removed, because it cand be replace by Set-AzMarketplaceTerms (Az.MarketplaceOrdering).
+  - where:
+      verb: New
+      subject: MarketplaceAgreement$
+    remove: true
+
   - where:
       subject: OrganizationOperation
     hide: true
@@ -66,4 +72,10 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentityExpanded$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
     remove: true
+  
+  # Hide the Remove-AzConfluentOrganization for ask user confirmation before Remove-AzConfluentOrganization been invoken
+  - where:
+      verb: Remove
+      subject: Organization$
+    hide: true
 ```

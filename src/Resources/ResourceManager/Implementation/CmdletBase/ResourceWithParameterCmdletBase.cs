@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter SkipTemplateParameterPrompt { get; set; }
 
         /// <summary>
-        /// Gets or sets the Template Specs Azure SDK client 
+        /// Gets or sets the Template Specs Azure SDK client
         /// </summary>
         public ITemplateSpecsClient TemplateSpecsClient
         {
@@ -177,11 +177,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             set { this.templateSpecsClient = value; }
         }
 
-        public virtual object GetDynamicParameters()
+        public new virtual object GetDynamicParameters()
         {
+            if (BicepUtility.IsBicepFile(TemplateUri))
+            {
+                throw new NotSupportedException($"'-TemplateUri {TemplateUri}' is not supported. Please download the bicep file and pass it using -TemplateFile.");
+            }
+
             if (BicepUtility.IsBicepFile(TemplateFile))
                 BuildAndUseBicepTemplate();
-                
+
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
             {
                 // Resolve the static parameter names for this cmdlet:
@@ -269,7 +274,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     if (!string.IsNullOrEmpty(resourceIdentifier.Subscription) &&
                         TemplateSpecsClient.SubscriptionId != resourceIdentifier.Subscription)
                     {
-                        // The template spec is in a different subscription than our default 
+                        // The template spec is in a different subscription than our default
                         // context. Force the client to use that subscription:
                         TemplateSpecsClient.SubscriptionId = resourceIdentifier.Subscription;
                     }

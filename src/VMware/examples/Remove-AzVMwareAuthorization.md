@@ -1,9 +1,15 @@
-### Example 1: Delete authorization for private cloud
+### Example 1: Delete authorization in private cloud
 ```powershell
-PS C:\> Remove-AzVMwareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Remove-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_authorization
 
 ```
 
-Delete authorization for private cloud
+Delete authorization in private cloud
 
+### Example 2: Delete authorization in private cloud
+```powershell
+PS C:\> Get-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_authorization | Remove-AzVMwareAuthorization
 
+```
+
+Delete authorization in private cloud

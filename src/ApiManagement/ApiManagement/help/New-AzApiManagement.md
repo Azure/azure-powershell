@@ -22,7 +22,8 @@ New-AzApiManagement -ResourceGroupName <String> -Name <String> -Location <String
  [-CustomHostnameConfiguration <PsApiManagementCustomHostNameConfiguration[]>]
  [-SystemCertificateConfiguration <PsApiManagementSystemCertificate[]>]
  [-SslSetting <PsApiManagementSslSetting>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
- [-EnableClientCertificate] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnableClientCertificate] [-Zone <String[]>] [-DisableGateway <Boolean>]
+ [-MinimalControlPlaneApiVersion <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,6 +167,48 @@ ResourceGroupName                     : Api-Default-CentralUS
 
 This command creates a Standard SKU Api Management service and Enable TLS 1.0 on Frontend client to ApiManagement Gateway and Backend client between ApiManagement Gateway and Backend.
 
+### Example 7: Create an API Management service in Availability Zones
+```powershell
+PS D:\> New-AzApiManagement -ResourceGroupName "contoso-rg" -Name "apim-test-pshell-azs" -Location "Central US" -Organization "Contoso" -AdminEmail "admin@contoso.com" -Sku Premium -Capacity 3 -Zone @("1","2","3")
+
+PublicIPAddresses                     : {52.238.252.170}
+PrivateIPAddresses                    :
+Id                                    : /subscriptions/aa7def4e-6bcd-4b28-b8d5-7613a618e753/resourceGroups/contoso-rg/providers/Microsoft.ApiManagement/service/apim-test-pshell-azs
+Name                                  : apim-test-pshell-azs
+Location                              : Central US
+Sku                                   : Premium
+Capacity                              : 3
+CreatedTimeUtc                        : 7/30/2021 7:47:12 PM
+ProvisioningState                     : Succeeded
+RuntimeUrl                            : https://apim-test-pshell-azs.azure-api.net
+RuntimeRegionalUrl                    : https://apim-test-pshell-azs-centralus-01.regional.azure-api.net
+PortalUrl                             : https://apim-test-pshell-azs.portal.azure-api.net
+DeveloperPortalUrl                    : https://apim-test-pshell-azs.developer.azure-api.net
+ManagementApiUrl                      : https://apim-test-pshell-azs.management.azure-api.net
+ScmUrl                                : https://apim-test-pshell-azs.scm.azure-api.net
+PublisherEmail                        : admin@contoso.com
+OrganizationName                      : Contoso
+NotificationSenderEmail               : apimgmt-noreply@mail.windowsazure.com
+VirtualNetwork                        :
+VpnType                               : None
+PortalCustomHostnameConfiguration     :
+ProxyCustomHostnameConfiguration      : {apim-test-pshell-azs.azure-api.net}
+ManagementCustomHostnameConfiguration :
+ScmCustomHostnameConfiguration        :
+DeveloperPortalHostnameConfiguration  :
+SystemCertificates                    :
+Tags                                  : {}
+AdditionalRegions                     : {}
+SslSetting                            : Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting
+Identity                              :
+EnableClientCertificate               :
+Zone                                  : {1, 2, 3}
+DisableGateway                        : False
+MinimalControlPlaneApiVersion         :
+ResourceGroupName                     : contoso-rg
+```
+This command creates a Premium SKU Api Management service in Zones
+
 ## PARAMETERS
 
 ### -AdditionalRegions
@@ -244,6 +287,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableGateway
+Flag only meant to be used for Premium SKU ApiManagement Service and Non Internal VNET deployments. This is useful in case we want to take a gateway region out of rotation. This can also be used to standup a new region in Passive mode, test it and then make it Live later.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableClientCertificate
 Flag only meant to be used for Consumption SKU ApiManagement Service. This enforces a client certificate to be presented on each request to the gateway. This also enables the ability to authenticate the certificate in the policy on the gateway.
 
@@ -273,6 +331,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MinimalControlPlaneApiVersion
+Minimal Control Plane Apis version  to allow for managing the API Management service.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -449,6 +522,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+A list of availability zones denoting where the api management service is deployed into.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

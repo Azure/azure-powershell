@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   suspendedTill: other.SuspendedTill,
                   slotSwapStatus: other.SlotSwapStatus,
                   httpsOnly: other.HttpsOnly,
-                  identity: other.Identity
+                  identity: other.Identity,
+                  customDomainVerificationId: other.CustomDomainVerificationId
                   )
         {
             PropertyInfo AzureStoragePathProp = other.GetType().GetProperty("AzureStoragePath");

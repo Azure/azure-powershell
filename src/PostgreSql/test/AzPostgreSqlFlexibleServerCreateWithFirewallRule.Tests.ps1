@@ -47,7 +47,6 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithFirewallRule' {
                 $FirewallRules[0].StartIPAddress | Should -Be "0.0.0.0"
                 $FirewallRules[0].EndIPAddress | Should -Be "255.255.255.255"
                 Remove-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName2
-                WaitServerDelete
             } | Should -Not -Throw
         }
     }

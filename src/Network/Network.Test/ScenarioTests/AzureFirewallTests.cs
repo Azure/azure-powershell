@@ -69,6 +69,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubCRUDWithZones()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubCRUDWithZones");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallThreatIntelWhitelistCRUD()
         {
             TestRunner.RunTestScript("Test-AzureFirewallThreatIntelWhitelistCRUD");
@@ -119,6 +127,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestAzureFirewallNoDataPip()
         {
             TestRunner.RunTestScript("Test-AzureFirewallNoDataPip");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubAllocateDeallocated()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubAllocateDeallocated");
         }
     }
 }

@@ -15,7 +15,7 @@ function Test-SynapseSqlPoolV3
         $workspaceName = $params.WorkspaceName
         $location = $params.location
         $sqlPoolName = $params.sqlPoolName
-        $sqlPoolPerformanceLevel = 'DW500f'
+        $sqlPoolPerformanceLevel = 'DW100c'
 
         # Test to make sure the SqlPool doesn't exist
         Assert-False {Test-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3}
@@ -49,7 +49,7 @@ function Test-SynapseSqlPoolV3
         Assert-True {Test-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3}
         
         # Updating SqlPool
-        $newPerformanceLevel = 'DW1000f'
+        $newPerformanceLevel = 'DW200c'
         Update-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3 -PerformanceLevel $newPerformanceLevel
  
 		# Wait for 3 minutes for the update completion

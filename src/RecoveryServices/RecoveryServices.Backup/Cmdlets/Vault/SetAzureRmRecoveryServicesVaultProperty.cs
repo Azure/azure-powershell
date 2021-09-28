@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -41,13 +40,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string EncryptionKeyId;
 
-        [Parameter(Mandatory = true, ValueFromPipeline = false, ParameterSetName = AzureRSVaultCMKParameterSet, HelpMessage = ParamHelpMsgs.Encryption.KeyVaultSubscriptionId)]
+        // can remove this param in breaking release 
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultCMKParameterSet, HelpMessage = ParamHelpMsgs.Encryption.KeyVaultSubscriptionId)]
         [ValidateNotNullOrEmpty]
         public string KeyVaultSubscriptionId;
 
         [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultCMKParameterSet, HelpMessage = ParamHelpMsgs.Encryption.InfrastructureEncryption)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter InfrastructureEncryption;
+
+        // make this parameter mandatory in breaking release
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultCMKParameterSet, HelpMessage = ParamHelpMsgs.Encryption.UseSystemAssignedIdentity)]
+        [ValidateNotNullOrEmpty]
+        public Boolean UseSystemAssignedIdentity = true;
+
+        [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultCMKParameterSet, HelpMessage = ParamHelpMsgs.Encryption.UserAssignedIdentity)]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentity;
 
         public override void ExecuteCmdlet()
         {
@@ -72,17 +81,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                     else if (EncryptionKeyId != null)
                     {
-                        BackupResourceEncryptionConfigResource vaultEncryptionSettings = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
+                        BackupResourceEncryptionConfigResource vaultEncryptionSettings = new BackupResourceEncryptionConfigResource();                        
+                        vaultEncryptionSettings.Properties = new BackupResourceEncryptionConfig();
 
-                        vaultEncryptionSettings.Properties.EncryptionAtRestType = "CustomerManaged";
-                        vaultEncryptionSettings.Properties.KeyUri = EncryptionKeyId;
+                        PatchVault patchVault = new PatchVault();
+                        patchVault.Properties = new VaultProperties();
+                        VaultPropertiesEncryption vaultEncryption = new VaultPropertiesEncryption();
+                        vaultEncryption.KeyVaultProperties = new CmkKeyVaultProperties();
+                        vaultEncryption.KekIdentity = new CmkKekIdentity();
+
+                        vaultEncryption.KeyVaultProperties.KeyUri = EncryptionKeyId;
+
                         if (InfrastructureEncryption.IsPresent)
                         {
-                            vaultEncryptionSettings.Properties.InfrastructureEncryptionState = "Enabled";
+                            vaultEncryption.InfrastructureEncryption = "Enabled";
                         }
-                        vaultEncryptionSettings.Properties.SubscriptionId = KeyVaultSubscriptionId;
-                        vaultEncryptionSettings.Properties.LastUpdateStatus = null;
-                        var response = ServiceClientAdapter.UpdateVaultEncryptionConfig(resourceGroupName, vaultName, vaultEncryptionSettings);
+                        
+                        vaultEncryption.KekIdentity.UseSystemAssignedIdentity = UseSystemAssignedIdentity;
+
+                        if(!UseSystemAssignedIdentity && (UserAssignedIdentity == null || UserAssignedIdentity == ""))
+                        {
+                            throw new ArgumentException(Resources.IdentityIdRequiredForCMK);
+                        }
+                        else if (!UseSystemAssignedIdentity)
+                        {
+                            vaultEncryption.KekIdentity.UserAssignedIdentity = UserAssignedIdentity;
+                        }
+
+                        patchVault.Properties.Encryption = vaultEncryption;                                               
+                        
+                        ServiceClientAdapter.UpdateRSVault(resourceGroupName, vaultName, patchVault);
                     }
                 }
                 catch (Exception exception)

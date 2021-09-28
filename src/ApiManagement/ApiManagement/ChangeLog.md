@@ -19,6 +19,32 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Added new `Sync-AzApiManagementKeyVaultSecret` cmdlet.
+* Added new `New-AzApiManagementKeyVaultObject` cmdlet.
+* Added new optional [-useFromLocation] parameter to the `Get-ApiManagementCache` `New-ApiManagementCache``Update-ApiManagementCache` cmdlet.
+
+* Updated cmdlet **New-AzApiManagement** to manage ApiManagement service 
+    - Added support for the new `Isolated` SKU
+    - Added support for managing Availability Zones using `Zone` property
+    - Added support for Disabling Gateway in a Region using `DisableGateway` property
+    - Added support for managing the minimum Api Version to allow for Control Plane using `MinimalControlPlaneApiVersion` property.
+
+* Updated cmdlet **New-AzApiManagementRegion** to manage ApiManagement service     
+    - Added support for managing Availability Zones using `Zone` property
+    - Added support for Disabling Gateway in a Region using `DisableGateway` property
+
+* Updated cmdlet **Add-AzApiManagementRegion** to manage ApiManagement service     
+    - Added support for managing Availability Zones using `Zone` property
+    - Added support for Disabling Gateway in a Region using `DisableGateway` property
+
+* Updated cmdlet **Update-AzApiManagementRegion** to manage ApiManagement service     
+    - Added support for managing Availability Zones using `Zone` property
+    - Added support for Disabling Gateway in a Region using `DisableGateway` property
+
+* Updated cmdlet **New-AzApiManagementCustomHostnameConfiguration** to manage Custom Hostname Configuration
+    - Added support for specifying `IdentityClientId` to provide Managed Identity User Assigned ClientId to use with KeyVault
+
 ## Version 2.2.0
 * [Breaking change] `New-AzApiManagementProduct` by default has no subscription limit.
 

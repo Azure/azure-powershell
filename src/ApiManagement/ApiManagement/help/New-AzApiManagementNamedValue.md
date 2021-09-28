@@ -13,9 +13,9 @@ Creates new Named Value.
 ## SYNTAX
 
 ```
-New-AzApiManagementNamedValue -Context <PsApiManagementContext> [-NamedValueId <String>] -Name <String>
- -Value <String> [-Secret] [-Tag <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzApiManagementNamedValue -Context <PsApiManagementContext> [-NamedValueId <String>] [-Name <String>]
+ [-Value <String>] [-Secret] [-Tag <String[]>] [-KeyVault <PsApiManagementKeyVaultEntity>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,16 @@ PS C:\>New-AzApiManagementNamedValue -Context $apimContext -NamedValueId "Proper
 ```
 
 This command creates a **Named Value** that has a value that is encrypted.
+
+### Example 3 : Create a keyVault Namedvalue
+```powershell
+PS C:\>$secretIdentifier = 'https://contoso.vault.azure.net/secrets/xxxx'
+PS C:\>$keyvault = New-AzApiManagementKeyVaultObject -SecretIdentifier $secretIdentifier 
+PS C:\>$keyVaultNamedValue = New-AzApiManagementNamedValue -Context $context -NamedValueId $keyVaultNamedValueId -Name $keyVaultNamedValueName -keyVault $keyvault -Secret
+```
+
+The first command creates a keyvault.
+The second command creates a named value using secret from this keyvault.
 
 ## PARAMETERS
 
@@ -74,6 +84,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KeyVault
+KeyVault used to fetch Namedvalue data.This parameter is required if Value not specified.
+See New-AzApiManagementKeyVaultObject for details.
+
+```yaml
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementKeyVaultEntity
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the named value.
 Maximum length is 100 characters.
@@ -85,7 +111,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -154,7 +180,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

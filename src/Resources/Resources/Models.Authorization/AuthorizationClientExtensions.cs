@@ -256,7 +256,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     new PSADObject() { Id = assignment.PrincipalId };
                 PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.RoleDefinitionId) ??
                     new PSRoleDefinition() { Id = assignment.RoleDefinitionId };
-                bool delegationFlag = assignment.CanDelegate.HasValue ? (bool)assignment.CanDelegate : false;
                 if (adObject is PSADUser)
                 {
                     psAssignments.Add(new PSRoleAssignment()
@@ -269,7 +268,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         SignInName = ((PSADUser)adObject).UserPrincipalName,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
-                        CanDelegate = delegationFlag,
                         Description = assignment.Description,
                         Condition = assignment.Condition,
                         ConditionVersion = assignment.ConditionVersion,
@@ -286,7 +284,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
-                        CanDelegate = delegationFlag,
                         Description = assignment.Description,
                         Condition = assignment.Condition,
                         ConditionVersion = assignment.ConditionVersion,
@@ -303,7 +300,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
-                        CanDelegate = delegationFlag,
                         Description = assignment.Description,
                         Condition = assignment.Condition,
                         ConditionVersion = assignment.ConditionVersion,
@@ -334,7 +330,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
-                        CanDelegate = delegationFlag,
                         ObjectType = DeletedObject,
                         Description = assignment.Description,
                         Condition = assignment.Condition,

@@ -188,6 +188,9 @@ Migrate an existing Storage blob containers to enable immutable Storage with ver
 ### [Invoke-AzStorageAccountFailover](Invoke-AzStorageAccountFailover.md)
 Invokes failover of a Storage account.
 
+### [Invoke-AzStorageAccountHierarchicalNamespaceUpgrade](Invoke-AzStorageAccountHierarchicalNamespaceUpgrade.md)
+Validates if a storage account can be upgraded to enable HierarchicalNamespace, or upgrades a Storage account to enabled HierarchicalNamespace.
+
 ### [Lock-AzRmStorageContainerImmutabilityPolicy](Lock-AzRmStorageContainerImmutabilityPolicy.md)
 Locks ImmutabilityPolicy of a Storage blob containers
 
@@ -442,6 +445,9 @@ Start an Incremental copy operation from a Page blob snapshot to the specified d
 
 ### [Start-AzStorageFileCopy](Start-AzStorageFileCopy.md)
 Starts to copy a source file.
+
+### [Stop-AzStorageAccountHierarchicalNamespaceUpgrade](Stop-AzStorageAccountHierarchicalNamespaceUpgrade.md)
+Aborts an ongoing HierarchicalNamespace upgrade task on a storage account.
 
 ### [Stop-AzStorageBlobCopy](Stop-AzStorageBlobCopy.md)
 Stops a copy operation.

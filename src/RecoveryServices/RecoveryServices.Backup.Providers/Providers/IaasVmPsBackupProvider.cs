@@ -399,7 +399,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string rehydrateDuration = ProviderData.ContainsKey(RecoveryPointParams.RehydrateDuration) ?
                 ProviderData[RecoveryPointParams.RehydrateDuration].ToString() : "15";
             string rehydratePriority = ProviderData.ContainsKey(RecoveryPointParams.RehydratePriority) ?
-                ProviderData[RecoveryPointParams.RehydratePriority].ToString() : null;
+                ProviderData[RecoveryPointParams.RehydratePriority].ToString() : null;            
+            bool useSystemAssignedIdentity = (bool)ProviderData[RestoreVMBackupItemParams.UseSystemAssignedIdentity];
+            string userAssignedIdentityId = (string) ProviderData[RestoreVMBackupItemParams.UserAssignedIdentityId];
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -443,7 +445,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 restoreDiskLUNS = null;
             }
-            
+
+            // Vanguard M9 requirement: restores using MSI
+            IdentityInfo identityInfo = null;
+            if (useSystemAssignedIdentity || (userAssignedIdentityId != null && userAssignedIdentityId != ""))
+            {
+                if (rp.IsManagedVirtualMachine)
+                {
+                    identityInfo = new IdentityInfo();
+                    if (useSystemAssignedIdentity)
+                    {   
+                        identityInfo.IsSystemAssignedIdentity = true;
+                    }
+                    else
+                    {
+                        identityInfo.IsSystemAssignedIdentity = false;
+                        identityInfo.ManagedIdentityResourceId = userAssignedIdentityId;
+                    }
+                }
+                else
+                {
+                    throw new NotSupportedException(Resources.MSIRestoreNotSupportedForUnmanagedVM);                    
+                }
+            }
+
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
                 CreateNewCloudService = false,
@@ -458,7 +483,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 OriginalStorageAccountOption = useOsa,
                 RestoreDiskLunList = restoreDiskLUNS,
                 DiskEncryptionSetId = DiskEncryptionSetId,
-                RestoreWithManagedDisks = restoreWithManagedDisks
+                RestoreWithManagedDisks = restoreWithManagedDisks,
+                IdentityInfo = identityInfo
             };
 
             if(targetZones != null)
@@ -469,6 +495,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
             triggerRestoreRequest.Properties = restoreRequest;
             
+            // Cross Region Restore
             if (useSecondaryRegion)
             {
                 // get access token

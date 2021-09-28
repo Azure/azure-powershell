@@ -539,12 +539,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRInMageRcmFailbackEventDetails(InMageRcmFailbackEventDetails inMageRcmFailbackEventDetails)
         {
             this.ProtectedItemName = inMageRcmFailbackEventDetails.ProtectedItemName;
+            this.VmName = inMageRcmFailbackEventDetails.VmName;
+            this.ApplianceName = inMageRcmFailbackEventDetails.ApplianceName;
+            this.ServerType = inMageRcmFailbackEventDetails.ServerType;
+            this.ComponentDisplayName = inMageRcmFailbackEventDetails.ComponentDisplayName;
         }
 
         /// <summary>
         ///     Gets or sets the protected item name.
         /// </summary>
         public string ProtectedItemName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the VM name.
+        /// </summary>
+        public string VmName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the appliance name.
+        /// </summary>
+        public string ApplianceName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the server type.
+        /// </summary>
+        public string ServerType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the component display name.
+        /// </summary>
+        public string ComponentDisplayName { get; set; }
 
         /// <summary>
         ///     Gets the class type.

@@ -15,13 +15,16 @@ Creates a managed HSM.
 ```
 New-AzKeyVaultManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
  [-Administrator] <String[]> [-Sku <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzKeyVaultManagedHsm** cmdlet creates a managed HSM in the specified resource group. To add, 
-remove, or list keys in the managed HSM, user should grant permissions by adding user ID to 
-Administrator.
+remove, or list keys in the managed HSM, user should: 
+1. grant permissions by adding user ID to Administrator;
+2. add role assignment for user like "Managed HSM Crypto User" and so on;
+3. back up security domain data of a managed HSM using `Export-AzKeyVaultSecurityDomain`.
 
 ## EXAMPLES
 
@@ -150,6 +153,23 @@ Accept wildcard characters: False
 
 ### -Sku
 Specifies the SKU of the managed HSM instance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the subscription.
+By default, cmdlets are executed in the subscription that is set in the current context. If the user specifies another subscription, the current cmdlet is executed in the subscription specified by the user.
+Overriding subscriptions only take effect during the lifecycle of the current cmdlet. It does not change the subscription in the context, and does not affect subsequent cmdlets.
 
 ```yaml
 Type: System.String
