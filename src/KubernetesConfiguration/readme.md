@@ -113,6 +113,9 @@ directive:
       subject: KubernetesConfiguration
     remove: true
   - where:
+      subject: Extension
+    hide: true
+  - where:
       subject: OperationStatus
     remove: true
   - where:

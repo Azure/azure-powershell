@@ -233,6 +233,6 @@ function New-AzExtension {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        Az.KubernetesConfiguration.internal\New-AzExtension @PSBoundParameters
+        Az.KubernetesConfiguration.internal\Remove-AzExtension @PSBoundParameters
     }
 }
