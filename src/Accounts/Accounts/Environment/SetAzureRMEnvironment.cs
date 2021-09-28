@@ -188,8 +188,8 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false,
             HelpMessage = "The audience for tokens authenticating with the MS Graph Endpoint.")]
-        [Alias("MicrosoftGraphEndpointResourceId", "GraphResourceId")]
-        public string MSGraphAudience { get; set; }
+        [Alias("MicrosoftGraphEndpointResourceId", "MicrosoftGraphResourceId")]
+        public string MicrosoftGraphAudience { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.Profile
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.Gallery, nameof(GalleryEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.Graph, nameof(GraphEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
-                                    nameof(MSGraphAudience));
+                                    nameof(MicrosoftGraphAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix,
                                     nameof(AzureKeyVaultDnsSuffix));
                                 SetEndpointIfBound(newEnvironment,
