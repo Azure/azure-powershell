@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
                             }
 
-                            if (parameters?.OrchestrationMode == OrchestrationMode.Flexible)
+                            if (parameters?.OrchestrationMode == "Flexible")
                             {
                                 if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkInterfaceConfigurations != null)
                                 {

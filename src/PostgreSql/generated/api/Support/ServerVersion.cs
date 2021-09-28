@@ -22,6 +22,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion Ten2 = @"10.2";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion Thirteen = @"13";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion Twelve = @"12";
 
         /// <summary>the value for an instance of the <see cref="ServerVersion" /> Enum.</summary>

@@ -16,11 +16,12 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Test;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
             var mock = new MockClientFactory(new List<object>
             {
-                clientFactory.GetSubscriptionClientVer2019(),
+                clientFactory.GetSubscriptionClientVerLatest(),
                 clientFactory.GetSubscriptionClientVer2016()
             }, true);
             mock.MoqClients = true;
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
                 new AzureTenant() { Directory = DefaultDomain, Id = DefaultTenant.ToString() });
             var profile = new AzureRmProfile();
-            profile.DefaultContext = Context;
+            profile.TrySetDefaultContext(Context);
             return new RMProfileClient(profile);
         }
 
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
             var mock = new MockClientFactory(new List<object>
             {
-                clientFactory.GetSubscriptionClientVer2019(),
+                clientFactory.GetSubscriptionClientVerLatest(),
                 clientFactory.GetSubscriptionClientVer2016()
             }, true);
             mock.MoqClients = true;
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
                 new AzureTenant() { Directory = DefaultDomain, Id = DefaultTenant.ToString() });
             var profile = new AzureRmProfile();
-            profile.DefaultContext = Context;
+            profile.TrySetDefaultContext(Context);
             return profile;
         }
 
@@ -144,7 +145,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 false,
                 null);
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
         }
 
         [Fact]
@@ -164,8 +165,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            MockSubscriptionClientFactory.SubGetQueueVer2019 = new Queue<Func<AzureOperationResponse<Subscription>>>();
-            MockSubscriptionClientFactory.SubGetQueueVer2019.Enqueue(() =>
+            MockSubscriptionClientFactory.SubGetQueueVerLatest = new Queue<Func<AzureOperationResponse<Subscription>>>();
+            MockSubscriptionClientFactory.SubGetQueueVerLatest.Enqueue(() =>
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
             });
@@ -179,7 +180,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                null,
                false,
                null));
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
         }
 
         [Fact]
@@ -230,8 +231,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            MockSubscriptionClientFactory.SubGetQueueVer2019 = new Queue<Func<AzureOperationResponse<Subscription>>>();
-            MockSubscriptionClientFactory.SubGetQueueVer2019.Enqueue(() =>
+            MockSubscriptionClientFactory.SubGetQueueVerLatest = new Queue<Func<AzureOperationResponse<Subscription>>>();
+            MockSubscriptionClientFactory.SubGetQueueVerLatest.Enqueue(() =>
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
             });
@@ -266,8 +267,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            MockSubscriptionClientFactory.SubListQueueVer2019 = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();
-            MockSubscriptionClientFactory.SubListQueueVer2019.Enqueue(() =>
+            MockSubscriptionClientFactory.SubListQueueVerLatest = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();
+            MockSubscriptionClientFactory.SubListQueueVerLatest.Enqueue(() =>
             {
                 var sub1 = new Subscription(
                     id: DefaultSubscription.ToString(),
@@ -1091,6 +1092,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.NotNull(graphMessage.Headers.Authorization);
             Assert.NotNull(graphMessage.Headers.Authorization.Parameter);
             Assert.Contains(graphToken2, graphMessage.Headers.Authorization.Parameter);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ShouldShallowCopy()
+        {
+            var tenants = new List<string> { DefaultTenant.ToString() };
+            var subscriptions = new List<string> { DefaultSubscription.ToString() };
+            var profile = SetupLogin(tenants, subscriptions, subscriptions);
+
+            var utilities = new AzureRmSharedUtilities();
+            var copy = utilities.CopyForContextOverriding(profile) as AzureRmProfile;
+
+            // Should act as shallow copy
+            // except for that `Contexts` should be a new dictionary
+            Assert.NotSame(profile, copy);
+            Assert.Same(profile.EnvironmentTable, copy.EnvironmentTable);
+            Assert.Same(profile.DefaultContext, copy.DefaultContext);
+            Assert.NotSame(profile.Contexts, copy.Contexts);
+
+            // Then deep copy default context of copy profile
+            copy.DefaultContext = copy.DefaultContext.DeepCopy();
+            Assert.NotSame(profile.DefaultContext, copy.DefaultContext);
         }
 
         private class MockPage<T> : IPage<T>

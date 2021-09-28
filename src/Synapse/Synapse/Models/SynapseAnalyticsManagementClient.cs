@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Strategies;
@@ -17,7 +31,6 @@ using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -29,14 +42,14 @@ using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TriggerType = Microsoft.Azure.Commands.Synapse.VulnerabilityAssessment.Model.TriggerType;
 using Action = System.Action;
-using ResourceIdentityType = Microsoft.Azure.Management.Synapse.Models.ResourceIdentityType;
 using Microsoft.Azure.Commands.Synapse.Model;
 using Microsoft.Azure.Commands.Synapse.Models.ManagedIdentitySqlControl;
+using ErrorResponseException = Microsoft.Azure.Management.Synapse.Models.ErrorResponseException;
+using Microsoft.Azure.Commands.Synapse.Models.Auditing;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -50,6 +63,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private ActiveDirectoryClient _activeDirectoryClient;
         private ResourceManagementClient _resourceManagementClient;
         private StorageManagementClient _storageManagementClient;
+        private MonitorManagementClient _monitorManagementClient;
 
         public SynapseAnalyticsManagementClient(IAzureContext context)
         {
@@ -68,6 +82,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 AzureEnvironment.Endpoint.ResourceManager);
 
             _synapseSqlV3ManagementClient = SynapseCmdletBase.CreateSynapseClient<SynapseSqlV3ManagementClient>(context,
+                AzureEnvironment.Endpoint.ResourceManager);
+
+            _monitorManagementClient = SynapseCmdletBase.CreateSynapseClient<MonitorManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
 
@@ -123,10 +140,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseManagementClient.Workspaces.CreateOrUpdate(resourceGroupName, workspaceName, createParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
+        }
+
+        public Guid GetTenantId()
+        {
+            return this._tenantId;
         }
 
         public Workspace UpdateWorkspace(string resourceGroupName, string workspaceName, WorkspacePatchInfo updateParams)
@@ -135,7 +157,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseManagementClient.Workspaces.Update(resourceGroupName, workspaceName, updateParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -152,7 +174,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseManagementClient.Workspaces.Get(resourceGroupName, workspaceName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -180,7 +202,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return ListResources(firstPage, _synapseManagementClient.Workspaces.ListNext);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -235,7 +257,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     ruleName,
                     createOrUpdateParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -252,7 +274,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseManagementClient.IpFirewallRules.Get(resourceGroupName, workspaceName, ruleName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -372,7 +394,19 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, GetActiveDirectoryInformation(displayName, objectId));
+                if(displayName != null)
+                {
+                    return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, GetActiveDirectoryInformation(displayName, objectId));
+                }
+                else
+                {
+                    var info = new WorkspaceAadAdminInfo()
+                    {
+                        Sid = objectId.ToString(),
+                        TenantId = _tenantId.ToString()
+                    };
+                    return _synapseManagementClient.WorkspaceAadAdmins.CreateOrUpdate(resourceGroupName, workspaceName, info);
+                }
             }
             catch (CloudException ex)
             {
@@ -551,560 +585,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #endregion
 
-        #region Auditing
-
-        public SqlPoolAuditModel GetSqlPoolAudit(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                var policy = this._synapseManagementClient.ExtendedSqlPoolBlobAuditingPolicies.Get(resourceGroupName, workspaceName, sqlPoolName);
-                var model = new SqlPoolAuditModel
-                {
-                    ResourceGroupName = resourceGroupName,
-                    WorkspaceName = workspaceName,
-                    SqlPoolName = sqlPoolName
-                };
-
-                model.IsAzureMonitorTargetEnabled = policy.IsAzureMonitorTargetEnabled;
-                model.PredicateExpression = policy.PredicateExpression;
-                model.AuditActionGroup = ExtractAuditActionGroups(policy.AuditActionsAndGroups);
-                model.AuditAction = ExtractAuditActions(policy.AuditActionsAndGroups);
-                ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId,
-                    IsAuditEnabled(policy.State), policy.RetentionDays);
-                model.BlobStorageTargetState = policy.State == BlobAuditingPolicyState.Enabled ? AuditStateType.Enabled : AuditStateType.Disabled;
-
-                return model;
-            }
-            catch (CloudException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        private AuditActionGroup[] ExtractAuditActionGroups(IEnumerable<string> auditActionsAndGroups)
-        {
-            var groups = new List<AuditActionGroup>();
-            if (auditActionsAndGroups != null)
-            {
-                auditActionsAndGroups.ForEach(item =>
-                {
-                    if (Enum.TryParse(item, true, out AuditActionGroup group))
-                    {
-                        groups.Add(group);
-                    }
-                });
-            }
-
-            return groups.ToArray();
-        }
-
-        private string[] ExtractAuditActions(IEnumerable<string> auditActionsAndGroups)
-        {
-            var actions = new List<string>();
-            if (auditActionsAndGroups != null)
-            {
-                auditActionsAndGroups.ForEach(item =>
-                {
-                    if (!Enum.TryParse(item, true, out AuditActionGroup group))
-                    {
-                        actions.Add(item);
-                    }
-                });
-            }
-
-            return actions.ToArray();
-        }
-
-        private void ModelizeStorageInfo(WorkspaceAuditModel model,
-            string storageEndpoint, bool? isSecondary, Guid? storageAccountSubscriptionId,
-            bool isAuditEnabled, int? retentionDays)
-        {
-            if (string.IsNullOrEmpty(storageEndpoint))
-            {
-                return;
-            }
-
-            model.StorageKeyType = GetStorageKeyKind(isSecondary);
-
-            if (isAuditEnabled)
-            {
-                if (storageAccountSubscriptionId == null || Guid.Empty.Equals(storageAccountSubscriptionId))
-                {
-                    storageAccountSubscriptionId = _subscriptionId;
-                }
-
-                model.StorageAccountResourceId = RetrieveStorageAccountIdAsync(
-                    storageAccountSubscriptionId.Value,
-                    GetStorageAccountName(storageEndpoint)).GetAwaiter().GetResult();
-
-                model.RetentionInDays = Convert.ToUInt32(retentionDays);
-            }
-        }
-
-        internal async Task<string> RetrieveStorageAccountIdAsync(Guid storageAccountSubscriptionId, string storageAccountName)
-        {
-            // Build a URI for calling corresponding REST-API.
-            //
-            var uriBuilder = new StringBuilder(Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString());
-            uriBuilder.AppendFormat("/resources?api-version=2018-05-01&$filter=(subscriptionId%20eq%20'{0}')%20and%20((resourceType%20eq%20'microsoft.storage/storageaccounts')%20or%20(resourceType%20eq%20'microsoft.classicstorage/storageaccounts'))%20and%20(name%20eq%20'{1}')",
-                storageAccountSubscriptionId,
-                storageAccountName);
-
-            var nextLink = uriBuilder.ToString();
-            string id = null;
-            while (!string.IsNullOrEmpty(nextLink))
-            {
-                JToken response = await SendAsync(nextLink, HttpMethod.Get, new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId)));
-                var valuesArray = (JArray)response["value"];
-                if (valuesArray.HasValues)
-                {
-                    var idValueToken = valuesArray[0];
-                    id = (string)idValueToken["id"];
-                    if (string.IsNullOrEmpty(id))
-                    {
-                        throw new Exception(string.Format(Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId));
-                    }
-                }
-                nextLink = (string)response["nextLink"];
-            }
-
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
-            }
-
-            return id;
-        }
-
-        internal async Task<JToken> SendAsync(string url, HttpMethod method, Exception exceptionToThrowOnFailure)
-        {
-            var httpRequest = new HttpRequestMessage { Method = method, RequestUri = new Uri(url) };
-            await ResourceManagementClient.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
-            var httpResponse = await ResourceManagementClient.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
-            if (!httpResponse.IsSuccessStatusCode)
-            {
-                throw exceptionToThrowOnFailure;
-            }
-
-            return JToken.Parse(await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
-        }
-
-        private static string GetStorageAccountName(string storageEndpoint)
-        {
-            int accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase) ? 8 : 7; // https:// or http://
-            int accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
-            return storageEndpoint.Substring(accountNameStartIndex, accountNameEndIndex - accountNameStartIndex);
-        }
-
-        private StorageKeyKind GetStorageKeyKind(bool? isSecondary)
-        {
-            if (isSecondary.HasValue)
-            {
-                return isSecondary.Value ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
-            }
-
-            return StorageKeyKind.Primary;
-        }
-
-        private bool IsAuditEnabled(BlobAuditingPolicyState state)
-        {
-            return state == BlobAuditingPolicyState.Enabled;
-        }
-
-        public void CreateOrUpdateSqlPoolAudit(SqlPoolAuditModel model)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(model.PredicateExpression))
-                {
-                    SqlPoolBlobAuditingPolicy policy = new SqlPoolBlobAuditingPolicy();
-                    PolicizeAuditModel(model, policy);
-                    _synapseManagementClient.SqlPoolBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, model.SqlPoolName, policy);
-                }
-                else
-                {
-                    ExtendedSqlPoolBlobAuditingPolicy policy = new ExtendedSqlPoolBlobAuditingPolicy
-                    {
-                        PredicateExpression = model.PredicateExpression
-                    };
-
-                    PolicizeAuditModel(model, policy);
-                    _synapseManagementClient.ExtendedSqlPoolBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, model.SqlPoolName, policy);
-                }
-            }
-            catch (CloudException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        private void PolicizeAuditModel(WorkspaceAuditModel model, dynamic policy)
-        {
-            policy.State = model.BlobStorageTargetState == AuditStateType.Enabled ?
-                           BlobAuditingPolicyState.Enabled : BlobAuditingPolicyState.Disabled;
-
-            policy.IsAzureMonitorTargetEnabled = model.IsAzureMonitorTargetEnabled;
-            if (model is SqlPoolAuditModel dbModel)
-            {
-                policy.AuditActionsAndGroups = ExtractAuditActionsAndGroups(dbModel.AuditActionGroup, dbModel.AuditAction);
-            }
-            else
-            {
-                policy.AuditActionsAndGroups = ExtractAuditActionsAndGroups(model.AuditActionGroup);
-            }
-
-            if (model.BlobStorageTargetState == AuditStateType.Enabled)
-            {
-                const string separator = "subscriptions/";
-                string storageAccountResourceId = model.StorageAccountResourceId.Substring(model.StorageAccountResourceId.IndexOf(separator) + separator.Length);
-                string[] segments = storageAccountResourceId.Split('/');
-                Guid storageAccountSubscriptionId = Guid.Parse(segments[0]);
-                string storageAccountName = segments[6];
-                policy.StorageEndpoint = string.Format("https://{0}.blob.{1}", storageAccountName, Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
-                policy.StorageAccountSubscriptionId = storageAccountSubscriptionId;
-
-                if (IsStorageAccountInVNet(model.StorageAccountResourceId))
-                {
-                    Guid? principalId = AssignServerIdentityIfNotAssigned(model.ResourceGroupName, model.WorkspaceName);
-                    AssignRoleForServerIdentityOnStorageIfNotAssigned(model.StorageAccountResourceId, principalId.Value, default(Guid));
-                }
-                else
-                {
-                    policy.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
-                    policy.StorageAccountAccessKey = RetrieveStorageKeysAsync(
-                        model.StorageAccountResourceId).GetAwaiter().GetResult()[model.StorageKeyType == StorageKeyKind.Secondary ? StorageKeyKind.Secondary : StorageKeyKind.Primary];
-                }
-
-                if (model.RetentionInDays != null)
-                {
-                    policy.RetentionDays = (int)model.RetentionInDays;
-                }
-            }
-        }
-
-        private static IList<string> ExtractAuditActionsAndGroups(AuditActionGroup[] auditActionGroup, string[] auditAction = null)
-        {
-            var actionsAndGroups = new List<string>();
-            if (auditAction != null)
-            {
-                actionsAndGroups.AddRange(auditAction);
-            }
-
-            auditActionGroup?.ToList().ForEach(aag => actionsAndGroups.Add(aag.ToString()));
-            if (actionsAndGroups.Count == 0) // default audit actions and groups in case nothing was defined by the user
-            {
-                actionsAndGroups.Add("SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP");
-                actionsAndGroups.Add("FAILED_DATABASE_AUTHENTICATION_GROUP");
-                actionsAndGroups.Add("BATCH_COMPLETED_GROUP");
-            }
-
-            return actionsAndGroups;
-        }
-
-        private bool IsStorageAccountInVNet(string storageAccountResourceId)
-        {
-            if (IsClassicStorage(storageAccountResourceId))
-            {
-                return false;
-            }
-
-            string uri = $"{Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString()}{storageAccountResourceId}?api-version=2019-06-01";
-            Exception exception = new Exception(
-                string.Format(Resources.RetrievingStorageAccountPropertiesFailed,
-                storageAccountResourceId));
-            JToken storageAccountPropertiesToken = SendAsync(uri, HttpMethod.Get, exception).Result;
-            return GetNetworkAclsDefaultAction(storageAccountPropertiesToken, exception).Equals("Deny");
-        }
-
-        private bool IsClassicStorage(string storageAccountResourceId)
-        {
-            return storageAccountResourceId.Contains("Microsoft.ClassicStorage/storageAccounts");
-        }
-
-        private string GetNetworkAclsDefaultAction(JToken storageAccountPropertiesToken, Exception exceptionToThrowOnFailure)
-        {
-            JToken value;
-            try
-            {
-                value = storageAccountPropertiesToken["properties"]["networkAcls"]["defaultAction"];
-            }
-            catch (Exception)
-            {
-                throw exceptionToThrowOnFailure;
-            }
-
-            return value?.ToString();
-        }
-
-        public Guid? AssignServerIdentityIfNotAssigned(string resourceGroupName, string workspaceName)
-        {
-            var workspaceInfo = _synapseManagementClient.Workspaces.Get(resourceGroupName, workspaceName);
-            if (workspaceInfo.Identity == null ||
-                workspaceInfo.Identity.Type != ResourceIdentityType.SystemAssigned)
-            {
-                workspaceInfo.Identity = new ManagedIdentity
-                {
-                    Type = ResourceIdentityType.SystemAssigned
-                };
-                workspaceInfo = _synapseManagementClient.Workspaces.CreateOrUpdate(resourceGroupName, workspaceName, workspaceInfo);
-            }
-
-            try
-            {
-                return new Guid(workspaceInfo.Identity.PrincipalId);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        private void AssignRoleForServerIdentityOnStorageIfNotAssigned(string storageAccountResourceId, Guid principalId, Guid roleAssignmentId)
-        {
-            if (IsRoleAssignedForServerIdentitiyOnStorage(storageAccountResourceId, principalId))
-            {
-                return;
-            }
-
-            roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
-            Uri endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
-            string uri = $"{endpoint}/{storageAccountResourceId}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2018-01-01-preview";
-
-            string roleDefinitionId = $"/subscriptions/{GetStorageAccountSubscription(storageAccountResourceId)}/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe";
-            string content = $"{{\"properties\": {{ \"roleDefinitionId\": \"{roleDefinitionId}\", \"principalId\": \"{principalId}\", \"principalType\": \"ServicePrincipal\"}}}}";
-
-            int numberOfTries = 20;
-            const int SecondsToWaitBetweenTries = 20;
-            HttpResponseMessage response = null;
-            bool isARetry = false;
-            System.Net.HttpStatusCode responseStatusCode;
-            string responseContent = null;
-            do
-            {
-                if (isARetry)
-                {
-                    Thread.Sleep(TimeSpan.FromSeconds(SecondsToWaitBetweenTries));
-                }
-
-                HttpRequestMessage httpRequest = new HttpRequestMessage
-                {
-                    Method = HttpMethod.Put,
-                    RequestUri = new Uri(uri),
-                    Content = new StringContent(content, Encoding.UTF8, "application/json")
-                };
-                ResourceManagementClient.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
-                response = ResourceManagementClient.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
-                if (response.IsSuccessStatusCode)
-                {
-                    return;
-                }
-                else if (response.StatusCode == System.Net.HttpStatusCode.Forbidden)
-                {
-                    throw new Exception(string.Format(Resources.AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden, storageAccountResourceId));
-                }
-
-                responseStatusCode = response.StatusCode;
-                responseContent = response.Content.ReadAsStringAsync().Result;
-                numberOfTries--;
-                isARetry = true;
-            } while (numberOfTries > 0);
-
-            throw new Exception(string.Format(Resources.FailedToAddRoleAssignmentForStorageAccount, storageAccountResourceId, responseStatusCode.ToString(), responseContent));
-        }
-
-        private bool IsRoleAssignedForServerIdentitiyOnStorage(string storageAccountResourceId, Guid principalId)
-        {
-            string StorageBlobDataContributorId = "ba92f5b4-2d11-453d-a403-e96b0029c9fe";
-            Uri endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
-            string uri = $"{endpoint}/{storageAccountResourceId}/providers/Microsoft.Authorization/roleAssignments/?api-version=2018-01-01-preview&$filter=assignedTo('{principalId}')";
-            JToken roleDefinitionsToken = SendAsync(uri, HttpMethod.Get,
-                new Exception(string.Format(Resources.FailedToGetRoleAssignmentsForStorageAccount, storageAccountResourceId))).Result;
-            try
-            {
-                JArray roleDefinitionsArray = (JArray)roleDefinitionsToken["value"];
-                return roleDefinitionsArray.Any((token =>
-                {
-                    JToken roleDefinitionId = token["properties"]["roleDefinitionId"];
-                    return roleDefinitionId != null && roleDefinitionId.ToString().Contains(StorageBlobDataContributorId);
-                }));
-            }
-            catch (Exception) { }
-
-            return false;
-        }
-
-        private static string GetStorageAccountSubscription(string storageAccountResourceId)
-        {
-            const string separator = "subscriptions/";
-            int subscriptionStartIndex = storageAccountResourceId.IndexOf(separator) + separator.Length;
-            return storageAccountResourceId.Substring(subscriptionStartIndex, Guid.Empty.ToString().Length);
-        }
-
-        internal async Task<Dictionary<StorageKeyKind, string>> RetrieveStorageKeysAsync(string storageAccountId)
-        {
-            var isClassicStorage = IsClassicStorage(storageAccountId);
-
-            // Build a URI for calling corresponding REST-API
-            //
-            var uriBuilder = new StringBuilder(Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString());
-            uriBuilder.AppendFormat("{0}/listKeys?api-version={1}",
-                storageAccountId,
-                isClassicStorage ? "2016-11-01" : "2017-06-01");
-
-            // Define an exception to be thrown on failure.
-            //
-            var exception = new Exception(string.Format(Resources.RetrievingStorageAccountKeysFailed, storageAccountId));
-
-            // Call the URI and get storage account keys.
-            //
-            var storageAccountKeysResponse = await SendAsync(uriBuilder.ToString(), HttpMethod.Post, exception);
-
-            // Extract keys out of response.
-            //
-            var storageAccountKeys = new Dictionary<StorageKeyKind, string>();
-            string primaryKey;
-            string secondaryKey;
-            if (isClassicStorage)
-            {
-                primaryKey = (string)storageAccountKeysResponse["primaryKey"];
-                secondaryKey = (string)storageAccountKeysResponse["secondaryKey"];
-            }
-            else
-            {
-                var storageAccountKeysArray = (JArray)storageAccountKeysResponse["keys"];
-                if (storageAccountKeysArray == null)
-                {
-                    throw exception;
-                }
-
-                primaryKey = (string)storageAccountKeysArray[0]["value"];
-                secondaryKey = (string)storageAccountKeysArray[1]["value"];
-            }
-
-            if (string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
-            {
-                throw exception;
-            }
-
-            storageAccountKeys.Add(StorageKeyKind.Primary, primaryKey);
-            storageAccountKeys.Add(StorageKeyKind.Secondary, secondaryKey);
-            return storageAccountKeys;
-        }
-
-        internal dynamic GetSqlAuditing(string resourceGroupName, string workspaceName, string sqlPoolName = null)
-        {
-            if (sqlPoolName == null)
-            {
-                return _synapseManagementClient.WorkspaceManagedSqlServerBlobAuditingPolicies.Get(resourceGroupName, workspaceName);
-            }
-            else
-            {
-                return _synapseManagementClient.SqlPoolBlobAuditingPolicies.Get(resourceGroupName, workspaceName, sqlPoolName);
-            }
-        }
-
-        public void RemoveSqlPoolAudit(string resourceGroupName, string workspaceName, string sqlPoolName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                SqlPoolBlobAuditingPolicy policy = GetSqlAuditing(resourceGroupName, workspaceName, sqlPoolName);
-                policy.State = BlobAuditingPolicyState.Disabled;
-                _synapseManagementClient.SqlPoolBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, policy);
-            }
-            catch (CloudException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public WorkspaceAuditModel GetWorkspaceAudit(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                var policy = _synapseManagementClient.WorkspaceManagedSqlServerExtendedBlobAuditingPolicies.Get(resourceGroupName, workspaceName);
-                var model = new WorkspaceAuditModel
-                {
-                    ResourceGroupName = resourceGroupName,
-                    WorkspaceName = workspaceName
-                };
-
-                model.IsAzureMonitorTargetEnabled = policy.IsAzureMonitorTargetEnabled;
-                model.PredicateExpression = policy.PredicateExpression;
-                model.AuditActionGroup = ExtractAuditActionGroups(policy.AuditActionsAndGroups);
-                ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId,
-                    IsAuditEnabled(policy.State), policy.RetentionDays);
-                model.BlobStorageTargetState = policy.State == BlobAuditingPolicyState.Enabled ? AuditStateType.Enabled : AuditStateType.Disabled;
-
-                return model;
-            }
-            catch (CloudException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public void CreateOrUpdateWorkspaceAudit(WorkspaceAuditModel model)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(model.PredicateExpression))
-                {
-                    var policy = new ServerBlobAuditingPolicy();
-                    PolicizeAuditModel(model, policy);
-                    _synapseManagementClient.WorkspaceManagedSqlServerBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
-                }
-                else
-                {
-                    var policy = new ExtendedServerBlobAuditingPolicy
-                    {
-                        PredicateExpression = model.PredicateExpression
-                    };
-                    PolicizeAuditModel(model, policy);
-                    _synapseManagementClient.WorkspaceManagedSqlServerExtendedBlobAuditingPolicies.CreateOrUpdate(model.ResourceGroupName, model.WorkspaceName, policy);
-                }
-            }
-            catch (CloudException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        public void RemoveWorkspaceAudit(string resourceGroupName, string workspaceName)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(resourceGroupName))
-                {
-                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
-                }
-
-                ServerBlobAuditingPolicy policy = GetSqlAuditing(resourceGroupName, workspaceName);
-                policy.State = BlobAuditingPolicyState.Disabled;
-                _synapseManagementClient.WorkspaceManagedSqlServerBlobAuditingPolicies.CreateOrUpdate(resourceGroupName, workspaceName, policy);
-            }
-            catch (CloudException ex)
-            {
-                throw GetAzurePowerShellException(ex);
-            }
-        }
-
-        #endregion
-
         #region Threat Detection
 
         public ServerSecurityAlertPolicy GetWorkspaceThreatDetectionPolicy(string resourceGroupName, string workspaceName)
@@ -1124,6 +604,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             var storageName = GetStorageAccountName(storageEndpoint);
             var resourceGroup = GetStorageResourceGroup(storageName);
             return GetStorageKeys(resourceGroup, storageName);
+        }
+
+        private static string GetStorageAccountName(string storageEndpoint)
+        {
+            int accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase) ? 8 : 7; // https:// or http://
+            int accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
+            return storageEndpoint.Substring(accountNameStartIndex, accountNameEndIndex - accountNameStartIndex);
         }
 
         private static class StorageAccountType
@@ -1528,7 +1015,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseManagementClient.SqlPools.Create(resourceGroupName, workspaceName, sqlPoolName, createOrUpdateParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1545,7 +1032,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseManagementClient.SqlPools.Get(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1557,7 +1044,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.InitiateScan(resourceGroup, workspaceName, sqlPoolName, scanId);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1570,7 +1057,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var result = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.Get(resourceGroupName, workspaceName, sqlPoolName, scanId);
                 return ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, workspaceName, sqlPoolName, result);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1583,7 +1070,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var firstPage = _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.List(resourceGroupName, workspaceName, sqlPoolName);
                 return ListResources(firstPage, _synapseManagementClient.SqlPoolVulnerabilityAssessmentScans.ListNext).Select(scanRecord => ConvertVulnerabilityAssessmentScanRecord(resourceGroupName, workspaceName, sqlPoolName, scanRecord)).ToList();
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1646,7 +1133,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var firstPage = this._synapseManagementClient.SqlPools.ListByWorkspace(resourceGroupName, workspaceName);
                 return ListResources(firstPage, _synapseManagementClient.SqlPools.ListByWorkspaceNext);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1663,7 +1150,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseManagementClient.SqlPools.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1685,7 +1172,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseManagementClient.SqlPools.Delete(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1728,7 +1215,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             //                $"workspaces/{workspaceName}")
             //        });
             //}
-            //catch (ErrorContractException ex)
+            //catch (ErrorResponseException ex)
             //{
             //    throw GetSynapseException(ex);
             //}
@@ -1745,7 +1232,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 this._synapseManagementClient.SqlPools.Pause(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1762,7 +1249,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 this._synapseManagementClient.SqlPools.Resume(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1787,7 +1274,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     sqlPoolName)
                     .ToList();
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1804,7 +1291,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return this._synapseManagementClient.SqlPoolRestorePoints.Create(resourceGroupName, workspaceName, sqlPoolName, parameters);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1826,7 +1313,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 this._synapseManagementClient.SqlPoolRestorePoints.Delete(resourceGroupName, workspaceName, sqlPoolName, sqlPoolRestorePointCreationDate);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1843,7 +1330,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return respoint != null;
             }
-            catch (ErrorContractException)
+            catch (ErrorResponseException)
             {
                 return false;
             }
@@ -1859,7 +1346,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseSqlV3ManagementClient.SqlPoolsV3.CreateOrUpdate(resourceGroupName, workspaceName, sqlPoolName, createOrUpdateParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1876,7 +1363,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseSqlV3ManagementClient.SqlPoolsV3.Get(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1906,7 +1393,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var firstPage = this._synapseSqlV3ManagementClient.SqlPoolsV3.ListByWorkspace(resourceGroupName, workspaceName);
                 return ListResources(firstPage, _synapseSqlV3ManagementClient.SqlPoolsV3.ListByWorkspaceNext);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1923,7 +1410,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseSqlV3ManagementClient.SqlPoolsV3.Update(resourceGroupName, workspaceName, sqlPoolName, updateParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1945,7 +1432,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseSqlV3ManagementClient.SqlPoolsV3.Delete(resourceGroupName, workspaceName, sqlPoolName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1964,6 +1451,40 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public void PauseSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                this._synapseSqlV3ManagementClient.SqlPoolsV3.Deactivate(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        public void ResumeSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                this._synapseSqlV3ManagementClient.SqlPoolsV3.Activate(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
         #endregion
 
         #region SQL Database operations
@@ -1974,7 +1495,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseSqlV3ManagementClient.SqlDatabases.CreateOrUpdate(resourceGroupName, workspaceName, sqlDatabaseName, createOrUpdateParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1984,11 +1505,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                var recoverableSqlPool = this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.Get(resourceGroupName, workspaceName, sqlPoolName);
+                var recoverableSqlPool = this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlPools.Get(resourceGroupName, workspaceName, sqlPoolName);
 
                 return new PSRecoverableSqlPool(recoverableSqlPool);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -1998,10 +1519,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                var firstPage =  this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.List(resourceGroupName, workspaceName);
-                return ListResources(firstPage, _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.ListNext);
+                var firstPage =  this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlPools.List(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlPools.ListNext);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2015,7 +1536,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return new PSRestorableDroppedSqlPool(restorableDroppedSqlPool);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2028,7 +1549,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var restorableDroppedSqlPoolList = this._synapseManagementClient.RestorableDroppedSqlPools.ListByWorkspace(resourceGroupName, workspaceName);
                 return restorableDroppedSqlPoolList.ToList();
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2045,7 +1566,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseSqlV3ManagementClient.SqlDatabases.Get(resourceGroupName, workspaceName, sqlDatabaseName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2075,7 +1596,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var firstPage = this._synapseSqlV3ManagementClient.SqlDatabases.ListByWorkspace(resourceGroupName, workspaceName);
                 return ListResources(firstPage, _synapseSqlV3ManagementClient.SqlDatabases.ListByWorkspaceNext);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2092,7 +1613,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseSqlV3ManagementClient.SqlDatabases.Update(resourceGroupName, workspaceName, sqlDatabaseName, updateParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2114,7 +1635,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseSqlV3ManagementClient.SqlDatabases.Delete(resourceGroupName, workspaceName, sqlDatabaseName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2143,7 +1664,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseManagementClient.BigDataPools.CreateOrUpdate(resourceGroupName, workspaceName, sparkPoolName, createOrUpdateParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2160,7 +1681,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseManagementClient.BigDataPools.Get(resourceGroupName, workspaceName, sparkPoolName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2178,7 +1699,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var firstPage = this._synapseManagementClient.BigDataPools.ListByWorkspace(resourceGroupName, workspaceName);
                 return ListResources(firstPage, _synapseManagementClient.BigDataPools.ListByWorkspaceNext);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2200,7 +1721,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseManagementClient.BigDataPools.Delete(resourceGroupName, workspaceName, sparkPoolName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2284,7 +1805,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return integrationRuntimes;
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2352,7 +1873,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName,
                     workspaceName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2378,7 +1899,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return GenerateIntegraionRuntimeObject(response, null, resourceGroupName, workspaceName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2468,7 +1989,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return new PSIntegrationRuntimeKeys(response.Body.AuthKey1, response.Body.AuthKey2);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2493,7 +2014,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return new PSIntegrationRuntimeMetrics(data.Body, resourceGroupName, workspaceName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2518,7 +2039,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 integrationRuntimeName,
                 nodeName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2541,7 +2062,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 workspaceName,
                 integrationRuntimeName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2569,7 +2090,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return new PSIntegrationRuntimeKeys(response.Body.AuthKey1, response.Body.AuthKey2);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2594,7 +2115,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return integrationRuntime != null;
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2629,7 +2150,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return response.Response.StatusCode;
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2656,7 +2177,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return response.Response.StatusCode;
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2714,7 +2235,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return psIntegrationRuntime;
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2745,7 +2266,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2775,7 +2296,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2806,7 +2327,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
                 }
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2834,7 +2355,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return this._synapseManagementClient.WorkspaceManagedIdentitySqlControlSettings.Get(resourceGroupName, workspaceName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2856,7 +2377,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 
                 return this._synapseManagementClient.WorkspaceManagedIdentitySqlControlSettings.CreateOrUpdate(resourceGroupName, workspaceName, managedIdentitySqlControlSettings);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2872,7 +2393,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return _synapseManagementClient.Keys.CreateOrUpdate(resourceGroupName, workspaceName, keyName, createOrUpdateParams);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2889,7 +2410,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 return _synapseManagementClient.Keys.Get(resourceGroupName, workspaceName, KeyName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2919,7 +2440,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 var firstPage = this._synapseManagementClient.Keys.ListByWorkspace(resourceGroupName, workspaceName);
                 return ListResources(firstPage, _synapseManagementClient.Keys.ListByWorkspaceNext);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2941,7 +2462,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
                 _synapseManagementClient.Keys.Delete(resourceGroupName, workspaceName, KeyName);
             }
-            catch (ErrorContractException ex)
+            catch (ErrorResponseException ex)
             {
                 throw GetAzurePowerShellException(ex);
             }
@@ -2981,7 +2502,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return resourceList;
         }
 
-        private static Exception GetAzurePowerShellException(ErrorContractException ex)
+        private static Exception GetAzurePowerShellException(ErrorResponseException ex)
         {
             return Utils.CreateAzurePowerShellException(ex);
         }
@@ -2989,6 +2510,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private static Exception GetAzurePowerShellException(CloudException ex)
         {
             return Utils.CreateAzurePowerShellException(ex);
+        }
+
+        private string GetResourceUri(string resourceGroupName, string workspaceName, string sqlPoolName = null)
+        {
+            string resourceUri = $"/subscriptions/{_subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}";
+
+            if (sqlPoolName == null)
+            {
+                return resourceUri;
+            }
+            else
+            {
+                return resourceUri + $"/sqlPools/{sqlPoolName}";
+            }
         }
 
         #endregion

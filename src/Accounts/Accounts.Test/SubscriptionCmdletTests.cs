@@ -52,5 +52,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             TestRunner.RunTestScript("Test-SetAzureRmContextWithoutSubscription");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetSubscriptionsWithTags()
+        {
+            TestRunner.RunTestScript("Test-GetSubscriptionsWithTags");
+        }
     }
 }

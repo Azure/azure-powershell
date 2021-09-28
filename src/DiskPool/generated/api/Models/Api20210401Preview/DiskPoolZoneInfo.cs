@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview
 
         /// <summary>List of additional capabilities for Disk Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.FormatTable(Index = 3)]
         public string[] AdditionalCapability { get => this._additionalCapability; set => this._additionalCapability = value; }
 
         /// <summary>Backing field for <see cref="AvailabilityZone" /> property.</summary>
@@ -20,6 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview
 
         /// <summary>Logical zone for Disk Pool resource; example: ["1"].</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.FormatTable(Index = 2)]
         public string[] AvailabilityZone { get => this._availabilityZone; set => this._availabilityZone = value; }
 
         /// <summary>Internal Acessors for Sku</summary>
@@ -30,14 +32,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview
 
         /// <summary>Determines the SKU of VM deployed for Disk Pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.DoNotFormat]
         internal Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.ISku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.Sku()); set => this._sku = value; }
 
         /// <summary>Sku name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.FormatTable(Index = 0)]
         public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.ISkuInternal)Sku).Name = value ?? null; }
 
         /// <summary>Sku tier</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.FormatTable(Index = 1)]
         public string SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.ISkuInternal)Sku).Tier = value ?? null; }
 
         /// <summary>Creates an new <see cref="DiskPoolZoneInfo" /> instance.</summary>

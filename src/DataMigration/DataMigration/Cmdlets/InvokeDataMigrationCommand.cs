@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         private CommandCmdlet commandCmdlet = null;
 
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
             RuntimeDefinedParameterDictionary dynamicParams = null;
 

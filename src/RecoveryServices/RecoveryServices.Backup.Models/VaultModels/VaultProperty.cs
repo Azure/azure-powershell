@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public EncryptionConfig encryptionProperties { get; set; }
 
-        public VaultProperty(BackupResourceVaultConfig vaultConfig, BackupResourceEncryptionConfigResource vaultEncryptionSetting)
+        public VaultProperty(BackupResourceVaultConfig vaultConfig, BackupResourceEncryptionConfigExtendedResource vaultEncryptionSetting)
         {
             StorageModelType = vaultConfig.StorageModelType;
             StorageType = vaultConfig.StorageType;
@@ -69,10 +69,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             encryptionProperties.Name = vaultEncryptionSetting.Name;
             encryptionProperties.Type = vaultEncryptionSetting.Type;
             encryptionProperties.Location = vaultEncryptionSetting.Location;
+            encryptionProperties.UseSystemAssignedIdentity = vaultEncryptionSetting.Properties.UseSystemAssignedIdentity;
+            encryptionProperties.UserAssignedIdentity = vaultEncryptionSetting.Properties.UserAssignedIdentity;
         }
-    }    
+    }
 
-    public class EncryptionConfig : BackupResourceEncryptionConfig
+    public class EncryptionConfig : BackupResourceEncryptionConfigExtended
     {
         public string Id { get; set; }        
         public string Name { get; set; }

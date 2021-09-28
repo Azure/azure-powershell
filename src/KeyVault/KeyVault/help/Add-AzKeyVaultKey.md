@@ -16,8 +16,8 @@ Creates a key in a key vault or imports a key into a key vault.
 ### InteractiveCreate (Default)
 ```
 Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] [-KeyType <String>]
+ [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveImport
@@ -46,7 +46,8 @@ Add-AzKeyVaultKey -HsmName <String> [-Name] <String> -KeyFilePath <String> [-Key
 ```
 Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <String> [-Disable]
  [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyType <String>] [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectImport
@@ -75,8 +76,8 @@ Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> -KeyFilePath <Str
 ### ResourceIdCreate
 ```
 Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] [-KeyType <String>]
+ [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdImport
@@ -131,8 +132,11 @@ backup of it that you can restore.
 ```powershell
 PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITSoftware' -Destination 'Software'
 
-Vault Name     : contoso
+Vault/HSM Name : contoso
 Name           : ITSoftware
+Key Type       : RSA
+Key Size       : 2048
+Curve Name     : 
 Version        : 67da57e9cadf48a2ad8d366b115843ab
 Id             : https://contoso.vault.azure.net:443/keys/ITSoftware/67da57e9cadf48a2ad8d366b115843ab
 Enabled        : True
@@ -146,7 +150,29 @@ Tags           :
 
 This command creates a software-protected key named ITSoftware in the key vault named Contoso.
 
-### Example 2: Create an HSM-protected key
+### Example 2: Create an EC key
+```powershell
+PS C:\> Add-AzKeyVaultKey -VaultName test-kv -Name test-key -Destination Software -KeyType EC
+
+Vault/HSM Name : test-kv
+Name           : test-key
+Key Type       : EC
+Key Size       :
+Curve Name     : P-256
+Version        : 4da74af2b4fd47d6b1aa0b05c9a2ed13
+Id             : https://test-kv.vault.azure.net:443/keys/test-key/4da74af2b4fd47d6b1aa0b05c9a2ed13
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 8/24/2021 6:38:34 AM
+Updated        : 8/24/2021 6:38:34 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
+```
+
+This command creates a software-protected EC key named test-key in the key vault named test-kv. Its curve name is P-256 by default.
+
+### Example 3: Create an HSM-protected key
 ```powershell
 PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITHsm' -Destination 'HSM'
 
@@ -165,7 +191,7 @@ Tags           :
 
 This command creates an HSM-protected key in the key vault named Contoso.
 
-### Example 3: Create a key with non-default values
+### Example 4: Create a key with non-default values
 ```powershell
 PS C:\> $KeyOperations = 'decrypt', 'verify'
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
@@ -173,8 +199,10 @@ PS C:\> $NotBefore = (Get-Date).ToUniversalTime()
 PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = "true"}
 PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITHsmNonDefault' -Destination 'HSM' -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable -Tag $Tags
 
-Vault Name     : contoso
+Vault/HSM Name : contoso
 Name           : ITHsmNonDefault
+Key Type       : RSA
+Key Size       : 2048
 Version        : 929bfc14db84439b823ffd1bedadaf5f
 Id             : https://contoso.vault.azure.net:443/keys/ITHsmNonDefault/929bfc14db84439b823ffd1bedadaf5f
 Enabled        : False
@@ -200,7 +228,7 @@ the *Expires* and *NotBefore* parameters created in the previous commands, and t
 severity and IT. The new key is disabled. You can enable it by using the **Set-AzKeyVaultKey**
 cmdlet.
 
-### Example 4: Import an HSM-protected key
+### Example 5: Import an HSM-protected key
 ```powershell
 PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITByok' -KeyFilePath 'C:\Contoso\ITByok.byok' -Destination 'HSM'
 
@@ -223,7 +251,7 @@ To import a key from your own hardware security module, you must first generate 
 For more information, see
 [How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=522252).
 
-### Example 5: Import a software-protected key
+### Example 6: Import a software-protected key
 ```powershell
 PS C:\> $Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
 PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
@@ -247,7 +275,7 @@ ConvertTo-SecureString`.
 The second command creates a software password in the Contoso key vault. The command specifies the
 location for the key and the password stored in $Password.
 
-### Example 6: Import a key and assign attributes
+### Example 7: Import a key and assign attributes
 ```powershell
 PS C:\> $Password = ConvertTo-SecureString -String 'password' -AsPlainText -Force
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
@@ -278,7 +306,7 @@ The final command imports a key as an HSM key from the specified location. The c
 the expiration time stored in $Expires and password stored in $Password, and applies the tags
 stored in $tags.
 
-### Example 7: Generate a Key Exchange Key (KEK) for "bring your own key" (BYOK) feature
+### Example 8: Generate a Key Exchange Key (KEK) for "bring your own key" (BYOK) feature
 
 ```powershell
 PS C:\> $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination HSM -Size 2048 -KeyOps "import"
@@ -294,7 +322,7 @@ Specifies the curve name of elliptic curve cryptography, this value is valid whe
 
 ```yaml
 Type: System.String
-Parameter Sets: InteractiveImport, HsmInteractiveCreate, InputObjectImport, HsmInputObjectCreate, ResourceIdImport, HsmResourceIdCreate
+Parameter Sets: InteractiveCreate, InteractiveImport, HsmInteractiveCreate, InputObjectCreate, InputObjectImport, HsmInputObjectCreate, ResourceIdCreate, ResourceIdImport, HsmResourceIdCreate
 Aliases:
 
 Required: False
@@ -522,7 +550,7 @@ Specifies the key type of this key. When importing BYOK keys, it defaults to 'RS
 
 ```yaml
 Type: System.String
-Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
+Parameter Sets: InteractiveCreate, InteractiveImport, InputObjectCreate, InputObjectImport, ResourceIdCreate, ResourceIdImport
 Aliases:
 
 Required: False
@@ -694,5 +722,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzKeyVaultKey](./Get-AzKeyVaultKey.md)
 
 [Remove-AzKeyVaultKey](./Remove-AzKeyVaultKey.md)
-
-[Set-AzKeyVaultKeyAttribute](./Set-AzKeyVaultKeyAttribute.md)

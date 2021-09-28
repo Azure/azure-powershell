@@ -11,6 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
     /// <remarks>
     /// [OpenAPI] ListByResourceTypeRegistrationsNestedResourceTypeThird=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzProviderHubSku_List3")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Description(@"Gets the list of skus for the given resource type.")]
@@ -263,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.Debug:

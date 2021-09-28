@@ -116,6 +116,9 @@ This command will retrieve all protectable items within a certain container or a
 ### [Get-AzRecoveryServicesBackupProtectionPolicy](Get-AzRecoveryServicesBackupProtectionPolicy.md)
 Gets Backup protection policies for a vault.
 
+### [Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup](Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup.md)
+Gets the recovery points which are recommended to be moved together to VaultArchive tier.
+
 ### [Get-AzRecoveryServicesBackupRecoveryLogChain](Get-AzRecoveryServicesBackupRecoveryLogChain.md)
 This command lists the start and end points of the unbroken log chain of the given backup item. Use it to determine whether the point-in-time, to which the user wants the DB to be restored, is valid or not.
 
@@ -154,6 +157,9 @@ This command triggers the discovery of any unprotected items of the given worklo
 
 ### [Initialize-AzRecoveryServicesDSMove](Initialize-AzRecoveryServicesDSMove.md)
 Initializes DS move for Copy-AzRecoveryServicesVault.
+
+### [Move-AzRecoveryServicesBackupRecoveryPoint](Move-AzRecoveryServicesBackupRecoveryPoint.md)
+Moves the recovery point from source tier to destination tier.
 
 ### [New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig](New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig.md)
 Creates a disk mapping object for Azure virtual machine disks to be replicated.
@@ -284,6 +290,9 @@ Starts a planned failover operation.
 
 ### [Start-AzRecoveryServicesAsrResynchronizeReplicationJob](Start-AzRecoveryServicesAsrResynchronizeReplicationJob.md)
 Starts replication resynchronization.
+
+### [Start-AzRecoveryServicesAsrSwitchAppliance](Start-AzRecoveryServicesAsrSwitchAppliance.md)
+Starts the switch appliance action for a Site Recovery object.
 
 ### [Start-AzRecoveryServicesAsrSwitchProcessServerJob](Start-AzRecoveryServicesAsrSwitchProcessServerJob.md)
 Switch replication from one Process server to another for load balancing.

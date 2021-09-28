@@ -16,6 +16,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Management.Automation;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,6 +28,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -37,6 +39,7 @@ using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -617,6 +620,12 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (autoSaveEnabled && !TokenCachePersistenceChecker.Verify())
                     {
+                        if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                        {
+                            // In Windows and macOS platforms, unknown errors are discovered that fails the persistence check.
+                            // Disable context autosaving before msal library provide a fallback method for the case.
+                            throw new PSInvalidOperationException(Resources.TokenCachePersistenceCheckError);
+                        }
                         // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
                         // We cannot just throw an exception here because this is called when importing the module
                         WriteInitializationWarnings(Resources.TokenCacheEncryptionNotSupportedWithFallback);
@@ -658,6 +667,9 @@ namespace Microsoft.Azure.Commands.Profile
                 }
                 IAzureEventListenerFactory azureEventListenerFactory = new AzureEventListenerFactory();
                 AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => new CommonUtilities());
+                // It's tricky to register a component as an Interface
+                // Make sure componentInitializer return the Interface, not the derived type
+                AzureSession.Instance.RegisterComponent(nameof(ISharedUtilities), () => new AzureRmSharedUtilities() as ISharedUtilities);
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());

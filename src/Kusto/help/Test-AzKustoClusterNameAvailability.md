@@ -31,7 +31,7 @@ Checks that the cluster name is valid and is not already in use.
 
 ### Example 1: Check the availability of a Kusto cluster name which is in use
 ```powershell
-PS C:\> Test-AzKustoClusterNameAvailability -Name testnewkustocluster -Location 'East US' -Type Microsoft.Kusto/clusters
+PS C:\> Test-AzKustoClusterNameAvailability -Name testnewkustocluster -Location 'East US'
 
 Message                                                                                       Name                NameAvailable Reason
 -------                                                                                       ----                ------------- ------
@@ -42,7 +42,7 @@ The above command returns whether or not a Kusto cluster named "testnewkustoclus
 
 ### Example 2: Check the availability of a Kusto cluster name which is not in use
 ```powershell
-PS C:\> Test-AzKustoClusterNameAvailability -Name availablekustocluster -Location 'East US' -Type Microsoft.Kusto/clusters
+PS C:\> Test-AzKustoClusterNameAvailability -Name availablekustocluster -Location 'East US'
 
 Message Name                  NameAvailable Reason
 ------- ----                  ------------- ------

@@ -29,7 +29,7 @@ New-AzApiManagementCustomHostnameConfiguration -Hostname <String> -HostnameType 
 ### SslCertificateFromKeyVault
 ```
 New-AzApiManagementCustomHostnameConfiguration -Hostname <String> -HostnameType <PsApiManagementHostnameType>
- -KeyVaultId <String> [-DefaultSslBinding] [-NegotiateClientCertificate]
+ -KeyVaultId <String> [-IdentityClientId <String>] [-DefaultSslBinding] [-NegotiateClientCertificate]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -129,9 +129,24 @@ Hostname Type
 Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Proxy, Portal, Management, Scm, DeveloperPortal
+Accepted values: Proxy, Portal, Management, Scm, DeveloperPortal, Configuration, Data
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityClientId
+User-Assigned Managed Identity ClientId used to authenticate to KeyVault to fetch Custom SSL Certificate.
+
+```yaml
+Type: System.String
+Parameter Sets: SslCertificateFromKeyVault
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

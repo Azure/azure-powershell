@@ -22,7 +22,7 @@ The Start-AzMigrateTestMigration cmdlet initiates the test migration for the rep
 https://docs.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
@@ -33,7 +33,7 @@ function Start-AzMigrateTestMigration {
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem]
         # Specifies the replicating server for which the test migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${InputObject},
 
@@ -117,7 +117,6 @@ function Start-AzMigrateTestMigration {
         $FabricName = $MachineIdArray[10]
         $ProtectionContainerName = $MachineIdArray[12]
         $MachineName = $MachineIdArray[14]
-            
 
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("ResourceName", $VaultName)
@@ -126,8 +125,46 @@ function Start-AzMigrateTestMigration {
         $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
 
         $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
+        $AvSetId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetAvailabilitySetId
+        if ($AvSetId)
+        {
+            Import-module -Name Az.Compute
+            Import-module -Name Az.Network
+            $AvSetName = $AvSetId.Split("/")[-1];
+            $AvSetRg = $AvSetId.Split("/")[-5];
+            $AvSet = Get-AzAvailabilitySet -ResourceGroupName $AvSetRg -Name $AvSetName -ErrorVariable notPresent -ErrorAction SilentlyContinue
+            if (!$AvSet)
+            {
+                throw "Availability Set '$($AvSetId)' does not exist."
+            }
+            if ($AvSet.VirtualMachinesReferences -And ($AvSet.VirtualMachinesReferences.Count -gt 0))
+            {
+                $VminAvSet = $AvSet.VirtualMachinesReferences[0].Id
+                if ($VminAvSet)
+                {
+                    $VmNameinAvSet = $VminAvSet.Split("/")[-1]
+                    $VM = Get-AzVM -ResourceGroupName $AvSetRg -Name $VmNameinAvSet -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                    if ($VM)
+                    {
+                        $NicId = $VM.NetworkProfile.NetworkInterfaces[0].Id
+                        $Nic = Get-AzNetworkInterface -resourceid $NicId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                        if($Nic -And ($Nic.IpConfigurations) -And ($Nic.IpConfigurations[0].Subnet) -And ($Nic.IpConfigurations[0].Subnet.Id))
+                        {
+                            $Subnet = $Nic.IpConfigurations[0].Subnet.Id.Split("/")
+                            $VnetID = "/$($Subnet[1])/$($Subnet[2])/$($Subnet[3])/$($Subnet[4])/$($Subnet[5])/$($Subnet[6])/$($Subnet[7])/$($Subnet[8])"
+                        }
+
+                        if ($TestNetworkID -ne $VnetID)
+                        {
+                            throw "Virtual Machines in the availability set '$AvSetName' can only be connected to virtual network '$VnetID'. Change the virtual network selected for the test or update the availability set for the machines, and retry the operation."
+                        }
+                    }
+                }
+            }
+        }
+
         if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrate' )) {
-            $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtTestMigrateInput]::new()
+            $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtTestMigrateInput]::new()
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.NetworkId = $TestNetworkID
             $ProviderSpecificDetailInput.RecoveryPointId = $ReplicationMigrationItem.ProviderSpecificDetail.LastRecoveryPointId

@@ -2367,43 +2367,49 @@ param(
 
             if($ArcCmdletsAbsentOnNodes.Count -ge 1)
             {
-                $ArcCmdletsNotAvailableErrorMsg = $ArcCmdletsNotAvailableError -f ($ArcCmdletsAbsentOnNodes -join ",")
-                Write-Error -Message $ArcCmdletsNotAvailableErrorMsg
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-                Write-Output $registrationOutput
-                return
-            }
-
-            $arcResourceId = $resourceId + $HCIArcInstanceName
-            $arcResourceGroupName = $ResourceGroupName
-
-            $arcres = Get-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
-
-            if($arcres -eq $null)
-            {
-                $arcres = New-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Force
-            }
-            else
-            {
-                if ($arcres.Properties.aggregateState -eq $ArcSettingsDisableInProgressState)
+                # Show Arc error on 20h2 only if -EnableAzureArcServer:$true is explicity passed by user
+                if($PSBoundParameters.ContainsKey('EnableAzureArcServer'))
                 {
-                    Write-Error -Message $ArcRegistrationDisableInProgressError
+                    $ArcCmdletsNotAvailableErrorMsg = $ArcCmdletsNotAvailableError -f ($ArcCmdletsAbsentOnNodes -join ",")
+                    Write-Error -Message $ArcCmdletsNotAvailableErrorMsg
                     $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
                     Write-Output $registrationOutput
                     return
                 }
             }
-
-            $arcResourceGroupName = $arcres.Properties.arcInstanceResourceGroup
-            $arcAppName = $ResourceName + ".arc"
-
-            Write-Verbose "Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $arcResourceGroupName"
-            $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -AppName $arcAppName -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC
-
-            if($arcResult -ne [ErrorDetail]::Success)
+            else
             {
-                $operationStatus = [OperationStatus]::RegisterSucceededButArcFailed
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $arcResult
+                $arcResourceId = $resourceId + $HCIArcInstanceName
+                $arcResourceGroupName = $ResourceGroupName
+
+                $arcres = Get-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
+
+                if($arcres -eq $null)
+                {
+                    $arcres = New-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Force
+                }
+                else
+                {
+                    if ($arcres.Properties.aggregateState -eq $ArcSettingsDisableInProgressState)
+                    {
+                        Write-Error -Message $ArcRegistrationDisableInProgressError
+                        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                        Write-Output $registrationOutput
+                        return
+                    }
+                }
+
+                $arcResourceGroupName = $arcres.Properties.arcInstanceResourceGroup
+                $arcAppName = $ResourceName + ".arc"
+
+                Write-Verbose "Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $arcResourceGroupName"
+                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -AppName $arcAppName -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC
+
+                if($arcResult -ne [ErrorDetail]::Success)
+                {
+                    $operationStatus = [OperationStatus]::RegisterSucceededButArcFailed
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $arcResult
+                }
             }
         }
 

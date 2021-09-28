@@ -63,7 +63,7 @@ Gets the status of a certificate operation.
 Gets the policy for a certificate in a key vault.
 
 ### [Get-AzKeyVaultKey](Get-AzKeyVaultKey.md)
-Gets Key Vault keys.
+Gets Key Vault keys. Please notes that detailed information about a key, like key type or key size, only available when querying a key in a certain version.
 
 ### [Get-AzKeyVaultManagedHsm](Get-AzKeyVaultManagedHsm.md)
 Get managed HSMs.

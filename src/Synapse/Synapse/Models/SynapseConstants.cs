@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Management.Synapse.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Management.Synapse.Models;
 using System;
 using System.Collections.Generic;
 
@@ -155,6 +169,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string ManagedVirtualNetworkConfig = nameof(ManagedVirtualNetworkConfig);
 
+        public const string GitRepositoryConfig = nameof(GitRepositoryConfig);
+
         public const string EncryptionConfig = nameof(EncryptionConfig);
 
         public const string WorkspaceKey = nameof(WorkspaceKey);
@@ -162,6 +178,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string WorkspaceKeyName = nameof(WorkspaceKeyName);
 
         public const string KeyName = nameof(KeyName);
+
+        public const string SparkJobDefinition = nameof(SparkJobDefinition);
+
+        public const string DisableMaxServiceObjectiveName = "remove";
+
+        public const string ManagedPrivateEndpoint = nameof(ManagedPrivateEndpoint);
+
+        public const string DefaultVNetName = "default";
+
+        public const string WorkspacePackage = nameof(WorkspacePackage);
 
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
@@ -234,6 +260,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             IntegrationRuntime,
             LinkedService,
             Credential
+        }
+
+        public class RepositoryType
+        {
+            public const string GitHub = "GitHub";
+            public const string AzureDevOpsGit = "AzureDevOpsGit";
+            public const string WorkspaceGitHubConfiguration = "WorkspaceGitHubConfiguration";
+            public const string WorkspaceVSTSConfiguration = "WorkspaceVSTSConfiguration";
+        }
+
+        public enum PackageActionType
+        {
+            Add,
+            Remove
         }
     }
 }

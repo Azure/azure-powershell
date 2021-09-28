@@ -8,14 +8,14 @@ schema: 2.0.0
 # Get-AzSentinelIncident
 
 ## SYNOPSIS
-Get one or more Azure Sentinel Incidents.
+Gets one or more Azure Sentinel Incidents.
 
 ## SYNTAX
 
 ### WorkspaceScope (Default)
 ```
-Get-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-Filter <String>]
+ [-OrderBy <String>] [-Max <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IncidentId
@@ -32,7 +32,8 @@ Get-AzSentinelIncident -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ## DESCRIPTION
 The **Get-AzSentinelIncident** cmdlet gets a specific or multiple Incidents from the specified workspace.
 If you specify the *IncidentId* parameter, a single **Incident** object is returned.
-If you do not specify the *IncidentId* parameter, an array containing all of the Incidents in the specified workspace is returned.
+If you do not specify the *IncidentId* parameter, an array containing Incidents in the specified workspace is returned.
+Default, the module returns 1000 incidents. To fetch more than 1000, use the -Max parameter.
 You can use the **Incident** object to update the Incident. For example you can add comments, change the severity, assign an owner, etc. to the **Incident**.
 
 *Note: An IncidentId is in the following format: c464bcd7-daee-47ff-ac58-1fbb73cf1d6b and is not the same as the Incident ID (number) as in the Azure Sentinel Incident view. The IncidentId can be found in the incident details view, in the "Incident link" field, represented in the last part of the https link.*
@@ -93,6 +94,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filter
+Filters the results, based on a Boolean condition.
+
+```yaml
+Type: System.String
+Parameter Sets: WorkspaceScope
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IncidentId
 Incident Id.
 
@@ -105,6 +121,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Max
+Maximum number of records to return
+
+```yaml
+Type: System.Int32
+Parameter Sets: WorkspaceScope
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrderBy
+Sorts the results
+
+```yaml
+Type: System.String
+Parameter Sets: WorkspaceScope
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

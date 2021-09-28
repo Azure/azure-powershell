@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edge zone of the network interface")]
         public string EdgeZone { get; set; }
 
         [Parameter(
@@ -275,7 +276,7 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.Name = this.Name;
 
             networkInterface.Location = this.Location;
-            if (this.EdgeZone != null)
+            if (!string.IsNullOrEmpty(EdgeZone))
             {
                 networkInterface.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }
@@ -437,13 +438,35 @@ namespace Microsoft.Azure.Commands.Network
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
+            List<string> resourceIdsRequiringAuthToken = new List<string>();
+            Dictionary<string, List<string>> auxAuthHeader = null;
+
+            // Get aux token for each gateway lb references
+            foreach (var ipConfiguration in networkInterface.IpConfigurations)
+            {
+                if (ipConfiguration.GatewayLoadBalancer != null)
+                {
+                    //Get the aux header for the remote vnet
+                    resourceIdsRequiringAuthToken.Add(ipConfiguration.GatewayLoadBalancer.Id);
+                }
+            }
+
+            if (resourceIdsRequiringAuthToken.Count > 0)
+            {
+                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIdsRequiringAuthToken);
+                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                {
+                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                }
+            }
+
             var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(networkInterface);
 
 			this.NullifyApplicationSecurityGroupIfAbsent(networkInterfaceModel);
 
 			networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);
+            this.NetworkInterfaceClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, networkInterfaceModel, auxAuthHeader).GetAwaiter().GetResult();
              
             var getNetworkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
 

@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Aks.Models
@@ -142,6 +146,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
         public PSManagedClusterAPIServerAccessProfile ApiServerAccessProfile { get; set; }
 
+        //
+        // Summary:
+        //     Gets or sets identities associated with the cluster.
+        public IDictionary<string, PSManagedClusterPropertiesIdentityProfile> IdentityProfile { get; set; }
+
         /// <summary>
         /// Gets or sets the identity of the managed cluster, if configured.
         /// </summary>
@@ -160,5 +169,23 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// keyVaultSecretRef must be specified.
         /// </summary>
         public PSContainerServiceServicePrincipalProfile ServicePrincipalProfile { get; set; }
+
+        /// <summary>
+        /// This is used by pipeline to autorest based cmdlets.
+        /// </summary>
+        /// <returns></returns>
+        public string ToJsonString()
+        {
+            DefaultContractResolver contractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy()
+            };
+
+            return JsonConvert.SerializeObject(this, new JsonSerializerSettings
+            {
+                ContractResolver = contractResolver,
+                Formatting = Formatting.Indented
+            });
+        }
     }
 }

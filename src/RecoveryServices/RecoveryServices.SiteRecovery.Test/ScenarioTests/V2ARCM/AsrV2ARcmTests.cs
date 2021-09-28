@@ -126,5 +126,12 @@ namespace RecoveryServices.SiteRecovery.Test
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMRecoveryPlan");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestV2ARCMSwitchAppliance()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMSwitchAppliance");
+        }
     }
 }

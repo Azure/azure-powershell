@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 case PsApiManagementSku.Premium: return SkuType.Premium;
                 case PsApiManagementSku.Basic: return SkuType.Basic;
                 case PsApiManagementSku.Consumption: return SkuType.Consumption;
-                default: throw new ArgumentException("Unrecognized Sku");
+                case PsApiManagementSku.Isolated: return SkuType.Isolated;
+                default: throw new ArgumentException($"Unrecognized Sku '{sku.ToString()}'");
             }
         }
 
@@ -71,6 +72,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 case SkuType.Premium: return PsApiManagementSku.Premium;
                 case SkuType.Basic: return PsApiManagementSku.Basic;
                 case SkuType.Consumption: return PsApiManagementSku.Consumption;
+                case SkuType.Isolated: return PsApiManagementSku.Isolated;
                 default: throw new ArgumentException($"Unrecognized Sku '{sku}'");
             }
         }
@@ -132,7 +134,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
 
             return MapAssignedIdentity(systemAssigned , userIdentities);
         }
-        
+
         public static ApiManagementServiceResource MapPsApiManagement(PsApiManagement apiManagement)
         {
             var parameters = new ApiManagementServiceResource
@@ -148,7 +150,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                     Name = MapSku(apiManagement.Sku)
                 },
                 Tags = apiManagement.Tags,
-                EnableClientCertificate = apiManagement.EnableClientCertificate
+                EnableClientCertificate = apiManagement.EnableClientCertificate,
+                Zones = apiManagement.Zone,
+                DisableGateway = apiManagement.DisableGateway
             };
 
             if (apiManagement.VirtualNetwork != null)
@@ -177,12 +181,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                                     : new VirtualNetworkConfiguration
                                     {
                                         SubnetResourceId = region.VirtualNetwork.SubnetResourceId
-                                    }
+                                    },
+                                Zones = region.Zone,
+                                DisableGateway = region.DisableGateway
                             })
                         .ToList();
             }
 
-            if (apiManagement.ProxyCustomHostnameConfiguration != null || 
+            if (apiManagement.ProxyCustomHostnameConfiguration != null ||
                 apiManagement.PortalCustomHostnameConfiguration != null ||
                 apiManagement.ManagementCustomHostnameConfiguration != null ||
                 apiManagement.ScmCustomHostnameConfiguration != null ||
@@ -192,7 +198,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
 
                 if (apiManagement.ProxyCustomHostnameConfiguration != null)
                 {
-                    foreach(var proxyCustomHostnameConfiguration in apiManagement.ProxyCustomHostnameConfiguration)
+                    foreach (var proxyCustomHostnameConfiguration in apiManagement.ProxyCustomHostnameConfiguration)
                     {
                         parameters.HostnameConfigurations.Add(proxyCustomHostnameConfiguration.GetHostnameConfiguration());
                     }
@@ -218,10 +224,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
             if (apiManagement.SystemCertificates != null)
             {
                 parameters.Certificates = new List<CertificateConfiguration>();
-                foreach(var systemCertificate in apiManagement.SystemCertificates)
+                foreach (var systemCertificate in apiManagement.SystemCertificates)
                 {
                     parameters.Certificates.Add(systemCertificate.GetCertificateConfiguration());
                 }
+            }
+
+            if (!string.IsNullOrWhiteSpace(apiManagement.MinimalControlPlaneApiVersion))
+            {
+                parameters.ApiVersionConstraint = new ApiVersionConstraint()
+                {
+                    MinApiVersion = apiManagement.MinimalControlPlaneApiVersion
+                };
             }
 
             if (apiManagement.Identity != null)
@@ -268,6 +282,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 connectivity.Status = connectivityStatus.Status;
                 connectivity.LastStatusChange = connectivityStatus.LastStatusChange;
                 connectivity.LastUpdated = connectivityStatus.LastUpdated;
+                connectivity.ResourceType = connectivityStatus.ResourceType;
+                connectivity.IsOptional = connectivityStatus.IsOptional;
                 aggregateStatus.Add(connectivity);
             }
 

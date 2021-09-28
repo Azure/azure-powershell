@@ -33,7 +33,7 @@ This command allows Azure Backup to convert the Resource to a Backup Container w
 
 ### Example 1
 ```
-PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType �MSSQL� -BackupManagementType �AzureWorkload�
+PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType MSSQL -BackupManagementType AzureWorkload
 ```
 
 The cmdlet registers an azure VM as a container for the workload MSSQL.

@@ -140,6 +140,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 Identity = model.Identity,
                 MinimalTlsVersion = model.MinimalTlsVersion,
                 PublicNetworkAccess = model.PublicNetworkAccess,
+                RestrictOutboundNetworkAccess = model.RestrictOutboundNetworkAccess,
                 Administrators = GetActiveDirectoryInformation(model.Administrators),
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
                 KeyId = model.KeyId
@@ -184,6 +185,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.ResourceId = resp.Id;
             server.MinimalTlsVersion = resp.MinimalTlsVersion;
             server.PublicNetworkAccess = resp.PublicNetworkAccess;
+            server.RestrictOutboundNetworkAccess = resp.RestrictOutboundNetworkAccess;
             server.Administrators = resp.Administrators;
 
             if (server.Administrators != null && server.Administrators.AdministratorType == null)

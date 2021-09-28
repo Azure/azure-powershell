@@ -19,12 +19,32 @@
 --->
 
 ## Upcoming Release
-* Added optional parameter `-IsSecuritySite` to the following cmdlet:
-    - `New-AzVpnSite`
-* Updated cmdlets to enable processing of available zones on AzureFirewalll
-    - `New-AzFirewall`
-* Updated cmdlets to add properties for new BYOIP features.
+* Support for Sku, ScaleUnits parameters of BastionHost resource.
+    - `New-AzBastion`
+    - `Set-AzBastion`
+
+## Version 4.11.0
+* Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
+    - `New-AzLoadBalancerBackendAddressConfig`
+* Updated cmdlet to add 'TunnelInterface' property for backend pool related operations.
+    - `New-AzLoadBalancerBackendAddressPool`
+    - `Set-AzLoadBalancerBackendAddressPool`
+* Onboard Azure Resource Manager to Private Link Common Cmdlets
+
+## Version 4.10.0
+* Added public ip address as an optional parameter to create route server
+    - `New-AzRouteServer`
+* Updated cmdlets to enable specification of edge zone
+    - `New-AzPublicIpPrefix`
+    - `New-AzLoadBalancer`
+    - `New-AzPrivateLinkService`
+    - `New-AzPrivateEndpoint`
+* Added support for viewing extended location of virtual network in the console
+    - `New-AzVirtualNetwork`
+    - `Get-AzVirtualNetwork`
+* Added support for viewing extended location of public IP address in the console
     - `New-AzPublicIpAddress`
+    - `Get-AzPublicIpAddress`
     - `New-AzCustomIpPrefix`
     - `Update-AzCustomIpPrefix`
 
