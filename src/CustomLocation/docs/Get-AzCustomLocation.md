@@ -41,9 +41,11 @@ Gets the details of the customLocation with a specified resource group and name.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzCustomLocation
 
-{{ Add output here }}
+Location Name                  Type
+-------- ----                  ----
+eastus   psteam-cl-arc-cluster Microsoft.ExtendedLocation/customLocations
 ```
 
 {{ Add description here }}

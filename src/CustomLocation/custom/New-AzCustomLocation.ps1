@@ -33,200 +33,167 @@ Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLoca
 https://docs.microsoft.com/powershell/module/az.customlocation/new-azcustomlocation
 #>
 function New-AzCustomLocation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    param(
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
+        [System.String]
+        # The name of the resource group.
+        # The name is case insensitive.
+        ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
-    [System.String]
-    # Custom Locations name.
-    ${ResourceName},
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
+        [System.String]
+        # Custom Locations name.
+        ${ResourceName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [System.String]
+        # The ID of the target subscription.
+        ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [System.String]
+        # The geo-location where the resource lives
+        ${Location},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String]
-    # The type of the Custom Locations authentication
-    ${AuthenticationType},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [System.String]
+        # The type of the Custom Locations authentication
+        ${AuthenticationType},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String]
-    # The kubeconfig value.
-    ${AuthenticationValue},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [System.String]
+        # The kubeconfig value.
+        ${AuthenticationValue},
 
-    [Parameter(Mandatory)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String[]]
-    # Contains the reference to the add-on that contains charts to deploy CRDs and operators.
-    ${ClusterExtensionId},
+        [Parameter(Mandatory)]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [System.String[]]
+        # Contains the reference to the add-on that contains charts to deploy CRDs and operators.
+        ${ClusterExtensionId},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String]
-    # Display name for the Custom Locations location.
-    ${DisplayName},
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [System.String]
+        # Display name for the Custom Locations location.
+        ${DisplayName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String]
-    # Connected Cluster or AKS Cluster.
-    # The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
-    ${HostResourceId},
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [System.String]
+        # Connected Cluster or AKS Cluster.
+        # The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
+        ${HostResourceId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.HostType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.DefaultInfo(Script='"Kubernetes"')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.HostType]
-    # Type of host the Custom Locations is referencing (Kubernetes, etc...).
-    ${HostType},
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.HostType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.DefaultInfo(Script = '"Kubernetes"')]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.HostType]
+        # Type of host the Custom Locations is referencing (Kubernetes, etc...).
+        ${HostType},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.ResourceIdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.ResourceIdentityType]
+        # The identity type.
+        ${IdentityType},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String]
-    # Kubernetes namespace that will be created on the specified cluster.
-    ${Namespace},
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [System.String]
+        # Kubernetes namespace that will be created on the specified cluster.
+        ${Namespace},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String]
-    # Provisioning State for the Custom Location.
-    ${ProvisioningState},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [System.String]
+        # Provisioning State for the Custom Location.
+        ${ProvisioningState},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20.ITrackedResourceTags]))]
+        [System.Collections.Hashtable]
+        # Resource tags.
+        ${Tag},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
+        [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The credentials, account, tenant, and subscription used for communication with Azure.
+        ${DefaultProfile},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
+        ${Break},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command asynchronously
+        ${NoWait},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}
+    )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+    process {
+        try {
+            Az.CustomLocation.internal\New-AzCustomLocation @PSBoundParameters
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            CreateExpanded = 'Az.CustomLocation.private\New-AzCustomLocation_CreateExpanded';
+        catch {
+            throw
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('HostType')) {
-            $PSBoundParameters['HostType'] = "Kubernetes"
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
     }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
 }
