@@ -223,6 +223,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 ResourceManagerUrl = "https://customresourcemanager.azure.com/",
                 StorageEndpointSuffix = ".custom.core.windows.net"
             };
+            newEnv.ExtendedProperties.Add(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl, "https://graph.microsoft.com/");
 
             Assert.Equal(newEnv.ActiveDirectoryServiceEndpointResourceId,
                 newEnv.GetAudienceFromRequestUri(new Uri($"{baseEnv.ResourceManagerUrl}/subscriptions")));
@@ -316,6 +317,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 ResourceManagerUrl = "https://customresourcemanager.azure.com/",
                 StorageEndpointSuffix = ".custom.core.windows.net"
             };
+            newEnv.ExtendedProperties.Add(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl, "https://graph.microsoft.com/");
 
             Assert.Equal(newEnv.ActiveDirectoryServiceEndpointResourceId,
                 newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"{baseEnv.ResourceManagerUrl}/subscriptions"))));
