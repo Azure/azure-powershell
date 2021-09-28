@@ -642,27 +642,6 @@ function New-AzMgApplication {
       $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
     }
 
-    switch ($PSCmdlet.ParameterSetName) {
-      'ApplicationWithPasswordCredentialParameterSet' {
-        $pc = $PSBoundParameters['PasswordCredentials']
-        $null = $PSBoundParameters.Remove('PasswordCredentials')
-        break
-      }
-      'ApplicationWithKeyPlainParameterSet' {
-        $cv = $PSBoundParameters['CertValue']
-        $null = $PSBoundParameters.Remove('CertValue')
-        break
-      }
-      'ApplicationWithKeyCredentialParameterSet' {
-        $kc = $PSBoundParameters['KeyCredentials']
-        $null = $PSBoundParameters.Remove('KeyCredentials')
-        break
-      }
-      default {
-        break
-      }
-    }
-
     if ($PSBoundParameters['StartDate']) {
       $sd = $PSBoundParameters['StartDate']
       $null = $PSBoundParameters.Remove('StartDate')
@@ -672,9 +651,35 @@ function New-AzMgApplication {
       $null = $PSBoundParameters.Remove('EndDate')
     }
 
+    switch ($PSCmdlet.ParameterSetName) {
+      'ApplicationWithPasswordCredentialParameterSet' {
+        $pc = $PSBoundParameters['PasswordCredentials']
+        $null = $PSBoundParameters.Remove('PasswordCredentials')
+        break
+      }
+      'ApplicationWithKeyPlainParameterSet' {
+        $kc = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+                                         -Property @{'Key' = ([System.Convert]::FromBase64String($PSBoundParameters['CertValue']));
+                                            'Usage'       = 'Verify'; 
+                                            'Type'        = 'AsymmetricX509Cert'
+                                         }
+        $null = $PSBoundParameters.Remove('CertValue')
+        $kc.StartDateTime = $sd
+        $kc.EndDateTime = $ed
+        $PSBoundParameters['KeyCredentials'] = $kc
+        break
+      }
+      default {
+        break
+      }
+    }
+
     $app = MSGraph.internal\New-AzMgApplication @PSBoundParameters
     $param = @{'ObjectId' = $app.Id }
-    
+    if ($PSBoundParameters['KeyCredentials']) {
+      $null = $PSBoundParameters.Remove('KeyCredentials')
+    }
+
     switch ($PSCmdlet.ParameterSetName) {
       'ApplicationWithPasswordPlainParameterSet' {
         if ($sd) {
@@ -687,28 +692,8 @@ function New-AzMgApplication {
         break
       }
       'ApplicationWithPasswordCredentialParameterSet' {
-        foreach ($cred in $pc) {
-          $param['PasswordCredential'] = $cred
-          $null = New-AzMgAppCredential @param
-        }
-        break
-      }
-      'ApplicationWithKeyPlainParameterSet' {
-        $param['CertValue'] = $cv
-        if ($sd) {
-          $param['StartDate'] = $sd
-        }
-        if ($ed) {
-          $param['EndDate'] = $ed
-        }
+        $PSBoundParameters['PasswordCredentials'] = $pc
         $null = New-AzMgAppCredential @param
-        break
-      }
-      'ApplicationWithKeyCredentialParameterSet' {
-        foreach ($cred in $kc) {
-          $param['KeyCredential'] = $cred
-          $null = New-AzMgAppCredential @param
-        }
         break
       }
       default {

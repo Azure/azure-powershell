@@ -338,16 +338,6 @@ function Update-AzMgServicePrincipal {
     ${Info},
 
     [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
-    # The collection of key credentials associated with the service principal.
-    # Not nullable.
-    # Supports $filter (eq, NOT, ge, le).
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
-
-    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the URL where the service provider redirects the user to Azure AD to authenticate.
@@ -386,15 +376,6 @@ function Update-AzMgServicePrincipal {
     # Not nullable.
     # To construct, see NOTES section for OAUTH2PERMISSIONSCOPE properties and create a hash table.
     ${Oauth2PermissionScope},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
-    # The collection of password credentials associated with the service principal.
-    # Not nullable.
-    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
-    ${PasswordCredentials},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]

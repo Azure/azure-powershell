@@ -96,25 +96,24 @@ function Remove-AzMgAppCredential {
         switch ($PSCmdlet.ParameterSetName) {
             'ApplicationObjectIdWithKeyIdParameterSet' {
                 $app = Get-AzMgApplication -ObjectId $PSBoundParameters['ObjectId']
-                $null = $PSBoundParameters.Remove('ObjectId')
                 if (!$app) {
                     Write-Error "application with id '$($PSBoundParameters['ObjectId'])' does not exist."
                     return
                 }
+                $null = $PSBoundParameters.Remove('ObjectId')
                 break
             }
             'ApplicationIdWithKeyIdParameterSet' {
                 $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId']
-                $null = $PSBoundParameters.Remove('ApplicationId')
                 if (!$app) {
                     Write-Error "application with app id '$($PSBoundParameters['ApplicationId'])' does not exist."
                     return
                 }
+                $null = $PSBoundParameters.Remove('ApplicationId')
                 break
             }
             'ApplicationDisplayNameParameterSet' {
                 $app = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']
-                $null = $PSBoundParameters.Remove('DisplayName')
                 if (0 -eq $app.Count) {
                     Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
                     return
@@ -124,40 +123,52 @@ function Remove-AzMgAppCredential {
                     Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
                     return
                 }
+                $null = $PSBoundParameters.Remove('DisplayName')
                 break
             }
             'ApplicationObjectWithKeyIdParameterSet' {
                 $app = Get-AzMgApplication -ObjectId $PSBoundParameters['ApplicationObject'].Id
-                $null = $PSBoundParameters.Remove('ApplicationObject')
+                
                 if (!$app) {
                     Write-Error "application with id '$($PSBoundParameters['ApplicationObject'].Id)' does not exist."
                     return
                 }
+                $null = $PSBoundParameters.Remove('ApplicationObject')
                 break
             }
             default {
                 break
             }
         }
-        $PSBoundParameters['ApplicationId'] = $app.Id
+        
         if (!$PSBoundParameters['KeyId']) {
-            foreach ($key in $app.KeyCredentials) {
-                $PSBoundParameters['KeyId'] = $key.KeyId
-                MSGraph.internal\Remove-AzMgApplicationKey @PSBoundParameters
-            }
+            $PSBoundParameters['Id'] = $app.Id
+            $PSBoundParameters['KeyCredentials'] = @()
+            MSGraph.internal\Update-AzMgApplication @PSBoundParameters
+            $null = $PSBoundParameters.Remove('KeyCredentials')
+            $null = $PSBoundParameters.Remove('Id')
+            $PSBoundParameters['ApplicationId'] = $app.Id
             foreach ($password in $app.PasswordCredentials) {
                 $PSBoundParameters['KeyId'] = $password.KeyId
                 MSGraph.internal\Remove-AzMgApplicationPassword @PSBoundParameters
             }
         } else {
+            $list = @()
             foreach ($key in $app.KeyCredentials) {
-                if ($key.KeyId -eq $PSBoundParameters['KeyId']) {
-                    MSGraph.internal\Remove-AzMgApplicationKey @PSBoundParameters
+                if ($key.KeyId -ne $PSBoundParameters['KeyId']) {
+                    $list += $key
+                }
+                if ($list.Count -ne $app.KeyCredentials.Count) {
+                    $null = $PSBoundParameters.Remove('KeyId')
+                    $PSBoundParameters['Id'] = $app.Id
+                    $PSBoundParameters['KeyCredentials'] = $list
+                    MSGraph.internal\Update-AzMgApplication @PSBoundParameters
                     return
                 }
             }
             foreach ($password in $app.PasswordCredentials) {
                 if ($password.KeyId -eq $PSBoundParameters['KeyId']) {
+                    $PSBoundParameters['ApplicationId'] = $app.Id
                     MSGraph.internal\Remove-AzMgApplicationPassword @PSBoundParameters
                     return
                 }

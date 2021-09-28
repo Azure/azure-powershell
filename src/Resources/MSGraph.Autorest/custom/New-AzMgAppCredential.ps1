@@ -64,16 +64,16 @@ function New-AzMgAppCredential {
         [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory)]
         [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential]
-        ${KeyCredential},
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
+        ${KeyCredentials},
 
         [Parameter(ParameterSetName = 'ApplicationObjectIdWithPasswordCredentialParameterSet', Mandatory)]
         [Parameter(ParameterSetName = 'ApplicationIdWithPasswordCredentialParameterSet', Mandatory)]
         [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
         [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential]
-        ${PasswordCredential},
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential[]]
+        ${PasswordCredentials},
 
         [Parameter(ParameterSetName = 'ApplicationObjectIdWithCertValueParameterSet')]
         [Parameter(ParameterSetName = 'ApplicationIdWithCertValueParameterSet')]
@@ -161,7 +161,7 @@ function New-AzMgAppCredential {
     )
     
     process {
-        if (!$PSBoundParameters['PasswordCredential'] -and !$PSBoundParameters['KeyCredential'] ) {
+        if (!$PSBoundParameters['PasswordCredentials'] -and !$PSBoundParameters['KeyCredentials'] ) {
             if ($PSBoundParameters.ContainsKey('CertValue')) {
                 $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
                                          -Property @{'Key' = ([System.Convert]::FromBase64String($PSBoundParameters['CertValue']));
@@ -186,31 +186,38 @@ function New-AzMgAppCredential {
             }
             $credential.KeyId = (New-Guid).ToString()
             if ($PSBoundParameters.ContainsKey('CertValue')) {
-                $PSBoundParameters['KeyCredential'] = $credential
+                $PSBoundParameters['KeyCredentials'] = $credential
                 $null = $PSBoundParameters.Remove('CertValue')
-            } else {
-                $PSBoundParameters['PasswordCredential'] = $credential
             }
+        } elseif ($PSBoundParameters['PasswordCredentials']) {
+            $credential = $PSBoundParameters['PasswordCredentials']
+            $null = $PSBoundParameters.Remove('PasswordCredentials')
         }
 
         switch ($PSCmdlet.ParameterSetName) {
             { $_ -in 'ApplicationObjectIdWithPasswordParameterSet', 'ApplicationObjectIdWithPasswordCredentialParameterSet'} {
                 $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ObjectId']
                 $null = $PSBoundParameters.Remove('ObjectId')
-                MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters
+                foreach ($pc in $credential) {
+                    $PSBoundParameters['PasswordCredential'] = $pc
+                    MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters
+                }
                 break
             }
             { $_ -in 'ApplicationObjectIdWithCertValueParameterSet', 'ApplicationObjectIdWithKeyCredentialParameterSet' } {
-                $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ObjectId']
+                $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
                 $null = $PSBoundParameters.Remove('ObjectId')
-                MSGraph.internal\Add-AzMgApplicationKey @PSBoundParameters
+                MSGraph.internal\Update-AzMgApplication @PSBoundParameters
                 break
             }
             { $_ -in 'ApplicationIdWithPasswordParameterSet', 'ApplicationIdWithPasswordCredentialParameterSet'} {
                 $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id
                 if ($app) {
                     $PSBoundParameters['ApplicationId'] = $app.Id
-                    MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters    
+                    foreach ($pc in $credential) {
+                        $PSBoundParameters['PasswordCredential'] = $pc
+                        MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters
+                    }    
                 }
                 else {
                     Write-Error "application with application id '$($PSBoundParameters['ApplicationId'])' does not exist."
@@ -221,8 +228,8 @@ function New-AzMgAppCredential {
             { $_ -in 'ApplicationIdWithCertValueParameterSet', 'ApplicationIdWithKeyCredentialParameterSet'} {
                 $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id
                 if ($app) {
-                    $PSBoundParameters['ApplicationId'] = $app.Id
-                    MSGraph.internal\Add-AzMgApplicationKey @PSBoundParameters
+                    $PSBoundParameters['Id'] = $app.Id
+                    MSGraph.internal\Update-AzMgApplication @PSBoundParameters
                 }
                 else {
                     Write-Error "application with application id '$($PSBoundParameters['ApplicationId'])' does not exist."
@@ -239,7 +246,10 @@ function New-AzMgAppCredential {
                 elseif (1 -eq $app.Count) {
                     $PSBoundParameters['ApplicationId'] = $app[0].Id
                     $null = $PSBoundParameters.Remove('DisplayName')
-                    MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters
+                    foreach ($pc in $credential) {
+                        $PSBoundParameters['PasswordCredential'] = $pc
+                        MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters
+                    }
                 }
                 else {
                     Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
@@ -254,9 +264,9 @@ function New-AzMgAppCredential {
                     return
                 }
                 elseif (1 -eq $app.Count) {
-                    $PSBoundParameters['ApplicationId'] = $app[0].Id
+                    $PSBoundParameters['Id'] = $app[0].Id
                     $null = $PSBoundParameters.Remove('DisplayName')
-                    MSGraph.internal\Add-AzMgApplicationkey @PSBoundParameters
+                    MSGraph.internal\Update-AzMgApplication @PSBoundParameters
                 }
                 else {
                     Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
@@ -267,13 +277,16 @@ function New-AzMgAppCredential {
             { $_ -in 'ApplicationObjectWithPasswordParameterSet', 'ApplicationObjectWithPasswordParameterSet'} {
                 $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ApplicationObject'].Id
                 $null = $PSBoundParameters.Remove('ApplicationObject')
-                MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters
+                foreach ($pc in $credential) {
+                    $PSBoundParameters['PasswordCredential'] = $pc
+                    MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters
+                }
                 break
             }
             { $_ -in 'ApplicationObjectWithCertValueParameterSet', 'ApplicationObjectWithCertValueParameterSet'} {
-                $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ApplicationObject'].Id
+                $PSBoundParameters['Id'] = $PSBoundParameters['ApplicationObject'].Id
                 $null = $PSBoundParameters.Remove('ApplicationObject')
-                MSGraph.internal\Add-AzMgApplicationKey @PSBoundParameters
+                MSGraph.internal\Update-AzMgApplication @PSBoundParameters
                 break
             }
             default {
