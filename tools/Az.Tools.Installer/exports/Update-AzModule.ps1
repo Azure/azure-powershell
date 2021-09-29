@@ -75,15 +75,19 @@ function Update-AzModule {
         $cmdStarted = Get-Date
         $Invoker = $MyInvocation.MyCommand
         $preErrorActionPreference =  $ErrorActionPreference
-        $ErrorActionPreference = 'Continue'
+        $ErrorActionPreference = 'stop'
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
         $Name = Normalize-ModuleName $Name
 
         $allInstalled = Get-AllAzModule
-        $intersection = $allInstalled
+        if (!$allInstalled) {
+            Write-Warning "[$Invoker] No Az modules are installled."
+            return
+        }
 
+        $intersection = $allInstalled
         if ($Name) {
             $intersection = $intersection | Where-Object {$_.Name -eq "Az.Accounts" -or $Name -Contains $_.Name}
             $modulesNotInstalled = $Name | Where-Object {$allInstalled.Name -NotContains $_}
@@ -104,7 +108,6 @@ function Update-AzModule {
             VersionUpdate = [Version] $_.Version
         } }
 
-        $module = $null
         $modulesAlreadyLatest = @()
         $moduleUpdateTable = $moduleUpdateTable | Foreach-Object {
             if ($_.VersionUpdate -gt $_.VersionBeforeUpdate) {
@@ -114,11 +117,11 @@ function Update-AzModule {
                 $modulesAlreadyLatest += $_.Name
             }
         }
+        if ($modulesAlreadyLatest) {
+            Write-Debug "[$Invoker] $modulesAlreadyLatest are already in their latest version(s) with reference to $Repository.`n"
+        }
         if ($moduleUpdateTable) {
             Write-Debug "[$Invoker] Will update $($moduleUpdateTable.Name) to the latest version(s) on $Repository."
-        }
-        if ($modulesAlreadyLatest) {
-            Write-Debug "[$Invoker] $modulesAlreadyLatest are already in their latest version(s) with reference to $Repository."
         }
  
         if ($WhatIfPreference) {
@@ -146,6 +149,7 @@ function Update-AzModule {
                 }
             }
             $installModuleParams.Add('AllowPrerelease', $true)
+            $installModuleParams.Add('Invoker', $Invoker)
             $modules = $moduleUpdateTable | Foreach-Object {
                 $m = New-Object ModuleInfo
                 $m.Name = $_.Name
@@ -153,7 +157,6 @@ function Update-AzModule {
                 $m
             }
             $installModuleParams.Add('ModuleList', $modules)
-            $installModuleParams.Add('Invoker', $MyInvocation.MyCommand)
             $null = Install-AzModuleInternal @installModuleParams
 
             Write-Output $moduleUpdateTable

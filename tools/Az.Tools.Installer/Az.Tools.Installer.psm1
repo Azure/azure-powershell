@@ -27,8 +27,6 @@ Microsoft.PowerShell.Core\Set-StrictMode -Version 3
 
 $script:AzTempRepoName = 'AzTempRepo'
 $script:CurrentMinAzToolsInstallerVersion = '0.0.0.0'
-$script:ExpectedModuleCompanyName = 'azure-sdk'
-$script:MaxModulesToFindIndividually = 3
 $script:ParallelDownloaderClassCode = @"
 using System;
 using System.Collections.Generic;
@@ -138,7 +136,7 @@ function Get-AllAzModule {
     )
 
     process {
-        $allmodules = Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name Az*,Az `
+        $allmodules = Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name Az*, Az `
          | Where-Object {$_.Name -match "Az(\.[a-zA-Z0-9]+)?$"} `
          | Where-Object {
             !$PrereleaseOnly -or ($_.PrivateData -and $_.PrivateData.ContainsKey('PSData') -and $_.PrivateData.PSData.ContainsKey('PreRelease') -and $_.PrivateData.PSData.Prerelease -eq 'preview') -or ($_.Version -lt [Version] "1.0")
@@ -189,7 +187,7 @@ function Get-ReferencePath {
         $pathList = $null
         if ($allAzModules) {
             $pathList = $allAzModules.Path -split 'Az.' | Sort-Object -Property Length -Descending | Select-Object -First $allAzModules.Count | Select-Object -Unique
-            $isAdmin = [Security.Principal.WindowsIdentity]::GetCurrent().Groups -contains 'S-1-5-32-544'
+            $isAdmin = [Security.Principal.WindowsIdentity]::GetCurrent().Groups -Contains 'S-1-5-32-544'
             if (!$isAdmin) {
                 $pathList = $pathList | Where-Object {$_.Contains($env:UserName)}
             }
@@ -206,6 +204,7 @@ function Get-AzModuleFromRemote {
         ${Name},
 
         [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
         [string]
         ${Repository},
 
@@ -214,7 +213,6 @@ function Get-AzModuleFromRemote {
         ${AllowPrerelease},
 
         [Parameter()]
-        [ValidateNotNullOrEmpty()]
         [Version]
         ${RequiredVersion},
 
@@ -242,6 +240,7 @@ function Get-AzModuleFromRemote {
             Name =  $azModule
             Repository = $Repository
             RequiredVersion = $RequiredVersion
+            ErrorAction = 'Stop'
         }
 
         $modules = PowerShellGet\Find-Module @findModuleParams
@@ -261,7 +260,14 @@ function Get-AzModuleFromRemote {
         foreach($module in $modules.Dependencies) {
             if ($module.Name -eq 'Az.Accounts') {
                 if ($UseExactAccountVersion) {
-                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $module.MinimumVersion}
+                    $version = $accountVersion
+                    if ($module.Keys -Contains 'MinimumVersion') {
+                        $version = $module.MinimumVersion
+                    }
+                    elseif ($module.Keys -Contains 'RequiredVersion') {
+                        $version = $module.RequiredVersion
+                    }
+                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $version}
                 }
                 else {
                     $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $accountVersion}
@@ -292,6 +298,7 @@ class ModuleInfo
     [Version[]] $Version = @()
 }
 
+<#
 function Invoke-ThreadJob {
     [CmdletBinding(SupportsShouldProcess)]
     param (
@@ -359,7 +366,7 @@ function Invoke-ThreadJob {
         }
     }
 }
-
+#>
 function Uninstall-AzureRM {
     process {
         try {
@@ -394,19 +401,17 @@ function Uninstall-SingleModule {
 
     process {
         try {
-            $modules = Get-Module -Name $moduleName -ListAvailable
-            if ($modules) {
-                foreach ($path in $ReferencePath){
-                    $path = Join-Path $path $moduleName
-                    if (Test-Path -Path $path) {
-                        Microsoft.PowerShell.Management\Remove-Item -Path $path -Recurse -Force -WhatIf:$false
-                        Write-Debug "[$Invoker] Uninstalling $ModuleName version $($modules.Version) is completed."
+            foreach ($path in $ReferencePath){
+                $path = Join-Path $path $moduleName
+                if (Test-Path -Path $path) {
+                    $subFolder = Get-ChildItem $path
+                    $version = $null
+                    if ($subFolder) {
+                        $version = $subFolder.Name
                     }
+                    Microsoft.PowerShell.Management\Remove-Item -Path $path -Recurse -Force -WhatIf:$false
+                    Write-Debug "[$Invoker] Uninstalling $ModuleName version $version is completed."
                 }
-
-            }
-            else {
-                Write-Warning "[$Invoker] $moduleName is not installed so that cannot be uninstalled."
             }
         }
         catch {
@@ -430,10 +435,10 @@ function Uninstall-Az {
     process {
         try {
             if (!$AzOnly) {
-                $azModuleNames = Get-InstalledModule -Name Az.* -ErrorAction Stop | Where-Object {$_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}
+                $azModuleNames = Get-Module -ListAvailable -Name Az.* | Where-Object {$_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}
                 $module = $null
                 foreach ($module in $azModuleNames) {
-                    $referencePath = $module.InstalledLocation -Split $module.Name | Sort-Object -Property Length -Descending | Select-Object -First 1
+                    $referencePath = $module.Path -Split $module.Name | Sort-Object -Property Length -Descending | Select-Object -First 1
                     Uninstall-SingleModule -ModuleName $module.Name -ReferencePath $referencePath -Invoker $Invoker
                 }
             }

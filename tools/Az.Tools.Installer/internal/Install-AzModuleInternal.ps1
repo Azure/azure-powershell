@@ -73,7 +73,6 @@ function Install-AzModuleInternal {
                 Uninstall-Az -AzOnly -Invoker $Invoker
             }
         }
-        Write-Host "Install-AzModuleInternal"
         if (!$ModuleList) {
             return
         }
@@ -145,6 +144,7 @@ function Install-AzModuleInternal {
                             $jobs  += Start-ThreadJob -Name "Az.Tools.Installer" {
                                 $tmodule = $using:module
                                 Write-Output "$($tmodule.Name) version $($tmodule.Version)"
+                                Import-Module PackageManagement
                                 Import-Module PowerShellGet
                                 PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
                             } -ThrottleLimit $maxJobCount
@@ -152,28 +152,26 @@ function Install-AzModuleInternal {
                         }
                     }
                     else {
-                        $runningJob = Get-Job -State Running
-                        $count = 0
-                        if ($runningJob -and $runningJob.PSObject.Properties.Name.Contains('Count')) {
-                            $count = (Get-Job -State Running).Count
-                        }
-                        if($count -lt $maxJobCount) {
-                            if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
-                                $jobs += Start-Job -Name "Az.Tools.Installer" {
-                                    $tmodule = $using:module
-                                    Write-Output "$($tmodule.Name) version $($tmodule.Version)"
-                                    Import-Module PowerShellGet
-                                    PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
-                                }
-                                Write-Progress -Activity "Install Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
-                                $index += 1
-                            }
-                        }
-                        else {
+                        $runningJob = @()
+                        $runningJob += Get-Job -State Running
+                        if ($runningJob -and ($runningJob.Count -ge $maxJobCount)) {
                             Get-Job -State Running | Wait-Job -Any -Timeout 120
-                            if ((Get-Job -State Running).Count -ge $maxJobCount) {
+                            $runningJob = @()
+                            $runningJob += Get-Job -State Running
+                            if ($runningJob -and ($runningJob.Count -ge $maxJobCount)) {
                                 Throw "[$Inovker] Some background jobs are blocked. Please use 'Get-Job -State Running' to check them."
+                            }                          
+                        }
+                        if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
+                            $jobs += Start-Job -Name "Az.Tools.Installer" {
+                                $tmodule = $using:module
+                                Write-Output "$($tmodule.Name) version $($tmodule.Version)"
+                                Import-Module PackageManagement
+                                Import-Module PowerShellGet
+                                PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
                             }
+                            Write-Progress -Activity "Install Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
+                            $index += 1
                         }
                     }
                 }
@@ -185,17 +183,18 @@ function Install-AzModuleInternal {
                     foreach ($job in $jobs) {
                         $job = Wait-Job $job
                         try {
+                            $result = $null
                             $result = Receive-Job $job
                             if ($job.State -eq 'Completed') {
                                 Write-Debug  "[$Invoker] Installing $result is complete."
                             }
                             else {
-                                Write-Warning  "[$Invoker] Uninstalling $result is failed."
+                                Write-Warning  "[$Invoker] Installing $result is failed."
                             }
                         }
                         catch {
                             Write-Warning $_
-                            Write-Warning  "[$Invoker] Uninstalling $result is failed."
+                            Write-Warning  "[$Invoker] Installing $result is failed."
                         }
                         Remove-Job $job -Confirm:$false
                         if ($PSVersionTable.PSEdition -eq "Core") {

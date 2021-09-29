@@ -60,7 +60,7 @@ function Uninstall-AzModule {
 
         $Invoker = $MyInvocation.MyCommand
         $preErrorActionPreference =  $ErrorActionPreference
-        $ErrorActionPreference = 'Continue'
+        $ErrorActionPreference = 'Stop'
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
@@ -72,13 +72,14 @@ function Uninstall-AzModule {
             Uninstall-Az -AzOnly -Invoker $Invoker
         }
 
-        $allInstalled = Get-AllAzModule -PrereleaseOnly:$PrereleaseOnly
+        $allInstalled = @()
+        $allInstalled += Get-AllAzModule -PrereleaseOnly:$PrereleaseOnly
 
         $moduleToUninstall = $allInstalled | Foreach-Object {[PSCustomObject]@{Name = $_.Name; Version = $_.Version}}
         if ($Name) {
             $Name = Normalize-ModuleName $Name
             $moduleToUninstall = $moduleToUninstall | Where-Object {!$Name -or $Name -Contains $_.Name}
-            $modulesNotInstalled = $Name | Where-Object {$allInstalled.Name -NotContains$_}
+            $modulesNotInstalled = $Name | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
             if ($modulesNotInstalled) {
                 Write-Warning "[$Invoker] $modulesNotInstalled are not installed."
             }         
@@ -90,32 +91,28 @@ function Uninstall-AzModule {
             }      
         }
 
-        $groupSet = @{}
-        $moduleToUninstall | Group-Object -Property Name | Foreach-Object {$groupSet[$_.Name] = ($_.Group.Version | Sort-Object -Descending) }
-
-        $modules = $groupSet.Keys | ForEach-Object {
-            $m = New-Object ModuleInfo
-            $m.Name = $_
-            $m.Version = $groupSet[$_]
-            $m
-        }
-
-        $started = Get-Date
-        $referencePaths = Get-ReferencePath
-
-        if ($modules -and $referencePaths) {
-            $module = $null
-            $index = 0
-            foreach ($module in $modules) {
-                if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Uninstall")) {
-                    Uninstall-SingleModule -ModuleName $module.Name -ReferencePath $referencePaths -Invoker $Invoker
-                    Write-Progress -Activity "Uninstall Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
-                    $index += 1
+        if ($moduleToUninstall) {
+            $groupSet = @{}
+            $moduleToUninstall | Group-Object -Property Name | Foreach-Object {$groupSet[$_.Name] = ($_.Group.Version | Sort-Object -Descending) }
+            
+            $started = Get-Date
+            $referencePaths = Get-ReferencePath
+            
+            if ($referencePaths) {
+                $module = $null
+                $index = 0
+                foreach ($moduleName in $groupSet.Keys) {
+                    $versions = $groupSet[$moduleName]
+                    if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $moduleName version $versions", "$moduleName version $versions", "Uninstall")) {
+                        Uninstall-SingleModule -ModuleName $moduleName -ReferencePath $referencePaths -Invoker $Invoker
+                        Write-Progress -Activity "Uninstall Module" -CurrentOperation "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
+                        $index += 1
+                    }
                 }
             }
+            $duration = (Get-Date) - $started
+            Write-Debug "[$Invoker] All uninstallation tasks are finished; Time Elapsed Total: $($duration.TotalSeconds)s."
         }
-        $duration = (Get-Date) - $started
-        Write-Debug "[$Invoker] All uninstallation tasks are finished; Time Elapsed Total: $($duration.TotalSeconds)s."
 
         $ErrorActionPreference = $preErrorActionPreference
 

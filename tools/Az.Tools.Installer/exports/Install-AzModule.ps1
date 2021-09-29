@@ -72,7 +72,7 @@ function Install-AzModule {
 
         $Invoker = $MyInvocation.MyCommand
         $preErrorActionPreference =  $ErrorActionPreference
-        $ErrorActionPreference = 'Continue'
+        $ErrorActionPreference = 'Stop'
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
@@ -90,7 +90,8 @@ function Install-AzModule {
             $findModuleParams.Add('RequiredVersion', [Version]$RequiredAzVersion)
         }
 
-        $modules = Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
+        $modules = @()
+        $modules += Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
 
         if($Name) {
             $moduleExcluded = $Name | Where-Object {$modules -and $modules.Name -NotContains $_}
@@ -102,7 +103,7 @@ function Install-AzModule {
 
         $installModuleParams = @{}
         foreach ($key in $PSBoundParameters.Keys) {
-            if($key -ne 'Name'){
+            if($key -ne 'Name') {
                 $installModuleParams.Add($key, $PSBoundParameters[$key]) 
             }
         }
@@ -115,9 +116,10 @@ function Install-AzModule {
         if ($moduleList) {
             $installModuleParams.Add('ModuleList', $moduleList)
         }
-        $installModuleParams.Add('Invoker', $MyInvocation.MyCommand)
+        $installModuleParams.Add('Invoker', $Invoker)
         $null = Install-AzModuleInternal @installModuleParams
 
+        #fixme
         if (!$WhatIfPreference) {
             Write-Output $modules
         }
