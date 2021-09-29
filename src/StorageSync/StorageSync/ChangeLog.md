@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed a bug where not all properties of PSSyncSessionStatus and PSSyncActivityStatus objects were being populated properly.
-* This affected the Get-AzStorageSyncServerEndpoint cmdlet when trying to access the following properties of the output:
+* This affected the `Get-AzStorageSyncServerEndpoint` cmdlet when trying to access the following properties of the output:
     - SyncStatus.UploadStatus
     - SyncStatus.DownloadStatus
     - SyncStatus.UploadActivity
