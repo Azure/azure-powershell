@@ -267,5 +267,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureStorageAccountHierarchicalNamespaceUpgrade");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageAccountWorm()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageAccountWorm");
+        }
     }
 }
