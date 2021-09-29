@@ -884,6 +884,20 @@ components:
               type: string
               description: 'Sets the age group of the user. Allowed values: null, minor, notAdult and adult. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).'
               nullable: true
+<<<<<<< HEAD
+=======
+            assignedLicenses:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.assignedLicense'
+              description: 'The licenses that are assigned to the user, including inherited (group-based) licenses. Not nullable. Supports $filter (eq and NOT).'
+            assignedPlans:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.assignedPlan'
+              readOnly: true
+              description: The plans that are assigned to the user. Read-only. Not nullable.Supports $filter (eq and NOT).
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             businessPhones:
               type: array
               items:
@@ -936,6 +950,11 @@ components:
               type: string
               description: 'The employee identifier assigned to the user by the organization. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).'
               nullable: true
+<<<<<<< HEAD
+=======
+            employeeOrgData:
+              $ref: '#/components/schemas/microsoft.graph.employeeOrgData'
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             employeeType:
               type: string
               description: 'Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).'
@@ -990,6 +1009,15 @@ components:
               readOnly: true
               description: 'Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult and adult. Refer to the legal age group property definitions for further information. Returned only on $select.'
               nullable: true
+<<<<<<< HEAD
+=======
+            licenseAssignmentStates:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.licenseAssignmentState'
+              readOnly: true
+              description: State of license assignments for this user. Read-only. Returned only on $select.
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             mail:
               type: string
               description: 'The SMTP address for the user, for example, admin@contoso.com. Changes to this property will also update the user''s proxyAddresses collection to include the value as an SMTP address. While this property can contain accent characters, using them can cause access issues with other Microsoft applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith).'
@@ -1016,6 +1044,11 @@ components:
               type: string
               description: 'Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only.'
               nullable: true
+<<<<<<< HEAD
+=======
+            onPremisesExtensionAttributes:
+              $ref: '#/components/schemas/microsoft.graph.onPremisesExtensionAttributes'
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             onPremisesImmutableId:
               type: string
               description: 'This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user''s userPrincipalName (UPN) property. Note: The $ and _ characters cannot be used when specifying this property. Supports $filter (eq, ne, NOT, ge, le, in).'
@@ -1027,6 +1060,14 @@ components:
               description: 'Indicates the last time at which the object was synced with the on-premises directory; for example: ''2013-02-16T03:04:54Z''. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, NOT, ge, le, in).'
               format: date-time
               nullable: true
+<<<<<<< HEAD
+=======
+            onPremisesProvisioningErrors:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.onPremisesProvisioningError'
+              description: 'Errors when using Microsoft synchronization product during provisioning.  Supports $filter (eq, NOT, ge, le).'
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             onPremisesSamAccountName:
               type: string
               readOnly: true
@@ -1066,6 +1107,15 @@ components:
               type: string
               description: 'The preferred language for the user. Should follow ISO 639-1 Code; for example en-US. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).'
               nullable: true
+<<<<<<< HEAD
+=======
+            provisionedPlans:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.provisionedPlan'
+              readOnly: true
+              description: 'The plans that are provisioned for the user. Read-only. Not nullable. Supports $filter (eq, NOT, ge, le).'
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             proxyAddresses:
               type: array
               items:
@@ -1167,6 +1217,40 @@ components:
                 type: string
                 nullable: true
               description: A list for the user to enumerate their skills. Returned only on $select.
+<<<<<<< HEAD
+=======
+            appRoleAssignments:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
+              description: Represents the app roles a user has been granted for an application. Supports $expand.
+            createdObjects:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
+              description: Directory objects that were created by the user. Read-only. Nullable.
+            directReports:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
+              description: The users and contacts that report to the user. (The users and contacts that have their manager property set to this user.) Read-only. Nullable. Supports $expand.
+            licenseDetails:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.licenseDetails'
+              readOnly: true
+              description: A collection of this user's license details. Read-only.
+            manager:
+              $ref: '#/components/schemas/microsoft.graph.directoryObject'
+            memberOf:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
+              description: 'The groups, directory roles and administrative units that the user is a member of. Read-only. Nullable. Supports $expand.'
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             oauth2PermissionGrants:
               type: array
               items:
@@ -1183,12 +1267,48 @@ components:
                 $ref: '#/components/schemas/microsoft.graph.directoryObject'
               readOnly: true
               description: Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
+<<<<<<< HEAD
+=======
+            registeredDevices:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              readOnly: true
+              description: Devices that are registered for the user. Read-only. Nullable. Supports $expand.
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             scopedRoleMemberOf:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.scopedRoleMembership'
               readOnly: true
               description: The scoped-role administrative unit memberships for this user. Read-only. Nullable.
+<<<<<<< HEAD
+=======
+            transitiveMemberOf:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+            calendar:
+              $ref: '#/components/schemas/microsoft.graph.calendar'
+            calendarGroups:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.calendarGroup'
+              readOnly: true
+              description: The user's calendar groups. Read-only. Nullable.
+            calendars:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.calendar'
+              readOnly: true
+              description: The user's calendars. Read-only. Nullable.
+            calendarView:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.event'
+              readOnly: true
+              description: The calendar view for the calendar. Read-only. Nullable.
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             contactFolders:
               type: array
               items:
@@ -1201,6 +1321,15 @@ components:
                 $ref: '#/components/schemas/microsoft.graph.contact'
               readOnly: true
               description: The user's contacts. Read-only. Nullable.
+<<<<<<< HEAD
+=======
+            events:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.event'
+              readOnly: true
+              description: The user's events. Default is to show events under the Default Calendar. Read-only. Nullable.
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             inferenceClassification:
               $ref: '#/components/schemas/microsoft.graph.inferenceClassification'
             mailFolders:
@@ -1215,6 +1344,11 @@ components:
                 $ref: '#/components/schemas/microsoft.graph.message'
               readOnly: true
               description: The messages in a mailbox or folder. Read-only. Nullable.
+<<<<<<< HEAD
+=======
+            outlook:
+              $ref: '#/components/schemas/microsoft.graph.outlookUser'
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             people:
               type: array
               items:
@@ -1223,6 +1357,15 @@ components:
               description: 'Read-only. The most relevant people to the user. The collection is ordered by their relevance to the user, which is determined by the user''s communication, collaboration and business relationships. A person is an aggregation of information from across mail, contacts and social networks.'
             photo:
               $ref: '#/components/schemas/microsoft.graph.profilePhoto'
+<<<<<<< HEAD
+=======
+            photos:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.profilePhoto'
+              readOnly: true
+              description: Read-only. Nullable.
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             drive:
               $ref: '#/components/schemas/microsoft.graph.drive'
             drives:
@@ -1261,6 +1404,17 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.deviceManagementTroubleshootingEvent'
               description: The list of troubleshooting events for this user.
+<<<<<<< HEAD
+=======
+            planner:
+              $ref: '#/components/schemas/microsoft.graph.plannerUser'
+            insights:
+              $ref: '#/components/schemas/microsoft.graph.officeGraphInsights'
+            settings:
+              $ref: '#/components/schemas/microsoft.graph.userSettings'
+            onenote:
+              $ref: '#/components/schemas/microsoft.graph.onenote'
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             activities:
               type: array
               items:
@@ -1840,6 +1994,270 @@ components:
               description: Unique identifier for the directory role that the member is in.
             roleMemberInfo:
               $ref: '#/components/schemas/microsoft.graph.identity'
+<<<<<<< HEAD
+=======
+    microsoft.graph.calendar:
+      allOf:
+        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - title: calendar
+          type: object
+          properties:
+            allowedOnlineMeetingProviders:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.onlineMeetingProviderType'
+              description: 'Represent the online meeting service providers that can be used to create online meetings in this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.'
+            canEdit:
+              type: boolean
+              description: 'true if the user can write to the calendar, false otherwise. This property is true for the user who created the calendar. This property is also true for a user who has been shared a calendar and granted write access, through an Outlook client or the corresponding calendarPermission resource. Read-only.'
+              nullable: true
+            canShare:
+              type: boolean
+              description: 'true if the user has the permission to share the calendar, false otherwise. Only the user who created the calendar can share it. Read-only.'
+              nullable: true
+            canViewPrivateItems:
+              type: boolean
+              description: 'true if the user can read calendar items that have been marked private, false otherwise. This property is set through an Outlook client or the corresponding calendarPermission resource. Read-only.'
+              nullable: true
+            changeKey:
+              type: string
+              description: 'Identifies the version of the calendar object. Every time the calendar is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.'
+              nullable: true
+            color:
+              $ref: '#/components/schemas/microsoft.graph.calendarColor'
+            defaultOnlineMeetingProvider:
+              $ref: '#/components/schemas/microsoft.graph.onlineMeetingProviderType'
+            hexColor:
+              type: string
+              description: 'The calendar color, expressed in a hex color code of three hexadecimal values, each ranging from 00 to FF and representing the red, green, or blue components of the color in the RGB color space. If the user has never explicitly set a color for the calendar, this property is  empty.'
+              nullable: true
+            isDefaultCalendar:
+              type: boolean
+              description: 'true if this is the default calendar where new events are created by default, false otherwise.'
+              nullable: true
+            isRemovable:
+              type: boolean
+              description: Indicates whether this user calendar can be deleted from the user mailbox.
+              nullable: true
+            isTallyingResponses:
+              type: boolean
+              description: Indicates whether this user calendar supports tracking of meeting responses. Only meeting invites sent from users' primary calendars support tracking of meeting responses.
+              nullable: true
+            name:
+              type: string
+              description: The calendar name.
+              nullable: true
+            owner:
+              $ref: '#/components/schemas/microsoft.graph.emailAddress'
+            calendarPermissions:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.calendarPermission'
+              description: The permissions of the users with whom the calendar is shared.
+            calendarView:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.event'
+              description: The calendar view for the calendar. Navigation property. Read-only.
+            events:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.event'
+              description: The events in the calendar. Navigation property. Read-only.
+            multiValueExtendedProperties:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.multiValueLegacyExtendedProperty'
+              description: The collection of multi-value extended properties defined for the calendar. Read-only. Nullable.
+            singleValueExtendedProperties:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
+              description: The collection of single-value extended properties defined for the calendar. Read-only. Nullable.
+    microsoft.graph.calendarGroup:
+      allOf:
+        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - title: calendarGroup
+          type: object
+          properties:
+            changeKey:
+              type: string
+              description: 'Identifies the version of the calendar group. Every time the calendar group is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.'
+              nullable: true
+            classId:
+              pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+              type: string
+              description: The class identifier. Read-only.
+              format: uuid
+              nullable: true
+            name:
+              type: string
+              description: The group name.
+              nullable: true
+            calendars:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.calendar'
+              description: The calendars in the calendar group. Navigation property. Read-only. Nullable.
+    microsoft.graph.event:
+      allOf:
+        - $ref: '#/components/schemas/microsoft.graph.outlookItem'
+        - title: event
+          type: object
+          properties:
+            allowNewTimeProposals:
+              type: boolean
+              description: 'True if the meeting organizer allows invitees to propose a new time when responding, false otherwise. Optional. Default is true.'
+              nullable: true
+            attendees:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.attendee'
+              description: The collection of attendees for the event.
+            body:
+              $ref: '#/components/schemas/microsoft.graph.itemBody'
+            bodyPreview:
+              type: string
+              description: The preview of the message associated with the event. It is in text format.
+              nullable: true
+            end:
+              $ref: '#/components/schemas/microsoft.graph.dateTimeTimeZone'
+            hasAttachments:
+              type: boolean
+              description: Set to true if the event has attachments.
+              nullable: true
+            hideAttendees:
+              type: boolean
+              description: 'When set to true, each attendee only sees themselves in the meeting request and meeting Tracking list. Default is false.'
+              nullable: true
+            iCalUId:
+              type: string
+              description: A unique identifier for an event across calendars. This ID is different for each occurrence in a recurring series. Read-only.
+              nullable: true
+            importance:
+              $ref: '#/components/schemas/microsoft.graph.importance'
+            isAllDay:
+              type: boolean
+              description: Set to true if the event lasts all day.
+              nullable: true
+            isCancelled:
+              type: boolean
+              description: Set to true if the event has been canceled.
+              nullable: true
+            isDraft:
+              type: boolean
+              description: 'Set to true if the user has updated the meeting in Outlook but has not sent the updates to attendees. Set to false if all changes have been sent, or if the event is an appointment without any attendees.'
+              nullable: true
+            isOnlineMeeting:
+              type: boolean
+              description: 'True if this event has online meeting information, false otherwise. Default is false. Optional.'
+              nullable: true
+            isOrganizer:
+              type: boolean
+              description: Set to true if the calendar owner (specified by the owner property of the calendar) is the organizer of the event (specified by the organizer property of the event). This also applies if a delegate organized the event on behalf of the owner.
+              nullable: true
+            isReminderOn:
+              type: boolean
+              description: Set to true if an alert is set to remind the user of the event.
+              nullable: true
+            location:
+              $ref: '#/components/schemas/microsoft.graph.location'
+            locations:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.location'
+              description: 'The locations where the event is held or attended from. The location and locations properties always correspond with each other. If you update the location property, any prior locations in the locations collection would be removed and replaced by the new location value.'
+            onlineMeeting:
+              $ref: '#/components/schemas/microsoft.graph.onlineMeetingInfo'
+            onlineMeetingProvider:
+              $ref: '#/components/schemas/microsoft.graph.onlineMeetingProviderType'
+            onlineMeetingUrl:
+              type: string
+              description: A URL for an online meeting. The property is set only when an organizer specifies an event as an online meeting such as a Skype meeting. Read-only.
+              nullable: true
+            organizer:
+              $ref: '#/components/schemas/microsoft.graph.recipient'
+            originalEndTimeZone:
+              type: string
+              description: The end time zone that was set when the event was created. A value of tzone://Microsoft/Custom indicates that a legacy custom time zone was set in desktop Outlook.
+              nullable: true
+            originalStart:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: 'The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z'
+              format: date-time
+              nullable: true
+            originalStartTimeZone:
+              type: string
+              description: The start time zone that was set when the event was created. A value of tzone://Microsoft/Custom indicates that a legacy custom time zone was set in desktop Outlook.
+              nullable: true
+            recurrence:
+              $ref: '#/components/schemas/microsoft.graph.patternedRecurrence'
+            reminderMinutesBeforeStart:
+              maximum: 2147483647
+              minimum: -2147483648
+              type: integer
+              description: The number of minutes before the event start time that the reminder alert occurs.
+              format: int32
+              nullable: true
+            responseRequested:
+              type: boolean
+              description: 'Default is true, which represents the organizer would like an invitee to send a response to the event.'
+              nullable: true
+            responseStatus:
+              $ref: '#/components/schemas/microsoft.graph.responseStatus'
+            sensitivity:
+              $ref: '#/components/schemas/microsoft.graph.sensitivity'
+            seriesMasterId:
+              type: string
+              description: 'The ID for the recurring series master item, if this event is part of a recurring series.'
+              nullable: true
+            showAs:
+              $ref: '#/components/schemas/microsoft.graph.freeBusyStatus'
+            start:
+              $ref: '#/components/schemas/microsoft.graph.dateTimeTimeZone'
+            subject:
+              type: string
+              description: The text of the event's subject line.
+              nullable: true
+            transactionId:
+              type: string
+              description: 'A custom identifier specified by a client app for the server to avoid redundant POST operations in case of client retries to create the same event. This is useful when low network connectivity causes the client to time out before receiving a response from the server for the client''s prior create-event request. After you set transactionId when creating an event, you cannot change transactionId in a subsequent update. This property is only returned in a response payload if an app has set it. Optional.'
+              nullable: true
+            type:
+              $ref: '#/components/schemas/microsoft.graph.eventType'
+            webLink:
+              type: string
+              description: 'The URL to open the event in Outlook on the web.Outlook on the web opens the event in the browser if you are signed in to your mailbox. Otherwise, Outlook on the web prompts you to sign in.This URL cannot be accessed from within an iFrame.'
+              nullable: true
+            attachments:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.attachment'
+              description: 'The collection of FileAttachment, ItemAttachment, and referenceAttachment attachments for the event. Navigation property. Read-only. Nullable.'
+            calendar:
+              $ref: '#/components/schemas/microsoft.graph.calendar'
+            extensions:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.extension'
+              description: The collection of open extensions defined for the event. Nullable.
+            instances:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.event'
+              description: 'The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.'
+            multiValueExtendedProperties:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.multiValueLegacyExtendedProperty'
+              description: The collection of multi-value extended properties defined for the event. Read-only. Nullable.
+            singleValueExtendedProperties:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.singleValueLegacyExtendedProperty'
+              description: The collection of single-value extended properties defined for the event. Read-only. Nullable.
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
     microsoft.graph.contactFolder:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3051,6 +3469,85 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/microsoft.graph.teamsTab'
+<<<<<<< HEAD
+=======
+    microsoft.graph.team:
+      allOf:
+        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - title: team
+          type: object
+          properties:
+            classification:
+              type: string
+              description: An optional label. Typically describes the data or business sensitivity of the team. Must match one of a pre-configured set in the tenant's directory.
+              nullable: true
+            createdDateTime:
+              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+              type: string
+              description: Timestamp at which the team was created.
+              format: date-time
+              nullable: true
+            description:
+              type: string
+              description: 'An optional description for the team. Maximum length: 1024 characters.'
+              nullable: true
+            displayName:
+              type: string
+              description: The name of the team.
+              nullable: true
+            funSettings:
+              $ref: '#/components/schemas/microsoft.graph.teamFunSettings'
+            guestSettings:
+              $ref: '#/components/schemas/microsoft.graph.teamGuestSettings'
+            internalId:
+              type: string
+              description: A unique ID for the team that has been used in a few places such as the audit log/Office 365 Management Activity API.
+              nullable: true
+            isArchived:
+              type: boolean
+              description: Whether this team is in read-only mode.
+              nullable: true
+            memberSettings:
+              $ref: '#/components/schemas/microsoft.graph.teamMemberSettings'
+            messagingSettings:
+              $ref: '#/components/schemas/microsoft.graph.teamMessagingSettings'
+            specialization:
+              $ref: '#/components/schemas/microsoft.graph.teamSpecialization'
+            visibility:
+              $ref: '#/components/schemas/microsoft.graph.teamVisibilityType'
+            webUrl:
+              type: string
+              description: 'A hyperlink that will go to the team in the Microsoft Teams client. This is the URL that you get when you right-click a team in the Microsoft Teams client and select Get link to team. This URL should be treated as an opaque blob, and not parsed.'
+              nullable: true
+            schedule:
+              $ref: '#/components/schemas/microsoft.graph.schedule'
+            channels:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.channel'
+              description: The collection of channels & messages associated with the team.
+            group:
+              $ref: '#/components/schemas/microsoft.graph.group'
+            installedApps:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.teamsAppInstallation'
+              description: The apps installed in this team.
+            members:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.conversationMember'
+              description: Members and owners of the team.
+            operations:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.teamsAsyncOperation'
+              description: The async operations that ran or are running on this team.
+            primaryChannel:
+              $ref: '#/components/schemas/microsoft.graph.channel'
+            template:
+              $ref: '#/components/schemas/microsoft.graph.teamsTemplate'
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
     microsoft.graph.userTeamwork:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3319,6 +3816,24 @@ components:
         - skypeForConsumer
         - teamsForBusiness
       type: string
+<<<<<<< HEAD
+=======
+    microsoft.graph.calendarColor:
+      title: calendarColor
+      enum:
+        - auto
+        - lightBlue
+        - lightGreen
+        - lightOrange
+        - lightGray
+        - lightYellow
+        - lightTeal
+        - lightPink
+        - lightBrown
+        - lightRed
+        - maxColor
+      type: string
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
     microsoft.graph.emailAddress:
       title: emailAddress
       type: object
@@ -3333,6 +3848,32 @@ components:
           nullable: true
       additionalProperties:
         type: object
+<<<<<<< HEAD
+=======
+    microsoft.graph.calendarPermission:
+      allOf:
+        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - title: calendarPermission
+          type: object
+          properties:
+            allowedRoles:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.calendarRoleType'
+              description: 'List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.'
+            emailAddress:
+              $ref: '#/components/schemas/microsoft.graph.emailAddress'
+            isInsideOrganization:
+              type: boolean
+              description: True if the user in context (sharee or delegate) is inside the same organization as the calendar owner.
+              nullable: true
+            isRemovable:
+              type: boolean
+              description: 'True if the user can be removed from the list of sharees or delegates for the specified calendar, false otherwise. The ''My organization'' user determines the permissions other people within your organization have to the given calendar. You cannot remove ''My organization'' as a sharee to a calendar.'
+              nullable: true
+            role:
+              $ref: '#/components/schemas/microsoft.graph.calendarRoleType'
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
     microsoft.graph.multiValueLegacyExtendedProperty:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -3500,6 +4041,17 @@ components:
         - oof
         - workingElsewhere
       type: string
+<<<<<<< HEAD
+=======
+    microsoft.graph.eventType:
+      title: eventType
+      enum:
+        - singleInstance
+        - occurrence
+        - exception
+        - seriesMaster
+      type: string
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
     microsoft.graph.attachment:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.entity'
@@ -5909,6 +6461,33 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.directoryObject'
               description: The list of users or groups that are allowed to create post's or calendar events in this group. If this list is non-empty then only users or groups listed here are allowed to post.
+<<<<<<< HEAD
+=======
+            calendar:
+              $ref: '#/components/schemas/microsoft.graph.calendar'
+            calendarView:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.event'
+              description: The calendar view for the calendar. Read-only.
+            conversations:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.conversation'
+              description: The group's conversations.
+            events:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.event'
+              description: The group's events.
+            photo:
+              $ref: '#/components/schemas/microsoft.graph.profilePhoto'
+            photos:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.profilePhoto'
+              description: The profile photos owned by the group. Read-only. Nullable.
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
             rejectedSenders:
               type: array
               items:
@@ -5945,6 +6524,11 @@ components:
               $ref: '#/components/schemas/microsoft.graph.plannerGroup'
             onenote:
               $ref: '#/components/schemas/microsoft.graph.onenote'
+<<<<<<< HEAD
+=======
+            team:
+              $ref: '#/components/schemas/microsoft.graph.team'
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
           additionalProperties:
             type: object
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
@@ -6150,6 +6734,21 @@ components:
           nullable: true
       additionalProperties:
         type: object
+<<<<<<< HEAD
+=======
+    microsoft.graph.calendarRoleType:
+      title: calendarRoleType
+      enum:
+        - none
+        - freeBusyRead
+        - limitedRead
+        - read
+        - write
+        - delegateWithoutPrivateEventAccess
+        - delegateWithPrivateEventAccess
+        - custom
+      type: string
+>>>>>>> 76b10604827a24798e9791b6f2b757941666516d
     microsoft.graph.attendeeBase:
       allOf:
         - $ref: '#/components/schemas/microsoft.graph.recipient'
