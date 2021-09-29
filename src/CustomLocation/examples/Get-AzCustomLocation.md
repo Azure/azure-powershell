@@ -1,20 +1,32 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the details of the customLocation.
 ```powershell
 PS C:\> Get-AzCustomLocation
 
-Location Name                  Type
--------- ----                  ----
-eastus   psteam-cl-arc-cluster Microsoft.ExtendedLocation/customLocations
+Location Name              Type
+-------- ----              ----
+eastus   azps_test_cluster Microsoft.ExtendedLocation/customLocations
 ```
 
-{{ Add description here }}
+List the details of the customLocation.
 
-### Example 2: {{ Add title here }}
+### Example 2: List the details of the customLocation with a specified resource group.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzCustomLocation -ResourceGroupName azps_test_group
 
-{{ Add output here }}
+Location Name              Type
+-------- ----              ----
+eastus   azps_test_cluster Microsoft.ExtendedLocation/customLocations
 ```
 
-{{ Add description here }}
+List the details of the customLocation with a specified resource group.
 
+### Example 3: Gets the details of the customLocation with a specified resource group and name.
+```powershell
+PS C:\> Get-AzCustomLocation -ResourceGroupName azps_test_group -ResourceName azps_test_cluster
+
+Location Name              Type
+-------- ----              ----
+eastus   azps_test_cluster Microsoft.ExtendedLocation/customLocations
+```
+
+Gets the details of the customLocation with a specified resource group and name.

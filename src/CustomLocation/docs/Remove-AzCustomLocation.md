@@ -29,23 +29,13 @@ Deletes the Custom Location with the specified Resource Name, Resource Group, an
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deletes the Custom Location.
 ```powershell
 PS C:\> Remove-AzCustomLocation -ResourceGroupName psteam-cl-rg -ResourceName psteam-cl-arc-cluster
 
-Remove-AzCustomLocation_Delete: The server responded with an unrecognized response, Status: OK
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes the Custom Location.
 
 ## PARAMETERS
 

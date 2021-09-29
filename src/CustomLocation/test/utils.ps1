@@ -18,6 +18,43 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    $k8sName = RandomString -allChars $false -len 6
+    $clusterName = RandomString -allChars $false -len 6
+    $extensionName = RandomString -allChars $false -len 6
+    $clusterLocationName = RandomString -allChars $false -len 6
+
+    $env.Add("k8sName", $k8sName)
+    $env.Add("clusterName", $clusterName)
+    $env.Add("extensionName", $extensionName)
+    $env.Add("clusterLocationName", $clusterLocationName)
+
+    $env.Add("location", "eastus")
+
+    # Create the test group
+    write-host "start to create test group"
+    $resourceGroup = "testgroup" + $env.clusterLocationName
+    $env.Add("resourceGroup", $resourceGroup)
+    
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
+    az aks create --name $env.k8sName --resource-group $env.resourceGroup --kubernetes-version 1.20.9 --vm-set-type AvailabilitySet
+
+    az aks get-credentials --resource-group $env.resourceGroup --name $env.k8sName
+
+    az connectedk8s connect --name $env.clusterName --resource-group $env.resourceGroup --location $env.location
+    
+    az k8s-extension create -c $env.clusterName -g $env.resourceGroup --name $env.extensionName --cluster-type connectedClusters --extension-type microsoft.arcdataservices --auto-upgrade false --scope cluster --release-namespace arc --config Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper
+    
+    az k8s-extension show -g $env.resourceGroup -c $env.clusterName --name $env.extensionName --cluster-type connectedclusters
+    
+    $HostResourceId = az connectedk8s show -n $env.clusterName -g $env.resourceGroup --query id -o tsv
+    
+    $ClusterExtensionId = az k8s-extension show --name $env.extensionName --cluster-type connectedClusters -c $env.clusterName -g $env.resourceGroup --query id -o tsv
+    
+    $env.Add("HostResourceId", $HostResourceId)
+    $env.Add("ClusterExtensionId", $ClusterExtensionId)
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -26,6 +63,6 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

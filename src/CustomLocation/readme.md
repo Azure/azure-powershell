@@ -43,6 +43,21 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "Succeeded. The customLocation was deleted."
+        },
+        "202": {
+          "description": "Accepted. The response indicates the delete operation is performed in the background."
+        },
+        "204": {
+          "description": "NoContent. The response indicates the customLocation resource is already deleted."
+        }
+      }
+
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
