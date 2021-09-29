@@ -144,17 +144,11 @@
   <data name="RemoveRedisCache" xml:space="preserve">
     <value>Removing redis cache '{0}' ...</value>
   </data>
-  <data name="RemoveRedisPrivateEndpointConnection" xml:space="preserve">
-    <value>Removing redis Private Endpoint Connection '{0}' ...</value>
-  </data>
   <data name="RemoveRedisCacheDiagnostics" xml:space="preserve">
     <value>Disabling diagnostics on redis cache '{0}' ...</value>
   </data>
   <data name="RemovingRedisCache" xml:space="preserve">
     <value>Are you sure you want to remove redis cache '{0}'?</value>
-  </data>
-  <data name="RemovingRedisPrivateEndpointConnection" xml:space="preserve">
-    <value>Are you sure you want to remove redis private endpoint connection '{0}'?</value>
   </data>
   <data name="RemovingRedisCacheDiagnostics" xml:space="preserve">
     <value>Are you sure you want to disable diagnostics on redis cache '{0}'?</value>
@@ -179,9 +173,6 @@
   </data>
   <data name="FirewallRuleNotFound" xml:space="preserve">
     <value>Cache '{0}' does not have a firewall rule with name '{1}'.</value>
-  </data>
-  <data name="PrivateEndpointNameNotFound" xml:space="preserve">
-    <value>Cache '{0}' does not have a Private Endpoint Name '{1}'.</value>
   </data>
   <data name="LinkedServerCreationFailed" xml:space="preserve">
     <value>Operation to link cache '{0}' to cache '{1}' failed.</value>
@@ -221,9 +212,6 @@
   </data>
   <data name="SetRedisCacheDiagnostics" xml:space="preserve">
     <value>Enabling diagnostics on redis cache '{0}' ...</value>
-  </data>
-  <data name="SetRedisPrivateEndpoint" xml:space="preserve">
-    <value>Setting connection status on redis private endpoint '{0}' ...</value>
   </data>
   <data name="UpdateRedisCache" xml:space="preserve">
     <value>Updating redis cache '{0}' ...</value>

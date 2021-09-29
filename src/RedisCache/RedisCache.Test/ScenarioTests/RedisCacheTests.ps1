@@ -866,33 +866,6 @@ function Test-Zones
     Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
 
-
-<#
-.SYNOPSIS
-Tests redis private endpoints connection.
-#>
-function Test-PrivateEndpoint
-{
-    # Important - Test Private Endpoint currently does not support live testing.
-    # Setup - For testing Private Endpoint Connection you have to create private endpoint connection manually.
-
-    # In Below example manually created cache and private endpoint connection.
-    $resourceGroupName = "PowerShellTest-10"
-    $cacheName = "redisteam010"
-    $privateEndpointConnectionName = "MyPrivateEndpoint.741ed8da-d23e-4eb8-bf38-c13bb1b886c3"
-    $connectionStatus = "Rejected"
-
-
-     # Get the details of private endpoint connection
-     Assert-True {Get-AzRedisPrivateEndpointConnection -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName} " Private Endpoint Properties."
-
-     # Set the connection status of Private Endpoint
-     Assert-True {Set-AzRedisPrivateEndpointConnectionStatus -ResourceGroupName $resourceGroupName -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -ConnectionStatus $connectionStatus} "Setting Private Endpoint connection Status."
-   
-     # Delete the prviate endpoint connection    
-     Assert-True {Remove-AzRedisPrivateEndpointConnection -Name $cacheName -PrivateEndpointConnectionName $privateEndpointConnectionName -Force -PassThru} "Removing Private Endpoint Name."
-}
-
 <#
 .SYNOPSIS
 Sleeps but only during recording.

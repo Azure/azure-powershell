@@ -355,37 +355,6 @@ namespace Microsoft.Azure.Commands.RedisCache
             _client.FirewallRules.Delete(resourceGroupName, cacheName, ruleName);
         }
 
-        internal void RemoveRedisPrivateEndpointConnection(string resourceGroupName, string cacheName, string privateEndpointConnectionName)
-        {
-            _client.PrivateEndpointConnections.Delete(resourceGroupName, cacheName, privateEndpointConnectionName);
-        }
-        internal PrivateEndpointConnection GetRedisPrivateEndpointConnection(string resourceGroupName, string cacheName, string privateEndpointConnectionName)
-        {
-            return _client.PrivateEndpointConnections.Get(resourceGroupName, cacheName, privateEndpointConnectionName);   
-        }
-
-        internal PrivateEndpointConnection SetRedisPrivateEndpointConnection(string resourceGroupName, string cacheName, string privateEndpointConnectionName, string connectionStatus)
-        {
-            PrivateEndpointConnection properties = new PrivateEndpointConnection(new PrivateLinkServiceConnectionState(PrivateEndpointServiceConnectionStatus.Approved));
-            if (connectionStatus == "Approved")
-            {
-                properties = new PrivateEndpointConnection(new PrivateLinkServiceConnectionState(PrivateEndpointServiceConnectionStatus.Approved));
-            }
-            else if (connectionStatus == "Rejected")
-            {
-                properties = new PrivateEndpointConnection(new PrivateLinkServiceConnectionState(PrivateEndpointServiceConnectionStatus.Rejected));
-            }
-            else if (connectionStatus == "Pending")
-            {
-                properties = new PrivateEndpointConnection(new PrivateLinkServiceConnectionState(PrivateEndpointServiceConnectionStatus.Pending));
-            }
-            else
-            {
-                throw new Exception("Connection Status type not found");
-            }
-            var response = _client.PrivateEndpointConnections.Put(resourceGroupName, cacheName, privateEndpointConnectionName,properties);
-            return response;
-        }
 
         internal RedisLinkedServerWithProperties SetLinkedServer(string resourceGroupName, string cacheName, 
             string linkedCacheName, string linkedCacheId, string linkedCacheLocation, ReplicationRole serverRole)
