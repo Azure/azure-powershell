@@ -236,18 +236,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.")]
-        public long? DefaultUserQuotaInKiBs { get; set; }
+        public long? DefaultUserQuotaInKiB { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.")]
-        public long? DefaultGroupQuotaInKiBs { get; set; }
+        public long? DefaultGroupQuotaInKiB { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Basic network, or Standard features available to the volume (Basic, Standard).")]
         [PSArgumentCompleter("Basic", "Standard")]
-        public string NetworkFeatures { get; set; }
+        public string NetworkFeature { get; set; }
 
         [Parameter(
             ParameterSetName = FieldsParameterSet,
@@ -331,9 +331,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 UnixPermissions = UnixPermissions,
                 AvsDataStore = AvsDataStore,
                 IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
-                DefaultUserQuotaInKiBs = DefaultUserQuotaInKiBs,
-                DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiBs,
-                NetworkFeatures = NetworkFeatures
+                DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
+                DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB,
+                NetworkFeatures = NetworkFeature
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

@@ -22,7 +22,7 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  [-SnapshotDirectoryVisible] [-BackupId <String>] [-SecurityStyle <String>] [-ThroughputMibps <Double>]
  [-KerberosEnabled] [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-CoolAccess]
  [-CoolnessPeriod <Int32>] [-UnixPermissions <String>] [-AvsDataStore <String>] [-IsDefaultQuotaEnabled]
- [-DefaultUserQuotaInKiBs <Int64>] [-DefaultGroupQuotaInKiBs <Int64>] [-NetworkFeatures <String>]
+ [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>]
  [-NetworkSiblingSetId <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -36,7 +36,7 @@ New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String
  [-SnapshotDirectoryVisible] [-SecurityStyle <String>] [-ThroughputMibps <Double>] [-KerberosEnabled]
  [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-CoolAccess] [-CoolnessPeriod <Int32>]
  [-UnixPermissions <String>] [-AvsDataStore <String>] [-IsDefaultQuotaEnabled]
- [-DefaultUserQuotaInKiBs <Int64>] [-DefaultGroupQuotaInKiBs <Int64>] [-NetworkFeatures <String>]
+ [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>]
  [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -174,7 +174,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultGroupQuotaInKiBs
+### -DefaultGroupQuotaInKiB
 Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
 
 ```yaml
@@ -204,7 +204,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultUserQuotaInKiBs
+### -DefaultUserQuotaInKiB
 Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
 
 ```yaml
@@ -309,7 +309,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkFeatures
+### -NetworkFeature
 Basic network, or Standard features available to the volume (Basic, Standard).
 
 ```yaml

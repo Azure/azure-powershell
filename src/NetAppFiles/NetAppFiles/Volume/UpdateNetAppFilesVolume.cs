@@ -131,12 +131,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.")]
-        public long? DefaultUserQuotaInKiBs { get; set; }
+        public long? DefaultUserQuotaInKiB { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.")]
-        public long? DefaultGroupQuotaInKiBs { get; set; }
+        public long? DefaultGroupQuotaInKiB { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -229,8 +229,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 ThroughputMibps = ThroughputMibps,
                 DataProtection = (dataProtection != null) ? dataProtection.ConvertToPatchFromPs() : null,
                 IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
-                DefaultUserQuotaInKiBs = DefaultUserQuotaInKiBs,
-                DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiBs
+                DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
+                DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
