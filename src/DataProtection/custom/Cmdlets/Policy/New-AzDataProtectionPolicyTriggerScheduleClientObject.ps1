@@ -39,14 +39,22 @@ function New-AzDataProtectionPolicyTriggerScheduleClientObject{
         # this completely ignores the timeZone given by user and anyway adds the offset as per time zone
         $timezone = Get-TimeZone
         $offset = $timezone.BaseUtcOffset.ToString()
-        $offset = $offset.Substring(0, 5)
-
+        
         $repeatingTimeIntervals = @()
 
         foreach($day in $ScheduleDays){
             $format = $day.ToString("yyyy-MM-ddTHH:mm:ss")
             $backupFrequency = GetBackupFrequencyString -frequency $IntervalType -Count $IntervalCount
-            $timeInterval = "R/" + $format + "+" + $offset + "/" + $backupFrequency
+
+            if($offset.StartsWith("-")){
+                $offset = $offset.Substring(0, 6)
+                $timeInterval = "R/" + $format + $offset + "/" + $backupFrequency
+            }
+            else {
+                $offset = $offset.Substring(0, 5)
+                $timeInterval = "R/" + $format + "+" + $offset + "/" + $backupFrequency
+            }
+            
             $repeatingTimeIntervals += $timeInterval
         }
         
