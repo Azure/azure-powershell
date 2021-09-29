@@ -82,7 +82,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -149,7 +149,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -210,7 +210,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -277,7 +277,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -344,7 +344,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -411,7 +411,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -484,7 +484,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4367,7 +4367,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4431,7 +4431,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4495,7 +4495,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5063,7 +5063,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5121,7 +5121,7 @@
           "FxVersion/4.6.28928.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/2.1.0.0"
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/3.0.0.0"
         ]
       },
       "ResponseHeaders": {
