@@ -360,7 +360,7 @@ function Update-AzMgApplication {
     [Alias('WebRedirectUri')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
-    ${ReplyUrls},
+    ${ReplyUrl},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -502,28 +502,38 @@ function Update-AzMgApplication {
       }
     }
 
-    if ($PSBoundParameters.ContainsKey('AvailableToOtherTenants') -and !$PSBoundParameters.ContainsKey('SignInAudience')) {
-      $PSBoundParameters['SignInAudience'] = 'AzureADMultipleOrgs'
+    if ($PSBoundParameters.ContainsKey('AvailableToOtherTenants')) {
+      if (!$PSBoundParameters['SignInAudience']) {
+        $PSBoundParameters['SignInAudience'] = 'AzureADMultipleOrgs'
+      } elseif (($PSBoundParameters['SignInAudience'] -in 'AzureADMyOrg', 'PersonalMicrosoftAccount') -and $PSBoundParameters['AvailableToOtherTenants']) {
+        Write-Error "sign in audience '$($PSBoundParameters['SignInAudience'])' cannot be available to other tenants"
+        return
+      } elseif (($PSBoundParameters['SignInAudience'] -in 'AzureADMultipleOrgs', 'AzureADandPersonalMicrosoftAccount') -and !$PSBoundParameters['AvailableToOtherTenants']) {
+        Write-Error "sign in audience '$($PSBoundParameters['SignInAudience'])' is available to other tenants, please try to use 'AzureADMyOrg' or 'PersonalMicrosoftAccount'"
+        return
+      }      
       $null = $PSBoundParameters.Remove('AvailableToOtherTenants')
     }
     # even if payload contains all three redirect options, only one will be added in the actual app, the order is
     # web -> spa -> public client
-    if ($PSBoundParameters.ContainsKey('HomePage') -or $PSBoundParameters.ContainsKey('RedirectUrls')) {
-        $props = @{}
-        if ($PSBoundParameters.ContainsKey('HomePage')) {
-            $props['HomePageUrl'] = $PSBoundParameters['HomePage']
-            $null = $PSBoundParameters.Remove('HomePage')
-        }
-        if ($PSBoundParameters.ContainsKey('RedirectUrls')) {
-            $props['RedirectUri'] = $PSBoundParameters['RedirectUrls']
-            $null = $PSBoundParameters.Remove('RedirectUrls')
-        }
-        $PSBoundParameters['Web'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphWebApplication" -Property $props
-    } elseif ($PSBoundParameters.ContainsKey('SPARedirectUri')) {
-        $PSBoundParameters['SPA'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphSPAApplication" -Property @{'RedirectUri'=$PSBoundParameters['SPARedirectUri']}
-        $null = $PSBoundParameters.Remove('SPARedirectUri')
-    } elseif ($PSBoundParameters.ContainsKey('PublicClientRedirectUri')) {
-      $PSBoundParameters['PublicClient'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPublicClientApplication" -Property @{'RedirectUri'=$PSBoundParameters['PublicClientRedirectUri']}
+    if ($PSBoundParameters['HomePage'] -or $PSBoundParameters['ReplyUrls']) {
+      $props = @{}
+      if ($PSBoundParameters['HomePage']) {
+        $props['HomePageUrl'] = $PSBoundParameters['HomePage']
+        $null = $PSBoundParameters.Remove('HomePage')
+      }
+      if ($PSBoundParameters['ReplyUrls']) {
+        $props['RedirectUri'] = $PSBoundParameters['ReplyUrls']
+        $null = $PSBoundParameters.Remove('ReplyUrls')
+      }
+      $PSBoundParameters['Web'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphWebApplication" -Property $props
+    }
+    elseif ($PSBoundParameters['SPARedirectUri']) {
+      $PSBoundParameters['SPA'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphSPAApplication" -Property @{'RedirectUri' = $PSBoundParameters['SPARedirectUri'] }
+      $null = $PSBoundParameters.Remove('SPARedirectUri')
+    }
+    elseif ($PSBoundParameters['PublicClientRedirectUri']) {
+      $PSBoundParameters['PublicClient'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPublicClientApplication" -Property @{'RedirectUri' = $PSBoundParameters['PublicClientRedirectUri'] }
       $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
     }
     

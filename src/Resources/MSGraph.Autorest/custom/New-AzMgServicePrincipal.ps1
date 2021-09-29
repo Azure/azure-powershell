@@ -318,6 +318,18 @@ function New-AzMgServicePrincipal {
     # The description exposed by the associated application.
     ${AppDescription},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # The role that the service principal has over the scope.
+    ${Role},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # The scope that the service principal has permissions for.
+    ${Scope},
+
     [Parameter(ParameterSetName = 'ApplicationObjectWithoutCredentialParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
@@ -712,6 +724,15 @@ function New-AzMgServicePrincipal {
       $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $AppName).AppId
     }
 
+    if ($PSBoundParameters['Role']) {
+      $spRole = $PSBoundParameters['Role']
+      $null = $PSBoundParameters.Remove('Role')
+    }
+    if ($PSBoundParameters['Scope']) {
+      $spScope = $PSBoundParameters['Scope']
+      $null = $PSBoundParameters.Remove['Scope']
+    }
+    
     if ($PSBoundParameters['StartDate']) {
       $sd = $PSBoundParameters['StartDate']
       $null = $PSBoundParameters.Remove('StartDate')
@@ -744,13 +765,8 @@ function New-AzMgServicePrincipal {
       }
     }
 
-    
-
     $sp = MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
     $param = @{'ObjectId' = $sp.Id }
-    if ($PSBoundParameters['KeyCredentials']) {
-      $null = $PSBoundParameters.Remove('KeyCredentials')
-    }
 
     switch ($PSCmdlet.ParameterSetName) {
       {$_ -in 'ApplicationWithPasswordPlainParameterSet', 'ApplicationObjectWithPasswordPlainParameterSet', 'DisplayNameWithPasswordPlainParameterSet'} {
@@ -764,7 +780,7 @@ function New-AzMgServicePrincipal {
         break
       }
       {$_ -in 'ApplicationWithPasswordCredentialParameterSet', 'ApplicationObjectWithPasswordCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
-        $PSBoundParameters['PasswordCredentials'] = $pc
+        $param['PasswordCredentials'] = $pc
         $null = New-AzMgSpCredential @param
         break
       }
@@ -773,6 +789,15 @@ function New-AzMgServicePrincipal {
       }
     }
     
+    if ($spRole) {
+      $param = @{'ObjectId' = $sp.Id; 'RoleDefinitionName' = $spRole }
+      if ($spScope) {
+        $param['Scope'] = $spScope
+      }
+      
+      New-AzRoleAssignment @param
+    }
+
     $PSCmdlet.WriteObject($sp)
   }
 }

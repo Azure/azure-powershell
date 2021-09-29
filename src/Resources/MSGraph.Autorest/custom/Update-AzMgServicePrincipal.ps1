@@ -172,6 +172,36 @@ function Update-AzMgServicePrincipal {
     ${ObjectId},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
+    # The collection of key credentials associated with the application.
+    # Not nullable.
+    # Supports $filter (eq, NOT, ge, le).
+    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
+    ${KeyCredential},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
+    # The collection of password credentials associated with the application.
+    # Not nullable.
+    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
+    ${PasswordCredential},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String[]]
+    # The URIs that identify the application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+    # For more information, see Application Objects and Service Principal Objects.
+    # The any operator is required for filter expressions on multi-valued properties.
+    # Not nullable.
+    # Supports $filter (eq, ne, ge, le, startsWith).
+    ${IdentifierUri},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if the service principal account is enabled; otherwise, false.
@@ -527,6 +557,19 @@ function Update-AzMgServicePrincipal {
   )
 
   process {
+    if ($PSBoundParameters['KeyCredential']) {
+      $kc = $PSBoundParameters['KeyCredential']
+      $null = $PSBoundParameters.Remove('KeyCredential')
+    }
+    if ($PSBoundParameters['PasswordCredential']) {
+      $pc = $PSBoundParameters['PasswordCredential']
+      $null = $PSBoundParameters.Remove('PasswordCredential')
+    }
+    if ($PSBoundParameters['IdentifierUri']) {
+      $iu = $PSBoundParameters['IdentifierUri']
+      $null = $PSBoundParameters.Remove('IdentifierUri')
+    }
+
     switch ($PSCmdlet.ParameterSetName) {
       'SpObjectIdWithDisplayNameParameterSet' {
         $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
@@ -555,5 +598,21 @@ function Update-AzMgServicePrincipal {
     }
 
     MSGraph.internal\Update-AzMgServicePrincipal @PSBoundParameters
+
+    $param = @{'ObjectId'=$PSBoundParameters['Id']; 'Debug'=$PSBoundParameters['Debug']}
+    if ($iu) {
+      $param['IdentifierUri'] = $iu
+      Update-AzMgApplication @param
+      $null = $param.Remove('IdentifierUri')
+    }
+    if ($pc) {
+      $param['PasswordCredentials'] = $pc
+    }
+    if ($kc) {
+      $param['KeyCredentials'] = $kc
+    }
+    if ($pc -or $kc) {
+      New-AzMgAppCredential @param
+    }
   }
 }
