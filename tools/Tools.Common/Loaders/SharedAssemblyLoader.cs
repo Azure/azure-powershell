@@ -22,7 +22,7 @@ namespace Tools.Common.Loaders
 
         private static void PreloadSharedAssemblies(string directory)
         {
-            var sharedAssemblyFolder = Path.Combine(directory, "Az.Accounts", "NetCoreAssemblies");
+            var sharedAssemblyFolder = Path.Combine(directory, "Az.Accounts", "AzSharedAlcAssemblies");
             if (Directory.Exists(sharedAssemblyFolder))
             {
                 foreach (var file in Directory.GetFiles(sharedAssemblyFolder))

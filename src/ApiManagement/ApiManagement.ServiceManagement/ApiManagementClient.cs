@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 cfg
                     .CreateMap<AccessInformationSecretsContract, PsApiManagementAccessInformation>()
                     .ForMember(dest => dest.Enabled, opt => opt.MapFrom(src => src.Enabled))
-                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.PrincipalId))
                     .ForMember(dest => dest.PrimaryKey, opt => opt.MapFrom(src => src.PrimaryKey))
                     .ForMember(dest => dest.SecondaryKey, opt => opt.MapFrom(src => src.SecondaryKey));
 
@@ -3206,6 +3206,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 context.ServiceName,
                 "gitaccess");
 
+            response.PrimaryKey = null;
+            response.SecondaryKey = null;
             return Mapper.Map<PsApiManagementAccessInformation>(response);
         }
 

@@ -47,10 +47,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             {
                 Timestamp = source.Timestamp,
                 AppliedBytes = source.AppliedBytes,
-                AppliedItemCount=source.AppliedItemCount,
-                PerItemErrorCount=source.PerItemErrorCount,
+                AppliedItemCount = source.AppliedItemCount,
+                PerItemErrorCount = source.PerItemErrorCount,
                 TotalBytes = source.TotalBytes,
-                TotalItemCount=source.TotalItemCount
+                TotalItemCount = source.TotalItemCount,
+                SyncMode = source.SyncMode,
+                SessionMinutesRemaining = source.SessionMinutesRemaining
             };
         }
     }

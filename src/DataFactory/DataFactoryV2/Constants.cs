@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string IntegrationRuntimeNode = "AzureRmDataFactoryV2IntegrationRuntimeNode";
 
+        public const string IntegrationRuntimeVNetInjectionStandard = "Standard";
+
+        public const string IntegrationRuntimeVNectInjectionExpress = "Express";
+
         public const string IntegrationRuntimeMetric = "AzureRmDataFactoryV2IntegrationRuntimeMetric";
 
         public const string IntegrationRuntimeKey = "AzureRmDataFactoryV2IntegrationRuntimeKey";
@@ -148,11 +152,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeDataFlowComputeType = "Compute type of the data flow cluster which will execute data flow job.";
 
+        public const string HelpIntegrationRuntimeDataFlowQuickReuseEnabled = "Enable data flow flow cluster reuse in the next data flow activity run.";
+
         public const string HelpIntegrationRuntimeDataFlowTimeToLive = "Time to live (in minutes) setting of the data flow cluster which will execute data flow job.";
 
         public const string HelpIntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
 
         public const string HelpIntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";
+
+        public const string HelpIntegrationRuntimeVNetInjectionMethod = "The virtual network injection method for Azure-SSIS Integration Runtime, Standard or Express, with Standard as default when not specified.";
 
         public const string HelpIntegrationRuntimeExpressCustomSetup = "The express custom setup for SSIS integration runtime which could be used to setup configurations and 3rd party components without custom setup script.";
 

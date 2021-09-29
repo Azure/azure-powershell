@@ -192,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -CustomData
-Specifies a string to be passed to the virtual machine. For more information see [Custom Data on Azure VMs](https://docs.microsoft.com/en-us/azure/virtual-machines/custom-data).
+Specifies a string to be passed to the virtual machine. For more information see [Custom Data on Azure VMs](https://docs.microsoft.com/azure/virtual-machines/custom-data).
 **Note: It is not recommended to store sensitive information in custom data.**
 
 

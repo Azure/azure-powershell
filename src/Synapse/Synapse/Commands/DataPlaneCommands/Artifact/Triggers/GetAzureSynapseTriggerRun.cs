@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 filter.Filters.Add(new RunQueryFilter(RunQueryFilterOperand.TriggerName, RunQueryFilterOperator.EqualsValue, new List<string>() { Name }));
             }
             WriteObject(SynapseAnalyticsClient.QueryTriggerRunsByWorkspace(filter)
-                .Select(element => new PSTriggerRun(element)));
+                .Select(element => new PSTriggerRun(element, this.WorkspaceName)));
         }
     }
 }

@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
@@ -99,6 +100,9 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            //TODO: Must be removed after Compute team add real logic
+            AzureStorageService servie = new AzureStorageService();
+
             base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
@@ -223,7 +227,8 @@ namespace Microsoft.Azure.Commands.Compute
                             var psstate = state.ToPSVirtualMachineInstanceView(psItem.ResourceGroupName, psItem.Name);
                             if (psstate != null && psstate.Statuses != null && psstate.Statuses.Count > 1)
                             {
-                                psItem.PowerState = psstate.Statuses[1].DisplayStatus;
+                                var powerStatus = psstate.Statuses.LastOrDefault(s => s.Code.StartsWith("PowerState"));
+                                psItem.PowerState = powerStatus != null ? powerStatus.DisplayStatus : InfoNotAvailable;
                             }
                             else
                             {

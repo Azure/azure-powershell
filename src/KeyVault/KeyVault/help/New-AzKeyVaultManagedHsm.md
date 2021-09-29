@@ -21,8 +21,10 @@ New-AzKeyVaultManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Locati
 
 ## DESCRIPTION
 The **New-AzKeyVaultManagedHsm** cmdlet creates a managed HSM in the specified resource group. To add, 
-remove, or list keys in the managed HSM, user should grant permissions by adding user ID to 
-Administrator.
+remove, or list keys in the managed HSM, user should: 
+1. grant permissions by adding user ID to Administrator;
+2. add role assignment for user like "Managed HSM Crypto User" and so on;
+3. back up security domain data of a managed HSM using `Export-AzKeyVaultSecurityDomain`.
 
 ## EXAMPLES
 

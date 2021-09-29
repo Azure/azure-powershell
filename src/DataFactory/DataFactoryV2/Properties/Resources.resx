@@ -421,4 +421,7 @@ Are you sure you want to continue?</value>
   <data name="IntegrationRuntimeSubnetNotProvided" xml:space="preserve">
     <value>Please provide a subnet resource ID to bring static public IP addresses for your Azure-SSIS Integration Runtime.</value>
   </data>
+  <data name="AzureExpressSSISIRSubnetIdMustBePresent" xml:space="preserve">
+    <value>SubnetId must be set for the express virtual network injection of Azure-SSIS Integration Runtime.</value>
+  </data>
 </root>

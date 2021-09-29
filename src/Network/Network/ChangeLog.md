@@ -19,6 +19,23 @@
 --->
 
 ## Upcoming Release
+* Support for Sku, ScaleUnits parameters of BastionHost resource.
+    - `New-AzBastion`
+    - `Set-AzBastion`
+* Onboard Azure Resource Manager to Private Link Common Cmdlets
+* Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.
+    - `New-AzVpnGateway'
+    - `Update-AzVpnGateway`	
+* Updated cmdlet to add property to disable InternetSecurity for P2SVpnGateway.
+    - `New-AzP2sVpnGateway'
+* Added new cmdlets for HubBgpConnection child resource of VirtualHub.
+    - `Get-AzVirtualHubBgpConnection`
+    - `New-AzVirtualHubBgpConnection`
+    - `Update-AzVirtualHubBgpConnection`
+    - `Remove-AzVirtualHubBgpConnection`
+* Onboard Azure HDInsight to Private Link Common Cmdlets
+
+## Version 4.11.0
 * Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
     - `New-AzLoadBalancerBackendAddressConfig`
 * Updated cmdlet to add 'TunnelInterface' property for backend pool related operations.
