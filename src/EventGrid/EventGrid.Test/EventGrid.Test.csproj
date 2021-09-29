@@ -18,4 +18,8 @@
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="23.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServiceBus\ServiceBus\ServiceBus.csproj" />
+  </ItemGroup>
+
 </Project>
