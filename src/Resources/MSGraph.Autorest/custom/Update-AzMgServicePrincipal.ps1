@@ -439,6 +439,9 @@ function Update-AzMgServicePrincipal {
     ${SamlSingleSignOnSetting},
 
     [Parameter(ParameterSetName = 'SPNWithDisplayNameParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'SpObjectIdWithDisplayNameParameterSet')]
+    [Parameter(ParameterSetName = 'SpApplicationIdWithDisplayNameParameterSet')]
+    [Parameter(ParameterSetName = 'InputObjectWithDisplayNameParameterSet')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
