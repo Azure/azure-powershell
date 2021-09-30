@@ -61,7 +61,7 @@ param(
     [Parameter(ParameterSetName='ApplicationIdParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [Alias('AppId')]
-    [System.String]
+    [System.Guid]
     # application id
     ${ApplicationId},
 

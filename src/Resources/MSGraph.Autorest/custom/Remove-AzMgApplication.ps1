@@ -47,7 +47,7 @@ param(
 
     [Parameter(ParameterSetName='ApplicationIdParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [System.String]
+    [System.Guid]
     # key: id of application
     ${ApplicationId},
 

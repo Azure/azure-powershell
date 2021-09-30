@@ -296,6 +296,78 @@ function New-AzMgApplication {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
   [CmdletBinding(DefaultParameterSetName = 'ApplicationWithoutCredentialParameterSet', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # The display name for the application.
+    # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
+    ${DisplayName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Boolean]
+    ${AvailableToOtherTenants},
+
+    [Parameter()]
+    [Alias('WebHomePageUrl')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # home page url for web
+    ${HomePage},
+
+    [Parameter()]
+    [Alias('WebRedirectUri')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String[]]
+    ${ReplyUrls},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String[]]
+    # The URIs that identify the application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+    # For more information, see Application Objects and Service Principal Objects.
+    # The any operator is required for filter expressions on multi-valued properties.
+    # Not nullable.
+    # Supports $filter (eq, ne, ge, le, startsWith).
+    ${IdentifierUri},
+
+    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
+    # The collection of key credentials associated with the application.
+    # Not nullable.
+    # Supports $filter (eq, NOT, ge, le).
+    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
+    ${KeyCredentials},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
+    # The collection of password credentials associated with the application.
+    # Not nullable.
+    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
+    ${PasswordCredentials},
+
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    ${CertValue},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    ${StartDate},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    ${EndDate},
+
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -331,11 +403,6 @@ function New-AzMgApplication {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Boolean]
-    ${AvailableToOtherTenants},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${CreatedOnBehalfOfDeletedDateTime},
@@ -362,13 +429,6 @@ function New-AzMgApplication {
     # Supports $filter (eq, ne, NOT).
     ${DisabledByMicrosoftStatus},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # The display name for the application.
-    # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
-    ${DisplayName},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -377,30 +437,12 @@ function New-AzMgApplication {
     ${GroupMembershipClaim},
 
     [Parameter()]
-    [Alias('WebHomePageUrl')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # home page url for web
-    ${HomePage},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
     # .
     # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String[]]
-    # The URIs that identify the application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
-    # For more information, see Application Objects and Service Principal Objects.
-    # The any operator is required for filter expressions on multi-valued properties.
-    # Not nullable.
-    # Supports $filter (eq, ne, ge, le, startsWith).
-    ${IdentifierUri},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -425,16 +467,6 @@ function New-AzMgApplication {
     # For example, the ROPC flow where the application is configured without specifying a redirect URI.
     # In those cases Azure AD interprets the application type based on the value of this property.
     ${IsFallbackPublicClient},
-
-    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
-    # The collection of key credentials associated with the application.
-    # Not nullable.
-    # Supports $filter (eq, NOT, ge, le).
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -469,25 +501,10 @@ function New-AzMgApplication {
     # To construct, see NOTES section for PARENTALCONTROLSETTING properties and create a hash table.
     ${ParentalControlSetting},
 
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
-    # The collection of password credentials associated with the application.
-    # Not nullable.
-    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
-    ${PasswordCredentials},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
     ${PublicClientRedirectUri},
-
-    [Parameter()]
-    [Alias('WebRedirectUri')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String[]]
-    ${ReplyUrls},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -548,23 +565,6 @@ function New-AzMgApplication {
     # Supports $expand.
     # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
     ${TokenLifetimePolicy},
-
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    ${CertValue},
-
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.DateTime]
-    ${StartDate},
-
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.DateTime]
-    ${EndDate},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

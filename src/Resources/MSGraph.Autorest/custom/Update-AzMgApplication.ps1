@@ -175,6 +175,37 @@ function Update-AzMgApplication {
     # key: id of application
     ${ObjectId},
 
+    [Parameter(ParameterSetName = 'ApplicationIdWithUpdateParamsParameterSet', Mandatory)]
+    [Alias('AppId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [System.Guid]
+    # key: application id
+    ${ApplicationId},
+
+    [Parameter(ParameterSetName = 'InputObjectWithUpdateParamsParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
+    # key: application object
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('WebHomePageUrl')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # home page url for web
+    ${HomePage},
+
+    [Parameter()]
+    [Alias('WebRedirectUri')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String[]]
+    ${ReplyUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Boolean]
+    ${AvailableToOtherTenants},
+
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -192,19 +223,6 @@ function Update-AzMgApplication {
     # To construct, see NOTES section for API properties and create a hash table.
     ${Api},
 
-    [Parameter(ParameterSetName = 'ApplicationIdWithUpdateParamsParameterSet', Mandatory)]
-    [Alias('AppId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [System.String]
-    # key: application id
-    ${ApplicationId},
-
-    [Parameter(ParameterSetName = 'InputObjectWithUpdateParamsParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
-    # key: application object
-    ${InputObject},
-
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -220,11 +238,6 @@ function Update-AzMgApplication {
     [System.String]
     # Unique identifier of the applicationTemplate.
     ${ApplicationTemplateId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Boolean]
-    ${AvailableToOtherTenants},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -275,13 +288,6 @@ function Update-AzMgApplication {
     # .
     # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
-
-    [Parameter()]
-    [Alias('WebHomePageUrl')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # home page url for web
-    ${HomePage},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -355,12 +361,6 @@ function Update-AzMgApplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
     ${PublicClientRedirectUri},
-
-    [Parameter()]
-    [Alias('WebRedirectUri')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String[]]
-    ${ReplyUrl},
 
     [Parameter()]
     [AllowEmptyCollection()]

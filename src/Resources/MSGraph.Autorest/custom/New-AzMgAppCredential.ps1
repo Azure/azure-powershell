@@ -30,7 +30,7 @@ function New-AzMgAppCredential {
         [Parameter(ParameterSetName = 'ApplicationIdWithPasswordParameterSet', Mandatory)]
         [Parameter(ParameterSetName = 'ApplicationIdWithCredentialParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [System.String]
+        [System.Guid]
         ${ApplicationId},
 
         [Parameter(ParameterSetName = 'DisplayNameWithPasswordParameterSet', Mandatory)]
