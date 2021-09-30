@@ -26,7 +26,7 @@ function Test-TableCRUD
 	$rgNameExisting = "dabenham-dev"
 	$wsNameExisting = "dabenham-eus"
 	$tableNameExisting = "dabenhamDev_CL"
-	$retention = 99
+	$retention = 98
 
 	try
 	{
