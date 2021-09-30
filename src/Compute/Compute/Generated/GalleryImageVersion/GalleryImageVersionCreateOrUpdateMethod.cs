@@ -137,8 +137,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 Name = (string)t["Name"],
                                 RegionalReplicaCount = (int?)t["ReplicaCount"],
                                 StorageAccountType = (string)t["StorageAccountType"],
-                                Encryption = (t["Encryption"] == null) ? (EncryptionImages)t["Encryption"] : null
                             };
+                            if (t["Encryption"] != null)
+                            {
+                                var osDiskEncryptionSetId = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["DiskEncryptionSetId"];
+                                var dataDiskEncryptionSetIds = new List<DataDiskImageEncryption>();
+                                var osDiskImage = new OSDiskImageEncryption(osDiskEncryptionSetId);
+                                target.Encryption = new EncryptionImages(osDiskImage, dataDiskImage);
+                            }
 
                             galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
                         }
@@ -332,8 +338,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 Name = (string)t["Name"],
                                 RegionalReplicaCount = (int?)t["ReplicaCount"],
                                 StorageAccountType = (string)t["StorageAccountType"],
-                                Encryption = (t["Encryption"] == null) ? (EncryptionImages)t["Encryption"] : null
                             };
+                            if (t["Encryption"] != null)
+                            {
+                                var EncryptionSetId = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["DiskEncryptionSetId"];
+                                var osDiskImage = new OSDiskImageEncryption(EncryptionSetId);
+                                target.Encryption = new EncryptionImages(osDiskImage);
+                            }
 
                             galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
                         }
