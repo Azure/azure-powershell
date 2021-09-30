@@ -21,7 +21,7 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @("Aks", "AppService", "Billing", "Compute", "ContainerInstance", "ConnectedMachine", "ContainerRegistry", "Dns", "DnsResolver", "KeyVault", "Media", "Monitor", "Network", "Resources", "ServiceBus", "Storage")
+$SKIP_MODULES = @("AppService", "Billing", "Compute", "ContainerInstance", "ConnectedMachine", "ContainerRegistry", "Dns", "KeyVault", "Media", "Monitor", "Network", "Resources", "ServiceBus", "Storage")
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
@@ -81,7 +81,9 @@ foreach ($Module in $ModuleList)
     $ModuleFolder = (Get-ChildItem -path $ModuleFolder -filter Az.$Module.psd1 -Recurse).Directory
     if ($Null -eq $ModuleFolder)
     {
-        Throw "Cannot find Az.$Module.psd1 in $ModuleFolder."
+        # Module is not found maybe it's deleted in this PR
+        Write-Warning "Cannot find Az.$Module.psd1 in $ModuleFolder."
+        continue
     }
     Set-Location -Path $ModuleFolder
     try

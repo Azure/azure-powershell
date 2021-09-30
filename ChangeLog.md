@@ -1,3 +1,256 @@
+## 6.4.0 - September 2021
+#### Az.Accounts
+* Corrected the URLs to Azure Portal in the results of 'Get-AzEnvironment' and 'Get-AzContext'. [#15429]
+* Made infrastructural changes to support overriding default subscription via a '-SubscriptionId <String>' parameter.
+    - [Az.Aks](https://docs.microsoft.com/powershell/module/az.aks/get-azakscluster) is the first module that supports it.
+
+#### Az.Aks
+* Made '-Subscription <String>' available in all Aks cmdlets. You can manage Aks resources in other subscriptions without switching the context.
+
+#### Az.ApiManagement
+* Added new 'Sync-AzApiManagementKeyVaultSecret' cmdlet.
+* Added new 'New-AzApiManagementKeyVaultObject' cmdlet.
+* Added new optional [-useFromLocation] parameter to the 'Get-ApiManagementCache' 'New-ApiManagementCache''Update-ApiManagementCache' cmdlet.
+* Updated cmdlet **New-AzApiManagement** to manage ApiManagement service 
+    - Added support for the new 'Isolated' SKU
+    - Added support for managing Availability Zones using 'Zone' property
+    - Added support for Disabling Gateway in a Region using 'DisableGateway' property
+    - Added support for managing the minimum Api Version to allow for Control Plane using 'MinimalControlPlaneApiVersion' property.
+* Updated cmdlet **New-AzApiManagementRegion** to manage ApiManagement service     
+    - Added support for managing Availability Zones using 'Zone' property
+    - Added support for Disabling Gateway in a Region using 'DisableGateway' property
+* Updated cmdlet **Add-AzApiManagementRegion** to manage ApiManagement service     
+    - Added support for managing Availability Zones using 'Zone' property
+    - Added support for Disabling Gateway in a Region using 'DisableGateway' property
+* Updated cmdlet **Update-AzApiManagementRegion** to manage ApiManagement service     
+    - Added support for managing Availability Zones using 'Zone' property
+    - Added support for Disabling Gateway in a Region using 'DisableGateway' property
+* Updated cmdlet **New-AzApiManagementCustomHostnameConfiguration** to manage Custom Hostname Configuration
+    - Added support for specifying 'IdentityClientId' to provide Managed Identity User Assigned ClientId to use with KeyVault
+
+#### Az.Automation
+* Fixed bug: Closing in input file handle in Import-AzAutomationRunbook
+
+#### Az.Cdn
+* Fixed mandatory parameters issue in 'Get-AzCdnEndpointResourceUsage' cmdlet
+
+#### Az.Compute
+* Added new parameters '-LinuxConfigurationPatchMode', '-WindowsConfigurationPatchMode', and '-LinuxConfigurationProvisionVMAgent' to 'Set-AzVmssOSProfile'
+* Added new parameters '-SshKeyName' and '-GenerateSshKey' to 'New-AzVM' to create a VM with SSH
+* Fixed a bug in 'Add-AzVHD' on Linux that caused uploads to fail for certain destination URI
+* Added new cmdlets for Restore Points and Restore Point Collection:
+    - 'New-AzRestorePoint'
+    - 'New-AzRestorePointCollection'
+    - 'Get-AzRestorePoint'
+    - 'Get-AzRestorePointCollection'
+    - 'Update-AzRestorePointCollection'
+    - 'Remove-AzRestorePoint'
+    - 'Remove-AzRestorePointCollection'
+* Added new parameters '-EnableSpotRestore' and '-SpotRestoreTimeout' to 'New-AzVMSSConfig' to enable Spot Restore Policy 
+* Added new cmdlets: 'Update-AzCapacityReservationGroup' and 'Update-AzCapacityReservation'
+
+#### Az.CosmosDB
+* Fixed a bug where the restore of deleted database accounts fail.
+
+#### Az.DataFactory
+* Added a subnetId argument for the 'Set-AzDataFactoryV2IntegrationRuntime' cmdlet to support RBAC checking for VNet injection against the subnet resource ID instead of the VNet resource ID.
+* Added the 'Get-AzDataFactoryV2IntegrationRuntimeOutboundNetworkDependenciesEndpoint' cmdlet to provide a list of outbound network dependencies for SSIS integration runtime in Azure Data Factory that joins a virtual network.
+* Added PublicNetworkAccess to Data Factory.
+* Updated ADF .Net SDK version to 4.23.0
+
+#### Az.KeyVault
+* Supported adding EC keys in key vault [#15699]
+
+#### Az.Migrate
+* Supported duplicate disk UUID in source disk.
+* Supported subnets in same VNet for AVSet.
+* Supported runAsAccount fetching for multiple Vcenters in same site.
+
+#### Az.Network
+* Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
+    - 'New-AzLoadBalancerBackendAddressConfig'
+* Updated cmdlet to add 'TunnelInterface' property for backend pool related operations.
+    - 'New-AzLoadBalancerBackendAddressPool'
+    - 'Set-AzLoadBalancerBackendAddressPool'
+
+#### Az.RecoveryServices
+* Azure Site Recovery multi appliance support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
+* Azure Backup fixed targetPhysicalPath issue with SQL CRR
+* Azure Backup fixed disable protection for SQL workload
+* Azure Backup resolved bug in setting CMK properties in latest release
+* Azure Backup removed special characters from register-azrecoveryservicesbackupcontainer command help text
+
+#### Az.Resources
+* Use JsonExtensions to serialize deserialize JSON objects to ensure the use of custom serialization settings [#15552]
+* Added support for 'Unsupported' and 'NoEffect' change types to deployment What-If cmdlets.
+
+#### Az.SecurityInsights
+* Updated to 'Get-AzSentinelIncident' parameters
+    - Added '-Filter' to support OData filter
+    - Added '-OrderBy' to support OData ordering
+    - Added '-Max' to support retrieving more than the default of 1000 incidents.
+
+#### Az.Sql
+* Changed the underlying implementation of 'Get-AzSqlDatabase' to support a paginated response from the server
+* Added 'ZoneRedundant' parameter to 'New-AzSqlInstance' and 'Set-AzSqlInstance' to enable the creation and the update of zone - redundant instances.
+* Added ZoneRedundant field to the model of the managed instance so that it displays information about zone - redundancy for instance that are returned by 'Get-AzSqlInstance'.
+* Extended AuditActionGroups enum in server & database audit. Added DBCC_GROUP, DATABASE_OWNERSHIP_CHANGE_GROUP and DATABASE_CHANGE_GROUP.
+* Added 'AsJob' flag to 'Remove-AzSqlInstance'
+* Added 'SubnetId' parameter to 'Set-AzSqlInstance' to support the cross-subnet update SLO
+* Upgraded to newest SDK version
+
+#### Az.Storage
+* Supported get/set blob tags on a specific blob
+    -  'Get-AzStorageBlobTag'
+    -  'Set-AzStorageBlobTag'
+* Supported create destination blob with specific blob tags while upload/copy Blob
+    -  'Set-AzStorageBlobContent'
+    -  'Start-AzStorageBlobCopy'
+* Supported list blobs across containers with a blob tag filter sql expression
+    -  'Get-AzStorageBlobByTag'
+* Supported list blobs inside a container and include Blob Tags
+    -  'Get-AzStorageBlob'
+* Supported run blob operation with blob tag condition, and fail the cmdlet when blob tag condition not match
+    -  'Get-AzStorageBlob'
+    -  'Get-AzStorageBlobContent'
+    -  'Get-AzStorageBlobTag'
+    -  'Remove-AzStorageBlob'
+    -  'Set-AzStorageBlobContent'
+    -  'Set-AzStorageBlobTag'
+    -  'Start-AzStorageBlobCopy'
+    -  'Stop-AzStorageBlobCopy'
+* Generate blob sas token with new API version
+    -  'New-AzStorageBlobSASToken' 
+    -  'New-AzStorageContainerSASToken' 
+    -  'New-AzStorageAccountSASToken'
+* Fixed blob copy failure with OAuth credential when client and server has time difference [#15644]
+    -  'Copy-AzStorageBlob' 
+* Fixed remove Data Lake Gen2 item fail with readonly SAS token
+    -  'Remove-AzDataLakeGen2Item' 
+* Revised destination existing check in move Data Lake Gen2 item
+    -  'Move-AzDataLakeGen2Item' 
+
+#### Az.StorageSync
+* Added parameter sets to 'Invoke-AzStorageSyncChangeDetection'
+    - Can call the cmdlet without -DirectoryPath and -Path parameters to trigger change detection on an entire file share
+* Added support for authoritative upload as part of New-AzStorageSyncServerEndpoint.
+* Added cloud change enumeration status information in Cloud Endpoint object.
+* Updated Server Endpoint object with various health properties
+* Added 'ServerName' property in Server Endpoint and Registered Server objects to support showing the current FQDN of a server.
+
+#### Az.Websites
+* Fixed 'Set-AzWebApp' to return a valid warning message when fails to add -Hostname #9316
+* Fixed 'Get-AzWebApp' to return CustomDomainVerificationId in the response. #9316
+
+### Thanks to our community contributors
+* Andrew Sears (@asears)
+  * Fix spelling of accountname (#15779)
+  * Fix Spelling, examples (#15780)
+* @cawrites, Update New-AzDataMigrationService.md (#15646)
+* @harpaul-gill, Adding support for pagination in Sql Get Databases (#15772)
+* @jeepingben, Create mutex names that are safe for Linux (fixes #15653) (#15666)
+* @LosManos, Docs: Parameter is ignored when listing secrets (#15788)
+* Mats Estensen (@matsest), docs: add examples for Update-AzSubscription (#15748)
+* Mauricio Arroyo (@mauricio-msft), Fix typo in cmdlet example (#15719)
+
+## 6.3.0 - August 2021
+#### Az.Accounts
+* Disabled context auto saving when token cache persistence fails on Windows and macOS
+* Added PowerShell version into telemetry record
+* Upgraded Microsoft.ApplicationInsights from 2.4.0 to 2.12.0
+* Updated Azure.Core to 1.16.0
+
+#### Az.Aks
+* Added 'Start-AzAksCluster', 'Stop-AzAksCluster', 'Get-AzAksUpgradeProfile' and 'Get-AzAksNodePoolUpgradeProfile'. [#14194]
+* Added property 'IdentityProfile' in the output of 'Get-AzAksCluster'. [#12546]
+
+#### Az.CognitiveServices
+* [Breaking Change] Changed type of PSCognitiveServicesAccount.Identity.Type from IdentityType to ResourceIdentityType.
+* [Breaking Change] Changed type of PSCognitiveServicesAccount.Sku.Tier from SkuTier to string.
+* [Breaking Change] Removed ActionRequired from PrivateLinkServiceConnectionState.
+* Updated PowerShell to use 2021-04-30 version.
+* Added 'Undo-AzCognitiveServicesAccountRemoval' cmdlet.
+* Added parameters '-RestrictOutboundNetworkAccess', '-AllowedFqdnList', '-DisableLocalAuth', '-KeyVaultIdentityClientId', '-IdentityType', '-UserAssignedIdentityId' to 'New-AzureCognitiveServicesAccount' and 'Set-AzureCognitiveServicesAccount'.
+* Added parameters '-InRemovedState', '-Location' to 'Remove-AzureCognitiveServicesAccount' and 'Get-AzureCognitiveServicesAccount'.
+
+#### Az.Compute
+* Fixed the warning in 'New-AzVM' cmdlet stating the sku of the VM is being defaulted even if a sku size is provided by the user. Now it only occurs when the user does not provide a sku size.
+* Edited 'Set-AzVmOperatingSystem' cmdlet to no longer overwrite any existing EnableAutomaticUpdates value on the passed in virtual machine if it exists.
+* Updated Compute module to use the latest .Net SDK version 48.0.0.
+* Added new cmdlets for the Capacity Reservation Feature:
+    - 'New-AzCapacityReservationGroup'
+    - 'Remove-AzCapacityReservationGroup'
+    - 'Get-AzCapacityReservationGroup'
+    - 'New-AzCapacityReservation'
+    - 'Remove-AzCapacityReservation'
+    - 'Get-AzCapacityReservation'
+* Added a new parameter '-CapacityReservationGroupId' to the following cmdlets:
+    - 'New-AzVm'
+    - 'New-AzVmConfig'
+    - 'New-AzVmss'
+    - 'New-AzVmssConfig'
+    - 'Update-AzVm'
+    - 'Update-AzVmss'
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 4.21.0
+
+#### Az.Migrate
+* Added SQL Server license type.
+* Added CRN feature.
+* Added resource tags feature.
+* Updated to 2021-02-10 api version.
+
+#### Az.Monitor
+* Added parameter 'ResourceGroupName' back for 'Add-AzAutoscaleSetting' parameter set 'AddAzureRmAutoscaleSettingUpdateParamGroup' and made it optional [#15491]
+
+#### Az.RecoveryServices
+* Added Archive for V1 vaults.
+* Added ProtectedItemsCount in Get-AzRecoveryServicesBackupProtectionPolicy.
+* Azure site recovery bug fix for azure to azure in update vm properties.
+
+#### Az.RedisCache
+* Added 'RedisVersion' parameter in 'New-AzRedisCache' and 'Set-AzRedisCache'
+
+#### Az.Resources
+* Fixed bug with 'PSResource' where some constructors left 'SubscriptionId' property unassigned/null.  [#10783]
+* Added support for creating and updating Template Spec in Bicep file [#15313]
+* Added '-ProceedIfNoChange' parameter to deployment create cmdlets.
+
+#### Az.ServiceFabric
+* Fixed Managed and Classic Application models (Application, Cluster, Service) by updating constructor to take all new properties
+    - This solves piping related issues where piping the results directly from a Get cmdlet call into and Update or Set call remove some intentionally set properties
+    - Updated appropriate test files to cover the above mentioned cases
+
+#### Az.Sql
+* Fixed identity logic in 'Set-AzSqlServer' and 'Set-AzSqlInstance'
+
+#### Az.Storage
+* Supported Blob Last Access Time
+    -  'Enable-AzStorageBlobLastAccessTimeTracking'
+    -  'Disable-AzStorageBlobLastAccessTimeTracking'
+    -  'Add-AzStorageAccountManagementPolicyAction'
+* Made 'Get-AzDataLakeGen2ChildItem' list all datalake gen2 items by default, instead of needing user to list chunk by chunk.
+* Fixed BlobProperties is empty issue when using sas without prefix '?' [#15460]
+* Fixed synchronously copy small blob failure [#15548]
+    - 'Copy-AzStorageBlob'
+
+#### Az.Websites
+* Fixed 'Add-AzWebAppAccessRestrictionRule' failing when users does not have permissions to get Service Tag list #15316 and #14862
+
+### Thanks to our community contributors
+* Borys Generalov (@bgener), Update Get-AzPolicyState.md (#15455)
+* Dean Mock (@deanmock), Update New-AzAutomationSchedule.md (#15371)
+* John Bevan (@JohnLBevan), #10783 - Fix for Get-AzResource returning PSResource with null SubscriptionId (#15106)
+* Michael Mejias Sanchez (@mikemej), Update - Update deployment (external VNET) (#15391)
+* @mjsharma, Adding note for alternate commands (#15360)
+* Ked Mardemootoo (@nocticdr), Fixed some typos for added clarity (#15428)
+* Pascal Berger (@pascalberger), Fix parameter name in Sync-AzVirtualNetworkPeering examples (#15493)
+* @rcabr, Doc fix in Get-AzStorageContainer (#15476)
+* AAron (@S-AA-RON), Update New-AzNetworkSecurityGroup.md (#15512)
+* 坂本ポテコ (@sakamoto-poteko), Update New-AzVMConfig.md (#15376)
+* @Shawn-Yuen, Update Remove-AzDataLakeGen2Item.md (#15388)
+
 ## 6.2.1 - July 2021
 #### Az.Accounts
 * Fixed access error when subscripiton has no 'Tags' property [#15425].

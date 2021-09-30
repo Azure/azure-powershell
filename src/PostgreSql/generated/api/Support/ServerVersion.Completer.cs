@@ -50,6 +50,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("11", "11", global::System.Management.Automation.CompletionResultType.ParameterValue, "11");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "13".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("13", "13", global::System.Management.Automation.CompletionResultType.ParameterValue, "13");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "12".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("12", "12", global::System.Management.Automation.CompletionResultType.ParameterValue, "12");

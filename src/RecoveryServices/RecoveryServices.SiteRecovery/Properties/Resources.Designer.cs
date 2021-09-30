@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Credentials to access source machine: {0} not found in the Site {1}..
+        ///   Looks up a localized string similar to Credentials to access source machine: {0} not found for the appliance {1} in the Site {2}.
         /// </summary>
         internal static string RunAsAccountNotFound {
             get {
@@ -1007,6 +1007,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string SubscriptionIsNotAssociatedWithTheAccount {
             get {
                 return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The target appliance &quot;{0}&quot; is already mapped to the machine &quot;{1}&quot;.
+        /// </summary>
+        internal static string TargetApplianceAlreadyMapped {
+            get {
+                return ResourceManager.GetString("TargetApplianceAlreadyMapped", resourceCulture);
             }
         }
         
@@ -1196,6 +1205,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string UnsupportedReplicationProviderForUpdatePolicy {
             get {
                 return ResourceManager.GetString("UnsupportedReplicationProviderForUpdatePolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported replication provider {0} for this {1} operation.
+        /// </summary>
+        internal static string UnsupportedReplicationProviderOperation {
+            get {
+                return ResourceManager.GetString("UnsupportedReplicationProviderOperation", resourceCulture);
             }
         }
         

@@ -5,8 +5,6 @@
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
-  <!--<Import Project="$(MSBuildThisFileDirectory)\..\..\..\Repo.props" />
-  <Import Project="$(MSBuildThisFileDirectory)\..\..\Az.Shared.props" />-->
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext</AssemblyName>

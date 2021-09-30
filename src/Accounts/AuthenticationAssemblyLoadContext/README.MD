@@ -81,22 +81,16 @@ As Compute.csproj project must not reference to storage SDK, the types of parame
     - **Executable**: pwsh
     - **Application arguments**: -NoExit -Command "Import-Module C:\AME\erich-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1;Import-Module C:\AME\erich-powershell\artifacts\Debug\Az.Compute\Az.Compute.psd1;"
 
-1. [To Be Automated]Update Compute.csproj to copy Compute.AlcWrapper and storage SDKs assemblies to predefined directory.
+1. [To Be Automated]Update Compute.csproj to define property `ModuleAlcEntryAssembly` and `ModuleAlcRefAssembly`. `ModuleAlcEntryAssembly` is entry assembly of separate AssemblyLoadContext referenced by module project; `ModuleAlcRefAssembly` is collection of assembly referenced by `ModuleAlcEntryAssembly`
 
     ```xml
-    <ItemGroup>
-        <ModuleAclAssemblies Include="$(TargetDir)Microsoft.Azure.Commands.Compute.AlcWrapper.dll" />
-        <ModuleAclAssemblies Include="$(TargetDir)Azure.Storage.Blobs.dll" />
-        <ModuleAclAssemblies Include="$(TargetDir)Azure.Storage.Common.dll" />
-    </ItemGroup>
-
-    <Target Name="CopyFiles" AfterTargets="Build">
-        <Copy SourceFiles="@(ModuleAclAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
-        <Move SourceFiles="@(ModuleAclAssemblies)" DestinationFolder="$(TargetDir)\ModuleAclAssemblies" />
-    </Target>
+    <PropertyGroup>
+      <ModuleAlcEntryAssembly>Microsoft.Azure.Commands.Compute.AlcWrapper</ModuleAlcEntryAssembly>
+    </PropertyGroup>
 
     <ItemGroup>
-        <None Update="PostImportScripts\*.ps1" CopyToOutputDirectory="PreserveNewest" />
+      <ModuleAlcRefAssembly Include="Azure.Storage.Blobs" />
+      <ModuleAlcRefAssembly Include="Azure.Storage.Common" />
     </ItemGroup>
     ```
 
@@ -104,21 +98,13 @@ As Compute.csproj project must not reference to storage SDK, the types of parame
 
     ```xml
     <Project>
-        <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., Directory.Build.targets))\Directory.Build.targets" />
-        <Target Name="AddAccountsPsm1Dependency" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
-            <Exec Command="pwsh -NonInteractive -NoLogo -NoProfile -Command &quot;. '$(OutDir)../../../tools/AddModulePsm1Dependency.ps1' -ModuleFolder '$(OutDir)' -IgnorePwshVersion &quot;" />
-        </Target>
+      <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., Directory.Build.targets))\Directory.Build.targets" />
+      <Target Name="AddAccountsPsm1Dependency" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+        <Exec Command="pwsh -NonInteractive -NoLogo -NoProfile -Command &quot;. '$(OutDir)../../../tools/AddModulePsm1Dependency.ps1' -ModuleFolder '$(OutDir)' -IgnorePwshVersion &quot;" />
+      </Target>
+      <Target Name="PostBuildModuleAlc" AfterTargets="Build" Condition="'$(ModuleAlcEntryAssembly)' != ''">
+        <!--generate ps1; move ALC assembly to sub folder-->
+        <Exec Command="pwsh -NonInteractive -NoLogo -NoProfile -Command &quot;. '$(OutDir)../../../tools/PostBuildModuleAlc.ps1' -ModuleFolder '$(OutDir)' -AlcEntryAssembly '$(ModuleAlcEntryAssembly)' -AlcRefAssembly '@(ModuleAlcRefAssembly)' -Configuration '$(Configuration)' &quot;" />
+      </Target>
     </Project>
-    ```
-
-1. [To Be Automated]Create script file InitializeAssemblyLoadContext.ps1 which will be executed during importing current module
-
-    ```powershell
-    try {
-        $assemblyLoadContextFolder = [System.IO.Path]::Combine($PSScriptRoot, "..", "ModuleAclAssemblies")
-        [Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.AzAssemblyLoadContextInitializer]::RegisterModuleAssemblyLoadContext("Microsoft.Azure.Commands.Compute.AlcWrapper", $assemblyLoadContextFolder)
-
-    } catch {
-            Write-Warning $_
-    }
     ```

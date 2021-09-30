@@ -12,13 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzConfluentOrganization' {
-    It 'Delete' {
+    # Skip test case because the cmdlet needs to be interactive to take consent from user 
+    It 'Delete' -Skip {
       Remove-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName00
       $confluentOrgList = Get-AzConfluentOrganization 
       $confluentOrgList.Name | Should -Not -Contain $env.confluentOrgName00
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
       $confluentOrg = Get-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName01 
       Remove-AzConfluentOrganization -InputObject $confluentOrg
       $confluentOrgList = Get-AzConfluentOrganization 

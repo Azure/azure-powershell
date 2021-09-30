@@ -15,12 +15,14 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase
 {
     using System;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Common.Strategies;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Management.ResourceManager.Models;
 
     public abstract class DeploymentCreateCmdlet: DeploymentWhatIfCmdlet
     {
@@ -30,6 +32,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
         protected abstract ConfirmImpact ConfirmImpact { get; }
 
         protected abstract PSDeploymentCmdletParameters DeploymentParameters { get; }
+
+        protected abstract bool ShouldSkipConfirmationIfNoChange();
 
         protected override void OnProcessRecord()
         {
@@ -41,6 +45,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             {
                 PSWhatIfOperationResult whatIfResult = this.ExecuteWhatIf();
                 string whatIfFormattedOutput = WhatIfOperationResultFormatter.Format(whatIfResult);
+
+                if (this.ShouldProcessGivenCurrentConfirmFlagAndPreference() &&
+                    this.ShouldSkipConfirmationIfNoChange() &&
+                    whatIfResult.Changes.All(x => x.ChangeType == ChangeType.NoChange || x.ChangeType == ChangeType.Ignore))
+                {
+
+                    var whatIfInformation = new HostInformationMessage { Message = whatIfFormattedOutput };
+                    var tags = new[] { "PSHOST" };
+
+                    this.WriteInformation(whatIfInformation, tags);
+                    this.ExecuteDeployment();
+
+                    return;
+                }
+
                 string cursorUp = $"{(char)27}[1A";
 
                 // Use \r to override the built-in "What if:" in output.
@@ -59,24 +78,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
         {
             if (!string.IsNullOrEmpty(this.DeploymentParameters.DeploymentDebugLogLevel))
             {
-                WriteWarning(Resources.WarnOnDeploymentDebugSetting);
+                this.WriteWarning(Resources.WarnOnDeploymentDebugSetting);
             }
 
             if (this.DeploymentParameters.ScopeType == DeploymentScopeType.ResourceGroup)
             {
-                WriteObject(this.ResourceManagerSdkClient.ExecuteResourceGroupDeployment(this.DeploymentParameters));
+                this.WriteObject(this.ResourceManagerSdkClient.ExecuteResourceGroupDeployment(this.DeploymentParameters));
             }
             else
             {
-                WriteObject(this.ResourceManagerSdkClient.ExecuteDeployment(this.DeploymentParameters));
+                this.WriteObject(this.ResourceManagerSdkClient.ExecuteDeployment(this.DeploymentParameters));
             }
         }
 
-        protected bool ShouldExecuteWhatIf()
-        {
-            return ShouldProcessGivenCurrentWhatIfFlagAndPreference()
-                || ShouldProcessGivenCurrentConfirmFlagAndPreference();
-        }
+        protected bool ShouldExecuteWhatIf() =>
+            this.ShouldProcessGivenCurrentWhatIfFlagAndPreference() ||
+            this.ShouldProcessGivenCurrentConfirmFlagAndPreference();
 
         private bool ShouldProcessGivenCurrentWhatIfFlagAndPreference()
         {

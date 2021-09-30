@@ -702,7 +702,7 @@
     <value>A valid HubRouteTable reference is required.</value>
   </data>
   <data name="CommissioningStateConflict" xml:space="preserve">
-    <value>Cannot have both 'Commission' and 'Decomission' flags set</value>
+    <value>Cannot have both more than one flag set</value>
     <comment>Error message for setting the customIpPrefix</comment>
   </data>
   <data name="ApplicationGatewaySslProfileName" xml:space="preserve">

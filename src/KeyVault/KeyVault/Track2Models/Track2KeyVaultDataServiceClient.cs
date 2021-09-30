@@ -32,33 +32,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         /// </summary>
         private Track2VaultClient VaultClient => _vaultClient ?? (_vaultClient = new Track2VaultClient(_authFactory, _context));
         private Track2HsmClient HsmClient => _hsmClient ?? (_hsmClient = new Track2HsmClient(_authFactory, _context));
-
         private Track2VaultClient _vaultClient;
         private Track2HsmClient _hsmClient;
 
-        #region KeyVault-related methods
-
-        public string BackupCertificate(string vaultName, string certificateName, string outputBlobPath)
-        {
-            throw new NotImplementedException();
-        }
-
+        #region KeyVault key actions
         public string BackupKey(string vaultName, string keyName, string outputBlobPath)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string BackupManagedStorageAccount(string vaultName, string managedStorageAccountName, string outputBlobPath)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string BackupSecret(string vaultName, string secretName, string outputBlobPath)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultCertificateOperation CancelCertificateOperation(string vaultName, string certificateName)
         {
             throw new NotImplementedException();
         }
@@ -66,6 +44,105 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         public PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
         {
             return VaultClient.CreateKey(vaultName, keyName, keyAttributes, size, curveName);
+        }
+
+        public PSKeyOperationResult Decrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        {
+            return VaultClient.Decrypt(vaultName, keyName, version, value, encryptAlgorithm);
+        }
+
+        public PSDeletedKeyVaultKey DeleteKey(string vaultName, string keyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyOperationResult Encrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        {
+            return VaultClient.Encrypt(vaultName, keyName, version, value, encryptAlgorithm);
+        }
+
+        public PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion)
+        {
+            return VaultClient.GetKey(vaultName, keyName, keyVersion);
+        }
+
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, Microsoft.Azure.KeyVault.WebKey.JsonWebKey webKey, bool? importToHsm)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyOperationResult UnwrapKey(string vaultName, string keyName, string keyVersion, byte[] value, string wrapAlgorithm)
+        {
+            return VaultClient.UnwrapKey(vaultName, keyName, keyVersion, wrapAlgorithm, value);
+        }
+
+        public PSKeyOperationResult WrapKey(string vaultName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm)
+        {
+            return VaultClient.WrapKey(vaultName, keyName, keyVersion, wrapAlgorithm, wrapKey);
+        }
+
+        public void PurgeKey(string vaultName, string name)
+        {
+            throw new NotImplementedException();
+        }
+        public PSKeyVaultKey RecoverKey(string vaultName, string keyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Certificate actions
+        public string BackupCertificate(string vaultName, string certificateName, string outputBlobPath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultCertificate UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultCertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public PSKeyVaultCertificateOperation CancelCertificateOperation(string vaultName, string certificateName)
+        {
+            throw new NotImplementedException();
         }
 
         public PSDeletedKeyVaultCertificate DeleteCertificate(string vaultName, string certName)
@@ -79,26 +156,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         }
 
         public PSKeyVaultCertificateOperation DeleteCertificateOperation(string vaultName, string certificateName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSDeletedKeyVaultKey DeleteKey(string vaultName, string keyName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSDeletedKeyVaultManagedStorageAccount DeleteManagedStorageAccount(string vaultName, string managedStorageAccountName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSDeletedKeyVaultManagedStorageSasDefinition DeleteManagedStorageSasDefinition(string vaultName, string managedStorageAccountName, string sasDefinitionName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSDeletedKeyVaultSecret DeleteSecret(string vaultName, string secretName)
         {
             throw new NotImplementedException();
         }
@@ -158,12 +215,120 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
-        public PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string name)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PurgeCertificate(string vaultName, string certName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultCertificate RecoverCertificate(string vaultName, string certName)
+        {
+            throw new NotImplementedException();
+        }
+        public PSKeyVaultCertificate RestoreCertificate(string vaultName, string inputBlobPath)
+        {
+            throw new NotImplementedException();
+        }
+        public IEnumerable<PSKeyVaultCertificateContact> SetCertificateContacts(string vaultName, IEnumerable<PSKeyVaultCertificateContact> contacts)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultCertificateIssuer SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Secret actions
+        public string BackupSecret(string vaultName, string secretName, string outputBlobPath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSDeletedKeyVaultSecret DeleteSecret(string vaultName, string secretName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSDeletedKeyVaultSecret GetDeletedSecret(string vaultName, string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<PSDeletedKeyVaultSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultSecret GetSecret(string vaultName, string secretName, string secretVersion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<PSKeyVaultSecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<PSKeyVaultSecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PurgeSecret(string vaultName, string secretName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultSecret RecoverSecret(string vaultName, string secretName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultSecret RestoreSecret(string vaultName, string inputBlobPath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSKeyVaultSecretAttributes secretAttributes)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSKeyVaultSecretAttributes secretAttributes)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion Secret actions
+
+        #region Managed storage actions
+        public string BackupManagedStorageAccount(string vaultName, string managedStorageAccountName, string outputBlobPath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSDeletedKeyVaultManagedStorageAccount DeleteManagedStorageAccount(string vaultName, string managedStorageAccountName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSDeletedKeyVaultManagedStorageSasDefinition DeleteManagedStorageSasDefinition(string vaultName, string managedStorageAccountName, string sasDefinitionName)
         {
             throw new NotImplementedException();
         }
@@ -188,31 +353,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
-        public PSDeletedKeyVaultSecret GetDeletedSecret(string vaultName, string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<PSDeletedKeyVaultSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options)
-        {
-            throw new NotImplementedException();
-        }
-
         public PSKeyVaultManagedStorageAccount GetManagedStorageAccount(string vaultName, string managedStorageAccountName)
         {
             throw new NotImplementedException();
@@ -233,67 +373,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
-        public PSKeyVaultSecret GetSecret(string vaultName, string secretName, string secretVersion)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<PSKeyVaultSecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<PSKeyVaultSecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, Microsoft.Azure.KeyVault.WebKey.JsonWebKey webKey, bool? importToHsm)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void PurgeCertificate(string vaultName, string certName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void PurgeKey(string vaultName, string name)
-        {
-            throw new NotImplementedException();
-        }
-
         public void PurgeManagedStorageAccount(string vaultName, string managedStorageAccountName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void PurgeSecret(string vaultName, string secretName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultCertificate RecoverCertificate(string vaultName, string certName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultKey RecoverKey(string vaultName, string keyName)
         {
             throw new NotImplementedException();
         }
@@ -308,42 +388,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
-        public PSKeyVaultSecret RecoverSecret(string vaultName, string secretName)
-        {
-            throw new NotImplementedException();
-        }
-
         public PSKeyVaultManagedStorageAccount RegenerateManagedStorageAccountKey(string vaultName, string managedStorageAccountName, string keyName)
         {
             throw new NotImplementedException();
         }
 
-        public PSKeyVaultCertificate RestoreCertificate(string vaultName, string inputBlobPath)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath)
-        {
-            throw new NotImplementedException();
-        }
-
         public PSKeyVaultManagedStorageAccount RestoreManagedStorageAccount(string vaultName, string inputBlobPath)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultSecret RestoreSecret(string vaultName, string inputBlobPath)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<PSKeyVaultCertificateContact> SetCertificateContacts(string vaultName, IEnumerable<PSKeyVaultCertificateContact> contacts)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultCertificateIssuer SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails)
         {
             throw new NotImplementedException();
         }
@@ -358,52 +408,36 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
-        public PSKeyVaultSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSKeyVaultSecretAttributes secretAttributes)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultCertificate UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultCertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
-        {
-            throw new NotImplementedException();
-        }
-
         public PSKeyVaultManagedStorageAccount UpdateManagedStorageAccount(string vaultName, string managedStorageAccountName, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, PSKeyVaultManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags)
         {
             throw new NotImplementedException();
         }
-
-        public PSKeyVaultSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSKeyVaultSecretAttributes secretAttributes)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
         #region Full backup restore
         public Uri BackupHsm(string hsmName, Uri blobStorageUri, string sasToken)
         {
-            return HsmClient.BackupHsm(hsmName, blobStorageUri, sasToken);
+            return HsmClient.BackupHsm(hsmName, blobStorageUri, sasToken).FolderUri;
         }
 
         public void RestoreHsm(string hsmName, Uri backupLocation, string sasToken, string backupFolder)
         {
-            HsmClient.RestoreHsm(hsmName, backupLocation, sasToken, backupFolder);
+            var backupUri = new Uri(System.IO.Path.Combine(backupLocation.ToString(), backupFolder));
+            HsmClient.RestoreHsm(hsmName, backupUri, sasToken);
         }
 
         public void SelectiveRestoreHsm(string hsmName, string keyName, Uri backupLocation, string sasToken, string backupFolder)
         {
-            HsmClient.SelectiveRestoreHsm(hsmName, keyName, backupLocation, sasToken, backupFolder);
+            var backupUri = new Uri(System.IO.Path.Combine(backupLocation.ToString(), backupFolder));
+            HsmClient.SelectiveRestoreHsm(hsmName, keyName, backupUri, sasToken);
         }
         #endregion
+
+        #region RBAC
+        public PSKeyVaultRoleDefinition CreateOrUpdateHsmRoleDefinition(string hsmName, string scope, PSKeyVaultRoleDefinition role)
+        {
+            return HsmClient.CreateOrUpdateHsmRoleDefinition(hsmName, scope, role);
+        }
 
         public PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string hsmName, string scope)
         {
@@ -429,17 +463,22 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         {
             HsmClient.RemoveHsmRoleAssignment(hsmName, scope, roleAssignmentName);
         }
+
+        /// <summary>
+        /// Remove a custom role definition from an HSM.
+        /// </summary>
+        /// <param name="name">Name of the role. A GUID.</param>
+        public void RemoveHsmRoleDefinition(string hsmName, string scope, string name)
+        {
+            HsmClient.RemoveHsmRoleDefinition(hsmName, scope, name);
+        }
         #endregion
 
-        #region ManagedHsm-related methods
+        #region ManagedHsm key methods
 
         public string BackupManagedHsmKey(string managedHsmName, string keyName, string outputBlobPath)
         {
             return HsmClient.BackupKey(managedHsmName, keyName, outputBlobPath);
-        }
-        public PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath)
-        {
-            return HsmClient.RestoreKey(managedHsmName, inputBlobPath);
         }
 
         public PSKeyVaultKey CreateManagedHsmKey(string managedHsmName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
@@ -450,6 +489,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         public PSDeletedKeyVaultKey DeleteManagedHsmKey(string managedHsmName, string keyName)
         {
             return HsmClient.DeleteKey(managedHsmName, keyName);
+        }
+        public PSKeyOperationResult ManagedHsmKeyDecrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        {
+            return HsmClient.Decrypt(vaultName, keyName, version, value, encryptAlgorithm);
+        }
+
+        public PSKeyOperationResult ManagedHsmKeyEncrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)
+        {
+            return HsmClient.Encrypt(vaultName, keyName, version, value, encryptAlgorithm);
+        }
+
+        public PSKeyOperationResult ManagedHsmUnwrapKey(string vaultName, string keyName, string version, byte[] value, string wrapAlgorithm)
+        {
+            return HsmClient.UnwrapKey(vaultName, keyName, version, wrapAlgorithm, value);
+        }
+
+        public PSKeyOperationResult ManagedHsmWrapKey(string vaultName, string keyName, string keyVersion, byte[] wrapKey, string wrapAlgorithm)
+        {
+            return HsmClient.WrapKey(vaultName, keyName, keyVersion, wrapAlgorithm, wrapKey);
         }
 
         public PSKeyVaultKey UpdateManagedHsmKey(string managedHsmName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes)
@@ -487,16 +545,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return HsmClient.GetKeyAllVersions(managedHsmName, keyName);
         }
 
+        public PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, JsonWebKey webKey)
+        {
+            return HsmClient.ImportKey(managedHsmName, keyName, webKey);
+        }
+
         public void PurgeManagedHsmKey(string managedHsmName, string keyName)
         {
             HsmClient.PurgeKey(managedHsmName, keyName);
         }
 
-        public PSKeyVaultKey ImportManagedHsmKey(string managedHsmName, string keyName, JsonWebKey webKey) 
+        public PSKeyVaultKey RestoreManagedHsmKey(string managedHsmName, string inputBlobPath)
         {
-            return HsmClient.ImportKey(managedHsmName, keyName, webKey);
+            return HsmClient.RestoreKey(managedHsmName, inputBlobPath);
         }
-
         #endregion
 
     }

@@ -34,7 +34,7 @@ The **Get-AzStorageContainer** cmdlet lists the storage containers associated wi
 
 ## EXAMPLES
 
-### Example 1: Get Azure Storage blob by name
+### Example 1: Get Azure Storage container by name
 ```
 PS C:\>Get-AzStorageContainer -Name container*
 ```

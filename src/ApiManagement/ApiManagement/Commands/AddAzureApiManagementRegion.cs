@@ -55,12 +55,33 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Virtual network configuration. Default value is $null.")]
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A list of availability zones denoting where the api management service is deployed into.")]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag only meant to be used for Premium SKU ApiManagement Service and Non Internal VNET deployments. " +
+            "This is useful in case we want to take a gateway region out of rotation." +
+            " This can also be used to standup a new region in Passive mode, test it and then make it Live later." +
+            " Default behavior is to make the region live immediately. ")]
+        public bool? DisableGateway { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(
                 () =>
                 {
-                    ApiManagement.AddRegion(Location, Sku ?? PsApiManagementSku.Premium, Capacity ?? 1, VirtualNetwork);
+                    ApiManagement.AddRegion(
+                        Location, 
+                        Sku ?? PsApiManagementSku.Premium, 
+                        Capacity ?? 1,
+                        VirtualNetwork,
+                        Zone,
+                        DisableGateway);
 
                     return ApiManagement;
                 },

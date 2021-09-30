@@ -20,12 +20,47 @@
 
 -->
 ## Upcoming Release
+* Update Compute .NET SDK package reference to version 49.1.0
+* Fixed a bug in `Get-AzVM` that caused incorrect power status output.
+
+## Version 4.17.0
+* Added new parameters `-LinuxConfigurationPatchMode`, `-WindowsConfigurationPatchMode`, and `-LinuxConfigurationProvisionVMAgent` to `Set-AzVmssOSProfile`
+* Added new parameters `-SshKeyName` and `-GenerateSshKey` to `New-AzVM` to create a VM with SSH
+* Fixed a bug in `Add-AzVHD` on Linux that caused uploads to fail for certain destination URI
+* Added new cmdlets for Restore Points and Restore Point Collection:
+    - 'New-AzRestorePoint'
+    - 'New-AzRestorePointCollection'
+    - 'Get-AzRestorePoint'
+    - 'Get-AzRestorePointCollection'
+    - 'Update-AzRestorePointCollection'
+    - 'Remove-AzRestorePoint'
+    - 'Remove-AzRestorePointCollection'
+* Added new parameters '-EnableSpotRestore' and '-SpotRestoreTimeout' to 'New-AzVMSSConfig' to enable Spot Restore Policy 
+* Added new cmdlets: `Update-AzCapacityReservationGroup` and `Update-AzCapacityReservation`
+
+## Version 4.16.0
 * Fixed the warning in `New-AzVM` cmdlet stating the sku of the VM is being defaulted even if a sku size is provided by the user. Now it only occurs when the user does not provide a sku size.
 * `Add-AzVhd` has the following new functionalities:
     - if a VHDX file is given as `-LocalFilePath`, it coverts to a VHD file using Hyper-V. Throws error if Hyper-V is not found.
     - if a VHD file given in `-LocalFilePath` is dynamically sized, it will covert it to fixed size using Hyper-V. Throws error if Hyper-V is not found.
     - if a VHD file given in `-LocalFilePath` needs resizing, it will resize it using Hyper-V. Throws error if Hyper-V is not found.
     - added a new parameter set which will create a managed disk and upload Vhd file directly to the disk.
+* Edited `Set-AzVmOperatingSystem` cmdlet to no longer overwrite any existing EnableAutomaticUpdates value on the passed in virtual machine if it exists.
+* Updated Compute module to use the latest .Net SDK version 48.0.0.
+* Added new cmdlets for the Capacity Reservation Feature:
+    - `New-AzCapacityReservationGroup`
+    - `Remove-AzCapacityReservationGroup`
+    - `Get-AzCapacityReservationGroup`
+    - `New-AzCapacityReservation`
+    - `Remove-AzCapacityReservation`
+    - `Get-AzCapacityReservation`
+* Added a new parameter `-CapacityReservationGroupId` to the following cmdlets:
+    - `New-AzVm`
+    - `New-AzVmConfig`
+    - `New-AzVmss`
+    - `New-AzVmssConfig`
+    - `Update-AzVm`
+    - `Update-AzVmss`
 
 ## Version 4.15.0
 * Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`

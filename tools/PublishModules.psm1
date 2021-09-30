@@ -309,6 +309,9 @@ function Get-AllModules {
 .PARAMETER Path
 Path to the psd1 file.
 
+.PARAMETER KeepRequiredModules
+Switch to keep RequiredModules.
+
 #>
 function Remove-ModuleDependencies {
     [CmdletBinding()]

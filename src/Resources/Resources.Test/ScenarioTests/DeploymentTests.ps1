@@ -924,3 +924,199 @@ function Test-WhatIfWithQueryString
 		}
 	}
 }
+
+<#
+.SYNOPSIS
+Tests deployment via template file containing a single datetime string output.
+#>
+function Test-NewDeploymentFromTemplateFileContainingDatetimeOutput
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West US 2"
+
+	try
+	{
+		# Test
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		$datetime = "2021-07-08T22:56:00"
+		$datetimeFormatted = $datetime | Get-Date
+		$parameters = @{ "date"= $datetime }
+
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile simpleTemplateWithDatetimeOutput.json -TemplateParameterObject $parameters
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		$subId = (Get-AzContext).Subscription.SubscriptionId
+		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+
+		$datetimeOutput = $getById.Outputs.date.Value | Get-Date
+		
+		Assert-AreEqual $datetimeFormatted $datetimeOutput
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment via template and parameter file containing a single datetime string output.
+#>
+function Test-NewDeploymentFromTemplateAndParameterFileContainingDatetimeOutput
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West US 2"
+
+	try
+	{
+		# Test
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		# NOTE(jcotillo): This is the same value as the one from: simpleTemplateWithDatetimeOutputParameters.json
+		# if the parameter file gets updated, please ensure to update this value as well otherwise test will fail.
+		$datetime = "2021-07-08T22:56:00"
+		$datetimeFormatted = $datetime | Get-Date
+		$parameters = @{ "date"= $datetime }
+
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile simpleTemplateWithDatetimeOutput.json -TemplateParameterFile simpleTemplateWithDatetimeOutputParameters.json
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		$subId = (Get-AzContext).Subscription.SubscriptionId
+		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+
+		$datetimeOutput = $getById.Outputs.date.Value | Get-Date
+		
+		Assert-AreEqual $datetimeFormatted $datetimeOutput
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment via template and parameter file containing a tags with different casing.
+#>
+function Test-NewDeploymentFromTemplateFileContainingTagsOutput
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West US 2"
+
+	try
+	{
+		# Test
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		$tagsToCompare = @{
+			"MY_FIRST_TAG" = "tagValue";
+			"MYFIRSTTAG" = "tagvalue2";
+			"mysecondTag" = "tagValue3";
+			"mythirdtag" = "tagvalue4"
+		}
+
+		$parameters = @{ "tags"= $tagsToCompare }
+
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile simpleTemplateWithTagsOutput.json -TemplateParameterObject $parameters
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		$subId = (Get-AzContext).Subscription.SubscriptionId
+		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+
+		$tagsOutput = $getById.Outputs.tags.Value
+
+		$tagsOutputJson = ConvertTo-Json -Compress $tagsOutput
+		
+		# Performs a case sensitive comparison
+		# Doing a foreach on the keys and comparing against the JSON string
+		# this needed because the flag -AsHashTable doesn't seem to work 
+		# in ConvertTo-Json cmdlet
+		foreach ($tag in $tagsToCompare.Keys)
+		{
+			Assert-True { $tagsOutputJson -clike "*${tag}*"}
+		}
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment via template and parameter file containing a tags with different casing.
+#>
+function Test-NewDeploymentFromTemplateAndParameterFileContainingTagsOutput
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West US 2"
+
+	try
+	{
+		# Test
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		$tagsToCompare = @{
+			"MY_FIRST_TAG" = "tagValue";
+			"MYFIRSTTAG" = "tagvalue2";
+			"mysecondTag" = "tagValue3";
+			"mythirdtag" = "tagvalue4"
+		}
+
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile simpleTemplateWithTagsOutput.json -TemplateParameterFile simpleTemplateWithTagsOutputParameters.json
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		$subId = (Get-AzContext).Subscription.SubscriptionId
+		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+		$getById = Get-AzResourceGroupDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+
+		$tagsOutput = $getById.Outputs.tags.Value
+		
+		$tagsOutputJson = ConvertTo-Json -Compress $tagsOutput
+		
+		# Performs a case sensitive comparison
+		# Doing a foreach on the keys and comparing against the JSON string
+		# this needed because the flag -AsHashTable doesn't seem to work 
+		# in ConvertTo-Json cmdlet
+		foreach ($tag in $tagsToCompare.Keys)
+		{
+			Assert-True { $tagsOutputJson -clike "*${tag}*"}
+		}
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

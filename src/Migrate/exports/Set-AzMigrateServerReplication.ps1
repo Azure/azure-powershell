@@ -41,32 +41,71 @@ TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
 TargetObjectName                 : prsadhu-TestVM
 Task                             : {DisableProtectionOnPrimary, UpdateDraState}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
+.Example
+PS C:\> $OSDisk = Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1"
+PS C:\> $DataDisk = Set-AzMigrateDiskMapping -DiskID "6000C292-79b9-bbdc-fb8a-f1fa8dbeff84" -DiskName "ContosoDisk_2"
+PS C:\> $DiskMapping = $OSDisk, $DataDisk
+PS C:\> Set-AzMigrateServerReplication -TargetObjectId "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015f6d8-fc84-afdf-de47-1eab79330f00" -DiskToUpdate $DiskMapping
+
+ActivityId                       : c533d88d-2211-43c6-b615-7b46876d8882 ActivityId: de18df8b-8d43-4249-8989-846d33a124f6
+AllowedAction                    : {}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobDetailsAffectedObje
+                                   ctDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Update the virtual machine
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105src
+                                   rg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJo
+                                   bs/6ec1cca6-87c7-4f14-9657-bd0469c02fcd
+Location                         :
+Name                             : 6ec1cca6-87c7-4f14-9657-bd0469c02fcd
+ScenarioName                     : UpdateVmProperties
+StartTime                        : 8/30/2021 7:08:51 AM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : f3aa6bd4-1b60-52bb-b12d-e850f8d8f13c
+TargetObjectName                 : Win2k16
+Task                             : {UpdateVmPropertiesTask}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+DISKTOUPDATE <IVMwareCbtUpdateDiskInput[]>: Updates the disk for the Azure VM to be created.
+  DiskId <String>: The disk Id.
+  [TargetDiskName <String>]: The target disk name.
+
 INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the properties need to be updated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
   [Location <String>]: Resource Location
-  [CurrentJobId <String>]: The ARM Id of the job being executed.
-  [CurrentJobName <String>]: The job name.
-  [CurrentJobStartTime <DateTime?>]: The start time of the job.
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
 
 NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be created.
   IsPrimaryNic <String>: A value indicating whether this is the primary NIC.
   NicId <String>: The NIC Id.
   [IsSelectedForMigration <String>]: A value indicating whether this NIC is selected for migration.
+  [TargetNicName <String>]: Target NIC name.
   [TargetStaticIPAddress <String>]: The static IP address.
   [TargetSubnetName <String>]: Target subnet name.
+
+UPDATEDISKTAG <IVMwareCbtEnableMigrationInputTargetDiskTags>: Specifies the tag to be used for disk creation.
+  [(Any) <String>]: This indicates any property can be added to this object.
+
+UPDATENICTAG <IVMwareCbtEnableMigrationInputTargetNicTags>: Specifies the tag to be used for NIC creation.
+  [(Any) <String>]: This indicates any property can be added to this object.
+
+UPDATEVMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>: Specifies the tag to be used for VM creation.
+  [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 #>
 function Set-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -82,6 +121,12 @@ param(
     # Specifies the replcating server for which the properties need to be updated.
     # The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
     ${TargetVMName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the name of the Azure VM to be created.
+    ${TargetDiskName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -103,10 +148,17 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IVMwareCbtNicInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput[]]
     # Updates the NIC for the Azure VM to be created.
     # To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
     ${NicToUpdate},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtUpdateDiskInput[]]
+    # Updates the disk for the Azure VM to be created.
+    # To construct, see NOTES section for DISKTOUPDATE properties and create a hash table.
+    ${DiskToUpdate},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -119,6 +171,68 @@ param(
     [System.String]
     # Specifies the Availability Zone to be used for VM creation.
     ${TargetAvailabilityZone},
+
+    [Parameter()]
+    [ArgumentCompleter({ "NoLicenseType" , "PAYG" , "AHUB" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
+    ${SqlServerLicenseType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.Collections.Hashtable]
+    # Specifies the tag to be used for Resource creation.
+    ${UpdateTag},
+
+    [Parameter()]
+    [ArgumentCompleter({ "Merge" , "Replace" , "Delete" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies update tag operation.
+    ${UpdateTagOperation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetVmtags]
+    # Specifies the tag to be used for VM creation.
+    # To construct, see NOTES section for UPDATEVMTAG properties and create a hash table.
+    ${UpdateVMTag},
+
+    [Parameter()]
+    [ArgumentCompleter({ "Merge" , "Replace" , "Delete" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies update VM tag operation.
+    ${UpdateVMTagOperation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetNicTags]
+    # Specifies the tag to be used for NIC creation.
+    # To construct, see NOTES section for UPDATENICTAG properties and create a hash table.
+    ${UpdateNicTag},
+
+    [Parameter()]
+    [ArgumentCompleter({ "Merge" , "Replace" , "Delete" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies update NIC tag operation.
+    ${UpdateNicTagOperation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetDiskTags]
+    # Specifies the tag to be used for disk creation.
+    # To construct, see NOTES section for UPDATEDISKTAG properties and create a hash table.
+    ${UpdateDiskTag},
+
+    [Parameter()]
+    [ArgumentCompleter({ "Merge" , "Replace" , "Delete" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies update disk tag operation.
+    ${UpdateDiskTagOperation},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -135,7 +249,7 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem]
     # Specifies the replicating server for which the properties need to be updated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -203,6 +317,8 @@ begin {
         if (('ByIDVMwareCbt', 'ByInputObjectVMwareCbt') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
