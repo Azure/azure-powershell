@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Common
     using NextDelegate = Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>;
     using SignalDelegate = Func<string, CancellationToken, Func<EventArgs>, Task>;
     using PipelineChangeDelegate = Action<Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Func<HttpRequestMessage, CancellationToken, Action, Func<string, CancellationToken, Func<EventArgs>, Task>, Task<HttpResponseMessage>>, Task<HttpResponseMessage>>>;
+    using TokenAudienceConverterDelegate = Func<IAzureEnvironment, IAzureEnvironment, Uri, string>;
 
     /// <summary>
     /// Perform authentication and parameter completion based on the value of the context
@@ -72,6 +73,50 @@ namespace Microsoft.Azure.Commands.Common
         {
             appendStep(new UserAgent(invocationInfo).SendAsync);
             appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ResourceManager));
+        }
+
+        internal void AddRequestUserAgentHandler(
+            InvocationInfo invocationInfo,
+            string correlationId,
+            string processRecordId,
+            PipelineChangeDelegate prependStep,
+            PipelineChangeDelegate appendStep)
+        {
+            appendStep(new UserAgent(invocationInfo).SendAsync);
+        }
+
+        internal void AddPatchRequestUriHandler(
+            InvocationInfo invocationInfo,
+            string correlationId,
+            string processRecordId,
+            PipelineChangeDelegate prependStep,
+            PipelineChangeDelegate appendStep)
+        {
+            appendStep(
+                async (request, cancelToken, cancelAction, signal, next) =>
+                {
+                    var context = GetDefaultContext(_provider, invocationInfo);
+                    PatchRequestUri(context, request);
+                    return await next(request, cancelToken, cancelAction, signal);
+                });
+        }
+
+        internal void AddAuthorizeRequestHandler(
+            InvocationInfo invocationInfo,
+            string resourceId,
+            PipelineChangeDelegate prependStep,
+            PipelineChangeDelegate appendStep,
+            TokenAudienceConverterDelegate tokenAudienceConverter,
+            IDictionary<string, object> extensibleParameters = null)
+        {
+            appendStep(
+                async (request, cancelToken, cancelAction, signal, next) =>
+                {
+                    resourceId = resourceId ?? AzureEnvironment.Endpoint.ResourceManager;
+                    var context = GetDefaultContext(_provider, invocationInfo);
+                    await AuthorizeRequest(context, resourceId, request, cancelToken);
+                    return await next(request, cancelToken, cancelAction, signal);
+                });
         }
 
         /// <summary>
@@ -169,7 +214,8 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="request"></param>
         /// <param name="outerToken"></param>
         /// <returns></returns>
-        internal async Task AuthorizeRequest(IAzureContext context, string resourceId, HttpRequestMessage request, CancellationToken outerToken)
+        internal async Task AuthorizeRequest(IAzureContext context, string resourceId, HttpRequestMessage request, CancellationToken outerToken, 
+                        TokenAudienceConverterDelegate tokenAudienceConverter = null, IDictionary<string, object> extensibleParamters = null)
         {
             if (context == null || context.Account == null || context.Environment == null)
             {
@@ -178,7 +224,15 @@ namespace Microsoft.Azure.Commands.Common
 
             await Task.Run(() =>
             {
-                resourceId = context?.Environment?.GetAudienceFromRequestUri(request.RequestUri) ?? resourceId;
+                if (tokenAudienceConverter != null)
+                {
+                    var tokenAudience = tokenAudienceConverter.Invoke(context.Environment, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], request.RequestUri);
+                    resourceId = tokenAudience ?? resourceId;
+                }
+                else
+                {
+                    resourceId = context?.Environment?.GetAudienceFromRequestUri(request.RequestUri) ?? resourceId;
+                }
                 var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, resourceId);
                 authToken.AuthorizeRequest((type, token) => request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(type, token));
             }, outerToken);
