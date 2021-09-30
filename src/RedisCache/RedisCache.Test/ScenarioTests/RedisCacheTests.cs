@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
     {
         public XunitTracingInterceptor _logger;
 
-       public RedisCacheTests(ITestOutputHelper output)
+        public RedisCacheTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 #if NETSTANDARD
         [Fact(Skip = "Needs investigation: Storage Id cannot be null")]
 #else
-         [Fact]
+        [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticOperations()

@@ -14,5 +14,5 @@
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="7.0.0" />
   </ItemGroup>
-	
+
 </Project>

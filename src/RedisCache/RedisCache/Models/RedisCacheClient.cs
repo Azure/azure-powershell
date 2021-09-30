@@ -355,7 +355,6 @@ namespace Microsoft.Azure.Commands.RedisCache
             _client.FirewallRules.Delete(resourceGroupName, cacheName, ruleName);
         }
 
-
         internal RedisLinkedServerWithProperties SetLinkedServer(string resourceGroupName, string cacheName, 
             string linkedCacheName, string linkedCacheId, string linkedCacheLocation, ReplicationRole serverRole)
         {
