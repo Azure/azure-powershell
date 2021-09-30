@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="appendStep">a delegate which allows the module to append a step in the HTTP Pipeline</param>
         public NewRequestPipelineDelegate OnNewRequest;
 
+        public NewRequestPipelineDelegate AddRequestUserAgentHandler;
+
+        public NewRequestPipelineDelegate AddPatchRequestUriHandler;
+
+        public AuthorizeRequestDelegate AddAuthorizeRequestHandler;
+
         /// <summary>
         /// Called for well-known parameters that require argument completers
         /// </summary>
