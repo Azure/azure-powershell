@@ -16,8 +16,8 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 New-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> -ClusterExtensionId <String[]>
  -DisplayName <String> -HostResourceId <String> -Location <String> -Namespace <String>
  [-SubscriptionId <String>] [-AuthenticationType <String>] [-AuthenticationValue <String>]
- [-HostType <HostType>] [-IdentityType <ResourceIdentityType>] [-ProvisioningState <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ResourceIdentityType>] [-ProvisioningState <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,21 +140,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HostType
-Type of host the Custom Locations is referencing (Kubernetes, etc...).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.HostType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Kubernetes"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

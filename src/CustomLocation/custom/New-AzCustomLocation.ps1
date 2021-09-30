@@ -95,14 +95,6 @@ function New-AzCustomLocation {
         ${HostResourceId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.HostType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.DefaultInfo(Script = '"Kubernetes"')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.HostType]
-        # Type of host the Custom Locations is referencing (Kubernetes, etc...).
-        ${HostType},
-
-        [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.ResourceIdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.ResourceIdentityType]

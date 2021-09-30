@@ -16,18 +16,17 @@ Updates a Custom Location with the specified Resource Name in the specified Reso
 ```
 Update-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> -ClusterExtensionId <String[]>
  -DisplayName <String> -HostResourceId <String> -Namespace <String> [-SubscriptionId <String>]
- [-AuthenticationType <String>] [-AuthenticationValue <String>] [-HostType <HostType>]
- [-IdentityType <ResourceIdentityType>] [-ProvisioningState <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AuthenticationType <String>] [-AuthenticationValue <String>] [-IdentityType <ResourceIdentityType>]
+ [-ProvisioningState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzCustomLocation -InputObject <ICustomLocationIdentity> -ClusterExtensionId <String[]>
  -DisplayName <String> -HostResourceId <String> -Namespace <String> [-AuthenticationType <String>]
- [-AuthenticationValue <String>] [-HostType <HostType>] [-IdentityType <ResourceIdentityType>]
- [-ProvisioningState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AuthenticationValue <String>] [-IdentityType <ResourceIdentityType>] [-ProvisioningState <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,21 +134,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HostType
-Type of host the Custom Locations is referencing (Kubernetes, etc...).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.HostType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: "Kubernetes"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
