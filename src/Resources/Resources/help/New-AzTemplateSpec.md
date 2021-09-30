@@ -39,7 +39,7 @@ existing versions will be preserved).
 
 ## EXAMPLES
 
-### Example 1:
+### Example 1
 ```powershell
 PS C:\> $templateJson = @"
 {
@@ -58,7 +58,7 @@ will have $templateJson as the version's ARM Template content.
  **Note:** The ARM Template in the example is a no-op as 
 it contains no actual resources.
 
-### Example 2:
+### Example 2
 ```powershell
 PS C:\> New-AzTemplateSpec -ResourceGroupName 'myRG' -Name 'myTemplateSpec' -Version 'v2.0' -Location 'West US' -TemplateFile 'myTemplateContent.json'
 ```
