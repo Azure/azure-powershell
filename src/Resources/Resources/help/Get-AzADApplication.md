@@ -56,33 +56,33 @@ If no parameter is provided, it fetches all applications under the tenant.
 
 ## EXAMPLES
 
-### Example 1 - List all applications
+### Example 1: List all applications
 
-```
+```powershell
 PS C:\> Get-AzADApplication
 ```
 
 Lists all the applications under a tenant.
 
-### Example 2 - List applications using paging
+### Example 2: List applications using paging
 
-```
+```powershell
 PS C:\> Get-AzADApplication -First 100
 ```
 
 Lists the first 100 applications under a tenant.
 
-### Example 3 - Get application by identifier URI
+### Example 3: Get application by identifier URI
 
-```
+```powershell
 PS C:\> Get-AzADApplication -IdentifierUri http://mySecretApp1
 ```
 
 Gets the application with identifier uri as "http://mySecretApp1".
 
-### Example 4 - Get application by object id
+### Example 4: Get application by object id
 
-```
+```powershell
 PS C:\> Get-AzADApplication -ObjectId 39e64ec6-569b-4030-8e1c-c3c519a05d69
 ```
 

@@ -2064,6 +2064,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         #endregion
 
         #region RBAC
+        public PSKeyVaultRoleDefinition CreateOrUpdateHsmRoleDefinition(string hsmName, string scope, PSKeyVaultRoleDefinition role)
+        {
+            throw new NotImplementedException();
+        }
+
         public PSKeyVaultRoleDefinition[] GetHsmRoleDefinitions(string name, string scope)
         {
             throw new NotImplementedException();
@@ -2085,6 +2090,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         public void RemoveHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveHsmRoleDefinition(string hsmName, string scope, string name)
         {
             throw new NotImplementedException();
         }

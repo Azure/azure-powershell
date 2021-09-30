@@ -87,6 +87,11 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter EnableRoutingPreferenceInternetFlag { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "Flag to enable Bgp route translation for NAT on this VpnGateway.")]
+        public SwitchParameter EnableBgpRouteTranslationForNat { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "The list of VpnGatewayNatRules that are associated with this VpnGateway.")]
         public PSVpnGatewayNatRule[] VpnGatewayNatRule { get; set; }
@@ -167,6 +172,9 @@ namespace Microsoft.Azure.Commands.Network
 
             // Set the Routing Preference Internet, if it is specified by customer.
             vpnGateway.IsRoutingPreferenceInternet = EnableRoutingPreferenceInternetFlag.IsPresent;
+
+            // Set the Bgp route translation for NAT on this VpnGateway, if it is specified by customer.
+            vpnGateway.EnableBgpRouteTranslationForNat = this.EnableBgpRouteTranslationForNat.IsPresent;
 
             vpnGateway.BgpSettings = null;
 

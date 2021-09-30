@@ -39,25 +39,25 @@ To update the credentials associated with this application, please use the New-A
 
 ## EXAMPLES
 
-### Example 1 - Update the display name of an application
+### Example 1: Update the display name of an application
 
-```
+```powershell
 PS C:\> Update-AzADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 -DisplayName MyNewDisplayName
 ```
 
 Updates the display name of the application with object id 'fb7b3405-ca44-4b5b-8584-12392f5d96d7' to be 'MyNewDisplayName'.
 
-### Example 2 - Update all properties of an application
+### Example 2: Update all properties of an application
 
-```
+```powershell
 PS C:\> Update-AzADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 -DisplayName MyNewDisplayName -HomePage https://www.microsoft.com -IdentifierUris "https://UpdateAppUri"
 ```
 
 Updates the properties of an application with object id 'fb7b3405-ca44-4b5b-8584-12392f5d96d7'.
 
-### Example 3 - Update the display name of an application using piping
+### Example 3: Update the display name of an application using piping
 
-```
+```powershell
 PS C:\> Get-AzADApplication -ObjectId fb7b3405-ca44-4b5b-8584-12392f5d96d7 | Update-AzADApplication -DisplayName MyNewDisplayName
 ```
 

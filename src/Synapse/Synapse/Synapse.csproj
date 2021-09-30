@@ -35,11 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Models\AdvancedThreatProtection\Templates\DeployWorkspaceVaTemplate.json" />
+    <None Remove="Models\ManagementModels\AdvancedThreatProtection\Templates\DeployWorkspaceVaTemplate.json" />
   </ItemGroup>
 	
   <ItemGroup>
-    <EmbeddedResource Include="Models\AdvancedThreatProtection\Templates\DeployWorkspaceVaTemplate.json" />
+    <EmbeddedResource Include="Models\ManagementModels\AdvancedThreatProtection\Templates\DeployWorkspaceVaTemplate.json" />
   </ItemGroup>
 
 </Project>

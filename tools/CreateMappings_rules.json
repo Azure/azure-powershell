@@ -688,5 +688,9 @@
   {
     "alias": "Purview",
     "regex": "Purview"
+  },
+  {
+    "alias": "Elastic",
+    "regex": "Elastic"
   }
 ]

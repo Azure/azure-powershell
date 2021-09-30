@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Guest patch maintenance support.
 
 ## Version 1.1.1
 * Bumped API version to stable 2021-05-01.
