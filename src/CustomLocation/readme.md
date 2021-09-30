@@ -55,6 +55,12 @@ directive:
         },
         "204": {
           "description": "NoContent. The response indicates the customLocation resource is already deleted."
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/c6c9e02ae4de78cd7357bc4a5a7be38e6f1909d0/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
         }
       }
 
