@@ -1356,7 +1356,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     {
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
-        $imgRef = Get-DefaultCRPWindowsImageOffline;
+        $imgRef = Get-WindowsImage $imageType;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
     }
     Write-Verbose "Start Create-AdvancedVM 6"
@@ -1405,6 +1405,12 @@ function Get-LinuxImage($imageType) {
 	} else {
 		return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP4' 'latest';
 	}
+}
+
+function Get-WindowsImage($imageType) {
+	
+    return Create-ComputeVMImageObject 'MicrosoftWindowsServer' 'WindowsServer' '2019-Datacenter' 'latest';
+	
 }
 
 function GetWrongTestResult($TestResult, $searchFor, $level)

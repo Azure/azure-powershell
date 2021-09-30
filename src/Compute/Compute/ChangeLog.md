@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Update Compute .NET SDK package reference to version 49.1.0
+* Add support for proxy and debug settings for VM Extension for SAP (AEM)
 
 ## Version 4.17.0
 * Added new parameters `-LinuxConfigurationPatchMode`, `-WindowsConfigurationPatchMode`, and `-LinuxConfigurationProvisionVMAgent` to `Set-AzVmssOSProfile`
