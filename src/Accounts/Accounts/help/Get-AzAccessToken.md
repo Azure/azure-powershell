@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceTypeName
-Optional resource type name, supported values: AadGraph, MSGraph, AnalysisServices, Arm, Attestation, Batch, DataLake, KeyVault, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.
+Optional resource type name, supported values: AadGraph, AnalysisServices, Arm, Attestation, Batch, DataLake, KeyVault, MSGraph, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.
 
 ```yaml
 Type: System.String
