@@ -22,19 +22,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSCluster))]
     public class GetAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = AllParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = AllParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, HelpMessage = "The cluster name.")]
         [ValidateNotNullOrEmpty]
         public string ClusterName { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = AllParameterSet)]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
