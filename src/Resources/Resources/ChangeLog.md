@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.4.0
 * Added a clearer error message for a case in which TemplateUri do not accept bicep file.
 * Fixed typos with ManagementGroups breaking change descriptions [#15819].
 * Fixed resource tags casing issue - resource tags casing not being preserved.
