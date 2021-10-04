@@ -82,7 +82,7 @@ CmdletsToExport = 'Remove-AzRedisCachePatchSchedule', 'New-AzRedisCacheScheduleE
                'Set-AzRedisCache', 'New-AzRedisCacheKey', 'Get-AzRedisCacheKey', 
                'Get-AzRedisCache', 'Remove-AzRedisCache', 'New-AzRedisCache', 
                'New-AzRedisCacheLink', 'Remove-AzRedisCacheLink', 
-               'Get-AzRedisCacheLink', 'New-AzRedisCacheFirewallRule',
+               'Get-AzRedisCacheLink', 'New-AzRedisCacheFirewallRule', 
                'Remove-AzRedisCacheFirewallRule', 'Get-AzRedisCacheFirewallRule'
 
 # Variables to export from this module
