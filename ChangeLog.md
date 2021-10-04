@@ -96,6 +96,13 @@
 #### Az.Websites
 * Updated 'Import-AzWebAppKeyVaultCertificate1' to set the default name with combination of keyvault name and cert name 
 
+### Thanks to our community contributors
+* @DSakura207, Use last PowerState instance in Statuses for power status (#15941)
+* Yannic Graber (@grabery), Recode Example2 (#15808)
+* @joelmforsyth, Fix multi-regional examples (#15918)
+* Adam Coffman (@SysAdminforCoffee), Update Set-AzNetworkInterfaceIpConfig.md (#15846)
+* Michael Howard (@x509cert), Reworded sentence to make it clear that a specific key version must be provided (#15886)
+
 ## 6.4.0 - September 2021
 #### Az.Accounts
 * Corrected the URLs to Azure Portal in the results of 'Get-AzEnvironment' and 'Get-AzContext'. [#15429]
