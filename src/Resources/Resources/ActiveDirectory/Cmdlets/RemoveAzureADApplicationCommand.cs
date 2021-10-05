@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     public class RemoveAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The application object id.")]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
         public Guid ApplicationId { get; set; }
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string DisplayName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The application object.")]
-        public PSADApplication InputObject { get; set; }
+        public PSADApplication InputObject { get; set;}
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }

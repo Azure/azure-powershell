@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -26,13 +25,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Removes the service principal.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.ObjectId), OutputType(typeof(PSADServicePrincipal))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.ObjectId),OutputType(typeof(PSADServicePrincipal))]
     public class RemoveAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The service principal object id.")]
         [ValidateNotNullOrEmpty]
         [Alias("PrincipalId", "Id")]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The service principal application id.")]
         [ValidateNotNullOrEmpty]
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     ObjectId = InputObject.Id;
                 }
 
-                if (!this.IsParameterBound(c => c.ObjectId) && ObjectId != Guid.Empty)
+                if (!this.IsParameterBound(c => c.ObjectId))
                 {
                     IEnumerable<PSADServicePrincipal> result = null;
                     if (this.IsParameterBound(c => c.ApplicationId) || this.IsParameterBound(c => c.ApplicationObject))
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         result = ActiveDirectoryClient.FilterServicePrincipals(options);
                     }
 
-                    if (result == null)
+                    if (result == null || !result.Any())
                     {
                         throw new ArgumentException(string.Format("Could not find a service principal with the name {0}.", ServicePrincipalName));
                     }
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Force.IsPresent,
                     string.Format(ProjectResources.RemovingServicePrincipal, ObjectId),
                     ProjectResources.RemoveServicePrincipal,
-                    ObjectId.ToString(),
+                    ObjectId,
                     () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId));
 
                 if (PassThru)

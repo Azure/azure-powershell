@@ -13,8 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithPassword, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
         [Alias("ServicePrincipalObjectId")]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithCertValue, HelpMessage = "The servicePrincipal name.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithPassword, HelpMessage = "The servicePrincipal name.")]
@@ -48,18 +47,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ServicePrincipalObjectWithPassword, HelpMessage = "The service principal object.")]
         [ValidateNotNullOrEmpty]
         public PSADServicePrincipal ServicePrincipalObject { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithPassword,
-            HelpMessage = "The value for the password credential associated with the servicePrincipal that will be valid for one year by default.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithPassword,
-            HelpMessage = "The value for the password credential associated with the servicePrincipal that will be valid for one year by default.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ServicePrincipalObjectWithPassword,
-            HelpMessage = "The value for the password credential associated with the servicePrincipal that will be valid for one year by default.")]
-        [ValidateNotNullOrEmpty]
-#if NETSTANDARD
-        [CmdletParameterBreakingChange(nameof(Password), ChangeDescription = "The Password parameter will be removed in an upcoming breaking change release. After this point, the password will always be automatically generated.")]
-#endif
-        public SecureString Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithCertValue,
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the servicePrincipal that will be valid for one year by default.")]
@@ -75,6 +62,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end date till which password or key is valid. Default value is one year after the start date.")]
         public DateTime EndDate { get; set; }
+    
+        public Guid KeyId { get; set; } = default(Guid);
 
         public NewAzureADSpCredentialCommand()
         {
@@ -102,36 +91,20 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
                 }
 
-                if (Password != null && Password.Length > 0)
-                {
-                    string decodedPassword = SecureStringExtensions.ConvertToString(Password);
-                    // Create object for password credential
-                    var passwordCredential = new PasswordCredential()
-                    {
-                        EndDate = EndDate,
-                        StartDate = StartDate,
-                        KeyId = Guid.NewGuid().ToString(),
-                        Value = decodedPassword
-                    };
-                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
-                    {
-                        WriteObject(ActiveDirectoryClient.CreateSpPasswordCredential(ObjectId, passwordCredential));
-                    }
-                }
-                else if (this.IsParameterBound(c => c.CertValue))
+                if (this.IsParameterBound(c => c.CertValue))
                 {
                     // Create object for key credential
                     var keyCredential = new KeyCredential()
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
-                        KeyId = Guid.NewGuid().ToString(),
+                        KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
                         Value = CertValue,
                         Type = "AsymmetricX509Cert",
                         Usage = "Verify"
                     };
 
-                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new caertificate to service principal with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new caertificate to service principal with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateSpKeyCredential(ObjectId, keyCredential));
                     }
@@ -139,7 +112,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 else
                 {
                     // If no credentials provided, set the password to a randomly generated GUID
-                    Password = Guid.NewGuid().ToString().ConvertToSecureString();
+                    var Password = Guid.NewGuid().ToString().ConvertToSecureString();
 
                     string decodedPassword = SecureStringExtensions.ConvertToString(Password);
 
@@ -147,10 +120,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
-                        KeyId = Guid.NewGuid().ToString(),
+                        KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
                         Value = decodedPassword
                     };
-                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
                     {
                         var spCred = new PSADCredentialWrapper(ActiveDirectoryClient.CreateSpPasswordCredential(ObjectId, passwordCredential));
                         spCred.Secret = Password;

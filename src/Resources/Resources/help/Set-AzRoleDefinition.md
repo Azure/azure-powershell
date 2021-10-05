@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
-online version: https://docs.microsoft.com/powershell/module/az.resources/set-Azroledefinition
+online version: https://docs.microsoft.com/powershell/module/az.resources/set-azroledefinition
 schema: 2.0.0
 ---
 
@@ -24,8 +24,7 @@ Set-AzRoleDefinition -InputFile <String> [-DefaultProfile <IAzureContextContaine
 
 ### RoleDefinitionParameterSet
 ```
-Set-AzRoleDefinition -Role <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzRoleDefinition -Role <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,18 +60,17 @@ Following is a sample updated role definition json for Set-AzRoleDefinition
 
 ## EXAMPLES
 
-### Update using PSRoleDefinitionObject
-```
+### Example 1: Update using PSRoleDefinitionObject
+```powershell
 PS C:\> $roleDef = Get-AzRoleDefinition "Contoso On-Call"
-          PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
-          PS C:\> $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
-          PS C:\> $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-
-          PS C:\> Set-AzRoleDefinition -Role $roleDef
+PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
+PS C:\> $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
+PS C:\> $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+PS C:\> Set-AzRoleDefinition -Role $roleDef
 ```
 
-### Create using JSON file
-```
+### Example 2: Create using JSON file
+```powershell
 PS C:\> Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
 
@@ -82,9 +80,9 @@ PS C:\> Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -126,19 +124,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
-Parameters: Role (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
 
 ## NOTES
-Keywords: azure, Az, arm, resource, management, manager, resource, group, template, deployment
+Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 

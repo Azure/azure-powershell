@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System.IO;
@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.Resources
 
             role = role ?? Role;
 
-            foreach (var scope in role.AssignableScopes) {
+            foreach (var scope in role.AssignableScopes)
+            {
                 AuthorizationClient.ValidateScope(scope, false);
             }
 

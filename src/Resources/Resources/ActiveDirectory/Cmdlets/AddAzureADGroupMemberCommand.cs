@@ -13,12 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -33,7 +31,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObject, HelpMessage = "The object id of the member(s) to add to the group.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObjectId, HelpMessage = "The object id of the member(s) to add to the group.")]
         [ValidateNotNullOrEmpty]
-        public Guid[] MemberObjectId { get; set; }
+        public string[] MemberObjectId { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupDisplayName, HelpMessage = "The UPN of the member(s) to add to the group.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupObject, HelpMessage = "The UPN of the member(s) to add to the group.")]
@@ -43,7 +41,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObjectId, HelpMessage = "The object id of the group to add the member(s) to.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupObjectId, HelpMessage = "The object id of the group to add the member(s) to.")]
         [ValidateNotNullOrEmpty]
-        public Guid TargetGroupObjectId { get; set; }
+        public string TargetGroupObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObject, HelpMessage = "The object representation of the group to add the member(s) to.")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.MemberUPNWithGroupObject, HelpMessage = "The object representation of the group to add the member(s) to.")]
@@ -73,7 +71,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 if (this.IsParameterBound(c => c.MemberUserPrincipalName))
                 {
-                    var memberObjectId = new List<Guid>();
+                    var memberObjectId = new List<string>();
                     foreach (var memberUPN in MemberUserPrincipalName)
                     {
                         memberObjectId.Add(ActiveDirectoryClient.GetObjectIdFromUPN(memberUPN));

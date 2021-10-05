@@ -12,24 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory;
-using System.Security;
-
-namespace Microsoft.Azure.Commands.Resources.Models.Authorization
+namespace Microsoft.Azure.Commands.ActiveDirectory
 {
-    public class PSADServicePrincipalWrapper : PSADServicePrincipal
+    public class PSADUser : PSADObject
     {
-        public PSADServicePrincipalWrapper(PSADServicePrincipal sp)
-        {
-            if (sp != null)
-            {
-                ApplicationId = sp.ApplicationId;
-                DisplayName = sp.DisplayName;
-                Id = sp.Id;
-                ServicePrincipalNames = sp.ServicePrincipalNames;
-                Type = sp.Type;
-            }
-        }
-        public SecureString Secret { get; set; }
+        public string UserPrincipalName { get; set; }
+
+        public string ObjectType => "User";
+
+        public string UsageLocation { get; set; }
+
+        public string GivenName { get; set; }
+
+        public string Surname { get; set; }
+
+        public bool? AccountEnabled { get; set; }
+
+        public string MailNickname { get; set; }
+
+        public string Mail { get; set; }
+
+        public string ImmutableId { get; set; }
     }
 }

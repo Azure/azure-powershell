@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The service principal object id.")]
         [ValidateNotNullOrEmpty]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId,
             HelpMessage = "The service principal application id.")]
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 if (this.IsParameterBound(c => c.ObjectId))
                 {
-                    var objectId = ObjectId.ToString();
+                    var objectId = ObjectId;
                     var servicePrincipal = ActiveDirectoryClient.GetServicePrincipalByObjectId(objectId);
                     if (servicePrincipal != null)
                     {

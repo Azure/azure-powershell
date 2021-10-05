@@ -12,24 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory;
-using System.Security;
-
-namespace Microsoft.Azure.Commands.Resources.Models.Authorization
+namespace Microsoft.Azure.Commands.ActiveDirectory
 {
-    public class PSADServicePrincipalWrapper : PSADServicePrincipal
+    public enum ErrorTypeEnum
     {
-        public PSADServicePrincipalWrapper(PSADServicePrincipal sp)
+        GenericError = 0,
+        MalformedQuery = 1,
+    }
+
+    public class PSErrorHelperObject : PSADObject
+    {
+        public PSErrorHelperObject()
         {
-            if (sp != null)
-            {
-                ApplicationId = sp.ApplicationId;
-                DisplayName = sp.DisplayName;
-                Id = sp.Id;
-                ServicePrincipalNames = sp.ServicePrincipalNames;
-                Type = sp.Type;
-            }
+            this.ErrorType = ErrorTypeEnum.GenericError;
         }
-        public SecureString Secret { get; set; }
+
+        public PSErrorHelperObject(ErrorTypeEnum ete)
+        {
+            this.ErrorType = ete;
+        }
+
+        public ErrorTypeEnum ErrorType { get; set; }
+        public string PrincipalId { get; set; }
     }
 }

@@ -13,22 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ActiveDirectory;
+using System;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
-    public class FilterRoleAssignmentsOptions
+    public class FilterDenyAssignmentsOptions
     {
-        public string RoleDefinitionName { get; set; }
+        public Guid DenyAssignmentId { get; set; }
 
-        /// <summary>
-        /// RoleDefinitionId Guid
-        /// </summary>
-        public string RoleDefinitionId { get; set; }
+        public string DenyAssignmentName { get; set; }
 
         private string scope;
-        public string Description { get; set; }
-        public string Condition { get; set; }
-        public string ConditionVersion { get; set; }
 
         public string Scope
         {
@@ -60,12 +55,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public bool ExpandPrincipalGroups { get; set; }
 
-        public bool IncludeClassicAdministrators { get; set; }
-
         public bool ExcludeAssignmentsForDeletedPrincipals { get; set; }
-
-        public bool CanDelegate { get; set; }
-
-        public string RoleAssignmentId { get; set; }
     }
 }

@@ -12,12 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
+using System.Globalization;
+using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Resources
@@ -28,18 +32,18 @@ namespace Microsoft.Azure.Commands.Resources
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
     public class NewAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
+        #region Parameters
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
-            HelpMessage = "The user or group object id.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "The user or group object id.")]
-        [Alias("Id", "PrincipalId")]
         [ValidateNotNullOrEmpty]
+        [Alias("Id", "PrincipalId")]
         public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
@@ -105,9 +109,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string ParentResource { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
-            HelpMessage = "Scope of the role assignment. In the format of relative URI. If not specified, will assign the role at subscription level. If specified, it can either start with \"/subscriptions/<id>\" or the part after that. If it's latter, the current subscription id will be used.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "Scope of the role assignment. In the format of relative URI. If not specified, will assign the role at subscription level. If specified, it can either start with \"/subscriptions/<id>\" or the part after that. If it's latter, the current subscription id will be used.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
             HelpMessage = "Scope of the role assignment. In the format of relative URI. If not specified, will assign the role at subscription level. If specified, it can either start with \"/subscriptions/<id>\" or the part after that. If it's latter, the current subscription id will be used.")]
@@ -119,8 +121,6 @@ namespace Microsoft.Azure.Commands.Resources
         public string Scope { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
-            HelpMessage = "Role name to assign the principals with.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
             HelpMessage = "Role name to assign the principals with.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
             HelpMessage = "Role name to assign the principals with.")]
@@ -141,17 +141,170 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionName { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
+            HelpMessage = "Brief description of the role assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
+            HelpMessage = "Brief description of the role assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
+            HelpMessage = "Brief description of the role assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
+            HelpMessage = "Brief description of the role assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
+            HelpMessage = "Brief description of the role assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
+            HelpMessage = "Brief description of the role assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
+            HelpMessage = "Brief description of the role assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "Brief description of the role assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
+            HelpMessage = "Brief description of the role assignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
+            HelpMessage = "Brief description of the role assignment.")]
+        [ValidateNotNullOrEmpty]
+        public string Description { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
+            HelpMessage = "Condition to be applied to the RoleAssignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
+            HelpMessage = "Condition to be applied to the RoleAssignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
+            HelpMessage = "Condition to be applied to the RoleAssignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
+            HelpMessage = "Condition to be applied to the RoleAssignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
+            HelpMessage = "Condition to be applied to the RoleAssignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
+            HelpMessage = "Condition to be applied to the RoleAssignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
+            HelpMessage = "Condition to be applied to the RoleAssignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "Condition to be applied to the RoleAssignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
+            HelpMessage = "Condition to be applied to the RoleAssignment.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
+            HelpMessage = "Condition to be applied to the RoleAssignment.")]
+        [ValidateNotNullOrEmpty]
+        public string Condition { get; set; } = null;
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
+            HelpMessage = "Version of the condition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
+            HelpMessage = "Version of the condition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
+            HelpMessage = "Version of the condition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
+            HelpMessage = "Version of the condition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
+            HelpMessage = "Version of the condition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
+            HelpMessage = "Version of the condition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
+            HelpMessage = "Version of the condition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "Version of the condition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
+            HelpMessage = "Version of the condition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
+            HelpMessage = "Version of the condition.")]
+        [ValidateNotNullOrEmpty]
+        public string ConditionVersion { get; set; } = null;
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [PSArgumentCompleter("User", "Group", "Service Principal")]
+        [Alias("PrincipalType")]
+        public string ObjectType { get; set; } = null;
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "Role Id the principal is assigned to.")]
         [ValidateGuidNotEmpty]
         public Guid RoleDefinitionId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.InputFile,
+            HelpMessage = "Path to role assignment json")]
+        [ValidateNotNullOrEmpty]
+        public string InputFile { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Delegation flag.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AllowDelegation { get; set; }
 
+        #endregion
+
+        public Guid RoleAssignmentId { get; set; } = default(Guid);
+
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName == ParameterSet.InputFile)
+            {
+                string fileName = this.TryResolvePath(InputFile);
+                if (!(new FileInfo(fileName)).Exists)
+                {
+                    throw new PSArgumentException(string.Format("File {0} does not exist", fileName));
+                }
+
+                try
+                {
+                    PSRoleAssignment RoleAssignment = JsonConvert.DeserializeObject<PSRoleAssignment>(File.ReadAllText(fileName));
+
+                    this.ObjectId = RoleAssignment.ObjectId;
+                    this.ObjectType = RoleAssignment.ObjectType;
+                    this.ResourceType = RoleAssignment.ObjectType;
+                    this.Scope = RoleAssignment.Scope;
+                    Guid guid = Guid.Empty;
+                    Guid.TryParse(RoleAssignment.RoleDefinitionId, out guid);
+                    this.RoleDefinitionId = guid;
+                    this.Description = RoleAssignment.Description;
+                    this.Condition = RoleAssignment.Condition;
+                    this.ConditionVersion = RoleAssignment.ConditionVersion;
+                }
+                catch (JsonException)
+                {
+                    WriteVerbose("Deserializing the input role assignment failed.");
+                    throw new Exception("Deserializing the input role assignment failed. Please confirm the file is properly formated");
+                }
+            }
+            if (string.IsNullOrEmpty(Condition) ^ string.IsNullOrEmpty(ConditionVersion))
+            {
+                if (!string.IsNullOrEmpty(Condition))
+                {
+                    ConditionVersion = "2.0";
+                    WriteDebug("-Condition was set but -ConditionVersion was not, defaulting to lowest publicly available version: '2.0'");
+                }
+                else
+                {
+                    WriteExceptionError(new ArgumentException("If -ConditionVersion is set -Condition can not be empty."));
+                    return;
+                }
+
+            }
+            // ensure that if ConditionVersion is empty in any way, it becomes null
+            ConditionVersion = string.IsNullOrEmpty(ConditionVersion) ? null : string.IsNullOrWhiteSpace(ConditionVersion) ? null : ConditionVersion;
+            var _conditionVersion = Version.Parse(ConditionVersion ?? "2.0");
+            if (_conditionVersion.Major < 2)
+            {
+                WriteExceptionError(new ArgumentException("Argument -ConditionVersion must be greater or equal than 2.0"));
+                return;
+            }
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
             {
                 Scope = Scope,
@@ -162,6 +315,7 @@ namespace Microsoft.Azure.Commands.Resources
                     UPN = SignInName,
                     SPN = ApplicationId,
                     Id = ObjectId,
+                    ObjectType = ObjectType,
                 },
                 ResourceIdentifier = new ResourceIdentifier()
                 {
@@ -169,13 +323,17 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString(),
-                }
+                    Subscription = DefaultProfile.DefaultContext.Subscription.Id,
+                },
+                CanDelegate = AllowDelegation.IsPresent ? true : false,
+                Description = Description,
+                Condition = Condition,
+                ConditionVersion = ConditionVersion,
             };
 
             AuthorizationClient.ValidateScope(parameters.Scope, false);
 
-            WriteObject(PoliciesClient.CreateRoleAssignment(parameters));
+            WriteObject(PoliciesClient.CreateRoleAssignment(parameters, RoleAssignmentId));
         }
     }
 }

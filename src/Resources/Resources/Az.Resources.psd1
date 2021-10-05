@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.11.0'
+ModuleVersion = '0.12.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -65,6 +65,7 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
                'Microsoft.Extensions.Options.dll', 
                'Microsoft.Extensions.Primitives.dll',
+               'Microsoft.Azure.Graph.RBAC.dll', 
                'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -87,7 +88,7 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
-    'Get-AzRoleAssignment', 'New-AzRoleAssignment',
+    'Get-AzRoleAssignment', 'New-AzRoleAssignment', 'Set-AzRoleAssignment',
     'Get-AzRoleDefinition', 'New-AzRoleDefinition',
     'Set-AzRoleDefinition', 'Remove-AzRoleDefinition',
     'Get-AzADAppCredential', 'Get-AzADApplication',

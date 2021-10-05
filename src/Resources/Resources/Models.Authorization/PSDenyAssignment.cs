@@ -12,24 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory;
-using System.Security;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
-    public class PSADServicePrincipalWrapper : PSADServicePrincipal
+    public class PSDenyAssignment
     {
-        public PSADServicePrincipalWrapper(PSADServicePrincipal sp)
-        {
-            if (sp != null)
-            {
-                ApplicationId = sp.ApplicationId;
-                DisplayName = sp.DisplayName;
-                Id = sp.Id;
-                ServicePrincipalNames = sp.ServicePrincipalNames;
-                Type = sp.Type;
-            }
-        }
-        public SecureString Secret { get; set; }
+        public string Id { get; set; }
+
+        public string DenyAssignmentName { get; set; }
+
+        public string Description { get; set; }
+
+        public List<string> Actions { get; set; }
+
+        public List<string> NotActions { get; set; }
+
+        public List<string> DataActions { get; set; }
+
+        public List<string> NotDataActions { get; set; }
+
+        public string Scope { get; set; }
+
+        public bool DoNotApplyToChildScopes { get; set; }
+
+        public List<PSPrincipal> Principals { get; set; }
+
+        public List<PSPrincipal> ExcludePrincipals { get; set; }
+
+        public bool IsSystemProtected { get; set; }
     }
 }

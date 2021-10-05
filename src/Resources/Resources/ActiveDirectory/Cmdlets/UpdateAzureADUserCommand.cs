@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The object Id of the user to be updated.")]
         [ValidateNotNullOrEmpty]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The object of the user to be updated.")]
         [ValidateNotNullOrEmpty]
@@ -86,7 +85,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 };
             }
 
-            var userUpdateParameters = new UserUpdateParameters(EnableAccount, DisplayName, profile);
+            var userUpdateParameters = new UserUpdateParameters
+            {
+                AccountEnabled = EnableAccount,
+                DisplayName = DisplayName,
+                PasswordProfile = profile
+            };
 
             ExecutionBlock(() =>
             {
@@ -102,7 +106,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
                 else if (this.IsParameterBound(c => c.ObjectId))
                 {
-                    UPNOrObjectId = ObjectId.ToString();
+                    UPNOrObjectId = ObjectId;
                 }
 
                 if (ShouldProcess(target: UPNOrObjectId, action: string.Format("Updating properties for user with upn or object id '{0}'", UPNOrObjectId)))

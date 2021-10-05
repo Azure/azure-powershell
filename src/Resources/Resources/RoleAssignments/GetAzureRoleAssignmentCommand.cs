@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -30,6 +29,8 @@ namespace Microsoft.Azure.Commands.Resources
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
     public class GetAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
+        #region Cmdlet Parameters
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
@@ -215,6 +216,9 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
         public SwitchParameter IncludeClassicAdministrators { get; set; }
 
+        #endregion
+
+
         public override void ExecuteCmdlet()
         {
             FilterRoleAssignmentsOptions options = new FilterRoleAssignmentsOptions()
@@ -234,7 +238,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription.Id.ToString()
+                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription.Id
                 },
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
                 IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
@@ -243,7 +247,7 @@ namespace Microsoft.Azure.Commands.Resources
 
             AuthorizationClient.ValidateScope(options.Scope, true);
 
-            List<PSRoleAssignment> ra = PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id.ToString());
+            List<PSRoleAssignment> ra = PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id);
 
             WriteObject(ra, enumerateCollection: true);
         }

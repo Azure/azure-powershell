@@ -12,24 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory;
-using System.Security;
+using System;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
-    public class PSADServicePrincipalWrapper : PSADServicePrincipal
+    public class PSPrincipal
     {
-        public PSADServicePrincipalWrapper(PSADServicePrincipal sp)
+        public string DisplayName { get; set; }
+
+        public string ObjectType { get; set; }
+
+        public Guid ObjectId { get; set; }
+
+        public override string ToString()
         {
-            if (sp != null)
-            {
-                ApplicationId = sp.ApplicationId;
-                DisplayName = sp.DisplayName;
-                Id = sp.Id;
-                ServicePrincipalNames = sp.ServicePrincipalNames;
-                Type = sp.Type;
-            }
+            return $"\nDisplayName:\t{this.DisplayName}\nObjectType:\t{this.ObjectType}\nObjectId:\t{this.ObjectId}\n";
         }
-        public SecureString Secret { get; set; }
     }
 }
