@@ -61,6 +61,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// </remarks>
         public Runspace DefaultRunspace => _defaultRunspace.Value;
 
+        private static readonly Lazy<Runspace> _ConsoleRunspace = new Lazy<Runspace>(() => Runspace.DefaultRunspace);
+        public static readonly Lazy<PowerShell> _ConsoleRuntime = new Lazy<PowerShell>(() => PowerShell.Create(System.Management.Automation.RunspaceMode.CurrentRunspace));
+
         public void Dispose()
         {
             if (_runtime != null)
@@ -78,18 +81,29 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// <summary>
         /// Executes the PowerShell cmdlet in the current powershell session.
         /// </summary>
-        public IList<T> ExecuteScript<T>(string contents)
+        public IList<T> ExecuteScript<T>(string contents, bool writeToConsole = false)
         {
             List<T> output = new List<T>();
 
-            Runtime.Commands.Clear();
-            Runtime.AddScript(contents);
-            Collection<T> result = Runtime.Invoke<T>();
+            PowerShell runtime = null;
 
-            if (result != null && result.Count > 0)
+            if (writeToConsole)
             {
-                output.AddRange(result);
+                runtime = _ConsoleRuntime.Value;
             }
+            else
+            {
+                runtime = Runtime;
+            }
+
+            runtime.Commands.Clear();
+            runtime.AddScript(contents);
+            Collection<T> result = runtime.Invoke<T>();
+
+            //if (result != null && result.Count > 0)
+            //{
+            //    output.AddRange(result);
+            //}
 
             return output;
         }

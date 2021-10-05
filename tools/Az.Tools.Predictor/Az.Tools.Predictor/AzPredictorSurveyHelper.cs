@@ -23,15 +23,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     internal sealed class AzPredictorSurveyHelper : ISurveyHelper
     {
-        private const string _PromptMessageScript = "Write-Host \"---------------------------------------------------\""
-            + "Write-Host \"Survey:\" -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline;"
-            + "Write-Host \" How was your experience using the Az Predictor module?\";"
-            + "Write-Host \"\";"
-            + "Write-Host \"Run \" -NoNewline; Write-Host \"Open-AzPredictorSurvey\" -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline; Write-Host \" to give us your feedback.\";"
-            + "Write-Host \"---------------------------------------------------\";";
+        /*
+         *private const string _PromptMessageScript = "Write-Host \"---------------------------------------------------\";"
+         *    + "Write-Host \"Survey:\" -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline;"
+         *    + "Write-Host \" How was your experience using the Az Predictor module?\";"
+         *    + "Write-Host \"\";"
+         *    + "Write-Host \"Run \" -NoNewline; Write-Host \"Open-AzPredictorSurvey\" -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline; Write-Host \" to give us your feedback.\";"
+         *    + "Write-Host \"---------------------------------------------------\";";
+         */
+        private const string _PromptMessageScript = "Write-Host \"---------------------------------------------------\"";
 
-        private static readonly string _ModuleName = typeof(AzPredictorSurveyHelper).Assembly.GetName().Name;
-        private static readonly Version _ModuleVersion = typeof(AzPredictorSurveyHelper).Assembly.GetName().Version;
+        private static readonly string _ModuleName = "Az.Predictor";
+        private static readonly Version _ModuleVersion = new Version("1.0.0.0"); //typeof(AzPredictorSurveyHelper).Assembly.GetName().Version;
         private static readonly SurveyHelper _sharedSurveyHelper = SurveyHelper.GetInstance();
 
         private readonly PowerShellRuntime _powerShellRuntime;
@@ -44,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public void PromptSurvey()
         {
-            _powerShellRuntime.ExecuteScript<string>(AzPredictorSurveyHelper._PromptMessageScript);
+            System.Console.WriteLine("\n---------------------------------------------------\nSurvey: How was your experience using the Az Predictor module?\nRun \"Open-AzPredictorSurvey\" to give us your feedback.\n---------------------------------------------------");
         }
     }
 }
