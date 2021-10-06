@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Update New-AzGalleryImageVersion to take in the 'Encryption' property correctly from '-TagetRegion' parameter. 
+* Update Set-AzVmBootDiagnostic to default to managed storage account if not provided.
 * Update Compute .NET SDK package reference to version 49.1.0
 * Fixed a bug in `Get-AzVM` that caused incorrect power status output.
 
