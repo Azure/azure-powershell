@@ -491,8 +491,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetId
-This parameter is required when you want to create Virtual network enabled Azure Cache for Redis.</br> 
-Syntax: -SubnetId "/subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}"
+The full resource ID of a subnet in a virtual network to deploy the Azure Cache for Redis in.
+Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/{vnetName}/subnets/{subnetName}
 
 ```yaml
 Type: System.String
