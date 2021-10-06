@@ -26,6 +26,38 @@ using System.Threading.Tasks.Dataflow;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
+    internal sealed class TelemetryDataCollection
+    {
+        public sealed class SuggestionSession
+        {
+            public uint SuggestionSessionId { get; set; }
+            public Ast UserInput { get; set; }
+            public CommandLineSuggestion FoundSuggestion { get; set; }
+            public bool IsCancellationRequested { get; set; }
+            public SuggestionDisplayMode DisplayMode { get; set; }
+            public int DisplayedSuggestionCountOrIndex { get; set; }
+            public string AcceptedSuggestion { get; set; }
+        }
+
+        public string CommandId { get; set; }
+
+        public string RequestId { get; set; }
+
+        public string SessionId { get; set; }
+
+        public PredictionClient Client { get; init; }
+
+        public bool HasSentHttpRequest { get; set; }
+
+        public string CommandLine { get; set; }
+
+        public bool IsCommandSuccess { get; set; }
+
+        public IList<SuggstionSession> SuggestionSessions => new List<SuggestionSession>();
+
+        public bool IsDataComplete { get; set; }
+    }
+
     /// <summary>
     /// A telemetry client implementation to collect the telemetry data for AzPredictor.
     /// </summary>
@@ -60,6 +92,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// We only handle one item at a time so there is no race condition.
         /// </remarks>
         private IDictionary<string, string> _userAcceptedAndSuggestion = new Dictionary<string, string>();
+
+        /// <summary>
+        /// The cached telemetry data collection sent when we process the command history data.
+        /// </summary>
+        /// <remarks>
+        /// We only access it in the thread pool which is to handle the data at the target side of the data flow.
+        /// We only handle one item at a time so there is no race condition.
+        /// </remarks>
+        private TelemetryDataCollection _cachedTelemetryDataCollection = new TelemetryDataCollection();
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictorTelemetryClient"/>.
@@ -217,65 +258,88 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </summary>
         private void DispatchTelemetryData(ITelemetryData telemetryData)
         {
+            // We'll aggregate all the telemetry data into one event. We include the data since last command history (not
+            // inclusive) to this command history (inclusive).
+            // If there is any exceptions, we'll record them separately in a different event.
+
             switch (telemetryData)
             {
                 case HistoryTelemetryData history:
-                    SendTelemetry(history);
+                    ProcessTelemetryData(history);
                     break;
                 case RequestPredictionTelemetryData requestPrediction:
-                    SendTelemetry(requestPrediction);
+                    ProcessTelemetryData(requestPrediction);
                     break;
                 case GetSuggestionTelemetryData getSuggestion:
-                    SendTelemetry(getSuggestion);
+                    ProcessTelemetryData(getSuggestion);
                     break;
                 case SuggestionDisplayedTelemetryData suggestionDisplayed:
-                    SendTelemetry(suggestionDisplayed);
+                    ProcessTelemetryData(suggestionDisplayed);
                     break;
                 case SuggestionAcceptedTelemetryData suggestionAccepted:
-                    SendTelemetry(suggestionAccepted);
+                    ProcessTelemetryData(suggestionAccepted);
                     break;
                 case ParameterMapTelemetryData parameterMap:
-                    SendTelemetry(parameterMap);
+                    ProcessTelemetryData(parameterMap);
                     break;
                 case CommandLineParsingTelemetryData commandLineParsing:
-                    SendTelemetry(commandLineParsing);
+                    ProcessTelemetryData(commandLineParsing);
                     break;
-                default:
-                    throw new NotImplementedException();
             }
         }
 
         /// <summary>
-        /// Sends the telemetry with the command history.
+        /// Processes the telemetry with the command history.
         /// </summary>
         private void SendTelemetry(HistoryTelemetryData telemetryData)
         {
-            var properties = CreateProperties(telemetryData, telemetryData.Client);
-            properties.Add("History", telemetryData.Command);
+            if (_cachedTelemetryDataCollection == null)
+            {
+                _cachedTelemetryDataCollection = new TelemetryDataCollection()
+                {
+                    IsDataComplete = false;
+                }
+            }
+            else
+            {
+                _cachedTelemetryDataCollection.IsDataComplete = true;
+            }
+
+            _cachedTelemetryDataCollection.CommandLine = telemetryData.Command;
+            .Add("History", telemetryData.Command);
             properties.Add("Success", telemetryData.Success.ToString(CultureInfo.InvariantCulture));
 
             SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/CommandHistory", properties);
         }
 
         /// <summary>
-        /// Sends the telemetry with the commands for prediction.
+        /// Processes the telemetry with the commands for prediction.
         /// </summary>
-        private void SendTelemetry(RequestPredictionTelemetryData telemetryData)
+        private void ProcessTelemetryData(RequestPredictionTelemetryData telemetryData)
         {
             _userAcceptedAndSuggestion.Clear();
 
-            var properties = CreateProperties(telemetryData, telemetryData.Client);
-            properties.Add("Command", telemetryData.Commands == null ? string.Empty : string.Join(AzPredictorConstants.CommandConcatenator, telemetryData.Commands));
-            properties.Add("HttpRequestSent", telemetryData.HasSentHttpRequest.ToString(CultureInfo.InvariantCulture));
-            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
+            if (_cachedTelemetryDataCollection != null)
+            {
+                SendTelmetry(_cachedTelemetryDataCollection);
+            }
 
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/RequestPrediction", properties);
+            _cachedTelemetryDataCollection = new TelemetryDataCollection()
+            {
+                RequestId = ((ITelemetryData)telemetryData).RequestId,
+                HasSentHttpRequest = telemetryData.HasSentHttpRequest,
+            };
+
+            if (telemetryData.Exception != null)
+            {
+                SendException("An error occurred when requesting predictions.", telemetryData.Exception);
+            }
         }
 
         /// <summary>
         /// Sends the telemetry with the suggestion returned to the user.
         /// </summary>
-        private void SendTelemetry(GetSuggestionTelemetryData telemetryData)
+        private void ProcessTelemetryData(GetSuggestionTelemetryData telemetryData)
         {
             var suggestions = telemetryData.Suggestion?.PredictiveSuggestions;
             var suggestionSource = telemetryData.Suggestion?.SuggestionSources;
@@ -297,7 +361,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             properties.Add("IsCancelled", telemetryData.IsCancellationRequested.ToString(CultureInfo.InvariantCulture));
             properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
 
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/GetSuggestion", properties);
+            if (telemetryData.Exception != null)
+            {
+                SendException("An error occurred when getting suggestions.", telemetryData.Exception);
+            }
         }
 
         /// <summary>
@@ -341,27 +408,28 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/AcceptSuggestion", properties);
         }
 
-        /// <summary>
-        /// Sends the telemetry with the parameter map file loading information.
-        /// </summary>
-        private void SendTelemetry(ParameterMapTelemetryData telemetryData)
+        private void ProcessTelemetryData(ParameterMapTelemetryData telemetryData)
         {
-            var properties = CreateProperties(telemetryData, client: null);
-            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
-
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/LoadParameterMap", properties);
+            if (parameterMap.Exception != null)
+            {
+                SendException("An error occurred when loading parameter map.", telemetryData.Exception);
+            }
         }
 
         /// <summary>
-        /// Sends the telemetry with the command line parsing information.
+        /// Process the telemetry with the command line parsing information.
         /// </summary>
         private void SendTelemetry(CommandLineParsingTelemetryData telemetryData)
         {
-            var properties = CreateProperties(telemetryData, client: null);
-            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
-            properties.Add("Command", telemetryData.Command);
+            if (commandLineParsing.Exception != null)
+            {
+                var properties = new Dictionary<string,string>()
+                {
+                    { "Command", telemetryData.Command },
+                };
 
-            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/ParseCommandLineFailure", properties);
+                SendException("An error occurred when parsing command line.", telemetryData.Exception, properties);
+            }
         }
 
         /// <summary>
@@ -380,6 +448,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             }
 
             return properties;
+        }
+
+        /// <summary>
+        /// Sends the exception event when there is an exception is thrown.
+        /// </summary>
+        private void SendException(string message, Exception exception, IDictionary<string, string> extraProperties)
+        {
+            var properties = CreateProperties(telemetryData, telemetryData.Client);
+            properties.Add("Message", message);
+            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(exception));
+
+            if (extraProperties != null)
+            {
+                foreach (var p in extraProperties)
+                {
+                    properties.Add(p.Key, p.Value);
+                }
+            }
+
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/Exception", properties);
         }
     }
 }
