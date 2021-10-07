@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private List<IDisposable> _externalDisposableObjects = new List<IDisposable>();
 
         private ISurveyHelper _surveyHelper;
+        private PowerShellRuntime _powerShellRuntime;
 
         private bool _isInitialized;
 
@@ -86,16 +87,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         public AzPredictor()
         {
-            var powerShellRuntime = new PowerShellRuntime();
+            _powerShellRuntime = new PowerShellRuntime();
+            _surveyHelper = new AzPredictorSurveyHelper(_powerShellRuntime);
 
             // To make import-module fast, we'll do all the initialization in a task.
             // Slow initialization may make opening a PowerShell window slow if "Import-Module" is added to the user's profile.
             Task.Run(() =>
                     {
-                        RegisterDisposableObject(powerShellRuntime);
-
                         _settings = Settings.GetSettings();
-                        _azContext = new AzContext(powerShellRuntime)
+                        _azContext = new AzContext(_powerShellRuntime)
                         {
                             IsInternal = (_settings.SetAsInternal == true) ? true : false,
                             SurveyId = _settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
@@ -104,7 +104,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         _azContext.UpdateContext();
                         _telemetryClient = new AzPredictorTelemetryClient(_azContext);
                         _service = new AzPredictorService(_settings.ServiceUri, _telemetryClient, _azContext);
-                        _surveyHelper = new AzPredictorSurveyHelper(powerShellRuntime);
                         _isInitialized = true;
                     });
         }
@@ -132,6 +131,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 _predictionRequestCancellationSource.Dispose();
                 _predictionRequestCancellationSource = null;
+            }
+
+            if (_surveyHelper is IDisposable disposableSurveyHelper)
+            {
+                disposableSurveyHelper.Dispose();
+                _surveyHelper = null;
+            }
+
+            if (_powerShellRuntime != null)
+            {
+                _powerShellRuntime.Dispose();
+                _powerShellRuntime = null;
             }
 
             _externalDisposableObjects.ForEach((o) => o?.Dispose());

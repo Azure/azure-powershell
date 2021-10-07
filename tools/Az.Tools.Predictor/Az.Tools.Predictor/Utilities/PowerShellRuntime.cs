@@ -15,8 +15,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
+using System.Threading;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
 {
@@ -62,14 +64,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// </remarks>
         public Runspace DefaultRunspace => _defaultRunspace.Value;
 
-        //private static readonly Lazy<Runspace> _ConsoleRunspace = new Lazy<Runspace>(() => Runspace.DefaultRunspace);
-        public static PowerShell _ConsoleRuntime = PowerShell.Create(System.Management.Automation.RunspaceMode.CurrentRunspace);
-        private PSEventSubscriber _idleEventSubscriber = null;
-
-        public PowerShellRuntime()
-        {
-            _idleEventSubscriber = _ConsoleRuntime.Runspace.Events.SubscribeEvent(_ConsoleRuntime.Runspace, PSEngineEvent.OnIdle, null, null, OnPSIdle, true, false);
-        }
+        /// <summary>
+        /// The PowerShell environment that the module is imported into.
+        /// </summary>
+        /// <remarks>
+        /// The usage of <see cref="ConsoleRuntime"/> has to be in the context of the running PowerShell thread, for example,
+        /// the callback of <see cref="PredictorInitializer.OnImport"/>.
+        /// The callbacks of <see cref="AzPredictor"/> are on a thread pool and it must not be used there.
+        /// </remarks>
+        internal PowerShell ConsoleRuntime = PowerShell.Create(System.Management.Automation.RunspaceMode.CurrentRunspace);
 
         public void Dispose()
         {
@@ -84,51 +87,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                 _defaultRunspace.Value.Dispose();
             }
 
-            if (_idleEventSubscriber != null)
+            if (ConsoleRuntime != null)
             {
-                _ConsoleRuntime.Runspace.Events.UnsubscribeEvent(_idleEventSubscriber);
-                _idleEventSubscriber = null;
+                ConsoleRuntime.Dispose();
             }
-
-            if (_ConsoleRuntime != null)
-            {
-                _ConsoleRuntime.Dispose();
-            }
-        }
-
-        private void OnPSIdle(object sender, PSEventArgs args)
-        {
-
         }
 
         /// <summary>
         /// Executes the PowerShell cmdlet in the current powershell session.
         /// </summary>
-        public IList<T> ExecuteScript<T>(string contents, bool writeToConsole = false)
+        public IList<T> ExecuteScript<T>(string contents)
         {
-            List<T> output = new List<T>();
+            Runtime.Commands.Clear();
+            Runtime.AddScript(contents);
+            Collection<T> result = Runtime.Invoke<T>();
 
-            PowerShell runtime = null;
-
-            if (writeToConsole)
-            {
-                runtime = _ConsoleRuntime;
-            }
-            else
-            {
-                runtime = Runtime;
-            }
-
-            runtime.Commands.Clear();
-            runtime.AddScript(contents);
-            Collection<T> result = runtime.Invoke<T>();
-
-            //if (result != null && result.Count > 0)
-            //{
-            //    output.AddRange(result);
-            //}
-
-            return output;
+            return result?.ToList() ?? new List<T>();
         }
     }
 }
