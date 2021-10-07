@@ -287,6 +287,113 @@ function New-AzMgServicePrincipal {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]
   [CmdletBinding(DefaultParameterSetName = 'SimpleParameterSet', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
+    [Parameter(ParameterSetName = 'DisplayNameWithoutCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # The display name for the service principal.
+    # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
+    ${DisplayName},
+
+    [Parameter(ParameterSetName = 'ApplicationObjectWithoutCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
+    ${ApplicationObject},
+
+    [Parameter(ParameterSetName = 'ApplicationWithoutCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
+    [Alias('AppId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Guid]
+    # The unique identifier for the associated application (its appId property).
+    ${ApplicationId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # The role that the service principal has over the scope.
+    ${Role},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # The scope that the service principal has permissions for.
+    ${Scope},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Home page or landing page of the application.
+    ${Homepage},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String[]]
+    # The URLs that user tokens are sent to for sign in with the associated application, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to for the associated application.
+    # Not nullable.
+    ${ReplyUrl},
+
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    ${CertValue},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet')]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    ${StartDate},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet')]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet')]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    ${EndDate},
+
+    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
+    # The collection of key credentials associated with the service principal.
+    # Not nullable.
+    # Supports $filter (eq, NOT, ge, le).
+    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
+    ${KeyCredentials},
+
+    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
+    # The collection of password credentials associated with the service principal.
+    # Not nullable.
+    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
+    ${PasswordCredentials},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
@@ -316,27 +423,7 @@ function New-AzMgServicePrincipal {
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The description exposed by the associated application.
-    ${AppDescription},
-
-    [Parameter(ParameterSetName = 'ApplicationObjectWithoutCredentialParameterSet', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
-    ${ApplicationObject},
-
-    [Parameter(ParameterSetName = 'ApplicationWithoutCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
-    [Alias('AppId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # The unique identifier for the associated application (its appId property).
-    ${ApplicationId},
+    ${AppDescription},    
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -422,17 +509,6 @@ function New-AzMgServicePrincipal {
     # Supports $filter (eq, ne, NOT).
     ${DisabledByMicrosoftStatus},
 
-    [Parameter(ParameterSetName = 'DisplayNameWithoutCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # The display name for the service principal.
-    # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
-    ${DisplayName},
-
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -453,28 +529,10 @@ function New-AzMgServicePrincipal {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # Home page or landing page of the application.
-    ${Homepage},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl]
     # informationalUrl
     # To construct, see NOTES section for INFO properties and create a hash table.
     ${Info},
-
-    [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
-    # The collection of key credentials associated with the service principal.
-    # Not nullable.
-    # Supports $filter (eq, NOT, ge, le).
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -516,17 +574,6 @@ function New-AzMgServicePrincipal {
     # To construct, see NOTES section for OAUTH2PERMISSIONSCOPE properties and create a hash table.
     ${Oauth2PermissionScope},
 
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
-    # The collection of password credentials associated with the service principal.
-    # Not nullable.
-    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
-    ${PasswordCredentials},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -542,14 +589,6 @@ function New-AzMgServicePrincipal {
     # Do not write or otherwise rely on this property.
     # May be removed in future versions.
     ${PreferredTokenSigningKeyThumbprint},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String[]]
-    # The URLs that user tokens are sent to for sign in with the associated application, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to for the associated application.
-    # Not nullable.
-    ${ReplyUrl},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -622,33 +661,6 @@ function New-AzMgServicePrincipal {
     # To construct, see NOTES section for TRANSITIVEMEMBEROF properties and create a hash table.
     ${TransitiveMemberOf},
 
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    ${CertValue},
-
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.DateTime]
-    ${StartDate},
-
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet')]
-    [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.DateTime]
-    ${EndDate},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -712,6 +724,15 @@ function New-AzMgServicePrincipal {
       $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $AppName).AppId
     }
 
+    if ($PSBoundParameters['Role']) {
+      $spRole = $PSBoundParameters['Role']
+      $null = $PSBoundParameters.Remove('Role')
+    }
+    if ($PSBoundParameters['Scope']) {
+      $spScope = $PSBoundParameters['Scope']
+      $null = $PSBoundParameters.Remove['Scope']
+    }
+    
     if ($PSBoundParameters['StartDate']) {
       $sd = $PSBoundParameters['StartDate']
       $null = $PSBoundParameters.Remove('StartDate')
@@ -744,13 +765,8 @@ function New-AzMgServicePrincipal {
       }
     }
 
-    
-
     $sp = MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
     $param = @{'ObjectId' = $sp.Id }
-    if ($PSBoundParameters['KeyCredentials']) {
-      $null = $PSBoundParameters.Remove('KeyCredentials')
-    }
 
     switch ($PSCmdlet.ParameterSetName) {
       {$_ -in 'ApplicationWithPasswordPlainParameterSet', 'ApplicationObjectWithPasswordPlainParameterSet', 'DisplayNameWithPasswordPlainParameterSet'} {
@@ -764,7 +780,7 @@ function New-AzMgServicePrincipal {
         break
       }
       {$_ -in 'ApplicationWithPasswordCredentialParameterSet', 'ApplicationObjectWithPasswordCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
-        $PSBoundParameters['PasswordCredentials'] = $pc
+        $param['PasswordCredentials'] = $pc
         $null = New-AzMgSpCredential @param
         break
       }
@@ -773,6 +789,15 @@ function New-AzMgServicePrincipal {
       }
     }
     
+    if ($spRole) {
+      $param = @{'ObjectId' = $sp.Id; 'RoleDefinitionName' = $spRole }
+      if ($spScope) {
+        $param['Scope'] = $spScope
+      }
+      
+      New-AzRoleAssignment @param
+    }
+
     $PSCmdlet.WriteObject($sp)
   }
 }

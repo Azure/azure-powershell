@@ -171,6 +171,70 @@ function Update-AzMgServicePrincipal {
     # key: id of servicePrincipal
     ${ObjectId},
 
+    [Parameter(ParameterSetName = 'SpApplicationIdWithDisplayNameParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Alias('AppId')]
+    [System.Guid]
+    # The unique identifier for the associated application (its appId property).
+    ${ApplicationId},
+
+    [Parameter(ParameterSetName = 'InputObjectWithDisplayNameParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
+    # service principal object
+    ${InputObject},
+
+    [Parameter(ParameterSetName = 'SPNWithDisplayNameParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'SpObjectIdWithDisplayNameParameterSet')]
+    [Parameter(ParameterSetName = 'SpApplicationIdWithDisplayNameParameterSet')]
+    [Parameter(ParameterSetName = 'InputObjectWithDisplayNameParameterSet')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Contains the list of identifiersUris, copied over from the associated application.
+    # Additional values can be added to hybrid applications.
+    # These values can be used to identify the permissions exposed by this app within Azure AD.
+    # For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties.
+    # Not nullable.
+    # Supports $filter (eq, NOT, ge, le, startsWith).
+    ${ServicePrincipalName},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
+    # The collection of key credentials associated with the application.
+    # Not nullable.
+    # Supports $filter (eq, NOT, ge, le).
+    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
+    ${KeyCredential},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
+    # The collection of password credentials associated with the application.
+    # Not nullable.
+    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
+    ${PasswordCredential},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String[]]
+    # The URIs that identify the application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+    # For more information, see Application Objects and Service Principal Objects.
+    # The any operator is required for filter expressions on multi-valued properties.
+    # Not nullable.
+    # Supports $filter (eq, ne, ge, le, startsWith).
+    ${IdentifierUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Home page or landing page of the application.
+    ${Homepage},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
@@ -201,19 +265,6 @@ function Update-AzMgServicePrincipal {
     [System.String]
     # The description exposed by the associated application.
     ${AppDescription},
-
-    [Parameter(ParameterSetName = 'SpApplicationIdWithDisplayNameParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Alias('AppId')]
-    [System.String]
-    # The unique identifier for the associated application (its appId property).
-    ${ApplicationId},
-
-    [Parameter(ParameterSetName = 'InputObjectWithDisplayNameParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
-    # service principal object
-    ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -326,12 +377,6 @@ function Update-AzMgServicePrincipal {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # Home page or landing page of the application.
-    ${Homepage},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl]
     # informationalUrl
     # To construct, see NOTES section for INFO properties and create a hash table.
@@ -407,18 +452,6 @@ function Update-AzMgServicePrincipal {
     # samlSingleSignOnSettings
     # To construct, see NOTES section for SAMLSINGLESIGNONSETTING properties and create a hash table.
     ${SamlSingleSignOnSetting},
-
-    [Parameter(ParameterSetName = 'SPNWithDisplayNameParameterSet', Mandatory)]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # Contains the list of identifiersUris, copied over from the associated application.
-    # Additional values can be added to hybrid applications.
-    # These values can be used to identify the permissions exposed by this app within Azure AD.
-    # For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties.
-    # Not nullable.
-    # Supports $filter (eq, NOT, ge, le, startsWith).
-    ${ServicePrincipalName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -527,6 +560,19 @@ function Update-AzMgServicePrincipal {
   )
 
   process {
+    if ($PSBoundParameters['KeyCredential']) {
+      $kc = $PSBoundParameters['KeyCredential']
+      $null = $PSBoundParameters.Remove('KeyCredential')
+    }
+    if ($PSBoundParameters['PasswordCredential']) {
+      $pc = $PSBoundParameters['PasswordCredential']
+      $null = $PSBoundParameters.Remove('PasswordCredential')
+    }
+    if ($PSBoundParameters['IdentifierUri']) {
+      $iu = $PSBoundParameters['IdentifierUri']
+      $null = $PSBoundParameters.Remove('IdentifierUri')
+    }
+
     switch ($PSCmdlet.ParameterSetName) {
       'SpObjectIdWithDisplayNameParameterSet' {
         $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
@@ -555,5 +601,21 @@ function Update-AzMgServicePrincipal {
     }
 
     MSGraph.internal\Update-AzMgServicePrincipal @PSBoundParameters
+
+    $param = @{'ObjectId'=$PSBoundParameters['Id']; 'Debug'=$PSBoundParameters['Debug']}
+    if ($iu) {
+      $param['IdentifierUri'] = $iu
+      Update-AzMgApplication @param
+      $null = $param.Remove('IdentifierUri')
+    }
+    if ($pc) {
+      $param['PasswordCredentials'] = $pc
+    }
+    if ($kc) {
+      $param['KeyCredentials'] = $kc
+    }
+    if ($pc -or $kc) {
+      New-AzMgAppCredential @param
+    }
   }
 }

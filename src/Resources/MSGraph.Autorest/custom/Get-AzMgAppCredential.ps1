@@ -26,7 +26,7 @@ function Get-AzMgAppCredential {
 
         [Parameter(ParameterSetName='ApplicationIdParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [System.String]
+        [System.Guid]
         ${ApplicationId},
 
         [Parameter(ParameterSetName='DisplayNameParameterSet', Mandatory)]

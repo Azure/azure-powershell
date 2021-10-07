@@ -20,8 +20,7 @@ function New-AzMgSpCredential {
     param(
         [Parameter(ParameterSetName='SpObjectIdWithPasswordParameterSet', Mandatory)]
         [Parameter(ParameterSetName='SpObjectIdWithCertValueParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='SpObjectIdWithKeyCredentialParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='SpObjectIdWithPasswordCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet', Mandatory)]
         [Alias('Id')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
@@ -29,16 +28,14 @@ function New-AzMgSpCredential {
 
         [Parameter(ParameterSetName='SPNWithCertValueParameterSet', Mandatory)]
         [Parameter(ParameterSetName='SPNWithPasswordParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='SPNWithKeyCredentialParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='SPNWithPasswordCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='SPNWithCredentialParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
         ${ServicePrincipalName},
 
         [Parameter(ParameterSetName='ServicePrincipalObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordParameterSet', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='ServicePrincipalObjectWithKeyCredentialParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
         ${ServicePrincipalObject},
@@ -50,16 +47,16 @@ function New-AzMgSpCredential {
         [System.String]
         ${CertValue},
 
-        [Parameter(ParameterSetName='SpObjectIdWithKeyCredentialParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='SPNWithKeyCredentialParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='ServicePrincipalObjectWithKeyCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet')]
+        [Parameter(ParameterSetName='SPNWithCredentialParameterSet')]
+        [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
         ${KeyCredentials},
 
-        [Parameter(ParameterSetName='SpObjectIdWithPasswordCredentialParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='SPNWithPasswordCredentialParameterSet', Mandatory)]
-        [Parameter(ParameterSetName='ServicePrincipalObjectWithPasswordCredentialParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='SpObjectIdWithCredentialParameterSet')]
+        [Parameter(ParameterSetName='SPNWithCredentialParameterSet')]
+        [Parameter(ParameterSetName='ServicePrincipalObjectWithCredentialParameterSet')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential[]]
         ${PasswordCredentials},
@@ -134,7 +131,7 @@ function New-AzMgSpCredential {
     
     process {
         if (!$PSBoundParameters['PasswordCredentials'] -and !$PSBoundParameters['KeyCredentials']) {
-            if ($PSBoundParameters.ContainsKey('CertValue')) {
+            if ($PSBoundParameters['CertValue']) {
                 $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
                                          -Property @{'Key'=([System.Convert]::FromBase64String($PSBoundParameters['CertValue']));
                                                      'Usage'='Verify'; 
@@ -142,87 +139,71 @@ function New-AzMgSpCredential {
             } else {
                 $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential"
             }
-
-            if ($PSBoundParameters.ContainsKey('StartDate')) {
+            if ($PSBoundParameters['StartDate']) {
                 $credential.StartDateTime = $PSBoundParameters['StartDate']
                 $null = $PSBoundParameters.Remove('StartDate')
             }
-            if ($PSBoundParameters.ContainsKey('EndDate')) {
+            if ($PSBoundParameters['EndDate']) {
                 $credential.EndDateTime = $PSBoundParameters['EndDate']
                 $null = $PSBoundParameters.Remove('EndDate')
 
             }
             $credential.KeyId = (New-Guid).ToString()
-            if ($PSBoundParameters.ContainsKey('CertValue')) {
-                $PSBoundParameters['KeyCredentials'] = $credential
+            if ($PSBoundParameters['CertValue']) {
+                $kc = $credential
                 $null = $PSBoundParameters.Remove('CertValue')
+            } else {
+                $pc = $credential
             }
         } elseif ($PSBoundParameters['PasswordCredentials']) {
-            $credential = $PSBoundParameters['PasswordCredentials']
+            $pc = $PSBoundParameters['PasswordCredentials']
+            $null = $PSBoundParameters.Remove('PasswordCredentials')
+        } else {
+            $kc = $PSBoundParameters['KeyCredentials']
             $null = $PSBoundParameters.Remove('PasswordCredentials')
         }
         
         switch ($PSCmdlet.ParameterSetName) {
-            {$_ -in 'SpObjectIdWithPasswordParameterSet', 'SpObjectIdWithPasswordCredentialParameterSet'} {
-                $PSBoundParameters['ServicePrincipalId'] = $PSBoundParameters['ObjectId']
+            {$_ -in 'SpObjectIdWithPasswordParameterSet', 'SpObjectIdWithCredentialParameterSet', 'SpObjectIdWithCertValueParameterSet'} {
+                $id = $PSBoundParameters['ObjectId']
                 $null = $PSBoundParameters.Remove('ObjectId')
-                foreach ($pc in $credential) {
-                    $PSBoundParameters['PasswordCredential'] = $pc
-                    MSGraph.internal\Add-AzMgServicePrincipalPassword @PSBoundParameters
-                }
                 break
             }
-            {$_ -in 'SpObjectIdWithCertValueParameterSet', 'SpObjectIdWithKeyCredentialParameterSet'} {
-                $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
-                $null = $PSBoundParameters.Remove('ObjectId')
-                MSGraph.internal\Update-AzMgServicePrincipal @PSBoundParameters
-                break
-            }
-            {$_ -in 'SPNWithPasswordParameterSet', 'SPNWithPasswordCredentialParameterSet'} {
+            {$_ -in 'SPNWithPasswordParameterSet', 'SPNWithCredentialParameterSet', 'SPNWithCertValueParameterSet'} {
                 $sp = Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName'] -Select Id
                 if($sp) {
-                    $PSBoundParameters['ServicePrincipalId'] = $sp.Id
+                    $id = $sp.Id
                     $null = $PSBoundParameters.Remove('ServicePrincipalName')
-                    foreach ($pc in $credential) {
-                        $PSBoundParameters['PasswordCredential'] = $pc
-                        MSGraph.internal\Add-AzMgServicePrincipalPassword @PSBoundParameters
-                    }
                 } else {
                     Write-Error "service principal with name '$($PSBoundParameters['ServicePrincipalName'])' does not exist."
                     return
                 }
                 break
             }
-            {$_ -in 'SPNWithCertValueParameterSet', 'SPNWithKeyCredentialParameterSet'} {
-                $sp = Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName'] -Select Id
-                if($sp) {
-                    $PSBoundParameters['Id'] = $sp.Id
-                    $null = $PSBoundParameters.Remove('ServicePrincipalName')
-                    MSGraph.internal\Update-AzMgServicePrincipal @PSBoundParameters
-                } else {
-                    Write-Error "service principal with name '$($PSBoundParameters['ServicePrincipalName'])' does not exist."
-                    return
-                }
-                break
-            }
-            {$_ -in 'ServicePrincipalObjectWithPasswordParameterSet', 'ServicePrincipalObjectWithPasswordCredentialParameterSet'} {
-                $PSBoundParameters['ServicePrincipalId'] = $PSBoundParameters['ServicePrincipalObject'].Id
+            {$_ -in 'ServicePrincipalObjectWithPasswordParameterSet', 'ServicePrincipalObjectWithCredentialParameterSet', 'ServicePrincipalObjectWithCertValueParameterSet'} {
+                $id = $PSBoundParameters['ServicePrincipalObject'].Id
                 $null = $PSBoundParameters.Remove('ServicePrincipalObject')
-                foreach ($pc in $credential) {
-                    $PSBoundParameters['PasswordCredential'] = $pc
-                    MSGraph.internal\Add-AzMgServicePrincipalPassword @PSBoundParameters
-                }
-                break
-            }
-            {$_ -in 'ServicePrincipalObjectWithCertValueParameterSet', 'ServicePrincipalObjectWithKeyCredentialParameterSet'} {
-                $PSBoundParameters['Id'] = $PSBoundParameters['ServicePrincipalObject'].Id
-                $null = $PSBoundParameters.Remove('ServicePrincipalObject')
-                MSGraph.internal\Update-AzMgServicePrincipal @PSBoundParameters
                 break
             }
             default {
                 break
             }
-        }    
+        } 
+        if ($pc) {
+            $PSBoundParameters['ServicePrincipalId'] = $id
+            foreach ($credential in $pc) {
+                $PSBoundParameters['PasswordCredential'] = $credential
+                $null = MSGraph.internal\Add-AzMgServicePrincipalPassword @PSBoundParameters
+            }
+            $null = $PSBoundParameters.Remove('ServicePrincipalId')
+            if ($PSBoundParameters['PasswordCredential']) {
+                $null = $PSBoundParameters.Remove('PasswordCredential')
+            }
+        }
+        if ($kc) {
+            $PSBoundParameters['Id'] = $id
+            $PSBoundParameters['KeyCredentials'] = $kc
+            MSGraph.internal\Update-AzMgServicePrincipal @PSBoundParameters
+        }   
     }
 }

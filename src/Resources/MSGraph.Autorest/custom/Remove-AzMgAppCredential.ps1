@@ -26,7 +26,7 @@ function Remove-AzMgAppCredential {
 
         [Parameter(ParameterSetName='ApplicationIdWithKeyIdParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [System.String]
+        [System.Guid]
         ${ApplicationId},
 
         [Parameter(ParameterSetName='ApplicationDisplayNameParameterSet', Mandatory)]
