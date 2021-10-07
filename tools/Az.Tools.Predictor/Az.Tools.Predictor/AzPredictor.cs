@@ -311,7 +311,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 parsedResult = GetAstAndMaskedCommandLine(commandLine);
             }
 
-            //if (parsedResult.IsSupported && _surveyHelper?.ShouldPromptSurvey() == true)
+            if (parsedResult.IsSupported && _surveyHelper?.ShouldPromptSurvey() == true)
             {
                 _surveyHelper.PromptSurvey();
             }

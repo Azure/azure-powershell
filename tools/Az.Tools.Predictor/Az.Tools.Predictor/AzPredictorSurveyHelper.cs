@@ -37,13 +37,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             var promptMessageScript = @"
                 if ([Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle) {
-                    Write-Host `n---------------------------------------------------
-                    Write-Host Survey: -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline
-                    Write-Host ' How was your experience using the Az Predictor module?'
+                    [Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle = $False
+                    Write-Host `nSurvey: -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewLine; Write-Host ' How was your experience using the Az Predictor module?'
                     Write-Host ''
                     Write-Host 'Run ' -NoNewline; Write-Host Open-AzPredictorSurvey -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline; Write-Host ' to give us your feedback.'
-                    Write-Host ---------------------------------------------------
-                    [Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle = $False
+                    Write-Host '(press Enter to continue)'
                 }";
 
             ScriptBlock scriptBlock = ScriptBlock.Create(promptMessageScript);
@@ -76,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             if ((_lastCheckedTime == DateTime.MinValue) || (_lastCheckedTime.AddDays(1) <= DateTime.Now))
             {
                 _lastCheckedTime = DateTime.Now;
-                retur _sharedSurveyHelper.ShouldPropmtSurvey(_ModuleName, _ModuleVersion);
+                return _sharedSurveyHelper.ShouldPropmtSurvey(_ModuleName, _ModuleVersion);
             }
 
             return false;
