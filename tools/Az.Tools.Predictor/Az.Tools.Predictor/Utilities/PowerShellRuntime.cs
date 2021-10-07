@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
@@ -61,8 +62,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// </remarks>
         public Runspace DefaultRunspace => _defaultRunspace.Value;
 
-        private static readonly Lazy<Runspace> _ConsoleRunspace = new Lazy<Runspace>(() => Runspace.DefaultRunspace);
-        public static readonly Lazy<PowerShell> _ConsoleRuntime = new Lazy<PowerShell>(() => PowerShell.Create(System.Management.Automation.RunspaceMode.CurrentRunspace));
+        //private static readonly Lazy<Runspace> _ConsoleRunspace = new Lazy<Runspace>(() => Runspace.DefaultRunspace);
+        public static PowerShell _ConsoleRuntime = PowerShell.Create(System.Management.Automation.RunspaceMode.CurrentRunspace);
+        private PSEventSubscriber _idleEventSubscriber = null;
+
+        public PowerShellRuntime()
+        {
+            _idleEventSubscriber = _ConsoleRuntime.Runspace.Events.SubscribeEvent(_ConsoleRuntime.Runspace, PSEngineEvent.OnIdle, null, null, OnPSIdle, true, false);
+        }
 
         public void Dispose()
         {
@@ -76,6 +83,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
             {
                 _defaultRunspace.Value.Dispose();
             }
+
+            if (_idleEventSubscriber != null)
+            {
+                _ConsoleRuntime.Runspace.Events.UnsubscribeEvent(_idleEventSubscriber);
+                _idleEventSubscriber = null;
+            }
+
+            if (_ConsoleRuntime != null)
+            {
+                _ConsoleRuntime.Dispose();
+            }
+        }
+
+        private void OnPSIdle(object sender, PSEventArgs args)
+        {
+
         }
 
         /// <summary>
@@ -89,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
 
             if (writeToConsole)
             {
-                runtime = _ConsoleRuntime.Value;
+                runtime = _ConsoleRuntime;
             }
             else
             {

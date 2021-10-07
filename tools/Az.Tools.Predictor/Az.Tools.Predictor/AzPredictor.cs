@@ -87,7 +87,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public AzPredictor()
         {
             var powerShellRuntime = new PowerShellRuntime();
-            var _ = PowerShellRuntime._ConsoleRuntime.Value;
 
             // To make import-module fast, we'll do all the initialization in a task.
             // Slow initialization may make opening a PowerShell window slow if "Import-Module" is added to the user's profile.
