@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        public const string SimpleParameterSet = "SimpleParameterSet";
+        public const string SimpleParameterSet = "SimpleParameterSet", DefaultParameter = "DefaultParameter";
 
         public override void ExecuteCmdlet()
         {
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
+            ParameterSetName = DefaultParameter,
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
+            ParameterSetName = DefaultParameter,
             Position = 2,
             Mandatory = true,
             ValueFromPipeline = true)]
@@ -122,5 +122,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "UserData for the Vmss, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        public string UserData { get; set; }
     }
 }
