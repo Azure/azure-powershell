@@ -38,7 +38,7 @@ Invoke a run command on the VM.
 
 ## EXAMPLES
 
-### Example 1 - Windows
+### Example 1
 ```
 PS C:\> Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RunPowerShellScript' -ScriptPath 'sample.ps1' -Parameter @{param1 = "var1"; param2 = "var2"}
 ```
@@ -53,7 +53,7 @@ Write-Host This is a sample script with parameters $param1 $param2
 ```
 Parameter value can be string type only and script is responsible for converting them to other types if needed.
 
-## Example 2 - Linux
+## Example 2
 
 For linux the parameters get converted to environment variables:
 ```
