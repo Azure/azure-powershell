@@ -1742,6 +1742,10 @@
                 <Label>ExtendedLocation</Label>
                 <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>CustomIpPrefix</Label>
+                <PropertyName>CustomIpPrefixText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
