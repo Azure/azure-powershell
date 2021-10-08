@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMConfig", DefaultParameterSetName = "DefaultParameterSet"), OutputType(typeof(PSVirtualMachine))]
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        private const string DefaultParameterSetName = "DefaultParameterSet", ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
+	
         [Alias("ResourceName", "Name")]
         [Parameter(
             Mandatory = true,
@@ -59,14 +61,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Position = 4,
             Mandatory = true,
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "ExplicitIdentityParameterSet",
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
 
@@ -134,6 +136,18 @@ namespace Microsoft.Azure.Commands.Compute
         {
             get { return true; }
         }
+	
+	[Parameter(
+            Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DefaultParameterSetName,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        public string UserData { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -215,6 +229,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 vm.CapacityReservation = new CapacityReservationProfile();
                 vm.CapacityReservation.CapacityReservationGroup = new SubResource(this.CapacityReservationGroupId);
+            }
+	    
+	    if (this.IsParameterBound(c => c.UserData))
+            {
+                vm.UserData = this.UserData;
             }
 
             WriteObject(vm);
