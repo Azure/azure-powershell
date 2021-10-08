@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated New-AzGalleryImageVersion to take in the 'Encryption' property correctly from '-TagetRegion' parameter. 
 * Updated Set-AzVmBootDiagnostic to default to managed storage account if not provided.
 
 ## Version 4.17.1
