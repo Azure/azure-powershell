@@ -29,7 +29,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// them to the model.
         /// e.g., Get-AzContext -Name Hello -Location 'EastUS' => Get-AzContext -Location *** -Name ***
         /// </summary>
-        /// <param name="cmdAst">The last user input command.</param>
+        /// <param name="commandLine">The command line to mask.</param>
+        public static string MaskCommandLine(string commandLine)
+        {
+            var asts = Parser.ParseInput(commandLine, out _, out _);
+            var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
+            var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
+
+            return CommandLineUtilities.MaskCommandLine(commandAst);
+        }
+
+        /// <summary>
+        /// Masks the user input of any data, like names and locations.
+        /// Also alphabetizes the parameters to normalize them before sending
+        /// them to the model.
+        /// e.g., Get-AzContext -Name Hello -Location 'EastUS' => Get-AzContext -Location *** -Name ***
+        /// </summary>
+        /// <param name="cmdAst">The command to mask.</param>
         public static string MaskCommandLine(CommandAst cmdAst)
         {
             var commandElements = cmdAst?.CommandElements;

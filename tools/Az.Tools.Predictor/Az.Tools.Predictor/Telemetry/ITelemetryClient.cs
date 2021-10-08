@@ -30,11 +30,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public string RequestId { get; set; }
 
         /// <summary>
-        /// Gets the session id for the telemetry events.
-        /// </summary>
-        public string SessionId { get; }
-
-        /// <summary>
         /// Collects the event of the history command.
         /// </summary>
         /// <param name="telemetryData">The data to collect.</param>

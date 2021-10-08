@@ -83,9 +83,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
-            // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
-
             Assert.Null(telemetryClient.GetSuggestionData);
             Assert.Null(telemetryClient.SuggestionDisplayedData);
             Assert.Null(telemetryClient.SuggestionAcceptedData);
@@ -131,9 +128,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
-            // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
-
             Assert.Null(telemetryClient.GetSuggestionData);
             Assert.Null(telemetryClient.SuggestionDisplayedData);
             Assert.Null(telemetryClient.SuggestionAcceptedData);
@@ -178,9 +172,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
-
-            // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             Assert.Null(telemetryClient.GetSuggestionData);
             Assert.Null(telemetryClient.SuggestionDisplayedData);
@@ -232,9 +223,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
-            // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
-
             Assert.Null(telemetryClient.GetSuggestionData);
             Assert.Null(telemetryClient.SuggestionDisplayedData);
             Assert.Null(telemetryClient.SuggestionAcceptedData);
@@ -279,9 +267,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
-
-            // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             Assert.Null(telemetryClient.GetSuggestionData);
             Assert.Null(telemetryClient.SuggestionDisplayedData);
@@ -360,9 +345,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             AzPredictorTelemetryTests.EnsureDifferentRequestId(firstHistoryData, firstRequestPredictionData);
             AzPredictorTelemetryTests.EnsureSameRequestId(firstRequestPredictionData, secondHistoryData);
 
-            AzPredictorTelemetryTests.EnsureSameSessionId(firstHistoryData, firstRequestPredictionData);
-            AzPredictorTelemetryTests.EnsureSameSessionId(firstRequestPredictionData, secondHistoryData);
-
             telemetryClient.ResetWaitingTasks();
             expectedTelemetryCount = 1;
             telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
@@ -386,9 +368,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             // There is no new request prediction. The request id isn't changed.
             AzPredictorTelemetryTests.EnsureSameRequestId(firstRequestPredictionData, telemetryClient.HistoryData);
-
-            // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(firstRequestPredictionData, telemetryClient.HistoryData);
 
             telemetryClient.ResetWaitingTasks();
             expectedTelemetryCount = 2;
@@ -423,9 +402,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
-
-            // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
         }
 
         /// <summary>
@@ -460,9 +436,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(MockObjects.PredictionClient, telemetryClient.RequestPredictionData.Client);
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
-
-            // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
         }
@@ -499,9 +472,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(MockObjects.PredictionClient, telemetryClient.RequestPredictionData.Client);
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
-
-            // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
         }
@@ -546,9 +516,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
-
-            // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
         }
 
         /// <summary>
@@ -613,8 +580,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             AzPredictorTelemetryTests.EnsureSameRequestId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionDisplayedData);
             AzPredictorTelemetryTests.EnsureSameRequestId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionAcceptedData);
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionDisplayedData);
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionAcceptedData);
 
             Assert.Null(telemetryClient.HistoryData);
             Assert.Null(telemetryClient.RequestPredictionData);
@@ -638,7 +603,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.NotEqual(secondSuggestionPackage.Session, firstSuggestionPackage.Session);
             AzPredictorTelemetryTests.EnsureSameRequestId(secondGetSuggestionData, firstGetSuggestionData);
-            AzPredictorTelemetryTests.EnsureSameSessionId(secondGetSuggestionData, firstGetSuggestionData);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
         }
@@ -908,11 +872,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         private static void EnsureSameRequestId(ITelemetryData expected, ITelemetryData actual)
         {
             Assert.Equal(expected.RequestId, actual.RequestId);
-        }
-
-        private static void EnsureSameSessionId(ITelemetryData expected, ITelemetryData actual)
-        {
-            Assert.Equal(expected.SessionId, actual.SessionId);
         }
 
         /// <summary>
