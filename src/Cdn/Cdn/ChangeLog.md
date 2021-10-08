@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.8.1
 * Fixed null reference exception and typos in `New-AzFrontDoorCdnRule` cmdlet
 
 ## Version 1.8.0

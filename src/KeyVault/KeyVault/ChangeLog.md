@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.6.0
 * Supported custom role definitions on managed HSM:
     - Create via `New-AzKeyVaultRoleDefinition`,
     - Delete via `Remove-AzKeyVaultRoleDefinition`,
