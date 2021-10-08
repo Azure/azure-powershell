@@ -44,7 +44,7 @@ PS C:\> Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -Comm
 ```
 
 Where arg1 and arg2 are defined as parameters in the sample.ps1:
-```
+```powershell
 param(
 [string]$param1,
 [string]$param2
