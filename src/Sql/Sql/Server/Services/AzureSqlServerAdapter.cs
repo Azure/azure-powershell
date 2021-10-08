@@ -143,7 +143,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 RestrictOutboundNetworkAccess = model.RestrictOutboundNetworkAccess,
                 Administrators = GetActiveDirectoryInformation(model.Administrators),
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
-                KeyId = model.KeyId
+                KeyId = model.KeyId,
+                FederatedClientId = model.FederatedClientId
             });
 
             return CreateServerModelFromResponse(resp);
@@ -194,6 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             }
             server.PrimaryUserAssignedIdentityId = resp.PrimaryUserAssignedIdentityId;
             server.KeyId = resp.KeyId;
+            server.FederatedClientId = resp.FederatedClientId;
 
             return server;
         }
