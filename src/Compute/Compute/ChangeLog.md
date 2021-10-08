@@ -23,6 +23,17 @@
 * Added support for proxy and debug settings for VM Extension for SAP (AEM)
 * Updated New-AzGalleryImageVersion to take in the 'Encryption' property correctly from '-TagetRegion' parameter. 
 * Updated Set-AzVmBootDiagnostic to default to managed storage account if not provided.
+* * Added `UserData` parameter to the following cmdlets:
+    - `Get-AzVm`
+    - `Get-AzVmss`
+    - `Get-AzVmssVm`
+    - `New-Azvm`
+    - `New-AzVmConfig`
+    - `New-AzVmss`
+    - `New-AzVmssConfig`
+    - `Update-AzVm`
+    - `Update-AzVmss`
+    - `Update-AzVmssVm`
 
 ## Version 4.17.1
 * Updated Compute .NET SDK package reference to version 49.1.0
