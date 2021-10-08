@@ -323,6 +323,18 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = DiskFileParameterSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        public string UserData { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -459,6 +471,19 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (_cmdlet.DiskFile == null)
                 {
+                    //adam testin
+                    if (String.IsNullOrEmpty(_cmdlet.UserData) ||
+                        _cmdlet.UserData.Contains(" ") ||
+                        _cmdlet.UserData.Length % 4 != 0 ||
+                        _cmdlet.UserData.Contains("\t") ||
+                        _cmdlet.UserData.Contains("\r") ||
+                        _cmdlet.UserData.Contains("\n"))
+                    {
+                        var x = 1;
+                        x += 1;
+                    }
+                    //adam
+                
                     return resourceGroup.CreateVirtualMachineConfig(
                         name: _cmdlet.Name,
                         networkInterface: networkInterface,
@@ -484,7 +509,8 @@ namespace Microsoft.Azure.Commands.Compute
                         sshPublicKeys: sshPublicKeyList,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
-                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
+                        userData: _cmdlet.UserData
                         );
                 }
                 else
@@ -515,7 +541,8 @@ namespace Microsoft.Azure.Commands.Compute
                         encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
-                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
+                        userData: _cmdlet.UserData
                     );
                 }
             }
@@ -698,7 +725,8 @@ namespace Microsoft.Azure.Commands.Compute
                         EvictionPolicy = this.VM.EvictionPolicy,
                         BillingProfile = this.VM.BillingProfile,
                         SecurityProfile = this.VM.SecurityProfile,
-                        CapacityReservation = this.VM.CapacityReservation
+                        CapacityReservation = this.VM.CapacityReservation,
+                        UserData = this.VM.UserData
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
