@@ -2821,3 +2821,342 @@ function Test-VirtualMachineScaleSetSpotRestorePolicy
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test the VMSS spot restore policy 
+#>
+function Test-VMSSUserdata
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    $loc = Get-ComputeVMLocation;
+    try
+    {
+
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+        $platformFaultDomain = 1;
+
+        $text = "new vmss";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+        $userData = $encodedText;
+
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        #VMSS in Flexible orchestration mode
+        $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomain -UserData $userData -OrchestrationMode "Flexible"; #-SkuName "Standard_D2s_v3";
+        $vmss = New-AzVmss -VirtualMachineScaleSet $vmssConfig -ResourceGroupName $rgname -Name $vmssName;
+        $vm = New-AzVm -ResourceGroupName $rgname -Location $loc -Name $vmssName -VmssId $vmss.Id -Credential $cred;
+
+        Assert-AreEqual $vmss.VirtualMachineProfile.UserData $userData;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test the VMSS spot restore policy 
+#>
+function Test-VMSSUserdata2
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $networkApiVersion = "2021-02-01";
+        $publicIPAddressName = "pubipvmss";
+        # $pubip = New-AzPublicIpAddress -Force -Name $publicIPAddressName -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        # trying -Sku Standard
+        $pubip = New-AzPublicIpAddress -Force -Sku Standard -Name $publicIPAddressName -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname) -Tier Global;
+        $pubip = Get-AzPublicIpAddress -Name $publicIPAddressName -ResourceGroupName $rgname;
+
+        # Create LoadBalancer
+        $frontendName = Get-ResourceName
+        $backendAddressPoolName = Get-ResourceName
+        $probeName = Get-ResourceName
+        $inboundNatPoolName = Get-ResourceName
+        $lbruleName = Get-ResourceName
+        $lbName = Get-ResourceName
+
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip;
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName;
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2;
+        $inboundNatPool = New-AzLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId `
+            $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3364 -BackendPort 3370;
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName `
+            -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool `
+            -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
+            -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP;
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $loc `
+            -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool `
+            -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool;
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname;
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+
+        $adminUsername = 'Foo12';
+        $adminPassword = Get-PasswordForVM;
+
+        $text = "new vmss";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+        $userData = $encodedText;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+
+
+        #$ipCfg = New-AzVmssIPConfig -Name 'test' `
+        #    -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
+        #    -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
+        #    -SubnetId $subnetId;
+        # Create VMSS with managed disk
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
+            -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id -SubnetId $subnetId;
+
+         #removed -EnableSpotRestore 
+        $vmss = New-AzVmssConfig -Location $loc -UserData $userData -OrchestrationMode "Flexible" -SkuCapacity 2 -SkuName 'Standard_A2_v2' -UpgradePolicyMode 'Automatic' -SpotRestoreTimeout 'PT35M' -PlatformFaultDomainCount 1 -Priority 'Spot'`
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg -NetworkApiVersion $networkApiVersion `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName;
+
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView:$false -UserData;
+        Assert-AreEqual $vmss.VirtualMachineProfile.Userdata $userData;
+
+        $text2 = "update vmss";
+        $bytes2 = [System.Text.Encoding]::Unicode.GetBytes($text2);
+        $encodedText2 = [Convert]::ToBase64String($bytes2);
+        $userData2 = $encodedText2;
+        #$vmssUp2 = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Userdata $userData2; 
+        #$vmss2 = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView:$false -Userdata;
+        #Assert-AreEqual $vmss2.VirtualMachineProfile.Userdata $userData2;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test the VMSS spot restore policy 
+#>
+function Test-VMSSUserdata3
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    $loc = Get-ComputeVMLocation;
+    try
+    {
+        # didn't work $loc = "westcentralus";
+        $loc = "eastus";
+        $rgname = "vmssflex-powershell-slb2";
+        $vmssName = "myVmssSlb";
+        $vmNamePrefix = "vmSlb";
+        $vmssInstanceCount = 5;
+        $vmssSku = "Standard_DS1_v2";
+
+
+        $vnetname = "myVnet";
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "default-slb";
+        $subnetAddress = "10.0.2.0/24";
+
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $text = "new vmss";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+        $userData = $encodedText;
+
+        $rg = New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a virtual network 
+
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress ;
+        $virtualNetwork = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rg.ResourceGroupName -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+
+        #Optionally you can place instances behind a standard load balancer
+        # # Create a public IP address
+        $publicIP = New-AzPublicIpAddress `
+            -ResourceGroupName $rg.ResourceGroupName `
+            -Location $loc `
+            -AllocationMethod Static `
+            -Sku "Standard" `
+            -IpAddressVersion "IPv4" `
+            -Name "myLBPublicIP";
+
+        # # Create a frontend and backend IP pool
+        $frontendIP = New-AzLoadBalancerFrontendIpConfig `
+         -Name "myFrontEndPool" `
+         -PublicIpAddress $publicIP;
+
+        $backendPool = New-AzLoadBalancerBackendAddressPoolConfig `
+            -Name "myBackEndPool" ;
+
+        # # Create the load balancer
+        $lb = New-AzLoadBalancer `
+         -ResourceGroupName $rg.ResourceGroupName `
+         -Name "myLoadBalancer" `
+         -Sku "Standard" `
+         -Tier "Regional" `
+         -Location $loc `
+         -FrontendIpConfiguration $frontendIP `
+         -BackendAddressPool $backendPool ;
+
+        # # Create a load balancer health probe for TCP port 80
+        Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
+         -LoadBalancer $lb `
+         -Protocol TCP `
+         -Port 80 `
+         -IntervalInSeconds 15 `
+         -ProbeCount 2;
+
+        # # Create a load balancer rule to distribute traffic on port TCP 80
+        # # The health probe from the previous step is used to make sure that traffic is
+        # # only directed to healthy VM instances
+        Add-AzLoadBalancerRuleConfig `
+             -Name "myLoadBalancerRule" `
+             -LoadBalancer $lb `
+             -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+             -BackendAddressPool $lb.BackendAddressPools[0] `
+             -Protocol TCP `
+             -FrontendPort 80 `
+             -BackendPort 80 `
+             -DisableOutboundSNAT `
+             -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb);
+
+        # # Add outbound connectivity rule
+        Add-AzLoadBalancerOutboundRuleConfig `
+            -Name "outboundrule" `
+            -LoadBalancer $lb `
+            -AllocatedOutboundPort '10000' `
+            -Protocol 'All' `
+            -IdleTimeoutInMinutes '15' `
+            -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+            -BackendAddressPool $lb.BackendAddressPools[0] ;
+
+        # # Update the load balancer configuration
+        Set-AzLoadBalancer -LoadBalancer $lb;
+
+        # # Create IP address configurations
+        # # Instances will require explicit outbound connectivity, for example
+        # #   - NAT Gateway on the subnet (recommended)
+        # #   - Instances in backend pool of Standard LB with outbound connectivity rules
+        # #   - Public IP address on each instance
+        # # See aka.ms/defaultoutboundaccess for more info
+        $ipConfig = New-AzVmssIpConfig `
+             -Name "myIPConfig" `
+             -SubnetId $virtualNetwork.Subnets[0].Id `
+             -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
+             -Primary;
+
+        # Create a config object
+        # The VMSS config object stores the core information for creating a scale set
+        $vmssConfig = New-AzVmssConfig `
+                -Location $loc `
+                -SkuCapacity $vmssInstanceCount `
+                -SkuName $vmssSku `
+                -OrchestrationMode 'Flexible' `
+                -PlatformFaultDomainCount 1 -UserData $userData;
+
+        # Reference a virtual machine image from the gallery
+        Set-AzVmssStorageProfile $vmssConfig `
+            -OsDiskCreateOption "FromImage" `
+            -ImageReferencePublisher "Canonical" `
+            -ImageReferenceOffer "UbuntuServer" `
+            -ImageReferenceSku "18.04-LTS" `
+            -ImageReferenceVersion "latest";
+
+        # Set up information for authenticating with the virtual machine
+        Set-AzVmssOsProfile $vmssConfig `
+             -AdminUsername $cred.UserName `
+             -AdminPassword $cred.Password `
+             -ComputerNamePrefix $vmNamePrefix ;
+
+        # Attach the virtual network to the config object
+        Add-AzVmssNetworkInterfaceConfiguration `
+            -VirtualMachineScaleSet $vmssConfig `
+            -Name "network-config" `
+            -Primary $true `
+            -IPConfiguration $ipConfig `
+            -NetworkApiVersion '2020-11-01' ;
+
+
+        # Create the scale set with the config object (this step might take a few minutes)
+        $vmss = New-AzVmss `
+             -ResourceGroupName $rg.ResourceGroupName `
+             -Name $vmssName `
+             -VirtualMachineScaleSet $vmssConfig `
+             -AsJob;######trying this
+
+        $result = $vmss | Wait-Job;
+
+        $vmssGet = Get-AzVmss -ResourceGroupName $rg.ResourcegroupName -Name $vmssName -Userdata -InstanceView:$false;
+        ###$result = $vmssGet | Wait-Job;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
+
+        $text2 = "update vmss";
+        $bytes2 = [System.Text.Encoding]::Unicode.GetBytes($text2);
+        $encodedText2 = [Convert]::ToBase64String($bytes2);
+        $userData2 = $encodedText2;
+
+        # Update VMSS Userdata
+        $vmssUp = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssGet -AsJob -Userdata $userData2; # -SkipExtensionsOnOverprovisionedVMs $true;
+        #succeeded until here
+        $result = $vmssUp | Wait-Job;
+        $vmssGet2 = Get-AzVmss -ResourceGroupName $rg.ResourcegroupName -Name $vmssName -Userdata -InstanceView:$false;
+        Assert-AreEqual $vmssGet2.VirtualMachineProfile.UserData $userData2;
+
+        #Assign VM to the VMSS.
+        #$vmName = "vm" + $rg.ResourceGroupName;
+        #$vmInVmss = New-AzVm -ResourceGroupName $rg.resourcegroupName -location $loc -name $vmName -VmssId $vmssGet2.Id -Credential $cred;
+
+
+        #Null VMSS Userdata
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
