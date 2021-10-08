@@ -19,7 +19,9 @@
 --->
 
 ## Upcoming Release
-* Support for Sku, ScaleUnits parameters of BastionHost resource.
+* Added optional parameter `-IsSecuritySite` to the following cmdlet:
+    - `New-AzVpnSite`
+* Support for Sku, ScaleUnits parameters of BastionHost resource. [#15885]
     - `New-AzBastion`
     - `Set-AzBastion`
 * Onboard Azure Resource Manager to Private Link Common Cmdlets
