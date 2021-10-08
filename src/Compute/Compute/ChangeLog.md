@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated Set-AzVmBootDiagnostic to default to managed storage account if not provided.
 
 ## Version 4.17.1
 * Updated Compute .NET SDK package reference to version 49.1.0

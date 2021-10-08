@@ -74,7 +74,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// </summary>
         [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags")]
         public Hashtable Tag { get; set; }
-        
+
+        /// <summary>
+        /// Indicates whether DisableLocalAuth is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "enabling or disabling SAS authentication for the Service Bus namespace")]
+        public SwitchParameter DisableLocalAuth { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -87,7 +93,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             {
                 try
                 {
-                    WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary));
+                    WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, DisableLocalAuth.IsPresent));
                 }
                 catch (Management.ServiceBus.Models.ErrorResponseException ex)
                 {

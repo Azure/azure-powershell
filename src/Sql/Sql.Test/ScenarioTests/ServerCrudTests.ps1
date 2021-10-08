@@ -257,6 +257,69 @@ function Test-UpdateServerWithoutIdentity
 
 <#
 	.SYNOPSIS
+	Tests creating a server with a federated client id
+#>
+function Test-CreateServerWithFederatedClientId
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+
+	$serverName = Get-ServerName
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$federatedClientId = "3728d52a-7b46-47a9-8a8c-318c27263eef";
+
+	try
+	{
+		New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "eastus2euap" -SqlAdministratorCredentials $credentials -FederatedClientId $federatedClientId -AssignIdentity
+		$respserver = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName
+		Assert-AreEqual $respserver.ServerName $serverName
+		Assert-AreEqual $respserver.FederatedClientId $federatedClientId
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a server with a federated client id
+#>
+function Test-UpdatingServerWithFederatedClientId
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+
+	$serverName = Get-ServerName
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$federatedClientId = "3728d52a-7b46-47a9-8a8c-318c27263eef";
+	$updatedFederatedClientId = "dac7a46b-3dc9-4893-ab34-18169a917073";
+
+	try
+	{
+		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "eastus2euap" -SqlAdministratorCredentials $credentials -FederatedClientId $federatedClientId -AssignIdentity
+		Assert-AreEqual $server1.ServerName $serverName
+		Assert-AreEqual $server1.FederatedClientId $federatedClientId
+
+		# Update server with new Federated client id
+		$newPassword = "n3wc00lP@55w0rd"
+		$secureString = ConvertTo-SecureString $newPassword -AsPlainText -Force
+		$server2 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -SqlAdministratorPassword $secureString -FederatedClientId $updatedFederatedClientId
+		Assert-AreEqual $server2.FederatedClientId $updatedFederatedClientId
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+
+<#
+	.SYNOPSIS
 	Tests create and update a server with minimal TLS version
 	.DESCRIPTION
 	SmokeTest
