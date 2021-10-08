@@ -121,15 +121,15 @@ Describe 'Remove-AzConnectedMachineExtension' {
         Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -ExtensionTarget $target
 
         Write-Host "Getting the specific custom extension" -ForegroundColor Cyan
-        $custom = Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1
+        $custom = Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name $customExtension
         $custom.Name | Should -Be $customExtension
-        $custom.Setting["CommandToExecute"] | Should -Not -BeLike $all[0].Settings["CommandToExecute"]
-        $custom.Setting["TypeHandlerVersion"] | Should -Not -Be "1.10.10"
+        $custom.Setting["CommandToExecute"] | Should -Not -BeLike $all[0].Setting["CommandToExecute"]
+        $custom.TypeHandlerVersion | Should -Not -Be "1.10.10"
 
         Write-Host "Deleting the extensions" -ForegroundColor Cyan
         Remove-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name $customExtension
         { Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name $customExtension } | Should -Throw
-        Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName | Remove-AzConnectedMachineExtension
+        Remove-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name $dependencyExtension
         { Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name $dependencyExtension } | Should -Throw
     }
 }

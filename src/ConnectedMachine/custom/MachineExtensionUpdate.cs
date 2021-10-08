@@ -17,9 +17,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520
         {
             foreach (var key in this.Keys)
             {
-                container.Add(
-                    key.ToString(),
-                    Runtime.JsonSerializable.ToJsonValue(this[key]));
+                if (!container.ContainsKey(key.ToString()))
+                {
+                    container.Add(
+                        key.ToString(),
+                        Runtime.JsonSerializable.ToJsonValue(this[key]));
+                }
             }
         }
 

@@ -46,7 +46,8 @@ module-version: 0.4.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2021-05-20/HybridCompute.json
+  - D:/azure-rest-api-specs/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2021-05-20/HybridCompute.json
+#  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2021-05-20/HybridCompute.json
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2021-05-20/privateLinkScopes.json
 
 directive:

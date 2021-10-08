@@ -15,7 +15,7 @@ Import-Module "$PSScriptRoot/helper.psm1" -Force
 
 Describe 'Remove-AzConnectedMachine' {
     BeforeAll {
-        $machineName = $env.MachineName2
+        $machineName = $env.MachineName
 
         if ($TestMode -ne 'playback' -and $IsMacOS) {
             Write-Host "Live tests can only be run on Windows and Linux. Skipping..."
