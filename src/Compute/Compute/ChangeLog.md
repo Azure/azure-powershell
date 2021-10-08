@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.17.1
 * Updated Compute .NET SDK package reference to version 49.1.0
 * Fixed a bug in `Get-AzVM` that caused incorrect power status output.
 

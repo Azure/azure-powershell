@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.12.0
 * Support for Sku, ScaleUnits parameters of BastionHost resource.
     - `New-AzBastion`
     - `Set-AzBastion`
