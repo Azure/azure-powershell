@@ -118,6 +118,23 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
         public SwitchParameter NoWait { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ResourceGroupNameParameterSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = IdParameterSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
+            HelpMessage = "UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.",
+            ValueFromPipeline = true)]
+        public string UserData { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -132,6 +149,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ExecuteClientAction(() =>
                 {
+                    //todo: remove below for prod release
+                    string usdTest = this.IsParameterBound(c => c.UserData)
+                            ? this.UserData
+                            : this.VM.UserData;
+                            
                     var parameters = new VirtualMachine
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,
@@ -159,7 +181,10 @@ namespace Microsoft.Azure.Commands.Compute
                         AdditionalCapabilities = this.VM.AdditionalCapabilities,
                         EvictionPolicy = this.VM.EvictionPolicy,
                         Priority = this.VM.Priority,
-                        CapacityReservation = this.VM.CapacityReservation
+                        CapacityReservation = this.VM.CapacityReservation,
+                        UserData = this.IsParameterBound(c => c.UserData)
+                            ? this.UserData
+                            : this.VM.UserData
                     };
 
                     if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
