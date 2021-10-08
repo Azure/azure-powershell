@@ -19,10 +19,12 @@ Tests EventHub Namespace Create List Remove operations.
 #>
 function ServiceBusTests {
     # Setup    
-    $location = Get-Location
+    $location = "East US 2"
     $resourceGroupName = getAssetName "RGName-"
     $namespaceName = getAssetName "Namespace1-"
     $namespaceName2 = getAssetName "Namespace2-"
+    $namespaceName3 = getAssetName "Namespace3-"
+
  
     Write-Debug "Create resource group"    
     New-AzResourceGroup -Name $resourceGroupName -Location $location -Force 
@@ -60,7 +62,16 @@ function ServiceBusTests {
     $allCreatedNamespace = Get-AzServiceBusNamespace
     Assert-True { $allCreatedNamespace.Count -gt 1 }
 
+    # for ZoneRedundant and DisableLocalAuth 
+    Write-Debug "NamespaceName : $namespaceName3"
+    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName3 -SkuName "Premium" -ZoneRedundant -DisableLocalAuth
+    # Assert
+    Assert-AreEqual $result.Name $namespaceName3
+    Assert-True {$result.ZoneRedundant}
+    Assert-True {$result.DisableLocalAuth}
+
     Write-Debug " Delete namespaces"
+    Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName3
     Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
     Remove-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
