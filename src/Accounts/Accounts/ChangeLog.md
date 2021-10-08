@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.5.4
+* Supported getting the access token for Microsoft Graph.
+* Added AuthorizeRequestDelegate to allow service module to adjust token audience.
 * Utilized [AssemblyLoadContext](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext) to resolve assembly conflict issues in PowerShell.
 * Updated Azure.Core from 1.16.0 to 1.19.0.
 
