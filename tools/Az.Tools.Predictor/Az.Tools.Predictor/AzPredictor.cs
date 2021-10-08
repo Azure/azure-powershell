@@ -92,7 +92,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         var azContext = new AzContext()
                         {
                             IsInternal = (_settings.SetAsInternal == true) ? true : false,
-                            SurveyId = _settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
                         };
 
                         RegisterDisposableObject(azContext);

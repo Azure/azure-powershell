@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -40,8 +41,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         protected override void ProcessRecord()
         {
-            var profileSettings = Settings.GetProfileSettings();
-            var surveyId = profileSettings?.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? "000000";
+            var random = new Random((int)DateTime.UtcNow.Ticks);
+            int minIdNumber = 0;
+            int maxIdNumber = 1000000;
+            var surveyId = random.Next(minIdNumber, maxIdNumber).ToString("D6", CultureInfo.InvariantCulture);
 
             var link = string.Format(OpenAzPredictorSurvey._SurveyLinkFormat, surveyId, CultureInfo.InvariantCulture);
 
@@ -53,24 +56,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             Process.Start(processStartInfo);
 
-            if (profileSettings != null)
+            AdditionalTelemetryProperties = new Dictionary<string, string>
             {
-                profileSettings.SurveyId = null;
-
-                try
-                {
-                    var fileContent = JsonSerializer.Serialize<Settings>(profileSettings, new JsonSerializerOptions(JsonUtilities.DefaultSerializerOptions)
-                        {
-                            WriteIndented = true,
-                        });
-                    var profileSettingFilePath = Settings.GetProfileSettingsFilePath();
-                    File.WriteAllText(profileSettingFilePath, fileContent, Encoding.UTF8);
-                }
-                catch
-                {
-                    // Ignore all exceptions.
-                }
-            }
+                { "SurveyId", surveyId },
+            };
 
             if (PassThru.IsPresent)
             {

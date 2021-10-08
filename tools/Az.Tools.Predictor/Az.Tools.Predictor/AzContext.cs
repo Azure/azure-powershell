@@ -167,15 +167,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public bool IsInternal { get; internal set; }
 
-        /// <summary>
-        /// The survey session id appended to the survey.
-        /// </summary>
-        /// <remarks>
-        /// We only collect this information in the preview and it'll be removed in GA. That's why it's not defined in the
-        /// interface IAzContext and it's internal.
-        /// </remarks>
-        internal string SurveyId { get; set; }
-
         /// <inheritdoc/>
         public void UpdateContext()
         {
