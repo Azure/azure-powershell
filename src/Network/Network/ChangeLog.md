@@ -34,6 +34,7 @@
     - `Update-AzVirtualHubBgpConnection`
     - `Remove-AzVirtualHubBgpConnection`
 * Onboard Azure HDInsight to Private Link Common Cmdlets
+* Display CustomIpPrefix in the PublicIpPrefix json in powershell.
 
 ## Version 4.11.0
 * Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
