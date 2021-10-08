@@ -21,7 +21,6 @@
 -->
 ## Upcoming Release
 * Updated Set-AzVmBootDiagnostic to default to managed storage account if not provided.
-* Updated Set-AzVmBootDiagnostic to default to managed storage account if not provided.
 * Update Compute .NET SDK package reference to version 49.1.0
 * Fixed a bug in `Get-AzVM` that caused incorrect power status output.
 
