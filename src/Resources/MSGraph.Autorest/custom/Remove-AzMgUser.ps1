@@ -34,10 +34,15 @@ https://docs.microsoft.com/powershell/module/az.resources/remove-azmguser
 #>
 function Remove-AzMgUser {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='UPNOrObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
+        [Parameter(ParameterSetName = 'UPNOrObjectIdParameterSet', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+        [System.String]
+        # The userPrincipalName or ObjectId of the user to be deleted.
+        ${UPNOrObjectId},
+
         [Parameter(ParameterSetName = 'ObjectIdParameterSet', Mandatory)]
-        [Alias('UserId', 'Id')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
         [System.String]
         # key: id of user
@@ -46,6 +51,7 @@ function Remove-AzMgUser {
         [Parameter(ParameterSetName = 'UPNParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
         [System.String]
+        [Alias('UPN')]
         # user principal name
         ${UserPrincipalName},
     
@@ -60,7 +66,6 @@ function Remove-AzMgUser {
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser]
         # user input object
         ${InputObject},
-    
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -130,21 +135,27 @@ function Remove-AzMgUser {
             }
             'DisplayNameParameterSet' {
                 $list = Get-AzMgUser -DisplayName $PSBoundParameters['DisplayName'] -Select Id
-                if(1 -lt $list.Count) {
-                    Write-Error "More than one user found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzADUser cmdlet to get the object id of the desired user."
-                    return
-                } elseif (1 -eq $list.Count) {
-                    $id = $list[0].Id
-                } else {
+                if($null -eq $list) {
                     Write-Error "User with display name '$($PSBoundParameters['DisplayName'])' does not exist."
                     return
                 }
+                if($list -is [System.Array]) {
+                    Write-Error "More than one user found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzADUser cmdlet to get the object id of the desired user."
+                    return
+                }
+                $id = $list.Id
                 $null = $PSBoundParameters.Remove('DisplayName')
                 break
             }
             'UPNParameterSet' {
-                $id = (Get-AzMgUser -UserPrincipalName $PSBoundParameters['UserPrincipalName'])[0].Id
+                # Delete API handles UPN and ID as the same
+                $id = $PSBoundParameters['UserPrincipalName']
                 $null = $PSBoundParameters.Remove('UserPrincipalName')
+                break
+            }
+            'UPNOrObjectIdParameterSet' {
+                $id = $PSBoundParameters['UPNOrObjectId']
+                $null = $PSBoundParameters.Remove('UPNOrObjectId')
                 break
             }
         }

@@ -36,20 +36,19 @@ https://docs.microsoft.com/powershell/module/az.resources/get-azmggroup
 #>
 function Get-AzMgGroup {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]
-    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
     param(
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Alias('GroupId', 'Id')]
+        [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]
         [System.Guid]
         # key: id of group
         ${ObjectId},
 
-        [Parameter(ParameterSetName='StartsWithDisplayName', Mandatory)]
+        [Parameter(ParameterSetName='SearchStringParameterSet', Mandatory)]
         [System.String]
         # Used to find groups that begin with the provided string.
         ${DisplayNameStartsWith},
 
-        [Parameter(ParameterSetName='ByDisplayName', Mandatory)]
+        [Parameter(ParameterSetName='DisplayNameParameterSet', Mandatory)]
         [System.String]
         # The display name of the group.
         ${DisplayName},
@@ -61,58 +60,48 @@ function Get-AzMgGroup {
 
         [Parameter()]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
         [System.String[]]
         # Expand related entities
         ${Expand},
 
         [Parameter()]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
         [System.String[]]
         # Select properties to be returned
         ${Select},
 
-        [Parameter(ParameterSetName='List')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-        [System.Management.Automation.SwitchParameter]
-        # Include count of items
-        ${Count},
-
-        [Parameter(ParameterSetName='List')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+        [Parameter(ParameterSetName='EmptyParameterSet')]
         [System.String]
         # Filter items by property values
         ${Filter},
 
-        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='EmptyParameterSet')]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
         [System.String[]]
         # Order items by property values
         ${Orderby},
 
-        [Parameter(ParameterSetName='List')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+        [Parameter(ParameterSetName='EmptyParameterSet')]
         [System.String]
         # Search items by search phrases
         ${Search},
 
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
         [System.String]
         # Indicates the requested consistency level.
         # Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/
         ${ConsistencyLevel},
 
-        [Parameter(ParameterSetName='List')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+        [Parameter(ParameterSetName='EmptyParameterSet')]
+        [Parameter(ParameterSetName='SearchStringParameterSet')]
+        [Parameter(ParameterSetName='DisplayNameParameterSet')]
         [System.UInt64]
         # Gets only the first 'n' objects.
         ${First},
 
-        [Parameter(ParameterSetName='List')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+        [Parameter(ParameterSetName='EmptyParameterSet')]
+        [Parameter(ParameterSetName='SearchStringParameterSet')]
+        [Parameter(ParameterSetName='DisplayNameParameterSet')]
         [System.UInt64]
         # Ignores the first 'n' objects and then gets the remaining objects.
         ${Skip},
@@ -126,40 +115,34 @@ function Get-AzMgGroup {
         ${DefaultProfile},
 
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
 
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
 
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
 
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
 
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
 
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
@@ -173,12 +156,12 @@ function Get-AzMgGroup {
         }
 
         switch ($PSCmdlet.ParameterSetName) {
-            'StartsWithDisplayName' {
+            'SearchStringParameterSet' {
                 $PSBOundParameters['Filter'] = "startsWith(displayName, '$($PSBOundParameters['DisplayNameStartsWith'])'"
                 $null = $PSBoundParameters.Remove('DisplayNameStartsWith')
                 break
             }
-            'ByDisplayName' {
+            'DisplayNameParameterSet' {
                 $PSBOundParameters['Filter'] = "displayName eq '$($PSBOundParameters['DisplayName'])'"
                 $null = $PSBoundParameters.Remove('DisplayName')
                 break

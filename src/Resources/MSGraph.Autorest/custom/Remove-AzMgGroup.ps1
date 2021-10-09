@@ -38,12 +38,21 @@ function Remove-AzMgGroup {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('GroupId')]
+    [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)] 
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of group
-    ${Id},
+    ${ObjectId},
+
+    [Parameter(ParameterSetName='DisplayNameParameterSet', Mandatory)] 
+    [System.String]
+    # The display name of the group to be removed.
+    ${DisplayName},
+
+    [Parameter(ParameterSetName = 'InputObjectParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser]
+    # user input object
+    ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
@@ -105,39 +114,36 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+
+  process {
+    switch ($PSCmdlet.ParameterSetName) {
+        'ObjectIdParameterSet' {
+            $id = $PSBoundParameters['ObjectId']
+            $null = $PSBoundParameters.Remove('ObjectId')
+            break
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        $mapping = @{
-            Delete = 'Az.Resources.MSGraph.private\Remove-AzMgGroup_Delete';
+        'InputObjectParameterSet' {
+            $id = $PSBoundParameters['InputObject'].Id
+            $null = $PSBoundParameters.Remove('InputObject')
+            break
         }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        throw
+        'DisplayNameParameterSet' {
+            $list = Get-AzMgGroup -DisplayName $PSBoundParameters['DisplayName'] -Select Id
+            if($null -eq $list) {
+                Write-Error "Group with display name '$($PSBoundParameters['DisplayName'])' does not exist."
+                return
+            }
+            if($list -is [System.Array]) {
+                Write-Error "More than one group found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzADGroup cmdlet to get the object id of the desired group."
+                return
+            }
+            $id = $list.Id
+            $null = $PSBoundParameters.Remove('DisplayName')
+            break
+        }
     }
-}
+    $PSBoundParameters['Id'] = $id
 
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        throw
-    }
-}
-
-end {
-    try {
-        $steppablePipeline.End()
-    } catch {
-        throw
-    }
-}
+    MSGraph.internal\Remove-AzMgGroup @PSBoundParameters
+  }
 }
