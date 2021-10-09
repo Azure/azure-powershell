@@ -179,20 +179,19 @@ function Normalize-ModuleName {
 }
 
 function Get-ReferencePath {
-    [OutputType([string[]])]
     param()
     process {
         $allAzModules = @()
         $allAzModules += Get-Module -ListAvailable | Where-Object {$_ -match "Az(\.[a-zA-Z0-9]+)?$"}
-        $pathList = $null
+        $pathList = @()
+        $userPath = $null
+        $adminPath = $null
         if ($allAzModules) {
             $pathList = $allAzModules.Path -split 'Az.' | Sort-Object -Property Length -Descending | Select-Object -First $allAzModules.Count | Select-Object -Unique
-            $isAdmin = [Security.Principal.WindowsIdentity]::GetCurrent().Groups -Contains 'S-1-5-32-544'
-            if (!$isAdmin) {
-                $pathList = $pathList | Where-Object {$_.Contains($env:UserName)}
-            }
+            $userPath = $pathList | Where-Object {$_.Contains($env:UserName)}
+            $adminPath = $pathList | Where-Object {!$_.Contains($env:UserName)}
         }
-        Write-Output $pathList
+        Write-Output @{UserPath = $userPath; AdminPath = $adminPath}
     }
 }
 
@@ -386,12 +385,17 @@ function Uninstall-SingleModule {
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]
-        ${ModuleName},
+        ${Name},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
         [string[]]
-        ${ReferencePath},
+        ${UserPath},
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string[]]
+        ${AdminPath},
 
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
@@ -401,8 +405,8 @@ function Uninstall-SingleModule {
 
     process {
         try {
-            foreach ($path in $ReferencePath){
-                $path = Join-Path $path $moduleName
+            if ($UserPath) {
+                $path = Join-Path $UserPath $Name
                 if (Test-Path -Path $path) {
                     $subFolder = Get-ChildItem $path
                     $version = $null
@@ -410,43 +414,25 @@ function Uninstall-SingleModule {
                         $version = $subFolder.Name
                     }
                     Microsoft.PowerShell.Management\Remove-Item -Path $path -Recurse -Force -WhatIf:$false
-                    Write-Debug "[$Invoker] Uninstalling $ModuleName version $version is completed."
+                    Write-Debug "[$Invoker] Uninstalling $Name version $version is completed."
+                }
+            }
+            if ($AdminPath) {
+                $path = Join-Path $AdminPath $Name
+                if (Test-Path -Path $path) {
+                    $subFolder = Get-ChildItem $path
+                    $version = $null
+                    if ($subFolder) {
+                        $version = $subFolder.Name
+                    }
+                    Microsoft.PowerShell.Management\Remove-Item -Path $path -Recurse -Force -WhatIf:$false
+                    Write-Debug "[$Invoker] Uninstalling $Name version $version is completed."
                 }
             }
         }
         catch {
-            Write-Warning $_
+            Write-Warning "[$Invoker] You don't have the enough permission to uninstall the module. Please run PowerShell as admin.$_"
         }
-    }
-}
-
-function Uninstall-Az {
-    param (
-        [Parameter()]
-        [Switch]
-        ${AzOnly},
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        ${Invoker}
-    )
-    
-    process {
-        try {
-            if (!$AzOnly) {
-                $azModuleNames = Get-Module -ListAvailable -Name Az.* | Where-Object {$_.Name -match "Az(\.[a-zA-Z0-9]+)?$"}
-                $module = $null
-                foreach ($module in $azModuleNames) {
-                    $referencePath = $module.Path -Split $module.Name | Sort-Object -Property Length -Descending | Select-Object -First 1
-                    Uninstall-SingleModule -ModuleName $module.Name -ReferencePath $referencePath -Invoker $Invoker
-                }
-            }
-            Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue
-        }
-        catch {
-            Write-Warning $_
-        }   
     }
 }
 

@@ -69,7 +69,7 @@ function Uninstall-AzModule {
         }
 
         if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
-            Uninstall-Az -AzOnly -Invoker $Invoker
+            Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue
         }
 
         $allInstalled = @()
@@ -104,7 +104,9 @@ function Uninstall-AzModule {
                 foreach ($moduleName in $groupSet.Keys) {
                     $versions = $groupSet[$moduleName]
                     if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $moduleName version $versions", "$moduleName version $versions", "Uninstall")) {
-                        Uninstall-SingleModule -ModuleName $moduleName -ReferencePath $referencePaths -Invoker $Invoker
+                        Uninstall-Module -Name $moduleName -AllVersion 
+                        #Uninstall-SingleModule -Name $moduleName -ReferencePath $referencePaths -Invoker $Invoker
+                        Write-Debug "[$Invoker] Uninstalling $moduleName version $version is completed."
                         Write-Progress -Activity "Uninstall Module" -CurrentOperation "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
                         $index += 1
                     }

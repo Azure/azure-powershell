@@ -62,6 +62,11 @@ function Update-AzModule {
         [string[]]
         ${Name},
 
+        [Parameter(HelpMessage = 'Scope to update modules. Accepted values: CurrentUser, AllUser.')]
+        [ValidateSet('CurrentUser', 'AllUsers')]
+        [string]
+        ${Scope},
+
         [Parameter(HelpMessage = 'Present to keep the previous versions of the modules.')]
         [switch]
         ${KeepPrevious},
@@ -120,46 +125,44 @@ function Update-AzModule {
         if ($modulesAlreadyLatest) {
             Write-Debug "[$Invoker] $modulesAlreadyLatest are already in their latest version(s) with reference to $Repository.`n"
         }
+
+        if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
+            Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue
+        }
+
         if ($moduleUpdateTable) {
             Write-Debug "[$Invoker] Will update $($moduleUpdateTable.Name) to the latest version(s) on $Repository."
-        }
- 
-        if ($WhatIfPreference) {
-            $module = $null
-            foreach($module in $moduleUpdateTable) {
-                Write-Host "WhatIf: Wiil update $($module.Name) from $($module.VersionBeforeUpdate) to $($module.VersionUpdate)."
+
+            if ($WhatIfPreference) {
+                $module = $null
+                foreach($module in $moduleUpdateTable) {
+                    Write-Host "WhatIf: Wiil update $($module.Name) from $($module.VersionBeforeUpdate) to $($module.VersionUpdate)."
+                }
             }
-        }
-        else {
-            if ($moduleUpdateTable) {
-                $referencePaths = Get-ReferencePath
-                if ($referencePaths) {
-                    $module = $null
-                    foreach($module in $moduleUpdateTable) {
-                        if (!$KeepPrevious) {
-                            Uninstall-SingleModule -ModuleName $module.Name -ReferencePath $referencePaths -Invoker $Invoker
-                        }
+            else {
+                $installModuleParams = @{}
+                foreach ($key in $PSBoundParameters.Keys) {
+                    if($key -ne 'Name'){
+                        $installModuleParams.Add($key, $PSBoundParameters[$key]) 
                     }
                 }
-            }
-            $installModuleParams = @{}
-            foreach ($key in $PSBoundParameters.Keys) {
-                if($key -ne 'Name'){
-                    $installModuleParams.Add($key, $PSBoundParameters[$key]) 
+                $installModuleParams.Add('AllowPrerelease', $true)
+                $installModuleParams.Add('Invoker', $Invoker)
+                $installModuleParams.Add('RemovePrevious', !$KeepPrevious)
+                if (!$installModuleParams.Contains('Scope')) {
+                    $installModuleParams.Add('Scope', 'CurrentUser')
                 }
+                $modules = $moduleUpdateTable | Foreach-Object {
+                    $m = New-Object ModuleInfo
+                    $m.Name = $_.Name
+                    $m.Version += [Version] $_.VersionUpdate
+                    $m
+                }
+                $installModuleParams.Add('ModuleList', $modules)
+                $null = Install-AzModuleInternal @installModuleParams
+    
+                Write-Output $moduleUpdateTable
             }
-            $installModuleParams.Add('AllowPrerelease', $true)
-            $installModuleParams.Add('Invoker', $Invoker)
-            $modules = $moduleUpdateTable | Foreach-Object {
-                $m = New-Object ModuleInfo
-                $m.Name = $_.Name
-                $m.Version += [Version] $_.VersionUpdate
-                $m
-            }
-            $installModuleParams.Add('ModuleList', $modules)
-            $null = Install-AzModuleInternal @installModuleParams
-
-            Write-Output $moduleUpdateTable
         }
 
         $ErrorActionPreference = $preErrorActionPreference

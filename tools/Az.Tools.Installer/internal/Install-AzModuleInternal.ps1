@@ -15,7 +15,8 @@
 function Install-AzModuleInternal {
     [CmdletBinding(SupportsShouldProcess)]
     param(
-        [Parameter(ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
         [ModuleInfo[]]
         ${ModuleList},
 
@@ -36,6 +37,11 @@ function Install-AzModuleInternal {
         [Parameter()]
         [Switch]
         ${UseExactAccountVersion},
+
+        [Parameter(Mandatory)]
+        [ValidateSet('CurrentUser', 'AllUsers')]
+        [string]
+        ${Scope},
 
         [Parameter()]
         [Switch]
@@ -59,30 +65,51 @@ function Install-AzModuleInternal {
     )
 
     process {
-        if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
-            Uninstall-AzureRM
-        }
 
-        if ($RemovePrevious) {
-            if ($Force -or $PSCmdlet.ShouldProcess('Remove all previously installed Az modules', 'Az modules', 'Remove')) {
-                Uninstall-Az -Invoker $Invoker
-            }
-        }
-        else {
-            if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
-                Uninstall-Az -AzOnly -Invoker $Invoker
-            }
-        }
-        if (!$ModuleList) {
-            return
-        }
+        Write-Progress "Uninstalling Az if installed" -PercentComplete (1 / 4 * 100)
 
-        $modules = $ModuleList
         try {
-            [string]$tempRepo = Join-Path ([Path]::GetTempPath()) (Get-Date -Format "yyyyddMM-HHmm")
-            #$tempRepo = Join-Path 'D:/PSLocalRepo/' (Get-Date -Format "yyyyddMM-HHmm")
-            
+            if ($RemovePrevious) {
+                $pathTable = Get-ReferencePath
+                $module = $null
+                foreach ($module in $moduleList) {
+                    if ($Force -or $PSCmdlet.ShouldProcess("Remove all previously installed $($module.Name)", "$($module.Name)", 'Remove')) {
+                        Uninstall-Module -Name $module.Name -AllVersion -ErrorAction 'Continue'
+                        #Uninstall-SingleModule -Name $moduleName -ReferencePath $referencePaths -Invoker $Invoker
+                        Write-Debug "[$Invoker] Uninstalling $($module.Name) version $($module.Version) is completed."
+<#
+                        if ($pathTable.AdminPath) {
+                            if ($pathTable.UserPath) {
+                                Uninstall-SingleModule -Name $module.Name -UserPath $pathTable.userPath -AdminPath $pathTable.adminPath -Invoker $Invoker
+                            }
+                            else {
+                                Uninstall-SingleModule -Name $module.Name -AdminPath $pathTable.adminPath -Invoker $Invoker
+                            }
+                        }
+                        else {
+                            if ($pathTable.UserPath) {
+                                try
+                                {
+                                     Uninstall-SingleModule -Name $module.Name -UserPath $pathTable.userPath -Invoker $Invoker
+                                }
+                                catch
+                                {
+                                    Write-Warning $_
+                                }
+                    
+                            }
+                            else {
+                                Write-Warning "[$Invoker] $($module.Name) is not installed."
+                            }
+                        }
+                    }
+                }
+#>                
+            }
+
             if ($Force -or !$WhatIfPreference) {
+                [string]$tempRepo = Join-Path ([Path]::GetTempPath()) ([Path]::GetRandomFileName())
+                #$tempRepo = Join-Path 'D:/PSLocalRepo/' (Get-Date -Format "yyyyddMM-HHmm")
                 if (Test-Path -Path $tempRepo) {
                     Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false
                 }
@@ -97,10 +124,11 @@ function Install-AzModuleInternal {
                 $InstallStarted = Get-Date
                 $url = Get-RepositoryUrl $Repository
                 $downloader = [ParallelDownloader]::new($url)
-                $module = $null
-    
+
+                Write-Progress "Downloading packagkes from $Repository" -PercentComplete (2 / 4 * 100)
                 try {
-                    foreach ($module in $modules) {
+                    $module = $null
+                    foreach ($module in $moduleList) {
                         Write-Debug "[$Invoker] Downloading $($module.Name) version $($module.Version)."
                         $null = $downloader.Download($module.Name, [string] $module.Version, $tempRepo)
                     }
@@ -112,11 +140,13 @@ function Install-AzModuleInternal {
                     $downloader.Dispose()
                 }
             }
+
+            Write-Progress "Installing packagkes from local" -PercentComplete (3 / 4 * 100) -Completed
             
             $InstallStarted = Get-Date
-            Write-Debug "[$Invoker] Will install modules $($modules.Name)."
+            Write-Debug "[$Invoker] Will install modules $($moduleList.Name)."
             $installModuleParams = @{
-                Scope = 'CurrentUser'
+                Scope = $Scope
                 Repository = $script:AzTempRepoName
                 AllowClobber = $true
                 Confirm = $false
@@ -125,11 +155,11 @@ function Install-AzModuleInternal {
                 AllowPrerelease = if ($AllowPrerelease) {$AllowPrerelease} else {$false}
             }
 
-            if ($modules[0].Name -eq 'Az.Accounts') {
-                if ($Force -or $PSCmdlet.ShouldProcess("Install module Az.Accounts version $($modules[0].Version)", "Az.Accounts version $($modules[0].Version)", "Install")) {
-                    PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($modules[0].Version)"
+            if ($moduleList[0].Name -eq 'Az.Accounts') {
+                if ($Force -or $PSCmdlet.ShouldProcess("Install module Az.Accounts version $($moduleList[0].Version)", "Az.Accounts version $($moduleList[0].Version)", "Install")) {
+                    PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($moduleList[0].Version)"
                 }
-                $modules = $modules | Select-Object -Last ($modules.Length - 1)
+                $moduleList = $moduleList | Select-Object -Last ($moduleList.Length - 1)
             }
 
             try
@@ -138,7 +168,7 @@ function Install-AzModuleInternal {
                 $module = $null
                 $maxJobCount = 5
                 $index = 0
-                foreach ($module in $modules) {
+                foreach ($module in $moduleList) {
                     if ($PSVersionTable.PSEdition -eq "Core") {
                         if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
                             $jobs  += Start-ThreadJob -Name "Az.Tools.Installer" {
@@ -170,7 +200,7 @@ function Install-AzModuleInternal {
                                 Import-Module PowerShellGet
                                 PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
                             }
-                            Write-Progress -Activity "Install Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
+                            Write-Progress -Activity "Install Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $moduleList.Count * 100)
                             $index += 1
                         }
                     }
@@ -223,7 +253,9 @@ function Install-AzModuleInternal {
                     PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue'
 
                     Write-Debug "[$Invoker] The Repository folder $tempRepo is removed."
-                    Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false
+                    if (Test-Path -Path $tempRepo) {
+                        Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false
+                    }
                 }
             }
         }

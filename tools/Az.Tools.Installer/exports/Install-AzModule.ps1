@@ -54,6 +54,11 @@ function Install-AzModule {
         [Switch]
         ${UseExactAccountVersion},
 
+        [Parameter(HelpMessage = 'Scope to install modules. Accepted values: CurrentUser, AllUser.')]
+        [ValidateSet('CurrentUser', 'AllUsers')]
+        [string]
+        ${Scope},
+
         [Parameter(HelpMessage = 'Remove given module installed previously.')]
         [Switch]
         ${RemovePrevious},
@@ -90,6 +95,7 @@ function Install-AzModule {
             $findModuleParams.Add('RequiredVersion', [Version]$RequiredAzVersion)
         }
 
+        Write-Progress "Find modules on $Repository" -PercentComplete (0 / 4 * 100)
         $modules = @()
         $modules += Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
 
@@ -101,31 +107,42 @@ function Install-AzModule {
             }
         }
 
-        $installModuleParams = @{}
-        foreach ($key in $PSBoundParameters.Keys) {
-            if($key -ne 'Name') {
-                $installModuleParams.Add($key, $PSBoundParameters[$key]) 
+        if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
+            Uninstall-AzureRM
+        }
+
+        if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
+            Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue
+        }
+
+        if ($modules) {
+            $installModuleParams = @{}
+            foreach ($key in $PSBoundParameters.Keys) {
+                if($key -ne 'Name') {
+                    $installModuleParams.Add($key, $PSBoundParameters[$key]) 
+                }
+            }
+            $installModuleParams.Add('Invoker', $Invoker)
+            if (!$installModuleParams.Contains('Scope')) {
+                $installModuleParams.Add('Scope', 'CurrentUser')
+            }
+            $moduleList = $modules | ForEach-Object {
+                $m = New-Object ModuleInfo
+                $m.Name = $_.Name
+                $m.Version += [Version] $_.Version
+                $m
+            }
+            $installModuleParams.Add('ModuleList', $moduleList)
+            $null = Install-AzModuleInternal @installModuleParams
+    
+            #fixme
+            if (!$WhatIfPreference) {
+                Write-Output $modules
             }
         }
-        $moduleList = $modules | ForEach-Object {
-            $m = New-Object ModuleInfo
-            $m.Name = $_.Name
-            $m.Version += [Version] $_.Version
-            $m
-        }
-        if ($moduleList) {
-            $installModuleParams.Add('ModuleList', $moduleList)
-        }
-        $installModuleParams.Add('Invoker', $Invoker)
-        $null = Install-AzModuleInternal @installModuleParams
 
-        #fixme
-        if (!$WhatIfPreference) {
-            Write-Output $modules
-        }
 
         $ErrorActionPreference = $preErrorActionPreference
-
         <#
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
             -IsSuccess $true `
