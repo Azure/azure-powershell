@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzKustoAttachedDatabaseC
 }
 
 Describe 'Test-AzKustoAttachedDatabaseConfigurationNameAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpanded' {
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.clusterName
+        $databaseName = "testdatabase" + $env.rstr5
+        
+        $AttachedDatabaseConfigurationNameAvailability = Test-AzKustoAttachedDatabaseConfigurationNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
+        $AttachedDatabaseConfigurationNameAvailability.Name | Should -Be $databaseName
+        $AttachedDatabaseConfigurationNameAvailability.NameAvailable | Should -Be $true
     }
 
     It 'CheckViaIdentityExpanded' -skip {

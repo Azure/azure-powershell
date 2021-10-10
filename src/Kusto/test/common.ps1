@@ -200,6 +200,42 @@ function Validate_ManagedPrivateEndpoint {
 
 <#
 .SYNOPSIS
+Validate if private endpoint connection is valid
+#>
+function Validate_PrivateEndpointConnection {
+	Param ([Object]$PrivateEndpointConnection,
+		[string]$Name)
+		$PrivateEndpointConnection.ResourceName | Should -Be $Name
+}
+
+<#
+.SYNOPSIS
+Validate if private link is valid
+#>
+function Validate_PrivateLink {
+	Param ([Object]$PrivateLink,
+		[string]$resourceId,
+		[string]$Name)
+		$PrivateLink.Id | Should -Be $resourceId
+		$PrivateLink.Type | Should -Be "Microsoft.Kusto/Clusters/PrivateLinkResources"		
+		$PrivateLink.Name | Should -Be $Name
+}
+
+<#
+.SYNOPSIS
+Validate if private link list is valid
+#>
+function Validate_PrivateLinkList {
+	Param ([Object]$PrivateLinkList,
+		[string]$resourceId,
+		[string]$Name)
+		$PrivateLinkList.Id | Should -Be $resourceId
+		$PrivateLinkList.Type | Should -Be "Microsoft.Kusto/Clusters/PrivateLinkResources"		
+		$PrivateLinkList.Name | Should -Be $Name
+}
+
+<#
+.SYNOPSIS
 Validate if data connection is valid for EventHub
 #>
 function Validate_EventHubDataConnection {

@@ -15,8 +15,23 @@ Describe 'Get-AzKustoScript' {
         }
         . ($mockingPath | Select-Object -First 1).FullName
     }
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+
+    It 'List' {
+        $continueOnErrors = $false
+        $clusterName = $env.clusterName
+        $databaseName = "testdatabase" + $env.rstr4
+        $databaseFullName = $clusterName + "/" + $databaseName
+
+        # { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SubscriptionId $env.SubscriptionId
+        
+        { New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $env.scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag $env.forceUpdateTag -ScriptUrl $env.scriptUrl -ScriptUrlSasToken $env.scriptUrlSasToken } | Should -Not -Throw
+        $ScriptList = Get-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId
+               
+        Validate_Script $ScriptList $env.scriptUrl $env.forceUpdateTag $continueOnErrors $clusterName $databaseName $env.scriptName
+
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
     }
 
     It 'Get' {
@@ -25,7 +40,7 @@ Describe 'Get-AzKustoScript' {
         $databaseName = "testdatabase" + $env.rstr4
         $databaseFullName = $clusterName + "/" + $databaseName
 
-        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SubscriptionId $env.SubscriptionId
         
         { New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $env.scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag $env.forceUpdateTag -ScriptUrl $env.scriptUrl -ScriptUrlSasToken $env.scriptUrlSasToken } | Should -Not -Throw
         $Script = Get-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $env.scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId
