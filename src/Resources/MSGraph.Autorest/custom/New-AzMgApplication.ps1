@@ -616,16 +616,24 @@ function New-AzMgApplication {
 
   process {
     if ($PSBoundParameters.ContainsKey('AvailableToOtherTenants')) {
-      if (!$PSBoundParameters['SignInAudience']) {
-        $PSBoundParameters['SignInAudience'] = 'AzureADMultipleOrgs'
-      } elseif (($PSBoundParameters['SignInAudience'] -in 'AzureADMyOrg', 'PersonalMicrosoftAccount') -and $PSBoundParameters['AvailableToOtherTenants']) {
-        Write-Error "sign in audience '$($PSBoundParameters['SignInAudience'])' cannot be available to other tenants"
-        return
-      } elseif (($PSBoundParameters['SignInAudience'] -in 'AzureADMultipleOrgs', 'AzureADandPersonalMicrosoftAccount') -and !$PSBoundParameters['AvailableToOtherTenants']) {
-        Write-Error "sign in audience '$($PSBoundParameters['SignInAudience'])' is available to other tenants, please try to use 'AzureADMyOrg' or 'PersonalMicrosoftAccount'"
-        return
-      }      
+      if ($PSBoundParameters['SignInAudience']) {
+        if (($PSBoundParameters['SignInAudience'] -in 'AzureADMyOrg', 'PersonalMicrosoftAccount') -and $PSBoundParameters['AvailableToOtherTenants']) {
+          Write-Error "sign in audience '$($PSBoundParameters['SignInAudience'])' cannot be available to other tenants"
+          return
+        } elseif (($PSBoundParameters['SignInAudience'] -in 'AzureADMultipleOrgs', 'AzureADandPersonalMicrosoftAccount') -and !$PSBoundParameters['AvailableToOtherTenants']) {
+          Write-Error "sign in audience '$($PSBoundParameters['SignInAudience'])' is available to other tenants, please try to use 'AzureADMyOrg' or 'PersonalMicrosoftAccount'"
+          return
+        }  
+      } else {
+        if ($PSBoundParameters['AvailableToOtherTenants']) {
+          $PSBoundParameters['SignInAudience'] = 'AzureADMultipleOrgs'
+        } else {
+          $PSBoundParameters['SignInAudience'] = 'AzureADMyOrg'
+        }
+      }
       $null = $PSBoundParameters.Remove('AvailableToOtherTenants')
+    } elseif (!$PSBoundParameters['SignInAudience']) {
+      $PSBoundParameters['SignInAudience'] = 'AzureADMyOrg'
     }
     # even if payload contains all three redirect options, only one will be added in the actual app, the order is
     # web -> spa -> public client
@@ -634,7 +642,7 @@ function New-AzMgApplication {
       if ($PSBoundParameters['HomePage']) {
         $props['HomePageUrl'] = $PSBoundParameters['HomePage']
         $null = $PSBoundParameters.Remove('HomePage')
-      }
+      }q
       if ($PSBoundParameters['ReplyUrls']) {
         $props['RedirectUri'] = $PSBoundParameters['ReplyUrls']
         $null = $PSBoundParameters.Remove('ReplyUrls')

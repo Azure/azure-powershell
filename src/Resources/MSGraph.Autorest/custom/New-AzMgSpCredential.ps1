@@ -193,7 +193,7 @@ function New-AzMgSpCredential {
             $PSBoundParameters['ServicePrincipalId'] = $id
             foreach ($credential in $pc) {
                 $PSBoundParameters['PasswordCredential'] = $credential
-                $null = MSGraph.internal\Add-AzMgServicePrincipalPassword @PSBoundParameters
+                MSGraph.internal\Add-AzMgServicePrincipalPassword @PSBoundParameters
             }
             $null = $PSBoundParameters.Remove('ServicePrincipalId')
             if ($PSBoundParameters['PasswordCredential']) {
@@ -204,6 +204,6 @@ function New-AzMgSpCredential {
             $PSBoundParameters['Id'] = $id
             $PSBoundParameters['KeyCredentials'] = $kc
             MSGraph.internal\Update-AzMgServicePrincipal @PSBoundParameters
-        }   
+        }  
     }
 }

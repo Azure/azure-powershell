@@ -287,18 +287,16 @@ function New-AzMgServicePrincipal {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]
   [CmdletBinding(DefaultParameterSetName = 'SimpleParameterSet', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
-    [Parameter(ParameterSetName = 'DisplayNameWithoutCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName = 'DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName = 'DisplayNameWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet', Mandatory)]
     [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'SimpleParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The display name for the service principal.
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.
     ${DisplayName},
 
-    [Parameter(ParameterSetName = 'ApplicationObjectWithoutCredentialParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet', Mandatory, ValueFromPipeline)]
@@ -307,11 +305,10 @@ function New-AzMgServicePrincipal {
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     ${ApplicationObject},
 
-    [Parameter(ParameterSetName = 'ApplicationWithoutCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName = 'ApplicationWithPasswordCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName = 'ApplicationWithKeyCredentialParameterSet', Mandatory)]
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet', Mandatory)]
     [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'SimpleParameterSet')]
     [Alias('AppId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Guid]
@@ -351,22 +348,20 @@ function New-AzMgServicePrincipal {
     [System.String]
     ${CertValue},
 
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
     [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
     [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet')]
     [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet')]
     [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet')]
+    [Parameter(ParameterSetName = 'SimpleParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     ${StartDate},
 
-    [Parameter(ParameterSetName = 'ApplicationWithPasswordPlainParameterSet')]
     [Parameter(ParameterSetName = 'ApplicationWithKeyPlainParameterSet')]
     [Parameter(ParameterSetName = 'ApplicationObjectWithPasswordPlainParameterSet')]
     [Parameter(ParameterSetName = 'ApplicationObjectWithKeyPlainParameterSet')]
-    [Parameter(ParameterSetName = 'DisplayNameWithPasswordPlainParameterSet')]
     [Parameter(ParameterSetName = 'DisplayNameWithKeyPlainParameterSet')]
+    [Parameter(ParameterSetName = 'SimpleParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     ${EndDate},
@@ -710,20 +705,6 @@ function New-AzMgServicePrincipal {
   )
 
   process {
-    if ($PSBoundParameters['DisplayName']) {
-      $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']).AppId
-      $null = $PSBoundParameters.Remove('DisplayName')
-    } elseif ($PSBoundParameters['ApplicationObject']) {
-      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationObject'].AppId
-      $null = $PSBoundParameters.Remove('ApplicationObject')
-    } elseif ($PSBoundParameters['ApplicationId']) {
-      $PSBoundParameters['AppId'] = $PSBoundParameters['ApplicationId']
-      $null = $PSBoundParameters.Remove('ApplicationId')
-    } else {
-      $appName = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
-      $PSBoundParameters['AppId'] = (New-AzMgApplication -DisplayName $AppName).AppId
-    }
-
     if ($PSBoundParameters['Role']) {
       $spRole = $PSBoundParameters['Role']
       $null = $PSBoundParameters.Remove('Role')
@@ -733,61 +714,28 @@ function New-AzMgServicePrincipal {
       $null = $PSBoundParameters.Remove['Scope']
     }
     
-    if ($PSBoundParameters['StartDate']) {
-      $sd = $PSBoundParameters['StartDate']
-      $null = $PSBoundParameters.Remove('StartDate')
-    }
-    if ($PSBoundParameters['EndDate']) {
-      $ed = $PSBoundParameters['EndDate']
-      $null = $PSBoundParameters.Remove('EndDate')
+    if ($PSBoundParameters['ApplicationId'] -or $PSBoundParameters['ApplicationObject']) {
+      if ($PSBoundParameters['ApplicationObject']) {
+        $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ApplicationObject'].AppId
+      }
+    } else {
+      if (!$PSBoundParameters['StartDate']) {
+        $PSBoundParameters['StartDate'] = [System.DateTime]::UtcNow
+      }
+
+      if (!$PSBoundParameters['EndDate']) {
+        $PSBoundParameters['EndDate'] = $PSBoundParameters['StartDate'].AddYear(1)
+      }
+
+      if (!$PSBoundParameters['DisplayName']) {
+        $PSBoundParameters['DisplayName'] = "azure-powershell-" + (Get-Date).ToString("MM-dd-yyyy-HH-mm-ss")
+      }
+      $app = New-AzMgApplication @PSBoundParameters
+      $PSBoundParameters['ApplicationId'] = $app.AppId
     }
 
-    switch ($PSCmdlet.ParameterSetName) {
-      {$_ -in 'ApplicationWithKeyPlainParameterSet', 'ApplicationObjectWithKeyPlainParameterSet', 'DisplayNameWithKeyPlainParameterSet'} {
-        $kc = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
-                                         -Property @{'Key' = ([System.Convert]::FromBase64String($PSBoundParameters['CertValue']));
-                                            'Usage'       = 'Verify'; 
-                                            'Type'        = 'AsymmetricX509Cert'
-                                         }
-        $null = $PSBoundParameters.Remove('CertValue')
-        $kc.StartDateTime = $sd
-        $kc.EndDateTime = $ed
-        $PSBoundParameters['KeyCredentials'] = $kc
-        break
-      }
-      {$_ -in 'ApplicationWithPasswordCredentialParameterSet', 'ApplicationObjectWithPasswordCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
-        $pc = $PSBoundParameters['PasswordCredentials']
-        $null = $PSBoundParameters.Remove('PasswordCredentials')
-        break
-      }
-      default {
-        break
-      }
-    }
-
-    $sp = MSGraph.internal\New-AzMgServicePrincipal @PSBoundParameters
+    $sp = MSGraph.internal\New-AzMgServicePrincipal -AppId $PSBoundParameters['ApplicationId'] -AccountEnabled -Debug $PSBoundParameters['-Debug']
     $param = @{'ObjectId' = $sp.Id }
-
-    switch ($PSCmdlet.ParameterSetName) {
-      {$_ -in 'ApplicationWithPasswordPlainParameterSet', 'ApplicationObjectWithPasswordPlainParameterSet', 'DisplayNameWithPasswordPlainParameterSet'} {
-        if ($sd) {
-          $param['StartDate'] = $sd
-        }
-        if ($ed) {
-          $param['EndDate'] = $ed
-        }
-        $null = New-AzMgSpCredential @param
-        break
-      }
-      {$_ -in 'ApplicationWithPasswordCredentialParameterSet', 'ApplicationObjectWithPasswordCredentialParameterSet', 'DisplayNameWithPasswordCredentialParameterSet'} {
-        $param['PasswordCredentials'] = $pc
-        $null = New-AzMgSpCredential @param
-        break
-      }
-      default {
-        break
-      }
-    }
     
     if ($spRole) {
       $param = @{'ObjectId' = $sp.Id; 'RoleDefinitionName' = $spRole }

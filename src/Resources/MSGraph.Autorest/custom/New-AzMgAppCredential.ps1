@@ -241,7 +241,7 @@ function New-AzMgAppCredential {
             $PSBoundParameters['ApplicationId'] = $id
             foreach ($credential in $pc) {
                 $PSBoundParameters['PasswordCredential'] = $credential
-                $null = MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters
+                MSGraph.internal\Add-AzMgApplicationPassword @PSBoundParameters
             }
             $null = $PSBoundParameters.Remove('ApplicationId')
             if ($PSBoundParameters['PasswordCredential']) {
