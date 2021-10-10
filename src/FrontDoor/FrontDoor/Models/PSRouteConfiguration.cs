@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
     public class PSRouteConfiguration
@@ -28,6 +30,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public string BackendPoolId { get; set; }
 
         public string QueryParameterStripDirective { get; set; }
+
+        public string QueryParameters { get; set; }
+
+        public TimeSpan? CacheDuration { get; set; }
 
         public PSEnabledState? DynamicCompression { get; set; }
 

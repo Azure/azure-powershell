@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.StorageSync.Models;
 using System;
+using System.Collections.Generic;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
@@ -44,12 +45,30 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>PSSyncSessionStatus.</returns>
         protected override PSSyncSessionStatus Transform(StorageSyncModels.ServerEndpointSyncSessionStatus source)
         {
+            var filesNotSyncingErrors = new List<PSServerEndpointFilesNotSyncingError>();
+            if (source.FilesNotSyncingErrors != null)
+            {
+                foreach (var error in source.FilesNotSyncingErrors)
+                {
+                    filesNotSyncingErrors.Add(new PSServerEndpointFilesNotSyncingError
+                    {
+                        ErrorCode = error.ErrorCode,
+                        PersistentCount = error.PersistentCount,
+                        TransientCount = error.TransientCount
+                    });
+                }
+            }
+
             return new PSSyncSessionStatus()
             {
                 LastSyncResult = source.LastSyncResult,
                 LastSyncTimestamp = source.LastSyncTimestamp,
                 LastSyncSuccessTimestamp = source.LastSyncSuccessTimestamp,
-                LastSyncPerItemErrorCount = source.LastSyncPerItemErrorCount
+                LastSyncPerItemErrorCount = source.LastSyncPerItemErrorCount,
+                LastSyncMode = source.LastSyncMode,
+                PersistentFilesNotSyncingCount = source.PersistentFilesNotSyncingCount,
+                TransientFilesNotSyncingCount = source.TransientFilesNotSyncingCount,
+                FilesNotSyncingErrors = filesNotSyncingErrors
             };
         }
     }

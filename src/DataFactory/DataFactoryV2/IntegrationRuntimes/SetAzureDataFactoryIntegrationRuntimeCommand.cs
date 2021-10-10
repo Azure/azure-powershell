@@ -295,6 +295,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataFlowQuickReuseEnabled)]
+        public SwitchParameter DataFlowEnableQuickReuse { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeDataFlowCoreCount)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
@@ -353,6 +367,25 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             IntegrationRuntimeEdition.Enterprise,
             IgnoreCase = true)]
         public string Edition { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeEdition)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeEdition)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeVNetInjectionMethod)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.IntegrationRuntimeVNetInjectionStandard,
+            Constants.IntegrationRuntimeVNectInjectionExpress,
+            IgnoreCase = true)]
+        public string VNetInjectionMethod { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -736,88 +769,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntime.SsisProperties.CatalogInfo.CatalogPricingTier = CatalogPricingTier;
             }
 
-            if (!string.IsNullOrWhiteSpace(SubnetId))
-            {
-                // When subnetId as VNet property of Azure - SSIS integration runtime is provided, the other subnet and vnetId properties must be empty.
-                if (!string.IsNullOrWhiteSpace(VNetId) || !string.IsNullOrWhiteSpace(Subnet))
-                {
-                    throw new PSArgumentException(string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.AzureSSISIRSubnetAndVnetIdMustBeEmpty));
-                }
+            SetAzureDataFactoryIntegrationRuntimeCommandHelper.SetSubnetId(
+                integrationRuntime, VNetInjectionMethod, SubnetId, Subnet, VNetId
+                );
 
-                integrationRuntime.ComputeProperties.VNetProperties = new IntegrationRuntimeVNetProperties
-                {
-                    SubnetId = SubnetId
-                };
-            }
-            else if (string.IsNullOrWhiteSpace(VNetId) ^ string.IsNullOrWhiteSpace(Subnet))
-            {
-                // Only one of the two pramaters is set
-                throw new PSArgumentException(string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.IntegrationRuntimeInvalidVnet),
-                    "Type");
-            }
-
-            if (integrationRuntime.ComputeProperties?.VNetProperties == null
-                || (string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.VNetId)
-                    && string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.Subnet)
-                    && string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.SubnetId)))
-            {
-                // When no previous VNet set, subnetId or both VNetId and Subnet must be present
-                if (!string.IsNullOrWhiteSpace(SubnetId))
-                {
-                    integrationRuntime.ComputeProperties.VNetProperties = new IntegrationRuntimeVNetProperties
-                    {
-                        SubnetId = SubnetId
-                    };
-                }
-                else if (!string.IsNullOrWhiteSpace(VNetId) && !string.IsNullOrWhiteSpace(Subnet))
-                {
-                    // Both VNetId and Subnet are set
-                    if (integrationRuntime.ComputeProperties == null)
-                    {
-                        integrationRuntime.ComputeProperties = new IntegrationRuntimeComputeProperties();
-                    }
-
-                    integrationRuntime.ComputeProperties.VNetProperties = new IntegrationRuntimeVNetProperties()
-                    {
-                        VNetId = VNetId,
-                        Subnet = Subnet
-                    };
-                }
-                
-            }
-            else
-            {
-                // We have VNet properties set, then we are able to change VNetId or Subnet individually now.
-                // Could be empty. If user input empty, then convert it to null. If user want to remove VNet settings, input both with empty string.
-                if (VNetId != null)
-                {
-                    integrationRuntime.ComputeProperties.VNetProperties.VNetId = VNetId.IsEmptyOrWhiteSpace() ? null : VNetId;
-                }
-                if (Subnet != null)
-                {
-                    integrationRuntime.ComputeProperties.VNetProperties.Subnet = Subnet.IsEmptyOrWhiteSpace() ? null : Subnet;
-                }
-                if (SubnetId != null)
-                {
-                    integrationRuntime.ComputeProperties.VNetProperties.SubnetId = SubnetId.IsEmptyOrWhiteSpace() ? null : SubnetId;
-                }
-
-                // Make sure both VNetId and Subnet are present, or both null
-                if (string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.VNetId)
-                    ^ string.IsNullOrWhiteSpace(integrationRuntime.ComputeProperties.VNetProperties.Subnet))
-                {
-                    throw new PSArgumentException(string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.IntegrationRuntimeInvalidVnet),
-                        "Type");
-                }
-            }
-
-            if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null)
+            if (!string.IsNullOrWhiteSpace(DataFlowComputeType) || DataFlowCoreCount != null || DataFlowTimeToLive != null || DataFlowEnableQuickReuse != null)
             {
                 if (integrationRuntime.ComputeProperties == null)
                 {
@@ -831,6 +787,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType = DataFlowComputeType ?? integrationRuntime.ComputeProperties.DataFlowProperties.ComputeType;
                 integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount = DataFlowCoreCount ?? integrationRuntime.ComputeProperties.DataFlowProperties.CoreCount;
                 integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive = DataFlowTimeToLive ?? integrationRuntime.ComputeProperties.DataFlowProperties.TimeToLive;
+                if (DataFlowEnableQuickReuse.IsPresent)
+                {
+                    integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = false;
+                } 
+                else
+                {
+                    // setting it as null as the default value for the cleanup variable is false, and the backend endpoint treats null value as true.
+                    integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = null;
+                }
+
             }
 
             if (PublicIPs != null)

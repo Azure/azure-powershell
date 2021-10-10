@@ -145,4 +145,23 @@ directive:
       variant: ^List(.*)
     set:
       clientside-pagination: true
+
+  - where:
+      model-name: MicrosoftGraphUser
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - Id
+          - Mail
+          - UserPrincipalName
+  - where:
+      model-name: MicrosoftGraphGroup
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - Id
+          - MailNickname
+          - Description
 ```

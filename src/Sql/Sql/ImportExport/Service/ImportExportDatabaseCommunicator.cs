@@ -23,7 +23,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
-
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
@@ -129,18 +128,30 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
             var response = client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
 
-            response.EnsureSuccessStatusCode();
-
             rawHttpResponse = response;
             string responseString = response.Content.ReadAsStringAsync().Result;
 
-            ImportExportOperationResult operationResult = JsonConvert.DeserializeObject<ImportExportOperationResult>(responseString, new JsonSerializerSettings
+            if (response.IsSuccessStatusCode)
             {
-                Converters = new List<JsonConverter>() { new Rest.Serialization.TransformationJsonConverter() },
-                NullValueHandling = NullValueHandling.Ignore
-            });
+                ImportExportOperationResult operationResult = JsonConvert.DeserializeObject<ImportExportOperationResult>(responseString, new JsonSerializerSettings
+                {
+                    Converters = new List<JsonConverter>() { new Rest.Serialization.TransformationJsonConverter() },
+                    NullValueHandling = NullValueHandling.Ignore
+                });
 
-            return operationResult;
+                return operationResult;
+            }
+            else
+            {
+                OperationStatusResponse errorResult = JsonConvert.DeserializeObject<OperationStatusResponse>(responseString, new JsonSerializerSettings
+                {
+                    Converters = new List<JsonConverter>() { new Rest.Serialization.TransformationJsonConverter() },
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+
+                HttpRequestException ex = new HttpRequestException(errorResult.Error.Message);
+                throw ex;
+            }
         }
 
         /// <summary>

@@ -104,7 +104,7 @@ function Test-SynapseSqlPool-Security
 {
     param
     (
-        $storageGen2AccountName = (Get-DataLakeStorageAccountName)
+        $storageGen2AccountName = "sqlauditstorage" + (getAssetName)
     )
 
 	# Setup

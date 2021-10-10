@@ -329,9 +329,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var actual = this._azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             Assert.Equal(expected.Count, actual.SuggestionEntries.Count);
-            // Assert.Equal(expected.PredictiveSuggestions.First().SuggestionText, actual.SuggestionEntries.First().SuggestionText);
-            // When it returns the exact number of the requested prediction, AzPredictor replaces the last suggestion with the survey command.
-            Assert.Equal("Open-AzPredictorSurvey # Run this command to tell us about your experience with Az Predictor", actual.SuggestionEntries.Last().SuggestionText);
+            Assert.Equal(expected.PredictiveSuggestions.First().SuggestionText, actual.SuggestionEntries.First().SuggestionText);
         }
 
         /// <summary>
@@ -340,13 +338,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifySuggestionOnIncompleteCommand()
         {
-            // We need to get the suggestions for more than one. So we create a local version az predictor.
-            using var localAzPredictor = new AzPredictor(_service, _telemetryClient, new Settings()
+            // We need to get the suggestions for more than one and the cohort from the context. So we create a local version az predictor and the service.
+            var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
+            var azContext = new MockAzContext()
+            {
+                Cohort = 0,
+            };
+            var localPredictorService = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection, azContext);
+            using var localAzPredictor = new AzPredictor(localPredictorService, _telemetryClient, new Settings()
             {
                 SuggestionCount = 7,
                 MaxAllowedCommandDuplicate = 1,
             },
-            null);
+            azContext);
 
             var userInput = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -";
             var expected = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -Tag value1";

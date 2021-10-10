@@ -19,6 +19,11 @@ $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroup
 
 function Get-AzureVmWorkloadContainer
 {
+   $resourceGroupName = "pstestwlRG1bca8"
+   $vaultName = "pstestwlRSV1bca8"
+   $containerName = "PSTestVM235870"
+   $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG235879ba/providers/Microsoft.Compute/virtualMachines/PSTestVM235870"
+    
    try
    {
       $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName

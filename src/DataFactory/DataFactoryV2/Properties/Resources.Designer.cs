@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SubnetId must be set for express Azure-SSIS integration runtime..
+        /// </summary>
+        internal static string AzureExpressSSISIRSubnetIdMustBePresent {
+            get {
+                return ResourceManager.GetString("AzureExpressSSISIRSubnetIdMustBePresent", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to When subnetId as VNet property of Azure - SSIS integration runtime is provided, the other subnet and vnetId properties must be empty..
         /// </summary>
         internal static string AzureSSISIRSubnetAndVnetIdMustBeEmpty {

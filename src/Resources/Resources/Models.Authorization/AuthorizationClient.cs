@@ -151,7 +151,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 PrincipalId = principalId.ToString(),
                 PrincipalType = asigneeObjectType,
                 RoleDefinitionId = roleDefinitionId,
-                CanDelegate = parameters.CanDelegate,
                 Description = parameters.Description,
                 Condition = parameters.Condition,
                 ConditionVersion = parameters.ConditionVersion
@@ -214,7 +213,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
                 else
                 {
-                    var tempResult = AuthorizationManagementClient.RoleAssignments.List(odataQuery);
+                    var tempResult = AuthorizationManagementClient.RoleAssignments.ListForSubscription(odataQuery);
                     result.AddRange(tempResult
                         .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                         .ToPSRoleAssignments(this, ActiveDirectoryClient, AuthorizationHelper.GetSubscriptionScope(currentSubscription), options.ExcludeAssignmentsForDeletedPrincipals));
@@ -236,7 +235,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
             else
             {
-                var tempResult = AuthorizationManagementClient.RoleAssignments.List(odataQuery);
+                var tempResult = AuthorizationManagementClient.RoleAssignments.ListForSubscription(odataQuery);
                 result.AddRange(tempResult
                      .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                      .ToPSRoleAssignments(this, ActiveDirectoryClient, AuthorizationHelper.GetSubscriptionScope(currentSubscription), options.ExcludeAssignmentsForDeletedPrincipals));
@@ -330,7 +329,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 PrincipalId = principalId.ToString(),
                 RoleDefinitionId = roleDefinitionId,
                 PrincipalType = principalType,
-                CanDelegate = roleAssignment.CanDelegate,
                 Description = Description,
                 Condition = Condition,
                 ConditionVersion = ConditionVersion

@@ -155,6 +155,21 @@ $azFw | Set-AzFirewall
 
 In this example, Active FTP is allowed on the Firewall.
 
+### 12: Deallocate and allocate the Firewall from a Virtual Hub
+```
+$firewall=Get-AzFirewall -ResourceGroupName rgName -Name azFw
+$firewall.Deallocate()
+$firewall | Set-AzFirewall
+
+$Hub = Get-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub"
+$firewall.Allocate($Hub.Id)
+$firewall | Set-AzFirewall
+```
+This example retrieves a Hub Firewall, deallocates the hub firewall, and saves it. The Deallocate command removes the reference 
+to the virtual hub but preserves the firewall's configuration. For changes to be reflected in cloud, Set-AzFirewall must be called.
+The Allocate method assigns the virtual hub reference to the firewall. Again, for changes to be reflected in cloud,
+Set-AzFirewall must be called.
+
 ## PARAMETERS
 
 ### -AsJob

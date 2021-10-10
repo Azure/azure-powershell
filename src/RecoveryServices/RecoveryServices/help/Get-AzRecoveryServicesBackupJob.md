@@ -189,7 +189,7 @@ The acceptable values for this parameter are:
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Backup, Restore, ConfigureBackup, DisableBackup, DeleteBackupData
+Accepted values: Backup, Restore, ConfigureBackup, DisableBackup, DeleteBackupData, BackupDataMove, UpdateCustomerManagedKey
 
 Required: False
 Position: 2

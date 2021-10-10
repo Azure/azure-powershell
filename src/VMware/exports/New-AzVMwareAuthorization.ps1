@@ -19,21 +19,19 @@ Create or update an ExpressRoute Circuit Authorization in a private cloud
 .Description
 Create or update an ExpressRoute Circuit Authorization in a private cloud
 .Example
-PS C:\> New-AzVMwareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> New-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
-
-
-Name           Type
-----           ----
-azps-test-auth Microsoft.AVS/privateClouds/authorizations
+Name                    Type                                       ResourceGroupName
+----                    ----                                       -----------------
+azps_test_authorization Microsoft.AVS/privateClouds/authorizations azps_test_group
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorization
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IExpressRouteAuthorization
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.vmware/new-azvmwareauthorization
+https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
 #>
 function New-AzVMwareAuthorization {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorization])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IExpressRouteAuthorization])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -136,6 +134,8 @@ begin {
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
