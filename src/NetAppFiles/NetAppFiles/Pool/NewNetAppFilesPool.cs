@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             Mandatory = true,
             HelpMessage = "The service level of the ANF pool")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Ultra")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS")]
         public string ServiceLevel { get; set; }
 
         [Parameter(
@@ -95,6 +95,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             Mandatory = false,
             HelpMessage = "If enabled (true) the pool can contain cool Access enabled volumes.")]
         public SwitchParameter CoolAccess { get; set; }
+
+        [Parameter(
+                    Mandatory = false,
+                    HelpMessage = "Encryption type of the capacity pool (Single, Double), set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Single", "Double")]
+        public string EncryptionType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -154,7 +161,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Location = Location,
                 Tags = tagPairs,
                 QosType = QosType,
-                CoolAccess = CoolAccess
+                CoolAccess = CoolAccess,
+                EncryptionType = EncryptionType
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

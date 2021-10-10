@@ -74,6 +74,9 @@ Set Tests:
 17. Test with new extension and no switch
 	Tested by: Test-ExtensionDowngrade
 
+187. Test new extension with proxy and debug mode
+	Tested by: Test-ExtensionProxyDebug
+
 Remove Test:
 	1. run with no extension
 		tested by: Test-WithUserAssignedIdentity
@@ -380,6 +383,44 @@ function Test-NewExtensionDiskAdd() {
 		Write-Verbose "`tUpdating new extension"
 		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension -SetAccessToIndividualResources	
 		Assert-NewExtension -ResourceGroupName $rgname -VMName $vm.Name -IdentityType 'SystemAssigned'
+	}
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-ExtensionProxyDebug
+{
+    Write-Verbose "Test: VM Extension with proxy and debug mode"
+	$rgname = Get-CustomResourceGroupName
+	try
+    {
+        $proxyURI = "https://proxyhost:8080"
+		$loc = Get-LocationForNewExtension
+		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS
+	
+		Write-Verbose "`tInstalling new extension"
+		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension -SetAccessToIndividualResources -ProxyURI $proxyURI -DebugExtension
+		Assert-NewExtension -ResourceGroupName $rgname -VMName $vm.Name -IdentityType 'SystemAssigned'
+
+        $extension = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vm.Name
+        $nul = Assert-NotNull $extension
+        $nul = Assert-NotNull $extension.PublicSettings
+
+        $extensionSettings = $extension.PublicSettings | ConvertFrom-Json
+        $nul = Assert-NotNull $extensionSettings
+        $nul = Assert-NotNull $extensionSettings.cfg
+
+        $proxySetting = $extensionSettings.cfg | Where-Object { $_.key -eq "proxy"}
+        $nul = Assert-NotNull $proxySetting
+        $nul = Assert-AreEqual $proxySetting.value $proxyURI
+        
+        $debugSetting = $extensionSettings.cfg | Where-Object { $_.key -eq "debug"}
+        $nul = Assert-NotNull $debugSetting
+        $nul = Assert-AreEqual $debugSetting.value "1"
+
 	}
     finally
     {
@@ -1315,7 +1356,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     {
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
-        $imgRef = Get-DefaultCRPWindowsImageOffline;
+        $imgRef = Get-WindowsImage $imageType;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
     }
     Write-Verbose "Start Create-AdvancedVM 6"
@@ -1364,6 +1405,12 @@ function Get-LinuxImage($imageType) {
 	} else {
 		return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP4' 'latest';
 	}
+}
+
+function Get-WindowsImage($imageType) {
+	
+    return Create-ComputeVMImageObject 'MicrosoftWindowsServer' 'WindowsServer' '2019-Datacenter' 'latest';
+	
 }
 
 function GetWrongTestResult($TestResult, $searchFor, $level)

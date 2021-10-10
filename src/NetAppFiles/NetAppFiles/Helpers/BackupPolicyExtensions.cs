@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = backupPolicy.Name,
                 Type = backupPolicy.Type,
                 Tags = backupPolicy.Tags,
+                Etag = backupPolicy.Etag,
                 ProvisioningState = backupPolicy.ProvisioningState,
                 BackupPolicyId = backupPolicy.Id,
                 DailyBackupsToKeep = backupPolicy.DailyBackupsToKeep,
