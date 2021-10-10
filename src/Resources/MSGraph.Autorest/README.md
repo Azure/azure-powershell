@@ -164,4 +164,12 @@ directive:
           - Id
           - MailNickname
           - Description
+  - where:
+      model-name: MicrosoftGraphDirectoryObject
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - Id
+          - OdataType
 ```
