@@ -714,17 +714,15 @@ function New-AzMgServicePrincipal {
       $null = $PSBoundParameters.Remove['Scope']
     }
     
-    if ($PSBoundParameters['ApplicationId'] -or $PSBoundParameters['ApplicationObject']) {
-      if ($PSBoundParameters['ApplicationObject']) {
-        $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ApplicationObject'].AppId
-      }
-    } else {
+    if ($PSBoundParameters['ApplicationObject']) {
+      $PSBoundParameters['ApplicationId'] = $PSBoundParameters['ApplicationObject'].AppId
+    } elseif (!$PSBoundParameters['ApplicationId']) {
       if (!$PSBoundParameters['StartDate']) {
         $PSBoundParameters['StartDate'] = [System.DateTime]::UtcNow
       }
 
       if (!$PSBoundParameters['EndDate']) {
-        $PSBoundParameters['EndDate'] = $PSBoundParameters['StartDate'].AddYear(1)
+        $PSBoundParameters['EndDate'] = $PSBoundParameters['StartDate'].AddYears(1)
       }
 
       if (!$PSBoundParameters['DisplayName']) {
@@ -734,18 +732,15 @@ function New-AzMgServicePrincipal {
       $PSBoundParameters['ApplicationId'] = $app.AppId
     }
 
-    $sp = MSGraph.internal\New-AzMgServicePrincipal -AppId $PSBoundParameters['ApplicationId'] -AccountEnabled -Debug $PSBoundParameters['-Debug']
-    $param = @{'ObjectId' = $sp.Id }
-    
+    $param = @{'AppId' = $PSBoundParameters['ApplicationId']; 'AccountEnabled'=$true; 'Debug' = $PSBoundParameters['Debug']}
+    Write-Output ($sp = MSGraph.internal\New-AzMgServicePrincipal @param)
+
     if ($spRole) {
-      $param = @{'ObjectId' = $sp.Id; 'RoleDefinitionName' = $spRole }
+      $param = @{'ObjectId' = $sp.Id; 'RoleDefinitionName' = $spRole; 'Debug' = $PSBoundParameters['Debug']}
       if ($spScope) {
         $param['Scope'] = $spScope
       }
-      
       New-AzRoleAssignment @param
     }
-
-    $PSCmdlet.WriteObject($sp)
   }
 }

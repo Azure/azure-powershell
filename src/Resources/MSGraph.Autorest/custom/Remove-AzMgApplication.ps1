@@ -35,132 +35,133 @@ System.Boolean
 https://docs.microsoft.com/powershell/module/az.resources/remove-azmgapplication
 #>
 function Remove-AzMgApplication {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]
-    [Alias('Id')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [System.String]
-    # key: object id of application
-    ${ObjectId},
-
-    [Parameter(ParameterSetName='ApplicationIdParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [System.Guid]
-    # key: id of application
-    ${ApplicationId},
-
-    [Parameter(ParameterSetName='ApplicationDisplayNameParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [System.String]
-    # key: display name of application
-    ${DisplayName},
-
-    [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
-    # key: display name of application
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-process {
-    switch ($PSCmdlet.ParameterSetName) {
-        'ObjectIdParameterSet' {
-            $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
-            $null = $PSBoundParameters.Remove('ObjectId')
-            break
-        }
-        'InputObjectParameterSet' {
-            $PSBoundParameters['Id'] = $PSBoundParameters['InputObject'].Id
-            $null = $PSBoundParameters.Remove('InputObject')
-            break
-        }
-        'ApplicationDisplayNameParameterSet' {
-            try {
-                $list = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName'] -Select Id
-                if(1 -lt $list.Count) {
-                    Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
-                    return
-                } elseif (1 -eq $list.Count) {
-                    $PSBoundParameters['Id'] = $list[0].Id
-                } else {
-                    Write-Error "Application with display name '$($PSBoundParameters['DisplayName'])' does not exist."
-                    return
+    [OutputType([System.Boolean])]
+    [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    param(
+        [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]
+        [Alias('Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+        [System.String]
+        # key: object id of application
+        ${ObjectId},
+    
+        [Parameter(ParameterSetName='ApplicationIdParameterSet', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+        [System.Guid]
+        # key: id of application
+        ${ApplicationId},
+    
+        [Parameter(ParameterSetName='ApplicationDisplayNameParameterSet', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+        [System.String]
+        # key: display name of application
+        ${DisplayName},
+    
+        [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
+        # key: display name of application
+        ${InputObject},
+    
+        [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The credentials, account, tenant, and subscription used for communication with Azure.
+        ${DefaultProfile},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
+        ${Break},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}
+    )
+    
+    process {
+        switch ($PSCmdlet.ParameterSetName) {
+            'ObjectIdParameterSet' {
+                $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
+                $null = $PSBoundParameters.Remove('ObjectId')
+                break
+            }
+            'InputObjectParameterSet' {
+                $PSBoundParameters['Id'] = $PSBoundParameters['InputObject'].Id
+                $null = $PSBoundParameters.Remove('InputObject')
+                break
+            }
+            'ApplicationDisplayNameParameterSet' {
+                try {
+                    [Array]$list = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName'] -Select Id
+                    if(1 -lt $list.Count) {
+                        Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
+                        return
+                    } elseif (1 -eq $list.Count) {
+                        $PSBoundParameters['Id'] = $list[0].Id
+                    } else {
+                        Write-Error "Application with display name '$($PSBoundParameters['DisplayName'])' does not exist."
+                        return
+                    }
+                } catch {
+                    throw
                 }
-            } catch {
-                throw
+                $null = $PSBoundParameters.Remove('DisplayName')
+                break
             }
-            $null = $PSBoundParameters.Remove('DisplayName')
-            break
-        }
-        'ApplicationIdParameterSet' {
-            try {
-                $PSBoundParameters['Id'] = (Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id).Id
-            } catch {
-                throw
+            'ApplicationIdParameterSet' {
+                try {
+                    $PSBoundParameters['Id'] = (Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id).Id
+                } catch {
+                    throw
+                }
+                $null = $PSBoundParameters.Remove('ApplicationId')
+                break
             }
-            $null = $PSBoundParameters.Remove('ApplicationId')
-            break
+            default {
+                break
+            }
         }
-        default {
-            break
-        }
+    
+        MSGraph.internal\Remove-AzMgApplication @PSBoundParameters
     }
-
-    MSGraph.internal\Remove-AzMgApplication @PSBoundParameters
-}
-}
+    }
+    
