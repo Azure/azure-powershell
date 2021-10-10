@@ -1,62 +1,47 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azmguser
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azmggroup
 schema: 2.0.0
 ---
 
-# Get-AzMgUser
+# Get-AzMgGroup
 
 ## SYNOPSIS
-Represents an Azure Active Directory user object.
+Represents an Azure Active Directory object.
+The directoryObject type is the base type for many other directory entity types.
 
 ## SYNTAX
 
-### List (Default)
+### EmptyParameterSet (Default)
 ```
-Get-AzMgUser [-ConsistencyLevel <String>] [-Count] [-DefaultProfile <PSObject>] [-Expand <String[]>]
- [-Filter <String>] [-First <UInt64>] [-IncludeTotalCount] [-Orderby <String[]>] [-Search <String>]
- [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
+Get-AzMgGroup [-ConsistencyLevel <String>] [-Expand <String[]>] [-Filter <String>] [-First <UInt64>]
+ [-IncludeTotalCount] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzMgUser -DisplayName <String> [-DefaultProfile <PSObject>] [-Expand <String[]>] [-First <UInt64>]
- [-IncludeTotalCount] [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
-```
-
-### MailParameterSet
-```
-Get-AzMgUser -Mail <String> [-DefaultProfile <PSObject>] [-Expand <String[]>] [-First <UInt64>]
- [-IncludeTotalCount] [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
+Get-AzMgGroup -DisplayName <String> [-ConsistencyLevel <String>] [-Expand <String[]>] [-First <UInt64>]
+ [-IncludeTotalCount] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Get-AzMgUser -ObjectId <String> [-DefaultProfile <PSObject>] [-Expand <String[]>] [-Select <String[]>]
+Get-AzMgGroup -ObjectId <Guid> [-ConsistencyLevel <String>] [-Expand <String[]>] [-IncludeTotalCount]
+ [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### SearchStringParameterSet
+```
+Get-AzMgGroup -DisplayNameStartsWith <String> [-ConsistencyLevel <String>] [-Expand <String[]>]
+ [-First <UInt64>] [-IncludeTotalCount] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### SignedInUser
-```
-Get-AzMgUser -SignedIn [-DefaultProfile <PSObject>] [-Expand <String[]>] [-Select <String[]>]
- [<CommonParameters>]
-```
-
-### StartsWithParameterSet
-```
-Get-AzMgUser -StartsWith <String> [-DefaultProfile <PSObject>] [-Expand <String[]>] [-First <UInt64>]
- [-IncludeTotalCount] [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
-```
-
-### UPNParameterSet
-```
-Get-AzMgUser -UserPrincipalName <String> [-DefaultProfile <PSObject>] [-Expand <String[]>]
- [-Select <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Represents an Azure Active Directory user object.
+Represents an Azure Active Directory object.
+The directoryObject type is the base type for many other directory entity types.
 
 ## EXAMPLES
 
@@ -86,22 +71,7 @@ Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-
 
 ```yaml
 Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Count
-Include count of items
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -127,11 +97,26 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-user display name
+The display name of the group.
 
 ```yaml
 Type: System.String
 Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayNameStartsWith
+Used to find groups that begin with the provided string.
+
+```yaml
+Type: System.String
+Parameter Sets: SearchStringParameterSet
 Aliases:
 
 Required: True
@@ -161,7 +146,7 @@ Filter items by property values
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False
@@ -176,7 +161,7 @@ Gets only the first 'n' objects.
 
 ```yaml
 Type: System.UInt64
-Parameter Sets: DisplayNameParameterSet, List, MailParameterSet, StartsWithParameterSet
+Parameter Sets: DisplayNameParameterSet, EmptyParameterSet, SearchStringParameterSet
 Aliases:
 
 Required: False
@@ -192,7 +177,7 @@ Currently, this parameter does nothing.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DisplayNameParameterSet, List, MailParameterSet, StartsWithParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -202,26 +187,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Mail
-user mail address
-
-```yaml
-Type: System.String
-Parameter Sets: MailParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ObjectId
-key: id of user
+key: id of group
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -237,7 +207,7 @@ Order items by property values
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List
+Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False
@@ -252,7 +222,7 @@ Search items by search phrases
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False
@@ -277,60 +247,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SignedIn
-user mail address
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SignedInUser
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Skip
 Ignores the first 'n' objects and then gets the remaining objects.
 
 ```yaml
 Type: System.UInt64
-Parameter Sets: DisplayNameParameterSet, List, MailParameterSet, StartsWithParameterSet
+Parameter Sets: DisplayNameParameterSet, EmptyParameterSet, SearchStringParameterSet
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StartsWith
-user display name starts with
-
-```yaml
-Type: System.String
-Parameter Sets: StartsWithParameterSet
-Aliases: SearchString
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserPrincipalName
-user principal name
-
-```yaml
-Type: System.String
-Parameter Sets: UPNParameterSet
-Aliases: UPN
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -344,7 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 
 ## NOTES
 

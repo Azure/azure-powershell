@@ -1,49 +1,45 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azmguser
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azmggroup
 schema: 2.0.0
 ---
 
-# Remove-AzMgUser
+# Remove-AzMgGroup
 
 ## SYNOPSIS
-Represents an Azure Active Directory user object.
+Represents an Azure Active Directory object.
+The directoryObject type is the base type for many other directory entity types.
 
 ## SYNTAX
 
-### UPNOrObjectIdParameterSet (Default)
+### Delete (Default)
 ```
-Remove-AzMgUser -UPNOrObjectId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzMgGroup [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Remove-AzMgUser -DisplayName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzMgGroup -DisplayName <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzMgUser -InputObject <IMicrosoftGraphUser> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzMgGroup -InputObject <IMicrosoftGraphUser> [-IfMatch <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Remove-AzMgUser -ObjectId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UPNParameterSet
-```
-Remove-AzMgUser -UserPrincipalName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzMgGroup -ObjectId <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Represents an Azure Active Directory user object.
+Represents an Azure Active Directory object.
+The directoryObject type is the base type for many other directory entity types.
 
 ## EXAMPLES
 
@@ -83,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-user display name
+The display name of the group to be removed.
 
 ```yaml
 Type: System.String
@@ -91,6 +87,21 @@ Parameter Sets: DisplayNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+ETag
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -114,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-key: id of user
+key: id of group
 
 ```yaml
 Type: System.String
@@ -137,36 +148,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UPNOrObjectId
-The userPrincipalName or ObjectId of the user to be deleted.
-
-```yaml
-Type: System.String
-Parameter Sets: UPNOrObjectIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserPrincipalName
-user principal name
-
-```yaml
-Type: System.String
-Parameter Sets: UPNParameterSet
-Aliases: UPN
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

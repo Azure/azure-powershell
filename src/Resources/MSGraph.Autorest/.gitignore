@@ -12,4 +12,5 @@ test/*-TestResults.xml
 /*.ps1xml
 /*.psm1
 /*.snk
+/*.csproj
 /*.nuspec
