@@ -868,6 +868,210 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
+  /me:
+     get:
+      tags:
+        - users.user
+      summary: Get current signed-in user
+      description: Represents current signed-in user object.
+      operationId: users.user_GetSignedInUser
+      parameters:
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - deletedDateTime
+                - accountEnabled
+                - ageGroup
+                - assignedLicenses
+                - assignedPlans
+                - businessPhones
+                - city
+                - companyName
+                - consentProvidedForMinor
+                - country
+                - createdDateTime
+                - creationType
+                - department
+                - displayName
+                - employeeHireDate
+                - employeeId
+                - employeeOrgData
+                - employeeType
+                - externalUserState
+                - externalUserStateChangeDateTime
+                - faxNumber
+                - givenName
+                - identities
+                - imAddresses
+                - isResourceAccount
+                - jobTitle
+                - lastPasswordChangeDateTime
+                - legalAgeGroupClassification
+                - licenseAssignmentStates
+                - mail
+                - mailNickname
+                - mobilePhone
+                - officeLocation
+                - onPremisesDistinguishedName
+                - onPremisesDomainName
+                - onPremisesExtensionAttributes
+                - onPremisesImmutableId
+                - onPremisesLastSyncDateTime
+                - onPremisesProvisioningErrors
+                - onPremisesSamAccountName
+                - onPremisesSecurityIdentifier
+                - onPremisesSyncEnabled
+                - onPremisesUserPrincipalName
+                - otherMails
+                - passwordPolicies
+                - passwordProfile
+                - postalCode
+                - preferredLanguage
+                - provisionedPlans
+                - proxyAddresses
+                - showInAddressList
+                - signInSessionsValidFromDateTime
+                - state
+                - streetAddress
+                - surname
+                - usageLocation
+                - userPrincipalName
+                - userType
+                - mailboxSettings
+                - deviceEnrollmentLimit
+                - aboutMe
+                - birthday
+                - hireDate
+                - interests
+                - mySite
+                - pastProjects
+                - preferredName
+                - responsibilities
+                - schools
+                - skills
+                - appRoleAssignments
+                - createdObjects
+                - directReports
+                - licenseDetails
+                - manager
+                - memberOf
+                - oauth2PermissionGrants
+                - ownedDevices
+                - ownedObjects
+                - registeredDevices
+                - scopedRoleMemberOf
+                - transitiveMemberOf
+                - calendar
+                - calendarGroups
+                - calendars
+                - calendarView
+                - contactFolders
+                - contacts
+                - events
+                - inferenceClassification
+                - mailFolders
+                - messages
+                - outlook
+                - people
+                - photo
+                - photos
+                - drive
+                - drives
+                - followedSites
+                - extensions
+                - agreementAcceptances
+                - managedDevices
+                - managedAppRegistrations
+                - deviceManagementTroubleshootingEvents
+                - planner
+                - insights
+                - settings
+                - onenote
+                - activities
+                - onlineMeetings
+                - presence
+                - authentication
+                - chats
+                - joinedTeams
+                - teamwork
+                - todo
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - appRoleAssignments
+                - createdObjects
+                - directReports
+                - licenseDetails
+                - manager
+                - memberOf
+                - oauth2PermissionGrants
+                - ownedDevices
+                - ownedObjects
+                - registeredDevices
+                - scopedRoleMemberOf
+                - transitiveMemberOf
+                - calendar
+                - calendarGroups
+                - calendars
+                - calendarView
+                - contactFolders
+                - contacts
+                - events
+                - inferenceClassification
+                - mailFolders
+                - messages
+                - outlook
+                - people
+                - photo
+                - photos
+                - drive
+                - drives
+                - followedSites
+                - extensions
+                - agreementAcceptances
+                - managedDevices
+                - managedAppRegistrations
+                - deviceManagementTroubleshootingEvents
+                - planner
+                - insights
+                - settings
+                - onenote
+                - activities
+                - onlineMeetings
+                - presence
+                - authentication
+                - chats
+                - joinedTeams
+                - teamwork
+                - todo
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.user'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation   
 components:
   schemas:
     microsoft.graph.user:

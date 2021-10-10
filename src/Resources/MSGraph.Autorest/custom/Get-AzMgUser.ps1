@@ -62,7 +62,12 @@ function Get-AzMgUser {
         [System.String]
         # user mail address
         ${Mail},
-    
+
+        [Parameter(ParameterSetName='SignedInUser', Mandatory)]
+        [System.Management.Automation.SwitchParameter]
+        # user mail address
+        ${SignedIn},
+
         [Parameter()]
         [AllowEmptyCollection()]
         [System.String[]]
@@ -75,17 +80,26 @@ function Get-AzMgUser {
         # Select properties to be returned
         ${Select},
     
-        [Parameter()]
+        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='StartsWithParameterSet')]
+        [Parameter(ParameterSetName='DisplayNameParameterSet')]
+        [Parameter(ParameterSetName='MailParameterSet')]
         [System.UInt64]
         # Gets only the first 'n' objects.
         ${First},
     
-        [Parameter()]
+        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='StartsWithParameterSet')]
+        [Parameter(ParameterSetName='DisplayNameParameterSet')]
+        [Parameter(ParameterSetName='MailParameterSet')]
         [System.UInt64]
         # Ignores the first 'n' objects and then gets the remaining objects.
         ${Skip},
     
-        [Parameter()]
+        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='StartsWithParameterSet')]
+        [Parameter(ParameterSetName='DisplayNameParameterSet')]
+        [Parameter(ParameterSetName='MailParameterSet')]
         [System.Management.Automation.SwitchParameter]
         # Reports the number of objects in the data set. Currently, this parameter does nothing.
         ${IncludeTotalCount},
@@ -159,6 +173,12 @@ function Get-AzMgUser {
     )
     
     process {
+        if('SignedInUser' -eq $PSCmdlet.ParameterSetName) {
+            $null = $PSBoundParameters.Remove('SignedIn')
+            Az.Resources.MSGraph.private\Get-AzMgUserSigned_Get
+            return
+        }
+
         switch ($PSCmdlet.ParameterSetName) {
             'ObjectIdParameterSet' {
                 $PSBOundParameters['UserId'] = $PSBOundParameters['ObjectId']
