@@ -95,6 +95,15 @@ directive:
   - from: swagger-document
     where: $
     transform: return $.replace(/\/principalAssignments\//g, "/PrincipalAssignments/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/managedPrivateEndpoints\//g, "/ManagedPrivateEndpoints/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/privateEndpointConnections\//g, "/PrivateEndpointConnections/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/privateLinkResource\//g, "/PrivateLinkResources/")
   # Remove the unexpanded parameter set
   - where:
       variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Detach$|^DetachViaIdentity$

@@ -30,23 +30,16 @@ Checks that the managed private endpoints resource name is valid and is not alre
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Checks whether the ManagedPrivateEndpoint name is available in the given cluster
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzKustoManagedPrivateEndpointNameAvailability -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "testmanagedprivateendpoint"
 
-{{ Add output here }}
+Message Name                       NameAvailable Reason
+------- ----                       ------------- ------
+        testmanagedprivateendpoint True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The above command returns whether or not a ManagedPrivateEndpoint name is available in the cluster named "mycluster" in resource group "testrg".
 
 ## PARAMETERS
 

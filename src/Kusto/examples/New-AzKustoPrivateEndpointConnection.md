@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
+## EXAMPLES
 
-{{ Add output here }}
+### Example 1: Create a new PrivateEndpointConnection in a cluster
+```powershell
+PS C:\> New-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName "testrg" -SubscriptionId "12345678-1234-1234-1234-123456789098" -Parameter $privateEndpointConnection -Name "testprivateconnection-12345678-1234-1234-1234-123456789098"
+
+Name                                                       	Type
+----                                                       	----
+testprivateconnection-12345678-1234-1234-1234-123456789098  Microsoft.Kusto/Clusters/PrivateEndpointConnections
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+The above command creates a new PrivateEndpointConnection in the cluster "mycluster" found in the resource group "testrg".
