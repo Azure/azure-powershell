@@ -131,7 +131,7 @@ function Remove-AzMgApplication {
             }
             'ApplicationDisplayNameParameterSet' {
                 try {
-                    [Array]$list = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName'] -Select Id
+                    [System.Array]$list = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName'] -Select Id
                     if(1 -lt $list.Count) {
                         Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
                         return

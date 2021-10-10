@@ -163,7 +163,7 @@ process {
         }
         'DisplayNameParameterSet' {
             try {
-                [array]$list = Get-AzMgServicePrincipal -DisplayName $PSBoundParameters['DisplayName'] -Select Id
+                [System.Array]$list = Get-AzMgServicePrincipal -DisplayName $PSBoundParameters['DisplayName'] -Select Id
                 if(1 -lt $list.Count) {
                     Write-Error "More than one service principal found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgServicePrincipal cmdlet to get the object id of the desired service principal."
                     return
