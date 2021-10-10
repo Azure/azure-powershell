@@ -401,8 +401,15 @@ param(
 
 process {
   # mailEnabled is required value even though it is not declared on Swagger 
-  if(-not $PSBoundParameters['mailEnabled']) {
+  # Default value is false following previous behavior 
+  if(-not $PSBoundParameters.ContainsKey('mailEnabled')) {
     $PSBoundParameters['mailEnabled'] = $false
+  }
+
+  # securityEnabled is required value even though it is not declared on Swagger.
+  # Default value is true following previous behavior 
+  if(-not $PSBoundParameters.ContainsKey('securityEnabled')) {
+    $PSBoundParameters['securityEnabled'] = $true
   }
   
   MSGraph.internal\New-AzMgGroup @PSBoundParameters
