@@ -19,6 +19,7 @@ git config --global user.email "azurepowershell@ms.com"
 git config --global user.name "azurepowershell"
 git checkout -b "syncToolsFolder-$BranchName" "origin/$BranchName"
 
+# There are some files or folders who need to be keeped in target branch.
 foreach ($UnSyncPath in $Config.UnSyncPath)
 {
     Write-Host "Back up $UnSyncPath from $BranchName branch."
