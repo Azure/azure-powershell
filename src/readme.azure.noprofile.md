@@ -35,6 +35,17 @@ clear-output-folder: true
 output-folder: .
 ```
 
+> Exclude some properties in table view
+``` yaml
+# For a specific module, we could override this configuration by setting default-exclude-tableview-properties to false in readme.md of that module.
+default-exclude-tableview-properties: true
+```
+``` yaml $(default-exclude-tableview-properties)
+exclude-tableview-properties:
+  - Id
+  - Type
+```
+
 > Directives
 ``` yaml
 directive:
