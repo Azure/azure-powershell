@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed a bug about the exitcode of Bicep [#16055]
 
 ## Version 4.4.0
 * Added a clearer error message for a case in which TemplateUri do not accept bicep file.
