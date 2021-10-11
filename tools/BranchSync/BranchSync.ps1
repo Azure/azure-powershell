@@ -22,7 +22,8 @@ foreach ($SyncPath in $Config.SyncPath)
 foreach ($UnSyncPath in $Config.UnSyncPath)
 {
     Write-Host "Back up $UnSyncPath from $BranchName branch."
-    Copy-Item -Path $UnSyncPath -Destination "$TmpFolder/$UnSyncPath" -Recurse -Force
+    $ParentFolder = Split-Path -path $UnSyncPath -Parent
+    Copy-Item -Path $UnSyncPath -Destination "$TmpFolder/$ParentFolder" -Recurse -Force
 }
 
 foreach ($SyncPath in $Config.SyncPath)
