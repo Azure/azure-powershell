@@ -15,9 +15,9 @@ foreach ($SyncPath in $Config.SyncPath)
     Copy-Item -Path $SyncPath -Destination "$TmpFolder/$SyncPath" -Recurse
 }
 
-# git config --global user.email "azurepowershell@ms.com"
-# git config --global user.name "azurepowershell"
-# git checkout -b "syncToolsFolder-$BranchName" "origin/$BranchName"
+git config --global user.email "azurepowershell@ms.com"
+git config --global user.name "azurepowershell"
+git checkout -b "syncToolsFolder-$BranchName" "origin/$BranchName"
 
 foreach ($UnSyncPath in $Config.UnSyncPath)
 {
@@ -29,10 +29,10 @@ foreach ($UnSyncPath in $Config.UnSyncPath)
 foreach ($SyncPath in $Config.SyncPath)
 {
     Remove-Item -Path $SyncPath -Recurse
-    Copy-Item -Path "$TmpFolder/$UnSyncPath" -Destination $SyncPath -Recurse
-    # git add $SyncPath
+    Copy-Item -Path "$TmpFolder/$SyncPath" -Destination $SyncPath -Recurse
+    git add $SyncPath
 }
 
-# git commit -m "Sync tools folder from main branch to $BranchName branch"
-# git remote set-url origin "https://$GithubToken@github.com/Azure/azure-powershell.git"
-# git push origin "syncToolsFolder-$BranchName" --force
+git commit -m "Sync tools folder from main branch to $BranchName branch"
+git remote set-url origin "https://$GithubToken@github.com/Azure/azure-powershell.git"
+git push origin "syncToolsFolder-$BranchName" --force
