@@ -740,7 +740,14 @@ function New-AzMgServicePrincipal {
       if ($spScope) {
         $param['Scope'] = $spScope
       }
-      New-AzRoleAssignment @param
+      for ($i = 0; i -lt 6; i++) {
+        try {
+          New-AzRoleAssignment @param
+          break
+        } catch {
+          
+        }
+      }
     }
   }
 }
