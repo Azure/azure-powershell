@@ -19,6 +19,17 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $env['today'] = (Get-Date).tostring('yyyy-MM-dd')
+    $env['appName1'] = $env['today'] + '-testapp' + (RandomString -allChars $false -len 8)
+    $env['appName2'] = $env['today'] + '-testapp' + (RandomString -allChars $false -len 8)
+    $env['spName1'] = $env['today'] + '-testsp' + (RandomString -allChars $false -len 8)
+    $env['spName2'] = $env['today'] + '-testsp' + (RandomString -allChars $false -len 8)
+
+    $env['reply1'] = 'https://' + $env['today'] + '-reply1.com'
+    $env['homepage1'] = 'https://' + $env['today'] + '-home1.com'
+    $env['reply2'] = 'https://' + $env['today'] + '-reply2.com'
+    $env['homepage2'] = 'https://' + $env['today'] + '-home2.com'
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
