@@ -58,7 +58,7 @@
             if ($PSBoundParameters.ContainsKey("JustInTimeAccessPolicyMaximumActivationDuration")) {
                 $Object.JustInTimeAccessPolicyMaximumActivationDuration = $JustInTimeAccessPolicyMaximumActivationDuration
             } else {
-                $Object.JustInTimeAccessPolicyMaximumActivationDuration = New-TimeSpan -Minutes 30
+                $Object.JustInTimeAccessPolicyMaximumActivationDuration = New-TimeSpan -Hours 8
             }
 
             if ($PSBoundParameters.ContainsKey("JustInTimeAccessPolicyMultiFactorAuthProvider")) {

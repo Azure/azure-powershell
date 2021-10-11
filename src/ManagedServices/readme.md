@@ -45,16 +45,6 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
-  # Merge cmdlet via modified operation id.
-  # Origin operation id: MarketplaceRegistrationDefinitionsWithoutScope_Get
-  # - from: swagger-document
-  #   where: $.paths["/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions/{marketplaceIdentifier}"].get.operationId
-  #   transform: return "MarketplaceRegistrationDefinitions_Get"
-
-  # # Origin operation id: MarketplaceRegistrationDefinitionsWithoutScope_List
-  # - from: swagger-document
-  #   where: $.paths["/providers/Microsoft.ManagedServices/marketplaceRegistrationDefinitions"].get.operationId
-  #   transform: return "MarketplaceRegistrationDefinitions_List"
 
   # Remove unnecessary cmdlet.
   - where:
@@ -101,8 +91,9 @@ directive:
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
     - Authorization
-    - EligibleAuthorization
     - EligibleApprover
+    # Need custom that add ArgumentCompleterAttribute for JustInTimeAccessPolicyMultiFactorAuthProvider parameter.
+    # - EligibleAuthorization
   
   # The function invalid for memory cmdlet.
   # Custom cmdlet.
