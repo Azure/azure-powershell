@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string networkInterfaceDeleteOption = null,
             string osDiskDeleteOption = null,
             string dataDiskDeleteOption = null,
-            string userData = null))
+            string userData = null)
 
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
