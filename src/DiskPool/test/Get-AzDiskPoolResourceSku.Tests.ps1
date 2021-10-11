@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDiskPoolResourceSku'))
 }
 
 Describe 'Get-AzDiskPoolResourceSku' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzDiskPoolResourceSku -Location AustraliaEast } | Should -Not -Throw
     }
 }
