@@ -39,31 +39,19 @@ Invoke a run command on the VM.
 ## EXAMPLES
 
 ### Example 1 -Windows
+
+Var1 and var2 are defined as parameters in the sample.ps1. Parameter value can be string type only and script is responsible for converting them to other types if needed.
+
 ```
 PS C:\> Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RunPowerShellScript' -ScriptPath 'sample.ps1' -Parameter @{param1 = "var1"; param2 = "var2"}
 ```
 
-#### sample.ps1
-Where arg1 and arg2 are defined as parameters in the sample.ps1:
-```powershell
-param(
-[string]$param1,
-[string]$param2
-)
-Write-Host This is a sample script with parameters $param1 $param2
-```
-Parameter value can be string type only and script is responsible for converting them to other types if needed.
-
 ## Example 2 - Linux
 
-For linux the parameters get converted to environment variables:
 ```
 export param1=var1 param2=var2
 set -- var1 var2 var3
-```
-These exports get added to the top of the bash script before execution.
 
-```
 Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -Name 'vmname' -CommandId 'RunShellScript' -ScriptPath 'sample.bash' -Parameter @{"param1" = "var1";"param2" = "var2"}
 echo This is a sample bash script
 echo Usage 1: Ordered parameters: $0 $1
