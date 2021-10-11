@@ -18,15 +18,6 @@
 List the resources currently being monitored by the Logz monitor resource.
 .Description
 List the resources currently being monitored by the Logz monitor resource.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource
 .Link
