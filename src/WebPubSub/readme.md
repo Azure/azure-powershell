@@ -72,6 +72,12 @@ directive:
       verb: New
       subject: WebPubSub
     hide: true
+  # location cannot be updated
+  - where:
+      verb: Update
+      subject: WebPubSub
+      parameter-name: Location
+    hide: true
   # format output
   - where:
       model-name: WebPubSubResource
@@ -106,28 +112,7 @@ directive:
       parameter-name: ResourceLogConfigurationCategory
     set:
       parameter-name: ResourceLogCategory
-  # remove the subject before the 'Name' when multiple *Name parameter exist
-  - where:
-      subject: WebPubSubEventHandler
-      parameter-name: EventHandlerName
-    set:
-      parameter-name: Name
-  - where:
-      subject: WebPubSubHub
-      parameter-name: HubName
-    set:
-      parameter-name: Name
-  - where:
-      subject: WebPubSubPrivateEndpointConnection
-      parameter-name: PrivateEndpointConnectionName
-    set:
-      parameter-name: Name
-  - where:
-      subject: WebPubSubSharedPrivateLinkResource
-      parameter-name: SharedPrivateLinkResourceName
-    set:
-      parameter-name: Name
-  # rename model properties
+  # rename model properties, usually is a mapping of the previous section
   - where:
       model-name: WebPubSubResource
       property-name: IdentityUserAssignedIdentity
@@ -158,4 +143,25 @@ directive:
       property-name: ResourceLogConfigurationCategory
     set:
       property-name: ResourceLogCategory
+  # remove the subject before the 'Name' when multiple *Name parameter exist
+  - where:
+      subject: WebPubSubEventHandler
+      parameter-name: EventHandlerName
+    set:
+      parameter-name: Name
+  - where:
+      subject: WebPubSubHub
+      parameter-name: HubName
+    set:
+      parameter-name: Name
+  - where:
+      subject: WebPubSubPrivateEndpointConnection
+      parameter-name: PrivateEndpointConnectionName
+    set:
+      parameter-name: Name
+  - where:
+      subject: WebPubSubSharedPrivateLinkResource
+      parameter-name: SharedPrivateLinkResourceName
+    set:
+      parameter-name: Name
 ```
