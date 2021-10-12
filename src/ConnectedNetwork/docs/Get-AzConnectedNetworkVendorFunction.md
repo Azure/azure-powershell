@@ -183,6 +183,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.
   - `[NetworkFunctionName <String>]`: The name of the network function.

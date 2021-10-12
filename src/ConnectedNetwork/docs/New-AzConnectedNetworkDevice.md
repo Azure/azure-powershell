@@ -1,32 +1,25 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorskupreview
+online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkdevice
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedNetworkVendorSkuPreview
+# New-AzConnectedNetworkDevice
 
 ## SYNOPSIS
-Deletes the preview information of a vendor sku.
+Creates or updates a device.
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzConnectedNetworkVendorSkuPreview -PreviewSubscription <String> -SkuName <String> -VendorName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzConnectedNetworkVendorSkuPreview -InputObject <IConnectedNetworkIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzConnectedNetworkDevice -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-DeviceType <DeviceType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the preview information of a vendor sku.
+Creates or updates a device.
 
 ## EXAMPLES
 
@@ -80,19 +73,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -DeviceType
+The type of the device.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
-Parameter Sets: DeleteViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.DeviceType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Resource name for the device resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: DeviceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,42 +133,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PreviewSubscription
-Preview subscription ID.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
-The name of the vendor sku.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -161,7 +154,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -171,15 +164,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VendorName
-The name of the vendor.
+### -Tag
+Resource tags.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -222,34 +215,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
-  - `[DeviceName <String>]`: The name of the device resource.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.
-  - `[NetworkFunctionName <String>]`: The name of the network function.
-  - `[PreviewSubscription <String>]`: Preview subscription ID.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RoleInstanceName <String>]`: The name of the role instance of the vendor network function.
-  - `[ServiceKey <String>]`: The GUID for the vendor network function.
-  - `[SkuName <String>]`: The name of the sku.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VendorName <String>]`: The name of the vendor.
-  - `[VendorSkuName <String>]`: The name of the network function sku.
 
 ## RELATED LINKS
 

@@ -14,33 +14,9 @@ This is expected service behavior.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzConnectedNetworkFunction -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-DeviceId <String>] [-Etag <String>] [-ManagedApplicationParameter <IAny>]
- [-NetworkFunctionContainerConfiguration <IAny>]
- [-NetworkFunctionUserConfiguration <INetworkFunctionUserConfiguration[]>] [-SkuName <String>]
- [-Tag <Hashtable>] [-VendorName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzConnectedNetworkFunction -Name <String> -ResourceGroupName <String> -Parameter <INetworkFunction>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzConnectedNetworkFunction -InputObject <IConnectedNetworkIdentity> -Parameter <INetworkFunction>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzConnectedNetworkFunction -InputObject <IConnectedNetworkIdentity> -Location <String>
- [-DeviceId <String>] [-Etag <String>] [-ManagedApplicationParameter <IAny>]
  [-NetworkFunctionContainerConfiguration <IAny>]
  [-NetworkFunctionUserConfiguration <INetworkFunctionUserConfiguration[]>] [-SkuName <String>]
  [-Tag <Hashtable>] [-VendorName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -109,7 +85,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -124,7 +100,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -134,28 +110,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -170,7 +130,7 @@ The parameters for the managed application.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -185,7 +145,7 @@ Resource name for the network function resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases: NetworkFunctionName
 
 Required: True
@@ -200,7 +160,7 @@ The network function container configurations from the user.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -216,7 +176,7 @@ To construct, see NOTES section for NETWORKFUNCTIONUSERCONFIGURATION properties 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionUserConfiguration[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -241,29 +201,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Network function resource response.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -279,7 +223,7 @@ Once set, it cannot be updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -294,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -309,7 +253,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -325,7 +269,7 @@ Once set, it cannot be updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -371,10 +315,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction
-
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction
@@ -387,19 +327,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.
-  - `[NetworkFunctionName <String>]`: The name of the network function.
-  - `[PreviewSubscription <String>]`: Preview subscription ID.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RoleInstanceName <String>]`: The name of the role instance of the vendor network function.
-  - `[ServiceKey <String>]`: The GUID for the vendor network function.
-  - `[SkuName <String>]`: The name of the sku.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VendorName <String>]`: The name of the vendor.
-  - `[VendorSkuName <String>]`: The name of the network function sku.
 
 NETWORKFUNCTIONUSERCONFIGURATION <INetworkFunctionUserConfiguration[]>: The network function configurations from the user.
   - `[NetworkInterface <INetworkInterface[]>]`: The network interface configuration.
@@ -416,39 +343,6 @@ NETWORKFUNCTIONUSERCONFIGURATION <INetworkFunctionUserConfiguration[]>: The netw
   - `[OSProfileCustomData <String>]`: Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes.    **Note: Do not pass any secrets or passwords in customData property**    This property cannot be updated after the VM is created.    customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)    For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   - `[RoleName <String>]`: The name of the network function role.
   - `[UserDataParameter <IAny>]`: The user data parameters from the customer.
-
-PARAMETER <INetworkFunction>: Network function resource response.
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[ContainerConfiguration <IAny>]`: The network function container configurations from the user.
-  - `[DeviceId <String>]`: Resource ID.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[ManagedApplicationId <String>]`: Resource ID.
-  - `[ManagedApplicationParameter <IAny>]`: The parameters for the managed application.
-  - `[SkuName <String>]`: The sku name for the network function. Once set, it cannot be updated.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[UserConfiguration <INetworkFunctionUserConfiguration[]>]`: The network function configurations from the user.
-    - `[NetworkInterface <INetworkInterface[]>]`: The network interface configuration.
-      - `[IPConfiguration <INetworkInterfaceIPConfiguration[]>]`: A list of IP configurations of the network interface.
-        - `[DnsServer <String[]>]`: The list of DNS servers IP addresses.
-        - `[Gateway <String>]`: The value of the gateway.
-        - `[IPAddress <String>]`: The value of the IP address.
-        - `[IPAllocationMethod <IPAllocationMethod?>]`: IP address allocation method.
-        - `[IPVersion <IPVersion?>]`: IP address version.
-        - `[Subnet <String>]`: The value of the subnet.
-      - `[MacAddress <String>]`: The MAC address of the network interface.
-      - `[Name <String>]`: The name of the network interface.
-      - `[VMSwitchType <VMSwitchType?>]`: The type of the VM switch.
-    - `[OSProfileCustomData <String>]`: Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes.    **Note: Do not pass any secrets or passwords in customData property**    This property cannot be updated after the VM is created.    customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)    For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-    - `[RoleName <String>]`: The name of the network function role.
-    - `[UserDataParameter <IAny>]`: The user data parameters from the customer.
-  - `[VendorName <String>]`: The vendor name for the network function. Once set, it cannot be updated.
 
 ## RELATED LINKS
 

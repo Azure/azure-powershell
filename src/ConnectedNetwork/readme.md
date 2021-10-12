@@ -30,13 +30,14 @@ For information on how to develop for `Az.ConnectedNetwork`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a2d4dc4b1296624eefd4b5c235d56af46f7c39d2
+branch: 5f32b50e18ed0a91eefe39287078bf66c4d6c3a8
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/networkFunction.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/vendor.json
+  - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/device.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/networkFunctionVendor.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/vendorNetworkFunction.json
 
@@ -47,6 +48,10 @@ identity-correction-for-post: true
 resourcegroup-append: true
 
 directive:
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+    remove: true
+
   - where:
       verb: Set
     remove: true

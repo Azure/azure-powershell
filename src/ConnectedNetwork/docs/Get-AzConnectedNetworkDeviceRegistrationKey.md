@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendor
+online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdeviceregistrationkey
 schema: 2.0.0
 ---
 
-# New-AzConnectedNetworkVendor
+# Get-AzConnectedNetworkDeviceRegistrationKey
 
 ## SYNOPSIS
-Creates or updates a vendor.
+List the registration key for the device.
 
 ## SYNTAX
 
 ```
-New-AzConnectedNetworkVendor -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzConnectedNetworkDeviceRegistrationKey -DeviceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a vendor.
+List the registration key for the device.
 
 ## EXAMPLES
 
@@ -42,21 +42,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -72,13 +57,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the vendor.
+### -DeviceName
+The name of the device resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: VendorName
+Aliases:
 
 Required: True
 Position: Named
@@ -87,15 +72,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,7 +92,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendor
+### System.String
 
 ## NOTES
 

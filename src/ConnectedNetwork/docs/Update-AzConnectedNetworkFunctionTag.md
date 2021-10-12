@@ -19,19 +19,6 @@ Update-AzConnectedNetworkFunctionTag -NetworkFunctionName <String> -ResourceGrou
  [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzConnectedNetworkFunctionTag -NetworkFunctionName <String> -ResourceGroupName <String>
- -Parameter <ITagsObject> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzConnectedNetworkFunctionTag -InputObject <IConnectedNetworkIdentity> -Parameter <ITagsObject>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzConnectedNetworkFunctionTag -InputObject <IConnectedNetworkIdentity> [-Tag <Hashtable>]
@@ -84,7 +71,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -99,7 +86,7 @@ Resource name for the network function resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -109,29 +96,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Tags object for patch operations.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ITagsObject
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -146,7 +117,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -161,7 +132,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -207,8 +178,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ITagsObject
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
 
 ## OUTPUTS
@@ -225,6 +194,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+  - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.
   - `[NetworkFunctionName <String>]`: The name of the network function.
@@ -236,10 +206,6 @@ INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VendorName <String>]`: The name of the vendor.
   - `[VendorSkuName <String>]`: The name of the network function sku.
-
-PARAMETER <ITagsObject>: Tags object for patch operations.
-  - `[Tag <ITagsObjectTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

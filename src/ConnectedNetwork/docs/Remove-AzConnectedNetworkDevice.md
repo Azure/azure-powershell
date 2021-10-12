@@ -1,32 +1,31 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendorskupreview
+online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkdevice
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedNetworkVendorSkuPreview
+# Remove-AzConnectedNetworkDevice
 
 ## SYNOPSIS
-Deletes the preview information of a vendor sku.
+Deletes the specified device.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzConnectedNetworkVendorSkuPreview -PreviewSubscription <String> -SkuName <String> -VendorName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzConnectedNetworkDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzConnectedNetworkVendorSkuPreview -InputObject <IConnectedNetworkIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedNetworkDevice -InputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the preview information of a vendor sku.
+Deletes the specified device.
 
 ## EXAMPLES
 
@@ -96,6 +95,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the device resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: DeviceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -126,23 +140,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PreviewSubscription
-Preview subscription ID.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
-The name of the vendor sku.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -167,21 +167,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VendorName
-The name of the vendor.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

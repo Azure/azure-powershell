@@ -11,6 +11,12 @@ Locale: en-US
 Microsoft Azure PowerShell: ConnectedNetwork cmdlets
 
 ## Az.ConnectedNetwork Cmdlets
+### [Get-AzConnectedNetworkDevice](Get-AzConnectedNetworkDevice.md)
+Gets information about the specified device.
+
+### [Get-AzConnectedNetworkDeviceRegistrationKey](Get-AzConnectedNetworkDeviceRegistrationKey.md)
+List the registration key for the device.
+
 ### [Get-AzConnectedNetworkFunction](Get-AzConnectedNetworkFunction.md)
 Gets information about the specified network function resource.
 
@@ -35,6 +41,9 @@ Gets information about the specified sku.
 ### [Get-AzConnectedNetworkVendorSkuPreview](Get-AzConnectedNetworkVendorSkuPreview.md)
 Gets the preview information of a vendor sku.
 
+### [New-AzConnectedNetworkDevice](New-AzConnectedNetworkDevice.md)
+Creates or updates a device.
+
 ### [New-AzConnectedNetworkFunction](New-AzConnectedNetworkFunction.md)
 Creates or updates a network function resource.
 This operation can take up to 6 hours to complete.
@@ -55,6 +64,9 @@ This is expected service behavior.
 
 ### [New-AzConnectedNetworkVendorSkuPreview](New-AzConnectedNetworkVendorSkuPreview.md)
 Creates or updates preview information of a vendor sku.
+
+### [Remove-AzConnectedNetworkDevice](Remove-AzConnectedNetworkDevice.md)
+Deletes the specified device.
 
 ### [Remove-AzConnectedNetworkFunction](Remove-AzConnectedNetworkFunction.md)
 Deletes the specified network function resource.
@@ -80,6 +92,9 @@ Starts a role instance of a vendor network function.
 
 ### [Stop-AzConnectedNetworkVendorFunctionRoleInstance](Stop-AzConnectedNetworkVendorFunctionRoleInstance.md)
 Powers off (stop) a role instance of a vendor network function.
+
+### [Update-AzConnectedNetworkDeviceTag](Update-AzConnectedNetworkDeviceTag.md)
+Updates device tags.
 
 ### [Update-AzConnectedNetworkFunctionTag](Update-AzConnectedNetworkFunctionTag.md)
 Updates the tags for the network function resource.

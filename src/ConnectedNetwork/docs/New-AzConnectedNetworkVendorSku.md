@@ -14,33 +14,10 @@ This is expected service behavior.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzConnectedNetworkVendorSku -SkuName <String> -VendorName <String> [-SubscriptionId <String>]
  [-DeploymentMode <SkuDeploymentMode>] [-ManagedApplicationParameter <IAny>]
  [-ManagedApplicationTemplate <IAny>]
- [-NetworkFunctionTemplateNetworkFunctionRoleConfiguration <INetworkFunctionRoleConfiguration[]>]
- [-NetworkFunctionType <NetworkFunctionType>] [-Preview] [-SkuType <SkuType>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzConnectedNetworkVendorSku -SkuName <String> -VendorName <String> -Parameter <IVendorSku>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzConnectedNetworkVendorSku -InputObject <IConnectedNetworkIdentity> -Parameter <IVendorSku>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzConnectedNetworkVendorSku -InputObject <IConnectedNetworkIdentity> [-DeploymentMode <SkuDeploymentMode>]
- [-ManagedApplicationParameter <IAny>] [-ManagedApplicationTemplate <IAny>]
  [-NetworkFunctionTemplateNetworkFunctionRoleConfiguration <INetworkFunctionRoleConfiguration[]>]
  [-NetworkFunctionType <NetworkFunctionType>] [-Preview] [-SkuType <SkuType>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -108,7 +85,7 @@ The sku deployment mode.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.SkuDeploymentMode
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -118,28 +95,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ManagedApplicationParameter
 The parameters for the managed application to be supplied by the vendor.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -154,7 +115,7 @@ The template for the managed application deployment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -170,7 +131,7 @@ To construct, see NOTES section for NETWORKFUNCTIONTEMPLATENETWORKFUNCTIONROLECO
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionRoleConfiguration[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -185,7 +146,7 @@ The network function type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.NetworkFunctionType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -210,28 +171,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Sku sub resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Preview
 Indicates if the vendor sku is in preview mode.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -246,7 +191,7 @@ The name of the sku.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -261,7 +206,7 @@ The sku type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.SkuType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -276,7 +221,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -291,7 +236,7 @@ The name of the vendor.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -337,10 +282,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku
-
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IConnectedNetworkIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku
@@ -353,19 +294,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.
-  - `[NetworkFunctionName <String>]`: The name of the network function.
-  - `[PreviewSubscription <String>]`: Preview subscription ID.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RoleInstanceName <String>]`: The name of the role instance of the vendor network function.
-  - `[ServiceKey <String>]`: The GUID for the vendor network function.
-  - `[SkuName <String>]`: The name of the sku.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VendorName <String>]`: The name of the vendor.
-  - `[VendorSkuName <String>]`: The name of the network function sku.
 
 NETWORKFUNCTIONTEMPLATENETWORKFUNCTIONROLECONFIGURATION <INetworkFunctionRoleConfiguration[]>: An array of network function role definitions.
   - `[CustomProfileMetadataConfigurationPath <String>]`: Path for metadata configuration.
@@ -404,57 +332,6 @@ NETWORKFUNCTIONTEMPLATENETWORKFUNCTIONROLECONFIGURATION <INetworkFunctionRoleCon
   - `[UserDataTemplate <IAny>]`: The user data template for customers. This is a json schema template describing the format and data type of user data parameters.
   - `[VhdUri <String>]`: Specifies the virtual hard disk's uri.
   - `[VirtualMachineSize <VirtualMachineSizeTypes?>]`: The size of the virtual machine.
-
-PARAMETER <IVendorSku>: Sku sub resource.
-  - `[DeploymentMode <SkuDeploymentMode?>]`: The sku deployment mode.
-  - `[ManagedApplicationParameter <IAny>]`: The parameters for the managed application to be supplied by the vendor.
-  - `[ManagedApplicationTemplate <IAny>]`: The template for the managed application deployment.
-  - `[NetworkFunctionTemplateNetworkFunctionRoleConfiguration <INetworkFunctionRoleConfiguration[]>]`: An array of network function role definitions.
-    - `[CustomProfileMetadataConfigurationPath <String>]`: Path for metadata configuration.
-    - `[ImageReferenceExactVersion <String>]`: Specifies in decimal numbers, the exact version of image used to create the virtual machine.
-    - `[ImageReferenceOffer <String>]`: Specifies the offer of the image used to create the virtual machine.
-    - `[ImageReferencePublisher <String>]`: The image publisher.
-    - `[ImageReferenceSku <String>]`: The image SKU.
-    - `[ImageReferenceVersion <String>]`: Specifies the version of the image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
-    - `[NetworkInterface <INetworkInterface[]>]`: The network interface configurations.
-      - `[IPConfiguration <INetworkInterfaceIPConfiguration[]>]`: A list of IP configurations of the network interface.
-        - `[DnsServer <String[]>]`: The list of DNS servers IP addresses.
-        - `[Gateway <String>]`: The value of the gateway.
-        - `[IPAddress <String>]`: The value of the IP address.
-        - `[IPAllocationMethod <IPAllocationMethod?>]`: IP address allocation method.
-        - `[IPVersion <IPVersion?>]`: IP address version.
-        - `[Subnet <String>]`: The value of the subnet.
-      - `[MacAddress <String>]`: The MAC address of the network interface.
-      - `[Name <String>]`: The name of the network interface.
-      - `[VMSwitchType <VMSwitchType?>]`: The type of the VM switch.
-    - `[OSDiskName <String>]`: The VHD name.
-    - `[OSDiskOstype <OperatingSystemTypes?>]`: The OS type.
-    - `[OSDiskSizeGb <Int32?>]`: Specifies the size of os disk in gigabytes. This is the fully expanded disk size needed of the VHD image on the ASE. This disk size should be greater than the size of the VHD provided in vhdUri.
-    - `[OSProfileAdminUsername <String>]`: Specifies the name of the administrator account.    **Windows-only restriction:** Cannot end in "."    **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".    **Minimum-length (Linux):** 1  character    **Max-length (Linux):** 64 characters    **Max-length (Windows):** 20 characters    <li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) <li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-    - `[OSProfileCustomData <String>]`: Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes.    **Note: Do not pass any secrets or passwords in customData property**    This property cannot be updated after the VM is created.    customData is passed to the VM to be saved as a file. For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)    For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-    - `[OSProfileCustomDataRequired <Boolean?>]`: Indicates if custom data is required to deploy this role.
-    - `[RoleName <String>]`: The name of the network function role.
-    - `[RoleType <NetworkFunctionRoleConfigurationType?>]`: Role type.
-    - `[SshPublicKey <ISshPublicKey[]>]`: The list of SSH public keys used to authenticate with linux based VMs.
-      - `[KeyData <String>]`: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-      - `[Path <String>]`: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-    - `[StorageProfileDataDisk <IDataDisk[]>]`: Specifies the parameters that are used to add a data disk to a virtual machine.
-      - `[CreateOption <DiskCreateOptionTypes?>]`: Specifies how the virtual machine should be created.
-      - `[DiskSizeGb <Int32?>]`: Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
-      - `[Name <String>]`: The name of data disk.
-    - `[UserDataParameter <IAny>]`: The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.
-    - `[UserDataTemplate <IAny>]`: The user data template for customers. This is a json schema template describing the format and data type of user data parameters.
-    - `[VhdUri <String>]`: Specifies the virtual hard disk's uri.
-    - `[VirtualMachineSize <VirtualMachineSizeTypes?>]`: The size of the virtual machine.
-  - `[NetworkFunctionType <NetworkFunctionType?>]`: The network function type.
-  - `[Preview <Boolean?>]`: Indicates if the vendor sku is in preview mode.
-  - `[SkuType <SkuType?>]`: The sku type.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 ## RELATED LINKS
 
