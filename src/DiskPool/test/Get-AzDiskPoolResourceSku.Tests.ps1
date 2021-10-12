@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDiskPoolResourceSku'))
 
 Describe 'Get-AzDiskPoolResourceSku' {
     It 'List' {
-        { Get-AzDiskPoolResourceSku -Location AustraliaEast } | Should -Not -Throw
+        $skus = Get-AzDiskPoolResourceSku -Location $env.location
+        $skus.Count | Should -Be 3
     }
 }
