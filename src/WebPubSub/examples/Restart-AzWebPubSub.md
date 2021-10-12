@@ -1,18 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Restart a Web PubSub resource
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Restart-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### Example 2: Restart a Web PubSub resource with identity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $identity = @{ResourceGroupName = 'psdemo'
+ResourceName = 'psdemo-wps'
+SubscriptionId = $(Get-AzContext).Subscription.Id }
 
-{{ Add output here }}
+PS C:\> $identity | Restart-AzWebPubSub
 ```
 
-{{ Add description here }}
+
 
