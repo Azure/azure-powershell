@@ -21,14 +21,6 @@ Describe 'New-AzKustoPrivateEndpointConnection' {
 
         # Set-AzContext -SubscriptionId $env.networkClustersTestsSubscriptionId
 
-        $virtualNetwork = Get-AzVirtualNetwork -ResourceName $env.virtualNetworkName -ResourceGroupName $env.resourceGroupNamefordc
-        $subnet = $virtualNetwork | Select-Object -ExpandProperty subnets | Where-Object Name -eq $env.subnetName
-
-        $privateLinkServiceId = "/subscriptions/" +  $env.networkClustersTestsSubscriptionId + "/resourceGroups/" + $env.resourceGroupNamefordc + "/providers/Microsoft.Kusto/Clusters/" + $env.clusterNetwork
-
-        $privateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $env.privateEndpointConnectionName -PrivateLinkServiceId $privateLinkServiceId -GroupId $env.groupId
-        New-AzPrivateEndpoint -Name $env.privateEndpointConnectionName -ResourceGroupName $env.resourceGroupNamefordc -Location $env.locationNetworking -PrivateLinkServiceConnection $privateLinkServiceConnection -Subnet $subnet -Force
-
         $privateEndpointConnection = Get-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId
         $privateEndpointConnectionName = $privateEndpointConnection.Name
 
@@ -40,8 +32,9 @@ Describe 'New-AzKustoPrivateEndpointConnection' {
         $privateEndpointConnection = Get-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId
         $privateEndpointConnection.PrivateLinkServiceConnectionStateStatus | Should -Be $env.rejected
 
+        $clusterName = $env.clusterNetwork
+        $ResourceGroupName = $env.resourceGroupNamefordc
         Remove-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId -Name $privateEndpointConnectionName
-        Remove-AzPrivateEndpoint -Name $env.privateEndpointConnectionName -ResourceGroupName $env.resourceGroupNamefordc -Force
 
         # Set-AzContext -SubscriptionId $env.SubscriptionId
     }
