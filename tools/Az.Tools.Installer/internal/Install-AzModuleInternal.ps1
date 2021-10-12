@@ -62,9 +62,9 @@ function Install-AzModuleInternal {
 
     process {
 
-        Write-Progress "Uninstalling Az if installed" -PercentComplete (1 / 4 * 100)
-
         try {
+            Write-Progress -Id $script:FixProgressBarId "Download packagkes from $Repository."
+
             if ($Force -or !$WhatIfPreference) {
                 [string]$tempRepo = Join-Path ([Path]::GetTempPath()) ((New-Guid).Guid)
                 #$tempRepo = Join-Path 'D:/PSLocalRepo/' (Get-Date -Format "yyyyddMM-HHmm")
@@ -83,7 +83,6 @@ function Install-AzModuleInternal {
                 $url = Get-RepositoryUrl $Repository
                 $downloader = [ParallelDownloader]::new($url)
 
-                Write-Progress "Downloading packagkes from $Repository" -PercentComplete (2 / 4 * 100)
                 try {
                     $module = $null
                     $fileList = @()
@@ -110,7 +109,7 @@ function Install-AzModuleInternal {
                 }
             }
 
-            Write-Progress "Installing packagkes from local" -PercentComplete (3 / 4 * 100) -Completed
+            Write-Progress -Id $script:FixProgressBarId  "Install packagkes from local."
 
             $moduleInstalled = @()
 
@@ -241,6 +240,8 @@ function Install-AzModuleInternal {
                                 $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation)
                                 Write-Output $result
                             }
+                            Write-Progress -ParentId $script:FixProgressBarId -Activity "Install Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
+                            $index += 1
                         }
                     }
                 }
@@ -265,7 +266,7 @@ function Install-AzModuleInternal {
                         }
                         Remove-Job $job -Confirm:$false
                         if ($PSVersionTable.PSEdition -eq "Core") {
-                            Write-Progress -Activity "Install Module" -CurrentOperation "$result" -PercentComplete ($index / $jobs.Count * 100)
+                            Write-Progress -ParentId $script:FixProgressBarId -Activity "Install Module" -CurrentOperation "$($result.ModuleName) of version $($result.ModuleVersion)" -PercentComplete ($index / $jobs.Count * 100)
                             $index += 1
                         }
                     }

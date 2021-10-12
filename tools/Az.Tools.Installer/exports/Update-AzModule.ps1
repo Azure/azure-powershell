@@ -82,8 +82,9 @@ function Update-AzModule {
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
-        $Name = Normalize-ModuleName $Name
+        Write-Progress -Id $script:FixProgressBarId "Check currently installed Az modules."
 
+        $Name = Normalize-ModuleName $Name
         $allInstalled = Get-AllAzModule
         if (!$allInstalled) {
             Write-Warning "[$Invoker] No Az modules are installled."
@@ -99,6 +100,8 @@ function Update-AzModule {
                 #If Az.Accounts is in modulesNotInstalled，it will be warned but installed anyway.
             }
         }
+
+        Write-Progress -Id $script:FixProgressBarId "Find modules on $Repository."
 
         $groupSet = @{}
         $group = $intersection | Group-Object -Property Name

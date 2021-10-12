@@ -78,8 +78,9 @@ function Install-AzModule {
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
-        $Name = Normalize-ModuleName $Name
+        Write-Progress -Id $script:FixProgressBarId "Find modules on $Repository."
 
+        $Name = Normalize-ModuleName $Name
         $findModuleParams = @{
             Repository = $Repository
             Name = $Name
@@ -92,7 +93,6 @@ function Install-AzModule {
             $findModuleParams.Add('RequiredVersion', [Version]$RequiredAzVersion)
         }
 
-        Write-Progress "Find modules on $Repository" -PercentComplete (0 / 4 * 100)
         $modules = @()
         $modules += Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
 
@@ -105,6 +105,8 @@ function Install-AzModule {
         }
 
         if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
+
+            Write-Progress -Id 1 "Uninstall Azure and AzureRM."
             Uninstall-AzureRM
         }
 

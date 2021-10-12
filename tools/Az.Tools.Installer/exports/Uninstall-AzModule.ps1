@@ -62,12 +62,15 @@ function Uninstall-AzModule {
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
         if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
+            Write-Progress -Id $script:FixProgressBarId "Uninstall Azure and AzureRM."
             Uninstall-AzureRM
         }
 
         if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
             Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue
         }
+
+        Write-Progress -Id $script:FixProgressBarId "Check currently installed Az modules."
 
         $allInstalled = @()
         $allInstalled += Get-AllAzModule -PrereleaseOnly:$PrereleaseOnly
@@ -89,6 +92,8 @@ function Uninstall-AzModule {
             }
         }
 
+        Write-Progress -Id 1 "Uninstall specified Az modules."
+
         if ($moduleToUninstall) {
             $groupSet = @{}
             $moduleToUninstall | Group-Object -Property Name | Foreach-Object {$groupSet[$_.Name] = ($_.Group.Version | Sort-Object -Descending) }
@@ -101,7 +106,7 @@ function Uninstall-AzModule {
                 if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $moduleName version $versions", "$moduleName version $versions", "Uninstall")) {
                     Uninstall-Module -Name $moduleName -AllVersion -ErrorAction 'Continue'
                     Write-Debug "[$Invoker] Uninstalling $moduleName version $versions is completed."
-                    Write-Progress -Activity "Uninstall Module" -CurrentOperation "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
+                    Write-Progress -ParentId $script:FixProgressBarId -Activity "Uninstall Module" -CurrentOperation "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
                     $index += 1
                 }
             }

@@ -26,7 +26,7 @@ using namespace System.Threading.Tasks
 Microsoft.PowerShell.Core\Set-StrictMode -Version 3
 
 $script:AzTempRepoName = 'AzTempRepo'
-$script:CurrentMinAzToolsInstallerVersion = '0.0.0.0'
+$script:FixProgressBarId = 1
 $script:ParallelDownloaderClassCode = @"
 using System;
 using System.Collections.Generic;
