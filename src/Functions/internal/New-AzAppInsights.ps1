@@ -100,16 +100,16 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 
 INSIGHTPROPERTY <IApplicationInsightsComponent>: An Application Insights component definition.
   Location <String>: Resource location
-  ApplicationType <ApplicationType>: Type of application being monitored.
   Kind <String>: The kind of application that this component refers to, used to customize UI. This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
   [Tag <IComponentsResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
+  [ApplicationType <ApplicationType?>]: Type of application being monitored.
   [FlowType <FlowType?>]: Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
   [HockeyAppId <String>]: The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
   [RequestSource <RequestSource?>]: Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
   [SamplingPercentage <Double?>]: Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azappinsights
+https://docs.microsoft.com/powershell/module/az.functions/new-azappinsights
 #>
 function New-AzAppInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent])]

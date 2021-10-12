@@ -12,25 +12,25 @@ Gets the auditing settings of an Azure Synapse Analytics SQL pool.
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### SqlPoolParameterSet (Default)
 ```
-Get-AzSynapseSqlPoolAuditSetting [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
+Get-AzSynapseSqlPoolAuditSetting [[-ResourceGroupName] <String>] [-WorkspaceName] <String>
+ -SqlPoolName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SqlPoolParentObjectParameterSet
+```
+Get-AzSynapseSqlPoolAuditSetting -WorkspaceObject <PSSynapseWorkspace> -SqlPoolName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetByParentObjectParameterSet
+### SqlPoolObjectParameterSet
 ```
-Get-AzSynapseSqlPoolAuditSetting -Name <String> -WorkspaceObject <PSSynapseWorkspace>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByInputObjectParameterSet
-```
-Get-AzSynapseSqlPoolAuditSetting -InputObject <PSSynapseSqlPool> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSynapseSqlPoolAuditSetting -SqlPoolObject <PSSynapseSqlPool> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### GetByResourceIdParameterSet
+### SqlPoolResourceIdParameterSet
 ```
 Get-AzSynapseSqlPoolAuditSetting -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -72,46 +72,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-SQL pool input object, usually passed through the pipeline.
-
-```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
-Parameter Sets: GetByInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of Synapse SQL pool.
-
-```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet, GetByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: SqlPoolParameterSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -122,7 +92,7 @@ Resource identifier of Synapse SQL Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
+Parameter Sets: SqlPoolResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -132,16 +102,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SqlPoolName
+Name of Synapse SQL pool.
+
+```yaml
+Type: System.String
+Parameter Sets: SqlPoolParameterSet, SqlPoolParentObjectParameterSet
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlPoolObject
+SQL pool input object, usually passed through the pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseSqlPool
+Parameter Sets: SqlPoolObjectParameterSet
+Aliases: InputObject
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: SqlPoolParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -152,7 +152,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: GetByParentObjectParameterSet
+Parameter Sets: SqlPoolParentObjectParameterSet
 Aliases:
 
 Required: True

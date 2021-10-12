@@ -15,12 +15,12 @@
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using System.Linq;
 using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
-using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
+using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -54,15 +54,18 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
-            Func<IEngine, SubResource> proximityPlacementGroup,
-            Func<IEngine, SubResource> hostGroup,
+            Func<IEngine, CM.SubResource> proximityPlacementGroup,
+            Func<IEngine, CM.SubResource> hostGroup,
             string priority,
             string evictionPolicy,
             double? maxPrice,
             string[] scaleInPolicy,
             bool doNotRunExtensionsOnOverprovisionedVMs,
             bool encryptionAtHost,
-            int? platformFaultDomainCount
+            int? platformFaultDomainCount,
+            string edgeZone,
+            string orchestrationMode,
+            string capacityReservationId
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -70,6 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: engine => new VirtualMachineScaleSet()
                 {
                     Zones = zones,
+                    ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
                     UpgradePolicy = new UpgradePolicy
                     {
                         Mode = upgradeMode ?? UpgradeMode.Manual
@@ -112,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                         new VirtualMachineScaleSetIPConfiguration
                                         {
                                             Name = name,
-                                            LoadBalancerBackendAddressPools = new [] 
+                                            LoadBalancerBackendAddressPools = new []
                                             {
                                                 engine.GetReference(backendAdressPool)
                                             },
@@ -129,7 +133,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
-                        BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
+                        BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
+                        CapacityReservation = (capacityReservationId == null) ? null : new CapacityReservationProfile
+                        {
+                            CapacityReservationGroup = new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId)
+                        }
                     },
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
                     HostGroup = hostGroup(engine),
@@ -137,7 +145,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         Rules = scaleInPolicy
                     },
-                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null
+                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
+                    OrchestrationMode = orchestrationMode
                 });
     }
 }

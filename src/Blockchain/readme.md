@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Blockchain service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -58,6 +58,17 @@ subject-prefix: 'Blockchain'
 identity-correction-for-post: true
 
 directive:
+  - where:
+      verb: (.*)
+    set:
+      breaking-change:
+        change-description: On September 10, 2021, Azure Blockchain will be retired.
+  - from: swagger-document
+    where: $.definitions..password
+    transform: $.format = "password"
+  - from: swagger-document
+    where: $.definitions..consortiumManagementAccountPassword
+    transform: $.format = "password"
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/ListRegenerateApiKeys$/, "RegenerateApiKeys")
@@ -104,14 +115,9 @@ directive:
       verb: Test
       variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
-  # Hide these two cmdlets, because we need to customize a version with password secured.
   - where:
-      verb: New|Update
+      verb: New
       subject: BlockchainMember
-    hide: true
-  - where:
-      verb: New|Update
-      subject: TransactionNode
     hide: true
   - where:
       parameter-name: SubscriptionId

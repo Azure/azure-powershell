@@ -34,14 +34,14 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: Removes a directory
 ```
-PS C:\>Remove-AzDataLakeGen2tem -FileSystem "filesystem1" -Path "dir1/"
+PS C:\>Remove-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
 ```
 
 This command removes a directory from a Filesystem.
 
 ### Example 2: Removes a file without prompt
 ```
-PS C:\>Remove-AzDataLakeGen2tem -FileSystem "filesystem1" -Path "dir1/file1" -Force
+PS C:\>Remove-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" -Force
 ```
 
 This command removes a directory from a Filesystem, without prompt.

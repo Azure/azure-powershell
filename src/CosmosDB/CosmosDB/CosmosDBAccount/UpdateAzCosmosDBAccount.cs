@@ -100,13 +100,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             if (NetworkAclBypass != null)
             {
-                databaseAccountUpdateParameters.NetworkAclBypass = 
+                databaseAccountUpdateParameters.NetworkAclBypass =
                     NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {
-               databaseAccountUpdateParameters.ConsistencyPolicy = base.PopoulateConsistencyPolicy(DefaultConsistencyLevel, MaxStalenessIntervalInSeconds, MaxStalenessPrefix);
+                databaseAccountUpdateParameters.ConsistencyPolicy = base.PopoulateConsistencyPolicy(DefaultConsistencyLevel, MaxStalenessIntervalInSeconds, MaxStalenessPrefix);
             }
 
             if (Tag != null)
@@ -158,6 +158,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
             {
+                if (BackupPolicyType == "Continuous")
+                {
+                    WriteWarning("Cannot set BackupPolicyType along with BackupInterval or BackupRetention parameters");
+                    return;
+                }
+
                 if (readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
                 {
                     databaseAccountUpdateParameters.BackupPolicy = new PeriodicModeBackupPolicy()
@@ -175,6 +181,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     return;
                 }
             }
+
+            // Update backup policy to ContinuousModeBackupPolicy
+            if (BackupPolicyType == "Continuous" && readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
+            {
+                databaseAccountUpdateParameters.BackupPolicy = new ContinuousModeBackupPolicy();
+            }
+
+            // Update analytical storage schema type.
+            databaseAccountUpdateParameters.AnalyticalStorageConfiguration = CreateAnalyticalStorageConfiguration(AnalyticalStorageSchemaType);
 
             if (ShouldProcess(Name, "Updating Database Account"))
             {

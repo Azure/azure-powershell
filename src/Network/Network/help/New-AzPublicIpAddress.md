@@ -14,11 +14,11 @@ Creates a public IP address.
 ## SYNTAX
 
 ```
-New-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
- [-Tier <String>] -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>]
- [-IpTag <PSPublicIpTag[]>] [-PublicIpPrefix <PSPublicIpPrefix>] [-ReverseFqdn <String>]
- [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-EdgeZone <String>]
+ [-Sku <String>] [-Tier <String>] -AllocationMethod <String> [-IpAddressVersion <String>] [-IpAddress <String>]
+ [-DomainNameLabel <String>] [-IpTag <PSPublicIpTag[]>] [-PublicIpPrefix <PSPublicIpPrefix>]
+ [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-Tag <Hashtable>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +51,7 @@ $dnsPrefix.$location.cloudapp.azure.com.
 ### Example 3: Create a new public IP address with IpTag
 ```powershell
 $ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql"
-$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -IpTags $ipTag
+$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -IpTag $ipTag
 ```
 
 This command creates a new public IP address resource.A DNS record is created for
@@ -64,8 +64,7 @@ and passed as input through -IpTags.
 
 ### Example 4: Create a new public IP address from a Prefix
 ```powershell
-$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location
--PublicIpPrefix publicIpPrefix -Sku Standard
+$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -PublicIpPrefix $publicIpPrefix -Sku Standard
 ```
 
 This command creates a new public IP address resource. A DNS record is created for
@@ -73,7 +72,18 @@ $dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of thi
 public IP address is immediately allocated to this resource from the publicIpPrefix specified.
 This option is only supported for the 'Standard' Sku and 'Static' AllocationMethod.
 
-### Example 5: Create a new global public IP address
+### Example 5: Create a specific public IP address from a BYOIP Prefix
+```powershell
+$publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -Location $location -IpAddress 0.0.0.0 -PublicIpPrefix $publicIpPrefix -Sku Standard
+```
+
+This command creates a new public IP address resource with specific IP. NRP would check if the
+given IP is inside the PublicIpPrefix and if the given PublicIpPrefix is BYOIP PublicIpPrefix.
+the given public IP address is immediately allocated to this resource from the publicIpPrefix
+specified. This option is only supported for the 'Standard' Sku and 'Static' AllocationMethod
+and BYOIP PublicIpPrefix.
+
+### Example 6: Create a new global public IP address
 ```powershell
 $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $domainNameLabel -Location $location -Sku Standard -Tier Global
 ```
@@ -134,6 +144,21 @@ Accept wildcard characters: False
 
 ### -DomainNameLabel
 Specifies the relative DNS name for a public IP address.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EdgeZone
+The name of the extended location.
 
 ```yaml
 Type: System.String
@@ -243,6 +268,21 @@ Specifies the PSPublicIpPrefix from which to allocate the public IP address.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpAddress
+Specifies the IP address when creating a BYOIP publicIpAddress.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

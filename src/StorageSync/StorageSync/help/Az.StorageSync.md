@@ -27,13 +27,18 @@ This command lists all server endpoints within a given sync group.
 This command lists all storage sync services within a given scope of subscription/resource group.
 
 ### [Invoke-AzStorageSyncChangeDetection](Invoke-AzStorageSyncChangeDetection.md)
-This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. A maximum of 10,000 changes can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within a 10,000 changes limit.
+This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. A maximum of 10,000 items can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within the 10,000 item limit.
+
+> [!Note]  
+> The Invoke-AzStorageSyncChangeDetection cmdlet will not detect the following changes in the Azure file share:
+> - Files that are deleted. 
+> - Files that are moved out of the share.
+> - Files that are deleted and created with the same name.  
+> 
+>  These changes will be detected when the [change detection job](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#afs-change-detection) runs.
 
 ### [Invoke-AzStorageSyncCompatibilityCheck](Invoke-AzStorageSyncCompatibilityCheck.md)
 Checks for potential compatibility issues between your system and Azure File Sync.
-
-### [Invoke-AzStorageSyncFileRecall](Invoke-AzStorageSyncFileRecall.md)
-This command recalls all tiered files back to local disk.
 
 ### [New-AzStorageSyncCloudEndpoint](New-AzStorageSyncCloudEndpoint.md)
 This command creates an Azure File Sync cloud endpoint in a sync group.
@@ -46,9 +51,6 @@ This command creates a new server endpoint on a registered server. This enables 
 
 ### [New-AzStorageSyncService](New-AzStorageSyncService.md)
 This command creates a new storage sync service in a resource group.
-
-### [Set-AzStorageSyncService](New-AzStorageSyncService.md)
-This command sets a storage sync service in a resource group.
 
 ### [Register-AzStorageSyncServer](Register-AzStorageSyncServer.md)
 This command registers a server to a storage sync service which creates a trust relationship. PowerShell or the Azure portal can then be used to configure sync on this server.
@@ -70,6 +72,9 @@ Use for troubleshooting only. This command will roll the storage sync server cer
 
 ### [Set-AzStorageSyncServerEndpoint](Set-AzStorageSyncServerEndpoint.md)
 This command allows for changes on the adjustable parameters of a server endpoint.
+
+### [Set-AzStorageSyncService](Set-AzStorageSyncService.md)
+This command sets storage sync service in a resource group.
 
 ### [Unregister-AzStorageSyncServer](Unregister-AzStorageSyncServer.md)
 Warning: Unregistering a server will result in cascading deletes of all server endpoints on this server. This command will unregister a server from it's storage sync service.

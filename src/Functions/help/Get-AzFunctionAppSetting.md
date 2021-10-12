@@ -166,7 +166,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ISite>: 
   - `Location <String>`: Resource Location.
-  - `CloningInfoSourceWebAppId <String>`: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   - `[Kind <String>]`: Kind of resource.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
@@ -181,11 +180,11 @@ INPUTOBJECT <ISite>:
   - `[CloningInfoCorrelationId <String>]`: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   - `[CloningInfoHostingEnvironment <String>]`: App Service Environment.
   - `[CloningInfoOverwrite <Boolean?>]`: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  - `[CloningInfoSourceWebAppId <String>]`: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   - `[CloningInfoSourceWebAppLocation <String>]`: Location of source app ex: West US or North Europe
   - `[CloningInfoTrafficManagerProfileId <String>]`: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   - `[CloningInfoTrafficManagerProfileName <String>]`: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   - `[Config <ISiteConfig>]`: Configuration of the app.
-    - `IsPushEnabled <Boolean>`: Gets or sets a flag indicating whether the Push endpoint is enabled.
     - `[ActionMinProcessExecutionTime <String>]`: Minimum time the process must execute         before taking the action
     - `[ActionType <AutoHealActionType?>]`: Predefined action to be taken.
     - `[AlwaysOn <Boolean?>]`: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -237,6 +236,7 @@ INPUTOBJECT <ISite>:
       - `[Tag <IPFilterTag?>]`: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       - `[VnetSubnetResourceId <String>]`: Virtual network resource id
       - `[VnetTrafficTag <Int32?>]`: (internal) Vnet traffic tag
+    - `[IsPushEnabled <Boolean?>]`: Gets or sets a flag indicating whether the Push endpoint is enabled.
     - `[JavaContainer <String>]`: Java container.
     - `[JavaContainerVersion <String>]`: Java container version.
     - `[JavaVersion <String>]`: Java version.

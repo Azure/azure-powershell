@@ -5,7 +5,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
 
     public enum DatasourceTypes
     {
-        AzureDisk = 0
+        AzureDisk = 0,
+        AzureBlob,
+        AzureDatabaseForPostgreSQL
     }
 
     public enum StorageSettingType
@@ -32,7 +34,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
     public enum CopyOption
     {
         CustomCopyOption = 0,
-        ImmediateCopyOption
+        ImmediateCopyOption,
+        CopyOnExpiryOption
     }
 
     public enum BackupFrequency
@@ -117,7 +120,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
 
     public enum RestoreTargetType
     {
-        AlternateLocation = 0
+        AlternateLocation = 0,
+        OriginalLocation,
+        RestoreAsFiles
+    }
+
+    public enum SecretStoreTypes
+    {
+        AzureKeyVault = 0
     }
 
     public enum ProtectionStatus

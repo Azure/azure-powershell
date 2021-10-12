@@ -81,6 +81,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [LocationCompleter("Microsoft.Compute/virtualMachineScaleSets")]
         public string Location { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        public string EdgeZone { get; set; }
+
         // this corresponds to VmSku in the Azure CLI
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string VmSize { get; set; } = "Standard_DS1_v2";
@@ -185,6 +188,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Fault Domain count for each placement group.")]
         public int PlatformFaultDomainCount { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the orchestration mode for the virtual machine scale set.")]
+        [PSArgumentCompleter("Uniform", "Flexible")]
+        public string OrchestrationMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+        [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        public string CapacityReservationGroupId { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -227,6 +245,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                     name: _cmdlet.PublicIpAddressName,
+                    edgeZone: _cmdlet.EdgeZone,
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
                     //sku.Basic is not compatible with multiple placement groups
@@ -237,6 +256,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName,
+                    edgeZone: _cmdlet.EdgeZone,
                     addressPrefix: _cmdlet.VnetAddressPrefix);
 
                 var subnet = virtualNetwork.CreateSubnet(
@@ -328,7 +348,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost : _cmdlet.EncryptionAtHost.IsPresent,
-                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null
+                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
+                    edgeZone: _cmdlet.EdgeZone,
+                    orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
+                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null
                     );
             }
         }

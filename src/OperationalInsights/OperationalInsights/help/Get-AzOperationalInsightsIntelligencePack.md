@@ -11,6 +11,8 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets the available Intelligence Packs.
 
+> [!NOTE]
+> Solutions is being deprecated, please use [az monitor log-analytics solution](https://docs.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
 ## SYNTAX
 
 ```

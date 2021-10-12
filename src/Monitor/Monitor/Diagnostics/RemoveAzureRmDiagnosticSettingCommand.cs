@@ -16,6 +16,7 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -29,8 +30,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// <summary>
     /// Removes a named diagnostic setting or disables the setting called 'service' if the name argument is not present or if is 'service'.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
-    public class RemoveAzureRmDiagnosticSettingCommand : ManagementCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting", DefaultParameterSetName = ResourceIdParameterSet, SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
+    public class RemoveAzureRmDiagnosticSettingCommand : DiagnosticSettingCommandBase
     {
         /// <summary>
         /// This is a temporary constant to provide backwards compatibility
@@ -38,13 +39,6 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         internal const string TempServiceName = "service";
 
         #region Parameters declarations
-
-        /// <summary>
-        /// Gets or sets the resourceId parameter of the cmdlet
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
@@ -57,13 +51,15 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
+            Validate();
+
             string requestId;
             HttpStatusCode statusCode;
-
+            string target = GetTargetUri();
             if (string.IsNullOrWhiteSpace(this.Name))
             {
-                WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Listing existing diagnostics settings for resourceId '{0}'", this.ResourceId));
-                IList<DiagnosticSettingsResource> listSettings = this.MonitorManagementClient.DiagnosticSettings.ListAsync(resourceUri: this.ResourceId).Result.Value;
+                WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Listing existing diagnostics settings for resourceId '{0}'", target));
+                IList<DiagnosticSettingsResource> listSettings = this.MonitorManagementClient.DiagnosticSettings.ListAsync(resourceUri: target).Result.Value;
 
                 if (listSettings.Any())
                 {
@@ -93,7 +89,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 }
                 else
                 {
-                    WriteDebugWithTimestamp("No setting to delete for resource: {0}", this.ResourceId);
+                    WriteDebugWithTimestamp("No setting to delete for resource: {0}", target);
                     return;
                 }
 
@@ -125,12 +121,12 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
 
             if (ShouldProcess(
-                target: string.Format("Remove a diagnostic setting for resource Id: {0}", this.ResourceId),
+                target: string.Format("Remove a diagnostic setting for resource Id: {0}", target),
                 action: "Remove a diagnostic setting"))
             {
                 WriteDebugWithTimestamp("Removing named diagnostic setting: {0}", this.Name);
                 Rest.Azure.AzureOperationResponse resultDelete = this.MonitorManagementClient.DiagnosticSettings.DeleteWithHttpMessagesAsync(
-                    resourceUri: this.ResourceId,
+                    resourceUri: target,
                     name: this.Name).Result;
 
                 requestId = resultDelete.RequestId;

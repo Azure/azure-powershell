@@ -12,6 +12,7 @@ Below is a table containing our Azure PowerShell rollup module.
 Description       | Module Name  | PowerShell Gallery Link
 ----------------- | ------------ | -----------------------
 Azure PowerShell  | `Az`         | [![Az]][AzGallery]
+Azure PowerShell with preview modules | `AzPreview`                             | [![AzPreview]][AzPreviewGallery]
 
 For a full list of modules found in this repository, please see the [Azure PowerShell Modules][AzurePowerShelModules] document.
 
@@ -25,7 +26,7 @@ Run the following command in an elevated PowerShell session to install the rollu
 Install-Module -Name Az
 ```
 
-This module runs on Windows PowerShell with [.NET Framework 4.7.2][DotNetFramework] or greater, or [PowerShell Core][PowerShellCore]. The `Az` module replaces `AzureRM`. You should not install `Az` side-by-side with `AzureRM`.
+This module runs on Windows PowerShell with [.NET Framework 4.7.2][DotNetFramework] or greater, or [the latest version of PowerShell 7][PowerShellCore]. The `Az` module replaces `AzureRM`. You should not install `Az` side-by-side with `AzureRM`.
 
 If you have an earlier version of the Azure PowerShell modules installed from the PowerShell Gallery and would like to update to the latest version, run the following commands in an elevated PowerShell session:
 
@@ -173,7 +174,9 @@ _This project has adopted the [Microsoft Open Source Code of Conduct][CodeOfCond
 
 <!-- External -->
 [Az]: https://img.shields.io/powershellgallery/v/Az.svg?style=flat-square&label=Az
+[AzPreview]: https://img.shields.io/powershellgallery/v/AzPreview.svg?style=flat-square&label=AzPreview
 [AzGallery]: https://www.powershellgallery.com/packages/Az/
+[AzPreviewGallery]: https://www.powershellgallery.com/packages/AzPreview/
 
 [DotNetFramework]: https://dotnet.microsoft.com/download/dotnet-framework-runtime
 [PowerShellCore]: https://github.com/PowerShell/PowerShell/releases/latest

@@ -107,6 +107,7 @@ function Get-RollupModules {
             if ($IsNetCore) {
                 # For .NetCore publish AzureRM.Netcore
                 $targets += "$PSScriptRoot\Az"
+                $targets += "$PSScriptRoot\AzPreview"
             } else {
                 $targets += "$PSScriptRoot\AzureRM"
             }
@@ -308,18 +309,26 @@ function Get-AllModules {
 .PARAMETER Path
 Path to the psd1 file.
 
+.PARAMETER KeepRequiredModules
+Switch to keep RequiredModules.
+
 #>
 function Remove-ModuleDependencies {
     [CmdletBinding()]
     param(
-        [string]$Path
+        [string]$Path,
+
+        [Parameter(Mandatory=$false)]
+        [switch]$KeepRequiredModules
     )
 
     PROCESS {
-        $regex = New-Object System.Text.RegularExpressions.Regex "RequiredModules\s*=\s*@\([^\)]+\)"
-        $content = (Get-Content -Path $Path) -join "`r`n"
-        $text = $regex.Replace($content, "RequiredModules = @()")
-        Out-FileNoBom -File $Path -Text $text
+        if (-not $KeepRequiredModules.IsPresent){
+            $regex = New-Object System.Text.RegularExpressions.Regex "RequiredModules\s*=\s*@\([^\)]+\)"
+            $content = (Get-Content -Path $Path) -join "`r`n"
+            $text = $regex.Replace($content, "RequiredModules = @()")
+            Out-FileNoBom -File $Path -Text $text
+        }
 
         $regex = New-Object System.Text.RegularExpressions.Regex "NestedModules\s*=\s*@\([^\)]+\)"
         $content = (Get-Content -Path $Path) -join "`r`n"

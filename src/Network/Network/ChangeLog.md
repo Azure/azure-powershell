@@ -20,6 +20,86 @@
 
 ## Upcoming Release
 
+## Version 4.12.0
+* Support for Sku, ScaleUnits parameters of BastionHost resource.
+    - `New-AzBastion`
+    - `Set-AzBastion`
+* Onboard Azure Resource Manager to Private Link Common Cmdlets
+* Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.
+    - `New-AzVpnGateway`
+    - `Update-AzVpnGateway`
+* Updated cmdlet to add property to disable InternetSecurity for P2SVpnGateway.
+    - `New-AzP2sVpnGateway`
+* Added new cmdlets for HubBgpConnection child resource of VirtualHub.
+    - `Get-AzVirtualHubBgpConnection`
+    - `New-AzVirtualHubBgpConnection`
+    - `Update-AzVirtualHubBgpConnection`
+    - `Remove-AzVirtualHubBgpConnection`
+* Onboard Azure HDInsight to Private Link Common Cmdlets
+
+## Version 4.11.0
+* Updated cmdlet to add 'Subnet' property for IP based load balancer backend address pool.
+    - `New-AzLoadBalancerBackendAddressConfig`
+* Updated cmdlet to add 'TunnelInterface' property for backend pool related operations.
+    - `New-AzLoadBalancerBackendAddressPool`
+    - `Set-AzLoadBalancerBackendAddressPool`
+
+## Version 4.10.0
+* Added public ip address as an optional parameter to create route server
+    - `New-AzRouteServer`
+* Updated cmdlets to enable specification of edge zone
+    - `New-AzPublicIpPrefix`
+    - `New-AzLoadBalancer`
+    - `New-AzPrivateLinkService`
+    - `New-AzPrivateEndpoint`
+* Added support for viewing extended location of virtual network in the console
+    - `New-AzVirtualNetwork`
+    - `Get-AzVirtualNetwork`
+* Added support for viewing extended location of public IP address in the console
+    - `New-AzPublicIpAddress`
+    - `Get-AzPublicIpAddress`
+    - `New-AzCustomIpPrefix`
+    - `Update-AzCustomIpPrefix`
+
+## Version 4.9.0
+* Updated cmdlets for route server for a more stable way to add IP configuration.
+* Added support for getting a single private link resource.
+* Added more detailed description about GroupId in `New-AzPrivateLinkServiceConnection`
+* Updated cmdlets to enable setting of PrivateRange on AzureFirewallPolicy.
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
+* Updated cmdlets to add NatRules in VirtualNetworkGateway and BgpRouteTranslationForNat.
+    - `New-AzVirtualNetworkGateway`
+    - `Set-AzVirtualNetworkGateway`
+* Updated cmdlets to add EngressNatRules and EgressNatRules in VirtualNetworkGateway Connection.
+    - `New-AzVirtualNetworkGatewayConnection`
+    - `Set-AzVirtualNetworkGatewayConnection`
+* Updated cmdlet to enable setting of FlowTimeout in VirtualNetwork.
+    - `New-AzVirtualNetwork`
+* Added cmdlets for Get/Create/Update/Delete VirtualNetworkGatewayNatRules.
+    - `New-AzVirtualNetworkGatewayNatRule`
+    - `Update-AzVirtualNetworkGatewayNatRule`
+    - `Get-AzVirtualNetworkGatewayNatRule`
+    - `Remove-AzVirtualNetworkGatewayNatRule`
+* Added a new cmdlet for Sync on VirtualNetworkPeering
+    - `Sync-AzVirtualNetworkPeering`
+* Updated cmdlets to add new properties and redefined an existing property in the VirtualNetworkPeering
+    - `Add-AzVirtualNetworkPeering`
+    - `Get-AzVirtualNetworkPeering`
+* Updated cmdlets to enable setting of PreferredRoutingGateway on VirtualHub.
+    - `New-AzVirtualHub`
+    - `Update-AzVirtualHub`
+* Updated cmdlets to expose two read-only properties of client certificate.
+    - `Get-AzApplicationGatewayTrustedClientCertificate`
+
+## Version 4.8.0
+* Updated validation to allow passing zero value for saDataSizeKilobytes parameter
+    - `New-AzureRmIpsecPolicy`
+* Added optional parameter `-EdgeZone` to the following cmdlets:
+    - `New-AzNetworkInterface`
+    - `New-AzPublicIpAddress`
+    - `New-AzVirtualNetwork`
+
 ## Version 4.7.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
     - `Get-AzRouteServerPeerAdvertisedRoute`

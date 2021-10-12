@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Management.Automation.Subsystem.Prediction;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
@@ -23,15 +24,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public sealed class RequestPredictionTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
-        string ITelemetryData.SessionId { get; set; }
+        string ITelemetryData.CommandId { get; set; }
 
         /// <inheritdoc/>
-        string ITelemetryData.CorrelationId { get; set; }
+        string ITelemetryData.RequestId { get; set; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.SessionId { get; set; }
 
         /// <summary>
-        /// Gets the id of the client that makes the calls.
+        /// Gets client that makes the calls.
         /// </summary>
-        public string ClientId { get; init; }
+        public PredictionClient Client { get; init; }
 
         /// <summary>
         /// Gets the masked command lines that are used to request prediction.
@@ -54,13 +58,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Creates an instance of <see cref="RequestPredictionTelemetryData"/>.
         /// </summary>
-        /// <param name="clientId">The client id that makes the call.</param>
+        /// <param name="client">The client that makes the call.</param>
         /// <param name="commands">The commands to request prediction for.</param>
         /// <param name="hasSentHttpRequest">The flag to indicate whether the http request is canceled.</param>
         /// <param name="exception">The exception that may be thrown.</param>
-        public RequestPredictionTelemetryData(string clientId, IEnumerable<string> commands, bool hasSentHttpRequest, Exception exception)
+        public RequestPredictionTelemetryData(PredictionClient client, IEnumerable<string> commands, bool hasSentHttpRequest, Exception exception)
         {
-            ClientId = clientId;
+            Client = client;
             Commands = commands;
             HasSentHttpRequest = hasSentHttpRequest;
             Exception = exception;

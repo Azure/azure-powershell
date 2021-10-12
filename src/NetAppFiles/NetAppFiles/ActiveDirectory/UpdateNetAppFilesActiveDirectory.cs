@@ -163,6 +163,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
         public SwitchParameter LdapOverTLS { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AllowLocalNfsUsersWithLdap { get; set; }
+
+        [Parameter(
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
@@ -233,6 +239,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                     {
                         anfADConfig.LdapOverTLS = LdapOverTLS;
                     }
+                    if (AllowLocalNfsUsersWithLdap)
+                    {
+                        anfADConfig.AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap;
+                    }
                 }
                 else
                 {
@@ -266,6 +276,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                         if (LdapOverTLS)
                         {
                             anfADConfig.LdapOverTLS = LdapOverTLS;
+                        }
+                        if (AllowLocalNfsUsersWithLdap)
+                        {
+                            anfADConfig.AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap;
                         }
                     }
                 }

@@ -301,6 +301,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+        ///     Starts cancel failover.
+        /// </summary>
+        /// <param name="fabricName">Fabric name.</param>
+        /// <param name="protectionContainerName">Protection conatiner name.</param>
+        /// <param name="replicationProtectedItemName">Replication protected item.</param>
+        /// <returns>Job response.</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryCancelFailover(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginFailoverCancelWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectedItemName,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
         ///     Starts Planned Failover
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
@@ -534,6 +559,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var op = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems.BeginUpdateWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectedItemName,
+                    input,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Switch appliance of a replication protected item.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name.</param>
+        /// <param name="replicationProtectedItemName">Replication Protected Item.</param>
+        /// <param name="input">Input for update appliance.</param>
+        /// <returns>Job Response.</returns>
+        public PSSiteRecoveryLongRunningOperation SwitchAppliance(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
+            UpdateApplianceForReplicationProtectedItemInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginUpdateApplianceWithHttpMessagesAsync(
                     fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,

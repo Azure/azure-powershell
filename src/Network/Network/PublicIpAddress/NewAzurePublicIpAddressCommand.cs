@@ -60,6 +60,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the extended location.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP Sku name.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -69,14 +75,14 @@ namespace Microsoft.Azure.Commands.Network
         public string Sku { get; set; }
 
         [Parameter(
-    Mandatory = false,
-    ValueFromPipelineByPropertyName = true,
-    HelpMessage = "The public IP Sku tier.")]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The public IP Sku tier.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-    MNM.PublicIPAddressSkuTier.Regional,
-    MNM.PublicIPAddressSkuTier.Global,
-    IgnoreCase = true)]
+            MNM.PublicIPAddressSkuTier.Regional,
+            MNM.PublicIPAddressSkuTier.Global,
+            IgnoreCase = true)]
         public string Tier { get; set; }
 
         [Parameter(
@@ -135,7 +141,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
             ValueFromPipelineByPropertyName = true)]
-            public string[] Zone { get; set; }
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Target ip Address for BYOIP PublicIpAddress.",
+            ValueFromPipelineByPropertyName = true)]
+        public string IpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -177,6 +189,12 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.PublicIpAddressVersion = this.IpAddressVersion;
             publicIp.Zones = this.Zone?.ToList();
             publicIp.PublicIpPrefix = this.PublicIpPrefix;
+            publicIp.IpAddress = this.IpAddress;
+
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                publicIp.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
 
             if (!string.IsNullOrEmpty(this.Sku))
             {

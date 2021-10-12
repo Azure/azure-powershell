@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
 using System;
 
 namespace Microsoft.Azure.Commands.Management.Storage

@@ -14,9 +14,6 @@ Azure Service Fabric Module that you can use to automate the end-2-end operation
 ### [Add-AzServiceFabricClientCertificate](Add-AzServiceFabricClientCertificate.md)
 Add common name or thumbprint to the cluster for client authentication purposes.
 
-### [Add-AzServiceFabricClusterCertificate](Add-AzServiceFabricClusterCertificate.md)
-Add a secondary cluster certificate to the cluster.
-
 ### [Add-AzServiceFabricManagedClusterClientCertificate](Add-AzServiceFabricManagedClusterClientCertificate.md)
 Add certificate common name or thumbprint to the cluster. This will register the certificate agains the cluster for client authentication purposes.
 
@@ -110,9 +107,6 @@ Remove Service fabric an application type version from the cluster. Only support
 ### [Remove-AzServiceFabricClientCertificate](Remove-AzServiceFabricClientCertificate.md)
 Remove a client certificate(s) or certificate subject(s) name(s) from being used for client authentication to the cluster.
 
-### [Remove-AzServiceFabricClusterCertificate](Remove-AzServiceFabricClusterCertificate.md)
-Remove a cluster certificate from being used for cluster security.
-
 ### [Remove-AzServiceFabricManagedCluster](Remove-AzServiceFabricManagedCluster.md)
 Remove cluster resource.
 
@@ -182,11 +176,12 @@ Update a service fabric application. This allows to update the application param
 ### [Update-AzServiceFabricDurability](Update-AzServiceFabricDurability.md)
 Update the durability tier or VmSku of a node type in the cluster.
 
-### [Update-AzServiceFabricReliability](Update-AzServiceFabricReliability.md)
-Update the reliability tier of the primary node type in a cluster.
-
 ### [Update-AzServiceFabricNodeType](Update-AzServiceFabricNodeType.md)
 Update a node type within the cluster.
 
+### [Update-AzServiceFabricReliability](Update-AzServiceFabricReliability.md)
+Update the reliability tier of the primary node type in a cluster.
+
 ### [Update-AzServiceFabricVmImage](Update-AzServiceFabricVmImage.md)
 Update the cluster resource vmImage setting which maps the appropriate runtime package to be delivered based on the target operating system.
+

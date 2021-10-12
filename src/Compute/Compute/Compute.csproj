@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Compute</PsModuleName>
@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="44.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="49.1.0" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.4.1" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
@@ -23,11 +23,27 @@
     <EmbeddedResource Include="Strategies\ComputeRp\Images.json" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <ModuleAlcEntryAssembly>Microsoft.Azure.Commands.Compute.AlcWrapper</ModuleAlcEntryAssembly>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.Common.2017_10_01\ARMStorageProvider.cs" Link="Common\ARMStorageProvider.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.Common.2017_10_01\ARMStorageService.cs" Link="Common\ARMStorageService.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs" Link="Common\AzureContextAdapterExtensions.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs" Link="Common\AzureStorageContext.cs" />
+    <ModuleAlcRefAssembly Include="Azure.Storage.Blobs" />
+    <ModuleAlcRefAssembly Include="Azure.Storage.Common" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Compute.AlcWrapper\Compute.AlcWrapper.csproj">
+      <!-- AlcWrapper DLL (and its dependencies) won't be copied to the output folder -->
+      <!-- Because we are going to put them under ModuleAlcAssemblies/ -->
+      <!-- See https://docs.microsoft.com/en-us/dotnet/core/tutorials/creating-app-with-plugin-support -->
+      <Private>false</Private>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

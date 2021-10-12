@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     {
         const string ParameterSet1Name = "S1";
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 0, Mandatory = true, HelpMessage = "The name of the keyvault.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 0, Mandatory = true, HelpMessage = "The name of the keyvault or Id of the KeyVault.")]
         [ValidateNotNullOrEmpty]
         public string KeyVaultName { get; set; }
 
@@ -44,11 +44,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(WebAppName))
             {
+                string kvId = string.Empty, kvRgName = string.Empty, kvSubscriptionId = string.Empty;
                 var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, Slot));
                 var location = webApp.Location;
                 var serverFarmId = webApp.ServerFarmId;
-                string kvid = string.Empty;
-                string kvresourcegrpname = string.Empty;
                 var keyvaultResources = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
                 {
                     ResourceType = "Microsoft.KeyVault/Vaults"
@@ -58,19 +57,29 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     if (kv.Name == KeyVaultName)
                     {
-                        kvid = kv.Id;
-                        kvresourcegrpname = kv.ResourceGroupName;
+                        kvId = kv.Id;
+                        kvRgName = kv.ResourceGroupName;
                         break;
                     }
                 }
-                if (string.IsNullOrEmpty(kvid))
+                if (string.IsNullOrEmpty(kvId))
                 {
-                    kvid = KeyVaultName;
+                    kvId = KeyVaultName;
+                    if (CmdletHelpers.IsValidAKVResourceId(kvId))
+                    {
+                        var details = CmdletHelpers.GetResourceDetailsFromResourceId(kvId);
+                        kvRgName = details.ResourceGroupName;
+                        KeyVaultName = details.ResourceName;
+                        kvSubscriptionId = details.Subscription;
+                    }
+                    else //default to AppService RG 
+                    {
+                        kvRgName = ResourceGroupName;
+                    }
                 }
-                string keyvaultperm;
-                keyvaultperm = CmdletHelpers.CheckServicePrincipalPermissions(this.ResourcesClient, this.KeyvaultClient,kvresourcegrpname, KeyVaultName);
+                var kvpermission = CmdletHelpers.CheckServicePrincipalPermissions(this.ResourcesClient, this.KeyvaultClient, kvRgName, KeyVaultName, kvSubscriptionId);
                 var lnk = "https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html";
-                if ((keyvaultperm != "Get") & (keyvaultperm != "get"))
+                if (kvpermission.ToLower() != "get")
                 {
                     WriteWarning("Unable to verify Key Vault permissions.");
                     WriteWarning("You may need to grant Microsoft.Azure.WebSites service principal the Secret:Get permission");
@@ -80,7 +89,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Certificate kvc = null;
                 var certificate = new Certificate(
                     location: location,
-                    keyVaultId: kvid,
+                    keyVaultId: kvId,
                     password: "",
                     keyVaultSecretName: CertName,
                     serverFarmId: serverFarmId
@@ -90,7 +99,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     try
                     {
-                        kvc = WebsitesClient.CreateCertificate(ResourceGroupName, CertName, certificate);
+                        kvc = WebsitesClient.CreateCertificate(ResourceGroupName, KeyVaultName +'-'+CertName, certificate);
                     }
                     catch (DefaultErrorResponseException e)
                     {
@@ -100,7 +109,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         }
                     }
                 }
-                WriteObject(kvc);
+                WriteObject(new PSCertificate(kvc));
             }
 
         }

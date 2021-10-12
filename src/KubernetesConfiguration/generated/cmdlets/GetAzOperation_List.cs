@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
     /// List all the available operations the KubernetesConfiguration resource provider supports.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] Operations_List=>GET:"/providers/Microsoft.KubernetesConfiguration/operations"
+    /// [OpenAPI] List=>GET:"/providers/Microsoft.KubernetesConfiguration/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzOperation_List")]

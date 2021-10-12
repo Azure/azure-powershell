@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
-            string resourceId)
+            string resourceId,
+            bool? sendCertificateChain = null)
         {
             TokenCacheProvider = tokenCacheProvider;
             Environment = environment;

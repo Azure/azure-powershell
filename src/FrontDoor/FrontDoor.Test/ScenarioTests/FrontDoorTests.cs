@@ -48,12 +48,33 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudWithPiping");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFrontDoorRulesEngineCrud()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorRulesEngineCrud");
+        }
+
         //[Fact]
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
         //public void TestFrontDoorEndpointCustomDomainHTTPSFrontDoor()
         //{
         //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor");
         //}
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFrontDoorEndpointCustomDomainHTTPSByocSpecificVersion()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-SpecificVersion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFrontDoorEndpointCustomDomainHTTPSByocLatestVersion()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-LatestVersion");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

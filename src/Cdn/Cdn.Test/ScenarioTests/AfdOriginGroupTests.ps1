@@ -28,14 +28,16 @@ function Test-CreateAfdOriginGroup
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $originGroupName = getAssetName 
+    $sampleSize = 2
 
-    $originGroup = New-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    $originGroup = New-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -SampleSize $sampleSize
 
     Assert-AreEqual $originGroupName $originGroup.Name 
     Assert-AreEqual $originGroup.Type "Microsoft.Cdn/profiles/origingroups"
+    Assert-AreEqual $originGroup.SampleSize $sampleSize
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
@@ -51,16 +53,18 @@ function Test-GetAfdOriginGroup
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $originGroupName = getAssetName 
+    $successfulSamplesRequired = 1
 
-    New-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    New-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -SuccessfulSamplesRequired $successfulSamplesRequired
 
-    $originGroup = Get-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
 
     Assert-AreEqual $originGroupName $originGroup.Name 
     Assert-AreEqual $originGroup.Type "Microsoft.Cdn/profiles/origingroups"
+    Assert-AreEqual $originGroup.SuccessfulSamplesRequired $successfulSamplesRequired
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
@@ -76,15 +80,15 @@ function Test-SetAfdOriginGroup
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $originGroupName = getAssetName 
 
-    New-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    New-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -SampleSize 2 -SuccessfulSamplesRequired 1
 
-    Set-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -SampleSize 6 -SuccessfulSamplesRequired 3
+    Set-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -SampleSize 6 -SuccessfulSamplesRequired 3
 
-    $originGroup = Get-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
     
     Assert-AreEqual $originGroup.SampleSize 6
     Assert-AreEqual $originGroup.SuccessfulSamplesRequired 3
@@ -103,15 +107,15 @@ function Test-RemoveAfdOriginGroup
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    $profile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    $profile = New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $originGroupName = getAssetName 
 
-    $originGroup = New-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    $originGroup = New-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -SampleSize 2 -SuccessfulSamplesRequired 1
 
-    Remove-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
 
-    Assert-ThrowsContains { Get-AzAfdOriginGroup -ResourceId $originGroup.Id } "NotFound"
+    Assert-ThrowsContains { Get-AzFrontDoorCdnOriginGroup -ResourceId $originGroup.Id } "NotFound"
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

@@ -43,5 +43,10 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
         /// Gets or sets the KeyId
         /// </summary>
         public string KeyId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key auto rotation status.
+        /// </summary>
+        public bool? AutoRotationEnabled { get; set; }
     }
 }

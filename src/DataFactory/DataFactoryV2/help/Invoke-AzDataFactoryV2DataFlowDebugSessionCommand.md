@@ -15,7 +15,7 @@ Invoke debug action in data flow debug session.
 ### ByFactoryName (Default)
 ```
 Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Command] <String>
- [-StreamName] <String> [[-RowLimits] <Int32>] [[-Expression] <String>]
+ [-StreamName] <String> [[-RowLimit] <Int32>] [[-Expression] <String>]
  [[-Columns] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -24,7 +24,7 @@ Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Comman
 ### ByFactoryObject
 ```
 Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Command] <String>
- [-StreamName] <String> [[-RowLimits] <Int32>] [[-Expression] <String>]
+ [-StreamName] <String> [[-RowLimit] <Int32>] [[-Expression] <String>]
  [[-Columns] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Comman
 ### ByResourceId
 ```
 Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Command] <String>
- [-StreamName] <String> [[-RowLimits] <Int32>] [[-Expression] <String>]
+ [-StreamName] <String> [[-RowLimit] <Int32>] [[-Expression] <String>]
  [[-Columns] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -49,7 +49,7 @@ The PowerShell command sequence for data flow debug workflow should be:
 
 ### Example 1
 ```powershell
-PS C:\WINDOWS\system32> $result = Invoke-AzDataFactoryV2DataFlowDebugSessionCommand -ResourceGroupName adf -DataFactoryName WiKiADF -Command executePreviewQuery -SessionId fd76cd0d-8b37-4dc0-a370-3f9d43ac686d -StreamName source1 -RowLimits 100 -AsJob
+PS C:\WINDOWS\system32> $result = Invoke-AzDataFactoryV2DataFlowDebugSessionCommand -ResourceGroupName adf -DataFactoryName WiKiADF -Command executePreviewQuery -SessionId fd76cd0d-8b37-4dc0-a370-3f9d43ac686d -StreamName source1 -RowLimit 100 -AsJob
 PS C:\WINDOWS\system32> $result
 
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
@@ -215,7 +215,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RowLimits
+### -RowLimit
 The row limit for data flow data preview.
 
 ```yaml

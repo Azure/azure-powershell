@@ -276,6 +276,15 @@
   <data name="InvalidIPAddress" xml:space="preserve">
     <value>The IpAddress specified is invalid.</value>
   </data>
+  <data name="InvalidPrivateIPRange" xml:space="preserve">
+    <value>The private IP range specified, {0}, is invalid.</value>
+  </data>
+  <data name="InvalidPrivateIPRangeMask" xml:space="preserve">
+    <value>The private IP range specified, {0}, is invalid. Subnet masks should be between 0 and 32 bits.</value>
+  </data>
+  <data name="InvalidPrivateIPRangeUnmaskedBits" xml:space="preserve">
+    <value>The private IP range specified, {0}, is invalid. Bits not covered by the subnet mask should be all 0.</value>
+  </data>
   <data name="ParentVirtualHubNotFound" xml:space="preserve">
     <value>The parent virtual hub mentioned could not be found.</value>
   </data>
@@ -693,7 +702,7 @@
     <value>A valid HubRouteTable reference is required.</value>
   </data>
   <data name="CommissioningStateConflict" xml:space="preserve">
-    <value>Cannot have both 'Commission' and 'Decomission' flags set</value>
+    <value>Cannot have both more than one flag set</value>
     <comment>Error message for setting the customIpPrefix</comment>
   </data>
   <data name="ApplicationGatewaySslProfileName" xml:space="preserve">

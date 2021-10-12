@@ -1,11 +1,11 @@
 # Please don't use ADO UI defined scheduled triggers because it takes precedence over YAML scheduled triggers.
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers
 schedules:
-- cron: "0 0 * * *"
-  displayName: Daily Midnight Build
+- cron: "0 18 * * *"
+  displayName: 2:00 AM (UTC + 8:00) China Daily Build
   branches:
     include:
-    - master
+    - main
 
 pr: none
 
@@ -97,6 +97,8 @@ jobs:
         Release/**/Microsoft.Azure.PowerShell.Authentication.dll
         Release/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll
         Release/**/Microsoft.Azure.PowerShell.Authenticators.dll
+        Release/**/Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.dll
+        Release/**/Microsoft.Azure.Commands.*.AlcWrapper.dll
         !Release/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll
       UseMinimatch: true
       signConfigType: 'inlineSignParams'

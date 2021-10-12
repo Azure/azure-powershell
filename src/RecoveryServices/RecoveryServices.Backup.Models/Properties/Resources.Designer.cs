@@ -1895,5 +1895,182 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("ZonalRestoreVaultStorageRedundancyException", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to WorkloadRecoveryConfig TargetVirtualMachineId cannot be null for Alternate location restore.
+        /// </summary>
+        public static string TargetVirtualMachineIdRequiredException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetVirtualMachineIdRequiredException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Archive is currently not supported for the workload type of the BackupItem passed in the cmdlet.
+        /// </summary>
+        public static string ArchiveNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("ArchiveNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Recommendation for Archival RP groups is not applicable for the workload type of the backup item passed in the cmdlet.
+        /// </summary>
+        public static string ArchiveRecommendationNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("ArchiveRecommendationNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide RehydrationPriority and RehydrationDuration for the Archived Recovery Point. Default RehydrationDuration is 15 Days
+        /// </summary>
+        public static string InvalidRehydration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidRehydration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Rehydrate duration should be between 10 and 30.
+        /// </summary>
+        public static string InvalidRehydrateDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidRehydrateDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to You will incur early deletion fees for this operation as there are archived recovery points for the backup item you are trying to unprotect. Do you want to continue?  
+        /// </summary>
+        public static string DeleteArchiveRecoveryPoints
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteArchiveRecoveryPoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Disable protection with delete recovery points
+        /// </summary>
+        public static string DeleteRecoveryPoints
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteRecoveryPoints", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Move Azure Backup Recovery Point Operation
+        /// </summary>
+        public static string MoveRPOperation
+        {
+            get
+            {
+                return ResourceManager.GetString("MoveRPOperation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Move Readiness cannot be checked for given recovery points
+        /// </summary>
+        public static string MoveReadinessInfoUndefined
+        {
+            get
+            {
+                return ResourceManager.GetString("MoveReadinessInfoUndefined", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MSI based Restore can't use both SystemAssigned and UserAssigned identities
+        /// </summary>
+        public static string MultipleMSIProvidedForRestore
+        {
+            get
+            {
+                return ResourceManager.GetString("MultipleMSIProvidedForRestore", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MSI based Restore is only applicable to Managed VM Recovery Points
+        /// </summary>
+        public static string MSIRestoreNotSupportedForUnmanagedVM
+        {
+            get
+            {
+                return ResourceManager.GetString("MSIRestoreNotSupportedForUnmanagedVM", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter IdentityId. IdentityId can't be set for SystemAssigned Identities
+        /// </summary>
+        public static string InvalidParameterIdentityId
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParameterIdentityId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to IdentityId can't be empty for UserAssigned Identities
+        /// </summary>
+        public static string IdentityIdRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("IdentityIdRequired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to UserAssigned and SystemAssigned identities can't be removed together
+        /// </summary>
+        public static string InvalidIdentityRemove
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidIdentityRemove", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to IdentityId '{0}' is invalid
+        /// </summary>
+        public static string InvalidIdentityId
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidIdentityId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please input a valid UserAssignedIdentity
+        /// </summary>
+        public static string IdentityIdRequiredForCMK
+        {
+            get
+            {
+                return ResourceManager.GetString("IdentityIdRequiredForCMK", resourceCulture);
+            }
+        }
+
     }
 }

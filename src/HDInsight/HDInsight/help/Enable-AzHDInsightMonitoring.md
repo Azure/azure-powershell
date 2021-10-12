@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzHDInsightMonitoring
 
 ## SYNOPSIS
-Enables monitoring in a HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
+Enables the Classic Azure Monitor logs integration on an HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Enable-AzHDInsightMonitoring [-Name] <String> [-WorkspaceId] <String> [-PrimaryK
 ```
 
 ## DESCRIPTION
-The **Enable-AzHDInsightMonitoring** cmdlet enables monitoring in a Azure HDInsight cluster.
+The **Enable-AzHDInsightMonitoring** cmdlet enables the Classic Azure Monitor logs integration on an HDInsight cluster.
 
 ## EXAMPLES
 

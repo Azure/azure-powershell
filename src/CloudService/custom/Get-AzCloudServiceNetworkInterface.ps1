@@ -18,8 +18,6 @@
 Get the network interfaces of a cloud service.
 .Description
 Get the network interfaces of a cloud service.
-.Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-AzCloudServiceNetworkInterfaces
 #>
 
 function Get-AzCloudServiceNetworkInterfaces {
@@ -44,7 +42,7 @@ function Get-AzCloudServiceNetworkInterfaces {
         [string] $RoleInstanceName,
 
         [Parameter(Mandatory=$true, ParameterSetName="CloudService", HelpMessage="CloudService instance.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudService] $CloudService
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService] $CloudService
     )
     process {
         $ApiVersion = "2020-06-01"

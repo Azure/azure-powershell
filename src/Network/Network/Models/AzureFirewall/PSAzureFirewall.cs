@@ -129,6 +129,17 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         #region Ip Configuration Operations
+        public void Allocate(Management.Network.Models.SubResource virtualHub)
+        {
+            if (this.Sku.Name.Equals("AZFW_Hub", StringComparison.OrdinalIgnoreCase))
+            {
+                this.VirtualHub = virtualHub;
+            }
+            else
+            {
+                throw new ArgumentException($"Hub firewall allocation attempted on a Non-hub firewall. Firewall name = {this.Name}, Sku name = {this.Sku.Name}");
+            }
+        }
 
         public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress = null)
         {
@@ -154,7 +165,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             {
                 throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallSubnetName}");
             }
-           
+
             PSSubnet firewallMgmtSubnet = null;
             if (ManagementPublicIpAddress != null)
             {
@@ -191,7 +202,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
             else
             {
-                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration{Name = $"{AzureFirewallIpConfigurationName}{0}"});
+                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration { Name = $"{AzureFirewallIpConfigurationName}{0}" });
             }
 
             this.IpConfigurations[0].Subnet = new PSResourceId { Id = firewallSubnet.Id };
@@ -199,8 +210,15 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public void Deallocate()
         {
-            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
-            this.ManagementIpConfiguration = null;
+            if (this.Sku.Name.Equals("AZFW_Hub", StringComparison.OrdinalIgnoreCase))
+            {
+                this.VirtualHub = null;
+            }
+            else
+            {
+                this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+                this.ManagementIpConfiguration = null;
+            }
         }
 
         public void AddPublicIpAddress(PSPublicIpAddress publicIpAddress)

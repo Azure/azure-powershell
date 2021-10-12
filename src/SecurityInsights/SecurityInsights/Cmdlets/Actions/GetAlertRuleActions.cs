@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
                     WriteObject(actions.ConvertToPSType(), enumerateCollection: true);
                     break;
                 case ParameterSetNames.ActionId:
-                    var action = SecurityInsightsClient.AlertRules.GetAction(ResourceGroupName, WorkspaceName, AlertRuleId, ActionId);
+                    var action = SecurityInsightsClient.Actions.Get(ResourceGroupName, WorkspaceName, AlertRuleId, ActionId);
                     WriteObject(action.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:

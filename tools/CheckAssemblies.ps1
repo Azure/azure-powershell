@@ -23,17 +23,19 @@ function Get-PreloadAssemblies{
         [string] $ModuleFolder
     )
 
-    $preloadAssemblies = @()
     if($PSEdition -eq 'Core') {
-        $preloadFolderName = "NetCoreAssemblies"
+        $preloadFolderName = @("NetCoreAssemblies", "AzSharedAlcAssemblies")
     } else {
         $preloadFolderName = "PreloadAssemblies"
     }
-    $preloadFolder = [System.IO.Path]::Combine($ModuleFolder, $preloadFolderName)
-    if(Test-Path $preloadFolder){
-        $preloadAssemblies = (Get-ChildItem $preloadFolder -Filter "*.dll").Name | ForEach-Object { $_ -replace ".dll", ""}
+    $preloadFolderName | ForEach-Object {
+        $preloadAssemblies = @()
+        $preloadFolder = [System.IO.Path]::Combine($ModuleFolder, $_)
+        if(Test-Path $preloadFolder){
+            $preloadAssemblies = (Get-ChildItem $preloadFolder -Filter "*.dll").Name | ForEach-Object { $_ -replace ".dll", ""}
+        }
+        $preloadAssemblies
     }
-    $preloadAssemblies
 }
 
 $ProjectPaths = @( "$PSScriptRoot\..\artifacts\$BuildConfig" )

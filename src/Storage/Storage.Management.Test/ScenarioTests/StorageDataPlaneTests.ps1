@@ -278,28 +278,52 @@ function Test-Blob
         Assert-AreEqual $blob.Count 2
         Assert-AreEqual $blob[0].ICloudBlob.IsSnapshot $true
         Assert-AreEqual $blob[1].ICloudBlob.IsSnapshot $false
-		
-		#Upload Blob with properties to container which enabled Immutability Policy
-		Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -ImmutabilityPeriod 1		
+        
+        #Upload Blob with properties to container which enabled Immutability Policy
+        Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -ImmutabilityPeriod 1        
         Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob immublob -Force -Properties @{"CacheControl" = "max-age=31536000, private"; "ContentEncoding" = "gzip"; "ContentDisposition" = "123"; "ContentLanguage" = "1234"; "ContentType" = "abc/12345"; } -Metadata @{"tag1" = "value1"; "tag2" = "value22" } -Context $storageContext
-		
-		$immutabilityPolicy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName
-		Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -Etag $immutabilityPolicy.Etag
-		
-		# Encryption Scope Test
-		$scopename = "testscope"
-		$scopename2 = "testscope2"
-		$containerName2 = "testscopecontainer"
-		New-AzStorageEncryptionScope -ResourceGroupName $ResourceGroupName -StorageAccountName $storageAccountName -EncryptionScopeName $scopename -StorageEncryption
-		New-AzStorageEncryptionScope -ResourceGroupName $ResourceGroupName -StorageAccountName $storageAccountName -EncryptionScopeName $scopename2 -StorageEncryption
-		$container = New-AzStorageContainer -Name $containerName2 -Context $storageContext -DefaultEncryptionScope $scopeName -PreventEncryptionScopeOverride $true
-		Assert-AreEqual $scopename $container.BlobContainerProperties.DefaultEncryptionScope
-		Assert-AreEqual $true $container.BlobContainerProperties.PreventEncryptionScopeOverride
-		$blob = Set-AzStorageBlobContent -Context $storageContext -File $localSrcFile -Container $containerName -Blob encryscopetest  -EncryptionScope $scopename
-		Assert-AreEqual $scopename $blob.BlobProperties.EncryptionScope
-		$blob = Copy-AzStorageBlob -Context $storageContext -SrcContainer $containerName -SrcBlob encryscopetest -DestContainer $containerName -DestBlob encryscopetest -Force  -EncryptionScope $scopename2
-		Assert-AreEqual $scopename2 $blob.BlobProperties.EncryptionScope
-		Remove-AzStorageContainer -Name $containerName2 -Force -Context $storageContext
+        
+        $immutabilityPolicy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName
+        Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -Etag $immutabilityPolicy.Etag
+        
+        # Encryption Scope Test
+        $scopename = "testscope"
+        $scopename2 = "testscope2"
+        $containerName2 = "testscopecontainer"
+        New-AzStorageEncryptionScope -ResourceGroupName $ResourceGroupName -StorageAccountName $storageAccountName -EncryptionScopeName $scopename -StorageEncryption
+        New-AzStorageEncryptionScope -ResourceGroupName $ResourceGroupName -StorageAccountName $storageAccountName -EncryptionScopeName $scopename2 -StorageEncryption
+        $container = New-AzStorageContainer -Name $containerName2 -Context $storageContext -DefaultEncryptionScope $scopeName -PreventEncryptionScopeOverride $true
+        Assert-AreEqual $scopename $container.BlobContainerProperties.DefaultEncryptionScope
+        Assert-AreEqual $true $container.BlobContainerProperties.PreventEncryptionScopeOverride
+        $blob = Set-AzStorageBlobContent -Context $storageContext -File $localSrcFile -Container $containerName -Blob encryscopetest  -EncryptionScope $scopename
+        Assert-AreEqual $scopename $blob.BlobProperties.EncryptionScope
+        $blob = Copy-AzStorageBlob -Context $storageContext -SrcContainer $containerName -SrcBlob encryscopetest -DestContainer $containerName -DestBlob encryscopetest -Force  -EncryptionScope $scopename2
+        Assert-AreEqual $scopename2 $blob.BlobProperties.EncryptionScope
+        Remove-AzStorageContainer -Name $containerName2 -Force -Context $storageContext
+
+        # container softdelete test
+        ## Enabled container softdelete,then create and delete a container
+        Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -RetentionDays 3
+        $containerNamesoftdelete = "softdeletecontainer"
+        New-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext
+        Remove-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext -Force
+        ## Get container without -IncludeDeleted, won't list out deleted containers
+        $deletedcontainer = Get-AzStorageContainer -Context $storageContext | ?{$_.IsDeleted}
+        Assert-AreEqual 0 $deletedcontainer.Count
+        ## Get container with -IncludeDeleted, will list out deleted containers
+        $deletedcontainer = Get-AzStorageContainer -Context $storageContext -IncludeDeleted | ?{$_.IsDeleted}
+        Assert-AreEqual 1 $deletedcontainer.Count
+        Assert-AreEqual $true $deletedcontainer.IsDeleted
+        Assert-NotNull $deletedcontainer.VersionId
+        ## restore container with pipeline, to same container name
+        sleep 60 # need wait for some time, or restore will fail with 409 (The specified container is being deleted.)
+        $deletedcontainer | Restore-AzStorageContainer  
+        $container =  Get-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext
+        Assert-AreEqual 1 $container.Count
+        Assert-Null $container.IsDeleted
+        Assert-Null $container.VersionId        
+        Disable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName $ResourceGroupName -Name $StorageAccountName 
+        Remove-AzStorageContainer -Name $containerNamesoftdelete -Context $storageContext -Force
 
         # Clean Storage Account
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext
@@ -876,9 +900,11 @@ function Test-DatalakeGen2
 		Assert-AreEqual 2 $result.TotalFilesSuccessfulCount
 		Assert-AreEqual 3 $result.TotalDirectoriesSuccessfulCount
 
-		# Remove Items
-        Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Force
-        Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Force
+		# Remove Items with delete only SAS
+        $sas = New-AzStorageContainerSASToken -Name $filesystemName -Permission d -Context $storageContext
+        $storageContextSas = New-AzStorageContext -StorageAccountName $storageContext.StorageAccountName -SasToken $sas 
+        Remove-AzDataLakeGen2Item -Context $storageContextSas -FileSystem $filesystemName -Path $filePath1 -Force
+        Remove-AzDataLakeGen2Item -Context $storageContextSas -FileSystem $filesystemName -Path $directoryPath1 -Force
 
         # Clean Storage Account
         Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName | Remove-AzDataLakeGen2Item -Force

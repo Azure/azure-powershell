@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="CheckNameResourceTypes" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new CheckNameResourceTypes(System.Convert.ToString(value));
+            return new CheckNameResourceTypes(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type CheckNameResourceTypes</summary>

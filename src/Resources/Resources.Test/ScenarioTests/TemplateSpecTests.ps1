@@ -136,7 +136,7 @@ function Test-CreateTemplateSpec
         
         # For the ARM template itself we'll do some normalization to ensure a valid comparison:
         $normalizedSampleTemplateJson = $sampleTemplateJson | ConvertFrom-Json | ConvertTo-Json -Compress
-        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Versions[0].Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
+        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Versions[0].MainTemplate.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
         
         Assert-AreEqual $normalizedSampleTemplateJson $normalizedTemplateJsonInV1
 
@@ -182,7 +182,7 @@ function Test-SetTemplateSpec
 
         # For the ARM template itself we'll do some normalization to ensure a valid comparison:
         $normalizedSampleTemplateJson = $sampleTemplateJson | ConvertFrom-Json | ConvertTo-Json -Compress
-        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Versions[0].Template.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
+        $normalizedTemplateJsonInV1 = $basicCreatedTemplateSpecV1.Versions[0].MainTemplate.ToString() | ConvertFrom-Json | ConvertTo-Json -Compress
 
         Assert-AreEqual $normalizedSampleTemplateJson $normalizedTemplateJsonInV1
 

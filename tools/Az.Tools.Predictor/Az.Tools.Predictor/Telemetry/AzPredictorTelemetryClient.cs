@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Profile;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
@@ -21,6 +20,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation.Language;
+using System.Management.Automation.Subsystem.Prediction;
 using System.Text.Json;
 using System.Threading.Tasks.Dataflow;
 
@@ -31,13 +31,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     internal class AzPredictorTelemetryClient : ITelemetryClient
     {
-        private const string TelemetryEventPrefix = "Az.Tools.Predictor";
+        /// <inheritdoc/>
+        public string RequestId { get; set; } = Guid.NewGuid().ToString();
 
         /// <inheritdoc/>
-        public string SessionId { get; } = Guid.NewGuid().ToString();
-
-        /// <inheritdoc/>
-        public string CorrelationId { get; private set; } = Guid.NewGuid().ToString();
+        public string SessionId => TelemetryUtilities.SessionId;
 
         /// <summary>
         /// The client that sends the telemetry to the server.
@@ -46,10 +44,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
         private readonly IAzContext _azContext;
 
-        /// <summary>
-        /// The id to identify the events proceeding to a CommandHistory
-        /// </summary>
-        private string _commandId = Guid.NewGuid().ToString();
+        /// <inheritdoc/>
+        public string CommandId { get; private set; } = Guid.NewGuid().ToString();
 
         /// <summary>
         /// The action to handle the <see cref="ITelemetryData"/> in a thread pool.
@@ -82,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         {
             PostTelemetryData(telemetryData);
 
-            _commandId = Guid.NewGuid().ToString();
+            CommandId = Guid.NewGuid().ToString();
 
 #if TELEMETRY_TRACE && DEBUG
             System.Diagnostics.Trace.WriteLine("Recording CommandHistory");
@@ -92,12 +88,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <inheritdoc/>
         public virtual void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
         {
-            // OnRequestPrediction may be running as a task on a different thread, or it's not triggerred at all because the history isn't changed,
-            // regardless, we only update the correlation id when that happens.
-            // If correlation id isn't updated, that's the same as the prediction used for suggestion isn't updated yet.
-            // The correlation id should be to correlate the prediction from the server and the suggestions presented to the user.
-            CorrelationId = Guid.NewGuid().ToString();
-
             PostTelemetryData(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
@@ -144,20 +134,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 #endif
         }
 
+        /// <inheritdoc/>
+        public void OnParseCommandLineFailure(CommandLineParsingTelemetryData telemetryData)
+        {
+            PostTelemetryData(telemetryData);
+
+#if TELEMETRY_TRACE && DEBUG
+            System.Diagnostics.Trace.WriteLine("Recording CommandLineParsing");
+#endif
+        }
+
         /// <summary>
         /// Gets the client that can send telemetry via Application Insight.
         /// </summary>
-        protected virtual TelemetryClient GetApplicationInsightTelemetryClient()
-        {
-            TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
-            configuration.InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"; // Use Azuer-PowerShell instrumentation key. see https://github.com/Azure/azure-powershell-common/blob/master/src/Common/AzurePSCmdlet.cs
-            var telemetryClient = new TelemetryClient(configuration);
-            telemetryClient.Context.Location.Ip = "0.0.0.0";
-            telemetryClient.Context.Cloud.RoleInstance = "placeholderdon'tuse";
-            telemetryClient.Context.Cloud.RoleName = "placeholderdon'tuse";
-
-            return telemetryClient;
-        }
+        protected virtual TelemetryClient GetApplicationInsightTelemetryClient() => TelemetryUtilities.CreateApplicationInsightTelemetryClient();
 
         /// <summary>
         /// Sends the telemetry event via Application Insight.
@@ -195,10 +185,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 return string.Empty;
             }
 
-            // The exception message may contain data such as file path if it is IO related exception.
-            // It's this solution to throw the exception, the type and the stack trace only contain information related to the solution.
-            return string.Format($"Type: {exception.GetType().ToString()}\nStack Trace: {exception.StackTrace?.ToString()}");
-;        }
+            switch (exception)
+            {
+                case CommandLineException:
+                case ServiceRequestException:
+                    // This is the exception type created by us. We should not contain private data in the message.
+                    return $"Message: {exception.Message}\nStack Trace: {exception.StackTrace?.ToString()}";
+                default:
+                    // The exception message may contain data such as file path if it is IO related exception.
+                    // It's this solution to throw the exception, the type and the stack trace only contain information related to the solution.
+                    return $"Type: {exception.GetType().ToString()}\nStack Trace: {exception.StackTrace?.ToString()}";
+            }
+        }
 
         private void PostTelemetryData(ITelemetryData telemetryData)
         {
@@ -208,7 +206,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             }
 
             telemetryData.SessionId = SessionId;
-            telemetryData.CorrelationId = CorrelationId;
+            telemetryData.RequestId = RequestId;
+            telemetryData.CommandId = CommandId;
 
             _telemetryDispatcher.Post(telemetryData);
         }
@@ -238,6 +237,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 case ParameterMapTelemetryData parameterMap:
                     SendTelemetry(parameterMap);
                     break;
+                case CommandLineParsingTelemetryData commandLineParsing:
+                    SendTelemetry(commandLineParsing);
+                    break;
                 default:
                     throw new NotImplementedException();
             }
@@ -248,11 +250,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </summary>
         private void SendTelemetry(HistoryTelemetryData telemetryData)
         {
-            var properties = CreateProperties(telemetryData);
-            properties.Add("ClientId", telemetryData.ClientId);
+            var properties = CreateProperties(telemetryData, telemetryData.Client);
             properties.Add("History", telemetryData.Command);
+            properties.Add("Success", telemetryData.Success.ToString(CultureInfo.InvariantCulture));
 
-            SendTelemetry($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", properties);
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/CommandHistory", properties);
         }
 
         /// <summary>
@@ -262,13 +264,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         {
             _userAcceptedAndSuggestion.Clear();
 
-            var properties = CreateProperties(telemetryData);
-            properties.Add("ClientId", telemetryData.ClientId);
+            var properties = CreateProperties(telemetryData, telemetryData.Client);
             properties.Add("Command", telemetryData.Commands == null ? string.Empty : string.Join(AzPredictorConstants.CommandConcatenator, telemetryData.Commands));
             properties.Add("HttpRequestSent", telemetryData.HasSentHttpRequest.ToString(CultureInfo.InvariantCulture));
             properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
 
-            SendTelemetry($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/RequestPrediction", properties);
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/RequestPrediction", properties);
         }
 
         /// <summary>
@@ -289,15 +290,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 }
             }
 
-            var properties = CreateProperties(telemetryData);
-            properties.Add("ClientId", telemetryData.ClientId);
+            var properties = CreateProperties(telemetryData, telemetryData.Client);
             properties.Add("SuggestionSessionId", telemetryData != null ? telemetryData.SuggestionSessionId.ToString(CultureInfo.InvariantCulture) : string.Empty);
             properties.Add("UserInput", maskedUserInput ?? string.Empty);
             properties.Add("Suggestion", sourceTexts != null ? JsonSerializer.Serialize(sourceTexts.Zip(suggestionSource).Select((s) => Tuple.Create(s.First, s.Second)), JsonUtilities.TelemetrySerializerOptions) : string.Empty);
             properties.Add("IsCancelled", telemetryData.IsCancellationRequested.ToString(CultureInfo.InvariantCulture));
             properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
 
-            SendTelemetry($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/GetSuggestion", properties);
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/GetSuggestion", properties);
         }
 
         /// <summary>
@@ -305,8 +305,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </summary>
         private void SendTelemetry(SuggestionDisplayedTelemetryData telemetryData)
         {
-            var properties = CreateProperties(telemetryData);
-            properties.Add("ClientId", telemetryData.ClientId);
+            var properties = CreateProperties(telemetryData, telemetryData.Client);
             properties.Add("SuggestionSessionId", telemetryData.SuggestionSessionId.ToString(CultureInfo.InvariantCulture));
             properties.Add("SuggestionDisplayMode", telemetryData.DisplayMode.ToString());
 
@@ -322,7 +321,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                     break;
             };
 
-            SendTelemetry($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/DisplaySuggestion", properties);
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/DisplaySuggestion", properties);
         }
 
         /// <summary>
@@ -332,15 +331,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         {
             if (!_userAcceptedAndSuggestion.TryGetValue(telemetryData.Suggestion, out var suggestion))
             {
-                suggestion = "NoRecord";
+                suggestion = telemetryData.Suggestion;
             }
 
-            var properties = CreateProperties(telemetryData);
-            properties.Add("ClientId", telemetryData.ClientId);
+            var properties = CreateProperties(telemetryData, telemetryData.Client);
             properties.Add("AcceptedSuggestion", suggestion);
             properties.Add("SuggestionSessionId", telemetryData.SuggestionSessionId.ToString(CultureInfo.InvariantCulture));
 
-            SendTelemetry($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/AcceptSuggestion", properties);
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/AcceptSuggestion", properties);
         }
 
         /// <summary>
@@ -348,30 +346,40 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </summary>
         private void SendTelemetry(ParameterMapTelemetryData telemetryData)
         {
-            var properties = CreateProperties(telemetryData);
+            var properties = CreateProperties(telemetryData, client: null);
             properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
 
-            SendTelemetry($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/LoadParameterMap", properties);
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/LoadParameterMap", properties);
+        }
+
+        /// <summary>
+        /// Sends the telemetry with the command line parsing information.
+        /// </summary>
+        private void SendTelemetry(CommandLineParsingTelemetryData telemetryData)
+        {
+            var properties = CreateProperties(telemetryData, client: null);
+            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
+            properties.Add("Command", telemetryData.Command);
+
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/ParseCommandLineFailure", properties);
         }
 
         /// <summary>
         /// Add the common properties to the telemetry event.
         /// </summary>
-        private IDictionary<string, string> CreateProperties(ITelemetryData telemetryData)
+        private IDictionary<string, string> CreateProperties(ITelemetryData telemetryData, PredictionClient client)
         {
-            return new Dictionary<string, string>()
+            var properties = TelemetryUtilities.CreateCommonProperties(this._azContext);
+            properties.Add("RequestId", telemetryData.RequestId);
+            properties.Add("CommandId", telemetryData.CommandId);
+
+            if (client != null)
             {
-                { "SessionId", telemetryData.SessionId },
-                { "CorrelationId", telemetryData.CorrelationId },
-                { "CommandId", _commandId },
-                { "UserId", _azContext.HashUserId },
-                { "IsInternal", _azContext.IsInternal.ToString(CultureInfo.InvariantCulture) },
-                { "SurveyId", (_azContext as AzContext)?.SurveyId },
-                { "HashMacAddress", _azContext.MacAddress },
-                { "PowerShellVersion", _azContext.PowerShellVersion.ToString() },
-                { "ModuleVersion", _azContext.ModuleVersion.ToString() },
-                { "OS", _azContext.OSVersion },
-            };
+                properties.Add("ClientId", client.Name);
+                properties.Add("ClientType", client.Kind.ToString());
+            }
+
+            return properties;
         }
     }
 }

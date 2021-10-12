@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = true,
             HelpMessage = "The service level of the ANF volume")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Ultra")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS")]
         public string ServiceLevel { get; set; }
 
         [Parameter(
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "Snapshot Policy ResourceId used to apply a snapshot policy to the volume")]
-        [ValidateNotNullOrEmpty]       
+        [ValidateNotNullOrEmpty]
         public string SnapshotPolicyId { get; set; }
         
         [Parameter(
@@ -204,6 +204,60 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies whether LDAP is enabled or not for a given NFS volume.")]
+        public SwitchParameter LdapEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether Cool Access(tiering) is enabled for the volume (default false).")]
+        public SwitchParameter CoolAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,            
+            HelpMessage = "Specifies the number of days after which data that is not accessed by clients will be tiered (minimum 7, maximum 63).")]
+        public int? CoolnessPeriod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.")]
+        public string UnixPermissions { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose (Enabled, Disabled)")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string AvsDataStore { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies if default quota is enabled for the volume")]
+        public SwitchParameter IsDefaultQuotaEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.")]
+        public long? DefaultUserQuotaInKiB { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.")]
+        public long? DefaultGroupQuotaInKiB { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Basic network, or Standard features available to the volume (Basic, Standard).")]
+        [PSArgumentCompleter("Basic", "Standard")]
+        public string NetworkFeature { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "Network Sibling Set ID (GUID) for the group of volumes sharing networking resources example (9760acf5-4638-11e7-9bdb-020073ca3333).")]
+        [ValidateNotNullOrEmpty]
+        public string NetworkSiblingSetId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -248,7 +302,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     Replication = ReplicationObject,
                     Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
                     Backup = Backup
-                };                
+                };
             }
 
             var volumeBody = new Management.NetApp.Models.Volume()
@@ -270,7 +324,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 ThroughputMibps = ThroughputMibps,
                 KerberosEnabled = KerberosEnabled.IsPresent,
                 SmbEncryption = SmbEncryption,
-                SmbContinuouslyAvailable = SmbContinuouslyAvailable
+                SmbContinuouslyAvailable = SmbContinuouslyAvailable,
+                LdapEnabled = LdapEnabled,
+                CoolAccess = CoolAccess,
+                CoolnessPeriod = CoolnessPeriod,
+                UnixPermissions = UnixPermissions,
+                AvsDataStore = AvsDataStore,
+                IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
+                DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
+                DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB,
+                NetworkFeatures = NetworkFeature
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

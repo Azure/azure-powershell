@@ -104,7 +104,7 @@ function Test-SynapseSqlPool-Security
 {
     param
     (
-        $storageGen2AccountName = (Get-DataLakeStorageAccountName)
+        $storageGen2AccountName = "sqlauditstorage" + (getAssetName)
     )
 
 	# Setup
@@ -159,7 +159,7 @@ function Test-SynapseSqlPool-Security
         Assert-AreEqual $threatProtectionGet.ThreatDetectionState Disabled
 
         # Remove SQL Pool Auditing
-        Assert-True {Remove-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -PassThru}
+        Assert-True {Remove-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName}
 
         # Verify that SQL Pool Auditing was deleted
         $auditing = Get-AzSynapseSqlPoolAudit -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName
@@ -207,7 +207,7 @@ function Get-SqlPoolTestEnvironmentParameters ($testSuffix)
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
 			  perfLevel = 'DW200c';
-              location = "westcentralus";
+              location = "canadacentral";
 		}
 }
 

@@ -22,8 +22,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public const string singlePassParameterSet = "SinglePassParameterSet";
         public const string aadClientCertParameterSet = "AADClientCertParameterSet";
         public const string aadClientSecretParameterSet = "AADClientSecretParameterSet";
+        public const string migrateAdeVersionParameterSet = "MigrateADEVersionParameterSet";
+        public const string migrateAdeVersionRecoveryParameterSet = "MigrateADEVersionRecoveryParameterSet";
         public const string enableEncryptionOperation = "EnableEncryption";
         public const string enableEncryptionFormatAllOperation = "EnableEncryptionFormatAll";
+        public const string migrateAdeOperationKey = "MigrateFlag";
+        public const string migrateAdeOperationValue = "Migrate";
         public const string disableEncryptionOperation = "DisableEncryption";
         public const string queryEncryptionStatusOperation = "QueryEncryptionStatus";
         public const string encryptionResultOsKey = "os";

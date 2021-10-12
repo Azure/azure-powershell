@@ -33,6 +33,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -153,6 +156,8 @@ begin {
         if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

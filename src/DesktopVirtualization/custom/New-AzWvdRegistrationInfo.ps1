@@ -20,7 +20,7 @@ Create Windows virtual desktop registration info.
 Create Windows virtual desktop registration info.
 #>
 function New-AzWvdRegistrationInfo {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IRegistrationInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IRegistrationInfo')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter()]
@@ -106,12 +106,11 @@ function New-AzWvdRegistrationInfo {
             -FriendlyName $hostpool.FriendlyName `
             -MaxSessionLimit $hostpool.MaxSessionLimit `
             -VMTemplate $hostpool.VMTemplate `
-            -SsoContext $hostpool.SsoContext `
             -CustomRdpProperty $hostpool.CustomRdpProperty `
             -Ring $hostpool.Ring `
             -ValidationEnvironment:$hostpool.ValidationEnvironment `
             -PreferredAppGroupType $hostpool.PreferredAppGroupType
-        New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.RegistrationInfo' `
+        New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.RegistrationInfo' `
             -Property @{ `
                 ExpirationTime = $hostpool.RegistrationInfoExpirationTime; `
                 RegistrationTokenOperation = $hostpool.RegistrationInfoRegistrationTokenOperation; `

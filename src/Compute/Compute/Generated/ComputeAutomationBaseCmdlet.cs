@@ -122,6 +122,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public ISshPublicKeysOperations SshPublicKeyClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.SshPublicKeys;
+            }
+        }
+
         public IGalleriesOperations GalleriesClient
         {
             get
@@ -231,6 +239,37 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             get
             {
                 return ComputeClient.ComputeManagementClient.VirtualMachines;
+            }
+        }
+
+        public ICapacityReservationGroupsOperations CapacityReservationGroupClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.CapacityReservationGroups;
+            }
+        }
+        public ICapacityReservationsOperations CapacityReservationClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.CapacityReservations;
+            }
+        }
+
+        public IRestorePointCollectionsOperations RestorePointCollectionsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.RestorePointCollections;
+            }
+        }
+
+        public IRestorePointsOperations RestorePointClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.RestorePoints;
             }
         }
 

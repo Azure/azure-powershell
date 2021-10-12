@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -BearerTokenSendingMethod
-OpenId authorization server mechanism by which access token is passed to the API. Refer to http://tools.ietf.org/html/rfc6749#section-4. This parameter is optional. Default value is $null.
+OpenId authorization server mechanism by which access token is passed to the API. Refer to https://datatracker.ietf.org/doc/html/rfc6749#section-4. This parameter is optional. Default value is $null.
 
 ```yaml
 Type: System.String[]

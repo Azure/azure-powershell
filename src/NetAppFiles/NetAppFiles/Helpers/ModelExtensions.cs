@@ -37,7 +37,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BackupOperators = psActiveDirectory.BackupOperators,
                 KdcIP = psActiveDirectory.KdcIP,
                 AdName = psActiveDirectory.AdName,
-                ServerRootCACertificate = psActiveDirectory.ServerRootCACertificate
+                ServerRootCACertificate = psActiveDirectory.ServerRootCACertificate,
+                AesEncryption = psActiveDirectory.AesEncryption,
+                LdapSigning = psActiveDirectory.LdapSigning,
+                SecurityOperators = psActiveDirectory.SecurityOperators,
+                LdapOverTLS = psActiveDirectory.LdapOverTLS,
+                AllowLocalNfsUsersWithLdap = psActiveDirectory.AllowLocalNfsUsersWithLdap,
+                Administrators = psActiveDirectory.Administrators
 
             }).ToList();
         }
@@ -67,7 +73,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 KdcIP = activeDirectory.KdcIP,
                 AdName = activeDirectory.AdName,
                 ServerRootCACertificate = activeDirectory.ServerRootCACertificate,
-                SecurityOperators = activeDirectory.SecurityOperators
+                AesEncryption = activeDirectory.AesEncryption,
+                LdapSigning = activeDirectory.LdapSigning,
+                SecurityOperators = activeDirectory.SecurityOperators,
+                LdapOverTLS = activeDirectory.LdapOverTLS,
+                AllowLocalNfsUsersWithLdap = activeDirectory.AllowLocalNfsUsersWithLdap
             };
             return psActiveDirectory;
         }
@@ -83,6 +93,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = netAppAccount.Name,
                 Type = netAppAccount.Type,
                 Tags = netAppAccount.Tags,
+                Etag = netAppAccount.Etag,
                 ActiveDirectories = (netAppAccount.ActiveDirectories != null) ? netAppAccount.ActiveDirectories.ConvertToPs(resourceGroupName, netAppAccount.Name) : null,
                 ProvisioningState = netAppAccount.ProvisioningState
             };
@@ -98,13 +109,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = capacityPool.Name,
                 Type = capacityPool.Type,
                 Tags = capacityPool.Tags,
+                Etag = capacityPool.Etag,
                 PoolId = capacityPool.PoolId,
                 Size = capacityPool.Size,
                 ServiceLevel = capacityPool.ServiceLevel,
                 ProvisioningState = capacityPool.ProvisioningState,
                 QosType = capacityPool.QosType,
                 TotalThroughputMibps = capacityPool.TotalThroughputMibps,
-                UtilizedThroughputMibps = capacityPool.UtilizedThroughputMibps
+                UtilizedThroughputMibps = capacityPool.UtilizedThroughputMibps,
+                CoolAccess = capacityPool.CoolAccess
             };
         }
 
@@ -129,7 +142,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     Kerberos5pReadOnly = rule.Kerberos5pReadOnly,
                     Kerberos5pReadWrite = rule.Kerberos5pReadWrite,
                     Kerberos5ReadOnly = rule.Kerberos5ReadOnly,
-                    Kerberos5ReadWrite = rule.Kerberos5ReadWrite
+                    Kerberos5ReadWrite = rule.Kerberos5ReadWrite,                                        
                 };
 
                 exportPolicy.Rules.Add(exportPolicyRule);
@@ -159,7 +172,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     Kerberos5pReadOnly = rule.Kerberos5pReadOnly,
                     Kerberos5pReadWrite = rule.Kerberos5pReadWrite,
                     Kerberos5ReadOnly = rule.Kerberos5ReadOnly,
-                    Kerberos5ReadWrite = rule.Kerberos5ReadWrite
+                    Kerberos5ReadWrite = rule.Kerberos5ReadWrite,                    
                 };
 
                 exportPolicy.Rules.Add(exportPolicyRule);
@@ -268,7 +281,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         public static VolumePatchPropertiesDataProtection ConvertToPatchFromPs(this PSNetAppFilesVolumeDataProtection psDataProtection)
         {
             var dataProtection = new VolumePatchPropertiesDataProtection();
-
+            if (psDataProtection.Snapshot != null)
+            {
+                var snapshot = new VolumeSnapshotProperties();
+                snapshot.SnapshotPolicyId = psDataProtection.Snapshot.SnapshotPolicyId;
+                dataProtection.Snapshot = snapshot;
+            }
             if (psDataProtection.Backup != null)
             {
                 var backup = new VolumeBackupProperties();
@@ -292,6 +310,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = volume.Name,
                 Type = volume.Type,
                 Tags = volume.Tags,
+                Etag = volume.Etag,
                 ProvisioningState = volume.ProvisioningState,
                 FileSystemId = volume.FileSystemId,
                 ServiceLevel = volume.ServiceLevel,
@@ -312,8 +331,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ThroughputMibps = volume.ThroughputMibps,
                 KerberosEnabled = volume.KerberosEnabled,
                 SmbEncryption = volume.SmbEncryption,
-                SmbContinuouslyAvailable = volume.SmbContinuouslyAvailable
-
+                SmbContinuouslyAvailable = volume.SmbContinuouslyAvailable,
+                LdapEnabled = volume.LdapEnabled,
+                CoolAccess = volume.CoolAccess,
+                CoolnessPeriod = volume.CoolnessPeriod,
+                UnixPermission = volume.UnixPermissions,
+                AvsDataStore = volume.AvsDataStore,
+                CloneProgress = volume.CloneProgress,
+                IsDefaultQuotaEnabled = volume.IsDefaultQuotaEnabled,
+                DefaultUserQuotaInKiBs = volume.DefaultUserQuotaInKiBs,
+                DefaultGroupQuotaInKiBs = volume.DefaultGroupQuotaInKiBs,
+                NetworkFeatures = volume.NetworkFeatures,
+                NetworkSiblingSetId = volume.NetworkSiblingSetId,
+                StorageToNetworkProximity = volume.StorageToNetworkProximity
             };
         }
 

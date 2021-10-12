@@ -16,21 +16,24 @@ Gets the recovery points for a backed up item.
 
 ### NoFilterParameterSet (Default)
 ```
-Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-UseSecondaryRegion] [-VaultId <String>]
+Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-UseSecondaryRegion] [-Tier <RecoveryPointTier>]
+ [-IsReadyForMove <Boolean>] [-TargetTier <RecoveryPointTier>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DateTimeFilter
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] <DateTime>] [-Item] <ItemBase>
- [-UseSecondaryRegion] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-UseSecondaryRegion] [-Tier <RecoveryPointTier>] [-IsReadyForMove <Boolean>]
+ [-TargetTier <RecoveryPointTier>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RecoveryPointId
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-RecoveryPointId] <String>
- [[-KeyFileDownloadLocation] <String>] [-UseSecondaryRegion] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-KeyFileDownloadLocation] <String>] [-UseSecondaryRegion] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,19 +48,53 @@ Set the vault context by using the -VaultId parameter.
 
 ```powershell
 PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $StartDate = (Get-Date).AddDays(-7)
-PS C:\> $EndDate = Get-Date
-PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -Name "V2VM" -VaultId $vault.ID
-PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -ContainerType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
-PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime() -VaultId $vault.ID
+PS C:\> $startDate = (Get-Date).AddDays(-7)
+PS C:\> $endDate = Get-Date
+PS C:\> $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -Name "V2VM" -VaultId $vault.ID
+PS C:\> $backupItem = Get-AzRecoveryServicesBackupItem -ContainerType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
+PS C:\> $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupItem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $vault.ID
 ```
 
 The first command gets vault object based on vaultName. 
-The second command gets the date from seven days ago, and then stores it in the $StartDate variable.
-The third command gets today's date, and then stores it in the $EndDate variable.
+The second command gets the date from seven days ago, and then stores it in the $startDate variable.
+The third command gets today's date, and then stores it in the $endDate variable.
 The fourth command gets AzureVM backup containers, and stores them in the $Container variable. 
-The fifth command gets the backup item based on workloadType, vaultId and then stores it in the $BackupItem variable.
-The last command gets an array of recovery points for the item in $BackupItem, and then stores them in the $RP variable.
+The fifth command gets the backup item based on workloadType, vaultId and then stores it in the $backupItem variable.
+The last command gets an array of recovery points for the item in $BackupItem, and then stores them in the $rp variable.
+
+### Example 2: Get recovery points which are ready to be moved to VaultArchive
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
+PS C:\> $endDate = Get-Date.ToUniversalTime()
+PS C:\> $item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $vault.ID
+PS C:\> $rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate $startDate -EndDate $endDate -VaultId $vault.ID -Item $item[3] 
+-IsReadyForMove $true -TargetTier VaultArchive
+```
+
+The first command gets vault object based on vaultName. The second command gets the date from seven days ago, and then stores it in the $startDate variable.
+The third command gets today's date, and then stores it in the $endDate variable.
+The fourth command gets backup items based on backupManagementType and workloadType, vaultId and then stores it in the $item variable.
+The last command gets an array of recovery points for the item in $backupItem which are ready to be moved to VaultArchive tier and 
+then stores them in the $rp variable.
+
+### Example 3: Get recovery points in a particular tier
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
+PS C:\> $endDate = Get-Date.ToUniversalTime()
+PS C:\> $item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $vault.ID
+PS C:\> $rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate $startDate -EndDate $endDate -VaultId $vault.ID -Item $item[3] 
+-Tier VaultStandard
+```
+
+The first command gets vault object based on vaultName. The second command gets the date from seven days ago, and then stores it in the $startDate variable.
+The third command gets today's date, and then stores it in the $endDate variable.
+The fourth command gets backup items based on backupManagementType and workloadType, vaultId and then stores it in the $item variable.
+The last command gets an array of recovery points for the item in $backupItem which are ready to be moved to VaultArchive tier and 
+then stores them in the $rp variable. 
 
 ## PARAMETERS
 
@@ -88,6 +125,22 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsReadyForMove
+
+Filters the Recovery Points based on whether RP is Ready to move to target tier. Use this along with target tier parameter.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -153,6 +206,55 @@ Aliases:
 
 Required: False
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetTier
+
+Target tier to check move readiness of recovery point. Currently only valid value is 'VaultArchive'.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointTier
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+Accepted values: VaultArchive
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tier
+
+Filter recovery points based on tier value.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointTier
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+Accepted values: VaultStandard, Snapshot, VaultArchive, VaultStandardRehydrated, SnapshotAndVaultStandard, SnapshotAndVaultArchive
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSecondaryRegion
+Filters from Secondary Region for Cross Region Restore
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

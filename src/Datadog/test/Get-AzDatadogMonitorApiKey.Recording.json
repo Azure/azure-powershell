@@ -1,0 +1,44 @@
+{
+  "Get-AzDatadogMonitorApiKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/listApiKeys?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorib56wm/listApiKeys?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "9da99489-066e-43d0-bb9b-f13720dee5cf" ],
+        "CommandName": [ "Get-AzDatadogMonitorApiKey" ],
+        "FullCommandName": [ "Get-AzDatadogMonitorApiKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "36640b0a-545c-4746-80ee-0f9a365b182c" ],
+        "x-ms-correlation-request-id": [ "bc09bf9a-bb6a-498d-ad96-da222dc3fc71" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T070647Z:bc09bf9a-bb6a-498d-ad96-da222dc3fc71" ],
+        "Date": [ "Mon, 31 May 2021 07:06:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "171" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"createdBy\":\"v-diya@microsoft.com\",\"name\":\"Azure Admin User API Key\",\"key\":\"c2200ba61f8f44a69a2cbe6fc4edf124\",\"created\":\"2021-05-31 06:24:38\"}],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -25,6 +25,8 @@ using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 {
@@ -33,6 +35,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesBackupPolicy",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
+    [CmdletOutputBreakingChange(typeof(PSNetAppFilesBackupPolicy), DeprecatedOutputProperties = new string[] { "YearlyBackupsToKeep" })]
     [Alias("Set-AnfBackupPolicy")]
     public class SetAzureRmNetAppFilesBackupPolicy : AzureNetAppFilesCmdletBase
     {
@@ -100,6 +103,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [Parameter(
             Mandatory = false,
             HelpMessage = "Yearly backups count to keep")]
+        [CmdletParameterBreakingChange("YearlyBackupsToKeep", ChangeDescription = "Parameter YearlyBackupsToKeep is invalid and preserved for compatibility.")]
         [ValidateNotNullOrEmpty]
         public int? YearlyBackupsToKeep { get; set; }
 
@@ -165,7 +169,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             }
             if (existingBackupPolicy == null)
             {
-                throw new Exception(string.Format("A Backup Policy with name '{0}' in resource group '{1}' does not exist. Please use New-AzNetAppFilesBackupPolicy to create a new Backup Policy.", this.Name, this.ResourceGroupName));
+                throw new AzPSResourceNotFoundCloudException($"A Backup Policy with name '{this.Name}' in resource group '{this.ResourceGroupName}' does not exist. Please use New-AzNetAppFilesBackupPolicy to create a new Backup Policy.");
             }
 
             var backupPolicyBody = new Management.NetApp.Models.BackupPolicy()
@@ -175,8 +179,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 Tags = tagPairs,
                 DailyBackupsToKeep = DailyBackupsToKeep,
                 WeeklyBackupsToKeep = WeeklyBackupsToKeep,
-                MonthlyBackupsToKeep = MonthlyBackupsToKeep,
-                YearlyBackupsToKeep = YearlyBackupsToKeep
+                MonthlyBackupsToKeep = MonthlyBackupsToKeep
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))

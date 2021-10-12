@@ -17,22 +17,25 @@ function Test-CreateBasicCluster
 	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
 	$clusterName = "sfmcps-" + (getAssetname)
 	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
-	$location = "northeurope"
+	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
 		-AdminPassword $pass -Sku Basic -ClientCertThumbprint $testClientTp -Verbose
-	Assert-AreEqual  "Succeeded" $cluster.ProvisioningState
-	Assert-AreEqual  "WaitingForNodes" $cluster.ClusterState
+	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
+	Assert-AreEqual "Automatic" $cluster.ClusterUpgradeMode
+	Assert-AreEqual "Wave0" $cluster.ClusterUpgradeCadence
 
-	$pnt = New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -Primary
-	
+	$pnt = New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -DiskType Standard_LRS -Primary
+	Assert-AreEqual 5 $pnt.VmInstanceCount
+	Assert-AreEqual "Standard_LRS" $pnt.DataDiskType
+
 	# shouldn't be allowed to remove the only primary node type in the cluster
 	Assert-ThrowsContains { $pnt | Remove-AzServiceFabricManagedNodeType } "InvalidParameter"
 
 	$cluster = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
-	Assert-AreEqual  "Deploying" $cluster.ClusterState
+	Assert-AreEqual "Deploying" $cluster.ClusterState
 
 	# scale primary node type
 	$pnt = Set-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 6
@@ -48,21 +51,31 @@ function Test-NodeTypeOperations
 {
 	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
 	$clusterName = "sfmcps-" + (getAssetname)
-	$location = "northeurope"
+	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
-	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
+	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -UpgradeMode Automatic -UpgradeCadence Wave1 -Location $location `
 		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Verbose
-	Assert-AreEqual  "Succeeded" $cluster.ProvisioningState
-	Assert-AreEqual  "WaitingForNodes" $cluster.ClusterState
+	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
+	Assert-AreEqual "WaitingForNodes" $cluster.ClusterState
+	Assert-AreEqual "Automatic" $cluster.ClusterUpgradeMode
+	Assert-AreEqual "Wave1" $cluster.ClusterUpgradeCadence
 
-	New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -Primary -AsJob
-	New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -InstanceCount 6 -AsJob
+	New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -Primary -DiskType Premium_LRS -VmSize "Standard_DS2" -AsJob
+	New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -InstanceCount 6 -IsStateless -AsJob
 
 	#wait for nodetypes
 	WaitForAllJob
+
+	$pnt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt
+	Assert-AreEqual "Premium_LRS" $pnt.DataDiskType
+	Assert-False { $pnt.IsStateless }
+
+	$snt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt
+	Assert-AreEqual "StandardSSD_LRS" $snt.DataDiskType
+	Assert-True { $snt.IsStateless }
 
 	$restart = Restart-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_0, snt_1 -PassThru
 	Assert-True { $restart }
@@ -85,15 +98,15 @@ function Test-CertAndExtension
 {
 	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
 	$clusterName = "sfmcps-" + (getAssetname)
-	$location = "northeurope"
+	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
 		-AdminPassword $pass -Sku Standard -ClientCertThumbprint $testClientTp -Verbose
-	Assert-AreEqual  "Succeeded" $cluster.ProvisioningState
-	Assert-AreEqual  "WaitingForNodes" $cluster.ClusterState
+	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
+	Assert-AreEqual "WaitingForNodes" $cluster.ClusterState
 
 	$pnt = New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -Primary
 

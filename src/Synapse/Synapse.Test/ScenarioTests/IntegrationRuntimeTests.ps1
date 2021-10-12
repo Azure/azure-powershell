@@ -142,6 +142,57 @@ function Test-IntegrationRuntime-Piping
 
 <#
 .SYNOPSIS
+Creates an azure SSIS integration runtime and then does operations.
+Deletes the created integration runtime at the end.
+#>
+function Test-AzureSSIS-IntegrationRuntime
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-WorkspaceTestEnvironment $testSuffix
+	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
+
+    $resourceGroupName = $params.rgname
+    $workspaceName = $params.workspaceName
+    $irname = "test-SSIS-integrationruntime"
+	$location = $params.location
+	$AzureSSISNodeSize = "Standard_D8_v3"
+	$AzureSSISNodeNumber = 2
+	$AzureSSISEdition = "Standard"
+	$AzureSSISLicenseType = "LicenseIncluded"
+	$AzureSSISMaxParallelExecutionsPerNode = 4
+
+    try
+    {
+        $description = "Start/stop SSIS"
+		$SSISIR = Set-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName `
+		-WorkspaceName $workspaceName `
+		-Name $irname `
+		-Description $description `
+		-Type Managed `
+		-Location $location `
+		-NodeSize $AzureSSISNodeSize `
+		-NodeCount $AzureSSISNodeNumber `
+		-Edition $AzureSSISEdition `
+		-LicenseType $AzureSSISLicenseType `
+		-MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+		-Force
+   
+        $result = ($SSISIR | Start-AzSynapseIntegrationRuntime -Force)
+        Assert-AreEqual $result.State 'Started'
+		$SSISIR | Stop-AzSynapseIntegrationRuntime -Force
+
+        Remove-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $irname -Force
+    }
+    finally
+    {
+		# Cleanup
+		Remove-WorkspaceTestEnvironment $testSuffix
+    }
+}
+
+<#
+.SYNOPSIS
 Creates the test environment needed to perform the tests
 #>
 function Create-WorkspaceTestEnvironment ($testSuffix)
@@ -162,7 +213,7 @@ function Get-WorkspaceTestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
-              location = "westcentralus";
+              location = "canadacentral";
 		}
 }
 

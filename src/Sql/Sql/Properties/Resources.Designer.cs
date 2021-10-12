@@ -295,6 +295,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
+        /// </summary>
+        internal static string BackupRedundancyChosenIsGeoWarning {
+            get {
+                return ResourceManager.GetString("BackupRedundancyChosenIsGeoWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
         /// </summary>
         internal static string BackupRedundancyNotChosenTakeGeoWarning {
@@ -574,15 +583,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
-        /// </summary>
-        internal static string GeoBackupRedundancyChosenWarning {
-            get {
-                return ResourceManager.GetString("GeoBackupRedundancyChosenWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
         internal static string InvalidADGroupNotSecurity {
@@ -655,6 +655,17 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid format of the resource identifier. A long term retention backup resource Id should follow one of the following formats:
+        ////subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+        ////subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseN [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string InvalidLongTermRetentionBackupResourceIdFormat {
+            get {
+                return ResourceManager.GetString("InvalidLongTermRetentionBackupResourceIdFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use audit table retention without specifying TableIdentifier. You may want to use &apos;{0}&apos;..
         /// </summary>
         internal static string InvalidRetentionTypeSet {
@@ -682,11 +693,47 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disables uploading ledger digests.
+        /// </summary>
+        internal static string LedgerDisableConfirmActionProcessMessage {
+            get {
+                return ResourceManager.GetString("LedgerDisableConfirmActionProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable uploading ledger digests.
+        /// </summary>
+        internal static string LedgerEnableConfirmActionProcessMessage {
+            get {
+                return ResourceManager.GetString("LedgerEnableConfirmActionProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Managed Instance Advanced Data Security is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first..
         /// </summary>
         internal static string ManagedInstanceAdvancedDataSecurityIsNotDefined {
             get {
                 return ResourceManager.GetString("ManagedInstanceAdvancedDataSecurityIsNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ExternalAdminName must be provided when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication..
+        /// </summary>
+        internal static string MissingExternalAdmin {
+            get {
+                return ResourceManager.GetString("MissingExternalAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SQL Administrator Credentials are only optional when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication..
+        /// </summary>
+        internal static string MissingSQLAdministratorCredentials {
+            get {
+                return ResourceManager.GetString("MissingSQLAdministratorCredentials", resourceCulture);
             }
         }
         
@@ -1006,6 +1053,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing allowed FQDN &apos;{0}&apos; from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlServerOutboundFirewallRuleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerOutboundFirewallRuleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the allowed FQDN &apos;{0}&apos; from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerOutboundFirewallRuleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerOutboundFirewallRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Azure Sql Server Trust Group &apos;{0}&apos; in location &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerTrustGroupDescription {
@@ -1303,6 +1368,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allowed FQDN with name &apos;{0}&apos; does not exist in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server &apos;{1}&apos;..
+        /// </summary>
+        internal static string ServerOutboundFirewallRuleFQDNDoesNotExist {
+            get {
+                return ResourceManager.GetString("ServerOutboundFirewallRuleFQDNDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowed FQDN with name &apos;{0}&apos; already exists in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server &apos;{1}&apos;..
+        /// </summary>
+        internal static string ServerOutboundFirewallRuleFQDNExists {
+            get {
+                return ResourceManager.GetString("ServerOutboundFirewallRuleFQDNExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request for upgrade of server &apos;{0}&apos; already exists..
         /// </summary>
         internal static string ServerUpgradeExists {
@@ -1335,6 +1418,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetAdvisorAutoExecuteStatusWarning {
             get {
                 return ResourceManager.GetString("SetAdvisorAutoExecuteStatusWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter &apos;{0}&apos; and &apos;{1}&apos; both being null is not allowed..
+        /// </summary>
+        internal static string SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters {
+            get {
+                return ResourceManager.GetString("SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters", resourceCulture);
             }
         }
         

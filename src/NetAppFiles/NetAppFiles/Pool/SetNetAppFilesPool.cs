@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
@@ -93,6 +94,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "If enabled (true) the pool can contain cool Access enabled volumes.")]
+        public SwitchParameter CoolAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -146,7 +152,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             }
             if (existingPool == null)
             {
-                throw new Exception(string.Format("A Capacity Pool with name '{0}' in resource group '{1}' does not exist. Please use New-AzNetAppFilesPool to create a new Capacity Pool.", this.Name, this.ResourceGroupName));
+                throw new AzPSResourceNotFoundCloudException($"A Capacity Pool with name '{this.Name}' in resource group '{this.ResourceGroupName}' does not exist. Please use New-AzNetAppFilesPool to create a new Capacity Pool.");
             }
 
             if (ParameterSetName == ParentObjectParameterSet)
@@ -162,7 +168,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Size = PoolSize,
                 Location = Location,
                 Tags = tagPairs,
-                QosType = QosType
+                QosType = QosType,
+                CoolAccess = CoolAccess
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))

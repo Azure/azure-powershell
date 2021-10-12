@@ -20,6 +20,15 @@
 
 ## Upcoming Release
 
+## Version 1.8.1
+* Fixed null reference exception and typos in `New-AzFrontDoorCdnRule` cmdlet
+
+## Version 1.8.0
+* Fixed mandatory parameters issue in `Get-AzCdnEndpointResourceUsage` cmdlet
+
+## Version 1.7.1
+* Fixed profile missing issue in `Remove-AzCdnProfile` cmdlet
+
 ## Version 1.7.0
 * Added cmdlets to support new AFD Premium / Standard SKUs
   

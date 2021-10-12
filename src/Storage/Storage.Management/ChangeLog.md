@@ -19,6 +19,140 @@
 -->
 ## Upcoming Release
 
+## Version 3.12.0
+* Upgraded Azure.Storage.Blobs to 12.10.0
+* Upgraded Azure.Storage.Files.Shares to 12.8.0
+* Upgraded Azure.Storage.Files.DataLake to 12.8.0
+* Upgraded Azure.Storage.Queues to 12.8.0
+* Supported upgrade storage account to enable HierarchicalNamespace
+    -  `Invoke-AzStorageAccountHierarchicalNamespaceUpgrade`
+    -  `Stop-AzStorageAccountHierarchicalNamespaceUpgrade`
+* Supported AccessTierInferred, Tags in blob inventory policy schema
+    - `New-AzStorageBlobInventoryPolicyRule`
+* Supported create/update storage account with PublicNetworkAccess enabled/disabled 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported create/update storage blob container with RootSquash
+    - `New-AzRmStorageContainer`
+    - `Update-AzRmStorageContainer`
+* Supported AllowProtectedAppendWriteAll in set container Immutability Policy, and add container LegalHold
+    - `Set-AzRmStorageContainerImmutabilityPolicy`
+    - `Add-AzRmStorageContainerLegalHold`
+
+## Version 3.11.0
+* Supported get/set blob tags on a specific blob
+    -  `Get-AzStorageBlobTag`
+    -  `Set-AzStorageBlobTag`
+* Supported create destination blob with specific blob tags while upload/copy Blob
+    -  `Set-AzStorageBlobContent`
+    -  `Start-AzStorageBlobCopy`
+* Supported list blobs across containers with a blob tag filter sql expression
+    -  `Get-AzStorageBlobByTag`
+* Supported list blobs inside a container and include Blob Tags
+    -  `Get-AzStorageBlob`
+* Supported run blob operation with blob tag condition, and fail the cmdlet when blob tag condition not match
+    -  `Get-AzStorageBlob`
+    -  `Get-AzStorageBlobContent`
+    -  `Get-AzStorageBlobTag`
+    -  `Remove-AzStorageBlob`
+    -  `Set-AzStorageBlobContent`
+    -  `Set-AzStorageBlobTag`
+    -  `Start-AzStorageBlobCopy`
+    -  `Stop-AzStorageBlobCopy`
+* Generate blob sas token with new API version
+    -  `New-AzStorageBlobSASToken` 
+    -  `New-AzStorageContainerSASToken` 
+    -  `New-AzStorageAccountSASToken`
+* Fixed blob copy failure with OAuth credential when client and server has time difference [#15644]
+    -  `Copy-AzStorageBlob` 
+* Fixed remove Data Lake Gen2 item fail with readonly SAS token
+    -  `Remove-AzDataLakeGen2Item` 
+* Revised destination existing check in move Data Lake Gen2 item
+    -  `Move-AzDataLakeGen2Item` 
+
+## Version 3.10.0
+* Supported Blob Last Access Time
+    -  `Enable-AzStorageBlobLastAccessTimeTracking`
+    -  `Disable-AzStorageBlobLastAccessTimeTracking`
+    -  `Add-AzStorageAccountManagementPolicyAction`
+* Made `Get-AzDataLakeGen2ChildItem` list all datalake gen2 items by default, instead of needing user to list chunk by chunk.
+* Fixed BlobProperties is empty issue when using sas without prefix '?' [#15460]
+* Fixed synchronously copy small blob failure [#15548]
+    - `Copy-AzStorageBlob`
+
+## Version 3.9.0
+* Supported enable/disable Blob container soft delete
+    -  `Enable-AzStorageContainerDeleteRetentionPolicy`
+    -  `Disable-AzStorageContainerDeleteRetentionPolicy`
+* Supported list deleted Blob containers
+    -  `Get-AzRmStorageContainer`
+    -  `Get-AzStorageContainer`
+* Supported restore deleted Blob container
+    -  `Restore-AzStorageContainer`
+* Supported secure SMB setting in File service properties
+    - `Update-AzStorageFileServiceProperty`
+* Supported create account with EnableNfsV3
+    - `New-AzStorageAccount`
+* Supported input more copy blob parameters from pipeline [#15301]
+    -  `Start-AzStorageBlobCopy`
+
+## Version 3.8.0
+* Supported create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+* Supported enable Smb Multichannel on File service
+    -  `Update-AzStorageFileServiceProperty`
+* Fixed copy inside same account issue by access source with anonymous credential, when copy Blob inside same account with Oauth credential
+* Removed StorageFileDataSmbShareOwner from value set of parameter DefaultSharePermission in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+
+## Version 3.7.0
+* Supported file share snapshot
+    - `New-AzRmStorageShare`
+    - `Get-AzRmStorageShare`
+    - `Remove-AzRmStorageShare`
+* Supported remove file share with it's snapshot (leased and not leased), by default remove file share will fail when share has snapshot
+    - `Remove-AzRmStorageShare`
+* Supported Set/Get/Remove blob inventory policy
+    - `New-AzStorageBlobInventoryPolicyRule`
+    - `Set-AzStorageBlobInventoryPolicy`
+    - `Get-AzStorageBlobInventoryPolicy`
+    - `Remove-AzStorageBlobInventoryPolicy`
+* Supported DefaultSharePermission in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported AllowCrossTenantReplication in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported Set Object Replication Policy with SourceAccount/DestinationAccount as Storage account resource Id
+    - `Set-AzStorageObjectReplicationPolicy`
+* Supported set SasExpirationPeriod as TimeSpan.Zero
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount
+* Make sure the correct account name is used when create account credential
+    - `New-AzStorageContext`
+
+## Version 3.6.0
+* Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported create/update storage account with keyvault encryption and access keyvault with user assigned identity
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported EdgeZone in create storage account
+    - `New-AzStorageAccount`
+* Fixed an issue that delete immutable blob will prompt incorrect message.
+    - `Remove-AzStorageAccount`
+* Allowed update Storage Account KeyVault properties by cleanup Keyversion to enable key auto rotation [#14769]
+    - `Set-AzStorageAccount`
+* Added breaking change warning message for upcoming cmdlet breaking change
+    - `Remove-AzRmStorageShare`
+
+## Version 3.5.1
+* Fixed copy blob fail with source context as Oauth [#14662]
+    -  `Start-AzStorageBlobCopy`
+
 ## Version 3.5.0
 * Fixed an issue that list account from resource group won't use nextlink
     - `Get-AzStorageAccount`

@@ -691,6 +691,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This function is in preview. It may not be available in the selected subscription..
+        /// </summary>
+        internal static string PreviewFunctionMessage {
+            get {
+                return ResourceManager.GetString("PreviewFunctionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set the target account, tenant, and subscription of cmdlets executed in this session to the context stored in {0}.
         /// </summary>
         internal static string ProcessImportContextFromFile {
@@ -1159,6 +1168,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Persistence check fails due to unknown error.
+        /// </summary>
+        internal static string TokenCachePersistenceCheckError {
+            get {
+                return ResourceManager.GetString("TokenCachePersistenceCheckError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To create an access token credential, you must provide an access token account..
         /// </summary>
         internal static string TypeNotAccessToken {
@@ -1168,7 +1186,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to acquire token for tenant &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Unable to acquire token for tenant &apos;{0}&apos; with error &apos;{1}&apos;.
         /// </summary>
         internal static string UnableToAqcuireToken {
             get {

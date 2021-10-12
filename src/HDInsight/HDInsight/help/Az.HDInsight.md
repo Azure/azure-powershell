@@ -32,11 +32,20 @@ Adds a security profile to a cluster configuration object.
 ### [Add-AzHDInsightStorage](Add-AzHDInsightStorage.md)
 Adds an Azure Storage key to a cluster configuration object.
 
+### [Disable-AzHDInsightAzureMonitor](Disable-AzHDInsightAzureMonitor.md)
+Disables Azure Monitor in a specified HDInsight cluster.
+
 ### [Disable-AzHDInsightMonitoring](Disable-AzHDInsightMonitoring.md)
-Disables monitoring in a HDInsight cluster and relevant logs will stop flowing to the monitoring workspace specified during enable.
+Disables the Classic Azure Monitor logs integration on an HDInsight cluster and relevant logs will stop flowing to the monitoring workspace specified during enable.
+
+### [Enable-AzHDInsightAzureMonitor](Enable-AzHDInsightAzureMonitor.md)
+Enables Azure Monitor in a specified HDInsight cluster.
 
 ### [Enable-AzHDInsightMonitoring](Enable-AzHDInsightMonitoring.md)
-Enables monitoring in a HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
+Enables the Classic Azure Monitor logs integration on an HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
+
+### [Get-AzHDInsightAzureMonitor](Get-AzHDInsightAzureMonitor.md)
+Gets the azure monitor status of a specified HDInsight cluster.
 
 ### [Get-AzHDInsightCluster](Get-AzHDInsightCluster.md)
 Gets and lists all of the Azure HDInsight clusters associated with the current subscription or a specified resource group, or retrieves a specific cluster.
@@ -54,7 +63,7 @@ Gets the list of jobs from a cluster and lists them in reverse chronological ord
 Gets the log output for a job from the storage account associated with a specified cluster.
 
 ### [Get-AzHDInsightMonitoring](Get-AzHDInsightMonitoring.md)
-Gets the status of monitoring installation on the cluster.
+Gets the status of the Classic Azure Monitor logs integration on an HDInsight cluster.
 
 ### [Get-AzHDInsightPersistedScriptAction](Get-AzHDInsightPersistedScriptAction.md)
 Gets the persisted script actions for a cluster and lists them in chronological order, or gets details for a specified persisted script action.

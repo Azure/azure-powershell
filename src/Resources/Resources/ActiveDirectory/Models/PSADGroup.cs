@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         public bool? SecurityEnabled { get; set; }
 
+        public bool? MailEnabled { get; set; }
+
         public string MailNickname { get; set; }
 
         public string ObjectType => "Group";

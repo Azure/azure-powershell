@@ -1,0 +1,45 @@
+{
+  "Get-AzStaticWebAppBuildFunctionAppSetting+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/default/listFunctionAppSettings?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/default/listFunctionAppSettings?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "7adc24cb-429f-44ac-a13d-fb47e195d2bd" ],
+        "CommandName": [ "Get-AzStaticWebAppBuildFunctionAppSetting" ],
+        "FullCommandName": [ "Get-AzStaticWebAppBuildFunctionAppSetting_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "4d002bf5-b714-4c8a-bc46-cabd65425034" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "38083d7b-f36c-45ba-b3f2-ec38b4390feb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T075908Z:38083d7b-f36c-45ba-b3f2-ec38b4390feb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 07:59:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "320" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/default/config/functionappsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/staticSites/builds/config/functionappsettings\",\"location\":\"Central US\",\"properties\":{}}",
+      "isContentBase64": false
+    }
+  }
+}

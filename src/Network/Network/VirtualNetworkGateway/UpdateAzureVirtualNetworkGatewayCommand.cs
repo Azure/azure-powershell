@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
+            HelpMessage = "Flag to enable private IPAddress on virtual network gateway")]
         public bool? EnablePrivateIpAddress { get; set; }
 
         [Parameter(
@@ -200,6 +200,17 @@ namespace Microsoft.Azure.Commands.Network
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "Custom routes AddressPool specified by customer")]
         public string[] CustomRoute { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The NatRules for Virtual network gateway.")]
+        public PSVirtualNetworkGatewayNatRule[] NatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This will enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
+        public bool? BgpRouteTranslationForNat { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -440,6 +451,16 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 this.VirtualNetworkGateway.CustomRoutes = null;
+            }
+
+            if (this.NatRule != null)
+            {
+                this.VirtualNetworkGateway.NatRules = this.NatRule?.ToList();
+            }
+
+            if (this.BgpRouteTranslationForNat.HasValue)
+            {
+                this.VirtualNetworkGateway.EnableBgpRouteTranslationForNat = this.BgpRouteTranslationForNat.Value;
             }
 
             // Map to the sdk object

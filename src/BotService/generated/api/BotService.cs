@@ -2528,6 +2528,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService
         }
 
         /// <summary>Creates a Channel registration for a Bot Service</summary>
+        /// <param name="resourceGroupName">The name of the Bot resource group in the user subscription.</param>
+        /// <param name="resourceName">The name of the Bot resource.</param>
+        /// <param name="channelName">The name of the Channel resource.</param>
+        /// <param name="subscriptionId">Azure Subscription ID.</param>
+        /// <param name="body">The parameters to provide for the created bot.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2537,15 +2542,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ChannelsCreate(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ChannelsCreate(string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName channelName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.ISendAsync sender)
         {
+            var apiVersion = @"2018-07-12";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}"
-
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.BotService/botServices/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/channels/"
+                        + global::System.Uri.EscapeDataString(channelName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2556,6 +2570,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ChannelsCreate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Creates a Channel registration for a Bot Service</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The parameters to provide for the created bot.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ChannelsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2018-07-12";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.BotService/botServices/(?<resourceName>[^/]+)/channels/(?<channelName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                var channelName = _match.Groups["channelName"].Value;
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.BotService/botServices/"
+                        + resourceName
+                        + "/channels/"
+                        + channelName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.ChannelsCreate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
             }
@@ -2621,15 +2701,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService
         /// Validation method for <see cref="ChannelsCreate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
+        /// <param name="resourceGroupName">The name of the Bot resource group in the user subscription.</param>
+        /// <param name="resourceName">The name of the Bot resource.</param>
+        /// <param name="channelName">The name of the Channel resource.</param>
+        /// <param name="subscriptionId">Azure Subscription ID.</param>
+        /// <param name="body">The parameters to provide for the created bot.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ChannelsCreate_Validate(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ChannelsCreate_Validate(string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.ChannelName channelName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel body, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,2);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,2);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,64);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
+                await eventListener.AssertNotNull(nameof(channelName),channelName);
+                await eventListener.AssertEnum(nameof(channelName),channelName,@"FacebookChannel", @"EmailChannel", @"KikChannel", @"TelegramChannel", @"SlackChannel", @"MsTeamsChannel", @"SkypeChannel", @"WebChatChannel", @"DirectLineChannel", @"SmsChannel");
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
@@ -2826,6 +2923,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService
         }
 
         /// <summary>Returns a BotService Channel registration specified by the parameters.</summary>
+        /// <param name="resourceGroupName">The name of the Bot resource group in the user subscription.</param>
+        /// <param name="resourceName">The name of the Bot resource.</param>
+        /// <param name="channelName">The name of the Bot resource.</param>
+        /// <param name="subscriptionId">Azure Subscription ID.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2834,15 +2935,80 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ChannelsGet(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ChannelsGet(string resourceGroupName, string resourceName, string channelName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.ISendAsync sender)
         {
+            var apiVersion = @"2018-07-12";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}"
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.BotService/botServices/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/channels/"
+                        + global::System.Uri.EscapeDataString(channelName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ChannelsGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns a BotService Channel registration specified by the parameters.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ChannelsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBotChannel>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2018-07-12";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.BotService/botServices/(?<resourceName>[^/]+)/channels/(?<channelName>[^/]+)$").Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                var channelName = _match.Groups["channelName"].Value;
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.BotService/botServices/"
+                        + resourceName
+                        + "/channels/"
+                        + channelName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2911,15 +3077,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService
         /// Validation method for <see cref="ChannelsGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
+        /// <param name="resourceGroupName">The name of the Bot resource group in the user subscription.</param>
+        /// <param name="resourceName">The name of the Bot resource.</param>
+        /// <param name="channelName">The name of the Bot resource.</param>
+        /// <param name="subscriptionId">Azure Subscription ID.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ChannelsGet_Validate(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ChannelsGet_Validate(string resourceGroupName, string resourceName, string channelName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
-
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,2);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,2);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,64);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
+                await eventListener.AssertNotNull(nameof(channelName),channelName);
+                await eventListener.AssertMinimumLength(nameof(channelName),channelName,2);
+                await eventListener.AssertMaximumLength(nameof(channelName),channelName,64);
+                await eventListener.AssertRegEx(nameof(channelName),channelName,@"^[a-zA-Z0-9][a-zA-Z0-9_.-]*$");
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
             }
         }
 

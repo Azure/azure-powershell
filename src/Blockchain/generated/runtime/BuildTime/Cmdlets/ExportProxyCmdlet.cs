@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.PowerShell
         [ValidateNotNullOrEmpty]
         public string DocsFolder { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = "Docs")]
+        [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string ExamplesFolder { get; set; }
 
@@ -116,6 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Runtime.PowerShell
                     }
                     sb.Append(parameterGroup.Aliases.ToAliasOutput(true));
                     sb.Append(parameterGroup.HasValidateNotNull.ToValidateNotNullOutput());
+                    sb.Append(parameterGroup.HasAllowEmptyArray.ToAllowEmptyArray());
                     sb.Append(parameterGroup.CompleterInfo.ToArgumentCompleterOutput());
                     sb.Append(parameterGroup.OrderCategory.ToParameterCategoryOutput());
                     sb.Append(parameterGroup.InfoAttribute.ToInfoOutput(parameterGroup.ParameterType));

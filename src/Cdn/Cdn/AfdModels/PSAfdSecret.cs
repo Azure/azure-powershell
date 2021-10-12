@@ -11,9 +11,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
     public class PSAfdSecret : PSArmBaseResource
     {
+        public string CertificateAuthority { get; set; }
+
+        public string SecretSource { get; set; }
+
+        public string SecretVersion { get; set; }
+
+        public List<string> SubjectAlternativeNames { get; set; }
+
+        public bool? UseLatestVersion { get; set; }
     }
 }

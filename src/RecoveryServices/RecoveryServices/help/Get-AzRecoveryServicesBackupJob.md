@@ -17,7 +17,7 @@ Gets Backup jobs.
 ```
 Get-AzRecoveryServicesBackupJob [[-Status] <JobStatus>] [[-Operation] <JobOperation>] [[-From] <DateTime>]
  [[-To] <DateTime>] [[-JobId] <String>] [[-Job] <JobBase>] [-BackupManagementType <BackupManagementType>]
-  [-UseSecondaryRegion] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-UseSecondaryRegion] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +83,7 @@ Note: You can use **Wait-AzRecoveryServicesBackupJob** cmdlet to wait for an Azu
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $Jobs = Get-AzRecoveryServicesBackupJob  -VaultId $vault.ID  -Status Completed -From (Get-Date).AddDays(-2).ToUniversalTime() -BackupManagementType AzureVM
 ```
+
 First cmdlet fetches the vault object. Second cmdlet stores all the AzureVM jobs in the given vault which completed in last 2 days to $jobs. Change the value of BackupManagementType parameter to MAB in order to fetch MAB agent jobs.
 
 ## PARAMETERS
@@ -188,7 +189,7 @@ The acceptable values for this parameter are:
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Backup, Restore, ConfigureBackup, DisableBackup, DeleteBackupData
+Accepted values: Backup, Restore, ConfigureBackup, DisableBackup, DeleteBackupData, BackupDataMove, UpdateCustomerManagedKey
 
 Required: False
 Position: 2
@@ -236,6 +237,21 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSecondaryRegion
+Filters from Secondary Region for Cross Region Restore
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

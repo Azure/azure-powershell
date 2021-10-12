@@ -54,41 +54,41 @@ Deletes the azure active directory service principal.
 
 ## EXAMPLES
 
-### Example 1 - Remove a service principal by object id
+### Example 1: Remove a service principal by object id
 
-```
+```powershell
 PS C:\> Remove-AzADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447c678d45
 ```
 
 Removes the service principal with object id '61b5d8ea-fdc6-40a2-8d5b-ad447c678d45'.
 
-### Example 2 - Remove a service principal by application id
+### Example 2: Remove a service principal by application id
 
-```
+```powershell
 PS C:\> Remove-AzADServicePrincipal -ApplicationId 9263469e-d328-4321-8646-3e3e75d20e76
 ```
 
 Removes the service principal with application id '9263469e-d328-4321-8646-3e3e75d20e76'.
 
-### Example 3 - Remove a service principal by SPN
+### Example 3: Remove a service principal by SPN
 
-```
+```powershell
 PS C:\> Remove-AzADServicePrincipal -ServicePrincipalName MyServicePrincipal
 ```
 
 Remove the service principal with service principal name "MyServicePrincipal"
 
-### Example 4 - Remove a service principal by piping
+### Example 4: Remove a service principal by piping
 
-```
+```powershell
 PS C:\> Get-AzADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447c678d45 | Remove-AzADServicePrincipal
 ```
 
 Gets the service principal with object id '61b5d8ea-fdc6-40a2-8d5b-ad447c678d45' and pipes that to the Remove-AzADServicePrincipal cmdlet to remove that service principal.
 
-### Example 5 - Remove a service principal by piping an application
+### Example 5: Remove a service principal by piping an application
 
-```
+```powershell
 PS C:\> Get-AzApplication -ApplicationId 9263469e-d328-4321-8646-3e3e75d20e76 | Remove-AzADServicePrincipal
 ```
 

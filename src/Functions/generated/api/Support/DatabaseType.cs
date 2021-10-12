@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="DatabaseType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DatabaseType(System.Convert.ToString(value));
+            return new DatabaseType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="DatabaseType" Enum class./></summary>

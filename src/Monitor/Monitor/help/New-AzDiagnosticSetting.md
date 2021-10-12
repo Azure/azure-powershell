@@ -12,10 +12,19 @@ Create PSServiceDiagnosticSettings object.
 
 ## SYNTAX
 
+### ResourceIdParameterSet (Default)
 ```
-New-AzDiagnosticSetting -TargetResourceId <String> -Name <String> [-StorageAccountId <String>]
- [-ServiceBusRuleId <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>]
- [-WorkspaceId <String>] [-DedicatedLogAnalyticsDestinationType] [-Setting <PSDiagnosticDetailSettings[]>]
+New-AzDiagnosticSetting -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
+ [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>] [-WorkspaceId <String>]
+ [-DedicatedLogAnalyticsDestinationType] [-Setting <PSDiagnosticDetailSettings[]>] [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SubscriptionIdParameterSet
+```
+New-AzDiagnosticSetting -Name <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
+ [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>] [-WorkspaceId <String>]
+ [-Setting <PSDiagnosticDetailSettings[]>] [-SubscriptionId] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -29,7 +38,6 @@ for
 
 ### Example 1
 ```powershell
-$TimeGrain=New-TimeSpan -Days 90
 $metric = New-AzDiagnosticDetailSetting -Metric -RetentionInDays 1 -RetentionEnabled -Category AllMetrics
 $log = New-AzDiagnosticDetailSetting -Log -RetentionInDays 1 -RetentionEnabled -Category Audit -Enabled
 $setting = New-AzDiagnosticSetting -TargetResourceId /subscriptions/XXXXXXXXXXXX/resourceGroups/XXXXXXXX/providers/Microsoft.Network/virtualNetworks/XXXXXXXX -Name diagnostic-test -WorkspaceId /subscriptions/XXXXXXXXXXXX/resourceGroups/XXXXXXXX/providers/Microsoft.OperationalInsights/workspaces/XXXXXXXXX -DedicatedLogAnalyticsDestinationType -Setting $log,$metric
@@ -73,8 +81,8 @@ Create PSServiceDiagnosticSettings object. And create diagnostic setting for tar
 The value indicating whether to export (to ODS) to resource-specific (if present) or to AzureDiagnostics (default, not present)
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -88,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -103,7 +111,7 @@ Accept wildcard characters: False
 The event hub rule id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +126,7 @@ Accept wildcard characters: False
 The service bus rule id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +142,7 @@ The name of the diagnostic setting.
 Defaults to 'service'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -145,11 +153,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The resource id
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases: TargetResourceId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ServiceBusRuleId
 The service bus rule id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +187,7 @@ Accept wildcard characters: False
 Metric settings or Log settings
 
 ```yaml
-Type: PSDiagnosticDetailSettings[]
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDiagnosticDetailSettings[]
 Parameter Sets: (All)
 Aliases:
 
@@ -179,7 +202,7 @@ Accept wildcard characters: False
 The storage account id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,16 +213,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TargetResourceId
-The resource id
+### -SubscriptionId
+The subscription id
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -209,7 +232,7 @@ Accept wildcard characters: False
 The resource Id of the Log Analytics workspace to send logs/metrics to
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -22,11 +22,12 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
- [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-Tag <Hashtable>] [-Force]
- [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
- [-AadTenantUri <String>] [-AadAudienceId <String>] [-AadIssuerUri <String>] [-CustomRoute <String[]>]
- [-VpnGatewayGeneration <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>]
+ [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-EnableBgpRouteTranslationForNat] [-Tag <Hashtable>]
+ [-Force] [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>]
+ [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>] [-AadAudienceId <String>]
+ [-AadIssuerUri <String>] [-CustomRoute <String[]>] [-VpnGatewayGeneration <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,6 +159,28 @@ ipconfigurationId1 of gateway ipconfiguration just created and stored in ngwipco
 The gateway will be called "gateway1" within the resource group "resourcegroup1resourcegroup1" in the location "UK West" 
 with the previously created IP configurations Bgppeering address saved in the variable "gw1ipconfBgp1," the
 gateway type of "VPN", the vpn type "RouteBased", the sku "VpnGw4" and VpnGatewayGeneration Generation2 enabled.
+
+### Example 7: Create a Virtual Network Gateway with NatRules
+```powershell
+New-AzResourceGroup -Location "UK West" -Name "resourcegroup1"
+$subnet = New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
+
+$ngwpip = New-AzPublicIpAddress -Name ngwpip -ResourceGroupName "resourcegroup1" -Location "UK West" -AllocationMethod Dynamic
+$vnet = New-AzVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" -Name vnet-gateway -ResourceGroupName "resourcegroup1" -Subnet $subnet
+$subnet = Get-AzVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
+$ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
+
+$natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
+
+New-AzVirtualNetworkGateway -Name gateway1 -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw4" -VpnGatewayGeneration "Generation2" -NatRule $natRule -EnableBgpRouteTranslationForNat
+```
+
+The above will create a resource group, request a Public IP Address, create a Virtual Network and
+subnet and create a Virtual Network Gateway in Azure.
+ipconfigurationId1 of gateway ipconfiguration just created and stored in ngwipconfig.
+The gateway will be called "gateway1" within the resource group "resourcegroup1resourcegroup1" in the location "UK West" 
+New virtualNetworkGateway NatRule will be saved in the variable "natRule" 
+the gateway type of "VPN", the vpn type "RouteBased", the sku "VpnGw4" and VpnGatewayGeneration Generation2 enabled and BgpRouteTranslationForNat enabled.
 
 ## PARAMETERS
 
@@ -293,6 +316,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableBgpRouteTranslationForNat
+Flag to enable BgpRouteTranslationForNat on this VirtualNetworkGateway.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -433,6 +471,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -NatRule
+The NatRules for Virtual network gateway.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayNatRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PeerWeight
 The weight added to routes learned over BGP from this virtual network gateway
 
@@ -530,6 +583,7 @@ The list of P2S VPN client authentication types.
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+Accepted values: Certificate, Radius, AAD
 
 Required: False
 Position: Named
@@ -704,9 +758,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSIpConfigurationBgpPeeringAddress[]
 
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayNatRule[]
+
 ### System.Collections.Hashtable
 
 ### System.Security.SecureString
+
+### Microsoft.Azure.Commands.Network.Models.PSRadiusServer[]
 
 ## OUTPUTS
 

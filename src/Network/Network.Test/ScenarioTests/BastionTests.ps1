@@ -19,7 +19,7 @@ BastionCRUD
 function Test-BastionCRUD
 {
 
-    #Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
+   # Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
    # Setup
     $rgname = Get-ResourceGroupName
     $bastionName = Get-ResourceName
@@ -44,8 +44,8 @@ function Test-BastionCRUD
 		# Create public ip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 		
-		 # Create Bastion
-        $bastion = New-AzBastion -ResourceGroupName $rgname –Name $bastionName -PublicIpAddressRgName $rgname -PublicIpAddressName $publicIpName -VirtualNetworkRgName $rgname -VirtualNetworkName $vnetName 
+		# Create Bastion
+        $bastion = New-AzBastion -ResourceGroupName $rgname –Name $bastionName -PublicIpAddressRgName $rgname -PublicIpAddressName $publicIpName -VirtualNetworkRgName $rgname -VirtualNetworkName $vnetName -Sku "Standard"
 
 		# Get Bastion by Name
 		$bastionObj = Get-AzBastion -ResourceGroupName $rgname -Name $bastionName
@@ -60,6 +60,8 @@ function Test-BastionCRUD
         Assert-NotNull $bastionObj.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $subnet.Id $bastionObj.IpConfigurations[0].Subnet.Id
         Assert-AreEqual $publicip.Id $bastionObj.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $bastionObj.Sku.Name "Standard"
+        Assert-AreEqual $bastionObj.ScaleUnit 2
 
 		# Get Bastion by Id
 		$bastionObj = Get-AzBastion -ResourceId $bastion.id
@@ -75,6 +77,14 @@ function Test-BastionCRUD
         Assert-AreEqual $subnet.Id $bastionObj.IpConfigurations[0].Subnet.Id
         Assert-AreEqual $publicip.Id $bastionObj.IpConfigurations[0].PublicIpAddress.Id
 
+        # Update Bastion Scale Units
+		$bastionObj = Set-AzBastion -InputObject $bastionObj -ScaleUnit 3 -Force
+
+        # Verification
+        Assert-NotNull $bastionObj
+        Assert-AreEqual $bastionObj.Sku.Name "Standard"
+        Assert-AreEqual $bastionObj.ScaleUnit 3
+
 		# Get all Bastions in ResourceGroup
         $bastions = Get-AzBastion -ResourceGroupName $rgName
         Assert-NotNull $bastions
@@ -83,7 +93,7 @@ function Test-BastionCRUD
         $bastionsAll = Get-AzBastion
         Assert-NotNull $bastionsAll
        
-	   # Delete Bastion
+	    # Delete Bastion
         $delete = Remove-AzBastion -ResourceGroupName $rgname -Name $bastionName -PassThru -Force
 		Assert-AreEqual true $delete
 

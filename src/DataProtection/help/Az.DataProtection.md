@@ -23,6 +23,9 @@ Adds or removes schedule tag in an existing backup policy.
 ### [Edit-AzDataProtectionPolicyTriggerClientObject](Edit-AzDataProtectionPolicyTriggerClientObject.md)
 Updates Backup schedule of an existing backup policy.
 
+### [Find-AzDataProtectionRestorableTimeRange](Find-AzDataProtectionRestorableTimeRange.md)
+
+
 ### [Get-AzDataProtectionBackupInstance](Get-AzDataProtectionBackupInstance.md)
 Gets a backup instance with name in a backup vault
 
@@ -30,10 +33,13 @@ Gets a backup instance with name in a backup vault
 Gets a backup policy belonging to a backup vault
 
 ### [Get-AzDataProtectionBackupVault](Get-AzDataProtectionBackupVault.md)
-Returns a resource belonging to a resource group.
+Returns resource collection belonging to a resource group.
 
 ### [Get-AzDataProtectionJob](Get-AzDataProtectionJob.md)
 Gets a job with id in a backup vault
+
+### [Get-AzDataProtectionOperation](Get-AzDataProtectionOperation.md)
+Returns the list of available operations.
 
 ### [Get-AzDataProtectionPolicyTemplate](Get-AzDataProtectionPolicyTemplate.md)
 Gets default policy template for a selected datasource type.

@@ -12,21 +12,21 @@ Gets the auditing settings of an Azure Synapse Analytics Workspace.
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### WorkspaceParameterSet (Default)
 ```
-Get-AzSynapseSqlAuditSetting [-ResourceGroupName <String>] -WorkspaceName <String>
+Get-AzSynapseSqlAuditSetting [[-ResourceGroupName] <String>] [-WorkspaceName] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetByInputObjectParameterSet
+### WorkspaceObjectParameterSet
 ```
-Get-AzSynapseSqlAuditSetting -InputObject <PSSynapseWorkspace> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSynapseSqlAuditSetting -WorkspaceObject <PSSynapseWorkspace> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetByResourceIdParameterSet
+### WorkspaceResourceIdParameterSetName
 ```
-Get-AzSynapseSqlAuditSetting -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSynapseSqlAuditSetting -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -51,6 +51,21 @@ Gets the auditing settings of a workspace named ContosoWorkspace through pipelin
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -66,31 +81,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-workspace input object, usually passed through the pipeline.
-
-```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: GetByInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: WorkspaceParameterSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -101,7 +101,7 @@ Resource identifier of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
+Parameter Sets: WorkspaceResourceIdParameterSetName
 Aliases:
 
 Required: True
@@ -116,13 +116,28 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: WorkspaceParameterSet
 Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceObject
+workspace input object, usually passed through the pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
+Parameter Sets: WorkspaceObjectParameterSet
+Aliases: InputObject
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

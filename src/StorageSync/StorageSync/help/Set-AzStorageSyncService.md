@@ -12,9 +12,23 @@ This command sets storage sync service in a resource group.
 
 ## SYNTAX
 
+### StringParameterSet (Default)
 ```
-Set-AzStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Tag <Hashtable>]
+Set-AzStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [[-IncomingTrafficPolicy] <String>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Set-AzStorageSyncService [-InputObject] <PSStorageSyncService> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Set-AzStorageSyncService [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +45,21 @@ This command will set a storage sync service.
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -45,12 +74,44 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -IncomingTrafficPolicy
+Storage Sync Service IncomingTrafficPolicy
+
+```yaml
+Type: System.String
+Parameter Sets: StringParameterSet
+Aliases:
+Accepted values: AllowVirtualNetworksOnly, AllowAllTraffic
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+StorageSyncService Input Object, normally passed through the pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the storage sync service.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: StringParameterSet
 Aliases: StorageSyncServiceName
 
 Required: True
@@ -65,7 +126,7 @@ Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: StringParameterSet
 Aliases:
 
 Required: True
@@ -75,16 +136,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IncomingTrafficPolicy
-Storage Sync Service IncomingTrafficPolicy
+### -ResourceId
+StorageSyncService Resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -95,7 +156,7 @@ Storage Sync Service Tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: StringParameterSet
 Aliases: Tags
 
 Required: False

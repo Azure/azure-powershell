@@ -18,8 +18,8 @@ GetLocationKindExchange
 function Test-ConvertLegacyKindExchangeAshburn {
     try {
         #must be hard coded asn because they have legacy items.
-        $peerAsn = makePeerAsn 42;
-        $name = getPeeringVariable "Name" "AS42_Ashburn_Exchange"
+        $peerAsn = makePeerAsn 1828;
+        $name = getPeeringVariable "Name" "AS1828_Ashburn_Exchange"
         $rg = getPeeringVariable "ResourceGroupName" "Building40"
         $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Ashburn 
 		Assert-NotNull $peerAsn.Id
@@ -42,15 +42,15 @@ Convert Legacy Kind Exchange Amsterdam With New Connection
 function Test-ConvertLegacyKindExchangeAmsterdamWithNewConnection {
     try {
         #must be hard coded asn because they have legacy items.
-        $peerAsn = makePeerAsn 42
-        $name = getPeeringVariable "Name" "AS42_Amsterdam_Exchange"
+        $peerAsn = makePeerAsn 559
+        $name = getPeeringVariable "Name" "AS559_Amsterdam_Exchange"
         $rg = getPeeringVariable "ResourceGroupName" "Building40"
         $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam 
         Assert-NotNull $legacy
         Assert-True { $legacy.Count -ge 1 }
         #has to be hard coded becuase this ip address isnt used.
         #testing trim
-        $ipaddress = getPeeringVariable "ipaddress" " 80.249.211.62 "
+        $ipaddress = getPeeringVariable "ipaddress" " 80.249.208.37 "
         $facilityId = 26
         $maxv4 = maxAdvertisedIpv4
         $connection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -PeerSessionIPv4Address $ipaddress

@@ -55,14 +55,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
+        public override string TagCondition { get; set; }
 
         protected override bool UseTrack2Sdk()
         {
-            if (SasTokenHelper.IsTrack2Permission(this.Permission))
-            {
-                return true;
-            }
-            return base.UseTrack2Sdk();
+            return true;                                                                                                                                                                                                                                                                                              
         }
 
         /// <summary>

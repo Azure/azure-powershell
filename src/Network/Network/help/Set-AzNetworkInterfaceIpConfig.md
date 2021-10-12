@@ -33,6 +33,15 @@ Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterf
  [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SetByResourceGatewayLoadBalancer
+```
+Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
+ [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-SubnetId <String>]
+ [-PublicIpAddressId <String>] [-GatewayLoadBalancerId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
+ [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
+ [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Set-AzNetworkInterfaceIpConfig** cmdlet updates an IP configuration for a network interface.
 
@@ -62,7 +71,7 @@ The first two commands get a virtual network called myvnet and a subnet called m
 ```
 $vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
-$asg = Get-ApplicationSecurityGroup -Name myasg -ResourceGroupName myrg
+$asg = Get-AzApplicationSecurityGroup -Name myasg -ResourceGroupName myrg
 
 $nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
 
@@ -153,6 +162,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GatewayLoadBalancerId
+Specifies the ID of the Gateway Load Balancer Provider Frontend Ip Configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceGatewayLoadBalancer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

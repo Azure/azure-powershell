@@ -23,7 +23,7 @@ Set-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-Clu
  [-DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService <Int32>]
  [-DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition <Int32>]
  [-DefaultServiceTypeUnhealthyServicesMaxPercent <Int32>] [-UnhealthyDeployedApplicationsMaxPercent <Int32>]
- [-ServiceTypeHealthPolicyMap <Hashtable>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ServiceTypeHealthPolicyMap <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Set-AzServiceFabricManagedClusterApplication [[-ApplicationTypeVersion] <String>
  [-DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService <Int32>]
  [-DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition <Int32>]
  [-DefaultServiceTypeUnhealthyServicesMaxPercent <Int32>] [-UnhealthyDeployedApplicationsMaxPercent <Int32>]
- [-ServiceTypeHealthPolicyMap <Hashtable>] [-Tags <Hashtable>] -ResourceId <String> [-Force] [-AsJob]
+ [-ServiceTypeHealthPolicyMap <Hashtable>] [-Tag <Hashtable>] -ResourceId <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -53,7 +53,7 @@ Set-AzServiceFabricManagedClusterApplication [[-ApplicationTypeVersion] <String>
  [-DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService <Int32>]
  [-DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition <Int32>]
  [-DefaultServiceTypeUnhealthyServicesMaxPercent <Int32>] [-UnhealthyDeployedApplicationsMaxPercent <Int32>]
- [-ServiceTypeHealthPolicyMap <Hashtable>] [-Tags <Hashtable>] -InputObject <PSManagedApplication> [-Force]
+ [-ServiceTypeHealthPolicyMap <Hashtable>] [-Tag <Hashtable>] -InputObject <PSManagedApplication> [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -443,7 +443,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specify the tags as key/value pairs.
 
 ```yaml

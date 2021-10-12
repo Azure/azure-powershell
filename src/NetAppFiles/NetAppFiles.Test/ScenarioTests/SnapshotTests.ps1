@@ -31,7 +31,9 @@ function Test-SnapshotCrud
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus2euap" -UseCanonical
-    $resourceLocation = "eastus2euap"
+    #$resourceLocation = "eastus2euap"
+    $resourceLocation = "eastus"
+
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -42,7 +44,7 @@ function Test-SnapshotCrud
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 		
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -50,7 +52,7 @@ function Test-SnapshotCrud
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         # create account, pool and volume
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
@@ -119,7 +121,8 @@ function Test-SnapshotPipelines
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
-    $resourceLocation = "eastus2euap"
+    $resourceLocation = "eastus"
+    #$resourceLocation = "eastus2euap"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -130,7 +133,7 @@ function Test-SnapshotPipelines
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 		
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -181,8 +184,9 @@ function Test-CreateVolumeFromSnapshot
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
-    $resourceLocation = "eastus2euap"
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    #$resourceLocation = "eastus2euap"
+    $resourceLocation = "eastus"
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -193,7 +197,7 @@ function Test-CreateVolumeFromSnapshot
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 		
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -201,7 +205,7 @@ function Test-CreateVolumeFromSnapshot
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         # create account, pool and volume
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
@@ -256,7 +260,8 @@ function Test-RestoreVolumeFromSnapshot
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
-    $resourceLocation = "eastus2euap"
+    #$resourceLocation = "eastus2euap"
+    $resourceLocation = "eastus"
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -267,7 +272,7 @@ function Test-RestoreVolumeFromSnapshot
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 		
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -275,7 +280,7 @@ function Test-RestoreVolumeFromSnapshot
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
         # create account, pool and volume
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
