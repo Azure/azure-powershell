@@ -18,63 +18,50 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-Expanded DatasourceType with values "Query", "Alerts" for cmdlets:
-	- Get-AzOperationalInsightsLinkedStorageAccount
-	- New-AzOperationalInsightsLinkedStorageAccount
-	- Remove-AzOperationalInsightsLinkedStorageAccount
-	- Set-AzOperationalInsightsLinkedStorageAccount
-	
-Files moved (without change):
-	- Get-AzOperationalInsightsSavedSearch
-	- Get-AzOperationalInsightsSchema
-	- New-AzOperationalInsightsSavedSearch
-	- Remove-AzOperationalInsightsSavedSearch	
-	- Set-AzOperationalInsightsSavedSearch	
-	
-CmdletParameterBreakingChange: rename StorageAccountId to StorageAccountIds 
-	- New-AzOperationalInsightsLinkedStorageAccount
-
-Changed return contract: Now returns PSSavedSearch instead of HttpStatusCode:
-	- New-AzOperationalInsightsComputerGroup
-	
-Changed return contract: Now returns PSCluster instead of PSLinkedService:
-	- Update-AzOperationalInsightsCluster
-
-Expanded Sku with values "capacityreservation", "lacluster" for cmdlets:
-	- Set-AzOperationalInsightsWorkspace
-	- New-AzOperationalInsightsWorkspace
-
-Added new properties:"SkuCapacity": (int), "ForceCmkForQuery": (bool), "DisableLocalAuth": (bool)  for cmdlets:
-	- Set-AzOperationalInsightsWorkspace
-	- New-AzOperationalInsightsWorkspace
-	
-Added new property: "DailyQuotaGb": (int?):
-	- Set-AzOperationalInsightsWorkspace
-	
-Added new properties: "ETag: (string), "Tags: (Hashtable)" for cmdlets:
-	- Set-AzOperationalInsightsStorageInsight
-	- New-AzOperationalInsightsStorageInsight
-	
-Added new property "StorageAccountResourceId": (string) to cmdlet:
-	- Set-AzOperationalInsightsStorageInsight
-	
-Added SupportsShouldProcess attribute to cmdlet:
-	- Set-AzOperationalInsightsStorageInsight
-
-New commands added:
-	- Set-AzOperationalInsightsTable
-	- Get-AzOperationalInsightsTable
-	- Get-AzOperationalInsightsOperations
-	- Get-AzOperationalInsightsDataExport
-	- New-AzOperationalInsightsDataExport	
-	- Remove-AzOperationalInsightsDataExport
-	- Update-AzOperationalInsightsDataExport
-	- Get-AzOperationalInsightsOperationStatus
-	- Update-AzOperationalInsightsWorkspaceSharedKey		
-	- New-AzOperationalInsightsPurgeWorkspace
-	- Get-AzOperationalInsightsPurgeWorkspaceStatus
-
+* Expanded DatasourceType with values `Query`, `Alerts` for cmdlets:
+  - `Get-AzOperationalInsightsLinkedStorageAccount`
+  - `New-AzOperationalInsightsLinkedStorageAccount`
+  - `Remove-AzOperationalInsightsLinkedStorageAccount`
+  - `Set-AzOperationalInsightsLinkedStorageAccount`
+* Files moved (without change):
+  - `Get-AzOperationalInsightsSavedSearch`
+  - `Get-AzOperationalInsightsSchema`
+  - `New-AzOperationalInsightsSavedSearch`
+  - `Remove-AzOperationalInsightsSavedSearch`
+  - `Set-AzOperationalInsightsSavedSearch`
+* CmdletParameterBreakingChange: rename `StorageAccountId` to `StorageAccountIds`
+  - `New-AzOperationalInsightsLinkedStorageAccount`
+* Changed return contract: Now returns `PSSavedSearch` instead of `HttpStatusCode`:
+  - `New-AzOperationalInsightsComputerGroup`
+* Changed return contract: Now returns `PSCluster` instead of `PSLinkedService`:
+  - `Update-AzOperationalInsightsCluster`
+* Expanded Sku with values `capacityreservation`, `lacluster` for cmdlets:
+  - `Set-AzOperationalInsightsWorkspace`
+  - `New-AzOperationalInsightsWorkspace`
+* Added new properties:`SkuCapacity`, `ForceCmkForQuery`, `DisableLocalAuth`  for cmdlets:
+  - `Set-AzOperationalInsightsWorkspace`
+  - `New-AzOperationalInsightsWorkspace`
+* Added new property: `DailyQuotaGb`:
+  - `Set-AzOperationalInsightsWorkspace`
+* Added new properties: `ETag`, `Tags` for cmdlets:
+  - `Set-AzOperationalInsightsStorageInsight`
+  - `New-AzOperationalInsightsStorageInsight`
+* Added new property `StorageAccountResourceId` to cmdlet:
+  - `Set-AzOperationalInsightsStorageInsight`
+* Added SupportsShouldProcess attribute to cmdlet:
+  - `Set-AzOperationalInsightsStorageInsight`
+* Added new cmdlets:
+  - `Set-AzOperationalInsightsTable`
+  - `Get-AzOperationalInsightsTable`
+  - `Get-AzOperationalInsightsOperations`
+  - `Get-AzOperationalInsightsDataExport`
+  - `New-AzOperationalInsightsDataExport`
+  - `Remove-AzOperationalInsightsDataExport`
+  - `Update-AzOperationalInsightsDataExport`
+  - `Get-AzOperationalInsightsOperationStatus`
+  - `Update-AzOperationalInsightsWorkspaceSharedKey`
+  - `New-AzOperationalInsightsPurgeWorkspace`
+  - `Get-AzOperationalInsightsPurgeWorkspaceStatus`
 
 
 ## Version 2.3.0
