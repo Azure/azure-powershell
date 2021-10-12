@@ -19,20 +19,20 @@ PS C:\> $wps | format-list
 
 DisableAadAuth               : False
 DisableLocalAuth             : False
-EnableTlClientCert           : False
+EnableTlsClientCert          : False
 ExternalIP                   : 20.62.134.186
 HostName                     : psdemo-wps.webpubsub.azure.com
 Id                           : /subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/psdemo/providers/Micr
                                osoft.SignalRService/WebPubSub/psdemo-wps
-IdentityPrincipalId          : 330ad5ec-15b8-495c-9827-0a4bc93ff631
-IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
-IdentityType                 : SystemAssigned
-LiveTraceCategory            : {ConnectivityLogs, MessageLogs}
+IdentityPrincipalId          :
+IdentityTenantId             :
+IdentityType                 :
+LiveTraceCategory            :
 LiveTraceEnabled             : true
 Location                     : eastus
 Name                         : psdemo-wps
 NetworkAcLDefaultAction      : Deny
-PrivateEndpoint              : {}
+PrivateEndpointAcl           : {}
 PrivateEndpointConnection    : {}
 ProvisioningState            : Succeeded
 PublicNetworkAccess          : Enabled
@@ -50,7 +50,7 @@ SkuTier                      : Standard
 SystemDataCreatedAt          : 2021-10-11 9:02:37 AM
 SystemDataCreatedBy          : testuser@microsoft.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 2021-10-12 6:34:47 AM
+SystemDataLastModifiedAt     : 2021-10-12 7:21:58 AM
 SystemDataLastModifiedBy     : testuser@microsoft.com
 SystemDataLastModifiedByType : User
 Tag                          : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.TrackedResourceTags

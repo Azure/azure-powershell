@@ -2,47 +2,44 @@
 ```powershell
 PS C:\> Get-AzWebPubSub -SubscriptionId ef72249e-9785-4799-a76b-7cdd80e1b1d0
 
-Location      Name                Type
---------      ----                ----
-eastus        demo-live           Microsoft.SignalRService/WebPubSub
-eastus        testcli             Microsoft.SignalRService/WebPubSub
-southeastasia demo                Microsoft.SignalRService/WebPubSub
-southeastasia livedemo            Microsoft.SignalRService/WebPubSub
-westcentralus demo1               Microsoft.SignalRService/WebPubSub
+Name                Location      SkuName
+----                --------      -------
+demo1               eastus        Standard_S1
+demo2               eastus        Free_F1
 ```
 
 
 
 ### Example 2: List all Web PubSub resources in a resource group
 ```powershell
-PS C:\> Get-AzWebPubSub -ResourceGroupName demo-rg
+PS C:\> Get-AzWebPubSub -ResourceGroupName psdemo
 
-Location Name             Type
--------- ----             ----
-eastus   demo-testWPS  Microsoft.SignalRService/WebPubSub
-eastus   demo-testwps2 Microsoft.SignalRService/WebPubSub
+Name       Location SkuName
+----       -------- -------
+psdemo-wps eastus   Standard_S1
 ```
 
 
 
 ### Example 3: Get a specific Web PubSub resource
 ```powershell
-PS C:\> Get-AzWebPubSub -ResourceGroupName demo-rg -ResourceName demo-testWPS
+PS C:\> Get-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
 
-Location Name            Type
--------- ----            ----
-eastus   demo-testWPS Microsoft.SignalRService/WebPubSub
+Name       Location SkuName
+----       -------- -------
+psdemo-wps eastus   Standard_S1
 ```
-
-
 
 ### Example 4: Get a specific Web PubSub resource via identity object
 ```powershell
-PS C:\> Get-AzWebPubSub -ResourceGroupName demo-rg -ResourceName demo-testWPS
+PS C:\> $identity = @{ ResourceGroupName = 'psdemo'
+ResourceName = 'psdemo-wps'
+SubscriptionId = $(Get-AzContext).Subscription.Id }
 
-Location Name            Type
--------- ----            ----
-eastus   demo-testWPS Microsoft.SignalRService/WebPubSub
+PS C:\> $identity | Get-AzWebPubSub
+
+Name       Location SkuName
+----       -------- -------
+psdemo-wps eastus   Standard_S1
 ```
-
 
