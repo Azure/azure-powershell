@@ -6,7 +6,8 @@ $ErrorActionPreference = 'Stop'
 
 $GAOSBuildNumber = 17784
 $GAOSUBR = 1374
-
+$V2OSBuildNumber = 20348
+$V210BOSUBR = 1374
 #region User visible strings
 
 $AdminConsentWarning = "You need additional Azure Active Directory permissions to register in this Azure subscription. Contact your Azure AD administrator to grant consent to AAD application identity {0} at {1}. Then, run Register-AzStackHCI again with same parameters to complete registration."
@@ -19,6 +20,7 @@ $CertificateNotFoundOnNode = "Certificate with thumbprint {0} not found on node(
 $SettingCertificateFailed = "Failed to register. Couldn't generate self-signed certificate on node(s) {0}. Couldn't set and verify registration certificate on node(s) {1}. Make sure every clustered node is up and has Internet connectivity (at least outbound to Azure)."
 $InstallLatestVersionWarning = "Newer version of the Az.StackHCI module is available. Update from version {0} to version {1} using Update-Module."
 $NotAllTheNodesInClusterAreGA = "Update the operating system on node(s) {0} to version $GAOSBuildNumber.$GAOSUBR or later to continue."
+$NotAllTheNodesInClusterSupportArcOnFF = "Nodes {0} do not support ARC for $AzureUSGovernment cloud. Update the operating system to version $V2OSBuildNumber.$V210BOSUBR or later to continue."
 $NoExistingRegistrationExistsErrorMessage = "Can't repair registration because the cluster isn't registered yet. Register the cluster using Register-AzStackHCI without the -RepairRegistration option."
 $UserCertValidationErrorMessage = "Can't use certificate with thumbprint {0} because it expires in less than 60 days, on {1}. Certificates must be valid for at least 60 days."
 $FailedToRemoveRegistrationCertWarning = "Couldn't clean up Azure Stack HCI registration certificate from node(s) {0}. You can ignore this message or clean up the certificate yourself (optional)."
@@ -140,9 +142,9 @@ $AuthorityAzureChinaCloud = "https://login.partner.microsoftonline.cn"
 $BillingServiceApiScopeAzureChinaCloud = "$UsageServiceFirstPartyAppId/.default"
 $GraphServiceApiScopeAzureChinaCloud = "https://microsoftgraph.chinacloudapi.cn/.default"
 
-$ServiceEndpointAzureUSGovernment = "https://azurestackhci-usage.trafficmanager.us"
+$ServiceEndpointAzureUSGovernment = "https://dp.azurestackhci.azure.us"
 $AuthorityAzureUSGovernment = "https://login.microsoftonline.us"
-$BillingServiceApiScopeAzureUSGovernment = "https://azurestackhci-usage.azurewebsites.us/.default"
+$BillingServiceApiScopeAzureUSGovernment = "https://dp.azurestackhci.azure.us/.default"
 $GraphServiceApiScopeAzureUSGovernment = "https://graph.windows.net/.default"
 
 $ServiceEndpointAzureGermanCloud = "https://azurestackhci-usage.trafficmanager.de"
@@ -464,7 +466,7 @@ param(
     }
     elseif($EnvironmentName -eq $AzureUSGovernment)
     {
-        $defaultRegion = "usgoviowa"
+        $defaultRegion = "usgovvirginia"
     }
     elseif($EnvironmentName -eq $AzureGermanCloud)
     {
@@ -1018,6 +1020,56 @@ param(
             $HealthEndPointCheckFailedNodes.Add($clusNode.Name) | Out-Null
             continue
         }
+    }
+}
+
+function Check-NodeVersionCompatibility {
+    param (
+        $ClusterNodes,
+        [string] $EnvironmentName,
+        [string] $EnableAzureArcServer,
+        [System.Management.Automation.PSCredential] $Credential,
+        [string] $ClusterDNSSuffix
+    )
+
+    if (($EnvironmentName -eq $AzureUSGovernment) -and ($EnableAzureArcServer -eq $true)) {
+        Write-Debug("Verifying all nodes support Arc for "+$AzureUSGovernment+ " cloud")
+        $OSDoesNotSupportARC = [System.Collections.ArrayList]::new()
+
+        Foreach ($clusNode in $ClusterNodes) {
+            $nodeSession = $null
+            try {
+                if ($Credential -eq $Null) {
+                    $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $ClusterDNSSuffix)
+                }
+                else {
+                    $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $ClusterDNSSuffix) -Credential $Credential
+                }
+            }
+            catch {
+                Write-Debug ("Exception occured in establishing new PSSession. ErrorMessage : " + $_.Exception.Message)
+                Write-Debug $_
+                throw
+            }
+            $nodeUBR = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").UBR }
+            $nodeBuildNumber = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber }
+
+            if (($nodeBuildNumber -lt $V2OSBuildNumber) -or (($nodeBuildNumber -eq $V2OSBuildNumber) -and ($nodeUBR -le $V210BOSUBR))) {
+                Write-Debug ("Node "+$clusNode.Name+" does not support ARC on "+$AzureUSGovernment)
+                $OSDoesNotSupportARC.Add($clusNode.Name) | Out-Null
+                continue
+            }
+        }
+        if($OSDoesNotSupportARC.Count -ge 1)
+        {
+            $NotAllTheNodesInClusterSupportARCOnFFError = $NotAllTheNodesInClusterSupportArcOnFF -f ($OSDoesNotSupportARC -join ",")
+            Write-Error -Message $NotAllTheNodesInClusterSupportARCOnFFError
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+            Write-Output $registrationOutput
+            return
+        }
+        Write-Debug ("All nodes support ARC on "+$AzureUSGovernment)
+
     }
 }
 
@@ -1794,7 +1846,7 @@ enum ErrorDetail
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
     .PARAMETER ComputerName
     Specifies the cluster name or one of the cluster node in on-premise cluster that is being registered to Azure.
@@ -1998,6 +2050,7 @@ param(
         $clusterDNSSuffix = Get-ClusterDNSSuffix -Session $clusterNodeSession
         $clusterDNSName = Get-ClusterDNSName -Session $clusterNodeSession
 
+        Check-NodeVersionCompatibility -ClusterNodes $clusterNodes -EnvironmentName $EnvironmentName -EnableAzureArcServer $EnableAzureArcServer -Credential $Credential  -ClusterDNSSuffix $clusterDNSSuffix
         if([string]::IsNullOrEmpty($ResourceName))
         {
             if($getCluster -eq $Null)
@@ -2477,7 +2530,7 @@ param(
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
     .PARAMETER UseDeviceAuthentication
     Use device code authentication instead of an interactive browser prompt.
@@ -2800,7 +2853,7 @@ param(
     Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
     .PARAMETER Region
     Specifies the Region to connect to. Not used unless it is Canary region.
