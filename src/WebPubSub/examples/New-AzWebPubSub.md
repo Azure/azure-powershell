@@ -7,6 +7,8 @@ Name                Location      SkuName
 psdemo-wps          eastus        Standard_S1
 ```
 
+
+
 ### Example 2: Create a Web PubSub resource with more parameters and show the result
 ```powershell
 PS C:\> $wps = New-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps `

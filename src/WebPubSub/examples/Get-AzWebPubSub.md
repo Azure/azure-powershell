@@ -11,6 +11,8 @@ southeastasia livedemo            Microsoft.SignalRService/WebPubSub
 westcentralus demo1               Microsoft.SignalRService/WebPubSub
 ```
 
+
+
 ### Example 2: List all Web PubSub resources in a resource group
 ```powershell
 PS C:\> Get-AzWebPubSub -ResourceGroupName demo-rg
@@ -21,6 +23,8 @@ eastus   demo-testWPS  Microsoft.SignalRService/WebPubSub
 eastus   demo-testwps2 Microsoft.SignalRService/WebPubSub
 ```
 
+
+
 ### Example 3: Get a specific Web PubSub resource
 ```powershell
 PS C:\> Get-AzWebPubSub -ResourceGroupName demo-rg -ResourceName demo-testWPS
@@ -30,6 +34,8 @@ Location Name            Type
 eastus   demo-testWPS Microsoft.SignalRService/WebPubSub
 ```
 
+
+
 ### Example 4: Get a specific Web PubSub resource via identity object
 ```powershell
 PS C:\> Get-AzWebPubSub -ResourceGroupName demo-rg -ResourceName demo-testWPS
@@ -38,3 +44,5 @@ Location Name            Type
 -------- ----            ----
 eastus   demo-testWPS Microsoft.SignalRService/WebPubSub
 ```
+
+
