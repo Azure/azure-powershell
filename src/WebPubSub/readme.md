@@ -99,7 +99,7 @@ directive:
   - where:
       parameter-name: NetworkAcLPrivateEndpoint
     set:
-      parameter-name: PrivateEndpoint
+      parameter-name: PrivateEndpointAcl
   - where:
       parameter-name: LiveTraceConfigurationEnabled
     set:
@@ -127,7 +127,7 @@ directive:
       model-name: WebPubSubResource
       property-name: NetworkAcLPrivateEndpoint
     set:
-      property-name: PrivateEndpoint
+      property-name: PrivateEndpointAcl
   - where:
       model-name: WebPubSubResource
       property-name: LiveTraceConfigurationEnabled
