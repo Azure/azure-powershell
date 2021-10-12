@@ -17,7 +17,7 @@ function Uninstall-AzModule {
 <#
     .Synopsis
         Uninstalls Azure PowerShell modules.
-    
+
     .Description
         Uninstalls Azure PowerShell modules.
 
@@ -42,7 +42,7 @@ function Uninstall-AzModule {
         [ValidateNotNullOrEmpty()]
         [Switch]
         ${PrereleaseOnly},
-        
+
         [Parameter(HelpMessage = 'Remove all AzureRm modules.')]
         [ValidateNotNullOrEmpty()]
         [Switch]
@@ -57,10 +57,7 @@ function Uninstall-AzModule {
     process
     {
         $cmdStarted = Get-Date
-
         $Invoker = $MyInvocation.MyCommand
-        $preErrorActionPreference =  $ErrorActionPreference
-        $ErrorActionPreference = 'Stop'
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
@@ -78,45 +75,39 @@ function Uninstall-AzModule {
         $moduleToUninstall = $allInstalled | Foreach-Object {[PSCustomObject]@{Name = $_.Name; Version = $_.Version}}
         if ($Name) {
             $Name = Normalize-ModuleName $Name
-            $moduleToUninstall = $moduleToUninstall | Where-Object {!$Name -or $Name -Contains $_.Name}
+            $moduleToUninstall = $moduleToUninstall | Where-Object {$Name -Contains $_.Name}
+            #fixme
             $modulesNotInstalled = $Name | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
             if ($modulesNotInstalled) {
                 Write-Warning "[$Invoker] $modulesNotInstalled are not installed."
-            }         
+            }
         }
         else {
             if ($ExcludeModule) {
                 $ExcludeModule = Normalize-ModuleName $ExcludeModule
                 $moduleToUninstall = $moduleToUninstall | Where-Object {$ExcludeModule -NotContains $_.Name}
-            }      
+            }
         }
 
         if ($moduleToUninstall) {
             $groupSet = @{}
             $moduleToUninstall | Group-Object -Property Name | Foreach-Object {$groupSet[$_.Name] = ($_.Group.Version | Sort-Object -Descending) }
-            
+
             $started = Get-Date
-            $referencePaths = Get-ReferencePath
-            
-            if ($referencePaths) {
-                $module = $null
-                $index = 0
-                foreach ($moduleName in $groupSet.Keys) {
-                    $versions = $groupSet[$moduleName]
-                    if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $moduleName version $versions", "$moduleName version $versions", "Uninstall")) {
-                        Uninstall-Module -Name $moduleName -AllVersion 
-                        #Uninstall-SingleModule -Name $moduleName -ReferencePath $referencePaths -Invoker $Invoker
-                        Write-Debug "[$Invoker] Uninstalling $moduleName version $version is completed."
-                        Write-Progress -Activity "Uninstall Module" -CurrentOperation "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
-                        $index += 1
-                    }
+            $module = $null
+            $index = 0
+            foreach ($moduleName in $groupSet.Keys) {
+                $versions = $groupSet[$moduleName]
+                if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $moduleName version $versions", "$moduleName version $versions", "Uninstall")) {
+                    Uninstall-Module -Name $moduleName -AllVersion -ErrorAction 'Continue'
+                    Write-Debug "[$Invoker] Uninstalling $moduleName version $versions is completed."
+                    Write-Progress -Activity "Uninstall Module" -CurrentOperation "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
+                    $index += 1
                 }
             }
             $duration = (Get-Date) - $started
             Write-Debug "[$Invoker] All uninstallation tasks are finished; Time Elapsed Total: $($duration.TotalSeconds)s."
         }
-
-        $ErrorActionPreference = $preErrorActionPreference
 
         <#
         $s = {
@@ -133,17 +124,17 @@ function Uninstall-AzModule {
                 JobName = 'Az.Tools.Installer'
                 Invoker = $Invoker
             }
-    
+
             if ($PSBoundParameters.ContainsKey('Force'))
             {
                 $JobParams.Add('Confirm', $false)
             }
-    
+
             if ($PSBoundParameters.ContainsKey('Confirm'))
             {
                 $JobParams.Add('Confirm', $PSBoundParameters['Confirm'])
             }
-    
+
             if ($PSBoundParameters.ContainsKey('WhatIf'))
             {
                 $JobParams.Add('WhatIf', $PSBoundParameters['WhatIf'])
@@ -154,7 +145,7 @@ function Uninstall-AzModule {
 
             Invoke-ThreadJob @JobParams
         }
-        
+
         <#
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
             -IsSuccess $true `

@@ -49,10 +49,6 @@ function Install-AzModuleInternal {
 
         [Parameter()]
         [Switch]
-        ${RemoveAzureRm},
-
-        [Parameter()]
-        [Switch]
         ${Force},
 
         [Parameter()]
@@ -69,46 +65,8 @@ function Install-AzModuleInternal {
         Write-Progress "Uninstalling Az if installed" -PercentComplete (1 / 4 * 100)
 
         try {
-            if ($RemovePrevious) {
-                $pathTable = Get-ReferencePath
-                $module = $null
-                foreach ($module in $moduleList) {
-                    if ($Force -or $PSCmdlet.ShouldProcess("Remove all previously installed $($module.Name)", "$($module.Name)", 'Remove')) {
-                        Uninstall-Module -Name $module.Name -AllVersion -ErrorAction 'Continue'
-                        #Uninstall-SingleModule -Name $moduleName -ReferencePath $referencePaths -Invoker $Invoker
-                        Write-Debug "[$Invoker] Uninstalling $($module.Name) version $($module.Version) is completed."
-<#
-                        if ($pathTable.AdminPath) {
-                            if ($pathTable.UserPath) {
-                                Uninstall-SingleModule -Name $module.Name -UserPath $pathTable.userPath -AdminPath $pathTable.adminPath -Invoker $Invoker
-                            }
-                            else {
-                                Uninstall-SingleModule -Name $module.Name -AdminPath $pathTable.adminPath -Invoker $Invoker
-                            }
-                        }
-                        else {
-                            if ($pathTable.UserPath) {
-                                try
-                                {
-                                     Uninstall-SingleModule -Name $module.Name -UserPath $pathTable.userPath -Invoker $Invoker
-                                }
-                                catch
-                                {
-                                    Write-Warning $_
-                                }
-                    
-                            }
-                            else {
-                                Write-Warning "[$Invoker] $($module.Name) is not installed."
-                            }
-                        }
-                    }
-                }
-#>                
-            }
-
             if ($Force -or !$WhatIfPreference) {
-                [string]$tempRepo = Join-Path ([Path]::GetTempPath()) ([Path]::GetRandomFileName())
+                [string]$tempRepo = Join-Path ([Path]::GetTempPath()) ((New-Guid).Guid)
                 #$tempRepo = Join-Path 'D:/PSLocalRepo/' (Get-Date -Format "yyyyddMM-HHmm")
                 if (Test-Path -Path $tempRepo) {
                     Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false
@@ -128,11 +86,22 @@ function Install-AzModuleInternal {
                 Write-Progress "Downloading packagkes from $Repository" -PercentComplete (2 / 4 * 100)
                 try {
                     $module = $null
+                    $fileList = @()
                     foreach ($module in $moduleList) {
                         Write-Debug "[$Invoker] Downloading $($module.Name) version $($module.Version)."
-                        $null = $downloader.Download($module.Name, [string] $module.Version, $tempRepo)
+                        $filePath = $downloader.Download($module.Name, [string] $module.Version, $tempRepo)
+                        $fileList += @{
+                            Name = $module.Name
+                            Path = $filePath
+                        }
                     }
                     $downloader.WaitForAllTasks()
+                    $file = $null
+                    foreach($file in $fileList) {
+                        if (!(Test-Path -Path $file.Path)) {
+                            Throw "[$Invoker] Fail to download $($file.Name) to $tempRepo. Please check your network connection and retry."
+                        }
+                    }
                     $durationInstallation = (Get-Date) - $InstallStarted
                     Write-Debug "[$Invoker] All download tasks are finished. Time Elapsed Total:$($durationInstallation.TotalSeconds)s."
                 }
@@ -142,7 +111,9 @@ function Install-AzModuleInternal {
             }
 
             Write-Progress "Installing packagkes from local" -PercentComplete (3 / 4 * 100) -Completed
-            
+
+            $moduleInstalled = @()
+
             $InstallStarted = Get-Date
             Write-Debug "[$Invoker] Will install modules $($moduleList.Name)."
             $installModuleParams = @{
@@ -156,8 +127,20 @@ function Install-AzModuleInternal {
             }
 
             if ($moduleList[0].Name -eq 'Az.Accounts') {
-                if ($Force -or $PSCmdlet.ShouldProcess("Install module Az.Accounts version $($moduleList[0].Version)", "Az.Accounts version $($moduleList[0].Version)", "Install")) {
+                $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module Az.Accounts version $($moduleList[0].Version)", "Az.Accounts version $($moduleList[0].Version)", "Install")
+                $confirmUninstallation = $false
+                if ($RemovePrevious) {
+                    $confirmUninstallation = $Force -or $PSCmdlet.ShouldProcess("Remove previously installed Az.Accounts", "Az.Accounts", 'Remove')
+                }
+                if ($confirmInstallation) {
+                    if ($confirmUninstallation) {
+                        Uninstall-Module -Name "Az.Accounts" -AllVersion -ErrorAction 'SilentlyContinue'
+                    }
                     PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($moduleList[0].Version)"
+                }
+                $moduleInstalled += [PSCustomObject]@{
+                    Name = "Az.Accounts"
+                    Version = ($moduleList[0].Version | Select-Object -First 1)
                 }
                 $moduleList = $moduleList | Select-Object -Last ($moduleList.Length - 1)
             }
@@ -168,17 +151,71 @@ function Install-AzModuleInternal {
                 $module = $null
                 $maxJobCount = 5
                 $index = 0
-                foreach ($module in $moduleList) {
-                    if ($PSVersionTable.PSEdition -eq "Core") {
-                        if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
-                            $jobs  += Start-ThreadJob -Name "Az.Tools.Installer" {
-                                $tmodule = $using:module
-                                Write-Output "$($tmodule.Name) version $($tmodule.Version)"
+                $functions = {
+                    function Install-SingleModule {
+                        param (
+                            [Parameter(Mandatory)]
+                            [ValidateNotNullOrEmpty()]
+                            [string]
+                            ${ModuleName},
+
+                            [Parameter(Mandatory)]
+                            [ValidateNotNullOrEmpty()]
+                            [version[]]
+                            ${ModuleVersion},
+
+                            [Parameter()]
+                            [Switch]
+                            ${RemovePrevious},
+
+                            [Parameter(Mandatory)]
+                            [ValidateNotNullOrEmpty()]
+                            [hashtable]
+                            ${InstallModuleParam}
+                        )
+
+                        process {
+                            $state = $null
+                            $errorString = $null
+                            try {
                                 Import-Module PackageManagement
                                 Import-Module PowerShellGet
-                                PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
+                                if ($RemovePrevious) {
+                                    Uninstall-Module -Name $moduleName -AllVersion -ErrorAction 'SilentlyContinue'
+                                }
+                                PowerShellGet\Install-Module @installModuleParam -Name $moduleName -RequiredVersion "$moduleVersion"
+                                $state = "succeeded"
+                            }
+                            catch {
+                                $state = "failed"
+                                $errorString = $_
+                            }
+                            finally {
+                                Write-Output @{
+                                    "ModuleName" = $moduleName
+                                    "ModuleVersion" = $moduleVersion
+                                    "Result" = $state
+                                    "Error" = $errorString
+                                }
+                            }
+                        }
+                    }
+                }
+                foreach ($module in $moduleList) {
+                    if ($PSVersionTable.PSEdition -eq "Core") {
+                        $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")
+                        $confirmUninstallation = $false
+                        if ($RemovePrevious) {
+                            $confirmUninstallation = $Force -or $PSCmdlet.ShouldProcess("Remove previously installed $($module.Name)", "$($module.Name)", 'Remove')
+                        }
+                        if ($confirmInstallation) {
+                            $jobs  += Start-ThreadJob -Name "Az.Tools.Installer" -InitializationScript $functions -ScriptBlock {
+                                $tmodule = $using:module
+                                $tInstallModuleParam = $using:installModuleParams
+                                $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation)
+                                Write-Output $result
                             } -ThrottleLimit $maxJobCount
-                            #-StreamingHost $Host
+                             #-StreamingHost $Host
                         }
                     }
                     else {
@@ -190,41 +227,41 @@ function Install-AzModuleInternal {
                             $runningJob += Get-Job -State Running
                             if ($runningJob -and ($runningJob.Count -ge $maxJobCount)) {
                                 Throw "[$Inovker] Some background jobs are blocked. Please use 'Get-Job -State Running' to check them."
-                            }                          
-                        }
-                        if ($Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")) {
-                            $jobs += Start-Job -Name "Az.Tools.Installer" {
-                                $tmodule = $using:module
-                                Write-Output "$($tmodule.Name) version $($tmodule.Version)"
-                                Import-Module PackageManagement
-                                Import-Module PowerShellGet
-                                PowerShellGet\Install-Module @using:installModuleParams -Name $tmodule.Name -RequiredVersion "$($tmodule.Version)"
                             }
-                            Write-Progress -Activity "Install Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $moduleList.Count * 100)
-                            $index += 1
+                        }
+                        $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")
+                        $confirmUninstallation = $false
+                        if ($RemovePrevious) {
+                            $confirmUninstallation = $Force -or $PSCmdlet.ShouldProcess("Remove previously installed $($module.Name)", "$($module.Name)", 'Remove')
+                        }
+                        if ($confirmInstallation) {
+                            $jobs += Start-Job -Name "Az.Tools.Installer"  -InitializationScript $functions -ScriptBlock {
+                                $tmodule = $using:module
+                                $tInstallModuleParam = $using:installModuleParams
+                                $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation)
+                                Write-Output $result
+                            }
                         }
                     }
                 }
-    
+
                 if ($Force -or !$WhatIfPreference) {
                     $result = $null
                     $job = $null
                     $index = 0
                     foreach ($job in $jobs) {
                         $job = Wait-Job $job
-                        try {
-                            $result = $null
-                            $result = Receive-Job $job
-                            if ($job.State -eq 'Completed') {
-                                Write-Debug  "[$Invoker] Installing $result is complete."
-                            }
-                            else {
-                                Write-Warning  "[$Invoker] Installing $result is failed."
+                        $result = $null
+                        $result = Receive-Job $job
+                        if ($job.State -eq 'Completed' -and $result.Result -eq "succeeded") {
+                            Write-Debug  "[$Invoker] Installing $($result.ModuleName) of version $($result.ModuleVersion) is complete."
+                            $moduleInstalled += [PSCustomObject]@{
+                                Name = $result.ModuleName
+                                Version = ($result.ModuleVersion | Select-Object -First 1)
                             }
                         }
-                        catch {
-                            Write-Warning $_
-                            Write-Warning  "[$Invoker] Installing $result is failed."
+                        else {
+                            Write-Error "[$Invoker] Installing $($result.ModuleName) of version $($result.ModuleVersion) is failed. `n$($result.Error)"
                         }
                         Remove-Job $job -Confirm:$false
                         if ($PSVersionTable.PSEdition -eq "Core") {
@@ -232,6 +269,7 @@ function Install-AzModuleInternal {
                             $index += 1
                         }
                     }
+                    Write-Output $moduleInstalled
                 }
             }
             finally

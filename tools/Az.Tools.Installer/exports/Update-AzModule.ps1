@@ -17,7 +17,7 @@ function Update-AzModule {
 <#
     .Synopsis
         Updates Azure PowerShell modules.
-    
+
     .Description
         Updates Azure PowerShell modules.
 
@@ -79,8 +79,6 @@ function Update-AzModule {
     process {
         $cmdStarted = Get-Date
         $Invoker = $MyInvocation.MyCommand
-        $preErrorActionPreference =  $ErrorActionPreference
-        $ErrorActionPreference = 'stop'
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
@@ -97,7 +95,7 @@ function Update-AzModule {
             $intersection = $intersection | Where-Object {$_.Name -eq "Az.Accounts" -or $Name -Contains $_.Name}
             $modulesNotInstalled = $Name | Where-Object {$allInstalled.Name -NotContains $_}
             if ($modulesNotInstalled) {
-                Write-Warning "[$Invoker] $modulesNotInstalled are not installed. Please firstly install them before update."
+                Write-Error "[$Invoker] $modulesNotInstalled are not installed. Please firstly install them before update."
                 #If Az.Accounts is in modulesNotInstalled，it will be warned but installed anyway.
             }
         }
@@ -143,7 +141,7 @@ function Update-AzModule {
                 $installModuleParams = @{}
                 foreach ($key in $PSBoundParameters.Keys) {
                     if($key -ne 'Name'){
-                        $installModuleParams.Add($key, $PSBoundParameters[$key]) 
+                        $installModuleParams.Add($key, $PSBoundParameters[$key])
                     }
                 }
                 $installModuleParams.Add('AllowPrerelease', $true)
@@ -159,13 +157,14 @@ function Update-AzModule {
                     $m
                 }
                 $installModuleParams.Add('ModuleList', $modules)
-                $null = Install-AzModuleInternal @installModuleParams
-    
-                Write-Output $moduleUpdateTable
+                $output = Install-AzModuleInternal @installModuleParams
+
+                if ($output) {
+                    $moduleUpdated  = $moduleUpdateTable | Where-Object {$output.Name.Contains($_.Name)}
+                    Write-Output $moduleUpdated
+                }
             }
         }
-
-        $ErrorActionPreference = $preErrorActionPreference
 
         <#
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `

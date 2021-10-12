@@ -17,7 +17,7 @@ function Install-AzModule {
 <#
     .Synopsis
         Installs Azure PowerShell modules.
-    
+
     .Description
         Installs Azure PowerShell modules.
 
@@ -74,10 +74,7 @@ function Install-AzModule {
 
     process {
         $cmdStarted = Get-Date
-
         $Invoker = $MyInvocation.MyCommand
-        $preErrorActionPreference =  $ErrorActionPreference
-        $ErrorActionPreference = 'Stop'
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
@@ -100,10 +97,10 @@ function Install-AzModule {
         $modules += Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
 
         if($Name) {
-            $moduleExcluded = $Name | Where-Object {$modules -and $modules.Name -NotContains $_}
+            $moduleExcluded = $Name | Where-Object {!$modules -or $modules.Name -NotContains $_}
             if ($moduleExcluded) {
                 $azVersion = if ($RequiredAzVersion) {$RequiredAzVersion} else {"Latest"}
-                Write-Warning "The following specified modules:$moduleExcluded cannot be found in $Repository with the $azVersion version."
+                Write-Error "[$Invoker] The following specified modules:$moduleExcluded cannot be found in $Repository with the $azVersion version."
             }
         }
 
@@ -119,7 +116,7 @@ function Install-AzModule {
             $installModuleParams = @{}
             foreach ($key in $PSBoundParameters.Keys) {
                 if($key -ne 'Name') {
-                    $installModuleParams.Add($key, $PSBoundParameters[$key]) 
+                    $installModuleParams.Add($key, $PSBoundParameters[$key])
                 }
             }
             $installModuleParams.Add('Invoker', $Invoker)
@@ -133,16 +130,13 @@ function Install-AzModule {
                 $m
             }
             $installModuleParams.Add('ModuleList', $moduleList)
-            $null = Install-AzModuleInternal @installModuleParams
-    
-            #fixme
-            if (!$WhatIfPreference) {
-                Write-Output $modules
+            $output = Install-AzModuleInternal @installModuleParams
+
+            if (!$WhatIfPreference -and $output) {
+                Write-Output $output
             }
         }
 
-
-        $ErrorActionPreference = $preErrorActionPreference
         <#
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
             -IsSuccess $true `

@@ -64,12 +64,13 @@ public class ParallelDownloader
         }
     }
 
-    public void Download(string module, Version version, string path)
+    public string Download(string module, Version version, string path)
     {
         var nupkgFile = Path.Combine(path, String.Format("{0}.{1}.nupkg", module, version));
         Task task = DownloadToFile(String.Format("{0}/package/{1}/{2}", urlRepository, module, version), nupkgFile.ToString());
         tasks.Add(task);
         modules.Add(module);
+        return nupkgFile;
     }
 
     public void WaitForAllTasks()
@@ -121,11 +122,11 @@ Add-Type $script:ParallelDownloaderClassCode -ReferencedAssemblies System.Net.Ht
 Write-Warning "Add-Type finished."
 
 $getModule = Get-Module -Name "PowerShellGet"
-if ($null -ne $getModule -and $getModule.Version -lt [System.Version]"2.1.3") { 
-    Write-Error "This module requires PowerShellGet version 2.1.3. An earlier version of PowerShellGet is imported in the current PowerShell session. Please open a new session before importing this module." -ErrorAction Stop 
-} 
-elseif ($null -eq $getModule) { 
-    Import-Module PowerShellGet -MinimumVersion 2.1.3 -Scope Global 
+if ($null -ne $getModule -and $getModule.Version -lt [System.Version]"2.1.3") {
+    Write-Error "This module requires PowerShellGet version 2.1.3. An earlier version of PowerShellGet is imported in the current PowerShell session. Please open a new session before importing this module." -ErrorAction Stop
+}
+elseif ($null -eq $getModule) {
+    Import-Module PowerShellGet -MinimumVersion 2.1.3 -Scope Global
 }
 
 function Get-AllAzModule {
@@ -149,7 +150,7 @@ function Normalize-ModuleName {
     param (
         [Parameter()]
         [string[]]
-        ${Name}      
+        ${Name}
     )
 
     process {
@@ -172,26 +173,9 @@ function Normalize-ModuleName {
         if ($normalName -eq 'Az.Az') {
             $normalName = $normalName | Where-Object { $_ -ne 'Az.Az'}
             Write-Warning "Az.Tools.Installer cannot be used to install Az. Will discard Az in the Name parameter."
-        } 
-        
-        $normalName
-    }
-}
-
-function Get-ReferencePath {
-    param()
-    process {
-        $allAzModules = @()
-        $allAzModules += Get-Module -ListAvailable | Where-Object {$_ -match "Az(\.[a-zA-Z0-9]+)?$"}
-        $pathList = @()
-        $userPath = $null
-        $adminPath = $null
-        if ($allAzModules) {
-            $pathList = $allAzModules.Path -split 'Az.' | Sort-Object -Property Length -Descending | Select-Object -First $allAzModules.Count | Select-Object -Unique
-            $userPath = $pathList | Where-Object {$_.Contains($env:UserName)}
-            $adminPath = $pathList | Where-Object {!$_.Contains($env:UserName)}
         }
-        Write-Output @{UserPath = $userPath; AdminPath = $adminPath}
+
+        $normalName
     }
 }
 
@@ -338,7 +322,7 @@ function Invoke-ThreadJob {
                     #-StreamingHost $Host
                 }
             }
-    
+
             if (!$WhatIfPreference) {
                 $result = $null
                 $job = $null
@@ -376,7 +360,7 @@ function Uninstall-AzureRM {
         }
         catch {
             Write-Warning $_
-        }   
+        }
     }
 }
 
@@ -477,7 +461,7 @@ Add-RepositoryDefaultValue -Cmdlets $commandsWithRepositoryParameter -ParameterN
 function Test-Downloader {
     param (
     )
-    
+
     process {
         $tempRepo = Join-Path 'D:/PSLocalRepo/' (Get-Date -Format "yyyyddMM-HHmm")
         $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false
