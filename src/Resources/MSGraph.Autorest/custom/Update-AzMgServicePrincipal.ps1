@@ -573,6 +573,7 @@ function Update-AzMgServicePrincipal {
       $null = $PSBoundParameters.Remove('IdentifierUri')
     }
 
+    $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
     switch ($PSCmdlet.ParameterSetName) {
       'SpObjectIdWithDisplayNameParameterSet' {
         $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
@@ -581,7 +582,8 @@ function Update-AzMgServicePrincipal {
       } 
       'SpApplicationIdWithDisplayNameParameterSet' {
         try {
-          $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal -ApplicationId $PSBoundParameters['ApplicationId']).Id
+          $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
+          $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal @param).Id
         }
         catch {
           throw
@@ -591,7 +593,8 @@ function Update-AzMgServicePrincipal {
       }
       'SPNWithDisplayNameParameterSet' {
         try {
-          $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName']).Id
+          $param['ServicePrincipalName'] = $PSBoundParameters['ServicePrincipalName']
+          $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal @param).Id
         }
         catch {
           throw
@@ -602,7 +605,7 @@ function Update-AzMgServicePrincipal {
 
     MSGraph.internal\Update-AzMgServicePrincipal @PSBoundParameters
 
-    $param = @{'ObjectId'=$PSBoundParameters['Id']; 'Debug'=$PSBoundParameters['Debug']}
+    $param = @{'ObjectId'=$PSBoundParameters['Id']; 'Debug'= $PSBoundParameters['Debug']; 'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
     if ($iu) {
       $param['IdentifierUri'] = $iu
       Update-AzMgApplication @param

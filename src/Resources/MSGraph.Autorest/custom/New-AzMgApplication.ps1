@@ -642,7 +642,7 @@ function New-AzMgApplication {
       if ($PSBoundParameters['HomePage']) {
         $props['HomePageUrl'] = $PSBoundParameters['HomePage']
         $null = $PSBoundParameters.Remove('HomePage')
-      }q
+      }
       if ($PSBoundParameters['ReplyUrls']) {
         $props['RedirectUri'] = $PSBoundParameters['ReplyUrls']
         $null = $PSBoundParameters.Remove('ReplyUrls')
@@ -691,7 +691,7 @@ function New-AzMgApplication {
     }
 
     $app = MSGraph.internal\New-AzMgApplication @PSBoundParameters
-    $param = @{'ObjectId' = $app.Id }
+    $param = @{'ObjectId' = $app.Id; 'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
 
     switch ($PSCmdlet.ParameterSetName) {
       'ApplicationWithPasswordPlainParameterSet' {

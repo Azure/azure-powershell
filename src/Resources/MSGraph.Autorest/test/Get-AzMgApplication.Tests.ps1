@@ -16,29 +16,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMgApplication'))
 
 Describe 'Get-AzMgApplication' {
     It 'EmptyParameterSet' -skip {
-        $app = New-AzMgApplication -DisplayName 2021-10-08-testapp1 -ReplyUrls https://2021-10-08-reply1.com -HomePage https://2021-10-08-home1 -AvailableToOtherTenants $true -StartDate (Get-Date)
-        Get-AzMgApplication -ObjectId $app.id
-        Get-AzMgApplication -ApplicationId $app.AppId
-        Get-AzMgApplication -DisplayNameStartWith $app.DisplayName
-        Get-AzMgApplication -DisplayName $app.DisplayName
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $homepage2 = "https://2021-10-08-home2"
-        $reply2 = "https://2021-10-08-reply2.com"
-        update-azmgapplication -ObjectId $app.Id -ReplyUrl $reply2 -HomePage $homepage2 -AvailableToOtherTenants $false
-        $appupdate = Get-AzMgApplication -ObjectId $app.id
+    It 'ApplicationObjectIdParameterSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        get-azmgappcredential -ObjectId $app.Id
-        $cred = New-AzMgAppCredential -ObjectId $app.Id -StartDate (get-date)
-        Remove-AzMgAppCredential -ObjectId $app.Id -KeyId $cred.KeyId
+    It 'SearchStringParameterSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        New-AzMgServicePrincipal -ApplicationId $app.AppId -Role contributor
-        $sp1 = Get-AzMgServiceprincipal -ApplicationId $app.AppId
-        New-AzMgServicePrincipal -DisplayName 2021-10-10-testsp2
-        $sp2=Get-AzMgServicePrincipal -DisplayName 2021-10-10-testsp2
+    It 'DisplayNameParameterSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $sp2 | Remove-AzMgServicePrincipal
-        Remove-AzMgServicePrincipal -ObjectId $sp1.Id
+    It 'ApplicationIdParameterSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $app | remove-azmgapplication
+    It 'ApplicationIdentifierUriParameterSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

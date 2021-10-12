@@ -137,6 +137,7 @@ param(
 )
 
 process {
+    $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
     switch ($PSCmdlet.ParameterSetName) {
         'ObjectIdParameterSet' {
             $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
@@ -145,7 +146,8 @@ process {
         }
         'ApplicationIdParameterSet' {
             try {
-                $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id).Id
+                $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
+                $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal @param).Id
             } catch {
                 throw
             }
@@ -154,7 +156,8 @@ process {
         }
         'SPNParameterSet' {
             try {
-                $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName'] -Select Id).Id
+                $param['ServicePrincipalName'] = $PSBoundParameters['ServicePrincipalName']
+                $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal @param).Id
             } catch {
                 throw
             }
@@ -163,7 +166,8 @@ process {
         }
         'DisplayNameParameterSet' {
             try {
-                [System.Array]$list = Get-AzMgServicePrincipal -DisplayName $PSBoundParameters['DisplayName'] -Select Id
+                $param['DisplayName'] = $PSBoundParameters['DisplayName']
+                [System.Array]$list = Get-AzMgServicePrincipal @param
                 if(1 -lt $list.Count) {
                     Write-Error "More than one service principal found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgServicePrincipal cmdlet to get the object id of the desired service principal."
                     return
@@ -186,7 +190,8 @@ process {
         }
         'ApplicationObjectParameterSet' {
             try {
-                $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal -ApplicationId $PSBoundParameters['ApplicationObject'].AppId -Select Id).Id
+                $param['-ApplicationId'] = $PSBoundParameters['ApplicationObject']
+                $PSBoundParameters['Id'] = (Get-AzMgServicePrincipal @param).Id
             } catch {
                 throw
             }

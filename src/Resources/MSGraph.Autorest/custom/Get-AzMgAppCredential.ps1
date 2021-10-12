@@ -88,48 +88,11 @@ function Get-AzMgAppCredential {
       )
     
     process {
-        switch ($PSCmdlet.ParameterSetName) {
-            'ApplicationObjectIdParameterSet' {
-                $app = Get-AzMgApplication -ObjectId $PSBoundParameters['ObjectId']
-                if (!$app) {
-                    Write-Error "application with id '$($PSBoundParameters['ObjectId'])' does not exist."
-                    return
-                }
-                break
-            }
-            'ApplicationIdParameterSet' {
-                $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId']
-                if (!$app) {
-                    Write-Error "application with id '$($PSBoundParameters['ApplicationId'])' does not exist."
-                    return
-                }
-                break
-            }
-            'DisplayNameParameterSet' {
-                $app = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']
-                if (0 -eq $app.Count) {
-                    Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
-                    return
-                } elseif (1 -eq $app.Count) {
-                    $app = $app[0]
-                } else {
-                    Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
-                    return
-                }
-                break
-            }
-            'ApplicationObjectParameterSet' {
-                $app = Get-AzMgApplication -ObjectId $PSBoundParameters['ApplicationObject'].Id
-                if (!$app) {
-                    Write-Error "application with id '$($PSBoundParameters['ApplicationObject'].Id)' does not exist."
-                    return
-                }
-                break
-            }
-            default {
-                break
-            }
+        if ($PSBoundParameters['ApplicationObject']) {
+            $PSBoundParameters['ObjectId'] = $PSBoundParameters['ApplicationObject'].Id
+            $null = $PSBoundParameters.Remove('ApplicationObject')
         }
+        $app = Get-AzMgApplication @PSBoundParameters
         if ($app.KeyCredentials) {
             $PSCmdlet.WriteObject($app.KeyCredentials, $true)
         }

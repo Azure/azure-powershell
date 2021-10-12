@@ -118,6 +118,7 @@ function Remove-AzMgApplication {
     )
     
     process {
+        $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
         switch ($PSCmdlet.ParameterSetName) {
             'ObjectIdParameterSet' {
                 $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
@@ -131,7 +132,8 @@ function Remove-AzMgApplication {
             }
             'ApplicationDisplayNameParameterSet' {
                 try {
-                    [System.Array]$list = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName'] -Select Id
+                    $param['DisplayName'] = $PSBoundParameters['DisplayName']
+                    [System.Array]$list = Get-AzMgApplication @param
                     if(1 -lt $list.Count) {
                         Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
                         return
@@ -149,7 +151,8 @@ function Remove-AzMgApplication {
             }
             'ApplicationIdParameterSet' {
                 try {
-                    $PSBoundParameters['Id'] = (Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id).Id
+                    $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
+                    $PSBoundParameters['Id'] = (Get-AzMgApplication @param).Id
                 } catch {
                     throw
                 }

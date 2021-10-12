@@ -93,46 +93,25 @@ function Remove-AzMgAppCredential {
       )
     
     process {
+        $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
         switch ($PSCmdlet.ParameterSetName) {
             'ApplicationObjectIdWithKeyIdParameterSet' {
-                $app = Get-AzMgApplication -ObjectId $PSBoundParameters['ObjectId']
-                if (!$app) {
-                    Write-Error "application with id '$($PSBoundParameters['ObjectId'])' does not exist."
-                    return
-                }
+                $param['ObjectId'] = $PSBoundParameters['ObjectId']
                 $null = $PSBoundParameters.Remove('ObjectId')
                 break
             }
             'ApplicationIdWithKeyIdParameterSet' {
-                $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId']
-                if (!$app) {
-                    Write-Error "application with app id '$($PSBoundParameters['ApplicationId'])' does not exist."
-                    return
-                }
+                $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
                 $null = $PSBoundParameters.Remove('ApplicationId')
                 break
             }
             'ApplicationDisplayNameParameterSet' {
-                $app = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName']
-                if (0 -eq $app.Count) {
-                    Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
-                    return
-                } elseif (1 -eq $app.Count) {
-                    $app = $app[0]
-                } else {
-                    Write-Error "More than one application found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgApplication cmdlet to get the object id of the desired application."
-                    return
-                }
+                $param['DisplayName'] = $PSBoundParameters['DisplayName']
                 $null = $PSBoundParameters.Remove('DisplayName')
                 break
             }
             'ApplicationObjectWithKeyIdParameterSet' {
-                $app = Get-AzMgApplication -ObjectId $PSBoundParameters['ApplicationObject'].Id
-                
-                if (!$app) {
-                    Write-Error "application with id '$($PSBoundParameters['ApplicationObject'].Id)' does not exist."
-                    return
-                }
+                $param['ObjectId'] = $PSBoundParameters['ApplicationObject'].Id
                 $null = $PSBoundParameters.Remove('ApplicationObject')
                 break
             }
@@ -140,7 +119,7 @@ function Remove-AzMgAppCredential {
                 break
             }
         }
-        
+        $app = Get-AzMgApplication @param
         if (!$PSBoundParameters['KeyId']) {
             $PSBoundParameters['Id'] = $app.Id
             $PSBoundParameters['KeyCredentials'] = @()

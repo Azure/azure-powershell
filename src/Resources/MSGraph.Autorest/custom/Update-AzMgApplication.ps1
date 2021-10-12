@@ -484,7 +484,9 @@ function Update-AzMgApplication {
       }
       'ApplicationIdWithUpdateParamsParameterSet' {
         try {
-          $PSBoundParameters['Id'] = (Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId']).Id
+          $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+          $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
+          $PSBoundParameters['Id'] = (Get-AzMgApplication @param).Id
         }
         catch {
           throw

@@ -732,7 +732,7 @@ function New-AzMgServicePrincipal {
       $PSBoundParameters['ApplicationId'] = $app.AppId
     }
 
-    $param = @{'AppId' = $PSBoundParameters['ApplicationId']; 'AccountEnabled'=$true; 'Debug' = $PSBoundParameters['Debug']}
+    $param = @{'AppId' = $PSBoundParameters['ApplicationId']; 'AccountEnabled'=$true; 'Debug' = $PSBoundParameters['Debug']; 'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
     Write-Output ($sp = MSGraph.internal\New-AzMgServicePrincipal @param)
 
     if ($spRole) {
@@ -745,7 +745,7 @@ function New-AzMgServicePrincipal {
           New-AzRoleAssignment @param
           break
         } catch {
-          
+
         }
       }
     }

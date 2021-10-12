@@ -93,45 +93,25 @@ function Remove-AzMgSpCredential {
       )
     
     process {
+        $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
         switch ($PSCmdlet.ParameterSetName) {
             'ObjectIdWithKeyIdParameterSet' {
-                $sp = Get-AzMgServicePrincipal -ObjectId $PSBoundParameters['ObjectId']
-                if (!$sp) {
-                    Write-Error "service principal with id '$($PSBoundParameters['ObjectId'])' does not exist."
-                    return
-                }
+                $param['ObjectId'] = $PSBoundParameters['ObjectId']
                 $null = $PSBoundParameters.Remove('ObjectId')
                 break
             }
             'SPNWithKeyIdParameterSet' {
-                $sp = Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName']
-                if (!$sp) {
-                    Write-Error "service principal with name '$($PSBoundParameters['ServicePrincipalName'])' does not exist."
-                    return
-                }
+                $param['ServicePrincipalName'] = $PSBoundParameters['ServicePrincipalName']
                 $null = $PSBoundParameters.Remove('ServicePrincipalName')
                 break
             }
             'DisplayNameWithKeyIdParameterSet' {
-                $sp = Get-AzMgServicePrincipal -DisplayName $PSBoundParameters['DisplayName']
-                if (0 -eq $sp.Count) {
-                    Write-Error "service principal with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
-                    return
-                } elseif (1 -eq $sp.Count) {
-                    $sp = $sp[0]
-                } else {
-                    Write-Error "More than one service principal found with display name '$($PSBoundParameters['DisplayName'])'. Please use the Get-AzMgServicePrincipal cmdlet to get the object id of the desired service principal."
-                    return
-                }
+                $param['DisplayName'] = $PSBoundParameters['DisplayName']
                 $null = $PSBoundParameters.Remove('DisplayName')
                 break
             }
             'ServicePrincipalObjectParameterSet' {
-                $sp = Get-AzMgServicePrincipal -ObjectId $PSBoundParameters['ServicePrincipalObject'].Id
-                if (!$sp) {
-                    Write-Error "service principal with id '$($PSBoundParameters['ServicePrincipalObject'].Id)' does not exist."
-                    return
-                }
+                $param['ObjectId'] = $PSBoundParameters['ServicePrincipalObject'].Id
                 $null = $PSBoundParameters.Remove('ServicePrincipalObject')
                 break
             }
@@ -139,7 +119,7 @@ function Remove-AzMgSpCredential {
                 break
             }
         }
-        
+        $sp = Get-AzMgServicePrincipal @param
         if (!$PSBoundParameters['KeyId']) {
             $PSBoundParameters['Id'] = $sp.Id
             $PSBoundParameters['KeyCredentials'] = @()

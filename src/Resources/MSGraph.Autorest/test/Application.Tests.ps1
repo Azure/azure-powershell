@@ -17,24 +17,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Application'))
 Describe 'Application' {
     It 'CRUD' {
         { 
-            
-            New-AzMgApplication -DisplayName $env['appName1'] -ReplyUrls $env['reply1'] -HomePage $env['homepage1'] -AvailableToOtherTenants $true -StartDate (Get-Date)
+            New-AzMgApplication -DisplayName $env.appName1 -ReplyUrls $env.reply1 -HomePage $env.homepage1 -AvailableToOtherTenants $true -StartDate (Get-Date)
 
-            $app = Get-AzMgApplication -DisplayName $env['appName1']
+            $app = Get-AzMgApplication -DisplayName $env.appName1
             $app | Should -Not -Be $null
-            $app.Web.RedirectUri | Should -Be $env['reply1']
-            $app.Web.HomePageUrl | should -Be $env['homepage1']
+            $app.Web.RedirectUri | Should -Be $env.reply1
+            $app.Web.HomePageUrl | should -Be $env.homepage1
             $app.SignInAudience | Should -Be 'AzureADMultipleOrgs'
 
             (Get-AzMgApplication -ObjectId $app.id -Select Id).Id | Should -Be $app.Id
-            (Get-AzMgApplication -ApplicationId $app.AppId -Select Id) | Should -Be $app.Id
+            (Get-AzMgApplication -ApplicationId $app.AppId -Select Id).Id | Should -Be $app.Id
 
             
-            Update-AzMgApplication -ObjectId $app.Id -ReplyUrl $env['reply2'] -HomePage $env['homepage2'] -AvailableToOtherTenants $false
+            Update-AzMgApplication -ObjectId $app.Id -ReplyUrl $env.reply2 -HomePage $env.homepage2 -AvailableToOtherTenants $false
 
-            $appUpdate = Get-AzMgApplication -DisplayName $env['appName1']
-            $appUpdate.Web.RedirectUri | Should -Be $env['reply2']
-            $appUpdate.Web.HomePageUrl | should -Be $env['homepage2']
+            $appUpdate = Get-AzMgApplication -DisplayName $env.appName1
+            $appUpdate.Web.RedirectUri | Should -Be $env.reply2
+            $appUpdate.Web.HomePageUrl | should -Be $env.homepage2
             $appUpdate.SignInAudience | Should -Be 'AzureADMyOrg'
 
             (Get-AzMgAppCredential -ObjectId $app.Id) | Should -Not -Be $null
@@ -45,6 +44,6 @@ Describe 'Application' {
     }
 
     AfterAll {
-        Remove-AzMgApplication -DisplayName $env['AppName1']
+        Remove-AzMgApplication -DisplayName $env.appName1
     }
 }

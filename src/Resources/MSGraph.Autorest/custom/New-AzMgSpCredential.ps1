@@ -163,6 +163,7 @@ function New-AzMgSpCredential {
             $null = $PSBoundParameters.Remove('PasswordCredentials')
         }
         
+        $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
         switch ($PSCmdlet.ParameterSetName) {
             {$_ -in 'SpObjectIdWithPasswordParameterSet', 'SpObjectIdWithCredentialParameterSet', 'SpObjectIdWithCertValueParameterSet'} {
                 $id = $PSBoundParameters['ObjectId']
@@ -170,7 +171,8 @@ function New-AzMgSpCredential {
                 break
             }
             {$_ -in 'SPNWithPasswordParameterSet', 'SPNWithCredentialParameterSet', 'SPNWithCertValueParameterSet'} {
-                $sp = Get-AzMgServicePrincipal -ServicePrincipalName $PSBoundParameters['ServicePrincipalName'] -Select Id
+                $param['ServicePrincipalName'] = $PSBoundParameters['ServicePrincipalName']
+                $sp = Get-AzMgServicePrincipal @param
                 if($sp) {
                     $id = $sp.Id
                     $null = $PSBoundParameters.Remove('ServicePrincipalName')

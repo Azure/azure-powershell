@@ -194,6 +194,7 @@ function New-AzMgAppCredential {
             $null = $PSBoundParameters.Remove('PasswordCredentials')
         }
 
+        $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
         switch ($PSCmdlet.ParameterSetName) {
             { $_ -in 'ApplicationObjectIdWithPasswordParameterSet', 'ApplicationObjectIdWithCredentialParameterSet'} {
                 $id = $PSBoundParameters['ObjectId']
@@ -201,7 +202,8 @@ function New-AzMgAppCredential {
                 break
             }
             { $_ -in 'ApplicationIdWithPasswordParameterSet', 'ApplicationIdWithCredentialParameterSet', 'ApplicationIdWithCertValueParameterSet'} {
-                $app = Get-AzMgApplication -ApplicationId $PSBoundParameters['ApplicationId'] -Select Id
+                $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
+                $app = Get-AzMgApplication @param
                 if ($app) {
                     $id = $app.Id
                     $null = $PSBoundParameters.Remove('ApplicationId')  
@@ -213,7 +215,8 @@ function New-AzMgAppCredential {
                 break
             }
             { $_ -in 'DisplayNameWithPasswordParameterSet', 'DisplayNameWithCredentialParameterSet', 'DisplayNameWithCertValueParameterSet'} {
-                $app = Get-AzMgApplication -DisplayName $PSBoundParameters['DisplayName'] -Select Id
+                $param['DisplayName'] = $PSBoundParameters['DisplayName']
+                $app = Get-AzMgApplication @param
                 if (0 -eq $app.Count) {
                     Write-Error "application with display name '$($PSBoundParameters['DisPlayName'])' does not exist."
                     return
