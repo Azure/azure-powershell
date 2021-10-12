@@ -29,6 +29,9 @@ function setupEnv() {
     $constants = Get-Content .\test\constants.json | ConvertFrom-Json
     $constants.psobject.Properties | ForEach-Object { $env[$_.Name] = $_.Value }
 
+    # Add network module
+    Import-Module -Name Az.Network
+    
     # Create the test group
     $resourceGroupName = "testgroup" + $rstr1
     Write-Host "Start to create test resource group" $resourceGroupName
