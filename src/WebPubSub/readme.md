@@ -95,7 +95,7 @@ directive:
   - where:
       parameter-name: TlClientCertEnabled
     set:
-      parameter-name: EnableTlClientCert
+      parameter-name: EnableTlsClientCert
   - where:
       parameter-name: NetworkAcLPrivateEndpoint
     set:
@@ -122,7 +122,7 @@ directive:
       model-name: WebPubSubResource
       property-name: TlClientCertEnabled
     set:
-      property-name: EnableTlClientCert
+      property-name: EnableTlsClientCert
   - where:
       model-name: WebPubSubResource
       property-name: NetworkAcLPrivateEndpoint
