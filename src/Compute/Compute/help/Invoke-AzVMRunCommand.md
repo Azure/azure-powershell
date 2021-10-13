@@ -38,14 +38,14 @@ Invoke a run command on the VM.
 
 ## EXAMPLES
 
-### Example 1: Invoke a script on Windows
+### Example 1: Invoke a command on Windows
 ```powershell
 PS C:\> Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RunPowerShellScript' -ScriptPath 'sample.ps1' -Parameter @{param1 = "var1"; param2 = "var2"}
 ```
 
-var1 and var2 are defined as parameters in the sample.ps1. Parameter value can be string type only and script is responsible for converting them to other types if needed. This command invokes sample.ps1 on a Windows VM named 'vmname'.
+Invoke a run command 'RunPowerShellScript' with overriding the script 'sample.ps1' on a Windows VM named 'vmname' in resource group 'rgname'. Var1 and var2 are defined as parameters in the sample.ps1. Parameter value can be string type only and script is responsible for converting them to other types if needed. 
 
-## Example 2: Invoke a script on Linux
+## Example 2: Invoke a command on Linux
 ```powershell
 export param1=var1 param2=var2
 set -- var1 var2 var3
@@ -56,7 +56,7 @@ echo Usage 1: Ordered parameters: $0 $1
 echo Usage 2: Named exports: $var1 $var2
 ```
 
-This command invokes sample.bash on a Linux VM named 'vmname'.
+This command invokes a run command 'RunShellScript' with overriding the script 'sample.bash' on a Linux VM named 'vmname'. Var1 and var2 are defined as parameters in the sample.bash.
 
 ## PARAMETERS
 
