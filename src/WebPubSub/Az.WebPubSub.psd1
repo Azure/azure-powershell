@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.WebPubSub.private.dll'
   FormatsToProcess = './Az.WebPubSub.format.ps1xml'
-  FunctionsToExport = 'Get-AzWebPubSub', 'Get-AzWebPubSubEventHandler', 'Get-AzWebPubSubHub', 'Get-AzWebPubSubKey', 'Get-AzWebPubSubPrivateEndpointConnection', 'Get-AzWebPubSubPrivateLinkResource', 'Get-AzWebPubSubSharedPrivateLinkResource', 'Get-AzWebPubSubSku', 'Get-AzWebPubSubUsage', 'New-AzWebPubSub', 'New-AzWebPubSubEventHandler', 'New-AzWebPubSubHub', 'New-AzWebPubSubKey', 'New-AzWebPubSubSharedPrivateLinkResource', 'Remove-AzWebPubSub', 'Remove-AzWebPubSubEventHandler', 'Remove-AzWebPubSubHub', 'Remove-AzWebPubSubPrivateEndpointConnection', 'Remove-AzWebPubSubSharedPrivateLinkResource', 'Restart-AzWebPubSub', 'Test-AzWebPubSubNameAvailability', 'Update-AzWebPubSub', '*'
+  FunctionsToExport = 'Get-AzWebPubSub', 'Get-AzWebPubSubHub', 'Get-AzWebPubSubKey', 'Get-AzWebPubSubSku', 'Get-AzWebPubSubUsage', 'New-AzWebPubSub', 'New-AzWebPubSubHub', 'New-AzWebPubSubKey', 'Remove-AzWebPubSub', 'Remove-AzWebPubSubHub', 'Restart-AzWebPubSub', 'Test-AzWebPubSubNameAvailability', 'Update-AzWebPubSub', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

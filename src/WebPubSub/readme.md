@@ -68,13 +68,13 @@ directive:
     set:
       subject-prefix: WebPubSub
   # Remove the private link resource related cmdlets
-    - where:
+  - where:
       subject: WebPubSubPrivateEndpointConnection
     remove: true
-    - where:
+  - where:
       subject: WebPubSubPrivateLinkResource
     remove: true
-    - where:
+  - where:
       subject: WebPubSubSharedPrivateLinkResource
     remove: true
   # Customized cmdlets
