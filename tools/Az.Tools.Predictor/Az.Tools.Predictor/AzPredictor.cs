@@ -99,6 +99,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         _azContext = azContext;
 
                         _azContext.UpdateContext();
+                        // This will run the script in the right context.
+                        var _ = _azContext.PowerShellVersion;
                         _telemetryClient = new AzPredictorTelemetryClient(_azContext);
                         _service = new AzPredictorService(_settings.ServiceUri, _telemetryClient, _azContext);
                         _isInitialized = true;

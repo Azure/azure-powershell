@@ -23,6 +23,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     public sealed class GetSuggestionTelemetryData : ITelemetryData
     {
+        /// <summary>
+        /// The telemetry property name for "isCancelled".
+        /// </summary>
+        public const string PropertyNameIsCancelled = "IsCancelled";
+
+        /// <summary>
+        /// The telemetry property name for "Found".
+        /// </summary>
+        public const string PropertyNameFound = "Found";
+
+        /// <summary>
+        /// The telemetry property name for "SuggestionSessionId".
+        /// </summary>
+        public const string PropertyNameSuggestionSessionId = "SuggestionSessionId";
+
+        /// <summary>
+        /// The telemetry property name fo "userInput".
+        /// </summary>
+        public const string PropertyNameUserInput = "UserInput";
+
         /// <inheritdoc/>
         public PredictionClient Client { get; init; }
 

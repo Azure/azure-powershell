@@ -23,6 +23,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     public sealed class RequestPredictionTelemetryData : ITelemetryData
     {
+        /// <summary>
+        /// The telemetry property name for "HttpRequestSent".
+        /// </summary>
+        public const string PropertyNameHttpRequestSent = "HttpRequestSent";
+
         /// <inheritdoc/>
         public PredictionClient Client { get; init; }
 

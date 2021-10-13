@@ -21,6 +21,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     public sealed class HistoryTelemetryData : ITelemetryData
     {
+        /// <summary>
+        /// The telemetry property name for "History".
+        /// </summary>
+        public const string PropertyNameHistory = "History";
+
+        /// <summary>
+        /// The telemetry property name for "Success".
+        /// </summary>
+        public const string PropertyNameSuccess = "Success";
+
         /// <inheritdoc/>
         public PredictionClient Client { get; init; }
 

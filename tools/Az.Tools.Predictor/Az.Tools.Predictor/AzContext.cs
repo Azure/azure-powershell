@@ -56,7 +56,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     minimalState.Types.Clear();
                     minimalState.Formats.Clear();
                     // Refer to the remarks for the property DefaultRunspace.
-                    minimalState.ImportPSModule("Az.Accounts");
                     var runspace = RunspaceFactory.CreateRunspace(minimalState);
                     runspace.Open();
                     return runspace;
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         /// <inheritdoc />
         /// <remarks>
-        /// We pre-load some common Az service modules.
+        /// We don't pre-load Az service modules since they may not always be installed.
         /// Creating the instance is at the first time this is called.
         /// It can be slow. So the first call must not be in the path of the user interaction.
         /// Loading too many modules can also impact user experience because that may add to much memory pressure at the same
@@ -231,6 +230,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     if (currentAz > latestAz)
                     {
                         latestAz = currentAz;
+                    }
+                }
+
+                if (!(outputs?.Any() == true))
+                {
+                    outputs = ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable");
+                    foreach (PSObject obj in outputs)
+                    {
+                        string psVersion = obj.Properties["Version"].Value.ToString();
+                        int pos = psVersion.IndexOf('-');
+                        Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
+                        if (currentAz > latestAz)
+                        {
+                            latestAz = currentAz;
+                        }
                     }
                 }
             }

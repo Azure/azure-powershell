@@ -21,6 +21,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     public sealed class SuggestionAcceptedTelemetryData : ITelemetryData
     {
+        /// <summary>
+        /// The telemetry property name for "Accepted".
+        /// </summary>
+        public const string PropertyNameAccepted = "Accepted";
+
         /// <inheritdoc/>
         public PredictionClient Client { get; init; }
 
