@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstanceusage
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/get-azcontainerinstanceusage
 schema: 2.0.0
 ---
 
@@ -94,7 +94,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsage
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IUsage
 
 ## NOTES
 

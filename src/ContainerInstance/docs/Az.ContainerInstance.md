@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ContainerInstance
 Module Guid: 78f5cd97-9a2c-4258-bf37-7a8820083684
-Download Help Link: https://docs.microsoft.com/powershell/module/az.containerinstance
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -23,6 +23,10 @@ Get the list of cached images on specific OS type for a subscription in a region
 
 ### [Get-AzContainerInstanceCapability](Get-AzContainerInstanceCapability.md)
 Get the list of CPU/memory/GPU capabilities of a region.
+
+### [Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint](Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint.md)
+Gets all the network dependencies for this container group to allow complete control of network setting and configuration.
+For container groups, this will always be an empty list.
 
 ### [Get-AzContainerInstanceLog](Get-AzContainerInstanceLog.md)
 Get the logs for a specified container instance in a specified resource group and container group.

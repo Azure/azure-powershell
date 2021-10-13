@@ -21,9 +21,9 @@ New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Container <ICon
  [-InitContainer <IInitContainerDefinition[]>] [-IPAddressDnsNameLabel <String>] [-IPAddressIP <String>]
  [-IPAddressPort <IPort[]>] [-IPAddressType <String>] [-LogAnalyticLogType <String>]
  [-LogAnalyticMetadata <Hashtable>] [-LogAnalyticWorkspaceId <String>] [-LogAnalyticWorkspaceKey <String>]
- [-LogAnalyticWorkspaceResourceId <Hashtable>] [-NetworkProfileId <String>] [-OSType <String>]
- [-RestartPolicy <String>] [-Sku <String>] [-Tag <Hashtable>] [-Volume <IVolume[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LogAnalyticWorkspaceResourceId <String>] [-OSType <String>] [-RestartPolicy <String>] [-Sku <String>]
+ [-Subnet <String>] [-Tag <Hashtable>] [-Volume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,7 +144,7 @@ The containers within the container group.
 To construct, see NOTES section for CONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IContainer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -299,7 +299,7 @@ To construct, see NOTES section for IMAGEREGISTRYCREDENTIALS properties and crea
 To construct, see NOTES section for IMAGEREGISTRYCREDENTIAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IImageRegistryCredential[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IImageRegistryCredential[]
 Parameter Sets: (All)
 Aliases:
 
@@ -315,7 +315,7 @@ The init containers for a container group.
 To construct, see NOTES section for INITCONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IInitContainerDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IInitContainerDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -361,7 +361,7 @@ The list of ports exposed on the container group.
 To construct, see NOTES section for IPADDRESSPORT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IPort[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -466,7 +466,7 @@ Accept wildcard characters: False
 The workspace resource id for log analytics
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -486,21 +486,6 @@ Parameter Sets: (All)
 Aliases: ContainerGroupName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkProfileId
-The identifier for a network profile.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -583,6 +568,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Subnet
+The subnet for the container group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -619,7 +619,7 @@ The list of volumes that can be mounted by containers in this container group.
 To construct, see NOTES section for VOLUME properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolume[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IVolume[]
 Parameter Sets: (All)
 Aliases:
 
@@ -668,7 +668,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IContainerGroup
 
 ## NOTES
 
@@ -695,8 +695,9 @@ CONTAINER <IContainer[]>: The containers within the container group.
   - `[LimitsGpuSku <GpuSku?>]`: The SKU of the GPU resource.
   - `[LivenessProbeExecCommand <String[]>]`: The commands to execute within the container.
   - `[LivenessProbeFailureThreshold <Int32?>]`: The failure threshold.
-  - `[LivenessProbeHttpGetHttpHeadersName <String>]`: The header name.
-  - `[LivenessProbeHttpGetHttpHeadersValue <String>]`: The header value.
+  - `[LivenessProbeHttpGetHttpHeader <IHttpHeader[]>]`: The HTTP headers.
+    - `[Name <String>]`: The header name.
+    - `[Value <String>]`: The header value.
   - `[LivenessProbeHttpGetPath <String>]`: The path to probe.
   - `[LivenessProbeHttpGetPort <Int32?>]`: The port number to probe.
   - `[LivenessProbeHttpGetScheme <Scheme?>]`: The scheme.
@@ -709,8 +710,7 @@ CONTAINER <IContainer[]>: The containers within the container group.
     - `[Protocol <ContainerNetworkProtocol?>]`: The protocol associated with the port.
   - `[ReadinessProbeExecCommand <String[]>]`: The commands to execute within the container.
   - `[ReadinessProbeFailureThreshold <Int32?>]`: The failure threshold.
-  - `[ReadinessProbeHttpGetHttpHeadersName <String>]`: The header name.
-  - `[ReadinessProbeHttpGetHttpHeadersValue <String>]`: The header value.
+  - `[ReadinessProbeHttpGetHttpHeader <IHttpHeader[]>]`: The HTTP headers.
   - `[ReadinessProbeHttpGetPath <String>]`: The path to probe.
   - `[ReadinessProbeHttpGetPort <Int32?>]`: The port number to probe.
   - `[ReadinessProbeHttpGetScheme <Scheme?>]`: The scheme.
@@ -728,6 +728,8 @@ CONTAINER <IContainer[]>: The containers within the container group.
 IMAGEREGISTRYCREDENTIAL <IImageRegistryCredential[]>: The image registry credentials by which the container group is created from. To construct, see NOTES section for IMAGEREGISTRYCREDENTIALS properties and create a hash table.
   - `Server <String>`: The Docker image registry server without a protocol such as "http" and "https".
   - `Username <String>`: The username for the private registry.
+  - `[Identity <String>]`: The identity for the private registry.
+  - `[IdentityUrl <String>]`: The identity URL for the private registry.
   - `[Password <String>]`: The password for the private registry.
 
 INITCONTAINER <IInitContainerDefinition[]>: The init containers for a container group.

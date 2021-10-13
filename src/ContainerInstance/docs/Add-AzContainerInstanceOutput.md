@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.containerinstance/add-azcontainerinstanceoutput
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/add-azcontainerinstanceoutput
 schema: 2.0.0
 ---
 
@@ -151,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainerAttachResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IContainerAttachResponse
 
 ## NOTES
 

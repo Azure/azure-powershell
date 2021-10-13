@@ -1,52 +1,70 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/stop-azcontainergroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/get-azcontainerinstancecontainergroupoutboundnetworkdependencyendpoint
 schema: 2.0.0
 ---
 
-# Stop-AzContainerGroup
+# Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint
 
 ## SYNOPSIS
-Stops all containers in a container group.
-Compute resources will be deallocated and billing will stop.
+Gets all the network dependencies for this container group to allow complete control of network setting and configuration.
+For container groups, this will always be an empty list.
 
 ## SYNTAX
 
-### Stop (Default)
+### Get (Default)
 ```
-Stop-AzContainerGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint -ContainerGroupName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### StopViaIdentity
+### GetViaIdentity
 ```
-Stop-AzContainerGroup -InputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint
+ -InputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Stops all containers in a container group.
-Compute resources will be deallocated and billing will stop.
+Gets all the network dependencies for this container group to allow complete control of network setting and configuration.
+For container groups, this will always be an empty list.
 
 ## EXAMPLES
 
-### Example 1: Stop all containers in a container group
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Stop-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command stops all containers in a container group.
-Compute resources will be deallocated and billing will stop.
+{{ Add description here }}
 
-### Example 2: Stop all containers in a container group by piping
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzContainerGroup -Name test-cg -ResourceGroupName test-rg | Stop-AzContainerGroup
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command stops all containers in a container group by piping.
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -ContainerGroupName
+The name of the container group.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -69,7 +87,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
-Parameter Sets: StopViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -79,42 +97,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the container group.
-
-```yaml
-Type: System.String
-Parameter Sets: Stop
-Aliases: ContainerGroupName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -129,44 +117,13 @@ Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Stop
+Type: System.String[]
+Parameter Sets: Get
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -180,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### System.String
 
 ## NOTES
 

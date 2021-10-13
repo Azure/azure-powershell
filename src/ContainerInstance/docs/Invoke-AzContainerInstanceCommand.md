@@ -195,7 +195,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainerExecResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IContainerExecResponse
 
 ## NOTES
 
