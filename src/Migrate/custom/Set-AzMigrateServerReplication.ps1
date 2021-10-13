@@ -635,10 +635,6 @@ function Set-AzMigrateServerReplication {
                             $updateNic.TargetStaticIPAddress = $null
                         }
                         else {
-                            $isValidIpAddress = [ipaddress]::TryParse($matchingUserInputNic.TargetStaticIPAddress,[ref][ipaddress]::Loopback)
-                            if(!$isValidIpAddress) {
-                                throw "(InvalidPrivateIPAddressFormat) Static IP address value '$($matchingUserInputNic.TargetStaticIPAddress)' is invalid."
-                            }
                             $updateNic.TargetStaticIPAddress = $matchingUserInputNic.TargetStaticIPAddress
                         }
                     }
