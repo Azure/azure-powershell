@@ -4,6 +4,10 @@ PS C:\> $wps = Update-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo
 -IdentityType SystemAssigned -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 
+Name       Location SkuName
+----       -------- -------
+psdemo-wps eastus   Standard_S1
+
 PS C:\> $wps | format-list
 
 DisableAadAuth               : False
@@ -11,42 +15,27 @@ DisableLocalAuth             : False
 EnableTlsClientCert          : False
 ExternalIP                   : 20.62.134.186
 HostName                     : psdemo-wps.webpubsub.azure.com
-Id                           : /subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/psdemo/providers/Micr
-                               osoft.SignalRService/WebPubSub/psdemo-wps
-IdentityPrincipalId          :
-IdentityTenantId             :
-IdentityType                 :
-LiveTraceCategory            :
-LiveTraceEnabled             : true
-Location                     : eastus
-Name                         : psdemo-wps
-NetworkAcLDefaultAction      : Deny
-PrivateEndpointAcl           : {}
-PrivateEndpointConnection    : {}
-ProvisioningState            : Succeeded
-PublicNetworkAccess          : Enabled
-PublicNetworkAllow           : {ServerConnection, ClientConnection, RESTAPI, Trace}
-PublicNetworkDeny            :
-PublicPort                   : 443
-ResourceLogCategory          :
-ServerPort                   : 443
-SharedPrivateLinkResource    : {}
-SkuCapacity                  : 1
-SkuFamily                    :
-SkuName                      : Standard_S1
-SkuSize                      : S1
-SkuTier                      : Standard
-SystemDataCreatedAt          : 2021-10-11 9:02:37 AM
-SystemDataCreatedBy          : zityang@microsoft.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 2021-10-12 7:21:58 AM
-SystemDataLastModifiedBy     : zityang@microsoft.com
-SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.TrackedResourceTags
-Type                         : Microsoft.SignalRService/WebPubSub
-UserAssignedIdentity         : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentityUserAssig
-                               nedIdentities
+......
 Version                      : 1.0
 ```
 
 
+### Example 2: Update a Web PubSub resource via identity
+```powershell
+PS C:\> $identity = @{ ResourceGroupName = 'psdemo'
+ResourceName = 'psdemo-wps'
+SubscriptionId = $(Get-AzContext).Subscription.Id }
+PS C:\> $identity | Update-AzWebPubSub -EnableTlsClientCert
+
+PS C:\> $wps | format-list
+
+DisableAadAuth               : False
+DisableLocalAuth             : False
+EnableTlsClientCert          : True
+ExternalIP                   : 20.62.134.186
+HostName                     : psdemo-wps.webpubsub.azure.com
+......
+Version                      : 1.0
+```
+
+The example constructs a hash table representing the identity of a Web PubSub resource, and then it pipes the identity object to the `Update` cmdlet. At last it pipes the result of `Update` cmdlet to `Format-List` to see all the property values.

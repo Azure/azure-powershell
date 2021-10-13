@@ -12,27 +12,8 @@ Checks that the resource name is valid and is not already in use.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
 ```
-Test-AzWebPubSubNameAvailability -Location <String> -Name <String> -Type <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Check
-```
-Test-AzWebPubSubNameAvailability -Location <String> -Parameter <INameAvailabilityParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzWebPubSubNameAvailability -InputObject <IWebPubSubIdentity> -Parameter <INameAvailabilityParameters>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzWebPubSubNameAvailability -InputObject <IWebPubSubIdentity> -Name <String> -Type <String>
+Test-AzWebPubSubNameAvailability -Location <String> -Name <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -41,23 +22,16 @@ Checks that the resource name is valid and is not already in use.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if the resource name "abc" is available in east US region.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzWebPubSubNameAvailability -Location eastus -Name abc
 
-{{ Add output here }}
+NameAvailable Reason Message
+------------- ------ -------
+True
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -76,28 +50,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 the region
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -113,29 +71,13 @@ e.g."my-resource-name"
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameter
-Data POST-ed to the nameAvailability action
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailabilityParameters
-Parameter Sets: Check, CheckViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -145,28 +87,12 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-The resource type.
-Can be "Microsoft.SignalRService/SignalR" or "Microsoft.SignalRService/webPubSub"
-
-```yaml
-Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -207,10 +133,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailabilityParameters
-
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailability
@@ -218,26 +140,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
-  - `[EventHandlerName <String>]`: The event handler name.
-  - `[HubName <String>]`: The hub name.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: the region
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[ResourceName <String>]`: The name of the resource.
-  - `[SharedPrivateLinkResourceName <String>]`: The name of the shared private link resource
-  - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-PARAMETER <INameAvailabilityParameters>: Data POST-ed to the nameAvailability action
-  - `Name <String>`: The resource name to validate. e.g."my-resource-name"
-  - `Type <String>`: The resource type. Can be "Microsoft.SignalRService/SignalR" or "Microsoft.SignalRService/webPubSub"
 
 ## RELATED LINKS
 

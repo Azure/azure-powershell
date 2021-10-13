@@ -39,23 +39,54 @@ Get the resource and its properties.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all Web PubSub resources in a subscription
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWebPubSub -SubscriptionId ef72249e-9785-4799-a76b-7cdd80e1b1d0
 
-{{ Add output here }}
+Name                Location      SkuName
+----                --------      -------
+demo1               eastus        Standard_S1
+demo2               eastus        Free_F1
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+
+### Example 2: List all Web PubSub resources in a resource group
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWebPubSub -ResourceGroupName psdemo
 
-{{ Add output here }}
+Name       Location SkuName
+----       -------- -------
+psdemo-wps eastus   Standard_S1
 ```
 
-{{ Add description here }}
+
+
+### Example 3: Get a specific Web PubSub resource
+```powershell
+PS C:\> Get-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
+
+Name       Location SkuName
+----       -------- -------
+psdemo-wps eastus   Standard_S1
+```
+
+
+
+### Example 4: Get a specific Web PubSub resource via identity object
+```powershell
+PS C:\> $identity = @{ ResourceGroupName = 'psdemo'
+ResourceName = 'psdemo-wps'
+SubscriptionId = $(Get-AzContext).Subscription.Id }
+
+PS C:\> $identity | Get-AzWebPubSub
+
+Name       Location SkuName
+----       -------- -------
+psdemo-wps eastus   Standard_S1
+```
+
+
 
 ## PARAMETERS
 
@@ -158,7 +189,6 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
-  - `[EventHandlerName <String>]`: The event handler name.
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region

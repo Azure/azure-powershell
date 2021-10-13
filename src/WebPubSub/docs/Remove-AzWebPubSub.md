@@ -29,23 +29,23 @@ Operation to delete a resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Web PubSub resource
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+
+### Example 2: Remove a Web PubSub resource via identity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $identity = @{ResourceGroupName = 'psdemo'
+ResourceName = 'psdemo-wps'
+SubscriptionId = $(Get-AzContext).Subscription.Id }
 
-{{ Add output here }}
+PS C:\> $identity | Remove-AzWebPubSub
 ```
 
-{{ Add description here }}
+
 
 ## PARAMETERS
 
@@ -224,7 +224,6 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
-  - `[EventHandlerName <String>]`: The event handler name.
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region

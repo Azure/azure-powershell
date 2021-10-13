@@ -20,14 +20,13 @@ Get-AzWebPubSubHub -ResourceGroupName <String> -ResourceName <String> [-Subscrip
 
 ### Get
 ```
-Get-AzWebPubSubHub -ResourceGroupName <String> -ResourceName <String> -Name <String>
+Get-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzWebPubSubHub -InputObject <IWebPubSubIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzWebPubSubHub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,23 +34,43 @@ Get a hub setting.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List hub settings of a Web PubSub resource.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Get-AzWebPubSubHub -ResourceGroupName psdemo -ResourceName psdemo-wps
 
-{{ Add output here }}
+Name     AnonymousConnectPolicy
+----     ----------------------
+testHub  deny
+testHub2 deny
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+
+### Example 2: Get a Web PubSub hub setting.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Get-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps
 
-{{ Add output here }}
+Name    AnonymousConnectPolicy
+----    ----------------------
+testHub deny
 ```
 
-{{ Add description here }}
+
+
+### Example 3: Get a Web PubSub hub setting via identity.
+```powershell
+PS C:\>  $hubIdentity = @{ ResourceGroupName = 'psdemo'
+ResourceName = 'psdemo-wps'
+SubscriptionId = $(Get-AzContext).Subscription.Id
+HubName = 'testHub' }
+PS C:\>   $hubIdentity | Get-AzWebPubSubHub
+
+Name    AnonymousConnectPolicy
+----    ----------------------
+testHub deny
+```
+
+
 
 ## PARAMETERS
 
@@ -91,7 +110,7 @@ The hub name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -169,7 +188,6 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
-  - `[EventHandlerName <String>]`: The event handler name.
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region

@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check if the resource name "abc" is available in east US region.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzWebPubSubNameAvailability -Location eastus -Name abc
 
-{{ Add output here }}
+NameAvailable Reason Message
+------------- ------ -------
+True
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

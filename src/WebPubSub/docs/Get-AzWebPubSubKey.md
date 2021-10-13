@@ -22,23 +22,17 @@ Get the access keys of the resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the access keys of a Web PubSub resource
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzWebPubSubKey -ResourceGroupName psdemo -ResourceName psdemo-wps  | Format-List
 
-{{ Add output here }}
+PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
+PrimaryKey                : ********
+SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********Version=1.0;
+SecondaryKey              : ********
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The example gets the access keys of the Web PubSub resource and then pipes the result to `Format-List` to see all the property values of the result.
 
 ## PARAMETERS
 

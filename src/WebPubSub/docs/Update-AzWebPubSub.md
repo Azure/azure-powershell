@@ -15,9 +15,9 @@ Operation to update an exiting resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzWebPubSub -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-DisableAadAuth] [-DisableLocalAuth] [-EnableTlClientCert] [-IdentityType <ManagedIdentityType>]
- [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>] [-Location <String>]
- [-NetworkAcLDefaultAction <AclAction>] [-PrivateEndpoint <IPrivateEndpointAcl[]>]
+ [-DisableAadAuth] [-DisableLocalAuth] [-EnableTlsClientCert] [-IdentityType <ManagedIdentityType>]
+ [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>]
+ [-NetworkAcLDefaultAction <AclAction>] [-PrivateEndpointAcl <IPrivateEndpointAcl[]>]
  [-PublicNetworkAccess <String>] [-PublicNetworkAllow <WebPubSubRequestType[]>]
  [-PublicNetworkDeny <WebPubSubRequestType[]>] [-ResourceLogCategory <IResourceLogCategory[]>]
  [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <WebPubSubSkuTier>] [-Tag <Hashtable>]
@@ -28,9 +28,9 @@ Update-AzWebPubSub -ResourceGroupName <String> -ResourceName <String> [-Subscrip
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DisableAadAuth] [-DisableLocalAuth]
- [-EnableTlClientCert] [-IdentityType <ManagedIdentityType>] [-LiveTraceCategory <ILiveTraceCategory[]>]
- [-LiveTraceEnabled <String>] [-Location <String>] [-NetworkAcLDefaultAction <AclAction>]
- [-PrivateEndpoint <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>]
+ [-EnableTlsClientCert] [-IdentityType <ManagedIdentityType>] [-LiveTraceCategory <ILiveTraceCategory[]>]
+ [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <AclAction>]
+ [-PrivateEndpointAcl <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>]
  [-PublicNetworkAllow <WebPubSubRequestType[]>] [-PublicNetworkDeny <WebPubSubRequestType[]>]
  [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>] [-SkuName <String>]
  [-SkuTier <WebPubSubSkuTier>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
@@ -42,23 +42,49 @@ Operation to update an exiting resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a Web PubSub resource
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $wps = Update-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps `
+-IdentityType SystemAssigned -LiveTraceEnabled true `
+-LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 
-{{ Add output here }}
+Name       Location SkuName
+----       -------- -------
+psdemo-wps eastus   Standard_S1
+
+PS C:\> $wps | format-list
+
+DisableAadAuth               : False
+DisableLocalAuth             : False
+EnableTlsClientCert          : False
+ExternalIP                   : 20.62.134.186
+HostName                     : psdemo-wps.webpubsub.azure.com
+......
+Version                      : 1.0
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+
+### Example 2: Update a Web PubSub resource via identity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $identity = @{ ResourceGroupName = 'psdemo'
+ResourceName = 'psdemo-wps'
+SubscriptionId = $(Get-AzContext).Subscription.Id }
+PS C:\> $identity | Update-AzWebPubSub -EnableTlsClientCert
 
-{{ Add output here }}
+PS C:\> $wps | format-list
+
+DisableAadAuth               : False
+DisableLocalAuth             : False
+EnableTlsClientCert          : True
+ExternalIP                   : 20.62.134.186
+HostName                     : psdemo-wps.webpubsub.azure.com
+......
+Version                      : 1.0
 ```
 
-{{ Add description here }}
+The example constructs a hash table representing the identity of a Web PubSub resource, and then it pipes the identity object to the `Update` cmdlet.
+At last it pipes the result of `Update` cmdlet to `Format-List` to see all the property values.
 
 ## PARAMETERS
 
@@ -122,7 +148,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableTlClientCert
+### -EnableTlsClientCert
 Request client certificate during TLS handshake if enabled
 
 ```yaml
@@ -199,23 +225,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The GEO location of the resource.
-e.g.
-West US | East US | North Central US | South Central US.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NetworkAcLDefaultAction
 Default action when no other rule matches
 
@@ -246,9 +255,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateEndpoint
+### -PrivateEndpointAcl
 ACLs for requests from private endpoints
-To construct, see NOTES section for PRIVATEENDPOINT properties and create a hash table.
+To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]
@@ -505,7 +514,6 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
-  - `[EventHandlerName <String>]`: The event handler name.
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
@@ -519,7 +527,7 @@ LIVETRACECATEGORY <ILiveTraceCategory[]>: Gets or sets the list of category conf
   - `[Enabled <String>]`: Indicates whether or the live trace category is enabled.         Available values: true, false.         Case insensitive.
   - `[Name <String>]`: Gets or sets the live trace category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 
-PRIVATEENDPOINT <IPrivateEndpointAcl[]>: ACLs for requests from private endpoints
+PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>: ACLs for requests from private endpoints
   - `Name <String>`: Name of the private endpoint connection
   - `[Allow <WebPubSubRequestType[]>]`: Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
   - `[Deny <WebPubSubRequestType[]>]`: Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.

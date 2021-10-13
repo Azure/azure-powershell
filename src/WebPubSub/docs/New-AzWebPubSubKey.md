@@ -15,28 +15,15 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ### RegenerateExpanded (Default)
 ```
-New-AzWebPubSubKey -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-KeyType <KeyType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Regenerate
-```
-New-AzWebPubSubKey -ResourceGroupName <String> -ResourceName <String> -Parameter <IRegenerateKeyParameters>
+New-AzWebPubSubKey -ResourceGroupName <String> -ResourceName <String> -KeyType <KeyType>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### RegenerateViaIdentity
-```
-New-AzWebPubSubKey -InputObject <IWebPubSubIdentity> -Parameter <IRegenerateKeyParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### RegenerateViaIdentityExpanded
 ```
-New-AzWebPubSubKey -InputObject <IWebPubSubIdentity> [-KeyType <KeyType>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzWebPubSubKey -InputObject <IWebPubSubIdentity> -KeyType <KeyType> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,23 +32,22 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Regenerate the primary access key of a Web PubSub resource
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\>  New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps -KeyType 'Primary'
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+
+### Example 2: Regenerate the primary access key of a Web PubSub resource via identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\>  $identity = @{ ResourceGroupName = 'psdemo'
+ResourceName = 'psdemo-wps'
+SubscriptionId = $(Get-AzContext).Subscription.Id }
+PS C:\> $identity | New-AzWebPubSubKey -KeyType Primary
 ```
 
-{{ Add description here }}
+
 
 ## PARAMETERS
 
@@ -101,7 +87,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
-Parameter Sets: RegenerateViaIdentity, RegenerateViaIdentityExpanded
+Parameter Sets: RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -113,14 +99,14 @@ Accept wildcard characters: False
 
 ### -KeyType
 The keyType to regenerate.
-Must be either 'primary' or 'secondary'(case-insensitive).
+Must be either 'primary', 'secondary' or 'salt'(case-insensitive).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType
-Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -142,29 +128,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Parameters describes the request to regenerate access keys
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IRegenerateKeyParameters
-Parameter Sets: Regenerate, RegenerateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -179,7 +149,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -195,7 +165,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: False
@@ -241,8 +211,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IRegenerateKeyParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 
 ## OUTPUTS
@@ -259,7 +227,6 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
-  - `[EventHandlerName <String>]`: The event handler name.
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
@@ -268,9 +235,6 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   - `[ResourceName <String>]`: The name of the resource.
   - `[SharedPrivateLinkResourceName <String>]`: The name of the shared private link resource
   - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regenerate access keys
-  - `[KeyType <KeyType?>]`: The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).
 
 ## RELATED LINKS
 

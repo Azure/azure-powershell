@@ -23,23 +23,20 @@ Create or update a hub setting.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a hub setting
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $eventHandler = @{UrlTemplate = 'http://example.com/api/{hub}/connect/{event}' ; AuthType = 'None' ; SystemEvent = 'connect' ; } ,
+@{ UrlTemplate = 'http://example.com/api/{hub}/userevent/{event}' ; AuthType = 'None' ; UserEventPattern = '*' }
 
-{{ Add output here }}
+PS C:\> New-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps -EventHandler $eventHandler
+
+Name    AnonymousConnectPolicy
+----    ----------------------
+testHub deny
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The example first creates a list of hash tables containing two event handler settings, one for system events and the other for user events.
+Then it creates a hub with the event handlers.
 
 ## PARAMETERS
 
@@ -235,12 +232,6 @@ EVENTHANDLER <IEventHandler[]>: Event handler of a hub.
   - `UrlTemplate <String>`: Gets or sets the EventHandler URL template. You can use a predefined parameter {hub} and {event} inside the template, the value of the EventHandler URL is dynamically calculated when the client request comes in.         For example, UrlTemplate can be `http://example.com/api/{hub}/{event}`. The host part can't contains parameters.
   - `[AuthType <UpstreamAuthType?>]`: Gets or sets the type of auth. None or ManagedIdentity is supported now.
   - `[ManagedIdentityResource <String>]`: The Resource indicating the App ID URI of the target resource.         It also appears in the aud (audience) claim of the issued token.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
   - `[SystemEvent <String[]>]`: Gets ot sets the list of system events.
   - `[UserEventPattern <String>]`: Gets or sets the matching pattern for event names.         There are 3 kind of patterns supported:             1. "*", it to matches any event name             2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"             3. The single event name, for example, "event1", it matches "event1"
 
