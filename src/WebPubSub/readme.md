@@ -67,6 +67,16 @@ directive:
       subject: Usage
     set:
       subject-prefix: WebPubSub
+  # Remove the private link resource related cmdlets
+    - where:
+      subject: WebPubSubPrivateEndpointConnection
+    remove: true
+    - where:
+      subject: WebPubSubPrivateLinkResource
+    remove: true
+    - where:
+      subject: WebPubSubSharedPrivateLinkResource
+    remove: true
   # Customized cmdlets
   - where:
       verb: New
@@ -211,16 +221,6 @@ directive:
   - where:
       subject: WebPubSubHub
       parameter-name: HubName
-    set:
-      parameter-name: Name
-  - where:
-      subject: WebPubSubPrivateEndpointConnection
-      parameter-name: PrivateEndpointConnectionName
-    set:
-      parameter-name: Name
-  - where:
-      subject: WebPubSubSharedPrivateLinkResource
-      parameter-name: SharedPrivateLinkResourceName
     set:
       parameter-name: Name
 ```
