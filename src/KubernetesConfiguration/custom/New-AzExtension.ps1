@@ -116,7 +116,7 @@ function New-AzExtension {
         # Configuration settings, as name-value pairs for configuring this extension.
         ${ConfigurationSetting},
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # Type of the Extension, of which this resource is an instance of.
@@ -233,6 +233,6 @@ function New-AzExtension {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        Az.KubernetesConfiguration.internal\Remove-AzExtension @PSBoundParameters
+        Az.KubernetesConfiguration.internal\New-AzExtension @PSBoundParameters
     }
 }

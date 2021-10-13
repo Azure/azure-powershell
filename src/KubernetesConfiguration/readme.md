@@ -105,7 +105,6 @@ directive:
     set:
       verb: Update
   - where:
-      verb: New|Remove
       subject: KubernetesConfiguration
     hide: true
   - where:
@@ -113,12 +112,13 @@ directive:
       subject: KubernetesConfiguration
     remove: true
   - where:
-      subject: Extension
-    hide: true
-  - where:
       subject: OperationStatus
     remove: true
   - where:
       subject: Extension
     hide: true
+  - where:
+      verb: Update
+      subject: Extension
+    remove: true
 ```

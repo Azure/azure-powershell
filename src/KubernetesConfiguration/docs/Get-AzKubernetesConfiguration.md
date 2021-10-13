@@ -14,13 +14,13 @@ Gets details of the Source Control Configuration.
 
 ### List (Default)
 ```
-Get-AzKubernetesConfiguration -ClusterName <String> -ClusterRp <String> -ClusterType <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKubernetesConfiguration -ClusterName <String> -ClusterRp <String> -ClusterType <String> -Name <String>
+Get-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -35,43 +35,33 @@ Gets details of the Source Control Configuration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List details of the Source Control Configuration.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -ClusterType ConnectedClusters
 
-{{ Add output here }}
+Name          Type
+----          ----
+azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
 ```
 
-{{ Add description here }}
+List details of the Source Control Configuration.
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets details of the Source Control Configuration.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azpstestk8s01
 
-{{ Add output here }}
+Name          Type
+----          ----
+azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
 ```
 
-{{ Add description here }}
+Gets details of the Source Control Configuration.
 
 ## PARAMETERS
 
 ### -ClusterName
 The name of the kubernetes cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterRp
-The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
 
 ```yaml
 Type: System.String

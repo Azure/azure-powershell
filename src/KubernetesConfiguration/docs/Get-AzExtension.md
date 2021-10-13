@@ -35,23 +35,27 @@ Gets Kubernetes Cluster Extension.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets Kubernetes Cluster Extension.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group
 
-{{ Add output here }}
+Name                Type
+----                ----
+azps_test_extension Microsoft.KubernetesConfiguration/extensions
 ```
 
-{{ Add description here }}
+Gets Kubernetes Cluster Extension.
 
-### Example 2: {{ Add title here }}
+### Example 2: List Kubernetes Cluster Extension.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group
 
-{{ Add output here }}
+Name                Type
+----                ----
+azps_test_extension Microsoft.KubernetesConfiguration/extensions
 ```
 
-{{ Add description here }}
+List Kubernetes Cluster Extension.
 
 ## PARAMETERS
 

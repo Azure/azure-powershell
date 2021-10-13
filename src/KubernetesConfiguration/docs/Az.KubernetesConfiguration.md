@@ -30,6 +30,3 @@ This will cause the Agent to Uninstall the extension from the cluster.
 ### [Remove-AzKubernetesConfiguration](Remove-AzKubernetesConfiguration.md)
 This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
 
-### [Update-AzExtension](Update-AzExtension.md)
-Patch an existing Kubernetes Cluster Extension.
-
