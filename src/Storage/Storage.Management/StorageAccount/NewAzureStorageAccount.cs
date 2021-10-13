@@ -203,6 +203,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable Secure File Transfer Protocol for the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSftp
+        {
+            get
+            {
+                return enableSftp != null ? enableSftp.Value : false;
+            }
+            set
+            {
+                enableSftp = value;
+            }
+        }
+        private bool? enableSftp = null;
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Enable HierarchicalNamespace for the Storage account.")]
         [ValidateNotNullOrEmpty]
         public bool EnableHierarchicalNamespace
@@ -791,6 +808,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.AllowProtectedAppendWrites = this.allowProtectedAppendWrite;
                 }
+            }
+            if(this.enableSftp != null)
+            {
+                createParameters.IsSftpEnabled = this.enableSftp;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

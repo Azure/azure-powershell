@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AllowCrossTenantReplication = storageAccount.AllowCrossTenantReplication;
             this.PublicNetworkAccess = storageAccount.PublicNetworkAccess;
             this.ImmutableStorageWithVersioning = storageAccount.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageAccount(storageAccount.ImmutableStorageWithVersioning);
+            this.EnableSftp = storageAccount.IsSftpEnabled;
         }
         public bool? AllowCrossTenantReplication { get; set; }
 
@@ -146,8 +147,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? AllowBlobPublicAccess { get; set; }
 
         public string MinimumTlsVersion { get; set; }
-        
+
         public bool? EnableNfsV3 { get; set; }
+
+        public bool? EnableSftp { get; set; }
 
         public bool? AllowSharedKeyAccess { get; set; }
 
