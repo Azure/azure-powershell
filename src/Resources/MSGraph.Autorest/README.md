@@ -66,7 +66,7 @@ format-ps1xml: MSGraph.format.ps1xml
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 subject-prefix: Mg
 identity-correction-for-post: true
-endpoint-resource-id-key-name: https://graph.microsoft.com/
+endpoint-resource-id-key-name: MicrosoftGraphEndpointResourceId
 
 # Disable default settings and Set in to empty for msgraph
 default-exclude-tableview-properties: false
