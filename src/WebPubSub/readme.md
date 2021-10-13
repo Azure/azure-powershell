@@ -134,14 +134,17 @@ directive:
           - Limit
           - Unit
   - where:
-      model-name: SkuList
+      model-name: Sku
     set:
       format-table:
         properties:
           - Name
           - Tier
+          - SkuCapacity
           - CapacityDefault
           - CapacityAllowedValue
+          - CapacityMinimum
+          - CapacityMaximum
           - CapacityScaleType
   # rename parameters
   - where:
