@@ -26,12 +26,12 @@ Password                                           WebSocketUri
 ****************** wss://bridge-linux-xx.eastus.management.azurecontainer.io/exec/caas-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/bridge-xxxxxxxxxxxxxxx?rows=12&cols=12api-version=2018-02-01-preview
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainerExecResponse
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IContainerExecResponse
 .Link
 https://docs.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
 #>
 function Invoke-AzContainerInstanceCommand {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainerExecResponse])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IContainerExecResponse])]
   [CmdletBinding(DefaultParameterSetName='ExecuteExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
       [Parameter(Mandatory)]
