@@ -1,18 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a hub setting
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $eventHandler = @{UrlTemplate = 'http://example.com/api/{hub}/connect/{event}' ; AuthType = 'None' ; SystemEvent = 'connect' ; } ,
+@{ UrlTemplate = 'http://example.com/api/{hub}/userevent/{event}' ; AuthType = 'None' ; UserEventPattern = '*' }
+
+PS C:\> New-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps -EventHandler $eventHandler
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+The example first creates a list of hash tables containing two event handler settings, one for system events and the other for user events. Then it creates a hub with the event handlers.
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
