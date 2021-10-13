@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             IgnoreCase = true)]
         public string DefaultSharePermission { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Enable or disable public network access to the storage account. Enabled by default. Possible values include: 'Enabled', 'Disabled'.")]
+        [Parameter(Mandatory = false, HelpMessage = "Allow or disallow public network access to Storage Account.Possible values include: 'Enabled', 'Disabled'.")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         [ValidateNotNullOrEmpty]
         public string PublicNetworkAccess { get; set; }

@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+
+## Version 1.0.0
 * General availability of `Az.Attestation` module
 
 ## Version 0.1.8

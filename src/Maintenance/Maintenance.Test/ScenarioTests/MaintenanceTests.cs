@@ -41,6 +41,13 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMaintenanceConfigurationInGuestPatch()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzMaintenanceConfigurationInGuestPatch");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConfigurationAssignment()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzConfigurationAssignment");

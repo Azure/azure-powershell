@@ -363,6 +363,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Premium_LRS = "Premium_LRS";
 
         /// <summary>
+        ///     Represents Premium_ZRS storage account.
+        /// </summary>
+        public const string Premium_ZRS = "Premium_ZRS";
+
+        /// <summary>
         ///     Represents primary location.
         /// </summary>
         public const string PrimaryLocation = "Primary";
@@ -518,6 +523,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Represents StandardSSD_LRS storage account.
         /// </summary>
         public const string StandardSSD_LRS = "StandardSSD_LRS";
+
+        /// <summary>
+        ///     Represents StandardSSD_ZRS storage account.
+        /// </summary>
+        public const string StandardSSD_ZRS = "StandardSSD_ZRS";
 
         /// <summary>
         ///     Represents Standard_SSD storage account.

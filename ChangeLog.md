@@ -1,3 +1,108 @@
+## 6.5.0 - October 2021
+#### Az.Accounts
+* Supported getting the access token for Microsoft Graph.
+* Added AuthorizeRequestDelegate to allow service module to adjust token audience.
+* Utilized [AssemblyLoadContext](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext) to resolve assembly conflict issues in PowerShell.
+* Updated Azure.Core from 1.16.0 to 1.19.0.
+
+#### Az.Attestation
+* General availability of 'Az.Attestation' module
+
+#### Az.Cdn
+* Fixed null reference exception and typos in 'New-AzFrontDoorCdnRule' cmdlet
+
+#### Az.Compute
+* Updated Compute .NET SDK package reference to version 49.1.0
+* Fixed a bug in 'Get-AzVM' that caused incorrect power status output.
+
+#### Az.DataFactory
+* Added a DataFlowEnableQuickReuse argument for the 'Set-AzDataFactoryV2IntegrationRuntime' cmdlet to enable quick reuse of clusters in next pipeline activities.
+* Updated ADF .Net SDK version to 4.25.0
+* Added a VNetInjectionMethod argument for the 'Set-AzDataFactoryV2IntegrationRuntime' cmdlet to support the express virtual network injection of Azure-SSIS Integration Runtime.
+
+#### Az.FrontDoor
+* Allowed rule engine action creation without RouteConfigurationOverride for 'New-AzFrontDoorRulesEngineActionObject'.
+* Fixed DynamicCompression parameter being ignored issue of 'New-AzFrontDoorRulesEngineActionObject'.
+
+#### Az.KeyVault
+* Supported custom role definitions on managed HSM:
+    - Create via 'New-AzKeyVaultRoleDefinition',
+    - Delete via 'Remove-AzKeyVaultRoleDefinition',
+    - Filter all custom roles via 'Get-AzKeyVaultRoleDefinition -Custom'.
+* Supported Encrypt/Decrypt/Wrap/Unwrap using keys [#15679]
+* Enabled managing resources in other subscriptions without switching the context by adding '-Subscription <String>'.
+
+#### Az.Maintenance
+* Added Guest patch maintenance support.
+
+#### Az.Network
+* Support for Sku, ScaleUnits parameters of BastionHost resource.
+    - 'New-AzBastion'
+    - 'Set-AzBastion'
+* Onboard Azure Resource Manager to Private Link Common Cmdlets
+* Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.
+    - 'New-AzVpnGateway'
+    - 'Update-AzVpnGateway'
+* Updated cmdlet to add property to disable InternetSecurity for P2SVpnGateway.
+    - 'New-AzP2sVpnGateway'
+* Added new cmdlets for HubBgpConnection child resource of VirtualHub.
+    - 'Get-AzVirtualHubBgpConnection'
+    - 'New-AzVirtualHubBgpConnection'
+    - 'Update-AzVirtualHubBgpConnection'
+    - 'Remove-AzVirtualHubBgpConnection'
+* Onboard Azure HDInsight to Private Link Common Cmdlets
+
+#### Az.RecoveryServices
+* Azure Site Recovery bug fixes for VMware to Azure Reprotect, Update policy and Disable scenarios.
+* Azure Backup added the support for UserAssigned MSI in RecoveryServices Vault.
+
+#### Az.Resources
+* Added a clearer error message for a case in which TemplateUri do not accept bicep file.
+* Fixed typos with ManagementGroups breaking change descriptions [#15819].
+* Fixed resource tags casing issue - resource tags casing not being preserved.
+* Updated to Microsoft.Azure.Management.Authorization 2.13.0-preview.
+
+#### Az.Sql
+* Fixed 'Get-AzSqlDatabaseImportExportStatus' to report the error encountered
+
+#### Az.Storage
+* Upgraded Azure.Storage.Blobs to 12.10.0
+* Upgraded Azure.Storage.Files.Shares to 12.8.0
+* Upgraded Azure.Storage.Files.DataLake to 12.8.0
+* Upgraded Azure.Storage.Queues to 12.8.0
+* Supported upgrade storage account to enable HierarchicalNamespace
+    -  'Invoke-AzStorageAccountHierarchicalNamespaceUpgrade'
+    -  'Stop-AzStorageAccountHierarchicalNamespaceUpgrade'
+* Supported AccessTierInferred, Tags in blob inventory policy schema
+    - 'New-AzStorageBlobInventoryPolicyRule'
+* Supported create/update storage account with PublicNetworkAccess enabled/disabled 
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported create/update storage blob container with RootSquash
+    - 'New-AzRmStorageContainer'
+    - 'Update-AzRmStorageContainer'
+* Supported AllowProtectedAppendWriteAll in set container Immutability Policy, and add container LegalHold
+    - 'Set-AzRmStorageContainerImmutabilityPolicy'
+    - 'Add-AzRmStorageContainerLegalHold'
+
+#### Az.StorageSync
+* Fixed a bug where not all properties of PSSyncSessionStatus and PSSyncActivityStatus objects were being populated properly.
+* This affected the 'Get-AzStorageSyncServerEndpoint' cmdlet when trying to access the following properties of the output:
+    - SyncStatus.UploadStatus
+    - SyncStatus.DownloadStatus
+    - SyncStatus.UploadActivity
+    - SyncStatus.DownloadActivity
+
+#### Az.Websites
+* Updated 'Import-AzWebAppKeyVaultCertificate1' to set the default name with combination of keyvault name and cert name 
+
+### Thanks to our community contributors
+* @DSakura207, Use last PowerState instance in Statuses for power status (#15941)
+* Yannic Graber (@grabery), Recode Example2 (#15808)
+* @joelmforsyth, Fix multi-regional examples (#15918)
+* Adam Coffman (@SysAdminforCoffee), Update Set-AzNetworkInterfaceIpConfig.md (#15846)
+* Michael Howard (@x509cert), Reworded sentence to make it clear that a specific key version must be provided (#15886)
+
 ## 6.4.0 - September 2021
 #### Az.Accounts
 * Corrected the URLs to Azure Portal in the results of 'Get-AzEnvironment' and 'Get-AzContext'. [#15429]

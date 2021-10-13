@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzRedisCache
 
 ## SYNOPSIS
-Modifies a Redis Cache.
+Modifies an Azure Cache for Redis.
 
 ## SYNTAX
 
@@ -21,11 +21,11 @@ Set-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-Size <String>] [
 ```
 
 ## DESCRIPTION
-The **Set-AzRedisCache** cmdlet modifies an Azure Redis Cache.
+The **Set-AzRedisCache** cmdlet modifies an Azure Cache for Redis.
 
 ## EXAMPLES
 
-### Example 1: Modify a Redis Cache
+### Example 1: Modify Azure Cache for Redis
 ```
 PS C:\>Set-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
 
@@ -49,7 +49,229 @@ PS C:\>Set-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -RedisConfi
           Zone               : []
 ```
 
-This command updates the maxmemory-policy for the Redis Cache named MyCache.
+This command updates the maxmemory-policy for your Azure Cache fo Redis named *MyCache*.
+
+### Example 2: Modify Azure Cache for Redis - If you want to Disable RDB or AOF Data Persistence.
+```
+PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"rdb-backup-enabled" = "false"}
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : Succeeded
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300], [rdb-backup-enabled, false]...} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : []
+```    
+
+This cmdlet disables RDB backup data persistence for Azure Cache for Redis. You can also disable AOF backup persistent cache.
+
+### Example 3: Modify Azure Cache for Redis - If you want to add data persistence after azure redis cache created.
+```
+PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : Succeeded
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300], [rdb-backup-enabled, true]....} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : []
+```
+This cmdlet enables rdb-backup persistence on an already existing cache. You can also enable aof-backup persistence.
+
+### Example 4: Modify Azure Cache for Redis - If you want to change rdb back up frequency.
+
+For example - Currently you are taking RDB snapshot in every 30 minute, but you want to change to take snapshot 15 minutes.
+
+```
+PS C:\>Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-frequency" = "15"}
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : Succeeded
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300], [rdb-backup-enabled, true]....} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : []
+``` 
+
+### Example 5: Modify Azure Cache for Redis - If you want to change AOF back up data persistence to RDB back up.
+
+```
+PS C:\>Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"aof-backup-enabled"= "false"; "rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : Succeeded
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300], [rdb-backup-enabled, true]....} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : []
+``` 
+This cmdlet helps in changing persistence method.
+
+
+### Example 6: Scale an Azure Cache for Redis Instance - Update to different size.
+
+```
+PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P2" -Sku "Premium"
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : Scaling
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300]....} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : []
+```
+This command increases or decreases the memory size of your instance.
+
+
+### Example 7: Scale an Azure Cache for Redis Instance - Update to different tier.
+
+```
+PS C:\>Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium" 
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : Scaling
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300]....} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 1GB
+          Sku                : Standard
+          Tag                : {}
+          Zone               : []
+```
+This command helps you change the tier of your cache. You can change from Basic to Standard, or Standard to Premium.
+
+### Example 8: Scale an Azure Cache for Redis Instance - Enable Redis Clustering.
+
+```
+PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 1
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : Scaling
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300]....} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          ShardCount         :
+          Tag                : {}
+          Zone               : []
+```
+This cmdlet helps you in enable clustering for your Azure Cache for Redis instance. For increasing the shard count, must enable clustering first.
+
+
+### Example 9: Scale an Azure Cache for Redis Instance - Use Redis Cluster to scale in/out.
+
+```
+PS C:\>Set-AzRedisCache -Name "MyCache" -ShardCount 2
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : Scaling
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300]....} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          ShardCount         : 1
+          Tag                : {}
+          Zone               : []
+```
+This command increases or decreases the cluster size.
+
 
 ## PARAMETERS
 
@@ -100,7 +322,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Redis Cache to update.
+Specifies the name of the Azure Cache for Redis to update.
 
 ```yaml
 Type: System.String

@@ -15,7 +15,7 @@ Modifies boot diagnostics properties of a virtual machine.
 
 ### EnableBootDiagnostics
 ```
-Set-AzVMBootDiagnostic [-VM] <PSVirtualMachine> [-Enable] [-ResourceGroupName] <String>
+Set-AzVMBootDiagnostic [-VM] <PSVirtualMachine> [-Enable] [[-ResourceGroupName] <String>]
  [[-StorageAccountName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ The **Set-AzVMBootDiagnostic** cmdlet modifies boot diagnostics properties of a 
 ```
 PS C:\> $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07"
 PS C:\> Set-AzVMBootDiagnostic -VM $VM -Enable -ResourceGroupName "ResourceGroup11" -StorageAccountName "DiagnosticStorage"
-PS C:\> Update-AzVM -VM $VM
+PS C:\> Update-AzVM -VM $VM -ResourceGroupName "ResourceGroup11"
 ```
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzVM**.
@@ -97,7 +97,7 @@ Type: System.String
 Parameter Sets: EnableBootDiagnostics
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-Specifies the name of the storage account in which to save boot diagnostics data.
+Specifies the name of the storage account in which to save boot diagnostics data. If not provided, it will look for a StorageUri in the BootDiagnostic Profile in the PSVirtualMachine object provided in the '-VM' parameter. If StorageUri is null, it will default to used a managed storage account. 
 
 ```yaml
 Type: System.String

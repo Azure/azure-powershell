@@ -29,7 +29,7 @@ function Test-VaultCrud
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $backupLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $backupLocation -Tags @{Owner = 'b-aubald'}
 
         # try creating an Account -               
         $newTagName = "tag1"
