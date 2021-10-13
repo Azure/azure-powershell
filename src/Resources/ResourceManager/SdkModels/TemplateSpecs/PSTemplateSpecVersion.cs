@@ -68,6 +68,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public DateTime? LastModifiedTime { get; private set; }
 
         /// <summary>
+        /// Gets or sets the UI Form definition (if any) for the template spec version
+        /// </summary>
+        public string UIFormDefinition { get; set; }
+
+        /// <summary>
         /// Converts a template spec model from the Azure SDK to the powershell
         /// exposed template spec model.
         /// </summary>
@@ -92,7 +97,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                     ? new Dictionary<string, string>()
                     : new Dictionary<string, string>(templateSpecVersion.Tags),
                 // Note: Cast is redundant, but present for clarity reasons:
-                MainTemplate = ((JToken)templateSpecVersion.MainTemplate).ToString()
+                MainTemplate = ((JToken)templateSpecVersion.MainTemplate).ToString(),
+                UIFormDefinition = ((JToken)templateSpecVersion.UiFormDefinition)?.ToString()
             };
 
             if (templateSpecVersion.LinkedTemplates?.Any() == true) {

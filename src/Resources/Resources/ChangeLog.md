@@ -23,6 +23,8 @@
 * Fixed typos with ManagementGroups breaking change descriptions [#15819].
 * Fixed resource tags casing issue - resource tags casing not being preserved.
 * Update to Microsoft.Azure.Management.Authorization 2.13.0-preview.
+* Added property `UIFormDefinition` to Template Spec Versions
+* `Export-AzTemplateSpec` will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.
 
 ## Version 4.3.1
 * Use JsonExtensions to serialize deserialize JSON objects to ensure the use of custom serialization settings [#15552]
