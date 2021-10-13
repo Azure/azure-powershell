@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added `-FederatedId` on `Connect-AzAccount` to support OIDC token.
 
 ## Version 2.5.4
 * Supported getting the access token for Microsoft Graph.
