@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// <summary>
     /// A telemetry client implementation to collect the telemetry data for AzPredictor.
     /// </summary>
-    internal class AzPredictorTelemetryClient : ITelemetryClient
+    internal class AzPredictorTelemetryClient : ITelemetryClient, IDisposable
     {
         // The maximum size we can have in the telemetry property
         // Application Insight has a limit of 8192 (https://github.com/MicrosoftDocs/azure-docs/blob/master/includes/application-insights-limits.md).
@@ -72,6 +72,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </remarks>
         private AggregatedTelemetryData _cachedAggregatedTelemetryData = new();
 
+        private bool _isDisposed;
+
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictorTelemetryClient"/>.
         /// </summary>
@@ -82,6 +84,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             _azContext = azContext;
             _telemetryDispatcher = new ActionBlock<ITelemetryData>(
                     (telemetryData) => DispatchTelemetryData(telemetryData));
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            if (_isDisposed)
+            {
+                return;
+            }
+
+            _isDisposed = true;
+            Dispose(disposing: true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _telemetryDispatcher.Complete();
+            }
         }
 
         /// <inheritdoc/>
@@ -269,7 +291,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
             if (_cachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient._MaximumPropertyValueSize)
             {
-                _cachedAggregatedTelemetryData = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, _cachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault().SuggestionSessionId);
+                var _ = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, _cachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault().SuggestionSessionId);
             }
 
             if (_cachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault()?.IsSuggestionComplete == true)
@@ -497,7 +519,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                     var suggestionSource = foundSuggestions.SuggestionSources;
                     var sourceTexts = foundSuggestions.SourceTexts;
 
+#if TELEMETRY_PLACEHOLDER
+                    toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameFound, "PLACEHOLDER");
+#else
                     toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameFound, sourceTexts?.Zip(suggestionSource)?.Select((s) => new object[] { s.First, (int)s.Second }));
+#endif
                     toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameIsCancelled, suggestionSession.IsCancellationRequested.ToString(CultureInfo.InvariantCulture));
                 }
 
