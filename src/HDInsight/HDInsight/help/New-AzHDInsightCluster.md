@@ -16,8 +16,8 @@ Creates an Azure HDInsight cluster in the specified resource group for the curre
 ### Default (Default)
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
- [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
+ [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [-StorageAccountResourceId <String>]
+ [-StorageAccountKey <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
  [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
  [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
@@ -36,15 +36,16 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
  [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker] [-KafkaClientGroupId <String>]
  [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>] [-PrivateLink <String>]
- [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zones <String[]>]
+ [-PrivateLinkConfigurations <AzureHDInsightPrivateLinkConfiguration[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFilePath
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
- [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
+ [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [-StorageAccountResourceId <String>]
+ [-StorageAccountKey <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
  [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
  [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
@@ -63,15 +64,16 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
  [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
  [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
- [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>]
+ [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zones <String[]>]
+ [-PrivateLinkConfigurations <AzureHDInsightPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
 ```
 New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [[-StorageAccountResourceId] <String>]
- [[-StorageAccountKey] <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
+ [-ClusterSizeInNodes] <Int32> [-HttpCredential] <PSCredential> [-StorageAccountResourceId <String>]
+ [-StorageAccountKey <String>] [-StorageAccountType <StorageType>] [-Config <AzureHDInsightConfig>]
  [-OozieMetastore <AzureHDInsightMetastore>] [-HiveMetastore <AzureHDInsightMetastore>]
  [-AmbariDatabase <AzureHDInsightMetastore>]
  [-AdditionalStorageAccounts <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
@@ -90,7 +92,8 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
  [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
  [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
- [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>]
+ [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zones <String[]>]
+ [-PrivateLinkConfigurations <AzureHDInsightPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -496,6 +499,126 @@ PS C:\&gt; # Primary storage account info
             -EnableComputeIsolation `
 ```
 
+### Example 11: Create an Azure HDInsight cluster with private link configuration feature
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Virtual network info
+        $virtualNetworkId="yourvnetresourceid"
+        $subnetName="yoursubnetname"
+
+        $ipConfigName="ipconfig"
+        $privateIPAllocationMethod="dynamic" # the only supported IP allocation method for private link IP configuration is dynamic
+        $subnetId=$vnetId+"/subnets/"+$subnetName
+        # Create Private IP configuration
+        $ipConfiguration= New-AzHDInsightIPConfiguration -Name $ipConfigName -PrivateIPAllocationMethod $privateIPAllocationMethod -SubnetId $subnetId -Primary
+
+        $privateLinkConfigurationName="plconfig"
+        $groupId="headnode"
+        # Create private link configuration
+        $privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name $privateLinkConfigurationName -GroupId $groupId -IPConfigurations $ipConfiguration
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -VirtualNetworkId $virtualNetworkId -SubnetName $subnetName `
+            -ResourceProviderConnection Outbound -PrivateLink Enabled -PrivateLinkConfigurations $privateLinkConfiguration
+```
+
+### Example 12: Create an Azure HDInsight cluster availability feature
+```
+PS C:\&gt; # Primary storage account info
+        $storageAccountResourceGroupName = "Group"
+        $storageAccountResourceId = "yourstorageaccountresourceid"
+        $storageAccountName = "yourstorageacct001"
+        $storageAccountKey = Get-AzStorageAccountKey `
+            -ResourceGroupName $storageAccountResourceGroupName `
+            -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | %{$_.Value}
+        $storageContainer = "container002"
+
+        # Cluster configuration info
+        $location = "East US 2"
+        $clusterResourceGroupName = "Group"
+        $clusterName = "your-hadoop-002"
+        $clusterCreds = Get-Credential
+
+        # If the cluster's resource group doesn't exist yet, run:
+        # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+        # Virtual network info
+        $virtualNetworkId="yourvnetresourceid"
+        $subnetName="yoursubnetname"
+
+        $databaseUserName="yourusername"
+        $databasePassword="******"
+        $databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
+
+        $sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
+        $sqlserver="yoursqlserver.database.windows.net"
+        $ambariDatabase="ambaridb"
+        $hiveDatabase ="hivedb"
+        $oozieDatabase = "ooziedb"
+
+        # availability zone feature requires customer ambari database, hive metatastore and oozie metastore
+        # Create Ambari database
+        $config=New-AzHDInsightClusterConfig|Add-AzHDInsightMetastore `
+        -SqlAzureServerName $sqlserver -DatabaseName $ambariDatabase `
+        -Credential $sqlserverCredential -MetastoreType AmbariDatabase
+
+        # Create Hive metastore
+        $config=$config|Add-AzHDInsightMetastore `
+        -SqlAzureServerName $sqlserver -DatabaseName $hiveDatabase `
+        -Credential $sqlserverCredential -MetastoreType HiveMetastore
+
+        # Create Oozie metastore
+        $config=$config|Add-AzHDInsightMetastore `
+        -SqlAzureServerName $sqlserver -DatabaseName $oozieDatabase `
+        -Credential $sqlserverCredential -MetastoreType OozieMetastore
+
+        # availability zones
+        $zones="1"
+
+        # Create the cluster
+        New-AzHDInsightCluster `
+            -ClusterType Hadoop `
+            -ClusterSizeInNodes 4 `
+            -ResourceGroupName $clusterResourceGroupName `
+            -ClusterName $clusterName `
+            -HttpCredential $clusterCreds `
+            -Location $location `
+            -StorageAccountResourceId $storageAccountResourceId `
+            -StorageAccountKey $storageAccountKey `
+            -StorageContainer $storageContainer `
+            -SshCredential $clusterCreds `
+            -VirtualNetworkId $virtualNetworkId -SubnetName $subnetName `
+            -AmbariDatabase $config.AmbariDatabase -HiveMetastore $config.HiveMetastore -OozieMetastore $config.OozieMetastore -Zones $zones
+```
+
 ## PARAMETERS
 
 ### -AadTenantId
@@ -842,7 +965,6 @@ Gets or sets the encryption algorithm.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: RSA-OAEP, RSA-OAEP-256, RSA1_5
 
 Required: False
 Position: Named
@@ -1104,7 +1226,21 @@ Gets or sets the private link type.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkConfigurations
+Gets or sets the private link configuration.
+
+```yaml
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightPrivateLinkConfiguration[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -1166,7 +1302,6 @@ Gets or sets the resource provider connection type.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Inbound, Outbound
 
 Required: False
 Position: Named
@@ -1249,7 +1384,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -1279,7 +1414,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -1292,7 +1427,6 @@ Gets or sets the type of the storage account.
 Type: System.Nullable`1[Microsoft.Azure.Commands.HDInsight.Models.Management.StorageType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureStorage, AzureDataLakeStore, AzureDataLakeStorageGen2
 
 Required: False
 Position: Named
@@ -1397,6 +1531,21 @@ Use Get-AzVMSize for acceptable VM sizes, and see HDInsight's pricing page.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zones
+Gets or sets the availability zones.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

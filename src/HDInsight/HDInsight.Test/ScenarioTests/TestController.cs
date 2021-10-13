@@ -31,6 +31,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 
 namespace Commands.HDInsight.Test.ScenarioTests
 {
@@ -46,6 +47,9 @@ namespace Commands.HDInsight.Test.ScenarioTests
         public KeyVaultClient KeyVaultClient { get; private set; }
         public ManagedServiceIdentityClient ManagedServiceIdentityClient { get; private set; }
         public NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public GraphRbacManagementClient GraphRbacManagementClient { get; private set; }
+
         public static TestHelper TestHelper { get; private set; }
         public static TestController NewInstance => new TestController();
         
@@ -63,7 +67,8 @@ namespace Commands.HDInsight.Test.ScenarioTests
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             ManagedServiceIdentityClient = GetManagedServiceIdentityClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
-            _helper.SetupManagementClients(ResourceManagementClient, HDInsightManagementClient, StorageManagementClient, OperationalInsightsManagementClient, KeyVaultManagementClient, ManagedServiceIdentityClient);
+            GraphRbacManagementClient = GetGraphRbacManagementClient(context);
+            _helper.SetupManagementClients(ResourceManagementClient, HDInsightManagementClient, StorageManagementClient, OperationalInsightsManagementClient, KeyVaultManagementClient, ManagedServiceIdentityClient, NetworkManagementClient, GraphRbacManagementClient);
         }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
@@ -118,6 +123,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
                     _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                     _helper.GetRMModulePath("AzureRM.ManagedServiceIdentity.psd1"),
                     _helper.RMKeyVaultModule,
+                    _helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
                 try
@@ -173,6 +179,11 @@ namespace Commands.HDInsight.Test.ScenarioTests
         private static NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
             return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
+        {
+            return context.GetGraphServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private TestHelper GetTestHelper()

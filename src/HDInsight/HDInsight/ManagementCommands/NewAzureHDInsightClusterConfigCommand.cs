@@ -99,7 +99,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
+#pragma warning disable CS0436 // Type conflicts with imported type
         public Tier ClusterTier
+#pragma warning restore CS0436 // Type conflicts with imported type
         {
             get { return _config.ClusterTier; }
             set { _config.ClusterTier = value; }

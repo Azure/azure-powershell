@@ -75,7 +75,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets or sets the cluster tier.
         /// </summary>
+#pragma warning disable CS0436 // Type conflicts with imported type
         public Tier ClusterTier { get; set; }
+#pragma warning restore CS0436 // Type conflicts with imported type
 
         /// <summary>
         /// Gets or sets the database to store the metadata for Oozie.
