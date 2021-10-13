@@ -294,9 +294,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 var _ = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, _cachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault().SuggestionSessionId);
             }
 
-            if (_cachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault()?.IsSuggestionComplete == true)
+            if ((_cachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault()?.IsSuggestionComplete == true)
+                    || _cachedAggregatedTelemetryData.HasSentHttpRequest.HasValue)
             {
-                _cachedAggregatedTelemetryData.IsDataComplete = true;
+                _cachedAggregatedTelemetryData.UsingPrediction = true;
             }
 
             _cachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
@@ -570,7 +571,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 properties.Add(HistoryTelemetryData.PropertyNameHistory, aggregatedData.CommandLine);
             }
 
-            properties.Add("IsDataComplete", aggregatedData.IsDataComplete.ToString(CultureInfo.InvariantCulture));
+            properties.Add("UsingPrediction", aggregatedData.UsingPrediction.ToString(CultureInfo.InvariantCulture));
 
             SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/Aggregation", properties);
         }
