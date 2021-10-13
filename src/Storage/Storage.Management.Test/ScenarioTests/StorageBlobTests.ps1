@@ -33,7 +33,7 @@ function Test-StorageBlobIsVersioningEnabled
         $kind = 'StorageV2'
 	
         Write-Verbose "RGName: $rgname | Loc: $loc"
-        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc -Tag @{Some = 'some'};
 		
         $loc = Get-ProviderLocation_Canary ResourceManagement;
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
@@ -227,14 +227,14 @@ function Test-StorageBlobContainerLegalHold
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 		$containerName = "container"+ $rgname
 
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzResourceGroup -Name $rgname -Location $loc;
 
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHierarchicalNamespace $true
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 
 		New-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
@@ -246,7 +246,7 @@ function Test-StorageBlobContainerLegalHold
 		Assert-AreEqual $false $container.HasImmutabilityPolicy
 		Assert-AreEqual none $container.PublicAccess
 		
-        Add-AzRmStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname  -Name $containerName -Tag  tag1,tag2,tag3
+        Add-AzRmStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname  -Name $containerName -Tag  tag1,tag2,tag3 -AllowProtectedAppendWriteAll $true
 		$container = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual 3 $container.LegalHold.Tags.Count
@@ -259,6 +259,7 @@ function Test-StorageBlobContainerLegalHold
 		Assert-AreEqual "tag3" $container.LegalHold.Tags[2].Tag
 		Assert-AreNotEqual $null $container.LegalHold.Tags[2].Timestamp
 		Assert-AreNotEqual $null $container.LegalHold.Tags[2].ObjectIdentifier
+		Assert-AreEqual $true $container.LegalHold.ProtectedAppendWritesHistory.AllowProtectedAppendWritesAll
 
 		Remove-AzRmStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -Tag tag1,tag2 
 		$container = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
@@ -308,7 +309,7 @@ function Test-StorageBlobContainerImmutabilityPolicy
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 		$containerName = "container"+ $rgname
 
@@ -352,12 +353,13 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreEqual $true $container.ImmutabilityPolicy.AllowProtectedAppendWrites
 		
 		$immutabilityPeriod =2
-        Set-AzRmStorageContainerImmutabilityPolicy -inputObject $policy -ImmutabilityPeriod $immutabilityPeriod -AllowProtectedAppendWrite $false
+        Set-AzRmStorageContainerImmutabilityPolicy -inputObject $policy -ImmutabilityPeriod $immutabilityPeriod -AllowProtectedAppendWrite $false -AllowProtectedAppendWriteAll $true
 		$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 
 		Assert-AreEqual $immutabilityPeriod $policy.ImmutabilityPeriodSinceCreationInDays
 		Assert-AreEqual Unlocked $policy.State
 		Assert-AreNotEqual $null $policy.Etag
 		Assert-AreEqual $false $policy.AllowProtectedAppendWrites
+		Assert-AreEqual $true $policy.AllowProtectedAppendWritesAll
 		$container = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName		
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual $immutabilityPeriod $container.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays
@@ -368,6 +370,7 @@ function Test-StorageBlobContainerImmutabilityPolicy
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].Timestamp
 		Assert-AreNotEqual $null $container.ImmutabilityPolicy.UpdateHistory[0].ObjectIdentifier
 		Assert-AreEqual $false $container.ImmutabilityPolicy.AllowProtectedAppendWrites
+		Assert-AreEqual $true $container.ImmutabilityPolicy.AllowProtectedAppendWritesAll
 
         Remove-AzRmStorageContainerImmutabilityPolicy -inputObject $policy 
 		$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $rgname -StorageAccountName $stoname  -ContainerName $containerName 

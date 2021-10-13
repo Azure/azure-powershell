@@ -65,6 +65,7 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 	VNetId                       : 
 	Subnet                       : 
 	SubnetId                     : 
+	VNetInjectionMethod          : Express
 	PublicIPs                    : 
 	State                        : Starting
 	ResourceGroupName            : rg-test-dfv2
@@ -95,6 +96,7 @@ PS C:\> Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -D
 	VNetId                       : 
 	Subnet                       : 
 	SubnetId                     : 
+	VNetInjectionMethod          : Standard
 	PublicIPs                    : 
 	ResourceGroupName            : rg-test-dfv2
 	DataFactoryName              : test-df-eu2

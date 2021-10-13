@@ -29,26 +29,26 @@ Get access token
 
 ## EXAMPLES
 
-### Example 1 Get raw access token for ARM endpoint
+### Example 1 Get the access token for ARM endpoint
 ```powershell
 PS C:\> Get-AzAccessToken
 ```
 
-Get access token of ResourceManager endpoint for current account
+Get access token of current account for ResourceManager endpoint
 
-### Example 2 Get raw access token for AAD graph endpoint
+### Example 2 Get the access token for Microsoft Graph endpoint
 ```powershell
-PS C:\> Get-AzAccessToken -ResourceTypeName AadGraph
+PS C:\> Get-AzAccessToken -ResourceTypeName MSGraph
 ```
 
-Get access token of AAD graph endpoint for current account
+Get access token of Microsoft Graph endpoint for current account
 
-### Example 3 Get raw access token for AAD graph endpoint
+### Example 3 Get the access token for Microsoft Graph endpoint
 ```powershell
-PS C:\> Get-AzAccessToken -ResourceUrl "https://graph.windows.net/"
+PS C:\> Get-AzAccessToken -ResourceUrl "https://graph.microsoft.com/"
 ```
 
-Get access token of AAD graph endpoint for current account
+Get access token of Microsoft Graph endpoint for current account
 
 ## PARAMETERS
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceTypeName
-Optional resouce type name, supported values: AadGraph, AnalysisServices, Arm, Attestation, Batch, DataLake, KeyVault, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.
+Optional resource type name, supported values: AadGraph, AnalysisServices, Arm, Attestation, Batch, DataLake, KeyVault, MSGraph, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.
 
 ```yaml
 Type: System.String
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceUrl
-Resource url for that you're requesting token, e.g. 'http://graph.windows.net/'.
+Resource url for that you're requesting token, e.g. 'https://graph.microsoft.com/'.
 
 ```yaml
 Type: System.String

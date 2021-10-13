@@ -162,7 +162,7 @@ $region_westus = @{Name = 'West US'}
 $region_ukwest = @{Name = 'UK West';ReplicaCount = 2}
 $region_southcentralus = @{Name = 'South Central US';StorageAccountType = Standard_LRS}
 $targetRegions = @($region_eastus, $region_westus, $region_ukwest, $region_southcentralus)
-New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType $storageAccountType
+New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType $storageAccountType -TargetRegion $targetRegions
 ```
 
 Create an image version in four regions. In this example, the global replica count is 1 and the global storage account type is Standard_ZRS. East US will have 3 replicas, each stored on Standard_LRS account storage. West US will inherit from global settings and have 1 replica stored on Standard_ZRS. UK West will have a replica count of 2 stored on Standard_ZRS. South Central US will have one replica stored on Standard_LRS.
@@ -197,7 +197,7 @@ $region_westus = @{Name = 'West US'; Encryption = $westus_encryption}}
 
 # Create images
 $targetRegions = @($region_eastus, $region_westus)
-New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId
+New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -TargetRegion $targetRegions
 ```
 
 Create an image version with encryption in two regions. Disk encryption sets are regional resources and a different disk encryption set must be used in each region.

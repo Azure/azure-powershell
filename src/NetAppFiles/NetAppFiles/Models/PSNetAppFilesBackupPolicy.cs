@@ -51,6 +51,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public object Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets resource etag
+        /// </summary>
+        /// <remarks>
+        /// A unique read-only string that changes whenever the resource is updated.
+        /// </remarks>
+        public string Etag { get; set; }
+
+        /// <summary>
         /// Gets snapshotId
         /// </summary>
         /// <remarks>
@@ -63,16 +71,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>
         /// <remarks>
         ///  Number of volumes using current backup policy
-        /// </remarks>        
+        /// </remarks>
         public int? VolumesAssigned { get; set; }
-
-        /// <summary>
-        /// Gets or sets YearlyBackupsToKeep
-        /// </summary>
-        ///<remarks>
-        /// Yearly backups count to keep
-        ///</remarks>
-        public int? YearlyBackupsToKeep { get; set; }
 
         /// <summary>
         /// Gets or sets MonthlyBackupsToKeep
@@ -100,17 +100,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
 
         /// <summary>
         /// Gets VolumeBackups
-        /// </summary>        
+        /// </summary>
         /// <remarks>
         /// A list of volumes assigned to this policy
         /// </remarks>
         public IList<PSNetAppFilesVolumeBackup> VolumeBackups { get; set; }
 
         ///
-        /// Summary:
-        ///     Gets or sets the property to decide policy is enabled or not        
-        /// Remarks:
+        /// <summary>
+        ///     Gets or sets the property to decide policy is enabled or not
+        /// </summary>
+        /// <remarks>
         /// The property to decide policy is enabled or not
+        /// </remarks>
         public bool? Enabled { get; set; }
 
         /// <summary>

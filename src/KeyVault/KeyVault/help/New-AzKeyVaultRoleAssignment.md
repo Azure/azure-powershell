@@ -58,6 +58,7 @@ And to specify an Azure AD application, use ApplicationId or ObjectId parameters
 The role that is being assigned must be specified using the RoleDefinitionName pr RoleDefinitionId parameter. The scope at which access is being granted may be specified. It defaults to the selected subscription.
 
 ## EXAMPLES
+
 ### Example 1
 ```powershell
 PS C:\> New-AzKeyVaultRoleAssignment -HsmName bez-hsm -RoleDefinitionName "Managed Hsm Crypto User" -ObjectId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx

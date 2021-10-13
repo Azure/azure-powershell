@@ -2017,5 +2017,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter IdentityId. IdentityId can't be set for SystemAssigned Identities
+        /// </summary>
+        public static string InvalidParameterIdentityId
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParameterIdentityId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to IdentityId can't be empty for UserAssigned Identities
+        /// </summary>
+        public static string IdentityIdRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("IdentityIdRequired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to UserAssigned and SystemAssigned identities can't be removed together
+        /// </summary>
+        public static string InvalidIdentityRemove
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidIdentityRemove", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to IdentityId '{0}' is invalid
+        /// </summary>
+        public static string InvalidIdentityId
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidIdentityId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please input a valid UserAssignedIdentity
+        /// </summary>
+        public static string IdentityIdRequiredForCMK
+        {
+            get
+            {
+                return ResourceManager.GetString("IdentityIdRequiredForCMK", resourceCulture);
+            }
+        }
+
     }
 }
