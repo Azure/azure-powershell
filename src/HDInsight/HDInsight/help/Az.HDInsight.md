@@ -68,6 +68,12 @@ Gets the status of the Classic Azure Monitor logs integration on an HDInsight cl
 ### [Get-AzHDInsightPersistedScriptAction](Get-AzHDInsightPersistedScriptAction.md)
 Gets the persisted script actions for a cluster and lists them in chronological order, or gets details for a specified persisted script action.
 
+### [Get-AzHDInsightPrivateEndpointConnection](Get-AzHDInsightPrivateEndpointConnection.md)
+Gets the private endpoint connections of the HDInsight cluster.
+
+### [Get-AzHDInsightPrivateLinkResource](Get-AzHDInsightPrivateLinkResource.md)
+Gets the private link resources of the HDInsight cluster.
+
 ### [Get-AzHDInsightProperty](Get-AzHDInsightProperty.md)
 Gets properties about the HDInsight service, such as available locations and capacity.
 
@@ -92,11 +98,17 @@ Creates a non-persisted cluster configuration object that describes an Azure HDI
 ### [New-AzHDInsightHiveJobDefinition](New-AzHDInsightHiveJobDefinition.md)
 Creates a Hive job object.
 
+### [New-AzHDInsightIPConfiguration](New-AzHDInsightIPConfiguration.md)
+Creates the IP configuration of private link configuration.
+
 ### [New-AzHDInsightMapReduceJobDefinition](New-AzHDInsightMapReduceJobDefinition.md)
 Creates a MapReduce job object.
 
 ### [New-AzHDInsightPigJobDefinition](New-AzHDInsightPigJobDefinition.md)
 Creates a Pig job object.
+
+### [New-AzHDInsightPrivateLinkConfiguration](New-AzHDInsightPrivateLinkConfiguration.md)
+Creates the private link configuration of the HDInsight cluster.
 
 ### [New-AzHDInsightSqoopJobDefinition](New-AzHDInsightSqoopJobDefinition.md)
 Creates a Sqoop job object.
@@ -112,6 +124,9 @@ Removes the autoscale configuration of the HDInsight cluster.
 
 ### [Remove-AzHDInsightPersistedScriptAction](Remove-AzHDInsightPersistedScriptAction.md)
 Removes an persisted script action from an HDInsight cluster.
+
+### [Remove-AzHDInsightPrivateEndpointConnection](Remove-AzHDInsightPrivateEndpointConnection.md)
+Removes the specific private endpoint connection of the HDInsight cluster.
 
 ### [Restart-AzHDInsightHost](Restart-AzHDInsightHost.md)
 Restarts the specific hosts of HDInsight cluster.
@@ -133,6 +148,9 @@ Sets the gateway HTTP credentials of an Azure HDInsight cluster.
 
 ### [Set-AzHDInsightPersistedScriptAction](Set-AzHDInsightPersistedScriptAction.md)
 Sets a previously executed script action to be a persisted script action.
+
+### [Set-AzHDInsightPrivateEndpointConnection](Set-AzHDInsightPrivateEndpointConnection.md)
+Sets the specific private endpoint connection status: Aproved or Rejected.
 
 ### [Start-AzHDInsightJob](Start-AzHDInsightJob.md)
 Starts a defined Azure HDInsight job on a specified cluster.

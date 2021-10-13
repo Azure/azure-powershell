@@ -44,7 +44,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         private const string DefaultParameterSet = "Default";
 
         #region These fields are marked obsolete in ClusterCreateParameters
+#pragma warning disable CS0436 // Type conflicts with imported type
         private OSType? _osType;
+#pragma warning restore CS0436 // Type conflicts with imported type
         #endregion
 
         #region Input Parameter Definitions
@@ -274,14 +276,20 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string SubnetName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
+#pragma warning disable CS0436 // Type conflicts with imported type
         public OSType OSType
+#pragma warning restore CS0436 // Type conflicts with imported type
         {
+#pragma warning disable CS0436 // Type conflicts with imported type
             get { return _osType ?? OSType.Linux; }
+#pragma warning restore CS0436 // Type conflicts with imported type
             set { _osType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
+#pragma warning disable CS0436 // Type conflicts with imported type
         public Tier ClusterTier { get; set; }
+#pragma warning restore CS0436 // Type conflicts with imported type
 
         [Parameter(HelpMessage = "Gets or sets SSH credential.")]
         public PSCredential SshCredential { get; set; }
@@ -376,6 +384,12 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the dedicated host sku for compute isolation.")]
         public string ComputeIsolationHostSku { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the availability zones.")]
+        public string[] Zones { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the private link configuration.")]
+        public AzureHDInsightPrivateLinkConfiguration[] PrivateLinkConfigurations { get; set; }
 
 
         #endregion
@@ -516,15 +530,15 @@ namespace Microsoft.Azure.Commands.HDInsight
                 clusterIdentity = new ClusterIdentity
                 {
                     Type = ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, ClusterIdentityUserAssignedIdentitiesValue>()
+                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
                 };
                 if (AssignedIdentity != null)
                 {
-                    clusterIdentity.UserAssignedIdentities.Add(AssignedIdentity, new ClusterIdentityUserAssignedIdentitiesValue());
+                    clusterIdentity.UserAssignedIdentities.Add(AssignedIdentity, new UserAssignedIdentity());
                 }
                 if (StorageAccountManagedIdentity != null)
                 {
-                    clusterIdentity.UserAssignedIdentities.Add(StorageAccountManagedIdentity, new ClusterIdentityUserAssignedIdentitiesValue());
+                    clusterIdentity.UserAssignedIdentities.Add(StorageAccountManagedIdentity, new UserAssignedIdentity());
                 }
             }
 
@@ -585,9 +599,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 Location = Location,
                 //Tags = Tags,  //To Do add this Tags parameter
+                Zones = Zones,
                 Properties = new ClusterCreateProperties
                 {
-                    Tier = ClusterTier,
+                    Tier = ClusterTier.ToString(),
                     ClusterDefinition = new ClusterDefinition
                     {
                         Kind = ClusterType ?? "Hadoop",
@@ -597,7 +612,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     ClusterVersion = Version ?? "default",
                     KafkaRestProperties = kafkaRestProperties,
                     ComputeProfile = computeProfile,
-                    OsType = OSType,
+                    OsType = OSType.ToString(),
                     SecurityProfile = securityProfile,
                     StorageProfile = storageProfile,
                     DiskEncryptionProperties = diskEncryptionProperties,
@@ -608,8 +623,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     } : null,
                     MinSupportedTlsVersion = MinSupportedTlsVersion,
                     NetworkProperties = networkProperties,
-                    ComputeIsolationProperties= computeIsolationProperties
-
+                    ComputeIsolationProperties= computeIsolationProperties,
+                    PrivateLinkConfigurations = PrivateLinkConfigurations !=null ? PrivateLinkConfigurations.Select(item=> item.ToPrivateLinkConfiguration()).ToList(): null
                 },
                 Identity = clusterIdentity
             };

@@ -30,8 +30,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Location = cluster.Location;
             ClusterId = cluster.Properties.ClusterId;
             ClusterVersion = cluster.Properties.ClusterVersion;
-            OperatingSystemType = cluster.Properties.OsType ?? OSType.Linux;
-            ClusterTier = cluster.Properties.Tier ?? Tier.Standard;
+#pragma warning disable CS0436 // Type conflicts with imported type
+            OperatingSystemType = string.IsNullOrEmpty(cluster.Properties.OsType) ? OSType.Linux: (OSType)Enum.Parse(typeof(OSType), cluster.Properties.OsType, ignoreCase: true);
+#pragma warning restore CS0436 // Type conflicts with imported type
+#pragma warning disable CS0436 // Type conflicts with imported type
+            ClusterTier = string.IsNullOrEmpty(cluster.Properties.Tier) ? Tier.Standard: (Tier)Enum.Parse(typeof(Tier), cluster.Properties.Tier, ignoreCase: true);
+#pragma warning restore CS0436 // Type conflicts with imported type
             ClusterState = cluster.Properties.ClusterState;
             ClusterType = cluster.Properties.ClusterDefinition.Kind;
             CoresUsed = cluster.Properties.QuotaInfo.CoresUsed ?? 0;
@@ -81,6 +85,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             KafkaRestProperties = cluster?.Properties?.KafkaRestProperties != null ? new AzureHDInsightKafkaRestProperties(cluster.Properties.KafkaRestProperties) : null;
             NetworkProperties = cluster?.Properties?.NetworkProperties != null ? new AzureHDInsightNetworkProperties(cluster.Properties.NetworkProperties) : null;
             ComputeIsolationProperties = cluster?.Properties?.ComputeIsolationProperties != null ? new AzureHDInsightComputeIsolationProperties(cluster.Properties.ComputeIsolationProperties) : null;
+            PrivateLinkConfigurations = cluster?.Properties?.PrivateLinkConfigurations?.Select(config => new AzureHDInsightPrivateLinkConfiguration(config)).ToList();
+            PrivateEndpointConnections = cluster?.Properties?.PrivateEndpointConnections?.Select(connection => new AzureHDInsightPrivateEndpointConnection(connection)).ToList();
         }
 
         public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
@@ -148,12 +154,16 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// The type of operating system.
         /// </summary>
+#pragma warning disable CS0436 // Type conflicts with imported type
         public OSType OperatingSystemType { get; set; }
+#pragma warning restore CS0436 // Type conflicts with imported type
 
         /// <summary>
         /// Gets or sets the cluster tier.
         /// </summary>
+#pragma warning disable CS0436 // Type conflicts with imported type
         public Tier ClusterTier { get; set; }
+#pragma warning restore CS0436 // Type conflicts with imported type
 
         /// <summary>
         /// The state of the cluster.
@@ -286,5 +296,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the connectivity endpoints.
         /// </summary>
         public IList<AzureHDInsightConnectivityEndpoint> ConnectivityEndpoints;
+
+        /// <summary>
+        /// Gets or sets the private link configurations.
+        /// </summary>
+        public List<AzureHDInsightPrivateLinkConfiguration> PrivateLinkConfigurations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the private endpoint connections.
+        /// </summary>
+        public List<AzureHDInsightPrivateEndpointConnection> PrivateEndpointConnections { get; }
     }
 }
