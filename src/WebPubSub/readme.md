@@ -36,7 +36,7 @@ require:
 sanitize-names: true
 input-file:
 # You need to specify your swagger files here.
-   - $(repo)/specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2021-10-01/webpubsub.json
+  - $(repo)/specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2021-10-01/webpubsub.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 
@@ -117,6 +117,22 @@ directive:
           - NameAvailable
           - Reason
           - Message
+  - where:
+      model-name: WebPubSubHub
+    set:
+      format-table:
+        properties:
+          - Name
+          - AnonymousConnectPolicy
+  - where:
+      model-name: SignalRServiceUsage
+    set:
+      format-table:
+        properties:
+          - NameValue
+          - CurrentValue
+          - Limit
+          - Unit
   - where:
       model-name: SkuList
     set:
