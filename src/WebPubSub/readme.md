@@ -67,16 +67,39 @@ directive:
       subject: Usage
     set:
       subject-prefix: WebPubSub
+  # Customized cmdlets
   - where:
       verb: New
       subject: WebPubSub
     hide: true
-  # location cannot be updated
+  - where:
+      verb: New
+      subject: WebPubSubKey
+    hide: true
+  # Remove the unexpanded parameter set because there is only one parameter
+  - where:
+      variant: ^Regenerate$|^RegenerateViaIdentity$
+      subject: WebPubSubKey
+    remove: true
+  # Remove the unexpanded parameter set with only one parameter, remove meaningless identity parameter set
+  - where:
+      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
+      subject: WebPubSubNameAvailability
+    remove: true
+  # Hide parameters
   - where:
       verb: Update
       subject: WebPubSub
-      parameter-name: Location
+      parameter-name: Location   # location cannot be updated
     hide: true
+  - where:
+      verb: Test
+      subject: WebPubSubNameAvailability
+      parameter-name: Type
+    hide: true
+    set:
+      default:
+        script: '"Microsoft.SignalRService/webPubSub"'
   # format output
   - where:
       model-name: WebPubSubResource
@@ -86,6 +109,24 @@ directive:
           - Name
           - Location
           - SkuName
+  - where:
+      model-name: NameAvailability
+    set:
+      format-table:
+        properties:
+          - NameAvailable
+          - Reason
+          - Message
+  - where:
+      model-name: SkuList
+    set:
+      format-table:
+        properties:
+          - Name
+          - Tier
+          - CapacityDefault
+          - CapacityAllowedValue
+          - CapacityScaleType
   # rename parameters
   - where:
       parameter-name: IdentityUserAssignedIdentity
