@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected const string DefaultParameterSetName = "DefaultParameter",
                                ResourceIdParameterSet = "ResourceIdParameter",
                                ObjectParameterSet = "ObjectParameter";
-                               
+        private InstanceViewTypes UserDataExpand = InstanceViewTypes.UserData;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -71,7 +72,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     VirtualMachineScaleSetVM parameters = new VirtualMachineScaleSetVM();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSetVM, VirtualMachineScaleSetVM>(this.VirtualMachineScaleSetVM, parameters);
 
-                    if (this.ParameterSetName != ObjectParameterSet)
+                    if (this.IsParameterBound(c => c.UserData))
+                    {
+                        parameters = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId, UserDataExpand);
+                    }
+                    else if (this.ParameterSetName != ObjectParameterSet)
                     {
                         parameters = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId);
                     }
@@ -112,6 +117,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
 
                         parameters.ProtectionPolicy.ProtectFromScaleSetActions = this.ProtectFromScaleSetAction;
+                    }
+
+                    if (this.IsParameterBound(c => c.UserData))
+                    {
+                        parameters.UserData = this.UserData;
                     }
 
                     var result = VirtualMachineScaleSetVMsClient.Update(resourceGroupName, vmScaleSetName, instanceId, parameters);

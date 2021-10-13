@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && !string.IsNullOrEmpty(instanceId))
                 {
-                    if (this.ParameterSetName.Equals("FriendMethod"))
+                    if (this.ParameterSetName.Equals(FriendMethodParameterSet))
                     {
                         var result = VirtualMachineScaleSetVMsClient.GetInstanceView(resourceGroupName, vmScaleSetName, instanceId);
                         var psObject = new PSVirtualMachineScaleSetVMInstanceView();
