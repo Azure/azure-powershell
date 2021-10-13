@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Regenerate the primary access key of a Web PubSub resource
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\>  New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps -KeyType 'Primary'
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
