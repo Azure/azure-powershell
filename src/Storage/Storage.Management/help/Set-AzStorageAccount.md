@@ -890,7 +890,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccess
-Enable or disable public network access to the storage account. Enabled by default. Possible values include: 'Enabled', 'Disabled'.
+Allow or disallow public network access to Storage Account.Possible values include: 'Enabled', 'Disabled'.
 
 ```yaml
 Type: System.String

@@ -33,7 +33,7 @@ function Test-BackupPolicyCrud
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $backupLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $backupLocation -Tags @{Owner = 'b-aubald'}
 
         # try creating an Account -               
         $newTagName = "tag1"
@@ -141,7 +141,7 @@ function Test-BackupPolicyPipelines
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $backupLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $backupLocation -Tags @{Owner = 'b-aubald'}
 
         New-AnfAccount -ResourceGroupName $resourceGroup -Location $backupLocation -Name $accName1 
         $newTagName = "tag1"
