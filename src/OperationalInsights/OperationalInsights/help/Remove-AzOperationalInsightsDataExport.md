@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputDataExport
-{{ Fill InputDataExport Description }}
+Specifies the DataExport to be updated.
 
 ```yaml
 Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport
@@ -106,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+The destination resource ID.
+This can be copied from the Properties entry of the destination resource in Azure.
 
 ```yaml
 Type: System.String

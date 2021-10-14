@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputCluster
-{{ Fill InputCluster Description }}
+Specifies the cluster to be updated.
 
 ```yaml
 Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
@@ -219,7 +219,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+The destination resource ID.
+This can be copied from the Properties entry of the destination resource in Azure.
 
 ```yaml
 Type: System.String

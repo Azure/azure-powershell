@@ -120,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+The destination resource ID.
+This can be copied from the Properties entry of the destination resource in Azure.
 
 ```yaml
 Type: System.String

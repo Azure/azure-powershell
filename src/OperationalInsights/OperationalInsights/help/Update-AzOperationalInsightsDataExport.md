@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputDataExport
-{{ Fill InputDataExport Description }}
+Specifies the DataExport to be updated.
 
 ```yaml
 Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport
