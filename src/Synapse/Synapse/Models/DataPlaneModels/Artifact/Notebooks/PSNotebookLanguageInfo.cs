@@ -27,15 +27,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Name = notebookLanguageInfo?.Name;
             this.CodemirrorMode = notebookLanguageInfo?.CodemirrorMode;
-            var propertiesEnum = notebookLanguageInfo?.GetEnumerator();
-            if (propertiesEnum != null)
-            {
-                this.AdditionalProperties = new Dictionary<string, object>();
-                while (propertiesEnum.MoveNext())
-                {
-                    this.AdditionalProperties.Add(propertiesEnum.Current);
-                }
-            }
+            this.AdditionalProperties = notebookLanguageInfo?.AdditionalProperties;
         }
 
         public string Name { get; set; }

@@ -698,7 +698,7 @@ Are you sure you want to continue?</value>
   </data>
   <data name="RerunSynapseTriggerRun" xml:space="preserve">
     <value>Rerunning trigger run with Id: '{0}'</value>
-  </data>  
+  </data>
   <data name="CannotSendDirectory" xml:space="preserve">
     <value>Can not upload the directory '{0}' to Synapse. If you want to upload directory, please use "ls -File -Recurse | New-AzSynapseWorkspacePackage".</value>
   </data>
@@ -760,5 +760,17 @@ Failed: {2}.</value>
   </data>
   <data name="Encrypting" xml:space="preserve">
     <value>Encrypting the connection string.</value>
+  </data>
+  <data name="RegisteringSynapseMetastore" xml:space="preserve">
+    <value>Registering metastore '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="UpdatingSynapseMetastore" xml:space="preserve">
+    <value>Updating metastore '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemoveSynapseMetastore" xml:space="preserve">
+    <value>Are you sure you want to remove metastore '{0}'?</value>
+  </data>
+  <data name="RemovingSynapseMetastore" xml:space="preserve">
+    <value>Deleting metastore '{0}' in workspace '{1}'.</value>
   </data>
 </root>

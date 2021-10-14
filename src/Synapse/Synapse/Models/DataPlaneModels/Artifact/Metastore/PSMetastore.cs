@@ -13,26 +13,29 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSNotebookMetadata
+    public class PSMetastore
     {
-        public PSNotebookMetadata(NotebookMetadata notebookMetadata)
+        public PSMetastore(MetastoreRegistrationResponse response, string workspaceName, string databaseName)
         {
-            this.Kernelspec = new PSNotebookKernelSpec(notebookMetadata?.Kernelspec);
-            this.LanguageInfo = new PSNotebookLanguageInfo(notebookMetadata?.LanguageInfo);
-            this.AdditionalProperties = notebookMetadata?.AdditionalProperties;
+            this.Status = response?.Status;
+            this.WorkspaceName = workspaceName;
+            this.DatabaseName = databaseName;
         }
 
-        public PSNotebookKernelSpec Kernelspec { get; set; }
+        public PSMetastore(MetastoreUpdationResponse response, string workspaceName, string databaseName)
+        {
+            this.Status = response?.Status;
+            this.WorkspaceName = workspaceName;
+            this.DatabaseName = databaseName;
+        }
 
-        public PSNotebookLanguageInfo LanguageInfo { get; set; }
+        public RequestStatus? Status { get; }
 
-        public IDictionary<string, object> AdditionalProperties { get; set; }
+        public string WorkspaceName { get; set; }
+
+        public string DatabaseName { get; set; }
     }
 }

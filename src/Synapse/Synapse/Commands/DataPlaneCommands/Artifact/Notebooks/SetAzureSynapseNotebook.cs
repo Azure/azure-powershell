@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     options["name"] = this.SparkPoolName;
                     options["sparkVersion"] = sparkPoolInfo.SparkVersion;
                     options["type"] = "Spark";
-                    metadata["a365ComputeOptions"] = options;
+                    metadata.AdditionalProperties.Add("a365ComputeOptions", options);
 
                     notebookResource.Properties.BigDataPool = new BigDataPoolReference(BigDataPoolReferenceType.BigDataPoolReference, this.SparkPoolName);
                     notebookResource.Properties.SessionProperties = new NotebookSessionProperties(options["memory"] + "g", (int)options["cores"], options["memory"] + "g", (int)options["cores"], (int)options["nodeCount"]);

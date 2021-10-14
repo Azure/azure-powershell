@@ -21,8 +21,6 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -41,6 +39,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly DataFlowClient _dataFlowClient;
         private readonly BigDataPoolsClient _bigDataPoolsClient;
         private readonly SparkJobDefinitionClient _sparkJobDefinitionClient;
+        private readonly MetastoreClient _metastoreClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -63,6 +62,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _dataFlowClient = new DataFlowClient(uri, new AzureSessionCredential(context));
             _bigDataPoolsClient = new BigDataPoolsClient(uri, new AzureSessionCredential(context));
             _sparkJobDefinitionClient = new SparkJobDefinitionClient(uri, new AzureSessionCredential(context));
+            _metastoreClient = new MetastoreClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -327,6 +327,25 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 NewName = newName
             }).Poll();
+        }
+
+        #endregion
+
+        #region Metastore
+
+        public MetastoreRegistrationResponse RegisterMetaStore(string databaseName, string inputFolder)
+        {
+            return _metastoreClient.Register(databaseName, new MetastoreRegisterObject(inputFolder));
+        }
+
+        public MetastoreUpdationResponse UpdateMetaStore(string databaseName, string inputFolder)
+        {
+            return _metastoreClient.Update(databaseName, new MetastoreUpdateObject(inputFolder));
+        }
+
+        public void DeleteMetaStore(string databaseName)
+        {
+            _metastoreClient.Delete(databaseName);
         }
 
         #endregion
