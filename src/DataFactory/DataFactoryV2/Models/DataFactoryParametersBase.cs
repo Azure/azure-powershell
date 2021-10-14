@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public FactoryIdentity FactoryIdentity { get; set; }
 
+        public string PublicNetworkAccess { get; set; }
+
         public EncryptionConfiguration EncryptionConfiguration { get; set; }
 
         public bool Force { get; set; }

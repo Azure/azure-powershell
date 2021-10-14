@@ -21,6 +21,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     {
         public Hashtable Tags { get; set; }
 
-        public string PublicNetworkAccess { get; set; }
     }
 }
