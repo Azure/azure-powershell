@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.SparkPoolName, string.Format(Resources.StartingSynapseSparkSession, this.SparkPoolName, this.WorkspaceName)))
             {
-                var sparkSession = SynapseAnalyticsClient.CreateSparkSession(livyRequest, waitForCompletion: true);
+                var sparkSession = SynapseAnalyticsClient.CreateSparkSession(livyRequest);
 
                 PSSynapseSparkSession psSparkSession = null;
                 if (this.IsParameterBound(c => c.Language))

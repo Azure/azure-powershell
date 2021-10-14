@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
+            HelpMessage = "Flag to enable private IPAddress on virtual network gateway")]
         public bool? EnablePrivateIpAddress { get; set; }
 
         [Parameter(

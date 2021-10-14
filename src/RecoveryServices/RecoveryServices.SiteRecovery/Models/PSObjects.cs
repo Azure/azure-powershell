@@ -782,9 +782,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryPointHistoryInMinutes = (int)details.RecoveryPointHistoryInMinutes,
                         CrashConsistentFrequencyInMinutes =
                             (int)details.CrashConsistentFrequencyInMinutes,
-                        MultiVmSyncStatus = details.EnableMultiVmSync.Equals(Constants.True) ?
-                            Constants.Enable :
-                            Constants.Disable
+                        MultiVmSyncStatus = 
+                            details.EnableMultiVmSync.Equals(
+                                Constants.True, StringComparison.OrdinalIgnoreCase) ?
+                                Constants.Enable :
+                                Constants.Disable
                     };
 
                 this.ReplicationProviderSettings = replicationProviderSettings;

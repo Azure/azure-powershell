@@ -61,6 +61,13 @@ The role that is being assigned must be specified using the RoleDefinitionName p
 
 ### Example 1
 ```powershell
+PS C:\> New-AzKeyVaultRoleAssignment -HsmName bez-hsm -RoleDefinitionName "Managed Hsm Crypto User" -ObjectId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+This example assigns role "Managed Hsm Crypto User" to user "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" at top scope. If user wants to perform operations on keys. "Managed Hsm Crypto *" role is required for that user.
+
+### Example 2
+```powershell
 PS C:\> New-AzKeyVaultRoleAssignment -HsmName myHsm -RoleDefinitionName "Managed HSM Policy Administrator" -SignInName user1@microsoft.com
 
 RoleDefinitionName               DisplayName                    ObjectType Scope

@@ -44,7 +44,7 @@ This command creates a new Failover Group with failover policy 'Manual' for two 
 ## PARAMETERS
 
 ### -AllowReadOnlyFailoverToPrimary
-Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.
+Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary

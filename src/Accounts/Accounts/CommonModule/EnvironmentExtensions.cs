@@ -103,6 +103,7 @@ namespace Microsoft.Azure.Commands.Common
             return baseEndpoint;
         }
 
+        ////TODO: Update to support all data plane audience
         /// <summary>
         /// Determien the inteneded audience of a request
         /// </summary>

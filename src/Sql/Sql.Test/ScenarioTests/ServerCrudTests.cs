@@ -70,6 +70,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateWithFederatedClientId()
+        {
+            RunPowerShellTest("Test-CreateServerWithFederatedClientId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdateWithFederatedClientId()
+        {
+            RunPowerShellTest("Test-UpdatingServerWithFederatedClientId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdateWithoutIdentity()
         {
             RunPowerShellTest("Test-UpdateServerWithoutIdentity");

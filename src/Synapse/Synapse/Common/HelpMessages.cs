@@ -94,6 +94,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string LibraryRequirementsFilePath = "Environment configuration file (\"PIP freeze\" output).";
 
+        public const string SparkConfigPropertiesFilePath = "Spark pool properties configuration file.";
+
         public const string Batch = "Indicates Spark batch.";
 
         public const string SparkJobName = "Name of Spark job.";
@@ -490,6 +492,10 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string ManagedPrivateEndpointObject = "The Synapse Managed Private Endpoint Object.";
 
         public const string DefaultVNetName = "Managed Virtual Network Name is 'default'.";
+
+        public const string HelpTriggerRun = "The information about the trigger run.";
+
+        public const string TriggerRunId = "The Run ID of the trigger.";
 
         public const string WorkspacePackageFile = "Specifies a local file path for a file to upload as workspace package.";
 

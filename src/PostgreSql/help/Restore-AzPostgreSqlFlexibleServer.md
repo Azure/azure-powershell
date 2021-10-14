@@ -14,8 +14,9 @@ Restore a PostgreSQL flexible server from an existing backup
 
 ```
 Restore-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -SourceServerName <String>
- -RestorePointInTime <DateTime> [-SubscriptionId <String>] [-Location <String>] [-Zone <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -RestorePointInTime <DateTime> [-SubscriptionId <String>] [-Location <String>] [-PrivateDnsZone <String>]
+ [-Subnet <String>] [-Zone <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,6 +113,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateDnsZone
+The id of an existing private dns zone.
+You can use the
+        private dns zone from same resource group, different resource group, or
+        different subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group that contains the resource, You can obtain this value from the Azure Resource Manager API or the portal.
 
@@ -151,6 +170,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Subnet
+The id of an existing Subnet the private access server will created to.
+Please note that the subnet will be delegated to Microsoft.DBforPostgreSQL/flexibleServers.
+After delegation, this subnet cannot be used for any other type of Azure resources.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

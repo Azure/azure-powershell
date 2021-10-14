@@ -50,6 +50,7 @@
   # Tweaks the pipeline on module load
   $instance.OnModuleLoad = $VTable.OnModuleLoad
   
+
   # Tweaks the pipeline per call
   $instance.OnNewRequest = $VTable.OnNewRequest
   

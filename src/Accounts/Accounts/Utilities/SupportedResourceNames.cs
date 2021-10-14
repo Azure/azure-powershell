@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Profile
             DataPlaneResourceNameMap = new Dictionary<string, string>()
                     {
                         { AadGraph, AzureEnvironment.Endpoint.GraphEndpointResourceId },
-                        { MSGraph, AzureEnvironment.Endpoint.MicrosoftGraphEndpointResourceId },
+                        { MSGraph, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId },
                         { Batch, AzureEnvironment.Endpoint.BatchEndpointResourceId },
                         { DataLake, AzureEnvironment.Endpoint.DataLakeEndpointResourceId },
                         { KeyVault, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId },
