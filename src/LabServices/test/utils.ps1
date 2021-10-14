@@ -17,8 +17,12 @@ function setupEnv() {
         $envFile = 'localEnv.json'
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    .\CreateTestResources.ps1
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    .\SetVariables.ps1
+    Remove-AzResourceGroup -Name $ENV:ResourceGroupName -Force
+      
 }
 
