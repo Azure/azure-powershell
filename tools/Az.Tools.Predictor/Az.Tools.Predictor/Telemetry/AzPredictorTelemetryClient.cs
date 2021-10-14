@@ -27,7 +27,8 @@ using System.Threading.Tasks.Dataflow;
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
-    /// A telemetry client implementation to collect the telemetry data for AzPredictor.
+    /// A telemetry client implementation to collect the data at the interested places, aggregate them and send it to
+    /// Application Insight.
     /// </summary>
     internal class AzPredictorTelemetryClient : ITelemetryClient, IDisposable
     {

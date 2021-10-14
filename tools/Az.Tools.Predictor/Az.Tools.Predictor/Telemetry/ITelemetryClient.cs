@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
-    /// The telemetry client that collects and sends the telemetry data.
+    /// The telemetry client that collects data at the interested places.
     /// </summary>
     public interface ITelemetryClient
     {
