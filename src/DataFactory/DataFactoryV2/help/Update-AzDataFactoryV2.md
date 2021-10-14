@@ -157,6 +157,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+Whether or not public network access is allowed for the data factory. Options are 'Enabled' or 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: Enabled
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The data factory object.
 
@@ -169,20 +183,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PublicNetworkAccess
-Whether or not public network access is allowed for the data factory. Options are 'Enabled' or 'Disabled'
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Required: False
-Position: Named
-Default value: Enabled
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
