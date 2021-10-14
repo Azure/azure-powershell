@@ -386,10 +386,10 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string ComputeIsolationHostSku { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the availability zones.")]
-        public string[] Zones { get; set; }
+        public string[] Zone { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the private link configuration.")]
-        public AzureHDInsightPrivateLinkConfiguration[] PrivateLinkConfigurations { get; set; }
+        public AzureHDInsightPrivateLinkConfiguration[] PrivateLinkConfiguration { get; set; }
 
 
         #endregion
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 Location = Location,
                 //Tags = Tags,  //To Do add this Tags parameter
-                Zones = Zones,
+                Zones = Zone,
                 Properties = new ClusterCreateProperties
                 {
                     Tier = ClusterTier.ToString(),
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     MinSupportedTlsVersion = MinSupportedTlsVersion,
                     NetworkProperties = networkProperties,
                     ComputeIsolationProperties= computeIsolationProperties,
-                    PrivateLinkConfigurations = PrivateLinkConfigurations !=null ? PrivateLinkConfigurations.Select(item=> item.ToPrivateLinkConfiguration()).ToList(): null
+                    PrivateLinkConfigurations = PrivateLinkConfiguration !=null ? PrivateLinkConfiguration.Select(item=> item.ToPrivateLinkConfiguration()).ToList(): null
                 },
                 Identity = clusterIdentity
             };

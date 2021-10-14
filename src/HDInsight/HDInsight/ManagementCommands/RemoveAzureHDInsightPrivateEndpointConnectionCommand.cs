@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightPrivateEndpointConnection", DefaultParameterSetName = RemoveByNameParameterSet), OutputType(typeof(AzureHDInsightPrivateEndpointConnection))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightPrivateEndpointConnection", DefaultParameterSetName = RemoveByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(AzureHDInsightPrivateEndpointConnection))]
     public class RemoveAzureHDInsightPrivateEndpointConnectionCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -96,6 +96,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -126,11 +129,14 @@ namespace Microsoft.Azure.Commands.HDInsight
                 this.ClusterName = resourceIdentifier.ParentResource.Split('/').Last();
             }
 
-            HDInsightManagementClient.DeletePrivateEndpointConnection(ResourceGroupName, ClusterName, PrivateEndpointConnectionName);
-
-            if (PassThru.IsPresent)
+            if (ShouldProcess(PrivateEndpointConnectionName))
             {
-                WriteObject(true);
+                HDInsightManagementClient.DeletePrivateEndpointConnection(ResourceGroupName, ClusterName, PrivateEndpointConnectionName);
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }

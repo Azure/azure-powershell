@@ -14,7 +14,7 @@ Creates the private link configuration of the HDInsight cluster.
 
 ```
 New-AzHDInsightPrivateLinkConfiguration [-Name <String>] [-GroupId <String>]
- [-IpConfigurations <AzureHDInsightIPConfiguration[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-IpConfiguration <AzureHDInsightIPConfiguration[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ PS C:\> $ipConfiguration= New-AzHDInsightIPConfiguration -Name $ipConfigName Pri
 PS C:\> $privateLinkConfigurationName="plconfig"
 PS C:\> $groupId="headnode"
 PS C:\> # Create private link configuration
-PS C:\> $privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name$privateLinkConfigurationName -GroupId $groupId -IPConfigurations $ipConfiguration
+PS C:\> $privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name$privateLinkConfigurationName -GroupId $groupId -IPConfiguration $ipConfiguration
 ```
 
 This cmdlet creates the private link configuration in memory.
@@ -73,7 +73,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IpConfigurations
+### -IpConfiguration
 Gets or sets the ip configurations of the private link.
 
 ```yaml

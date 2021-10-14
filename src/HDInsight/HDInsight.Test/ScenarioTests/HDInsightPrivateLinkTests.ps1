@@ -42,7 +42,7 @@ function Test-PrivateLinkRelatedCommands{
 		$groupId="headnode"
 		# Create private link configuration
 		$privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name $privateLinkConfigurationName `
-		-GroupId $groupId -IPConfigurations $ipConfiguration
+		-GroupId $groupId -IPConfiguration $ipConfiguration
 
 		# create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
