@@ -292,7 +292,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             try
             {
-                if (string.Equals(localCommands, _commandToRequestPrediction, StringComparison.Ordinal))
+                if (string.Equals(localCommands, _commandToRequestPrediction, StringComparison.OrdinalIgnoreCase))
                 {
                     // It's the same history we've already requested the prediction for last time, skip it.
                     return null;
