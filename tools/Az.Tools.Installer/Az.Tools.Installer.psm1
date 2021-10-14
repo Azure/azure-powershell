@@ -213,7 +213,7 @@ function Get-AzModuleFromRemote {
         $azModule = "Az"
         if ($AllowPrerelease) {
             if ($RequiredVersion -and $RequiredVersion -lt [Version] "6.0") {
-                write-warning "[$Invoker] Prerelease version cannot be lower than 6.0. Will only install GA modules."
+                Throw "[$Invoker] Prerelease version cannot be lower than 6.0. Please install GA modules only and specify Az version above 6.0."
             }
             else {
                 $azModule = "AzPreview"
@@ -355,7 +355,7 @@ function Uninstall-AzureRM {
         try {
             $azureModuleNames = (Get-InstalledModule -Name Azure* -ErrorAction Stop).Name | Where-Object {$_ -match "Azure(\.[a-zA-Z0-9]+)?$" -or $_ -match "AzureRM(\.[a-zA-Z0-9]+)?$"}
             foreach($module in $azureModuleNames) {
-                Uninstall-Module -Name $azureModuleName -AllVersion -ErrorAction SilentlyContinue
+                PowerShellGet\Uninstall-Module -Name $azureModuleName -AllVersion -AllowPrerelease -ErrorAction SilentlyContinue
             }
         }
         catch {

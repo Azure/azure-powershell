@@ -133,7 +133,7 @@ function Install-AzModuleInternal {
                 }
                 if ($confirmInstallation) {
                     if ($confirmUninstallation) {
-                        Uninstall-Module -Name "Az.Accounts" -AllVersion -ErrorAction 'SilentlyContinue'
+                        Uninstall-Module -Name "Az.Accounts" -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
                     }
                     PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($moduleList[0].Version)"
                 }
@@ -180,7 +180,7 @@ function Install-AzModuleInternal {
                                 Import-Module PackageManagement
                                 Import-Module PowerShellGet
                                 if ($RemovePrevious) {
-                                    Uninstall-Module -Name $moduleName -AllVersion -ErrorAction 'SilentlyContinue'
+                                    Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
                                 }
                                 PowerShellGet\Install-Module @installModuleParam -Name $moduleName -RequiredVersion "$moduleVersion"
                                 $state = "succeeded"
