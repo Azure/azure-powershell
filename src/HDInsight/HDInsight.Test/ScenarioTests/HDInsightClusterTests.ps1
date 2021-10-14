@@ -442,7 +442,7 @@ function Test-CreateClusterWithAvailabilityZones{
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $vnetId -SubnetName $subnetName `
-		-AmbariDatabase $config.AmbariDatabase -HiveMetastore $config.HiveMetastore -OozieMetastore $config.OozieMetastore -Zones "1"
+		-AmbariDatabase $config.AmbariDatabase -HiveMetastore $config.HiveMetastore -OozieMetastore $config.OozieMetastore -Zone "1"
 
 		Assert-NotNull $cluster
 	}
@@ -479,7 +479,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 		$privateLinkConfigurationName="plconfig"
 		$groupId="headnode"
 		# Create private link configuration
-		$privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name $privateLinkConfigurationName -GroupId $groupId -IPConfigurations $ipConfiguration
+		$privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name $privateLinkConfigurationName -GroupId $groupId -IPConfiguration $ipConfiguration
 
 		# create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
@@ -488,7 +488,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
 		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 3.6 `
-		-ResourceProviderConnection Outbound -PrivateLink Enabled -PrivateLinkConfigurations $privateLinkConfiguration
+		-ResourceProviderConnection Outbound -PrivateLink Enabled -PrivateLinkConfiguration $privateLinkConfiguration
 
 		Assert-AreEqual $cluster.NetworkProperties.ResourceProviderConnection Outbound
 		Assert-AreEqual $cluster.NetworkProperties.PrivateLink Enabled

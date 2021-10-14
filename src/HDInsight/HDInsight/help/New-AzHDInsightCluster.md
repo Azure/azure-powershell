@@ -36,8 +36,8 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
  [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker] [-KafkaClientGroupId <String>]
  [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>] [-PrivateLink <String>]
- [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zones <String[]>]
- [-PrivateLinkConfigurations <AzureHDInsightPrivateLinkConfiguration[]>]
+ [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
+ [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -64,8 +64,8 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
  [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
  [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
- [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zones <String[]>]
- [-PrivateLinkConfigurations <AzureHDInsightPrivateLinkConfiguration[]>]
+ [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
+ [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -92,8 +92,8 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
  [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
  [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
- [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zones <String[]>]
- [-PrivateLinkConfigurations <AzureHDInsightPrivateLinkConfiguration[]>]
+ [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
+ [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -532,7 +532,7 @@ PS C:\&gt; # Primary storage account info
         $privateLinkConfigurationName="plconfig"
         $groupId="headnode"
         # Create private link configuration
-        $privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name $privateLinkConfigurationName -GroupId $groupId -IPConfigurations $ipConfiguration
+        $privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name $privateLinkConfigurationName -GroupId $groupId -IPConfiguration $ipConfiguration
 
         # Create the cluster
         New-AzHDInsightCluster `
@@ -547,7 +547,7 @@ PS C:\&gt; # Primary storage account info
             -StorageContainer $storageContainer `
             -SshCredential $clusterCreds `
             -VirtualNetworkId $virtualNetworkId -SubnetName $subnetName `
-            -ResourceProviderConnection Outbound -PrivateLink Enabled -PrivateLinkConfigurations $privateLinkConfiguration
+            -ResourceProviderConnection Outbound -PrivateLink Enabled -PrivateLinkConfiguration $privateLinkConfiguration
 ```
 
 ### Example 12: Create an Azure HDInsight cluster availability feature
@@ -1234,7 +1234,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateLinkConfigurations
+### -PrivateLinkConfiguration
 Gets or sets the private link configuration.
 
 ```yaml
@@ -1541,7 +1541,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Zones
+### -Zone
 Gets or sets the availability zones.
 
 ```yaml

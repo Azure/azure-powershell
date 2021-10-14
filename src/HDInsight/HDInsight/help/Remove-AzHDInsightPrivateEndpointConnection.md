@@ -15,28 +15,28 @@ Removes the specific private endpoint connection of the HDInsight cluster.
 ### RemoveByNameParameterSet (Default)
 ```
 Remove-AzHDInsightPrivateEndpointConnection [[-ResourceGroupName] <String>] [-ClusterName] <String>
- [-PrivateEndpointConnectionName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-PrivateEndpointConnectionName] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByClusterResourceIdParameterSet
 ```
 Remove-AzHDInsightPrivateEndpointConnection [-ClusterResourceId] <String>
- [-PrivateEndpointConnectionName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-PrivateEndpointConnectionName] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByClusterInputObjectParameterSet
 ```
 Remove-AzHDInsightPrivateEndpointConnection [-ClusterInputObject] <AzureHDInsightCluster>
- [-PrivateEndpointConnectionName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-PrivateEndpointConnectionName] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByPrivateEndpointConnectionResourceIdParameterSet
 ```
-Remove-AzHDInsightPrivateEndpointConnection [-ResourceId] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzHDInsightPrivateEndpointConnection [-ResourceId] <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +52,21 @@ PS C:\> Remove-AzHDInsightPrivateEndpointConnection -ClusterName testcluster -Re
 This cmdlet deletes the private endpoint connection "MyPrivateEndpointConnection" of the specific HDInsight cluster.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ClusterInputObject
 Gets or sets the cluster input object.
@@ -170,6 +185,36 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

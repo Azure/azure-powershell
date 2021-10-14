@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the ip configurations of the private link.")]
-        public AzureHDInsightIPConfiguration[] IpConfigurations
+        public AzureHDInsightIPConfiguration[] IpConfiguration
         {
             get { return _privateLinkConfiguration.IpConfigurations.ToArray(); }
             set { _privateLinkConfiguration.IpConfigurations = value.ToList(); }
