@@ -1,0 +1,187 @@
+---
+external help file:
+Module Name: Az.LabServices
+online version: https://docs.microsoft.com/powershell/module/az.labservices/stop-azlabservicesuservm
+schema: 2.0.0
+---
+
+# Stop-AzLabServicesUserVM
+
+## SYNOPSIS
+
+
+## SYNTAX
+
+### Stop (Default)
+```
+Stop-AzLabServicesUserVM -Email <String> -LabName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+```
+
+### User
+```
+Stop-AzLabServicesUserVM -User <User> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+```
+
+## DESCRIPTION
+
+
+## EXAMPLES
+
+### Example 1: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+## PARAMETERS
+
+### -AsJob
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Email
+
+
+```yaml
+Type: System.String
+Parameter Sets: Stop
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LabName
+
+
+```yaml
+Type: System.String
+Parameter Sets: Stop
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+
+
+```yaml
+Type: System.String
+Parameter Sets: Stop
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+
+
+```yaml
+Type: System.String
+Parameter Sets: Stop
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -User
+To construct, see NOTES section for USER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+Parameter Sets: User
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+
+## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+USER <User>: 
+  - `Email <String>`: Email address of the user.
+  - `[AdditionalUsageQuota <TimeSpan?>]`: The amount of usage quota time the user gets in addition to the lab usage quota.
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+
+## RELATED LINKS
+
