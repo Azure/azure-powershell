@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.Profile
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.Graph, metadataEndpoints.GraphEndpoint);
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId,
                                     metadataEndpoints.GraphEndpoint);
-                                SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.MicrosoftGraphEndpointResourceId,
+                                SetEndpointIfProvided(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
                                     metadataEndpoints.GraphEndpoint);
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix,
                                         AzureKeyVaultDnsSuffix ?? string.Format("vault.{0}", domain).ToLowerInvariant());
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Commands.Profile
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.AdTenant, nameof(AdTenant));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId,
                                    nameof(GraphAudience));
-                                SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.MicrosoftGraphEndpointResourceId,
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
                                    nameof(MSGraphAudience));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.Endpoint.DataLakeEndpointResourceId,
                                     nameof(DataLakeAudience));

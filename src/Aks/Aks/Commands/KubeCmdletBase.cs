@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.MicrosoftGraph;
+using Microsoft.Azure.Commands.Common.MSGraph;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Aks
             }));
 
         protected IMicrosoftGraphClient MicrosoftGraphClient =>
-            _microsoftGraphClient ?? (_microsoftGraphClient = BuildClient<MicrosoftGraphClient>(endpoint: AzureEnvironment.Endpoint.MicrosoftGraphUrl, postBuild: instance =>
+            _microsoftGraphClient ?? (_microsoftGraphClient = BuildClient<MicrosoftGraphClient>(endpoint: AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl, postBuild: instance =>
             {
                 instance.TenantID = DefaultContext.Tenant.Id;
                 return instance;

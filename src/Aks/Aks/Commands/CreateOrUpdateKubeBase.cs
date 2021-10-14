@@ -39,9 +39,8 @@ using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.PowerShell.Cmdlets.MicrosoftGraph.Applications;
-using Microsoft.Azure.PowerShell.Cmdlets.MicrosoftGraph.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Applications;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -242,8 +241,8 @@ namespace Microsoft.Azure.Commands.Aks
                 startDate: DateTime.UtcNow,
                 endDate: DateTime.UtcNow.AddYears(2));
 
-            var keyCredentials = new List<MicrosoftgraphkeyCredential> {
-                    new MicrosoftgraphkeyCredential {
+            var keyCredentials = new List<MicrosoftGraphKeyCredential> {
+                    new MicrosoftGraphKeyCredential {
                         EndDateTime = pwCreds.EndDate,
                         StartDateTime = pwCreds.StartDate,
                         Key = pwCreds.Value,
@@ -251,17 +250,17 @@ namespace Microsoft.Azure.Commands.Aks
                         Usage = "Verify"
                     }
             };
-            var appCreateParameters = new Microsoftgraphapplication
+            var appCreateParameters = new MicrosoftGraphApplication
             {
                 DisplayName = name,
                 KeyCredentials = keyCredentials
             };
             var app = MicrosoftGraphClient.Applications.CreateApplication(appCreateParameters);
 
-            MicrosoftgraphservicePrincipal sp = null;
+            MicrosoftGraphServicePrincipal sp = null;
             var success = RetryAction(() =>
             {
-                var servicePrincipalCreateParams = new MicrosoftgraphservicePrincipal
+                var servicePrincipalCreateParams = new MicrosoftGraphServicePrincipal
                 {
                     AppId = app.AppId,
                     AccountEnabled = true,
