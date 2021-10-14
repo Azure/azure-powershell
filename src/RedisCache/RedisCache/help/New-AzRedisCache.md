@@ -76,7 +76,142 @@ PS C:\>New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "
           Zone               : []
 ```
 
-This command creates a Redis Cache.
+This cmdlet creates a cache using Azure Cache for Redis.
+
+### Example 3: Create a Zone Redundant Cache 
+
+```
+PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -Zone @("1","2")
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300]...} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : {1, 2}
+```
+This command creates Azure cache for Redis instance in mutliple zones.
+
+### Example 4: Create a Virtual Network enable Cache
+   
+Requirements for creating Virtual Network enable cache.
+1. Create the virtual network in same resource group in which you want to create your redis cache. You can create virtual network from [New-AzVirtualNetwork](./../../../Network/Network/help/New-AzVirtualNetwork.md) powershell command.
+1. You will need SubnetID for VNET enable cache. Syntax of SubnetID is given below.
+
+Format of SubnetID: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}/subnets/{subnetName}
+
+```
+PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -SubnetId "/subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/MyNet/subnets/MySubnet"
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300]...} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          SubnetId           : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Network/virtualNetworks/MyNet/subnets/MySubnet
+          StaticIP           : 10.0.0.4  
+          Tag                : {}
+          Zone               : []
+```
+
+### Example 5: Configure data persistence for a Premium Azure Cache for Redis
+
+Persistence writes Redis data into an Azure Storage account that you own and manage. So before configuring data persistence you need to have [storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-powershell) in same resource group. Choose a storage account in the same region and subscription as the cache, and a Premium Storage account is recommended because premium storage has higher throughput.
+
+After creating a storage account, get the storage account connection string using this procedure.
+
+1. Run this command **Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName** in powershell.
+1. From the output of above, copy any key.
+1. Put the storage account key and the storage account name in format below to get the connection string of your storage account.
+
+Connection String Format :- "DefaultEndpointsProtocol=https;AccountName={storageAccountName};AccountKey={storageAccountKey};EndpointSuffix=core.windows.net"</br>
+
+You must have the specific Redis configuration settings to enable data persistence.  
+
+For RDB backup enable
+-  rdb-backup-enabled (Set true or false)
+-  rdb-storage-connection-string (Give connection string in above format.)    
+-  rdb-backup-frequency (Set a backup interval in minutes. You can only choose from - 15, 30, 60, 360, 720 and 1440 minutes.)  
+    
+```
+PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300], [rdb-backup-enabled, true]....} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : []
+```
+
+### Example 6: Configure data persistence for a Premium Azure Cache for Redis - AOF backup enabled
+
+For AOF back up enabled.
+-  aof-backup-enabled (Set true or false),
+-  aof-storage-connection-string-0 (Give connection string in above format.)
+-  aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.) 
+
+```
+PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"aof-backup-enabled" = "true"; "aof-storage-connection-string-0" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"}
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : MyGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/MyCache
+          Location           : Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random], [maxclients, 7500], [maxmemory-reserved, 200],
+                                [maxfragmentationmemory-reserved, 300], [aof-backup-enabled, true]...} 
+          EnableNonSslPort   : False
+          RedisVersion       : 4.0.14
+          Size               : 6GB
+          Sku                : Premium
+          Tag                : {}
+          Zone               : []
+```
 
 ## PARAMETERS
 
@@ -356,6 +491,9 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetId
+The full resource ID of a subnet in a virtual network to deploy the Azure Cache for Redis in.
+Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/{vnetName}/subnets/{subnetName}
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -399,7 +537,7 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-List of zones.
+List of Azure regions with [Availability zones](https://docs.microsoft.com/en-us/azure/availability-zones/az-region#azure-services-supporting-availability-zones).
 
 ```yaml
 Type: System.String[]

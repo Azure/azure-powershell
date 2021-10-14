@@ -80,7 +80,7 @@ function Test-BackupCrud
             Start-Sleep -Seconds 10.0
             $i++
         }               
-        until ($sourceVolume.ProvisioningState -eq "Succeeded" -or $i -eq 3);        
+        until ($sourceVolume.ProvisioningState -eq "Succeeded" -or $i -eq 3);
     }    
 
     function SleepDuringRecord ($seconds = 30.0)
@@ -95,7 +95,7 @@ function Test-BackupCrud
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $backupVNetLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $backupVNetLocation -Tags @{Owner = 'b-aubald'}
 
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $backupVNetLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -268,7 +268,7 @@ function Test-BackupPipelines
         $newTagValue = "psBackupTagValue1"
         
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $backupVNetLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $backupVNetLocation -Tags @{Owner = 'b-aubald'}
 
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $backupVNetLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -433,7 +433,7 @@ function Test-VolumeBackupStatus
     try
     {
         # create the resource group
-        New-AzResourceGroup -Name $resourceGroup -Location $backupVNetLocation
+        New-AzResourceGroup -Name $resourceGroup -Location $backupVNetLocation -Tags @{Owner = 'b-aubald'}
 		
         # create virtual network
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $backupVNetLocation -Name $vnetName -AddressPrefix 10.0.0.0/16

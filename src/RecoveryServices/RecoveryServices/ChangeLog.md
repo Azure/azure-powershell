@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for ZRS disk type for Azure to Azure replication.
+* Added Availability zone information in replicated protected item response for Azure to Azure replication.
+
+## Version 4.7.0
 * Azure Site Recovery bug fixes for VMware to Azure Reprotect, Update policy and Disable scenarios.
 * Azure Backup added the support for UserAssigned MSI in RecoveryServices Vault.
 
