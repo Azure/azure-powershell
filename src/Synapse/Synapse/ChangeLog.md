@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added support for Synapse Metastore
+    - Added `Register-AzSynapseMetastore` cmdlet
+    - Added `Get-AzSynapseMetastore` cmdlet
+    - Added `Update-AzSynapseMetastore` cmdlet
+    - Added `Remove-AzSynapseMetastore` cmdlet
 
 ## Version 1.0.0
 * General availability of Az.Synapse

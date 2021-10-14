@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.TriggerRunId = triggerRun?.TriggerRunId;
             this.TriggerName = triggerRun?.TriggerName;
             this.TriggerType = triggerRun?.TriggerType;
-            this.TriggerRunTimestamp = triggerRun?.TriggerRunTimestamp;
-            this.Status = triggerRun?.Status;
+            this.TriggerRunTimestamp = triggerRun?.TriggerRunTimestamp;            
+            this.Status = PSTriggerRunStatus.Parse(triggerRun?.Status);
             this.Message = triggerRun?.Message;
             this.Properties = triggerRun?.Properties;
             this.TriggeredPipelines = triggerRun?.TriggeredPipelines;
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public DateTimeOffset? TriggerRunTimestamp { get; }
 
-        public TriggerRunStatus? Status { get; }
+        public PSTriggerRunStatus? Status { get; }
 
         public string Message { get; }
 

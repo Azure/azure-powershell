@@ -803,4 +803,16 @@ Failed: {2}.</value>
   <data name="SettingSynapseKqlScript" xml:space="preserve">
     <value>Setting KQL script '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="RegisteringSynapseMetastore" xml:space="preserve">
+    <value>Registering metastore '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="UpdatingSynapseMetastore" xml:space="preserve">
+    <value>Updating metastore '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="RemoveSynapseMetastore" xml:space="preserve">
+    <value>Are you sure you want to remove metastore '{0}'?</value>
+  </data>
+  <data name="RemovingSynapseMetastore" xml:space="preserve">
+    <value>Deleting metastore '{0}' in workspace '{1}'.</value>
+  </data>
 </root>

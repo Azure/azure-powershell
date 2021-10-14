@@ -21,8 +21,6 @@ using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -46,6 +44,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly SparkConfigurationClient _sparkConfigurationClient;
         private readonly KqlScriptClient _kqlScriptClient;
         private readonly KqlScriptsClient _kqlScriptsClient;
+        private readonly MetastoreClient _metastoreClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -73,6 +72,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _sparkConfigurationClient = new SparkConfigurationClient(uri, new AzureSessionCredential(context));
             _kqlScriptClient = new KqlScriptClient(uri, new AzureSessionCredential(context));
             _kqlScriptsClient = new KqlScriptsClient(uri, new AzureSessionCredential(context));
+            _metastoreClient = new MetastoreClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -444,6 +444,30 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             var operation = _kqlScriptClient.StartCreateOrUpdate(kqlScriptName, kqlScript);
             return operation.Poll().Value;
+        }
+
+        #endregion
+
+        #region Metastore
+
+        public MetastoreRegistrationResponse RegisterMetaStore(string databaseName, string inputFolder)
+        {
+            return _metastoreClient.Register(databaseName, new MetastoreRegisterObject(inputFolder));
+        }
+
+        public MetastoreRequestSuccessResponse GetMetaStore(string databaseName)
+        {
+            return _metastoreClient.GetDatabaseOperations(databaseName);
+        }
+
+        public MetastoreUpdationResponse UpdateMetaStore(string databaseName, string inputFolder)
+        {
+            return _metastoreClient.Update(databaseName, new MetastoreUpdateObject(inputFolder));
+        }
+
+        public void DeleteMetaStore(string databaseName)
+        {
+            _metastoreClient.Delete(databaseName);
         }
 
         #endregion

@@ -901,6 +901,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registering metastore &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RegisteringSynapseMetastore {
+            get {
+                return ResourceManager.GetString("RegisteringSynapseMetastore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove filewall rule &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveFirewallRule {
@@ -951,6 +960,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemoveSynapseManagedPrivateEndpoint {
             get {
                 return ResourceManager.GetString("RemoveSynapseManagedPrivateEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove metastore &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseMetastore {
+            get {
+                return ResourceManager.GetString("RemoveSynapseMetastore", resourceCulture);
             }
         }
         
@@ -1185,6 +1203,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseManagedPrivateEndpoint {
             get {
                 return ResourceManager.GetString("RemovingSynapseManagedPrivateEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting metastore &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseMetastore {
+            get {
+                return ResourceManager.GetString("RemovingSynapseMetastore", resourceCulture);
             }
         }
         
@@ -1900,6 +1927,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string UpdatingSqlPoolVulnerabilityAssessmentSetting {
             get {
                 return ResourceManager.GetString("UpdatingSqlPoolVulnerabilityAssessmentSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating metastore &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdatingSynapseMetastore {
+            get {
+                return ResourceManager.GetString("UpdatingSynapseMetastore", resourceCulture);
             }
         }
         
