@@ -1,0 +1,88 @@
+{
+  "Remove-AzLabServicesUser+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "12909d03-ec2c-4f72-9885-65db421ef69b" ],
+        "CommandName": [ "Get-AzLabServicesUser" ],
+        "FullCommandName": [ "Get-AzLabServicesUser_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:4533d2ee-f157-447b-8879-f736235bf81d" ],
+        "x-ms-request-id": [ "0HMCE0AC7FQS0:00000001" ],
+        "x-ms-correlation-request-id": [ "e39725be-7f18-4b1b-8a01-0175435614f7" ],
+        "traceparent": [ "00-a33a93439c9bca46a805b87dff0a2e9e-1645ff625d536468-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211014T190207Z:e39725be-7f18-4b1b-8a01-0175435614f7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 14 Oct 2021 19:02:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "654" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-14T16:12:18.3719322Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-14T16:12:18.3719322Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"email\":\"test@contosouniversity.com\",\"registrationState\":\"NotRegistered\",\"invitationState\":\"NotSent\",\"totalUsage\":\"PT0S\",\"additionalUsageQuota\":\"PT0S\"},\"id\":\"/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser\",\"name\":\"testuser\",\"type\":\"Microsoft.LabServices/labs/users\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzLabServicesUser+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser?api-version=2021-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "dc0ac65b-e37c-471f-b3e9-dc0b2d76b2ba" ],
+        "CommandName": [ "Get-AzLabServicesUser" ],
+        "FullCommandName": [ "Get-AzLabServicesUser_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "Request-Context": [ "appId=cid-v1:4533d2ee-f157-447b-8879-f736235bf81d" ],
+        "x-ms-request-id": [ "0HMCE0A0US3FL:00000004" ],
+        "x-ms-correlation-request-id": [ "ffe7afed-6f93-4297-98e8-2bf63e469296" ],
+        "traceparent": [ "00-d78df95272fca04880adcae51a63c88d-0d1b9e3e5c138672-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211014T190238Z:ffe7afed-6f93-4297-98e8-2bf63e469296" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 14 Oct 2021 19:02:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "161" ],
+        "Content-Type": [ "application/problem+json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"https://tools.ietf.org/html/rfc7231#section-6.5.4\",\"title\":\"Not Found\",\"status\":404,\"traceId\":\"00-d78df95272fca04880adcae51a63c88d-0d1b9e3e5c138672-01\"}",
+      "isContentBase64": false
+    }
+  }
+}

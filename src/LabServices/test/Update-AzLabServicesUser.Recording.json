@@ -1,0 +1,45 @@
+{
+  "Update-AzLabServicesUser+[NoContext]+Update Existing+$GET+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testseconduser?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testseconduser?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "241682e0-aec4-40ff-8a88-aee6e6343b37" ],
+        "CommandName": [ "Get-AzLabServicesUser" ],
+        "FullCommandName": [ "Get-AzLabServicesUser_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:4533d2ee-f157-447b-8879-f736235bf81d" ],
+        "x-ms-request-id": [ "0HMCE0A0US3HH:00000001" ],
+        "x-ms-correlation-request-id": [ "b1479202-e4ef-4c41-a92a-54badbf03d97" ],
+        "traceparent": [ "00-902409d54aa72d48b230993b51f4c686-76ea4eab61727460-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211014T204542Z:b1479202-e4ef-4c41-a92a-54badbf03d97" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 14 Oct 2021 20:45:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "161" ],
+        "Content-Type": [ "application/problem+json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"https://tools.ietf.org/html/rfc7231#section-6.5.4\",\"title\":\"Not Found\",\"status\":404,\"traceId\":\"00-902409d54aa72d48b230993b51f4c686-76ea4eab61727460-01\"}",
+      "isContentBase64": false
+    }
+  }
+}

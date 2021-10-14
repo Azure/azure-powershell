@@ -1,0 +1,88 @@
+{
+  "Remove-AzLabServicesSchedule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/schedules/secondtestschedule?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/schedules/secondtestschedule?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "f9a8952b-480f-40a5-aa5a-8410c019d74f" ],
+        "CommandName": [ "Get-AzLabServicesSchedule" ],
+        "FullCommandName": [ "Get-AzLabServicesSchedule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:4533d2ee-f157-447b-8879-f736235bf81d" ],
+        "x-ms-request-id": [ "0HMCE0A0US3HC:00000002" ],
+        "x-ms-correlation-request-id": [ "bf89959f-8724-448b-8b82-69bb336b901c" ],
+        "traceparent": [ "00-78daa39536e1684ca534ae8aa0ece175-f48255bb07a1aeb2-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211014T203434Z:bf89959f-8724-448b-8b82-69bb336b901c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 14 Oct 2021 20:34:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "739" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-14T20:33:58.4377188Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-14T20:33:58.4377188Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"startAt\":\"2021-10-15T01:33:58\",\"stopAt\":\"2021-10-15T02:33:58\",\"recurrencePattern\":{\"frequency\":\"Weekly\",\"weekDays\":[\"Thursday\"],\"interval\":1,\"expirationDate\":\"2021-11-03\"},\"timeZoneId\":\"America/Los_Angeles\"},\"id\":\"/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/schedules/secondtestschedule\",\"name\":\"secondtestschedule\",\"type\":\"Microsoft.LabServices/labs/schedules\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzLabServicesSchedule+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/schedules/secondtestschedule?api-version=2021-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2d5eedc9-8509-41fe-aac8-f16d54583ac6/resourceGroups/rg-test-powershell/providers/Microsoft.LabServices/labs/lab-unit-powershell/schedules/secondtestschedule?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "2d8613f7-8edb-4cda-b24c-faf33164f0f2" ],
+        "CommandName": [ "Get-AzLabServicesSchedule" ],
+        "FullCommandName": [ "Get-AzLabServicesSchedule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "Request-Context": [ "appId=cid-v1:4533d2ee-f157-447b-8879-f736235bf81d" ],
+        "x-ms-request-id": [ "0HMCE0AC7FQTI:00000002" ],
+        "x-ms-correlation-request-id": [ "3b87a5c2-1513-4655-b0bf-48b5a7c8fc27" ],
+        "traceparent": [ "00-c87124b7dcb79941b332b196dc51abc7-9f265254f7753faf-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211014T203505Z:3b87a5c2-1513-4655-b0bf-48b5a7c8fc27" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 14 Oct 2021 20:35:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "161" ],
+        "Content-Type": [ "application/problem+json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"https://tools.ietf.org/html/rfc7231#section-6.5.4\",\"title\":\"Not Found\",\"status\":404,\"traceId\":\"00-c87124b7dcb79941b332b196dc51abc7-9f265254f7753faf-01\"}",
+      "isContentBase64": false
+    }
+  }
+}
