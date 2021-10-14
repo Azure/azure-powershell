@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -160,8 +160,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* General availability of ''Az.Security'' module
-* Changed the name of ''Get-AzRegulatoryComplainceAssessment'' to ''Get-AzRegulatoryComplianceAssessment'' to fix typo'
+        ReleaseNotes = '* Updated Security .NET SDK package reference to version 3.0.0'
 
         # Prerelease string of this module
         # Prerelease = ''
