@@ -1,0 +1,71 @@
+function New-AzLabServicesSchedule_Lab {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
+    [CmdletBinding(PositionalBinding=$false)]
+    param(
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        ${Lab},
+    
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        [System.String]
+        ${Name},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+        [System.String]
+        ${Notes},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+        [System.DateTime]
+        ${RecurrencePatternExpirationDate},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency]
+        ${RecurrencePatternFrequency},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+        [System.Int32]
+        ${RecurrencePatternInterval},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]]
+        ${RecurrencePatternWeekDay},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+        [System.DateTime]
+        ${StartAt},
+        
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+        [System.DateTime]
+        ${StopAt},
+        
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+        [System.String]
+        ${TimeZoneId},
+    
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The credentials, account, tenant, and subscription used for communication with Azure.
+        ${DefaultProfile}
+    )
+    
+    process {
+        $PSBoundParameters = $Lab.BindResourceParameters($PSBoundParameters)
+        $PSBoundParameters.Remove("Lab") > $null
+   
+        return Az.LabServices\New-AzLabServicesSchedule @PSBoundParameters
+    }
+    
+    }
+    
