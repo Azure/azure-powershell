@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpIdentityType)]
         #endregion
         public string IdentityType { get; set; }
+
         #region Attributes
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpPublicNetworkAccess)]
         #endregion
