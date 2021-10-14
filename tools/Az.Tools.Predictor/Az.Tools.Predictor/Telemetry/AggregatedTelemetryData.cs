@@ -270,11 +270,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
         public IList<SuggestionSession> SuggestionSessions { get; } = new List<SuggestionSession>();
 
-        /// <summary>
-        /// Whether prediction is used before the command line is executed.
-        /// </summary>
-        public bool UsingPrediction { get; set; } = false;
-
         public void UpdateFromTelemetryData(ITelemetryData telemetryData)
         {
             Client = telemetryData.Client;

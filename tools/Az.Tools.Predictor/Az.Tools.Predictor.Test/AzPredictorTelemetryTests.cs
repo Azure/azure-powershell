@@ -77,7 +77,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(AzPredictorTelemetryTests.GetCommandName(inputData), telemetryClient.RecordedTelemetry[0].Properties["History"]);
             Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
-            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["UsingPrediction"]);
             Assert.False(telemetryClient.RecordedTelemetry[0].Properties.ContainsKey("HttpRequestSent"));
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[1].EventName);
@@ -1018,7 +1017,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.False(suggestionSessions[0].ContainsKey(GetSuggestionTelemetryData.PropertyNameIsCancelled));
             Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
             Assert.Equal("Get-AzDefault", recordedTelemetry.Properties[HistoryTelemetryData.PropertyNameHistory]);
-            Assert.Equal("True", recordedTelemetry.Properties["UsingPrediction"]);
         }
 
         private (AzPredictor, MockAzPredictorTelemetryClient) CreateTestObjects(bool throwException, int expectedTelemetryEvent)

@@ -295,8 +295,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 properties.Add(HistoryTelemetryData.PropertyNameHistory, aggregatedData.CommandLine);
             }
 
-            properties.Add("UsingPrediction", aggregatedData.UsingPrediction.ToString(CultureInfo.InvariantCulture));
-
             SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/Aggregation", properties);
         }
 
@@ -374,13 +372,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
             if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
             {
-                var _ = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, CachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault().SuggestionSessionId);
-            }
-
-            if (CachedAggregatedTelemetryData.SuggestionSessions.Any()
-                    || CachedAggregatedTelemetryData.HasSentHttpRequest.HasValue)
-            {
-                CachedAggregatedTelemetryData.UsingPrediction = true;
+                var newSuggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, CachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault().SuggestionSessionId);
+                newSuggestionSession.IsSuggestionComplete = false; // This can correlate to the suggestions in the previous events.
             }
 
             CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
@@ -615,7 +608,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             var newSuggestionSession = new SuggestionSession()
             {
                 SuggestionSessionId = suggestionSessionId,
-                IsSuggestionComplete = false,
+                // Don't need to mark IsSuggestionComplete. If method is called when we process GetSuggestionTelemetryEvent,
+                // all the previous suggestion session should be complete and this starts a new suggestion session.
             };
             CachedAggregatedTelemetryData.SuggestionSessions.Add(newSuggestionSession);
             return newSuggestionSession;
