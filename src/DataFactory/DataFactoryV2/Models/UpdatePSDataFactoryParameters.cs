@@ -20,6 +20,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     public class UpdatePSDataFactoryParameters : DataFactoryParametersBase
     {
         public Hashtable Tags { get; set; }
-
     }
 }
