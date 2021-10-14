@@ -1,13 +1,13 @@
 {
-  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testclusterqlp6ob/Databases/testdatabaseqlp6ob/listPrincipals?api-version=2021-01-01+1": {
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouppazj5i/providers/Microsoft.Kusto/Clusters/testclusterpazj5i/Databases/testdatabasepazj5i/listPrincipals?api-version=2021-08-27+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testclusterqlp6ob/Databases/testdatabaseqlp6ob/listPrincipals?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouppazj5i/providers/Microsoft.Kusto/Clusters/testclusterpazj5i/Databases/testdatabasepazj5i/listPrincipals?api-version=2021-08-27",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "19" ],
-        "x-ms-client-request-id": [ "080c08cf-88aa-4846-baf4-d2029f2af557" ],
+        "x-ms-unique-id": [ "241" ],
+        "x-ms-client-request-id": [ "519c5e60-b279-46d4-a1f9-22b17290f1db" ],
         "CommandName": [ "Get-AzKustoDatabasePrincipal" ],
         "FullCommandName": [ "Get-AzKustoDatabasePrincipal_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -20,23 +20,23 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
+        "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "efea7070-60e3-4a33-8292-a6e74b274940" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "b9f0340d-3605-4898-ab9c-8e7cfabe38ff" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T115607Z:b9f0340d-3605-4898-ab9c-8e7cfabe38ff" ],
+        "x-ms-request-id": [ "8358eafc-5b71-441c-9557-d561fa98cd5d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "03fc4e9a-0526-42d2-bb63-dac80a74ba99" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20210917T170503Z:03fc4e9a-0526-42d2-bb63-dac80a74ba99" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 11:56:07 GMT" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+        "Date": [ "Fri, 17 Sep 2021 17:05:03 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "464" ],
+        "Content-Length": [ "459" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"},{\"name\":\"Assaf Taubenfeld\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=53d8fc23-618e-49fa-ae3f-ae65cc60aa37;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"astauben@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"}]}",
+      "Content": "{\"value\":[{\"name\":\"Aviv Yaniv\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=ae3b8ee5-620e-4cda-abcd-f8201dad81e0;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"avivyaniv@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"},{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"}]}",
       "isContentBase64": false
     }
   }

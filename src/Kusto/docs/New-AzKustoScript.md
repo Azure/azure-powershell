@@ -178,7 +178,7 @@ Class representing a database script.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IScript
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IScript
 Parameter Sets: Create
 Aliases:
 
@@ -286,11 +286,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IScript
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IScript
 
 ## NOTES
 

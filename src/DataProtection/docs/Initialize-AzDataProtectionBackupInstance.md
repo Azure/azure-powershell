@@ -14,7 +14,8 @@ Initializes Backup instance Request object for configuring backup
 
 ```
 Initialize-AzDataProtectionBackupInstance -DatasourceLocation <String> -DatasourceType <DatasourceTypes>
- [-DatasourceId <String>] [-PolicyId <String>] [<CommonParameters>]
+ [-DatasourceId <String>] [-PolicyId <String>] [-SecretStoreType <SecretStoreTypes>]
+ [-SecretStoreURI <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,6 +105,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecretStoreType
+Secret store type for secret store authentication of data source.
+This parameter is only supported for AzureDatabaseForPostgreSQL currently.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretStoreURI
+Secret uri for secret store authentication of data source.
+This parameter is only supported for AzureDatabaseForPostgreSQL currently.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -111,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceResource
 
 ## NOTES
 

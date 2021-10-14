@@ -1,0 +1,328 @@
+{
+  "New-AzKustoPrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/privateEndpointConnections?api-version=2021-08-27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/privateEndpointConnections?api-version=2021-08-27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "b612c82e-a648-49c6-8065-2087b4da31da" ],
+        "CommandName": [ "Get-AzKustoPrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzKustoPrivateEndpointConnection_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a82b030b-a46e-40e0-8155-061935f18eb4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "6c953116-a98c-4092-8cb6-163ce98688d9" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20211010T142509Z:6c953116-a98c-4092-8cb6-163ce98688d9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Sun, 10 Oct 2021 14:25:08 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "717" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c\",\"type\":\"Microsoft.Kusto/Clusters/PrivateEndpointConnections\",\"id\":\"/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c\",\"properties\":{\"provisioningState\":\"Succeeded\",\"groupId\":\"cluster\",\"privateEndpoint\":{\"id\":\"/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Network/privateEndpoints/testprivateconnection\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"\",\"actionsRequired\":\"None\"}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzKustoPrivateEndpointConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c?api-version=2021-08-27+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c?api-version=2021-08-27",
+      "Content": "{\r\n  \"properties\": {\r\n    \"privateLinkServiceConnectionState\": {\r\n      \"status\": \"Rejected\",\r\n      \"description\": \"\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "133" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ecb598f8-a032-4b92-af90-ad1a8dc4c2a1" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West US 2/operationResults/493a650c-92bb-4c4c-a09d-ce4e551eb0ad?api-version=2021-08-27" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "a113d327-911d-4e38-ac25-10de26bb0a76" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20211010T142511Z:a113d327-911d-4e38-ac25-10de26bb0a76" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Sun, 10 Oct 2021 14:25:10 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "986" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c\",\"name\":\"testclusternetwork2/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c\",\"type\":\"Microsoft.Kusto/Clusters/PrivateEndpointConnections\",\"properties\":{\"properties\":{\"privateLinkServiceConnectionState\":{\"status\":\"Rejected\",\"description\":\"\"}},\"id\":\"/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c\",\"systemData\":{\"createdBy\":\"avivyaniv@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-10T14:25:10.6953778Z\",\"lastModifiedBy\":\"avivyaniv@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-10T14:25:10.6953778Z\"},\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzKustoPrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West US 2/operationResults/493a650c-92bb-4c4c-a09d-ce4e551eb0ad?api-version=2021-08-27+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West%20US%202/operationResults/493a650c-92bb-4c4c-a09d-ce4e551eb0ad?api-version=2021-08-27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "bc81d9fa-8777-4d50-85c9-495a55f4744c" ],
+        "CommandName": [ "New-AzKustoPrivateEndpointConnection" ],
+        "FullCommandName": [ "New-AzKustoPrivateEndpointConnection_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "15b7846c-e345-416a-bd20-cedf70811336" ],
+        "x-ms-operation-root-activity-id": [ "4ee6a989-08b6-4da9-8771-8f9c4f6d4a37" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
+        "x-ms-correlation-request-id": [ "274c2ba5-5ccf-4ec4-bca0-a8de7f9aa3d9" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20211010T142541Z:274c2ba5-5ccf-4ec4-bca0-a8de7f9aa3d9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Sun, 10 Oct 2021 14:25:41 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "465" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West US 2/operationresults/493a650c-92bb-4c4c-a09d-ce4e551eb0ad\",\"name\":\"493a650c-92bb-4c4c-a09d-ce4e551eb0ad\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-10T14:25:10.9598139Z\",\"endTime\":\"2021-10-10T14:25:38.1650432Z\",\"percentComplete\":1.0,\"properties\":{\"operationKind\":\"PrivateEndpointConnectionAlterCommand\",\"provisioningState\":\"Succeeded\",\"operationState\":\"Completed\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzKustoPrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c?api-version=2021-08-27+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c?api-version=2021-08-27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "bc81d9fa-8777-4d50-85c9-495a55f4744c" ],
+        "CommandName": [ "New-AzKustoPrivateEndpointConnection" ],
+        "FullCommandName": [ "New-AzKustoPrivateEndpointConnection_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "1b84ae4a-92a9-422f-bc5a-2bbff02c4a0c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "10c68177-8b36-471f-b013-56a6a76d5102" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20211010T142542Z:10c68177-8b36-471f-b013-56a6a76d5102" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Sun, 10 Oct 2021 14:25:42 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "703" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c\",\"type\":\"Microsoft.Kusto/Clusters/PrivateEndpointConnections\",\"id\":\"/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c\",\"properties\":{\"provisioningState\":\"Succeeded\",\"groupId\":\"cluster\",\"privateEndpoint\":{\"id\":\"/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Network/privateEndpoints/testprivateconnection\"},\"privateLinkServiceConnectionState\":{\"status\":\"Rejected\",\"description\":\"\",\"actionsRequired\":null}}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzKustoPrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/privateEndpointConnections?api-version=2021-08-27+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/privateEndpointConnections?api-version=2021-08-27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "0a124823-aec9-46fa-95fe-44c3b4723914" ],
+        "CommandName": [ "Get-AzKustoPrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzKustoPrivateEndpointConnection_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a40cdf3d-3e7f-450b-a07f-629ee3167261" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "209e59c6-5e58-4c22-a4f8-ecfa5e70e9f8" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20211010T142545Z:209e59c6-5e58-4c22-a4f8-ecfa5e70e9f8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Sun, 10 Oct 2021 14:25:45 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "715" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c\",\"type\":\"Microsoft.Kusto/Clusters/PrivateEndpointConnections\",\"id\":\"/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c\",\"properties\":{\"provisioningState\":\"Succeeded\",\"groupId\":\"cluster\",\"privateEndpoint\":{\"id\":\"/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Network/privateEndpoints/testprivateconnection\"},\"privateLinkServiceConnectionState\":{\"status\":\"Rejected\",\"description\":\"\",\"actionsRequired\":null}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzKustoPrivateEndpointConnection+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c?api-version=2021-08-27+6": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/testclusternetwork2/PrivateEndpointConnections/testprivateconnection-e3f70fa8-649b-4d64-92f7-2a1748da579c?api-version=2021-08-27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "59" ],
+        "x-ms-client-request-id": [ "2f5da2ba-41b5-48b5-ba4f-7157b9689abd" ],
+        "CommandName": [ "Remove-AzKustoPrivateEndpointConnection" ],
+        "FullCommandName": [ "Remove-AzKustoPrivateEndpointConnection_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West US 2/operationResults/ec5837e5-b1e8-4b18-ab86-c1cdf1e29432?api-version=2021-08-27" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "9c964e95-d488-4558-b6c3-96166dac8835" ],
+        "x-ms-correlation-request-id": [ "9c964e95-d488-4558-b6c3-96166dac8835" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20211010T142546Z:9c964e95-d488-4558-b6c3-96166dac8835" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Sun, 10 Oct 2021 14:25:46 GMT" ],
+        "Location": [ "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West%20US%202/operationResults/ec5837e5-b1e8-4b18-ab86-c1cdf1e29432?api-version=2021-08-27\u0026operationResultResponseType=Location" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzKustoPrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West US 2/operationResults/ec5837e5-b1e8-4b18-ab86-c1cdf1e29432?api-version=2021-08-27+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West%20US%202/operationResults/ec5837e5-b1e8-4b18-ab86-c1cdf1e29432?api-version=2021-08-27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "60" ],
+        "x-ms-client-request-id": [ "2f5da2ba-41b5-48b5-ba4f-7157b9689abd" ],
+        "CommandName": [ "Remove-AzKustoPrivateEndpointConnection" ],
+        "FullCommandName": [ "Remove-AzKustoPrivateEndpointConnection_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a87cfa5f-97d7-401e-8473-ab59ca51364e" ],
+        "x-ms-operation-root-activity-id": [ "d6b2955e-82f4-4c33-8fe7-34cac468a250" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
+        "x-ms-correlation-request-id": [ "1ce782ea-b722-4666-9957-36bb7f00ed20" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20211010T142617Z:1ce782ea-b722-4666-9957-36bb7f00ed20" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Sun, 10 Oct 2021 14:26:17 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "466" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West US 2/operationresults/ec5837e5-b1e8-4b18-ab86-c1cdf1e29432\",\"name\":\"ec5837e5-b1e8-4b18-ab86-c1cdf1e29432\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-10T14:25:46.7436719Z\",\"endTime\":\"2021-10-10T14:25:58.4475768Z\",\"percentComplete\":1.0,\"properties\":{\"operationKind\":\"PrivateEndpointConnectionDeleteCommand\",\"provisioningState\":\"Succeeded\",\"operationState\":\"Completed\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzKustoPrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West US 2/operationResults/ec5837e5-b1e8-4b18-ab86-c1cdf1e29432?api-version=2021-08-27\u0026operationResultResponseType=Location+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/58359f48-f3fe-4fd2-b007-4e3dede54d09/providers/Microsoft.Kusto/locations/West%20US%202/operationResults/ec5837e5-b1e8-4b18-ab86-c1cdf1e29432?api-version=2021-08-27\u0026operationResultResponseType=Location",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "2f5da2ba-41b5-48b5-ba4f-7157b9689abd" ],
+        "CommandName": [ "Remove-AzKustoPrivateEndpointConnection" ],
+        "FullCommandName": [ "Remove-AzKustoPrivateEndpointConnection_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "744040e7-df39-422b-af7f-65fc680fe941" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "297" ],
+        "x-ms-correlation-request-id": [ "3b8bb0d7-f137-4441-ad7b-13247a618d2e" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20211010T142618Z:3b8bb0d7-f137-4441-ad7b-13247a618d2e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Sun, 10 Oct 2021 14:26:17 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

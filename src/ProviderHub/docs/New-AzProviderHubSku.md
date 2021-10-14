@@ -14,8 +14,8 @@ Creates or updates the resource type skus in the given resource type.
 
 ```
 New-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <String>
- -SkuSetting <ISkuSetting[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -SkuSetting <ISkuSetting[]> [-SubscriptionId <String>] [-ProvisioningState <ProvisioningState>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,25 +25,30 @@ Creates or updates the resource type skus in the given resource type.
 
 ### Example 1: Create/Update a resource SKU definition.
 ```powershell
-PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "Employees" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
-```
+PS C:\> $skuSetting1 = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.SkuSetting" -Property @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
+PS C:\> $skuSetting2 = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.SkuSetting" -Property @{Name = "freeSku2"; Tier = "Tier1"; Kind = "Standard"}
+
+PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default" -SkuSetting $skuSetting1, $skuSetting2
 
 Name      Type
 ----      ----
 default   Microsoft.ProviderHub/providerRegistrations/skus
+```
 
 Create/Update a resource SKU definition.
 
-### Example 2: Create/Update a resource SKU definition.
+### Example 2: Create/Update a nested resource type SKU definition.
 ```powershell
-PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "Employees" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
-```
+PS C:\> $skuSetting1 = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.SkuSetting" -Property @{Name = "freeSku"; Tier = "Tier1"; Kind = "Standard"}
+
+PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType/nestedResourceType" -Sku "default" -SkuSetting $skuSetting1
 
 Name      Type
 ----      ----
 default   Microsoft.ProviderHub/providerRegistrations/skus
+```
 
-Create/Update a resource SKU definition.
+Create/Update a nested resource type SKU definition.
 
 ## PARAMETERS
 
@@ -71,6 +76,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -188,33 +208,33 @@ To create the parameters described below, construct a hash table containing the 
 
 
 SKUSETTING <ISkuSetting[]>: .
-  - `Name <String>`: 
-  - `[Capability <ISkuCapability[]>]`: 
-    - `Name <String>`: 
-    - `Value <String>`: 
-  - `[CapacityDefault <Int32?>]`: 
-  - `[CapacityMaximum <Int32?>]`: 
-  - `[CapacityMinimum <Int32?>]`: 
-  - `[CapacityScaleType <String>]`: 
-  - `[Cost <ISkuCost[]>]`: 
-    - `MeterId <String>`: 
-    - `[ExtendedUnit <String>]`: 
-    - `[Quantity <Int32?>]`: 
-  - `[Family <String>]`: 
-  - `[Kind <String>]`: 
-  - `[Location <String[]>]`: 
-  - `[LocationInfo <ISkuLocationInfo[]>]`: 
-    - `Location <String>`: 
-    - `[ExtendedLocation <String[]>]`: 
-    - `[Type <String>]`: 
-    - `[Zone <String[]>]`: 
-    - `[ZoneDetail <ISkuZoneDetail[]>]`: 
-      - `[Capability <ISkuCapability[]>]`: 
-      - `[Name <String[]>]`: 
-  - `[RequiredFeature <String[]>]`: 
-  - `[RequiredQuotaId <String[]>]`: 
-  - `[Size <String>]`: 
-  - `[Tier <String>]`: 
+  - `Name <String>`:
+  - `[Capability <ISkuCapability[]>]`:
+    - `Name <String>`:
+    - `Value <String>`:
+  - `[CapacityDefault <Int32?>]`:
+  - `[CapacityMaximum <Int32?>]`:
+  - `[CapacityMinimum <Int32?>]`:
+  - `[CapacityScaleType <SkuScaleType?>]`:
+  - `[Cost <ISkuCost[]>]`:
+    - `MeterId <String>`:
+    - `[ExtendedUnit <String>]`:
+    - `[Quantity <Int32?>]`:
+  - `[Family <String>]`:
+  - `[Kind <String>]`:
+  - `[Location <String[]>]`:
+  - `[LocationInfo <ISkuLocationInfo[]>]`:
+    - `Location <String>`:
+    - `[ExtendedLocation <String[]>]`:
+    - `[Type <String>]`:
+    - `[Zone <String[]>]`:
+    - `[ZoneDetail <ISkuZoneDetail[]>]`:
+      - `[Capability <ISkuCapability[]>]`:
+      - `[Name <String[]>]`:
+  - `[RequiredFeature <String[]>]`:
+  - `[RequiredQuotaId <String[]>]`:
+  - `[Size <String>]`:
+  - `[Tier <String>]`:
 
 ## RELATED LINKS
 

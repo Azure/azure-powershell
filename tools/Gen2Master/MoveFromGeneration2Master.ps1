@@ -9,7 +9,7 @@ Function Move-Generation2Master {
     process {
         #Region Handle the hybrid module whoes folder is a subfolder of the module folder.
         $ModuleName = $SourcePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
-        $SourcePsd1Path = Get-ChildItem -path $ModuleFolder -filter Az.$ModuleName.psd1 -Recurse
+        $SourcePsd1Path = Get-ChildItem -path $SourcePath -filter Az.$ModuleName.psd1 -Recurse
         $FolderPathRelativeToSrc = $SourcePsd1Path.Directory.FullName.Replace('/', '\').Split('\src\')[1]
         if ($FolderPathRelativeToSrc -eq $ModuleName)
         {
@@ -190,13 +190,13 @@ Function Move-Generation2Master {
         }
         Copy-Template -SourceName Changelog.md -DestPath $DestPath -DestName Changelog.md
         #Region create a solution file for module and add the related csproj files to this solution.
-        dotnet new sln -n $ModuleName -o $DestPath
+        dotnet new sln -n $ModuleName -o $DestPath --force
         $SolutionPath = Join-Path -Path $DestPath -ChildPath $ModuleName.sln
         foreach ($DependenceCsproj in (Get-ChildItem -path $DestAccountsPath -Recurse -Filter *.csproj -Exclude *test*))
         {
             dotnet sln $SolutionPath add $DependenceCsproj
         }
-        dotnet sln $SolutionPath add Az.$ModuleName.csproj
+        dotnet sln $SolutionPath add (Join-Path -Path $DestPath -ChildPath Az.$ModuleName.csproj)
         #EndRegion
 
         $PropertiesPath = Join-Path -Path $DestPath -ChildPath "Properties"

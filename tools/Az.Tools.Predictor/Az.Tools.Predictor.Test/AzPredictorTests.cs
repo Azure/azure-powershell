@@ -13,9 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation.Subsystem;
+using System.Management.Automation.Subsystem.Prediction;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -26,13 +27,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
     /// Tests for <see cref="AzPredictor"/>
     /// </summary>
     [Collection("Model collection")]
-    public sealed class AzPredictorTests
+    public sealed class AzPredictorTests : IDisposable
     {
-        private const string AzPredictorClient = "Test";
         private readonly ModelFixture _fixture;
         private readonly MockAzPredictorTelemetryClient _telemetryClient;
         private readonly MockAzPredictorService _service;
-        private readonly AzPredictor _azPredictor;
+        private AzPredictor _azPredictor;
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictorTests"/>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _fixture = modelFixture;
             var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
 
-            _service = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection);
+            _service = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection, null);
             _telemetryClient = new MockAzPredictorTelemetryClient();
             _azPredictor = new AzPredictor(_service, _telemetryClient, new Settings()
             {
@@ -50,6 +50,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 MaxAllowedCommandDuplicate = 1,
             },
             null);
+        }
+
+        /// <inhertdoc />
+        public void Dispose()
+        {
+            if (_azPredictor != null)
+            {
+                _azPredictor.Dispose();
+                _azPredictor = null;
+            }
         }
 
         /// <summary>
@@ -67,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _service.History = null;
             _service.ResetRequestPredictionTask();
 
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             Assert.Equal(new List<string>() { AzPredictorConstants.CommandPlaceholder, AzPredictorConstants.CommandPlaceholder }, _service.Commands);
@@ -89,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _service.History = null;
             _service.ResetRequestPredictionTask();
 
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             string maskedCommand = "New-AzVM -Location *** -Name ***";
@@ -114,7 +124,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _service.History = null;
             _service.ResetRequestPredictionTask();
 
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             var maskedCommands = new List<string>()
@@ -143,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _service.History = null;
             _service.ResetRequestPredictionTask();
 
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             var maskedCommands = new List<string>()
@@ -172,17 +182,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _service.History = null;
             _service.ResetRequestPredictionTask();
 
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             _service.ResetRequestPredictionTask();
             history.Add("git status");
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             // Don't need to await on _service.RequestPredictionTask, because "git" isn't a supported command and RequestPredictionsAsync isn't called.
 
             _service.ResetRequestPredictionTask();
             history.Add(@"$a='NewResourceName'");
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             // Don't need to await on _service.RequestPredictionTask, because assignment isn't supported and RequestPredictionsAsync isn't called.
 
             // We don't take the last two unsupported command to request predictions.
@@ -201,7 +211,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             _service.ResetRequestPredictionTask();
             history.Add("Get-AzResourceGroup -Name ResourceGroup01");
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             maskedCommands = new List<string>()
@@ -230,12 +240,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _service.History = null;
             _service.ResetRequestPredictionTask();
 
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             _service.ResetRequestPredictionTask();
             history.Add("Get-AzResourceGroup -Name resourceGroup01");
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             var maskedCommands = new List<string>()
@@ -264,7 +274,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _service.History = null;
             _service.ResetRequestPredictionTask();
 
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             var maskedCommands = new List<string>()
@@ -293,7 +303,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _service.History = null;
             _service.ResetRequestPredictionTask();
 
-            _azPredictor.StartEarlyProcessing(AzPredictorTests.AzPredictorClient, history);
+            _azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             await _service.RequestPredictionTaskCompletionSource.Task;
 
             var maskedCommands = new List<string>()
@@ -316,7 +326,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var predictionContext = PredictionContext.Create(userInput);
             var expected = this._service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
-            var actual = this._azPredictor.GetSuggestion(AzPredictorTests.AzPredictorClient, predictionContext, CancellationToken.None);
+            var actual = this._azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             Assert.Equal(expected.Count, actual.SuggestionEntries.Count);
             Assert.Equal(expected.PredictiveSuggestions.First().SuggestionText, actual.SuggestionEntries.First().SuggestionText);
@@ -328,36 +338,38 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifySuggestionOnIncompleteCommand()
         {
-            // We need to get the suggestions for more than one. So we create a local version az predictor.
-            var localAzPredictor = new AzPredictor(_service, _telemetryClient, new Settings()
+            // We need to get the suggestions for more than one and the cohort from the context. So we create a local version az predictor and the service.
+            var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
+            var azContext = new MockAzContext()
+            {
+                Cohort = 0,
+            };
+            var localPredictorService = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection, azContext);
+            using var localAzPredictor = new AzPredictor(localPredictorService, _telemetryClient, new Settings()
             {
                 SuggestionCount = 7,
                 MaxAllowedCommandDuplicate = 1,
             },
-            null);
+            azContext);
 
             var userInput = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -";
             var expected = "New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf -Tag value1";
 
             var predictionContext = PredictionContext.Create(userInput);
-            var actual = localAzPredictor.GetSuggestion(AzPredictorTests.AzPredictorClient, predictionContext, CancellationToken.None);
+            var actual = localAzPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             Assert.Equal(expected, actual.SuggestionEntries.First().SuggestionText);
         }
 
         /// <summary>
-        /// Verify when we cannot parse the user input correctly.
+        /// Verify when we don't support the commands.
         /// </summary>
-        /// <remarks>
-        /// When we can parse them correctly, please move the InlineData to the corresponding test methods, for example, "git status"
-        /// can be moved to <see cref="VerifySuggestion"/>.
-        /// </remarks>
         [Theory]
         [InlineData("git status")]
-        public void VerifyMalFormattedCommandLine(string userInput)
+        public void VerifyUnsupportedCommandSuggestion(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var actual = _azPredictor.GetSuggestion(AzPredictorTests.AzPredictorClient, predictionContext, CancellationToken.None);
+            var actual = _azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             Assert.Null(actual.SuggestionEntries);
         }
