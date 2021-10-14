@@ -80,7 +80,7 @@ directive:
       subject: KubernetesConfiguration
       parameter-name: HelmOperatorPropertyChartValue
     set:
-      parameter-name: HelmOperatorChartValues
+      parameter-name: HelmOperatorChartValue
   - where:
       verb: New
       subject: KubernetesConfiguration
@@ -98,7 +98,7 @@ directive:
       subject: KubernetesConfiguration
       parameter-name: SshKnownHostsContent
     set:
-      parameter-name: SshKnownHosts
+      parameter-name: SshKnownHost
   - where:
       verb: Set
       subject: KubernetesConfiguration
@@ -121,4 +121,9 @@ directive:
       verb: Update
       subject: Extension
     remove: true
+  - where:
+      subject: ^Extension$
+      parameter-name: Statuses
+    set:
+      parameter-name: Statuse
 ```

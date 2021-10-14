@@ -34,7 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-STATUSES <IExtensionStatus[]>: Status from this extension.
+STATUSE <IExtensionStatus[]>: Status from this extension.
   [Code <String>]: Status code provided by the Extension
   [DisplayStatus <String>]: Short description of status of the extension.
   [Level <LevelType?>]: Level of the status.
@@ -149,8 +149,8 @@ function New-AzExtension {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtensionStatus[]]
         # Status from this extension.
-        # To construct, see NOTES section for STATUSES properties and create a hash table.
-        ${Statuses},
+        # To construct, see NOTES section for STATUSE properties and create a hash table.
+        ${Statuse},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]

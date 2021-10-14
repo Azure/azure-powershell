@@ -15,9 +15,9 @@ Create a new Kubernetes Source Control Configuration.
 ```
 New-AzKubernetesConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
  -RepositoryUrl <String> [-ClusterType <String>] [-SubscriptionId <String>] [-ClusterScoped]
- [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValues <String>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValue <String>]
  [-HelmOperatorChartVersion <String>] [-OperatorInstanceName <String>] [-OperatorNamespace <String>]
- [-OperatorParameters <String>] [-SshKnownHosts <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-OperatorParam <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -141,7 +141,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HelmOperatorChartValues
+### -HelmOperatorChartValue
 Values override for the operator Helm chart.
 
 ```yaml
@@ -217,7 +217,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperatorParameters
+### -OperatorParam
 Any Parameters for the Operator instance in string format.
 
 ```yaml
@@ -262,7 +262,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SshKnownHosts
+### -SshKnownHost
 If passed set the scope of the Configuration to Cluster (default is nameSpace).
 
 ```yaml
