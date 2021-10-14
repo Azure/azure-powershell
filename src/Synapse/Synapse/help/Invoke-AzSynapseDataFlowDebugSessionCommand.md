@@ -16,7 +16,7 @@ Invoke debug action in data flow debug session.
 ```
 Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceName <String> -SessionId <String> -Command <String>
  -StreamName <String> [-RowLimit <Int32>] [-Expression <String>]
- [-Columns <System.Collections.Generic.List`1[System.String]>] [-AsJob]
+ [-Column <System.Collections.Generic.List`1[System.String]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceName <String> -SessionId <
 ```
 Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceObject <PSSynapseWorkspace> -SessionId <String>
  -Command <String> -StreamName <String> [-RowLimit <Int32>] [-Expression <String>]
- [-Columns <System.Collections.Generic.List`1[System.String]>] [-AsJob]
+ [-Column <System.Collections.Generic.List`1[System.String]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -85,8 +85,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Columns
-The columns list for data flow statistics preview.
+### -Column
+The column list for data flow statistics preview.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
