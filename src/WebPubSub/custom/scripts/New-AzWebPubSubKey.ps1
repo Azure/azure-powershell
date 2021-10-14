@@ -14,13 +14,12 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 Regenerate the access key for the resource.
 PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\>  New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps -KeyType 'Primary'
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\>  $identity = @{ ResourceGroupName = 'psdemo'
+ResourceName = 'psdemo-wps'
+SubscriptionId = $(Get-AzContext).Subscription.Id }
+PS C:\> $identity | New-AzWebPubSubKey -KeyType Primary
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
