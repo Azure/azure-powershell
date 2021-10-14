@@ -174,6 +174,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public PSDataFactory UpdatePSDataFactory(UpdatePSDataFactoryParameters parameters)
         {
             var updateParams = new FactoryUpdateParameters(parameters.Tags?.ToDictionary());
+            updateParams.PublicNetworkAccess = parameters.PublicNetworkAccess;
             return new PSDataFactory(
                 this.DataFactoryManagementClient.Factories.Update(
                     parameters.ResourceGroupName,
