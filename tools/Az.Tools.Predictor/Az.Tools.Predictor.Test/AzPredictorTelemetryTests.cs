@@ -75,14 +75,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(inputData), telemetryClient.RecordedTelemetry[0].Properties["History"]);
-            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
-            Assert.False(telemetryClient.RecordedTelemetry[0].Properties.ContainsKey("HttpRequestSent"));
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(inputData), telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameHistory]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameSuccess]);
+            Assert.False(telemetryClient.RecordedTelemetry[0].Properties.ContainsKey(RequestPredictionTelemetryData.PropertyNameHttpRequestSent));
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties["HttpRequestSent"]);
-            Assert.False(telemetryClient.RecordedTelemetry[1].Properties.ContainsKey("History"));
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties[RequestPredictionTelemetryData.PropertyNameHttpRequestSent]);
+            Assert.False(telemetryClient.RecordedTelemetry[1].Properties.ContainsKey(HistoryTelemetryData.PropertyNameHistory));
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -124,8 +124,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(history[0], telemetryClient.RecordedTelemetry[0].Properties["History"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
+            Assert.Equal(history[0], telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameHistory]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameSuccess]);
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -167,11 +167,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(maskedCommand, telemetryClient.RecordedTelemetry[0].Properties["History"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
+            Assert.Equal(maskedCommand, telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameHistory]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameSuccess]);
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties["HttpRequestSent"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties[RequestPredictionTelemetryData.PropertyNameHttpRequestSent]);
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -218,11 +218,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(maskedCommands[1], telemetryClient.RecordedTelemetry[0].Properties["History"]);
-            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
+            Assert.Equal(maskedCommands[1], telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameHistory]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameSuccess]);
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties["HttpRequestSent"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties[RequestPredictionTelemetryData.PropertyNameHttpRequestSent]);
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -263,12 +263,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameSuccess]);
             // Should use the placeholder for the assignment like \"$a='ResourceGroup01'\" where there is no command name at the right side.
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameHistory]);
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties["HttpRequestSent"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties[RequestPredictionTelemetryData.PropertyNameHttpRequestSent]);
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -315,11 +315,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(maskedCommands[1], telemetryClient.RecordedTelemetry[0].Properties["History"]);
-            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
+            Assert.Equal(maskedCommands[1], telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameHistory]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameSuccess]);
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties["HttpRequestSent"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties[RequestPredictionTelemetryData.PropertyNameHttpRequestSent]);
 
             var firstHistoryData = telemetryClient.HistoryData;
             var firstRequestPredictionData = telemetryClient.RequestPredictionData;
@@ -342,9 +342,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.RecordedTelemetry[0].Properties["History"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
-            Assert.False(telemetryClient.RecordedTelemetry[1].Properties.ContainsKey("HttpRequestSent"));
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameHistory]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameSuccess]);
+            Assert.False(telemetryClient.RecordedTelemetry[1].Properties.ContainsKey(RequestPredictionTelemetryData.PropertyNameHttpRequestSent));
 
             var secondHistoryData = telemetryClient.HistoryData;
 
@@ -370,8 +370,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.RecordedTelemetry[0].Properties["History"]);
-            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameHistory]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameSuccess]);
 
             // There is no new request prediction. The request id isn't changed.
             AzPredictorTelemetryTests.EnsureSameRequestId(firstRequestPredictionData, telemetryClient.HistoryData);
@@ -401,11 +401,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(maskedCommands[1], telemetryClient.RecordedTelemetry[0].Properties["History"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
+            Assert.Equal(maskedCommands[1], telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameHistory]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameSuccess]);
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
-            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties["HttpRequestSent"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[1].Properties[RequestPredictionTelemetryData.PropertyNameHttpRequestSent]);
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -513,8 +513,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(maskedCommand, telemetryClient.RecordedTelemetry[0].Properties["History"]);
-            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
+            Assert.Equal(maskedCommand, telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameHistory]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties[HistoryTelemetryData.PropertyNameSuccess]);
 
             Assert.EndsWith("Exception", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[2].EventName);
             Assert.Equal(telemetryClient.RecordedTelemetry[2].Properties["RequestId"], telemetryClient.RecordedTelemetry[1].Properties["RequestId"]);
-            Assert.Equal("False", telemetryClient.RecordedTelemetry[2].Properties["HttpRequestSent"]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[2].Properties[RequestPredictionTelemetryData.PropertyNameHttpRequestSent]);
 
             // The request id are changed in OnRequestPrediction.
             AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -551,9 +551,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
-            Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0]["SuggestionSessionId"]).GetUInt32());
+            Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
             Assert.Equal("New-AzResourceGroup -Location *** -Name *** -WhatIf ***", ((JsonElement)suggestionSessions[0]["UserInut"]).GetString());
-            Assert.Equal(0, ((JsonElement)suggestionSessions[0]["Found"]).GetArrayLength());
+            Assert.Equal(0, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameFound]).GetArrayLength());
 
             var displayCountOrIndex = 3;
 
@@ -567,9 +567,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
-            Assert.Equal((int)SuggestionDisplayMode.ListView, ((JsonElement)suggestionSessions[0]["Displayed"])[0].GetInt32());
-            Assert.Equal(Math.Abs(displayCountOrIndex), ((JsonElement)suggestionSessions[0]["Displayed"])[1].GetInt32());
-            Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0]["SuggestionSessionId"]).GetUInt32());
+            Assert.Equal((int)SuggestionDisplayMode.ListView, ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[0].GetInt32());
+            Assert.Equal(Math.Abs(displayCountOrIndex), ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[1].GetInt32());
+            Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
             Assert.Equal(suggestionPackage.Session.Value, telemetryClient.SuggestionDisplayedData.SuggestionSessionId);
             Assert.Equal(displayCountOrIndex, telemetryClient.SuggestionDisplayedData.SuggestionCountOrIndex);
 
@@ -584,10 +584,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(suggestionPackage.Session.Value.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties["SuggestionSessionId"]);
+            Assert.Equal(suggestionPackage.Session.Value.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]);
             suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
-            Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0]["SuggestionSessionId"]).GetUInt32());
-            Assert.Equal(acceptedSuggestion, ((JsonElement)suggestionSessions[0]["AccepedSuggestion"]).GetString());
+            Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
+            Assert.Equal(acceptedSuggestion, ((JsonElement)suggestionSessions[0][SuggestionAcceptedTelemetryData.PropertyNameAccepted]).GetString());
 
             AzPredictorTelemetryTests.EnsureSameRequestId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionDisplayedData);
             AzPredictorTelemetryTests.EnsureSameRequestId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionAcceptedData);
@@ -641,9 +641,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
-            Assert.Equal((int)SuggestionDisplayMode.ListView, ((JsonElement)suggestionSessions[0]["Displayed"])[0].GetInt32());
-            Assert.Equal(Math.Abs(suggestionCountOrIndex), ((JsonElement)suggestionSessions[0]["Displayed"])[1].GetInt32());
-            Assert.Equal(suggestionSessionId, ((JsonElement)suggestionSessions[0]["SuggestionSessionId"]).GetUInt32());
+            Assert.Equal((int)SuggestionDisplayMode.ListView, ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[0].GetInt32());
+            Assert.Equal(Math.Abs(suggestionCountOrIndex), ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[1].GetInt32());
+            Assert.Equal(suggestionSessionId, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
         }
 
         /// <summary>
@@ -670,9 +670,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
 
             var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
-            Assert.Equal((int)SuggestionDisplayMode.InlineView, ((JsonElement)suggestionSessions[0]["Displayed"])[0].GetInt32());
-            Assert.Equal(Math.Abs(suggestionCountOrIndex), ((JsonElement)suggestionSessions[0]["Displayed"])[1].GetInt32());
-            Assert.Equal(suggestionSessionId, ((JsonElement)suggestionSessions[0]["SuggestionSessionId"]).GetUInt32());
+            Assert.Equal((int)SuggestionDisplayMode.InlineView, ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[0].GetInt32());
+            Assert.Equal(Math.Abs(suggestionCountOrIndex), ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[1].GetInt32());
+            Assert.Equal(suggestionSessionId, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
         }
 
         /// <summary>
@@ -698,8 +698,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
-            Assert.Equal((int)SuggestionDisplayMode.InlineView, ((JsonElement)suggestionSessions[0]["Displayed"])[0].GetInt32());
-            Assert.Equal(Math.Abs(suggestionCountOrIndex), ((JsonElement)suggestionSessions[0]["Displayed"])[1].GetInt32());
+            Assert.Equal((int)SuggestionDisplayMode.InlineView, ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[0].GetInt32());
+            Assert.Equal(Math.Abs(suggestionCountOrIndex), ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[1].GetInt32());
         }
 
         /// <summary>
