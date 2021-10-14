@@ -1,6 +1,6 @@
 ### Example 1: Update a Web PubSub resource
 ```powershell
-PS C:\> $wps = Update-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps `
+PS C:\> $wps = Update-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
 -IdentityType SystemAssigned -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 

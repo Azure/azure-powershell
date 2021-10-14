@@ -14,7 +14,7 @@ Operation to delete a resource.
 
 ### Delete (Default)
 ```
-Remove-AzWebPubSub -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+Remove-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Operation to delete a resource.
 
 ### Example 1: Remove a Web PubSub resource
 ```powershell
-PS C:\> Remove-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
+PS C:\> Remove-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
 ```
 
 
@@ -95,6 +95,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -128,21 +143,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-The name of the resource.
 
 ```yaml
 Type: System.String

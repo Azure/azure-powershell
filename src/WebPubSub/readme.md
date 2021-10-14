@@ -223,4 +223,10 @@ directive:
       parameter-name: HubName
     set:
       parameter-name: Name
+  - where:
+      subject: WebPubSub
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+      alias: ResourceName
 ```

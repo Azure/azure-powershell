@@ -1,6 +1,6 @@
 ### Example 1: Remove a Web PubSub resource
 ```powershell
-PS C:\> Remove-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
+PS C:\> Remove-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
 ```
 
 

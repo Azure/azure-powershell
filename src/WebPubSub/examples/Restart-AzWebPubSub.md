@@ -1,6 +1,6 @@
 ### Example 1: Restart a Web PubSub resource
 ```powershell
-PS C:\> Restart-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
+PS C:\> Restart-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
 ```
 
 

@@ -23,7 +23,7 @@ psdemo-wps eastus   Standard_S1
 
 ### Example 3: Get a specific Web PubSub resource
 ```powershell
-PS C:\> Get-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
+PS C:\> Get-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
 
 Name       Location SkuName
 ----       -------- -------

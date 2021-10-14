@@ -13,11 +13,11 @@ Create or update a resource.
 ## SYNTAX
 
 ```
-New-AzWebPubSub -ResourceGroupName <String> -ResourceName <String> -Location <String> -SkuName <String>
- [-SubscriptionId <String>] [-DisableAadAuth] [-DisableLocalAuth] [-EnableTlClientCert]
+New-AzWebPubSub -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
+ [-SubscriptionId <String>] [-DisableAadAuth] [-DisableLocalAuth] [-EnableTlsClientCert]
  [-IdentityType <ManagedIdentityType>] [-LiveTraceCategory <ILiveTraceCategory[]>]
  [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <AclAction>]
- [-PrivateEndpoint <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>]
+ [-PrivateEndpointAcl <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>]
  [-PublicNetworkAllow <WebPubSubRequestType[]>] [-PublicNetworkDeny <WebPubSubRequestType[]>]
  [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>] [-SkuTier <WebPubSubSkuTier>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -31,7 +31,7 @@ Create or update a resource.
 
 ### Example 1: Create a Web PubSub resource with minimal required parameters.
 ```powershell
-PS C:\> New-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps -Location eastus -SkuName Standard_S1
+PS C:\> New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps -Location eastus -SkuName Standard_S1
 
 Name                Location      SkuName
 ----                --------      -------
@@ -42,9 +42,13 @@ psdemo-wps          eastus        Standard_S1
 
 ### Example 2: Create a Web PubSub resource with more parameters and show the result
 ```powershell
-PS C:\> $wps = New-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps `
+PS C:\> $wps = New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
 -Location eastus -SkuName Standard_S1 -IdentityType SystemAssigned -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
+
+Name                Location      SkuName
+----                --------      -------
+psdemo-wps          eastus        Standard_S1
 
 PS C:\> $wps | format-list
 
@@ -155,7 +159,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableTlClientCert
+### -EnableTlsClientCert
 Request client certificate during TLS handshake if enabled
 
 ```yaml
@@ -233,6 +237,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NetworkAcLDefaultAction
 Default action when no other rule matches
 
@@ -263,9 +282,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateEndpoint
+### -PrivateEndpointAcl
 ACLs for requests from private endpoints
-To construct, see NOTES section for PRIVATEENDPOINT properties and create a hash table.
+To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]
@@ -353,21 +372,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-The name of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -523,7 +527,7 @@ LIVETRACECATEGORY <ILiveTraceCategory[]>: Gets or sets the list of category conf
   - `[Enabled <String>]`: Indicates whether or the live trace category is enabled.         Available values: true, false.         Case insensitive.
   - `[Name <String>]`: Gets or sets the live trace category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 
-PRIVATEENDPOINT <IPrivateEndpointAcl[]>: ACLs for requests from private endpoints
+PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>: ACLs for requests from private endpoints
   - `Name <String>`: Name of the private endpoint connection
   - `[Allow <WebPubSubRequestType[]>]`: Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
   - `[Deny <WebPubSubRequestType[]>]`: Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.

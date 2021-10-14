@@ -14,8 +14,8 @@ Operation to update an exiting resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWebPubSub -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-DisableAadAuth] [-DisableLocalAuth] [-EnableTlsClientCert] [-IdentityType <ManagedIdentityType>]
+Update-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DisableAadAuth]
+ [-DisableLocalAuth] [-EnableTlsClientCert] [-IdentityType <ManagedIdentityType>]
  [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>]
  [-NetworkAcLDefaultAction <AclAction>] [-PrivateEndpointAcl <IPrivateEndpointAcl[]>]
  [-PublicNetworkAccess <String>] [-PublicNetworkAllow <WebPubSubRequestType[]>]
@@ -44,7 +44,7 @@ Operation to update an exiting resource.
 
 ### Example 1: Update a Web PubSub resource
 ```powershell
-PS C:\> $wps = Update-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps `
+PS C:\> $wps = Update-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
 -IdentityType SystemAssigned -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 
@@ -225,6 +225,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NetworkAcLDefaultAction
 Default action when no other rule matches
 
@@ -345,21 +360,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-The name of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

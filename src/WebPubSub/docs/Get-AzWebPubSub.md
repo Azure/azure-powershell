@@ -19,7 +19,7 @@ Get-AzWebPubSub [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<Comm
 
 ### Get
 ```
-Get-AzWebPubSub -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
+Get-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ psdemo-wps eastus   Standard_S1
 
 ### Example 3: Get a specific Web PubSub resource
 ```powershell
-PS C:\> Get-AzWebPubSub -ResourceGroupName psdemo -ResourceName psdemo-wps
+PS C:\> Get-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
 
 Name       Location SkuName
 ----       -------- -------
@@ -121,14 +121,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+### -Name
+The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
-Aliases:
+Parameter Sets: Get
+Aliases: ResourceName
 
 Required: True
 Position: Named
@@ -137,12 +136,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-The name of the resource.
+### -ResourceGroupName
+The name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
