@@ -13,52 +13,45 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewayFirewallExclusionConfigBase : NetworkBaseCmdlet
+    public class AzureApplicationGatewayFirewallPolicyExclusionManagedRuleSet : NetworkBaseCmdlet
     {
-
+        [Alias("RuleSetType")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The variable to be excluded.")]
+            HelpMessage = "RuleSet Type.")]
         [ValidateNotNullOrEmpty]
-        public string Variable { get; set; }
+        public string Type { get; set; }
 
+        [Alias("RuleSetVersion")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.")]
+            HelpMessage = "RuleSet Version.")]
         [ValidateNotNullOrEmpty]
-        public string Operator { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to.")]
-        [ValidateNotNullOrEmpty]
-        public string Selector { get; set; }
+        public string Version { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of Exclusion Managed ruleSets.")]
+            HelpMessage = "Rule Groups.")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[] ExclusionManagedRuleSet { get; set; }
+        public PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup[] RuleGroup { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
         }
 
-        protected PSApplicationGatewayFirewallExclusion NewObject()
+        protected PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet NewObject()
         {
-            return new PSApplicationGatewayFirewallExclusion()
+            return new PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet()
             {
-                MatchVariable = this.Variable,
-                SelectorMatchOperator = this.Operator,
-                Selector = this.Selector,
-                ExclusionManagedRuleSets = this.ExclusionManagedRuleSet?.ToList()
+                RuleSetType = this.Type,
+                RuleSetVersion = this.Version,
+                RuleGroups = this.RuleGroup?.ToList()
             };
         }
     }

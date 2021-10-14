@@ -13,22 +13,19 @@
 // limitations under the License.
 //
 
-using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSApplicationGatewayFirewallExclusion
+    public partial class PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public string MatchVariable { get; set; }
+        public string RuleSetType { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public string SelectorMatchOperator { get; set; }
+        public string RuleSetVersion { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public string Selector { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet> ExclusionManagedRuleSets { get; set; }
+        public List<PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup> RuleGroups { get; set; }
     }
 }
