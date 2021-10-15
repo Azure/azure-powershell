@@ -1,18 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Start user assigned VM in the lab.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Start-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email "user@contoso.com"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This starts the VM assigned to the user with the specific email. If there isn't a VM assigned to the user a null is returned.

@@ -37,23 +37,16 @@ Operation to create or update a lab user.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add user to a lab
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>         New-AzLabServicesUser -LabName "Lab Name" -ResourceGroupName "Group Name" -Name "User Name" -Email "User@contoso.com"
 
-{{ Add output here }}
+Name
+----
+User Name
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Adds a user to a lab.
 
 ## PARAMETERS
 

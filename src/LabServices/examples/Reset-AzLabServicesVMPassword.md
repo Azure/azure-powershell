@@ -1,18 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Reset the password on the VM.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Reset-AzLabServicesVMPassword -ResourceGroupName "Group Name" -LabName "Lab Name" -VirtualMachineName 0 -Password "New Password"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This changes the VM password.

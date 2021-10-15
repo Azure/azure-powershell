@@ -1,18 +1,34 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new lab.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  New-AzLabServicesLab `
+        -Name "NewLab" `
+        -ResourceGroupName $ENV:ResourceGroupName `
+        -Location $ENV:Location `
+        -AdditionalCapabilityInstallGpuDriver Disabled `
+        -AdminUserPassword "PlaceholderPassword" `
+        -AdminUserUsername "PlaceholderAccountName" `
+        -AutoShutdownProfileShutdownOnDisconnect Disabled `
+        -AutoShutdownProfileShutdownOnIdle None `
+        -AutoShutdownProfileShutdownWhenNotConnected Disabled `
+        -ConnectionProfileClientRdpAccess Public `
+        -ConnectionProfileClientSshAccess None `
+        -ConnectionProfileWebRdpAccess None `
+        -ConnectionProfileWebSshAccess None `
+        -Description "New lab description" `
+        -ImageReferenceOffer "Windows-10" `
+        -ImageReferencePublisher "MicrosoftWindowsDesktop" `
+        -ImageReferenceSku "20h2-pro" `
+        -ImageReferenceVersion "latest" `
+        -SecurityProfileOpenAccess Disabled `
+        -SkuCapacity 3 `
+        -SkuName "Standard" `
+        -Title $ENV:NewLabName `
+        -VirtualMachineProfileCreateOption "TemplateVM" `
+        -VirtualMachineProfileUseSharedPassword Enabled
 
-{{ Add output here }}
+Location Name
+-------- ----
+westus2  NewLab
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates a new Lab.

@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Reimage an existing VM.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzLabServicesVMReimage -ResourceGroupName "Group Name" -LabName "Lab Name" -Name 0
 
-{{ Add output here }}
+Name
+----
+0
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This example reimages the VM.

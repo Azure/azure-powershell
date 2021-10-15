@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a lab plan image.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzLabServicesPlanImage -ResourceGroupName "Group Name" -LabPlanName "LabPlan Name" -Name "Image Name" -EnabledState "Enabled"
 
-{{ Add output here }}
+Name
+----
+Image Name
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This example enables the image for use in labs.

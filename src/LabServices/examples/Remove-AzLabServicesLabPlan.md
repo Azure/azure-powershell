@@ -1,18 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Lab plan
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzLabServicesLabPlan -ResourceGroupName "Group Name" -LabPlanName "Lab Plan Name"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Removes the lab plan.

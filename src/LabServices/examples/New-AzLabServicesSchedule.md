@@ -1,18 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new schedule in a lab.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  New-AzLabServicesSchedule `
+            -ResourceGroupName "Group Name" `
+            -LabName "Lab Name" `
+            -Name "Schedule Name" `
+            -StartAt "$((Get-Date).AddHours(5))" `
+            -StopAt "$((Get-Date).AddHours(6))" `
+            -RecurrencePatternFrequency 'Weekly' `
+            -RecurrencePatternInterval 1 `
+            -RecurrencePatternWeekDay @($((Get-Date).DayOfWeek)) `
+            -RecurrencePatternExpirationDate $((Get-Date).AddDays(20)) `
+            -TimeZoneId 'America/Los_Angeles'
 
-{{ Add output here }}
+Name
+----
+Schedule Name
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a weekly schedule.
 

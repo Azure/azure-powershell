@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update-AzLabServicesQuota
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzLabServicesQuota -ResourceGroupName "Group Name" -LabName "Lab Name" -LabQuota $(New-TimeSpan -Hours 3)
 
-{{ Add output here }}
+Location Name
+-------- ----
+westus2  Lab Name
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This example updates the lab adding an additional 3 hours to the lab quota.

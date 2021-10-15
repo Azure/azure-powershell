@@ -56,23 +56,16 @@ Operation to update a Lab Plan resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Lab plan
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzLabServicesLabPlan -ResourceGroupName "Group Name" -Name "LabPlan Name"         -DefaultAutoShutdownProfileShutdownOnDisconnect 'Enabled' -DefaultAutoShutdownProfileDisconnectDelay "00:17:00"
 
-{{ Add output here }}
+Location Name
+-------- ----
+westus2  LabPlan Name
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This example updates the lab plan enabling the Shutdown on disconnect with a delay of 17 minutes.
 
 ## PARAMETERS
 

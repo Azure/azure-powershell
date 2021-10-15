@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update existing schedule.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzLabServicesSchedule -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "Schedule Name" -Note "Update note."
 
-{{ Add output here }}
+Name                   Type
+----                   ----
+Schedule Name          Microsoft.LabServices/labs/schedules
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Updated the schedule to add additional note information.

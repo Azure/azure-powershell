@@ -43,23 +43,16 @@ Operation to update a lab user.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Lab User information.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzLabServicesUser -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "User Name" -AdditionalUsageQuota $(New-TimeSpan -Hours 2)
 
-{{ Add output here }}
+Name
+----
+User Name
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet will add additional quota of two hours to the user.
 
 ## PARAMETERS
 

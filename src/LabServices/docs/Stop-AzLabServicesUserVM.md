@@ -28,23 +28,14 @@ Stop-AzLabServicesUserVM -User <User> [-DefaultProfile <PSObject>] [-AsJob] [<Co
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Stop user assigned VM in the lab.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Stop-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email "user@contoso.com"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This stops the VM assigned to the user with the specific email.
+If there isn't a VM assigned to the user a null is returned.
 
 ## PARAMETERS
 

@@ -1,18 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Lab plan.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzLabServicesLabPlan `
+	-LabPlanName "testplan" `
+	-ResourceGroupName "Group Name" `
+	-Location "westus2" `
+	-AllowedRegion @('westus2', 'eastus2') `
+	-DefaultAutoShutdownProfileShutdownOnDisconnect Disabled `
+	-DefaultAutoShutdownProfileShutdownOnIdle None `
+	-DefaultAutoShutdownProfileShutdownWhenNotConnected Disabled `
+	-DefaultConnectionProfileClientRdpAccess Public `
+	-DefaultConnectionProfileClientSshAccess None `
+	-SupportInfoEmail 'test@contoso.com' `
+	-SupportInfoInstruction 'test information' `
+	-SupportInfoPhone '123-456-7890' `
+	-SupportInfoUrl 'https:\\test.com' `
+	-DefaultConnectionProfileWebRdpAccess None `
+	-DefaultConnectionProfileWebSshAccess None
 
-{{ Add output here }}
+Location Name
+-------- ----
+westus2  testplan
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a lab plan.

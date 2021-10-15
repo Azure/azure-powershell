@@ -1,18 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Send lab invite to the user.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Send-AzLabServicesUserInvite -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "User Name" -Text "Welcome to the lab."
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This sends an email invitation to the user with the custom text "Welcome to the lab" in the body of the email.

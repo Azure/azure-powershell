@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Sync the users connected to the lab.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Sync-AzLabServicesLabUsers -ResourceGroupName "Group Name" -LabName "Lab Name"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet will sync the connected AD Group to update the users.  
 

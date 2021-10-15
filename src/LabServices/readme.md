@@ -60,7 +60,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Users.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/VirtualMachines.json
 
-module-version: 1.0.0
+module-version: 0.1.0
 title: LabServices
 subject-prefix: $(service-name)
 
