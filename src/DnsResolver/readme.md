@@ -70,14 +70,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: ffebe2759a66ebd6ca52288a9eaf1c02f28e3842
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-<<<<<<< HEAD
   - $(this-folder)/resources/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2020-04-01-preview/dnsresolver.json
-=======
-  - D:\SpecRepo\azure-rest-api-specs-pr\specification\dnsresolver\resource-manager\Microsoft.Network\preview\2020-04-01-preview\dnsresolver.json
->>>>>>> 1b30867f0c... made some changes
 
 module-version: 0.1.2
 title: DnsResolver
