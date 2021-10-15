@@ -33,6 +33,7 @@ WARNING: This operation cannot be undone.
 All forwarding rules within the ruleset will be deleted.
 
 ## EXAMPLES
+
 ### Example 1: Remove an DNS forwarding ruleset by name.
 ```powershell
 PS C:\> Remove-AzDnsResolverDnsForwardingRuleset -Name dnsForwardingRulset -ResourceGroupName sampleRG

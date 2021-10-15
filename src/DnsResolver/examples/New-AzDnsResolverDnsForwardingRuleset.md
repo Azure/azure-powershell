@@ -21,3 +21,4 @@ westus2  dnsForwardingRuleset Microsoft.Network/dnsForwardingRulesets "04005592-
 ```
 
 This cmdlet creates a DNS forwarding ruleset.
+

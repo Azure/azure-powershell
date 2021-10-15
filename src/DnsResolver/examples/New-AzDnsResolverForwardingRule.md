@@ -21,3 +21,4 @@ sampleForwardingRule Microsoft.Network/dnsForwardingRuleset/forwardingRule "0b00
 ```
 
 This cmdlet creates a forwarding rule with tag. 
+

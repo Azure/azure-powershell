@@ -20,7 +20,6 @@ Az.DesktopVirtualization
 Az.DigitalTwins
 Az.DiskPool
 Az.Elastic
-Az.DnsResolver
 Az.Functions
 Az.HanaOnAzure
 Az.HealthBot
