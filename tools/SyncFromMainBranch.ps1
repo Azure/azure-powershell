@@ -6,7 +6,7 @@ param(
     [string]$GithubToken
 )
 
-$Config = Get-Content (Join-Path $PSScriptRoot "config.json") | ConvertFrom-Json
+$Config = Get-Content (Join-Path $PSScriptRoot "../.azure-pipelines/SyncFromMainBranchConfig.json") | ConvertFrom-Json
 $TmpFolder = New-Item -ItemType Directory -Path tmp
 
 foreach ($SyncPath in $Config.SyncPath)
@@ -15,9 +15,9 @@ foreach ($SyncPath in $Config.SyncPath)
     Copy-Item -Path $SyncPath -Destination "$TmpFolder/$SyncPath" -Recurse
 }
 
-git config --global user.email "azurepowershell@ms.com"
-git config --global user.name "azurepowershell"
-git checkout -b "syncToolsFolder-$BranchName" "origin/$BranchName"
+# git config --global user.email "azurepowershell@ms.com"
+# git config --global user.name "azurepowershell"
+# git checkout -b "syncToolsFolder-$BranchName" "origin/$BranchName"
 
 # There are some files or folders who need to be keeped in target branch.
 foreach ($UnSyncPath in $Config.UnSyncPath)
@@ -31,9 +31,9 @@ foreach ($SyncPath in $Config.SyncPath)
 {
     Remove-Item -Path $SyncPath -Recurse
     Copy-Item -Path "$TmpFolder/$SyncPath" -Destination $SyncPath -Recurse
-    git add $SyncPath
+    # git add $SyncPath
 }
 
-git commit -m "Sync tools folder from main branch to $BranchName branch"
-git remote set-url origin "https://$GithubToken@github.com/Azure/azure-powershell.git"
-git push origin "syncToolsFolder-$BranchName" --force
+# git commit -m "Sync tools folder from main branch to $BranchName branch"
+# git remote set-url origin "https://$GithubToken@github.com/Azure/azure-powershell.git"
+# git push origin "syncToolsFolder-$BranchName" --force
