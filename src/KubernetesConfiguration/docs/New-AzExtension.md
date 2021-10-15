@@ -17,8 +17,8 @@ New-AzExtension -ClusterName <String> -ClusterType <String> -Name <String> -Reso
  -ExtensionType <String> [-SubscriptionId <String>] [-AkAssignedIdentityType <ResourceIdentityType>]
  [-AutoUpgradeMinorVersion] [-ClusterReleaseNamespace <String>] [-ConfigurationProtectedSetting <Hashtable>]
  [-ConfigurationSetting <Hashtable>] [-IdentityType <ResourceIdentityType>]
- [-NamespaceTargetNamespace <String>] [-ReleaseTrain <String>] [-Statuse <IExtensionStatus[]>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NamespaceTargetNamespace <String>] [-ReleaseTrain <String>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -284,22 +284,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Statuse
-Status from this extension.
-To construct, see NOTES section for STATUSE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtensionStatus[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The Azure subscription ID.
 This is a GUID-formatted string (e.g.
@@ -376,18 +360,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-STATUSE <IExtensionStatus[]>: Status from this extension.
-  - `[Code <String>]`: Status code provided by the Extension
-  - `[DisplayStatus <String>]`: Short description of status of the extension.
-  - `[Level <LevelType?>]`: Level of the status.
-  - `[Message <String>]`: Detailed message of the status from the Extension.
-  - `[Time <String>]`: DateLiteral (per ISO8601) noting the time of installation status.
 
 ## RELATED LINKS
 

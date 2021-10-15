@@ -61,6 +61,18 @@ subject-prefix: ''
 identity-correction-for-post: true
 
 directive:
+  - from: swagger-document 
+    where: $.definitions.Extension.properties.properties.properties.statuses
+    transform: >-
+      return {
+          "description": "Status from this extension.",
+          "type": "array",
+          "readOnly": true,
+          "x-nullable": true,
+          "items": {
+            "$ref": "#/definitions/ExtensionStatus"
+          }
+      }
   - from: swagger-document
     where: $.definitions.EnableHelmOperatorDefinition.type
     transform: return "string"
@@ -121,9 +133,4 @@ directive:
       verb: Update
       subject: Extension
     remove: true
-  - where:
-      subject: ^Extension$
-      parameter-name: Statuses
-    set:
-      parameter-name: Statuse
 ```

@@ -1,8 +1,8 @@
 {
-  "AzExtension+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a?api-version=2021-09-01+1": {
+  "AzExtension+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53?api-version=2021-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a?api-version=2021-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53?api-version=2021-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"extensionType\": \"Microsoft.Arcdataservices\"\r\n  }\r\n}",
       "Headers": {
       },
@@ -16,34 +16,112 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://eastus2euap.rp.kubernetesconfiguration.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a" ],
+        "Location": [ "https://eastus2euap.rp.kubernetesconfiguration.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/c196a048-d1bf-47b7-bab4-bfe148fd0452?api-Version=2021-09-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/552603d7-bf56-4d66-9d6f-3a061310dd92?api-Version=2021-09-01" ],
         "api-supported-versions": [ "2020-07-01-Preview, 2021-05-01-preview, 2021-09-01" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "c8d06384-80cb-4574-8991-607f6b472790" ],
-        "x-ms-correlation-request-id": [ "c8d06384-80cb-4574-8991-607f6b472790" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083333Z:c8d06384-80cb-4574-8991-607f6b472790" ],
-        "Date": [ "Thu, 14 Oct 2021 08:33:32 GMT" ]
+        "x-ms-request-id": [ "af3b8bd9-3154-41b9-ac44-a3bc2fa45ee7" ],
+        "x-ms-correlation-request-id": [ "af3b8bd9-3154-41b9-ac44-a3bc2fa45ee7" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20211015T072006Z:af3b8bd9-3154-41b9-ac44-a3bc2fa45ee7" ],
+        "Date": [ "Fri, 15 Oct 2021 07:20:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "822" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a\",\"name\":\"dgp71a\",\"type\":\"Microsoft.KubernetesConfiguration/extensions\",\"properties\":{\"extensionType\":\"Microsoft.Arcdataservices\",\"autoUpgradeMinorVersion\":true,\"releaseTrain\":\"Stable\",\"version\":null,\"scope\":{\"cluster\":{\"releaseNamespace\":\"arc\"}},\"provisioningState\":\"Creating\",\"installState\":\"Unknown\",\"configurationSettings\":{},\"configurationProtectedSettings\":{},\"statuses\":[],\"aksAssignedIdentity\":null},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2021-10-14T08:33:32.8804415+00:00\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":\"2021-10-14T08:33:32.8804415+00:00\"}}"
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53\",\"name\":\"arfw53\",\"type\":\"Microsoft.KubernetesConfiguration/extensions\",\"properties\":{\"extensionType\":\"Microsoft.Arcdataservices\",\"autoUpgradeMinorVersion\":true,\"releaseTrain\":\"Stable\",\"version\":null,\"scope\":{\"cluster\":{\"releaseNamespace\":\"arc\"}},\"provisioningState\":\"Creating\",\"installState\":\"Unknown\",\"configurationSettings\":{},\"configurationProtectedSettings\":{},\"statuses\":[],\"aksAssignedIdentity\":null},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2021-10-15T07:20:06.2828283+00:00\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":\"2021-10-15T07:20:06.2828283+00:00\"}}"
     }
   },
-  "AzExtension+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/c196a048-d1bf-47b7-bab4-bfe148fd0452?api-Version=2021-09-01+2": {
+  "AzExtension+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/552603d7-bf56-4d66-9d6f-3a061310dd92?api-Version=2021-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/c196a048-d1bf-47b7-bab4-bfe148fd0452?api-Version=2021-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/552603d7-bf56-4d66-9d6f-3a061310dd92?api-Version=2021-09-01",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "68ec8178-5477-4282-8406-b64df4805324" ],
+        "x-ms-client-request-id": [ "5fb7f539-d11e-4b4c-a82d-675b0c2ca0c7" ],
+        "CommandName": [ "Az.KubernetesConfiguration.internal\\New-AzExtension" ],
+        "FullCommandName": [ "New-AzExtension_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "api-supported-versions": [ "2019-11-01-Preview, 2021-05-01-preview, 2021-06-01-preview, 2021-09-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "a40b746f-0eeb-4f28-8359-2c6a9c13eb15" ],
+        "x-ms-correlation-request-id": [ "a40b746f-0eeb-4f28-8359-2c6a9c13eb15" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20211015T072037Z:a40b746f-0eeb-4f28-8359-2c6a9c13eb15" ],
+        "Date": [ "Fri, 15 Oct 2021 07:20:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/552603d7-bf56-4d66-9d6f-3a061310dd92\",\"name\":\"552603d7-bf56-4d66-9d6f-3a061310dd92\",\"status\":\"Creating\"}"
+    }
+  },
+  "AzExtension+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/552603d7-bf56-4d66-9d6f-3a061310dd92?api-Version=2021-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/552603d7-bf56-4d66-9d6f-3a061310dd92?api-Version=2021-09-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "5fb7f539-d11e-4b4c-a82d-675b0c2ca0c7" ],
+        "CommandName": [ "Az.KubernetesConfiguration.internal\\New-AzExtension" ],
+        "FullCommandName": [ "New-AzExtension_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "api-supported-versions": [ "2019-11-01-Preview, 2021-05-01-preview, 2021-06-01-preview, 2021-09-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "b0de2387-f024-4bf8-8a24-703b59d55b97" ],
+        "x-ms-correlation-request-id": [ "b0de2387-f024-4bf8-8a24-703b59d55b97" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20211015T072109Z:b0de2387-f024-4bf8-8a24-703b59d55b97" ],
+        "Date": [ "Fri, 15 Oct 2021 07:21:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/552603d7-bf56-4d66-9d6f-3a061310dd92\",\"name\":\"552603d7-bf56-4d66-9d6f-3a061310dd92\",\"status\":\"Succeeded\"}"
+    }
+  },
+  "AzExtension+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53?api-version=2021-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53?api-version=2021-09-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "5fb7f539-d11e-4b4c-a82d-675b0c2ca0c7" ],
         "CommandName": [ "Az.KubernetesConfiguration.internal\\New-AzExtension" ],
         "FullCommandName": [ "New-AzExtension_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -59,107 +137,29 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "api-supported-versions": [ "2019-11-01-Preview, 2021-05-01-preview, 2021-06-01-preview, 2021-09-01" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "8732b8fd-64e7-4037-b08d-855a06b9e4e5" ],
-        "x-ms-correlation-request-id": [ "8732b8fd-64e7-4037-b08d-855a06b9e4e5" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083404Z:8732b8fd-64e7-4037-b08d-855a06b9e4e5" ],
-        "Date": [ "Thu, 14 Oct 2021 08:34:04 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "328" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/c196a048-d1bf-47b7-bab4-bfe148fd0452\",\"name\":\"c196a048-d1bf-47b7-bab4-bfe148fd0452\",\"status\":\"Creating\"}"
-    }
-  },
-  "AzExtension+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/c196a048-d1bf-47b7-bab4-bfe148fd0452?api-Version=2021-09-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/c196a048-d1bf-47b7-bab4-bfe148fd0452?api-Version=2021-09-01",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "68ec8178-5477-4282-8406-b64df4805324" ],
-        "CommandName": [ "Az.KubernetesConfiguration.internal\\New-AzExtension" ],
-        "FullCommandName": [ "New-AzExtension_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "api-supported-versions": [ "2019-11-01-Preview, 2021-05-01-preview, 2021-06-01-preview, 2021-09-01" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "ab174ada-9e70-48cb-8de8-9af2df2025d0" ],
-        "x-ms-correlation-request-id": [ "ab174ada-9e70-48cb-8de8-9af2df2025d0" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083436Z:ab174ada-9e70-48cb-8de8-9af2df2025d0" ],
-        "Date": [ "Thu, 14 Oct 2021 08:34:35 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "329" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/c196a048-d1bf-47b7-bab4-bfe148fd0452\",\"name\":\"c196a048-d1bf-47b7-bab4-bfe148fd0452\",\"status\":\"Succeeded\"}"
-    }
-  },
-  "AzExtension+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a?api-version=2021-09-01+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a?api-version=2021-09-01",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "68ec8178-5477-4282-8406-b64df4805324" ],
-        "CommandName": [ "Az.KubernetesConfiguration.internal\\New-AzExtension" ],
-        "FullCommandName": [ "New-AzExtension_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "api-supported-versions": [ "2020-07-01-Preview, 2021-05-01-preview, 2021-09-01" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "16fd6470-ea03-4956-8679-0a346d7e5e6c" ],
-        "x-ms-correlation-request-id": [ "16fd6470-ea03-4956-8679-0a346d7e5e6c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083437Z:16fd6470-ea03-4956-8679-0a346d7e5e6c" ],
-        "Date": [ "Thu, 14 Oct 2021 08:34:36 GMT" ]
+        "x-ms-request-id": [ "ef81d47c-779b-4946-87dc-09f435b4b2da" ],
+        "x-ms-correlation-request-id": [ "ef81d47c-779b-4946-87dc-09f435b4b2da" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20211015T072110Z:ef81d47c-779b-4946-87dc-09f435b4b2da" ],
+        "Date": [ "Fri, 15 Oct 2021 07:21:10 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "835" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a\",\"name\":\"dgp71a\",\"type\":\"Microsoft.KubernetesConfiguration/extensions\",\"properties\":{\"extensionType\":\"Microsoft.Arcdataservices\",\"autoUpgradeMinorVersion\":true,\"releaseTrain\":\"Stable\",\"version\":\"1.0.16701001\",\"scope\":{\"cluster\":{\"releaseNamespace\":\"arc\"}},\"provisioningState\":\"Succeeded\",\"installState\":\"Installed\",\"configurationSettings\":{},\"configurationProtectedSettings\":{},\"statuses\":[],\"aksAssignedIdentity\":null},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2021-10-14T08:33:32.8804415+00:00\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":\"2021-10-14T08:33:32.8804415+00:00\"}}"
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53\",\"name\":\"arfw53\",\"type\":\"Microsoft.KubernetesConfiguration/extensions\",\"properties\":{\"extensionType\":\"Microsoft.Arcdataservices\",\"autoUpgradeMinorVersion\":true,\"releaseTrain\":\"Stable\",\"version\":\"1.0.16701001\",\"scope\":{\"cluster\":{\"releaseNamespace\":\"arc\"}},\"provisioningState\":\"Succeeded\",\"installState\":\"Installed\",\"configurationSettings\":{},\"configurationProtectedSettings\":{},\"statuses\":[],\"aksAssignedIdentity\":null},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2021-10-15T07:20:06.2828283+00:00\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":\"2021-10-15T07:20:06.2828283+00:00\"}}"
     }
   },
-  "AzExtension+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions?api-version=2021-09-01+1": {
+  "AzExtension+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions?api-version=2021-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions?api-version=2021-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions?api-version=2021-09-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "479c4ae9-9c21-47fa-9486-295945eeeab7" ],
+        "x-ms-client-request-id": [ "d95dce6d-0bbb-44e2-b231-f935af82a0d4" ],
         "CommandName": [ "Az.KubernetesConfiguration.internal\\Get-AzExtension" ],
         "FullCommandName": [ "Get-AzExtension_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -174,31 +174,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "api-supported-versions": [ "2020-07-01-Preview, 2021-05-01-preview, 2021-09-01" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "2df28531-0179-4e87-b155-362d6e01d168" ],
-        "x-ms-correlation-request-id": [ "2df28531-0179-4e87-b155-362d6e01d168" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083439Z:2df28531-0179-4e87-b155-362d6e01d168" ],
-        "Date": [ "Thu, 14 Oct 2021 08:34:38 GMT" ]
+        "x-ms-request-id": [ "b3c8b503-c71f-4467-b280-f9eab33a9e60" ],
+        "x-ms-correlation-request-id": [ "b3c8b503-c71f-4467-b280-f9eab33a9e60" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20211015T072112Z:b3c8b503-c71f-4467-b280-f9eab33a9e60" ],
+        "Date": [ "Fri, 15 Oct 2021 07:21:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "863" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a\",\"name\":\"dgp71a\",\"type\":\"Microsoft.KubernetesConfiguration/extensions\",\"properties\":{\"extensionType\":\"Microsoft.Arcdataservices\",\"autoUpgradeMinorVersion\":true,\"releaseTrain\":\"Stable\",\"version\":\"1.0.16701001\",\"scope\":{\"cluster\":{\"releaseNamespace\":\"arc\"}},\"provisioningState\":\"Succeeded\",\"installState\":\"Installed\",\"configurationSettings\":{},\"configurationProtectedSettings\":{},\"statuses\":[],\"aksAssignedIdentity\":null},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2021-10-14T08:33:32.8804415+00:00\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":\"2021-10-14T08:33:32.8804415+00:00\"}}],\"nextLink\":null}"
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53\",\"name\":\"arfw53\",\"type\":\"Microsoft.KubernetesConfiguration/extensions\",\"properties\":{\"extensionType\":\"Microsoft.Arcdataservices\",\"autoUpgradeMinorVersion\":true,\"releaseTrain\":\"Stable\",\"version\":\"1.0.16701001\",\"scope\":{\"cluster\":{\"releaseNamespace\":\"arc\"}},\"provisioningState\":\"Succeeded\",\"installState\":\"Installed\",\"configurationSettings\":{},\"configurationProtectedSettings\":{},\"statuses\":[],\"aksAssignedIdentity\":null},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2021-10-15T07:20:06.2828283+00:00\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":\"2021-10-15T07:20:06.2828283+00:00\"}}],\"nextLink\":null}"
     }
   },
-  "AzExtension+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a?api-version=2021-09-01+1": {
+  "AzExtension+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53?api-version=2021-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a?api-version=2021-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53?api-version=2021-09-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "e8c0ba4b-e0c5-40b3-b736-bd3923814502" ],
+        "x-ms-client-request-id": [ "9d31109f-2753-4606-bf27-ba08d511b21f" ],
         "CommandName": [ "Az.KubernetesConfiguration.internal\\Get-AzExtension" ],
         "FullCommandName": [ "Get-AzExtension_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -213,31 +213,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "api-supported-versions": [ "2020-07-01-Preview, 2021-05-01-preview, 2021-09-01" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "77114eac-1729-4840-8415-1297051ae2d9" ],
-        "x-ms-correlation-request-id": [ "77114eac-1729-4840-8415-1297051ae2d9" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083441Z:77114eac-1729-4840-8415-1297051ae2d9" ],
-        "Date": [ "Thu, 14 Oct 2021 08:34:40 GMT" ]
+        "x-ms-request-id": [ "c03a3753-ae2a-4425-9248-29812008228e" ],
+        "x-ms-correlation-request-id": [ "c03a3753-ae2a-4425-9248-29812008228e" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20211015T072113Z:c03a3753-ae2a-4425-9248-29812008228e" ],
+        "Date": [ "Fri, 15 Oct 2021 07:21:13 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "835" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a\",\"name\":\"dgp71a\",\"type\":\"Microsoft.KubernetesConfiguration/extensions\",\"properties\":{\"extensionType\":\"Microsoft.Arcdataservices\",\"autoUpgradeMinorVersion\":true,\"releaseTrain\":\"Stable\",\"version\":\"1.0.16701001\",\"scope\":{\"cluster\":{\"releaseNamespace\":\"arc\"}},\"provisioningState\":\"Succeeded\",\"installState\":\"Installed\",\"configurationSettings\":{},\"configurationProtectedSettings\":{},\"statuses\":[],\"aksAssignedIdentity\":null},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2021-10-14T08:33:32.8804415+00:00\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":\"2021-10-14T08:33:32.8804415+00:00\"}}"
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53\",\"name\":\"arfw53\",\"type\":\"Microsoft.KubernetesConfiguration/extensions\",\"properties\":{\"extensionType\":\"Microsoft.Arcdataservices\",\"autoUpgradeMinorVersion\":true,\"releaseTrain\":\"Stable\",\"version\":\"1.0.16701001\",\"scope\":{\"cluster\":{\"releaseNamespace\":\"arc\"}},\"provisioningState\":\"Succeeded\",\"installState\":\"Installed\",\"configurationSettings\":{},\"configurationProtectedSettings\":{},\"statuses\":[],\"aksAssignedIdentity\":null},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2021-10-15T07:20:06.2828283+00:00\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":\"2021-10-15T07:20:06.2828283+00:00\"}}"
     }
   },
-  "AzExtension+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a?api-version=2021-09-01+1": {
+  "AzExtension+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53?api-version=2021-09-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a?api-version=2021-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53?api-version=2021-09-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "ff0b3276-4d26-40f8-9ecf-1e220c39fd16" ],
+        "x-ms-client-request-id": [ "f28696bc-01f8-4bbb-9441-d73125970283" ],
         "CommandName": [ "Az.KubernetesConfiguration.internal\\Remove-AzExtension" ],
         "FullCommandName": [ "Remove-AzExtension_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -254,13 +254,13 @@
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9?api-Version=2021-09-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/97900b4e-f566-4711-8f75-c9ee47cff29c?api-Version=2021-09-01" ],
         "api-supported-versions": [ "2020-07-01-Preview, 2021-05-01-preview, 2021-09-01" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "dcc12a96-20a6-4db8-8681-f4334f772e25" ],
-        "x-ms-correlation-request-id": [ "dcc12a96-20a6-4db8-8681-f4334f772e25" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083443Z:dcc12a96-20a6-4db8-8681-f4334f772e25" ],
-        "Date": [ "Thu, 14 Oct 2021 08:34:42 GMT" ]
+        "x-ms-request-id": [ "78d71e90-b371-4644-8b25-f01f469ad7d6" ],
+        "x-ms-correlation-request-id": [ "78d71e90-b371-4644-8b25-f01f469ad7d6" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20211015T072115Z:78d71e90-b371-4644-8b25-f01f469ad7d6" ],
+        "Date": [ "Fri, 15 Oct 2021 07:21:14 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -269,15 +269,93 @@
       "Content": null
     }
   },
-  "AzExtension+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9?api-Version=2021-09-01+2": {
+  "AzExtension+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/97900b4e-f566-4711-8f75-c9ee47cff29c?api-Version=2021-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9?api-Version=2021-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/97900b4e-f566-4711-8f75-c9ee47cff29c?api-Version=2021-09-01",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "ff0b3276-4d26-40f8-9ecf-1e220c39fd16" ],
+        "x-ms-client-request-id": [ "f28696bc-01f8-4bbb-9441-d73125970283" ],
+        "CommandName": [ "Az.KubernetesConfiguration.internal\\Remove-AzExtension" ],
+        "FullCommandName": [ "Remove-AzExtension_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "api-supported-versions": [ "2019-11-01-Preview, 2021-05-01-preview, 2021-06-01-preview, 2021-09-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5f3b55d6-4552-43c1-b88b-a4dc26ca589c" ],
+        "x-ms-correlation-request-id": [ "5f3b55d6-4552-43c1-b88b-a4dc26ca589c" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20211015T072146Z:5f3b55d6-4552-43c1-b88b-a4dc26ca589c" ],
+        "Date": [ "Fri, 15 Oct 2021 07:21:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/97900b4e-f566-4711-8f75-c9ee47cff29c\",\"name\":\"97900b4e-f566-4711-8f75-c9ee47cff29c\",\"status\":\"Deleting\"}"
+    }
+  },
+  "AzExtension+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/97900b4e-f566-4711-8f75-c9ee47cff29c?api-Version=2021-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/97900b4e-f566-4711-8f75-c9ee47cff29c?api-Version=2021-09-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "f28696bc-01f8-4bbb-9441-d73125970283" ],
+        "CommandName": [ "Az.KubernetesConfiguration.internal\\Remove-AzExtension" ],
+        "FullCommandName": [ "Remove-AzExtension_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "api-supported-versions": [ "2019-11-01-Preview, 2021-05-01-preview, 2021-06-01-preview, 2021-09-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "ba6d4018-1dc8-4329-b498-4d8517274758" ],
+        "x-ms-correlation-request-id": [ "ba6d4018-1dc8-4329-b498-4d8517274758" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20211015T072218Z:ba6d4018-1dc8-4329-b498-4d8517274758" ],
+        "Date": [ "Fri, 15 Oct 2021 07:22:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "329" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/97900b4e-f566-4711-8f75-c9ee47cff29c\",\"name\":\"97900b4e-f566-4711-8f75-c9ee47cff29c\",\"status\":\"Succeeded\"}"
+    }
+  },
+  "AzExtension+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/97900b4e-f566-4711-8f75-c9ee47cff29c?api-Version=2021-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/97900b4e-f566-4711-8f75-c9ee47cff29c?api-Version=2021-09-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "f28696bc-01f8-4bbb-9441-d73125970283" ],
         "CommandName": [ "Az.KubernetesConfiguration.internal\\Remove-AzExtension" ],
         "FullCommandName": [ "Remove-AzExtension_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -295,134 +373,17 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "api-supported-versions": [ "2019-11-01-Preview, 2021-05-01-preview, 2021-06-01-preview, 2021-09-01" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "3678c3f8-c050-4efe-8d01-074d3f25e4d7" ],
-        "x-ms-correlation-request-id": [ "3678c3f8-c050-4efe-8d01-074d3f25e4d7" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083514Z:3678c3f8-c050-4efe-8d01-074d3f25e4d7" ],
-        "Date": [ "Thu, 14 Oct 2021 08:35:14 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "328" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9\",\"name\":\"b28a9930-1309-4c20-9ade-82e85330b4a9\",\"status\":\"Deleting\"}"
-    }
-  },
-  "AzExtension+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9?api-Version=2021-09-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9?api-Version=2021-09-01",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "ff0b3276-4d26-40f8-9ecf-1e220c39fd16" ],
-        "CommandName": [ "Az.KubernetesConfiguration.internal\\Remove-AzExtension" ],
-        "FullCommandName": [ "Remove-AzExtension_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "api-supported-versions": [ "2019-11-01-Preview, 2021-05-01-preview, 2021-06-01-preview, 2021-09-01" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "9186a782-a3a1-40b3-81b0-b20c178359ce" ],
-        "x-ms-correlation-request-id": [ "9186a782-a3a1-40b3-81b0-b20c178359ce" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083547Z:9186a782-a3a1-40b3-81b0-b20c178359ce" ],
-        "Date": [ "Thu, 14 Oct 2021 08:35:46 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "328" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9\",\"name\":\"b28a9930-1309-4c20-9ade-82e85330b4a9\",\"status\":\"Deleting\"}"
-    }
-  },
-  "AzExtension+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9?api-Version=2021-09-01+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9?api-Version=2021-09-01",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "ff0b3276-4d26-40f8-9ecf-1e220c39fd16" ],
-        "CommandName": [ "Az.KubernetesConfiguration.internal\\Remove-AzExtension" ],
-        "FullCommandName": [ "Remove-AzExtension_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "api-supported-versions": [ "2019-11-01-Preview, 2021-05-01-preview, 2021-06-01-preview, 2021-09-01" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "83fd7683-6f83-4475-a4c4-4676ec7bb0b9" ],
-        "x-ms-correlation-request-id": [ "83fd7683-6f83-4475-a4c4-4676ec7bb0b9" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083618Z:83fd7683-6f83-4475-a4c4-4676ec7bb0b9" ],
-        "Date": [ "Thu, 14 Oct 2021 08:36:18 GMT" ]
+        "x-ms-request-id": [ "229214a5-9f5f-49fb-8f3a-92c1b0876e13" ],
+        "x-ms-correlation-request-id": [ "229214a5-9f5f-49fb-8f3a-92c1b0876e13" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20211015T072219Z:229214a5-9f5f-49fb-8f3a-92c1b0876e13" ],
+        "Date": [ "Fri, 15 Oct 2021 07:22:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "329" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9\",\"name\":\"b28a9930-1309-4c20-9ade-82e85330b4a9\",\"status\":\"Succeeded\"}"
-    }
-  },
-  "AzExtension+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9?api-Version=2021-09-01+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9?api-Version=2021-09-01",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "ff0b3276-4d26-40f8-9ecf-1e220c39fd16" ],
-        "CommandName": [ "Az.KubernetesConfiguration.internal\\Remove-AzExtension" ],
-        "FullCommandName": [ "Remove-AzExtension_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "api-supported-versions": [ "2019-11-01-Preview, 2021-05-01-preview, 2021-06-01-preview, 2021-09-01" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "6cc5c99c-84c8-4d82-bcdb-7afe90f6bedb" ],
-        "x-ms-correlation-request-id": [ "6cc5c99c-84c8-4d82-bcdb-7afe90f6bedb" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211014T083620Z:6cc5c99c-84c8-4d82-bcdb-7afe90f6bedb" ],
-        "Date": [ "Thu, 14 Oct 2021 08:36:19 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "329" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/matex5/providers/Microsoft.KubernetesConfiguration/extensions/dgp71a/operations/b28a9930-1309-4c20-9ade-82e85330b4a9\",\"name\":\"b28a9930-1309-4c20-9ade-82e85330b4a9\",\"status\":\"Succeeded\"}"
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus2euap/providers/Microsoft.Kubernetes/ConnectedClusters/zabhn2/providers/Microsoft.KubernetesConfiguration/extensions/arfw53/operations/97900b4e-f566-4711-8f75-c9ee47cff29c\",\"name\":\"97900b4e-f566-4711-8f75-c9ee47cff29c\",\"status\":\"Succeeded\"}"
     }
   }
 }
