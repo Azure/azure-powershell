@@ -1,54 +1,54 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverdnsforwardingruleset
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetvirtualnetworklink
 schema: 2.0.0
 ---
 
-# Remove-AzDnsResolverDnsForwardingRuleset
+# Remove-AzDnsForwardingRulesetVirtualNetworkLink
 
 ## SYNOPSIS
-Deletes a DNS forwarding ruleset.
+Deletes a virtual network link to a DNS forwarding ruleset.
 WARNING: This operation cannot be undone.
-All forwarding rules within the ruleset will be deleted.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDnsResolverDnsForwardingRuleset -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDnsResolverDnsForwardingRuleset -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+Remove-AzDnsForwardingRulesetVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a DNS forwarding ruleset.
+Deletes a virtual network link to a DNS forwarding ruleset.
 WARNING: This operation cannot be undone.
-All forwarding rules within the ruleset will be deleted.
 
 ## EXAMPLES
 
-### Example 1: Remove an DNS forwarding ruleset by name.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzDnsResolverDnsForwardingRuleset -Name dnsForwardingRulset -ResourceGroupName sampleRG
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-This command removes a DNS forwarding ruleset by name.
+{{ Add description here }}
 
-### Example 2: Remove a DNS forwarding ruleset by identity
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $dnsResolverDnsForwardingRulesetObject = Get-AzDnsResolverDnsForwardingRuleset -Name dnsForwardingRuleset -ResourceGroupName sampleRG
-PS C:\> Remove-AzDnsResolverDnsForwardingRuleset -InputObject $dnsResolverDnsForwardingRulesetObject 
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command removes a DNS forwarding ruleset by identity.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -76,6 +76,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsForwardingRulesetName
+The name of the DNS forwarding ruleset.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,12 +131,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the DNS forwarding ruleset.
+The name of the virtual network link.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: DnsForwardingRulesetName
+Aliases: VirtualNetworkLinkName
 
 Required: True
 Position: Named

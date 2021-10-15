@@ -1,6 +1,6 @@
 v
 
-!-- region Generated -->
+<!-- region Generated -->
 # Az.DnsResolver
 This directory contains the PowerShell module for the DnsResolver service.
 
@@ -85,6 +85,17 @@ inlining-threshold: 50
 # identity-correction-for-post: true
 
 directive:
+  - where:
+      subject: ForwardingRule|VirtualNetworkLink
+    set:
+      subject-prefix: DnsForwardingRuleset
+  - where:
+      subject: DnsForwardingRuleset
+    set:
+      subject-prefix: ''
+  - where:
+      subject: DnsForwardingRulesetDnsForwardingRuleset
+    remove: true
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well

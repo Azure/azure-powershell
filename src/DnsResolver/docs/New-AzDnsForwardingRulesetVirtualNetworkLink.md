@@ -1,54 +1,63 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverforwardingrule
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetvirtualnetworklink
 schema: 2.0.0
 ---
 
-# Remove-AzDnsResolverForwardingRule
+# New-AzDnsForwardingRulesetVirtualNetworkLink
 
 ## SYNOPSIS
-Deletes a forwarding rule in a DNS forwarding ruleset.
-WARNING: This operation cannot be undone.
+Creates or updates a virtual network link to a DNS forwarding ruleset.
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzDnsResolverForwardingRule -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzDnsResolverForwardingRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Metadata <Hashtable>] [-VirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a forwarding rule in a DNS forwarding ruleset.
-WARNING: This operation cannot be undone.
+Creates or updates a virtual network link to a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: Remove forwarding rule by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzDnsResolverForwardingRule -DnsForwardingRulesetName sampleForwardingRuleset -Name sampleForwardingRule -ResourceGroupName powershell-test-rg
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command removes forwarding rule by name
+{{ Add description here }}
 
-### Example 2: Remove forwarding rule via identity
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $inputobject = Get-AzDnsResolverForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG -Name forwardingRule
+PS C:\> {{ Add code here }}
 
-PS C:\>  Remove-AzDnsResolverForwardingRule -InputObject $inputObject
+{{ Add output here }}
 ```
 
-This command removes forwarding rule via identity
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -70,7 +79,7 @@ The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -97,29 +106,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -IfNoneMatch
+Set to '*' to allow a new resource to be created, but to prevent updating an existing resource.
+Other values will be ignored.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: DeleteViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Metadata
+Metadata attached to the virtual network link.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the forwarding rule.
+The name of the virtual network link.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: ForwardingRuleName
+Parameter Sets: (All)
+Aliases: VirtualNetworkLinkName
 
 Required: True
 Position: Named
@@ -128,8 +152,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -149,7 +173,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -164,12 +188,27 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -210,31 +249,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
-  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
-  - `[DnsResolverName <String>]`: The name of the DNS resolver.
-  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
-  - `[Id <String>]`: Resource identity path
-  - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
-  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
 
 ## RELATED LINKS
 

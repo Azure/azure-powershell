@@ -1,50 +1,53 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolvervirtualnetworklink
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetvirtualnetworklink
 schema: 2.0.0
 ---
 
-# New-AzDnsResolverVirtualNetworkLink
+# Update-AzDnsForwardingRulesetVirtualNetworkLink
 
 ## SYNOPSIS
-Creates or updates a virtual network link to a DNS forwarding ruleset.
+Updates a virtual network link to a DNS forwarding ruleset.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzDnsResolverVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-Metadata <Hashtable>] [-VirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-Metadata <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzDnsForwardingRulesetVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a virtual network link to a DNS forwarding ruleset.
+Updates a virtual network link to a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: Create a virtual network link 
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzDnsResolverVirtualNetworkLink -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleVnetLink -ResourceGroupName sampleRG -VirtualNetworkId "/subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c64/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub"
+PS C:\> {{ Add code here }}
 
-Location Name                   Type                                             Etag
--------- ----                   ----                                             ----
-westus2  sampleVnetLink Microsoft.Network/dnsForwardingRulesets/virtualNetworkLinks "0a009902-0000-0800-0000-60e378030000"
+{{ Add output here }}
 ```
 
-This cmdlet creates a virtual network link.
+{{ Add description here }}
 
-### Example 2: Create a virtual network link with metadata
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> New-AzDnsResolverVirtualNetworkLink -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleVnetLink -ResourceGroupName sampleRG -VirtualNetworkId "/subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c64/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub" -Metadata @{"key0" = "value0"}
+PS C:\> {{ Add code here }}
 
-Location Name                   Type                                             Etag
--------- ----                   ----                                             ----
-westus2  sampleVnetLink Microsoft.Network/dnsForwardingRulesets/virtualNetworkLinks "0a009902-0000-0800-0000-60e378030000"
+{{ Add output here }}
 ```
 
-This cmdlet creates a virtual network link with metadata.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -83,7 +86,7 @@ The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -110,19 +113,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IfNoneMatch
-Set to '*' to allow a new resource to be created, but to prevent updating an existing resource.
-Other values will be ignored.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -146,7 +149,7 @@ The name of the virtual network link.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: VirtualNetworkLinkName
 
 Required: True
@@ -177,7 +180,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -192,27 +195,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualNetworkId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -253,6 +241,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink
@@ -260,6 +250,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
+  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
+  - `[DnsResolverName <String>]`: The name of the DNS resolver.
+  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
+  - `[Id <String>]`: Resource identity path
+  - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
+  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
 
 ## RELATED LINKS
 

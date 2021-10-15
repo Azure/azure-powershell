@@ -1,52 +1,54 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverforwardingrule
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetforwardingrule
 schema: 2.0.0
 ---
 
-# New-AzDnsResolverForwardingRule
+# Update-AzDnsForwardingRulesetForwardingRule
 
 ## SYNOPSIS
-Creates or updates a forwarding rule in a DNS forwarding ruleset.
+Updates a forwarding rule in a DNS forwarding ruleset.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzDnsResolverForwardingRule -DnsForwardingRulesetName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DomainName <String>]
+Update-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzDnsForwardingRulesetForwardingRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
  [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a forwarding rule in a DNS forwarding ruleset.
+Updates a forwarding rule in a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: Create a forwarding rule.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> $targetIPConfig = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.0.3 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c67/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub/subnets/test-subnet
-PS C:\> New-AzDnsResolverForwardingRule -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleForwardingRule -ResourceGroupName sampleRG -TargetDnsServer $targetIPConfig
+PS C:\> {{ Add code here }}
 
-Name                  Type                                            Etag
-----                  ----                                            ----
-sampleForwardingRule Microsoft.Network/dnsForwardingRuleset/forwardingRule "0b008451-0000-0800-0000-60402b960000"
+{{ Add output here }}
 ```
 
-This cmdlet creates a forwarding rule.
+{{ Add description here }}
 
-### Example 2: Create a forwarding rule with tag 
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $targetIPConfig = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.0.3 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c67/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub/subnets/test-subnet
-PS C:\> New-AzDnsResolverForwardingRule -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleForwardingRule -ResourceGroupName sampleRG -TargetDnsServer $targetIPConfig -Metadata @{"key0" = "value0"}
+PS C:\> {{ Add code here }}
 
-Name                  Type                                            Etag
-----                  ----                                            ----
-sampleForwardingRule Microsoft.Network/dnsForwardingRuleset/forwardingRule "0b008451-0000-0800-0000-60402b960000"
+{{ Add output here }}
 ```
 
-This cmdlet creates a forwarding rule with tag.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -70,25 +72,10 @@ The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DomainName
-The domain name for the forwarding rule.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -127,19 +114,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IfNoneMatch
-Set to '*' to allow a new resource to be created, but to prevent updating an existing resource.
-Other values will be ignored.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -163,7 +150,7 @@ The name of the forwarding rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: ForwardingRuleName
 
 Required: True
@@ -179,7 +166,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -194,7 +181,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -256,6 +243,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule
@@ -268,6 +257,17 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
+  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
+  - `[DnsResolverName <String>]`: The name of the DNS resolver.
+  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
+  - `[Id <String>]`: Resource identity path
+  - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
+  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
 
 TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
   - `[IPAddress <String>]`: DNS server IP address.

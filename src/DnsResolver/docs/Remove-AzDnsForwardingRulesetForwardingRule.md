@@ -1,62 +1,54 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverforwardingrule
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetforwardingrule
 schema: 2.0.0
 ---
 
-# Get-AzDnsResolverForwardingRule
+# Remove-AzDnsForwardingRulesetForwardingRule
 
 ## SYNOPSIS
-Gets properties of a forwarding rule in a DNS forwarding ruleset.
+Deletes a forwarding rule in a DNS forwarding ruleset.
+WARNING: This operation cannot be undone.
 
 ## SYNTAX
 
-### List (Default)
+### Delete (Default)
 ```
-Get-AzDnsResolverForwardingRule -DnsForwardingRulesetName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDnsResolverForwardingRule -DnsForwardingRulesetName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzDnsResolverForwardingRule -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Remove-AzDnsForwardingRulesetForwardingRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets properties of a forwarding rule in a DNS forwarding ruleset.
+Deletes a forwarding rule in a DNS forwarding ruleset.
+WARNING: This operation cannot be undone.
 
 ## EXAMPLES
 
-### Example 1: List all forwarding rule under the resource 
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzDnsResolverForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG
+PS C:\> {{ Add code here }}
 
-Location Name                                                            Type                                                Etag
--------- ----                                                            ----                                                ----
-westus2  dnsForwardingRule                                            Microsoft.Network/dnsForwardingRulesets/forwardingRule "04005592-0000-0800-0000-60e7ec170000"
-westus2  pw-dnsForwardingRule                                         Microsoft.Network/dnsForwardingRulesets/forwardingRule "08009ec9-0000-0800-0000-60e383b70000"
+{{ Add output here }}
 ```
 
-This command gets all forwarding rule under the resource.
+{{ Add description here }}
 
-### Example 1: Get forwarding rule by name 
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzDnsResolverForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG -Name forwardingRule
+PS C:\> {{ Add code here }}
 
-Location Name                                                            Type                                                Etag
--------- ----                                                            ----                                                ----
-westus2  dnsForwardingRule                                            Microsoft.Network/dnsForwardingRulesets/forwardingRule "04005592-0000-0800-0000-60e7ec170000"
+{{ Add output here }}
 ```
 
-This command gets a forwarding rule by name.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -80,10 +72,27 @@ The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+ETag of the resource.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,7 +105,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -111,10 +120,25 @@ The name of the forwarding rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases: ForwardingRuleName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -127,7 +151,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -141,8 +165,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -152,14 +176,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Top
-The maximum number of results to return.
-If not specified, returns up to 100 results.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -177,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule
+### System.Boolean
 
 ## NOTES
 
