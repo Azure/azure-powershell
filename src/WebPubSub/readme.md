@@ -45,6 +45,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: WebPubSub
 subject-prefix: ''
+branch: ab0c850713dcb87f906e8f38f73d43099668a60f
 
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
@@ -110,6 +111,48 @@ directive:
     set:
       default:
         script: '"Microsoft.SignalRService/webPubSub"'
+  # Add 200 return code to swagger in order to mitigate the issue that async operation returns 200 but not recognized by AutoRest
+  # the commit or branch referenced here must be consistent with the branch property in this file
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/regenerateKey"].post.responses
+    transform: >-
+      return {
+          "202": {
+            "description": "Accepted and an async operation is executing in background to make the new key to take effect. The response contains new access keys and a Location header to query the async operation result.",
+            "schema": {
+              "$ref": "#/definitions/WebPubSubKeys"
+            }
+          },
+         "200": {
+            "description": "The async operation to make the new key to take effect is finished."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ab0c850713dcb87f906e8f38f73d43099668a60f/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/restart"].post.responses
+    transform: >-
+      return {
+          "202": {
+            "description": "Accepted. The response indicates the restart operation is performed in the background."
+          },
+          "204": {
+            "description": "Success. The response indicates the operation is successful and no content will be returned."
+          },
+         "200": {
+            "description": "The async operation to restart is finished.",
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ab0c850713dcb87f906e8f38f73d43099668a60f/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
   # Add enum valid values description in swagger
   - from: swagger-document
     where: $.definitions.EventHandler.properties.systemEvents.description
