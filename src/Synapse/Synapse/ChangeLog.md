@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.17.0
 * Added cmdlets for Synapse Integration Runtime
 	- Added `Start-AzSynapseIntegrationRuntime` cmdlet
 	- Added `Stop-AzSynapseIntegrationRuntime` cmdlet
