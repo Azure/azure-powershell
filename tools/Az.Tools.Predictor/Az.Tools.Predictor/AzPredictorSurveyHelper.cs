@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     internal sealed class AzPredictorSurveyHelper : ISurveyHelper, IDisposable
     {
         private static readonly string _ModuleName = "Az.Predictor";
-        private static readonly Version _ModuleVersion = new Version("1.0.0.0"); //typeof(AzPredictorSurveyHelper).Assembly.GetName().Version;
+        private static readonly Version _ModuleVersion = typeof(AzPredictorSurveyHelper).Assembly.GetName().Version;
         private static readonly SurveyHelper _sharedSurveyHelper = SurveyHelper.GetInstance();
 
         private readonly PSEventManager _powerShellEventManager;
