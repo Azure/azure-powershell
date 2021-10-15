@@ -232,7 +232,7 @@ EVENTHANDLER <IEventHandler[]>: Event handler of a hub.
   - `UrlTemplate <String>`: Gets or sets the EventHandler URL template. You can use a predefined parameter {hub} and {event} inside the template, the value of the EventHandler URL is dynamically calculated when the client request comes in.         For example, UrlTemplate can be `http://example.com/api/{hub}/{event}`. The host part can't contains parameters.
   - `[AuthType <UpstreamAuthType?>]`: Gets or sets the type of auth. None or ManagedIdentity is supported now.
   - `[ManagedIdentityResource <String>]`: The Resource indicating the App ID URI of the target resource.         It also appears in the aud (audience) claim of the issued token.
-  - `[SystemEvent <String[]>]`: Gets ot sets the list of system events.
+  - `[SystemEvent <String[]>]`: Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'.
   - `[UserEventPattern <String>]`: Gets or sets the matching pattern for event names.         There are 3 kind of patterns supported:             1. "*", it to matches any event name             2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"             3. The single event name, for example, "event1", it matches "event1"
 
 ## RELATED LINKS

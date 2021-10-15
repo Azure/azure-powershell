@@ -110,6 +110,15 @@ directive:
     set:
       default:
         script: '"Microsoft.SignalRService/webPubSub"'
+  # Add enum valid values description in swagger
+  - from: swagger-document
+    where: $.definitions.EventHandler.properties.systemEvents.description
+    transform: >-
+      return "Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'."
+  - from: swagger-document
+    where: $.definitions.RegenerateKeyParameters.properties.keyType.description
+    transform: >-
+      return "Must be either 'primary', 'secondary' or 'salt'(case-insensitive)."
   # format output
   - where:
       model-name: WebPubSubResource
