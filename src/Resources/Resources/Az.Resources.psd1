@@ -91,7 +91,8 @@ FunctionsToExport = 'Get-AzMgUser', 'New-AzMgUser', 'Remove-AzMgUser', 'Update-A
                     'Get-AzMgApplication', 'New-AzMgApplication', 'Remove-AzMgApplication', 'Update-AzMgApplication', 
                     'Get-AzMgServicePrincipal', 'New-AzMgServicePrincipal', 'Remove-AzMgServicePrincipal', 'Update-AzMgServicePrincipal', 
                     'Get-AzMgAppCredential', 'New-AzMgAppCredential', 'Remove-AzMgAppCredential', 
-                    'Get-AzMgSpCredential', 'New-AzMgSpCredential', 'Remove-AzMgSpCredential'
+                    'Get-AzMgSpCredential', 'New-AzMgSpCredential', 'Remove-AzMgSpCredential', 
+                    'Get-AzMgGroupMember', 'Add-AzMgGroupMember', 'Remove-AzMgGroupMember'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment', 

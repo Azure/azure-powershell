@@ -141,7 +141,7 @@ directive:
       property-name: Items
 
   - where:
-      subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|group$
+      subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|group$|groupmember$|grouprefmember$
     hide: true
 
   - where:
@@ -150,6 +150,24 @@ directive:
     set:
       clientside-pagination: true
 
+  - where:
+      model-name: MicrosoftGraphApplication
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - Id
+          - AppId
+          - IdentifierUris
+  - where:
+      model-name: MicrosoftGraphServicePrincipal
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - Id
+          - AppId
+          - ServicePrincipalNames
   - where:
       model-name: MicrosoftGraphUser
     set:
