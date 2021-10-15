@@ -1,18 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Gets all the Virtual machines in the lab.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLabServicesVM -LabName "Lab Name" -ResourceGroupName "Group Name"
 
-{{ Add output here }}
+Name
+----
+0
+1
+2
 ```
 
-{{ Add description here }}
+Returns all the VMs.
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets the specific VM in the lab.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLabServicesVM -LabName "Lab Name" -ResourceGroupName "Group Name" -VirtualMachineName 2
 
-{{ Add output here }}
+Name
+----
+2
 ```
 
-{{ Add description here }}
+Returns the specific VM.
 

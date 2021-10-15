@@ -31,23 +31,13 @@ For troubleshooting connectivity.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Redeploy the specific Virtual machine.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Redeploy-AzLabServicesVM -LabName "Lab Name" -ResourceGroupName "Group Name" -VirtualMachineName 1
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The Redeploy removes the machine and creates a new one.
 
 ## PARAMETERS
 

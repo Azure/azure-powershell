@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get all users for a lab.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLabServicesUser -LabName "Lab Name" -ResourceGroupName "Group Name"
 
-{{ Add output here }}
+Name
+----
+testuser
 ```
 
-{{ Add description here }}
+Gets all the users for a lab.
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLabServicesUser -LabName "Lab Name" -ResourceGroupName "Group Name" -UserName "testuser"
 
-{{ Add output here }}
+Name
+----
+testuser
 ```
 
-{{ Add description here }}
+Gets a specific user from the lab.
 

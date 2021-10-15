@@ -38,23 +38,16 @@ Get-AzLabServicesUserVM -User <User> [-DefaultProfile <PSObject>] [<CommonParame
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the Virtual machine assigned to a specific user.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email 'user@contoso.com'
 
-{{ Add output here }}
+Name
+----
+0
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Returns the specific machine that is assigned to the user in the lab.
 
 ## PARAMETERS
 

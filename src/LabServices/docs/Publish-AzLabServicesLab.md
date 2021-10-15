@@ -35,23 +35,16 @@ This will create or update all lab resources, such as virtual machines.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Publish the lab.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Publish-AzLabServicesLab -LabName "Lab Name" -ResourceGroupName "Group Name"
 
-{{ Add output here }}
+Location Name
+-------- ----
+eastus2  Lab Name
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Publish the lab template.
 
 ## PARAMETERS
 
