@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
+        private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";
         // SimpleParameterSet
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [PSArgumentCompleter(
@@ -229,6 +230,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
+                if (_cmdlet.OrchestrationMode != null)
+                {
+                    return await SimpleParameterSetOrchestrationMode();
+                }
+                else
+                {
+                    return await SimpleParameterSetNormalMode();
+                }
+                /*
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                     ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
 
@@ -353,9 +363,302 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null
                     );
+                */
+            }
+
+            private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetNormalMode()
+            {
+                ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
+                        ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
+
+                // generate a domain name label if it's not specified.
+                _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                    domainNameLabel: _cmdlet.DomainNameLabel,
+                    name: _cmdlet.VMScaleSetName,
+                    location: Location,
+                    client: _client);
+
+                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
+
+                var noZones = _cmdlet.Zone == null || _cmdlet.Zone.Count == 0;
+
+                var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
+                    name: _cmdlet.PublicIpAddressName,
+                    edgeZone: _cmdlet.EdgeZone,
+                    domainNameLabel: _cmdlet.DomainNameLabel,
+                    allocationMethod: _cmdlet.AllocationMethod,
+                    //sku.Basic is not compatible with multiple placement groups
+                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
+                        ? PublicIPAddressStrategy.Sku.Basic
+                        : PublicIPAddressStrategy.Sku.Standard,
+                    zones: null);
+
+                var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
+                    name: _cmdlet.VirtualNetworkName,
+                    edgeZone: _cmdlet.EdgeZone,
+                    addressPrefix: _cmdlet.VnetAddressPrefix);
+
+                var subnet = virtualNetwork.CreateSubnet(
+                    _cmdlet.SubnetName, _cmdlet.SubnetAddressPrefix);
+
+                var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
+                    name: _cmdlet.LoadBalancerName,
+                    //sku.Basic is not compatible with multiple placement groups
+                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
+                        ? LoadBalancerStrategy.Sku.Basic
+                        : LoadBalancerStrategy.Sku.Standard);
+
+                var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
+                    name: _cmdlet.FrontendPoolName,
+                    publicIpAddress: publicIpAddress);
+
+                var backendAddressPool = loadBalancer.CreateBackendAddressPool(
+                    name: _cmdlet.BackendPoolName);
+
+                if (_cmdlet.BackendPort != null)
+                {
+                    var loadBalancingRuleName = _cmdlet.LoadBalancerName;
+                    foreach (var backendPort in _cmdlet.BackendPort)
+                    {
+                        loadBalancer.CreateLoadBalancingRule(
+                            name: loadBalancingRuleName + backendPort.ToString(),
+                            fronendIpConfiguration: frontendIpConfiguration,
+                            backendAddressPool: backendAddressPool,
+                            frontendPort: backendPort,
+                            backendPort: backendPort);
+                    }
+                }
+
+                _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
+
+                var inboundNatPoolName = _cmdlet.VMScaleSetName;
+                var PortRangeSize = _cmdlet.InstanceCount * 2;
+
+                var ports = _cmdlet
+                    .NatBackendPort
+                    ?.Select((port, i) => Tuple.Create(
+                        port,
+                        FirstPortRangeStart + i * 2000))
+                    .ToList();
+
+                var inboundNatPools = ports
+                    ?.Select(p => loadBalancer.CreateInboundNatPool(
+                        name: inboundNatPoolName + p.Item1.ToString(),
+                        frontendIpConfiguration: frontendIpConfiguration,
+                        frontendPortRangeStart: p.Item2,
+                        frontendPortRangeEnd: p.Item2 + PortRangeSize,
+                        backendPort: p.Item1))
+                    .ToList();
+
+                var networkSecurityGroup = noZones
+                    ? null
+                    : resourceGroup.CreateNetworkSecurityGroupConfig(
+                        _cmdlet.VMScaleSetName,
+                        _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
+
+                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
+
+                var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
+
+                return resourceGroup.CreateVirtualMachineScaleSetConfig(
+                    name: _cmdlet.VMScaleSetName,
+                    subnet: subnet,
+                    backendAdressPool: backendAddressPool,
+                    inboundNatPools: inboundNatPools,
+                    networkSecurityGroup: networkSecurityGroup,
+                    imageAndOsType: ImageAndOsType,
+                    adminUsername: _cmdlet.Credential.UserName,
+                    adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                    vmSize: _cmdlet.VmSize,
+                    instanceCount: _cmdlet.InstanceCount,
+                    upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
+                        ? _cmdlet.UpgradePolicyMode
+                        : (UpgradeMode?)null,
+                    dataDisks: _cmdlet.DataDiskSizeInGb,
+                    zones: _cmdlet.Zone,
+                    ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
+                    identity: _cmdlet.GetVmssIdentityFromArgs(),
+                    singlePlacementGroup: _cmdlet.SinglePlacementGroup.IsPresent,
+                    proximityPlacementGroup: proximityPlacementGroup,
+                    hostGroup: hostGroup,
+                    priority: _cmdlet.Priority,
+                    evictionPolicy: _cmdlet.EvictionPolicy,
+                    maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                    scaleInPolicy: _cmdlet.ScaleInPolicy,
+                    doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
+                    encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
+                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
+                    edgeZone: _cmdlet.EdgeZone,
+                    orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
+                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null
+                    );
+            }
+
+            private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetOrchestrationMode()
+            {
+                switch (_cmdlet.OrchestrationMode)
+                {
+                    case flexibleOrchestrationMode:
+                        return await SimpleParameterSetOrchestrationModeFlexible();
+                    default:
+                        return await SimpleParameterSetNormalMode();
+                }
+            }
+
+            private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetOrchestrationModeFlexible()
+            {
+                //check omode params and throw error otherwise
+                checkFlexibleOrchestrationModeParams();
+                
+
+                ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
+                        ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
+
+                // generate a domain name label if it's not specified.
+                _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                    domainNameLabel: _cmdlet.DomainNameLabel,
+                    name: _cmdlet.VMScaleSetName,
+                    location: Location,
+                    client: _client);
+
+                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
+
+                var noZones = _cmdlet.Zone == null || _cmdlet.Zone.Count == 0;
+
+                var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
+                    name: _cmdlet.PublicIpAddressName,
+                    edgeZone: _cmdlet.EdgeZone,
+                    domainNameLabel: _cmdlet.DomainNameLabel,
+                    allocationMethod: _cmdlet.AllocationMethod,
+                    //sku.Basic is not compatible with multiple placement groups
+                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
+                        ? PublicIPAddressStrategy.Sku.Basic
+                        : PublicIPAddressStrategy.Sku.Standard,
+                    zones: null);
+
+                var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
+                    name: _cmdlet.VirtualNetworkName,
+                    edgeZone: _cmdlet.EdgeZone,
+                    addressPrefix: _cmdlet.VnetAddressPrefix);
+
+                var subnet = virtualNetwork.CreateSubnet(
+                    _cmdlet.SubnetName, _cmdlet.SubnetAddressPrefix);
+
+                var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
+                    name: _cmdlet.LoadBalancerName,
+                    //sku.Basic is not compatible with multiple placement groups
+                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
+                        ? LoadBalancerStrategy.Sku.Basic
+                        : LoadBalancerStrategy.Sku.Standard);
+
+                var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
+                    name: _cmdlet.FrontendPoolName,
+                    publicIpAddress: publicIpAddress);
+
+                var backendAddressPool = loadBalancer.CreateBackendAddressPool(
+                    name: _cmdlet.BackendPoolName);
+
+                if (_cmdlet.BackendPort != null)
+                {
+                    var loadBalancingRuleName = _cmdlet.LoadBalancerName;
+                    foreach (var backendPort in _cmdlet.BackendPort)
+                    {
+                        loadBalancer.CreateLoadBalancingRule(
+                            name: loadBalancingRuleName + backendPort.ToString(),
+                            fronendIpConfiguration: frontendIpConfiguration,
+                            backendAddressPool: backendAddressPool,
+                            frontendPort: backendPort,
+                            backendPort: backendPort);
+                    }
+                }
+
+                _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
+
+                /*
+                var inboundNatPoolName = _cmdlet.VMScaleSetName;
+                var PortRangeSize = _cmdlet.InstanceCount * 2;
+
+                
+                var ports = _cmdlet
+                    .NatBackendPort
+                    ?.Select((port, i) => Tuple.Create(
+                        port,
+                        FirstPortRangeStart + i * 2000))
+                    .ToList();
+                
+                var inboundNatPools = ports
+                    ?.Select(p => loadBalancer.CreateInboundNatPool(
+                        name: inboundNatPoolName + p.Item1.ToString(),
+                        frontendIpConfiguration: frontendIpConfiguration,
+                        frontendPortRangeStart: p.Item2,
+                        frontendPortRangeEnd: p.Item2 + PortRangeSize,
+                        backendPort: p.Item1))
+                    .ToList();
+                */
+
+                var networkSecurityGroup = noZones
+                    ? null
+                    : resourceGroup.CreateNetworkSecurityGroupConfig(
+                        _cmdlet.VMScaleSetName,
+                        _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
+
+                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
+
+                var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
+
+                return resourceGroup.CreateVirtualMachineScaleSetConfigOrchestrationModeFlexible(
+                    name: _cmdlet.VMScaleSetName,
+                    subnet: subnet,
+                    backendAdressPool: backendAddressPool,
+                    //inboundNatPools: inboundNatPools,
+                    networkSecurityGroup: networkSecurityGroup,
+                    imageAndOsType: ImageAndOsType,
+                    adminUsername: _cmdlet.Credential.UserName,
+                    adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                    vmSize: _cmdlet.VmSize,
+                    instanceCount: _cmdlet.InstanceCount,
+                    //upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
+                    //    ? _cmdlet.UpgradePolicyMode
+                    //    : (UpgradeMode?)null,
+                    dataDisks: _cmdlet.DataDiskSizeInGb,
+                    zones: _cmdlet.Zone,
+                    ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
+                    identity: _cmdlet.GetVmssIdentityFromArgs(),
+                    singlePlacementGroup: _cmdlet.SinglePlacementGroup == false ? _cmdlet.SinglePlacementGroup : throw new Exception("SinglePLacementGroup set to true when can't for Omode Flex, needs to be false"),//is this throw ok? 
+                    proximityPlacementGroup: proximityPlacementGroup,
+                    hostGroup: hostGroup,
+                    priority: _cmdlet.Priority,
+                    evictionPolicy: _cmdlet.EvictionPolicy,
+                    maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                    scaleInPolicy: _cmdlet.ScaleInPolicy,
+                    doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
+                    encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
+                    //platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
+                    platformFaultDomainCount: _cmdlet.PlatformFaultDomainCount == 1 ? _cmdlet.PlatformFaultDomainCount : throw new Exception("PFDCount has to be 1 for omode flexible"),
+                    edgeZone: _cmdlet.EdgeZone,
+                    orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
+                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null
+                    );
+            }
+
+            private void checkFlexibleOrchestrationModeParams()
+            {
+                if (_cmdlet.IsParameterBound(c => c.UpgradePolicyMode))
+                {
+                    throw new Exception("UpgradePolicyMode provided when shouldn't for omode");
+                }
+                else if (_cmdlet.SinglePlacementGroup == true)
+                {
+                    throw new Exception("SinglePLacementGroup set to true when can't for Omode");
+                }
+                else if (_cmdlet.PlatformFaultDomainCount != 1)
+                {
+                   // throw new Exception("PFDCount has to be 1 for omode flexible");
+                }
             }
         }
 
+        
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
             bool loadBalancerNamePassedIn = !String.IsNullOrWhiteSpace(LoadBalancerName);
