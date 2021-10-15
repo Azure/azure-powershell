@@ -111,7 +111,7 @@ function Install-AzModule {
         }
 
         if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
-            Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue
+            PowerShellGet\Uninstall-Module -Name 'Az' -AllVersion -AllowPrerelease -ErrorAction SilentlyContinue
         }
 
         if ($modules) {

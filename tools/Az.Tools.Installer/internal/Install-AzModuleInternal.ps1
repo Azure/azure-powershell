@@ -133,7 +133,7 @@ function Install-AzModuleInternal {
                 }
                 if ($confirmInstallation) {
                     if ($confirmUninstallation) {
-                        Uninstall-Module -Name "Az.Accounts" -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
+                        PowerShellGet\Uninstall-Module -Name "Az.Accounts" -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
                     }
                     PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($moduleList[0].Version)"
                 }
@@ -180,7 +180,7 @@ function Install-AzModuleInternal {
                                 Import-Module PackageManagement
                                 Import-Module PowerShellGet
                                 if ($RemovePrevious) {
-                                    Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
+                                    PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
                                 }
                                 PowerShellGet\Install-Module @installModuleParam -Name $moduleName -RequiredVersion "$moduleVersion"
                                 $state = "succeeded"
@@ -200,6 +200,8 @@ function Install-AzModuleInternal {
                         }
                     }
                 }
+                $index = 1
+                $module = $null
                 foreach ($module in $moduleList) {
                     if ($PSVersionTable.PSEdition -eq "Core") {
                         $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")
@@ -240,7 +242,7 @@ function Install-AzModuleInternal {
                                 $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation)
                                 Write-Output $result
                             }
-                            Write-Progress -ParentId $script:FixProgressBarId -Activity "Install Module" -CurrentOperation "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
+                            Write-Progress -ParentId $script:FixProgressBarId -Activity "Install Module" -Status "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
                             $index += 1
                         }
                     }
@@ -249,7 +251,7 @@ function Install-AzModuleInternal {
                 if ($Force -or !$WhatIfPreference) {
                     $result = $null
                     $job = $null
-                    $index = 0
+                    $index = 1
                     foreach ($job in $jobs) {
                         $job = Wait-Job $job
                         $result = $null
@@ -266,7 +268,7 @@ function Install-AzModuleInternal {
                         }
                         Remove-Job $job -Confirm:$false
                         if ($PSVersionTable.PSEdition -eq "Core") {
-                            Write-Progress -ParentId $script:FixProgressBarId -Activity "Install Module" -CurrentOperation "$($result.ModuleName) of version $($result.ModuleVersion)" -PercentComplete ($index / $jobs.Count * 100)
+                            Write-Progress -ParentId $script:FixProgressBarId -Activity "Install Module" -Status "$($result.ModuleName) of version $($result.ModuleVersion)" -PercentComplete ($index / $jobs.Count * 100)
                             $index += 1
                         }
                     }

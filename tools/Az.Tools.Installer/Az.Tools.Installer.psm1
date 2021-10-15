@@ -240,6 +240,7 @@ function Get-AzModuleFromRemote {
 
         $modulesWithVersion = @()
         $containValidModule = if ($Name) {$Name -Contains 'Az.Accounts'} else {$false}
+        $module = $null
         foreach($module in $modules.Dependencies) {
             if ($module.Name -eq 'Az.Accounts') {
                 if ($UseExactAccountVersion) {

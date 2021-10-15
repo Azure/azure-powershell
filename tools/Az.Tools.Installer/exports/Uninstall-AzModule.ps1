@@ -99,14 +99,14 @@ function Uninstall-AzModule {
             $moduleToUninstall | Group-Object -Property Name | Foreach-Object {$groupSet[$_.Name] = ($_.Group.Version | Sort-Object -Descending) }
 
             $started = Get-Date
-            $module = $null
-            $index = 0
+            $moduleName  = $null
+            $index = 1
             foreach ($moduleName in $groupSet.Keys) {
                 $versions = $groupSet[$moduleName]
                 if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $moduleName version $versions", "$moduleName version $versions", "Uninstall")) {
-                    Uninstall-Module -Name $moduleName -AllVersion -ErrorAction 'Continue'
+                    PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'Continue'
                     Write-Debug "[$Invoker] Uninstalling $moduleName version $versions is completed."
-                    Write-Progress -ParentId $script:FixProgressBarId -Activity "Uninstall Module" -CurrentOperation "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
+                    Write-Progress -ParentId $script:FixProgressBarId -Activity "Uninstall Module" -Status "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
                     $index += 1
                 }
             }
