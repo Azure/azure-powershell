@@ -41,7 +41,7 @@ foreach ($file in $ChangedFiles)
     }
     else
     {
-        $NUll = $ModuleSet.Add($ALL_MODULE)
+        # $NUll = $ModuleSet.Add($ALL_MODULE)
     }
 }
 if ($ModuleSet.Contains($ALL_MODULE))
