@@ -30,7 +30,7 @@ if "List Private Endpoint Connection API" is not available, `privateEndpointConn
 ```
 
 ## Code Changes Needed
-To add corresponding {Provider}, {Top-Level-Resource} and {API-Version} into [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12), we need follow 
+To add corresponding {Provider}, {Top-Level-Resource} and {API-Version} into [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12), we need to follow 
 in following pattern:
 ```
 RegisterConfiguration("{Provider}/{Top-Level-Resource}", "{API-Version}", bool hasPrivateEndppointConnectionsURI, bool hasPrivateLinkResourceURI)
