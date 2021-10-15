@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an DNS forwarding ruleset by name.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzDnsForwardingRuleset -Name dnsForwardingRulset -ResourceGroupName sampleRG
 ```
 
-{{ Add description here }}
+This command removes a DNS forwarding ruleset by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a DNS forwarding ruleset by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $dnsResolverDnsForwardingRulesetObject = Get-AzDnsForwardingRuleset -Name dnsForwardingRuleset -ResourceGroupName sampleRG
+PS C:\> Remove-AzDnsForwardingRuleset -InputObject $dnsResolverDnsForwardingRulesetObject 
 ```
 
-{{ Add description here }}
+This command removes a DNS forwarding ruleset by identity.
 

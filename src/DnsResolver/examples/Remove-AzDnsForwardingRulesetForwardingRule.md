@@ -1,18 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove forwarding rule by name
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName sampleForwardingRuleset -Name sampleForwardingRule -ResourceGroupName powershell-test-rg
 ```
 
-{{ Add description here }}
+This command removes forwarding rule by name
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove forwarding rule via identity
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $inputobject = Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG -Name forwardingRule
 
-{{ Add output here }}
+PS C:\>  Remove-AzDnsForwardingRulesetForwardingRule -InputObject $inputObject
 ```
 
-{{ Add description here }}
+This command removes forwarding rule via identity
 
