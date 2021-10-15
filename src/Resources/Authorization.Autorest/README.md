@@ -34,17 +34,21 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/EligibleChildResources.json
+
   - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleAssignmentSchedule.json
   - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleAssignmentScheduleInstance.json
   - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleAssignmentScheduleRequest.json
+
   - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleEligibilitySchedule.json
   - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleEligibilityScheduleInstance.json
   - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleEligibilityScheduleRequest.json
+
   - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleManagementPolicy.json
   - https://github.com/Azure/azure-rest-api-specs/blob/23800927d61999e655f6fd7fd054deaa80385683/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleManagementPolicyAssignment.json
 
 module-name: $(prefix).Resources
 title: Authorization
+# module-version: 4.2.0
 dll-name: Az.Resources.Authorization.private
 csproj: Authorization.csproj
 psm1: Authorization.psm1
@@ -52,11 +56,14 @@ psm1-internal: internal/Authorization.internal.psm1
 psm1-custom: custom/Authorization.custom.psm1
 format-ps1xml: Authorization.format.ps1xml
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization
+# remove subject-prefix for all generated cmdlets.
 subject-prefix: ''
 identity-correction-for-post: true
+resourcegroup-append: true
+default-exclude-tableview-properties: false
 
 directive:
-  # Swagger bug: The scope should be readonly according to the server response.
+  # Swaager bug: The scope should be readonly according to the server response.
   - from: swagger-document
     where: $.definitions.RoleManagementPolicyProperties.properties.scope
     transform: >-
@@ -75,14 +82,14 @@ directive:
         "description": "The role management policy scope."
       }
       
-  # Remove "Create", "CreateViaIdentity", "CreateViaIdentityExpanded" syntax variant of the cmdlets because new cmdlet is not supported.
+  # Remove "Create", "CreateViaIdentity", "CreateViaIdentityExpanded" syntax variant of the cmdlets. Because of new cmdlet does unsupport.
   - where:
       verb: New
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
       # subject: RoleEligibilityScheduleRequest$|RoleManagementPolicyAssignment$
     remove: true
 
-  # Remove "Update", "UpdateViaIdentity", syntax variant of the cmdlets because update cmdlet is not supported.
+  # Remove "Update", "UpdateViaIdentity", syntax variant of the cmdlets. Because of update cmdlet does unsupport.
   - where:
       verb: Update
       variant: ^Update$|^UpdateViaIdentity$
@@ -103,5 +110,100 @@ directive:
   # Then cancel configuration of it.   
   # - model-cmdlet:
   #   - RoleManagementPolicyRule
-    
+  
+  - where:
+      model-name: EligibleChildResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - Type
+  - where:
+      model-name: RoleAssignmentSchedule
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - Type
+          - Scope
+          - RoleDefinitionId
+          - PrincipalId
+  - where:
+      model-name: RoleAssignmentScheduleInstance
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - Type
+          - Scope
+          - RoleDefinitionId
+          - PrincipalId
+  - where:
+      model-name: RoleAssignmentScheduleRequest
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - Type
+          - Scope
+          - RoleDefinitionId
+          - PrincipalId
+  - where:
+      model-name: RoleEligibilitySchedule
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - Type
+          - Scope
+          - RoleDefinitionId
+          - PrincipalId
+  - where:
+      model-name: RoleEligibilityScheduleInstance
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - Type
+          - Scope
+          - RoleDefinitionId
+          - PrincipalId
+  - where:
+      model-name: RoleEligibilityScheduleRequest
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - Type
+          - Scope
+          - RoleDefinitionId
+          - PrincipalId
+  - where:
+      model-name: RoleManagementPolicy
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - Type
+          - Scope
+  - where:
+      model-name: RoleManagementPolicyAssignment
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - Type
+          - Scope
+          - RoleDefinitionId
+          - PolicyId
+          
 ```

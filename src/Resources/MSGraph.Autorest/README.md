@@ -67,6 +67,7 @@ namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
 subject-prefix: Mg
 identity-correction-for-post: true
 endpoint-resource-id-key-name: MicrosoftGraphEndpointResourceId
+export-properties-for-dict: false
 
 # Disable default settings and Set in to empty for msgraph
 default-exclude-tableview-properties: false

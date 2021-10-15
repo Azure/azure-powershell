@@ -67,7 +67,8 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.Primitives.dll', 
                'Microsoft.Azure.Graph.RBAC.dll', 
                'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll',
-               'MSGraph\bin\Az.Resources.MSGraph.private.dll'
+               'MSGraph\bin\Az.Resources.MSGraph.private.dll',
+               'Authorization\bin\Az.Resources.Authorization.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -83,7 +84,7 @@ FormatsToProcess = 'Resources.format.ps1xml', 'ResourceManager.format.ps1xml',
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Resources.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.Tags.dll', 'MSGraph\bin\Az.Resources.MSGraph.private.dll' 
-               'MSGraph\MSGraph.psm1')
+               'MSGraph\MSGraph.psm1', 'Authorization\bin\Az.Resources.Authorization.private.dll', 'Authorization\Authorization.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzMgUser', 'New-AzMgUser', 'Remove-AzMgUser', 'Update-AzMgUser',
@@ -91,8 +92,14 @@ FunctionsToExport = 'Get-AzMgUser', 'New-AzMgUser', 'Remove-AzMgUser', 'Update-A
                     'Get-AzMgApplication', 'New-AzMgApplication', 'Remove-AzMgApplication', 'Update-AzMgApplication', 
                     'Get-AzMgServicePrincipal', 'New-AzMgServicePrincipal', 'Remove-AzMgServicePrincipal', 'Update-AzMgServicePrincipal', 
                     'Get-AzMgAppCredential', 'New-AzMgAppCredential', 'Remove-AzMgAppCredential', 
-                    'Get-AzMgSpCredential', 'New-AzMgSpCredential', 'Remove-AzMgSpCredential', 
-                    'Get-AzMgGroupMember', 'Add-AzMgGroupMember', 'Remove-AzMgGroupMember'
+                    'Get-AzMgSpCredential', 'New-AzMgSpCredential', 'Remove-AzMgSpCredential',
+                    'Get-AzMgGroupMember', 'Add-AzMgGroupMember', 'Remove-AzMgGroupMember', 
+                    'Get-AzEligibleChildResource', 'Get-AzRoleAssignmentSchedule', 'Get-AzRoleAssignmentScheduleInstance', 
+                    'Get-AzRoleAssignmentScheduleRequest', 'Get-AzRoleEligibilitySchedule', 'Get-AzRoleEligibilityScheduleInstance', 
+                    'Get-AzRoleEligibilityScheduleRequest', 'Get-AzRoleManagementPolicy', 'Get-AzRoleManagementPolicyAssignment', 
+                    'New-AzRoleAssignmentScheduleRequest', 'New-AzRoleEligibilityScheduleRequest', 'New-AzRoleManagementPolicyAssignment', 
+                    'New-AzRoleManagementPolicyRuleObject', 'Remove-AzRoleManagementPolicy', 'Remove-AzRoleManagementPolicyAssignment', 
+                    'Stop-AzRoleAssignmentScheduleRequest', 'Stop-AzRoleEligibilityScheduleRequest', 'Update-AzRoleManagementPolicy'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment', 
