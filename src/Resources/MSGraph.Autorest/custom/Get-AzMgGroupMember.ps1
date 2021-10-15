@@ -19,7 +19,7 @@ function Get-AzMgGroupMember {
         # The display name of the group.
         ${GroupDisplayName},
 
-        [Parameter(ParameterSetName="GroupObjectParameterSet", Mandatory)]
+        [Parameter(ParameterSetName="GroupObjectParameterSet", Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup]
         # The group object that you are listing members from.
         ${GroupObject},
@@ -116,9 +116,16 @@ function Get-AzMgGroupMember {
     )
     
     process {
-        if ($PSBoundParameters.ContainsKey('GroupObjectId')) {
-            $PSBOundParameters['GroupId'] = $PSBoundParameters['GroupObjectId']
+        if ($PSBoundParameters['GroupObjectId']) {
+            $PSBoundParameters['GroupId'] = $PSBoundParameters['GroupObjectId']
             $null = $PSBoundParameters.Remove('GroupObjectId')
+        } elseif ($PSBoundParameters['GroupObject']) {
+            $PSBoundParameters['GroupId'] = $PSBoundParameters['GroupObject'].Id
+            $null = $PSBoundParameters.Remove('GroupObject')
+        } else {
+            $param = @{'DisplayName' = $PSBoundParameters['GroupDisplayName']; 'Debug' = $PSBoundParameters['Debug']; 'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+            $PSBoundParameter['GroupId'] = (Get-AzMgGroup @param).Id
+            $null = $PSBoundParameters.Remove('GroupDisplayName')
         }
 
         $PSBOundParameters['ConsistencyLevel'] = 'eventual'

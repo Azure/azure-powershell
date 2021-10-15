@@ -165,6 +165,10 @@ function Remove-AzMgApplication {
         }
     
         MSGraph.internal\Remove-AzMgApplication @PSBoundParameters
+        
+        if ($PSBoundParameters['PassThru']) {
+            $PSCmdlet.WriteObject($true)
+        }
     }
     }
     

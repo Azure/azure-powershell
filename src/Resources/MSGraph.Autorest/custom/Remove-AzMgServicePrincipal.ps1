@@ -204,5 +204,8 @@ process {
     }
 
     MsGraph.Internal\Remove-AzMgServicePrincipal @PSBoundParameters
+    if ($PSBoundParameters['PassThru']) {
+        $PSCmdlet.WriteObject($true)
+    }
 }
 }

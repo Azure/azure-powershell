@@ -153,6 +153,9 @@ function Remove-AzMgSpCredential {
                 }
             }
             Write-Error "service principal '$($sp.Id)' does not contains credential with key id: '$($PSBoundParameters['KeyId'])'."
+            if ($PSBoundParameters['PassThru']) {
+                $PSCmdlet.WriteObject($true)
+            }
         }
     }
 }
