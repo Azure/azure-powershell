@@ -247,6 +247,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[VirtualNetworkName <String>]`: The name of the virtual network.
   - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
 
 ## RELATED LINKS
