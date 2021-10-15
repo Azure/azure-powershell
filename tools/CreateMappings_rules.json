@@ -692,5 +692,9 @@
   {
     "alias": "Elastic",
     "regex": "Elastic"
+  },
+  {
+    "regex": "Logz",
+    "alias": "Logz"
   }
 ]
