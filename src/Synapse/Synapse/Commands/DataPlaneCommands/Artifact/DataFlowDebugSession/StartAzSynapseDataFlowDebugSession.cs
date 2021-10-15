@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.JsonFilePath)]
         [ValidateNotNullOrEmpty]
         [Alias("File")]
-        public string IntegrationRuntimeFile { get; set; }
+        public string DefinitionFile { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Commands.Synapse
                 TimeToLive = 60
             };
 
-            if (!string.IsNullOrWhiteSpace(IntegrationRuntimeFile))
+            if (!string.IsNullOrWhiteSpace(DefinitionFile))
             {
-                string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(IntegrationRuntimeFile));
+                string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
                 IntegrationRuntimeDebugResource createdataflowsessionrequest = JsonSerializer.Deserialize<IntegrationRuntimeDebugResource>(rawJsonContent);
                 request.IntegrationRuntime = createdataflowsessionrequest;
             }

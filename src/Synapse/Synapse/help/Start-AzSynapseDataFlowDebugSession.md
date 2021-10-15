@@ -14,13 +14,13 @@ Starts a Synapse Analytics data flow debug session in Synapse Workspace.
 
 ### StartByName (Default)
 ```
-Start-AzSynapseDataFlowDebugSession -WorkspaceName <String> [-IntegrationRuntimeFile <String>] [-AsJob]
+Start-AzSynapseDataFlowDebugSession -WorkspaceName <String> [-DefinitionFile <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartByObject
 ```
-Start-AzSynapseDataFlowDebugSession -WorkspaceObject <PSSynapseWorkspace> [-IntegrationRuntimeFile <String>]
+Start-AzSynapseDataFlowDebugSession -WorkspaceObject <PSSynapseWorkspace> [-DefinitionFile <String>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -86,7 +86,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IntegrationRuntimeFile
+### -DefinitionFile
 The JSON file path.
 
 ```yaml
