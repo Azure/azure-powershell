@@ -17,11 +17,6 @@ Gets properties of a DNS resolver.
 Get-AzDnsResolver [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
-### List2
-```
-Get-AzDnsResolver -ResourceGroupName <String> -VirtualNetworkName <String> [-SubscriptionId <String[]>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
 
 ### Get
 ```
@@ -38,6 +33,11 @@ Get-AzDnsResolver -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject
 ```
 Get-AzDnsResolver -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+### List2
+```
+Get-AzDnsResolver -ResourceGroupName <String> -VirtualNetworkName <String> [-SubscriptionId <String[]>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,6 +193,7 @@ The name of the virtual network.
 Type: System.String
 Parameter Sets: List2
 Aliases:
+
 Required: True
 Position: Named
 Default value: None
@@ -221,16 +222,12 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
-  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
   - `[DnsResolverName <String>]`: The name of the DNS resolver.
-  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
   - `[Id <String>]`: Resource identity path
   - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
-  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkName <String>]`: The name of the virtual network.
-  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
 
 ## RELATED LINKS
 
