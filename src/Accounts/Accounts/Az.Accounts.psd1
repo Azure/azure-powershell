@@ -146,7 +146,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added ''-FederatedId'' on ''Connect-AzAccount'' to support OIDC token.'
+        ReleaseNotes = '* Added ''-FederatedToken'' on ''Connect-AzAccount'' to support OIDC token.'
 
         # Prerelease string of this module
         # Prerelease = ''
