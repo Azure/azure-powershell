@@ -1,62 +1,62 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverinboundendpoint
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetforwardingrule
 schema: 2.0.0
 ---
 
-# Get-AzDnsResolverInboundEndpoint
+# Get-AzDnsForwardingRulesetForwardingRule
 
 ## SYNOPSIS
-Gets properties of an inbound endpoint for a DNS resolver.
+Gets properties of a forwarding rule in a DNS forwarding ruleset.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDnsResolverInboundEndpoint -DnsResolverName <String> -ResourceGroupName <String>
+Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDnsResolverInboundEndpoint -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
+Get-AzDnsForwardingRulesetForwardingRule -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets properties of an inbound endpoint for a DNS resolver.
+Gets properties of a forwarding rule in a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: List Inbound Endpoints under a DNS Resolver
+### Example 1: List all forwarding rule under the resource
 ```powershell
-PS C:\> Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -ResourceGroupName powershell-test-rg
+PS C:\> Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG
 
-Name                   Type                                            Etag
-----                   ----                                            ----
-sampleInboundEndpoint  Microsoft.Network/dnsResolvers/inboundEndpoints "0b008451-0000-0800-0000-60402b960000"
-sampleInboundEndpoint1 Microsoft.Network/dnsResolvers/inboundEndpoints "0b0071aa-0000-0800-0000-60406a2d0000"
+Location Name                                                            Type                                                Etag
+-------- ----                                                            ----                                                ----
+westus2  dnsForwardingRule                                            Microsoft.Network/dnsForwardingRulesets/forwardingRule "04005592-0000-0800-0000-60e7ec170000"
+westus2  pw-dnsForwardingRule                                         Microsoft.Network/dnsForwardingRulesets/forwardingRule "08009ec9-0000-0800-0000-60e383b70000"
 ```
 
-This command gets a list Inbound Endpoint by name
+This command gets all forwarding rule under the resource.
 
-### Example 2: Get single Inbound Endpoint by name
+### Example 1: Get forwarding rule by name
 ```powershell
-PS C:\> Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
+PS C:\> Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG -Name forwardingRule
 
-Name                  Type                                            Etag
-----                  ----                                            ----
-sampleInboundEndpoint Microsoft.Network/dnsResolvers/inboundEndpoints "0b008451-0000-0800-0000-60402b960000"
+Location Name                                                            Type                                                Etag
+-------- ----                                                            ----                                                ----
+westus2  dnsForwardingRule                                            Microsoft.Network/dnsForwardingRulesets/forwardingRule "04005592-0000-0800-0000-60e7ec170000"
 ```
 
-This command gets single Inbound Endpoint by name
+This command gets a forwarding rule by name.
 
 ## PARAMETERS
 
@@ -75,8 +75,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsResolverName
-The name of the DNS resolver.
+### -DnsForwardingRulesetName
+The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
@@ -107,12 +107,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the inbound endpoint for the DNS resolver.
+The name of the forwarding rule.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: InboundEndpointName
+Aliases: ForwardingRuleName
 
 Required: True
 Position: Named
@@ -177,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule
 
 ## NOTES
 

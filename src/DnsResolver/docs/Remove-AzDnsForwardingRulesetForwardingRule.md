@@ -1,62 +1,52 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverinboundendpoint
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetforwardingrule
 schema: 2.0.0
 ---
 
-# Get-AzDnsResolverInboundEndpoint
+# Remove-AzDnsForwardingRulesetForwardingRule
 
 ## SYNOPSIS
-Gets properties of an inbound endpoint for a DNS resolver.
+Deletes a forwarding rule in a DNS forwarding ruleset.
+WARNING: This operation cannot be undone.
 
 ## SYNTAX
 
-### List (Default)
+### Delete (Default)
 ```
-Get-AzDnsResolverInboundEndpoint -DnsResolverName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzDnsResolverInboundEndpoint -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Remove-AzDnsForwardingRulesetForwardingRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets properties of an inbound endpoint for a DNS resolver.
+Deletes a forwarding rule in a DNS forwarding ruleset.
+WARNING: This operation cannot be undone.
 
 ## EXAMPLES
 
-### Example 1: List Inbound Endpoints under a DNS Resolver
+### Example 1: Remove forwarding rule by name
 ```powershell
-PS C:\> Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -ResourceGroupName powershell-test-rg
-
-Name                   Type                                            Etag
-----                   ----                                            ----
-sampleInboundEndpoint  Microsoft.Network/dnsResolvers/inboundEndpoints "0b008451-0000-0800-0000-60402b960000"
-sampleInboundEndpoint1 Microsoft.Network/dnsResolvers/inboundEndpoints "0b0071aa-0000-0800-0000-60406a2d0000"
+PS C:\> Remove-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName sampleForwardingRuleset -Name sampleForwardingRule -ResourceGroupName powershell-test-rg
 ```
 
-This command gets a list Inbound Endpoint by name
+This command removes forwarding rule by name
 
-### Example 2: Get single Inbound Endpoint by name
+### Example 2: Remove forwarding rule via identity
 ```powershell
-PS C:\> Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
+PS C:\> $inputobject = Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG -Name forwardingRule
 
-Name                  Type                                            Etag
-----                  ----                                            ----
-sampleInboundEndpoint Microsoft.Network/dnsResolvers/inboundEndpoints "0b008451-0000-0800-0000-60402b960000"
+PS C:\>  Remove-AzDnsForwardingRulesetForwardingRule -InputObject $inputObject
 ```
 
-This command gets single Inbound Endpoint by name
+This command removes forwarding rule via identity
 
 ## PARAMETERS
 
@@ -75,15 +65,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsResolverName
-The name of the DNS resolver.
+### -DnsForwardingRulesetName
+The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfMatch
+ETag of the resource.
+Omit this value to always overwrite the current resource.
+Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,7 +103,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -107,14 +114,29 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the inbound endpoint for the DNS resolver.
+The name of the forwarding rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: InboundEndpointName
+Parameter Sets: Delete
+Aliases: ForwardingRuleName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -127,7 +149,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -141,8 +163,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -152,14 +174,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Top
-The maximum number of results to return.
-If not specified, returns up to 100 results.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -177,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint
+### System.Boolean
 
 ## NOTES
 
