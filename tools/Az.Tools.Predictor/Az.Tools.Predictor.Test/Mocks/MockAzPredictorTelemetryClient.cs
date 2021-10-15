@@ -31,6 +31,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         public ParameterMapTelemetryData ParameterMapData { get; internal set; }
         public IList<TelemetryRecord> RecordedTelemetry { get; internal set; } = new List<TelemetryRecord>();
         public IList<ITelemetryData> DispatchedTelemetry { get; internal set; } = new List<ITelemetryData>();
+        public AggregatedTelemetryData RecordedAggregatedData { get; private set; }
+        public bool FlushAtDispatch { get; set; }
 
         private int _expctedTelemetryDispatchCount = 1;
         public int ExceptedTelemetryDispatchCount
@@ -99,6 +101,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
             ParameterMapData = telemetryData;
         }
 
+        public void FlushTelemetry() => SendAggregatedTelemetryData();
+
         public void ResetWaitingTasks()
         {
             HistoryTaskCompletionSource = new TaskCompletionSource();
@@ -120,10 +124,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
             if (DispatchedTelemetry.Count == ExceptedTelemetryDispatchCount)
             {
-                if (base.CachedAggregatedTelemetryData.EstimateSuggestionSessionSize > 0)
+                RecordedAggregatedData = CachedAggregatedTelemetryData;
+
+                if (FlushAtDispatch && base.CachedAggregatedTelemetryData.EstimateSuggestionSessionSize > 0)
                 {
                     CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
-                    SendAggregatedTelemetryData(base.CachedAggregatedTelemetryData);
+                    SendAggregatedTelemetryData();
                 }
 
                 DispatchTelemetryTaskCompletionSource?.TrySetResult();

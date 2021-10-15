@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// We only access it in the thread pool which is to handle the data at the target side of the data flow.
         /// We only handle one item at a time so there is no race condition.
         /// </remarks>
-        internal protected AggregatedTelemetryData CachedAggregatedTelemetryData { get; private set; } = new();
+        protected AggregatedTelemetryData CachedAggregatedTelemetryData { get; private set; } = new();
 
         private bool _isDisposed;
 
@@ -222,8 +222,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Sends the aggregated telemetry data.
         /// </summary>
-        protected void SendAggregatedTelemetryData(AggregatedTelemetryData aggregatedData)
+        protected void SendAggregatedTelemetryData()
         {
+            var aggregatedData = CachedAggregatedTelemetryData;
+            CachedAggregatedTelemetryData = new AggregatedTelemetryData();
+
             var properties = CreateProperties(aggregatedData);
 
             // Add the request prediction data.
@@ -381,8 +384,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             CachedAggregatedTelemetryData.CommandLine = telemetryData.Command;
             CachedAggregatedTelemetryData.IsCommandSuccess = telemetryData.Success;
 
-            SendAggregatedTelemetryData(CachedAggregatedTelemetryData);
-            CachedAggregatedTelemetryData = new AggregatedTelemetryData();
+            SendAggregatedTelemetryData();
         }
 
         /// <summary>
@@ -393,8 +395,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             // We may have two consecutive requests.
             if (CachedAggregatedTelemetryData != null && !string.IsNullOrWhiteSpace(CachedAggregatedTelemetryData.RequestId))
             {
-                SendAggregatedTelemetryData(CachedAggregatedTelemetryData);
-                CachedAggregatedTelemetryData = null;
+                SendAggregatedTelemetryData();
             }
 
             if (CachedAggregatedTelemetryData == null)
@@ -603,9 +604,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             }
 
             CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
-            SendAggregatedTelemetryData(CachedAggregatedTelemetryData);
+            SendAggregatedTelemetryData();
 
-            CachedAggregatedTelemetryData = new AggregatedTelemetryData();
             var newSuggestionSession = new SuggestionSession()
             {
                 SuggestionSessionId = suggestionSessionId,

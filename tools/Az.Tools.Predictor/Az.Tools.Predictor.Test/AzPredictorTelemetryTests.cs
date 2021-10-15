@@ -532,7 +532,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// <summary>
         /// Verify that GetSuggestion, SuggestionDisplayed, and SessionAccepted all have the same suggestion session id.
         /// </summary>
-        //[Fact]
+        [Fact]
         private void VerifySameSuggestionSessionId()
         {
             var expectedTelemetryCount = 1;
@@ -551,9 +551,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
-            Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
-            Assert.Equal("New-AzResourceGroup -Location *** -Name *** -WhatIf ***", ((JsonElement)suggestionSessions[0]["UserInut"]).GetString());
-            Assert.Equal(0, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameFound]).GetArrayLength());
+            Assert.Equal("New-AzResourceGroup -Location *** -Name *** -WhatIf ***", ((JsonElement)(suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameUserInput])).GetString());
+            Assert.Equal(1, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameFound]).GetArrayLength());
 
             var displayCountOrIndex = 3;
 
@@ -584,11 +583,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(suggestionPackage.Session.Value.ToString(CultureInfo.InvariantCulture), telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]);
             suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
             Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
             Assert.Equal(acceptedSuggestion, ((JsonElement)suggestionSessions[0][SuggestionAcceptedTelemetryData.PropertyNameAccepted]).GetString());
-
             AzPredictorTelemetryTests.EnsureSameRequestId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionDisplayedData);
             AzPredictorTelemetryTests.EnsureSameRequestId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionAcceptedData);
 
@@ -862,7 +859,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var expectedTelemetryCount = 42;
             var expectedSuggestionSessionInFirstBatch = expectedTelemetryCount;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount, flushTelemetry: false);
 
             for (int i = 0; i < expectedTelemetryCount; ++i)
             {
@@ -874,7 +871,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
 
-            Assert.True(telemetryClient.CachedAggregatedTelemetryData.EstimateSuggestionSessionSize < AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer);
+            Assert.True(telemetryClient.RecordedAggregatedData.EstimateSuggestionSessionSize < AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer);
 
             expectedTelemetryCount = 1;
             var expectedSuggestionSessionInSecondBatch = expectedTelemetryCount;
@@ -889,6 +886,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             }
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
+            telemetryClient.FlushTelemetry();
 
             var recordedTelemetry = telemetryClient.RecordedTelemetry[0];
             var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties["Suggestion"]);
@@ -908,7 +906,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var expectedTelemetryCount = 43;
             var expectedSuggestionSessionInFirstBatch = expectedTelemetryCount;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount, flushTelemetry: false);
             PredictionContext predictionContext = default;
             SuggestionPackage suggestionPackage = default;
 
@@ -924,7 +922,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
-            Assert.True(telemetryClient.CachedAggregatedTelemetryData.EstimateSuggestionSessionSize < AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer);
+            Assert.True(telemetryClient.RecordedAggregatedData.EstimateSuggestionSessionSize < AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer);
 
             expectedTelemetryCount = 2;
             var expectedSuggestionSessionInSecondBatch = 1;
@@ -938,6 +936,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             azPredictor.OnSuggestionAccepted(MockObjects.PredictionClient, suggestionPackage.Session.Value, "Get-AzDefault");
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
+            telemetryClient.FlushTelemetry();
 
             var recordedTelemetry = telemetryClient.RecordedTelemetry[0];
             var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties["Suggestion"]);
@@ -967,7 +966,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var expectedTelemetryCount = 43;
             var expectedSuggestionSessionInFirstBatch = expectedTelemetryCount;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount, flushTelemetry: false);
             PredictionContext predictionContext = default;
             SuggestionPackage suggestionPackage = default;
 
@@ -983,7 +982,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
-            Assert.True(telemetryClient.CachedAggregatedTelemetryData.EstimateSuggestionSessionSize < AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer);
+            Assert.True(telemetryClient.RecordedAggregatedData.EstimateSuggestionSessionSize < AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer);
 
             expectedTelemetryCount = 3;
             var expectedSuggestionSessionInSecondBatch = 1;
@@ -1019,11 +1018,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal("Get-AzDefault", recordedTelemetry.Properties[HistoryTelemetryData.PropertyNameHistory]);
         }
 
-        private (AzPredictor, MockAzPredictorTelemetryClient) CreateTestObjects(bool throwException, int expectedTelemetryEvent)
+        private (AzPredictor, MockAzPredictorTelemetryClient) CreateTestObjects(bool throwException, int expectedTelemetryEvent, bool flushTelemetry = true)
         {
             var telemetryClient = new MockAzPredictorTelemetryClient();
             telemetryClient.ResetWaitingTasks();
             telemetryClient.ExceptedTelemetryDispatchCount = expectedTelemetryEvent;
+            telemetryClient.FlushAtDispatch = flushTelemetry;
             var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
 
             var service = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection, null);
