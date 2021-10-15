@@ -33,9 +33,9 @@ System.Boolean
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/new-azmggrouprefmember
 #>
-function New-AzMgGroupRefMember {
+function New-AzMgGroupMember {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='MemberObjectIdWithGroupObjectId ', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='MemberObjectIdWithGroupObjectId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectId', Mandatory)]
         [Parameter(ParameterSetName='MemberUPNWithGroupObjectId', Mandatory)]
@@ -137,7 +137,7 @@ function New-AzMgGroupRefMember {
             $PSBoundParameter['GroupId'] = $PSBoundParameters['TargetGroupObject'].Id
             $null = $PSBoundParameters['TargetGroupObject']
         } else {
-            $PSBoundParameter['GroupId'] = $PSBoundParameters['TargetGroupObjectId']
+            $PSBoundParameters['GroupId'] = $PSBoundParameters['TargetGroupObjectId']
             $null = $PSBoundParameters.Remove('TargetGroupObjectId')
         }
 
@@ -148,7 +148,7 @@ function New-AzMgGroupRefMember {
             }
             $null = $PSBoundParameters.Remove('MemberUserPrincipalName')
         } else {
-            $members = $PSBoundParameters['MemberObjectId']
+            $members += $PSBoundParameters['MemberObjectId']
             $null = $PSBoundParameters.Remove('MemberObjectId')
         }
 

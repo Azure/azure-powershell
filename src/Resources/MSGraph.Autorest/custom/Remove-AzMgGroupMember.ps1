@@ -33,7 +33,7 @@ System.Boolean
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/remove-azmggrouprefmember
 #>
-function Remove-AzMgGroupRefMember {
+function Remove-AzMgGroupMember {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName = 'ExplicitParameterSet ', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
@@ -125,10 +125,6 @@ function Remove-AzMgGroupRefMember {
     )
     
     process {
-        $baseUrl = (Get-AzContext).Environment.ExtendedProperties.MicrosoftGraphUrl
-        $apiVersion = 'V1.0'
-        $odataIdUriPrefix = "$($baseUrl)/$($apiVersion)/directoryObjects"
-
         if ($PSBoundParameters['GroupDisplayName']) {
             $param = @{'DisplayName' = $PSBoundParameters['GroupDisplayName']; 'Debug' = $PSBoundParameters['Debug']; 'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
             $PSBoundParameter['GroupId'] = (Get-AzMgGroup @param).Id
@@ -137,7 +133,7 @@ function Remove-AzMgGroupRefMember {
             $PSBoundParameter['GroupId'] = $PSBoundParameters['GroupObject'].Id
             $null = $PSBoundParameters['GroupObject']
         } else {
-            $PSBoundParameter['GroupId'] = $PSBoundParameters['GroupObjectId']
+            $PSBoundParameters['GroupId'] = $PSBoundParameters['GroupObjectId']
             $null = $PSBoundParameters.Remove('GroupObjectId')
         }
 
@@ -148,16 +144,15 @@ function Remove-AzMgGroupRefMember {
             }
             $null = $PSBoundParameters.Remove('MemberUserPrincipalName')
         } else {
-            $members = $PSBoundParameters['MemberObjectId']
+            $members += $PSBoundParameters['MemberObjectId']
             $null = $PSBoundParameters.Remove('MemberObjectId')
         }
 
         foreach ($member in $members) {
-            $additionalProperties = @{'@odata.id'="$($odataIdUriPrefix)/$($member)"}
-            $PSBoundParameters['AdditionalProperties'] = $additionalProperties
+            $PSBoundParameters['MemberId'] = $member
             MSGraph.internal\Remove-AzMgGroupRefMember @PSBoundParameters
         }
-        
+
         if ($PSBoundParameters['PassThru']) {
             $PSCmdlet.WriteObject($true)
         }

@@ -680,7 +680,7 @@ paths:
         nextLinkName: '@odata.nextLink'
         operationName: listMore
       x-ms-docs-operation-type: operation
-  '/groups/{group-id}/members/$ref':
+  '/groups/{group-id}/members/{member-id}/$ref':
     delete:
       tags:
         - groups.directoryObject
@@ -695,24 +695,20 @@ paths:
           schema:
             type: string
           x-ms-docs-key-type: group
-      requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        - name: member-id
+          in: path
+          description: 'key: id of member'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: member
       responses:
         '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-pageable:
-        nextLinkName: '@odata.nextLink'
-        operationName: listMore
       x-ms-docs-operation-type: operation
+  '/groups/{group-id}/members/$ref':
     post:
       tags:
         - groups.directoryObject

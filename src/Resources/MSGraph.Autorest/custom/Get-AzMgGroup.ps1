@@ -157,7 +157,7 @@ function Get-AzMgGroup {
 
         switch ($PSCmdlet.ParameterSetName) {
             'SearchStringParameterSet' {
-                $PSBOundParameters['Filter'] = "startsWith(displayName, '$($PSBOundParameters['DisplayNameStartsWith'])'"
+                $PSBOundParameters['Filter'] = "startsWith(displayName, '$($PSBOundParameters['DisplayNameStartsWith'])')"
                 $null = $PSBoundParameters.Remove('DisplayNameStartsWith')
                 break
             }
