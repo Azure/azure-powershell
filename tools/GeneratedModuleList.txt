@@ -19,6 +19,7 @@ Az.DedicatedHsm
 Az.DesktopVirtualization
 Az.DigitalTwins
 Az.DiskPool
+Az.Elastic
 Az.Functions
 Az.HanaOnAzure
 Az.HealthBot

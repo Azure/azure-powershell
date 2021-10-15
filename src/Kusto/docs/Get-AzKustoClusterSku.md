@@ -157,9 +157,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IAzureResourceSku
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IAzureResourceSku
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.ISkuDescription
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ISkuDescription
 
 ## NOTES
 
