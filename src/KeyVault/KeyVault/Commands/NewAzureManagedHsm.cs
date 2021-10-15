@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     SkuFamilyName = DefaultManagedHsmSkuFamily
                 };
 
-                this.WriteObject(KeyVaultManagementClient.CreateNewManagedHsm(vaultCreationParameter, ActiveDirectoryClient));
+                this.WriteObject(KeyVaultManagementClient.CreateNewManagedHsm(vaultCreationParameter, GraphClient));
             }
         }
 

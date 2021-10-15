@@ -142,25 +142,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #region Set-AzureRmKeyVaultAccessPolicy & Remove-AzureRmKeyVaultAccessPolicy
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetRemoveAccessPolicyByObjectId()
-        {
-            string upn = "";
+        // [Fact(Skip = "Graph authentication blocks test passes")]
+        // [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // public void TestSetRemoveAccessPolicyByObjectId()
+        // {
+        //     string upn = "";
 
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyByObjectId", _data.PreCreatedVault, _data.ResourceGroupName, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
+        //     KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+        //     controller.RunPsTestWorkflow(
+        //         _logger,
+        //         () =>
+        //         {
+        //             var objId = GetUserObjectId(controller, upn);
+        //             return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyByObjectId", _data.PreCreatedVault, _data.ResourceGroupName, objId) };
+        //         },
+        //         null,
+        //         MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+        //         MethodBase.GetCurrentMethod().Name
+        //         );
+        // }
 
         [Fact(Skip = "Graph authentication blocks test passes")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -179,123 +179,123 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetRemoveAccessPolicyByCompoundId()
-        {
-            string upn = "";
-            Guid? appId = null;
+        // [Fact(Skip = "Graph authentication blocks test passes")]
+        // [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // public void TestSetRemoveAccessPolicyByCompoundId()
+        // {
+        //     string upn = "";
+        //     Guid? appId = null;
 
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetRemoveAccessPolicyByCompoundId", _data.PreCreatedVault, _data.ResourceGroupName, appId, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
+        //     KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+        //     controller.RunPsTestWorkflow(
+        //         _logger,
+        //         () =>
+        //         {
+        //             var objId = GetUserObjectId(controller, upn);
+        //             return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetRemoveAccessPolicyByCompoundId", _data.PreCreatedVault, _data.ResourceGroupName, appId, objId) };
+        //         },
+        //         null,
+        //         MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+        //         MethodBase.GetCurrentMethod().Name
+        //         );
+        // }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAccessPolicyWithCompoundIdPolicies()
-        {
-            string upn = "";
+        // [Fact(Skip = "Graph authentication blocks test passes")]
+        // [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // public void TestRemoveAccessPolicyWithCompoundIdPolicies()
+        // {
+        //     string upn = "";
 
-            Guid? appId1 = null;
-            Guid? appId2 = null;
+        //     Guid? appId1 = null;
+        //     Guid? appId2 = null;
 
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3} {4} {5}", "Test-RemoveAccessPolicyWithCompoundIdPolicies", _data.PreCreatedVault, _data.ResourceGroupName, appId1, appId2, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
+        //     KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+        //     controller.RunPsTestWorkflow(
+        //         _logger,
+        //         () =>
+        //         {
+        //             var objId = GetUserObjectId(controller, upn);
+        //             return new[] { string.Format("{0} {1} {2} {3} {4} {5}", "Test-RemoveAccessPolicyWithCompoundIdPolicies", _data.PreCreatedVault, _data.ResourceGroupName, appId1, appId2, objId) };
+        //         },
+        //         null,
+        //         MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+        //         MethodBase.GetCurrentMethod().Name
+        //         );
+        // }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetCompoundIdAccessPolicy()
-        {
-            string upn = "";
-            Guid? appId = null;
+        // [Fact(Skip = "Graph authentication blocks test passes")]
+        // [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // public void TestSetCompoundIdAccessPolicy()
+        // {
+        //     string upn = "";
+        //     Guid? appId = null;
 
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetCompoundIdAccessPolicy", _data.PreCreatedVault, _data.ResourceGroupName, appId, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
+        //     KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+        //     controller.RunPsTestWorkflow(
+        //         _logger,
+        //         () =>
+        //         {
+        //             var objId = GetUserObjectId(controller, upn);
+        //             return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetCompoundIdAccessPolicy", _data.PreCreatedVault, _data.ResourceGroupName, appId, objId) };
+        //         },
+        //         null,
+        //         MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+        //         MethodBase.GetCurrentMethod().Name
+        //         );
+        // }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetRemoveAccessPolicyBySPN()
-        {
-            Application app = null;
-            ServicePrincipal principal = null;
+        // [Fact(Skip = "Graph authentication blocks test passes")]
+        // [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // public void TestSetRemoveAccessPolicyBySPN()
+        // {
+        //     Application app = null;
+        //     ServicePrincipal principal = null;
 
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-            //script builder
-            () =>
-            {
-                app = CreateNewAdApp(controller);
-                principal = CreateNewAdServicePrincipal(controller, app.AppId);
-                return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyBySPN",
-                    _data.PreCreatedVault,
-                    _data.ResourceGroupName,
-                    principal.ServicePrincipalNames.Where(s => s.StartsWith("http")).FirstOrDefault()) };
-            },
-            // cleanup
-            () =>
-            {
-                DeleteAdServicePrincipal(controller, principal);
-                DeleteAdApp(controller, app);
-            },
-            MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-            MethodBase.GetCurrentMethod().Name
-            );
-        }
+        //     KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+        //     controller.RunPsTestWorkflow(
+        //         _logger,
+        //     //script builder
+        //     () =>
+        //     {
+        //         app = CreateNewAdApp(controller);
+        //         principal = CreateNewAdServicePrincipal(controller, app.AppId);
+        //         return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyBySPN",
+        //             _data.PreCreatedVault,
+        //             _data.ResourceGroupName,
+        //             principal.ServicePrincipalNames.Where(s => s.StartsWith("http")).FirstOrDefault()) };
+        //     },
+        //     // cleanup
+        //     () =>
+        //     {
+        //         DeleteAdServicePrincipal(controller, principal);
+        //         DeleteAdApp(controller, app);
+        //     },
+        //     MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+        //     MethodBase.GetCurrentMethod().Name
+        //     );
+        // }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestModifyAccessPolicy()
-        {
-            string upn = "";
+        // [Fact(Skip = "Graph authentication blocks test passes")]
+        // [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // public void TestModifyAccessPolicy()
+        // {
+        //     string upn = "";
 
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+        //     KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
 
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
+        //     controller.RunPsTestWorkflow(
+        //         _logger,
+        //         () =>
+        //         {
 
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicy", _data.PreCreatedVault, _data.ResourceGroupName, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
+        //             var objId = GetUserObjectId(controller, upn);
+        //             return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicy", _data.PreCreatedVault, _data.ResourceGroupName, objId) };
+        //         },
+        //         null,
+        //         MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+        //         MethodBase.GetCurrentMethod().Name
+        //         );
+        // }
 
         [Fact(Skip = "Graph authentication blocks test passes")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -369,25 +369,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveNonExistentAccessPolicyDoesNotThrow()
-        {
-            string upn = "";
+        // [Fact(Skip = "Graph authentication blocks test passes")]
+        // [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // public void TestRemoveNonExistentAccessPolicyDoesNotThrow()
+        // {
+        //     string upn = "";
 
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () =>
-                {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-RemoveNonExistentAccessPolicyDoesNotThrow", _data.PreCreatedVault, _data.ResourceGroupName, objId) };
-                },
-                null,
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name
-                );
-        }
+        //     KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+        //     controller.RunPsTestWorkflow(
+        //         _logger,
+        //         () =>
+        //         {
+        //             var objId = GetUserObjectId(controller, upn);
+        //             return new[] { string.Format("{0} {1} {2} {3}", "Test-RemoveNonExistentAccessPolicyDoesNotThrow", _data.PreCreatedVault, _data.ResourceGroupName, objId) };
+        //         },
+        //         null,
+        //         MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+        //         MethodBase.GetCurrentMethod().Name
+        //         );
+        // }
 
         #endregion
 
@@ -408,62 +408,62 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         #endregion
 
         #region Helper Methods
-        private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)
-        {
-            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
-            {
-                var user = controllerAdmin.GraphClient.Users.Get(upn);
-                HttpMockServer.Variables["ObjectId"] = user.ObjectId;
-                return user.ObjectId;
-            }
-            else
-            {
-                return HttpMockServer.Variables["ObjectId"];
-            }
-        }
+        // private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)
+        // {
+        //     if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
+        //     {
+        //         var user = controllerAdmin.GraphClient.Users.Get(upn);
+        //         HttpMockServer.Variables["ObjectId"] = user.ObjectId;
+        //         return user.ObjectId;
+        //     }
+        //     else
+        //     {
+        //         return HttpMockServer.Variables["ObjectId"];
+        //     }
+        // }
 
-        private Application CreateNewAdApp(KeyVaultManagementController controllerAdmin)
-        {
-            var appName = TestUtilities.GenerateName("adApplication");
-            var url = string.Format("http://{0}/home", appName);
-            var appParam = new ApplicationCreateParameters
-            {
-                AvailableToOtherTenants = false,
-                DisplayName = appName,
-                Homepage = url,
-                IdentifierUris = new[] { url },
-                ReplyUrls = new[] { url }
-            };
+        // private Application CreateNewAdApp(KeyVaultManagementController controllerAdmin)
+        // {
+        //     var appName = TestUtilities.GenerateName("adApplication");
+        //     var url = string.Format("http://{0}/home", appName);
+        //     var appParam = new ApplicationCreateParameters
+        //     {
+        //         AvailableToOtherTenants = false,
+        //         DisplayName = appName,
+        //         Homepage = url,
+        //         IdentifierUris = new[] { url },
+        //         ReplyUrls = new[] { url }
+        //     };
 
-            return controllerAdmin.GraphClient.Applications.Create(appParam);
-        }
+        //     return controllerAdmin.GraphClient.Applications.Create(appParam);
+        // }
 
-        private ServicePrincipal CreateNewAdServicePrincipal(KeyVaultManagementController controllerAdmin, string appId)
-        {
-            var spParam = new ServicePrincipalCreateParameters
-            {
-                AppId = appId,
-                AccountEnabled = true
-            };
+        // private ServicePrincipal CreateNewAdServicePrincipal(KeyVaultManagementController controllerAdmin, string appId)
+        // {
+        //     var spParam = new ServicePrincipalCreateParameters
+        //     {
+        //         AppId = appId,
+        //         AccountEnabled = true
+        //     };
 
-            return controllerAdmin.GraphClient.ServicePrincipals.Create(spParam);
-        }
+        //     return controllerAdmin.GraphClient.ServicePrincipals.Create(spParam);
+        // }
 
-        private void DeleteAdApp(KeyVaultManagementController controllerAdmin, Application app)
-        {
-            if (app != null)
-            {
-                controllerAdmin.GraphClient.Applications.Delete(app.ObjectId);
-            }
-        }
+        // private void DeleteAdApp(KeyVaultManagementController controllerAdmin, Application app)
+        // {
+        //     if (app != null)
+        //     {
+        //         controllerAdmin.GraphClient.Applications.Delete(app.ObjectId);
+        //     }
+        // }
 
-        private void DeleteAdServicePrincipal(KeyVaultManagementController controllerAdmin, ServicePrincipal newServicePrincipal)
-        {
-            if (newServicePrincipal != null)
-            {
-                controllerAdmin.GraphClient.ServicePrincipals.Delete(newServicePrincipal.ObjectId);
-            }
-        }
+        // private void DeleteAdServicePrincipal(KeyVaultManagementController controllerAdmin, ServicePrincipal newServicePrincipal)
+        // {
+        //     if (newServicePrincipal != null)
+        //     {
+        //         controllerAdmin.GraphClient.ServicePrincipals.Delete(newServicePrincipal.ObjectId);
+        //     }
+        // }
         #endregion
     }
 

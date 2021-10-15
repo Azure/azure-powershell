@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     if (string.IsNullOrWhiteSpace(this.ObjectId))
                     {
-                        if (ActiveDirectoryClient == null)
+                        if (GraphClient == null)
                         {
                             throw new Exception(Resources.ActiveDirectoryClientNull);
                         }
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     existingVault.EnableRbacAuthorization,
                     existingVault.SoftDeleteRetentionInDays,
                     existingVault.NetworkAcls,
-                    ActiveDirectoryClient);
+                    GraphClient);
 
                 if (PassThru.IsPresent)
                     WriteObject(updatedVault);
