@@ -62,6 +62,8 @@
         "README.md",
         "**/ChangeLog.md",
         "**/readme.md",
+        ".ci-config.json",
+        "tools/PrepareAutorestModule.ps1",
         "src/**/document/*"
       ],
       "phases": []
