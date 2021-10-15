@@ -7,7 +7,7 @@ For providers who
 
 they need register provider configuration in [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12).
 
-Notes: No additional commands for the features of private linke resource and private endpoint connection need be added.
+Notes: No additional commands for the features of private linke resource and private endpoint connection need to be added.
 
 ## Prerequisite
 We assume the API for `List` private link resource and `Get` private endpoint connection is available in the provider that claims to support private endpoint connection features. That means it supports following APIs:
