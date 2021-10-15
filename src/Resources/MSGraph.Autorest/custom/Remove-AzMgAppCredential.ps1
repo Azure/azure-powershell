@@ -154,5 +154,9 @@ function Remove-AzMgAppCredential {
             }
             Write-Error "application '$($app.Id)' does not contains credential with key id: '$($PSBoundParameters['KeyId'])'."
         }
+
+        if ($PSBoundParameters['PassThru']) {
+            $PSCmdlet.WriteObject($true)
+        }
     }
 }

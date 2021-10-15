@@ -162,5 +162,8 @@ function Remove-AzMgUser {
         $PSBoundParameters['Id'] = $id
 
         MSGraph.internal\Remove-AzMgUser @PSBoundParameters
+        if ($PSBoundParameters['PassThru']) {
+            $PSCmdlet.WriteObject($true)
+        }
     }
 }

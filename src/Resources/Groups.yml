@@ -681,6 +681,38 @@ paths:
         operationName: listMore
       x-ms-docs-operation-type: operation
   '/groups/{group-id}/members/$ref':
+    delete:
+      tags:
+        - groups.directoryObject
+      summary: Delete ref of members from groups
+      description: 'Users, contacts, and groups that are members of this group. HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only. Nullable. Supports $expand.'
+      operationId: groups_DeleteRefMembers
+      parameters:
+        - name: group-id
+          in: path
+          description: 'key: id of group'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: group
+      requestBody:
+        description: New navigation property ref value
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: object
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-pageable:
+        nextLinkName: '@odata.nextLink'
+        operationName: listMore
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - groups.directoryObject
@@ -713,6 +745,8 @@ paths:
                 type: object
                 additionalProperties:
                   type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation

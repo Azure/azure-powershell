@@ -145,5 +145,9 @@ param(
     $PSBoundParameters['Id'] = $id
 
     MSGraph.internal\Remove-AzMgGroup @PSBoundParameters
+
+    if ($PSBoundParameters['PassThru']) {
+        $PSCmdlet.WriteObject($true)
+    }
   }
 }
