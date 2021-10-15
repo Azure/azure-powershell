@@ -1,4 +1,4 @@
-Example 1: List all forwarding rule under the resource
+### Example 1: List all forwarding rule under the resource
 ```powershell
 PS C:\> Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG
 
@@ -10,7 +10,7 @@ westus2  pw-dnsForwardingRule                                         Microsoft.
 
 This command gets all forwarding rule under the resource.
 
-Example 1: Get forwarding rule by name
+### Example 1: Get forwarding rule by name
 ```powershell
 PS C:\> Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG -Name forwardingRule
 
