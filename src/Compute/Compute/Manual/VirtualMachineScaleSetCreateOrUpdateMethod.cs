@@ -509,7 +509,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 //check omode params and throw error otherwise
                 checkFlexibleOrchestrationModeParams();
-                
+                int platformFaultDomainCountFlexibleDefault = 1;
+                SwitchParameter singlePlacementGroupFlexibleDefault = false;
 
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
@@ -624,7 +625,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     zones: _cmdlet.Zone,
                     ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
-                    singlePlacementGroup: _cmdlet.SinglePlacementGroup == false ? _cmdlet.SinglePlacementGroup : throw new Exception("SinglePLacementGroup set to true when can't for Omode Flex, needs to be false"),//is this throw ok? 
+                    singlePlacementGroup: singlePlacementGroupFlexibleDefault,
                     proximityPlacementGroup: proximityPlacementGroup,
                     hostGroup: hostGroup,
                     priority: _cmdlet.Priority,
@@ -634,7 +635,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
                     //platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
-                    platformFaultDomainCount: _cmdlet.PlatformFaultDomainCount == 1 ? _cmdlet.PlatformFaultDomainCount : throw new Exception("PFDCount has to be 1 for omode flexible"),
+                    platformFaultDomainCount: platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null

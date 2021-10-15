@@ -2821,3 +2821,54 @@ function Test-VirtualMachineScaleSetSpotRestorePolicy
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test the VMSS Flexible orchestration mode defaulting. 
+#>
+function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $networkAPIVersionFlexible = "2020-11-01";
+    $flexiblePFDC = 1;
+    $flexibleSinglePlacementGroup = $false;
+    $flexibleIPConfigPrimary = $true;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup variables
+        $vmssname = "vmsstestflex";
+        $omode = "Flexible";
+        $username = "admin01"
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        # Create VMSS with minimal inputs to allow defaulting
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode;
+        Assert-NotNull $vmss;
+        Assert-AreEqual $vmss.OrchestrationMode $omode;
+        Assert-AreEqual $vmss.SinglePlacementGroup $flexibleSinglePlacementGroup;
+        Assert-AreEqual $vmss.PlatformFaultDomainCount $flexiblePFDC;
+        Assert-AreEqual $vmss.VirtualMachineProfile.NetworkProfile.NetworkAPIVersion $networkAPIVersionFlexible;
+        Assert-AreEqual $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations.IpConfigurations.Primary $flexibleIPConfigPrimary;
+
+        #Assert-ThrowsContains {
+        #    $vmssError = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -PlatformFaultDOmainCount 2; } "The incoming virtual machine must have a 'resourceGroupName'.";
+        #}
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
