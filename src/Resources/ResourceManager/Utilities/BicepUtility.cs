@@ -59,19 +59,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         public static string GetBicepVesion()
         {
-            System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create();
-            powershell.AddScript("bicep -v");
-            var result = powershell.Invoke()[0].ToString();
-            Regex pattern = new Regex("\\d+(\\.\\d+)+");
-            string bicepVersion = pattern.Match(result)?.Value;
-            return bicepVersion;
+            using(System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
+            {
+                powershell.AddScript("bicep -v");
+                var result = powershell.Invoke()[0].ToString();
+                Regex pattern = new Regex("\\d+(\\.\\d+)+");
+                string bicepVersion = pattern.Match(result)?.Value;
+                return bicepVersion;
+            }
         }
 
         public static int GetLastExitCode(System.Management.Automation.PowerShell powershell)
         {
             powershell.AddScript("$LASTEXITCODE");
             var result = powershell.Invoke();
-            int.TryParse(result[0].ToString(), out int exitcode);
+            int.TryParse(result[0]?.ToString(), out int exitcode);
             return exitcode;
         }
 
