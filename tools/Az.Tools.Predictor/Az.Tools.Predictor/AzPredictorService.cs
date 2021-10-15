@@ -178,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 inputParameterSet = new ParameterSet(commandAst, _azContext);
             }
-            catch when (!IsSupportedCommand(commandName))
+            catch when (!IsRecognizedCommand(commandName))
             {
                 // We only ignore the exception when the command name is not supported.
                 // We want to collect the telemetry about the exception how common it is for the format we don't support.
@@ -348,9 +348,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public bool IsSupportedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd)
+        public bool IsSupportedCommand(string cmd) => IsRecognizedCommand(cmd)
             && !_surveyCmdlets.Any(cmdlet => cmdlet.Command.StartsWith(cmd, StringComparison.OrdinalIgnoreCase)) // the survey cmdlets aren't in the normal az command flow, so mark them as unsupported.
-            && (_allPredictiveCommands?.Contains(cmd) == true);
+            && cmd.IndexOf(AzPredictorConstants.AzCommandMoniker) > 0; // This is the Az cmdlet.
 
         /// <summary>
         /// Requests a list of popular commands from service. These commands are used as fall back suggestion
@@ -488,5 +488,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
         }
+
+        private bool IsRecognizedCommand(string cmd) => !string.IsNullOrWhiteSpace(cmd)
+            && (_allPredictiveCommands?.Contains(cmd) == true);
     }
 }

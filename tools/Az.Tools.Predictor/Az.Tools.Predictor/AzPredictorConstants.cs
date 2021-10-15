@@ -55,6 +55,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public const string CommandsEndpoint = "/commands";
 
         /// <summary>
+        /// The character that separates verb and noun in the cmdlet.
+        /// </summary>
+        public const string CommandSeparator  = "-";
+
+        /// <summary>
         /// The service endpoint to get the list of suggestions.
         /// </summary>
         public const string PredictionsEndpoint = "/predictions";
