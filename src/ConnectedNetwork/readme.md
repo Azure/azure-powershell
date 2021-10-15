@@ -34,7 +34,6 @@ branch: 5f32b50e18ed0a91eefe39287078bf66c4d6c3a8
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/networkFunction.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/vendor.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/device.json
@@ -51,18 +50,80 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
-
   - where:
       verb: Set
     remove: true
-
+  - where:
+      subject: ^NetworkFunction$
+      parameter-name: NetworkFunctionContainerConfiguration
+    set:
+      parameter-name: ContainerConfiguration
+  - where:
+      subject: ^NetworkFunction$
+      parameter-name: NetworkFunctionUserConfiguration
+    set:
+      parameter-name: UserConfiguration
   - where:
       subject: ^VendorNetworkFunction$
     set:
       subject: VendorFunction
-
   - where:
       subject: ^RoleInstance$
     set:
       subject: VendorFunctionRoleInstance
+  - where:
+      subject: ^VendorFunction$
+      parameter-name: NetworkFunctionVendorConfiguration
+    set:
+      parameter-name: VendorConfiguration
+  - where:
+      subject: ^VendorSku$
+      parameter-name: NetworkFunctionTemplateNetworkFunctionRoleConfiguration
+    set:
+      parameter-name: NetworkFunctionRoleConfigurationType
+  - from: swagger-document 
+    where: $.definitions.VendorNetworkFunctionPropertiesFormat.properties.vendorProvisioningState
+    transform: >-
+      return {
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/5f32b50e18ed0a91eefe39287078bf66c4d6c3a8/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json#/definitions/VendorProvisioningState",
+          "description": "The vendor controlled provisioning state of the vendor network function.",
+          "readOnly": true
+      }
+  - from: swagger-document 
+    where: $.definitions.NetworkFunctionPropertiesFormat.properties.managedApplicationParameters
+    transform: >-
+      return {
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/5f32b50e18ed0a91eefe39287078bf66c4d6c3a8/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json#/definitions/ManagedApplicationParameters",
+          "additionalProperties": true,
+          "description": "The parameters for the managed application."
+      }
+  - from: swagger-document 
+    where: $.definitions.NetworkFunctionPropertiesFormat.properties.networkFunctionContainerConfigurations
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "The network function container configurations from the user."
+      }
+  - from: swagger-document 
+    where: $.definitions.VendorSkuPropertiesFormat.properties.managedApplicationParameters
+    transform: >-
+      return {
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/5f32b50e18ed0a91eefe39287078bf66c4d6c3a8/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json#/definitions/ManagedApplicationParameters",
+          "additionalProperties": true,
+          "description": "The parameters for the managed application to be supplied by the vendor."
+      }
+  - from: swagger-document 
+    where: $.definitions.VendorSkuPropertiesFormat.properties.managedApplicationTemplate
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "The template for the managed application deployment."
+      }
+  #  The generated cmdlet need to Re-Name 
+  #  - model-cmdlet:
+  #      - NetworkFunctionUserConfiguration
+  #      - NetworkFunctionVendorConfiguration
+  #      - NetworkFunctionRoleConfiguration
 ```

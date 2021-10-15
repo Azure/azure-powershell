@@ -49,6 +49,15 @@ Creates or updates a network function resource.
 This operation can take up to 6 hours to complete.
 This is expected service behavior.
 
+### [New-AzConnectedNetworkFunctionRoleConfigurationObject](New-AzConnectedNetworkFunctionRoleConfigurationObject.md)
+Create a in-memory object for NetworkFunctionRoleConfiguration
+
+### [New-AzConnectedNetworkFunctionUserConfigurationObject](New-AzConnectedNetworkFunctionUserConfigurationObject.md)
+Create a in-memory object for NetworkFunctionUserConfiguration
+
+### [New-AzConnectedNetworkFunctionVendorConfigurationObject](New-AzConnectedNetworkFunctionVendorConfigurationObject.md)
+Create a in-memory object for NetworkFunctionVendorConfiguration
+
 ### [New-AzConnectedNetworkVendor](New-AzConnectedNetworkVendor.md)
 Creates or updates a vendor.
 

@@ -16,11 +16,10 @@ This is expected service behavior.
 
 ```
 New-AzConnectedNetworkFunction -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-DeviceId <String>] [-Etag <String>] [-ManagedApplicationParameter <IAny>]
- [-NetworkFunctionContainerConfiguration <IAny>]
- [-NetworkFunctionUserConfiguration <INetworkFunctionUserConfiguration[]>] [-SkuName <String>]
- [-Tag <Hashtable>] [-VendorName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ContainerConfiguration <Hashtable>] [-DeviceId <String>] [-Etag <String>]
+ [-ManagedApplicationParameter <IAny>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-UserConfiguration <INetworkFunctionUserConfiguration[]>] [-VendorName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +54,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerConfiguration
+The network function container configurations from the user.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -155,37 +169,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkFunctionContainerConfiguration
-The network function container configurations from the user.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkFunctionUserConfiguration
-The network function configurations from the user.
-To construct, see NOTES section for NETWORKFUNCTIONUSERCONFIGURATION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionUserConfiguration[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -263,6 +246,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserConfiguration
+The network function configurations from the user.
+To construct, see NOTES section for USERCONFIGURATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionUserConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VendorName
 The vendor name for the network function.
 Once set, it cannot be updated.
@@ -328,7 +327,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-NETWORKFUNCTIONUSERCONFIGURATION <INetworkFunctionUserConfiguration[]>: The network function configurations from the user.
+USERCONFIGURATION <INetworkFunctionUserConfiguration[]>: The network function configurations from the user.
   - `[NetworkInterface <INetworkInterface[]>]`: The network interface configuration.
     - `[IPConfiguration <INetworkInterfaceIPConfiguration[]>]`: A list of IP configurations of the network interface.
       - `[DnsServer <String[]>]`: The list of DNS servers IP addresses.

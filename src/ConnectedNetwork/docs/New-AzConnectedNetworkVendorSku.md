@@ -17,8 +17,8 @@ This is expected service behavior.
 ```
 New-AzConnectedNetworkVendorSku -SkuName <String> -VendorName <String> [-SubscriptionId <String>]
  [-DeploymentMode <SkuDeploymentMode>] [-ManagedApplicationParameter <IAny>]
- [-ManagedApplicationTemplate <IAny>]
- [-NetworkFunctionTemplateNetworkFunctionRoleConfiguration <INetworkFunctionRoleConfiguration[]>]
+ [-ManagedApplicationTemplate <Hashtable>]
+ [-NetworkFunctionRoleConfigurationType <INetworkFunctionRoleConfiguration[]>]
  [-NetworkFunctionType <NetworkFunctionType>] [-Preview] [-SkuType <SkuType>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The template for the managed application deployment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -125,9 +125,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkFunctionTemplateNetworkFunctionRoleConfiguration
+### -NetworkFunctionRoleConfigurationType
 An array of network function role definitions.
-To construct, see NOTES section for NETWORKFUNCTIONTEMPLATENETWORKFUNCTIONROLECONFIGURATION properties and create a hash table.
+To construct, see NOTES section for NETWORKFUNCTIONROLECONFIGURATIONTYPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionRoleConfiguration[]
@@ -295,7 +295,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-NETWORKFUNCTIONTEMPLATENETWORKFUNCTIONROLECONFIGURATION <INetworkFunctionRoleConfiguration[]>: An array of network function role definitions.
+NETWORKFUNCTIONROLECONFIGURATIONTYPE <INetworkFunctionRoleConfiguration[]>: An array of network function role definitions.
   - `[CustomProfileMetadataConfigurationPath <String>]`: Path for metadata configuration.
   - `[ImageReferenceExactVersion <String>]`: Specifies in decimal numbers, the exact version of image used to create the virtual machine.
   - `[ImageReferenceOffer <String>]`: Specifies the offer of the image used to create the virtual machine.

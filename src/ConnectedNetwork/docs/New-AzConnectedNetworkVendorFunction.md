@@ -16,9 +16,8 @@ This is expected service behavior.
 
 ```
 New-AzConnectedNetworkVendorFunction -LocationName <String> -ServiceKey <String> -VendorName <String>
- [-SubscriptionId <String>] [-NetworkFunctionVendorConfiguration <INetworkFunctionVendorConfiguration[]>]
- [-VendorProvisioningState <VendorProvisioningState>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-VendorConfiguration <INetworkFunctionVendorConfiguration[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,22 +92,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkFunctionVendorConfiguration
-An array of network function vendor configurations.
-To construct, see NOTES section for NETWORKFUNCTIONVENDORCONFIGURATION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendorConfiguration[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -154,6 +137,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VendorConfiguration
+An array of network function vendor configurations.
+To construct, see NOTES section for VENDORCONFIGURATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendorConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VendorName
 The name of the vendor.
 
@@ -163,21 +162,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VendorProvisioningState
-The vendor controlled provisioning state of the vendor network function.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VendorProvisioningState
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -233,7 +217,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-NETWORKFUNCTIONVENDORCONFIGURATION <INetworkFunctionVendorConfiguration[]>: An array of network function vendor configurations.
+VENDORCONFIGURATION <INetworkFunctionVendorConfiguration[]>: An array of network function vendor configurations.
   - `[NetworkInterface <INetworkInterface[]>]`: The network interface configurations.
     - `[IPConfiguration <INetworkInterfaceIPConfiguration[]>]`: A list of IP configurations of the network interface.
       - `[DnsServer <String[]>]`: The list of DNS servers IP addresses.
