@@ -36,4 +36,3 @@ westus2  pw-dnsForwardingRuleset1 Microsoft.Network/dnsForwardingRulesets "08007
 ```
 
 This command gets all DNS forwarding ruleset under the resouce group.
-

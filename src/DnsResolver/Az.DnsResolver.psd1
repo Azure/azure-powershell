@@ -11,7 +11,11 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DnsResolver.private.dll'
   FormatsToProcess = './Az.DnsResolver.format.ps1xml'
+<<<<<<< HEAD
   FunctionsToExport = 'Get-AzDnsResolver', 'Get-AzDnsResolverDnsForwardingRuleset', 'Get-AzDnsResolverForwardingRule', 'Get-AzDnsResolverInboundEndpoint', 'Get-AzDnsResolverOutboundEndpoint', 'Get-AzDnsResolverVirtualNetworkLink', 'New-AzDnsResolver', 'New-AzDnsResolverDnsForwardingRuleset', 'New-AzDnsResolverForwardingRule', 'New-AzDnsResolverInboundEndpoint', 'New-AzDnsResolverIPConfigurationObject', 'New-AzDnsResolverOutboundEndpoint', 'New-AzDnsResolverTargetDnsServerObject', 'New-AzDnsResolverVirtualNetworkLink', 'Remove-AzDnsResolver', 'Remove-AzDnsResolverDnsForwardingRuleset', 'Remove-AzDnsResolverForwardingRule', 'Remove-AzDnsResolverInboundEndpoint', 'Remove-AzDnsResolverOutboundEndpoint', 'Remove-AzDnsResolverVirtualNetworkLink', 'Update-AzDnsResolver', 'Update-AzDnsResolverDnsForwardingRuleset', 'Update-AzDnsResolverForwardingRule', 'Update-AzDnsResolverInboundEndpoint', 'Update-AzDnsResolverOutboundEndpoint', 'Update-AzDnsResolverVirtualNetworkLink', '*'
+=======
+  FunctionsToExport = 'Get-AzDnsResolver', 'Get-AzDnsResolverDnsForwardingRuleset', 'Get-AzDnsResolverForwardingRule', 'Get-AzDnsResolverInboundEndpoint', 'Get-AzDnsResolverOutboundEndpoint', 'Get-AzDnsResolverVirtualNetworkLink', 'New-AzDnsResolver', 'New-AzDnsResolverDnsForwardingRuleset', 'New-AzDnsResolverForwardingRule', 'New-AzDnsResolverInboundEndpoint', 'New-AzDnsResolverIPConfigurationObject', 'New-AzDnsResolverOutboundEndpoint', 'New-AzDnsResolverVirtualNetworkLink', 'Remove-AzDnsResolver', 'Remove-AzDnsResolverDnsForwardingRuleset', 'Remove-AzDnsResolverForwardingRule', 'Remove-AzDnsResolverInboundEndpoint', 'Remove-AzDnsResolverOutboundEndpoint', 'Remove-AzDnsResolverVirtualNetworkLink', 'Update-AzDnsResolver', 'Update-AzDnsResolverDnsForwardingRuleset', 'Update-AzDnsResolverForwardingRule', 'Update-AzDnsResolverInboundEndpoint', 'Update-AzDnsResolverOutboundEndpoint', 'Update-AzDnsResolverVirtualNetworkLink', '*'
+>>>>>>> 1b30867f0c... made some changes
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

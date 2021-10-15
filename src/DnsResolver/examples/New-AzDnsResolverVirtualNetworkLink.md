@@ -18,4 +18,3 @@ westus2  sampleVnetLink Microsoft.Network/dnsForwardingRulesets/virtualNetworkLi
 ```
 
 This cmdlet creates a virtual network link with metadata. 
-

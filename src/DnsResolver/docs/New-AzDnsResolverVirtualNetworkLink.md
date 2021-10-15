@@ -23,7 +23,6 @@ New-AzDnsResolverVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <St
 Creates or updates a virtual network link to a DNS forwarding ruleset.
 
 ## EXAMPLES
-
 ### Example 1: Create a virtual network link 
 ```powershell
 PS C:\> New-AzDnsResolverVirtualNetworkLink -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleVnetLink -ResourceGroupName sampleRG -VirtualNetworkId "/subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c64/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub"
