@@ -56,9 +56,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 supportEvent: true,
                 forwardEvent: false);
 
-            _promptDelayTimer = new Timer(TimeSpan.FromSeconds(2).TotalMilliseconds);
+            _promptDelayTimer = new Timer(TimeSpan.FromSeconds(1).TotalMilliseconds);
             _promptDelayTimer.Elapsed += OnPromptDelayTimer;
-
         }
 
         public void Dispose()
