@@ -23,6 +23,22 @@ westus2  dnsForwardingRuleset Microsoft.Network/dnsForwardingRulesets "04005592-
 ```
 
 This command gets  single DNS forwarding ruleset by name.
+<<<<<<< HEAD
+=======
+
+### Example 3: List all DNS forwarding ruleset under the resouce group 
+```powershell
+PS C:\>  Get-AzDnsResolverDnsForwardingRuleset -ResourceGroupName sampleRG
+
+Location Name                     Type                                    Etag
+-------- ----                     ----                                    ----
+westus2  dnsForwardingRuleset     Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
+westus2  pw-dnsForwardingRuleset  Microsoft.Network/dnsForwardingRulesets "08009ec9-0000-0800-0000-60e383b70000"
+westus2  pw-dnsForwardingRuleset1 Microsoft.Network/dnsForwardingRulesets "08007ccc-0000-0800-0000-60e3846a0000"
+```
+
+This command gets all DNS forwarding ruleset under the resouce group.
+>>>>>>> 6a6c72a28c... made some changes
 
 ### Example 3: List all DNS forwarding ruleset under the resouce group 
 ```powershell
