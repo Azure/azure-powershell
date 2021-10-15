@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fixed a bug about the exitcode of Bicep [#16055]
+* Added property `UIFormDefinition` to Template Spec Versions,  `Export-AzTemplateSpec` will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.
 
 ## Version 4.4.0
 * Added a clearer error message for a case in which TemplateUri do not accept bicep file.
