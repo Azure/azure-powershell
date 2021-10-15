@@ -16,6 +16,7 @@ using Microsoft.Azure.PowerShell.Common.Share.Survey;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Management.Automation;
+using System.Timers;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private PSEventSubscriber _idleEventSubscriber = null;
 
         private DateTime _lastCheckedTime = DateTime.MinValue;
+        private Timer _promptDelayTimer;
 
         public AzPredictorSurveyHelper(PowerShellRuntime powerShellRuntime)
         {
@@ -53,6 +55,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 action: scriptBlock,
                 supportEvent: true,
                 forwardEvent: false);
+
+            _promptDelayTimer = new Timer(TimeSpan.FromSeconds(2).TotalMilliseconds);
+            _promptDelayTimer.Elapsed += OnPromptDelayTimer;
+
         }
 
         public void Dispose()
@@ -63,6 +69,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 _powerShellEventManager.UnsubscribeEvent(_idleEventSubscriber);
                 _idleEventSubscriber = null;
+            }
+
+            if (_promptDelayTimer != null)
+            {
+                _promptDelayTimer.Elapsed -= OnPromptDelayTimer;
+                _promptDelayTimer.Dispose();
+                _promptDelayTimer = null;
             }
         }
 
@@ -83,6 +96,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public void PromptSurvey()
         {
+            _promptDelayTimer.Enabled = true;
+        }
+
+        private void OnPromptDelayTimer(object sender, ElapsedEventArgs args)
+        {
+            _promptDelayTimer.Enabled = false;
             AzPredictorData.ShowSurveyOnIdle = true;
         }
     }
