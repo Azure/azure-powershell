@@ -102,7 +102,7 @@ function New-AzKubernetesConfiguration {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # Any Parameters for the Operator instance in string format.
-        ${OperatorParam},
+        ${OperatorParameter},
 
         [Parameter(HelpMessage="If passed set the scope of the Configuration to Cluster (default is nameSpace).")]
         [switch]
