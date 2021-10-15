@@ -785,4 +785,13 @@ Failed: {2}.</value>
   <data name="SettingSynapseSqlScript" xml:space="preserve">
     <value>Setting Synapse Sql Script '{0}' in workspace '{1}'</value>
   </data>
+  <data name="RemoveSynapseSparkConfiguration" xml:space="preserve">
+    <value>Are you sure you want to remove spark configuration '{0}'?</value>
+  </data>
+  <data name="RemovingSynapseSparkConfiguration" xml:space="preserve">
+    <value>Deleting spark configuration '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseSparkConfiguration" xml:space="preserve">
+    <value>Setting Synapse spark configuration '{0}' in workspace '{1}'.</value>
+  </data>
 </root>
