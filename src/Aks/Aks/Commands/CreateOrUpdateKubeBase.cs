@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.Aks
                 DisplayName = name,
                 KeyCredentials = keyCredentials
             };
-            var app = MicrosoftGraphClient.Applications.CreateApplication(appCreateParameters);
+            var app = GraphClient.Applications.CreateApplication(appCreateParameters);
 
             MicrosoftGraphServicePrincipal sp = null;
             var success = RetryAction(() =>
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Aks
                     AccountEnabled = true,
                     KeyCredentials = keyCredentials
                 };
-                sp = MicrosoftGraphClient.ServicePrincipals.CreateServicePrincipal(servicePrincipalCreateParams);
+                sp = GraphClient.ServicePrincipals.CreateServicePrincipal(servicePrincipalCreateParams);
             }, Resources.ServicePrincipalCreate);
 
             if (!success)
@@ -326,10 +326,8 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 try
                 {
-                    //Please note string.Equals doesn't work here, while == works.
-                    var odataQuery = new ODataQuery<ServicePrincipal>(sp => sp.AppId == acsServicePrincipal.SpId);
-                    var servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery).First();
-                    spObjectId = servicePrincipal.ObjectId;
+                    var servicePrincipal = GraphClient.ServicePrincipals.GetServicePrincipal(acsServicePrincipal.SpId);
+                    spObjectId = servicePrincipal.Id;
                 }
                 catch(Exception ex)
                 {
