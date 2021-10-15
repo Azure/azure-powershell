@@ -12,7 +12,7 @@ $TmpFolder = New-Item -ItemType Directory -Path tmp
 foreach ($SyncPath in $Config.SyncPath)
 {
     Write-Host "Back up $SyncPath from main branch."
-    Copy-Item -Path $SyncPath -Destination "$TmpFolder/$SyncPath" -Recurse
+    Copy-Item -Path $SyncPath -Destination "$TmpFolder/$SyncPath" -Recurse -Force
 }
 
 # git config --global user.email "azurepowershell@ms.com"
@@ -30,7 +30,7 @@ foreach ($UnSyncPath in $Config.UnSyncPath)
 foreach ($SyncPath in $Config.SyncPath)
 {
     Remove-Item -Path $SyncPath -Recurse
-    Copy-Item -Path "$TmpFolder/$SyncPath" -Destination $SyncPath -Recurse
+    Copy-Item -Path "$TmpFolder/$SyncPath" -Destination $SyncPath -Recurse -Force
     # git add $SyncPath
 }
 
