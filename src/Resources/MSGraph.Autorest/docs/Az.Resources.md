@@ -11,92 +11,92 @@ Locale: en-US
 Microsoft Azure PowerShell: MSGraph cmdlets
 
 ## Az.Resources Cmdlets
-### [Get-AzMgAppCredential](Get-AzMgAppCredential.md)
+### [Get-AzAdAppCredential](Get-AzAdAppCredential.md)
 
 
-### [Get-AzMgApplication](Get-AzMgApplication.md)
+### [Get-AzAdApplication](Get-AzAdApplication.md)
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 
-### [Get-AzMgGroup](Get-AzMgGroup.md)
+### [Get-AzAdGroup](Get-AzAdGroup.md)
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 
-### [Get-AzMgGroupMember](Get-AzMgGroupMember.md)
+### [Get-AzAdGroupMember](Get-AzAdGroupMember.md)
 
 
-### [Get-AzMgServicePrincipal](Get-AzMgServicePrincipal.md)
+### [Get-AzAdServicePrincipal](Get-AzAdServicePrincipal.md)
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 
-### [Get-AzMgSpCredential](Get-AzMgSpCredential.md)
+### [Get-AzAdSpCredential](Get-AzAdSpCredential.md)
 
 
-### [Get-AzMgUser](Get-AzMgUser.md)
+### [Get-AzAdUser](Get-AzAdUser.md)
 Represents an Azure Active Directory user object.
 
-### [Get-AzMgUserSigned](Get-AzMgUserSigned.md)
+### [Get-AzAdUserSigned](Get-AzAdUserSigned.md)
 Represents current signed-in user object.
 
-### [New-AzMgAppCredential](New-AzMgAppCredential.md)
+### [New-AzAdAppCredential](New-AzAdAppCredential.md)
 
 
-### [New-AzMgApplication](New-AzMgApplication.md)
+### [New-AzAdApplication](New-AzAdApplication.md)
 Add new entity to applications
 
-### [New-AzMgGroup](New-AzMgGroup.md)
+### [New-AzAdGroup](New-AzAdGroup.md)
 Add new entity to groups
 
-### [New-AzMgGroupMember](New-AzMgGroupMember.md)
+### [New-AzAdGroupMember](New-AzAdGroupMember.md)
 Users, contacts, and groups that are members of this group.
 HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
 Nullable.
 Supports $expand.
 
-### [New-AzMgServicePrincipal](New-AzMgServicePrincipal.md)
+### [New-AzAdServicePrincipal](New-AzAdServicePrincipal.md)
 Add new entity to servicePrincipals
 
-### [New-AzMgSpCredential](New-AzMgSpCredential.md)
+### [New-AzAdSpCredential](New-AzAdSpCredential.md)
 
 
-### [New-AzMgUser](New-AzMgUser.md)
+### [New-AzAdUser](New-AzAdUser.md)
 Add new entity to users
 
-### [Remove-AzMgAppCredential](Remove-AzMgAppCredential.md)
+### [Remove-AzAdAppCredential](Remove-AzAdAppCredential.md)
 
 
-### [Remove-AzMgApplication](Remove-AzMgApplication.md)
+### [Remove-AzAdApplication](Remove-AzAdApplication.md)
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 
-### [Remove-AzMgGroup](Remove-AzMgGroup.md)
+### [Remove-AzAdGroup](Remove-AzAdGroup.md)
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 
-### [Remove-AzMgGroupMember](Remove-AzMgGroupMember.md)
+### [Remove-AzAdGroupMember](Remove-AzAdGroupMember.md)
 Users, contacts, and groups that are members of this group.
 HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
 Nullable.
 Supports $expand.
 
-### [Remove-AzMgServicePrincipal](Remove-AzMgServicePrincipal.md)
+### [Remove-AzAdServicePrincipal](Remove-AzAdServicePrincipal.md)
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 
-### [Remove-AzMgSpCredential](Remove-AzMgSpCredential.md)
+### [Remove-AzAdSpCredential](Remove-AzAdSpCredential.md)
 
 
-### [Remove-AzMgUser](Remove-AzMgUser.md)
+### [Remove-AzAdUser](Remove-AzAdUser.md)
 Represents an Azure Active Directory user object.
 
-### [Update-AzMgApplication](Update-AzMgApplication.md)
+### [Update-AzAdApplication](Update-AzAdApplication.md)
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 
-### [Update-AzMgServicePrincipal](Update-AzMgServicePrincipal.md)
+### [Update-AzAdServicePrincipal](Update-AzAdServicePrincipal.md)
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 
-### [Update-AzMgUser](Update-AzMgUser.md)
+### [Update-AzAdUser](Update-AzAdUser.md)
 Represents an Azure Active Directory user object.
 

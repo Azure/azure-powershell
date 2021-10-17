@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Resources.MSGraph.private.dll'
   FormatsToProcess = 'MSGraph.format.ps1xml'
-  FunctionsToExport = 'Get-AzMgAppCredential', 'Get-AzMgApplication', 'Get-AzMgGroup', 'Get-AzMgGroupMember', 'Get-AzMgServicePrincipal', 'Get-AzMgSpCredential', 'Get-AzMgUser', 'Get-AzMgUserSigned', 'New-AzMgAppCredential', 'New-AzMgApplication', 'New-AzMgGroup', 'New-AzMgGroupMember', 'New-AzMgServicePrincipal', 'New-AzMgSpCredential', 'New-AzMgUser', 'Remove-AzMgAppCredential', 'Remove-AzMgApplication', 'Remove-AzMgGroup', 'Remove-AzMgGroupMember', 'Remove-AzMgServicePrincipal', 'Remove-AzMgSpCredential', 'Remove-AzMgUser', 'Update-AzMgApplication', 'Update-AzMgServicePrincipal', 'Update-AzMgUser', '*'
+  FunctionsToExport = 'Get-AzAdAppCredential', 'Get-AzAdApplication', 'Get-AzAdGroup', 'Get-AzAdGroupMember', 'Get-AzAdServicePrincipal', 'Get-AzAdSpCredential', 'Get-AzAdUser', 'Get-AzAdUserSigned', 'New-AzAdAppCredential', 'New-AzAdApplication', 'New-AzAdGroup', 'New-AzAdGroupMember', 'New-AzAdServicePrincipal', 'New-AzAdSpCredential', 'New-AzAdUser', 'Remove-AzAdAppCredential', 'Remove-AzAdApplication', 'Remove-AzAdGroup', 'Remove-AzAdGroupMember', 'Remove-AzAdServicePrincipal', 'Remove-AzAdSpCredential', 'Remove-AzAdUser', 'Update-AzAdApplication', 'Update-AzAdServicePrincipal', 'Update-AzAdUser', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
