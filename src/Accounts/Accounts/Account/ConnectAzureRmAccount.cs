@@ -93,8 +93,6 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true)]
-        [Parameter(ParameterSetName = ClientAssertionParameterSet,
-                    Mandatory = true)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
                     Mandatory = false)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet,

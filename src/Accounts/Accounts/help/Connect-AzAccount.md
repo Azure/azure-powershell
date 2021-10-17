@@ -45,6 +45,14 @@ Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -Appli
  [<CommonParameters>]
 ```
 
+### ClientAssertionParameterSet
+```
+Connect-AzAccount [-Environment <String>] -ApplicationId <String> -Tenant <String> [-Subscription <String>]
+ [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force]
+ -FederatedToken <String> [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ServicePrincipalCertificateFileWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrincipal] -Tenant <String>
@@ -302,7 +310,7 @@ Application ID of the service principal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ClientAssertionParameterSet, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases:
 
 Required: True
@@ -434,6 +442,21 @@ Parameter Sets: (All)
 Aliases: EnvironmentName
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FederatedToken
+The federated token.
+
+```yaml
+Type: System.String
+Parameter Sets: ClientAssertionParameterSet
+Aliases: ClientAssertion
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -651,7 +674,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId, ClientAssertionParameterSet, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases: Domain, TenantId
 
 Required: True
