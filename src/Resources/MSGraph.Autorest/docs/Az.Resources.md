@@ -47,7 +47,7 @@ Add new entity to applications
 ### [New-AzMgGroup](New-AzMgGroup.md)
 Add new entity to groups
 
-### [New-AzMgGroupRefMember](New-AzMgGroupRefMember.md)
+### [New-AzMgGroupMember](New-AzMgGroupMember.md)
 Users, contacts, and groups that are members of this group.
 HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
 Nullable.
@@ -73,6 +73,12 @@ The directoryObject type is the base type for many other directory entity types.
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
 
+### [Remove-AzMgGroupMember](Remove-AzMgGroupMember.md)
+Users, contacts, and groups that are members of this group.
+HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
+Nullable.
+Supports $expand.
+
 ### [Remove-AzMgServicePrincipal](Remove-AzMgServicePrincipal.md)
 Represents an Azure Active Directory object.
 The directoryObject type is the base type for many other directory entity types.
@@ -82,9 +88,6 @@ The directoryObject type is the base type for many other directory entity types.
 
 ### [Remove-AzMgUser](Remove-AzMgUser.md)
 Represents an Azure Active Directory user object.
-
-### [Unprotect-SecureString](Unprotect-SecureString.md)
-
 
 ### [Update-AzMgApplication](Update-AzMgApplication.md)
 Represents an Azure Active Directory object.

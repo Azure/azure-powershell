@@ -1,80 +1,82 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azmggroupmember
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-azmggrouprefmember
 schema: 2.0.0
 ---
 
-# Get-AzMgGroupMember
+# New-AzMgGroupMember
 
 ## SYNOPSIS
-
+Users, contacts, and groups that are members of this group.
+HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
+Nullable.
+Supports $expand.
 
 ## SYNTAX
 
-### ObjectIdParameterSet (Default)
+### MemberObjectIdWithGroupObjectId (Default)
 ```
-Get-AzMgGroupMember -GroupObjectId <String> [-Count] [-Expand <String[]>] [-Filter <String>] [-First <UInt64>]
- [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### DisplayNameParameterSet
-```
-Get-AzMgGroupMember -GroupDisplayName <String> [-Count] [-Expand <String[]>] [-Filter <String>]
- [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzMgGroupMember -MemberObjectId <String[]> -TargetGroupObjectId <String> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GroupObjectParameterSet
+### MemberObjectIdWithGroupDisplayName
 ```
-Get-AzMgGroupMember -GroupObject <IMicrosoftGraphGroup> [-Count] [-Expand <String[]>] [-Filter <String>]
- [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzMgGroupMember -MemberObjectId <String[]> -TargetGroupDisplayName <String> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### MemberObjectIdWithGroupObject
+```
+New-AzMgGroupMember -MemberObjectId <String[]> -TargetGroupObject <MicrosoftGraphGroup>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupDisplayName
+```
+New-AzMgGroupMember -MemberUserPrincipalName <String[]> -TargetGroupDisplayName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupObject
+```
+New-AzMgGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObject <MicrosoftGraphGroup>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupObjectId
+```
+New-AzMgGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObjectId <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+Users, contacts, and groups that are members of this group.
+HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
+Nullable.
+Supports $expand.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
 {{ Add output here }}
+
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
+{{ Add code here }}
 ```
 
-{{ Add description here }}
+{{ Add output here }}
 
 ## PARAMETERS
 
-### -Count
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -88,57 +90,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Expand
+### -MemberObjectId
 
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Filter
-
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -First
-
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GroupDisplayName
-
-
-```yaml
-Type: System.String
-Parameter Sets: DisplayNameParameterSet
+Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberObjectIdWithGroupObject, MemberObjectIdWithGroupObjectId
 Aliases:
 
 Required: True
@@ -148,12 +105,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupObject
-To construct, see NOTES section for GROUPOBJECT properties and create a hash table.
+### -MemberUserPrincipalName
+
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
-Parameter Sets: GroupObjectParameterSet
+Type: System.String[]
+Parameter Sets: MemberUPNWithGroupDisplayName, MemberUPNWithGroupObject, MemberUPNWithGroupObjectId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetGroupDisplayName
+
+
+```yaml
+Type: System.String
+Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberUPNWithGroupDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetGroupObject
+To construct, see NOTES section for TARGETGROUPOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
+Parameter Sets: MemberObjectIdWithGroupObject, MemberUPNWithGroupObject
 Aliases:
 
 Required: True
@@ -163,12 +165,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -GroupObjectId
-
+### -TargetGroupObjectId
+key: id of group
 
 ```yaml
 Type: System.String
-Parameter Sets: ObjectIdParameterSet
+Parameter Sets: MemberObjectIdWithGroupObjectId, MemberUPNWithGroupObjectId
 Aliases:
 
 Required: True
@@ -178,13 +180,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Orderby
-
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.String[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
 Required: False
 Position: Named
@@ -193,43 +195,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Search
-
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Select
-
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.String[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Skip
-
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
+Aliases: wi
 
 Required: False
 Position: Named
@@ -243,11 +216,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
+### System.Boolean
 
 ## NOTES
 
@@ -258,12 +231,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-GROUPOBJECT <IMicrosoftGraphGroup>: 
+TARGETGROUPOBJECT <MicrosoftGraphGroup>: 
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[DeletedDateTime <DateTime?>]`: 
-  - `[DisplayName <String>]`: The name displayed in directory
-  - `[OdataId <String>]`: The full id of object in directory
-  - `[OdataType <String>]`: The type of object in directory
   - `[AppRoleAssignment <IMicrosoftGraphAppRoleAssignmentAutoGenerated[]>]`: Represents the app roles a group has been granted for an application. Supports $expand.
     - `[DeletedDateTime <DateTime?>]`: 
     - `[DisplayName <String>]`: The name displayed in directory
@@ -307,6 +276,10 @@ GROUPOBJECT <IMicrosoftGraphGroup>:
   - `[SecurityIdentifier <String>]`: Security identifier of the group, used in Windows scenarios. Returned by default.
   - `[Theme <String>]`: Specifies a Microsoft 365 group's color theme. Possible values are Teal, Purple, Green, Blue, Pink, Orange or Red. Returned by default.
   - `[Visibility <String>]`: Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or Hiddenmembership. Hiddenmembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. See group visibility options to learn more. Returned by default.
+  - `[DeletedDateTime <DateTime?>]`: 
+  - `[DisplayName <String>]`: The name displayed in directory
+  - `[OdataId <String>]`: The full id of object in directory
+  - `[OdataType <String>]`: The type of object in directory
 
 ## RELATED LINKS
 
