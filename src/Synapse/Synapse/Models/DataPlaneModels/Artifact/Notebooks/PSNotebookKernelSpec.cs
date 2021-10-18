@@ -27,15 +27,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Name = notebookKernelSpec?.Name;
             this.DisplayName = notebookKernelSpec?.DisplayName;
-            var propertiesEnum = notebookKernelSpec?.GetEnumerator();
-            if (propertiesEnum != null)
-            {
-                this.AdditionalProperties = new Dictionary<string, object>();
-                while (propertiesEnum.MoveNext())
-                {
-                    this.AdditionalProperties.Add(propertiesEnum.Current);
-                }
-            }
+            this.AdditionalProperties = notebookKernelSpec?.AdditionalProperties;
         }
 
         public string Name { get; set; }
