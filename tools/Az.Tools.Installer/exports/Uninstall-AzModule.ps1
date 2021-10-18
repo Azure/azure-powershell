@@ -89,6 +89,10 @@ function Uninstall-AzModule {
             if ($ExcludeModule) {
                 $ExcludeModule = Normalize-ModuleName $ExcludeModule
                 $moduleToUninstall = $moduleToUninstall | Where-Object {$ExcludeModule -NotContains $_.Name}
+                $modulesNotInstalled = $ExcludeModule | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
+                if ($modulesNotInstalled) {
+                    Throw "[$Invoker] $modulesNotInstalled are not installed."
+                }
             }
         }
 
@@ -104,9 +108,24 @@ function Uninstall-AzModule {
             foreach ($moduleName in $groupSet.Keys) {
                 $versions = $groupSet[$moduleName]
                 if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $moduleName version $versions", "$moduleName version $versions", "Uninstall")) {
-                    PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'Continue'
-                    Write-Debug "[$Invoker] Uninstalling $moduleName version $versions is completed."
                     Write-Progress -ParentId $script:FixProgressBarId -Activity "Uninstall Module" -Status "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
+                    if ($PrereleaseOnly) {
+                        $versionStrings = $versions | ForEach-Object {
+                            if ($_ -ge [Version] "1.0") {
+                                "$($_)-preview"
+                            }
+                            else {
+                                "$_"
+                            }
+                        }
+                        foreach($versionString in $versionStrings) {
+                            PowerShellGet\Uninstall-Module -Name $moduleName -RequiredVersion $versionString -AllowPrerelease -ErrorAction 'Continue'
+                        }
+                    }
+                    else {
+                        PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'Continue'
+                    }
+                    Write-Debug "[$Invoker] Uninstalling $moduleName version $versions is completed."
                     $index += 1
                 }
             }
