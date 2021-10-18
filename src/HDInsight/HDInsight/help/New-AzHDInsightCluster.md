@@ -616,7 +616,7 @@ PS C:\&gt; # Primary storage account info
             -StorageContainer $storageContainer `
             -SshCredential $clusterCreds `
             -VirtualNetworkId $virtualNetworkId -SubnetName $subnetName `
-            -AmbariDatabase $config.AmbariDatabase -HiveMetastore $config.HiveMetastore -OozieMetastore $config.OozieMetastore -Zones $zones
+            -AmbariDatabase $config.AmbariDatabase -HiveMetastore $config.HiveMetastore -OozieMetastore $config.OozieMetastore -Zone $zones
 ```
 
 ## PARAMETERS

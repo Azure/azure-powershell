@@ -18,17 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add two parameters `-Zones` and `-PrivateLinkConfigurations` to cmdlet `New-AzHDInsightCluster`
-  - Add parameter `-Zones` to cmdlet `New-AzHDInsightCluster` to support to create cluster with availability zones feature
-  - Add parameter `-PrivateLinkConfigurations` to cmdlet `New-AzHDInsightCluster` to support to add private link configuration when creating cluster with private link feature.
+* Add two parameters `-Zone` and `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster`
+  - Add parameter `-Zone` to cmdlet `New-AzHDInsightCluster` to support to create cluster with availability zones feature
+  - Add parameter `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster` to support to add private link configuration when creating cluster with private link feature.
 * Add  cmdlet New-AzHDInsightIPConfiguration to create ip configuration object in memory.
 * Add cmdlet New-AzHDInsightPrivateLinkConfiguration to create private link configuration object in memory.
-* Support getting private link resource
-  - Add cmdlet Get-AzHDInsightPrivateLinkResource
-* Support managing private endpoint connection 
-  - Add cmdlet Get-AzHDInsightPrivateEndpointConnection to get the private endpoitn connection of HDInsight cluster.
-  - Add cmdlet Set-AzHDInsightPrivateEndpointConnection to approve or reject the private endpoint connection.
-  - Add cmdlet Remove-AzHDInsightPrivateEndpointConnection to remove the private endpoint connection.
 
 ## Version 4.3.0
 * Support new azure monitor feature in HDInsight:
