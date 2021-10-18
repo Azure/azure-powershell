@@ -669,7 +669,7 @@ paths:
                   value:
                     type: array
                     items:
-                      $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                      $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
                   '@odata.nextLink':
                     type: string
                 additionalProperties:
@@ -750,7 +750,7 @@ components:
   schemas:
     microsoft.graph.groupLifecyclePolicy:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: groupLifecyclePolicy
           type: object
           properties:
@@ -773,7 +773,7 @@ components:
             type: object
     microsoft.graph.group:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: group
           type: object
           properties:
@@ -883,29 +883,29 @@ components:
                 $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
               description: Represents the app roles a group has been granted for an application. Supports $expand.
             createdOnBehalfOf:
-              $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
             memberOf:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
               readOnly: true
               description: 'Groups and administrative units that this group is a member of. HTTP Methods: GET (supported for all groups). Read-only. Nullable. Supports $expand.'
             members:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
               readOnly: true
               description: 'Users, contacts, and groups that are members of this group. HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only. Nullable. Supports $expand.'
             membersWithLicenseErrors:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
               readOnly: true
               description: A list of group members with license errors from this group-based license assignment. Read-only.
             owners:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
               readOnly: true
               description: 'The owners of the group. The owners are a set of non-admin users who are allowed to modify this object. HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only. Nullable. Supports $expand.'
             permissionGrants:
@@ -921,30 +921,6 @@ components:
               description: The collection of lifecycle policies for this group. Read-only. Nullable.
           additionalProperties:
             type: object
-          description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-    microsoft.graph.directoryObject:
-      allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
-        - title: directoryObject
-          type: object
-          properties:
-            deletedDateTime:
-              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-              type: string
-              format: date-time
-              nullable: true
-            displayName:
-              type: string
-              description: 'The name displayed in directory'
-              nullable: true
-            '@odata.type':
-              type: string
-              description: 'The type of object in directory'
-              nullable: true
-            '@odata.id':
-              type: string
-              description: 'The full id of object in directory'
-              nullable: true
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.attachmentItem:
       title: attachmentItem
@@ -1016,14 +992,14 @@ components:
         type: object
     microsoft.graph.extension:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: extension
           type: object
           additionalProperties:
             type: object
     microsoft.graph.multiValueLegacyExtendedProperty:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: multiValueLegacyExtendedProperty
           type: object
           properties:
@@ -1037,7 +1013,7 @@ components:
             type: object
     microsoft.graph.singleValueLegacyExtendedProperty:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: singleValueLegacyExtendedProperty
           type: object
           properties:
@@ -1068,7 +1044,7 @@ components:
         type: object
     microsoft.graph.resourceSpecificPermissionGrant:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: resourceSpecificPermissionGrant
           type: object
           properties:
@@ -1097,7 +1073,7 @@ components:
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.profilePhoto:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: profilePhoto
           type: object
           properties:
@@ -1119,7 +1095,7 @@ components:
             type: object
     microsoft.graph.extensionProperty:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: extensionProperty
           type: object
           properties:
@@ -1145,14 +1121,6 @@ components:
           additionalProperties:
             type: object
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-    microsoft.graph.entity:
-      title: entity
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-          description: Read-only.
     microsoft.graph.assignedLabel:
       title: assignedLabel
       type: object
@@ -1202,7 +1170,7 @@ components:
         type: object
     microsoft.graph.appRoleAssignment:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: appRoleAssignment
           type: object
           properties:
@@ -1246,7 +1214,7 @@ components:
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.groupSetting:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: groupSetting
           type: object
           properties:
@@ -1351,7 +1319,7 @@ components:
         type: object
     microsoft.graph.outlookItem:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: outlookItem
           type: object
           properties:
@@ -1533,7 +1501,7 @@ components:
       type: string
     microsoft.graph.operation:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: operation
           type: object
           properties:
@@ -1633,7 +1601,7 @@ components:
       type: string
     microsoft.graph.calendarPermission:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: calendarPermission
           type: object
           properties:
@@ -1775,7 +1743,7 @@ components:
         type: object
     microsoft.graph.columnDefinition:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: columnDefinition
           type: object
           properties:
@@ -1841,7 +1809,7 @@ components:
             type: object
     microsoft.graph.contentType:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: contentType
           type: object
           properties:
@@ -1886,7 +1854,7 @@ components:
             type: object
     microsoft.graph.permission:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: permission
           type: object
           properties:
@@ -1927,7 +1895,7 @@ components:
             type: object
     microsoft.graph.schedule:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: schedule
           type: object
           properties:
@@ -2656,7 +2624,7 @@ components:
         type: object
     microsoft.graph.subscription:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: subscription
           type: object
           properties:
@@ -2714,7 +2682,7 @@ components:
             type: object
     microsoft.graph.thumbnailSet:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: thumbnailSet
           type: object
           properties:
@@ -2992,7 +2960,7 @@ components:
         type: object
     microsoft.graph.columnLink:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: columnLink
           type: object
           properties:
@@ -3051,7 +3019,7 @@ components:
         type: object
     microsoft.graph.plannerBucket:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: plannerBucket
           type: object
           properties:
@@ -3075,7 +3043,7 @@ components:
             type: object
     microsoft.graph.plannerPlanDetails:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: plannerPlanDetails
           type: object
           properties:
@@ -3087,7 +3055,7 @@ components:
             type: object
     microsoft.graph.plannerTask:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: plannerTask
           type: object
           properties:
@@ -3238,7 +3206,7 @@ components:
         type: object
     microsoft.graph.onenoteEntityBaseModel:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: onenoteEntityBaseModel
           type: object
           properties:
@@ -3440,7 +3408,7 @@ components:
       type: string
     microsoft.graph.chatMessage:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: chatMessage
           type: object
           properties:
@@ -3853,7 +3821,7 @@ components:
         type: object
     microsoft.graph.licenseDetails:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: licenseDetails
           type: object
           properties:
@@ -3876,7 +3844,7 @@ components:
             type: object
     microsoft.graph.oAuth2PermissionGrant:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: oAuth2PermissionGrant
           type: object
           properties:
@@ -3902,7 +3870,7 @@ components:
             type: object
     microsoft.graph.scopedRoleMembership:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: scopedRoleMembership
           type: object
           properties:
@@ -3918,7 +3886,7 @@ components:
             type: object
     microsoft.graph.inferenceClassification:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: inferenceClassification
           type: object
           properties:
@@ -3931,7 +3899,7 @@ components:
             type: object
     microsoft.graph.outlookUser:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: outlookUser
           type: object
           properties:
@@ -3944,7 +3912,7 @@ components:
             type: object
     microsoft.graph.person:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: person
           type: object
           properties:
@@ -4030,7 +3998,7 @@ components:
             type: object
     microsoft.graph.agreementAcceptance:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: agreementAcceptance
           type: object
           properties:
@@ -4092,7 +4060,7 @@ components:
             type: object
     microsoft.graph.managedDevice:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: managedDevice
           type: object
           properties:
@@ -4300,7 +4268,7 @@ components:
           description: Devices that are managed or pre-enrolled through Intune
     microsoft.graph.managedAppRegistration:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: managedAppRegistration
           type: object
           properties:
@@ -4373,7 +4341,7 @@ components:
           description: The ManagedAppEntity is the base entity type for all other entity types under app management workflow.
     microsoft.graph.deviceManagementTroubleshootingEvent:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: deviceManagementTroubleshootingEvent
           type: object
           properties:
@@ -4391,7 +4359,7 @@ components:
           description: Event representing an general failure.
     microsoft.graph.officeGraphInsights:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: officeGraphInsights
           type: object
           properties:
@@ -4414,7 +4382,7 @@ components:
             type: object
     microsoft.graph.userSettings:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: userSettings
           type: object
           properties:
@@ -4430,7 +4398,7 @@ components:
             type: object
     microsoft.graph.userActivity:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: userActivity
           type: object
           properties:
@@ -4492,7 +4460,7 @@ components:
             type: object
     microsoft.graph.presence:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: presence
           type: object
           properties:
@@ -4508,7 +4476,7 @@ components:
             type: object
     microsoft.graph.authentication:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: authentication
           type: object
           properties:
@@ -4576,7 +4544,7 @@ components:
         type: object
     microsoft.graph.fieldValueSet:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: fieldValueSet
           type: object
           additionalProperties:
@@ -4706,7 +4674,7 @@ components:
       type: string
     microsoft.graph.plannerAssignedToTaskBoardTaskFormat:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: plannerAssignedToTaskBoardTaskFormat
           type: object
           properties:
@@ -4720,7 +4688,7 @@ components:
             type: object
     microsoft.graph.plannerBucketTaskBoardTaskFormat:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: plannerBucketTaskBoardTaskFormat
           type: object
           properties:
@@ -4732,7 +4700,7 @@ components:
             type: object
     microsoft.graph.plannerTaskDetails:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: plannerTaskDetails
           type: object
           properties:
@@ -4750,7 +4718,7 @@ components:
             type: object
     microsoft.graph.plannerProgressTaskBoardTaskFormat:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: plannerProgressTaskBoardTaskFormat
           type: object
           properties:
@@ -4796,7 +4764,7 @@ components:
             type: object
     microsoft.graph.changeTrackedEntity:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: changeTrackedEntity
           type: object
           properties:
@@ -5018,7 +4986,7 @@ components:
             type: object
     microsoft.graph.teamworkBot:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: teamworkBot
           type: object
           additionalProperties:
@@ -5092,7 +5060,7 @@ components:
         type: object
     microsoft.graph.inferenceClassificationOverride:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: inferenceClassificationOverride
           type: object
           properties:
@@ -5104,7 +5072,7 @@ components:
             type: object
     microsoft.graph.messageRule:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: messageRule
           type: object
           properties:
@@ -5175,7 +5143,7 @@ components:
         type: object
     microsoft.graph.outlookCategory:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: outlookCategory
           type: object
           properties:
@@ -5534,7 +5502,7 @@ components:
       type: string
     microsoft.graph.deviceCompliancePolicyState:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: deviceCompliancePolicyState
           type: object
           properties:
@@ -5567,7 +5535,7 @@ components:
           description: Device Compliance Policy State for a given device.
     microsoft.graph.deviceConfigurationState:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: deviceConfigurationState
           type: object
           properties:
@@ -5600,7 +5568,7 @@ components:
           description: Device Configuration State for a given device.
     microsoft.graph.deviceCategory:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: deviceCategory
           type: object
           properties:
@@ -5629,7 +5597,7 @@ components:
       type: string
     microsoft.graph.managedAppPolicy:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: managedAppPolicy
           type: object
           properties:
@@ -5659,7 +5627,7 @@ components:
           description: The ManagedAppPolicy resource represents a base type for platform specific policies.
     microsoft.graph.managedAppOperation:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: managedAppOperation
           type: object
           properties:
@@ -5685,7 +5653,7 @@ components:
           description: Represents an operation applied against an app registration.
     microsoft.graph.sharedInsight:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: sharedInsight
           type: object
           properties:
@@ -5700,14 +5668,14 @@ components:
               items:
                 $ref: '#/components/schemas/microsoft.graph.sharingDetail'
             lastSharedMethod:
-              $ref: '#/components/schemas/microsoft.graph.entity'
+              $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
             resource:
-              $ref: '#/components/schemas/microsoft.graph.entity'
+              $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
           additionalProperties:
             type: object
     microsoft.graph.trending:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: trending
           type: object
           properties:
@@ -5725,12 +5693,12 @@ components:
               description: 'Value indicating how much the document is currently trending. The larger the number, the more the document is currently trending around the user (the more relevant it is). Returned documents are sorted by this value.'
               format: double
             resource:
-              $ref: '#/components/schemas/microsoft.graph.entity'
+              $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
           additionalProperties:
             type: object
     microsoft.graph.usedInsight:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: usedInsight
           type: object
           properties:
@@ -5741,7 +5709,7 @@ components:
             resourceVisualization:
               $ref: '#/components/schemas/microsoft.graph.resourceVisualization'
             resource:
-              $ref: '#/components/schemas/microsoft.graph.entity'
+              $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
           additionalProperties:
             type: object
     microsoft.graph.shiftPreferences:
@@ -5794,7 +5762,7 @@ components:
         type: object
     microsoft.graph.activityHistoryItem:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: activityHistoryItem
           type: object
           properties:
@@ -5962,7 +5930,7 @@ components:
             type: object
     microsoft.graph.authenticationMethod:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: authenticationMethod
           type: object
           additionalProperties:
@@ -6166,7 +6134,7 @@ components:
             type: object
     microsoft.graph.teamworkHostedContent:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: teamworkHostedContent
           type: object
           properties:
@@ -6745,7 +6713,7 @@ components:
       type: string
     microsoft.graph.device:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: device
           type: object
           properties:
@@ -6840,22 +6808,22 @@ components:
             memberOf:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
               description: Groups that this device is a member of. Read-only. Nullable. Supports $expand.
             registeredOwners:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
               description: 'The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.'
             registeredUsers:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
               description: 'Collection of registered users of the device. For cloud joined devices and registered personal devices, registered users are set to the same value as registered owners at the time of registration. Read-only. Nullable. Supports $expand.'
             transitiveMemberOf:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: 'types.yml#/components/schemas/microsoft.graph.directoryObject'
               description: Groups that this device is a member of. This operation is transitive. Supports $expand.
             extensions:
               type: array
@@ -7024,7 +6992,7 @@ components:
       type: string
     microsoft.graph.linkedResource:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - $ref: 'types.yml#/components/schemas/microsoft.graph.entity'
         - title: linkedResource
           type: object
           properties:
