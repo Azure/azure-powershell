@@ -116,10 +116,8 @@ public class ParallelDownloader
 }
 "@
 
-Write-Warning "Start to add type of ParallelDownloaderClassCode"
 Add-Type -AssemblyName System.Net.Http -ErrorAction Stop
 Add-Type $script:ParallelDownloaderClassCode -ReferencedAssemblies System.Net.Http,System.Threading.Tasks,System.Linq,System.Collections,System.Runtime.Extensions
-Write-Warning "Add-Type finished."
 
 $getModule = Get-Module -Name "PowerShellGet"
 if ($null -ne $getModule -and $getModule.Version -lt [System.Version]"2.1.3") {
@@ -275,7 +273,6 @@ function Get-AzModuleFromRemote {
     }
 }
 
-Write-Warning "Start to add type of ModuleInfo"
 class ModuleInfo
 {
     [string] $Name = $null
@@ -441,7 +438,6 @@ $allFunctions = $internalFunctions + $exportedFunctions
 foreach($function in $allFunctions) {
     try {
         . $function.Fullname
-        Write-Warning "$($function.Fullname)"
     }
     catch {
         Write-Error -Message "Failed to import function $($function.fullname): $_"
