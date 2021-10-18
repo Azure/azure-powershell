@@ -143,7 +143,7 @@ function Update-AzModule {
             else {
                 $installModuleParams = @{}
                 foreach ($key in $PSBoundParameters.Keys) {
-                    if($key -ne 'Name'){
+                    if($key -ne 'Name' -and $key -ne 'KeepPrevious'){
                         $installModuleParams.Add($key, $PSBoundParameters[$key])
                     }
                 }
