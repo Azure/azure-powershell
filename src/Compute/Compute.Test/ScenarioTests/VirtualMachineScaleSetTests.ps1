@@ -2845,7 +2845,7 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
         # Setup variables
-        $vmssname = "vmsstestflex";
+        $vmssname = "vmss" + $rgname;
         $omode = "Flexible";
         $username = "admin01"
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
