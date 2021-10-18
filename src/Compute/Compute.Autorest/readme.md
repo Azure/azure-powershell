@@ -64,25 +64,50 @@ directive:
     remove: true
   # Remove existing cmdlets
   - select: command
-    where:
-      subject: VirtualMachine|AvailabilitySet|DedicatedHost|Image|Operation|ProximityPlacementGroup|RestorePoint|RestorePointCollection|Usage|CapacityReservationGroup|CapacityReservation|SshPublicKey
-    remove: true
-  #- select: parameter
-  #  where:
-  #    subject: CapacityReservationGroup
-  #    parameter-name: Expand
-  #  remove: true
-  #- select: command
-  #  where:
-  #    subject: CapacityReservation
-  #  remove: true
-  - select: command
     where: 
-      subject: Gallery$|GallerySharingProfile|GalleryApplicationVersion
+      subject: Gallery$|GallerySharingProfile|GalleryImage$|GalleryImageVersion$
     remove: true
-  - select: command
-    where:
-      subject: GalleryApplication
-      verb: Remove|Update|New
-    remove: true
+  - where:
+      verb: New
+      subject: GalleryApplication$
+      parameter-name: EndOfLifeDate
+    hide: true
+    #  parameter-name: justaTest    
+#hide: true
+  - where:
+      verb: New
+      subject: GalleryApplicationVersion
+      parameter-name: ManageActionRemove
+    set:
+      parameter-name: Remove
+  - where:
+      verb: New
+      subject: GalleryApplicationVersion
+      parameter-name: ManageActionInstall
+    set:
+      parameter-name: Install
+  - where:
+      verb: New
+      subject: GalleryApplicationVersion
+      parameter-name: ManageActionUpdate
+    set:
+      parameter-name: Update
+  - where:
+      verb: New|Update
+      subject: GalleryApplicationVersion
+      parameter-name: PublishingProfileReplicaCount
+    set:
+      parameter-name: ReplicaCount
+  - where:
+      verb: New|Update
+      subject: GalleryApplicationVersion
+      parameter-name: PublishingProfileTargetRegion
+    set:
+      parameter-name: TargetRegion
+  - where:
+      verb: New|Update
+      subject: GalleryApplicationVersion
+      parameter-name: SourceDefaultConfigurationLink
+    set:
+      parameter-name: DefaultConfigLink
 ```
