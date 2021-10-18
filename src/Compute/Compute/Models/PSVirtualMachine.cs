@@ -132,5 +132,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public SubResource HostGroup { get; set; }
 
         public CapacityReservationProfile CapacityReservation { get; set; }
+        public ApplicationProfile ApplicationProfile { get; set; }
     }
 }
