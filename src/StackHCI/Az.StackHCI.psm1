@@ -7,7 +7,7 @@ $ErrorActionPreference = 'Stop'
 $GAOSBuildNumber = 17784
 $GAOSUBR = 1374
 $V2OSBuildNumber = 20348
-$V210BOSUBR = 1374
+$V2OSUBR = 288
 #region User visible strings
 
 $AdminConsentWarning = "You need additional Azure Active Directory permissions to register in this Azure subscription. Contact your Azure AD administrator to grant consent to AAD application identity {0} at {1}. Then, run Register-AzStackHCI again with same parameters to complete registration."
@@ -20,7 +20,6 @@ $CertificateNotFoundOnNode = "Certificate with thumbprint {0} not found on node(
 $SettingCertificateFailed = "Failed to register. Couldn't generate self-signed certificate on node(s) {0}. Couldn't set and verify registration certificate on node(s) {1}. Make sure every clustered node is up and has Internet connectivity (at least outbound to Azure)."
 $InstallLatestVersionWarning = "Newer version of the Az.StackHCI module is available. Update from version {0} to version {1} using Update-Module."
 $NotAllTheNodesInClusterAreGA = "Update the operating system on node(s) {0} to version $GAOSBuildNumber.$GAOSUBR or later to continue."
-$NotAllTheNodesInClusterSupportArcOnFF = "Nodes {0} do not support ARC for $AzureUSGovernment cloud. Update the operating system to version $V2OSBuildNumber.$V210BOSUBR or later to continue."
 $NoExistingRegistrationExistsErrorMessage = "Can't repair registration because the cluster isn't registered yet. Register the cluster using Register-AzStackHCI without the -RepairRegistration option."
 $UserCertValidationErrorMessage = "Can't use certificate with thumbprint {0} because it expires in less than 60 days, on {1}. Certificates must be valid for at least 60 days."
 $FailedToRemoveRegistrationCertWarning = "Couldn't clean up Azure Stack HCI registration certificate from node(s) {0}. You can ignore this message or clean up the certificate yourself (optional)."
@@ -31,7 +30,7 @@ $ConnectingToCloudBillingServiceFailed = "Can't reach Azure from node(s) {0}. Ma
 $ResourceExistsInDifferentRegionError = "There is already an Azure Stack HCI resource with the same resource ID in region {0}, which is different from the input region {1}. Either specify the same region or delete the existing resource and try again."
 $ArcCmdletsNotAvailableError = "Azure Arc integration isn't available for the version of Azure Stack HCI installed on node(s) {0} yet. Check the documentation for details. You may need to install an update or join the Preview channel."
 $ArcRegistrationDisableInProgressError = "Unregister of Azure Arc integration is in progress. Try Unregister-AzStackHCI to finish unregistration and then try Register-AzStackHCI again."
-$ArcIntegrationNotAvailableChinaCloudError = "Azure Arc integration is not available in AzureChinaCloud. Specify '-EnableAzureArcServer:`$false' in Register-AzStackHCI Cmdlet to register without Arc integration."
+$ArcIntegrationNotAvailableForCloudError = "Azure Arc integration is not available in {0}. Specify '-EnableAzureArcServer:`$false' in Register-AzStackHCI Cmdlet to register without Arc integration."
 
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
 $ValidatingParametersFetchClusterName = "Validating cmdlet parameters"
@@ -1023,56 +1022,6 @@ param(
     }
 }
 
-function Check-NodeVersionCompatibility {
-    param (
-        $ClusterNodes,
-        [string] $EnvironmentName,
-        [string] $EnableAzureArcServer,
-        [System.Management.Automation.PSCredential] $Credential,
-        [string] $ClusterDNSSuffix
-    )
-
-    if (($EnvironmentName -eq $AzureUSGovernment) -and ($EnableAzureArcServer -eq $true)) {
-        Write-Debug("Verifying all nodes support Arc for "+$AzureUSGovernment+ " cloud")
-        $OSDoesNotSupportARC = [System.Collections.ArrayList]::new()
-
-        Foreach ($clusNode in $ClusterNodes) {
-            $nodeSession = $null
-            try {
-                if ($Credential -eq $Null) {
-                    $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $ClusterDNSSuffix)
-                }
-                else {
-                    $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $ClusterDNSSuffix) -Credential $Credential
-                }
-            }
-            catch {
-                Write-Debug ("Exception occured in establishing new PSSession. ErrorMessage : " + $_.Exception.Message)
-                Write-Debug $_
-                throw
-            }
-            $nodeUBR = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").UBR }
-            $nodeBuildNumber = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber }
-
-            if (($nodeBuildNumber -lt $V2OSBuildNumber) -or (($nodeBuildNumber -eq $V2OSBuildNumber) -and ($nodeUBR -le $V210BOSUBR))) {
-                Write-Debug ("Node "+$clusNode.Name+" does not support ARC on "+$AzureUSGovernment)
-                $OSDoesNotSupportARC.Add($clusNode.Name) | Out-Null
-                continue
-            }
-        }
-        if($OSDoesNotSupportARC.Count -ge 1)
-        {
-            $NotAllTheNodesInClusterSupportARCOnFFError = $NotAllTheNodesInClusterSupportArcOnFF -f ($OSDoesNotSupportARC -join ",")
-            Write-Error -Message $NotAllTheNodesInClusterSupportARCOnFFError
-            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-            Write-Output $registrationOutput
-            return
-        }
-        Write-Debug ("All nodes support ARC on "+$AzureUSGovernment)
-
-    }
-}
-
 function Setup-Certificates{
 param(
     $ClusterNodes,
@@ -1534,16 +1483,33 @@ param(
             return [ErrorDetail]::ArcPermissionsMissing
         }
 
+        $nodeUBR = Invoke-Command -Session $session -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").UBR }
+        $nodeBuildNumber = Invoke-Command -Session $session -ScriptBlock { (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber }
+        if (($nodeBuildNumber -eq $V2OSBuildNumber) -and ($nodeUBR -le $V2OSUBR)) {
+
+            Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration without region switch")
+            $ArcRegistrationParams = @{
+                AppId = $AppId
+                Secret = $Secret
+                TenantId = $TenantId
+                SubscriptionId = $SubscriptionId
+                Region = $Region
+                ResourceGroup = $ResourceGroup 
+            }    
+        }else{
+            Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration with region switch")
+            $ArcRegistrationParams = @{
+                AppId = $AppId
+                Secret = $Secret
+                TenantId = $TenantId
+                SubscriptionId = $SubscriptionId
+                Region = $Region
+                ResourceGroup = $ResourceGroup
+            }
+        }
         # Save Arc context.
         Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $SetupArcMessage -PercentComplete 40
-        $ArcRegistrationParams = @{
-            AppId = $AppId
-            Secret = $Secret
-            TenantId = $TenantId
-            SubscriptionId = $SubscriptionId
-            Region = $Region
-            ResourceGroup = $ResourceGroup
-        }
+        
         Invoke-Command -Session $session -ScriptBlock { Initialize-AzureStackHCIArcIntegration @Using:ArcRegistrationParams }
     }
 
@@ -2050,7 +2016,7 @@ param(
         $clusterDNSSuffix = Get-ClusterDNSSuffix -Session $clusterNodeSession
         $clusterDNSName = Get-ClusterDNSName -Session $clusterNodeSession
 
-        Check-NodeVersionCompatibility -ClusterNodes $clusterNodes -EnvironmentName $EnvironmentName -EnableAzureArcServer $EnableAzureArcServer -Credential $Credential  -ClusterDNSSuffix $clusterDNSSuffix
+        $Credential  -ClusterDNSSuffix $clusterDNSSuffix
         if([string]::IsNullOrEmpty($ResourceName))
         {
             if($getCluster -eq $Null)
@@ -2077,9 +2043,10 @@ param(
             AccountId: $AccountId EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
             RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC"
 
-        if(($EnvironmentName -eq $AzureChinaCloud) -and ($EnableAzureArcServer -eq $true))
+            if((($EnvironmentName -eq $AzureChinaCloud) -or ($EnvironmentName -eq $AzureUSGovernment)) -and ($EnableAzureArcServer -eq $true))
         {
-            Write-Error -Message $ArcIntegrationNotAvailableChinaCloudError
+            $ArcNotAvailableMessage = $ArcIntegrationNotAvailableForCloudError -f $EnvironmentName
+            Write-Error -Message $ArcNotAvailableMessage 
             $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
             Write-Output $registrationOutput
             return
