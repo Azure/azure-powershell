@@ -12,13 +12,13 @@ Microsoft Azure PowerShell: LabServices cmdlets
 
 ## Az.LabServices Cmdlets
 ### [Add-AzLabServicesUserQuota](Add-AzLabServicesUserQuota.md)
-
+API to add additional user quota.
 
 ### [Get-AzLabServicesLab](Get-AzLabServicesLab.md)
 Returns the properties of a lab resource.
 
 ### [Get-AzLabServicesLabForVM](Get-AzLabServicesLabForVM.md)
-
+API to return the lab for a specific VM.
 
 ### [Get-AzLabServicesLabPlan](Get-AzLabServicesLabPlan.md)
 Retrieves the properties of a Lab Plan.
@@ -30,7 +30,7 @@ Gets an image resource.
 Returns the properties of a lab Schedule.
 
 ### [Get-AzLabServicesTemplateVM](Get-AzLabServicesTemplateVM.md)
-
+API to get the template vm for the lab.
 
 ### [Get-AzLabServicesUser](Get-AzLabServicesUser.md)
 Returns the properties of a lab user.
@@ -84,13 +84,13 @@ Saves an image from a lab VM to the attached shared image gallery.
 Operation to invite a user to a lab.
 
 ### [Start-AzLabServicesUserVM](Start-AzLabServicesUserVM.md)
-
+API to start the assigned vm for the user.
 
 ### [Start-AzLabServicesVM](Start-AzLabServicesVM.md)
 Action to start a lab virtual machine.
 
 ### [Stop-AzLabServicesUserVM](Stop-AzLabServicesUserVM.md)
-
+API to stop the assigned vm for the user.
 
 ### [Stop-AzLabServicesVM](Stop-AzLabServicesVM.md)
 Action to stop a lab virtual machine.
@@ -108,7 +108,7 @@ Operation to update a Lab Plan resource.
 Updates an image resource.
 
 ### [Update-AzLabServicesQuota](Update-AzLabServicesQuota.md)
-
+API to update the lab quota.
 
 ### [Update-AzLabServicesSchedule](Update-AzLabServicesSchedule.md)
 Operation to update a lab schedule.

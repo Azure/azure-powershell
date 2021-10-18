@@ -1,7 +1,7 @@
 @{
   GUID = 'f4604f08-6749-40ce-bd25-81074c1119e7'
   RootModule = './Az.LabServices.psm1'
-  ModuleVersion = '1.0.0'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

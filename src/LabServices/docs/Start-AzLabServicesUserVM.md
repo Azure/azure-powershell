@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesuservm
+online version: https://docs.microsoft.com/powershell/module/az.labservices/Start-AzLabServicesUserVM
 schema: 2.0.0
 ---
 
 # Start-AzLabServicesUserVM
 
 ## SYNOPSIS
-
+API to start the assigned vm for the user.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Start-AzLabServicesUserVM -User <User> [-DefaultProfile <PSObject>] [-AsJob] [<C
 ```
 
 ## DESCRIPTION
-
+API to start the assigned vm for the user.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ If there isn't a VM assigned to the user a null is returned.
 ## PARAMETERS
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -70,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -Email
-
+The name of the user that uniqely identifies it within containing lab.
+Used in resource URIs.
 
 ```yaml
 Type: System.String
@@ -115,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

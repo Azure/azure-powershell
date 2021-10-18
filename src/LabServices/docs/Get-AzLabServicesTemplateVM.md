@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
+online version: https://docs.microsoft.com/powershell/module/az.labservices/Get-AzLabServicesTemplateVM
 schema: 2.0.0
 ---
 
 # Get-AzLabServicesTemplateVM
 
 ## SYNOPSIS
-
+API to get the template vm for the lab.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Get-AzLabServicesTemplateVM -Lab <Lab> [-DefaultProfile <PSObject>] [<CommonPara
 ```
 
 ## DESCRIPTION
-
+API to get the template vm for the lab.
 
 ## EXAMPLES
 
@@ -43,7 +43,7 @@ Returns the template VM for the lab.
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/update-azlabservicesquota
+online version: https://docs.microsoft.com/powershell/module/az.labservices/Update-AzLabServicesQuota
 schema: 2.0.0
 ---
 
 # Update-AzLabServicesQuota
 
 ## SYNOPSIS
-
+API to update the lab quota.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Update-AzLabServicesQuota -LabName <String> -ResourceGroupName <String> -LabQuot
 ```
 
 ## DESCRIPTION
-
+API to update the lab quota.
 
 ## EXAMPLES
 
@@ -43,7 +43,7 @@ This example updates the lab adding an additional 3 hours to the lab quota.
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -103,7 +103,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

@@ -52,7 +52,7 @@ Returns the specific machine that is assigned to the user in the lab.
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject

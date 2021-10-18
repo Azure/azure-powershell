@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/add-azlabservicesuserquota
+online version: https://docs.microsoft.com/powershell/module/az.labservices/Add-AzLabServicesUserQuota
 schema: 2.0.0
 ---
 
 # Add-AzLabServicesUserQuota
 
 ## SYNOPSIS
-
+API to add additional user quota.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Add-AzLabServicesUserQuota -Email <String> -LabName <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-
+API to add additional user quota.
 
 ## EXAMPLES
 
@@ -56,7 +56,7 @@ Increase the student quota by 5 hours.
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -71,7 +71,8 @@ Accept wildcard characters: False
 ```
 
 ### -Email
-
+The name of the user that uniqely identifies it within containing lab.
+Used in resource URIs.
 
 ```yaml
 Type: System.String
@@ -116,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -131,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -UsageQuotaToAddToExisting
-
+The amount of usage quota time the user gets in addition to the current user quota.
 
 ```yaml
 Type: System.TimeSpan

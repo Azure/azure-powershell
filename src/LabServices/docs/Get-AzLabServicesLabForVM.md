@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabforvm
+online version: https://docs.microsoft.com/powershell/module/az.labservices/Get-AzLabServicesLabForVM
 schema: 2.0.0
 ---
 
 # Get-AzLabServicesLabForVM
 
 ## SYNOPSIS
-
+API to return the lab for a specific VM.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzLabServicesLabForVM -ResourceId <String> [-DefaultProfile <PSObject>] [-Co
 ```
 
 ## DESCRIPTION
-
+API to return the lab for a specific VM.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ Gets the lab based on the VM Id.
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
