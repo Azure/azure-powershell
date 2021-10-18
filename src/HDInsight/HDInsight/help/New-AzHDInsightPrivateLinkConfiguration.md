@@ -36,7 +36,7 @@ PS C:\> $ipConfiguration= New-AzHDInsightIPConfiguration -Name $ipConfigName Pri
 PS C:\> $privateLinkConfigurationName="plconfig"
 PS C:\> $groupId="headnode"
 PS C:\> # Create private link configuration
-PS C:\> $privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name$privateLinkConfigurationName -GroupId $groupId -IPConfiguration $ipConfiguration
+PS C:\> $privateLinkConfiguration= New-AzHDInsightPrivateLinkConfiguration -Name $privateLinkConfigurationName -GroupId $groupId -IPConfiguration $ipConfiguration
 ```
 
 This cmdlet creates the private link configuration in memory.

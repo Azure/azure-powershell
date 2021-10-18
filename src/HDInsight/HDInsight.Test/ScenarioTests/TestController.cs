@@ -123,7 +123,6 @@ namespace Commands.HDInsight.Test.ScenarioTests
                     _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                     _helper.GetRMModulePath("AzureRM.ManagedServiceIdentity.psd1"),
                     _helper.RMKeyVaultModule,
-                    _helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
                 try
