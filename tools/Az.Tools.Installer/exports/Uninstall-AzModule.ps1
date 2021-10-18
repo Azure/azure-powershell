@@ -23,12 +23,11 @@ function Uninstall-AzModule {
 
     .Example
         C:\PS> Uninstall-AzModule -AllowPrerelease -AllVersion
-
 #>
 
     [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess = $true)]
     param(
-        [Parameter(ParameterSetName = 'ByName', Mandatory, HelpMessage = 'Az modules to uninstall.', ValueFromPipelineByPropertyName = $true)]
+        [Parameter(ParameterSetName = 'ByName', Mandatory, HelpMessage = 'Az modules to uninstall.', ValueFromPipelineByPropertyName = $true, Position = 0)]
         [ValidateNotNullOrEmpty()]
         [string[]]
         ${Name},

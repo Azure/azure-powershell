@@ -184,8 +184,7 @@ function Get-AzModuleFromRemote {
         [string[]]
         ${Name},
 
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
+        [Parameter()]
         [string]
         ${Repository},
 
@@ -219,12 +218,17 @@ function Get-AzModuleFromRemote {
         }
         $findModuleParams = @{
             Name =  $azModule
-            Repository = $Repository
             RequiredVersion = $RequiredVersion
             ErrorAction = 'Stop'
         }
+        if ($Repository) {
+            $findModuleParams.Add('Repository', $Repository);
+        }
 
-        $modules = PowerShellGet\Find-Module @findModuleParams
+        $modules = [Array] (PowerShellGet\Find-Module @findModuleParams)
+        if ($modules.Count -gt 1) {
+            Throw "[$Invoker] You have multiple modules matched 'Az' in the registered reposistory $($modules.Repository). Please specify a single -Repository."
+        }
 
         $accountVersion = 0
         if (!$UseExactAccountVersion) {
@@ -351,9 +355,9 @@ function Invoke-ThreadJob {
 function Uninstall-AzureRM {
     process {
         try {
-            $azureModuleNames = (Get-InstalledModule -Name Azure* -ErrorAction Stop).Name | Where-Object {$_ -match "Azure(\.[a-zA-Z0-9]+)?$" -or $_ -match "AzureRM(\.[a-zA-Z0-9]+)?$"}
-            foreach($module in $azureModuleNames) {
-                PowerShellGet\Uninstall-Module -Name $azureModuleName -AllVersion -AllowPrerelease -ErrorAction SilentlyContinue
+            $azureModuleNames = (Get-InstalledModule -Name Azure* -ErrorAction Stop).Name | Where-Object {$_ -match "Azure(\.[a-zA-Z0-9]+)?" -or $_ -match "AzureRM(\.[a-zA-Z0-9]+)?"}
+            foreach($moduleName in $azureModuleNames) {
+                PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction Continue
             }
         }
         catch {
@@ -452,7 +456,6 @@ $commandsWithRepositoryParameter = @(
 )
 
 Add-RepositoryArgumentCompleter -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"
-Add-RepositoryDefaultValue -Cmdlets $commandsWithRepositoryParameter -ParameterName "Repository"
 <#--------------------------------------------------------------#>
 
 function Test-Downloader {

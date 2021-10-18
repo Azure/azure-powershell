@@ -22,17 +22,15 @@ function Install-AzModule {
         Installs Azure PowerShell modules.
 
     .Example
-        C:\PS> Install-AzModuleV2 -Repository PSGallery -RemoveAzureRm -RequiredAzVersion 6.3 -UseExactAccountVersion -Confirm:$false -Debug
+        C:\PS> Install-AzModule -Repository PSGallery -RemoveAzureRm -RequiredAzVersion 6.3 -UseExactAccountVersion -Confirm:$false -Debug
 
-        C:\PS> Install-AzModuleV2 -Name Storage,Compute,Network,Blockchain -Repository PSGallery -AllowPrerelease -Confirm:$false -Debug
-
+        C:\PS> Install-AzModule -Name Storage,Compute,Network,Blockchain -Repository PSGallery -AllowPrerelease -Confirm:$false -Debug
 #>
 
     [OutputType([PSCustomObject[]])]
     [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess)]
     param(
-        [Parameter(HelpMessage = 'Az modules to install.', ValueFromPipelineByPropertyName = $true)]
-        #[ValidateNotNullOrEmpty()]
+        [Parameter(HelpMessage = 'Az modules to install.', ValueFromPipelineByPropertyName = $true, Position = 0)]
         [string[]]
         ${Name},
 
@@ -82,13 +80,14 @@ function Install-AzModule {
 
         $Name = Normalize-ModuleName $Name
         $findModuleParams = @{
-            Repository = $Repository
             Name = $Name
             AllowPrerelease = $AllowPrerelease
             UseExactAccountVersion = $UseExactAccountVersion
             Invoker = $Invoker
         }
-
+        if ($Repository) {
+            $findModuleParams.Add('Repository', $Repository)
+        }
         if ($RequiredAzVersion) {
             $findModuleParams.Add('RequiredVersion', [Version]$RequiredAzVersion)
         }
@@ -117,7 +116,7 @@ function Install-AzModule {
         if ($modules) {
             $installModuleParams = @{}
             foreach ($key in $PSBoundParameters.Keys) {
-                if($key -ne 'Name') {
+                if($key -ne 'Name' -and $key -ne 'RemoveAzureRm') {
                     $installModuleParams.Add($key, $PSBoundParameters[$key])
                 }
             }

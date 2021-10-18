@@ -86,7 +86,7 @@ function Install-AzModuleInternal {
                 try {
                     $module = $null
                     $fileList = @()
-                    foreach ($module in $moduleList) {
+                    foreach ($module in $modules) {
                         Write-Debug "[$Invoker] Downloading $($module.Name) version $($module.Version)."
                         $filePath = $downloader.Download($module.Name, [string] $module.Version, $tempRepo)
                         $fileList += @{
@@ -114,7 +114,7 @@ function Install-AzModuleInternal {
             $moduleInstalled = @()
 
             $InstallStarted = Get-Date
-            Write-Debug "[$Invoker] Will install modules $($moduleList.Name)."
+            Write-Debug "[$Invoker] Will install modules $($modules.Name)."
             $installModuleParams = @{
                 Scope = $Scope
                 Repository = $script:AzTempRepoName
@@ -125,8 +125,8 @@ function Install-AzModuleInternal {
                 AllowPrerelease = if ($AllowPrerelease) {$AllowPrerelease} else {$false}
             }
 
-            if ($moduleList[0].Name -eq 'Az.Accounts') {
-                $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module Az.Accounts version $($moduleList[0].Version)", "Az.Accounts version $($moduleList[0].Version)", "Install")
+            if ($modules[0].Name -eq 'Az.Accounts') {
+                $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module Az.Accounts version $($modules[0].Version)", "Az.Accounts version $($modules[0].Version)", "Install")
                 $confirmUninstallation = $false
                 if ($RemovePrevious) {
                     $confirmUninstallation = $Force -or $PSCmdlet.ShouldProcess("Remove previously installed Az.Accounts", "Az.Accounts", 'Remove')
@@ -141,7 +141,7 @@ function Install-AzModuleInternal {
                     Name = "Az.Accounts"
                     Version = ($moduleList[0].Version | Select-Object -First 1)
                 }
-                $moduleList = $moduleList | Select-Object -Last ($moduleList.Length - 1)
+                $modules = [Array] ($moduleList | Select-Object -Last ($moduleList.Length - 1))
             }
 
             try
@@ -202,7 +202,7 @@ function Install-AzModuleInternal {
                 }
                 $index = 1
                 $module = $null
-                foreach ($module in $moduleList) {
+                foreach ($module in $modules) {
                     if ($PSVersionTable.PSEdition -eq "Core") {
                         $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")
                         $confirmUninstallation = $false
@@ -227,7 +227,7 @@ function Install-AzModuleInternal {
                             $runningJob = @()
                             $runningJob += Get-Job -State Running
                             if ($runningJob -and ($runningJob.Count -ge $maxJobCount)) {
-                                Throw "[$Inovker] Some background jobs are blocked. Please use 'Get-Job -State Running' to check them."
+                                Throw "[$Invoker] You have enough background jobs currently. Please use 'Get-Job -State Running' to check them."
                             }
                         }
                         $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")

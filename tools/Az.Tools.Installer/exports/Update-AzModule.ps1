@@ -24,43 +24,19 @@ function Update-AzModule {
     .Example
         C:\PS> Update-AzModule
 
-        Version              Name                                Repository           Description
-        -------              ----                                ----------           -----------
-        1.4.0                Az.Automation                       PSGallery            Microsoft Azure PowerShell - Automation service…
-        4.3.1                Az.Compute                          PSGallery            Microsoft Azure PowerShell - Compute service…
-        1.10.0               Az.DataFactory                      PSGallery            Microsoft Azure PowerShell - Data Factory service…
-        2.0.0                Az.DesktopVirtualization            PSGallery            Microsoft Azure PowerShell: DesktopVirtualization cmdlets
-        3.5.0                Az.HDInsight                        PSGallery            Microsoft Azure PowerShell - HDInsight service…
-        2.1.0                Az.KeyVault                         PSGallery            Microsoft Azure PowerShell - Key Vault service…
-        1.1.0                Az.Maintenance                      PSGallery            Microsoft Azure PowerShell - Maintenance…
-        1.1.0                Az.ManagedServices                  PSGallery            Microsoft Azure PowerShell - ManagedServices cmdlets for Azure Resource Manager
-        2.1.0                Az.Monitor                          PSGallery            Microsoft Azure PowerShell - Monitor service…
-        2.12.0               Az.RecoveryServices                 PSGallery            Microsoft Azure PowerShell - Recovery Services…
-        2.5.0                Az.Resources                        PSGallery            Microsoft Azure PowerShell - Azure Resource Manager and Active Directory…
-        1.2.0                Az.SignalR                          PSGallery            Microsoft Azure PowerShell - Azure SignalR service…
-        2.5.0                Az.Storage                          PSGallery            Microsoft Azure PowerShell - Storage service…
-        4.6.1                Az                                  PSGallery            Microsoft Azure PowerShell - Cmdlets to manage resources in Azure…
-
-
         C:\PS> Update-AzModule -Name DesktopVirtualization,RecoveryServices
-
-        Version              Name                                Repository           Description
-        -------              ----                                ----------           -----------
-        2.0.0                Az.DesktopVirtualization            PSGallery            Microsoft Azure PowerShell: DesktopVirtualization cmdlets
-        2.12.0               Az.RecoveryServices                 PSGallery            Microsoft Azure PowerShell - Recovery Services…
-
 #>
     [OutputType([PSCustomObject[]])]
     [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess = $true)]
     param(
+        [Parameter(HelpMessage = 'The module names.', Position = 0)]
+        [string[]]
+        ${Name},
+
         [Parameter(HelpMessage = 'The Registered Repostory.')]
         [ValidateNotNullOrEmpty()]
         [string]
         ${Repository},
-
-        [Parameter(HelpMessage = 'The module names.')]
-        [string[]]
-        ${Name},
 
         [Parameter(HelpMessage = 'Scope to update modules. Accepted values: CurrentUser, AllUser.')]
         [ValidateSet('CurrentUser', 'AllUsers')]
@@ -107,7 +83,15 @@ function Update-AzModule {
         $group = $intersection | Group-Object -Property Name
         $group | Foreach-Object {$groupSet[$_.Name] = ($_.Group.Version | Sort-Object -Descending) }
 
-        $modulesToUpdate = Get-AzModuleFromRemote -Name $intersection.Name -Repository $Repository -AllowPrerelease:$true -Invoker $Invoker
+        $findModuleParams = @{
+            Name = $intersection.Name
+            AllowPrerelease = $true
+            Invoker = $Invoker
+        }
+        if ($Repository) {
+            $findModuleParams.Add('Repository', $Repository)
+        }
+        $modulesToUpdate = Get-AzModuleFromRemote @findModuleParams
         $moduleUpdateTable = $modulesToUpdate | Foreach-Object { [PSCustomObject]@{
             Name = $_.Name
             VersionBeforeUpdate = [Version] ($groupSet[$_.Name] | Select-Object -First 1)
