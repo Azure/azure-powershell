@@ -22,7 +22,7 @@ List the details of the customLocation with a specified resource group.
 
 ### Example 3: Gets the details of the customLocation with a specified resource group and name.
 ```powershell
-PS C:\> Get-AzCustomLocation -ResourceGroupName azps_test_group -ResourceName azps_test_cluster
+PS C:\> Get-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster
 
 Location Name              Type
 -------- ----              ----

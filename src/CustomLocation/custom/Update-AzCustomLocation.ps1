@@ -19,13 +19,11 @@ Updates a Custom Location with the specified Resource Name in the specified Reso
 .Description
 Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster_1 -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -DisplayName azps_test_cluster_1 -Namespace arc
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Location Name                Type
+-------- ----                ----
+eastus   azps_test_cluster_1 Microsoft.ExtendedLocation/customLocations
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
@@ -46,29 +44,29 @@ https://docs.microsoft.com/powershell/module/az.customlocation/update-azcustomlo
 #>
 function Update-AzCustomLocation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
+        [System.String]
+        # Custom Locations name.
+        ${Name},
+
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
-        [System.String]
-        # Custom Locations name.
-        ${ResourceName},
-
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity]
         # Identity Parameter
@@ -88,7 +86,6 @@ function Update-AzCustomLocation {
         ${AuthenticationValue},
 
         [Parameter(Mandatory)]
-        [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String[]]
         # Contains the reference to the add-on that contains charts to deploy CRDs and operators.
@@ -122,13 +119,7 @@ function Update-AzCustomLocation {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-        [System.String]
-        # Provisioning State for the Custom Location.
-        ${ProvisioningState},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.IPatchableCustomLocationsTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.IPatchableCustomLocationsTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},

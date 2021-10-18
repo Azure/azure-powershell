@@ -19,7 +19,7 @@ Get-AzCustomLocation [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [
 
 ### Get
 ```
-Get-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
+Get-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ List the details of the customLocation with a specified resource group.
 
 ### Example 3: Gets the details of the customLocation with a specified resource group and name.
 ```powershell
-PS C:\> Get-AzCustomLocation -ResourceGroupName azps_test_group -ResourceName azps_test_cluster
+PS C:\> Get-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster
 
 Location Name              Type
 -------- ----              ----
@@ -105,13 +105,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Custom Locations name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -121,12 +120,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-Custom Locations name.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

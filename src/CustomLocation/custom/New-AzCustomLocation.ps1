@@ -19,13 +19,11 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 .Description
 Creates or updates a Custom Location in the specified Subscription and Resource Group
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> New-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster -Location eastus -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -DisplayName azps_test_cluster -Namespace arc
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Location Name              Type
+-------- ----              ----
+eastus   azps_test_cluster Microsoft.ExtendedLocation/customLocations
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
@@ -34,8 +32,14 @@ https://docs.microsoft.com/powershell/module/az.customlocation/new-azcustomlocat
 #>
 function New-AzCustomLocation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]
-    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
+        [System.String]
+        # Custom Locations name.
+        ${Name},
+
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
         [System.String]
@@ -43,15 +47,9 @@ function New-AzCustomLocation {
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
-        [System.String]
-        # Custom Locations name.
-        ${ResourceName},
-
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
@@ -75,7 +73,6 @@ function New-AzCustomLocation {
         ${AuthenticationValue},
 
         [Parameter(Mandatory)]
-        [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String[]]
         # Contains the reference to the add-on that contains charts to deploy CRDs and operators.
@@ -109,13 +106,7 @@ function New-AzCustomLocation {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-        [System.String]
-        # Provisioning State for the Custom Location.
-        ${ProvisioningState},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},

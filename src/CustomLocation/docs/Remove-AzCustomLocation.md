@@ -14,7 +14,7 @@ Deletes the Custom Location with the specified Resource Name, Resource Group, an
 
 ### Delete (Default)
 ```
-Remove-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+Remove-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Deletes the Custom Location with the specified Resource Name, Resource Group, an
 
 ### Example 1: Deletes the Custom Location.
 ```powershell
-PS C:\> Remove-AzCustomLocation -ResourceGroupName psteam-cl-rg -ResourceName psteam-cl-arc-cluster
+PS C:\> Remove-AzCustomLocation -ResourceGroupName psteam-cl-rg -Name psteam-cl-arc-cluster
 
 ```
 
@@ -85,6 +85,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Custom Locations name.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -118,21 +133,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-Custom Locations name.
 
 ```yaml
 Type: System.String

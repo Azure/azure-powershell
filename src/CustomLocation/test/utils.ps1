@@ -54,7 +54,10 @@ function setupEnv() {
     
     $env.Add("HostResourceId", $HostResourceId)
     $env.Add("ClusterExtensionId", $ClusterExtensionId)
-
+    
+    # Wait for extension creation to complete
+    Start-Sleep –s 180
+    
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

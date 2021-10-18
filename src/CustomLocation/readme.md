@@ -64,6 +64,15 @@ directive:
         }
       }
 
+  - from: swagger-document 
+    where: $.definitions.customLocationProperties.properties.provisioningState
+    transform: >-
+      return {
+          "description": "Provisioning State for the Custom Location.",
+          "type": "string",
+          "readOnly": true
+      }
+
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
@@ -89,4 +98,19 @@ directive:
       verb: New|Update
       subject: CustomLocation
     hide: true
+
+  - where:
+      subject: ^CustomLocation$|^CustomLocationEnabledResourceType$
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+
+  - where:
+      model-name: CustomLocation
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - Type
 ```

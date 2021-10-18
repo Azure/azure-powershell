@@ -13,7 +13,7 @@ Gets the list of the Enabled Resource Types.
 ## SYNTAX
 
 ```
-Get-AzCustomLocationEnabledResourceType -ResourceGroupName <String> -ResourceName <String>
+Get-AzCustomLocationEnabledResourceType -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Gets the list of the Enabled Resource Types.
 
 ### Example 1: Gets the list of the Enabled Resource Types.
 ```powershell
-PS C:\>  Get-AzCustomLocationEnabledResourceType -ResourceGroupName azps_test_group -ResourceName azps_test_cluster
+PS C:\>  Get-AzCustomLocationEnabledResourceType -ResourceGroupName azps_test_group -Name azps_test_cluster
 
 Name                                                             Type
 ----                                                             ----
@@ -50,9 +50,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Custom Locations name.
 
 ```yaml
 Type: System.String
@@ -66,8 +65,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-Custom Locations name.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String

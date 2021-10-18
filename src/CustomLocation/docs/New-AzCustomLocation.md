@@ -13,11 +13,11 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 ## SYNTAX
 
 ```
-New-AzCustomLocation -ResourceGroupName <String> -ResourceName <String> -ClusterExtensionId <String[]>
+New-AzCustomLocation -Name <String> -ResourceGroupName <String> -ClusterExtensionId <String[]>
  -DisplayName <String> -HostResourceId <String> -Location <String> -Namespace <String>
  [-SubscriptionId <String>] [-AuthenticationType <String>] [-AuthenticationValue <String>]
- [-IdentityType <ResourceIdentityType>] [-ProvisioningState <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ResourceIdentityType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +27,7 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 
 ### Example 1: Creates or updates a Custom Location in the specified Subscription and Resource Group
 ```powershell
-PS C:\> New-AzCustomLocation -ResourceGroupName azps_test_group -ResourceName azps_test_cluster -Location eastus -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -DisplayName azps_test_cluster -Namespace arc
+PS C:\> New-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster -Location eastus -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -DisplayName azps_test_cluster -Namespace arc
 
 Location Name              Type
 -------- ----              ----
@@ -174,6 +174,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Custom Locations name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Namespace
 Kubernetes namespace that will be created on the specified cluster.
 
@@ -204,39 +219,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProvisioningState
-Provisioning State for the Custom Location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-Custom Locations name.
 
 ```yaml
 Type: System.String
