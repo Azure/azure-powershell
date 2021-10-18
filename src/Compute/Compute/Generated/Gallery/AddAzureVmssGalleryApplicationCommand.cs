@@ -31,15 +31,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Package Reference Id of the Gallery Application.")]
-        [ValidateNotNullOrEmpty]
-        public string GalleryApplicationsReferenceId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Configuration Reference Id of the Gallery Application.")]
-        [ValidateNotNullOrEmpty]
-        public string ConfigReferenceId { get; set; }
+            HelpMessage = "VM Gallery Application Object.")]
+        public VMGalleryApplication VmGalleryApplication { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -48,13 +41,7 @@ namespace Microsoft.Azure.Commands.Compute
                 VirtualMachineScaleSetVM.ApplicationProfile = new ApplicationProfile();
             }
 
-            var vmGal = new VMGalleryApplication(GalleryApplicationsReferenceId);
-            if (this.IsParameterBound(c => c.ConfigReferenceId))
-            {
-                vmGal.ConfigurationReference = this.ConfigReferenceId;
-            }
-
-            VirtualMachineScaleSetVM.ApplicationProfile.GalleryApplications.Add(vmGal);
+            VirtualMachineScaleSetVM.ApplicationProfile.GalleryApplications.Add(VmGalleryApplication);
 
             WriteObject(VirtualMachineScaleSetVM);
         }

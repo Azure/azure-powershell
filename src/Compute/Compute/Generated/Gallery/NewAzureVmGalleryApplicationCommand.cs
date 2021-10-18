@@ -20,29 +20,31 @@ using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmGalleryApplication"), OutputType(typeof(PSVirtualMachine))]
-    public class AddAzureVmGalleryApplicationCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmGalleryApplication"), OutputType(typeof(VMGalleryApplication))]
+    public class NewAzureVmGalleryApplicationCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The PSVirtualMachine object to add a Gallery Application Reference ID.")]
-        public PSVirtualMachine VM { get; set; }
+            HelpMessage = "Package Reference Id of the Gallery Application.")]
+        [ValidateNotNullOrEmpty]
+        public string GalleryApplicationsReferenceId { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "VM Gallery Application Object.")]
-        public VMGalleryApplication VmGalleryApplication { get; set; }
+            Mandatory = false,
+            HelpMessage = "Configuration Reference Id of the Gallery Application.")]
+        [ValidateNotNullOrEmpty]
+        public string ConfigReferenceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (VM.ApplicationProfile == null)
+
+            var vmGal = new VMGalleryApplication(GalleryApplicationsReferenceId);
+            if (this.IsParameterBound(c => c.ConfigReferenceId))
             {
-                VM.ApplicationProfile = new ApplicationProfile();
+                vmGal.ConfigurationReference = this.ConfigReferenceId;
             }
 
-            VM.ApplicationProfile.GalleryApplications.Add(VmGalleryApplication);
-
-            WriteObject(VM);
+            WriteObject(vmGal);
         }
     }
 }
