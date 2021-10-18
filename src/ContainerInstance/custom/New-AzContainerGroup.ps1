@@ -50,8 +50,7 @@ CONTAINER <IContainer[]>: The containers within the container group.
   [LimitsGpuSku <GpuSku?>]: The SKU of the GPU resource.
   [LivenessProbeExecCommand <String[]>]: The commands to execute within the container.
   [LivenessProbeFailureThreshold <Int32?>]: The failure threshold.
-  [LivenessProbeHttpGetHttpHeadersName <String>]: The header name.
-  [LivenessProbeHttpGetHttpHeadersValue <String>]: The header value.
+  [LivenessProbeHttpGetHttpHeader <IHttpHeader[]>]: The HTTP headers for liveness probe.
   [LivenessProbeHttpGetPath <String>]: The path to probe.
   [LivenessProbeHttpGetPort <Int32?>]: The port number to probe.
   [LivenessProbeHttpGetScheme <Scheme?>]: The scheme.
@@ -64,8 +63,7 @@ CONTAINER <IContainer[]>: The containers within the container group.
     [Protocol <ContainerNetworkProtocol?>]: The protocol associated with the port.
   [ReadinessProbeExecCommand <String[]>]: The commands to execute within the container.
   [ReadinessProbeFailureThreshold <Int32?>]: The failure threshold.
-  [ReadinessProbeHttpGetHttpHeadersName <String>]: The header name.
-  [ReadinessProbeHttpGetHttpHeadersValue <String>]: The header value.
+  [$ReadinessProbeHttpGetHttpHeader <IHttpHeader[]>]: The HTTP headers for readiness probe.
   [ReadinessProbeHttpGetPath <String>]: The path to probe.
   [ReadinessProbeHttpGetPort <Int32?>]: The port number to probe.
   [ReadinessProbeHttpGetScheme <Scheme?>]: The scheme.
@@ -322,6 +320,12 @@ param(
     # The list of volumes that can be mounted by containers in this container group.
     # To construct, see NOTES section for VOLUME properties and create a hash table.
     ${Volume},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # The Availability Zone for the container group.
+    ${Zone},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

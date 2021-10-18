@@ -94,14 +94,6 @@ function New-AzContainerInstanceObject {
         [Parameter(HelpMessage="The failure threshold.")]
         [int]
         $ReadinessProbeFailureThreshold,
-        <#
-        [Parameter(HelpMessage="The header name.")]
-        [string]
-        $ReadinessProbeHttpGetHttpHeadersName,
-        [Parameter(HelpMessage="The header value.")]
-        [string]
-        $ReadinessProbeHttpGetHttpHeadersValue,
-        #>
         [Parameter(HelpMessage="The HTTP headers for readiness probe.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]]
         $ReadinessProbeHttpGetHttpHeader,
