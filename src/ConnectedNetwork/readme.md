@@ -34,6 +34,7 @@ branch: 5f32b50e18ed0a91eefe39287078bf66c4d6c3a8
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
+  - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/networkFunction.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/vendor.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/device.json
@@ -93,7 +94,7 @@ directive:
     where: $.definitions.NetworkFunctionPropertiesFormat.properties.managedApplicationParameters
     transform: >-
       return {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/5f32b50e18ed0a91eefe39287078bf66c4d6c3a8/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json#/definitions/ManagedApplicationParameters",
+          "type": "object",
           "additionalProperties": true,
           "description": "The parameters for the managed application."
       }
@@ -109,7 +110,7 @@ directive:
     where: $.definitions.VendorSkuPropertiesFormat.properties.managedApplicationParameters
     transform: >-
       return {
-          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/5f32b50e18ed0a91eefe39287078bf66c4d6c3a8/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json#/definitions/ManagedApplicationParameters",
+          "type": "object",
           "additionalProperties": true,
           "description": "The parameters for the managed application to be supplied by the vendor."
       }

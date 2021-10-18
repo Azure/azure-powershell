@@ -17,7 +17,7 @@ This is expected service behavior.
 ```
 New-AzConnectedNetworkFunction -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ContainerConfiguration <Hashtable>] [-DeviceId <String>] [-Etag <String>]
- [-ManagedApplicationParameter <IAny>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-ManagedApplicationParameter <Hashtable>] [-SkuName <String>] [-Tag <Hashtable>]
  [-UserConfiguration <INetworkFunctionUserConfiguration[]>] [-VendorName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 The parameters for the managed application.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

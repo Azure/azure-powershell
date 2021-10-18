@@ -16,7 +16,7 @@ This is expected service behavior.
 
 ```
 New-AzConnectedNetworkVendorSku -SkuName <String> -VendorName <String> [-SubscriptionId <String>]
- [-DeploymentMode <SkuDeploymentMode>] [-ManagedApplicationParameter <IAny>]
+ [-DeploymentMode <SkuDeploymentMode>] [-ManagedApplicationParameter <Hashtable>]
  [-ManagedApplicationTemplate <Hashtable>]
  [-NetworkFunctionRoleConfigurationType <INetworkFunctionRoleConfiguration[]>]
  [-NetworkFunctionType <NetworkFunctionType>] [-Preview] [-SkuType <SkuType>] [-DefaultProfile <PSObject>]
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The parameters for the managed application to be supplied by the vendor.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
