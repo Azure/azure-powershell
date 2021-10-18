@@ -59,7 +59,7 @@ function New-AzContainerInstanceObject {
         $LivenessProbeFailureThreshold,
         [Parameter(HelpMessage="The HTTP headers for liveness probe.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]]
-        $LivenessProbeHttpGetHttpHeader,
+        $LivenessProbeHttpGetHttpHeaders,
         [Parameter(HelpMessage="The path to probe.")]
         [string]
         $LivenessProbeHttpGetPath,
@@ -96,7 +96,7 @@ function New-AzContainerInstanceObject {
         $ReadinessProbeFailureThreshold,
         [Parameter(HelpMessage="The HTTP headers for readiness probe.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]]
-        $ReadinessProbeHttpGetHttpHeader,
+        $ReadinessProbeHttpGetHttpHeaders,
         [Parameter(HelpMessage="The path to probe.")]
         [string]
         $ReadinessProbeHttpGetPath,
@@ -149,7 +149,7 @@ function New-AzContainerInstanceObject {
         $Object.LimitsGpuSku = $LimitsGpuSku
         $Object.LivenessProbeExecCommand = $LivenessProbeExecCommand
         $Object.LivenessProbeFailureThreshold = $LivenessProbeFailureThreshold
-        $Object.LivenessProbeHttpGetHttpHeader = $LivenessProbeHttpGetHttpHeader
+        $Object.LivenessProbeHttpGetHttpHeader = $LivenessProbeHttpGetHttpHeaders
         $Object.LivenessProbeHttpGetPath = $LivenessProbeHttpGetPath
         $Object.LivenessProbeHttpGetPort = $LivenessProbeHttpGetPort
         $Object.LivenessProbeHttpGetScheme = $LivenessProbeHttpGetScheme
@@ -165,7 +165,7 @@ function New-AzContainerInstanceObject {
         $Object.Port = $Port
         $Object.ReadinessProbeExecCommand = $ReadinessProbeExecCommand
         $Object.ReadinessProbeFailureThreshold = $ReadinessProbeFailureThreshold
-        $Object.ReadinessProbeHttpGetHttpHeader = $ReadinessProbeHttpGetHttpHeader
+        $Object.ReadinessProbeHttpGetHttpHeader = $ReadinessProbeHttpGetHttpHeaders
         $Object.ReadinessProbeHttpGetPath = $ReadinessProbeHttpGetPath
         $Object.ReadinessProbeHttpGetPort = $ReadinessProbeHttpGetPort
         $Object.ReadinessProbeHttpGetScheme = $ReadinessProbeHttpGetScheme

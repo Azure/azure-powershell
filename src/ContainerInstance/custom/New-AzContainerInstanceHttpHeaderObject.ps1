@@ -24,7 +24,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.HttpHead
 .Link
 https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceHttpHeaderObject
 #>
-function New-AzContainerGroupPortObject {
+function new-AzContainerInstanceHttpHeaderObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.HttpHeader')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

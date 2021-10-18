@@ -1,18 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a list of the outbound network dependencies
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint -ResourceGroupName test-rg -ContainerGroupName test-cg
 
-{{ Add output here }}
+[]
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command returns a list of the outbound network dependencies for Container Instances. Container Instances does not have any outbound network dependencies, so this list will be empty.
 

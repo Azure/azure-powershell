@@ -22,8 +22,8 @@ New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Container <ICon
  [-IPAddressPort <IPort[]>] [-IPAddressType <String>] [-LogAnalyticLogType <String>]
  [-LogAnalyticMetadata <Hashtable>] [-LogAnalyticWorkspaceId <String>] [-LogAnalyticWorkspaceKey <String>]
  [-LogAnalyticWorkspaceResourceId <String>] [-OSType <String>] [-RestartPolicy <String>] [-Sku <String>]
- [-Subnet <String>] [-Tag <Hashtable>] [-Volume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Subnet <String>] [-Tag <Hashtable>] [-Volume <IVolume[]>] [-Zone <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,7 +144,7 @@ The containers within the container group.
 To construct, see NOTES section for CONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IContainer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -299,7 +299,7 @@ To construct, see NOTES section for IMAGEREGISTRYCREDENTIALS properties and crea
 To construct, see NOTES section for IMAGEREGISTRYCREDENTIAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IImageRegistryCredential[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IImageRegistryCredential[]
 Parameter Sets: (All)
 Aliases:
 
@@ -315,7 +315,7 @@ The init containers for a container group.
 To construct, see NOTES section for INITCONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IInitContainerDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IInitContainerDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -361,7 +361,7 @@ The list of ports exposed on the container group.
 To construct, see NOTES section for IPADDRESSPORT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IPort[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -619,7 +619,22 @@ The list of volumes that can be mounted by containers in this container group.
 To construct, see NOTES section for VOLUME properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IVolume[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolume[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+The Availability Zone for the container group.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -668,7 +683,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210701.IContainerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup
 
 ## NOTES
 
