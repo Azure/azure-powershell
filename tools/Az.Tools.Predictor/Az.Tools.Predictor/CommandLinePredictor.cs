@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     resultBuilder.Clear();
                     resultBuilder.Append(_commandLinePredictions[i].Name);
                     usedParams.Clear();
-                    string commandNoun = ParameterValuePredictor.GetCommandNoun(_commandLinePredictions[i].Name).ToLower();
+                    string commandNoun = ParameterValuePredictor.GetCommandNoun(_commandLinePredictions[i].Name)?.ToLower();
 
                     if (DoesPredictionParameterSetMatchInput(resultBuilder, inputParameterSet, commandNoun, _commandLinePredictions[i].ParameterSet, usedParams))
                     {
