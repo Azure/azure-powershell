@@ -34,11 +34,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             public override bool Equals(PredictiveSuggestion first, PredictiveSuggestion second)
             {
-                if ((first == null) && (second == null))
+                if ((first is null) && (second is null))
                 {
                     return true;
                 }
-                else if ((first == null) || (second == null))
+                else if ((first is null) || (second is null))
                 {
                     return false;
                 }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// <inheritdoc/>
         public void Dispose()
         {
-            if (_powerShellRuntime != null)
+            if (_powerShellRuntime is not null)
             {
                 _powerShellRuntime.Dispose();
                 _powerShellRuntime = null;

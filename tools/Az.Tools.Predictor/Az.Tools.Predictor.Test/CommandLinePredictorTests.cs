@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// <inheritdoc/>
         public void Dispose()
         {
-            if (_powerShellRuntime != null)
+            if (_powerShellRuntime is not null)
             {
                 _powerShellRuntime.Dispose();
                 _powerShellRuntime = null;

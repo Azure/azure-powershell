@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         {
             get
             {
-                if (_runtime == null)
+                if (_runtime is null)
                 {
                     _runtime = PowerShell.Create(DefaultRunspace);
                 }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
 
         public void Dispose()
         {
-            if (_runtime != null)
+            if (_runtime is not null)
             {
                 _runtime.Dispose();
                 _runtime = null;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                 _defaultRunspace.Value.Dispose();
             }
 
-            if (ConsoleRuntime != null)
+            if (ConsoleRuntime is not null)
             {
                 ConsoleRuntime.Dispose();
             }
