@@ -64,13 +64,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             AzPredictorData.ShowSurveyOnIdle = false;
 
-            if (_idleEventSubscriber != null)
+            if (_idleEventSubscriber is not null)
             {
                 _powerShellEventManager.UnsubscribeEvent(_idleEventSubscriber);
                 _idleEventSubscriber = null;
             }
 
-            if (_promptDelayTimer != null)
+            if (_promptDelayTimer is not null)
             {
                 _promptDelayTimer.Elapsed -= OnPromptDelayTimer;
                 _promptDelayTimer.Dispose();
