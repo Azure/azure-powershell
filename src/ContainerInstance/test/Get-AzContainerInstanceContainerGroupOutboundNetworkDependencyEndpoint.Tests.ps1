@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzContainerInstanceContai
 }
 
 Describe 'Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint -ResourceGroupName $env.resourceGroupName -ContainerGroupName $env.containerGroupName
+        }
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+            $get = Update-AzContainerGroup -Name $env.containerGroupName -ResourceGroupName $env.resourceGroupName -Tag @{"key"="value"}
+            Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint -InputObject $get
+        }
     }
 }

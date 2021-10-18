@@ -1,8 +1,8 @@
 {
-  "Invoke-AzContainerInstanceCommand+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgf4lxk/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/exec?api-version=2021-07-01+1": {
+  "Invoke-AzContainerInstanceCommand+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgylj1b/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/exec?api-version=2021-09-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgf4lxk/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/exec?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rgylj1b/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/exec?api-version=2021-09-01",
       "Content": "{\n  \"terminalSize\": {\n    \"rows\": 12,\n    \"cols\": 12\n  },\n  \"command\": \"echo hello\"\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,20 +18,20 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:dd9fe040-5487-468e-ac40-77040046dcd2" ],
+        "x-ms-request-id": [ "eastus:89c7dcb2-2fbc-4ad9-a6b8-eca3b400d998" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "951dd8f1-79cb-4e79-b5c0-7e9ed5a9d73a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211013T165346Z:951dd8f1-79cb-4e79-b5c0-7e9ed5a9d73a" ],
+        "x-ms-correlation-request-id": [ "1c0291dc-ccda-430e-a0d2-1c5c4e879a4f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211018T222731Z:1c0291dc-ccda-430e-a0d2-1c5c4e879a4f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 13 Oct 2021 16:53:45 GMT" ]
+        "Date": [ "Mon, 18 Oct 2021 22:27:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "214" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"webSocketUri\":\"wss://sbz78p3kg2ffwlc.eastus.atlas.cloudapp.azure.com:19390/execstream/sessionId/a2935f73-bdf0-4b2c-86b5-a250b5d0d72e?api-version=1.0\u0026rows=12\u0026cols=12\",\"password\":\"GHuQ*s(rHR^4PWZTm\u003eXjH3!Uk[[EOM]]\"}",
+      "Content": "{\"webSocketUri\":\"wss://sbzung8ffk7hesy.eastus.atlas.cloudapp.azure.com:19390/execstream/sessionId/30a51200-bc16-4535-ab15-bbdd1445af71?api-version=1.0\u0026rows=12\u0026cols=12\",\"password\":\"JZ](VKQLu2@[;/KP(9_kDKNzG[[EOM]]\"}",
       "isContentBase64": false
     }
   }
