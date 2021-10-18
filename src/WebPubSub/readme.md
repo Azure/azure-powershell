@@ -153,6 +153,10 @@ directive:
             }
           }
         }
+  # lowerCase 'webPubSub' to 'WebPubSub' so that we can piping
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourceGroups\/\{resourceGroupName\}\/providers\/Microsoft\.SignalRService\/webPubSub/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/WebPubSub")
   # Add enum valid values description in swagger
   - from: swagger-document
     where: $.definitions.EventHandler.properties.systemEvents.description
