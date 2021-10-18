@@ -2846,6 +2846,7 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
         
         # Setup variables
         $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
         $omode = "Flexible";
         $username = "admin01"
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
@@ -2853,7 +2854,7 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
         $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
 
         # Create VMSS with minimal inputs to allow defaulting
-        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
         Assert-NotNull $vmss;
         Assert-AreEqual $vmss.OrchestrationMode $omode;
         Assert-AreEqual $vmss.SinglePlacementGroup $flexibleSinglePlacementGroup;
