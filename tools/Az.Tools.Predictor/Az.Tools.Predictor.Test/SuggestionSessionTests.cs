@@ -31,8 +31,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
     public sealed class SuggestionSessionTests
     {
         // Includes the quotes around the key, the colon to separate the key and the value, and the comma.
-        private const int _AdditionalSizeForKey = 4;
-        private const int _AdditionalSizeForString = 2;
+        private const int _AdditionalSizeForKey = 4; // It's for "":, e.g. "Key":<value>,
+        private const int _AdditionalSizeForString = 2; // It's for ""
+        private const int _AdditionalSizeForArrayBracket = 2; // It's the size for []
+        private const int _AdditionalSizeForTwoElementArray = SuggestionSessionTests._AdditionalSizeForArrayBracket + 1; // It's for [,]
 
         /// <summary>
         /// Tests the estimate size when there is only one suggestion found.
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Theory]
         [InlineData("Get-AzSubscription", SuggestionSource.StaticCommands, false, "ge")]
         [InlineData("Get-AzSecurityPricing -DefaultProfile <IAzureContextContainer>", SuggestionSource.CurrentCommand, true, "get-A")]
-        public void TesSizeForOneSuggestion(string suggestion, SuggestionSource source, bool isCancelled, string userInput)
+        public void TestSizeForOneSuggestion(string suggestion, SuggestionSource source, bool isCancelled, string userInput)
         {
             // The text in the telemetry data is like
             // { "Found":[["Get-AzSubscription",1]],"IsCanclled":"False","UserInput":"ge" }
@@ -58,8 +60,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var expectedSize = GetSuggestionTelemetryData.PropertyNameFound.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + suggestion.Length + SuggestionSessionTests._AdditionalSizeForString
                 + 1 // For the one digit of source
-                + 3 // for [,]
-                + 2 // for [] in Found
+                + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,]
+                + SuggestionSessionTests._AdditionalSizeForArrayBracket // for [] in Found
                 + GetSuggestionTelemetryData.PropertyNameUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + userInput.Length + SuggestionSessionTests._AdditionalSizeForString
                 + GetSuggestionTelemetryData.PropertyNameIsCancelled.Length + SuggestionSessionTests._AdditionalSizeForKey
@@ -73,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// </summary>
         [Theory]
         [InlineData("Get-AzSubscription", SuggestionSource.StaticCommands, "Get-AzSecurityPricing -DefaultProfile <IAzureContextContainer>", SuggestionSource.CurrentCommand, false, "ge")]
-        public void TesSizeForTwoSuggestions(string suggestion1, SuggestionSource source1, string suggestion2, SuggestionSource source2, bool isCancelled, string userInput)
+        public void TestSizeForTwoSuggestions(string suggestion1, SuggestionSource source1, string suggestion2, SuggestionSource source2, bool isCancelled, string userInput)
         {
             // The text in the telemetry data is like
             // { "Found":[["Get-AzSubscription",3],["Get-AzSecurityPricing -DefaultProfile <IAzureContextContainer>",1]],"IsCanclled":"False","UserInput":"ge" }
@@ -92,11 +94,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var expectedSize = GetSuggestionTelemetryData.PropertyNameFound.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + suggestion1.Length + SuggestionSessionTests._AdditionalSizeForString
                 + 1 // For the one digit of source1
-                + 3 // for [,]
+                + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,]
                 + suggestion2.Length + SuggestionSessionTests._AdditionalSizeForString
                 + 1 // for the one digit of source2
-                + 3 // for [,]
-                + 3 // for [,] in Found
+                + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,]
+                + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,] in Found
                 + GetSuggestionTelemetryData.PropertyNameUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + userInput.Length + SuggestionSessionTests._AdditionalSizeForString
                 + GetSuggestionTelemetryData.PropertyNameIsCancelled.Length + SuggestionSessionTests._AdditionalSizeForKey
@@ -111,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Theory]
         [InlineData("Get-AzSubscription", SuggestionSource.StaticCommands, false, "ge", SuggestionDisplayMode.InlineView, 0)]
         [InlineData("Get-AzSecurityPricing -DefaultProfile <IAzureContextContainer>", SuggestionSource.CurrentCommand, true, "get-A", SuggestionDisplayMode.ListView, 7)]
-        public void TesSizeForDisplaySuggestion(string suggestion, SuggestionSource source, bool isCancelled, string userInput, SuggestionDisplayMode mode, int index)
+        public void TestSizeForDisplaySuggestion(string suggestion, SuggestionSource source, bool isCancelled, string userInput, SuggestionDisplayMode mode, int index)
         {
             // The text in the telemetry data is like
             // { "Found":[["Get-AzSubscription",3]],"IsCanclled":"False","UserInput":"ge","Displayed":[1,7] }
@@ -131,14 +133,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var expectedSize = GetSuggestionTelemetryData.PropertyNameFound.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + suggestion.Length + SuggestionSessionTests._AdditionalSizeForString
                 + 1 // For the one digit of source
-                + 3 // for [,]
-                + 2 // for [] in Found
+                + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,]
+                + SuggestionSessionTests._AdditionalSizeForArrayBracket // for [] in Found
                 + GetSuggestionTelemetryData.PropertyNameUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + userInput.Length + SuggestionSessionTests._AdditionalSizeForString
                 + GetSuggestionTelemetryData.PropertyNameIsCancelled.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + isCancelled.ToString(CultureInfo.InvariantCulture).Length
                 + SuggestionDisplayedTelemetryData.PropertyNameDisplayed.Length + SuggestionSessionTests._AdditionalSizeForKey
-                + 5; // for [1,7]
+                + 2 // for the two digit 5 and 7.
+                + SuggestionSessionTests._AdditionalSizeForTwoElementArray;
 
             Assert.Equal(expectedSize, suggestionSession.EstimateTelemetrySize);
         }
@@ -148,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// </summary>
         [Theory]
         [InlineData("Get-AzSubscription", SuggestionSource.StaticCommands, false, "ge", "Get-AzSubscription")]
-        public void TesSizeForAcceptSuggestion(string suggestion, SuggestionSource source, bool isCancelled, string userInput, string acceptedSuggestion)
+        public void TestSizeForAcceptSuggestion(string suggestion, SuggestionSource source, bool isCancelled, string userInput, string acceptedSuggestion)
         {
             // The text in the telemetry data is like
             // { "Found":[["Get-AzSubscription",3]],"IsCanclled":"False","UserInput":"ge","Accepted":"Get-AzSubscription" }
@@ -167,8 +170,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var expectedSize = GetSuggestionTelemetryData.PropertyNameFound.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + suggestion.Length + SuggestionSessionTests._AdditionalSizeForString
                 + 1 // For the one digit of source
-                + 3 // for [,]
-                + 2 // for [] in Found
+                + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,]
+                + SuggestionSessionTests._AdditionalSizeForArrayBracket // for [] in Found
                 + GetSuggestionTelemetryData.PropertyNameUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + userInput.Length + SuggestionSessionTests._AdditionalSizeForString
                 + GetSuggestionTelemetryData.PropertyNameIsCancelled.Length + SuggestionSessionTests._AdditionalSizeForKey
@@ -184,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// </summary>
         [Theory]
         [InlineData(243, SuggestionDisplayMode.InlineView, 0, "Get-AzSubscription")]
-        public void TesSizeForIncompleteSuggestion(uint suggestionSessionId, SuggestionDisplayMode mode, int index, string acceptedSuggestion)
+        public void TestSizeForIncompleteSuggestion(uint suggestionSessionId, SuggestionDisplayMode mode, int index, string acceptedSuggestion)
         {
             // The text in the telemetry data is like
             // { "Displayed":[2,0],Accepted":"Get-AzSubscription","SuggestionSessionId":"243" }
@@ -201,7 +204,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var expectedSize = GetSuggestionTelemetryData.PropertyNameSuggestionSessionId.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + suggestionSessionId.ToString(CultureInfo.InvariantCulture).Length
                 + SuggestionDisplayedTelemetryData.PropertyNameDisplayed.Length + SuggestionSessionTests._AdditionalSizeForKey
-                + 5 // for [1,7]
+                + 2 // For the two digits 1 and 7
+                + SuggestionSessionTests._AdditionalSizeForTwoElementArray
                 + SuggestionAcceptedTelemetryData.PropertyNameAccepted.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + acceptedSuggestion.Length + SuggestionSessionTests._AdditionalSizeForString;
 

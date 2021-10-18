@@ -64,9 +64,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             if (AdditionalTelemetryProperties != null)
             {
-                foreach (var p in AdditionalTelemetryProperties)
+                foreach (var property in AdditionalTelemetryProperties)
                 {
-                    properties.TryAdd(p.Key, p.Value);
+                    properties.TryAdd(property.Key, property.Value);
                 }
             }
 

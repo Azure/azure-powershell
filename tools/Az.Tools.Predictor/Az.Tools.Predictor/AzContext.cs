@@ -217,42 +217,41 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         private Version GetAzVersion()
         {
-            Version latestAz = DefaultVersion;
+            Version latestAzVersion = DefaultVersion;
 
             try
             {
                 var outputs = ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
-                foreach (PSObject obj in outputs)
-                {
-                    string psVersion = obj.Properties["Version"].Value.ToString();
-                    int pos = psVersion.IndexOf('-');
-                    Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
-                    if (currentAz > latestAz)
-                    {
-                        latestAz = currentAz;
-                    }
-                }
 
                 if (!(outputs?.Any() == true))
                 {
                     outputs = ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable");
-                    foreach (PSObject obj in outputs)
-                    {
-                        string psVersion = obj.Properties["Version"].Value.ToString();
-                        int pos = psVersion.IndexOf('-');
-                        Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
-                        if (currentAz > latestAz)
-                        {
-                            latestAz = currentAz;
-                        }
-                    }
+                }
+
+                if (outputs?.Any() == true)
+                {
+                    ExtractAndSetLatestAzVersion(outputs);
                 }
             }
             catch (Exception)
             {
             }
 
-            return latestAz;
+            return latestAzVersion;
+
+            void ExtractAndSetLatestAzVersion(IEnumerable<PSObject> outputs)
+            {
+                foreach (var psObject in outputs)
+                {
+                    string versionOutput = psObject.Properties["Version"].Value.ToString();
+                    int positionOfVersion = versionOutput.IndexOf('-');
+                    Version currentAzVersion = (positionOfVersion == -1) ? new Version(versionOutput) : new Version(versionOutput.Substring(0, positionOfVersion));
+                    if (currentAzVersion > latestAzVersion)
+                    {
+                        latestAzVersion = currentAzVersion;
+                    }
+                }
+            }
         }
 
         /// <summary>

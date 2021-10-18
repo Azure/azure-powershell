@@ -44,6 +44,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var random = new Random((int)DateTime.UtcNow.Ticks);
             int minIdNumber = 0;
             int maxIdNumber = 1000000;
+            // Format the integer into a 6-digit string, adding 0 to the left if needed, e.g. 123 -> "000123", 123456 -> "123456".
+            // See https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings
             var surveyId = random.Next(minIdNumber, maxIdNumber).ToString("D6", CultureInfo.InvariantCulture);
 
             var link = string.Format(OpenAzPredictorSurvey._SurveyLinkFormat, surveyId, CultureInfo.InvariantCulture);

@@ -57,16 +57,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             {
                 int keySize = SuggestionSession.GetKeySize(GetSuggestionTelemetryData.PropertyNameUserInput.Length);
 
-                if (_userInput != null)
+                if (_userInput is not null)
                 {
                     _estimateTelemetrySize -= SuggestionSession.GetStringSize(_userInput.Length);
                 }
 
-                if ((_userInput == null) && (value != null))
+                if ((_userInput is null) && (value is not null))
                 {
                     _estimateTelemetrySize += keySize;
                 }
-                if ((_userInput != null) && (value == null))
+                if ((_userInput is not null) && (value is null))
                 {
                     _estimateTelemetrySize -= keySize;
                 }
@@ -84,16 +84,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             set
             {
                 int keySize = SuggestionSession.GetKeySize(GetSuggestionTelemetryData.PropertyNameFound.Length);
-                if (_foundSuggestion != null)
+                if (_foundSuggestion is not null)
                 {
                     _estimateTelemetrySize -= GetCommandLineSuggestionSize(_foundSuggestion);
                 }
 
-                if ((_foundSuggestion == null) && (value != null))
+                if ((_foundSuggestion is null) && (value is not null))
                 {
                     _estimateTelemetrySize += keySize;
                 }
-                else if ((_foundSuggestion != null) && (value == null))
+                else if ((_foundSuggestion is not null) && (value is null))
                 {
                     _estimateTelemetrySize -= keySize;
                 }
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 {
                     int suggestionSize = 0;
 
-                    if (suggestion != null)
+                    if (suggestion is not null)
                     {
                         for (var i = 0; i < suggestion.Count; ++i)
                         {
@@ -199,23 +199,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 // {"Accept":"Get-AzSubscription -SubscriptionId 'xxxx-xxxx-xxxx-xxxx'"}
 
                 int keySize = SuggestionSession.GetKeySize(SuggestionAcceptedTelemetryData.PropertyNameAccepted.Length);
-                if (_acceptedSuggestion != null)
+                if (_acceptedSuggestion is not null)
                 {
                     _estimateTelemetrySize -= SuggestionSession.GetStringSize(_acceptedSuggestion.Length);
                 }
 
-                if ((_acceptedSuggestion == null) && (value != null))
+                if ((_acceptedSuggestion is null) && (value is not null))
                 {
                     _estimateTelemetrySize += keySize;
                 }
-                else if ((_acceptedSuggestion != null) && (value == null))
+                else if ((_acceptedSuggestion is not null) && (value is null))
                 {
                     _estimateTelemetrySize -= keySize;
                 }
 
                 _acceptedSuggestion = value;
 
-                if (_acceptedSuggestion != null)
+                if (_acceptedSuggestion is not null)
                 {
                     _estimateTelemetrySize += SuggestionSession.GetStringSize(_acceptedSuggestion.Length);
                 }
