@@ -36,7 +36,7 @@ require:
   - $(this-folder)/../../tools/SwaggerCI/readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2021-07-01/containerInstance.json 
+  - $(repo)/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2021-09-01/containerInstance.json 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
