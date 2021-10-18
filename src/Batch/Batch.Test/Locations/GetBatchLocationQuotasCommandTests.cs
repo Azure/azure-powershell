@@ -14,12 +14,14 @@
 
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
+using Xunit.Abstractions;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
@@ -30,9 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchLocationQuotasCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public GetBatchLocationQuotasCommandTests(ITestOutputHelper output)
         {
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchLocationQuotaCommand()
@@ -46,8 +48,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetBatchLocationQuotasTest()
         {
-            List<PSBatchLocationQuotas> pipelineOutput = new List<PSBatchLocationQuotas>();
-
             // Return a pre-built object when the command is issued.
             string location = "westus";
             PSBatchLocationQuotas quotas = new PSBatchLocationQuotas(location, new BatchLocationQuota(accountQuota: 5));

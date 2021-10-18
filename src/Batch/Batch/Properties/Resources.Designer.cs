@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -714,6 +714,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GettingLocationQuotas {
             get {
                 return ResourceManager.GetString("GettingLocationQuotas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all supported virtual machine Sus for location {0}..
+        /// </summary>
+        internal static string GettingSupportedVirtualMachineSkus {
+            get {
+                return ResourceManager.GetString("GettingSupportedVirtualMachineSkus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all supported virtual machine Sus for location {0}. MaxResults: {1}, Filter: {2}..
+        /// </summary>
+        internal static string GettingSupportedVirtualMachineSkusWithODataParameters {
+            get {
+                return ResourceManager.GetString("GettingSupportedVirtualMachineSkusWithODataParameters", resourceCulture);
             }
         }
         

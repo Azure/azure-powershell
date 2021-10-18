@@ -17,4 +17,10 @@
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+
 </Project>
