@@ -54,27 +54,27 @@ else
 }
 #EndRegion
 
-Import-Module "$PSScriptRoot\..\tools\Gen2Master\MoveFromGeneration2Master.ps1" -Force
-$TmpFolder = "$PSScriptRoot\..\tmp"
-New-Item -ItemType Directory -Force -Path $TmpFolder
-Remove-Item -Path "$TmpFolder\*" -Recurse -Force
-
-#Region Clone latest Az.Accounts code
-Set-Location -Path $TmpFolder
-git init
-git remote add -f origin https://github.com/Azure/azure-powershell.git
-git config core.sparseCheckout true
-Add-Content -Path .git/info/sparse-checkout -Value "src/Accounts/"
-git pull origin main
-Move-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts"
-Copy-Item "$TmpFolder\Accounts" "$PSScriptRoot\..\src" -Recurse -Force
-Remove-Item -Path "$TmpFolder\src" -Recurse -Force
-Install-Module Az.Accounts -Repository PSGallery -Force
-Import-Module Az.Accounts
-Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
-#EndRegion
-
 try {
+    Import-Module "$PSScriptRoot\..\tools\Gen2Master\MoveFromGeneration2Master.ps1" -Force
+    $TmpFolder = "$PSScriptRoot\..\tmp"
+    New-Item -ItemType Directory -Force -Path $TmpFolder
+    Remove-Item -Path "$TmpFolder\*" -Recurse -Force
+    
+    #Region Clone latest Az.Accounts code
+    Set-Location -Path $TmpFolder
+    git init
+    git remote add -f origin https://github.com/Azure/azure-powershell.git
+    git config core.sparseCheckout true
+    Add-Content -Path .git/info/sparse-checkout -Value "src/Accounts/"
+    git pull origin main
+    Move-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts"
+    Copy-Item "$TmpFolder\Accounts" "$PSScriptRoot\..\src" -Recurse -Force
+    Remove-Item -Path "$TmpFolder\src" -Recurse -Force
+    Install-Module Az.Accounts -Repository PSGallery -Force
+    Import-Module Az.Accounts
+    Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
+    #EndRegion
+
     #Region generate the code and make the struture same with main branch.
     foreach ($Module in $ModuleList)
     {
