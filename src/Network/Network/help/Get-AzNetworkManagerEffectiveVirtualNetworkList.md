@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfacetapconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkmanagereffectivevirtualnetworklist
 schema: 2.0.0
 ---
 
@@ -86,7 +86,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -122,3 +122,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerEffectiveVirtualNetworkByNetworkGroupList](./Get-AzNetworkManagerEffectiveVirtualNetworkByNetworkGroupList.md)

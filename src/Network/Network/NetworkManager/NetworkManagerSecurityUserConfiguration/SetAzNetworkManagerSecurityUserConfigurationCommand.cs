@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager name.")]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (!this.IsNetworkManagerSecurityUserConfigurationPresent(this.ResourceGroupName, this.NetworkManagerName, this.NetworkManagerSecurityUserConfiguration.Name))
                 {
-                    throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.NetworkManagerSecurityUserConfiguration.Name));
                 }
 
                 // Map to the sdk object

@@ -19,14 +19,8 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
-    public class PSNetworkManagerChildResource : PSChildResource
+    public class PSNetworkManagerBaseResource : PSChildResource
     {
-        [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
-        public string ResourceGroupName { get; set; }
-
-        [Ps1Xml(Label = "NetworkManagerName", Target = ViewControl.Table, Position = 1)]
-        public string NetworkManagerName { get; set; }
-
         [Ps1Xml(Target = ViewControl.Table)]
         public string DisplayName { get; set; }
 

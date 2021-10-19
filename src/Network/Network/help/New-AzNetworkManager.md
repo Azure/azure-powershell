@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterfaceipconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanager
 schema: 2.0.0
 ---
 
@@ -26,9 +26,15 @@ The **New-AzNetworkManager** cmdlet creates a network manager.
 
 ### Example 1
 ```powershell
-New-AzNetworkManager -ResourceGroupName TestResourceGroup -Name TestNetworkManager -NetworkManagerScope $testScope -NetworkManagerScopeAccess $testAccess -Location $rglocation
+PS C:\> [System.Collections.Generic.List[string]]$subgroup  = @()
+PS C:\> $subgroup.Add("/subscriptions/00000000-0000-0000-0000-000000000000")
+PS C:\> $testScope = New-AzNetworkManagerScope -Subscription $subgroup -ManagementGroup $mggroup
+PS C:\> [System.Collections.Generic.List[String]]$access  = @()
+PS C:\> $access.Add("Connectivity");
+PS C:\> New-AzNetworkManager -ResourceGroupName TestResourceGroup -Name TestNetworkManager -NetworkManagerScope $testScope -NetworkManagerScopeAccess $access -Location "eastus"
 
 ```
+
 
 ## PARAMETERS
 
@@ -254,5 +260,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzNetworkManager](./Get-AzNetworkManager.md)
 
 [Remove-AzNetworkManager](./Remove-AzNetworkManager.md)
-
-[Set-AzNetworkManager](./Set-AzNetworkManager.md)

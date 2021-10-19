@@ -22,29 +22,17 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSNetworkManager : PSChildResource
+    public class PSNetworkManager : PSNetworkManagerBaseResource
     {
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string DisplayName { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string Description { get; set; }
 
         [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 2)]
         public string Location { get; set; }
-
-        public string Type { get; set; }
 
         public Hashtable Tag { get; set; }
 
         public PSNetworkManagerScopes NetworkManagerScopes { get; set; }
 
         public List<string> NetworkManagerScopeAccesses { get; set; }
-
-        public string ProvisioningState { get; set; }
-
-        public PSSystemData SystemData { get; set; }
 
         [JsonIgnore]
         public string NetworkManagerScopeAccessesText
@@ -56,12 +44,6 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         public string NetworkManagerScopesText
         {
             get { return JsonConvert.SerializeObject(NetworkManagerScopes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string SystemDataText
-        {
-            get { return JsonConvert.SerializeObject(SystemData, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public string TagsTable

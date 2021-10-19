@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfacetapconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkmanageractivesecurityuserrulelist
 schema: 2.0.0
 ---
 
@@ -126,3 +126,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerActiveConnectivityConfigurationList](./Get-AzNetworkManagerActiveConnectivityConfigurationList.md)
+
+[Get-AzNetworkManagerActiveSecurityAdminRuleList](./Get-AzNetworkManagerActiveSecurityAdminRuleList.md)

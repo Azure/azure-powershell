@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerConnectivityGroupItem", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerConnectivityGroupItem))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerConnectivityGroupItem"), OutputType(typeof(PSNetworkManagerConnectivityGroupItem))]
     public class NewAzNetworkManagerConnectivityGroupItemCommand : NetworkManagerConnectivityConfigurationBaseCmdlet
     {
 
@@ -60,9 +60,13 @@ namespace Microsoft.Azure.Commands.Network
                 psConnectivityGroupItem.UseHubGateway = "False";
             }
 
-            if (string.IsNullOrEmpty(GroupConnectivity))
+            if (!string.IsNullOrEmpty(GroupConnectivity))
             {
                 psConnectivityGroupItem.GroupConnectivity = this.GroupConnectivity;
+            }
+            else
+            {
+                psConnectivityGroupItem.GroupConnectivity = "None";
             }
 
             if (this.IsGlobal)

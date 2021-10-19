@@ -26,7 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.NetworkManager.NetworkManager
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerAddressPrefixItem", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerAddressPrefixItem))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerAddressPrefixItem"), OutputType(typeof(PSNetworkManagerAddressPrefixItem))]
     public class NewAzNetworkManagerAddressPrefixItemCommand: NetworkManagerBaseCmdlet
     {
 

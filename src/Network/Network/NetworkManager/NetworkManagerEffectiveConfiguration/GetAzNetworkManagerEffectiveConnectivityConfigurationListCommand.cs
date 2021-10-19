@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The vnet name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
         [SupportsWildcards]
         public virtual string VirtualNetworkName { get; set; }
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfacetapconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkmanageractiveconnectivityconfigurationlist
 schema: 2.0.0
 ---
 
@@ -27,8 +27,52 @@ The **Get-AzNetworkManagerActiveConnectivityConfigurationList** cmdlet lists Net
 ```powershell
 PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
 PS C:\> $regions.Add("centraluseuap")
-PS C:\> Get-AzNetworkManagerActiveConnectivityConfigurationList -NetworkManagerName "TestNMName"
- -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken"
+PS C:\> Get-AzNetworkManagerActiveConnectivityConfigurationList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken"
+ 
+ Value     : [
+              {
+                "Region": "centraluseuap",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn",
+                "DisplayName": "Sample Config Name",
+                "Description": "",
+                "ConnectivityTopology": "HubAndSpoke",
+                "Hubs": [
+                  {
+                    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/provide
+            rs/Microsoft.Network/virtualNetworks/hub",
+                    "ResourceType": "Microsoft.Network/virtualNetworks"
+                  }
+                ],
+                "IsGlobal": "False",
+                "AppliesToGroups": [
+                  {
+                    "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/pro
+            viders/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG",
+                    "UseHubGateway": "False",
+                    "IsGlobal": "True",
+                    "GroupConnectivity": "None"
+                  }
+                ],
+                "ProvisioningState": "Succeeded",
+                "DeleteExistingPeering": "True",
+                "ConfigurationGroups": [
+                  {
+                    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG",
+                    "DisplayName": "DISplayName",
+                    "Description": "SampleDESCRIption",
+                    "GroupMembers": [
+                      {
+                        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/testvnet"
+                      }
+                    ],
+                    "ConditionalMembership": "",
+                    "ProvisioningState": "Succeeded"
+                  }
+                ]
+              }
+            ]
+SkipToken : 
+
 ```
 
 
@@ -125,3 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerActiveSecurityAdminRuleList](./Get-AzNetworkManagerActiveSecurityAdminRuleList.md)
+
+[Get-AzNetworkManagerActiveSecurityUserRuleList](./Get-AzNetworkManagerActiveSecurityUserRuleList.md)

@@ -26,7 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerScope", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerScopes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerScope"), OutputType(typeof(PSNetworkManagerScopes))]
     public class NewPSNetworkManagerScopeCommand : NetworkManagerBaseCmdlet
     {
 
@@ -41,8 +41,6 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Subscription Lists in Network Manager Scope")]
         public List<string> Subscription { get; set; }
-
-
 
         public override void Execute()
         {

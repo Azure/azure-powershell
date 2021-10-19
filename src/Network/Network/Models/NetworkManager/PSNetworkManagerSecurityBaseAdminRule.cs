@@ -19,22 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
     using System.Collections;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSNetworkManagerSecurityBaseAdminRule : PSChildResource
+    public class PSNetworkManagerSecurityBaseAdminRule : PSNetworkManagerBaseResource
     {
-        [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
-        public string ResourceGroupName { get; set; }
-
-        [Ps1Xml(Label = "NetworkManagerName", Target = ViewControl.Table, Position = 1)]
-        public string NetworkManagerName { get; set; }
-
-        public string DisplayName { get; set; }
-
-        public string Description { get; set; }
-
-        public string Type { get; set; }
-
-        public string ProvisioningState { get; set; }
-
-        public PSSystemData SystemData { get; set; }
     }
 }

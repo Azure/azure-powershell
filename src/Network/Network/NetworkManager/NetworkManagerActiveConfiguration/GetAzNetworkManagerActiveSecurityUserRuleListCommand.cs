@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
 
@@ -69,8 +70,30 @@ namespace Microsoft.Azure.Commands.Network
             }
                 
             var networkManagerActiveUserRuleListResult = this.NetworkClient.NetworkManagementClient.ActiveSecurityUserRules.List(this.ResourceGroupName, this.NetworkManagerName, parameter);
-            var psNetworkManagerActiveUserRuleListResultList = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerActiveSecurityUserRuleListResult>(networkManagerActiveUserRuleListResult);
-            WriteObject(psNetworkManagerActiveUserRuleListResultList);
+            var pSNetworkManagerActiveSecurityUserRules = new List<PSNetworkManagerActiveBaseSecurityUserRule>();
+
+            foreach (var rule in networkManagerActiveUserRuleListResult.Value)
+            {
+                PSNetworkManagerActiveBaseSecurityUserRule psActiveUserRule;
+                if (rule.GetType().Name == "ActiveSecurityUserRule")
+                {
+                    psActiveUserRule = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerActiveSecurityUserRule>(rule);
+                }
+                else if (rule.GetType().Name == "ActiveDefaultSecurityUserRule")
+                {
+                    psActiveUserRule = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerActiveDefaultSecurityUserRule>(rule);
+                }
+                else
+                {
+                    throw new ErrorException("UnKnown Active User Rule Type");
+                }
+                pSNetworkManagerActiveSecurityUserRules.Add(psActiveUserRule);
+            }
+
+            var pSNetworkManagerActiveSecurityUserRulesList = new PSNetworkManagerActiveSecurityUserRuleListResult();
+            pSNetworkManagerActiveSecurityUserRulesList.Value = pSNetworkManagerActiveSecurityUserRules;
+            pSNetworkManagerActiveSecurityUserRulesList.SkipToken = networkManagerActiveUserRuleListResult.SkipToken;
+            WriteObject(pSNetworkManagerActiveSecurityUserRulesList);
         }
     }
 }

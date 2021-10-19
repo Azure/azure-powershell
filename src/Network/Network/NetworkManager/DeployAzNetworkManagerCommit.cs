@@ -19,10 +19,11 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Deploy", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerCommit", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Deploy", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerCommit", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerCommit))]
     public class PostAzNetworkManagerCommitCommand : NetworkManagerBaseCmdlet
     {
         [Alias("ResourceName")]

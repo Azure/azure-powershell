@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/deny-azprivateendpointconnection
+online version: https://docs.microsoft.com/powershell/module/az.network/deploy-aznetworkmanagercommit
 schema: 2.0.0
 ---
 
@@ -34,7 +34,17 @@ PS C:\> Deploy-AzNetworkManagerCommit -ResourceGroupName TestRGName -Name TestNM
 
 ```
 
-The example is used to commit connecitivity confgurations $TestConfigId on region centraluseuap. If configIds is empty, then it is used to uncommit all connectivity configurations.
+The example is used to commit connecitivity confgurations $TestConfigId on region centraluseuap.
+
+### Example 2
+```powershell
+PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
+PS C:\> $regions.Add("centraluseuap")
+PS C:\> Deploy-AzNetworkManagerCommit -ResourceGroupName TestRGName -Name TestNMName -TargetLocation $regions -CommitType "Connectivity" 
+
+```
+
+The example is used to uncommit all connecitivity confgurations on region centraluseuap.
 
 ## PARAMETERS
 
@@ -170,8 +180,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerCommit
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManager](./New-AzNetworkManager.md)
+
+[Get-AzNetworkManager](./Get-AzNetworkManager.md)
+
+[Remove-AzNetworkManager](./Remove-AzNetworkManager.md)

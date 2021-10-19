@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfacetapconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkmanagerconnectivityconfiguration
 schema: 2.0.0
 ---
 
@@ -34,12 +34,80 @@ The **Get-AzNetworkManagerConnectivityConfiguration** cmdlet gets one or more co
 ```powershell
 Expand
 PS C:\> Get-AzNetworkManagerConnectivityConfiguration  -Name "TestConn" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+
+Name                  : TestNMName
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
+                        t.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn
+DisplayName           : Sample Config Name
+Description           :
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+ConnectivityTopology  : HubAndSpoke
+DeleteExistingPeering : True
+IsGlobal              : True
+Hubs                  : [
+                          {
+                            "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/hub",
+                            "ResourceType": "Microsoft.Network/virtualNetworks"
+                          }
+                        ]
+AppliesToGroups       : [
+                          {
+                            "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng",
+                            "UseHubGateway": "True",
+                            "IsGlobal": "True",
+                            "GroupConnectivity": "None"
+                          }
+                        ]
+DeleteExistingPeering : True
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-17T21:13:05",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-17T21:13:08"
+                        }
 ```
 
 ### Example 2
 ```powershell
 NoExpand
 PS C:\> Get-AzNetworkManagerConnectivityConfiguration -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+
+Name                  : TestNMName
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
+                        t.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn
+DisplayName           : Sample Config Name
+Description           :
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+ConnectivityTopology  : HubAndSpoke
+DeleteExistingPeering : True
+IsGlobal              : True
+Hubs                  : [
+                          {
+                            "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/hub",
+                            "ResourceType": "Microsoft.Network/virtualNetworks"
+                          }
+                        ]
+AppliesToGroups       : [
+                          {
+                            "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng",
+                            "UseHubGateway": "True",
+                            "IsGlobal": "True",
+                            "GroupConnectivity": "None"
+                          }
+                        ]
+DeleteExistingPeering : True
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-17T21:13:05",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-17T21:13:08"
+                        }
 ```
 
 {{ Add example description here }}

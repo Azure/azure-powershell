@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfacetapconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkmanagerdeploymentstatuslist
 schema: 2.0.0
 ---
 
@@ -29,9 +29,23 @@ The **Get-AzNetworkManagerDeploymentStatusList** cmdlet lists Deployment Status 
 PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
 PS C:\> $regions.Add("centraluseuap")
 PS C:\> [System.Collections.Generic.List[String]]$DeploymentTypes = @()  
-PS C:\> $DeploymentTypes.Add("Connectivity")
-PS C:\> Get-AzNetworkManagerDeploymentStatusList -NetworkManagerName "TestNMName"
- -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken" -DeploymentType $DeploymentTypes
+PS C:\> $DeploymentTypes.Add("SecurityAdmin")
+PS C:\> Get-AzNetworkManagerDeploymentStatusList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken" -DeploymentType $DeploymentTypes
+ 
+Value     : [
+              {
+                "CommitTime": "2021-10-18T04:06:08Z",
+                "Region": "centraluseuap",
+                "DeploymentStatus": "Deployed",
+                "ConfigurationIds": [
+                  "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/testAdminConfig"
+                ],
+                "DeploymentType": "SecurityAdmin",
+                "ErrorMessage": ""
+              }
+            ]
+SkipToken :
+
 ```
 
 
@@ -105,7 +119,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

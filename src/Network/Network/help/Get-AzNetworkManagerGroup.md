@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfacetapconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkmanagergroup
 schema: 2.0.0
 ---
 
@@ -16,6 +16,7 @@ Gets a network group in a network manager.
 ```
 Get-AzNetworkManagerGroup [-Name <String>] -NetworkManagerName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+
 ```
 
 ### Expand
@@ -33,12 +34,60 @@ The **Get-AzNetworkManagerGroup** cmdlet gets a network group in a network manag
 ```powershell
 Expand
 PS C:\> Get-AzNetworkManagerGroup  -Name "TestGroup" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+
+Name                  : TestGroup
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
+                        t.Network/networkManagers/TestNMName/networkGroups/TestGroup
+DisplayName           : 
+Description           : 
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+ConditionalMembership :
+MemberType            :
+GroupMembers          : [
+                          {
+                            "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG
+                        /providers/Microsoft.Network/virtualNetworks/testvnet"
+                          }
+                        ]
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-17T21:13:02",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-17T21:13:02"
+                        }
 ```
 
 ### Example 2
 ```powershell
 NoExpand
 PS C:\> Get-AzNetworkManagerGroup -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+
+Name                  : TestGroup
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
+                        t.Network/networkManagers/TestNMName/networkGroups/TestGroup
+DisplayName           : 
+Description           : 
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+ConditionalMembership :
+MemberType            :
+GroupMembers          : [
+                          {
+                            "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG
+                        /providers/Microsoft.Network/virtualNetworks/testvnet"
+                          }
+                        ]
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-17T21:13:02",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-17T21:13:02"
+                        }
 ```
 
 ## PARAMETERS

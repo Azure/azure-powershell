@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSNetworkManagerConnectivityConfiguration : PSNetworkManagerChildResource
+    public class PSNetworkManagerConnectivityConfiguration : PSNetworkManagerBaseResource
     {
 
         [Ps1Xml(Target = ViewControl.Table)]

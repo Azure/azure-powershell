@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerGroupMembersItem", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerGroupMembersItem))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerGroupMembersItem"), OutputType(typeof(PSNetworkManagerGroupMembersItem))]
     public class NewAzNetworkManagerGroupMembersItemCommand : NetworkGroupBaseCmdlet
     {
 

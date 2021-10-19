@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkManager
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The networkManager networkgroup name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/networkGroups", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
         public virtual string NetworkGroupName { get; set; }
 
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkManager
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The networkManager name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
 

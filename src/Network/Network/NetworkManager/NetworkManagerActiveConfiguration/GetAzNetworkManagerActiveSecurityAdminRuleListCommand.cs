@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
 
@@ -69,8 +70,30 @@ namespace Microsoft.Azure.Commands.Network
             }
                 
             var networkManagerActiveAdminRuleListResult = this.NetworkClient.NetworkManagementClient.ActiveSecurityAdminRules.List(this.ResourceGroupName, this.NetworkManagerName, parameter);
-            var psNetworkManagerActiveAdminRuleListResultList = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerActiveSecurityAdminRuleListResult>(networkManagerActiveAdminRuleListResult);
-            WriteObject(psNetworkManagerActiveAdminRuleListResultList);
+            var pSNetworkManagerActiveSecurityAdminRules = new List<PSNetworkManagerActiveBaseSecurityAdminRule>();
+
+            foreach (var rule in networkManagerActiveAdminRuleListResult.Value)
+            {
+                PSNetworkManagerActiveBaseSecurityAdminRule psActiveAdminRule;
+                if (rule.GetType().Name == "ActiveSecurityAdminRule")
+                {
+                    psActiveAdminRule = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerActiveSecurityAdminRule>(rule);
+                }
+                else if (rule.GetType().Name == "ActiveDefaultSecurityAdminRule")
+                {
+                    psActiveAdminRule = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerActiveDefaultSecurityAdminRule>(rule);
+                }
+                else
+                {
+                    throw new ErrorException("UnKnown Active Admin Rule Type");
+                }
+                pSNetworkManagerActiveSecurityAdminRules.Add(psActiveAdminRule);
+            }
+
+            var pSNetworkManagerActiveSecurityAdminRulesList = new PSNetworkManagerActiveSecurityAdminRuleListResult();
+            pSNetworkManagerActiveSecurityAdminRulesList.Value = pSNetworkManagerActiveSecurityAdminRules;
+            pSNetworkManagerActiveSecurityAdminRulesList.SkipToken = networkManagerActiveAdminRuleListResult.SkipToken;
+            WriteObject(pSNetworkManagerActiveSecurityAdminRulesList);
         }
     }
 }

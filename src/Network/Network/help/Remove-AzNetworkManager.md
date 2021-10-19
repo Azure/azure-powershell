@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/Remove-aznetworkinterfacetapconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkmanager
 schema: 2.0.0
 ---
 
@@ -168,5 +168,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzNetworkManager](./Get-AzNetworkManager.md)
 
 [New-AzNetworkManager](./New-AzNetworkManager.md)
-
-[Update-AzNetworkManager](./Update-AzNetworkManager.md)

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfacetapconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkmanager
 schema: 2.0.0
 ---
 
@@ -36,23 +36,22 @@ Get-AzNetworkManager -ResourceGroupName "TestResourceGroup" -Name "TestNM"
 DisplayName                     :
 Description                     :
 Location                        : eastus2euap
+Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provider
+                                  s/Microsoft.Network/networkManagers/TestNM
 Type                            : Microsoft.Network/networkManagers
 Tag                             : {}
-NetworkManagerScopes            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerScopes
-NetworkManagerScopeAccesses     : {SecurityAdmin, SecurityUser}
 ProvisioningState               : Succeeded
-SystemData                      : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
-NetworkManagerScopeAccessesText : [
+NetworkManagerScopeAccesses     : [
                                     "SecurityAdmin",
-                                    "SEcurityUser"
+                                    "SecurityUser"
                                   ]
-NetworkManagerScopesText        : {
+NetworkManagerScopes            : {
                                     "ManagementGroups": [],
                                     "Subscriptions": [
                                       "/subscriptions/00000000-0000-0000-0000-000000000000"
                                     ]
                                   }
-SystemDataText                  : {
+SystemData                      : {
                                     "CreatedBy": "user@microsoft.com",
                                     "CreatedByType": "User",
                                     "CreatedAt": "2021-10-05T04:15:42",
@@ -60,37 +59,33 @@ SystemDataText                  : {
                                     "LastModifiedByType": "User",
                                     "LastModifiedAt": "2021-10-05T04:15:42"
                                   }
-TagsTable                       :
 Name                            : TestNM
 Etag                            : W/"00000000-0000-0000-0000-000000000000"
-Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provider
-                                  s/Microsoft.Network/networkManagers/TestNM
 ```
 
 ### Example 2: List network managers
 ```powershell
-Get-AzNetworkManager -ResourceGroupName "TestResourceGroup" -Name "TestNM"
+Get-AzNetworkManager -ResourceGroupName "TestResourceGroup"
 
 DisplayName                     :
 Description                     :
 Location                        : eastus2euap
+Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provider
+                                  s/Microsoft.Network/networkManagers/TestNM
 Type                            : Microsoft.Network/networkManagers
 Tag                             : {}
-NetworkManagerScopes            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerScopes
-NetworkManagerScopeAccesses     : {SecurityAdmin, SecurityUser}
 ProvisioningState               : Succeeded
-SystemData                      : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
-NetworkManagerScopeAccessesText : [
+NetworkManagerScopeAccesses     : [
                                     "SecurityAdmin",
-                                    "SecurityUser"
+                                    "SEcurityUser"
                                   ]
-NetworkManagerScopesText        : {
+NetworkManagerScopes            : {
                                     "ManagementGroups": [],
                                     "Subscriptions": [
                                       "/subscriptions/00000000-0000-0000-0000-000000000000"
                                     ]
                                   }
-SystemDataText                  : {
+SystemData                      : {
                                     "CreatedBy": "user@microsoft.com",
                                     "CreatedByType": "User",
                                     "CreatedAt": "2021-10-05T04:15:42",
@@ -98,11 +93,8 @@ SystemDataText                  : {
                                     "LastModifiedByType": "User",
                                     "LastModifiedAt": "2021-10-05T04:15:42"
                                   }
-TagsTable                       :
 Name                            : TestNM
 Etag                            : W/"00000000-0000-0000-0000-000000000000"
-Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provider
-                                  s/Microsoft.Network/networkManagers/TestNM
 ```
 
 ## PARAMETERS
@@ -190,8 +182,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-[New-AzNetworkManager]()
+[New-AzNetworkManager](./New-AzNetworkManager.md)
 
-[Remove-AzNetworkManager]()
-
-[Update-AzNetworkManager]()
+[Remove-AzNetworkManager](./Remove-AzNetworkManager.md)

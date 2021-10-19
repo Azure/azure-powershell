@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfacetapconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkmanagersecurityadminconfiguration
 schema: 2.0.0
 ---
 
@@ -30,15 +30,51 @@ The **Get-AzNetworkManagerSecurityAdminConfiguration** cmdlet gets a security ad
 ## EXAMPLES
 
 ### Example 1
-```powershell
 Expand
+```powershell
 PS C:\> Get-AzNetworkManagerSecurityAdminConfiguration  -Name "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+
+Name               : TestSecConfig
+DisplayName        : sample Config DisplayName
+Description        : DESCription
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestSecConfig
+Type               : Microsoft.Network/networkManagers/securityAdminConfigurations
+Etag               : "00000000-0000-0000-0000-000000000000"
+ProvisioningState  : Succeeded
+DeleteExistingNSGs :
+SecurityType       :
+SystemData         : {
+                       "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                       "CreatedByType": "Application",
+                       "CreatedAt": "2021-10-18T04:05:57",
+                       "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                       "LastModifiedByType": "Application",
+                       "LastModifiedAt": "2021-10-18T04:05:59"
+                     }
 ```
 
 ### Example 2
-```powershell
 NoExpand
+```powershell
 PS C:\> Get-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+
+Name               : TestSecConfig
+DisplayName        : sample Config DisplayName
+Description        : DESCription
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestSecConfig
+Type               : Microsoft.Network/networkManagers/securityAdminConfigurations
+Etag               : "00000000-0000-0000-0000-000000000000"
+ProvisioningState  : Succeeded
+DeleteExistingNSGs :
+SecurityType       :
+SystemData         : {
+                       "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                       "CreatedByType": "Application",
+                       "CreatedAt": "2021-10-18T04:05:57",
+                       "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                       "LastModifiedByType": "Application",
+                       "LastModifiedAt": "2021-10-18T04:05:59"
+                     }
 ```
 
 ## PARAMETERS

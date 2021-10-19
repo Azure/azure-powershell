@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfacetapconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkmanagergroup
+
 schema: 2.0.0
 ---
 
@@ -25,6 +26,7 @@ The **Set-AzNetworkManagerGroup** cmdlet updates a network manager group.
 
 ### Example 1
 ```powershell
+PS C:\> $networkGroup = Get-AzNetworkManagerGroup  -Name "TestGroup" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
 PS C:\> Set-AzNetworkManagerGroup -NetworkManagerName TestNMName -ResourceGroupName TestRGName
  -NetworkGroup $networkGroup
 ```

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSNetworkManagerGroup : PSNetworkManagerChildResource
+    public class PSNetworkManagerGroup : PSNetworkManagerBaseResource
     {
         public List<PSNetworkManagerGroupMembersItem> GroupMembers { get; set; }
 

@@ -1518,7 +1518,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.EffectiveConnectivityConfiguration, ANM.PSNetworkManagerEffectiveConnectivityConfiguration>();
                 cfg.CreateMap<MNM.NetworkManagerEffectiveConnectivityConfigurationListResult, ANM.PSNetworkManagerEffectiveConnectivityConfigurationListResult>();
                 cfg.CreateMap<MNM.EffectiveDefaultSecurityAdminRule, ANM.PSNetworkManagerEffectiveDefaultSecurityAdminRule>();
-                cfg.CreateMap<MNM.EffectiveSecurityAdminRule, ANM.PSNetworkManagerSecurityAdminRule>();
+                cfg.CreateMap<MNM.EffectiveSecurityAdminRule, ANM.PSNetworkManagerEffectiveSecurityAdminRule>();
                 cfg.CreateMap<MNM.NetworkManagerEffectiveSecurityAdminRulesListResult, ANM.PSNetworkManagerEffectiveSecurityAdminRuleListResult>();
                 cfg.CreateMap<MNM.EffectiveVirtualNetwork, ANM.PSNetworkManagerEffectiveVirtualNetwork>();
                 cfg.CreateMap<MNM.EffectiveVirtualNetworksListResult, ANM.PSNetworkManagerEffectiveVirtualNetworksListResult>();

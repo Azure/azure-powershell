@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections/rules", "ResourceGroupName", "NetworkManagerName", "SecurityAdminConfigurationName", "RuleCollectionName")]
         [SupportsWildcards]
         public string Name { get; set; }
 
@@ -44,7 +43,6 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager security admin rule collection name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "SecurityAdminConfigurationName")]
         [SupportsWildcards]
         public virtual string RuleCollectionName { get; set; }
 
@@ -54,7 +52,6 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager security admin configuration name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityAdminConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
         public virtual string SecurityAdminConfigurationName { get; set; }
 
@@ -89,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Description { get; set; }
 
         [Parameter(
-             Mandatory = false,
+             Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Default Flag Type.",
              ParameterSetName = "Default")]

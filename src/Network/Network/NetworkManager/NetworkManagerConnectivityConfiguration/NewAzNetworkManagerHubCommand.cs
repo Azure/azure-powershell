@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerHub", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerHub))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerHub"), OutputType(typeof(PSNetworkManagerHub))]
     public class NewAzNetworkManagerHubCommand : NetworkManagerConnectivityConfigurationBaseCmdlet
     {
 

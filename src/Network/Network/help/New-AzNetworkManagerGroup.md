@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterfaceipconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanagergroup
 schema: 2.0.0
 ---
 
@@ -27,10 +27,11 @@ The **New-AzNetworkManagerGroup** cmdlet creates a network manager group.
 
 ### Example 1
 ```powershell
-PS C:\> $groupmem = New-AzNetworkManagerGroupMembersItem -ResourceId "TestVnetId"
+PS C:\> $resourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/virtualNetworks/TestVnet"
+PS C:\> $groupmem = New-AzNetworkManagerGroupMembersItem -ResourceId $resourceId
 PS C:\> [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroupMembersItem]]$groupMembers  = @()
 PS C:\> $groupMembers.Add($groupmem)
-PS C:\> New-AzNetworkManagerGroup -ResourceGroupName $TestRGName -NetworkManagerName $TestNetworkManagerName -Name $TestNetworkGroupName -GroupMember $groupMembers -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "TestDISplayName" -Description "TestDescription"
+PS C:\> New-AzNetworkManagerGroup -ResourceGroupName TestRGName -NetworkManagerName TestNetworkManagerName -Name TestNetworkGroupName -GroupMember $groupMembers -MemberType "Microsoft.Network/VirtualNetwork" -DisplayName "TestDISplayName" -Description "TestDescription"
 
 ```
 

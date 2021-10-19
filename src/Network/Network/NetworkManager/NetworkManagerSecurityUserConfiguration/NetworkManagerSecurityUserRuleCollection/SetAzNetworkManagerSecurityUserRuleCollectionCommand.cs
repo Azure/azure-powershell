@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager security user configuration name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
         public virtual string SecurityUserConfigurationName { get; set; }
 
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
 
@@ -70,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (!this.IsNetworkManagerSecurityUserRuleCollectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.NetworkManagerSecurityUserRuleCollection.Name))
                 {
-                    throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.NetworkManagerSecurityUserRuleCollection.Name));
                 }
 
                 // Map to the sdk object

@@ -24,8 +24,62 @@ The **Get-AzNetworkManagerEffectiveSecurityAdminRuleList** cmdlet lists NetworkM
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName "TestVnet"
- -ResourceGroupName "TestRG" -skipToken "FakeSkipToken"
+PS C:\> Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -skipToken "FakeSkipToken"
+
+Value     : [
+              {
+                "DisplayName": "Sample Rule Name",
+                "Description": "Description",
+                "Protocol": "Tcp",
+                "Sources": [
+                  {
+                    "AddressPrefix": "Internet",
+                    "AddressPrefixType": "ServiceTag"
+                  }
+                ],
+                "Destinations": [
+                  {
+                    "AddressPrefix": "10.0.0.1",
+                    "AddressPrefixType": "IPPrefix"
+                  }
+                ],
+                "SourcePortRanges": [
+                  "100"
+                ],
+                "DestinationPortRanges": [
+                  "99"
+                ],
+                "Access": "Allow",
+                "Priority": 100,
+                "Direction": "Inbound",
+                "ProvisioningState": "Succeeded",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestAdminConfig/ruleCollections/TestRuleCollection/rules/TestRule",
+                "ConfigurationDisplayName": "sample Config DisplayName",
+                "ConfigurationDescription": "DESCription",
+                "RuleCollectionDisplayName": "Sample rule Collection displayName",
+                "RuleCollectionDescription": "Sample rule Collection Description",
+                "RuleCollectionAppliesToGroups": [
+                  {
+                    "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG"
+                  }
+                ],
+                "RuleGroups": [
+                  {
+                    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG",
+                    "DisplayName": "DISplayName",
+                    "Description": "SampleConfigDESCRIption",
+                    "GroupMembers": [
+                      {
+                        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVnet"
+                      }
+                    ],
+                    "ConditionalMembership": "",
+                    "ProvisioningState": "Succeeded"
+                  }
+                ]
+              }
+            ]
+SkipToken :
 ```
 
 {{ Add example description here }}
@@ -106,3 +160,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerEffectiveConnectivityConfigurationList](./Get-AzNetworkManagerEffectiveConnectivityConfigurationList.md)
