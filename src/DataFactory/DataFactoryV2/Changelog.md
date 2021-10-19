@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support CRUD in PrivateEndpointConnection Commands
 * Added PublicNetworkAccess to Update_AzDataFactoryV2 Command
 * Updated ADF .Net SDK version to 4.26.0
 

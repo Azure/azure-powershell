@@ -136,7 +136,11 @@ CmdletsToExport = 'Set-AzDataFactoryV2', 'Update-AzDataFactoryV2',
                'Remove-AzDataFactoryV2TriggerSubscription', 
                'Get-AzDataFactoryV2TriggerSubscriptionStatus', 
                'Stop-AzDataFactoryV2TriggerRun', 
-               'Invoke-AzDataFactoryV2TriggerRun'
+               'Invoke-AzDataFactoryV2TriggerRun',
+               'Get-AzDataFactoryV2PrivateEndpointConnection',
+               'Get-AzDataFactoryV2PrivateLinkResource',
+               'Set-AzDataFactoryV2PrivateEndpointConnection',
+               'Remove-AzDataFactoryV2PrivateEndpointConnection'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
                 return ResourceManager.GetString("LinkedServiceConfirmationMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Creating linked service &apos;{0}&apos; in data factory &apos;{1}&apos;..
         /// </summary>
@@ -826,7 +826,64 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
                 return ResourceManager.GetString("PipelineRemoving", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove PrivateEndpointConnection &apos;{0}&apos; in data factory &apos;{1}&apos;?.
+        /// </summary>
+        internal static string PrivateEndpointConnectionConfirmationMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("PrivateEndpointConnectionConfirmationMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to PrivateEndpointConnection &apos;{0}&apos; does not exist in the data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string PrivateEndpointConnectionNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("PrivateEndpointConnectionNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Removing PrivateEndpointConnection &apos;{0}&apos; in data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string PrivateEndpointConnectionRemoving
+        {
+            get
+            {
+                return ResourceManager.GetString("PrivateEndpointConnectionRemoving", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Creating PrivateEndpointConnection &apos;{0}&apos; in data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string PrivateEndpointConnectionCreating
+        {
+            get
+            {
+                return ResourceManager.GetString("PrivateEndpointConnectionCreating", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to A PrivateEndpointConnection with the name {0} in the data factory {1} already exists. 
+        ///Continuing execution will overwrite the existing one. 
+        ///Are you sure you want to continue?.
+        /// </summary>
+        internal static string PrivateEndpointConnectionExists
+        {
+            get
+            {
+                return ResourceManager.GetString("PrivateEndpointConnectionExists", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Renegerate the authentication key &apos;{0}&apos; of integration runtime {1}..
         /// </summary>
