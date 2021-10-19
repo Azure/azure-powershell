@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = true,
             HelpMessage = "VM Gallery Application Object.")]
-        public VMGalleryApplication VmGalleryApplication { get; set; }
+        public VMGalleryApplication GalleryApplication { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
                 VM.ApplicationProfile = new ApplicationProfile();
             }
 
-            VM.ApplicationProfile.GalleryApplications.Add(VmGalleryApplication);
+            VM.ApplicationProfile.GalleryApplications.Add(GalleryApplication);
 
             WriteObject(VM);
         }
