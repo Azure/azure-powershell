@@ -148,7 +148,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// <summary>
         /// Verify that a special placeholder parameter is added.
         /// </summary>
-        /// <param name="inputData"></param>
         [Theory]
         [InlineData("Get-AzStorage -")]
         public void VerifyIncompleteParameterAfterCommandName(string inputData)
