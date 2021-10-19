@@ -111,3 +111,4 @@ Write-Host "===================================================2"
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
 Write-Host "===================================================3"
 exit 0
+return $True
