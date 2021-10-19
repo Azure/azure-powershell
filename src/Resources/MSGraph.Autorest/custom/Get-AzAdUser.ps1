@@ -187,7 +187,7 @@ function Get-AzAdUser {
         if ($PSBoundParameters['ExtendedProperty'] -and $PSBoundParameters['Select']) {
             Write-Error "Parameter ExtendedProperty does not work with parameter Select"
         } elseif ($PSBoundParameters['ExtendedProperty']) {
-            $PSBoundParameters['Select'] = @('DisplayName', 'Id', 'DeletedDateTime', 'AdditionalProperties', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail', 'onPremisesImmutableId')
+            $PSBoundParameters['Select'] = @('DisplayName', 'Id', 'DeletedDateTime', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail', 'onPremisesImmutableId')
             $PSBoundParameters['Select'] += $PSBoundParameters['ExtendedProperty']
             $null = $PSBoundParameters['ExtendedProperty']
         }

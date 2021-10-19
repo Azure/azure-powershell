@@ -179,7 +179,7 @@ process {
     if ($PSBoundParameters['ExtendedProperty'] -and $PSBoundParameters['Select']) {
         Write-Error "Parameter ExtendedProperty does not work with parameter Select"
     } elseif ($PSBoundParameters['ExtendedProperty']) {
-        $PSBoundParameters['Select'] = @('DisplayName', 'Id', 'DeletedDateTime', 'AdditionalProperties', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience')
+        $PSBoundParameters['Select'] = @('DisplayName', 'Id', 'DeletedDateTime', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience')
         $PSBoundParameters['Select'] += $PSBoundParameters['ExtendedProperty']
         $null = $PSBoundParameters['ExtendedProperty']
     }
