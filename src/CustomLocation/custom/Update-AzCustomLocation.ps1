@@ -85,19 +85,19 @@ function Update-AzCustomLocation {
         # The kubeconfig value.
         ${AuthenticationValue},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String[]]
         # Contains the reference to the add-on that contains charts to deploy CRDs and operators.
         ${ClusterExtensionId},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # Display name for the Custom Locations location.
         ${DisplayName},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # Connected Cluster or AKS Cluster.
@@ -111,7 +111,7 @@ function Update-AzCustomLocation {
         # The identity type.
         ${IdentityType},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # Kubernetes namespace that will be created on the specified cluster.
