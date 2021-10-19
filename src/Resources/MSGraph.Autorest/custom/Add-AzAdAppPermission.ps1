@@ -1,5 +1,4 @@
 # ----------------------------------------------------------------------------------
-#
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,19 +11,34 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Get-AzAdAppPermission {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphApplicationApiPermission])]
+function Add-AzAdAppPermission {
+    [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
     param(
-        [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory, HelpMessage = "The unique identifier in Azure AD.")]
         [System.Guid]
         # key: id of group
         ${ObjectId},
 
-        [Parameter(ParameterSetName='AppIdParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='AppIdParameterSet', Mandatory, HelpMessage = "The unique identifier for the application that is assigned by Azure AD.")]
         [System.Guid]
-        # key: id of group
+        # The unique identifier for the application that is assigned by Azure AD.
         ${ApplicationId},
+
+        [Parameter(Mandatory, HelpMessage = "The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.")]
+        [ValidateNotNull()]
+        [System.Guid]
+        ${ApiId},
+
+        [Parameter(Mandatory, HelpMessage = "The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.")]
+        [ValidateNotNull()]
+        [System.String]
+        ${PermissionId},
+
+        [Parameter(HelpMessage = "Specifies whether the id property references an oauth2PermissionScopes or an appRole.")]
+        [ValidateNotNull()]
+        [System.String]
+        ${Type},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -88,17 +102,36 @@ function Get-AzAdAppPermission {
                 break
             }
         }
-        [System.Array]$list = @()
+
+        $newRequiredResourceAccess = @()
+        $foundRequiredResourceAccessItem = $null
+        $newRequiredResourceAccessItem = $null
         foreach ($item in $app.RequiredResourceAccess) {
-            $ApiId = $item.ResourceAppId
-            foreach ($access in $item.ResourceAccess) {
-                $obj = new-object Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphApplicationApiPermission
-                $obj.ApiId = $item.ResourceAppId
-                $obj.Id = $access.Id
-                $obj.Type = $access.Type
-                $list += $obj
+            if($item.resourceAppId -eq $ApiId) {
+                $foundRequiredResourceAccessItem = $item
+            } else {
+                $newRequiredResourceAccess += $item
             }
         }
-        return $list
+
+        $newRequiredResourceAccessItem = New-Object Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphRequiredResourceAccess
+        $newRequiredResourceAccessItem.resourceAppId = $ApiId
+        $newRequiredResourceAccessItem.resourceAccess = @()
+
+        foreach ($item in $foundRequiredResourceAccessItem.ResourceAccess) {
+            if($item.Id -eq $PermissionId) {
+                Write-Error "API permission with id '$($PSBoundParameters['PermissionId'])' already exists."
+                return
+            }
+            $newRequiredResourceAccessItem.resourceAccess += $item
+        }
+
+        $newResourceAccess = New-Object Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphResourceAccess
+        $newResourceAccess.Id = $PermissionId
+        $newResourceAccess.Type = $Type
+        
+        $newRequiredResourceAccessItem.resourceAccess += $newResourceAccess
+        $newRequiredResourceAccess += $newRequiredResourceAccessItem
+        $null = Update-AzAdApplication -InputObject $app -RequiredResourceAccess $newRequiredResourceAccess
     }
 }

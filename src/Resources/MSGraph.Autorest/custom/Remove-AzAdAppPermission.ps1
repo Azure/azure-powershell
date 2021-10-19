@@ -1,5 +1,4 @@
 # ----------------------------------------------------------------------------------
-#
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,19 +11,24 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Get-AzAdAppPermission {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphApplicationApiPermission])]
+function Remove-AzAdAppPermission {
+    [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
     param(
-        [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory, HelpMessage = "The unique identifier in Azure AD.")]
         [System.Guid]
         # key: id of group
         ${ObjectId},
 
-        [Parameter(ParameterSetName='AppIdParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='AppIdParameterSet', Mandatory, HelpMessage = "The unique identifier for the application that is assigned by Azure AD.")]
         [System.Guid]
-        # key: id of group
+        # The unique identifier for the application that is assigned by Azure AD.
         ${ApplicationId},
+
+        [Parameter(Mandatory, HelpMessage = "The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.")]
+        [ValidateNotNull()]
+        [System.Guid]
+        ${PermissionId},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -88,17 +92,28 @@ function Get-AzAdAppPermission {
                 break
             }
         }
-        [System.Array]$list = @()
+        $newRequiredResourceAccess = @()
+        $hasFound = $false
         foreach ($item in $app.RequiredResourceAccess) {
-            $ApiId = $item.ResourceAppId
+            $newResourceAccess = @()
             foreach ($access in $item.ResourceAccess) {
-                $obj = new-object Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphApplicationApiPermission
-                $obj.ApiId = $item.ResourceAppId
-                $obj.Id = $access.Id
-                $obj.Type = $access.Type
-                $list += $obj
+                if($PermissionId -ne $access.Id) {
+                    $newResourceAccess += $access
+                } else {
+                    $hasFound = $true
+                }
+            }
+
+            if($newResourceAccess.Count -gt 0) {
+                $item.resourceAccess = $newResourceAccess
+                $newRequiredResourceAccess += $item
             }
         }
-        return $list
+
+        if(!$hasFound) {
+            Write-Error "API permission with id '$($PSBoundParameters['PermissionId'])' does not exist."
+        }
+        
+        $null = Update-AzAdApplication -InputObject $app -RequiredResourceAccess $newRequiredResourceAccess
     }
 }
