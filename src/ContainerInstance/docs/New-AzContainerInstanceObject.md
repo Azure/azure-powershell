@@ -16,12 +16,12 @@ Create a in-memory object for Container
 New-AzContainerInstanceObject -Image <String> -Name <String> [-Command <String[]>]
  [-EnvironmentVariable <IEnvironmentVariable[]>] [-LimitCpu <Double>] [-LimitMemoryInGb <Double>]
  [-LimitsGpuCount <Int32>] [-LimitsGpuSku <String>] [-LivenessProbeExecCommand <String[]>]
- [-LivenessProbeFailureThreshold <Int32>] [-LivenessProbeHttpGetHttpHeaders <IHttpHeader[]>]
+ [-LivenessProbeFailureThreshold <Int32>] [-LivenessProbeHttpGetHttpHeader <IHttpHeader[]>]
  [-LivenessProbeHttpGetPath <String>] [-LivenessProbeHttpGetPort <Int32>]
  [-LivenessProbeHttpGetScheme <String>] [-LivenessProbeInitialDelaySecond <Int32>]
  [-LivenessProbePeriodSecond <Int32>] [-LivenessProbeSuccessThreshold <Int32>]
  [-LivenessProbeTimeoutSecond <Int32>] [-Port <IContainerPort[]>] [-ReadinessProbeExecCommand <String[]>]
- [-ReadinessProbeFailureThreshold <Int32>] [-ReadinessProbeHttpGetHttpHeaders <IHttpHeader[]>]
+ [-ReadinessProbeFailureThreshold <Int32>] [-ReadinessProbeHttpGetHttpHeader <IHttpHeader[]>]
  [-ReadinessProbeHttpGetPath <String>] [-ReadinessProbeHttpGetPort <Int32>]
  [-ReadinessProbeHttpGetScheme <String>] [-ReadinessProbeInitialDelaySecond <Int32>]
  [-ReadinessProbePeriodSecond <Int32>] [-ReadinessProbeSuccessThreshold <Int32>]
@@ -192,9 +192,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LivenessProbeHttpGetHttpHeaders
+### -LivenessProbeHttpGetHttpHeader
 The HTTP headers for liveness probe.
-To construct, see NOTES section for LIVENESSPROBEHTTPGETHTTPHEADERS properties and create a hash table.
+To construct, see NOTES section for LIVENESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]
@@ -374,9 +374,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReadinessProbeHttpGetHttpHeaders
+### -ReadinessProbeHttpGetHttpHeader
 The HTTP headers for readiness probe.
-To construct, see NOTES section for READINESSPROBEHTTPGETHTTPHEADERS properties and create a hash table.
+To construct, see NOTES section for READINESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IHttpHeader[]
@@ -594,7 +594,7 @@ ENVIRONMENTVARIABLE <IEnvironmentVariable[]>: The environment variables to set i
   - `[SecureValue <String>]`: The value of the secure environment variable.
   - `[Value <String>]`: The value of the environment variable.
 
-LIVENESSPROBEHTTPGETHTTPHEADERS <IHttpHeader[]>: The HTTP headers for liveness probe.
+LIVENESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>: The HTTP headers for liveness probe.
   - `[Name <String>]`: The header name.
   - `[Value <String>]`: The header value.
 
@@ -602,7 +602,7 @@ PORT <IContainerPort[]>: The exposed ports on the container instance.
   - `Port <Int32>`: The port number exposed within the container group.
   - `[Protocol <ContainerNetworkProtocol?>]`: The protocol associated with the port.
 
-READINESSPROBEHTTPGETHTTPHEADERS <IHttpHeader[]>: The HTTP headers for readiness probe.
+READINESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>: The HTTP headers for readiness probe.
   - `[Name <String>]`: The header name.
   - `[Value <String>]`: The header value.
 
