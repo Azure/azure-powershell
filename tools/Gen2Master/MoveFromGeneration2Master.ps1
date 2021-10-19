@@ -205,6 +205,8 @@ Function Move-Generation2Master {
         }
         Copy-Template -SourceName AssemblyInfo.cs -DestPath $PropertiesPath -DestName AssemblyInfo.cs
         Update-MappingJson -ModuleName $ModuleName
+
+        exit 0
     }
 }
 
