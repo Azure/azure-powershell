@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-## Version 0.9.1
+## Version 1.0.0
 * Adding Support for AzureUSGovernment cloud
     - EnvironmentName parameter in Register-AzStackHCI, Unregister-AzStackHCI and Test-AzStackHCIConnection now supports a new value "AzureUSGovernment"
 ## Version 0.9.0
