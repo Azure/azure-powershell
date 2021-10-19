@@ -14,7 +14,7 @@
 
 function Remove-AzLabServicesUser_Lab {
 [OutputType([System.Boolean])]
-[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]

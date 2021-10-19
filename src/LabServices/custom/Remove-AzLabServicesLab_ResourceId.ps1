@@ -14,7 +14,7 @@
 
 function Remove-AzLabServicesLab_ResourceId {
     [OutputType([System.Boolean])]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [System.String]
