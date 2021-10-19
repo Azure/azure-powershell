@@ -151,8 +151,8 @@ $AuthorityAzureGermanCloud = "https://login.microsoftonline.de"
 $BillingServiceApiScopeAzureGermanCloud = "https://azurestackhci-usage.azurewebsites.de/.default"
 $GraphServiceApiScopeAzureGermanCloud = "https://graph.cloudapi.de/.default"
 
-$RPAPIVersion = "2020-10-01"
-$HCIArcAPIVersion = "2021-01-01-preview"
+$RPAPIVersion = "2021-09-01";
+$HCIArcAPIVersion = "2021-09-01"
 $HCIArcInstanceName = "/arcSettings/default"
 $HCIArcExtensions = "/Extensions"
 
