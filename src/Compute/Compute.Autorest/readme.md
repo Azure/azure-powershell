@@ -67,13 +67,7 @@ directive:
     where: 
       subject: Gallery$|GallerySharingProfile|GalleryImage$|GalleryImageVersion$
     remove: true
-  - where:
-      verb: New
-      subject: GalleryApplication$
-      parameter-name: EndOfLifeDate
-    hide: true
-    #  parameter-name: justaTest    
-#hide: true
+  # changing parameter names for GalleryApplication, GalleryApplicationVersion
   - where:
       verb: New
       subject: GalleryApplicationVersion
@@ -95,6 +89,12 @@ directive:
   - where:
       verb: New|Update
       subject: GalleryApplicationVersion
+      parameter-name: SourceMediaLink
+    set:
+      parameter-name: PackageFileLink
+  - where:
+      verb: New|Update
+      subject: GalleryApplicationVersion
       parameter-name: PublishingProfileReplicaCount
     set:
       parameter-name: ReplicaCount
@@ -109,5 +109,11 @@ directive:
       subject: GalleryApplicationVersion
       parameter-name: SourceDefaultConfigurationLink
     set:
-      parameter-name: DefaultConfigLink
+      parameter-name: DefaultConfigFileLink
+  ### END # changing parameter names for GalleryApplication, GalleryApplicationVersion
+  - where:
+      verb: New
+      subject: GalleryApplication$
+      parameter-name: EndOfLifeDate
+    hide: true
 ```
