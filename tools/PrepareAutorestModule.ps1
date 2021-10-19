@@ -23,41 +23,36 @@ $ALL_MODULE = "ALL_MODULE"
 
 $SKIP_MODULES = @()
 
-try {
-    #Region Detect which module should be processed
-    $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
-    foreach ($file in $ChangedFiles)
+#Region Detect which module should be processed
+$ModuleSet = New-Object System.Collections.Generic.HashSet[string]
+foreach ($file in $ChangedFiles)
+{
+    $ParentFolder = Split-Path -Path $file -Parent
+    if ($ParentFolder.StartsWith("src"))
     {
-        $ParentFolder = Split-Path -Path $file -Parent
-        if ($ParentFolder.StartsWith("src"))
+        if ($ParentFolder -eq "src")
         {
-            if ($ParentFolder -eq "src")
-            {
-                $NUll = $ModuleSet.Add($ALL_MODULE)
-            }
-            else
-            {
-                $NUll = $ModuleSet.Add($ParentFolder.Replace("/", "\").Split('\')[1])
-            }
+            $NUll = $ModuleSet.Add($ALL_MODULE)
         }
-        # else
-        # {
-        #     $NUll = $ModuleSet.Add($ALL_MODULE)
-        # }
-    }
-    if ($ModuleSet.Contains($ALL_MODULE))
-    {
-        $ModuleList = (Get-ChildItem "$PSScriptRoot\..\src\" -Directory -Exclude helpers,lib).Name | Where-Object { $SKIP_MODULES -notcontains $_ }
+        else
+        {
+            $NUll = $ModuleSet.Add($ParentFolder.Replace("/", "\").Split('\')[1])
+        }
     }
     else
     {
-        $ModuleList = $ModuleSet | Where-Object { $SKIP_MODULES -notcontains $_ }
+        # $NUll = $ModuleSet.Add($ALL_MODULE)
     }
-    #EndRegion
 }
-catch {
-    
+if ($ModuleSet.Contains($ALL_MODULE))
+{
+    $ModuleList = (Get-ChildItem "$PSScriptRoot\..\src\" -Directory -Exclude helpers,lib).Name | Where-Object { $SKIP_MODULES -notcontains $_ }
 }
+else
+{
+    $ModuleList = $ModuleSet | Where-Object { $SKIP_MODULES -notcontains $_ }
+}
+#EndRegion
 
 Import-Module "$PSScriptRoot\..\tools\Gen2Master\MoveFromGeneration2Master.ps1" -Force
 $TmpFolder = "$PSScriptRoot\..\tmp"
@@ -80,32 +75,32 @@ Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
 #EndRegion
 
 #Region generate the code and make the struture same with main branch.
-# foreach ($Module in $ModuleList)
-# {
-#     $ModuleFolder = "$PSScriptRoot\..\src\$Module\"
-#     $ModuleFolder = (Get-ChildItem -path $ModuleFolder -filter Az.$Module.psd1 -Recurse).Directory
-#     if ($Null -eq $ModuleFolder)
-#     {
-#         # Module is not found maybe it's deleted in this PR
-#         Write-Warning "Cannot find Az.$Module.psd1 in $ModuleFolder."
-#         continue
-#     }
-#     Set-Location -Path $ModuleFolder
-#     try
-#     {
-#         npx autorest --max-memory-size=8192
-#     }
-#     catch
-#     {
-#         Write-Host "Generating $currentModule with m3"
-#         npx autorest --use:@autorest/powershell@2.1.401 --max-memory-size=8192
-#     }
-#     ./build-module.ps1
-#     # Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
-#     Write-Host "===================================================0"
-#     Remove-Item "$ModuleFolder\*" -Recurse -Force
-#     Write-Host "===================================================1"
-# }
+foreach ($Module in $ModuleList)
+{
+    $ModuleFolder = "$PSScriptRoot\..\src\$Module\"
+    $ModuleFolder = (Get-ChildItem -path $ModuleFolder -filter Az.$Module.psd1 -Recurse).Directory
+    if ($Null -eq $ModuleFolder)
+    {
+        # Module is not found maybe it's deleted in this PR
+        Write-Warning "Cannot find Az.$Module.psd1 in $ModuleFolder."
+        continue
+    }
+    Set-Location -Path $ModuleFolder
+    try
+    {
+        npx autorest --max-memory-size=8192
+    }
+    catch
+    {
+        Write-Host "Generating $currentModule with m3"
+        npx autorest --use:@autorest/powershell@2.1.401 --max-memory-size=8192
+    }
+    # ./build-module.ps1
+    # Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
+    Write-Host "===================================================0"
+    # Remove-Item "$ModuleFolder\*" -Recurse -Force
+    Write-Host "===================================================1"
+}
 Write-Host "===================================================2"
 #EndRegion
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
