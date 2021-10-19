@@ -942,7 +942,7 @@ param(
     [string] $Region,
     [ref] $SupportedRegions
     )
-    $resources = Get-AzResourceProvider -ProviderNamespace Microsoft.AzureStackHCI
+    $resources = Retry-Command -ScriptBlock { Get-AzResourceProvider -ProviderNamespace Microsoft.AzureStackHCI } -RetryIfNullOutput $true
     $locations = $resources.Where{($_.ResourceTypes.ResourceTypeName -eq 'clusters' -and $_.RegistrationState -eq 'Registered')}.Locations
 
     $locations | foreach {
@@ -1373,7 +1373,8 @@ param(
         $clusterNodeSessions = New-PSSession -ComputerName $clusterNodeNames -Credential $Credential
     }
 
-    if((Get-AzureStackHCIArcIntegration).ClusterArcStatus -eq [ArcStatus]::Disabled)
+    $nodeArcStatus = Invoke-Command -Session $Session -ScriptBlock { $(Get-AzureStackHCIArcIntegration)}
+    if($nodeArcStatus.ClusterArcStatus -eq [ArcStatus]::Disabled)
     {
         return $res
     }
@@ -1424,7 +1425,8 @@ param(
     [string] $Region,
     [string] $AppName,
     [string] $ClusterDNSSuffix,
-    [Switch] $IsWAC
+    [Switch] $IsWAC,
+    [string] $Environment
     )
 
     if($IsManagementNode)
@@ -1486,7 +1488,6 @@ param(
         $nodeUBR = Invoke-Command -Session $session -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").UBR }
         $nodeBuildNumber = Invoke-Command -Session $session -ScriptBlock { (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber }
         if (($nodeBuildNumber -eq $V2OSBuildNumber) -and ($nodeUBR -le $V2OSUBR)) {
-
             Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration without region switch")
             $ArcRegistrationParams = @{
                 AppId = $AppId
@@ -1505,6 +1506,7 @@ param(
                 SubscriptionId = $SubscriptionId
                 Region = $Region
                 ResourceGroup = $ResourceGroup
+                cloud  = $Environment 
             }
         }
         # Save Arc context.
@@ -2016,7 +2018,6 @@ param(
         $clusterDNSSuffix = Get-ClusterDNSSuffix -Session $clusterNodeSession
         $clusterDNSName = Get-ClusterDNSName -Session $clusterNodeSession
 
-        $Credential  -ClusterDNSSuffix $clusterDNSSuffix
         if([string]::IsNullOrEmpty($ResourceName))
         {
             if($getCluster -eq $Null)
@@ -2423,7 +2424,7 @@ param(
                 $arcAppName = $ResourceName + ".arc"
 
                 Write-Verbose "Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $arcResourceGroupName"
-                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -AppName $arcAppName -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC
+                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -AppName $arcAppName -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName
 
                 if($arcResult -ne [ErrorDetail]::Success)
                 {
