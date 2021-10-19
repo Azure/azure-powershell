@@ -95,6 +95,11 @@ function Get-AzAdUser {
         [System.UInt64]
         # Ignores the first 'n' objects and then gets the remaining objects.
         ${Skip},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+        [System.String[]]
+        ${ExtendedProperty},
     
         [Parameter(ParameterSetName='List')]
         [Parameter(ParameterSetName='StartsWithParameterSet')]
@@ -177,6 +182,14 @@ function Get-AzAdUser {
             $null = $PSBoundParameters.Remove('SignedIn')
             Az.Resources.MSGraph.private\Get-AzAdUserSigned_Get
             return
+        }
+
+        if ($PSBoundParameters['ExtendedProperty'] -and $PSBoundParameters['Select']) {
+            Write-Error "Parameter ExtendedProperty does not work with parameter Select"
+        } elseif ($PSBoundParameters['ExtendedProperty']) {
+            $PSBoundParameters['Select'] = @('DisplayName', 'Id', 'DeletedDateTime', 'AdditionalProperties', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail', 'onPremisesImmutableId')
+            $PSBoundParameters['Select'] += $PSBoundParameters['ExtendedProperty']
+            $null = $PSBoundParameters['ExtendedProperty']
         }
 
         switch ($PSCmdlet.ParameterSetName) {

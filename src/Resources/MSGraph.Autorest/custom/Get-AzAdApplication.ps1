@@ -123,6 +123,11 @@ param(
     ${Skip},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.String[]]
+    ${ExtendedProperty},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
@@ -171,6 +176,14 @@ param(
 )
 
 process {
+    if ($PSBoundParameters['ExtendedProperty'] -and $PSBoundParameters['Select']) {
+        Write-Error "Parameter ExtendedProperty does not work with parameter Select"
+    } elseif ($PSBoundParameters['ExtendedProperty']) {
+        $PSBoundParameters['Select'] = @('DisplayName', 'Id', 'DeletedDateTime', 'AdditionalProperties', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience')
+        $PSBoundParameters['Select'] += $PSBoundParameters['ExtendedProperty']
+        $null = $PSBoundParameters['ExtendedProperty']
+    }
+
     switch ($PSCmdlet.ParameterSetName) {
         'ApplicationObjectIdParameterSet' {
             $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']

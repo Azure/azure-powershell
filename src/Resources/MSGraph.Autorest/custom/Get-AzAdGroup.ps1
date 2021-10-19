@@ -107,6 +107,11 @@ function Get-AzAdGroup {
         ${Skip},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+        [System.String[]]
+        ${ExtendedProperty},
+
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
@@ -149,6 +154,13 @@ function Get-AzAdGroup {
     )
 
     process {
+        if ($PSBoundParameters['ExtendedProperty'] -and $PSBoundParameters['Select']) {
+            Write-Error "Parameter ExtendedProperty does not work with parameter Select"
+        } elseif ($PSBoundParameters['ExtendedProperty']) {
+            $PSBoundParameters['Select'] = @('DisplayName', 'Id', 'DeletedDateTime', 'AdditionalProperties', 'SecurityEnabled', 'MailEnabled', 'MailNickname', 'Description')
+            $PSBoundParameters['Select'] += $PSBoundParameters['ExtendedProperty']
+            $null = $PSBoundParameters['ExtendedProperty']
+        }
 
         if ($PSBoundParameters.ContainsKey('ObjectId')) {
             $PSBOundParameters['Id'] = $PSBoundParameters['ObjectId']
