@@ -182,7 +182,7 @@ function Update-AzAdApplication {
     # key: application id
     ${ApplicationId},
 
-    [Parameter(ParameterSetName = 'InputObjectWithUpdateParamsParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'InputObjectWithUpdateParamsParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     # key: application object
