@@ -68,6 +68,16 @@ directive:
       verb: Stop
       subject-prefix: ''
       subject: DiskPool
+  # Rename Upgrade-AzDiskPool -> Invoke-AzDiskPoolRedeployment
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/upgrade"].post.operationId
+    transform: >-
+      return "DiskPools_Redeploy"
+  - where:
+      verb: Invoke
+      subject: RedeployDiskPool
+    set:
+      subject: Redeployment
   # Rename DiskPoolName -> Name in Stop-AzDiskPool
   - where:
       verb: Stop

@@ -26,6 +26,11 @@ Lists available StoragePool resources and skus in an Azure location.
 ### [Get-AzDiskPoolZone](Get-AzDiskPoolZone.md)
 Lists available Disk Pool Skus in an Azure location.
 
+### [Invoke-AzDiskPoolRedeployment](Invoke-AzDiskPoolRedeployment.md)
+Upgrade replaces the underlying virtual machine hosts one at a time.
+This operation can take 10-15 minutes to complete.
+This is expected service behavior.
+
 ### [New-AzDiskPool](New-AzDiskPool.md)
 Create or Update Disk pool.
 This create or update operation can take 15 minutes to complete.
