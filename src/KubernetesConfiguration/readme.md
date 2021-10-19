@@ -47,11 +47,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: cb4659b009275e9024ba89efb581e91dc4ede181
+branch: fa0a95854a551be7fdb04367e2e7b6500ab2e341
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-03-01/kubernetesconfiguration.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-03-01/extensions.json
 
 title: KubernetesConfiguration
 module-version: 0.1.0
@@ -60,6 +61,18 @@ subject-prefix: ''
 identity-correction-for-post: true
 
 directive:
+  - from: swagger-document 
+    where: $.definitions.Extension.properties.properties.properties.statuses
+    transform: >-
+      return {
+          "description": "Status from this extension.",
+          "type": "array",
+          "readOnly": true,
+          "x-nullable": true,
+          "items": {
+            "$ref": "#/definitions/ExtensionStatus"
+          }
+      }
   - from: swagger-document
     where: $.definitions.EnableHelmOperatorDefinition.type
     transform: return "string"
