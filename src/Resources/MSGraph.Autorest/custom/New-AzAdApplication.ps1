@@ -691,7 +691,7 @@ function New-AzAdApplication {
     }
 
     $app = MSGraph.internal\New-AzAdApplication @PSBoundParameters
-    $param = @{'ObjectId' = $app.Id; 'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+    $param = @{'ObjectId' = $app.Id}
 
     switch ($PSCmdlet.ParameterSetName) {
       'ApplicationWithPasswordPlainParameterSet' {

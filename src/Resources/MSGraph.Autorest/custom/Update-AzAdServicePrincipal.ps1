@@ -605,7 +605,7 @@ function Update-AzAdServicePrincipal {
 
     MSGraph.internal\Update-AzAdServicePrincipal @PSBoundParameters
 
-    $param = @{'ObjectId'=$PSBoundParameters['Id']; 'Debug'= $PSBoundParameters['Debug']; 'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+    $param = @{'ObjectId'=$PSBoundParameters['Id']; 'Debug'= $PSBoundParameters['Debug']}
     if ($iu) {
       $param['IdentifierUri'] = $iu
       Update-AzAdApplication @param
