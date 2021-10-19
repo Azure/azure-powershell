@@ -102,10 +102,10 @@ try {
         Remove-Item "$ModuleFolder\*" -Recurse -Force
         Write-Host "===================================================1"
     }
-    Write-Host "===================================================2"
-    #EndRegion
-    Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
-    Write-Host "===================================================3"
+    # Write-Host "===================================================2"
+    # #EndRegion
+    # Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
+    # Write-Host "===================================================3"
 }
 catch {
     Write-Host "===================================================4"
