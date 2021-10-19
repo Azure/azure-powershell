@@ -39,8 +39,8 @@ using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.Common.MSGraph.Applications.Models;
-using Microsoft.Azure.Commands.Common.MSGraph.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 
 namespace Microsoft.Azure.Commands.Aks
 {

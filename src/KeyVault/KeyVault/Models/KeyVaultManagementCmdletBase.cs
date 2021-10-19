@@ -32,12 +32,12 @@ using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
-using Microsoft.Azure.Commands.Common.MSGraph;
-using Microsoft.Azure.Commands.Common.MSGraph.Users;
-using Microsoft.Azure.Commands.Common.MSGraph.Applications;
-using Microsoft.Azure.Commands.Common.MSGraph.Applications.Models;
-using Microsoft.Azure.Commands.Common.MSGraph.Users.Models;
-using Microsoft.Azure.Commands.Common.MSGraph.DirectoryObjects;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.DirectoryObjects;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 

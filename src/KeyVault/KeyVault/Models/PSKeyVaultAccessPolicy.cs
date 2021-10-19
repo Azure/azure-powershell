@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.Common.MSGraph;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using System;
 using System.Collections.Generic;
 using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;

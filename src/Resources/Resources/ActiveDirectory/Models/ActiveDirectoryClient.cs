@@ -14,14 +14,14 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.MSGraph;
-using Microsoft.Azure.Commands.Common.MSGraph.Applications;
-using Microsoft.Azure.Commands.Common.MSGraph.Applications.Models;
-using Microsoft.Azure.Commands.Common.MSGraph.DirectoryObjects;
-using Microsoft.Azure.Commands.Common.MSGraph.Groups;
-using Microsoft.Azure.Commands.Common.MSGraph.Groups.Models;
-using Microsoft.Azure.Commands.Common.MSGraph.Users;
-using Microsoft.Azure.Commands.Common.MSGraph.Users.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.DirectoryObjects;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             // todo: do we want to use 1000 as batch count in msgraph API?
             List<PSADObject> result = new List<PSADObject>();
-            IList<Common.MSGraph.DirectoryObjects.Models.MicrosoftGraphDirectoryObject> adObjects;
+            IList<Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject> adObjects;
             int objectIdBatchCount;
             const int batchCount = 1000;
             for (int i = 0; i < objectIds.Count; i += batchCount)
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 try
                 {
                     adObjects = GraphClient.DirectoryObjects.GetByIds(
-                        new Common.MSGraph.DirectoryObjects.Models.Body()
+                        new Common.MSGraph.Version1_0.DirectoryObjects.Models.Body()
                         {
                             Ids = objectIdBatch
                         }).Value;

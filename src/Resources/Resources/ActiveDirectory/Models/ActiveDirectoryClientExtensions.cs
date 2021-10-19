@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.MSGraph.Applications.Models;
-using Microsoft.Azure.Commands.Common.MSGraph.Groups.Models;
-using Microsoft.Azure.Commands.Common.MSGraph.Users.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     internal static class ActiveDirectoryClientExtensions
     {
-        public static PSADObject ToPSADObject(this Common.MSGraph.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
+        public static PSADObject ToPSADObject(this Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
         {
             if (obj == null) throw new ArgumentNullException();
 
@@ -54,15 +54,15 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             };
         }
 
-        public static bool IsUser(this Common.MSGraph.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
+        public static bool IsUser(this Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
         {
             return string.Equals(obj.Odatatype, "#microsoft.graph.user", StringComparison.OrdinalIgnoreCase);
         }
-        public static bool IsServicePrincipal(this Common.MSGraph.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
+        public static bool IsServicePrincipal(this Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
         {
             return string.Equals(obj.Odatatype, "#microsoft.graph.servicePrincipal", StringComparison.OrdinalIgnoreCase);
         }
-        public static bool IsGroup(this Common.MSGraph.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
+        public static bool IsGroup(this Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject obj)
         {
             return string.Equals(obj.Odatatype, "#microsoft.graph.group", StringComparison.OrdinalIgnoreCase);
         }

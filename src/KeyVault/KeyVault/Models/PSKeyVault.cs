@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.Common.MSGraph;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
