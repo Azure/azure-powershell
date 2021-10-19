@@ -250,11 +250,11 @@
       </ListControl>
     </View>
 	<View>
-		  <Name>Microsoft.Azure.Commands.DataFactoryV2.Models.PSPrivateEndpointConnection</Name>
-		  <ViewSelectedBy>
+	  <Name>Microsoft.Azure.Commands.DataFactoryV2.Models.PSPrivateEndpointConnection</Name>
+	  <ViewSelectedBy>
 			  <TypeName>Microsoft.Azure.Commands.DataFactoryV2.Models.PSPrivateEndpointConnection</TypeName>
 		  </ViewSelectedBy>
-		  <ListControl>
+	  <ListControl>
 			  <ListEntries>
 				  <ListEntry>
 					  <ListItems>
@@ -278,6 +278,6 @@
 				  </ListEntry>
 			  </ListEntries>
 		  </ListControl>
-	  </View>
+	</View>
   </ViewDefinitions>
 </Configuration>
