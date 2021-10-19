@@ -26,15 +26,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Kernelspec = new PSNotebookKernelSpec(notebookMetadata?.Kernelspec);
             this.LanguageInfo = new PSNotebookLanguageInfo(notebookMetadata?.LanguageInfo);
-            var propertiesEnum = notebookMetadata?.GetEnumerator();
-            if (propertiesEnum != null)
-            {
-                this.AdditionalProperties = new Dictionary<string, object>();
-                while (propertiesEnum.MoveNext())
-                {
-                    this.AdditionalProperties.Add(propertiesEnum.Current);
-                }
-            }
+            this.AdditionalProperties = notebookMetadata?.AdditionalProperties;
         }
 
         public PSNotebookKernelSpec Kernelspec { get; set; }

@@ -30,6 +30,10 @@ jobs:
         BranchName: ${{ variables.AzureStackBranchName }}
 
   steps:
-  - template: util/sync-tools-folder-template.yml
-    parameters:
-      BranchName: $(BranchName)
+  - task: PowerShell@2
+    displayName: Sync branch
+    inputs:
+      targetType: inline
+      script: >-
+        ./tools/BranchSync/BranchSync.ps1 -BranchName $(BranchName) -GithubToken $env:GITHUB_TOKEN
+      pwsh: true
