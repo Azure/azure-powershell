@@ -213,6 +213,23 @@ Are you sure you want to continue?</value>
   <data name="PipelineRemoving" xml:space="preserve">
     <value>Removing pipeline '{0}' in data factory '{1}'.</value>
   </data>
+  <data name="PrivateEndpointConnectionConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove privateEndpointConnection '{0}' in data factory '{1}'?</value>
+  </data>
+  <data name="PrivateEndpointConnectionNotFound" xml:space="preserve">
+    <value>PrivateEndpointConnection '{0}' does not exist in the data factory '{1}'.</value>
+  </data>
+  <data name="PrivateEndpointConnectionRemoving" xml:space="preserve">
+    <value>Removing privateEndpointConnection '{0}' in data factory '{1}'.</value>
+  </data>
+  <data name="PrivateEndpointConnectionExists" xml:space="preserve">
+    <value>A privateEndpointConnection with the name {0} in the data factory {1} exists. 
+Continuing execution may overwrite the existing one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="PrivateEndpointConnectionCreating" xml:space="preserve">
+    <value>Creating privateEndpointConnection '{0}' in data factory '{1}'.</value>
+  </data>
   <data name="ResourceGroupNameCannotBeEmpty" xml:space="preserve">
     <value>Resource group name cannot be null.</value>
   </data>

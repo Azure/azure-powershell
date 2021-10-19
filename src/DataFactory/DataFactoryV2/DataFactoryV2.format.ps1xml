@@ -249,5 +249,35 @@
         </ListEntries>
       </ListControl>
     </View>
+	<View>
+		  <Name>Microsoft.Azure.Commands.DataFactoryV2.Models.PSPrivateEndpointConnection</Name>
+		  <ViewSelectedBy>
+			  <TypeName>Microsoft.Azure.Commands.DataFactoryV2.Models.PSPrivateEndpointConnection</TypeName>
+		  </ViewSelectedBy>
+		  <ListControl>
+			  <ListEntries>
+				  <ListEntry>
+					  <ListItems>
+						  <ListItem>
+							  <Label>PrivateEndpointConnectionName</Label>
+							  <PropertyName>Name</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>ResourceGroupName</Label>
+							  <PropertyName>ResourceGroupName</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>DataFactoryName</Label>
+							  <PropertyName>DataFactoryName</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Properties</Label>
+							  <PropertyName>Properties</PropertyName>
+						  </ListItem>
+					  </ListItems>
+				  </ListEntry>
+			  </ListEntries>
+		  </ListControl>
+	  </View>
   </ViewDefinitions>
 </Configuration>

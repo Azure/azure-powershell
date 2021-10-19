@@ -226,6 +226,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpTriggerRunStartedBefore = "The time at or before which the trigger run started to execute in ISO8601 format.";
 
+        public const string HelpPrivateEndpointConnection = "The privateEndpointConnection object.";
+
         public const string File = "File";
 
         public const string DatasetName = "DatasetName";
@@ -243,6 +245,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string IntegrationRuntimeName = "IntegrationRuntimeName";
 
         public const string SubnetName = "SubnetName";
+
+        public const string PrivateEndpointConnectionName = "PrivateEndpointConnectionName";
 
         public const string IntegrationRuntimeTypeManaged = "Managed";
 
