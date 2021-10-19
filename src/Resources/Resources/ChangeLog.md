@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Added property `UIFormDefinition` to Template Spec Versions,  `Export-AzTemplateSpec` will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.
+* Added error catching for role assignment creation fail while creating a Service Principal
 
 ## Version 4.4.0
 * Added a clearer error message for a case in which TemplateUri do not accept bicep file.

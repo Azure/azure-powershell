@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -381,10 +382,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                             break;
                         }
                     }
-                    catch (Exception)
+                    catch (ErrorResponseException e)
                     {
-                        // Do nothing
+                        throw new ErrorResponseException(string.Format(ProjectResources.ServicePrincipalRoleAssignmentCreationFailed,e.Body.Error.Message),e);
                     }
+                    catch (Exception)
+					{
+                        // if the error is something else fail silently as before
+					}
                 }
             }
         }
