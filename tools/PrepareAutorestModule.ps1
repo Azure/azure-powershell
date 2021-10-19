@@ -21,7 +21,7 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @()
+$SKIP_MODULES = @("AppService", "Billing", "Compute", "ContainerInstance", "ConnectedMachine", "ContainerRegistry", "Dns", "KeyVault", "Media", "Monitor", "Network", "Resources", "ServiceBus", "Storage")
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
@@ -41,7 +41,7 @@ foreach ($file in $ChangedFiles)
     }
     else
     {
-        # $NUll = $ModuleSet.Add($ALL_MODULE)
+        $NUll = $ModuleSet.Add($ALL_MODULE)
     }
 }
 if ($ModuleSet.Contains($ALL_MODULE))
@@ -95,13 +95,9 @@ foreach ($Module in $ModuleList)
         Write-Host "Generating $currentModule with m3"
         npx autorest --use:@autorest/powershell@2.1.401 --max-memory-size=8192
     }
-    # ./build-module.ps1
-    # Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
-    Write-Host "===================================================0"
-    # Remove-Item "$ModuleFolder\*" -Recurse -Force
-    Write-Host "===================================================1"
+    ./build-module.ps1
+    Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
+    Remove-Item "$ModuleFolder\*" -Recurse -Force
 }
-Write-Host "===================================================2"
 #EndRegion
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
-Write-Host "===================================================3"
