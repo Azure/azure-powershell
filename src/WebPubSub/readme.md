@@ -73,10 +73,12 @@ directive:
       subject: WebPubSubPrivateEndpointConnection|WebPubSubPrivateLinkResource|WebPubSubSharedPrivateLinkResource
     remove: true
   # Customized cmdlets
+  #   To make parameter 'Location', 'SkuName' mandatory
   - where:
       verb: New
       subject: WebPubSub
     hide: true
+  #   To make parameter 'KeyType` mandatory
   - where:
       verb: New
       subject: WebPubSubKey
