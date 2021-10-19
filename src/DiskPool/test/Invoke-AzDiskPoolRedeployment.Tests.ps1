@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDiskPoolRedeployment
 }
 
 Describe 'Invoke-AzDiskPoolRedeployment' {
-    It 'Redeploy' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Redeploy' {
+        {Invoke-AzDiskPoolRedeployment -DiskPoolName $env.diskPool5 -ResourceGroupName $env.resourceGroup} | Should -Not -Throw
     }
 
-    It 'RedeployViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RedeployViaIdentity' {
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool5
+        {Invoke-AzDiskPoolRedeployment -InputObject $diskPool} | Should -Not -Throw
     }
 }
