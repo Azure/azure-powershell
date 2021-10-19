@@ -54,6 +54,7 @@ input-file:
   - ../Applications.yml
   - ../Groups.yml
   - ../Users.yml
+  - ../CommonTypes.yml
 
 module-name: $(prefix).Resources
 title: MSGraph
