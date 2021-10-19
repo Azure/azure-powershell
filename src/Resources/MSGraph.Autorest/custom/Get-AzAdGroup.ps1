@@ -107,6 +107,11 @@ function Get-AzAdGroup {
         ${Skip},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        ${AppendSelected},
+
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
@@ -149,6 +154,10 @@ function Get-AzAdGroup {
     )
 
     process {
+        if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
+            $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'AdditionalProperties', 'SecurityEnabled', 'MailEnabled', 'MailNickname', 'Description')
+            $null = $PSBoundParameters['AppendSelected']
+        }
 
         if ($PSBoundParameters.ContainsKey('ObjectId')) {
             $PSBOundParameters['Id'] = $PSBoundParameters['ObjectId']

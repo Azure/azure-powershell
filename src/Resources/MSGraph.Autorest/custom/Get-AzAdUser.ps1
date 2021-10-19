@@ -95,6 +95,11 @@ function Get-AzAdUser {
         [System.UInt64]
         # Ignores the first 'n' objects and then gets the remaining objects.
         ${Skip},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        ${AppendSelected},
     
         [Parameter(ParameterSetName='List')]
         [Parameter(ParameterSetName='StartsWithParameterSet')]
@@ -177,6 +182,11 @@ function Get-AzAdUser {
             $null = $PSBoundParameters.Remove('SignedIn')
             Az.Resources.MSGraph.private\Get-AzAdUserSigned_Get
             return
+        }
+
+        if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
+            $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail', 'onPremisesImmutableId')
+            $null = $PSBoundParameters['AppendSelected']
         }
 
         switch ($PSCmdlet.ParameterSetName) {

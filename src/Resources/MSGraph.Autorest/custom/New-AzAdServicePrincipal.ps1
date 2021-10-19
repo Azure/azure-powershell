@@ -732,7 +732,7 @@ function New-AzAdServicePrincipal {
       $PSBoundParameters['ApplicationId'] = $app.AppId
     }
 
-    $param = @{'AppId' = $PSBoundParameters['ApplicationId']; 'AccountEnabled'=$true; 'Debug' = $PSBoundParameters['Debug']; 'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+    $param = @{'AppId' = $PSBoundParameters['ApplicationId']; 'AccountEnabled'=$true; 'Debug' = $PSBoundParameters['Debug']}
     Write-Output ($sp = MSGraph.internal\New-AzAdServicePrincipal @param)
 
     if ($spRole) {

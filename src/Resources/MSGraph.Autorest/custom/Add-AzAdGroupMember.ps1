@@ -130,7 +130,7 @@ function New-AzAdGroupMember {
         $odataIdUriPrefix = "$($baseUrl)/$($apiVersion)/directoryObjects"
 
         if ($PSBoundParameters['TargetGroupDisplayName']) {
-            $param = @{'DisplayName' = $PSBoundParameters['TargetGroupDisplayName']; 'Debug' = $PSBoundParameters['Debug']; 'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+            $param = @{'DisplayName' = $PSBoundParameters['TargetGroupDisplayName']; 'Debug' = $PSBoundParameters['Debug']}
             $PSBoundParameter['GroupId'] = (Get-AzAdGroup @param).Id
             $null = $PSBoundParameters.Remove('TargetGroupDisplayName')
         } elseif ($PSBoundParameters['TargetGroupObject']) {

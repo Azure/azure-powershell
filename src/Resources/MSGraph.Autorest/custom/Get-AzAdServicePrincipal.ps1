@@ -129,6 +129,11 @@ param(
     ${Skip},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    ${AppendSelected},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
@@ -177,6 +182,11 @@ param(
 )
 
 process {
+    if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
+        $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'ServicePrincipalNames', 'AppId')
+        $null = $PSBoundParameters['AppendSelected']
+    }
+
     switch ($PSCmdlet.ParameterSetName) {
         "ObjectIdParameterSet" {
             $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
