@@ -319,15 +319,21 @@ function Add-CsprojMappings
     }
 }
 
+Write-Host "**********************************************************0"
 $Script:RootPath = (Get-Item -Path $PSScriptRoot).Parent.FullName
 $Script:SrcPath = Join-Path -Path $Script:RootPath -ChildPath "src"
 $Script:ServiceFolders = Get-ChildItem -Path $Script:SrcPath -Directory
+Write-Host "**********************************************************1"
 $Script:ProjectToFullPathMappings = Create-ProjectToFullPathMappings
+Write-Host "**********************************************************2"
 $Script:SolutionToProjectMappings = Create-SolutionToProjectMappings
+Write-Host "**********************************************************3"
 $Script:ProjectToSolutionMappings = Create-ProjectToSolutionMappings
+Write-Host "**********************************************************4"
 
 # Create-ModuleMappings
 Create-CsprojMappings
+Write-Host "**********************************************************5"
 
 # $Script:ModuleMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "ModuleMappings.json")
 $Script:CsprojMappings | Format-Json | Set-Content -Path (Join-Path -Path $Script:RootPath -ChildPath "CsprojMappings.json")
