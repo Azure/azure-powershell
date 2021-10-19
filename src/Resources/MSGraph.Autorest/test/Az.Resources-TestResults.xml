@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2021-10-12" time="17:11:52">
+  <environment user="yabhu" os-version="10.0.22000" cwd="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest" nunit-version="2.5.8.0" clr-version="Unknown" user-domain="FAREAST" platform="Microsoft Windows 11 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" machine-name="DESKTOP-A9A1UD2" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="11.6116" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Add-AzMgApplicationPassword.Tests.ps1" executed="True" result="Success" success="True" time="0.0889" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Add-AzMgApplicationPassword.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Add-AzMgServicePrincipalPassword.Tests.ps1" executed="True" result="Success" success="True" time="0.0285" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Add-AzMgServicePrincipalPassword.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Application.Tests.ps1" executed="True" result="Success" success="True" time="10.6387" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Application.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Application" executed="True" result="Success" success="True" time="10.1499" asserts="0" description="Application">
+            <results>
+              <test-case description="CRUD" name="Application.CRUD" time="8.461" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgAppCredential.Tests.ps1" executed="True" result="Success" success="True" time="0.0493" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgAppCredential.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgApplication.Tests.ps1" executed="True" result="Success" success="True" time="0.0338" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgApplication.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.0286" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgGroup.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgGroupMember.Tests.ps1" executed="True" result="Success" success="True" time="0.0282" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgGroupMember.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgGroupRefMember.Tests.ps1" executed="True" result="Success" success="True" time="0.0297" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgGroupRefMember.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgServicePrincipal.Tests.ps1" executed="True" result="Success" success="True" time="0.0286" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgServicePrincipal.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgSpCredential.Tests.ps1" executed="True" result="Success" success="True" time="0.0276" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgSpCredential.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgUser.Tests.ps1" executed="True" result="Success" success="True" time="0.0288" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgUser.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgUserSigned.Tests.ps1" executed="True" result="Success" success="True" time="0.0282" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Get-AzMgUserSigned.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgAppCredential.Tests.ps1" executed="True" result="Success" success="True" time="0.0351" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgAppCredential.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgApplication.Tests.ps1" executed="True" result="Success" success="True" time="0.0276" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgApplication.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.0288" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgGroup.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgGroupRefMember.Tests.ps1" executed="True" result="Success" success="True" time="0.0288" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgGroupRefMember.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgServicePrincipal.Tests.ps1" executed="True" result="Success" success="True" time="0.0289" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgServicePrincipal.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgSpCredential.Tests.ps1" executed="True" result="Success" success="True" time="0.0305" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgSpCredential.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgUser.Tests.ps1" executed="True" result="Success" success="True" time="0.0271" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\New-AzMgUser.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgAppCredential.Tests.ps1" executed="True" result="Success" success="True" time="0.0304" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgAppCredential.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgApplication.Tests.ps1" executed="True" result="Success" success="True" time="0.0336" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgApplication.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.0276" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgGroup.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgServicePrincipal.Tests.ps1" executed="True" result="Success" success="True" time="0.031" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgServicePrincipal.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgSpCredential.Tests.ps1" executed="True" result="Success" success="True" time="0.0323" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgSpCredential.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgUser.Tests.ps1" executed="True" result="Success" success="True" time="0.0314" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Remove-AzMgUser.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Unprotect-SecureString.Tests.ps1" executed="True" result="Success" success="True" time="0.0369" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Unprotect-SecureString.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Update-AzMgApplication.Tests.ps1" executed="True" result="Success" success="True" time="0.0326" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Update-AzMgApplication.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Update-AzMgGroup.Tests.ps1" executed="True" result="Success" success="True" time="0.0324" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Update-AzMgGroup.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Update-AzMgServicePrincipal.Tests.ps1" executed="True" result="Success" success="True" time="0.0312" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Update-AzMgServicePrincipal.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Update-AzMgUser.Tests.ps1" executed="True" result="Success" success="True" time="0.0466" asserts="0" description="C:\workspace\archive\azure-powershell\src\Resources\MSGraph.Autorest\test\Update-AzMgUser.Tests.ps1">
+        <results />
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
