@@ -12,24 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory;
-using System.Security;
+using System.Web;
 
-namespace Microsoft.Azure.Commands.Resources.Models.Authorization
+namespace Microsoft.Azure.Commands.ActiveDirectory
 {
-    public class PSADServicePrincipalWrapper : PSADServicePrincipal
+    public static class OdataHelper
     {
-        public PSADServicePrincipalWrapper(PSADServicePrincipal sp)
+        public static string GetFilterString<T>(Rest.Azure.OData.ODataQuery<T> odataQuery)
         {
-            if (sp != null)
-            {
-                ApplicationId = sp.ApplicationId;
-                DisplayName = sp.DisplayName;
-                Id = sp.Id;
-                ServicePrincipalNames = sp.ServicePrincipalNames;
-                Type = sp.Type;
-            }
+            return HttpUtility.UrlDecode(odataQuery.Filter);
         }
-        public SecureString Secret { get; set; }
     }
 }

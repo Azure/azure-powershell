@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq.Expressions;
+using System.Web;
 
-namespace Microsoft.Azure.Commands.ActiveDirectory
+namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
-    public class PSADKeyCredential
+    internal static class ODataHelper
     {
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndDate { get; set; }
-
-        public Guid KeyId { get; set; }
-
-        public string CertValue { get; set; }
+        /// <summary>
+        /// Format an ODataQuery filter expression to string.
+        /// </summary>
+        public static string FormatFilterString<T>(Expression<Func<T, bool>> filter)
+        {
+            var odataQuery = new Rest.Azure.OData.ODataQuery<T>(filter);
+            return HttpUtility.UrlDecode(odataQuery.Filter);
+        }
     }
 }

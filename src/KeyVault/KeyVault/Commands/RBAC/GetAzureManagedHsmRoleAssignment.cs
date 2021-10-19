@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.MSGraph.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Users;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
@@ -111,15 +111,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             }
             if (!string.IsNullOrEmpty(SignInName))
             {
-                var filter = new ADObjectFilterOptions() { UPN = SignInName };
-                var user = ActiveDirectoryClient.FilterUsers(filter).FirstOrDefault();
-                ObjectId = user?.Id.ToString();
+                var user = GraphClient.Users.GetUser(SignInName);
+                ObjectId = user?.Id;
             }
+            //todo: was originally filtering applications. need test
             if (!string.IsNullOrEmpty(ApplicationId))
             {
-                var odataQuery = new Rest.Azure.OData.ODataQuery<Application>(s => string.Equals(s.AppId, ApplicationId, StringComparison.OrdinalIgnoreCase));
-                var app = ActiveDirectoryClient.GetApplicationWithFilters(odataQuery).FirstOrDefault();
-                ObjectId = app?.ObjectId.ToString();
+                var servicePrincipal = GraphClient.ServicePrincipals.GetServicePrincipal(ApplicationId);
+                ObjectId = servicePrincipal?.Id;
             }
             if (!string.IsNullOrEmpty(RoleDefinitionId))
             {

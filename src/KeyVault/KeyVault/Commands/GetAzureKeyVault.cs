@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault",DefaultParameterSetName = GetVaultParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault", DefaultParameterSetName = GetVaultParameterSet)]
     [OutputType(typeof(PSKeyVault), typeof(PSKeyVaultIdentityItem), typeof(PSDeletedKeyVault))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Mandatory = false,
             ParameterSetName = GetVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the key and optional value of the specified tag to filter the list of key vaults by.")]        
+            HelpMessage = "Specifies the key and optional value of the specified tag to filter the list of key vaults by.")]
         public Hashtable Tag { get; set; }
 
         #endregion
@@ -108,14 +108,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                         PSKeyVault vault = KeyVaultManagementClient.GetVault(
                                                     VaultName,
                                                     ResourceGroupName,
-                                                    ActiveDirectoryClient);
+                                                    GraphClient);
                         WriteObject(FilterByTag(vault, Tag));
                     }
                     else
                     {
                         WriteObject(TopLevelWildcardFilter(ResourceGroupName, VaultName, ListVaults(ResourceGroupName, Tag)), true);
                     }
-                    
+
                     break;
 
                 case GetDeletedVaultParameterSet:

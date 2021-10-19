@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.MSGraph;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using System;
 using System.Linq;
 
@@ -21,25 +23,26 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
     public class RbacCmdletBase : KeyVaultCmdletBase
     {
-        private ActiveDirectoryClient _activeDirectoryClient;
+        private MicrosoftGraphClient _graphClient;
 
-        protected ActiveDirectoryClient ActiveDirectoryClient
+        protected MicrosoftGraphClient GraphClient
         {
             get
             {
-                if (_activeDirectoryClient != null) return _activeDirectoryClient;
+                if (_graphClient != null) return _graphClient;
                 try
                 {
-                    _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
+                    _graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId);
+                    _graphClient.TenantID = DefaultContext.Tenant.Id.ToString();
                 }
                 catch
                 {
-                    _activeDirectoryClient = null;
+                    _graphClient = null;
                 }
-                return _activeDirectoryClient;
+                return _graphClient;
             }
 
-            set { _activeDirectoryClient = value; }
+            set { _graphClient = value; }
         }
 
         internal static class ParameterSet
@@ -65,7 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             var definitions = Track2DataClient.GetHsmRoleDefinitions(hsmName, scope);
 
             // get info about assignee
-            var assignee = ModelExtensions.GetDetailsFromADObjectId(assignment.PrincipalId, ActiveDirectoryClient);
+            var assignee = ModelExtensions.GetDetailsFromADObjectId(assignment.PrincipalId, GraphClient);
             (assignment.DisplayName, assignment.ObjectType) = assignee;
 
             // traverse role definitions to find the correct one
