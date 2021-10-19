@@ -129,9 +129,9 @@ param(
     ${Skip},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [System.String[]]
-    ${ExtendedProperty},
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    ${AppendSelected},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -182,13 +182,9 @@ param(
 )
 
 process {
-
-    if ($PSBoundParameters['ExtendedProperty'] -and $PSBoundParameters['Select']) {
-        Write-Error "Parameter ExtendedProperty does not work with parameter Select"
-    } elseif ($PSBoundParameters['ExtendedProperty']) {
-        $PSBoundParameters['Select'] = @('DisplayName', 'Id', 'DeletedDateTime', 'ServicePrincipalNames', 'AppId')
-        $PSBoundParameters['Select'] += $PSBoundParameters['ExtendedProperty']
-        $null = $PSBoundParameters['ExtendedProperty']
+    if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
+        $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'ServicePrincipalNames', 'AppId')
+        $null = $PSBoundParameters['AppendSelected']
     }
 
     switch ($PSCmdlet.ParameterSetName) {

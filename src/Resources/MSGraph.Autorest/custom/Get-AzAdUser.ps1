@@ -97,9 +97,9 @@ function Get-AzAdUser {
         ${Skip},
 
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-        [System.String[]]
-        ${ExtendedProperty},
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        ${AppendSelected},
     
         [Parameter(ParameterSetName='List')]
         [Parameter(ParameterSetName='StartsWithParameterSet')]
@@ -184,12 +184,9 @@ function Get-AzAdUser {
             return
         }
 
-        if ($PSBoundParameters['ExtendedProperty'] -and $PSBoundParameters['Select']) {
-            Write-Error "Parameter ExtendedProperty does not work with parameter Select"
-        } elseif ($PSBoundParameters['ExtendedProperty']) {
-            $PSBoundParameters['Select'] = @('DisplayName', 'Id', 'DeletedDateTime', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail', 'onPremisesImmutableId')
-            $PSBoundParameters['Select'] += $PSBoundParameters['ExtendedProperty']
-            $null = $PSBoundParameters['ExtendedProperty']
+        if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
+            $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail', 'onPremisesImmutableId')
+            $null = $PSBoundParameters['AppendSelected']
         }
 
         switch ($PSCmdlet.ParameterSetName) {
