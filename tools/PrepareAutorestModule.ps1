@@ -101,7 +101,7 @@ foreach ($Module in $ModuleList)
         npx autorest --use:@autorest/powershell@2.1.401 --max-memory-size=8192
     }
     ./build-module.ps1
-    Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
+    # Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
     Write-Host "===================================================0"
     Remove-Item "$ModuleFolder\*" -Recurse -Force
     Write-Host "===================================================1"
@@ -110,5 +110,3 @@ Write-Host "===================================================2"
 #EndRegion
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
 Write-Host "===================================================3"
-exit 0
-return $True
