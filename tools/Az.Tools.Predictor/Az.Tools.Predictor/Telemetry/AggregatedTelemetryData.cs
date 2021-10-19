@@ -120,7 +120,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                     }
 
                     // All the suggestions will be written like:
-                    // ["Get-AzSubscription","3"],["Get-AzResourceGroup","3"]
+                    // ["Get-AzSubscription",3],["Get-AzResourceGroup",3]
                     var result = SuggestionSession.GetArraySize(suggestionSize, suggestion?.Count ?? 0);
                     return result;
                 }
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             set
             {
                 // It's written like
-                // {"Accept":"Get-AzSubscription -SubscriptionId 'xxxx-xxxx-xxxx-xxxx'"}
+                // {"Accepted":"Get-AzSubscription -SubscriptionId 'xxxx-xxxx-xxxx-xxxx'"}
 
                 int keySize = SuggestionSession.GetKeySize(SuggestionAcceptedTelemetryData.PropertyNameAccepted.Length);
                 if (_acceptedSuggestion is not null)
