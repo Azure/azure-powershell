@@ -52,6 +52,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-03-01/kubernetesconfiguration.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-09-01/extensions.json
 
 title: KubernetesConfiguration
 module-version: 0.1.0
@@ -60,18 +61,6 @@ subject-prefix: ''
 identity-correction-for-post: true
 
 directive:
-  - from: swagger-document 
-    where: $.definitions.Extension.properties.properties.properties.statuses
-    transform: >-
-      return {
-          "description": "Status from this extension.",
-          "type": "array",
-          "readOnly": true,
-          "x-nullable": true,
-          "items": {
-            "$ref": "#/definitions/ExtensionStatus"
-          }
-      }
   - from: swagger-document
     where: $.definitions.EnableHelmOperatorDefinition.type
     transform: return "string"
