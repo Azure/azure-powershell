@@ -24,7 +24,7 @@ PS C:\> $identity | New-AzWebPubSubKey -KeyType Primary
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,7 +44,7 @@ https://docs.microsoft.com/powershell/module/az.webpubsub/new-azwebpubsubkey
 #>
 function New-AzWebPubSubKey
 {
-    [OutputType([System.Boolean])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys])]
     [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
@@ -154,6 +154,10 @@ function New-AzWebPubSubKey
         try
         {
             Az.WebPubSub.internal\New-AzWebPubSubKey @PSBoundParameters
+
+            # The new key resource is returned in the first REST API call, but auto.rest can only return the result of the last REST API call. Here get a key result manually to mitigate the problem.
+            $null = $PSBoundParameters.Remove("KeyType")
+            Az.WebPubSub\Get-AzWebPubSubKey @PSBoundParameters
         } catch
         {
             throw

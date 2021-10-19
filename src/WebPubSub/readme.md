@@ -78,7 +78,7 @@ directive:
       verb: New
       subject: WebPubSub
     hide: true
-  #   To make parameter 'KeyType` mandatory
+  #   To make parameter 'KeyType` mandatory, get a key after 'new' complete
   - where:
       verb: New
       subject: WebPubSubKey
