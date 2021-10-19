@@ -104,7 +104,7 @@ directive:
       subject: KubernetesConfiguration
       parameter-name: OperatorParameters
     set:
-      parameter-name: OperatorParam
+      parameter-name: OperatorParameter
   - where:
       verb: New
       subject: KubernetesConfiguration
