@@ -4,6 +4,7 @@ Returns an ordered hashtable with the following paths having empty mappings:
 - All folders at the root of the repository (except "src")
 - All files in the "src" folder
 #>
+Write-Host "**********************************************************-1"
 function Initialize-Mappings
 {
     param
