@@ -14,6 +14,6 @@ while(-not $mockingPath) {
 Describe 'Get-AzDiskPoolOutboundNetworkDependencyEndpoint' {
     It 'Get' {
         $deps = Get-AzDiskPoolOutboundNetworkDependencyEndpoint -ResourceGroupName $env.resourceGroup -DiskPoolName $env.diskPool1
-        $deps.Count | Should -Be 4
+        $deps.Count | Should -Be 5
     }
 }

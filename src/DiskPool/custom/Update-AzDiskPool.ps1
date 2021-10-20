@@ -205,7 +205,7 @@ param(
             if ($PSBoundParameters.ContainsKey("DiskId")){
                 $disk = @()
                 for ($i = 0; $i -lt $DiskId.Count; $i++) {
-                    $diskObject = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.Disk
+                    $diskObject = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Disk
                     $diskObject.Id = $DiskId[$i]
                     $disk += $diskObject
                 }

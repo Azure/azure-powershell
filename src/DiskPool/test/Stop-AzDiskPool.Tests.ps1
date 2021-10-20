@@ -18,7 +18,7 @@ Describe 'Stop-AzDiskPool' {
         $diskPool.status | Should -Be 'Stopped (deallocated)'
     }
 
-    It 'DeallocateViaIdentity'  {
+    It 'DeallocateViaIdentity' {
         $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool5
         Stop-AzDiskPool -InputObject $diskPool
         $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool5

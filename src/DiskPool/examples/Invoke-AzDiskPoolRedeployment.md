@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Redeploy a Disk Pool
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Invoke-AzDiskPoolRedeployment -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command redeploys a Disk Pool.
 
-### Example 2: {{ Add title here }}
+### Example 2: Redeploy a Disk Pool by object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDiskPool -ResourceGroupName 'storagepool-rg-test' -Name 'disk-pool-1' | Invoke-AzDiskPoolRedeployment
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+This command redeploys a Disk Pool by object.
