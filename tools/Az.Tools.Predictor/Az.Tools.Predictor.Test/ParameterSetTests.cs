@@ -157,7 +157,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var parameterSet = new ParameterSet(commandAst, _azContext);
             var expected = new List<Parameter>()
             {
-                new Parameter(string.Empty, null, false),
+                new Parameter(AzPredictorConstants.DashParameterName, null, false),
             };
             Assert.Equal(expected, parameterSet.Parameters);
         }
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var expected = new List<Parameter>()
             {
                 new Parameter("Name", "Test", isPositional),
-                new Parameter(string.Empty, null, false),
+                new Parameter(AzPredictorConstants.DashParameterName, null, false),
             };
 
             var parameterSet = new ParameterSet(commandAst, _azContext);

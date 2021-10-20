@@ -106,10 +106,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     param = null;
                     arg = null;
                     hasSeenIncompleteParameter = true;
-                    // Add a new parameter with the empty name so that
-                    // 1. We can tell that the command name is complete
-                    // 2. We expect to predict parameters.
-                    parameters.Add(new Parameter(string.Empty, null, false));
+                    parameters.Add(new Parameter(AzPredictorConstants.DashParameterName, null, false));
                 }
                 else
                 {

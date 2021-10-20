@@ -272,9 +272,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="usedParams">Set of used parameters for set.</param>
         private static int FindParameterPositionInSet(Parameter parameter, ParameterSet predictionSet, HashSet<int> usedParams)
         {
+            var isPrefixed = string.Equals(parameter.Name, AzPredictorConstants.DashParameterName, StringComparison.Ordinal);
             for (var k = 0; k < predictionSet.Parameters.Count; k++)
             {
-                var isPrefixed = predictionSet.Parameters[k].Name.StartsWith(parameter.Name, StringComparison.OrdinalIgnoreCase);
+                isPrefixed = isPrefixed || predictionSet.Parameters[k].Name.StartsWith(parameter.Name, StringComparison.OrdinalIgnoreCase);
                 var hasNotBeenUsed = !usedParams.Contains(k);
                 if (isPrefixed && hasNotBeenUsed)
                 {
