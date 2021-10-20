@@ -696,5 +696,9 @@
   {
     "regex": "Logz",
     "alias": "Logz"
+  },
+  {
+    "regex": "CustomLocation",
+    "alias": "CustomLocation"
   }
 ]
