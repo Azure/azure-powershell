@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/en-us/powershell/module/az.containerinstance/update-azcontainergroup
+online version: https://docs.microsoft.com/powershell/module/az.containerinstance/update-azcontainergroup
 schema: 2.0.0
 ---
 
