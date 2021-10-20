@@ -11,6 +11,9 @@ Locale: en-US
 The topics in this section document the Azure PowerShell cmdlets for Azure Synapse Analytics.
 
 ## Az.Synapse Cmdlets
+### [Add-AzSynapseDataFlowDebugSessionPackage](Add-AzSynapseDataFlowDebugSessionPackage.md)
+Add data flow resource and its dependencies into specific data flow debug session.
+
 ### [Add-AzSynapseTriggerSubscription](Add-AzSynapseTriggerSubscription.md)
 Subscribe the event trigger to external service events.
 
@@ -43,6 +46,9 @@ Gets information about activity runs for a pipeline run.
 
 ### [Get-AzSynapseDataFlow](Get-AzSynapseDataFlow.md)
 Gets information about data flows in workspace.
+
+### [Get-AzSynapseDataFlowDebugSession](Get-AzSynapseDataFlowDebugSession.md)
+Get all active data flow debug sessions in specified Synapse workspace.
 
 ### [Get-AzSynapseDataset](Get-AzSynapseDataset.md)
 Gets information about datasets in workspace.
@@ -175,6 +181,9 @@ Gets a workspace key.
 
 ### [Get-AzSynapseWorkspacePackage](Get-AzSynapseWorkspacePackage.md)
 Gets a workspace package.
+
+### [Invoke-AzSynapseDataFlowDebugSessionCommand](Invoke-AzSynapseDataFlowDebugSessionCommand.md)
+Invoke debug action in data flow debug session.
 
 ### [Invoke-AzSynapseIntegrationRuntimeUpgrade](Invoke-AzSynapseIntegrationRuntimeUpgrade.md)
 Upgrades self-hosted integration runtime.
@@ -368,6 +377,9 @@ Sets the vulnerability assessment rule baseline.
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.
 
+### [Start-AzSynapseDataFlowDebugSession](Start-AzSynapseDataFlowDebugSession.md)
+Starts a Synapse Analytics data flow debug session in Synapse Workspace.
+
 ### [Start-AzSynapseIntegrationRuntime](Start-AzSynapseIntegrationRuntime.md)
 Starts a managed dedicated integration runtime.
 
@@ -379,6 +391,9 @@ Starts a vulnerability assessment scan.
 
 ### [Start-AzSynapseTrigger](Start-AzSynapseTrigger.md)
 Starts a trigger in a workspace.
+
+### [Stop-AzSynapseDataFlowDebugSession](Stop-AzSynapseDataFlowDebugSession.md)
+Stops a data flow debug session in a workspace.
 
 ### [Stop-AzSynapseIntegrationRuntime](Stop-AzSynapseIntegrationRuntime.md)
 Stops a managed dedicated integration runtime.
