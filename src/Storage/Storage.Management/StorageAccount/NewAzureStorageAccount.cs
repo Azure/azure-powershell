@@ -491,6 +491,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string EdgeZone { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Allow or disallow public network access to Storage Account. Possible values include: 'Enabled', 'Disabled'.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        [ValidateNotNullOrEmpty]
+        public string PublicNetworkAccess { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -719,6 +724,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if(allowCrossTenantReplication != null)
             {
                 createParameters.AllowCrossTenantReplication = allowCrossTenantReplication;
+            }
+            if (this.PublicNetworkAccess != null)
+            {
+                createParameters.PublicNetworkAccess = this.PublicNetworkAccess;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

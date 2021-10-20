@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Management.Synapse.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Management.Synapse.Models;
 using System;
 using System.Collections.Generic;
 
@@ -128,6 +142,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string LinkedService = nameof(LinkedService);
 
+        public const string LinkedServiceEncryptedCredential = nameof(LinkedServiceEncryptedCredential);
+
         public const string Notebook = nameof(Notebook);
 
         // TODO: In future, we should expose the default version string of Spark SDK and use that value here.
@@ -172,6 +188,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string ManagedPrivateEndpoint = nameof(ManagedPrivateEndpoint);
 
         public const string DefaultVNetName = "default";
+
+        public const string WorkspacePackage = nameof(WorkspacePackage);
+
+        public const string DataFlowDebugSession = nameof(DataFlowDebugSession);
+
+        public const string DataFlowDebugSessionCommand = nameof(DataFlowDebugSessionCommand);
+
+        public const string DataFlowDebugSessionPackage = nameof(DataFlowDebugSessionPackage);
 
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
@@ -252,6 +276,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             public const string AzureDevOpsGit = "AzureDevOpsGit";
             public const string WorkspaceGitHubConfiguration = "WorkspaceGitHubConfiguration";
             public const string WorkspaceVSTSConfiguration = "WorkspaceVSTSConfiguration";
+        }
+
+        public enum PackageActionType
+        {
+            Add,
+            Remove
         }
     }
 }

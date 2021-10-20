@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     resultBuilder.Clear();
                     resultBuilder.Append(_commandLinePredictions[i].Name);
                     usedParams.Clear();
-                    string commandNoun = ParameterValuePredictor.GetAzCommandNoun(_commandLinePredictions[i].Name).ToLower();
+                    string commandNoun = ParameterValuePredictor.GetCommandNoun(_commandLinePredictions[i].Name)?.ToLower();
 
                     if (DoesPredictionParameterSetMatchInput(resultBuilder, inputParameterSet, commandNoun, _commandLinePredictions[i].ParameterSet, usedParams))
                     {
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private void BuildParameterValue(StringBuilder builder, string commandNoun, Parameter parameter)
         {
             var parameterName = parameter.Name;
-            string parameterValue = this._parameterValuePredictor?.GetParameterValueFromAzCommand(commandNoun, parameterName);
+            string parameterValue = this._parameterValuePredictor?.GetParameterValueFromCommand(commandNoun, parameterName);
 
             if (string.IsNullOrWhiteSpace(parameterValue))
             {

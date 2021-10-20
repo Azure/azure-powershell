@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags, int? skuCapacity = null)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags, bool isZoneRedundant, bool isDisableLocalAuth, int? skuCapacity = null)
         {
             SBNamespace parameter = new SBNamespace();
             parameter.Location = location;
@@ -97,13 +97,18 @@ namespace Microsoft.Azure.Commands.ServiceBus
                     parameter.Sku.Capacity = skuCapacity;
                 }
             }
+            if(isDisableLocalAuth)
+                parameter.DisableLocalAuth = isDisableLocalAuth;
+
+            if(isZoneRedundant)
+                parameter.ZoneRedundant = isZoneRedundant;
 
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
         }
 
 
-        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags)
+        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isDisableLocalAuth)
         {
 
             var parameter = new SBNamespace()
@@ -132,6 +137,10 @@ namespace Microsoft.Azure.Commands.ServiceBus
             }
 
             parameter.Sku = tempSku;
+
+            if (isDisableLocalAuth)
+                parameter.DisableLocalAuth = isDisableLocalAuth;
+            
 
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);

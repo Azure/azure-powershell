@@ -119,6 +119,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     BackendPoolId = SDKForwardingConfiguration.BackendPool?.Id,
                     EnableCaching = SDKForwardingConfiguration.CacheConfiguration != null,
                     QueryParameterStripDirective = SDKForwardingConfiguration.CacheConfiguration?.QueryParameterStripDirective,
+                    QueryParameters = SDKForwardingConfiguration.CacheConfiguration?.QueryParameters,
+                    CacheDuration = SDKForwardingConfiguration.CacheConfiguration?.CacheDuration,
                     DynamicCompression = SDKForwardingConfiguration.CacheConfiguration?.DynamicCompression == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), SDKForwardingConfiguration.CacheConfiguration.DynamicCompression)
                 };
             }
@@ -149,7 +151,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     CustomForwardingPath = psForwardingConfiguration.CustomForwardingPath,
                     ForwardingProtocol = psForwardingConfiguration.ForwardingProtocol,
                     BackendPool = new SdkRefId(psForwardingConfiguration.BackendPoolId),
-                    CacheConfiguration = psForwardingConfiguration.EnableCaching ? new SdkCacheConfiguration(psForwardingConfiguration.QueryParameterStripDirective.ToString(), psForwardingConfiguration.DynamicCompression.ToString()) : null
+                    CacheConfiguration = psForwardingConfiguration.EnableCaching ? new SdkCacheConfiguration(psForwardingConfiguration.QueryParameterStripDirective,
+                                                                                                             psForwardingConfiguration.QueryParameters,
+                                                                                                             psForwardingConfiguration.DynamicCompression?.ToString(),
+                                                                                                             psForwardingConfiguration.CacheDuration) : null
                 };
             }
             else if (psRoutingConfiguration is PSRedirectConfiguration)

@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzKeyVaultKey
 
 ## SYNOPSIS
-Gets Key Vault keys. Please notes that detailed information about a key, like key type or key size, only available when querying a key in a certain version.
+Gets Key Vault keys. Please notes that detailed information about a key, like key type or key size, only available when querying a specific key version.
 
 ## SYNTAX
 

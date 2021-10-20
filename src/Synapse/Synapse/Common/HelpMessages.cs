@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.Synapse.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Synapse.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Common
 {
@@ -79,6 +93,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string SparkVersion = "Apache Spark version. Allowed values: 2.4";
 
         public const string LibraryRequirementsFilePath = "Environment configuration file (\"PIP freeze\" output).";
+
+        public const string SparkConfigPropertiesFilePath = "Spark pool properties configuration file.";
 
         public const string Batch = "Indicates Spark batch.";
 
@@ -476,5 +492,33 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string ManagedPrivateEndpointObject = "The Synapse Managed Private Endpoint Object.";
 
         public const string DefaultVNetName = "Managed Virtual Network Name is 'default'.";
+
+        public const string HelpTriggerRun = "The information about the trigger run.";
+
+        public const string TriggerRunId = "The Run ID of the trigger.";
+
+        public const string WorkspacePackageFile = "Specifies a local file path for a file to upload as workspace package.";
+
+        public const string WorkspacePackageName = "The workspace package name.";
+
+        public const string WorkspacePackageObject = "The workspace package object.";
+
+        public const string WorkspacePackages = "The workspace packages.";
+
+        public const string PackageAction = "Package action must be specified when you add or remove a workspace package from a Apache Spark pool.";
+
+        public const string DataFlowDebugSessionId = "Identifier for Synapse data flow debug session.";
+
+        public const string DebugSessionCommand = "The data flow debug command. Optionals are executePreviewQuery, executeStatisticsQuery and executeExpressionQuery.";
+
+        public const string DebugSessionStreamName = "The stream name of data flow for debugging.";
+
+        public const string DebugSessionRowLimit = "The row limit for data flow data preview.";
+
+        public const string DebugSessionExpression = "The expression for data flow expression preview.";
+
+        public const string DebugSessionColumns = "The columns list for data flow statistics preview.";
+
+        public const string DataFlowDebugSessionFilePath = "File path for Synapse data flow debug session";
     }
 }

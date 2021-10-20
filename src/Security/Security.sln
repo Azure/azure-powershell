@@ -26,6 +26,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Netwo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "..\OperationalInsights\OperationalInsights\OperationalInsights.csproj", "{AC0EA5E7-BD16-4E47-A8D9-0DBC18E6BB70}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Helpers", "..\Compute\Compute.Helpers\Compute.Helpers.csproj", "{1044DD4B-4E5D-40B4-A6DE-BE1096294A3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.AlcWrapper", "..\Compute\Compute.AlcWrapper\Compute.AlcWrapper.csproj", "{C00B188D-85B5-45C8-A86C-0A15BA68AD89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +80,14 @@ Global
 		{AC0EA5E7-BD16-4E47-A8D9-0DBC18E6BB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC0EA5E7-BD16-4E47-A8D9-0DBC18E6BB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC0EA5E7-BD16-4E47-A8D9-0DBC18E6BB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1044DD4B-4E5D-40B4-A6DE-BE1096294A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1044DD4B-4E5D-40B4-A6DE-BE1096294A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1044DD4B-4E5D-40B4-A6DE-BE1096294A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1044DD4B-4E5D-40B4-A6DE-BE1096294A3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C00B188D-85B5-45C8-A86C-0A15BA68AD89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C00B188D-85B5-45C8-A86C-0A15BA68AD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C00B188D-85B5-45C8-A86C-0A15BA68AD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C00B188D-85B5-45C8-A86C-0A15BA68AD89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,8 +19,20 @@
 -->
 
 ## Upcoming Release
+* Added property `UIFormDefinition` to Template Spec Versions,  `Export-AzTemplateSpec` will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.
+* Added error catching for role assignment creation fail while creating a Service Principal
+* Performance improvement for Get-AzPolicyAlias when -NamespaceMatch matches a single RP namespace
+
+## Version 4.4.0
+* Added a clearer error message for a case in which TemplateUri do not accept bicep file.
+* Fixed typos with ManagementGroups breaking change descriptions [#15819].
+* Fixed resource tags casing issue - resource tags casing not being preserved.
+* Updated to Microsoft.Azure.Management.Authorization 2.13.0-preview.
+
+## Version 4.3.1
 * Use JsonExtensions to serialize deserialize JSON objects to ensure the use of custom serialization settings [#15552]
 * Added support for `Unsupported` and `NoEffect` change types to deployment What-If cmdlets.
+* Added support for `ConsentToPermissions` Boolean parameter to Register-AzResourceProvider cmdlet.
 
 ## Version 4.3.0
 * Fixed bug with `PSResource` where some constructors left `SubscriptionId` property unassigned/null.  [#10783]

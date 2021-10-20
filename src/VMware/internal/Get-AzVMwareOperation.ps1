@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.vmware/get-azvmwareoperation
+https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareoperation
 #>
 function Get-AzVMwareOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -94,6 +94,7 @@ begin {
         $mapping = @{
             List = 'Az.VMware.private\Get-AzVMwareOperation_List';
         }
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

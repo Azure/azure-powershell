@@ -16,28 +16,37 @@
 ########################## Site Recovery Tests #############################
 
 # Inputs
-$vaultRg = "vmwaresrcrg"
-$vaultName = "v2aRcm-pwsh-test"
-$primaryFabricName = "v2aRcm-pwsh-testreplicationfabric"
-$primaryContainerName = "v2aRcm-pwsh-test0afareplicationcontainer"
+$vaultRg = "V2A-ECY"
+$vaultName = "Rcm-Vault-150"
+$primaryFabricName = "Rcm-Vault-150-vmwarefabric"
+$primaryContainerName = "Rcm-Vault-4678replicationcontainer"
 $policyName = "v2aRcm-pwsh-testpolicy"
 $failbackPolicyName = "appconsistency-policy-failback"
 $primaryContainerMappingName = "v2aRcm-pwsh-testmapping"
 $recoveryContainerMappingName = "appconsistency-failback-containerpairing"
 
-$vmName = "V2ARCM-Pwsh-Vm"
-$recoveryVmName = "V2ARCM-Pwsh-Vm"
-$updateRecoveryVmName = "v2aRcm-ps-vm"
+$vmName = "Rcm-W2K16-153"
+$recoveryVmName = "Rcm-W2K16-153"
+$updateRecoveryVmName = "Rcm-W2K16-1531"
+$tfoVmName = "Rcm-W2K19-152"
+$foVmName = $tfoVmName
+$reprotectVmName = $foVmName
+$failbackVmName = $reprotectVmName
+
+$switchAppVmName = "Rcm-Ub18-154"
+$TargetApplianceName = "Rcm-App-151"
+$CredentialsToAccessVm = "LinCreds"
+
 $recoveryPlanName = "v2arcm-pwsh-rp"
-$credentialsName = "windows-creds"
-$recoveryAzureNetworkId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vmwaretargetrg/providers/Microsoft.Network/virtualNetworks/v2arcm-vnet"
-$testNetworkId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vmwaretargetrg/providers/Microsoft.Network/virtualNetworks/v2arcm-vnet"
-$recoveryAzureSubnetName = "default"
-$testSubnetName = "default"
-$recoveryResourceGroupId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vmwaretargetrg"
-$logStorageAccountId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vmwaretargetrg/providers/Microsoft.Storage/storageAccounts/v2arcmpwshsa"
-$recoveryBootDiagnosticsStorageAccountId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vmwaretargetrg/providers/Microsoft.Storage/storageAccounts/v2arcmpwshsa"
-$dataStoreName = "datastore1 (1)"
+$credentialsName = "WinCreds"
+$recoveryAzureNetworkId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.Network/virtualNetworks/v2aecynw"
+$testNetworkId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.Network/virtualNetworks/v2aecynw"
+$recoveryAzureSubnetName = "Subnet1"
+$testSubnetName = "Subnet1"
+$recoveryResourceGroupId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY"
+$logStorageAccountId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.Storage/storageAccounts/v2aecystor"
+$recoveryBootDiagnosticsStorageAccountId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/V2A-ECY/providers/Microsoft.Storage/storageAccounts/v2aecystor"
+$dataStoreName = "SharedDS-84-85"
 
 <#
 .SYNOPSIS 
@@ -255,7 +264,7 @@ function Test-V2ARCMUpdateProtection {
     Assert-NotNull($RPI.providerSpecificDetails)
 		
     # Update protected item .
-    $job = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $RPI -Name $updateRecoveryVmName -Size Standard_D1
+    $job = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $RPI -Name $updateRecoveryVmName -Size Standard_B2s
     WaitForJobCompletion -JobId $Job.Name
 
     # Get protected item.
@@ -285,7 +294,7 @@ function Test-V2ARCMTestFailover {
     Assert-true { $Container.name -eq $primaryContainerName }
 
     # Get protected item.
-    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $vmName
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $tfoVmName
     Assert-NotNull($RPI)
     Assert-NotNull($RPI.providerSpecificDetails)
 		
@@ -319,7 +328,7 @@ function Test-V2ARCMFailover {
     Assert-true { $Container.name -eq $primaryContainerName }
 	
     # Get protected item.
-    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $vmName
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $foVmName
     Assert-NotNull($RPI)
     Assert-NotNull($RPI.providerSpecificDetails)
 		
@@ -349,7 +358,7 @@ function Test-V2ARCMCommit {
     Assert-true { $Container.name -eq $primaryContainerName }
 	
     # Get protected item.
-    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $vmName
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $foVmName
     Assert-NotNull($RPI)
     Assert-NotNull($RPI.providerSpecificDetails)
 		
@@ -383,11 +392,11 @@ function Test-V2ARCMReprotect {
 	
     # Get mapping.
     $FailbackMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $Container `
-        -Name $recoveryContainerMappingName    
+        -Name $recoveryContainerMappingName
     Assert-NotNull($FailbackMapping)
 
     # Get protected item.
-    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $vmName
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $reprotectVmName
     Assert-NotNull($RPI)
     Assert-NotNull($RPI.providerSpecificDetails)
 
@@ -395,7 +404,7 @@ function Test-V2ARCMReprotect {
     $Job = Update-AzRecoveryServicesAsrProtectionDirection -ReplicateAzureToVMware -ProtectionContainerMapping $FailbackMapping `
         -ReplicationProtectedItem $RPI -Direction RecoveryToPrimary `
         -ApplianceName $Fabric.FabricSpecificDetails.ProcessServers[0].Name -Fabric $Fabric `
-        -LogStorageAccountId $logStorageAccountId -DatastoreName $dataStoreName         
+        -LogStorageAccountId $logStorageAccountId -DatastoreName $dataStoreName
 }
 
 <#
@@ -419,14 +428,13 @@ function Test-V2ARCMFailback {
     Assert-true { $Container.name -eq $primaryContainerName }
 	
     # Get protected item.
-    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $recoveryVmName
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $failbackVmName
     Assert-NotNull($RPI)
     Assert-NotNull($RPI.providerSpecificDetails)
 		
     # Failback.
     $Job = Start-AzRecoveryServicesAsrPlannedFailoverJob -ReplicationProtectedItem $RPI -Direction RecoveryToPrimary `
         -RecoveryTag RecoveryTagApplicationConsistent
-    WaitForJobCompletion -JobId $Job.Name
 }
 
 <#
@@ -450,13 +458,52 @@ function Test-V2ARCMCancelFailover {
     Assert-true { $Container.name -eq $primaryContainerName }
 	
     # Get protected item.
-    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $recoveryVmName
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $failbackVmName
     Assert-NotNull($RPI)
     Assert-NotNull($RPI.providerSpecificDetails)
 		
     # Cancel failover.
-    $Job = Start-ASRCancelFailover -ReplicationProtectedItem $RPI 
-    WaitForJobCompletion -JobId $Job.Name
+    $Job = Start-ASRCancelFailover -ReplicationProtectedItem $RPI
+}
+
+<#
+.SYNOPSIS
+	Site Recovery V2A RCM Reprotect Test.
+#>
+function Test-V2ARCM540Reprotect {
+
+    # Set vault context.
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    
+    # Get fabric.
+    $Fabric = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
+    Assert-NotNull($Fabric)
+    Assert-true { $Fabric.name -eq $primaryFabricName }
+    Assert-NotNull($Fabric.FabricSpecificDetails.ProcessServers)
+    Assert-NotNull($Fabric.FabricSpecificDetails.ProcessServers[0].ID)
+    Assert-NotNull($Fabric.FabricSpecificDetails.ReprotectAgents[0].ID)
+
+    # Get container.
+    $Container = Get-AzRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $Fabric
+    Assert-NotNull($Container)
+    Assert-true { $Container.name -eq $primaryContainerName }
+
+    # Get mapping.
+    $Mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $Container `
+        -Name $primaryContainerMappingName
+    Assert-NotNull($Mapping)
+
+    # Get protected item.
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $reprotectVmName
+    Assert-NotNull($RPI)
+    Assert-NotNull($RPI.providerSpecificDetails)
+
+    # Reprotect.
+    $Job = Update-AzRecoveryServicesAsrProtectionDirection -ReplicateVMwareToAzure -ProtectionContainerMapping $Mapping `
+        -ReplicationProtectedItem $RPI -Direction PrimaryToRecovery -CredentialsToAccessVm $credentialsName `
+        -ApplianceName $Fabric.FabricSpecificDetails.ProcessServers[0].Name -Fabric $Fabric `
+        -SiteId $Fabric.FabricSpecificDetails.VmwareSiteId
 }
 
 <#
@@ -480,7 +527,7 @@ function Test-V2ARCMRecoveryPlan {
     Assert-true { $Container.name -eq $primaryContainerName }
 
     # Get protected item
-    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -Name $vmName
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $vmName
     Assert-NotNull($RPI)
     Assert-NotNull($RPI.providerSpecificDetails)
 		
@@ -496,6 +543,42 @@ function Test-V2ARCMRecoveryPlan {
     # Remove Recovery Plan
     $Job = Remove-AzRecoveryServicesAsrRecoveryPlan -InputObject $RecoveryPlan
     WaitForJobCompletion -JobId $Job.Name
+}
+
+<#
+.SYNOPSIS
+	Site Recovery V2A RCM switch appliance Test.
+#>
+function Test-V2ARCMSwitchAppliance {
+
+    # Set vault context.
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    
+    # Get fabric.
+    $Fabric = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
+    Assert-NotNull($Fabric)
+    Assert-true { $Fabric.name -eq $primaryFabricName }
+
+    # Get container.
+    $Container = Get-AzRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $Fabric
+    Assert-NotNull($Container)
+    Assert-true { $Container.name -eq $primaryContainerName }
+	
+    # Get protected item.
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $switchAppVmName
+    Assert-NotNull($RPI)
+    Assert-NotNull($RPI.providerSpecificDetails)
+
+    # Cancel failover.
+    $Job = Start-ASRSwitchAppliance -Fabric $Fabric -ReplicationProtectedItem $RPI -TargetApplianceName $TargetApplianceName # -CredentialsToAccessVm $CredentialsToAccessVm
+    WaitForJobCompletion -JobId $Job.Name
+
+    # Get protected item.
+    $RPI = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Container -FriendlyName $switchAppVmName
+    Assert-NotNull($RPI)
+    Assert-NotNull($RPI.providerSpecificDetails)
+    Assert-true { $RPI.providerSpecificDetails.ProcessServerName -eq $TargetApplianceName }
 }
 
 <#

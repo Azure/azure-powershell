@@ -1,6 +1,7 @@
 # How to: Enable Overriding Subscription ID in Your Module
 
 - [Background](#background)
+- [Limitation](#limitation)
 - [Steps](#steps)
   - [Add `SupportsSubscriptionId` Attribute](#add-supportssubscriptionid-attribute)
   - [Regenerate Help Documents](#regenerate-help-documents)
@@ -22,6 +23,14 @@ New-AzAksCluster ... -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 The new design does not only simplify scripts, but also runs more efficiently, as it saves 1 cmdlet execution per subscription switching.
+
+## Limitation
+
+The feature was designed to balance between "supporting more login scenarios" and "being easy to use". Here are the limitations:
+
+- **One subscription, multiple accounts**: when you login Azure PowerShell with multiple user accounts, and there is one subscription owned by more than one of them, it is obvious that `-SubscriptionId` is not enough to tell which context you wish to use, but we do not want to introduce more parameters, so this is not supported.
+  - Work-around is to log in with only 1 user account.
+- **Management-plane only**: as subscription may not make as much sense in data-plane as in management-plane, this feature is suggested to be applied to management-plane cmdlets only.
 
 ## Steps
 

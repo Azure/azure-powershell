@@ -14,8 +14,10 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         static ProviderConfiguration()
         {
+            RegisterConfiguration("Microsoft.ApiManagement/service", "2021-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2020-06-01", true, true);
             RegisterConfiguration("Microsoft.Attestation/attestationProviders", "2020-10-01", true, true);
+            RegisterConfiguration("Microsoft.Authorization/resourceManagementPrivateLinks", "2020-05-01", false);
             RegisterConfiguration("Microsoft.Automation/automationAccounts", "2020-01-13-preview", true, false);
             RegisterConfiguration("Microsoft.Batch/batchAccounts", "2020-03-01", true, true);
             RegisterConfiguration("Microsoft.Cache/Redis", "2020-12-01", true, true);
@@ -36,6 +38,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview", true, true); 
             RegisterConfiguration("Microsoft.EventHub/namespaces", "2018-01-01-preview", true, false);
             RegisterConfiguration("Microsoft.HealthcareApis/services", "2020-03-30", false, true);
+            RegisterConfiguration("Microsoft.HDInsight/clusters", "2018-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.HybridCompute/privateLinkScopes", "2021-05-20",true, true);
             RegisterConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview", true, true);
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2018-02-14", false, false);

@@ -1,0 +1,1802 @@
+{
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "4ab5c64c-3268-4cc8-80fe-bc3f0513ac41" ],
+        "CommandName": [ "Get-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "ad773b5e-bda4-425a-b642-4c442d9c4789" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105148Z:ad773b5e-bda4-425a-b642-4c442d9c4789" ],
+        "Date": [ "Sat, 28 Aug 2021 10:51:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "651" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"tags\":{\"MABUsed\":\"Yes\",\"Owner\":\"hiaga\",\"Purpose\":\"testing\",\"DeleteBy\":\"01-2099\"},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"74ad0080-cf50-42ae-a83a-7c5f1126cae2\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"GeoRedundant\"},{\"datastoreType\":\"ArchiveStore\",\"type\":\"GeoRedundant\"}]},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/oss-pstest-rg/providers/Microsoft.DataProtection/BackupVaults/oss-pstest-vault\",\"name\":\"oss-pstest-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances?api-version=2021-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "bc04eeb0-a4ea-411a-a61b-3f3b71add1af" ],
+        "CommandName": [ "Get-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "c0a278ca-6b02-4f29-af6d-56f4504f4697" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105149Z:c0a278ca-6b02-4f29-af6d-56f4504f4697" ],
+        "Date": [ "Sat, 28 Aug 2021 10:51:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1860" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"friendlyName\":\"oss-pstest-server\\\\postgres\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"resourceUri\":\"\",\"datasourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"resourceName\":\"postgres\",\"resourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"resourceLocation\":\"centraluseuap\",\"objectType\":\"Datasource\"},\"dataSourceSetInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server\",\"resourceUri\":\"\",\"datasourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"resourceName\":\"oss-pstest-server\",\"resourceType\":\"Microsoft.DBforPostgreSQL/servers\",\"resourceLocation\":\"centraluseuap\",\"objectType\":\"DatasourceSet\"},\"policyInfo\":{\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\"},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"datasourceAuthCredentials\":{\"objectType\":\"SecretStoreBasedAuthCredentials\",\"secretStoreResource\":{\"uri\":\"https://oss-pstest-keyvault.vault.azure.net/secrets/oss-pstest-secret\",\"secretStoreType\":\"AzureKeyVault\",\"value\":null}},\"objectType\":\"BackupInstance\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"name\":\"oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies?api-version=2021-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "fd94999b-b082-4bb5-a248-2d5700a41a35" ],
+        "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "4a77a2d5-4f2a-4ca6-b75b-50359709703d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105149Z:4a77a2d5-4f2a-4ca6-b75b-50359709703d" ],
+        "Date": [ "Sat, 28 Aug 2021 10:51:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1508" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Full\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2021-08-29T10:00:00+05:30/P1W\",\"R/2021-09-02T10:00:00+05:30/P1W\"],\"timeZone\":\"India Standard Time\"},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupWeekly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P3M\"},\"targetDataStoreCopySettings\":[{\"dataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"},\"copyAfter\":{\"objectType\":\"CopyOnExpiryOption\"}}],\"sourceDataStore\":{\"dataStoreType\":\"VaultStore\",\"objectType\":\"DataStoreInfoBase\"}},{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P6M\"},\"targetDataStoreCopySettings\":[],\"sourceDataStore\":{\"dataStoreType\":\"ArchiveStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.DBforPostgreSQL/servers/databases\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"name\":\"oss-pstest-policy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$POST+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/backup?api-version=2021-07-01+4": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/backup?api-version=2021-07-01",
+      "Content": "{\r\n  \"backupRuleOptions\": {\r\n    \"triggerOption\": {\r\n      \"retentionTagOverride\": \"Default\"\r\n    },\r\n    \"ruleName\": \"BackupWeekly\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "140" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzk0YWRhYmE3LThiMGItNGIxMy04MWY3LTBhZmU5NzJmZWJlOA==?api-version=2021-07-01" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzk0YWRhYmE3LThiMGItNGIxMy04MWY3LTBhZmU5NzJmZWJlOA==?api-version=2021-07-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "eed9f774-641e-4db0-b8b8-13b51948d719" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105150Z:eed9f774-641e-4db0-b8b8-13b51948d719" ],
+        "Date": [ "Sat, 28 Aug 2021 10:51:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzk0YWRhYmE3LThiMGItNGIxMy04MWY3LTBhZmU5NzJmZWJlOA==?api-version=2021-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzk0YWRhYmE3LThiMGItNGIxMy04MWY3LTBhZmU5NzJmZWJlOA==?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "c362194d-54c9-41c7-ab17-6bfc0a413e94" ],
+        "CommandName": [ "Backup-AzDataProtectionBackupInstanceAdhoc" ],
+        "FullCommandName": [ "Backup-AzDataProtectionBackupInstanceAdhoc_BackupExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "c4be0226-1b52-4a90-b616-647cb787b155" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105220Z:c4be0226-1b52-4a90-b616-647cb787b155" ],
+        "Date": [ "Sat, 28 Aug 2021 10:52:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "702" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzk0YWRhYmE3LThiMGItNGIxMy04MWY3LTBhZmU5NzJmZWJlOA==\",\"name\":\"ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzk0YWRhYmE3LThiMGItNGIxMy04MWY3LTBhZmU5NzJmZWJlOA==\",\"status\":\"Succeeded\",\"startTime\":\"2021-08-28T10:51:50.2635236Z\",\"endTime\":\"2021-08-28T10:51:52Z\",\"properties\":{\"jobId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/oss-pstest-rg/providers/Microsoft.DataProtection/BackupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"objectType\":\"OperationJobExtendedInfo\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzk0YWRhYmE3LThiMGItNGIxMy04MWY3LTBhZmU5NzJmZWJlOA==?api-version=2021-07-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzk0YWRhYmE3LThiMGItNGIxMy04MWY3LTBhZmU5NzJmZWJlOA==?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "c362194d-54c9-41c7-ab17-6bfc0a413e94" ],
+        "CommandName": [ "Backup-AzDataProtectionBackupInstanceAdhoc" ],
+        "FullCommandName": [ "Backup-AzDataProtectionBackupInstanceAdhoc_BackupExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzk0YWRhYmE3LThiMGItNGIxMy04MWY3LTBhZmU5NzJmZWJlOA==?api-version=2021-07-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "b73e6af2-9236-455a-99e3-9d086dcc467d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105221Z:b73e6af2-9236-455a-99e3-9d086dcc467d" ],
+        "Date": [ "Sat, 28 Aug 2021 10:52:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "245" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"jobId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/oss-pstest-rg/providers/Microsoft.DataProtection/BackupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"objectType\":\"OperationJobExtendedInfo\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "02984dca-9da7-40c1-af59-7b4a9246ab82" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "de1a3ed3-0b7b-4a31-bac6-e944836c5e10" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105231Z:de1a3ed3-0b7b-4a31-bac6-e944836c5e10" ],
+        "Date": [ "Sat, 28 Aug 2021 10:52:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "b39aa3d7-2b3c-406f-8ad4-b8486df8a760" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "a98e4eb2-f9b9-43f6-ad39-b24b0af5face" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105242Z:a98e4eb2-f9b9-43f6-ad39-b24b0af5face" ],
+        "Date": [ "Sat, 28 Aug 2021 10:52:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "bc21c770-1271-4e99-b9b8-2580efe9b7de" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "207677fb-d19b-4677-b6d8-84bbcf65c11d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105253Z:207677fb-d19b-4677-b6d8-84bbcf65c11d" ],
+        "Date": [ "Sat, 28 Aug 2021 10:52:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "406e0c7d-5ccb-4ea9-8479-45e3fa7a5524" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "e2e37755-5132-4d2f-a146-b5884acb2eb6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105303Z:e2e37755-5132-4d2f-a146-b5884acb2eb6" ],
+        "Date": [ "Sat, 28 Aug 2021 10:53:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "97a83a48-4264-4517-a91c-4c0d6df936d6" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "f7079e8b-a1d0-4e41-9dd3-44d673c9b43e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105314Z:f7079e8b-a1d0-4e41-9dd3-44d673c9b43e" ],
+        "Date": [ "Sat, 28 Aug 2021 10:53:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "f58c0962-775f-4185-9944-9e7d38665511" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "00803931-efe6-4749-84cc-2acca8dd2a55" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105324Z:00803931-efe6-4749-84cc-2acca8dd2a55" ],
+        "Date": [ "Sat, 28 Aug 2021 10:53:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "3a138098-489f-4f76-be0b-15e50ca6949f" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "e645389c-1bbb-442d-8494-8e5898115fb2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105335Z:e645389c-1bbb-442d-8494-8e5898115fb2" ],
+        "Date": [ "Sat, 28 Aug 2021 10:53:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "a24f0bc0-f838-41d6-a8be-4ae2dc9ab86e" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "c99e6f57-67cf-40dc-baf3-7ee7b495d66a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105345Z:c99e6f57-67cf-40dc-baf3-7ee7b495d66a" ],
+        "Date": [ "Sat, 28 Aug 2021 10:53:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "8e451476-f515-4c93-8346-25769941e42d" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "4663e011-fc6e-4c76-b82e-ed048236ddaf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105355Z:4663e011-fc6e-4c76-b82e-ed048236ddaf" ],
+        "Date": [ "Sat, 28 Aug 2021 10:53:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "56d51b48-b8e7-4fbe-bf6d-b05793f242bc" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "4d3e30bc-174a-41ab-acc3-a0ea5377551b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105406Z:4d3e30bc-174a-41ab-acc3-a0ea5377551b" ],
+        "Date": [ "Sat, 28 Aug 2021 10:54:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "0482b95f-86f5-45a8-9980-7279c6108dc4" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "c858d789-6035-49a8-a4d2-8c6e7a0d76f7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105417Z:c858d789-6035-49a8-a4d2-8c6e7a0d76f7" ],
+        "Date": [ "Sat, 28 Aug 2021 10:54:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2171" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A51%3A51.0578322Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "97eb3135-2752-4bc9-9aef-3e40bcf83697" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "3132ea9f-eb5a-4b78-a813-0abfa2c7482a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105427Z:3132ea9f-eb5a-4b78-a813-0abfa2c7482a" ],
+        "Date": [ "Sat, 28 Aug 2021 10:54:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2298" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"c362194d-54c9-41c7-ab17-6bfc0a413e94\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A54%3A26.9113462Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:51:50.6808887Z\",\"endTime\":\"2021-08-28T10:54:26.5527232Z\",\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"Completed\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT2M35.8718345S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"0001-01-01T00:00:00\"},\"sourceRecoverPoint\":null,\"recoveryDestination\":null,\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"Completed\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"name\":\"1e78fd45-43cc-4cd6-9fde-5ceeaf7fa627\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/recoveryPoints?api-version=2021-07-01+19": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/recoveryPoints?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "001e4f3c-3dcf-4e16-99bc-7192ecc41c8a" ],
+        "CommandName": [ "Az.DataProtection.internal\\Get-AzDataProtectionRecoveryPoint" ],
+        "FullCommandName": [ "Get-AzDataProtectionRecoveryPoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "7a8ba489-07bd-4c35-8226-5a9c71b92997" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105433Z:7a8ba489-07bd-4c35-8226-5a9c71b92997" ],
+        "Date": [ "Sat, 28 Aug 2021 10:54:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1054" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"objectType\":\"AzureBackupDiscreteRecoveryPoint\",\"recoveryPointId\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\",\"recoveryPointType\":\"Full\",\"friendlyName\":\"aa795753eeb346cfb4e6fb1395a853a2\",\"recoveryPointDataStoresDetails\":[{\"id\":\"ba608801-9fb2-40ed-9a88-c81efd13db17\",\"type\":\"VaultStore\",\"creationTime\":\"2021-08-28T10:53:26.9190023Z\",\"expiryTime\":null,\"metaData\":null,\"visible\":true,\"state\":\"COMMITTED\",\"rehydrationExpiryTime\":null,\"rehydrationStatus\":null}],\"retentionTagName\":\"Default\",\"retentionTagVersion\":\"637657398028302873\",\"policyName\":\"oss-pstest-policy\",\"policyVersion\":null},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/recoveryPoints/776d074b5b5b4a07a591aa5ffe9a4be1\",\"name\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$POST+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/restore?api-version=2021-07-01+20": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/restore?api-version=2021-07-01",
+      "Content": "{\r\n  \"objectType\": \"AzureBackupRecoveryPointBasedRestoreRequest\",\r\n  \"restoreTargetInfo\": {\r\n    \"objectType\": \"restoreTargetInfo\",\r\n    \"recoveryOption\": \"FailIfExists\",\r\n    \"restoreLocation\": \"centraluseuap\",\r\n    \"datasourceInfo\": {\r\n      \"datasourceType\": \"Microsoft.DBforPostgreSQL/servers/databases\",\r\n      \"objectType\": \"Datasource\",\r\n      \"resourceID\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore-27-08-2021-10-1-11\",\r\n      \"resourceLocation\": \"centraluseuap\",\r\n      \"resourceName\": \"oss-pstest-dbrestore-27-08-2021-10-1-11\",\r\n      \"resourceType\": \"Microsoft.DBforPostgreSQL/servers/databases\",\r\n      \"resourceUri\": \"\"\r\n    },\r\n    \"datasourceSetInfo\": {\r\n      \"datasourceType\": \"Microsoft.DBforPostgreSQL/servers/databases\",\r\n      \"objectType\": \"DatasourceSet\",\r\n      \"resourceID\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server\",\r\n      \"resourceLocation\": \"centraluseuap\",\r\n      \"resourceName\": \"oss-pstest-server\",\r\n      \"resourceType\": \"Microsoft.DBforPostgreSQL/servers\",\r\n      \"resourceUri\": \"\"\r\n    },\r\n    \"datasourceAuthCredentials\": {\r\n      \"objectType\": \"SecretStoreBasedAuthCredentials\",\r\n      \"secretStoreResource\": {\r\n        \"uri\": \"https://oss-pstest-keyvault.vault.azure.net/secrets/oss-pstest-secret\",\r\n        \"secretStoreType\": \"AzureKeyVault\"\r\n      }\r\n    }\r\n  },\r\n  \"sourceDataStoreType\": \"VaultStore\",\r\n  \"recoveryPointId\": \"776d074b5b5b4a07a591aa5ffe9a4be1\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1626" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzlmY2Y5NDgzLTQ1NWItNDE3MS04ZTM2LTQxNDM5MTA2Mjc1Yw==?api-version=2021-07-01" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzlmY2Y5NDgzLTQ1NWItNDE3MS04ZTM2LTQxNDM5MTA2Mjc1Yw==?api-version=2021-07-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "e41cc4fd-32d6-4e80-bf5d-efd79dea3f71" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105433Z:e41cc4fd-32d6-4e80-bf5d-efd79dea3f71" ],
+        "Date": [ "Sat, 28 Aug 2021 10:54:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzlmY2Y5NDgzLTQ1NWItNDE3MS04ZTM2LTQxNDM5MTA2Mjc1Yw==?api-version=2021-07-01+21": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzlmY2Y5NDgzLTQ1NWItNDE3MS04ZTM2LTQxNDM5MTA2Mjc1Yw==?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "36a7583d-4e71-4b21-855b-1733f75abdcc" ],
+        "CommandName": [ "Start-AzDataProtectionBackupInstanceRestore" ],
+        "FullCommandName": [ "Start-AzDataProtectionBackupInstanceRestore_Trigger" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "23027510-72c2-49cd-922a-96673278cb25" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105504Z:23027510-72c2-49cd-922a-96673278cb25" ],
+        "Date": [ "Sat, 28 Aug 2021 10:55:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "702" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzlmY2Y5NDgzLTQ1NWItNDE3MS04ZTM2LTQxNDM5MTA2Mjc1Yw==\",\"name\":\"ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzlmY2Y5NDgzLTQ1NWItNDE3MS04ZTM2LTQxNDM5MTA2Mjc1Yw==\",\"status\":\"Succeeded\",\"startTime\":\"2021-08-28T10:54:33.7503346Z\",\"endTime\":\"2021-08-28T10:54:36Z\",\"properties\":{\"jobId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/oss-pstest-rg/providers/Microsoft.DataProtection/BackupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"objectType\":\"OperationJobExtendedInfo\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzlmY2Y5NDgzLTQ1NWItNDE3MS04ZTM2LTQxNDM5MTA2Mjc1Yw==?api-version=2021-07-01+22": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzlmY2Y5NDgzLTQ1NWItNDE3MS04ZTM2LTQxNDM5MTA2Mjc1Yw==?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "36a7583d-4e71-4b21-855b-1733f75abdcc" ],
+        "CommandName": [ "Start-AzDataProtectionBackupInstanceRestore" ],
+        "FullCommandName": [ "Start-AzDataProtectionBackupInstanceRestore_Trigger" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzlmY2Y5NDgzLTQ1NWItNDE3MS04ZTM2LTQxNDM5MTA2Mjc1Yw==?api-version=2021-07-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "69c9be1b-3728-493c-a776-4563a3aabad9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105504Z:69c9be1b-3728-493c-a776-4563a3aabad9" ],
+        "Date": [ "Sat, 28 Aug 2021 10:55:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "245" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"jobId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/oss-pstest-rg/providers/Microsoft.DataProtection/BackupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"objectType\":\"OperationJobExtendedInfo\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01+23": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "a3691cf4-82c6-48b7-a45f-19946190a746" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "750b718a-2681-4376-ae31-c5cbc79b6fc4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105525Z:750b718a-2681-4376-ae31-c5cbc79b6fc4" ],
+        "Date": [ "Sat, 28 Aug 2021 10:55:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2437" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"36a7583d-4e71-4b21-855b-1733f75abdcc\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A54%3A34.5810087Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:54:34.3479249Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore-27-08-2021-10-1-11\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":null}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"name\":\"38123534-1e21-40ef-8e61-8a7901b3e440\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01+24": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "bbb66a64-789a-4fea-b1df-a39daa25a6f3" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "8316b754-660e-498e-b232-8afb63303bf8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105535Z:8316b754-660e-498e-b232-8afb63303bf8" ],
+        "Date": [ "Sat, 28 Aug 2021 10:55:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2437" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"36a7583d-4e71-4b21-855b-1733f75abdcc\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A54%3A34.5810087Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:54:34.3479249Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore-27-08-2021-10-1-11\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":null}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"name\":\"38123534-1e21-40ef-8e61-8a7901b3e440\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01+25": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "bb2e0ca5-520a-4c28-85bb-bee5190b1bc5" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "a168832c-d9e5-410e-ae8d-e73602c36952" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105546Z:a168832c-d9e5-410e-ae8d-e73602c36952" ],
+        "Date": [ "Sat, 28 Aug 2021 10:55:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2437" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"36a7583d-4e71-4b21-855b-1733f75abdcc\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A54%3A34.5810087Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:54:34.3479249Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore-27-08-2021-10-1-11\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":null}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"name\":\"38123534-1e21-40ef-8e61-8a7901b3e440\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01+26": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "a9013fca-2a04-4808-802f-7d48180b1dd3" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "f3619812-d15c-489f-a44d-edafe708c32f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105556Z:f3619812-d15c-489f-a44d-edafe708c32f" ],
+        "Date": [ "Sat, 28 Aug 2021 10:55:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2437" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"36a7583d-4e71-4b21-855b-1733f75abdcc\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A54%3A34.5810087Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:54:34.3479249Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore-27-08-2021-10-1-11\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":null}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"name\":\"38123534-1e21-40ef-8e61-8a7901b3e440\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01+27": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "56f5fbaa-9dc5-4655-b55f-d4f98c3f297d" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "304ef99d-189a-4d80-a6c8-17a08eb234e6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105607Z:304ef99d-189a-4d80-a6c8-17a08eb234e6" ],
+        "Date": [ "Sat, 28 Aug 2021 10:56:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2437" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"36a7583d-4e71-4b21-855b-1733f75abdcc\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A54%3A34.5810087Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:54:34.3479249Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore-27-08-2021-10-1-11\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":null}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"name\":\"38123534-1e21-40ef-8e61-8a7901b3e440\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01+28": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "49348aec-6971-4f25-bb4f-c3398f161440" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "2113c0ff-5b93-42ad-84a1-70d96720e5b9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105617Z:2113c0ff-5b93-42ad-84a1-70d96720e5b9" ],
+        "Date": [ "Sat, 28 Aug 2021 10:56:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2437" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"36a7583d-4e71-4b21-855b-1733f75abdcc\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A54%3A34.5810087Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:54:34.3479249Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore-27-08-2021-10-1-11\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":null}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"name\":\"38123534-1e21-40ef-8e61-8a7901b3e440\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01+29": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "d426584d-fe03-440c-9d34-c9534d9f8b3a" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "74c1a939-5af1-4019-96f0-60ba4b9b0493" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105629Z:74c1a939-5af1-4019-96f0-60ba4b9b0493" ],
+        "Date": [ "Sat, 28 Aug 2021 10:56:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2437" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"36a7583d-4e71-4b21-855b-1733f75abdcc\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A54%3A34.5810087Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:54:34.3479249Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore-27-08-2021-10-1-11\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":null}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"name\":\"38123534-1e21-40ef-8e61-8a7901b3e440\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01+30": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "e09f4cb7-7847-43f8-9b2f-f624c2adbb3f" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "2d8c4228-445b-4294-839b-d89dbc725d95" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105639Z:2d8c4228-445b-4294-839b-d89dbc725d95" ],
+        "Date": [ "Sat, 28 Aug 2021 10:56:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2437" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"36a7583d-4e71-4b21-855b-1733f75abdcc\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A54%3A34.5810087Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:54:34.3479249Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore-27-08-2021-10-1-11\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":null}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"name\":\"38123534-1e21-40ef-8e61-8a7901b3e440\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01+31": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "5bf4af2a-81cb-4b71-8351-29addac0ff18" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "46b7a182-45b9-4052-b741-a0b1b7ad26b4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105650Z:46b7a182-45b9-4052-b741-a0b1b7ad26b4" ],
+        "Date": [ "Sat, 28 Aug 2021 10:56:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2471" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"36a7583d-4e71-4b21-855b-1733f75abdcc\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A56%3A49.0018946Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:54:34.3479249Z\",\"endTime\":\"2021-08-28T10:56:48.701069Z\",\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"Completed\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT2M14.3531441S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore-27-08-2021-10-1-11\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"Completed\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":null}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/38123534-1e21-40ef-8e61-8a7901b3e440\",\"name\":\"38123534-1e21-40ef-8e61-8a7901b3e440\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/recoveryPoints?api-version=2021-07-01+32": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/recoveryPoints?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "09a4eac9-95f8-4790-8dc3-c103729f9af1" ],
+        "CommandName": [ "Az.DataProtection.internal\\Get-AzDataProtectionRecoveryPoint" ],
+        "FullCommandName": [ "Get-AzDataProtectionRecoveryPoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-correlation-request-id": [ "d2f4cd10-baa2-4123-bb01-18dd78fc7bb4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105656Z:d2f4cd10-baa2-4123-bb01-18dd78fc7bb4" ],
+        "Date": [ "Sat, 28 Aug 2021 10:56:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1054" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"objectType\":\"AzureBackupDiscreteRecoveryPoint\",\"recoveryPointId\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\",\"recoveryPointType\":\"Full\",\"friendlyName\":\"aa795753eeb346cfb4e6fb1395a853a2\",\"recoveryPointDataStoresDetails\":[{\"id\":\"ba608801-9fb2-40ed-9a88-c81efd13db17\",\"type\":\"VaultStore\",\"creationTime\":\"2021-08-28T10:53:26.9190023Z\",\"expiryTime\":null,\"metaData\":null,\"visible\":true,\"state\":\"COMMITTED\",\"rehydrationExpiryTime\":null,\"rehydrationStatus\":null}],\"retentionTagName\":\"Default\",\"retentionTagVersion\":\"637657398028302873\",\"policyName\":\"oss-pstest-policy\",\"policyVersion\":null},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/recoveryPoints/776d074b5b5b4a07a591aa5ffe9a4be1\",\"name\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$POST+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/restore?api-version=2021-07-01+33": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3/restore?api-version=2021-07-01",
+      "Content": "{\r\n  \"objectType\": \"AzureBackupRecoveryPointBasedRestoreRequest\",\r\n  \"restoreTargetInfo\": {\r\n    \"objectType\": \"RestoreFilesTargetInfo\",\r\n    \"recoveryOption\": \"FailIfExists\",\r\n    \"restoreLocation\": \"centraluseuap\",\r\n    \"targetDetails\": {\r\n      \"filePrefix\": \"oss-pstest-restoreasfiles-27-08-2021-10-1-11\",\r\n      \"restoreTargetLocationType\": \"AzureBlobs\",\r\n      \"url\": \"https://osspstestsa.blob.core.windows.net/oss-pstest-container\"\r\n    }\r\n  },\r\n  \"sourceDataStoreType\": \"VaultStore\",\r\n  \"recoveryPointId\": \"776d074b5b5b4a07a591aa5ffe9a4be1\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "551" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzNlYjg1MmI5LTI3OTUtNGIxMi04YzM1LTdhOTg2NmE2MDcyNw==?api-version=2021-07-01" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzNlYjg1MmI5LTI3OTUtNGIxMi04YzM1LTdhOTg2NmE2MDcyNw==?api-version=2021-07-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "b6f52d1b-bc52-475d-8690-3a1fac5610ed" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105657Z:b6f52d1b-bc52-475d-8690-3a1fac5610ed" ],
+        "Date": [ "Sat, 28 Aug 2021 10:56:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzNlYjg1MmI5LTI3OTUtNGIxMi04YzM1LTdhOTg2NmE2MDcyNw==?api-version=2021-07-01+34": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzNlYjg1MmI5LTI3OTUtNGIxMi04YzM1LTdhOTg2NmE2MDcyNw==?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "62f9c201-27fe-437b-af11-5942214df626" ],
+        "CommandName": [ "Start-AzDataProtectionBackupInstanceRestore" ],
+        "FullCommandName": [ "Start-AzDataProtectionBackupInstanceRestore_Trigger" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
+        "x-ms-correlation-request-id": [ "30d3c821-9bcb-4a8b-8475-4b90b4a518ad" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105727Z:30d3c821-9bcb-4a8b-8475-4b90b4a518ad" ],
+        "Date": [ "Sat, 28 Aug 2021 10:57:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "702" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzNlYjg1MmI5LTI3OTUtNGIxMi04YzM1LTdhOTg2NmE2MDcyNw==\",\"name\":\"ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzNlYjg1MmI5LTI3OTUtNGIxMi04YzM1LTdhOTg2NmE2MDcyNw==\",\"status\":\"Succeeded\",\"startTime\":\"2021-08-28T10:56:56.8942636Z\",\"endTime\":\"2021-08-28T10:57:00Z\",\"properties\":{\"jobId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/oss-pstest-rg/providers/Microsoft.DataProtection/BackupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"objectType\":\"OperationJobExtendedInfo\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzNlYjg1MmI5LTI3OTUtNGIxMi04YzM1LTdhOTg2NmE2MDcyNw==?api-version=2021-07-01+35": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzNlYjg1MmI5LTI3OTUtNGIxMi04YzM1LTdhOTg2NmE2MDcyNw==?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "62f9c201-27fe-437b-af11-5942214df626" ],
+        "CommandName": [ "Start-AzDataProtectionBackupInstanceRestore" ],
+        "FullCommandName": [ "Start-AzDataProtectionBackupInstanceRestore_Trigger" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/ZWY5ODFmNjktMDk0Yi00MGU5LWEwNmUtNzVjZGFkNzg1OTEyOzNlYjg1MmI5LTI3OTUtNGIxMi04YzM1LTdhOTg2NmE2MDcyNw==?api-version=2021-07-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-correlation-request-id": [ "39aa943d-595e-4398-8afe-8522a0e6cb3e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105727Z:39aa943d-595e-4398-8afe-8522a0e6cb3e" ],
+        "Date": [ "Sat, 28 Aug 2021 10:57:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "245" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"jobId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/oss-pstest-rg/providers/Microsoft.DataProtection/BackupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"objectType\":\"OperationJobExtendedInfo\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01+36": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "3ff0a01e-371c-4bc8-b02e-4d09826d16be" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "2aeaf838-0b48-4478-a4b5-488bacb7d7b2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105738Z:2aeaf838-0b48-4478-a4b5-488bacb7d7b2" ],
+        "Date": [ "Sat, 28 Aug 2021 10:57:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2379" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"62f9c201-27fe-437b-af11-5942214df626\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A56%3A57.9368304Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:56:57.7036059Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"https://osspstestsa.blob.core.windows.net/oss-pstest-container\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"Restore File Prefix\":\"oss-pstest-restoreasfiles-27-08-2021-10-1-11\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"name\":\"0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01+37": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "f958479e-2c7c-4324-ab4c-3dda2578a45e" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "94aa5623-feb2-49f3-bdec-056c411fe9ad" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105749Z:94aa5623-feb2-49f3-bdec-056c411fe9ad" ],
+        "Date": [ "Sat, 28 Aug 2021 10:57:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2379" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"62f9c201-27fe-437b-af11-5942214df626\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A56%3A57.9368304Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:56:57.7036059Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"https://osspstestsa.blob.core.windows.net/oss-pstest-container\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"Restore File Prefix\":\"oss-pstest-restoreasfiles-27-08-2021-10-1-11\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"name\":\"0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01+38": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "06d2d7a3-3ea7-4c40-87f7-9dd7356dca2f" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "924a7db7-a77b-469b-83ee-11543a1c6f8a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105759Z:924a7db7-a77b-469b-83ee-11543a1c6f8a" ],
+        "Date": [ "Sat, 28 Aug 2021 10:57:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2379" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"62f9c201-27fe-437b-af11-5942214df626\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A56%3A57.9368304Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:56:57.7036059Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"https://osspstestsa.blob.core.windows.net/oss-pstest-container\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"Restore File Prefix\":\"oss-pstest-restoreasfiles-27-08-2021-10-1-11\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"name\":\"0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01+39": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "eeca0861-25d8-403e-908f-b3b02be0d801" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "ce72aa02-e188-4ed0-9fdb-ff5177ef21a0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105810Z:ce72aa02-e188-4ed0-9fdb-ff5177ef21a0" ],
+        "Date": [ "Sat, 28 Aug 2021 10:58:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2379" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"62f9c201-27fe-437b-af11-5942214df626\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A56%3A57.9368304Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:56:57.7036059Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"https://osspstestsa.blob.core.windows.net/oss-pstest-container\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"Restore File Prefix\":\"oss-pstest-restoreasfiles-27-08-2021-10-1-11\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"name\":\"0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01+40": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "471cb8b8-c6a5-4b55-8da9-0e46899483e8" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "5cd01364-024a-41bc-a58b-49ad2da9f65f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105820Z:5cd01364-024a-41bc-a58b-49ad2da9f65f" ],
+        "Date": [ "Sat, 28 Aug 2021 10:58:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2379" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"62f9c201-27fe-437b-af11-5942214df626\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A56%3A57.9368304Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:56:57.7036059Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"https://osspstestsa.blob.core.windows.net/oss-pstest-container\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"Restore File Prefix\":\"oss-pstest-restoreasfiles-27-08-2021-10-1-11\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"name\":\"0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01+41": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "8d558116-bbbf-4dbc-8a42-7480b54b9fae" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11962" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "92fe0b14-21f6-4bb2-b2ce-68e7b6ba1b6c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105831Z:92fe0b14-21f6-4bb2-b2ce-68e7b6ba1b6c" ],
+        "Date": [ "Sat, 28 Aug 2021 10:58:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2379" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"62f9c201-27fe-437b-af11-5942214df626\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A56%3A57.9368304Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:56:57.7036059Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"https://osspstestsa.blob.core.windows.net/oss-pstest-container\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"Restore File Prefix\":\"oss-pstest-restoreasfiles-27-08-2021-10-1-11\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"name\":\"0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01+42": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "576e281f-5855-49ef-a614-a21b6a1086a6" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "f4581503-ceda-4186-a549-7fa5d33e505b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105842Z:f4581503-ceda-4186-a549-7fa5d33e505b" ],
+        "Date": [ "Sat, 28 Aug 2021 10:58:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2379" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"62f9c201-27fe-437b-af11-5942214df626\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A56%3A57.9368304Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:56:57.7036059Z\",\"endTime\":null,\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"InProgress\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"https://osspstestsa.blob.core.windows.net/oss-pstest-container\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"InProgress\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"Restore File Prefix\":\"oss-pstest-restoreasfiles-27-08-2021-10-1-11\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"name\":\"0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzDataProtectionBackupInstanceRestore+[NoContext]+OssRestore+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01+43": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "cdcc1ea3-cb7b-4bc4-84b2-926630ffbf93" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11960" ],
+        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "cadc2d7a-e2cc-4f45-af91-89fe9edd8e8b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210828T105852Z:cadc2d7a-e2cc-4f45-af91-89fe9edd8e8b" ],
+        "Date": [ "Sat, 28 Aug 2021 10:58:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2414" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"62f9c201-27fe-437b-af11-5942214df626\",\"subscriptionId\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"backupInstanceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupInstances/oss-pstest-server-postgres-45a33101-ec2b-47ed-8d05-3a067d208ef3\",\"policyId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupPolicies/oss-pstest-policy\",\"dataSourceId\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres\",\"vaultName\":\"oss-pstest-vault\",\"backupInstanceFriendlyName\":\"oss-pstest-server\\\\postgres\",\"policyName\":\"oss-pstest-policy\",\"sourceResourceGroup\":\"hiagarg\",\"dataSourceSetName\":\"oss-pstest-server\",\"dataSourceName\":\"postgres\",\"sourceDataStoreName\":null,\"destinationDataStoreName\":null,\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-08-28T10%3A58%3A46.1744454Z\u0027\\\"\",\"sourceSubscriptionID\":\"38304e13-357e-405e-9e9a-220351dcce8c\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-08-28T10:56:57.7036059Z\",\"endTime\":\"2021-08-28T10:58:45.7698615Z\",\"dataSourceType\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"operationCategory\":\"Restore\",\"operation\":\"Restore\",\"status\":\"Completed\",\"restoreType\":null,\"isUserTriggered\":true,\"rehydrationPriority\":null,\"supportedActions\":[\"\"],\"duration\":\"PT1M48.0662556S\",\"progressUrl\":null,\"errorDetails\":null,\"extendedInfo\":{\"backupInstanceState\":null,\"dataTransferedInBytes\":null,\"targetRecoverPoint\":null,\"sourceRecoverPoint\":{\"recoveryPointID\":\"776d074b5b5b4a07a591aa5ffe9a4be1\",\"recoveryPointTime\":\"2021-08-28T10:53:26.9190023Z\"},\"recoveryDestination\":\"https://osspstestsa.blob.core.windows.net/oss-pstest-container\",\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Restore\",\"taskStatus\":\"Completed\",\"taskProgress\":null,\"additionalDetails\":null}],\"additionalDetails\":{\"Restore File Prefix\":\"oss-pstest-restoreasfiles-27-08-2021-10-1-11\"}}},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/oss-pstest-rg/providers/Microsoft.DataProtection/backupVaults/oss-pstest-vault/backupJobs/0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"name\":\"0e6b1e28-01c0-439a-9ac4-4c8fdfc1fc6c\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  }
+}

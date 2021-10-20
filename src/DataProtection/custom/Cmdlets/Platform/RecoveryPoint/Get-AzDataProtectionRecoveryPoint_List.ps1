@@ -102,7 +102,7 @@
             $null = $PSBoundParameters.Add("Filter", $filter)
         }
 
-        $rps = Az.DataProtection.internal\Get-AzDataProtectionRecoveryPointList @PSBoundParameters
+        $rps = Az.DataProtection.internal\Get-AzDataProtectionRecoveryPoint @PSBoundParameters
         return $rps
     }
 }

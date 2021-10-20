@@ -97,6 +97,8 @@ jobs:
         Release/**/Microsoft.Azure.PowerShell.Authentication.dll
         Release/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll
         Release/**/Microsoft.Azure.PowerShell.Authenticators.dll
+        Release/**/Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.dll
+        Release/**/Microsoft.Azure.Commands.*.AlcWrapper.dll
         !Release/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll
       UseMinimatch: true
       signConfigType: 'inlineSignParams'

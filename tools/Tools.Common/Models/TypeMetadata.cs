@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Tools.Common.Loaders;
 using System.Text.RegularExpressions;
+using Tools.Common.Loaders;
 
 namespace Tools.Common.Models
 {
@@ -234,7 +233,7 @@ namespace Tools.Common.Models
         /// </summary>
         /// <param name="other">The TypeMetadata object being compared to this object.</param>
         /// <returns>True if the two objects are equal, false otherwise.</returns>
-        public override bool Equals(Object obj)
+        public bool Equals(Object obj, bool ignoreMethod = false)
         {
             var other = obj as TypeMetadata;
             if (other == null)
@@ -279,8 +278,11 @@ namespace Tools.Common.Models
             }
 
             typesEqual &= this.Properties.Keys.Count == other.Properties.Keys.Count;
-            typesEqual &= AreMethodSignaturesEqual(this.Methods, other.Methods);
-            typesEqual &= AreMethodSignaturesEqual(this.Constructors, other.Constructors);
+            if (!ignoreMethod)
+            {
+                typesEqual &= AreMethodSignaturesEqual(this.Methods, other.Methods);
+                typesEqual &= AreMethodSignaturesEqual(this.Constructors, other.Constructors);
+            }
             return typesEqual;
         }
 

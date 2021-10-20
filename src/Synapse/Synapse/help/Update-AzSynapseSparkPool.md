@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSynapseSparkPool
 
 ## SYNOPSIS
-Updates a Synapse Analytics Spark pool.
+Updates a Apache Spark pool in Azure Synapse Analytics.
 
 ## SYNTAX
 
@@ -18,6 +18,8 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
  [-Tag <Hashtable>] [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>]
  [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>]
  [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
+ [-SparkConfigFilePath <String>] [-PackageAction <PackageActionType>]
+ [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,8 +28,10 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
 Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-EnableAutoScale <Boolean>] [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>]
  [-EnableAutoPause <Boolean>] [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>]
- [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>]
+ [-PackageAction <PackageActionType>]
+ [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -35,8 +39,9 @@ Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [
 Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [-EnableAutoScale <Boolean>]
  [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
  [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
- [-LibraryRequirementsFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>] [-PackageAction <PackageActionType>]
+ [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -44,12 +49,13 @@ Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [
 Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoScale <Boolean>]
  [-AutoScaleMinNodeCount <Int32>] [-AutoScaleMaxNodeCount <Int32>] [-EnableAutoPause <Boolean>]
  [-AutoPauseDelayInMinute <Int32>] [-NodeCount <Int32>] [-NodeSize <String>] [-SparkVersion <String>]
- [-LibraryRequirementsFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-LibraryRequirementsFilePath <String>] [-SparkConfigFilePath <String>] [-PackageAction <PackageActionType>]
+ [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzSynapseSparkPool** cmdlet updates an Azure Synapse Analytics Spark pool.
+The **Update-AzSynapseSparkPool** cmdlet updates an Apache Spark pool in Azure Synapse Analytics.
 
 ## EXAMPLES
 
@@ -58,7 +64,7 @@ The **Update-AzSynapseSparkPool** cmdlet updates an Azure Synapse Analytics Spar
 PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -Tag @{"key" = "value"} -NodeCount 5 -NodeSize Medium
 ```
 
-This command updates an Azure Synapse Analytics Spark pool.
+This command updates an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 2
 ```powershell
@@ -66,7 +72,7 @@ PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name Con
 $pool | Update-AzSynapseSparkPool -Tag @{"key" = "value1"}
 ```
 
-This command updates an Azure Synapse Analytics Spark pool through pipeline.
+This command updates an Apache Spark pool in Azure Synapse Analytics through pipeline.
 
 ### Example 3
 ```powershell
@@ -74,42 +80,73 @@ PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | Update-AzSynapseSparkPool -Name ContosoSparkPool -Tag @{"key" = "value2"}
 ```
 
-This command updates an Azure Synapse Analytics Spark pool through pipeline.
+This command updates an Apache Spark pool in Azure Synapse Analytics through pipeline.
 
 ### Example 4
 ```powershell
 PS C:\> Update-AzSynapseSparkPool -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/bigDataPools/ContosoSparkPool -Tag @{"key" = "value3"}
 ```
 
-This command updates an Azure Synapse Analytics Spark pool with resource ID.
+This command updates an Apache Spark pool in Azure Synapse Analytics with resource ID.
 
 ### Example 5
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoScale $true -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 7
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoScale $true -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 7
 ```
 
-This command enables auto-scale for an Azure Synapse Analytics Spark pool.
+This command enables auto-scale for an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 6
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoScale $false
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoScale $false
 ```
 
-This command disables auto-scale for an Azure Synapse Analytics Spark pool.
+This command disables auto-scale for an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 7
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoPause $true -AutoPauseDelayInMinute 15
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoPause $true -AutoPauseDelayInMinute 15
 ```
 
-This command enables auto-pause for an Azure Synapse Analytics Spark pool.
+This command enables auto-pause for an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 8
 ```powershell
-PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool -EnableAutoPause $false
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableAutoPause $false
 ```
 
-This command disables auto-pause for an Azure Synapse Analytics Spark pool.
+This command disables auto-pause for an Apache Spark pool in Azure Synapse Analytics.
+
+### Example 9
+```powershell
+PS C:\> $packages = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Add -Package $packages
+```
+
+The first command retrieves workspace packages. The second command links these workspace packages to an Apache Spark pool in Azure Synapse Analytics.
+
+### Example 10
+```powershell
+PS C:\> $package = Get-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Name ContosoPackage
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Remove -Package $package
+```
+
+The first command retrieves workspace packages named ContosoPackage. The second command removes the workspace package from an Apache Spark pool in Azure Synapse Analytics.
+
+### Example 11
+```powershell
+PS C:\> $pool = Get-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool
+PS C:\> $pool | Update-AzSynapseSparkPool -PackageAction Remove -Package $pool.WorkspacePackages
+```
+
+The first command retrieves an Apache Spark pool in Azure Synapse Analytics. The second command removes all workspace packages that are linked to that Apache Spark pool.
+
+### Example 11
+```powershell
+PS C:\> Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -Tag @{"key" = "value"} -NodeCount 5 -NodeSize Medium -SparkConfigFilePath "c:\sparkconfig.txt"
+```
+
+This command updates an Apache Spark pool in Azure Synapse Analytics and upload a spark configuration file for the spark pool.
 
 ## PARAMETERS
 
@@ -297,6 +334,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Package
+The workspace packages.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]
+Parameter Sets: (All)
+Aliases: WorkspacePackage
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PackageAction
+Package action must be specified when you add or remove a workspace package from a Apache Spark pool.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+PackageActionType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Add, Remove
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource group name.
 
@@ -321,6 +389,21 @@ Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SparkConfigFilePath
+Spark pool properties configuration file.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
