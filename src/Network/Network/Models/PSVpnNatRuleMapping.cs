@@ -23,5 +23,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         /// </summary>
         [Ps1Xml(Target = ViewControl.Table)]
         public string AddressSpace { get; set; }
+
+        /// <summary>
+        /// Port range for Vpn NatRule mapping
+        /// </summary>
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PortRange { get; set; }
     }
 }

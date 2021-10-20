@@ -1276,7 +1276,7 @@ function Test-VirtualNetworkGatewayNatRuleCRUD
       # Create & Get virtualnetworkgateway with NatRules
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       $ipconfigurationId = $vnetIpConfig.id
-      $natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
+      $natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16") -InternalPortRanges @("100-100") -ExternalPortRanges @("200-200")
       $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw2 -NatRule $natRule -EnableBgpRouteTranslationForNat -AsJob
 	  $job | Wait-Job
 	  $actual = $job | Receive-Job
@@ -1290,7 +1290,7 @@ function Test-VirtualNetworkGatewayNatRuleCRUD
       # Updates & Get virtualnetworkgateway with NatRules
       $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       $vngNatRules = $gateway.NatRules
-      $natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule2" -Type "Static" -Mode "EgressSnat" -InternalMapping @("20.0.0.0/16") -ExternalMapping @("50.0.0.0/16")
+      $natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule2" -Type "Static" -Mode "EgressSnat" -InternalMapping @("20.0.0.0/16") -ExternalMapping @("50.0.0.0/16") -InternalPortRanges @("300-300") -ExternalPortRanges @("400-400")
       $vngNatRules.Add($natrule)
       $updatedGateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -NatRule $vngNatRules
       Assert-AreEqual 2 @($updatedGateway.NatRules).Count

@@ -210,6 +210,23 @@ function Test-CortexCRUD
 		Assert-AreEqual "Succeeded" $natRule.ProvisioningState	
 		#Assert-AreEqual $True $vpnGateway.IsRoutingPreferenceInternet
 
+		# Create Port Range NAT rule
+		New-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule4" -Type "Static" -Mode "IngressSnat" -InternalMapping "10.10.0.0/25" -ExternalMapping "10.20.0.0/25" -InternalPortRanges "100-100" -ExternalPortRanges "200-200"
+		$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule4"
+		Assert-AreEqual "NatRule4" $natRule.Name
+		Assert-AreEqual 1 $natRule.InternalMappings.Count
+		Assert-AreEqual "100-100" $natRule.InternalMappings[0].PortRange
+		Assert-AreEqual 1 $natRule.ExternalMappings.Count
+		Assert-AreEqual "200-200" $natRule.ExternalMappings[0].PortRange
+		Assert-AreEqual "Succeeded" $natRule.ProvisioningState
+
+		Update-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule4" -InternalPortRanges "200-200" -ExternalPortRanges "300-300"
+		$natRule = Get-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule4"
+		Assert-AreEqual "NatRule4" $natRule.Name
+		Assert-AreEqual "200-200" $natRule.InternalMappings[0].PortRange
+		Assert-AreEqual "300-300" $natRule.ExternalMappings[0].PortRange
+		Assert-AreEqual "Succeeded" $natRule.ProvisioningState
+
 		$vpnGateways = Get-AzVpnGateway
 		Assert-NotNull $vpnGateways
 		Assert-NotNull $vpnGateways[0].ResourceGroupName
