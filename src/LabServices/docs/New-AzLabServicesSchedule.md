@@ -21,12 +21,6 @@ New-AzLabServicesSchedule -LabName <String> -Name <String> -ResourceGroupName <S
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzLabServicesSchedule -LabName <String> -Name <String> -ResourceGroupName <String> -Body <ISchedule>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### Lab
 ```
 New-AzLabServicesSchedule -Lab <Lab> -Name <String> [-Notes <String>]
@@ -62,22 +56,6 @@ Schedule Name
 Create a weekly schedule.
 
 ## PARAMETERS
-
-### -Body
-Schedule for automatically turning virtual machines in a lab on and off at specified times.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -115,7 +93,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -177,7 +155,7 @@ This date is inclusive.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, Lab
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -192,7 +170,7 @@ The frequency of the recurrence.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency
-Parameter Sets: CreateExpanded, Lab
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -209,7 +187,7 @@ When no interval is supplied, an interval of 1 is used.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, Lab
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -225,7 +203,7 @@ Used for when the Frequency is set to Weekly.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]
-Parameter Sets: CreateExpanded, Lab
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -241,7 +219,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -257,7 +235,7 @@ Timestamp offsets will be ignored and timeZoneId is used instead.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, Lab
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -273,7 +251,7 @@ Timestamp offsets will be ignored and timeZoneId is used instead.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, Lab
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -288,7 +266,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -303,7 +281,7 @@ The IANA timezone id for the schedule.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Lab
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -349,8 +327,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
-
 ### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
 
 ## OUTPUTS
@@ -365,22 +341,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-BODY <ISchedule>: Schedule for automatically turning virtual machines in a lab on and off at specified times.
-  - `[Note <String>]`: Notes for this schedule.
-  - `[RecurrencePatternExpirationDate <DateTime?>]`: When the recurrence will expire. This date is inclusive.
-  - `[RecurrencePatternFrequency <RecurrenceFrequency?>]`: The frequency of the recurrence.
-  - `[RecurrencePatternInterval <Int32?>]`: The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.
-  - `[RecurrencePatternWeekDay <WeekDay[]>]`: The week days the schedule runs. Used for when the Frequency is set to Weekly.
-  - `[StartAt <DateTime?>]`: When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
-  - `[StopAt <DateTime?>]`: When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[TimeZoneId <String>]`: The IANA timezone id for the schedule.
 
 LAB <Lab>: 
   - `Location <String>`: The geo-location where the resource lives

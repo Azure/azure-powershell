@@ -19,13 +19,6 @@ New-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <Strin
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <String> -Body <IUser>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### Lab
 ```
 New-AzLabServicesUser -Lab <Lab> -Name <String> -Email <String> [-AdditionalUsageQuota <TimeSpan>]
@@ -55,7 +48,7 @@ The amount of usage quota time the user gets in addition to the lab usage quota.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, Lab
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -80,22 +73,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-User of a lab that can register for and use virtual machines within the lab.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -116,7 +93,7 @@ Email address of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Lab
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -147,7 +124,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -178,7 +155,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -194,7 +171,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -209,7 +186,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -255,8 +232,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
-
 ### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
 
 ## OUTPUTS
@@ -271,16 +246,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-BODY <IUser>: User of a lab that can register for and use virtual machines within the lab.
-  - `Email <String>`: Email address of the user.
-  - `[AdditionalUsageQuota <TimeSpan?>]`: The amount of usage quota time the user gets in addition to the lab usage quota.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 LAB <Lab>: 
   - `Location <String>`: The geo-location where the resource lives

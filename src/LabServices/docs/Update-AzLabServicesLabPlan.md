@@ -31,7 +31,7 @@ Update-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-Subscri
 
 ### LabPlan
 ```
-Update-AzLabServicesLabPlan -LabPlan <LabPlan> [-AllowedRegions <String[]>]
+Update-AzLabServicesLabPlan -LabPlan <LabPlan> [-AllowedRegion <String[]>]
  [-DefaultAutoShutdownProfileDisconnectDelay <TimeSpan>] [-DefaultAutoShutdownProfileIdleDelay <TimeSpan>]
  [-DefaultAutoShutdownProfileNoConnectDelay <TimeSpan>]
  [-DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState>]
@@ -40,15 +40,8 @@ Update-AzLabServicesLabPlan -LabPlan <LabPlan> [-AllowedRegions <String[]>]
  [-DefaultConnectionProfileClientRdpAccessEnabled <ConnectionType>]
  [-DefaultConnectionProfileClientSshAccessEnabled <ConnectionType>] [-DefaultNetworkProfileSubnetId <String>]
  [-LinkedLmsInstance <String>] [-SharedGalleryId <String>] [-SupportInfoEmail <String>]
- [-SupportInfoInstructions <String>] [-SupportInfoPhone <String>] [-SupportInfoUrl <String>]
- [-Tags <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> -Body <ILabPlanUpdate>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SupportInfoInstruction <String>] [-SupportInfoPhone <String>] [-SupportInfoUrl <String>] [-Tag <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,22 +67,7 @@ The allowed regions for the lab creator to use when creating labs using this lab
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AllowedRegions
-
-
-```yaml
-Type: System.String[]
-Parameter Sets: LabPlan
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -104,7 +82,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -114,29 +92,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Contains lab configuration and default settings.
-This variant is used for PATCH.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlanUpdate
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultAutoShutdownProfileDisconnectDelay
 The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -151,7 +112,7 @@ The amount of time a VM will idle before it is shutdown if this behavior is enab
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -166,7 +127,7 @@ The amount of time a VM will stay running before it is shutdown if no connection
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -181,7 +142,7 @@ Whether shutdown on disconnect is enabled
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -196,7 +157,7 @@ Whether a VM will get shutdown when it has idled for a period of time.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -211,7 +172,7 @@ Whether a VM will get shutdown when it hasn't been connected to after a period o
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -316,7 +277,7 @@ The external subnet resource id
 
 ```yaml
 Type: System.String
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -361,7 +322,7 @@ Base Url of the lms instance this lab plan can link lab rosters against.
 
 ```yaml
 Type: System.String
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -377,7 +338,7 @@ Used in resource URIs and in UI.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: LabPlanName
 
 Required: True
@@ -392,7 +353,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -408,7 +369,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -425,7 +386,7 @@ Shared images from the gallery can be made available to use when creating new la
 
 ```yaml
 Type: System.String
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -440,7 +401,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -455,7 +416,7 @@ Support contact email address.
 
 ```yaml
 Type: System.String
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -470,22 +431,7 @@ Support instructions.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SupportInfoInstructions
-
-
-```yaml
-Type: System.String
-Parameter Sets: LabPlan
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -500,7 +446,7 @@ Support contact phone number.
 
 ```yaml
 Type: System.String
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -515,7 +461,7 @@ Support web address.
 
 ```yaml
 Type: System.String
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -530,22 +476,7 @@ Resource tags.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
-
-
-```yaml
-Type: System.String[]
-Parameter Sets: LabPlan
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -591,8 +522,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlanUpdate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
 
 ## OUTPUTS
@@ -607,27 +536,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-BODY <ILabPlanUpdate>: Contains lab configuration and default settings. This variant is used for PATCH.
-  - `[Tag <String[]>]`: Resource tags.
-  - `[AllowedRegion <String[]>]`: The allowed regions for the lab creator to use when creating labs using this lab plan.
-  - `[DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]`: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  - `[DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]`: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  - `[DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]`: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  - `[DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState?>]`: Whether shutdown on disconnect is enabled
-  - `[DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]`: Whether a VM will get shutdown when it has idled for a period of time.
-  - `[DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState?>]`: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  - `[DefaultConnectionProfileClientRdpAccess <ConnectionType?>]`: The enabled access level for Client Access over RDP.
-  - `[DefaultConnectionProfileClientSshAccess <ConnectionType?>]`: The enabled access level for Client Access over SSH.
-  - `[DefaultConnectionProfileWebRdpAccess <ConnectionType?>]`: The enabled access level for Web Access over RDP.
-  - `[DefaultConnectionProfileWebSshAccess <ConnectionType?>]`: The enabled access level for Web Access over SSH.
-  - `[DefaultNetworkProfileSubnetId <String>]`: The external subnet resource id
-  - `[LinkedLmsInstance <String>]`: Base Url of the lms instance this lab plan can link lab rosters against.
-  - `[SharedGalleryId <String>]`: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
-  - `[SupportInfoEmail <String>]`: Support contact email address.
-  - `[SupportInfoInstruction <String>]`: Support instructions.
-  - `[SupportInfoPhone <String>]`: Support contact phone number.
-  - `[SupportInfoUrl <String>]`: Support web address.
 
 LABPLAN <LabPlan>: 
   - `Location <String>`: The geo-location where the resource lives

@@ -12,7 +12,6 @@ Operation to update a lab resource.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Update-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdditionalCapabilityInstallGpuDriver <EnableState>] [-AdminUserPassword <String>]
@@ -33,13 +32,6 @@ Update-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-Title <String>] [-VirtualMachineProfileCreateOption <CreateOption>]
  [-VirtualMachineProfileUsageQuota <TimeSpan>] [-VirtualMachineProfileUseSharedPassword <EnableState>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzLabServicesLab -Name <String> -ResourceGroupName <String> -Body <ILabUpdate>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +57,7 @@ Flag to pre-install dedicated GPU drivers.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -81,7 +73,7 @@ This is required for the TemplateVM createOption.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -96,7 +88,7 @@ The username to use when signing in to lab VMs.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -126,7 +118,7 @@ The amount of time a VM will stay running after a user disconnects if this behav
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -141,7 +133,7 @@ The amount of time a VM will idle before it is shutdown if this behavior is enab
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -156,7 +148,7 @@ The amount of time a VM will stay running before it is shutdown if no connection
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -171,7 +163,7 @@ Whether shutdown on disconnect is enabled
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -186,7 +178,7 @@ Whether a VM will get shutdown when it has idled for a period of time.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -201,7 +193,7 @@ Whether a VM will get shutdown when it hasn't been connected to after a period o
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -211,28 +203,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-The lab resource for updates.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabUpdate
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ConnectionProfileClientRdpAccess
 The enabled access level for Client Access over RDP.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -247,7 +223,7 @@ The enabled access level for Client Access over SSH.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -262,7 +238,7 @@ The enabled access level for Web Access over RDP.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -277,7 +253,7 @@ The enabled access level for Web Access over SSH.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -307,7 +283,7 @@ The description of the lab.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -322,7 +298,7 @@ Image resource ID
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -337,7 +313,7 @@ The image offer if applicable.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -352,7 +328,7 @@ The image publisher
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -367,7 +343,7 @@ The image SKU
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -382,7 +358,7 @@ The image version specified on creation.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -399,7 +375,7 @@ Setting a labPlanId on an existing lab provides organization..
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -431,7 +407,7 @@ This is required for the TemplateVM createOption.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -446,7 +422,7 @@ The username to use when signing in to lab VMs.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -493,7 +469,7 @@ Having this set enables AAD sync mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -508,7 +484,7 @@ The base URI identifying the lms instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -523,7 +499,7 @@ The unique id of the azure lab services tool in the lms.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -538,7 +514,7 @@ The unique context identifier for the lab in the lms.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -553,7 +529,7 @@ The uri of the names and roles service endpoint on the lms for the class attache
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -568,7 +544,7 @@ Whether any user or only specified users can register to a lab.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -584,7 +560,7 @@ If scale out/in is not possible for the resource this may be omitted.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -599,7 +575,7 @@ If the service has different generations of hardware, for the same SKU, then tha
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -616,7 +592,7 @@ It is typically a letter+number code
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -632,7 +608,7 @@ When the name field is the combination of tier and some other value, this would 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -647,7 +623,7 @@ This field is required to be implemented by the Resource Provider if the service
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -677,7 +653,7 @@ Resource tags.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -692,7 +668,7 @@ The title of the lab.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -707,7 +683,7 @@ Indicates what lab virtual machines are created from.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -723,7 +699,7 @@ Must be a time span between 0 and 9999 hours.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -738,7 +714,7 @@ Enabling this option will use the same password for all user VMs.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -784,8 +760,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabUpdate
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
@@ -793,51 +767,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-BODY <ILabUpdate>: The lab resource for updates.
-  - `[Tag <String[]>]`: Resource tags.
-  - `[AdditionalCapabilityInstallGpuDriver <EnableState?>]`: Flag to pre-install dedicated GPU drivers.
-  - `[AdminUserPassword <String>]`: The password for the user. This is required for the TemplateVM createOption.
-  - `[AdminUserUsername <String>]`: The username to use when signing in to lab VMs.
-  - `[AutoShutdownProfileDisconnectDelay <TimeSpan?>]`: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  - `[AutoShutdownProfileIdleDelay <TimeSpan?>]`: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  - `[AutoShutdownProfileNoConnectDelay <TimeSpan?>]`: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  - `[AutoShutdownProfileShutdownOnDisconnect <EnableState?>]`: Whether shutdown on disconnect is enabled
-  - `[AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]`: Whether a VM will get shutdown when it has idled for a period of time.
-  - `[AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]`: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  - `[ConnectionProfileClientRdpAccess <ConnectionType?>]`: The enabled access level for Client Access over RDP.
-  - `[ConnectionProfileClientSshAccess <ConnectionType?>]`: The enabled access level for Client Access over SSH.
-  - `[ConnectionProfileWebRdpAccess <ConnectionType?>]`: The enabled access level for Web Access over RDP.
-  - `[ConnectionProfileWebSshAccess <ConnectionType?>]`: The enabled access level for Web Access over SSH.
-  - `[Description <String>]`: The description of the lab.
-  - `[ImageReferenceId <String>]`: Image resource ID
-  - `[ImageReferenceOffer <String>]`: The image offer if applicable.
-  - `[ImageReferencePublisher <String>]`: The image publisher
-  - `[ImageReferenceSku <String>]`: The image SKU
-  - `[ImageReferenceVersion <String>]`: The image version specified on creation.
-  - `[LabPlanId <String>]`: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  - `[NonAdminUserPassword <String>]`: The password for the user. This is required for the TemplateVM createOption.
-  - `[NonAdminUserUsername <String>]`: The username to use when signing in to lab VMs.
-  - `[RosterProfileActiveDirectoryGroupId <String>]`: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  - `[RosterProfileLmsInstance <String>]`: The base URI identifying the lms instance.
-  - `[RosterProfileLtiClientId <String>]`: The unique id of the azure lab services tool in the lms.
-  - `[RosterProfileLtiContextId <String>]`: The unique context identifier for the lab in the lms.
-  - `[RosterProfileLtiRosterEndpoint <String>]`: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  - `[SecurityProfileOpenAccess <EnableState?>]`: Whether any user or only specified users can register to a lab.
-  - `[SkuCapacity <Int32?>]`: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  - `[SkuFamily <String>]`: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  - `[SkuName <String>]`: The name of the SKU. Ex - P3. It is typically a letter+number code
-  - `[SkuSize <String>]`: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  - `[SkuTier <SkuTier?>]`: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  - `[Title <String>]`: The title of the lab.
-  - `[VirtualMachineProfileCreateOption <CreateOption?>]`: Indicates what lab virtual machines are created from.
-  - `[VirtualMachineProfileUsageQuota <TimeSpan?>]`: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  - `[VirtualMachineProfileUseSharedPassword <EnableState?>]`: Enabling this option will use the same password for all user VMs.
 
 ## RELATED LINKS
 

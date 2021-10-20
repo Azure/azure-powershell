@@ -14,26 +14,26 @@ Operation to delete a user resource.
 
 ### ResourceId (Default)
 ```
-Remove-AzLabServicesUser -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzLabServicesUser -ResourceId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete
 ```
 Remove-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Lab
 ```
-Remove-AzLabServicesUser -Lab <Lab> -Name <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzLabServicesUser -Lab <Lab> -Name <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### User
 ```
-Remove-AzLabServicesUser -User <User> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+Remove-AzLabServicesUser -User <User> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -149,7 +149,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False

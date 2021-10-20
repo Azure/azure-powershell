@@ -67,12 +67,6 @@ subject-prefix: $(service-name)
 inlining-threshold: 50
 
 directive:
-  # set default SubscriptionId to the AzContext Subscription
-  - where:
-      parameter-name: SubscriptionId
-    set:
-      default:
-        script: "(Get-AzContext).Subscription.Id"
   # change VirtualMachine to VM
   - where:
       subject: ^(.*)(VirtualMachine)(.*)$
@@ -174,4 +168,7 @@ directive:
     set:
       verb: Update
       subject: $1VMReimage
+  - where:
+      variant: ^Create$|^Update$|^Reset$|^Save$|^Invite$
+    remove: true
 ```

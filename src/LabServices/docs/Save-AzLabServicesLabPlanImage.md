@@ -12,18 +12,10 @@ Saves an image from a lab VM to the attached shared image gallery.
 
 ## SYNTAX
 
-### SaveExpanded (Default)
 ```
 Save-AzLabServicesLabPlanImage -LabPlanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-LabVirtualMachineId <String>] [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Save
-```
-Save-AzLabServicesLabPlanImage -LabPlanName <String> -ResourceGroupName <String> -Body <ISaveImageBody>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,22 +45,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Body for the save image POST
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISaveImageBody
-Parameter Sets: Save
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -108,7 +84,7 @@ The ID of the lab virtual machine you want to save an image from.
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -123,7 +99,7 @@ The name for the image we create.
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -230,8 +206,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISaveImageBody
-
 ## OUTPUTS
 
 ### System.Boolean
@@ -239,15 +213,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-BODY <ISaveImageBody>: Body for the save image POST
-  - `[LabVirtualMachineId <String>]`: The ID of the lab virtual machine you want to save an image from.
-  - `[Name <String>]`: The name for the image we create.
 
 ## RELATED LINKS
 

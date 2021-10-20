@@ -20,15 +20,8 @@ Update-AzLabServicesPlanImage -EnabledState <EnableState> -ResourceId <String> [
 
 ### LabPlan
 ```
-Update-AzLabServicesPlanImage - Name <String> -LabPlan <LabPlan> -EnabledState <EnableState>
+Update-AzLabServicesPlanImage -LabPlan <LabPlan> -Name <String> -EnabledState <EnableState>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzLabServicesPlanImage -LabPlanName <String> -Name <String> -ResourceGroupName <String>
- -Body <IImageUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -56,37 +49,6 @@ This example enables the image for use in labs.
 
 ## PARAMETERS
 
-### - Name
-
-
-```yaml
-Type: System.String
-Parameter Sets: LabPlan
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Lab services virtual machine image for updates.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImageUpdate
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -107,7 +69,7 @@ Is the image enabled
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: LabPlan, ResourceId, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -138,7 +100,7 @@ Used in resource URIs and in UI.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -153,7 +115,7 @@ The image name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: LabPlan, UpdateExpanded
 Aliases: ImageName
 
 Required: True
@@ -169,7 +131,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -199,7 +161,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -245,8 +207,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImageUpdate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
 
 ## OUTPUTS
@@ -261,9 +221,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-BODY <IImageUpdate>: Lab services virtual machine image for updates.
-  - `[EnabledState <EnableState?>]`: Is the image enabled
 
 LABPLAN <LabPlan>: 
   - `Location <String>`: The geo-location where the resource lives

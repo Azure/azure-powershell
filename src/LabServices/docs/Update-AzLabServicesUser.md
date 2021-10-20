@@ -24,13 +24,6 @@ Update-AzLabServicesUser -Lab <Lab> -Name <String> [-AdditionalUsageQuota <TimeS
  [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <String> -Body <IUserUpdate>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateExpanded
 ```
 Update-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <String>
@@ -61,7 +54,7 @@ The amount of usage quota time the user gets in addition to the lab usage quota.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: Lab, ResourceId, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -83,23 +76,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-User of a lab that can register for and use virtual machines within the lab.
-Used for updates.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUserUpdate
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -139,7 +115,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -155,7 +131,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Lab, Update, UpdateExpanded
+Parameter Sets: Lab, UpdateExpanded
 Aliases: UserName
 
 Required: True
@@ -170,7 +146,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -186,7 +162,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -216,7 +192,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -262,8 +238,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUserUpdate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
 
 ## OUTPUTS
@@ -278,9 +252,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-BODY <IUserUpdate>: User of a lab that can register for and use virtual machines within the lab. Used for updates.
-  - `[AdditionalUsageQuota <TimeSpan?>]`: The amount of usage quota time the user gets in addition to the lab usage quota.
 
 LAB <Lab>: 
   - `Location <String>`: The geo-location where the resource lives

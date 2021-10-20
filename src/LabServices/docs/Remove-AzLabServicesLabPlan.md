@@ -15,14 +15,14 @@ Deleting a lab plan does not delete labs associated with a lab plan, nor does it
 
 ### Delete (Default)
 ```
-Remove-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### LabPlan
 ```
-Remove-AzLabServicesLabPlan -LabPlan <LabPlan> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzLabServicesLabPlan -LabPlan <LabPlan> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +122,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False

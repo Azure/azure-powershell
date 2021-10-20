@@ -18,13 +18,6 @@ Reset-AzLabServicesVMPassword -Password <String> -ResourceId <String> [-Username
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Reset
-```
-Reset-AzLabServicesVMPassword -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
- -Body <IResetPasswordBody> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ResetExpanded
 ```
 Reset-AzLabServicesVMPassword -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
@@ -58,29 +51,13 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Body of a reset password request.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IResetPasswordBody
-Parameter Sets: Reset
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -105,7 +82,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: True
@@ -120,7 +97,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: False
@@ -135,7 +112,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: False
@@ -150,7 +127,7 @@ The password
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, ResourceId, VM
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -166,7 +143,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: True
@@ -196,7 +173,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: False
@@ -211,7 +188,7 @@ The user whose password is being reset
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, ResourceId, VM
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -227,7 +204,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: True
@@ -288,8 +265,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IResetPasswordBody
-
 ### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
 
 ## OUTPUTS
@@ -306,10 +281,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-BODY <IResetPasswordBody>: Body of a reset password request.
-  - `Password <String>`: The password
-  - `Username <String>`: The user whose password is being reset
 
 VM <VirtualMachine>: 
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).

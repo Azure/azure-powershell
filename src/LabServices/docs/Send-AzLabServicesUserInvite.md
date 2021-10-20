@@ -18,13 +18,6 @@ Send-AzLabServicesUserInvite -ResourceId <String> [-Text <String>] [-DefaultProf
  [<CommonParameters>]
 ```
 
-### Invite
-```
-Send-AzLabServicesUserInvite -LabName <String> -ResourceGroupName <String> -UserName <String>
- -Body <IInviteBody> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### InviteExpanded
 ```
 Send-AzLabServicesUserInvite -LabName <String> -ResourceGroupName <String> -UserName <String>
@@ -68,22 +61,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Body for a user invite request
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IInviteBody
-Parameter Sets: Invite
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -105,7 +82,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: InviteExpanded
 Aliases:
 
 Required: True
@@ -120,7 +97,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: InviteExpanded
 Aliases:
 
 Required: False
@@ -135,7 +112,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: InviteExpanded
 Aliases:
 
 Required: False
@@ -151,7 +128,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: InviteExpanded
 Aliases:
 
 Required: True
@@ -181,7 +158,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: InviteExpanded
 Aliases:
 
 Required: False
@@ -196,7 +173,7 @@ Custom text for the invite email.
 
 ```yaml
 Type: System.String
-Parameter Sets: InviteExpanded, ResourceId, Users
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,7 +204,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: InviteExpanded
 Aliases:
 
 Required: True
@@ -273,8 +250,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IInviteBody
-
 ### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
 
 ## OUTPUTS
@@ -291,9 +266,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-BODY <IInviteBody>: Body for a user invite request
-  - `[Text <String>]`: Custom text for the invite email.
 
 USER <User>: 
   - `Email <String>`: Email address of the user.

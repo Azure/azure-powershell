@@ -24,7 +24,7 @@ param(
     [Parameter()]
     [String[]]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    ${AllowedRegions},
+    ${AllowedRegion},
 
     [Parameter()]
     [timespan]
@@ -94,7 +94,7 @@ param(
     [Parameter()]
     [String]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    ${SupportInfoInstructions},
+    ${SupportInfoInstruction},
 
     [Parameter()]
     [String]
@@ -109,7 +109,7 @@ param(
     [Parameter()]
     [String[]]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    ${Tags},
+    ${Tag},
 
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]

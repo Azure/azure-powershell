@@ -30,7 +30,11 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
-    ${AsJob}
+    ${AsJob},
+      
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru}
 )
 
 process {
