@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add data flow package to debug session &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string AddDataFlowDebugSessionPackage {
+            get {
+                return ResourceManager.GetString("AddDataFlowDebugSessionPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adding Storage Blob Data Contributor role for storage account {0} is forbidden..
         /// </summary>
         internal static string AddingStorageBlobDataContributorRoleForStorageAccountIsForbidden {
@@ -771,6 +780,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string InvalidStorageUri {
             get {
                 return ResourceManager.GetString("InvalidStorageUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoke debug command of debug session &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string InvokeDataFlowDebugSessionCommand {
+            get {
+                return ResourceManager.GetString("InvokeDataFlowDebugSessionCommand", resourceCulture);
             }
         }
         
@@ -1531,6 +1549,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start a Data Flow debug session under workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string StartDataFlowDebugSession {
+            get {
+                return ResourceManager.GetString("StartDataFlowDebugSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Starting Spark session in Spark pool &apos;{0}&apos; under workspace &apos;{1}&apos; ....
         /// </summary>
         internal static string StartingSynapseSparkSession {
@@ -1554,6 +1581,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StopingIntegrationRuntime {
             get {
                 return ResourceManager.GetString("StopingIntegrationRuntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping data flow debug session &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string StopingSynapseDataFlowDebugSession {
+            get {
+                return ResourceManager.GetString("StopingSynapseDataFlowDebugSession", resourceCulture);
             }
         }
         
@@ -1608,6 +1644,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string StoppingSynapseTriggerRun {
             get {
                 return ResourceManager.GetString("StoppingSynapseTriggerRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop data flow debug session &apos;{0}&apos; in workspace &apos;{1}&apos;?.
+        /// </summary>
+        internal static string StopSynapseDataFlowDebugSession {
+            get {
+                return ResourceManager.GetString("StopSynapseDataFlowDebugSession", resourceCulture);
             }
         }
         

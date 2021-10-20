@@ -55,6 +55,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public const string CommandsEndpoint = "/commands";
 
         /// <summary>
+        /// The character that separates verb and noun in the cmdlet.
+        /// </summary>
+        public const string CommandSeparator  = "-";
+
+        /// <summary>
         /// The special parameter name for "-" which is not a parameter name but an indication of a parameter.
         /// </summary>
         /// <remarks>
