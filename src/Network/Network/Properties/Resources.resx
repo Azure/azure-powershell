@@ -720,4 +720,7 @@
   <data name="VpnGatewayRequiredToCreateVpnNatRule" xml:space="preserve">
     <value>A valid VpnGateway reference is required to create a VpnNatRule</value>
   </data>
+  <data name="VirtualNetworkGatewayNatRuleNotFound" xml:space="preserve">
+    <value>The VirtualNetworkGatewayNatRule could not be found</value>
+  </data>
 </root>

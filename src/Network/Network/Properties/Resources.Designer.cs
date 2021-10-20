@@ -1654,6 +1654,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The VirtualNetworkGatewayNatRule could not be found.
+        /// </summary>
+        internal static string VirtualNetworkGatewayNatRuleNotFound {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayNatRuleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No revoked certificates found on VirtualNetworkGateway {0}.
         /// </summary>
         internal static string VirtualNetworkGatewayNoRevokedCertificate {
