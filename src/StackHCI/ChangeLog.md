@@ -18,8 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-## Version 1.0.0
-* Adding Support for AzureUSGovernment cloud
+* Added Support for AzureUSGovernment cloud
     - EnvironmentName parameter in Register-AzStackHCI, Unregister-AzStackHCI and Test-AzStackHCIConnection now supports a new value "AzureUSGovernment"
 ## Version 0.9.0
 * Made changes to show Arc not supported error on 20H2 only if intent to enable Arc is specified by user.
