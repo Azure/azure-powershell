@@ -387,9 +387,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         throw new ErrorResponseException(string.Format(ProjectResources.ServicePrincipalRoleAssignmentCreationFailed,e.Body.Error.Message),e);
                     }
                     catch (Exception)
-					{
+                    {
                         // if the error is something else fail silently as before
-					}
+                    }
                 }
             }
         }
