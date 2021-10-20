@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.LabServices/new-AzLabServicesImageObject
+online version: https://docs.microsoft.com/powershell/module/az.LabServices/new-AzLabServicesImageUpdateObject
 schema: 2.0.0
 ---
 
