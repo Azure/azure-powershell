@@ -61,10 +61,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// them to the model.
         /// e.g., Get-AzContext -Name Hello -Location 'EastUS' => Get-AzContext -Location *** -Name ***
         /// </summary>
-        /// <param name="cmdAst">The command to mask.</param>
-        public static string MaskCommandLine(CommandAst cmdAst)
+        /// <param name="commandAst">The command to mask.</param>
+        public static string MaskCommandLine(CommandAst commandAst)
         {
-            var commandElements = cmdAst?.CommandElements;
+            var commandElements = commandAst?.CommandElements;
 
             if (commandElements == null)
             {
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
 
             if (commandElements.Count == 1)
             {
-                return cmdAst.Extent.Text;
+                return commandAst.Extent.Text;
             }
 
-            var sb = new StringBuilder(cmdAst.Extent.Text.Length);
+            var sb = new StringBuilder(commandAst.Extent.Text.Length);
             _ = sb.Append(commandElements[0].ToString());
             var parameters = commandElements
                 .Skip(1)
