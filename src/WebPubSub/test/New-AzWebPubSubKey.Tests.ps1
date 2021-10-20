@@ -21,9 +21,8 @@ Describe 'New-AzWebPubSubKey' {
         $name = $env.WpsPrefix + "new-key-RegenerateExpanded"
         New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $name -Location eastus -SkuName Standard_S1
         $oldKey = Get-AzWebPubSubKey -ResourceGroupName $env.ResourceGroupName -ResourceName $name
-        New-AzWebPubSubKey -ResourceGroupName $env.ResourceGroupName -ResourceName $name -KeyType Primary
 
-        $newKey = Get-AzWebPubSubKey -ResourceGroupName $env.ResourceGroupName -ResourceName $name
+        $newKey = New-AzWebPubSubKey -ResourceGroupName $env.ResourceGroupName -ResourceName $name -KeyType Primary
 
         $newKey.PrimaryKey | Should -Not -Be $oldKey.PrimaryKey
     }
@@ -33,9 +32,8 @@ Describe 'New-AzWebPubSubKey' {
         $wps = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $name -Location eastus -SkuName Standard_S1
         $oldKey = Get-AzWebPubSubKey -ResourceGroupName $env.ResourceGroupName -ResourceName $name
 
-        New-AzWebPubSubKey -KeyType Primary -InputObject $wps
+        $newKey = New-AzWebPubSubKey -KeyType Primary -InputObject $wps
 
-        $newKey = Get-AzWebPubSubKey -ResourceGroupName $env.ResourceGroupName -ResourceName $name
         $newKey.PrimaryKey | Should -Not -Be $oldKey.PrimaryKey
     }
 }

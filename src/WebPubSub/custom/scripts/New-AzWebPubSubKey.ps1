@@ -153,10 +153,24 @@ function New-AzWebPubSubKey
     {
         try
         {
-            Az.WebPubSub.internal\New-AzWebPubSubKey @PSBoundParameters
+            $null = Az.WebPubSub.internal\New-AzWebPubSubKey @PSBoundParameters
+            if($PSBoundParameters.ContainsKey("InputObject"))
+            {
+                $InputObject.Id -match '/subscriptions/(?<SubscriptionId>.+)/resourceGroups/(?<ResourceGroupName>.+)/providers/Microsoft.SignalRService/WebPubSub/(?<ResourceName>.+)'
+                $PSBoundParameters.Add("ResourceGroupName", $Matches.ResourceGroupName)
+                $PSBoundParameters.Add("ResourceName", $Matches.ResourceName)
+                $PSBoundParameters.Add("SubscriptionId", $Matches.SubscriptionId)
+            }
+            $unacceptableKeys = "KeyType", "AsJob", "NoWait", "PassThru", "InputObject"
+            foreach ($key in $unacceptableKeys)
+            {
+                if($PSBoundParameters.ContainsKey($key))
+                {
+                    $null = $PSBoundParameters.Remove($key)
+                }
+            }
 
             # The new key resource is returned in the first REST API call, but auto.rest can only return the result of the last REST API call. Here get a key result manually to mitigate the problem.
-            $null = $PSBoundParameters.Remove("KeyType")
             Az.WebPubSub\Get-AzWebPubSubKey @PSBoundParameters
         } catch
         {
