@@ -1485,10 +1485,10 @@ param(
             return [ErrorDetail]::ArcPermissionsMissing
         }
 
-        $nodeUBR = Invoke-Command -Session $session -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").UBR }
-        $nodeBuildNumber = Invoke-Command -Session $session -ScriptBlock { (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber }
-        if (($nodeBuildNumber -eq $V2OSBuildNumber) -and ($nodeUBR -le $V2OSUBR)) {
-            Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration without region switch")
+        $arcCommand = Invoke-Command -Session $session -ScriptBlock { Get-Command -Name 'Initialize-AzureStackHCIArcIntegration' -ErrorAction SilentlyContinue }
+        if ($arcCommand.Parameters.ContainsKey('Cloud')) 
+        {
+            Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration with cloud switch")
             $ArcRegistrationParams = @{
                 AppId = $AppId
                 Secret = $Secret
@@ -1496,9 +1496,11 @@ param(
                 SubscriptionId = $SubscriptionId
                 Region = $Region
                 ResourceGroup = $ResourceGroup 
+                cloud  = $Environment 
             }    
-        }else{
-            Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration with region switch")
+        }else
+        {
+            Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration without cloud switch")
             $ArcRegistrationParams = @{
                 AppId = $AppId
                 Secret = $Secret
@@ -1506,9 +1508,9 @@ param(
                 SubscriptionId = $SubscriptionId
                 Region = $Region
                 ResourceGroup = $ResourceGroup
-                cloud  = $Environment 
             }
         }
+        
         # Save Arc context.
         Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $SetupArcMessage -PercentComplete 40
         
