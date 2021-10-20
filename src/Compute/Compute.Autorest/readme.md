@@ -36,8 +36,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-#  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/compute.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/gallery.json
+ - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/gallery.json
+ # - $(this-folder)\..\..\..\..\azure-rest-api-specs\specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/gallery.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 
 # For new RP, the version is 0.1.0
@@ -111,9 +111,38 @@ directive:
     set:
       parameter-name: DefaultConfigFileLink
   ### END # changing parameter names for GalleryApplication, GalleryApplicationVersion
+  # hide parameters for New,Update Gallery Application
+  - where:
+      verb: Update
+      subject: GalleryApplication$
+      parameter-name: SupportedOSType
+    hide: true
+  - where:
+      verb: Update|New
+      subject: GalleryApplication$
+      parameter-name: Eula|EndOfLifeDate|PrivacyStatementUri|ReleaseNoteUri
+    hide: true
+  ### END # hide parameters for New,Update Gallery Application
+  # hide parameters for New, Update Gallery Application Version
+  - where:
+      verb: Update|New
+      subject: GalleryApplicationVersion$
+      parameter-name: PublishingProfileEnableHealthCheck|PublishingProfileStorageAccountType|PublishingProfileReplicationMode
+    hide: true
+  - where:
+      verb: Update
+      subject: GalleryApplicationVersion$
+      parameter-name: ManageActionUpdate|ManageActionInstall|ManageActionRemove
+    hide: true
+  ### END # hide parameters for New, Update Gallery Application Version
+  # hide New-AzGalleryApplication, New-AzGalleryApplicationVersion, Update-AzGalleryApplicationVersion
+  - where:
+      verb: New|Update
+      subject: GalleryApplicationVersion
+    hide: true
   - where:
       verb: New
-      subject: GalleryApplication$
-      parameter-name: EndOfLifeDate
-    hide: true
+      subject: GalleryApplication
+    hide: true 
+  ### END # hide New-AzGalleryApplication, New-AzGalleryApplicationVersion, Update-AzGalleryApplicationVersion
 ```

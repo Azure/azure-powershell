@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a Gallery Application in a Gallery
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzGalleryApplication -ResourceGroupName $rgName -GalleryName $galleryName -name $galleryAppName
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Retrieve a Gallery Application resource with the provided Resource Group, Gallery, and Gallery Application name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get all the Gallery Applications in a Gallery
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzGalleryApplication -GalleryName $GalleryName -ResourceGroupName $rgName
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+Retrieve all the Gallery Application resources in the provided Resource Group and Gallery.
