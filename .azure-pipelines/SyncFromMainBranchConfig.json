@@ -6,6 +6,6 @@
         "build.proj"
     ],
     "UnSyncPath": [
-        "tools/BranchSync"
+        ".azure-pipelines/SyncFromMainBranchConfig.json"
     ]
 }
