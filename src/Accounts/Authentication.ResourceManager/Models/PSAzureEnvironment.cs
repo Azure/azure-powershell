@@ -105,8 +105,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
             GalleryUrl = other.GetProperty<string>(nameof(GalleryUrl));
             GraphEndpointResourceId = other.GetProperty<string>(nameof(GraphEndpointResourceId));
             GraphUrl = other.GetProperty<string>(nameof(GraphUrl));
-            MicrosoftGraphEndpointResourceId = other.GetProperty<string>(nameof(MicrosoftGraphEndpointResourceId));
-            MicrosoftGraphUrl = other.GetProperty<string>(nameof(MicrosoftGraphUrl));
             ManagementPortalUrl = other.GetProperty<string>(nameof(ManagementPortalUrl));
             PublishSettingsFileUrl = other.GetProperty<string>(nameof(PublishSettingsFileUrl));
             ResourceManagerUrl = other.GetProperty<string>(nameof(ResourceManagerUrl));
@@ -218,16 +216,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// Gets or sets the resource Id to use for contacting the Graph endpoint
         /// </summary>
         public string GraphEndpointResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Uri of the Microsoft Graph endpoint.
-        /// </summary>
-        public string MicrosoftGraphUrl { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource Id to use for contacting Microsoft Graph endpoint
-        /// </summary>
-        public string MicrosoftGraphEndpointResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the domain name suffix for traffig manager services.

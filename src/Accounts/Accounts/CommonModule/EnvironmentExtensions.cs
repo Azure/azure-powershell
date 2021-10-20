@@ -159,12 +159,6 @@ namespace Microsoft.Azure.Commands.Common
                     : baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId];
             }
 
-            //TODO: Add ExtendedProperties
-            if("http://azconfig.io".IsMatch(baseEndpoint))
-            {
-                return baseEndpoint.GetLeftPart(UriPartial.Authority); //return https://{myname}.azconfig.io
-            }
-
             return environment.ActiveDirectoryServiceEndpointResourceId;
         }
 
