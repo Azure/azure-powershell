@@ -66,6 +66,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSVirtualNetworkBgpCommunities RemoteBgpCommunities { get; set; }
 
         [JsonProperty(Order = 1)]
+        public PSVirtualNetworkEncryption RemoteVirtualNetworkEncryption { get; set; }
+
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
@@ -97,6 +100,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RemoteBgpCommunitiesText
         {
             get { return JsonConvert.SerializeObject(RemoteBgpCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RemoteVirtualNetworkEncryptionText
+        {
+            get { return JsonConvert.SerializeObject(RemoteVirtualNetworkEncryption, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

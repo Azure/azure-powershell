@@ -87,6 +87,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If to enable encryption on the virtual network")]
+        public string EnableEncryption { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Set the Encryption EnforcementPolicy")]
+        public string EncryptionEnforcementPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -171,6 +183,11 @@ namespace Microsoft.Azure.Commands.Network
                 vnet.BgpCommunities = new PSVirtualNetworkBgpCommunities {VirtualNetworkCommunity = this.BgpCommunity};
             }
 
+            if (!string.IsNullOrWhiteSpace(EnableEncryption))
+            {
+                vnet.Encryption = new PSVirtualNetworkEncryption { Enabled = this.EnableEncryption, Enforcement = this.EncryptionEnforcementPolicy };
+            }
+           
             if (!string.IsNullOrEmpty(this.EdgeZone))
             {
                 vnet.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
