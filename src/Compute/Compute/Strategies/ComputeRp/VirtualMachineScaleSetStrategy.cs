@@ -155,7 +155,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string name,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
             NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAdressPool,
-            //IEnumerable<NestedResourceConfig<InboundNatPool, LoadBalancer>> inboundNatPools,
             ResourceConfig<NetworkSecurityGroup> networkSecurityGroup,
             ImageAndOsType imageAndOsType,
             string adminUsername,
@@ -164,7 +163,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             int instanceCount,
             VirtualMachineScaleSetIdentity identity,
             bool singlePlacementGroup,
-            //UpgradeMode? upgradeMode,
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
@@ -236,12 +234,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                                 engine.GetReference(backendAdressPool)
                                             },
                                             Subnet = engine.GetReference(subnet),
-                                            Primary = true //adam
-                                            
-                                            //,
-                                            //LoadBalancerInboundNatPools = inboundNatPools
-                                            //    ?.Select(engine.GetReference)
-                                            //    .ToList()
+                                            Primary = true
                                         }
                                     },
                                     Primary = true,

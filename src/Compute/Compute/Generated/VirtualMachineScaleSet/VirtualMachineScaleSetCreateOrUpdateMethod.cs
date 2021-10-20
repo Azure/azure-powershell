@@ -80,11 +80,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 }
 
                                 parameters.UpgradePolicy = null;
-                            }
 
-                            // This somewhat contradicts with the above behavior that sets UpgradePolicy to null.
-                            // There is some concern with the above behavior being correct or not, and requires additional testing.
-                            checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
+                                checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
+                            }
+                            
 
                             var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
                             var psObject = new PSVirtualMachineScaleSet();
@@ -96,6 +95,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        /// This somewhat contradicts with the above behavior that sets UpgradePolicy to null.
+        /// There is some concern with the above behavior being correct or not, and requires additional testing before changing.
         private void checkFlexibleOrchestrationModeParamsDefaultParamSet(VirtualMachineScaleSet parameters)
         {
             if (parameters.UpgradePolicy != null)
@@ -110,19 +111,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 throw new Exception("The value provided for singlePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
             }
-            /*else if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkInterfaceConfigurations != null)
-            {
-                foreach (var nicConfig in parameters.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations)
-                {
-                    if (nicConfig.IpConfigurations != null)
-                    {
-                        if (nicConfig.IpConfigurations[0].Primary != true)
-                        {
-                            throw new Exception("The value provided for the first VirtualMachineScaleSetIPConfiguration Primary property is not valid for a VMSS with OrchestrationMode set to Flexible. Please set Primary to True.");
-                        } 
-                    }
-                }
-            }*/
         }
 
         [Parameter(

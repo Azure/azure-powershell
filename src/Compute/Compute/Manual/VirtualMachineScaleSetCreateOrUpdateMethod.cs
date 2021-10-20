@@ -238,132 +238,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     return await SimpleParameterSetNormalMode();
                 }
-                /*
-                ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
-                    ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
-
-                // generate a domain name label if it's not specified.
-                _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
-                    domainNameLabel: _cmdlet.DomainNameLabel,
-                    name: _cmdlet.VMScaleSetName,
-                    location: Location,
-                    client: _client);
-
-                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
-
-                var noZones = _cmdlet.Zone == null || _cmdlet.Zone.Count == 0;
-
-                var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
-                    name: _cmdlet.PublicIpAddressName,
-                    edgeZone: _cmdlet.EdgeZone,
-                    domainNameLabel: _cmdlet.DomainNameLabel,
-                    allocationMethod: _cmdlet.AllocationMethod,
-                    //sku.Basic is not compatible with multiple placement groups
-                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
-                        ? PublicIPAddressStrategy.Sku.Basic
-                        : PublicIPAddressStrategy.Sku.Standard,
-                    zones: null);
-
-                var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
-                    name: _cmdlet.VirtualNetworkName,
-                    edgeZone: _cmdlet.EdgeZone,
-                    addressPrefix: _cmdlet.VnetAddressPrefix);
-
-                var subnet = virtualNetwork.CreateSubnet(
-                    _cmdlet.SubnetName, _cmdlet.SubnetAddressPrefix);
-
-                var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
-                    name: _cmdlet.LoadBalancerName,
-                    //sku.Basic is not compatible with multiple placement groups
-                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
-                        ? LoadBalancerStrategy.Sku.Basic
-                        : LoadBalancerStrategy.Sku.Standard);
-
-                var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
-                    name: _cmdlet.FrontendPoolName,
-                    publicIpAddress: publicIpAddress);
-
-                var backendAddressPool = loadBalancer.CreateBackendAddressPool(
-                    name: _cmdlet.BackendPoolName);
-
-                if (_cmdlet.BackendPort != null)
-                {
-                    var loadBalancingRuleName = _cmdlet.LoadBalancerName;
-                    foreach (var backendPort in _cmdlet.BackendPort)
-                    {
-                        loadBalancer.CreateLoadBalancingRule(
-                            name: loadBalancingRuleName + backendPort.ToString(),
-                            fronendIpConfiguration: frontendIpConfiguration,
-                            backendAddressPool: backendAddressPool,
-                            frontendPort: backendPort,
-                            backendPort: backendPort);
-                    }
-                }
-
-                _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
-
-                var inboundNatPoolName = _cmdlet.VMScaleSetName;
-                var PortRangeSize = _cmdlet.InstanceCount * 2;
-
-                var ports = _cmdlet
-                    .NatBackendPort
-                    ?.Select((port, i) => Tuple.Create(
-                        port,
-                        FirstPortRangeStart + i * 2000))
-                    .ToList();
-
-                var inboundNatPools = ports
-                    ?.Select(p => loadBalancer.CreateInboundNatPool(
-                        name: inboundNatPoolName + p.Item1.ToString(),
-                        frontendIpConfiguration: frontendIpConfiguration,
-                        frontendPortRangeStart: p.Item2,
-                        frontendPortRangeEnd: p.Item2 + PortRangeSize,
-                        backendPort: p.Item1))
-                    .ToList();
-
-                var networkSecurityGroup = noZones 
-                    ? null 
-                    : resourceGroup.CreateNetworkSecurityGroupConfig(
-                        _cmdlet.VMScaleSetName,
-                        _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
-
-                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
-
-                var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
-
-                return resourceGroup.CreateVirtualMachineScaleSetConfig(
-                    name: _cmdlet.VMScaleSetName,
-                    subnet: subnet,                    
-                    backendAdressPool: backendAddressPool,
-                    inboundNatPools: inboundNatPools,
-                    networkSecurityGroup: networkSecurityGroup,
-                    imageAndOsType: ImageAndOsType,
-                    adminUsername: _cmdlet.Credential.UserName,
-                    adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
-                    vmSize: _cmdlet.VmSize,
-                    instanceCount: _cmdlet.InstanceCount,
-                    upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
-                        ? _cmdlet.UpgradePolicyMode
-                        : (UpgradeMode?)null,
-                    dataDisks: _cmdlet.DataDiskSizeInGb,
-                    zones: _cmdlet.Zone,
-                    ultraSSDEnabled : _cmdlet.EnableUltraSSD.IsPresent,
-                    identity: _cmdlet.GetVmssIdentityFromArgs(),
-                    singlePlacementGroup : _cmdlet.SinglePlacementGroup.IsPresent,
-                    proximityPlacementGroup: proximityPlacementGroup,
-                    hostGroup: hostGroup,
-                    priority: _cmdlet.Priority,
-                    evictionPolicy: _cmdlet.EvictionPolicy,
-                    maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                    scaleInPolicy: _cmdlet.ScaleInPolicy,
-                    doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
-                    encryptionAtHost : _cmdlet.EncryptionAtHost.IsPresent,
-                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
-                    edgeZone: _cmdlet.EdgeZone,
-                    orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
-                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null
-                    );
-                */
             }
 
             private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetNormalMode()
@@ -501,6 +375,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case flexibleOrchestrationMode:
                         return await SimpleParameterSetOrchestrationModeFlexible();
                     default:
+                        // When the OrchestrationMode is set but it is Uniform, which represents the current behavior. 
                         return await SimpleParameterSetNormalMode();
                 }
             }
@@ -575,28 +450,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
-                /*
-                var inboundNatPoolName = _cmdlet.VMScaleSetName;
-                var PortRangeSize = _cmdlet.InstanceCount * 2;
-
-                
-                var ports = _cmdlet
-                    .NatBackendPort
-                    ?.Select((port, i) => Tuple.Create(
-                        port,
-                        FirstPortRangeStart + i * 2000))
-                    .ToList();
-                
-                var inboundNatPools = ports
-                    ?.Select(p => loadBalancer.CreateInboundNatPool(
-                        name: inboundNatPoolName + p.Item1.ToString(),
-                        frontendIpConfiguration: frontendIpConfiguration,
-                        frontendPortRangeStart: p.Item2,
-                        frontendPortRangeEnd: p.Item2 + PortRangeSize,
-                        backendPort: p.Item1))
-                    .ToList();
-                */
-
                 var networkSecurityGroup = noZones
                     ? null
                     : resourceGroup.CreateNetworkSecurityGroupConfig(
@@ -611,16 +464,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     name: _cmdlet.VMScaleSetName,
                     subnet: subnet,
                     backendAdressPool: backendAddressPool,
-                    //inboundNatPools: inboundNatPools,
                     networkSecurityGroup: networkSecurityGroup,
                     imageAndOsType: ImageAndOsType,
                     adminUsername: _cmdlet.Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
                     vmSize: _cmdlet.VmSize,
                     instanceCount: _cmdlet.InstanceCount,
-                    //upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
-                    //    ? _cmdlet.UpgradePolicyMode
-                    //    : (UpgradeMode?)null,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
                     zones: _cmdlet.Zone,
                     ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
@@ -634,7 +483,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
-                    //platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
                     platformFaultDomainCount: platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
