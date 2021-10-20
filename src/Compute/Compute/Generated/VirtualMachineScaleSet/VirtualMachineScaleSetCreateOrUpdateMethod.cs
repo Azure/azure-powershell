@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         public const string SimpleParameterSet = "SimpleParameterSet";
+        public const string vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum = "2020-11-01";
 
         public override void ExecuteCmdlet()
         {
@@ -81,6 +82,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 parameters.UpgradePolicy = null;
                             }
 
+                            // This somewhat contradicts with the above behavior that sets UpgradePolicy to null.
+                            // There is some concern with the above behavior being correct or not, and requires additional testing.
+                            checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
+
                             var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
                             var psObject = new PSVirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
@@ -89,6 +94,35 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     });
                     break;
             }
+        }
+
+        private void checkFlexibleOrchestrationModeParamsDefaultParamSet(VirtualMachineScaleSet parameters)
+        {
+            if (parameters.UpgradePolicy != null)
+            {
+                throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
+            }
+            else if (parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion != vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum)
+            {
+                throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
+            }
+            else if (parameters.SinglePlacementGroup == true)
+            {
+                throw new Exception("The value provided for singlePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
+            }
+            /*else if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkInterfaceConfigurations != null)
+            {
+                foreach (var nicConfig in parameters.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations)
+                {
+                    if (nicConfig.IpConfigurations != null)
+                    {
+                        if (nicConfig.IpConfigurations[0].Primary != true)
+                        {
+                            throw new Exception("The value provided for the first VirtualMachineScaleSetIPConfiguration Primary property is not valid for a VMSS with OrchestrationMode set to Flexible. Please set Primary to True.");
+                        } 
+                    }
+                }
+            }*/
         }
 
         [Parameter(

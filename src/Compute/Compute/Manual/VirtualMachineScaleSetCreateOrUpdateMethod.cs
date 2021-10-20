@@ -646,15 +646,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (_cmdlet.IsParameterBound(c => c.UpgradePolicyMode))
                 {
-                    throw new Exception("UpgradePolicyMode provided when shouldn't for omode");
+                    throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
                 }
                 else if (_cmdlet.SinglePlacementGroup == true)
                 {
-                    throw new Exception("SinglePLacementGroup set to true when can't for Omode");
-                }
-                else if (_cmdlet.PlatformFaultDomainCount != 1)
-                {
-                   // throw new Exception("PFDCount has to be 1 for omode flexible");
+                    throw new Exception("The value provided for singlePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
                 }
             }
         }
