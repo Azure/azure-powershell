@@ -23,11 +23,13 @@ function setupEnv() {
     $clusterName = RandomString -allChars $false -len 6
     $extensionName = RandomString -allChars $false -len 6
     $clusterLocationName = RandomString -allChars $false -len 6
+    $clusterLocationName2 = RandomString -allChars $false -len 6
 
     $env.Add("k8sName", $k8sName)
     $env.Add("clusterName", $clusterName)
     $env.Add("extensionName", $extensionName)
     $env.Add("clusterLocationName", $clusterLocationName)
+    $env.Add("clusterLocationName2", $clusterLocationName2)
 
     $env.Add("location", "eastus")
 

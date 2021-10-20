@@ -8,3 +8,14 @@ eastus   azps_test_cluster_1 Microsoft.ExtendedLocation/customLocations
 ```
 
 Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+
+### Example 2: Updates a Custom Location.
+```powershell
+PS C:\> Get-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster | Update-AzCustomLocation
+
+Location Name                Type
+-------- ----                ----
+eastus   azps_test_cluster_1 Microsoft.ExtendedLocation/customLocations
+```
+
+Updates a Custom Location.
