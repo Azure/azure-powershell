@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -43,13 +44,39 @@ public class ParallelDownloader
     private string urlRepository = null;
     private readonly CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
 
-    IList<Task> tasks;
-    IList<string> modules;
+    private IList<Task> tasks;
+    private IList<string> modules;
+
+    private string lastModuleName = null;
+    private Version lastModuleVersion = null;
+
+    public string LastModuleName
+    {
+        get
+        {
+            return lastModuleName;
+        }
+    }
+
+    public Version LastModuleVersion
+    {
+        get
+        {
+            return lastModuleVersion;
+        }
+    }
 
     public ParallelDownloader(string url)
     {
         client = new HttpClient(httpClientHandler);
         this.urlRepository = url;
+        tasks = new List<Task>();
+        modules = new List<string>();
+    }
+
+    public ParallelDownloader()
+    {
+        client = new HttpClient(httpClientHandler);
         tasks = new List<Task>();
         modules = new List<string>();
     }
@@ -64,12 +91,77 @@ public class ParallelDownloader
         }
     }
 
+    private void Copy(string src, string dest)
+    {
+        File.Copy(src, dest);
+    }
+
+    bool ParseFile(string fileName, out string moduleName, out Version moduleVersion)
+    {
+        try
+        {
+            Regex pattern = new Regex(@"Az\.(?<moduleName>[a-zA-Z]+)\.(?<moduleVersion>[0-9.]+).nupkg");
+            Match matches = pattern.Match(fileName);
+            if (matches.Groups["moduleName"].Success && matches.Groups["moduleVersion"].Success)
+            {
+                moduleName = "Az." + matches.Groups["moduleName"].Value;
+                moduleVersion = Version.Parse(matches.Groups["moduleVersion"].Value);
+                return true;
+            }
+        }
+        catch
+        {
+        }
+        moduleName = null;
+        moduleVersion = null;
+        return false;
+    }
+
+    public string Download(string sourceUri, string targetPath)
+    {
+        try
+        {
+            Uri uri = new Uri(sourceUri);
+            var fileName = Path.GetFileName(uri.AbsoluteUri);
+            string module = null;
+            Version version = null;
+            if (!ParseFile(fileName, out module, out version))
+            {
+                throw new ArgumentException($"{fileName} is not a valid Az module nuget package name for installation.");
+            }
+            var nupkgFile = Path.Combine(targetPath, String.Format("{0}.{1}.nupkg", module, version));
+            if (uri.IsFile)
+            {
+                Copy(uri.AbsoluteUri, nupkgFile);
+            }
+            else if(String.Compare(uri.Scheme, "http", true) == 0 || String.Compare(uri.Scheme, "https", true) == 0)
+            {
+                Task task = DownloadToFile(uri.AbsoluteUri, nupkgFile.ToString());
+                tasks.Add(task);
+                modules.Add(module);
+            }
+            else
+            {
+                throw new ArgumentException($"{sourceUri} scheme is not supported.");
+            }
+            lastModuleName = module;
+            lastModuleVersion = version;
+            return nupkgFile;
+        }
+        catch (UriFormatException)
+        {
+            throw new ArgumentException($"{sourceUri} is not a valid uri.");
+        }
+    }
+
     public string Download(string module, Version version, string path)
     {
         var nupkgFile = Path.Combine(path, String.Format("{0}.{1}.nupkg", module, version));
         Task task = DownloadToFile(String.Format("{0}/package/{1}/{2}", urlRepository, module, version), nupkgFile.ToString());
         tasks.Add(task);
         modules.Add(module);
+        lastModuleName = module;
+        lastModuleVersion = version;
         return nupkgFile;
     }
 
@@ -117,7 +209,7 @@ public class ParallelDownloader
 "@
 
 Add-Type -AssemblyName System.Net.Http -ErrorAction Stop
-Add-Type $script:ParallelDownloaderClassCode -ReferencedAssemblies System.Net.Http,System.Threading.Tasks,System.Linq,System.Collections,System.Runtime.Extensions
+Add-Type $script:ParallelDownloaderClassCode -ReferencedAssemblies System.Net.Http,System.Threading.Tasks,System.Linq,System.Collections,System.Runtime.Extensions,System.Text.RegularExpressions,System.IO.FileSystem
 
 $getModule = Get-Module -Name "PowerShellGet"
 if ($null -ne $getModule -and $getModule.Version -lt [System.Version]"2.1.3") {
@@ -281,6 +373,7 @@ class ModuleInfo
 {
     [string] $Name = $null
     [Version[]] $Version = @()
+    [System.Uri] $Uri = $null
 }
 
 <#

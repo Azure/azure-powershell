@@ -30,27 +30,32 @@ function Install-AzModule {
     [OutputType([PSCustomObject[]])]
     [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess)]
     param(
-        [Parameter(HelpMessage = 'Az modules to install.', ValueFromPipelineByPropertyName = $true, Position = 0)]
+        [Parameter(ParameterSetName = 'Default', HelpMessage = 'Az modules to install.', ValueFromPipelineByPropertyName = $true, Position = 0)]
         [string[]]
         ${Name},
 
-        [Parameter(HelpMessage = 'Required Az Version.')]
+        [Parameter(ParameterSetName = 'Default', HelpMessage = 'Required Az Version.')]
         [ValidateNotNullOrEmpty()]
         [string]
         ${RequiredAzVersion},
 
-        [Parameter(HelpMessage = 'The Registered Repostory.')]
+        [Parameter(ParameterSetName = 'Default', HelpMessage = 'The Registered Repostory.')]
         [ValidateNotNullOrEmpty()]
         [string]
         ${Repository},
 
-        [Parameter(HelpMessage = 'Allow preview modules to be installed.')]
+        [Parameter(ParameterSetName = 'Default', HelpMessage = 'Allow preview modules to be installed.')]
         [Switch]
         ${AllowPrerelease},
 
-        [Parameter(HelpMessage = 'Use exact account version.')]
+        [Parameter(ParameterSetName = 'Default', HelpMessage = 'Use exact account version.')]
         [Switch]
         ${UseExactAccountVersion},
+
+        [Parameter(ParameterSetName = 'ByPackagePath', Mandatory, Position = 0)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${PackagePath},
 
         [Parameter(HelpMessage = 'Scope to install modules. Accepted values: CurrentUser, AllUser.')]
         [ValidateSet('CurrentUser', 'AllUsers')]
@@ -76,66 +81,11 @@ function Install-AzModule {
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
-        Write-Progress -Id $script:FixProgressBarId "Find modules on $Repository."
-
-        $Name = Normalize-ModuleName $Name
-        $findModuleParams = @{
-            Name = $Name
-            AllowPrerelease = $AllowPrerelease
-            UseExactAccountVersion = $UseExactAccountVersion
-            Invoker = $Invoker
+        if ($PSCmdlet.ParameterSetName -eq 'Default') {
+            Install-AzModule_Default @PSBoundParameters
         }
-        if ($Repository) {
-            $findModuleParams.Add('Repository', $Repository)
-        }
-        if ($RequiredAzVersion) {
-            $findModuleParams.Add('RequiredVersion', [Version]$RequiredAzVersion)
-        }
-
-        $modules = @()
-        $modules += Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
-
-        if($Name) {
-            $moduleExcluded = $Name | Where-Object {!$modules -or $modules.Name -NotContains $_}
-            if ($moduleExcluded) {
-                $azVersion = if ($RequiredAzVersion) {$RequiredAzVersion} else {"Latest"}
-                Write-Error "[$Invoker] The following specified modules:$moduleExcluded cannot be found in $Repository with the $azVersion version."
-            }
-        }
-
-        if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
-
-            Write-Progress -Id 1 "Uninstall Azure and AzureRM."
-            Uninstall-AzureRM
-        }
-
-        if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
-            PowerShellGet\Uninstall-Module -Name 'Az' -AllVersion -AllowPrerelease -ErrorAction SilentlyContinue
-        }
-
-        if ($modules) {
-            $installModuleParams = @{}
-            foreach ($key in $PSBoundParameters.Keys) {
-                if($key -ne 'Name' -and $key -ne 'RemoveAzureRm') {
-                    $installModuleParams.Add($key, $PSBoundParameters[$key])
-                }
-            }
-            $installModuleParams.Add('Invoker', $Invoker)
-            if (!$installModuleParams.Contains('Scope')) {
-                $installModuleParams.Add('Scope', 'CurrentUser')
-            }
-            $moduleList = $modules | ForEach-Object {
-                $m = New-Object ModuleInfo
-                $m.Name = $_.Name
-                $m.Version += [Version] $_.Version
-                $m
-            }
-            $installModuleParams.Add('ModuleList', $moduleList)
-            $output = Install-AzModuleInternal @installModuleParams
-
-            if (!$WhatIfPreference -and $output) {
-                Write-Output $output
-            }
+        else {
+            Install-AzModule_ByPackagePath @PSBoundParameters
         }
 
         <#

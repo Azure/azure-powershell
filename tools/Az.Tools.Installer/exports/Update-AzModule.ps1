@@ -125,25 +125,21 @@ function Update-AzModule {
                 }
             }
             else {
-                $installModuleParams = @{}
-                foreach ($key in $PSBoundParameters.Keys) {
-                    if($key -ne 'Name' -and $key -ne 'KeepPrevious'){
-                        $installModuleParams.Add($key, $PSBoundParameters[$key])
-                    }
-                }
-                $installModuleParams.Add('AllowPrerelease', $true)
-                $installModuleParams.Add('Invoker', $Invoker)
-                $installModuleParams.Add('RemovePrevious', !$KeepPrevious)
-                if (!$installModuleParams.Contains('Scope')) {
-                    $installModuleParams.Add('Scope', 'CurrentUser')
-                }
-                $modules = $moduleUpdateTable | Foreach-Object {
+                $moduleList = $moduleUpdateTable | ForEach-Object {
                     $m = New-Object ModuleInfo
                     $m.Name = $_.Name
                     $m.Version += [Version] $_.VersionUpdate
                     $m
                 }
-                $installModuleParams.Add('ModuleList', $modules)
+                $installModuleParams = @{
+                    ModuleList = $moduleList
+                    RepositoryUrl = (Get-RepositoryUrl $Repository)
+                    AllowPrerelease = $true
+                    Scope = if ($Scope) {$Scope} else {'CurrentUser'}
+                    RemovePrevious = !$KeepPrevious
+                    Force = $Force
+                    Invoker = $Invoker
+                }
                 $output = Install-AzModuleInternal @installModuleParams
 
                 if ($output) {

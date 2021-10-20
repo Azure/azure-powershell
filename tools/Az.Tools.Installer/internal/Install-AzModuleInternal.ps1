@@ -20,23 +20,14 @@ function Install-AzModuleInternal {
         [ModuleInfo[]]
         ${ModuleList},
 
-        [Parameter()]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        ${RequiredAzVersion},
-
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]
-        ${Repository},
+        ${RepositoryUrl},
 
         [Parameter()]
         [Switch]
         ${AllowPrerelease},
-
-        [Parameter()]
-        [Switch]
-        ${UseExactAccountVersion},
 
         [Parameter(Mandatory)]
         [ValidateSet('CurrentUser', 'AllUsers')]
@@ -52,12 +43,12 @@ function Install-AzModuleInternal {
         ${Force},
 
         [Parameter()]
-        [Switch]
-        ${DontClean},
+        [string]
+        ${Invoker},
 
         [Parameter()]
-        [string]
-        ${Invoker}
+        [Switch]
+        ${DontClean}
     )
 
     process {
@@ -80,13 +71,12 @@ function Install-AzModuleInternal {
                 Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is registered."
 
                 $InstallStarted = Get-Date
-                $url = Get-RepositoryUrl $Repository
-                $downloader = [ParallelDownloader]::new($url)
+                $downloader = [ParallelDownloader]::new($RepositoryUrl)
 
                 try {
                     $module = $null
                     $fileList = @()
-                    foreach ($module in $modules) {
+                    foreach ($module in $ModuleList) {
                         Write-Debug "[$Invoker] Downloading $($module.Name) version $($module.Version)."
                         $filePath = $downloader.Download($module.Name, [string] $module.Version, $tempRepo)
                         $fileList += @{
@@ -114,7 +104,7 @@ function Install-AzModuleInternal {
             $moduleInstalled = @()
 
             $InstallStarted = Get-Date
-            Write-Debug "[$Invoker] Will install modules $($modules.Name)."
+            Write-Debug "[$Invoker] Will install modules $($ModuleList.Name)."
             $installModuleParams = @{
                 Scope = $Scope
                 Repository = $script:AzTempRepoName
@@ -125,8 +115,8 @@ function Install-AzModuleInternal {
                 AllowPrerelease = if ($AllowPrerelease) {$AllowPrerelease} else {$false}
             }
 
-            if ($modules[0].Name -eq 'Az.Accounts') {
-                $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module Az.Accounts version $($modules[0].Version)", "Az.Accounts version $($modules[0].Version)", "Install")
+            if ($ModuleList[0].Name -eq 'Az.Accounts') {
+                $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module Az.Accounts version $($ModuleList[0].Version)", "Az.Accounts version $($ModuleList[0].Version)", "Install")
                 $confirmUninstallation = $false
                 if ($RemovePrevious) {
                     $confirmUninstallation = $Force -or $PSCmdlet.ShouldProcess("Remove previously installed Az.Accounts", "Az.Accounts", 'Remove')
