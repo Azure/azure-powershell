@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string StorageAccountKey { get; set; }
 
-        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The full Azure Resource Manager ID of the storage account.")]
         [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         [ValidateNotNullOrEmpty]
