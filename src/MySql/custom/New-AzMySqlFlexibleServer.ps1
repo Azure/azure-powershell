@@ -80,7 +80,7 @@ param(
     [System.String]
     ${SkuTier},
 
-    [Parameter(HelpMessage = "Backup retention days for the server. Day count is between 7 and 35.")]
+    [Parameter(HelpMessage = "Backup retention days for the server. Day count is between 1 and 35.")]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.Int32]
     ${BackupRetentionDay},
