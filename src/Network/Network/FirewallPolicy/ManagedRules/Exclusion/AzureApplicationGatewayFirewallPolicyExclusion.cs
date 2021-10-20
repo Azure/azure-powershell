@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "MatchVariable on Exclusion entry.")]
-        [ValidateSet("RequestHeaderNames", "RequestCookieNames", "RequestArgNames", IgnoreCase = true)]
+        [ValidateSet("RequestHeaderNames", "RequestCookieNames", "RequestArgNames", "RequestHeaderKeys", "RequestCookieKeys", "RequestArgKeys", "RequestHeaderValues", "RequestCookieValues", "RequestArgValues", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string MatchVariable { get; set; }
 
