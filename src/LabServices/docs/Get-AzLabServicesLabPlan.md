@@ -32,7 +32,7 @@ Get-AzLabServicesLabPlan -ResourceGroupName <String> [-SubscriptionId <String[]>
 
 ### ListByLabPlanName
 ```
-Get-AzLabServicesLabPlan -PlanName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzLabServicesLabPlan -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -98,23 +98,8 @@ Used in resource URIs and in UI.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, ListByLabPlanName
 Aliases: LabPlanName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanName
-
-
-```yaml
-Type: System.String
-Parameter Sets: ListByLabPlanName
-Aliases:
 
 Required: True
 Position: Named

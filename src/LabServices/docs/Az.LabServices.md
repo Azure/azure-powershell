@@ -36,22 +36,46 @@ API to get the template vm for the lab.
 Returns the properties of a lab user.
 
 ### [Get-AzLabServicesUserVM](Get-AzLabServicesUserVM.md)
-
+API to get the assigned vm for the user.
 
 ### [Get-AzLabServicesVM](Get-AzLabServicesVM.md)
 Returns the properties for a lab virtual machine.
 
+### [New-AzLabServicesImageUpdateObject](New-AzLabServicesImageUpdateObject.md)
+Create a in-memory object for Lab Services Image.
+
 ### [New-AzLabServicesLab](New-AzLabServicesLab.md)
 Operation to create or update a lab resource.
+
+### [New-AzLabServicesLabObject](New-AzLabServicesLabObject.md)
+Create a in-memory object for Lab Services Lab.
 
 ### [New-AzLabServicesLabPlan](New-AzLabServicesLabPlan.md)
 Operation to create or update a Lab Plan resource.
 
+### [New-AzLabServicesLabPlanObject](New-AzLabServicesLabPlanObject.md)
+Create a in-memory object for Lab Services Lab Plan.
+
+### [New-AzLabServicesResetPasswordObject](New-AzLabServicesResetPasswordObject.md)
+Create a in-memory object for Lab Services Reset Password.
+
+### [New-AzLabServicesSaveImageObject](New-AzLabServicesSaveImageObject.md)
+Create a in-memory object for Lab Services Save Image.
+
 ### [New-AzLabServicesSchedule](New-AzLabServicesSchedule.md)
 Operation to create or update a lab schedule.
 
+### [New-AzLabServicesScheduleObject](New-AzLabServicesScheduleObject.md)
+Create a in-memory object for Lab Services Schedule.
+
 ### [New-AzLabServicesUser](New-AzLabServicesUser.md)
 Operation to create or update a lab user.
+
+### [New-AzLabServicesUserInviteObject](New-AzLabServicesUserInviteObject.md)
+Create a in-memory object for Lab Services User Invite.
+
+### [New-AzLabServicesUserObject](New-AzLabServicesUserObject.md)
+Create a in-memory object for Lab Services User.
 
 ### [Publish-AzLabServicesLab](Publish-AzLabServicesLab.md)
 Publish or re-publish a lab.

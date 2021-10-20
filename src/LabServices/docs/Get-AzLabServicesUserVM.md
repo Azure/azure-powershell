@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
+online version: https://docs.microsoft.com/powershell/module/az.labservices/Get-AzLabServicesUserVM
 schema: 2.0.0
 ---
 
 # Get-AzLabServicesUserVM
 
 ## SYNOPSIS
-
+API to get the assigned vm for the user.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Get-AzLabServicesUserVM -User <User> [-DefaultProfile <PSObject>] [<CommonParame
 ```
 
 ## DESCRIPTION
-
+API to get the assigned vm for the user.
 
 ## EXAMPLES
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

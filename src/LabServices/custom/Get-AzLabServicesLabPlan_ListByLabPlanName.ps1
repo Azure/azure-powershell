@@ -26,7 +26,7 @@ param(
     [Parameter(Mandatory)]
     [SupportsWildcards()]
     [System.String]
-    ${PlanName},
+    ${Name},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -39,8 +39,8 @@ param(
 
 process {
 
-    $currentLabPlan = $PSBoundParameters.PlanName
-    $PSBoundParameters.Remove('PlanName') > $null
+    $currentLabPlan = $PSBoundParameters.Name
+    $PSBoundParameters.Remove('Name') > $null
     if ($(& $PSScriptRoot\Utilities\CheckForWildcards.ps1 -ResourceId $currentLabPlan))
     {
         # Uses Powershell wildcards
