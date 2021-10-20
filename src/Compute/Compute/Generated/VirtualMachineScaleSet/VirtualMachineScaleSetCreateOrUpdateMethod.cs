@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         public const string SimpleParameterSet = "SimpleParameterSet";
+        public const int vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt = 20201101;
         public const string vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum = "2020-11-01";
 
         public override void ExecuteCmdlet()
@@ -103,14 +104,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
             }
-            else if (parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion != vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum)
+            else if (convertAPIVersionToInt(parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
             {
-                throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
+                throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
             }
             else if (parameters.SinglePlacementGroup == true)
             {
                 throw new Exception("The value provided for singlePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
             }
+        }
+
+        private int convertAPIVersionToInt(string networkAPIVersion)
+        {
+            string networkAPIVersionString = String.Join("", networkAPIVersion.Split('-'));
+            int apiversionInt = Convert.ToInt32(networkAPIVersionString);
+
+            return apiversionInt;
         }
 
         [Parameter(
