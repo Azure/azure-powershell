@@ -131,6 +131,15 @@
                 <Label>VirtualNetworkPeerings</Label>
                 <PropertyName>VirtualNetworkPeeringsText</PropertyName>
               </ListItem>
+			  <ListItem>
+                <Label>Encryption</Label>
+                <PropertyName>EncryptionText</PropertyName>
+				<ItemSelectionCondition>
+                  <ScriptBlock>
+                    !($_.Encryption -eq $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
               <ListItem>
                 <Label>EnableDdosProtection</Label>
                 <PropertyName>EnableDdosProtectionText</PropertyName>
@@ -1829,6 +1838,10 @@
               <ListItem>
                 <Label>EnableAcceleratedNetworking</Label>
                 <PropertyName>EnableAcceleratedNetworking</PropertyName>
+              </ListItem>
+			  <ListItem>
+                <Label>VnetEncryptionSupported</Label>
+                <PropertyName>VnetEncryptionSupported</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>NetworkSecurityGroup</Label>

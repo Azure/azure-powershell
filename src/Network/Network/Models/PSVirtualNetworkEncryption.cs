@@ -11,17 +11,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Enabled { get; set; }
 
         public string Enforcement { get; set; }
-
-        [JsonIgnore]
-        public string EnabledText
-        {
-            get { return JsonConvert.SerializeObject(Enabled, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string EnforcementText
-        {
-            get { return JsonConvert.SerializeObject(Enforcement, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
     }
 }
