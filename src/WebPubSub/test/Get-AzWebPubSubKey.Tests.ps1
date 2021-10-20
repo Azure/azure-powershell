@@ -24,4 +24,13 @@ Describe 'Get-AzWebPubSubKey' {
         $key.SecondaryConnectionString | Should -BeTrue
         $key.SecondaryKey | Should -BeTrue
     }
+
+    It 'ListViaIdentity' {
+        $wps = Get-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -ResourceName $env.Wps1
+        $key = Get-AzWebPubSubKey -InputObject $wps
+        $key.PrimaryConnectionString | Should -BeTrue
+        $key.PrimaryKey | Should -BeTrue
+        $key.SecondaryConnectionString | Should -BeTrue
+        $key.SecondaryKey | Should -BeTrue
+    }
 }
