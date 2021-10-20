@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             else if (parameters.SinglePlacementGroup == true)
             {
-                throw new Exception("The value provided for singlePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
+                throw new Exception("The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
             }
         }
 
