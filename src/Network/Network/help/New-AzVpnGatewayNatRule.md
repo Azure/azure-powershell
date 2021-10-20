@@ -16,21 +16,23 @@ Creates a NAT rule on a VpnGateway which can be associated with VpnSiteLinkConne
 ```
 New-AzVpnGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  [-Type <String>] [-Mode <String>] -InternalMapping <String[]> -ExternalMapping <String[]>
- [-IpConfigurationId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-InternalPortRanges <String[]>] [-ExternalPortRanges <String[]>] [-IpConfigurationId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayObject
 ```
 New-AzVpnGatewayNatRule -ParentObject <PSVpnGateway> -Name <String> [-Type <String>] [-Mode <String>]
- -InternalMapping <String[]> -ExternalMapping <String[]> [-IpConfigurationId <String>] [-AsJob]
+ -InternalMapping <String[]> -ExternalMapping <String[]> [-InternalPortRanges <String[]>]
+ [-ExternalPortRanges <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayResourceId
 ```
 New-AzVpnGatewayNatRule -ParentResourceId <String> -Name <String> [-Type <String>] [-Mode <String>]
- -InternalMapping <String[]> -ExternalMapping <String[]> [-IpConfigurationId <String>] [-AsJob]
+ -InternalMapping <String[]> -ExternalMapping <String[]> [-InternalPortRanges <String[]>]
+ [-ExternalPortRanges <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -113,6 +115,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExternalPortRanges
+The list of external port range mappings for NAT subnets
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InternalMapping
 The list of private IP address subnet internal mappings for NAT
 
@@ -122,6 +139,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InternalPortRanges
+The list of internal port range mappings for NAT subnets
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
