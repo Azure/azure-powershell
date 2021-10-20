@@ -81,6 +81,16 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of internal port range mappings for NAT subnets")]
+        public string[] InternalPortRanges { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of external port range mappings for NAT subnets")]
+        public string[] ExternalPortRanges { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The IP Configuration ID this NAT rule applies to")]
         public string IpConfigurationId { get; set; }
 
@@ -157,6 +167,32 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
                     var externalMapping = new PSVpnNatRuleMapping();
                     externalMapping.AddressSpace = externalMappingSubnet;
                     natRuleToUpdate.ExternalMappings.Add(externalMapping);
+                }
+            }
+
+            if (this.InternalPortRanges != null)
+            {
+                if (natRuleToUpdate.InternalMappings.Count < this.InternalPortRanges.Count())
+                {
+                    throw new PSArgumentException(string.Format(Properties.Resources.VpnNatRuleUnmatchedPortRange, nameof(InternalPortRanges), nameof(InternalMapping)));
+                }
+
+                for (int i = 0; i < this.InternalPortRanges.Count(); i++)
+                {
+                    natRuleToUpdate.InternalMappings[i].PortRange = this.InternalPortRanges[i];
+                }
+            }
+
+            if (this.ExternalPortRanges != null)
+            {
+                if (natRuleToUpdate.ExternalMappings.Count < this.ExternalPortRanges.Count())
+                {
+                    throw new PSArgumentException(string.Format(Properties.Resources.VpnNatRuleUnmatchedPortRange, nameof(ExternalPortRanges), nameof(ExternalMapping)));
+                }
+
+                for (int i = 0; i < this.ExternalPortRanges.Count(); i++)
+                {
+                    natRuleToUpdate.ExternalMappings[i].PortRange = this.ExternalPortRanges[i];
                 }
             }
 
