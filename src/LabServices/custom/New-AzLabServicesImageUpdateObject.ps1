@@ -22,7 +22,7 @@ Create a in-memory object for Lab Services Image.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImageUpdate
 .Link
-https://docs.microsoft.com/powershell/module/az.LabServices/new-AzLabServicesImageObject
+https://docs.microsoft.com/powershell/module/az.labservices/new-azlabservicesimageupdateobject
 #>
 function New-AzLabServicesImageUpdateObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImageUpdate')]
