@@ -20,7 +20,7 @@ using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class NetworkmanagerTests : NetworkTestRunner
+    public class NetworkManagerTests : NetworkTestRunner
     {
         public NetworkmanagerTests(Xunit.Abstractions.ITestOutputHelper output)
             : base(output)
