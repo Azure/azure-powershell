@@ -13,17 +13,40 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicyExclusionManagedRuleGroup"), OutputType(typeof(PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup))]
-    public class NewAzureApplicationGatewayFirewallPolicyExclusionManagedRuleGroupCommand : AzureApplicationGatewayFirewallPolicyExclusionManagedRuleGroup
+    public class NewAzureApplicationGatewayFirewallPolicyExclusionManagedRuleGroupCommand : NetworkBaseCmdlet
     {
+        [Alias("RuleGroupName")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Rule Group Name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of Rules.")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayFirewallPolicyExclusionManagedRule[] Rule { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(base.NewObject());
+            WriteObject(NewObject());
+        }
+
+        protected PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup NewObject()
+        {
+            return new PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup()
+            {
+                RuleGroupName = this.Name,
+                Rules = this.Rule?.ToList()
+            };
         }
     }
 }

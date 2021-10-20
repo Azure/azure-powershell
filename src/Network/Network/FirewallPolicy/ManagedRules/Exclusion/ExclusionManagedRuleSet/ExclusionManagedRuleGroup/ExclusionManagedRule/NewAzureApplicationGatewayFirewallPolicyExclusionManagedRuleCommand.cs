@@ -18,12 +18,26 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicyExclusionManagedRule"), OutputType(typeof(PSApplicationGatewayFirewallPolicyExclusionManagedRule))]
-    public class NewAzureApplicationGatewayFirewallPolicyExclusionManagedRuleCommand : AzureApplicationGatewayFirewallPolicyExclusionManagedRule
+    public class NewAzureApplicationGatewayFirewallPolicyExclusionManagedRuleCommand : NetworkBaseCmdlet
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Rule Id.")]
+        [ValidateNotNullOrEmpty]
+        public string RuleId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(base.NewObject());
+            WriteObject(NewObject());
+        }
+
+        protected PSApplicationGatewayFirewallPolicyExclusionManagedRule NewObject()
+        {
+            return new PSApplicationGatewayFirewallPolicyExclusionManagedRule()
+            {
+                RuleId = this.RuleId
+            };
         }
     }
 }

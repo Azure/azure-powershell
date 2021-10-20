@@ -13,17 +13,48 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicyExclusionManagedRuleSet"), OutputType(typeof(PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet))]
-    public class NewAzureApplicationGatewayFirewallPolicyExclusionManagedRuleSetCommand : AzureApplicationGatewayFirewallPolicyExclusionManagedRuleSet
+    public class NewAzureApplicationGatewayFirewallPolicyExclusionManagedRuleSetCommand : NetworkBaseCmdlet
     {
+        [Alias("RuleSetType")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "RuleSet Type.")]
+        [ValidateNotNullOrEmpty]
+        public string Type { get; set; }
+
+        [Alias("RuleSetVersion")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "RuleSet Version.")]
+        [ValidateNotNullOrEmpty]
+        public string Version { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Rule Groups.")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup[] RuleGroup { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(base.NewObject());
+            WriteObject(NewObject());
+        }
+
+        protected PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet NewObject()
+        {
+            return new PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet()
+            {
+                RuleSetType = this.Type,
+                RuleSetVersion = this.Version,
+                RuleGroups = this.RuleGroup?.ToList()
+            };
         }
     }
 }
