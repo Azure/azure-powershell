@@ -131,10 +131,10 @@
                 <Label>VirtualNetworkPeerings</Label>
                 <PropertyName>VirtualNetworkPeeringsText</PropertyName>
               </ListItem>
-			  <ListItem>
+              <ListItem>
                 <Label>Encryption</Label>
                 <PropertyName>EncryptionText</PropertyName>
-				<ItemSelectionCondition>
+                <ItemSelectionCondition>
                   <ScriptBlock>
                     !($_.Encryption -eq $null)
                   </ScriptBlock>
@@ -1483,6 +1483,15 @@
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
+               <ListItem>
+                <Label>RemoteVirtualNetworkEncryption</Label>
+                <PropertyName>RemoteVirtualNetworkEncryptionText</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    !($_.RemoteVirtualNetworkEncryption -eq $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1596,7 +1605,7 @@
         </ListEntries>
       </ListControl>
     </View>
-	  <View>
+      <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSCustomIpPrefix</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSCustomIpPrefix</TypeName>
@@ -1839,7 +1848,7 @@
                 <Label>EnableAcceleratedNetworking</Label>
                 <PropertyName>EnableAcceleratedNetworking</PropertyName>
               </ListItem>
-			  <ListItem>
+              <ListItem>
                 <Label>VnetEncryptionSupported</Label>
                 <PropertyName>VnetEncryptionSupported</PropertyName>
               </ListItem>
@@ -4539,7 +4548,7 @@
               <ListItem>
                 <Label>NatRules</Label>
                 <PropertyName>NatRules</PropertyName>
-              </ListItem>			  
+              </ListItem>             
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -4634,7 +4643,7 @@
               </ListItem>
               <ListItem>
                 <Label>VpnAuthenticationTypes</Label>
-				<PropertyName>VpnAuthenticationTypes</PropertyName>
+                <PropertyName>VpnAuthenticationTypes</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>VpnClientRootCertificates</Label>
@@ -4667,7 +4676,7 @@
               <ListItem>
                 <Label>P2sVpnGateways</Label>
                 <PropertyName>P2sVpnGatewaysText</PropertyName>
-              </ListItem> 			  
+              </ListItem>             
               <ListItem>
                 <Label>Type</Label>
                 <PropertyName>Type</PropertyName>
@@ -4705,12 +4714,12 @@
               <ListItem>
                 <Label>TotalEgressBytesTransferred</Label>
                 <PropertyName>TotalEgressBytesTransferred</PropertyName>
-              </ListItem>			  
+              </ListItem>             
             </ListItems>
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>	
+    </View> 
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSClientCertificate</Name>
       <ViewSelectedBy>
@@ -4727,7 +4736,7 @@
               <ListItem>
                 <Label>Thumbprint</Label>
                 <PropertyName>Thumbprint</PropertyName>
-              </ListItem>			  
+              </ListItem>             
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -4749,12 +4758,12 @@
               <ListItem>
                 <Label>PublicCertData</Label>
                 <PropertyName>PublicCertData</PropertyName>
-              </ListItem>			  
+              </ListItem>             
             </ListItems>
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>		
+    </View>     
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationsResponse</Name>
       <ViewSelectedBy>
@@ -4772,7 +4781,7 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>	
+    </View> 
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSVpnProfileResponse</Name>
       <ViewSelectedBy>
@@ -4790,7 +4799,7 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>	
+    </View> 
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnConnectionHealth</Name>
       <ViewSelectedBy>
@@ -4808,7 +4817,7 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>	
+    </View> 
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSP2SConnectionConfiguration</Name>
       <ViewSelectedBy>
@@ -4847,7 +4856,7 @@
         </ListEntries>
       </ListControl>
     </View>
-    <View>	
+    <View>  
       <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway</TypeName>
@@ -4887,7 +4896,7 @@
               <ListItem>
                 <Label>VpnServerConfigurationLocation</Label>
                 <PropertyName>VpnServerConfigurationLocation</PropertyName>
-              </ListItem>			  
+              </ListItem>             
               <ListItem>
                 <Label>VpnClientConnectionHealth</Label>
                 <PropertyName>VpnClientConnectionHealthText</PropertyName>
@@ -4908,7 +4917,7 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>	
+    </View> 
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteGateway</Name>
       <ViewSelectedBy>
@@ -5579,10 +5588,10 @@
                 <Label>VirtualRouterIps</Label>
                 <PropertyName>VirtualRouterIps</PropertyName>
               </ListItem>
-		      <ListItem>
-			    <Label>AllowBranchToBranchTraffic</Label>
-			    <PropertyName>AllowBranchToBranchTraffic</PropertyName>
-			  </ListItem>
+              <ListItem>
+                <Label>AllowBranchToBranchTraffic</Label>
+                <PropertyName>AllowBranchToBranchTraffic</PropertyName>
+              </ListItem>
               <ListItem>
                 <Label>Peerings</Label>
                 <PropertyName>PeeringsText</PropertyName>
