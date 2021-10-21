@@ -1,44 +1,44 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupPortObject
+online version: https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceHttpHeaderObject
 schema: 2.0.0
 ---
 
-# New-AzContainerGroupPortObject
+# new-AzContainerInstanceHttpHeaderObject
 
 ## SYNOPSIS
-Create a in-memory object for Port
+Create a in-memory object for HttpHeader
 
 ## SYNTAX
 
 ```
-New-AzContainerGroupPortObject -Port <Int32> [-Protocol <String>] [<CommonParameters>]
+new-AzContainerInstanceHttpHeaderObject -Name <String> [-Value <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for Port
+Create a in-memory object for HttpHeader
 
 ## EXAMPLES
 
-### Example 1: Specify port 8000 exposed on a container group with TCP protocol
+### Example 1: Create an HTTP Header object
 ```powershell
-PS C:\> New-AzContainerGroupPortObject -Port 8000 -Protocol TCP
+PS C:\> new-AzContainerInstanceHttpHeaderObject -name foo -value bar
 
-Port1 Protocol
------ --------
-8000  TCP
+Name Value
+---- -----
+foo  bar
 ```
 
-This command specifies port 8000 exposed on a container group with TCP protocol.
+Create an HTTP Header object to be used in liveness or readiness probes.
 
 ## PARAMETERS
 
-### -Port
-The port number.
+### -Name
+The header name.
 
 ```yaml
-Type: System.Int32
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -49,8 +49,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocol
-The protocol associated with the port.
+### -Value
+The header value..
 
 ```yaml
 Type: System.String
@@ -71,7 +71,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Port
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.HttpHeader
 
 ## NOTES
 

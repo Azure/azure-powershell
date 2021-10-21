@@ -15,34 +15,33 @@
 
 <#
 .Synopsis
-Create a in-memory object for Port
+Create a in-memory object for HttpHeader
 .Description
-Create a in-memory object for Port
+Create a in-memory object for HttpHeader
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Port
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.HttpHeader
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupPortObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceHttpHeaderObject
 #>
-function New-AzContainerGroupPortObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Port')]
+function new-AzContainerInstanceHttpHeaderObject {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.HttpHeader')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="The port number.")]
-        [int]
-        $Port,
-        [Parameter(HelpMessage="The protocol associated with the port.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupNetworkProtocol])]
+        [Parameter(Mandatory, HelpMessage="The header name.")]
         [string]
-        $Protocol
+        $Name,
+        [Parameter(HelpMessage="The header value..")]
+        [string]
+        $Value
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Port]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.HttpHeader]::New()
 
-        $Object.Port1 = $Port
-        $Object.Protocol = $Protocol
+        $Object.Name = $Name
+        $Object.Value = $Value
         return $Object
     }
 }
