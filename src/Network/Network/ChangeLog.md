@@ -19,7 +19,6 @@
 --->
 
 ## Upcoming Release
-
 * Onboard Azure Virtual Network Manager Cmdlets for preview
     - `Get-AzNetworkManager` 
     - `New-AzNetworkManager` 
