@@ -2826,6 +2826,50 @@ function Test-VirtualMachineScaleSetSpotRestorePolicy
 .SYNOPSIS
 Test the VMSS spot restore policy 
 #>
+function Test-VMSSUserdataNorm
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    $loc = Get-ComputeVMLocation;
+    try
+    {
+
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+        $platformFaultDomain = 1;
+
+        $text = "new vmss";
+        $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+        $encodedText = [Convert]::ToBase64String($bytes);
+        $userData = $encodedText;
+
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        #VMSS in Flexible orchestration mode
+        $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomain -UserData $userData -OrchestrationMode "Flexible"; #-SkuName "Standard_D2s_v3";
+        $vmss = New-AzVmss -VirtualMachineScaleSet $vmssConfig -ResourceGroupName $rgname -Name $vmssName;
+        $vm = New-AzVm -ResourceGroupName $rgname -Location $loc -Name $vmssName -VmssId $vmss.Id -Credential $cred;
+
+        Assert-AreEqual $vmss.VirtualMachineProfile.UserData $userData;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test the VMSS spot restore policy 
+#>
 function Test-VMSSUserdata
 {
 
@@ -2857,6 +2901,7 @@ function Test-VMSSUserdata
         $vm = New-AzVm -ResourceGroupName $rgname -Location $loc -Name $vmssName -VmssId $vmss.Id -Credential $cred;
 
         Assert-AreEqual $vmss.VirtualMachineProfile.UserData $userData;
+
     }
     finally
     {
