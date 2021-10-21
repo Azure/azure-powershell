@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Commands.Profile
             if (azureAccount.Type == "ClientAssertion" && FederatedToken != null)
             {
                 password = SecureStringExtensions.ConvertToSecureString(FederatedToken);
-                azureAccount.SetProperty("ClientAssertion", password.ConvertToString());
+                azureAccount.SetProperty("ClientAssertion", FederatedToken);
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
                 {
                     var file = AzureSession.Instance.ARMProfileFile;
