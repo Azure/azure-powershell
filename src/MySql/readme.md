@@ -47,13 +47,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: cde7f150e8d3bf3af2418cc347cae0fb2baed6a7
+branch: 7af6056c5682b12ccfc2bb358b290158e9fce917
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/ServerSecurityAlertPolicies.json
-  - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/preview/2021-05-01-preview/mysql.json
+  - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
 module-version: 0.1.0
 title: MySQL
 subject-prefix: 'MySQL'
@@ -68,16 +68,16 @@ directive:
   - from: Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
     where: $.paths..operationId
     transform: return $.replace(/^ServerParameters_ListUpdateConfigurations$/g, "ServerConfigurationsList_Update")
-  - from: Microsoft.DBforMySQL/preview/2021-05-01-preview/mysql.json
+  - from: Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
     where: $.paths..operationId
     transform: return $.replace(/^(Servers|ServerKeys)_/g, "flexible$1_")
-  - from: Microsoft.DBforMySQL/preview/2021-05-01-preview/mysql.json
+  - from: Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
     where: $.paths..operationId
     transform: return $.replace(/^(Replicas|FirewallRules|Databases|Configurations|NameAvailability|LocationBasedCapabilities)_/g, "flexibleServer$1_")
-  - from: Microsoft.DBforMySQL/preview/2021-05-01-preview/mysql.json
+  - from: Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
     where: $.paths..operationId
     transform: return $.replace(/^CheckVirtualNetworkSubnetUsage_Execute$/g,"flexibleServerVirtualNetworkSubnetUsage_Get")
-  - from: Microsoft.DBforMySQL/preview/2021-05-01-preview/mysql.json
+  - from: Microsoft.DBforMySQL/stable/2021-05-01/mysql.json
     where: 
       verb: Restore$
       subject: ^FlexibleServer$
@@ -96,7 +96,7 @@ directive:
     set:
       verb: Update
   - where:
-      subject: ^Database$|^LocationBasedPerformanceTier$|^LogFile$|SecurityAlertPolicy$|Administrator$|NameAvailability$|^FlexibleServerKey$|^FlexibleServerVirtualNetworkSubnetUsage$|^FlexibleServerDatabase$
+      subject: ^Database$|^LocationBasedPerformanceTier$|^LogFile$|SecurityAlertPolicy$|Administrator$|NameAvailability$|^FlexibleServerKey$|^FlexibleServerVirtualNetworkSubnetUsage$
     hide: true
   - where:
       verb: New$|Update$
@@ -104,7 +104,7 @@ directive:
     hide: true
   - where:
       verb: Update$
-      subject: ^FlexibleServerConfiguration$
+      subject: ^FlexibleServerConfiguration$|^flexibleServerDatabase$
     hide: true
   - where:
       verb: New$
