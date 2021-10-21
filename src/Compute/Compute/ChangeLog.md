@@ -27,7 +27,7 @@
     - Removed NAT Pool.
     - Removed UpgradePolicy. Throws an error if provided.
     - SinglePlacementGroup must be false. Throws an error if true. 
-    - Networking Profile's API version is 2020-11-01.
+    - Networking Profile's API version is 2020-11-01 or later.
     - Networking Profile IP Configurations Primary property is set to true.
 
 ## Version 4.17.1
