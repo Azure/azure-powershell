@@ -85,7 +85,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// </summary>
         [Theory]
         [InlineData("Get-AzStorage")]
-        [InlineData("Get-AzStorage -")]
         public void VerifyOnlyCommandName(string inputData)
         {
             var predictionContext = PredictionContext.Create(inputData);
@@ -147,6 +146,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         }
 
         /// <summary>
+        /// Verify that a special placeholder parameter is added.
+        /// </summary>
+        [Theory]
+        [InlineData("Get-AzStorage -")]
+        public void VerifyIncompleteParameterAfterCommandName(string inputData)
+        {
+            var predictionContext = PredictionContext.Create(inputData);
+            var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
+            var parameterSet = new ParameterSet(commandAst, _azContext);
+            var expected = new List<Parameter>()
+            {
+                new Parameter(AzPredictorConstants.DashParameterName, null, false),
+            };
+            Assert.Equal(expected, parameterSet.Parameters);
+        }
+
+        /// <summary>
         /// Verify that the incomplete parameter is ignored.
         /// </summary>
         [Theory]
@@ -160,6 +176,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var expected = new List<Parameter>()
             {
                 new Parameter("Name", "Test", isPositional),
+                new Parameter(AzPredictorConstants.DashParameterName, null, false),
             };
 
             var parameterSet = new ParameterSet(commandAst, _azContext);

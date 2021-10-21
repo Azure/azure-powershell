@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Management.Automation.Subsystem.Prediction;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
@@ -22,13 +23,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public sealed class ParameterMapTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
+        public PredictionClient Client { get; }
+
+        /// <inheritdoc/>
         string ITelemetryData.CommandId { get; set; }
 
         /// <inheritdoc/>
         string ITelemetryData.RequestId { get; set; }
-
-        /// <inheritdoc/>
-        string ITelemetryData.SessionId { get; set; }
 
         /// <summary>
         /// Gets the exception if there is an error during the operation.

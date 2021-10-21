@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+* Added support for Synapse data flow debug session
+    - Added `Start-AzSynapseDataFlowDebugSession` cmdlet to start a Synapse Analytics data flow debug session.
+    - Added `Add-AzSynapseDataFlowDebugSessionPackage` cmdlet
+    - Added `Invoke-AzSynapseDataFlowDebugSessionCommand` cmdlet
+    - Added `Get-AzSynapseDataFlowDebugSession` cmdlet
+    - Added `Stop-AzSynapseDataFlowDebugSession`cmdlet to Stop a data flow debug session by `SessionId`
+* Fixed the format of notebook file exported by `Export-AzSynapseNotebook`
 
 ## Version 0.17.0
 * Added cmdlets for Synapse Integration Runtime
@@ -57,12 +64,6 @@
 	- Added `Remove-AzSynapseWorkspacePackage` cmdlet
 	- Updated `New-AzSynapseSparkPool` cmdlet to drop parameter `-LibraryRequirementsFilePath`
 	- Updated `Updated-AzSynapseSparkPool` cmdlet to add parameter `-Package` and `-PackageAction`
-* Added support for Synapse data flow debug session
-    - Added `Start-AzSynapseDataFlowDebugSession` cmdlet to start a Synapse Analytics data flow debug session.
-    - Added `Add-AzSynapseDataFlowDebugSessionPackage` cmdlet
-    - Added `Invoke-AzSynapseDataFlowDebugSessionCommand` cmdlet
-    - Added `Get-AzSynapseDataFlowDebugSession` cmdlet
-    - Added `Stop-AzSynapseDataFlowDebugSession`cmdlet to Stop a data flow debug session by `SessionId`
 
 ## Version 0.14.0
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
