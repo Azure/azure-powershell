@@ -47,10 +47,10 @@ Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -Appli
 
 ### ClientAssertionParameterSet
 ```
-Connect-AzAccount [-Environment <String>] -ApplicationId <String> -Tenant <String> [-Subscription <String>]
- [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force]
- -FederatedToken <String> [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrincipal] -Tenant <String>
+ [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
+ [-Force] -FederatedToken <String> [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificateFileWithSubscriptionId
@@ -449,7 +449,10 @@ Accept wildcard characters: False
 ```
 
 ### -FederatedToken
-The federated token.
+Specifies a token provided by another identity provider. The issuer and subject in this token must be first configured to be trusted by the ApplicationId.
+
+> [!CAUTION]
+> Federated tokens are a type of credential. You should take the appropriate security precautions to keep them confidential. Federated tokens also timeout and may prevent long running tasks from completing.
 
 ```yaml
 Type: System.String
@@ -594,7 +597,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ClientAssertionParameterSet, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases:
 
 Required: False

@@ -97,6 +97,8 @@ namespace Microsoft.Azure.Commands.Profile
                     Mandatory = false)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet,
                     Mandatory = false)]
+        [Parameter(ParameterSetName = ClientAssertionParameterSet,
+                    Mandatory = false)]
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet,
@@ -212,7 +214,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, HelpMessage = "The password required to access the pkcs#12 certificate file.")]
         public SecureString CertificatePassword { get; set; }
 
-        [Parameter(ParameterSetName = ClientAssertionParameterSet, Mandatory = true, HelpMessage = "The federated token.")]
+        [Parameter(ParameterSetName = ClientAssertionParameterSet, Mandatory = true, HelpMessage = "Specifies a token provided by another identity provider. The issuer and subject in this token must be first configured to be trusted by the ApplicationId.")]
         [Alias("ClientAssertion")]
         [ValidateNotNullOrEmpty]
         public string FederatedToken { get; set; }

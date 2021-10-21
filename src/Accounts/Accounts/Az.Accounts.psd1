@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.6.0'
+ModuleVersion = '2.5.4'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -146,7 +146,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added ''-FederatedToken'' on ''Connect-AzAccount'' to support OIDC token.'
+        ReleaseNotes = '* Supported getting the access token for Microsoft Graph.
+* Added AuthorizeRequestDelegate to allow service module to adjust token audience.
+* Utilized [AssemblyLoadContext](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext) to resolve assembly conflict issues in PowerShell.'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -168,4 +170,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
