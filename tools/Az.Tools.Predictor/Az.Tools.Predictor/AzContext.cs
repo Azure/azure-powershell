@@ -56,7 +56,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     minimalState.Types.Clear();
                     minimalState.Formats.Clear();
                     // Refer to the remarks for the property DefaultRunspace.
-                    minimalState.ImportPSModule("Az.Accounts");
                     var runspace = RunspaceFactory.CreateRunspace(minimalState);
                     runspace.Open();
                     return runspace;
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         /// <inheritdoc />
         /// <remarks>
-        /// We pre-load some common Az service modules.
+        /// We don't pre-load Az service modules since they may not always be installed.
         /// Creating the instance is at the first time this is called.
         /// It can be slow. So the first call must not be in the path of the user interaction.
         /// Loading too many modules can also impact user experience because that may add to much memory pressure at the same
@@ -167,15 +166,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public bool IsInternal { get; internal set; }
 
-        /// <summary>
-        /// The survey session id appended to the survey.
-        /// </summary>
-        /// <remarks>
-        /// We only collect this information in the preview and it'll be removed in GA. That's why it's not defined in the
-        /// interface IAzContext and it's internal.
-        /// </remarks>
-        internal string SurveyId { get; set; }
-
         /// <inheritdoc/>
         public void UpdateContext()
         {
@@ -227,27 +217,41 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         private Version GetAzVersion()
         {
-            Version latestAz = DefaultVersion;
+            Version latestAzVersion = DefaultVersion;
 
             try
             {
                 var outputs = ExecuteScript<PSObject>("Get-Module -Name Az -ListAvailable");
-                foreach (PSObject obj in outputs)
+
+                if (!(outputs?.Any() == true))
                 {
-                    string psVersion = obj.Properties["Version"].Value.ToString();
-                    int pos = psVersion.IndexOf('-');
-                    Version currentAz = (pos == -1) ? new Version(psVersion) : new Version(psVersion.Substring(0, pos));
-                    if (currentAz > latestAz)
-                    {
-                        latestAz = currentAz;
-                    }
+                    outputs = ExecuteScript<PSObject>("Get-Module -Name AzPreview -ListAvailable");
+                }
+
+                if (outputs?.Any() == true)
+                {
+                    ExtractAndSetLatestAzVersion(outputs);
                 }
             }
             catch (Exception)
             {
             }
 
-            return latestAz;
+            return latestAzVersion;
+
+            void ExtractAndSetLatestAzVersion(IEnumerable<PSObject> outputs)
+            {
+                foreach (var psObject in outputs)
+                {
+                    string versionOutput = psObject.Properties["Version"].Value.ToString();
+                    int positionOfVersion = versionOutput.IndexOf('-');
+                    Version currentAzVersion = (positionOfVersion == -1) ? new Version(versionOutput) : new Version(versionOutput.Substring(0, positionOfVersion));
+                    if (currentAzVersion > latestAzVersion)
+                    {
+                        latestAzVersion = currentAzVersion;
+                    }
+                }
+            }
         }
 
         /// <summary>
