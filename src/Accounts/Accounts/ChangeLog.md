@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.6.0
 * Added `-FederatedToken` on `Connect-AzAccount`
 * Updated Azure.Core from 1.19.0 to 1.20.0.
 
