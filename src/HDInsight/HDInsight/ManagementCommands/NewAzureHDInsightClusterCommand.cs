@@ -274,6 +274,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string SubnetName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
+        [ValidateSet(Management.HDInsight.Models.OSType.Linux, IgnoreCase = true)]
         public string OSType
 
         {
@@ -282,6 +283,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
+        [ValidateSet(Tier.Standard, Tier.Premium, IgnoreCase=true)]
         public string ClusterTier { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets SSH credential.")]

@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
+        [ValidateSet(Tier.Standard, Tier.Premium, IgnoreCase = true)]
         public string ClusterTier
         {
             get { return _config.ClusterTier; }
