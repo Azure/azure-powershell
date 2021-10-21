@@ -1373,7 +1373,7 @@ param(
         $clusterNodeSessions = New-PSSession -ComputerName $clusterNodeNames -Credential $Credential
     }
 
-    $nodeArcStatus = Invoke-Command -Session $Session -ScriptBlock { $(Get-AzureStackHCIArcIntegration)}
+    $nodeArcStatus = Invoke-Command -Session $Session -ScriptBlock { (Get-AzureStackHCIArcIntegration)}
     if($nodeArcStatus.ClusterArcStatus -eq [ArcStatus]::Disabled)
     {
         return $res
