@@ -15,14 +15,15 @@ function setupEnv() {
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
+        .\test\CreateTestResources.ps1
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
-    .\CreateTestResources.ps1
+    .\test\SetVariables.ps1
+    Write-Host "Sub: $($ENV:SubscriptionId)"
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
-    .\SetVariables.ps1
-    Remove-AzResourceGroup -Name $ENV:ResourceGroupName -Force
+    # Clean resources you create for testing    
+    #Remove-AzResourceGroup -Name $ENV:ResourceGroupName -Force
       
 }
 

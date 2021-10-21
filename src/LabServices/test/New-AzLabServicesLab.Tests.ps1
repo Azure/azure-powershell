@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzLabServicesLab'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-$loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
-. ($loadVarsPath)
+# $loadVarsPath = Join-Path $PSScriptRoot '\test\SetVariables.ps1'
+# . ($loadVarsPath)
 
 Describe 'New-AzLabServicesLab' {
     It 'Create' {
@@ -25,8 +25,8 @@ Describe 'New-AzLabServicesLab' {
         -ResourceGroupName $ENV:ResourceGroupName `
         -Location $ENV:Location `
         -AdditionalCapabilityInstallGpuDriver Disabled `
-        -AdminUserPassword "PlaceholderPassword" `
-        -AdminUserUsername "PlaceholderAccountName" `
+        -AdminUserPassword $(ConvertTo-SecureString "Junk@1234stuff" -AsPlainText -Force) `
+        -AdminUserUsername $ENV:UserName `
         -AutoShutdownProfileShutdownOnDisconnect Disabled `
         -AutoShutdownProfileShutdownOnIdle None `
         -AutoShutdownProfileShutdownWhenNotConnected Disabled `

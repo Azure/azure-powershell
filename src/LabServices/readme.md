@@ -91,7 +91,7 @@ directive:
       verb: Sync
       subject: ^(.*)(Group)(.*)$
     set:
-      subject: $1Users$3
+      subject: $1User$3
   # Change Update-xxxVM to Update-AzLabVMReimage
   - where:
       verb: Update
@@ -171,4 +171,16 @@ directive:
   - where:
       variant: ^Create$|^Update$|^Reset$|^Save$|^Invite$
     remove: true
+  # Hide reset vm password / New Lab / Update lab to set securestring passwords
+  - where:
+      verb: Reset
+    hide: true
+  - where:
+      verb: New
+      subject: Lab
+    hide: true
+  - where:
+      verb: Update
+      subject: Lab
+    hide: true
 ```

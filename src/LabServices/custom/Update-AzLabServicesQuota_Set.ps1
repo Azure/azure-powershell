@@ -62,15 +62,12 @@ function Update-AzLabServicesQuota_Set {
 
         $labQuota = $PSBoundParameters.LabQuota
         $PSBoundParameters.Remove("LabQuota") > $null
-        $lab = Az.LabServices\Get-AzLabServices @PSBoundParameters
-        # Need all vmprofile information to maintain existing properties.
-        $virtualMachineProfile = $lab.VirtualMachineProfile
-        $virtualMachineProfile.UsageQuota = $LabQuota
+        $PSBoundParameters.Remove("VirtualMachineProfileUsageQuota") > $null
 
-        $PSBoundParameters.Add("VirtualMachineProfile", $virtualMachineProfile)
+        $PSBoundParameters.Add("VirtualMachineProfileUsageQuota", $LabQuota)
         $PSBoundParameters.Remove("LabPlanName") > $null
 
-        return Az.LabServices\Update-AzLabServices @PSBoundParameters
+        return Az.LabServices\Update-AzLabServicesLab @PSBoundParameters
 
     }
     
