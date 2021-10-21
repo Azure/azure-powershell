@@ -28,27 +28,24 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
-
 ``` yaml
 branch: 7b19bbd8ee63fa724edf5c780b63ae038312d2b1
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../../readme.azure.noprofile.md
+  - ../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/compute.json
+#  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/compute.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/runCommands.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name
 title: Compute
 subject-prefix: ""
-
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
-
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
@@ -57,16 +54,15 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   # Remove following verbs
-  - select: command
-    where:
-      verb: Export|Convert|Install|Set
-    remove: true
+  #- select: command
+  #  where:
+  #    verb: Export|Convert|Install|Set
+  #  remove: true
   # Remove existing cmdlets
-  - select: command
-    where:
-      subject: VirtualMachine|AvailabilitySet|DedicatedHost|Image|Operation|ProximityPlacementGroup|RestorePoint|RestorePointCollection|Usage|CapacityReservationGroup|CapacityReservation
-    remove: true
-
+  #- select: command
+  #  where:
+  #    subject: VirtualMachine|AvailabilitySet|DedicatedHost|Image|Operation|ProximityPlacementGroup|RestorePoint|RestorePointCollection|Usage|#CapacityReservationGroup|CapacityReservation
+  #  remove: true
   #- select: parameter
   #  where:
   #    subject: CapacityReservationGroup
@@ -77,9 +73,31 @@ directive:
   #    subject: CapacityReservation
   #  remove: true
   - select: command
-    where:
-      subject: SshPublicKey   
-      verb: New|Remove|Update
+   where:
+     subject: SshPublicKey   
+     verb: New|Remove|Update|Get
+   remove: true
+  - where:
+      subject: VirtualMachineRunCommand
+    set:
+      subject: VMRunCommand
+  - where:
+      subject: VirtualMachineScaleSetVMRunCommand
+    set:
+      subject: VmssVMRunCommand
+  - where:
+      verb: Start
+      subject: VirtualMachineCommand
+  - where:
+      verb: Start
+      subject: VirtualMachineScaleSetVMCommand
     remove: true
-
+  - where:
+      verb: New
+      subject: VirtualMachineScaleSetVMCommand|VmssVMRunCommand
+    remove: true
+  - where:
+      verb: New
+      subject: VirtualMachineCommand|VmssVMRunCommand
+    remove: true
 ```
