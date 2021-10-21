@@ -29,6 +29,13 @@ PS C:\> $exclusionEntry = New-AzApplicationGatewayFirewallPolicyExclusion -Match
 
 This command creates a new exclusion-entry for the variable named RequestHeaderNames and operator named StartsWith and Selector named xyz. The exclusion entry is saved in $exclusionEntry.
 
+### Example 2
+```powershell
+PS C:\> $exclusionEntry = New-AzApplicationGatewayFirewallPolicyExclusion -MatchVariable "RequestHeaderKeys" -SelectorMatchOperator "Contains" -Selector "abc"
+```
+
+This command creates a new exclusion-entry for the variable named RequestHeaderKeys and operator named Contains and Selector named abc. The exclusion entry is saved in $exclusionEntry.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -53,7 +60,7 @@ The variable to be excluded.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: RequestHeaderNames, RequestCookieNames, RequestArgNames
+Accepted values: RequestHeaderNames, RequestCookieNames, RequestArgNames, RequestHeaderKeys, RequestCookieKeys, RequestArgKeys, RequestHeaderValues, RequestCookieValues, RequestArgValues
 
 Required: True
 Position: Named

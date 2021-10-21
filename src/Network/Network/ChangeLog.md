@@ -36,6 +36,7 @@
     - `Update-AzVirtualHubBgpConnection`
     - `Remove-AzVirtualHubBgpConnection`
 * Onboard Azure HDInsight to Private Link Common Cmdlets
+* Support for new Match Variables in WAF Exclusions
 * Onboard Virtual Network Encryption to Virtual Network Cmdlets
 
 ## Version 4.11.0
