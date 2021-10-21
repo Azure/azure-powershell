@@ -233,8 +233,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                             {
                                                 engine.GetReference(backendAdressPool)
                                             },
-                                            Subnet = engine.GetReference(subnet),
-                                            Primary = true
+                                            Subnet = engine.GetReference(subnet)
                                         }
                                     },
                                     Primary = true,
