@@ -165,7 +165,8 @@
                         "displayVersion": "3.9",
                         "runtimeVersion": "Python|3.9",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": false,
                         "minorVersions": [],
