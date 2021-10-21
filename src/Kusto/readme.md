@@ -53,7 +53,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2021-01-01/kusto.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2021-08-27/kusto.json
 
 ```
 
@@ -95,6 +95,15 @@ directive:
   - from: swagger-document
     where: $
     transform: return $.replace(/\/principalAssignments\//g, "/PrincipalAssignments/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/managedPrivateEndpoints\//g, "/ManagedPrivateEndpoints/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/privateEndpointConnections\//g, "/PrivateEndpointConnections/")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/privateLinkResource\//g, "/PrivateLinkResources/")
   # Remove the unexpanded parameter set
   - where:
       variant: ^Add$|^AddViaIdentity$|^Check$|^CheckViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Detach$|^DetachViaIdentity$
@@ -128,5 +137,5 @@ directive:
   # Correct some generated code
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IDataConnection Property');
 ```

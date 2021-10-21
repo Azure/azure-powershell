@@ -1,0 +1,124 @@
+{
+  "New-AzLogzMonitorSSOConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/singleSignOnConfigurations/default?api-version=2020-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/singleSignOnConfigurations/default?api-version=2020-10-01-preview",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000e985-0000-0800-0000-61443cb00000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ddc8157-0cfc-4630-87f5-4c20949f830d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "bf222714-52d8-4aa4-b1f2-609036f2f030" ],
+        "x-ms-correlation-request-id": [ "25c8e3c7-ce96-4758-8389-686b6b81f9b3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T065857Z:25c8e3c7-ce96-4758-8389-686b6b81f9b3" ],
+        "Date": [ "Fri, 17 Sep 2021 06:58:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "631" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.logz/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T05:58:35.9625384Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-09-17T05:58:35.9625384Z\"},\"properties\":{\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":null,\"singleSignOnUrl\":\"https://app.logz.io/#/login\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzMonitorSSOConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/singleSignOnConfigurations/default?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/singleSignOnConfigurations/default?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "bb6bc229-f871-4314-82f5-4e88e21f115d" ],
+        "CommandName": [ "New-AzLogzMonitorSSOConfiguration" ],
+        "FullCommandName": [ "New-AzLogzMonitorSSOConfiguration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000e985-0000-0800-0000-61443cb00000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4e207f10-c392-446f-8a7a-4781f2c9f32a" ],
+        "x-ms-correlation-request-id": [ "b69a9067-0ec4-44a2-947e-897a66af193a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T065927Z:b69a9067-0ec4-44a2-947e-897a66af193a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 06:59:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "631" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.logz/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T05:58:35.9625384Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-09-17T05:58:35.9625384Z\"},\"properties\":{\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":null,\"singleSignOnUrl\":\"https://app.logz.io/#/login\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzLogzMonitorSSOConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/singleSignOnConfigurations/default?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/singleSignOnConfigurations/default?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "bb6bc229-f871-4314-82f5-4e88e21f115d" ],
+        "CommandName": [ "New-AzLogzMonitorSSOConfiguration" ],
+        "FullCommandName": [ "New-AzLogzMonitorSSOConfiguration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000e985-0000-0800-0000-61443cb00000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7a19d0a7-f708-4f0e-bd66-553caf8fb85e" ],
+        "x-ms-correlation-request-id": [ "9f01188c-f5ed-4119-8bfd-15973268460d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210917T065927Z:9f01188c-f5ed-4119-8bfd-15973268460d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 06:59:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "631" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/logz-rg-el53t6/providers/Microsoft.Logz/monitors/monitor-kcion4/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.logz/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-17T05:58:35.9625384Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-09-17T05:58:35.9625384Z\"},\"properties\":{\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":null,\"singleSignOnUrl\":\"https://app.logz.io/#/login\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}
