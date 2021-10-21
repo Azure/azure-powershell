@@ -144,7 +144,8 @@
                         "displayVersion": "3.8",
                         "runtimeVersion": "Python|3.8",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
