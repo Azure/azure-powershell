@@ -1,0 +1,10 @@
+name: Internal issue
+description: Azure PowerShell team only
+title: "[Eng]: "
+labels: ["needs-triage", "Engineering"]
+
+body:
+  - type: markdown
+    attributes: 
+      value: |
+        Please describe your issue.

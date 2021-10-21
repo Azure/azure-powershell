@@ -1,0 +1,9 @@
+name: Feature request
+description: Suggest a new feature or improvement
+title: '[Feature]: '
+labels: [feature-request, needs-triage]
+
+
+## Description of the new feature
+
+## Proposed implementation details (optional)

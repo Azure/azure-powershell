@@ -1,0 +1,63 @@
+name: Az module bug report 🐛
+description: Report errors or unexpected behaviors for the Az module
+labels: [needs-triage]
+
+body:
+- type: markdown
+  attributes:
+    value: >
+     - Make sure you are able to reproduce this issue on the latest released version of Az https://www.powershellgallery.com/packages/Az
+     - Please search the existing issues to see if there has been a similar issue filed
+     - For issue related to importing a module, please refer to our troubleshooting guide:
+       - https://github.com/Azure/azure-powershell/blob/master/documentation/troubleshoot-module-load.md
+- type: textarea
+  attributes:
+    label: Description
+    description: >
+      Please describe the issue with context and expected result if any.
+      Please paste error script to below "Debug output" section 
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Issue script & Debug output
+    description: >
+      Set `$DebugPreference='Continue'` before running the repro and paste the resulting debug stream in the below code block
+      **ATTENTION:** Be sure to remove any sensitive information that may be in the logs
+    render: console
+    placeholder: |
+      PS> $DebugPreference='Continue'
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Environment data
+    description: >
+      Please run $PSVersionTable and paste the output in the below code block, If running the Docker container image, indicate the tag of the image used and the version of Docker engine
+    render: console
+    placeholder: |
+      PS> $PSVersionTable
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Module versions
+    description: >
+      Please run `Get-Module Az*` after cmdlet execution and paste the output in the below code block if you have question to specific cmdlet.
+      For other issues, please run `Get-Module -ListAvailable` and paste the output.
+    render: console
+    placeholder: |
+      PS> Get-Module Az*
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Error output
+    description: >
+      Please run `Resolve-AzError` and paste the output in the below code block
+      **ATTENTION:** Be sure to remove any sensitive information that may be in the logs
+    render: console
+    placeholder: |
+      PS> Resolve-AzError
+  validations:
+    required: false
