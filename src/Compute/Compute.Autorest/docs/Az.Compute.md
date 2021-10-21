@@ -17,12 +17,6 @@ Gets specific run command for a subscription in a location.
 ### [Get-AzVmssVMRunCommand](Get-AzVmssVMRunCommand.md)
 The operation to get the VMSS VM run command.
 
-### [New-AzVMRunCommand](New-AzVMRunCommand.md)
-The operation to create or update the run command.
-
-### [New-AzVmssVMRunCommand](New-AzVmssVMRunCommand.md)
-The operation to create or update the VMSS VM run command.
-
 ### [Remove-AzVMRunCommand](Remove-AzVMRunCommand.md)
 The operation to delete the run command.
 
