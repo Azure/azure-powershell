@@ -250,7 +250,7 @@
                         "displayVersion": "7.0",
                         "runtimeVersion": "PowerShell|7",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~4"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
@@ -264,7 +264,7 @@
                         },
                         "isPreview": true,
                         "isDeprecated": false,
-                        "isHidden": true
+                        "isHidden": false
                     }
                 ],
                 "frameworks": [],
