@@ -141,7 +141,8 @@
                         "displayVersion": "11",
                         "runtimeVersion": "11",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": false,
                         "minorVersions": [],
