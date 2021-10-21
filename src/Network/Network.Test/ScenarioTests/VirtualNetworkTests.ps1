@@ -1597,6 +1597,14 @@ function Test-VirtualNetworkEncryption
         Assert-AreEqual "true" $vnet2.VirtualNetworkPeerings[0].RemoteVirtualNetworkEncryption.Enabled
         Assert-AreEqual "allowUnencrypted" $vnet2.VirtualNetworkPeerings[0].RemoteVirtualNetworkEncryption.Enforcement
         Assert-AreEqual "allowUnencrypted" $vnet1.VirtualNetworkPeerings[0].RemoteVirtualNetworkEncryption.Enforcement
+
+        # Get Peering to confirm the RemoteVirtualNetworkEncryption property
+        $peering1 = Get-AzVirtualNetworkPeering -Name $peering1Name -VirtualNetwork $vnet1Name -ResourceGroupName $rgname
+        $peering2 = Get-AzVirtualNetworkPeering -Name $peering2Name -VirtualNetwork $vnet2Name -ResourceGroupName $rgname
+        Assert-AreEqual "true" $peering1.RemoteVirtualNetworkEncryption.Enabled
+        Assert-AreEqual "true" $peering2.RemoteVirtualNetworkEncryption.Enabled
+        Assert-AreEqual "allowUnencrypted" $peering1.RemoteVirtualNetworkEncryption.Enforcement
+        Assert-AreEqual "allowUnencrypted" $peering2.RemoteVirtualNetworkEncryption.Enforcement
     }
     finally
     {
