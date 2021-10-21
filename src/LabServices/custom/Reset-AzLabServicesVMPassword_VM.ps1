@@ -12,6 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Resets a lab virtual machine password.
+.Description
+Resets a lab virtual machine password.
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+.Link
+https://docs.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
+#>
 function Reset-AzLabServicesVMPassword_VM {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
