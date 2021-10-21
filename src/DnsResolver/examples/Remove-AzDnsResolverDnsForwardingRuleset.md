@@ -13,3 +13,4 @@ PS C:\> Remove-AzDnsResolverDnsForwardingRuleset -InputObject $dnsResolverDnsFor
 ```
 
 This command removes a DNS forwarding ruleset by identity.
+
