@@ -186,10 +186,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 {
                     Zones = zones,
                     ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
-                    //UpgradePolicy = new UpgradePolicy
-                    //{
-                    //    Mode = upgradeMode ?? UpgradeMode.Manual
-                    //},
                     Sku = new Azure.Management.Compute.Models.Sku()
                     {
                         Capacity = instanceCount,
