@@ -127,7 +127,7 @@ public class ParallelDownloader
             Version version = null;
             if (!ParseFile(fileName, out module, out version))
             {
-                throw new ArgumentException($"{fileName} is not a valid Az module nuget package name for installation.");
+                throw new ArgumentException(string.Format("{0} is not a valid Az module nuget package name for installation.", fileName));
             }
             var nupkgFile = Path.Combine(targetPath, String.Format("{0}.{1}.nupkg", module, version));
             if (uri.IsFile)
@@ -142,7 +142,7 @@ public class ParallelDownloader
             }
             else
             {
-                throw new ArgumentException($"{sourceUri} scheme is not supported.");
+                throw new ArgumentException(string.Format("{0} scheme is not supported.", sourceUri));
             }
             lastModuleName = module;
             lastModuleVersion = version;
@@ -150,7 +150,7 @@ public class ParallelDownloader
         }
         catch (UriFormatException)
         {
-            throw new ArgumentException($"{sourceUri} is not a valid uri.");
+            throw new ArgumentException(string.Format("{0} is not a valid uri.", sourceUri));
         }
     }
 
@@ -302,7 +302,7 @@ function Get-AzModuleFromRemote {
         $azModule = "Az"
         if ($AllowPrerelease) {
             if ($RequiredVersion -and $RequiredVersion -lt [Version] "6.0") {
-                Throw "[$Invoker] Prerelease version cannot be lower than 6.0. Please install GA modules only and specify Az version above 6.0."
+                Write-Error "[$Invoker] Prerelease version cannot be lower than 6.0. Please install GA modules only and specify Az version above 6.0." -ErrorAction 'Stop'
             }
             else {
                 $azModule = "AzPreview"
@@ -319,7 +319,7 @@ function Get-AzModuleFromRemote {
 
         $modules = [Array] (PowerShellGet\Find-Module @findModuleParams)
         if ($modules.Count -gt 1) {
-            Throw "[$Invoker] You have multiple modules matched 'Az' in the registered reposistory $($modules.Repository). Please specify a single -Repository."
+            Write-Error "[$Invoker] You have multiple modules matched 'Az' in the registered reposistory $($modules.Repository). Please specify a single -Repository." -ErrorAction 'Stop'
         }
 
         $accountVersion = 0
@@ -375,75 +375,6 @@ class ModuleInfo
     [Version[]] $Version = @()
 }
 
-<#
-function Invoke-ThreadJob {
-    [CmdletBinding(SupportsShouldProcess)]
-    param (
-        [Parameter(Mandatory)]
-        [ModuleInfo[]]
-        ${ModuleList},
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [ScriptBlock]
-        ${Snippet},
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        ${Operation},
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        ${JobName},
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        ${Invoker}
-    )
-
-    process {
-        #Write-Debug ($PSBoundParameters | Out-String)
-        try
-        {
-            $jobs = @()
-            $module = $null
-            foreach ($module in $ModuleList) {
-                if ($PSCmdlet.ShouldProcess("$Operation module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", $Operation)) {
-                    $jobs  += Start-ThreadJob -Name $JobName -ScriptBlock $Snippet -ArgumentList $module -ThrottleLimit 5
-                    #-StreamingHost $Host
-                }
-            }
-
-            if (!$WhatIfPreference) {
-                $result = $null
-                $job = $null
-                foreach ($job in $jobs) {
-                    $job = Wait-Job $job
-                    $result = Receive-Job $job
-                    if ($job.State -eq 'Completed') {
-                        Write-Debug  "[$Invoker] $Operation $result is completed"
-                    }
-                    else {
-                        Write-Warning  "[$Invoker] $Operation $result is failed"
-                    }
-                    Remove-Job $job -Confirm:$false
-                }
-            }
-        }
-        finally
-        {
-            $jobs = Get-Job -Name $JobName -ErrorAction 'SilentlyContinue'
-            if ($jobs) {
-                Stop-Job $jobs
-                Remove-Job $jobs -Confirm:$false
-            }
-        }
-    }
-}
-#>
 function Uninstall-AzureRM {
     process {
         try {
@@ -454,62 +385,6 @@ function Uninstall-AzureRM {
         }
         catch {
             Write-Warning $_
-        }
-    }
-}
-
-function Uninstall-SingleModule {
-    param (
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        ${Name},
-
-        [Parameter()]
-        [ValidateNotNullOrEmpty()]
-        [string[]]
-        ${UserPath},
-
-        [Parameter()]
-        [ValidateNotNullOrEmpty()]
-        [string[]]
-        ${AdminPath},
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        ${Invoker}
-    )
-
-    process {
-        try {
-            if ($UserPath) {
-                $path = Join-Path $UserPath $Name
-                if (Test-Path -Path $path) {
-                    $subFolder = Get-ChildItem $path
-                    $version = $null
-                    if ($subFolder) {
-                        $version = $subFolder.Name
-                    }
-                    Microsoft.PowerShell.Management\Remove-Item -Path $path -Recurse -Force -WhatIf:$false
-                    Write-Debug "[$Invoker] Uninstalling $Name version $version is completed."
-                }
-            }
-            if ($AdminPath) {
-                $path = Join-Path $AdminPath $Name
-                if (Test-Path -Path $path) {
-                    $subFolder = Get-ChildItem $path
-                    $version = $null
-                    if ($subFolder) {
-                        $version = $subFolder.Name
-                    }
-                    Microsoft.PowerShell.Management\Remove-Item -Path $path -Recurse -Force -WhatIf:$false
-                    Write-Debug "[$Invoker] Uninstalling $Name version $version is completed."
-                }
-            }
-        }
-        catch {
-            Write-Warning "[$Invoker] You don't have the enough permission to uninstall the module. Please run PowerShell as admin.$_"
         }
     }
 }

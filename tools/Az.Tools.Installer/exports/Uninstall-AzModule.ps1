@@ -78,7 +78,6 @@ function Uninstall-AzModule {
         if ($Name) {
             $Name = Normalize-ModuleName $Name
             $moduleToUninstall = $moduleToUninstall | Where-Object {$Name -Contains $_.Name}
-            #fixme
             $modulesNotInstalled = $Name | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
             if ($modulesNotInstalled) {
                 Write-Warning "[$Invoker] $modulesNotInstalled are not installed."
@@ -90,7 +89,7 @@ function Uninstall-AzModule {
                 $moduleToUninstall = $moduleToUninstall | Where-Object {$ExcludeModule -NotContains $_.Name}
                 $modulesNotInstalled = $ExcludeModule | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
                 if ($modulesNotInstalled) {
-                    Throw "[$Invoker] $modulesNotInstalled are not installed."
+                    Write-Error "[$Invoker] $modulesNotInstalled are not installed." -ErrorAction 'Stop'
                 }
             }
         }
@@ -130,43 +129,6 @@ function Uninstall-AzModule {
             }
             $duration = (Get-Date) - $started
             Write-Debug "[$Invoker] All uninstallation tasks are finished; Time Elapsed Total: $($duration.TotalSeconds)s."
-        }
-
-        <#
-        $s = {
-            param($module)
-            Write-Output "$($module.Name) ver $($module.Version)"
-            PowerShellGet\Uninstall-Module -Name $module.Name -AllVersions -ErrorAction SilentlyContinue
-        }
-
-        if ($modules) {
-            $JobParams = @{
-                ModuleList = $modules
-                Snippet = $s
-                Operation = 'Uninstalling'
-                JobName = 'Az.Tools.Installer'
-                Invoker = $Invoker
-            }
-
-            if ($PSBoundParameters.ContainsKey('Force'))
-            {
-                $JobParams.Add('Confirm', $false)
-            }
-
-            if ($PSBoundParameters.ContainsKey('Confirm'))
-            {
-                $JobParams.Add('Confirm', $PSBoundParameters['Confirm'])
-            }
-
-            if ($PSBoundParameters.ContainsKey('WhatIf'))
-            {
-                $JobParams.Add('WhatIf', $PSBoundParameters['WhatIf'])
-            }
-
-            Write-Host "[$Invoker] Uninstalling $($modules.Name)"
-
-
-            Invoke-ThreadJob @JobParams
         }
 
         <#
