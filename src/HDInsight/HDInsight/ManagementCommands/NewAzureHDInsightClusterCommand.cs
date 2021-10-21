@@ -44,9 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         private const string DefaultParameterSet = "Default";
 
         #region These fields are marked obsolete in ClusterCreateParameters
-#pragma warning disable CS0436 // Type conflicts with imported type
-        private OSType? _osType;
-#pragma warning restore CS0436 // Type conflicts with imported type
+        private string _osType;
         #endregion
 
         #region Input Parameter Definitions
@@ -276,20 +274,15 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string SubnetName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
-#pragma warning disable CS0436 // Type conflicts with imported type
-        public OSType OSType
-#pragma warning restore CS0436 // Type conflicts with imported type
+        public string OSType
+
         {
-#pragma warning disable CS0436 // Type conflicts with imported type
-            get { return _osType ?? OSType.Linux; }
-#pragma warning restore CS0436 // Type conflicts with imported type
+            get { return string.IsNullOrEmpty(_osType)? Management.HDInsight.Models.OSType.Linux : _osType; }
             set { _osType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
-#pragma warning disable CS0436 // Type conflicts with imported type
-        public Tier ClusterTier { get; set; }
-#pragma warning restore CS0436 // Type conflicts with imported type
+        public string ClusterTier { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets SSH credential.")]
         public PSCredential SshCredential { get; set; }
@@ -602,7 +595,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 Zones = Zone,
                 Properties = new ClusterCreateProperties
                 {
-                    Tier = ClusterTier.ToString(),
+                    Tier = ClusterTier,
                     ClusterDefinition = new ClusterDefinition
                     {
                         Kind = ClusterType ?? "Hadoop",
@@ -612,7 +605,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     ClusterVersion = Version ?? "default",
                     KafkaRestProperties = kafkaRestProperties,
                     ComputeProfile = computeProfile,
-                    OsType = OSType.ToString(),
+                    OsType = OSType,
                     SecurityProfile = securityProfile,
                     StorageProfile = storageProfile,
                     DiskEncryptionProperties = diskEncryptionProperties,
