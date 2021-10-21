@@ -30,12 +30,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Location = cluster.Location;
             ClusterId = cluster.Properties.ClusterId;
             ClusterVersion = cluster.Properties.ClusterVersion;
-#pragma warning disable CS0436 // Type conflicts with imported type
-            OperatingSystemType = string.IsNullOrEmpty(cluster.Properties.OsType) ? OSType.Linux: (OSType)Enum.Parse(typeof(OSType), cluster.Properties.OsType, ignoreCase: true);
-#pragma warning restore CS0436 // Type conflicts with imported type
-#pragma warning disable CS0436 // Type conflicts with imported type
-            ClusterTier = string.IsNullOrEmpty(cluster.Properties.Tier) ? Tier.Standard: (Tier)Enum.Parse(typeof(Tier), cluster.Properties.Tier, ignoreCase: true);
-#pragma warning restore CS0436 // Type conflicts with imported type
+            OperatingSystemType = cluster.Properties.OsType;
+            ClusterTier = cluster.Properties.Tier;
             ClusterState = cluster.Properties.ClusterState;
             ClusterType = cluster.Properties.ClusterDefinition.Kind;
             CoresUsed = cluster.Properties.QuotaInfo.CoresUsed ?? 0;
@@ -75,7 +71,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
             MinSupportedTlsVersion = cluster.Properties.MinSupportedTlsVersion;
             DiskEncryption = cluster.Properties.DiskEncryptionProperties;
-            AssignedIdentity = cluster.Identity;
+            AssignedIdentity = new AzureHDInsightClusterIdentity(cluster.Identity);
             EncryptionInTransit =cluster.Properties?.EncryptionInTransitProperties?.IsEncryptionInTransitEnabled;
             PrivateEndpoint = cluster.Properties?.ConnectivityEndpoints?.FirstOrDefault(endpoint => endpoint.Name.Equals("HTTPS-INTERNAL"))?.Location;
             var vnet = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(),cluster.Properties.ComputeProfile)?.VirtualNetworkProfile;
@@ -154,16 +150,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// The type of operating system.
         /// </summary>
-#pragma warning disable CS0436 // Type conflicts with imported type
-        public OSType OperatingSystemType { get; set; }
-#pragma warning restore CS0436 // Type conflicts with imported type
+        public string OperatingSystemType { get; set; }
 
         /// <summary>
         /// Gets or sets the cluster tier.
         /// </summary>
-#pragma warning disable CS0436 // Type conflicts with imported type
-        public Tier ClusterTier { get; set; }
-#pragma warning restore CS0436 // Type conflicts with imported type
+        public string ClusterTier { get; set; }
 
         /// <summary>
         /// The state of the cluster.
@@ -250,7 +242,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets or sets the assigned identity.
         /// </summary>
-        public ClusterIdentity AssignedIdentity { get; set; }
+        public AzureHDInsightClusterIdentity AssignedIdentity { get; set; }
 
         /// <summary>
         /// Gets or sets the private endpoint.

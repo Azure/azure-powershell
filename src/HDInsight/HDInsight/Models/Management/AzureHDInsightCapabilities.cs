@@ -26,9 +26,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 
             this.Regions = capabilitiesResult?.Regions?.ToDictionary(item => item.Key, item => new AzureHDInsightRegionsCapability(item.Value));
 
-            this.VmSizes = new Dictionary<string, AzureHDInsightVmSizesCapability> {
-                { "iaas", new AzureHDInsightVmSizesCapability(billingResponseListResult?.VmSizes)}
-            };
+            this.VmSizes = billingResponseListResult?.VmSizes;
 
             this.VmSizeFilters = billingResponseListResult?.VmSizeFilters?.Select(val => new AzureHDInsightVmSizeCompatibilityFilter(val)).ToList();
 
@@ -50,7 +48,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         /// <summary>
         /// The available vm sizes.
         /// </summary>
-        public IDictionary<string, AzureHDInsightVmSizesCapability> VmSizes { get; set; }  // ToDo: we need to change the type to List<string> in major release which allows breaking change
+        public IList<string> VmSizes { get; set; }
 
         /// <summary>
         /// The vmsize filters.
