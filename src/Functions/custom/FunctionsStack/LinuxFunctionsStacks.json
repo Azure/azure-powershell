@@ -196,7 +196,8 @@
                         "displayVersion": "8",
                         "runtimeVersion": "Java|8",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
