@@ -65,7 +65,8 @@
                         "displayVersion": "14",
                         "runtimeVersion": "~14",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
