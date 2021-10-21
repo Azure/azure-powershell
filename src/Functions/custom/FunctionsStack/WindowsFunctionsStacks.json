@@ -120,7 +120,8 @@
                         "runtimeVersion": "1.8",
                         "supportedFunctionsExtensionVersions": [
                             "~2",
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
