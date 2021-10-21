@@ -76,7 +76,8 @@
                             "WEBSITE_NODE_DEFAULT_VERSION": "~14"
                         },
                         "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": true
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
                         },
                         "isPreview": false,
                         "isDeprecated": false,
@@ -132,7 +133,8 @@
                         },
                         "siteConfigPropertiesDictionary": {
                             "javaVersion": "1.8",
-                            "use32BitWorkerProcess": true
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
                         },
                         "isPreview": false,
                         "isDeprecated": false,
@@ -153,7 +155,8 @@
                         },
                         "siteConfigPropertiesDictionary": {
                             "javaVersion": "11",
-                            "use32BitWorkerProcess": true
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
                         },
                         "isPreview": false,
                         "isDeprecated": false,
@@ -188,7 +191,8 @@
                         },
                         "siteConfigPropertiesDictionary": {
                             "powerShellVersion": "~7",
-                            "use32BitWorkerProcess": true
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
                         },
                         "isPreview": false,
                         "isDeprecated": false,
