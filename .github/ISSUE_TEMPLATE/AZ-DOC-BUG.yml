@@ -7,7 +7,7 @@ body:
 - type: markdown
   attributes:
     value: >
-      Thanks for reporting. Azure PowerShell document includes 3 category.
+      Thanks for reporting. Azure PowerShell document includes 3 categories.
 
       - Conceptual doc about Azure PowerShell: https://docs.microsoft.com/en-us/powershell/azure 
       
