@@ -94,6 +94,12 @@ directive:
   - where:
       verb: Restart
     hide: true
+  # Alias long name: Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint
+  - where:
+      verb: Get
+      subject: ContainerGroupOutboundNetworkDependencyEndpoint
+    set:
+      alias: Get-AzContainerGroupOutboundNetworkDependencyEndpoint
   - from: swagger-document
     where: $
     transform: return $.replace(/resourcegroups/, "resourceGroups")
@@ -114,4 +120,5 @@ directive:
             }
           }
         }
+
 ```

@@ -41,6 +41,16 @@ PS C:\> Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint -
 This command returns a list of the outbound network dependencies for Container Instances.
 Container Instances does not have any outbound network dependencies, so this list will be empty.
 
+### Example 2: Get a list of the outbound network dependencies (alias)
+```powershell
+PS C:\> Get-AzContainerGroupOutboundNetworkDependencyEndpoint -ResourceGroupName test-rg -ContainerGroupName test-cg
+
+[]
+```
+
+This command returns a list of the outbound network dependencies for Container Instances.
+Container Instances does not have any outbound network dependencies, so this list will be empty.
+
 ## PARAMETERS
 
 ### -ContainerGroupName
@@ -134,6 +144,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+Get-AzContainerGroupOutboundNetworkDependencyEndpoint
 
 COMPLEX PARAMETER PROPERTIES
 
