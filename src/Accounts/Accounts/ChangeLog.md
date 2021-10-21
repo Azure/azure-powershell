@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Added `-FederatedToken` on `Connect-AzAccount` to support OIDC token.
+* Updated Azure.Core from 1.19.0 to 1.20.0.
 
 ## Version 2.5.4
 * Supported getting the access token for Microsoft Graph.
