@@ -2851,12 +2851,17 @@ function Test-VMSSUserdataNorm
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        #VMSS in Flexible orchestration mode
-        $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomain -UserData $userData -OrchestrationMode "Flexible"; #-SkuName "Standard_D2s_v3";
-        $vmss = New-AzVmss -VirtualMachineScaleSet $vmssConfig -ResourceGroupName $rgname -Name $vmssName;
-        $vm = New-AzVm -ResourceGroupName $rgname -Location $loc -Name $vmssName -VmssId $vmss.Id -Credential $cred;
+        ##VMSS in Flexible orchestration mode
+        #$vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomain -UserData $userData;
+        #$vmss = New-AzVmss -VirtualMachineScaleSet $vmssConfig -ResourceGroupName $rgname -Name $vmssName;
+        #$vm = New-AzVm -ResourceGroupName $rgname -Location $loc -Name $vmssName -VmssId $vmss.Id -Credential $cred;
 
-        Assert-AreEqual $vmss.VirtualMachineProfile.UserData $userData;
+        # userdata vmss 
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -Userdata $userData;
+
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Userdata;
+
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
 
     }
     finally
