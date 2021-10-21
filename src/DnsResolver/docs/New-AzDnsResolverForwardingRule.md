@@ -14,7 +14,11 @@ Creates or updates a forwarding rule in a DNS forwarding ruleset.
 
 ```
 New-AzDnsResolverForwardingRule -DnsForwardingRulesetName <String> -Name <String> -ResourceGroupName <String>
+<<<<<<< HEAD
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DomainName <String>]
+=======
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+>>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193
  [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -80,6 +84,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -DomainName
 The domain name for the forwarding rule.
 
@@ -95,6 +100,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+=======
+>>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193
 ### -ForwardingRuleState
 The state of forwarding rule.
 
@@ -271,7 +278,11 @@ To create the parameters described below, construct a hash table containing the 
 
 TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
   - `[IPAddress <String>]`: DNS server IP address.
+<<<<<<< HEAD
   - `[Port <Int32?>]`: DNS server port.
+=======
+  - `[Port <Int64?>]`: DNS server port.
+>>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193
 
 ## RELATED LINKS
 

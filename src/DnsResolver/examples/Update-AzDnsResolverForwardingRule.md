@@ -19,4 +19,8 @@ Location Name                 Type                                             E
 westus2  forwardingRule Microsoft.Network/dnsForwardingRulesets/forwardingRule "04005592-0000-0800-0000-60e7ec170000"
 ```
 
+<<<<<<< HEAD
 This command updates forwarding rule via identity (adding metadata)
+=======
+This command updates forwarding rule via identity (adding metadata)
+>>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193

@@ -24,7 +24,10 @@ westus2  dnsForwardingRuleset Microsoft.Network/dnsForwardingRulesets "04005592-
 
 This command gets  single DNS forwarding ruleset by name.
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193
 
 ### Example 3: List all DNS forwarding ruleset under the resouce group 
 ```powershell
@@ -38,6 +41,7 @@ westus2  pw-dnsForwardingRuleset1 Microsoft.Network/dnsForwardingRulesets "08007
 ```
 
 This command gets all DNS forwarding ruleset under the resouce group.
+<<<<<<< HEAD
 >>>>>>> 6a6c72a28c... made some changes
 
 ### Example 3: List all DNS forwarding ruleset under the resouce group 
@@ -52,3 +56,6 @@ westus2  pw-dnsForwardingRuleset1 Microsoft.Network/dnsForwardingRulesets "08007
 ```
 
 This command gets all DNS forwarding ruleset under the resouce group.
+=======
+
+>>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193

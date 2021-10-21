@@ -276,7 +276,11 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
 
 TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
   - `[IPAddress <String>]`: DNS server IP address.
+<<<<<<< HEAD
   - `[Port <Int32?>]`: DNS server port.
+=======
+  - `[Port <Int64?>]`: DNS server port.
+>>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193
 
 ## RELATED LINKS
 
