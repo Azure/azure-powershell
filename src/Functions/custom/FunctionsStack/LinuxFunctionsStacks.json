@@ -217,7 +217,8 @@
                         "displayVersion": "11",
                         "runtimeVersion": "Java|11",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": false,
                         "minorVersions": [],
