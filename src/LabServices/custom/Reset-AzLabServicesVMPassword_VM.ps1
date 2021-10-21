@@ -25,7 +25,7 @@ function Reset-AzLabServicesVMPassword_VM {
         ${Username},
 
         [Parameter(Mandatory)]
-        [System.String]
+        [SecureString]
         ${Password},
 
         [Alias('AzureRMContext', 'AzureCredential')]

@@ -14,20 +14,20 @@ Resets a lab virtual machine password.
 
 ### ResourceId (Default)
 ```
-Reset-AzLabServicesVMPassword -Password <String> -ResourceId <String> [-Username <String>]
+Reset-AzLabServicesVMPassword -Password <SecureString> -ResourceId <String> [-Username <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ResetExpanded
+### Reset
 ```
 Reset-AzLabServicesVMPassword -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
- -Password <String> -Username <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Password <SecureString> -Username <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VM
 ```
-Reset-AzLabServicesVMPassword -Password <String> -VM <VirtualMachine> [-Username <String>]
+Reset-AzLabServicesVMPassword -Password <SecureString> -VM <VirtualMachine> [-Username <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ResetExpanded
+Parameter Sets: Reset
 Aliases:
 
 Required: False
@@ -82,7 +82,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded
+Parameter Sets: Reset
 Aliases:
 
 Required: True
@@ -97,7 +97,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ResetExpanded
+Parameter Sets: Reset
 Aliases:
 
 Required: False
@@ -112,7 +112,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ResetExpanded
+Parameter Sets: Reset
 Aliases:
 
 Required: False
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The password
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +143,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded
+Parameter Sets: Reset
 Aliases:
 
 Required: True
@@ -164,21 +164,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The ID of the target subscription.
-
-```yaml
-Type: System.String
-Parameter Sets: ResetExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -204,7 +189,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded
+Parameter Sets: Reset
 Aliases:
 
 Required: True

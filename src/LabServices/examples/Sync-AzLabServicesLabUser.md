@@ -1,6 +1,6 @@
 ### Example 1: Sync the users connected to the lab.
 ```powershell
-PS C:\> Sync-AzLabServicesLabUsers -ResourceGroupName "Group Name" -LabName "Lab Name"
+PS C:\> Sync-AzLabServicesLabUser -ResourceGroupName "Group Name" -LabName "Lab Name"
 
 ```
 

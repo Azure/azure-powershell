@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-function Sync-AzLabServicesLabUsers_Lab {
+function Sync-AzLabServicesLabUser_Lab {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
@@ -37,7 +37,7 @@ param(
 process {
     $PSBoundParameters = $Lab.BindResourceParameters($PSBoundParameters)
     $PSBoundParameters.Remove("Lab") > $null
-    return Az.LabServices\Sync-AzLabServicesLabUsers @PSBoundParameters
+    return Az.LabServices\Sync-AzLabServicesLabUser @PSBoundParameters
 }
 
 }

@@ -42,7 +42,7 @@ API to get the assigned vm for the user.
 Returns the properties for a lab virtual machine.
 
 ### [New-AzLabServicesLab](New-AzLabServicesLab.md)
-Operation to create or update a lab resource.
+Operation to create a lab resource.
 
 ### [New-AzLabServicesLabPlan](New-AzLabServicesLabPlan.md)
 Operation to create or update a Lab Plan resource.
@@ -95,7 +95,7 @@ API to stop the assigned vm for the user.
 ### [Stop-AzLabServicesVM](Stop-AzLabServicesVM.md)
 Action to stop a lab virtual machine.
 
-### [Sync-AzLabServicesLabUsers](Sync-AzLabServicesLabUsers.md)
+### [Sync-AzLabServicesLabUser](Sync-AzLabServicesLabUser.md)
 Action used to manually kick off an AAD group sync job.
 
 ### [Update-AzLabServicesLab](Update-AzLabServicesLab.md)

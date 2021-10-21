@@ -14,7 +14,7 @@ Operation to update a lab resource.
 
 ```
 Update-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdditionalCapabilityInstallGpuDriver <EnableState>] [-AdminUserPassword <String>]
+ [-AdditionalCapabilityInstallGpuDriver <EnableState>] [-AdminUserPassword <SecureString>]
  [-AdminUserUsername <String>] [-AutoShutdownProfileDisconnectDelay <TimeSpan>]
  [-AutoShutdownProfileIdleDelay <TimeSpan>] [-AutoShutdownProfileNoConnectDelay <TimeSpan>]
  [-AutoShutdownProfileShutdownOnDisconnect <EnableState>]
@@ -24,7 +24,7 @@ Update-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-ConnectionProfileWebRdpAccess <ConnectionType>] [-ConnectionProfileWebSshAccess <ConnectionType>]
  [-Description <String>] [-ImageReferenceId <String>] [-ImageReferenceOffer <String>]
  [-ImageReferencePublisher <String>] [-ImageReferenceSku <String>] [-ImageReferenceVersion <String>]
- [-LabPlanId <String>] [-NonAdminUserPassword <String>] [-NonAdminUserUsername <String>]
+ [-LabPlanId <String>] [-NonAdminUserPassword <SecureString>] [-NonAdminUserUsername <String>]
  [-RosterProfileActiveDirectoryGroupId <String>] [-RosterProfileLmsInstance <String>]
  [-RosterProfileLtiClientId <String>] [-RosterProfileLtiContextId <String>]
  [-RosterProfileLtiRosterEndpoint <String>] [-SecurityProfileOpenAccess <EnableState>] [-SkuCapacity <Int32>]
@@ -72,7 +72,7 @@ The password for the user.
 This is required for the TemplateVM createOption.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -406,7 +406,7 @@ The password for the user.
 This is required for the TemplateVM createOption.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 

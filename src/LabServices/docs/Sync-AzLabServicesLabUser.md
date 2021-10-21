@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/sync-azlabserviceslabusers
+online version: https://docs.microsoft.com/powershell/module/az.labservices/sync-azlabserviceslabuser
 schema: 2.0.0
 ---
 
-# Sync-AzLabServicesLabUsers
+# Sync-AzLabServicesLabUser
 
 ## SYNOPSIS
 Action used to manually kick off an AAD group sync job.
@@ -14,13 +14,13 @@ Action used to manually kick off an AAD group sync job.
 
 ### Sync (Default)
 ```
-Sync-AzLabServicesLabUsers -LabName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Sync-AzLabServicesLabUser -LabName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Lab
 ```
-Sync-AzLabServicesLabUsers -Lab <Lab> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+Sync-AzLabServicesLabUser -Lab <Lab> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Action used to manually kick off an AAD group sync job.
 
 ### Example 1: Sync the users connected to the lab.
 ```powershell
-PS C:\> Sync-AzLabServicesLabUsers -ResourceGroupName "Group Name" -LabName "Lab Name"
+PS C:\> Sync-AzLabServicesLabUser -ResourceGroupName "Group Name" -LabName "Lab Name"
 
 ```
 
