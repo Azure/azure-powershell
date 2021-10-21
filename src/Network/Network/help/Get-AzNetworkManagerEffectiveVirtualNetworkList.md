@@ -27,9 +27,16 @@ The **Get-AzNetworkManagerEffectiveVirtualNetworkList** cmdlet lists NetworkMana
 ```powershell
 PS C:\> Get-AzNetworkManagerEffectiveVirtualNetworkList -NetworkManagerName "TestNM"
  -ResourceGroupName "TestRG" -skipToken "FakeSkipToken" -ConditionalMember "fakeConditional"
+ 
+ Value     : [
+              {
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/pstestvent",
+                "Location": "centraluseuap",
+                "MembershipType": "Dynamic"
+              }
+            ]
+SkipToken :
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 

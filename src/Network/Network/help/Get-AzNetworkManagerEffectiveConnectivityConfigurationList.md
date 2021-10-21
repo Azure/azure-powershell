@@ -14,7 +14,7 @@ Lists NetworkManager Effective Connectivity Configurations applied on a virtual 
 
 ```
 Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetworkName <String>
- -ResourceGroupName <String> [-skipToken <String>] [-DefaultProfile <IAzureContextContainer>]
+ -ResourceGroupName <String> [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ The **Get-AzNetworkManagerEffectiveConnectivityConfigurationList** cmdlet lists 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -skipToken "FakeSkipToken"
+PS C:\> Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
  
  Value     : [
               {
@@ -102,7 +102,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -skipToken
+### -SkipToken
 SkipToken.
 
 ```yaml

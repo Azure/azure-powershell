@@ -66,5 +66,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkManagerSecurityUserRuleCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void NetworkManagerEffectiveVirtualNetworkList()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerEffectiveVirtualNetworkList");
+        }
     }
 }

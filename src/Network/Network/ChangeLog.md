@@ -20,7 +20,6 @@
 
 ## Upcoming Release
 
-## Version 4.12.1-preview
 * Onboard Azure Virtual Network Manager Cmdlets for preview
     - `Get-AzNetworkManager` 
     - `New-AzNetworkManager` 

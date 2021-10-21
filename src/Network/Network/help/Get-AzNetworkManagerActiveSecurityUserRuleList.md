@@ -14,7 +14,7 @@ Lists NetworkManager Active Security User Rules in network manager.
 
 ```
 Get-AzNetworkManagerActiveSecurityUserRuleList -NetworkManagerName <String> -ResourceGroupName <String>
- [-region <System.Collections.Generic.List`1[System.String]>] [-skipToken <String>]
+ [-Region <System.Collections.Generic.List`1[System.String]>] [-SkipToken <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ The **Get-AzNetworkManagerActiveSecurityUserRuleList** cmdlet lists NetworkManag
 PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
 PS C:\> $regions.Add("centraluseuap")
 PS C:\> Get-AzNetworkManagerActiveSecurityUserRuleList -NetworkManagerName "TestNMName"
- -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken"
+ -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
 ```
 
 {{ Add example description here }}
@@ -65,7 +65,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -region
+### -Region
 List of regions.
 
 ```yaml
@@ -95,7 +95,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -skipToken
+### -SkipToken
 SkipToken.
 
 ```yaml

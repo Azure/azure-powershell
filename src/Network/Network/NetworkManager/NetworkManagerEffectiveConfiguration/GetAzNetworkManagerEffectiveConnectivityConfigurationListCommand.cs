@@ -48,16 +48,16 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "SkipToken.")]
-        public string skipToken { get; set; }
+        public string SkipToken { get; set; }
 
         public override void Execute()
         {
             base.Execute();
             var parameter = new QueryRequestOptions();
 
-            if(!string.IsNullOrEmpty(this.skipToken))
+            if(!string.IsNullOrEmpty(this.SkipToken))
             {
-                parameter.SkipToken = this.skipToken;
+                parameter.SkipToken = this.SkipToken;
             }
                 
             var networkManagerEffectiveConnectivityConfiguration = this.NetworkClient.NetworkManagementClient.EffectiveConnectivityConfigurations.List(this.ResourceGroupName, this.VirtualNetworkName, parameter);

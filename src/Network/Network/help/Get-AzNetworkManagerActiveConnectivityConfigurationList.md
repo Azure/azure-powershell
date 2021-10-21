@@ -14,7 +14,7 @@ Lists NetworkManager Active Connectivity Configurations in network manager.
 
 ```
 Get-AzNetworkManagerActiveConnectivityConfigurationList -NetworkManagerName <String>
- -ResourceGroupName <String> [-region <System.Collections.Generic.List`1[System.String]>] [-skipToken <String>]
+ -ResourceGroupName <String> [-Region <System.Collections.Generic.List`1[System.String]>] [-SkipToken <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ The **Get-AzNetworkManagerActiveConnectivityConfigurationList** cmdlet lists Net
 ```powershell
 PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
 PS C:\> $regions.Add("centraluseuap")
-PS C:\> Get-AzNetworkManagerActiveConnectivityConfigurationList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken"
+PS C:\> Get-AzNetworkManagerActiveConnectivityConfigurationList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
  
  Value     : [
               {
@@ -108,7 +108,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -region
+### -Region
 List of regions.
 
 ```yaml
@@ -138,7 +138,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -skipToken
+### -SkipToken
 SkipToken.
 
 ```yaml

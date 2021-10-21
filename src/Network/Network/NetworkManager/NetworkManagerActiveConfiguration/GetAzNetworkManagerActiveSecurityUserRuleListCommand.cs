@@ -48,25 +48,25 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "List of regions.")]
-        public List<string> region { get; set; }
+        public List<string> Region { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "SkipToken.")]
-        public string skipToken { get; set; }
+        public string SkipToken { get; set; }
 
         public override void Execute()
         {
             base.Execute();
             var parameter = new ActiveConfigurationParameter();
-            if(this.region != null)
+            if(this.Region != null)
             {
-                parameter.Regions = this.region;
+                parameter.Regions = this.Region;
             }
-            if(!string.IsNullOrEmpty(this.skipToken))
+            if(!string.IsNullOrEmpty(this.SkipToken))
             {
-                parameter.SkipToken = this.skipToken;
+                parameter.SkipToken = this.SkipToken;
             }
                 
             var networkManagerActiveUserRuleListResult = this.NetworkClient.NetworkManagementClient.ActiveSecurityUserRules.List(this.ResourceGroupName, this.NetworkManagerName, parameter);

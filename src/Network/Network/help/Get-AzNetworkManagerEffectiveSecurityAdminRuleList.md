@@ -14,7 +14,7 @@ Lists NetworkManager Effective Security Admin Rules applied on a virtual network
 
 ```
 Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName <String> -ResourceGroupName <String>
- [-skipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The **Get-AzNetworkManagerEffectiveSecurityAdminRuleList** cmdlet lists NetworkM
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -skipToken "FakeSkipToken"
+PS C:\> Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
 
 Value     : [
               {
@@ -116,7 +116,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -skipToken
+### -SkipToken
 SkipToken.
 
 ```yaml

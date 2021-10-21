@@ -24,7 +24,7 @@ using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
-namespace Microsoft.Azure.Commands.Network.NetworkManager
+namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerEffectiveVirtualNetworkList"), OutputType(typeof(PSNetworkManagerEffectiveVirtualNetworksListResult))]
     public class GetAzNetworkManagerEffectiveVirtualNetworkListCommand : NetworkManagerBaseCmdlet

@@ -14,7 +14,7 @@ Lists NetworkManager Active Security Admin Rules in network manager.
 
 ```
 Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName <String> -ResourceGroupName <String>
- [-region <System.Collections.Generic.List`1[System.String]>] [-skipToken <String>]
+ [-Region <System.Collections.Generic.List`1[System.String]>] [-SkipToken <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ The **Get-AzNetworkManagerActiveSecurityAdminRuleList** cmdlet lists NetworkMana
 ```powershell
 PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
 PS C:\> $regions.Add("centraluseuap")
-PS C:\> Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken"
+PS C:\> Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
 
 Value     : [
               {
@@ -119,7 +119,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -region
+### -Region
 List of regions.
 
 ```yaml
@@ -149,7 +149,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -skipToken
+### -SkipToken
 SkipToken.
 
 ```yaml
