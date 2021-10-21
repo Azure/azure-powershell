@@ -2834,7 +2834,6 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
     $networkAPIVersionFlexible = "2020-11-01";
     $flexiblePFDC = 1;
     $flexibleSinglePlacementGroup = $false;
-    $flexibleIPConfigPrimary = $true;
 
     try
     {
@@ -2860,16 +2859,17 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
         Assert-AreEqual $vmss.SinglePlacementGroup $flexibleSinglePlacementGroup;
         Assert-AreEqual $vmss.PlatformFaultDomainCount $flexiblePFDC;
         Assert-AreEqual $vmss.VirtualMachineProfile.NetworkProfile.NetworkAPIVersion $networkAPIVersionFlexible;
-        Assert-AreEqual $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations.IpConfigurations.Primary $flexibleIPConfigPrimary;
 
-        #Assert-ThrowsContains {
-        #    $vmssError = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -PlatformFaultDOmainCount 2; } "The incoming virtual machine must have a 'resourceGroupName'.";
-        #}
+        Assert-ThrowsContains 
+        {
+            $vmssError = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -SinglePlacementGroup; `
+        } ` 
+        "The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.";
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname;
     }
 }
 
