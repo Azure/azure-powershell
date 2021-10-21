@@ -12,11 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{scope}/providers/Microsoft.Authorization/eligibleChildResources"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzEligibleChildResource_Get")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzRoleEligibleChildResource_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IEligibleChildResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Description(@"Get the child resources of a resource on which user has eligible access")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Generated]
-    public partial class GetAzEligibleChildResource_Get : global::System.Management.Automation.PSCmdlet,
+    public partial class GetAzRoleEligibleChildResource_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -80,6 +80,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity _inputObject;
+
+        /// <summary>Identity Parameter</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.ParameterCategory.Path)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -111,20 +119,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
-
-        /// <summary>Backing field for <see cref="Scope" /> property.</summary>
-        private string _scope;
-
-        /// <summary>The scope of the role management policy.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The scope of the role management policy.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The scope of the role management policy.",
-        SerializedName = @"scope",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.ParameterCategory.Path)]
-        public string Scope { get => this._scope; set => this._scope = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -170,9 +164,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="GetAzEligibleChildResource_Get" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="GetAzRoleEligibleChildResource_GetViaIdentity" /> cmdlet class.
         /// </summary>
-        public GetAzEligibleChildResource_Get()
+        public GetAzRoleEligibleChildResource_GetViaIdentity()
         {
 
         }
@@ -289,12 +283,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.EligibleChildResourcesGet(Scope, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, onOk, onDefault, this, Pipeline);
+                    if (InputObject?.Id != null)
+                    {
+                        await this.Client.EligibleChildResourcesGetViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, onOk, onDefault, this, Pipeline);
+                    }
+                    else
+                    {
+                        // try to call with PATH parameters from Input Object
+                        if (null == InputObject.Scope)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.Scope"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        await this.Client.EligibleChildResourcesGet(InputObject.Scope ?? null, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, onOk, onDefault, this, Pipeline);
+                    }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Scope=Scope,Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -340,14 +346,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

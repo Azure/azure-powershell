@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azeligiblechildresource
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azroleeligiblechildresource
 schema: 2.0.0
 ---
 
-# Get-AzEligibleChildResource
+# Get-AzRoleEligibleChildResource
 
 ## SYNOPSIS
 Get the child resources of a resource on which user has eligible access
@@ -14,13 +14,13 @@ Get the child resources of a resource on which user has eligible access
 
 ### Get (Default)
 ```
-Get-AzEligibleChildResource -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzRoleEligibleChildResource -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzEligibleChildResource -InputObject <IAuthorizationIdentity> [-Filter <String>]
+Get-AzRoleEligibleChildResource -InputObject <IAuthorizationIdentity> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
