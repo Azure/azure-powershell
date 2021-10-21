@@ -67,7 +67,8 @@
                         "displayVersion": "14",
                         "runtimeVersion": "Node|14",
                         "supportedFunctionsExtensionVersions": [
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
