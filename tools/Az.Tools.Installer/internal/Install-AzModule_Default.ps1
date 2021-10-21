@@ -13,20 +13,6 @@
 # ----------------------------------------------------------------------------------
 
 function Install-AzModule_Default {
-
-<#
-    .Synopsis
-        Installs Azure PowerShell modules.
-
-    .Description
-        Installs Azure PowerShell modules.
-
-    .Example
-        C:\PS> Install-AzModule -Repository PSGallery -RemoveAzureRm -RequiredAzVersion 6.3 -UseExactAccountVersion -Confirm:$false -Debug
-
-        C:\PS> Install-AzModule -Name Storage,Compute,Network,Blockchain -Repository PSGallery -AllowPrerelease -Confirm:$false -Debug
-#>
-
     [OutputType([PSCustomObject[]])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess)]
     param(
@@ -67,12 +53,16 @@ function Install-AzModule_Default {
         ${RemoveAzureRm},
 
         [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${Invoker},
+
+        [Parameter()]
         [Switch]
         ${Force}
     )
 
     process {
-        $Invoker = $MyInvocation.MyCommand
         Write-Progress -Id $script:FixProgressBarId "Find modules on $Repository."
 
         $Name = Normalize-ModuleName $Name
@@ -125,7 +115,6 @@ function Install-AzModule_Default {
                 Force = $Force
                 Invoker = $Invoker
             }
-            $installModuleParams.Add('ModuleList', $moduleList)
             $output = Install-AzModuleInternal @installModuleParams
 
             if (!$WhatIfPreference -and $output) {

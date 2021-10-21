@@ -30,7 +30,7 @@ function Install-AzModule_ByPackagePath {
     [OutputType([PSCustomObject[]])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess)]
     param(
-        [Parameter(Mandatory, Position = 0)]
+        [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]
         ${PackagePath},
@@ -49,6 +49,11 @@ function Install-AzModule_ByPackagePath {
         ${RemoveAzureRm},
 
         [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${Invoker},
+
+        [Parameter()]
         [Switch]
         ${Force},
 
@@ -58,8 +63,6 @@ function Install-AzModule_ByPackagePath {
     )
 
     process {
-        $Invoker = $MyInvocation.MyCommand
-
         if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
             Write-Progress -Id $script:FixProgressBarId "Uninstall Azure and AzureRM."
             Uninstall-AzureRM

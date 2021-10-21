@@ -373,7 +373,6 @@ class ModuleInfo
 {
     [string] $Name = $null
     [Version[]] $Version = @()
-    [System.Uri] $Uri = $null
 }
 
 <#

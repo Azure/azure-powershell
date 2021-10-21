@@ -52,7 +52,7 @@ function Install-AzModule {
         [Switch]
         ${UseExactAccountVersion},
 
-        [Parameter(ParameterSetName = 'ByPackagePath', Mandatory, Position = 0)]
+        [Parameter(ParameterSetName = 'ByPackagePath', Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]
         ${PackagePath},
@@ -81,11 +81,12 @@ function Install-AzModule {
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
 
+        $Invoker = $MyInvocation.MyCommand
         if ($PSCmdlet.ParameterSetName -eq 'Default') {
-            Install-AzModule_Default @PSBoundParameters
+            Install-AzModule_Default @PSBoundParameters -Invoker $Invoker
         }
         else {
-            Install-AzModule_ByPackagePath @PSBoundParameters
+            Install-AzModule_ByPackagePath @PSBoundParameters -Invoker $Invoker
         }
 
         <#
