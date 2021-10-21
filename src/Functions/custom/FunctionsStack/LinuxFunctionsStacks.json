@@ -10,6 +10,26 @@
                 "dependency": null,
                 "majorVersions": [
                     {
+                        "displayVersion": "6.0",
+                        "runtimeVersion": "dotnet|6",
+                        "supportedFunctionsExtensionVersions": [
+                            "~4"
+                        ],
+                        "isDefault": true,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": false,
+                            "linuxFxVersion": "dotnet|6.0"
+                        },
+                        "isPreview": true,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },                    
+                    {
                         "displayVersion": "3.1",
                         "runtimeVersion": "dotnet|3.1",
                         "supportedFunctionsExtensionVersions": [
