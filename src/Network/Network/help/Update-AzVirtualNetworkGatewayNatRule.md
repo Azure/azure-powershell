@@ -15,15 +15,15 @@ Updates a Virtual Network Gateway NatRule.
 ### ByVirtualNetworkGatewayNatRuleName (Default)
 ```
 Update-AzVirtualNetworkGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-InternalPortRanges <String[]>]
- [-ExternalPortRanges <String[]>] [-IpConfigurationId <String>] [-AsJob]
+ [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-InternalPortRange <String[]>]
+ [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualNetworkGatewayNatRuleResourceId
 ```
 Update-AzVirtualNetworkGatewayNatRule -ResourceId <String> [-InternalMapping <String[]>]
- [-ExternalMapping <String[]>] [-InternalPortRanges <String[]>] [-ExternalPortRanges <String[]>]
+ [-ExternalMapping <String[]>] [-InternalPortRange <String[]>] [-ExternalPortRange <String[]>]
  [-IpConfigurationId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,8 +31,8 @@ Update-AzVirtualNetworkGatewayNatRule -ResourceId <String> [-InternalMapping <St
 ### ByVirtualNetworkGatewayNatRuleObject
 ```
 Update-AzVirtualNetworkGatewayNatRule -InputObject <PSVirtualNetworkGatewayNatRule>
- [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-InternalPortRanges <String[]>]
- [-ExternalPortRanges <String[]>] [-IpConfigurationId <String>] [-AsJob]
+ [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-InternalPortRange <String[]>]
+ [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -111,7 +111,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExternalPortRanges
+### -ExternalPortRange
 The list of external port range mappings for NAT subnets
 
 ```yaml
@@ -156,7 +156,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InternalPortRanges
+### -InternalPortRange
 The list of internal port range mappings for NAT subnets
 
 ```yaml

@@ -16,14 +16,14 @@ Updates a NAT rule associated with VpnGateway.
 ```
 Update-AzVpnGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  [-Type <String>] [-Mode <String>] [-InternalMapping <String[]>] [-ExternalMapping <String[]>]
- [-InternalPortRanges <String[]>] [-ExternalPortRanges <String[]>] [-IpConfigurationId <String>] [-AsJob]
+ [-InternalPortRange <String[]>] [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayNatRuleResourceId
 ```
 Update-AzVpnGatewayNatRule -ResourceId <String> [-Type <String>] [-Mode <String>] [-InternalMapping <String[]>]
- [-ExternalMapping <String[]>] [-InternalPortRanges <String[]>] [-ExternalPortRanges <String[]>]
+ [-ExternalMapping <String[]>] [-InternalPortRange <String[]>] [-ExternalPortRange <String[]>]
  [-IpConfigurationId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,8 +31,8 @@ Update-AzVpnGatewayNatRule -ResourceId <String> [-Type <String>] [-Mode <String>
 ### ByVpnGatewayNatRuleObject
 ```
 Update-AzVpnGatewayNatRule -InputObject <PSVpnGatewayNatRule> [-Type <String>] [-Mode <String>]
- [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-InternalPortRanges <String[]>]
- [-ExternalPortRanges <String[]>] [-IpConfigurationId <String>] [-AsJob]
+ [-InternalMapping <String[]>] [-ExternalMapping <String[]>] [-InternalPortRange <String[]>]
+ [-ExternalPortRange <String[]>] [-IpConfigurationId <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -117,7 +117,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExternalPortRanges
+### -ExternalPortRange
 The list of external port range mappings for NAT subnets
 
 ```yaml
@@ -162,7 +162,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InternalPortRanges
+### -InternalPortRange
 The list of internal port range mappings for NAT subnets
 
 ```yaml
