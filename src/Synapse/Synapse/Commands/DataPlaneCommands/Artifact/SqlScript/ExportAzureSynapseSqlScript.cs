@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Synapse
 {
     [Cmdlet(VerbsData.Export, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlScript,
            DefaultParameterSetName = ExportByName)]
-    [OutputType(typeof(PSSqlScriptResource))]
+    [OutputType(typeof(FileInfo))]
     public class ExportAzureSynapseSqlScript: SynapseArtifactsCmdletBase
     {
         private const string ExportByName = "ExportByName";

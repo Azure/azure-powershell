@@ -1243,7 +1243,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Synapse SQL Script &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        ///   Looks up a localized string similar to Deleting Synapse SQL Script &apos;{0}&apos; in workspace &apos;{1}&apos;.
         /// </summary>
         internal static string RemovingSynapseSqlScript {
             get {
@@ -1565,7 +1565,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("SqlPoolRestorePointDoesNotExist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Starting integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
         /// </summary>
@@ -1574,7 +1574,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("StartingIntegrationRuntime", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Start a Data Flow debug session under workspace &apos;{0}&apos;..
         /// </summary>

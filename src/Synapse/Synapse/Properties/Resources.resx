@@ -698,7 +698,7 @@ Are you sure you want to continue?</value>
   </data>
   <data name="RerunSynapseTriggerRun" xml:space="preserve">
     <value>Rerunning trigger run with Id: '{0}'</value>
-  </data>  
+  </data>
   <data name="CannotSendDirectory" xml:space="preserve">
     <value>Can not upload the directory '{0}' to Synapse. If you want to upload directory, please use "ls -File -Recurse | New-AzSynapseWorkspacePackage".</value>
   </data>
@@ -780,7 +780,7 @@ Failed: {2}.</value>
     <value>Are you sure you want to remove Synapse SQL Script '{0}' under workspace '{1}'</value>
   </data>
   <data name="RemovingSynapseSqlScript" xml:space="preserve">
-    <value>Deleting Synapse SQL Script '{0}' under workspace '{1}'</value>
+    <value>Deleting Synapse SQL Script '{0}' in workspace '{1}'</value>
   </data>
   <data name="SettingSynapseSqlScript" xml:space="preserve">
     <value>Setting Synapse Sql Script '{0}' in workspace '{1}'</value>

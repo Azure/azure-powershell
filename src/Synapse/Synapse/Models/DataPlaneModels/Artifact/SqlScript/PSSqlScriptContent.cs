@@ -15,7 +15,6 @@
 using Azure.Analytics.Synapse.Artifacts.Models;
 using System.Collections.Generic;
 
-
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
     public class PSSqlScriptContent
