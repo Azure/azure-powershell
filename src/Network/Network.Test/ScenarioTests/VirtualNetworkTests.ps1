@@ -1575,8 +1575,12 @@ function Test-VirtualNetworkEncryption
         # Update the encryption policies on both virtual networks
         $vnet1.Encryption.Enforcement = "allowUnencrypted"
         $vnet2.Encryption.Enforcement = "allowUnencrypted"
-        $vnet1 | Set-AzVirtualNetwork
-        $vnet2 | Set-AzVirtualNetwork
+        $updateVnet1Job = $vnet1 | Set-AzVirtualNetwork -AsJob
+        $updateVnet1Job | Wait-Job
+        $updateVnet1 = $updateVnet1Job | Receive-Job
+        $updateVnet2Job = $vnet2 | Set-AzVirtualNetwork -AsJob
+        $updateVnet2Job | Wait-Job
+        $updateVnet2 = $updateVnet2Job | Receive-Job
 
          # Perform GET operations to retrieve both virtual networks and verify that the encryption property is set to the expected value
         $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
@@ -1587,8 +1591,25 @@ function Test-VirtualNetworkEncryption
         Assert-AreEqual "allowUnencrypted" $vnet2.Encryption.Enforcement
 
         # Peer both virtual networks
-        Add-AzVirtualNetworkPeering -Name $peering1Name -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.Id
-        Add-AzVirtualNetworkPeering -Name $peering2Name -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.Id
+        $job1 = $vnet1 | Add-AzVirtualNetworkPeering -Name $peering1Name -RemoteVirtualNetworkId $vnet2.Id -AsJob
+        $job1 | Wait-Job
+        $peer1 = $job1 | Receive-Job
+
+        $job2 = $vnet2 | Add-AzVirtualNetworkPeering -Name $peering2Name -RemoteVirtualNetworkId $vnet1.Id -AsJob
+        $job2 | Wait-Job
+        $peer2 = $job2 | Receive-Job
+
+        Assert-AreEqual $peer1.ResourceGroupName $rgname    
+        Assert-AreEqual $peer1.Name $peering1Name    
+        Assert-AreEqual $peer1.VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $peer1.ProvisioningState 
+        Assert-AreEqual $peer1.RemoteVirtualNetwork.Id $vnet2.Id
+
+        Assert-AreEqual $peer2.ResourceGroupName $rgname    
+        Assert-AreEqual $peer2.Name $peering2Name    
+        Assert-AreEqual $peer2.VirtualNetworkName $vnet2Name
+        Assert-AreEqual "Succeeded" $peer2.ProvisioningState 
+        Assert-AreEqual $peer2.RemoteVirtualNetwork.Id $vnet1.Id
 
         # Perform GET operations to retrieve both virtual networks and validate the RemoteVirtualNetworkEncryption property on the child peering resource
         $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
