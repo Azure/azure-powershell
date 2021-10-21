@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                         {
-                            NetworkApiVersion = flexibleOModeNetworkAPIVersion,//adam
+                            NetworkApiVersion = flexibleOModeNetworkAPIVersion,
                             NetworkInterfaceConfigurations = new[]
                             {
                                 new VirtualMachineScaleSetNetworkConfiguration
