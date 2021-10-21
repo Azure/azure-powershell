@@ -25,7 +25,7 @@ https://docs.microsoft.com/powershell/module/az.labservices/Add-AzLabServicesUse
 #>
 function Add-AzLabServicesUserQuota_User {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
-    [CmdletBinding(PositionalBinding=$false)]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]

@@ -25,7 +25,7 @@ https://docs.microsoft.com/powershell/module/az.labservices/Stop-AzLabServicesUs
 #>
 function Stop-AzLabServicesUserVM_Stop {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
-    [CmdletBinding(PositionalBinding=$false)]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     param(
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
