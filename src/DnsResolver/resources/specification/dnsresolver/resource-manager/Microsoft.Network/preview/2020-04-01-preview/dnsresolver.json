@@ -1693,12 +1693,9 @@
   "definitions": {
     "DnsResolverProperties": {
       "description": "Represents the properties of a DNS resolver.",
-<<<<<<< HEAD
       "required": [
         "virtualNetwork"
       ],
-=======
->>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193
       "properties": {
         "virtualNetwork": {
           "description": "The reference to the virtual network. This cannot be changed after creation.",
@@ -2058,7 +2055,6 @@
     },
     "ForwardingRuleProperties": {
       "description": "Represents the properties of a forwarding rule within a DNS forwarding ruleset.",
-<<<<<<< HEAD
       "required": [
         "domainName",
         "targetDnsServers"
@@ -2068,9 +2064,6 @@
           "description": "The domain name for the forwarding rule.",
           "type": "string"
         },
-=======
-      "properties": {
->>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193
         "targetDnsServers": {
           "description": "DNS servers to forward the DNS query to.",
           "type": "array",
@@ -2309,12 +2302,8 @@
         "port": {
           "description": "DNS server port.",
           "type": "integer",
-<<<<<<< HEAD
           "format": "int32",
           "default": 53
-=======
-          "format": "int64"
->>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193
         }
       }
     },

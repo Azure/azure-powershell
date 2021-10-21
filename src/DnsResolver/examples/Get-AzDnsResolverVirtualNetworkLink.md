@@ -18,8 +18,4 @@ Name                  Type                                            Etag
 samplevnetLink1 Microsoft.Network/dnsForwardingRuleset/virtualNetworkLinks "0b008451-0000-0800-0000-60402b960000"
 ```
 
-<<<<<<< HEAD
 This command gets single virtual network link by name
-=======
-This command gets single virtual network link by name
->>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193

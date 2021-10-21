@@ -20,7 +20,3 @@ sampleOutbound Microsoft.Network/dnsResolvers/outboundEndpoints "02001eab-0000-0
 ```
 
 This command updates Outbound Endpoint via identity (adding metadata)
-<<<<<<< HEAD
-=======
-
->>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193

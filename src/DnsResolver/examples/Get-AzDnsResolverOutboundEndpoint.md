@@ -19,7 +19,3 @@ sampleOutbound Microsoft.Network/dnsResolvers/outboundEndpoints "0a001a28-0000-0
 ```
 
 This command gets an outbound endpoint under the DNS resolver in a resouce group.
-<<<<<<< HEAD
-=======
-
->>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193

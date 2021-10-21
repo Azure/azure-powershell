@@ -1,3 +1,5 @@
+v
+
 <!-- region Generated -->
 # Az.DnsResolver
 This directory contains the PowerShell module for the DnsResolver service.

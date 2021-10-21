@@ -20,7 +20,3 @@ westus2  dnsForwardingRuleset Microsoft.Network/dnsForwardingRulesets "04005592-
 ```
 
 This command updates DNS Forwarding ruleset via identity (adding metadata)
-<<<<<<< HEAD
-=======
-
->>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193

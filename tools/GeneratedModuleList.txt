@@ -19,10 +19,7 @@ Az.DedicatedHsm
 Az.DesktopVirtualization
 Az.DigitalTwins
 Az.DiskPool
-<<<<<<< HEAD
 Az.Elastic
-=======
->>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193
 Az.DnsResolver
 Az.Functions
 Az.HanaOnAzure

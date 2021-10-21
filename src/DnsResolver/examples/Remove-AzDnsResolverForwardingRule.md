@@ -13,7 +13,3 @@ PS C:\>  Remove-AzDnsResolverForwardingRule -InputObject $inputObject
 ```
 
 This command removes forwarding rule via identity
-<<<<<<< HEAD
-=======
-
->>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193

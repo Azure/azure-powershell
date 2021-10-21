@@ -20,8 +20,3 @@ westus2  dnsForwardingRule                                            Microsoft.
 ```
 
 This command gets a forwarding rule by name.
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 2935e5fc9cb77a0d10c6bd977239c21938094193
