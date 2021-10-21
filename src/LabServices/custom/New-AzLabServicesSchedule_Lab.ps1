@@ -29,7 +29,7 @@ function New-AzLabServicesSchedule_Lab {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
         [System.String]
-        ${Notes},
+        ${Note},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
