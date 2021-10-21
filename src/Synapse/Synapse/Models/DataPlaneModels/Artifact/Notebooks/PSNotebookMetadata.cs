@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -29,10 +27,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.AdditionalProperties = notebookMetadata?.AdditionalProperties;
         }
 
+        [JsonProperty(PropertyName = "kernelspec")]
         public PSNotebookKernelSpec Kernelspec { get; set; }
 
+        [JsonProperty(PropertyName = "language_info")]
         public PSNotebookLanguageInfo LanguageInfo { get; set; }
 
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
     }
 }
