@@ -223,7 +223,16 @@ function New-AzBotService {
                     $CreateServerFarm = $true
                 }
                 $TemplateFile = [System.IO.Path]::Combine($PSScriptRoot, 'webappv4.template.json')
-                $AppSecret = ConvertFrom-SecureString $ApplicationSecret -AsPlainText
+
+                if ($PSEdition -eq 'Desktop')
+                {
+                    $AppSecret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ApplicationSecret))
+                }
+                else
+                {
+                    $AppSecret = ConvertFrom-SecureString $ApplicationSecret -AsPlainText
+                }
+
                 $Parameter = @{
                     'location' = $Location;
                     'kind' = $Kind;
