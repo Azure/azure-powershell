@@ -123,7 +123,8 @@
                         "runtimeVersion": "Python|3.7",
                         "supportedFunctionsExtensionVersions": [
                             "~2",
-                            "~3"
+                            "~3",
+                            "~4"
                         ],
                         "isDefault": true,
                         "minorVersions": [],
