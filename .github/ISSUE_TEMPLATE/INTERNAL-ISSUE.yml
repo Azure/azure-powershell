@@ -1,10 +1,17 @@
-name: Internal issue
+name: 🛠️ Internal Engineering Issue
 description: Azure PowerShell team only
 title: "[Eng]: "
-labels: ["needs-triage", "Engineering"]
+labels: ["Engineering"]
 
 body:
-  - type: markdown
-    attributes: 
-      value: |
-        Please describe your issue.
+- type: markdown
+  attributes:
+    value: >
+      Used for any issue and improvement on Azure PowerShell CI/CD or release pipeline
+- type: textarea
+  attributes:
+    label: Description
+    description: >
+      Please describe the issue or development area.
+  validations:
+    required: true

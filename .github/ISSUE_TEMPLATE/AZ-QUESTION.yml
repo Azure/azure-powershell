@@ -1,6 +1,6 @@
-name: 🐞 Az module bug report 
-description: Report errors or unexpected behaviors for the Az module.
-labels: [needs-triage, bug]
+name: 🤔 Az module question or discussion
+description: Raise questions or discussions for the Az module
+labels: [needs-triage, question]
 
 body:
 - type: markdown
@@ -8,21 +8,19 @@ body:
     value: >
       Thanks for reporting.
 
-      - Make sure you are able to reproduce this issue on the latest released version of [Az](https://www.powershellgallery.com/packages/Az) or [AzPreview](https://www.powershellgallery.com/packages/AzPreview)
+      - Please search the existing questions to see if there has been a similar issue filed
       
-      - Please search the existing issues to see if there has been a similar issue filed
-      
-      - For issue related to importing a module, please refer to our [troubleshooting guide](https://github.com/Azure/azure-powershell/blob/master/documentation/troubleshoot-module-load.md)
+      - For questions related to importing a module, please refer to our [troubleshooting guide](https://github.com/Azure/azure-powershell/blob/master/documentation/troubleshoot-module-load.md)
 - type: textarea
   attributes:
     label: Description
     description: >
-      Please describe the issue and expected result. Please paste error script to next "Debug output" section 
+      Please describe the question. 
   validations:
     required: true
 - type: textarea
   attributes:
-    label: Issue script & Debug output
+    label: Script or Debug output
     description: >
       Set `$DebugPreference='Continue'` before running the repro and paste the resulting debug stream in the below textarea
 
@@ -32,7 +30,7 @@ body:
       PS> $DebugPreference='Continue'
       PS> {}-Az{} ...
   validations:
-    required: true
+    required: false
 - type: textarea
   attributes:
     label: Environment data
@@ -43,7 +41,7 @@ body:
     placeholder: |
       PS> $PSVersionTable
   validations:
-    required: true
+    required: false
 - type: textarea
   attributes:
     label: Module versions
@@ -55,7 +53,7 @@ body:
     placeholder: |
       PS> Get-Module Az*
   validations:
-    required: true
+    required: false
 - type: textarea
   attributes:
     label: Error output
