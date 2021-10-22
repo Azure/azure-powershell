@@ -1,73 +1,70 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooliscsitarget
+online version: https://docs.microsoft.com/powershell/module/az.diskpool/invoke-azdiskpoolredeployment
 schema: 2.0.0
 ---
 
-# Get-AzDiskPoolIscsiTarget
+# Invoke-AzDiskPoolRedeployment
 
 ## SYNOPSIS
-Get an iSCSI Target.
+Upgrade replaces the underlying virtual machine hosts one at a time.
+This operation can take 10-15 minutes to complete.
+This is expected service behavior.
 
 ## SYNTAX
 
-### List (Default)
+### Redeploy (Default)
 ```
-Get-AzDiskPoolIscsiTarget -DiskPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDiskPoolIscsiTarget -DiskPoolName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Invoke-AzDiskPoolRedeployment -DiskPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### RedeployViaIdentity
 ```
-Get-AzDiskPoolIscsiTarget -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Invoke-AzDiskPoolRedeployment -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get an iSCSI Target.
+Upgrade replaces the underlying virtual machine hosts one at a time.
+This operation can take 10-15 minutes to complete.
+This is expected service behavior.
 
 ## EXAMPLES
 
-### Example 1: List iSCSI targets in a Disk Pool
+### Example 1: Redeploy a Disk Pool
 ```powershell
-PS C:\> Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5'
+PS C:\> Invoke-AzDiskPoolRedeployment -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
 
-Name               Type
-----               ----
-target0 Microsoft.StoragePool/diskPools/iscsiTargets
 ```
 
-This command lists all iSCSI targets in a Disk Pool.
+This command redeploys a Disk Pool.
 
-### Example 2: Get an iSCSI target
+### Example 2: Redeploy a Disk Pool by object
 ```powershell
-PS C:\> Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0'
+PS C:\> Get-AzDiskPool -ResourceGroupName 'storagepool-rg-test' -Name 'disk-pool-1' | Invoke-AzDiskPoolRedeployment
 
-Name               Type
-----               ----
-target0 Microsoft.StoragePool/diskPools/iscsiTargets
 ```
 
-This command gets an iSCSI target.
-
-### Example 3: Get an iSCSI target by object
-```powershell
-PS C:\> New-AzDiskPoolIscsiTarget -DiskPoolName 'disk-pool-5' -Name 'target1' -ResourceGroupName 'storagepool-rg-test' -AclMode 'Dynamic' | Get-AzDiskPoolIscsiTarget
-
-Name               Type
-----               ----
-target1 Microsoft.StoragePool/diskPools/iscsiTargets
-```
-
-This command gets an iSCSI target by object.
+This command redeploys a Disk Pool by object.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -89,7 +86,7 @@ The name of the Disk Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Redeploy
 Aliases:
 
 Required: True
@@ -105,7 +102,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: RedeployViaIdentity
 Aliases:
 
 Required: True
@@ -115,15 +112,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the iSCSI Target.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: IscsiTargetName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,7 +148,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Redeploy
 Aliases:
 
 Required: True
@@ -150,13 +162,44 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Redeploy
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -170,7 +213,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget
+### System.Boolean
 
 ## NOTES
 
