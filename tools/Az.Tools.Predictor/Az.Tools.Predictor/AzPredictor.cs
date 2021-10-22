@@ -351,9 +351,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private ParsedCommandLineHistory GetAstAndMaskedCommandLine(string commandLine)
         {
-            var asts = Parser.ParseInput(commandLine, out _, out _);
-            var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
-            var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
+            var commandAst = CommandLineUtilities.GetCommandAst(commandLine);
 
             var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
             bool isSupported = _service.IsSupportedCommand(commandName);
