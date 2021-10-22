@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            var result = HDInsightManagementClient.GetProperties(Location);
-            WriteObject(new AzureHDInsightCapabilities(result), true);
+            var capabilitiesResult = HDInsightManagementClient.GetProperties(Location);
+            var billingSpecResult = HDInsightManagementClient.ListBillingSpecs(Location);
+            WriteObject(new AzureHDInsightCapabilities(capabilitiesResult, billingSpecResult), true);
         }
     }
 }
