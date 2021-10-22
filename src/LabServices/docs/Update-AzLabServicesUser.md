@@ -14,14 +14,14 @@ Operation to update a lab user.
 
 ### ResourceId (Default)
 ```
-Update-AzLabServicesUser -ResourceId <String> [-AdditionalUsageQuota <TimeSpan>] [-DefaultProfile <PSObject>]
- [-AsJob] [<CommonParameters>]
+Update-AzLabServicesUser -ResourceId <String> [-SubscriptionId <String>] [-AdditionalUsageQuota <TimeSpan>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### Lab
 ```
-Update-AzLabServicesUser -Lab <Lab> -Name <String> [-AdditionalUsageQuota <TimeSpan>]
- [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+Update-AzLabServicesUser -Lab <Lab> -Name <String> [-SubscriptionId <String>]
+ [-AdditionalUsageQuota <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -146,7 +146,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -192,7 +192,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

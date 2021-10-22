@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/Stop-AzLabServicesUserVM
+online version: https://docs.microsoft.com/powershell/module/az.labservices/stop-azlabservicesuservm
 schema: 2.0.0
 ---
 
@@ -15,13 +15,14 @@ API to stop the assigned vm for the user.
 ### Stop (Default)
 ```
 Stop-AzLabServicesUserVM -Email <String> -LabName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### User
 ```
-Stop-AzLabServicesUserVM -User <User> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Stop-AzLabServicesUserVM -User <User> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 
 
@@ -121,7 +137,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: (All)
 Aliases:
 
 Required: False

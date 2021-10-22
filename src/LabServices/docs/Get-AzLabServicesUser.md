@@ -14,7 +14,8 @@ Returns the properties of a lab user.
 
 ### ResourceId (Default)
 ```
-Get-AzLabServicesUser -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesUser -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -25,7 +26,8 @@ Get-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <Strin
 
 ### Lab
 ```
-Get-AzLabServicesUser -Lab <Lab> [-Name <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesUser -Lab <Lab> [-Name <String>] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List
@@ -176,7 +178,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: False

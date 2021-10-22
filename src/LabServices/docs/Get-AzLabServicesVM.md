@@ -26,7 +26,8 @@ Get-AzLabServicesVM -LabName <String> -Name <String> -ResourceGroupName <String>
 
 ### Lab
 ```
-Get-AzLabServicesVM -Lab <Lab> [-Name <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesVM -Lab <Lab> [-Name <String>] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,7 +159,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: False

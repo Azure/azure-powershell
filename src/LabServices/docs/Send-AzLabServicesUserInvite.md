@@ -14,8 +14,8 @@ Operation to invite a user to a lab.
 
 ### ResourceId (Default)
 ```
-Send-AzLabServicesUserInvite -ResourceId <String> [-Text <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [<CommonParameters>]
+Send-AzLabServicesUserInvite -ResourceId <String> [-SubscriptionId <String>] [-Text <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### InviteExpanded
@@ -27,8 +27,8 @@ Send-AzLabServicesUserInvite -LabName <String> -ResourceGroupName <String> -User
 
 ### Users
 ```
-Send-AzLabServicesUserInvite -User <User> [-Text <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [<CommonParameters>]
+Send-AzLabServicesUserInvite -User <User> [-SubscriptionId <String>] [-Text <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +97,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: InviteExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -158,7 +158,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: InviteExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

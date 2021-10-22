@@ -15,7 +15,8 @@ The virtual machine will be deleted and recreated using the latest published sna
 
 ### ResourceId (Default)
 ```
-Update-AzLabServicesVMReimage -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzLabServicesVMReimage -ResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### Reimage
@@ -27,7 +28,8 @@ Update-AzLabServicesVMReimage -LabName <String> -Name <String> -ResourceGroupNam
 
 ### VM
 ```
-Update-AzLabServicesVMReimage -VM <VirtualMachine> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzLabServicesVMReimage -VM <VirtualMachine> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +56,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reimage
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -116,7 +118,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reimage
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -177,7 +179,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage
+Parameter Sets: (All)
 Aliases:
 
 Required: False

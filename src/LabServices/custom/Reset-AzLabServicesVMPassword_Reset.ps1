@@ -61,7 +61,31 @@ function Reset-AzLabServicesVMPassword_Reset {
         [System.String]
         # The user whose password is being reset
         ${Username},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob},
+        
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command asynchronously
+        ${NoWait},
     
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String]
+        # The ID of the target subscription.
+        ${SubscriptionId},
+        
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -70,23 +94,44 @@ function Reset-AzLabServicesVMPassword_Reset {
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
     
-        [Parameter()]
+        [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
+        # Wait for .NET debugger to attach
+        ${Break},
     
-        [Parameter()]
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
     
-        [Parameter()]
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
+    
+        [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
-        # Returns true when the command succeeds
-        ${PassThru}    
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}   
     )
 
     process {

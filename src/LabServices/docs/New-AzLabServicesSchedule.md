@@ -23,7 +23,7 @@ New-AzLabServicesSchedule -LabName <String> -Name <String> -ResourceGroupName <S
 
 ### Lab
 ```
-New-AzLabServicesSchedule -Lab <Lab> -Name <String> [-Notes <String>]
+New-AzLabServicesSchedule -Lab <Lab> -Name <String> [-SubscriptionId <String>] [-Note <String>]
  [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <RecurrenceFrequency>]
  [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <WeekDay[]>] [-StartAt <DateTime>]
  [-StopAt <DateTime>] [-TimeZoneId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -124,22 +124,7 @@ Notes for this schedule.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Notes
-
-
-```yaml
-Type: System.String
-Parameter Sets: Lab
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -266,7 +251,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

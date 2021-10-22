@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/Update-AzLabServicesQuota
+online version: https://docs.microsoft.com/powershell/module/az.labservices/update-azlabservicesquota
 schema: 2.0.0
 ---
 
@@ -14,14 +14,15 @@ API to update the lab quota.
 
 ### Lab (Default)
 ```
-Update-AzLabServicesQuota -Lab <Lab> -LabQuota <TimeSpan> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzLabServicesQuota -Lab <Lab> -LabQuota <TimeSpan> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Set
 ```
 Update-AzLabServicesQuota -LabName <String> -ResourceGroupName <String> -LabQuota <TimeSpan>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +42,21 @@ westus2  Lab Name
 This example updates the lab adding an additional 3 hours to the lab quota.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -102,6 +118,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -123,7 +154,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set
+Parameter Sets: (All)
 Aliases:
 
 Required: False

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/Get-AzLabServicesTemplateVM
+online version: https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
 schema: 2.0.0
 ---
 
@@ -14,13 +14,14 @@ API to get the template vm for the lab.
 
 ### Get (Default)
 ```
-Get-AzLabServicesTemplateVM -LabName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzLabServicesTemplateVM -LabName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Lab
 ```
-Get-AzLabServicesTemplateVM -Lab <Lab> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesTemplateVM -Lab <Lab> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,8 +107,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
