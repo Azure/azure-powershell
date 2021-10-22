@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Upgrade API version to 2021-09-01
+  - [Breaking Change] The type of parameter `LogAnalyticWorkspaceResourceId` in `New-AzContainerGroup` changes from Hashtable to String
+  - [Breaking Change] Parameter `NetworkProfileId` in `New-AzContainerGroup` is removed, `Subnet` and  `Zone` are added
+  - [Breaking Change] Parameter `ReadinessProbeHttpGetHttpHeadersName` and `ReadinessProbeHttpGetHttpHeadersValue` in `New-AzContainerInstanceObject` are removed and `ReadinessProbeHttpGetHttpHeader` is added as its alternatives
+  - [Breaking Change] Parameter `LivenessProbeHttpGetHttpHeadersName` and `LivenessProbeHttpGetHttpHeadersValue` in `New-AzContainerInstanceObject` are removed and `LivenessProbeHttpGetHttpHeader` is added as its alternatives
+  - Added `Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint`
 
 ## Version 2.1.0
 * Removed the display of file share credential [#15224]

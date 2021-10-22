@@ -79,7 +79,7 @@ FunctionsToExport = 'Add-AzContainerInstanceOutput', 'Get-AzContainerGroup',
                'New-AzContainerGroupPortObject', 
                'New-AzContainerGroupVolumeObject', 
                'New-AzContainerInstanceEnvironmentVariableObject', 
-               'new-AzContainerInstanceHttpHeaderObject', 
+               'New-AzContainerInstanceHttpHeaderObject', 
                'New-AzContainerInstanceInitDefinitionObject', 
                'New-AzContainerInstanceObject', 
                'New-AzContainerInstancePortObject', 
@@ -126,7 +126,7 @@ PrivateData = @{
         # ReleaseNotes = ''
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
