@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfig
 schema: 2.0.0
 ---
 
-# Get-AzExtension
+# Get-AzKubernetesExtension
 
 ## SYNOPSIS
 Gets Kubernetes Cluster Extension.
@@ -14,19 +14,19 @@ Gets Kubernetes Cluster Extension.
 
 ### List (Default)
 ```
-Get-AzExtension -ClusterName <String> -ClusterType <String> -ResourceGroupName <String>
+Get-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzExtension -ClusterName <String> -ClusterType <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzExtension -InputObject <IKubernetesConfigurationIdentity> [-DefaultProfile <PSObject>]
+Get-AzKubernetesExtension -InputObject <IKubernetesConfigurationIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Gets Kubernetes Cluster Extension.
 
 ### Example 1: Gets Kubernetes Cluster Extension.
 ```powershell
-PS C:\> Get-AzExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group
+PS C:\> Get-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group
 
 Name                Type
 ----                ----
@@ -48,7 +48,7 @@ Gets Kubernetes Cluster Extension.
 
 ### Example 2: List Kubernetes Cluster Extension.
 ```powershell
-PS C:\> Get-AzExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group
+PS C:\> Get-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group
 
 Name                Type
 ----                ----
@@ -182,6 +182,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+Get-AzK8sExtension
 
 COMPLEX PARAMETER PROPERTIES
 

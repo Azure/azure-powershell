@@ -51,4 +51,44 @@ Describe 'AzKubernetesConfiguration' {
             $config.Count | Should -Be 0
         } | Should -Not -Throw
     }
+
+    It 'K8sCreateExpanded' {
+        {
+            $config = New-AzK8sConfiguration -Name $env.kubernetesConfigurationNameCUS1 -ClusterName $env.clusterNameCUS -ResourceGroupName $env.resourceGroupCUS -RepositoryUrl http://github.com/xxxx
+            $config.ProvisioningState | Should -Be 'Succeeded'
+
+            $config = New-AzK8sConfiguration -Name $env.kubernetesConfigurationNameCUS2 -ClusterName $env.clusterNameCUS -ResourceGroupName $env.resourceGroupCUS -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
+            $config.ProvisioningState | Should -Be 'Succeeded'
+        } | Should -Not -Throw
+    }
+        
+    It 'K8sList' {
+        {
+            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters
+            $config.Count | Should -Be 2
+        } | Should -Not -Throw
+    }
+
+    It 'K8sGet' {
+        {
+            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationNameCUS1
+            $config.Name | Should -Be $env.kubernetesConfigurationNameCUS1
+        } | Should -Not -Throw
+    }
+
+    It 'K8sDelete' {
+        {
+            Remove-AzK8sConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationNameCUS1
+        } | Should -Not -Throw
+    }
+
+    It 'K8sDeleteViaIdentity' {
+        {
+            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters -Name $env.kubernetesConfigurationNameCUS2
+            Remove-AzK8sConfiguration -InputObject $config
+            
+            $config = Get-AzK8sConfiguration -ResourceGroupName $env.resourceGroupCUS -ClusterName $env.clusterNameCUS -ClusterType ConnectedClusters
+            $config.Count | Should -Be 0
+        } | Should -Not -Throw
+    }
 }

@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfig
 schema: 2.0.0
 ---
 
-# New-AzExtension
+# New-AzKubernetesExtension
 
 ## SYNOPSIS
 Create a new Kubernetes Cluster Extension.
@@ -13,9 +13,10 @@ Create a new Kubernetes Cluster Extension.
 ## SYNTAX
 
 ```
-New-AzExtension -ClusterName <String> -ClusterType <String> -Name <String> -ResourceGroupName <String>
- -ExtensionType <String> [-SubscriptionId <String>] [-AkAssignedIdentityType <ResourceIdentityType>]
- [-AutoUpgradeMinorVersion] [-ClusterReleaseNamespace <String>] [-ConfigurationProtectedSetting <Hashtable>]
+New-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> -ExtensionType <String> [-SubscriptionId <String>]
+ [-AkAssignedIdentityType <ResourceIdentityType>] [-AutoUpgradeMinorVersion]
+ [-ClusterReleaseNamespace <String>] [-ConfigurationProtectedSetting <Hashtable>]
  [-ConfigurationSetting <Hashtable>] [-IdentityType <ResourceIdentityType>]
  [-NamespaceTargetNamespace <String>] [-ReleaseTrain <String>] [-Version <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -28,7 +29,7 @@ Create a new Kubernetes Cluster Extension.
 
 ### Example 1: Create a new Kubernetes Cluster Extension.
 ```powershell
-PS C:\> New-AzExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ExtensionType Microsoft.Arcdataservices
+PS C:\> New-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ExtensionType Microsoft.Arcdataservices
 
 Name                Type
 ----                ----
@@ -360,6 +361,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+New-AzK8sExtension
 
 ## RELATED LINKS
 
