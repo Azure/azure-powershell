@@ -40,10 +40,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var promptMessageScript = @"
                 if ([Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle) {
                     [Microsoft.Azure.PowerShell.Tools.AzPredictor.AzPredictorData]::ShowSurveyOnIdle = $False
+                    Write-Host ''
                     Write-Host ''; Write-Host `Survey: -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewLine; Write-Host ' How was your experience using the Az Predictor module?'
                     Write-Host ''
                     Write-Host 'Run ' -NoNewline; Write-Host Open-AzPredictorSurvey -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline; Write-Host ' to give us your feedback.'
-                    Write-Host '(press Enter to continue)'
+                    Write-Host ''
+                    $thePrompt=Prompt
+                    Write-Host -NoNewLine $thePrompt
                 }";
 
             ScriptBlock scriptBlock = ScriptBlock.Create(promptMessageScript);
