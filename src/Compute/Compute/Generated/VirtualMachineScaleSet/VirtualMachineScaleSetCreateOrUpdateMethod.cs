@@ -82,6 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                                 parameters.UpgradePolicy = null;
 
+                                flexibleOrchestrationModeDefaultParameters(parameters);
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
                             }
                             
@@ -100,17 +101,33 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         /// There is some concern with the above behavior being correct or not, and requires additional testing before changing.
         private void checkFlexibleOrchestrationModeParamsDefaultParamSet(VirtualMachineScaleSet parameters)
         {
-            if (parameters.UpgradePolicy != null)
+            if (parameters?.UpgradePolicy != null)
             {
                 throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
             }
-            else if (convertAPIVersionToInt(parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
+            else if (convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
             {
                 throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
             }
-            else if (parameters.SinglePlacementGroup == true)
+            else if (parameters?.SinglePlacementGroup == true)
             {
                 throw new Exception("The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
+            }
+        }
+
+        private void flexibleOrchestrationModeDefaultParameters(VirtualMachineScaleSet parameters)
+        {
+            if (parameters?.SinglePlacementGroup == null)
+            {
+                parameters.SinglePlacementGroup = false;
+            }
+            if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion == null)
+            {
+                parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum;
+            }
+            if (parameters?.PlatformFaultDomainCount == null)
+            {
+                parameters.PlatformFaultDomainCount = 1;
             }
         }
 
