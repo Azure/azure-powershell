@@ -21,7 +21,7 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @("AppService", "Billing", "Compute", "ContainerInstance", "ConnectedMachine", "ContainerRegistry", "Dns", "KeyVault", "Media", "Monitor", "Network", "Resources", "ServiceBus", "Storage")
+$SKIP_MODULES = @("ContainerInstance", "ConnectedMachine")
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
