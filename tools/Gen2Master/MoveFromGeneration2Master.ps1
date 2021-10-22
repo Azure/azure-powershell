@@ -70,7 +70,7 @@ Function Move-Generation2Master {
         Write-Host "Copying docs: $SourceItem." -ForegroundColor Yellow
         Copy-Item -Recurse -Path $SourceItem -Destination $DestItem
         #EndRegion
-        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md' '*.psm1', '*.ps1xml')
+        $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml')
         Foreach($File in $File2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $File
             $DestItem = Join-Path -Path $DestPath -ChildPath $File
