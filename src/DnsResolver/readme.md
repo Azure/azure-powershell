@@ -75,7 +75,7 @@ require:
 input-file:
   - $(this-folder)/resources/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2020-04-01-preview/dnsresolver.json
 
-module-version: 0.1.2
+module-version: 0.1.4
 title: DnsResolver
 subject-prefix: $(service-name)
 
