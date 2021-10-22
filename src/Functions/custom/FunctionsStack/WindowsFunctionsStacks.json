@@ -25,7 +25,7 @@
                             "use32BitWorkerProcess": true,
                             "netFrameworkVersion": "v6.0"
                         },
-                        "isPreview": true,
+                        "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
                     },
