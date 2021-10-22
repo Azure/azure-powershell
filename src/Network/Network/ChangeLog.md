@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+<<<<<<< HEAD
 * Added support for retreiving the state of packet capture even when the provisioning state of the packet capture was failure
     - `Get-AzNetworkWatcherPacketCapture`
 * Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets
@@ -67,6 +68,60 @@
     - Also updated cmdlet to add the property for configuring ExclusionManagedRuleSet within Exclusions
         - `New-AzApplicationGatewayFirewallPolicyExclusion`
 * Bug Fix in Application Gateway Trusted Client Certificate cmdlets to load the entire cert chain from file.
+=======
+* Onboard Azure Virtual Network Manager Cmdlets for preview
+    - `Get-AzNetworkManager` 
+    - `New-AzNetworkManager` 
+    - `Remove-AzNetworkManager` 
+    - `Get-AzNetworkManagerGroup` 
+    - `New-AzNetworkManagerGroup` 
+    - `Remove-AzNetworkManagerGroup` 
+    - `Set-AzNetworkManagerGroup` 
+    - `Get-AzNetworkManagerConnectivityConfiguration` 
+    - `New-AzNetworkManagerConnectivityConfiguration` 
+    - `Remove-AzNetworkManagerConnectivityConfiguration` 
+    - `Set-AzNetworkManagerConnectivityConfiguration` 
+    - `Get-AzNetworkManagerSecurityAdminConfiguration` 
+    - `New-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Remove-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Set-AzNetworkManagerSecurityAdminConfiguration` 
+    - `Get-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `New-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Remove-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Set-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `Get-AzNetworkManagerSecurityAdminRule` 
+    - `New-AzNetworkManagerSecurityAdminRule` 
+    - `Remove-AzNetworkManagerSecurityAdminRule` 
+    - `Set-AzNetworkManagerSecurityAdminRule` 
+    - `Get-AzNetworkManagerSecurityUserConfiguration` 
+    - `New-AzNetworkManagerSecurityUserConfiguration` 
+    - `Remove-AzNetworkManagerSecurityUserConfiguration` 
+    - `Set-AzNetworkManagerSecurityUserConfiguration` 
+    - `Get-AzNetworkManagerSecurityUserRuleCollection` 
+    - `New-AzNetworkManagerSecurityUserRuleCollection` 
+    - `Remove-AzNetworkManagerSecurityUserRuleCollection` 
+    - `Set-AzNetworkManagerSecurityUserRuleCollection` 
+    - `Get-AzNetworkManagerSecurityUserRule` 
+    - `New-AzNetworkManagerSecurityUserRule` 
+    - `Remove-AzNetworkManagerSecurityUserRule` 
+    - `Set-AzNetworkManagerSecurityUserRule` 
+    - `Get-AzNetworkManagerActiveConnectivityConfigurationList` 
+    - `Get-AzNetworkManagerActiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerActiveSecurityUserRuleList` 
+    - `Get-AzNetworkManagerEffectiveConnectivityConfigurationList` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Deploy-AzNetworkManagerCommit` 
+    - `Get-AzNetworkManagerEffectiveVirtualNetworkList` 
+    - `Get-AzNetworkManagerEffectiveVirtualNetworkByNetworkGroupList` 
+    - `Get-AzNetworkManagerDeploymentStatusList` 
+    - `New-AzNetworkManagerAddressPrefixItem` 
+    - `New-AzNetworkManagerScope` 
+    - `New-AzNetworkManagerSecurityGroupItem` 
+    - `New-AzNetworkManagerGroupMembersItem` 
+    - `New-AzNetworkManagerHub` 
+    - `New-AzNetworkManagerConnectivityGroupItem`
+>>>>>>> 99a1f40ea5 (Add NetworkManager Service (#16085))
 
 ## Version 4.12.0
 * Support for Sku, ScaleUnits parameters of BastionHost resource.
