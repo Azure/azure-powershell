@@ -698,6 +698,10 @@
     "alias": "Logz"
   },
   {
+    "alias": "DiskPool",
+    "regex": "DiskPool"
+  },
+  {
     "regex": "WebPubSub",
     "alias": "WebPubSub"
   }
