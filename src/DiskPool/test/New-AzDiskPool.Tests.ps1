@@ -13,8 +13,8 @@ while(-not $mockingPath) {
 
 Describe 'New-AzDiskPool' {
     It 'CreateExpanded' {
-        $diskPool = New-AzDiskPool -Name $env.diskPool1 -ResourceGroupName $env.resourceGroup -Location $env.location -SkuName 'Standard' -SkuTier 'Standard' -SubnetId $env.diskPoolSubnetId -AvailabilityZone "1" 
-        $diskPool.name | Should -Be $env.diskPool1
+        $diskPool = New-AzDiskPool -Name $env.diskPool5 -ResourceGroupName $env.resourceGroup -Location $env.location -SkuName 'Standard_S1' -SkuTier 'Standard' -SubnetId $env.diskPoolSubnetId -AvailabilityZone "1" 
+        $diskPool.name | Should -Be $env.diskPool5
         $diskPool.status | Should -Be "Running"
     }
 }
