@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string SubnetName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
-        [ValidateSet(Management.HDInsight.Models.OSType.Linux, IgnoreCase = true)]
+        [PSArgumentCompleter(Management.HDInsight.Models.OSType.Linux)]
         public string OSType
 
         {
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
-        [ValidateSet(Tier.Standard, Tier.Premium, IgnoreCase=true)]
+        [PSArgumentCompleter(Tier.Standard, Tier.Premium)]
         public string ClusterTier { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets SSH credential.")]
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string StorageAccountManagedIdentity { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
-        [ValidateSet(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
         public string EncryptionAlgorithm { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption key name.")]
@@ -367,11 +367,11 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string KafkaClientGroupName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the resource provider connection type.")]
-        [ValidateSet(Management.HDInsight.Models.ResourceProviderConnection.Inbound, Management.HDInsight.Models.ResourceProviderConnection.Outbound)]
+        [PSArgumentCompleter(Management.HDInsight.Models.ResourceProviderConnection.Inbound, Management.HDInsight.Models.ResourceProviderConnection.Outbound)]
         public string ResourceProviderConnection { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the private link type.")]
-        [ValidateSet(Management.HDInsight.Models.PrivateLink.Enabled, Management.HDInsight.Models.PrivateLink.Disabled)]
+        [PSArgumentCompleter(Management.HDInsight.Models.PrivateLink.Enabled, Management.HDInsight.Models.PrivateLink.Disabled)]
         public string PrivateLink { get; set; }
 
         [Parameter(HelpMessage = "Enables HDInsight compute isolation feature.")]

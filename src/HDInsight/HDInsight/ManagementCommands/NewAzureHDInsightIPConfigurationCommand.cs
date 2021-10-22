@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the private ip allocation method.")]
-        [ValidateSet("dynamic", "static")]
+        [PSArgumentCompleter("dynamic", "static")]
         public string PrivateIPAllocationMethod
         {
             get { return _ipConfiguration.PrivateIPAllocationMethod; }
