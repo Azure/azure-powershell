@@ -6,7 +6,7 @@ PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName 
 Checking the existence of the resource group PowershellPostgreSqlTest ...
 Resource group PowershellPostgreSqlTest exists ? : True
 Creating PostgreSQL server postgresql-test in group PostgreSqlTest...
-Your server postgresql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
+Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 
 Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
 ----                --------  -------         -------        ------------------ -------------
@@ -41,7 +41,7 @@ PS C:\> New-AzPostgreSqlFlexibleServer  -ResourceGroupName postgresqltest -Serve
 Resource group PowershellPostgreSqlTest exists ? : True
 You have supplied a subnet Id. Verifying its existence...
 Creating PostgreSQL server testserver in group PowershellPostgreSqlTest...
-Your server server00000000 is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
+Your server server00000000 is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 Creating database flexibleserverdb...
 
 Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
@@ -49,7 +49,7 @@ Name                Location  SkuName         SkuTier        AdministratorLogin 
 postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           128
 
 ```
-This cmdlet creates PostgreSql flexible server with an existing Subnet Id provided by a user. The subnet will be delegated to PostgreSQL flexible server if not already delegated. You cannot use a subnet delegated to different services
+This cmdlet creates PostgreSql flexible server with an existing Subnet Id provided by a user. The subnet will be delegated to PostgreSQL flexible server if not already delegated. You cannot use a subnet delegated to different services. the subnet can be in a different resource group.
 
 ### Example 4: Create a new PostgreSql flexible server with virtual network and subnet name
 ```powershell
@@ -59,7 +59,7 @@ Resource group PowershellPostgreSqlTest exists ? : True
 Creating new vnet postgresql-vnet in resource group PowershellPostgreSqlTest
 Creating new subnet postgresql-subnet in resource group PowershellPostgreSqlTest and delegating it to Microsoft.DBforPostgreSQL/flexibleServers
 Creating PostgreSQL server postgresql-test in group PowershellPostgreSqlTest...
-Your server postgresql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
+Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 Creating database flexibleserverdb...
 
 Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
@@ -84,7 +84,7 @@ You have supplied a vnet Id/name. Verifying its existence...
 Creating new vnet vnetname in resource group PowershellPostgreSqlTest
 Creating new subnet Subnetserver00000000 in resource group PowershellPostgreSqlTest and delegating it to Microsoft.DBforPostgreSQL/flexibleServers
 Creating PostgreSQL server server00000000 in group PowershellPostgreSqlTest...
-Your server server00000000 is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
+Your server server00000000 is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 Creating database flexibleserverdb...
 
 Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
@@ -100,7 +100,7 @@ PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName 
 
 Resource group PowershellPostgreSqlTest exists ? : True
 Creating PostgreSQL server postgresql-test in group PowershellPostgreSqlTest...
-Your server postgresql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
+Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 Creating database flexibleserverdb...
 Configuring server firewall rule to accept connections from 0.0.0.0 to 255.255.255.255
 
@@ -116,7 +116,7 @@ PS C:\> New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName 
 
 Resource group PowershellPostgreSqlTest exists ? : True
 Creating PostgreSQL server postgresql-test in group PowershellPostgreSqlTest...
-Your server postgresql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
+Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 Creating database flexibleserverdb...
 Configuring server firewall rule to accept connections from 10.10.10.10 to 10.10.10.12
 

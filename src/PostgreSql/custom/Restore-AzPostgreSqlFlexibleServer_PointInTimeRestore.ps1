@@ -144,15 +144,6 @@ function Restore-AzPostgreSqlFlexibleServer_PointInTimeRestore {
             else {
                 $PSBoundParameters.AvailabilityZone = $server.AvailabilityZone
             }
-
-            if($PSBoundParameters.ContainsKey('Subnet') -or $PSBoundParameters.ContainsKey('PrivateDnsZone')) {
-                if (!(Get-Module -ListAvailable -Name Az.Network)) {
-                    throw 'Please install Az.Network module by entering "Install-Module -Name Az.Network"'
-                }
-                else {
-                    Import-Module -Name Az.Network
-                }
-            }
             
             if ($PSBoundParameters.ContainsKey('Subnet')){
                 if ($server.NetworkPublicNetworkAccess -eq 'Enabled') {
@@ -174,7 +165,7 @@ function Restore-AzPostgreSqlFlexibleServer_PointInTimeRestore {
                     }}
                 }
                 else { # Valid but no delegation
-                    throw "Add delegation " + $DELEGATION_SERVICE_NAME + "to the subnet."
+                    throw "Add delegation " + $DELEGATION_SERVICE_NAME + " to the subnet."
                 }
                 $PSBoundParameters.NetworkDelegatedSubnetResourceId = $PSBoundParameters.Subnet
                 $null = $PSBoundParameters.Remove('Subnet')
