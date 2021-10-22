@@ -110,11 +110,11 @@ CmdletsToExport = 'Remove-AzBatchAccount', 'Get-AzBatchAccount',
                'Remove-AzBatchComputeNodeUser', 'Enable-AzBatchTask', 
                'Set-AzBatchTask', 'Stop-AzBatchTask', 'Get-AzBatchComputeNode', 
                'Get-AzBatchJobSchedule', 'New-AzBatchJobSchedule', 
-               'Remove-AzBatchJobSchedule', 'Get-AzBatchTaskCount', 
+               'Remove-AzBatchJobSchedule', 'Get-AzBatchTaskCount', 'Get-AzBatchTaskCounts', 
                'Get-AzBatchPoolNodeCount', 
                'Start-AzBatchComputeNodeServiceLogUpload', 
                'New-AzBatchResourceFile',
-               'Get-AzBatchSupportedVirtualMachineSkus'
+               'Get-AzBatchSupportedVirtualMachineSkus', 'Get-AzBatchTaskSlotCounts'
 
 # Variables to export from this module
 # VariablesToExport = @()

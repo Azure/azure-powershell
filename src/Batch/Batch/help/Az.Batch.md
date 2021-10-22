@@ -101,13 +101,16 @@ Gets the subtask information of the specified task.
 ### [Get-AzBatchSupportedImage](Get-AzBatchSupportedImage.md)
 Gets Batch supported images for a Batch account.
 
+### [Get-AzBatchSupportedVirtualMachineSkus](Get-AzBatchSupportedVirtualMachineSkus.md)
+Gets the supported Skus for a given virtual machine.
+
 ### [Get-AzBatchTask](Get-AzBatchTask.md)
 Gets the Batch tasks for a job.
 
-### [Get-AzBatchTaskCounts](Get-AzBatchTaskCount.md)
+### [Get-AzBatchTaskCounts](Get-AzBatchTaskCounts.md)
 Gets the task counts for the specified job.
 
-### [Get-AzBatchTaskSlotCounts](Get-AzBatchTaskCount.md)
+### [Get-AzBatchTaskSlotCounts](Get-AzBatchTaskSlotCounts.md)
 Gets the task slot counts for the specified job.
 
 ### [New-AzBatchAccount](New-AzBatchAccount.md)
