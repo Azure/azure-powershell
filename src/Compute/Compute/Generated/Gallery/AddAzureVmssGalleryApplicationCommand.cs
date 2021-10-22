@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -32,7 +33,11 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = true,
             HelpMessage = "VM Gallery Application Object.")]
-        public VMGalleryApplication GalleryApplication { get; set; }
+        public PSVMGalleryApplication GalleryApplication { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public int Order { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -40,8 +45,19 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 VirtualMachineScaleSetVM.ApplicationProfile = new ApplicationProfile();
             }
+            if (VirtualMachineScaleSetVM.ApplicationProfile.GalleryApplications == null)
+            {
+                VirtualMachineScaleSetVM.ApplicationProfile.GalleryApplications = new List<VMGalleryApplication>();
+            }
 
-            VirtualMachineScaleSetVM.ApplicationProfile.GalleryApplications.Add(GalleryApplication);
+            if (this.IsParameterBound(c => c.Order))
+            {
+                GalleryApplication.Order = this.Order;
+            }
+
+            var VMgalleryApplication = new VMGalleryApplication();
+            ComputeAutoMapperProfile.Mapper.Map<PSVMGalleryApplication, VMGalleryApplication>(GalleryApplication, VMgalleryApplication);
+            VirtualMachineScaleSetVM.ApplicationProfile.GalleryApplications.Add(VMgalleryApplication);
 
             WriteObject(VirtualMachineScaleSetVM);
         }

@@ -17,17 +17,18 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssGalleryApplication"), OutputType(typeof(VMGalleryApplication))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssGalleryApplication"), OutputType(typeof(PSVMGalleryApplication))]
     public class NewAzureVmssGalleryApplicationCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "Package Reference Id of the Gallery Application.")]
         [ValidateNotNullOrEmpty]
-        public string GalleryApplicationsReferenceId { get; set; }
+        public string PackageReferenceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -38,7 +39,8 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
 
-            var vmGal = new VMGalleryApplication(GalleryApplicationsReferenceId);
+            var vmGal = new PSVMGalleryApplication();
+            vmGal.PackageReferenceId = PackageReferenceId;
             if (this.IsParameterBound(c => c.ConfigReferenceId))
             {
                 vmGal.ConfigurationReference = this.ConfigReferenceId;
