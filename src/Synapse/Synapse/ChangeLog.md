@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added support for Synapse KQL script
+    - Added `Get-AzSynapseKqlScript` cmdlet
+    - Added `Export-AzSynapseKqlScript` cmdlet
+    - Added `Remove-AzSynapseKqlScript` cmdlet
+    - Added `New-AzSynapseKqlScript` cmdlet
 * Renamed parameter FolderName in `Set-AzSynapseSqlScript` to FolderPath and keeped FolderName as alias
 * Updated `Set-AzSynapseNoteBook` and `Set-AzSynapseSparkJobDefinition` to support new parameter [-FolderPath]
 * Added cmdlets for Synapse Spark Configuration
