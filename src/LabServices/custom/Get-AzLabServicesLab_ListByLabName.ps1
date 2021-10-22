@@ -12,6 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+API to get labs.
+.Description
+API to get labs.
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+.Link
+https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
+#>
 function Get-AzLabServicesLab_ListByLabName {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
 [CmdletBinding(PositionalBinding=$false)]
@@ -30,7 +41,7 @@ param(
     [Parameter(Mandatory)]
     [SupportsWildcards()]
     [System.String]
-    ${WildcardName},
+    ${Name},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -42,26 +53,24 @@ param(
 )
 
 process {
-    $currentLab = $PSBoundParameters.WildcardName
-    $PSBoundParameters.Remove('WildcardName') > $null
-    
-    if ($(& $PSScriptRoot\Utilities\CheckForWildcards.ps1 -ResourceId $currentLab))
+        
+    if ($(& $PSScriptRoot\Utilities\CheckForWildcards.ps1 -ResourceId $PSBoundParameters.Name))
     {
-        # Powershell Wildcards
-        if ($PSBoundParameters.ContainsKey('ResourceGroupName')) {
-            return Az.LabServices.private\Get-AzLabServicesLab_List1 @PSBoundParameters |  Where-Object { $_.Name -like $currentLab }
-        } else {
-            return Az.LabServices.private\Get-AzLabServicesLab_List @PSBoundParameters |  Where-Object { $_.Name -like $currentLab }
-        }
+        $currentLab = $PSBoundParameters.Name
+        $PSBoundParameters.Remove('Name') > $null
+
+        return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters |  Where-Object { $_.Name -like $currentLab }
     }
     else
     {        
-        # Get all labs by name across RGs
-        $PSBoundParameters.Add('Filter', "Name eq '$currentLab'")
+        # Get all labs by name across RGs        
         if ($PSBoundParameters.ContainsKey('ResourceGroupName')) {
-            return Az.LabServices.private\Get-AzLabServicesLab_List1 @PSBoundParameters
-        } else {
-            return Az.LabServices.private\Get-AzLabServicesLab_List1 @PSBoundParameters
+            return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
+        } else {            
+            $currentLab = $PSBoundParameters.Name
+            $PSBoundParameters.Remove('Name') > $null
+            $PSBoundParameters.Add('Filter', "Name eq '$currentLab'")
+            return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
         }
     }
     

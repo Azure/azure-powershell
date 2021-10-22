@@ -13,7 +13,7 @@ Returns all the VMs.
 
 ### Example 2: Gets the specific VM in the lab.
 ```powershell
-PS C:\> Get-AzLabServicesVM -LabName "Lab Name" -ResourceGroupName "Group Name" -VirtualMachineName 2
+PS C:\> Get-AzLabServicesVM -LabName "Lab Name" -ResourceGroupName "Group Name" -Name 2
 
 Name
 ----

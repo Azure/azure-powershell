@@ -14,49 +14,45 @@
 
 <#
 .Synopsis
-API to get lab plan images.
+API to redeploy a VM.
 .Description
-API to get lab plan images.
+API to redeploy a VM.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesplanimage
+https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesredeployvm
 #>
-function Get-AzLabServicesPlanImage_LabPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
+function Start-AzLabServicesRedeployVM_ResourceId {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
-        [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
-        ${LabPlan},
-   
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        [Parameter(Mandatory)]
         [System.String]
-        ${Name},
-
-        [Parameter()]
+        ${ResourceId},
+  
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${DefaultProfile}
+        ${DefaultProfile},
+
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob}
     )
     
     process {
+        $PSBoundParameters = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
 
-        $PSBoundParameters = $LabPlan.BindResourceParameters($PSBoundParameters)
-        $PSBoundParameters.Remove("LabPlan") > $null
-
-        if ($PSBoundParameters.ContainsKey('Name')) {
-
-            return Az.LabServices.private\Get-AzLabServicesPlanImage_Get @PSBoundParameters
+        if ($PSBoundParameters) {
+            return Az.LabServices\Start-AzLabServicesRedeployVM @PSBoundParameters
         } else {
-            return Az.LabServices.private\Get-AzLabServicesPlanImage_List @PSBoundParameters
+            Write-Error -Message "Error: Invalid VM Resource Id." -ErrorAction Stop
         }
+
     }
-    
 }
     

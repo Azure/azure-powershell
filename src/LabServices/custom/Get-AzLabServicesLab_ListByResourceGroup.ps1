@@ -14,28 +14,30 @@
 
 <#
 .Synopsis
-API to get lab plan images.
+API to get labs.
 .Description
-API to get lab plan images.
+API to get labs.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesplanimage
+https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
 #>
-function Get-AzLabServicesPlanImage_LabPlan {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
+function Get-AzLabServicesLab_ListByResourceGroup {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
     [CmdletBinding(PositionalBinding=$false)]
-    param(
-        [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
-        ${LabPlan},
-   
+    param(    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String[]]
+        # The ID of the target subscription.
+        ${SubscriptionId},
+    
+        [Parameter(Mandatory)]
         [System.String]
-        ${Name},
-
+        ${ResourceGroupName},
+        
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -46,16 +48,7 @@ function Get-AzLabServicesPlanImage_LabPlan {
     )
     
     process {
-
-        $PSBoundParameters = $LabPlan.BindResourceParameters($PSBoundParameters)
-        $PSBoundParameters.Remove("LabPlan") > $null
-
-        if ($PSBoundParameters.ContainsKey('Name')) {
-
-            return Az.LabServices.private\Get-AzLabServicesPlanImage_Get @PSBoundParameters
-        } else {
-            return Az.LabServices.private\Get-AzLabServicesPlanImage_List @PSBoundParameters
-        }
+        return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
     }
     
 }

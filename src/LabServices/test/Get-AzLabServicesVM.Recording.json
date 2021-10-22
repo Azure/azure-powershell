@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "10ae3f41-b4bf-416e-89ca-855a04a12292" ],
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "ae02267d-aa9b-4d84-9517-a4ccda33ab25" ],
         "CommandName": [ "Get-AzLabServicesVM" ],
         "FullCommandName": [ "Get-AzLabServicesVM_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,23 +22,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11953" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOJMP:00000001" ],
-        "x-ms-correlation-request-id": [ "21e72de0-018e-404b-b1b2-7e4b50454891" ],
-        "traceparent": [ "00-2651949e877dc14fbfc4bb71d2dd6e99-9fd594eba00de4d7-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDH0R:0000001B" ],
+        "x-ms-correlation-request-id": [ "2a84fb69-19a5-409b-a577-6ac0351db800" ],
+        "traceparent": [ "00-ff0149f79d977f488fdddebf75f9d545-4713de280201e2f6-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T202603Z:21e72de0-018e-404b-b1b2-7e4b50454891" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T190206Z:2a84fb69-19a5-409b-a577-6ac0351db800" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 20:26:03 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 19:02:06 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1494" ],
+        "Content-Length": [ "1142" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Stopped\",\"connectionProfile\":{\"privateIpAddress\":\"10.0.0.5\",\"rdpAuthority\":\"lab-b4bf2a66-6212-4a93-bd11-40518a38163f.westcentralus.cloudapp.azure.com:4991\",\"adminUsername\":\"testuser\"},\"vmType\":\"Template\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/virtualMachines/0\",\"name\":\"0\",\"type\":\"Microsoft.LabServices/labs/virtualMachines\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Stopped\",\"connectionProfile\":{\"privateIpAddress\":\"10.0.0.4\",\"rdpAuthority\":\"lab-b4bf2a66-6212-4a93-bd11-40518a38163f.westcentralus.cloudapp.azure.com:7000\",\"adminUsername\":\"testuser\"},\"vmType\":\"User\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/virtualMachines/1\",\"name\":\"1\",\"type\":\"Microsoft.LabServices/labs/virtualMachines\"},{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Stopped\",\"connectionProfile\":{\"privateIpAddress\":\"10.0.0.7\",\"rdpAuthority\":\"lab-b4bf2a66-6212-4a93-bd11-40518a38163f.westcentralus.cloudapp.azure.com:7002\",\"adminUsername\":\"testuser\"},\"vmType\":\"User\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/virtualMachines/2\",\"name\":\"2\",\"type\":\"Microsoft.LabServices/labs/virtualMachines\"}]}",
+      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Stopped\",\"connectionProfile\":{\"privateIpAddress\":\"10.0.0.4\",\"rdpAuthority\":\"lab-8170daf8-c161-4a7e-9724-5010933e74c6.westcentralus.cloudapp.azure.com:4990\",\"adminUsername\":\"testuser\"},\"vmType\":\"Template\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/virtualMachines/0\",\"name\":\"0\",\"type\":\"Microsoft.LabServices/labs/virtualMachines\"},{\"properties\":{\"provisioningState\":\"Creating\",\"state\":\"Stopped\",\"vmType\":\"User\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/virtualMachines/1\",\"name\":\"1\",\"type\":\"Microsoft.LabServices/labs/virtualMachines\"},{\"properties\":{\"provisioningState\":\"Creating\",\"state\":\"Stopped\",\"vmType\":\"User\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/virtualMachines/2\",\"name\":\"2\",\"type\":\"Microsoft.LabServices/labs/virtualMachines\"}]}",
       "isContentBase64": false
     }
   },
@@ -49,8 +49,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "28cf36c8-b6ae-494b-9994-bbbfb95511ef" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "34c4300a-3d7b-43a5-9599-393714051f03" ],
         "CommandName": [ "Get-AzLabServicesVM" ],
         "FullCommandName": [ "Get-AzLabServicesVM_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,66 +65,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDGDG:00000003" ],
-        "x-ms-correlation-request-id": [ "8ee6faa0-0780-4ff2-aa8e-4d38db39ebf0" ],
-        "traceparent": [ "00-91a49d7b0529da42a1333fc03ddf2343-cd298d0236482dfd-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOKA9:0000001C" ],
+        "x-ms-correlation-request-id": [ "d370cf5c-4fec-47f8-a686-6be693790e6d" ],
+        "traceparent": [ "00-bf784c1a812ca04f94969d6922bcc4fd-1f4f277037a1c743-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T202604Z:8ee6faa0-0780-4ff2-aa8e-4d38db39ebf0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T190206Z:d370cf5c-4fec-47f8-a686-6be693790e6d" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 20:26:03 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 19:02:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "496" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Stopped\",\"connectionProfile\":{\"privateIpAddress\":\"10.0.0.5\",\"rdpAuthority\":\"lab-b4bf2a66-6212-4a93-bd11-40518a38163f.westcentralus.cloudapp.azure.com:4991\",\"adminUsername\":\"testuser\"},\"vmType\":\"Template\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/virtualMachines/0\",\"name\":\"0\",\"type\":\"Microsoft.LabServices/labs/virtualMachines\"}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzLabServicesVM+[NoContext]+Pipeline+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell?api-version=2021-10-01-preview+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell?api-version=2021-10-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "71daf69a-6d44-4eec-bbf6-f1c1f600a2eb" ],
-        "CommandName": [ "Get-AzLabServicesLab" ],
-        "FullCommandName": [ "Get-AzLabServicesLab_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOJMP:00000002" ],
-        "x-ms-correlation-request-id": [ "eacca1d1-51bc-4d8f-b736-6794a2d3f361" ],
-        "traceparent": [ "00-20c4baa00a6734438a8532e9c08f5182-4df7b7b4a28bcb38-01" ],
-        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T202604Z:eacca1d1-51bc-4d8f-b736-6794a2d3f361" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 20:26:03 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1291" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Published\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Enabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\",\"disconnectDelay\":\"PT25M\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"myvl7nasmkjuvpiribiyuoawh4\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"title\":\"LAB lab-unit-powershell\",\"description\":\"DESCRIPTION lab-unit-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell\",\"name\":\"lab-unit-powershell\",\"type\":\"Microsoft.LabServices/labs\"}",
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Stopped\",\"connectionProfile\":{\"privateIpAddress\":\"10.0.0.4\",\"rdpAuthority\":\"lab-8170daf8-c161-4a7e-9724-5010933e74c6.westcentralus.cloudapp.azure.com:4990\",\"adminUsername\":\"testuser\"},\"vmType\":\"Template\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/virtualMachines/0\",\"name\":\"0\",\"type\":\"Microsoft.LabServices/labs/virtualMachines\"}",
       "isContentBase64": false
     }
   }

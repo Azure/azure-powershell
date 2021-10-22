@@ -12,6 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+API to get labs.
+.Description
+API to get labs.
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+.Link
+https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
+#>
 function Get-AzLabServicesLab_LabPlan {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
@@ -43,13 +54,13 @@ function Get-AzLabServicesLab_LabPlan {
         
         if ($PSBoundParameters.ContainsKey('Name')) {            
             # If there is a lab name do a get for the specific lab.
-            return Az.LabServices.private\Get-AzLabServicesLab_Get @PSBoundParameters
+            return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
         } else {
             # Get all labs for the lab plan.
             $PSBoundParameters.Remove("Filter") > $null
             $PSBoundParameters.Remove("ResourceGroupName") > $null
             $PSBoundParameters.Add("Filter","Properties/LabPlanId eq '$labPlanId'")
-            return Az.LabServices.private\Get-AzLabServicesLab_List @PSBoundParameters
+            return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
         }
         
     }

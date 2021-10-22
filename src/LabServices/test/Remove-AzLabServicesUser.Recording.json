@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "175" ],
-        "x-ms-client-request-id": [ "f46ed9c2-daae-4a48-8be3-ef300d94b583" ],
+        "x-ms-unique-id": [ "139" ],
+        "x-ms-client-request-id": [ "8fe9238c-9948-40de-a56b-6089af26da46" ],
         "CommandName": [ "Get-AzLabServicesUser" ],
         "FullCommandName": [ "Get-AzLabServicesUser_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,23 +22,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11837" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11942" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOJLM:00000004" ],
-        "x-ms-correlation-request-id": [ "c5c60434-778c-4971-8481-400e339936f3" ],
-        "traceparent": [ "00-eb9ad4a541ce2848a7fa15a94507ea2c-0adfaefdbf98b957-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOKBB:00000009" ],
+        "x-ms-correlation-request-id": [ "7cf933ab-3f46-41a2-91ba-23e4e30981ee" ],
+        "traceparent": [ "00-0b226068131b324f8880e5e12b28a16c-6889cb61a8019b21-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T191655Z:c5c60434-778c-4971-8481-400e339936f3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T202008Z:7cf933ab-3f46-41a2-91ba-23e4e30981ee" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 19:16:55 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 20:20:08 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "704" ],
+        "Content-Length": [ "660" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-09T03:12:41.9974343Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-21T18:24:44.7566753Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"email\":\"test@contosouniversity.com\",\"registrationState\":\"NotRegistered\",\"invitationState\":\"Sent\",\"invitationSent\":\"2021-10-19T21:07:57.9122698\",\"totalUsage\":\"PT0S\",\"additionalUsageQuota\":\"P2DT2H\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser\",\"name\":\"testuser\",\"type\":\"Microsoft.LabServices/labs/users\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-21T23:51:56.7146092Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-22T19:00:04.0665227Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"email\":\"test@contosouniversity.com\",\"registrationState\":\"NotRegistered\",\"invitationState\":\"NotSent\",\"totalUsage\":\"PT0S\",\"additionalUsageQuota\":\"P1DT1H\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser\",\"name\":\"testuser\",\"type\":\"Microsoft.LabServices/labs/users\"}",
       "isContentBase64": false
     }
   },
@@ -49,8 +49,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "179" ],
-        "x-ms-client-request-id": [ "7522c848-7d63-4d3f-a80a-61b4eb4525c1" ],
+        "x-ms-unique-id": [ "143" ],
+        "x-ms-client-request-id": [ "b291a5cc-6730-466d-8bea-106bf4a03e82" ],
         "CommandName": [ "Get-AzLabServicesUser" ],
         "FullCommandName": [ "Get-AzLabServicesUser_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,23 +65,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11834" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11939" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOJLM:00000007" ],
-        "x-ms-correlation-request-id": [ "cc00b8ce-e6f4-42c7-871f-d976e0552924" ],
-        "traceparent": [ "00-41ad6bf05dc2a14893f3afc96a6cb65d-ce907b2f39dbba76-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOKBB:0000000B" ],
+        "x-ms-correlation-request-id": [ "8d7513e9-7046-4110-be98-e7f929adab72" ],
+        "traceparent": [ "00-141411141e81834680f0e5ce6c9b2944-fc7b074717c7d590-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T191726Z:cc00b8ce-e6f4-42c7-871f-d976e0552924" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T202039Z:8d7513e9-7046-4110-be98-e7f929adab72" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 19:17:26 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 20:20:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "161" ],
         "Content-Type": [ "application/problem+json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"type\":\"https://tools.ietf.org/html/rfc7231#section-6.5.4\",\"title\":\"Not Found\",\"status\":404,\"traceId\":\"00-41ad6bf05dc2a14893f3afc96a6cb65d-ce907b2f39dbba76-01\"}",
+      "Content": "{\"type\":\"https://tools.ietf.org/html/rfc7231#section-6.5.4\",\"title\":\"Not Found\",\"status\":404,\"traceId\":\"00-141411141e81834680f0e5ce6c9b2944-fc7b074717c7d590-01\"}",
       "isContentBase64": false
     }
   }

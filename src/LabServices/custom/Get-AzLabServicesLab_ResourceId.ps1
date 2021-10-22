@@ -12,6 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+API to get labs.
+.Description
+API to get labs.
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+.Link
+https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
+#>
 function Get-AzLabServicesLab_ResourceId {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
@@ -32,7 +43,7 @@ function Get-AzLabServicesLab_ResourceId {
         $PSBoundParameters = & $PSScriptRoot\Utilities\HandleLabResourceId.ps1 -ResourceId $ResourceId
 
         if ($PSBoundParameters) {
-            return Az.LabServices.private\Get-AzLabServicesLab_Get @PSBoundParameters
+            return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid Lab Resource Id." -ErrorAction Stop            
         }

@@ -1,6 +1,6 @@
 ### Example 1: Redeploy the specific Virtual machine.
 ```powershell
-PS C:\> Redeploy-AzLabServicesVM -LabName "Lab Name" -ResourceGroupName "Group Name" -VirtualMachineName 1
+PS C:\> Start-AzLabServicesRedeployVM -LabName "Lab Name" -ResourceGroupName "Group Name" -VirtualMachineName 1
 
 ```
 

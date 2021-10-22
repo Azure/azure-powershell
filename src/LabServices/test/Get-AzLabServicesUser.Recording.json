@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "24f2c803-ec6c-4af6-b087-9eccc1607743" ],
+        "x-ms-client-request-id": [ "a64254d9-7cb4-4c8e-a6b2-c5f5fc0a9199" ],
         "CommandName": [ "Get-AzLabServicesUser" ],
         "FullCommandName": [ "Get-AzLabServicesUser_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,23 +22,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11958" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOJL0:00000017" ],
-        "x-ms-correlation-request-id": [ "169fcc17-a129-4885-a146-fa3accd8b9a5" ],
-        "traceparent": [ "00-15869866226f744eafd7b783f6c15993-09e6d6924c6df8b2-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDH0R:00000018" ],
+        "x-ms-correlation-request-id": [ "66a10040-682a-4c5e-9c66-46886b0afc2c" ],
+        "traceparent": [ "00-133574f1be1d484489f8ef883dfe2b91-a01887647189858a-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T182631Z:169fcc17-a129-4885-a146-fa3accd8b9a5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T190146Z:66a10040-682a-4c5e-9c66-46886b0afc2c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 18:26:31 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 19:01:45 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "716" ],
+        "Content-Length": [ "672" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-09T03:12:41.9974343Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-21T18:24:44.7566753Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"email\":\"test@contosouniversity.com\",\"registrationState\":\"NotRegistered\",\"invitationState\":\"Sent\",\"invitationSent\":\"2021-10-19T21:07:57.9122698\",\"totalUsage\":\"PT0S\",\"additionalUsageQuota\":\"P2DT2H\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser\",\"name\":\"testuser\",\"type\":\"Microsoft.LabServices/labs/users\"}]}",
+      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-21T23:51:56.7146092Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-22T19:00:04.0665227Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"email\":\"test@contosouniversity.com\",\"registrationState\":\"NotRegistered\",\"invitationState\":\"NotSent\",\"totalUsage\":\"PT0S\",\"additionalUsageQuota\":\"P1DT1H\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser\",\"name\":\"testuser\",\"type\":\"Microsoft.LabServices/labs/users\"}]}",
       "isContentBase64": false
     }
   },
@@ -50,7 +50,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "cd3825fe-a24a-4f73-b853-907449390073" ],
+        "x-ms-client-request-id": [ "20170506-3a06-42e1-aaa6-9a305bfa1da4" ],
         "CommandName": [ "Get-AzLabServicesUser" ],
         "FullCommandName": [ "Get-AzLabServicesUser_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,66 +65,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11958" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDGBM:00000017" ],
-        "x-ms-correlation-request-id": [ "32a9c1b8-5e1b-4c8a-a7c7-876148f87778" ],
-        "traceparent": [ "00-4bcb648f3333ff44a6f11869315178e6-ecea368249c7cd1d-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOKA9:00000019" ],
+        "x-ms-correlation-request-id": [ "b144d8e6-b0eb-457e-ac33-c8875dbd01ec" ],
+        "traceparent": [ "00-49506b65553ac14e956c3addd7054a92-188988573b2025e6-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T182631Z:32a9c1b8-5e1b-4c8a-a7c7-876148f87778" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T190146Z:b144d8e6-b0eb-457e-ac33-c8875dbd01ec" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 18:26:31 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 19:01:46 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "704" ],
+        "Content-Length": [ "660" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-09T03:12:41.9974343Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-21T18:24:44.7566753Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"email\":\"test@contosouniversity.com\",\"registrationState\":\"NotRegistered\",\"invitationState\":\"Sent\",\"invitationSent\":\"2021-10-19T21:07:57.9122698\",\"totalUsage\":\"PT0S\",\"additionalUsageQuota\":\"P2DT2H\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser\",\"name\":\"testuser\",\"type\":\"Microsoft.LabServices/labs/users\"}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzLabServicesUser+[NoContext]+Lab+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell?api-version=2021-10-01-preview+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell?api-version=2021-10-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "21d1fdd7-d003-43d3-be7d-598e0efdd16e" ],
-        "CommandName": [ "Get-AzLabServicesLab" ],
-        "FullCommandName": [ "Get-AzLabServicesLab_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11956" ],
-        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOJL0:00000018" ],
-        "x-ms-correlation-request-id": [ "ace74222-835a-403d-88de-e35601eaffb8" ],
-        "traceparent": [ "00-81041771d5cfbe4b86f2bf0906e700a6-82513314212324aa-01" ],
-        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T182631Z:ace74222-835a-403d-88de-e35601eaffb8" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 18:26:31 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1262" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"myvl7nasmkjuvpiribiyuoawh4\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"title\":\"LAB lab-unit-powershell\",\"description\":\"DESCRIPTION lab-unit-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell\",\"name\":\"lab-unit-powershell\",\"type\":\"Microsoft.LabServices/labs\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-21T23:51:56.7146092Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-22T19:00:04.0665227Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"email\":\"test@contosouniversity.com\",\"registrationState\":\"NotRegistered\",\"invitationState\":\"NotSent\",\"totalUsage\":\"PT0S\",\"additionalUsageQuota\":\"P1DT1H\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell/users/testuser\",\"name\":\"testuser\",\"type\":\"Microsoft.LabServices/labs/users\"}",
       "isContentBase64": false
     }
   }

@@ -21,6 +21,6 @@ Describe 'Stop-AzLabServicesVM' {
     It 'Stop' {
         Start-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 0
         Stop-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 0
-        Get-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 0 | Select -ExpandProperty State |  Should -BeExactly "Stopped"        
+        Get-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 0 | Select -ExpandProperty State |  Should -BeIn @("Stopping","Stopped")
     }
 }

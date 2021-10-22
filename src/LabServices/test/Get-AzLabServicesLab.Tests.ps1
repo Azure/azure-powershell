@@ -40,6 +40,6 @@ Describe 'Get-AzLabServicesLab' {
     }
 
     It 'Name with wildcard' {
-        Get-AzLabServicesLab -ResourceGroupName $ENV:ResourceGroupName -WildcardName $ENV:LabNameLike | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabName)}"
+        Get-AzLabServicesLab -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:LabNameLike | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabName)}"
     }
 }

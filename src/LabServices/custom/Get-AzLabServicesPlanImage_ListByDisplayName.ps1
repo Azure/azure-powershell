@@ -12,6 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+API to get lab plan images.
+.Description
+API to get lab plan images.
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
+.Link
+https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesplanimage
+#>
 function Get-AzLabServicesPlanImage_ListByDisplayName {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
     [CmdletBinding(PositionalBinding=$false)]

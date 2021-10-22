@@ -14,7 +14,7 @@ Returns all labs for the current subscription.
 
 ### Example 2: Get a specific lab
 ```powershell
-PS C:\> Get-AzLab -ResourceGroupName 'yourgroupname' -LabName 'yourlabname'
+PS C:\> Get-AzLab -ResourceGroupName 'yourgroupname' -Name 'yourlabname'
 
 Location      Name                                               Type
 --------      ----                                               ----
@@ -27,7 +27,7 @@ Get a specific lab using the resource group name and the lab name.
 ### Example 3: Get all labs created with a lab plan
 ```powershell
 PS C:\> $plan = Get-AzLabPlan -LabPlanName 'lab plan name'
-PS C:\> $plan | Get-AzLab -LabName 'lab name'
+PS C:\> $plan | Get-AzLab -Name 'lab name'
 
 Location      Name                                               Type
 --------      ----                                               ----

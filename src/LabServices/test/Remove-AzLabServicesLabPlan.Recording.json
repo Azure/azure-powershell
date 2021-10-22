@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "170" ],
-        "x-ms-client-request-id": [ "a1477827-7923-4eb1-9970-eb0795eb5abb" ],
+        "x-ms-unique-id": [ "130" ],
+        "x-ms-client-request-id": [ "53a2b6ab-f600-43c8-8455-3f999df11443" ],
         "CommandName": [ "Get-AzLabServicesLabPlan" ],
         "FullCommandName": [ "Get-AzLabServicesLabPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,23 +22,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11841" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11949" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDGCC:00000002" ],
-        "x-ms-correlation-request-id": [ "92c94395-8863-45f7-867a-19071d5eefe7" ],
-        "traceparent": [ "00-7018a7f18f25e8459de42ce4240d77fb-a7cf5d523be60850-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDH24:00000004" ],
+        "x-ms-correlation-request-id": [ "67129faf-ac1a-42e6-a89c-ca95d715767a" ],
+        "traceparent": [ "00-b71d0cf1e8ee1148a35c5c9e5f229713-69a760dd947d9c79-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T191605Z:92c94395-8863-45f7-867a-19071d5eefe7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T201842Z:67129faf-ac1a-42e6-a89c-ca95d715767a" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 19:16:04 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 20:18:41 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1145" ],
+        "Content-Length": [ "1147" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-09T01:19:38.405243Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-09T01:19:38.405243Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"sharedGalleryId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.Compute/galleries/sigunitpowershell\",\"supportInfo\":{\"url\":\"https://help.contoso.com/\",\"email\":\"help@contoso.com\",\"phone\":\"+1-202-555-0123\",\"instructions\":\"Contact support for help.\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell-del\",\"name\":\"labplan-unit-powershell-del\",\"type\":\"Microsoft.LabServices/labPlans\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-21T23:22:53.4600614Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-21T23:22:53.4600614Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"sharedGalleryId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.Compute/galleries/sigunitpowershell\",\"supportInfo\":{\"url\":\"https://help.contoso.com/\",\"email\":\"help@contoso.com\",\"phone\":\"+1-202-555-0123\",\"instructions\":\"Contact support for help.\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell-del\",\"name\":\"labplan-unit-powershell-del\",\"type\":\"Microsoft.LabServices/labPlans\"}",
       "isContentBase64": false
     }
   }

@@ -12,6 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+API to get lab schedule.
+.Description
+API to get lab schedule.
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
+.Link
+https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesschedule
+#>
 function Get-AzLabServicesSchedule_Lab {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
     [CmdletBinding(PositionalBinding=$false)]

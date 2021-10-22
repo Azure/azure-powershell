@@ -18,38 +18,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Location": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/LabPlan-test-powershell?api-version=2021-10-01-preview" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDGBP:00000013" ],
-        "x-ms-correlation-request-id": [ "dd9a6010-6fc0-46c7-818a-f3e8859f76d1" ],
-        "traceparent": [ "00-77fe28a04d7633478f17018b4727dfff-fa36421da97e66c5-01" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/fcdd1fd9-d209-4337-98f5-8dd1b66561e0?api-version=2021-10-01-preview" ],
-        "Operation-Location": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/fcdd1fd9-d209-4337-98f5-8dd1b66561e0?api-version=2021-10-01-preview" ],
+        "x-ms-request-id": [ "0HMCF6OTAOKAO:00000002" ],
+        "x-ms-correlation-request-id": [ "0aea5587-010c-48b3-aaf9-b797218c0656" ],
+        "traceparent": [ "00-263a5c0a60346749aa13f26eee9fe8c3-67879dbdaa9a4e4e-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/f9cf1567-6d6f-4a4c-8f9a-1ef2871eeb4c?api-version=2021-10-01-preview" ],
+        "Operation-Location": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/f9cf1567-6d6f-4a4c-8f9a-1ef2871eeb4c?api-version=2021-10-01-preview" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T184022Z:dd9a6010-6fc0-46c7-818a-f3e8859f76d1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T194148Z:0aea5587-010c-48b3-aaf9-b797218c0656" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 18:40:22 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 19:41:47 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "969" ],
+        "Content-Length": [ "973" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-21T18:40:21.79048Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-21T18:40:21.79048Z\"},\"properties\":{\"provisioningState\":\"Creating\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"supportInfo\":{\"url\":\"https://www.secondtest.com/\",\"email\":\"secondlp@test.com\",\"phone\":\"123-234-3456\",\"instructions\":\"second Support Information\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/LabPlan-test-powershell\",\"name\":\"LabPlan-test-powershell\",\"type\":\"Microsoft.LabServices/labPlans\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-22T19:41:47.6437434Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-22T19:41:47.6437434Z\"},\"properties\":{\"provisioningState\":\"Creating\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"supportInfo\":{\"url\":\"https://www.secondtest.com/\",\"email\":\"secondlp@test.com\",\"phone\":\"123-234-3456\",\"instructions\":\"second Support Information\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/LabPlan-test-powershell\",\"name\":\"LabPlan-test-powershell\",\"type\":\"Microsoft.LabServices/labPlans\"}",
       "isContentBase64": false
     }
   },
-  "New-AzLabServicesLabPlan+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/fcdd1fd9-d209-4337-98f5-8dd1b66561e0?api-version=2021-10-01-preview+2": {
+  "New-AzLabServicesLabPlan+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/f9cf1567-6d6f-4a4c-8f9a-1ef2871eeb4c?api-version=2021-10-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/fcdd1fd9-d209-4337-98f5-8dd1b66561e0?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/f9cf1567-6d6f-4a4c-8f9a-1ef2871eeb4c?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "82" ],
-        "x-ms-client-request-id": [ "83ef507d-8619-4715-8023-63ac991387c7" ],
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "8ce15f5f-4e1d-474a-8ba1-0ce0dba04bfd" ],
         "CommandName": [ "New-AzLabServicesLabPlan" ],
         "FullCommandName": [ "New-AzLabServicesLabPlan_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -63,23 +63,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11921" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOJL3:00000014" ],
-        "x-ms-correlation-request-id": [ "d056bbd1-200b-4e0b-ba7c-c081e60a5d75" ],
-        "traceparent": [ "00-4a03a415aa686941b2f797e62cf27472-42c240ed85f6f879-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOKAP:00000002" ],
+        "x-ms-correlation-request-id": [ "74261f8b-0ef1-42aa-9758-010d22639558" ],
+        "traceparent": [ "00-01f25931dade174aa38a9eff171ed851-241268c92a3ca759-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T184053Z:d056bbd1-200b-4e0b-ba7c-c081e60a5d75" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T194218Z:74261f8b-0ef1-42aa-9758-010d22639558" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 18:40:52 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 19:42:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "319" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/fcdd1fd9-d209-4337-98f5-8dd1b66561e0\",\"name\":\"fcdd1fd9-d209-4337-98f5-8dd1b66561e0\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-21T18:40:21.9711507\",\"endTime\":\"2021-10-21T18:40:24.9644756\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/f9cf1567-6d6f-4a4c-8f9a-1ef2871eeb4c\",\"name\":\"f9cf1567-6d6f-4a4c-8f9a-1ef2871eeb4c\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-22T19:41:47.8547745\",\"endTime\":\"2021-10-22T19:42:18.0716797\"}",
       "isContentBase64": false
     }
   },
@@ -91,8 +91,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "83" ],
-        "x-ms-client-request-id": [ "83ef507d-8619-4715-8023-63ac991387c7" ],
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "8ce15f5f-4e1d-474a-8ba1-0ce0dba04bfd" ],
         "CommandName": [ "New-AzLabServicesLabPlan" ],
         "FullCommandName": [ "New-AzLabServicesLabPlan_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -106,23 +106,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11920" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDGBP:00000015" ],
-        "x-ms-correlation-request-id": [ "aab38adf-d489-4021-8c3d-54167418ac8b" ],
-        "traceparent": [ "00-df9a755854f78748958e5077f0cb2183-b76d5ddf1c668149-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOKAO:00000003" ],
+        "x-ms-correlation-request-id": [ "3082259b-f056-41e6-a6c5-e1d941277885" ],
+        "traceparent": [ "00-f83744102682c748acf94cb4cb8fd832-8f5942ef851e8035-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T184053Z:aab38adf-d489-4021-8c3d-54167418ac8b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T194218Z:3082259b-f056-41e6-a6c5-e1d941277885" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 18:40:52 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 19:42:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "970" ],
+        "Content-Length": [ "974" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-21T18:40:21.79048Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-21T18:40:21.79048Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"supportInfo\":{\"url\":\"https://www.secondtest.com/\",\"email\":\"secondlp@test.com\",\"phone\":\"123-234-3456\",\"instructions\":\"second Support Information\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/LabPlan-test-powershell\",\"name\":\"LabPlan-test-powershell\",\"type\":\"Microsoft.LabServices/labPlans\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-22T19:41:47.6437434Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-22T19:41:47.6437434Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"supportInfo\":{\"url\":\"https://www.secondtest.com/\",\"email\":\"secondlp@test.com\",\"phone\":\"123-234-3456\",\"instructions\":\"second Support Information\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/LabPlan-test-powershell\",\"name\":\"LabPlan-test-powershell\",\"type\":\"Microsoft.LabServices/labPlans\"}",
       "isContentBase64": false
     }
   },
@@ -133,8 +133,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "84" ],
-        "x-ms-client-request-id": [ "28857c9d-c405-4cfd-87d5-6913d6d75597" ],
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "0b8022cb-3459-4a67-b9a0-2bb412a6dafb" ],
         "CommandName": [ "Get-AzLabServicesLabPlan" ],
         "FullCommandName": [ "Get-AzLabServicesLabPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -149,23 +149,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOJL3:00000015" ],
-        "x-ms-correlation-request-id": [ "679fb4ef-5c63-4bb5-a9ae-5b98e261cd53" ],
-        "traceparent": [ "00-6455fb3ed6b8c34cb08494a884dccf7a-f524fdfc371a772f-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDH1G:00000003" ],
+        "x-ms-correlation-request-id": [ "0743ef62-1f75-4d2a-a752-19fbdef84802" ],
+        "traceparent": [ "00-8cce0f1e0779294ab00635ad65ee46c5-14bbf26c1f5e6d62-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211021T184053Z:679fb4ef-5c63-4bb5-a9ae-5b98e261cd53" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211022T194218Z:0743ef62-1f75-4d2a-a752-19fbdef84802" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 21 Oct 2021 18:40:52 GMT" ]
+        "Date": [ "Fri, 22 Oct 2021 19:42:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "970" ],
+        "Content-Length": [ "974" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-21T18:40:21.79048Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-21T18:40:21.79048Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"supportInfo\":{\"url\":\"https://www.secondtest.com/\",\"email\":\"secondlp@test.com\",\"phone\":\"123-234-3456\",\"instructions\":\"second Support Information\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/LabPlan-test-powershell\",\"name\":\"LabPlan-test-powershell\",\"type\":\"Microsoft.LabServices/labPlans\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-22T19:41:47.6437434Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-22T19:41:47.6437434Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"supportInfo\":{\"url\":\"https://www.secondtest.com/\",\"email\":\"secondlp@test.com\",\"phone\":\"123-234-3456\",\"instructions\":\"second Support Information\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/LabPlan-test-powershell\",\"name\":\"LabPlan-test-powershell\",\"type\":\"Microsoft.LabServices/labPlans\"}",
       "isContentBase64": false
     }
   }

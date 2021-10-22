@@ -1,6 +1,6 @@
 ### Example 1: Get all lab plans in subscription.
 ```powershell
-PS C:\> Get-AzLabPlan
+PS C:\> Get-AzLabServicesLabPlan
 
 Location      Name                          Type
 --------      ----                          ----

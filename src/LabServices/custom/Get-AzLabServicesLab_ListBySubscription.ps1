@@ -12,36 +12,40 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Redeploy-AzLabServicesVM_ResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+<#
+.Synopsis
+API to get labs.
+.Description
+API to get labs.
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+.Link
+https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
+#>
+function Get-AzLabServicesLab_ListBySubscription {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
     [CmdletBinding(PositionalBinding=$false)]
-    param(
-        [Parameter(Mandatory)]
-        [System.String]
-        ${ResourceId},
-  
+    param(    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String[]]
+        # The ID of the target subscription.
+        ${SubscriptionId},
+    
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${DefaultProfile},
-
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob}
+        ${DefaultProfile}
     )
     
     process {
-        $PSBoundParameters = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
-
-        if ($PSBoundParameters) {
-            return Az.LabServices\Redeploy-AzLabServicesVM @PSBoundParameters
-        } else {
-            Write-Error -Message "Error: Invalid VM Resource Id." -ErrorAction Stop
-        }
-
+        return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
     }
+    
 }
     

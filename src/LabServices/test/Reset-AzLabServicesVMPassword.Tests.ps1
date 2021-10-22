@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Reset-AzLabServicesVMPassword
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# $loadVarsPath = Join-Path $PSScriptRoot '\test\SetVariables.ps1'
-# . ($loadVarsPath)
+$loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
+. ($loadVarsPath)
 
 Describe 'Reset-AzLabServicesVMPassword' {
     It 'Reset' {

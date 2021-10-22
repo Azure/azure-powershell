@@ -84,8 +84,8 @@ directive:
       verb: Invoke
       subject: ^(.*)(RedeployVM)(.*)$
     set:
-      verb: Redeploy
-      subject: $1VM$3
+      verb: Start
+      subject: $1RedeployVM$3
   # Change the sync group to users
   - where:
       verb: Sync
@@ -181,6 +181,10 @@ directive:
     hide: true
   - where:
       verb: Update
+      subject: Lab
+    hide: true
+  - where:
+      verb: Get
       subject: Lab
     hide: true
 ```
