@@ -64,7 +64,8 @@
         "**/readme.md",
         "src/**/document/*",
         ".ci-config.json",
-        "tools/PrepareAutorestModule.ps1"
+        "tools/PrepareAutorestModule.ps1",
+        "tools/SyncFromMainBranch.ps1"
       ],
       "phases": []
     },
