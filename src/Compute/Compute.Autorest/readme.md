@@ -41,7 +41,7 @@ input-file:
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 0.2.0
 # Normally, title is the service name
 title: Compute
 subject-prefix: ""
@@ -67,50 +67,36 @@ directive:
     where: 
       subject: Gallery$|GallerySharingProfile|GalleryImage$|GalleryImageVersion$
     remove: true
-  # changing parameter names for GalleryApplication, GalleryApplicationVersion
-  - where:
-      verb: New
-      subject: GalleryApplicationVersion
-      parameter-name: ManageActionRemove
+  # Change model names for GalleryApplication, GalleryApplicationVersion
+  - where: 
+      model-name: ManageActionInstall
     set:
-      parameter-name: Remove
-  - where:
-      verb: New
-      subject: GalleryApplicationVersion
-      parameter-name: ManageActionInstall
+      model-name: Install
+  - where: 
+      model-name: ManageActionRemove
     set:
-      parameter-name: Install
-  - where:
-      verb: New
-      subject: GalleryApplicationVersion
-      parameter-name: ManageActionUpdate
+      model-name: Remove
+  - where: 
+      model-name: ManageActionUpdate
     set:
-      parameter-name: Update
-  - where:
-      verb: New|Update
-      subject: GalleryApplicationVersion
-      parameter-name: SourceMediaLink
+      model-name: Update
+  - where: 
+      model-name: SourceDefaultConfigurationLink
     set:
-      parameter-name: PackageFileLink
-  - where:
-      verb: New|Update
-      subject: GalleryApplicationVersion
-      parameter-name: PublishingProfileReplicaCount
+      model-name: DefaultConfigFileLink
+  - where: 
+      model-name: SourceMediaLink
     set:
-      parameter-name: ReplicaCount
+      model-name: PackageFileLink
   - where:
-      verb: New|Update
-      subject: GalleryApplicationVersion
-      parameter-name: PublishingProfileTargetRegion
+      model-name: PublishingProfileReplicaCount
     set:
-      parameter-name: TargetRegion
+      model-name: ReplicaCount
   - where:
-      verb: New|Update
-      subject: GalleryApplicationVersion
-      parameter-name: SourceDefaultConfigurationLink
+      model-name: PublishingProfileTargetRegion
     set:
-      parameter-name: DefaultConfigFileLink
-  ### END # changing parameter names for GalleryApplication, GalleryApplicationVersion
+      model-name: TargetRegion
+  ### END # Change model names for GalleryApplication, GalleryApplicationVersion
   # hide parameters for New,Update Gallery Application
   - where:
       verb: Update
@@ -132,7 +118,7 @@ directive:
   - where:
       verb: Update
       subject: GalleryApplicationVersion$
-      parameter-name: ManageActionUpdate|ManageActionInstall|ManageActionRemove
+      parameter-name: Update|Install|Remove
     hide: true
   ### END # hide parameters for New, Update Gallery Application Version
   # hide New-AzGalleryApplication, New-AzGalleryApplicationVersion, Update-AzGalleryApplicationVersion
