@@ -1,0 +1,631 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "DirectoryObjects",
+    "version": "v1.0"
+  },
+  "host": "graph.microsoft.com",
+  "basePath": "/v1.0/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/directoryObjects": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
+            "in": "header",
+            "name": "ConsistencyLevel",
+            "type": "string"
+          },
+          {
+            "description": "Show only the first n items",
+            "in": "query",
+            "minimum": 0,
+            "name": "$top",
+            "type": "integer",
+            "x-example": 50
+          },
+          {
+            "description": "Skip the first n items",
+            "in": "query",
+            "minimum": 0,
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "description": "Search items by search phrases",
+            "in": "query",
+            "name": "$search",
+            "type": "string"
+          },
+          {
+            "description": "Filter items by property values",
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "description": "Include count of items",
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Order items by property values",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "id desc",
+                "deletedDateTime",
+                "deletedDateTime desc"
+              ],
+              "type": "string"
+            },
+            "name": "$orderby",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Select properties to be returned",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "deletedDateTime"
+              ],
+              "type": "string"
+            },
+            "name": "$select",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Expand related entities",
+            "in": "query",
+            "items": {
+              "enum": [
+                "*"
+              ],
+              "type": "string"
+            },
+            "name": "$expand",
+            "type": "array",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "additionalProperties": {
+                "type": "object"
+              },
+              "properties": {
+                "@odata.nextLink": {
+                  "type": "string"
+                },
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+                  },
+                  "type": "array"
+                }
+              },
+              "title": "Collection of directoryObject",
+              "type": "object"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "directoryObjects"
+        ],
+        "operationId": "DirectoryObjectsOperations_ListDirectoryObject",
+        "summary": "Get entities from directoryObjects",
+        "x-ms-docs-operation-type": "operation",
+        "x-ms-pageable": {
+          "nextLinkName": "@odata.nextLink",
+          "operationName": "listMore"
+        }
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "New entity",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "directoryObjects"
+        ],
+        "operationId": "DirectoryObjectsOperations_CreateDirectoryObject",
+        "summary": "Add new entity to directoryObjects",
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/directoryObjects/microsoft.graph.getByIds": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Action parameters",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "additionalProperties": {
+                "type": "object"
+              },
+              "properties": {
+                "ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "types": {
+                  "items": {
+                    "type": "string",
+                    "x-nullable": true
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "additionalProperties": {
+                "type": "object"
+              },
+              "properties": {
+                "@odata.context": {
+                  "type": "string"
+                },
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+                  },
+                  "type": "array"
+                }
+              },
+              "title": "Collection of directoryObject",
+              "type": "object"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "directoryObjects"
+        ],
+        "operationId": "DirectoryObjectsOperations_getByIds",
+        "summary": "Invoke action getByIds",
+        "x-ms-docs-operation-type": "action"
+      }
+    },
+    "/directoryObjects/{directoryObject-id}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of directoryObject",
+            "in": "path",
+            "name": "directoryObject-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
+          },
+          {
+            "description": "ETag",
+            "in": "header",
+            "name": "If-Match",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "directoryObjects"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "DirectoryObjectsOperations_DeleteDirectoryObject",
+        "summary": "Delete entity from directoryObjects",
+        "x-ms-docs-operation-type": "operation"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of directoryObject",
+            "in": "path",
+            "name": "directoryObject-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
+          },
+          {
+            "description": "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
+            "in": "header",
+            "name": "ConsistencyLevel",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Select properties to be returned",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "deletedDateTime"
+              ],
+              "type": "string"
+            },
+            "name": "$select",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Expand related entities",
+            "in": "query",
+            "items": {
+              "enum": [
+                "*"
+              ],
+              "type": "string"
+            },
+            "name": "$expand",
+            "type": "array",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "directoryObjects"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "DirectoryObjectsOperations_GetDirectoryObject",
+        "summary": "Get entity from directoryObjects by key",
+        "x-ms-docs-operation-type": "operation"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of directoryObject",
+            "in": "path",
+            "name": "directoryObject-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
+          },
+          {
+            "description": "New property values",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "directoryObjects"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "DirectoryObjectsOperations_UpdateDirectoryObject",
+        "summary": "Update entity in directoryObjects",
+        "x-ms-docs-operation-type": "operation"
+      }
+    }
+  },
+  "definitions": {
+    "MicrosoftGraphDirectoryObject": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphEntity"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "@odata.type": {
+              "type": "string"
+            },
+            "deletedDateTime": {
+              "format": "date-time",
+              "type": "string",
+              "x-nullable": true
+            }
+          },
+          "title": "directoryObject",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphEntity": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "id": {
+          "description": "Read-only.",
+          "type": "string"
+        }
+      },
+      "title": "entity",
+      "type": "object"
+    },
+    "MicrosoftGraphExtensionProperty": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "appDisplayName": {
+              "description": "Display name of the application object on which this extension property is defined. Read-only.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "dataType": {
+              "description": "Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum",
+              "type": "string"
+            },
+            "isSyncedFromOnPremises": {
+              "description": "Indicates if this extension property was sycned from onpremises directory using Azure AD Connect. Read-only.",
+              "type": "boolean",
+              "x-nullable": true
+            },
+            "name": {
+              "description": "Name of the extension property. Not nullable.",
+              "type": "string"
+            },
+            "targetObjects": {
+              "description": "Following values are supported. Not nullable. UserGroupOrganizationDeviceApplication",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "title": "extensionProperty",
+          "type": "object"
+        }
+      ]
+    },
+    "OdataError": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/OdataErrorMain"
+        }
+      },
+      "required": [
+        "error"
+      ],
+      "type": "object"
+    },
+    "OdataErrorDetail": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    "OdataErrorMain": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/OdataErrorDetail"
+          },
+          "type": "array"
+        },
+        "innererror": {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "The structure of this object is service-specific",
+          "type": "object"
+        },
+        "message": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "azureaadv2": {
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "flow": "accessCode",
+      "scopes": {},
+      "tokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "type": "oauth2"
+    }
+  },
+  "security": [
+    {
+      "azureaadv2": []
+    }
+  ],
+  "x-components": {
+    "parameters": {
+      "count": {
+        "description": "Include count of items",
+        "in": "query",
+        "name": "$count",
+        "type": "boolean"
+      },
+      "filter": {
+        "description": "Filter items by property values",
+        "in": "query",
+        "name": "$filter",
+        "type": "string"
+      },
+      "search": {
+        "description": "Search items by search phrases",
+        "in": "query",
+        "name": "$search",
+        "type": "string"
+      },
+      "skip": {
+        "description": "Skip the first n items",
+        "in": "query",
+        "minimum": 0,
+        "name": "$skip",
+        "type": "integer"
+      },
+      "top": {
+        "description": "Show only the first n items",
+        "in": "query",
+        "minimum": 0,
+        "name": "$top",
+        "type": "integer",
+        "x-example": 50
+      }
+    },
+    "responses": {
+      "error": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "description": "error"
+      }
+    }
+  }
+}

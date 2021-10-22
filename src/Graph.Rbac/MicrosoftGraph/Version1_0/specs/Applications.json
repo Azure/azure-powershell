@@ -1,0 +1,1959 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ApplicationsClient",
+    "version": "v1.0"
+  },
+  "host": "graph.microsoft.com",
+  "basePath": "/v1.0/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/applications": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
+            "in": "header",
+            "name": "ConsistencyLevel",
+            "type": "string"
+          },
+          {
+            "description": "Show only the first n items",
+            "in": "query",
+            "minimum": 0,
+            "name": "$top",
+            "type": "integer",
+            "x-example": 50
+          },
+          {
+            "description": "Skip the first n items",
+            "in": "query",
+            "minimum": 0,
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "description": "Search items by search phrases",
+            "in": "query",
+            "name": "$search",
+            "type": "string"
+          },
+          {
+            "description": "Filter items by property values",
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "description": "Include count of items",
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Order items by property values",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "id desc",
+                "deletedDateTime",
+                "deletedDateTime desc",
+                "addIns",
+                "addIns desc",
+                "api",
+                "api desc",
+                "appId",
+                "appId desc",
+                "applicationTemplateId",
+                "applicationTemplateId desc",
+                "appRoles",
+                "appRoles desc",
+                "createdDateTime",
+                "createdDateTime desc",
+                "description",
+                "description desc",
+                "disabledByMicrosoftStatus",
+                "disabledByMicrosoftStatus desc",
+                "displayName",
+                "displayName desc",
+                "groupMembershipClaims",
+                "groupMembershipClaims desc",
+                "identifierUris",
+                "identifierUris desc",
+                "info",
+                "info desc",
+                "isDeviceOnlyAuthSupported",
+                "isDeviceOnlyAuthSupported desc",
+                "isFallbackPublicClient",
+                "isFallbackPublicClient desc",
+                "keyCredentials",
+                "keyCredentials desc",
+                "logo",
+                "logo desc",
+                "notes",
+                "notes desc",
+                "oauth2RequirePostResponse",
+                "oauth2RequirePostResponse desc",
+                "optionalClaims",
+                "optionalClaims desc",
+                "parentalControlSettings",
+                "parentalControlSettings desc",
+                "passwordCredentials",
+                "passwordCredentials desc",
+                "publicClient",
+                "publicClient desc",
+                "publisherDomain",
+                "publisherDomain desc",
+                "requiredResourceAccess",
+                "requiredResourceAccess desc",
+                "signInAudience",
+                "signInAudience desc",
+                "spa",
+                "spa desc",
+                "tags",
+                "tags desc",
+                "tokenEncryptionKeyId",
+                "tokenEncryptionKeyId desc",
+                "web",
+                "web desc"
+              ],
+              "type": "string"
+            },
+            "name": "$orderby",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Select properties to be returned",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "deletedDateTime",
+                "addIns",
+                "api",
+                "appId",
+                "applicationTemplateId",
+                "appRoles",
+                "createdDateTime",
+                "description",
+                "disabledByMicrosoftStatus",
+                "displayName",
+                "groupMembershipClaims",
+                "identifierUris",
+                "info",
+                "isDeviceOnlyAuthSupported",
+                "isFallbackPublicClient",
+                "keyCredentials",
+                "logo",
+                "notes",
+                "oauth2RequirePostResponse",
+                "optionalClaims",
+                "parentalControlSettings",
+                "passwordCredentials",
+                "publicClient",
+                "publisherDomain",
+                "requiredResourceAccess",
+                "signInAudience",
+                "spa",
+                "tags",
+                "tokenEncryptionKeyId",
+                "web",
+                "createdOnBehalfOf",
+                "extensionProperties",
+                "homeRealmDiscoveryPolicies",
+                "owners",
+                "tokenIssuancePolicies",
+                "tokenLifetimePolicies"
+              ],
+              "type": "string"
+            },
+            "name": "$select",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Expand related entities",
+            "in": "query",
+            "items": {
+              "enum": [
+                "*",
+                "createdOnBehalfOf",
+                "extensionProperties",
+                "homeRealmDiscoveryPolicies",
+                "owners",
+                "tokenIssuancePolicies",
+                "tokenLifetimePolicies"
+              ],
+              "type": "string"
+            },
+            "name": "$expand",
+            "type": "array",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "additionalProperties": {
+                "type": "object"
+              },
+              "properties": {
+                "@odata.nextLink": {
+                  "type": "string"
+                },
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/MicrosoftGraphApplication"
+                  },
+                  "type": "array"
+                }
+              },
+              "title": "Collection of application",
+              "type": "object"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "applications"
+        ],
+        "operationId": "ApplicationsOperations_ListApplication",
+        "summary": "Get entities from applications",
+        "x-ms-pageable": {
+          "nextLinkName": "@odata.nextLink",
+          "operationName": "listMore"
+        }
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "New entity",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphApplication"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphApplication"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "applications"
+        ],
+        "operationId": "ApplicationsOperations_CreateApplication",
+        "summary": "Add new entity to applications"
+      }
+    },
+    "/applications/{application-id}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of application",
+            "in": "path",
+            "name": "application-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "application"
+          },
+          {
+            "description": "ETag",
+            "in": "header",
+            "name": "If-Match",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "applications"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "ApplicationsOperations_DeleteApplication",
+        "summary": "Delete entity from applications",
+        "x-ms-docs-operation-type": "operation"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of application",
+            "in": "path",
+            "name": "application-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "application"
+          },
+          {
+            "description": "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
+            "in": "header",
+            "name": "ConsistencyLevel",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Select properties to be returned",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "deletedDateTime",
+                "addIns",
+                "api",
+                "appId",
+                "applicationTemplateId",
+                "appRoles",
+                "createdDateTime",
+                "description",
+                "disabledByMicrosoftStatus",
+                "displayName",
+                "groupMembershipClaims",
+                "identifierUris",
+                "info",
+                "isDeviceOnlyAuthSupported",
+                "isFallbackPublicClient",
+                "keyCredentials",
+                "logo",
+                "notes",
+                "oauth2RequirePostResponse",
+                "optionalClaims",
+                "parentalControlSettings",
+                "passwordCredentials",
+                "publicClient",
+                "publisherDomain",
+                "requiredResourceAccess",
+                "signInAudience",
+                "spa",
+                "tags",
+                "tokenEncryptionKeyId",
+                "web",
+                "createdOnBehalfOf",
+                "extensionProperties",
+                "homeRealmDiscoveryPolicies",
+                "owners",
+                "tokenIssuancePolicies",
+                "tokenLifetimePolicies"
+              ],
+              "type": "string"
+            },
+            "name": "$select",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Expand related entities",
+            "in": "query",
+            "items": {
+              "enum": [
+                "*",
+                "createdOnBehalfOf",
+                "extensionProperties",
+                "homeRealmDiscoveryPolicies",
+                "owners",
+                "tokenIssuancePolicies",
+                "tokenLifetimePolicies"
+              ],
+              "type": "string"
+            },
+            "name": "$expand",
+            "type": "array",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphApplication"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "applications"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "ApplicationsOperations_GetApplication",
+        "summary": "Get entity from applications by key",
+        "x-ms-docs-operation-type": "operation"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of application",
+            "in": "path",
+            "name": "application-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "application"
+          },
+          {
+            "description": "New property values",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphApplication"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "applications"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "ApplicationsOperations_UpdateApplication",
+        "summary": "Update entity in applications",
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/servicePrincipals": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
+            "in": "header",
+            "name": "ConsistencyLevel",
+            "type": "string"
+          },
+          {
+            "description": "Show only the first n items",
+            "in": "query",
+            "minimum": 0,
+            "name": "$top",
+            "type": "integer",
+            "x-example": 50
+          },
+          {
+            "description": "Skip the first n items",
+            "in": "query",
+            "minimum": 0,
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "description": "Search items by search phrases",
+            "in": "query",
+            "name": "$search",
+            "type": "string"
+          },
+          {
+            "description": "Filter items by property values",
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "description": "Include count of items",
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Order items by property values",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "id desc",
+                "deletedDateTime",
+                "deletedDateTime desc",
+                "accountEnabled",
+                "accountEnabled desc",
+                "addIns",
+                "addIns desc",
+                "alternativeNames",
+                "alternativeNames desc",
+                "appDescription",
+                "appDescription desc",
+                "appDisplayName",
+                "appDisplayName desc",
+                "appId",
+                "appId desc",
+                "applicationTemplateId",
+                "applicationTemplateId desc",
+                "appOwnerOrganizationId",
+                "appOwnerOrganizationId desc",
+                "appRoleAssignmentRequired",
+                "appRoleAssignmentRequired desc",
+                "appRoles",
+                "appRoles desc",
+                "description",
+                "description desc",
+                "disabledByMicrosoftStatus",
+                "disabledByMicrosoftStatus desc",
+                "displayName",
+                "displayName desc",
+                "homepage",
+                "homepage desc",
+                "info",
+                "info desc",
+                "keyCredentials",
+                "keyCredentials desc",
+                "loginUrl",
+                "loginUrl desc",
+                "logoutUrl",
+                "logoutUrl desc",
+                "notes",
+                "notes desc",
+                "notificationEmailAddresses",
+                "notificationEmailAddresses desc",
+                "oauth2PermissionScopes",
+                "oauth2PermissionScopes desc",
+                "passwordCredentials",
+                "passwordCredentials desc",
+                "preferredSingleSignOnMode",
+                "preferredSingleSignOnMode desc",
+                "preferredTokenSigningKeyThumbprint",
+                "preferredTokenSigningKeyThumbprint desc",
+                "replyUrls",
+                "replyUrls desc",
+                "samlSingleSignOnSettings",
+                "samlSingleSignOnSettings desc",
+                "servicePrincipalNames",
+                "servicePrincipalNames desc",
+                "servicePrincipalType",
+                "servicePrincipalType desc",
+                "signInAudience",
+                "signInAudience desc",
+                "tags",
+                "tags desc",
+                "tokenEncryptionKeyId",
+                "tokenEncryptionKeyId desc"
+              ],
+              "type": "string"
+            },
+            "name": "$orderby",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Select properties to be returned",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "deletedDateTime",
+                "accountEnabled",
+                "addIns",
+                "alternativeNames",
+                "appDescription",
+                "appDisplayName",
+                "appId",
+                "applicationTemplateId",
+                "appOwnerOrganizationId",
+                "appRoleAssignmentRequired",
+                "appRoles",
+                "description",
+                "disabledByMicrosoftStatus",
+                "displayName",
+                "homepage",
+                "info",
+                "keyCredentials",
+                "loginUrl",
+                "logoutUrl",
+                "notes",
+                "notificationEmailAddresses",
+                "oauth2PermissionScopes",
+                "passwordCredentials",
+                "preferredSingleSignOnMode",
+                "preferredTokenSigningKeyThumbprint",
+                "replyUrls",
+                "samlSingleSignOnSettings",
+                "servicePrincipalNames",
+                "servicePrincipalType",
+                "signInAudience",
+                "tags",
+                "tokenEncryptionKeyId",
+                "appRoleAssignedTo",
+                "appRoleAssignments",
+                "claimsMappingPolicies",
+                "createdObjects",
+                "delegatedPermissionClassifications",
+                "endpoints",
+                "homeRealmDiscoveryPolicies",
+                "memberOf",
+                "oauth2PermissionGrants",
+                "ownedObjects",
+                "owners",
+                "tokenIssuancePolicies",
+                "tokenLifetimePolicies",
+                "transitiveMemberOf"
+              ],
+              "type": "string"
+            },
+            "name": "$select",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Expand related entities",
+            "in": "query",
+            "items": {
+              "enum": [
+                "*",
+                "appRoleAssignedTo",
+                "appRoleAssignments",
+                "claimsMappingPolicies",
+                "createdObjects",
+                "delegatedPermissionClassifications",
+                "endpoints",
+                "homeRealmDiscoveryPolicies",
+                "memberOf",
+                "oauth2PermissionGrants",
+                "ownedObjects",
+                "owners",
+                "tokenIssuancePolicies",
+                "tokenLifetimePolicies",
+                "transitiveMemberOf"
+              ],
+              "type": "string"
+            },
+            "name": "$expand",
+            "type": "array",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "additionalProperties": {
+                "type": "object"
+              },
+              "properties": {
+                "@odata.nextLink": {
+                  "type": "string"
+                },
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/MicrosoftGraphServicePrincipal"
+                  },
+                  "type": "array"
+                }
+              },
+              "title": "Collection of servicePrincipal",
+              "type": "object"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "servicePrincipals"
+        ],
+        "operationId": "ServicePrincipalsOperations_ListServicePrincipal",
+        "summary": "Get entities from servicePrincipals",
+        "x-ms-docs-operation-type": "operation",
+        "x-ms-pageable": {
+          "nextLinkName": "@odata.nextLink"
+        }
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "New entity",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphServicePrincipal"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphServicePrincipal"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "servicePrincipals"
+        ],
+        "operationId": "ServicePrincipalsOperations_CreateServicePrincipal",
+        "summary": "Add new entity to servicePrincipals",
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/servicePrincipals/{servicePrincipal-id}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of servicePrincipal",
+            "in": "path",
+            "name": "servicePrincipal-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "servicePrincipal"
+          },
+          {
+            "description": "ETag",
+            "in": "header",
+            "name": "If-Match",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "servicePrincipals"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "ServicePrincipalsOperations_DeleteServicePrincipal",
+        "summary": "Delete entity from servicePrincipals",
+        "x-ms-docs-operation-type": "operation"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of servicePrincipal",
+            "in": "path",
+            "name": "servicePrincipal-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "servicePrincipal"
+          },
+          {
+            "description": "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
+            "in": "header",
+            "name": "ConsistencyLevel",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Select properties to be returned",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "deletedDateTime",
+                "accountEnabled",
+                "addIns",
+                "alternativeNames",
+                "appDescription",
+                "appDisplayName",
+                "appId",
+                "applicationTemplateId",
+                "appOwnerOrganizationId",
+                "appRoleAssignmentRequired",
+                "appRoles",
+                "description",
+                "disabledByMicrosoftStatus",
+                "displayName",
+                "homepage",
+                "info",
+                "keyCredentials",
+                "loginUrl",
+                "logoutUrl",
+                "notes",
+                "notificationEmailAddresses",
+                "oauth2PermissionScopes",
+                "passwordCredentials",
+                "preferredSingleSignOnMode",
+                "preferredTokenSigningKeyThumbprint",
+                "replyUrls",
+                "samlSingleSignOnSettings",
+                "servicePrincipalNames",
+                "servicePrincipalType",
+                "signInAudience",
+                "tags",
+                "tokenEncryptionKeyId",
+                "appRoleAssignedTo",
+                "appRoleAssignments",
+                "claimsMappingPolicies",
+                "createdObjects",
+                "delegatedPermissionClassifications",
+                "endpoints",
+                "homeRealmDiscoveryPolicies",
+                "memberOf",
+                "oauth2PermissionGrants",
+                "ownedObjects",
+                "owners",
+                "tokenIssuancePolicies",
+                "tokenLifetimePolicies",
+                "transitiveMemberOf"
+              ],
+              "type": "string"
+            },
+            "name": "$select",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Expand related entities",
+            "in": "query",
+            "items": {
+              "enum": [
+                "*",
+                "appRoleAssignedTo",
+                "appRoleAssignments",
+                "claimsMappingPolicies",
+                "createdObjects",
+                "delegatedPermissionClassifications",
+                "endpoints",
+                "homeRealmDiscoveryPolicies",
+                "memberOf",
+                "oauth2PermissionGrants",
+                "ownedObjects",
+                "owners",
+                "tokenIssuancePolicies",
+                "tokenLifetimePolicies",
+                "transitiveMemberOf"
+              ],
+              "type": "string"
+            },
+            "name": "$expand",
+            "type": "array",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphServicePrincipal"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "servicePrincipals"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "ServicePrincipalsOperations_GetServicePrincipal",
+        "summary": "Get entity from servicePrincipals by key",
+        "x-ms-docs-operation-type": "operation"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of servicePrincipal",
+            "in": "path",
+            "name": "servicePrincipal-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "servicePrincipal"
+          },
+          {
+            "description": "New property values",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphServicePrincipal"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "servicePrincipals"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "ServicePrincipalsOperations_UpdateServicePrincipal",
+        "summary": "Update entity in servicePrincipals",
+        "x-ms-docs-operation-type": "operation"
+      }
+    }
+  },
+  "definitions": {
+    "MicrosoftGraphAppRole": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "allowedMemberTypes": {
+          "description": "Specifies whether this app role can be assigned to users and groups (by setting to ['User']), to other application's (by setting to ['Application'], or both (by setting to ['User', 'Application']). App roles supporting assignment to other applications' service principals are also known as application permissions. The 'Application' value is only supported for app roles defined on application entities.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "The description for the app role. This is displayed when the app role is being assigned and, if the app role functions as an application permission, during  consent experiences.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "displayName": {
+          "description": "Display name for the permission that appears in the app role assignment and consent experiences.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "id": {
+          "description": "Unique role identifier inside the appRoles collection. When creating a new app role, a new Guid identifier must be provided.",
+          "format": "uuid",
+          "type": "string"
+        },
+        "isEnabled": {
+          "description": "When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.",
+          "type": "boolean"
+        },
+        "origin": {
+          "description": "Specifies if the app role is defined on the application object or on the servicePrincipal entity. Must not be included in any POST or PATCH requests. Read-only.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "value": {
+          "description": "Specifies the value to include in the roles claim in ID tokens and access tokens authenticating an assigned user or service principal. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..",
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "title": "appRole",
+      "type": "object"
+    },
+    "MicrosoftGraphAppRoleAssignment": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "appRoleId": {
+              "description": "The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.",
+              "format": "uuid",
+              "type": "string"
+            },
+            "createdDateTime": {
+              "description": "The time when the app role assignment was created.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.",
+              "format": "date-time",
+              "type": "string",
+              "x-nullable": true
+            },
+            "principalDisplayName": {
+              "description": "The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "principalId": {
+              "description": "The unique identifier (id) for the user, group or service principal being granted the app role. Required on create.",
+              "format": "uuid",
+              "type": "string",
+              "x-nullable": true
+            },
+            "principalType": {
+              "description": "The type of the assigned principal. This can either be User, Group or ServicePrincipal. Read-only.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "resourceDisplayName": {
+              "description": "The display name of the resource app's service principal to which the assignment is made.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "resourceId": {
+              "description": "The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).",
+              "format": "uuid",
+              "type": "string",
+              "x-nullable": true
+            }
+          },
+          "title": "appRoleAssignment",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphApplication": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "tags": {
+              "description": "Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "appId": {
+              "description": "The unique identifier for the application that is assigned by Azure AD. Not nullable. Read-only.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "appRoles": {
+              "description": "The collection of roles assigned to the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphAppRole"
+              },
+              "type": "array"
+            },
+            "applicationTemplateId": {
+              "description": "Unique identifier of the applicationTemplate.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "createdDateTime": {
+              "description": "The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, NOT, ge, le, in) and $orderBy.",
+              "format": "date-time",
+              "type": "string",
+              "x-nullable": true
+            },
+            "description": {
+              "description": "An optional description of the application. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "displayName": {
+              "description": "The display name for the application. Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "extensionProperties": {
+              "description": "Read-only. Nullable.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphExtensionProperty"
+              },
+              "type": "array"
+            },
+            "identifierUris": {
+              "description": "The URIs that identify the application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. For more information, see Application Objects and Service Principal Objects. The any operator is required for filter expressions on multi-valued properties. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "isDeviceOnlyAuthSupported": {
+              "description": "Specifies whether this application supports device authentication without a user. The default is false.",
+              "type": "boolean",
+              "x-nullable": true
+            },
+            "keyCredentials": {
+              "description": "The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, NOT, ge, le).",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphKeyCredential"
+              },
+              "type": "array"
+            },
+            "oauth2RequirePostResponse": {
+              "type": "boolean"
+            },
+            "owners": {
+              "description": "Directory objects that are owners of the application. Read-only. Nullable. Supports $expand.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+              },
+              "type": "array"
+            },
+            "passwordCredentials": {
+              "description": "The collection of password credentials associated with the application. Not nullable.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphPasswordCredential"
+              },
+              "type": "array"
+            }
+          },
+          "title": "application",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphApplicationServicePrincipal": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "application": {
+          "$ref": "#/definitions/MicrosoftGraphApplication"
+        },
+        "servicePrincipal": {
+          "$ref": "#/definitions/MicrosoftGraphServicePrincipal"
+        }
+      },
+      "title": "applicationServicePrincipal",
+      "type": "object"
+    },
+    "MicrosoftGraphApplicationTemplate": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphEntity"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "properties": {
+            "categories": {
+              "description": "The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.",
+              "items": {
+                "type": "string",
+                "x-nullable": true
+              },
+              "type": "array"
+            },
+            "description": {
+              "description": "A description of the application.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "displayName": {
+              "description": "The name of the application.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "homePageUrl": {
+              "description": "The home page URL of the application.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "logoUrl": {
+              "description": "The URL to get the logo for this application.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "publisher": {
+              "description": "The name of the publisher for this application.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "supportedProvisioningTypes": {
+              "description": "The list of provisioning modes supported by this application. The only valid value is sync.",
+              "items": {
+                "type": "string",
+                "x-nullable": true
+              },
+              "type": "array"
+            },
+            "supportedSingleSignOnModes": {
+              "description": "The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported.",
+              "items": {
+                "type": "string",
+                "x-nullable": true
+              },
+              "type": "array"
+            }
+          },
+          "title": "applicationTemplate",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphDirectoryObject": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphEntity"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "deletedDateTime": {
+              "format": "date-time",
+              "type": "string",
+              "x-nullable": true
+            }
+          },
+          "title": "directoryObject",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphEndpoint": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "capability": {
+              "description": "Describes the capability that is associated with this resource. (e.g. Messages, Conversations, etc.)  Not nullable. Read-only.",
+              "type": "string"
+            },
+            "providerId": {
+              "description": "Application id of the publishing underlying service. Not nullable. Read-only.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "providerName": {
+              "description": "Name of the publishing underlying service. Read-only.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "providerResourceId": {
+              "description": "For Microsoft 365 groups, this is set to a well-known name for the resource (e.g. Yammer.FeedURL etc.). Not nullable. Read-only.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "uri": {
+              "description": "URL of the published resource. Not nullable. Read-only.",
+              "type": "string"
+            }
+          },
+          "title": "endpoint",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphEntity": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "id": {
+          "description": "Read-only.",
+          "type": "string"
+        }
+      },
+      "title": "entity",
+      "type": "object"
+    },
+    "MicrosoftGraphExtensionProperty": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "appDisplayName": {
+              "description": "Display name of the application object on which this extension property is defined. Read-only.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "dataType": {
+              "description": "Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum",
+              "type": "string"
+            },
+            "isSyncedFromOnPremises": {
+              "description": "Indicates if this extension property was sycned from onpremises directory using Azure AD Connect. Read-only.",
+              "type": "boolean",
+              "x-nullable": true
+            },
+            "name": {
+              "description": "Name of the extension property. Not nullable.",
+              "type": "string"
+            },
+            "targetObjects": {
+              "description": "Following values are supported. Not nullable. UserGroupOrganizationDeviceApplication",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "title": "extensionProperty",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphKeyCredential": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "customKeyIdentifier": {
+          "description": "Custom key identifier",
+          "format": "base64url",
+          "type": "string",
+          "x-nullable": true
+        },
+        "displayName": {
+          "description": "Friendly name for the key. Optional.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "endDateTime": {
+          "description": "The date and time at which the credential expires.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "key": {
+          "description": "Value for the key credential. Should be a base 64 encoded value.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "keyId": {
+          "description": "The unique identifier (GUID) for the key.",
+          "format": "uuid",
+          "type": "string",
+          "x-nullable": true
+        },
+        "startDateTime": {
+          "description": "The date and time at which the credential becomes valid.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "type": {
+          "description": "The type of key credential; for example, 'Symmetric'.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "usage": {
+          "description": "A string that describes the purpose for which the key can be used; for example, 'Verify'.",
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "title": "keyCredential",
+      "type": "object"
+    },
+    "MicrosoftGraphKeyValue": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "key": {
+          "description": "Key.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "value": {
+          "description": "Value.",
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "title": "keyValue",
+      "type": "object"
+    },
+    "MicrosoftGraphOAuth2PermissionGrant": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphEntity"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "properties": {
+            "clientId": {
+              "description": "The id of the client service principal for the application which is authorized to act on behalf of a signed-in user when accessing an API. Required. Supports $filter (eq only).",
+              "type": "string"
+            },
+            "consentType": {
+              "description": "Indicates whether authorization is granted for the client application to impersonate all users or only a specific user. AllPrincipals indicates authorization to impersonate all users. Principal indicates authorization to impersonate a specific user. Consent on behalf of all users can be granted by an administrator. Non-admin users may be authorized to consent on behalf of themselves in some cases, for some delegated permissions. Required. Supports $filter (eq only).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "principalId": {
+              "description": "The id of the user on behalf of whom the client is authorized to access the resource, when consentType is Principal. If consentType is AllPrincipals this value is null. Required when consentType is Principal.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "resourceId": {
+              "description": "The id of the resource service principal to which access is authorized. This identifies the API which the client is authorized to attempt to call on behalf of a signed-in user.",
+              "type": "string"
+            },
+            "scope": {
+              "description": "A space-separated list of the claim values for delegated permissions which should be included in access tokens for the resource application (the API). For example, openid User.Read GroupMember.Read.All. Each claim value should match the value field of one of the delegated permissions defined by the API, listed in the publishedPermissionScopes property of the resource service principal.",
+              "type": "string",
+              "x-nullable": true
+            }
+          },
+          "title": "oAuth2PermissionGrant",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphPasswordCredential": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "customKeyIdentifier": {
+          "description": "Do not use.",
+          "format": "base64url",
+          "type": "string",
+          "x-nullable": true
+        },
+        "displayName": {
+          "description": "Friendly name for the password. Optional.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "endDateTime": {
+          "description": "The date and time at which the password expires represented using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        },
+        "hint": {
+          "description": "Contains the first three characters of the password. Read-only.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "keyId": {
+          "description": "The unique identifier for the password.",
+          "format": "uuid",
+          "type": "string",
+          "x-nullable": true
+        },
+        "secretText": {
+          "description": "Read-only; Contains the strong passwords generated by Azure AD that are 16-64 characters in length. The generated password value is only returned during the initial POST request to addPassword. There is no way to retrieve this password in the future.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "startDateTime": {
+          "description": "The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.",
+          "format": "date-time",
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "title": "passwordCredential",
+      "type": "object"
+    },
+    "MicrosoftGraphPermissionScope": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "adminConsentDescription": {
+          "description": "A description of the delegated permissions, intended to be read by an administrator granting the permission on behalf of all users. This text appears in tenant-wide admin consent experiences.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "adminConsentDisplayName": {
+          "description": "The permission's title, intended to be read by an administrator granting the permission on behalf of all users.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "id": {
+          "description": "Unique delegated permission identifier inside the collection of delegated permissions defined for a resource application.",
+          "format": "uuid",
+          "type": "string"
+        },
+        "isEnabled": {
+          "description": "When creating or updating a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.",
+          "type": "boolean"
+        },
+        "origin": {
+          "type": "string",
+          "x-nullable": true
+        },
+        "type": {
+          "description": "Specifies whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. This will be the default behavior, but each customer can choose to customize the behavior in their organization (by allowing, restricting or limiting user consent to this delegated permission.)",
+          "type": "string",
+          "x-nullable": true
+        },
+        "userConsentDescription": {
+          "description": "A description of the delegated permissions, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "userConsentDisplayName": {
+          "description": "A title for the permission, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "value": {
+          "description": "Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..",
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "title": "permissionScope",
+      "type": "object"
+    },
+    "MicrosoftGraphServicePrincipal": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "tags": {
+              "description": "Custom strings that can be used to categorize and identify the service principal. Not nullable. Supports $filter (eq, NOT, ge, le, startsWith).",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "accountEnabled": {
+              "description": "true if the service principal account is enabled; otherwise, false. Supports $filter (eq, ne, NOT, in).",
+              "type": "boolean",
+              "x-nullable": true
+            },
+            "alternativeNames": {
+              "description": "Used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities. Supports $filter (eq, NOT, ge, le, startsWith).",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "appDescription": {
+              "description": "The description exposed by the associated application.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "appDisplayName": {
+              "description": "The display name exposed by the associated application.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "appId": {
+              "description": "The unique identifier for the associated application (its appId property).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "appOwnerOrganizationId": {
+              "description": "Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications.Supports $filter (eq, ne, NOT, ge, le).",
+              "format": "uuid",
+              "type": "string",
+              "x-nullable": true
+            },
+            "appRoleAssignedTo": {
+              "description": "App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphAppRoleAssignment"
+              },
+              "type": "array"
+            },
+            "appRoleAssignmentRequired": {
+              "description": "Specifies whether users or other service principals need to be granted an app role assignment for this service principal before users can sign in or apps can get tokens. The default value is false. Not nullable. Supports $filter (eq, ne, NOT).",
+              "type": "boolean"
+            },
+            "appRoleAssignments": {
+              "description": "App role assignment for another app or service, granted to this service principal. Supports $expand.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphAppRoleAssignment"
+              },
+              "type": "array"
+            },
+            "appRoles": {
+              "description": "The roles exposed by the application which this service principal represents. For more information see the appRoles property definition on the application entity. Not nullable.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphAppRole"
+              },
+              "type": "array"
+            },
+            "applicationTemplateId": {
+              "description": "Unique identifier of the applicationTemplate that the servicePrincipal was created from. Read-only. Supports $filter (eq, ne, NOT, startsWith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "createdObjects": {
+              "description": "Directory objects created by this service principal. Read-only. Nullable.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+              },
+              "type": "array"
+            },
+            "description": {
+              "description": "Free text field to provide an internal end-user facing description of the service principal. End-user portals such MyApps will display the application description in this field. The maximum allowed size is 1024 characters. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "disabledByMicrosoftStatus": {
+              "description": "Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, NOT).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "displayName": {
+              "description": "The display name for the service principal. Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "endpoints": {
+              "description": "Endpoints available for discovery. Services like Sharepoint populate this property with a tenant specific SharePoint endpoints that other applications can discover and use in their experiences.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphEndpoint"
+              },
+              "type": "array"
+            },
+            "homepage": {
+              "description": "Home page or landing page of the application.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "keyCredentials": {
+              "description": "The collection of key credentials associated with the service principal. Not nullable. Supports $filter (eq, NOT, ge, le).",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphKeyCredential"
+              },
+              "type": "array"
+            },
+            "loginUrl": {
+              "description": "Specifies the URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on. The user launches the application from Microsoft 365, the Azure AD My Apps, or the Azure AD SSO URL.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "logoutUrl": {
+              "description": "Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "memberOf": {
+              "description": "Roles that this service principal is a member of. HTTP Methods: GET Read-only. Nullable. Supports $expand.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+              },
+              "type": "array"
+            },
+            "notes": {
+              "description": "Free text field to capture information about the service principal, typically used for operational purposes. Maximum allowed size is 1024 characters.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "notificationEmailAddresses": {
+              "description": "Specifies the list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "oauth2PermissionGrants": {
+              "description": "Delegated permission grants authorizing this service principal to access an API on behalf of a signed-in user. Read-only. Nullable.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphOAuth2PermissionGrant"
+              },
+              "type": "array"
+            },
+            "oauth2PermissionScopes": {
+              "description": "The delegated permissions exposed by the application. For more information see the oauth2PermissionScopes property on the application entity's api property. Not nullable.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphPermissionScope"
+              },
+              "type": "array"
+            },
+            "ownedObjects": {
+              "description": "Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+              },
+              "type": "array"
+            },
+            "owners": {
+              "description": "Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+              },
+              "type": "array"
+            },
+            "passwordCredentials": {
+              "description": "The collection of password credentials associated with the service principal. Not nullable.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphPasswordCredential"
+              },
+              "type": "array"
+            },
+            "preferredSingleSignOnMode": {
+              "description": "Specifies the single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. The supported values are password, saml, notSupported, and oidc.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "preferredTokenSigningKeyThumbprint": {
+              "description": "Reserved for internal use only. Do not write or otherwise rely on this property. May be removed in future versions.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "replyUrls": {
+              "description": "The URLs that user tokens are sent to for sign in with the associated application, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to for the associated application. Not nullable.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "servicePrincipalNames": {
+              "description": "Contains the list of identifiersUris, copied over from the associated application. Additional values can be added to hybrid applications. These values can be used to identify the permissions exposed by this app within Azure AD. For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties. Not nullable.  Supports $filter (eq, NOT, ge, le, startsWith).",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "servicePrincipalType": {
+              "description": "Identifies if the service principal represents an application or a managed identity. This is set by Azure AD internally. For a service principal that represents an application this is set as Application. For a service principal that represent a managed identity this is set as ManagedIdentity.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "signInAudience": {
+              "description": "Specifies the Microsoft accounts that are supported for the current application. Read-only. Supported values are:AzureADMyOrg: Users with a Microsoft work or school account in my organization鈥檚 Azure AD tenant (single-tenant).AzureADMultipleOrgs: Users with a Microsoft work or school account in any organization鈥檚 Azure AD tenant (multi-tenant).AzureADandPersonalMicrosoftAccount: Users with a personal Microsoft account, or a work or school account in any organization鈥檚 Azure AD tenant.PersonalMicrosoftAccount: Users with a personal Microsoft account only.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "tokenEncryptionKeyId": {
+              "description": "Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD issues tokens for this application encrypted using the key specified by this property. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.",
+              "format": "uuid",
+              "type": "string",
+              "x-nullable": true
+            },
+            "transitiveMemberOf": {
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+              },
+              "type": "array"
+            }
+          },
+          "title": "servicePrincipal",
+          "type": "object"
+        }
+      ]
+    },
+    "OdataError": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/OdataErrorMain"
+        }
+      },
+      "required": [
+        "error"
+      ],
+      "type": "object"
+    },
+    "OdataErrorDetail": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    "OdataErrorMain": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/OdataErrorDetail"
+          },
+          "type": "array"
+        },
+        "innererror": {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "The structure of this object is service-specific",
+          "type": "object"
+        },
+        "message": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "azureaadv2": {
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "flow": "accessCode",
+      "scopes": {},
+      "tokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "type": "oauth2"
+    }
+  },
+  "security": [
+    {
+      "azureaadv2": []
+    }
+  ],
+  "x-components": {
+    "parameters": {
+      "count": {
+        "description": "Include count of items",
+        "in": "query",
+        "name": "$count",
+        "type": "boolean"
+      },
+      "filter": {
+        "description": "Filter items by property values",
+        "in": "query",
+        "name": "$filter",
+        "type": "string"
+      },
+      "search": {
+        "description": "Search items by search phrases",
+        "in": "query",
+        "name": "$search",
+        "type": "string"
+      },
+      "skip": {
+        "description": "Skip the first n items",
+        "in": "query",
+        "minimum": 0,
+        "name": "$skip",
+        "type": "integer"
+      },
+      "top": {
+        "description": "Show only the first n items",
+        "in": "query",
+        "minimum": 0,
+        "name": "$top",
+        "type": "integer",
+        "x-example": 50
+      }
+    },
+    "responses": {
+    }
+  }
+}

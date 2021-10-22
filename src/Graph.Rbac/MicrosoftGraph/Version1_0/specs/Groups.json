@@ -1,0 +1,954 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Groups",
+    "version": "v1.0"
+  },
+  "host": "graph.microsoft.com",
+  "basePath": "/v1.0/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/groups": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
+            "in": "header",
+            "name": "ConsistencyLevel",
+            "type": "string"
+          },
+          {
+            "description": "Show only the first n items",
+            "in": "query",
+            "minimum": 0,
+            "name": "$top",
+            "type": "integer",
+            "x-example": 50
+          },
+          {
+            "description": "Skip the first n items",
+            "in": "query",
+            "minimum": 0,
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "description": "Search items by search phrases",
+            "in": "query",
+            "name": "$search",
+            "type": "string"
+          },
+          {
+            "description": "Filter items by property values",
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "description": "Include count of items",
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Order items by property values",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "id desc",
+                "deletedDateTime",
+                "deletedDateTime desc",
+                "assignedLabels",
+                "assignedLabels desc",
+                "assignedLicenses",
+                "assignedLicenses desc",
+                "classification",
+                "classification desc",
+                "createdDateTime",
+                "createdDateTime desc",
+                "description",
+                "description desc",
+                "displayName",
+                "displayName desc",
+                "expirationDateTime",
+                "expirationDateTime desc",
+                "groupTypes",
+                "groupTypes desc",
+                "hasMembersWithLicenseErrors",
+                "hasMembersWithLicenseErrors desc",
+                "isAssignableToRole",
+                "isAssignableToRole desc",
+                "licenseProcessingState",
+                "licenseProcessingState desc",
+                "mail",
+                "mail desc",
+                "mailEnabled",
+                "mailEnabled desc",
+                "mailNickname",
+                "mailNickname desc",
+                "membershipRule",
+                "membershipRule desc",
+                "membershipRuleProcessingState",
+                "membershipRuleProcessingState desc",
+                "onPremisesDomainName",
+                "onPremisesDomainName desc",
+                "onPremisesLastSyncDateTime",
+                "onPremisesLastSyncDateTime desc",
+                "onPremisesNetBiosName",
+                "onPremisesNetBiosName desc",
+                "onPremisesProvisioningErrors",
+                "onPremisesProvisioningErrors desc",
+                "onPremisesSamAccountName",
+                "onPremisesSamAccountName desc",
+                "onPremisesSecurityIdentifier",
+                "onPremisesSecurityIdentifier desc",
+                "onPremisesSyncEnabled",
+                "onPremisesSyncEnabled desc",
+                "preferredDataLocation",
+                "preferredDataLocation desc",
+                "preferredLanguage",
+                "preferredLanguage desc",
+                "proxyAddresses",
+                "proxyAddresses desc",
+                "renewedDateTime",
+                "renewedDateTime desc",
+                "securityEnabled",
+                "securityEnabled desc",
+                "securityIdentifier",
+                "securityIdentifier desc",
+                "theme",
+                "theme desc",
+                "visibility",
+                "visibility desc",
+                "allowExternalSenders",
+                "allowExternalSenders desc",
+                "autoSubscribeNewMembers",
+                "autoSubscribeNewMembers desc",
+                "hideFromAddressLists",
+                "hideFromAddressLists desc",
+                "hideFromOutlookClients",
+                "hideFromOutlookClients desc",
+                "isSubscribedByMail",
+                "isSubscribedByMail desc",
+                "unseenCount",
+                "unseenCount desc",
+                "isArchived",
+                "isArchived desc"
+              ],
+              "type": "string"
+            },
+            "name": "$orderby",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Select properties to be returned",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "deletedDateTime",
+                "assignedLabels",
+                "assignedLicenses",
+                "classification",
+                "createdDateTime",
+                "description",
+                "displayName",
+                "expirationDateTime",
+                "groupTypes",
+                "hasMembersWithLicenseErrors",
+                "isAssignableToRole",
+                "licenseProcessingState",
+                "mail",
+                "mailEnabled",
+                "mailNickname",
+                "membershipRule",
+                "membershipRuleProcessingState",
+                "onPremisesDomainName",
+                "onPremisesLastSyncDateTime",
+                "onPremisesNetBiosName",
+                "onPremisesProvisioningErrors",
+                "onPremisesSamAccountName",
+                "onPremisesSecurityIdentifier",
+                "onPremisesSyncEnabled",
+                "preferredDataLocation",
+                "preferredLanguage",
+                "proxyAddresses",
+                "renewedDateTime",
+                "securityEnabled",
+                "securityIdentifier",
+                "theme",
+                "visibility",
+                "allowExternalSenders",
+                "autoSubscribeNewMembers",
+                "hideFromAddressLists",
+                "hideFromOutlookClients",
+                "isSubscribedByMail",
+                "unseenCount",
+                "isArchived",
+                "appRoleAssignments",
+                "createdOnBehalfOf",
+                "memberOf",
+                "members",
+                "membersWithLicenseErrors",
+                "owners",
+                "permissionGrants",
+                "settings",
+                "transitiveMemberOf",
+                "transitiveMembers",
+                "acceptedSenders",
+                "calendar",
+                "calendarView",
+                "conversations",
+                "events",
+                "photo",
+                "photos",
+                "rejectedSenders",
+                "threads",
+                "drive",
+                "drives",
+                "sites",
+                "extensions",
+                "groupLifecyclePolicies",
+                "planner",
+                "onenote",
+                "team"
+              ],
+              "type": "string"
+            },
+            "name": "$select",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Expand related entities",
+            "in": "query",
+            "items": {
+              "enum": [
+                "*",
+                "appRoleAssignments",
+                "createdOnBehalfOf",
+                "memberOf",
+                "members",
+                "membersWithLicenseErrors",
+                "owners",
+                "permissionGrants",
+                "settings",
+                "transitiveMemberOf",
+                "transitiveMembers",
+                "acceptedSenders",
+                "calendar",
+                "calendarView",
+                "conversations",
+                "events",
+                "photo",
+                "photos",
+                "rejectedSenders",
+                "threads",
+                "drive",
+                "drives",
+                "sites",
+                "extensions",
+                "groupLifecyclePolicies",
+                "planner",
+                "onenote",
+                "team"
+              ],
+              "type": "string"
+            },
+            "name": "$expand",
+            "type": "array",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "additionalProperties": {
+                "type": "object"
+              },
+              "properties": {
+                "@odata.nextLink": {
+                  "type": "string"
+                },
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/MicrosoftGraphGroup"
+                  },
+                  "type": "array"
+                }
+              },
+              "title": "Collection of group",
+              "type": "object"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "GroupsOperations"
+        ],
+        "operationId": "GroupsOperations_ListGroup",
+        "summary": "Get entities from groups",
+        "x-ms-docs-operation-type": "operation",
+        "x-ms-pageable": {
+          "nextLinkName": "@odata.nextLink",
+          "operationName": "listMore"
+        }
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "New entity",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphGroup"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphGroup"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "GroupsOperations"
+        ],
+        "operationId": "GroupsOperations_CreateGroup",
+        "summary": "Add new entity to groups",
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/groups/{group-id}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of group",
+            "in": "path",
+            "name": "group-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "description": "ETag",
+            "in": "header",
+            "name": "If-Match",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "GroupsOperations"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "GroupsOperations_DeleteGroup",
+        "summary": "Delete entity from groups",
+        "x-ms-docs-operation-type": "operation"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of group",
+            "in": "path",
+            "name": "group-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "description": "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
+            "in": "header",
+            "name": "ConsistencyLevel",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Select properties to be returned",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "deletedDateTime",
+                "assignedLabels",
+                "assignedLicenses",
+                "classification",
+                "createdDateTime",
+                "description",
+                "displayName",
+                "expirationDateTime",
+                "groupTypes",
+                "hasMembersWithLicenseErrors",
+                "isAssignableToRole",
+                "licenseProcessingState",
+                "mail",
+                "mailEnabled",
+                "mailNickname",
+                "membershipRule",
+                "membershipRuleProcessingState",
+                "onPremisesDomainName",
+                "onPremisesLastSyncDateTime",
+                "onPremisesNetBiosName",
+                "onPremisesProvisioningErrors",
+                "onPremisesSamAccountName",
+                "onPremisesSecurityIdentifier",
+                "onPremisesSyncEnabled",
+                "preferredDataLocation",
+                "preferredLanguage",
+                "proxyAddresses",
+                "renewedDateTime",
+                "securityEnabled",
+                "securityIdentifier",
+                "theme",
+                "visibility",
+                "allowExternalSenders",
+                "autoSubscribeNewMembers",
+                "hideFromAddressLists",
+                "hideFromOutlookClients",
+                "isSubscribedByMail",
+                "unseenCount",
+                "isArchived",
+                "appRoleAssignments",
+                "createdOnBehalfOf",
+                "memberOf",
+                "members",
+                "membersWithLicenseErrors",
+                "owners",
+                "permissionGrants",
+                "settings",
+                "transitiveMemberOf",
+                "transitiveMembers",
+                "acceptedSenders",
+                "calendar",
+                "calendarView",
+                "conversations",
+                "events",
+                "photo",
+                "photos",
+                "rejectedSenders",
+                "threads",
+                "drive",
+                "drives",
+                "sites",
+                "extensions",
+                "groupLifecyclePolicies",
+                "planner",
+                "onenote",
+                "team"
+              ],
+              "type": "string"
+            },
+            "name": "$select",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Expand related entities",
+            "in": "query",
+            "items": {
+              "enum": [
+                "*",
+                "appRoleAssignments",
+                "createdOnBehalfOf",
+                "memberOf",
+                "members",
+                "membersWithLicenseErrors",
+                "owners",
+                "permissionGrants",
+                "settings",
+                "transitiveMemberOf",
+                "transitiveMembers",
+                "acceptedSenders",
+                "calendar",
+                "calendarView",
+                "conversations",
+                "events",
+                "photo",
+                "photos",
+                "rejectedSenders",
+                "threads",
+                "drive",
+                "drives",
+                "sites",
+                "extensions",
+                "groupLifecyclePolicies",
+                "planner",
+                "onenote",
+                "team"
+              ],
+              "type": "string"
+            },
+            "name": "$expand",
+            "type": "array",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphGroup"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "GroupsOperations"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "GroupsOperations_GetGroup",
+        "summary": "Get entity from groups by key",
+        "x-ms-docs-operation-type": "operation"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of group",
+            "in": "path",
+            "name": "group-id",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "description": "New property values",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphGroup"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "GroupsOperations"
+        ],
+        "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        "operationId": "GroupsOperations_UpdateGroup",
+        "summary": "Update entity in groups",
+        "x-ms-docs-operation-type": "operation"
+      }
+    }
+  },
+  "definitions": {
+    "MicrosoftGraphJson": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "title": "Json",
+      "type": "object"
+    },
+    "MicrosoftGraphAppRoleAssignment": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "appRoleId": {
+              "description": "The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.",
+              "format": "uuid",
+              "type": "string"
+            },
+            "createdDateTime": {
+              "description": "The time when the app role assignment was created.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.",
+              "format": "date-time",
+              "type": "string",
+              "x-nullable": true
+            },
+            "principalDisplayName": {
+              "description": "The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "principalId": {
+              "description": "The unique identifier (id) for the user, group or service principal being granted the app role. Required on create.",
+              "format": "uuid",
+              "type": "string",
+              "x-nullable": true
+            },
+            "principalType": {
+              "description": "The type of the assigned principal. This can either be User, Group or ServicePrincipal. Read-only.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "resourceDisplayName": {
+              "description": "The display name of the resource app's service principal to which the assignment is made.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "resourceId": {
+              "description": "The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).",
+              "format": "uuid",
+              "type": "string",
+              "x-nullable": true
+            }
+          },
+          "title": "appRoleAssignment",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphBodyType": {
+      "enum": [
+        "text",
+        "html"
+      ],
+      "title": "bodyType",
+      "type": "string"
+    },
+    "MicrosoftGraphBooleanColumn": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "title": "booleanColumn",
+      "type": "object"
+    },
+    "microsoft.graph.calculatedColumn": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "format": {
+          "description": "For dateTime output types, the format of the value. Must be one of dateOnly or dateTime.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "formula": {
+          "description": "The formula used to compute the value for this column.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "outputType": {
+          "description": "The output type used to format values in this column. Must be one of boolean, currency, dateTime, number, or text.",
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "title": "calculatedColumn",
+      "type": "object"
+    },
+    "MicrosoftGraphDirectoryObject": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphEntity"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "deletedDateTime": {
+              "format": "date-time",
+              "type": "string",
+              "x-nullable": true
+            }
+          },
+          "title": "directoryObject",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphEntity": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "id": {
+          "description": "Read-only.",
+          "type": "string"
+        }
+      },
+      "title": "entity",
+      "type": "object"
+    },
+    "MicrosoftGraphGroup": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "appRoleAssignments": {
+              "description": "Represents the app roles a group has been granted for an application. Supports $expand.",
+              "items": {
+                "$ref": "#/definitions/MicrosoftGraphAppRoleAssignment"
+              },
+              "type": "array"
+            },
+            "description": {
+              "description": "An optional description for the group. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "displayName": {
+              "description": "The display name for the group. This property is required when a group is created and cannot be cleared during updates. Returned by default. Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "mail": {
+              "description": "The SMTP address for the group, for example, 'serviceadmins@contoso.onmicrosoft.com'. Returned by default. Read-only. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "mailEnabled": {
+              "description": "Specifies whether the group is mail-enabled. Returned by default. Supports $filter (eq, ne, NOT).",
+              "type": "boolean",
+              "x-nullable": true
+            },
+            "mailNickname": {
+              "description": "The mail alias for the group, unique in the organization. This property must be specified when a group is created. These characters cannot be used in the mailNickName: @()/[]';:.<>,SPACE. Returned by default. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "securityEnabled": {
+              "description": "Specifies whether the group is a security group. Returned by default. Supports $filter (eq, ne, NOT, in).",
+              "type": "boolean",
+              "x-nullable": true
+            }
+          },
+          "title": "group",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphIdentity": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "displayName": {
+          "description": "The identity's display name. Note that this may not always be available or up to date. For example, if a user changes their display name, the API may show the new value in a future response, but the items associated with the user won't show up as having changed when using delta.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "id": {
+          "description": "Unique identifier for the identity.",
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "title": "identity",
+      "type": "object"
+    },
+    "MicrosoftGraphIdentitySet": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "application": {
+          "$ref": "#/definitions/MicrosoftGraphIdentity"
+        },
+        "device": {
+          "$ref": "#/definitions/MicrosoftGraphIdentity"
+        },
+        "user": {
+          "$ref": "#/definitions/MicrosoftGraphIdentity"
+        }
+      },
+      "title": "identitySet",
+      "type": "object"
+    },
+    "OdataError": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/OdataErrorMain"
+        }
+      },
+      "required": [
+        "error"
+      ],
+      "type": "object"
+    },
+    "OdataErrorDetail": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    "OdataErrorMain": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/OdataErrorDetail"
+          },
+          "type": "array"
+        },
+        "innererror": {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "The structure of this object is service-specific",
+          "type": "object"
+        },
+        "message": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "azureaadv2": {
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "flow": "accessCode",
+      "scopes": {},
+      "tokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "type": "oauth2"
+    }
+  },
+  "security": [
+    {
+      "azureaadv2": []
+    }
+  ],
+  "x-components": {
+    "parameters": {
+      "count": {
+        "description": "Include count of items",
+        "in": "query",
+        "name": "$count",
+        "type": "boolean"
+      },
+      "filter": {
+        "description": "Filter items by property values",
+        "in": "query",
+        "name": "$filter",
+        "type": "string"
+      },
+      "search": {
+        "description": "Search items by search phrases",
+        "in": "query",
+        "name": "$search",
+        "type": "string"
+      },
+      "skip": {
+        "description": "Skip the first n items",
+        "in": "query",
+        "minimum": 0,
+        "name": "$skip",
+        "type": "integer"
+      },
+      "top": {
+        "description": "Show only the first n items",
+        "in": "query",
+        "minimum": 0,
+        "name": "$top",
+        "type": "integer",
+        "x-example": 50
+      }
+    },
+    "responses": {
+    }
+  }
+}

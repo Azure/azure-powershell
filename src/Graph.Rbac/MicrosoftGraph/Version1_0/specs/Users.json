@@ -1,0 +1,1074 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Users",
+    "version": "v1.0"
+  },
+  "host": "graph.microsoft.com",
+  "basePath": "/v1.0/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
+            "in": "header",
+            "name": "ConsistencyLevel",
+            "type": "string"
+          },
+          {
+            "description": "Show only the first n items",
+            "in": "query",
+            "minimum": 0,
+            "name": "$top",
+            "type": "integer",
+            "x-example": 50
+          },
+          {
+            "description": "Skip the first n items",
+            "in": "query",
+            "minimum": 0,
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "description": "Search items by search phrases",
+            "in": "query",
+            "name": "$search",
+            "type": "string"
+          },
+          {
+            "description": "Filter items by property values",
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "description": "Include count of items",
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Order items by property values",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "id desc",
+                "deletedDateTime",
+                "deletedDateTime desc",
+                "accountEnabled",
+                "accountEnabled desc",
+                "ageGroup",
+                "ageGroup desc",
+                "assignedLicenses",
+                "assignedLicenses desc",
+                "assignedPlans",
+                "assignedPlans desc",
+                "businessPhones",
+                "businessPhones desc",
+                "city",
+                "city desc",
+                "companyName",
+                "companyName desc",
+                "consentProvidedForMinor",
+                "consentProvidedForMinor desc",
+                "country",
+                "country desc",
+                "createdDateTime",
+                "createdDateTime desc",
+                "creationType",
+                "creationType desc",
+                "department",
+                "department desc",
+                "displayName",
+                "displayName desc",
+                "employeeHireDate",
+                "employeeHireDate desc",
+                "employeeId",
+                "employeeId desc",
+                "employeeOrgData",
+                "employeeOrgData desc",
+                "employeeType",
+                "employeeType desc",
+                "externalUserState",
+                "externalUserState desc",
+                "externalUserStateChangeDateTime",
+                "externalUserStateChangeDateTime desc",
+                "faxNumber",
+                "faxNumber desc",
+                "givenName",
+                "givenName desc",
+                "identities",
+                "identities desc",
+                "imAddresses",
+                "imAddresses desc",
+                "isResourceAccount",
+                "isResourceAccount desc",
+                "jobTitle",
+                "jobTitle desc",
+                "lastPasswordChangeDateTime",
+                "lastPasswordChangeDateTime desc",
+                "legalAgeGroupClassification",
+                "legalAgeGroupClassification desc",
+                "licenseAssignmentStates",
+                "licenseAssignmentStates desc",
+                "mail",
+                "mail desc",
+                "mailNickname",
+                "mailNickname desc",
+                "mobilePhone",
+                "mobilePhone desc",
+                "officeLocation",
+                "officeLocation desc",
+                "onPremisesDistinguishedName",
+                "onPremisesDistinguishedName desc",
+                "onPremisesDomainName",
+                "onPremisesDomainName desc",
+                "onPremisesExtensionAttributes",
+                "onPremisesExtensionAttributes desc",
+                "onPremisesImmutableId",
+                "onPremisesImmutableId desc",
+                "onPremisesLastSyncDateTime",
+                "onPremisesLastSyncDateTime desc",
+                "onPremisesProvisioningErrors",
+                "onPremisesProvisioningErrors desc",
+                "onPremisesSamAccountName",
+                "onPremisesSamAccountName desc",
+                "onPremisesSecurityIdentifier",
+                "onPremisesSecurityIdentifier desc",
+                "onPremisesSyncEnabled",
+                "onPremisesSyncEnabled desc",
+                "onPremisesUserPrincipalName",
+                "onPremisesUserPrincipalName desc",
+                "otherMails",
+                "otherMails desc",
+                "passwordPolicies",
+                "passwordPolicies desc",
+                "passwordProfile",
+                "passwordProfile desc",
+                "postalCode",
+                "postalCode desc",
+                "preferredLanguage",
+                "preferredLanguage desc",
+                "provisionedPlans",
+                "provisionedPlans desc",
+                "proxyAddresses",
+                "proxyAddresses desc",
+                "showInAddressList",
+                "showInAddressList desc",
+                "signInSessionsValidFromDateTime",
+                "signInSessionsValidFromDateTime desc",
+                "state",
+                "state desc",
+                "streetAddress",
+                "streetAddress desc",
+                "surname",
+                "surname desc",
+                "usageLocation",
+                "usageLocation desc",
+                "userPrincipalName",
+                "userPrincipalName desc",
+                "userType",
+                "userType desc",
+                "mailboxSettings",
+                "mailboxSettings desc",
+                "deviceEnrollmentLimit",
+                "deviceEnrollmentLimit desc",
+                "aboutMe",
+                "aboutMe desc",
+                "birthday",
+                "birthday desc",
+                "hireDate",
+                "hireDate desc",
+                "interests",
+                "interests desc",
+                "mySite",
+                "mySite desc",
+                "pastProjects",
+                "pastProjects desc",
+                "preferredName",
+                "preferredName desc",
+                "responsibilities",
+                "responsibilities desc",
+                "schools",
+                "schools desc",
+                "skills",
+                "skills desc"
+              ],
+              "type": "string"
+            },
+            "name": "$orderby",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Select properties to be returned",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "deletedDateTime",
+                "accountEnabled",
+                "ageGroup",
+                "assignedLicenses",
+                "assignedPlans",
+                "businessPhones",
+                "city",
+                "companyName",
+                "consentProvidedForMinor",
+                "country",
+                "createdDateTime",
+                "creationType",
+                "department",
+                "displayName",
+                "employeeHireDate",
+                "employeeId",
+                "employeeOrgData",
+                "employeeType",
+                "externalUserState",
+                "externalUserStateChangeDateTime",
+                "faxNumber",
+                "givenName",
+                "identities",
+                "imAddresses",
+                "isResourceAccount",
+                "jobTitle",
+                "lastPasswordChangeDateTime",
+                "legalAgeGroupClassification",
+                "licenseAssignmentStates",
+                "mail",
+                "mailNickname",
+                "mobilePhone",
+                "officeLocation",
+                "onPremisesDistinguishedName",
+                "onPremisesDomainName",
+                "onPremisesExtensionAttributes",
+                "onPremisesImmutableId",
+                "onPremisesLastSyncDateTime",
+                "onPremisesProvisioningErrors",
+                "onPremisesSamAccountName",
+                "onPremisesSecurityIdentifier",
+                "onPremisesSyncEnabled",
+                "onPremisesUserPrincipalName",
+                "otherMails",
+                "passwordPolicies",
+                "passwordProfile",
+                "postalCode",
+                "preferredLanguage",
+                "provisionedPlans",
+                "proxyAddresses",
+                "showInAddressList",
+                "signInSessionsValidFromDateTime",
+                "state",
+                "streetAddress",
+                "surname",
+                "usageLocation",
+                "userPrincipalName",
+                "userType",
+                "mailboxSettings",
+                "deviceEnrollmentLimit",
+                "aboutMe",
+                "birthday",
+                "hireDate",
+                "interests",
+                "mySite",
+                "pastProjects",
+                "preferredName",
+                "responsibilities",
+                "schools",
+                "skills",
+                "appRoleAssignments",
+                "createdObjects",
+                "directReports",
+                "licenseDetails",
+                "manager",
+                "memberOf",
+                "oauth2PermissionGrants",
+                "ownedDevices",
+                "ownedObjects",
+                "registeredDevices",
+                "scopedRoleMemberOf",
+                "transitiveMemberOf",
+                "calendar",
+                "calendarGroups",
+                "calendars",
+                "calendarView",
+                "contactFolders",
+                "contacts",
+                "events",
+                "inferenceClassification",
+                "mailFolders",
+                "messages",
+                "outlook",
+                "people",
+                "photo",
+                "photos",
+                "drive",
+                "drives",
+                "followedSites",
+                "extensions",
+                "agreementAcceptances",
+                "managedDevices",
+                "managedAppRegistrations",
+                "deviceManagementTroubleshootingEvents",
+                "planner",
+                "insights",
+                "settings",
+                "onenote",
+                "activities",
+                "onlineMeetings",
+                "presence",
+                "authentication",
+                "chats",
+                "joinedTeams",
+                "teamwork",
+                "todo"
+              ],
+              "type": "string"
+            },
+            "name": "$select",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Expand related entities",
+            "in": "query",
+            "items": {
+              "enum": [
+                "*",
+                "appRoleAssignments",
+                "createdObjects",
+                "directReports",
+                "licenseDetails",
+                "manager",
+                "memberOf",
+                "oauth2PermissionGrants",
+                "ownedDevices",
+                "ownedObjects",
+                "registeredDevices",
+                "scopedRoleMemberOf",
+                "transitiveMemberOf",
+                "calendar",
+                "calendarGroups",
+                "calendars",
+                "calendarView",
+                "contactFolders",
+                "contacts",
+                "events",
+                "inferenceClassification",
+                "mailFolders",
+                "messages",
+                "outlook",
+                "people",
+                "photo",
+                "photos",
+                "drive",
+                "drives",
+                "followedSites",
+                "extensions",
+                "agreementAcceptances",
+                "managedDevices",
+                "managedAppRegistrations",
+                "deviceManagementTroubleshootingEvents",
+                "planner",
+                "insights",
+                "settings",
+                "onenote",
+                "activities",
+                "onlineMeetings",
+                "presence",
+                "authentication",
+                "chats",
+                "joinedTeams",
+                "teamwork",
+                "todo"
+              ],
+              "type": "string"
+            },
+            "name": "$expand",
+            "type": "array",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "schema": {
+              "additionalProperties": {
+                "type": "object"
+              },
+              "properties": {
+                "@odata.nextLink": {
+                  "type": "string"
+                },
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/MicrosoftGraphUser"
+                  },
+                  "type": "array"
+                }
+              },
+              "title": "Collection of user",
+              "type": "object"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "users"
+        ],
+        "operationId": "UsersOperations_ListUser",
+        "summary": "Get entities from users",
+        "x-ms-pageable": {
+          "nextLinkName": "@odata.nextLink",
+          "operationName": "listMore"
+        }
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "New entity",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphUser"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphUser"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "users"
+        ],
+        "operationId": "UsersOperations_CreateUser",
+        "summary": "Add new entity to users"
+      }
+    },
+    "/users/{user-id}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of user",
+            "in": "path",
+            "name": "user-id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "ETag",
+            "in": "header",
+            "name": "If-Match",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "users"
+        ],
+        "description": "Represents an Azure Active Directory user object.",
+        "operationId": "UsersOperations_DeleteUser",
+        "summary": "Delete entity from users"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of user",
+            "in": "path",
+            "name": "user-id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/",
+            "in": "header",
+            "name": "ConsistencyLevel",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Select properties to be returned",
+            "in": "query",
+            "items": {
+              "enum": [
+                "id",
+                "deletedDateTime",
+                "accountEnabled",
+                "ageGroup",
+                "assignedLicenses",
+                "assignedPlans",
+                "businessPhones",
+                "city",
+                "companyName",
+                "consentProvidedForMinor",
+                "country",
+                "createdDateTime",
+                "creationType",
+                "department",
+                "displayName",
+                "employeeHireDate",
+                "employeeId",
+                "employeeOrgData",
+                "employeeType",
+                "externalUserState",
+                "externalUserStateChangeDateTime",
+                "faxNumber",
+                "givenName",
+                "identities",
+                "imAddresses",
+                "isResourceAccount",
+                "jobTitle",
+                "lastPasswordChangeDateTime",
+                "legalAgeGroupClassification",
+                "licenseAssignmentStates",
+                "mail",
+                "mailNickname",
+                "mobilePhone",
+                "officeLocation",
+                "onPremisesDistinguishedName",
+                "onPremisesDomainName",
+                "onPremisesExtensionAttributes",
+                "onPremisesImmutableId",
+                "onPremisesLastSyncDateTime",
+                "onPremisesProvisioningErrors",
+                "onPremisesSamAccountName",
+                "onPremisesSecurityIdentifier",
+                "onPremisesSyncEnabled",
+                "onPremisesUserPrincipalName",
+                "otherMails",
+                "passwordPolicies",
+                "passwordProfile",
+                "postalCode",
+                "preferredLanguage",
+                "provisionedPlans",
+                "proxyAddresses",
+                "showInAddressList",
+                "signInSessionsValidFromDateTime",
+                "state",
+                "streetAddress",
+                "surname",
+                "usageLocation",
+                "userPrincipalName",
+                "userType",
+                "mailboxSettings",
+                "deviceEnrollmentLimit",
+                "aboutMe",
+                "birthday",
+                "hireDate",
+                "interests",
+                "mySite",
+                "pastProjects",
+                "preferredName",
+                "responsibilities",
+                "schools",
+                "skills",
+                "appRoleAssignments",
+                "createdObjects",
+                "directReports",
+                "licenseDetails",
+                "manager",
+                "memberOf",
+                "oauth2PermissionGrants",
+                "ownedDevices",
+                "ownedObjects",
+                "registeredDevices",
+                "scopedRoleMemberOf",
+                "transitiveMemberOf",
+                "calendar",
+                "calendarGroups",
+                "calendars",
+                "calendarView",
+                "contactFolders",
+                "contacts",
+                "events",
+                "inferenceClassification",
+                "mailFolders",
+                "messages",
+                "outlook",
+                "people",
+                "photo",
+                "photos",
+                "drive",
+                "drives",
+                "followedSites",
+                "extensions",
+                "agreementAcceptances",
+                "managedDevices",
+                "managedAppRegistrations",
+                "deviceManagementTroubleshootingEvents",
+                "planner",
+                "insights",
+                "settings",
+                "onenote",
+                "activities",
+                "onlineMeetings",
+                "presence",
+                "authentication",
+                "chats",
+                "joinedTeams",
+                "teamwork",
+                "todo"
+              ],
+              "type": "string"
+            },
+            "name": "$select",
+            "type": "array",
+            "uniqueItems": true
+          },
+          {
+            "collectionFormat": "csv",
+            "description": "Expand related entities",
+            "in": "query",
+            "items": {
+              "enum": [
+                "*",
+                "appRoleAssignments",
+                "createdObjects",
+                "directReports",
+                "licenseDetails",
+                "manager",
+                "memberOf",
+                "oauth2PermissionGrants",
+                "ownedDevices",
+                "ownedObjects",
+                "registeredDevices",
+                "scopedRoleMemberOf",
+                "transitiveMemberOf",
+                "calendar",
+                "calendarGroups",
+                "calendars",
+                "calendarView",
+                "contactFolders",
+                "contacts",
+                "events",
+                "inferenceClassification",
+                "mailFolders",
+                "messages",
+                "outlook",
+                "people",
+                "photo",
+                "photos",
+                "drive",
+                "drives",
+                "followedSites",
+                "extensions",
+                "agreementAcceptances",
+                "managedDevices",
+                "managedAppRegistrations",
+                "deviceManagementTroubleshootingEvents",
+                "planner",
+                "insights",
+                "settings",
+                "onenote",
+                "activities",
+                "onlineMeetings",
+                "presence",
+                "authentication",
+                "chats",
+                "joinedTeams",
+                "teamwork",
+                "todo"
+              ],
+              "type": "string"
+            },
+            "name": "$expand",
+            "type": "array",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphUser"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "users"
+        ],
+        "description": "Represents an Azure Active Directory user object.",
+        "operationId": "UsersOperations_GetUser",
+        "summary": "Get entity from users by key"
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "key: id of user",
+            "in": "path",
+            "name": "user-id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "New property values",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphUser"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "users"
+        ],
+        "description": "Represents an Azure Active Directory user object.",
+        "operationId": "UsersOperations_UpdateUser",
+        "summary": "Update entity in users"
+      }
+    },
+    "/me": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/MicrosoftGraphUser"
+            }
+          },
+          "default": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/OdataError"
+            }
+          }
+        },
+        "tags": [
+          "users"
+        ],
+        "description": "Represents an Azure Active Directory user object.",
+        "operationId": "UsersOperations_GetMyProfile",
+        "summary": "Get profile of current user."
+      }
+    }
+  },
+  "definitions": {
+    "MicrosoftGraphDirectoryObject": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphEntity"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+          "properties": {
+            "deletedDateTime": {
+              "format": "date-time",
+              "type": "string",
+              "x-nullable": true
+            }
+          },
+          "title": "directoryObject",
+          "type": "object"
+        }
+      ]
+    },
+    "MicrosoftGraphEntity": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "id": {
+          "description": "Read-only.",
+          "type": "string"
+        }
+      },
+      "title": "entity",
+      "type": "object"
+    },
+    "MicrosoftGraphIdentity": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "displayName": {
+          "description": "The identity's display name. Note that this may not always be available or up to date. For example, if a user changes their display name, the API may show the new value in a future response, but the items associated with the user won't show up as having changed when using delta.",
+          "type": "string",
+          "x-nullable": true
+        },
+        "id": {
+          "description": "Unique identifier for the identity.",
+          "type": "string",
+          "x-nullable": true
+        }
+      },
+      "title": "identity",
+      "type": "object"
+    },
+    "MicrosoftGraphUser": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MicrosoftGraphDirectoryObject"
+        },
+        {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "Represents an Azure Active Directory user object.",
+          "properties": {
+            "accountEnabled": {
+              "description": "true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter (eq, ne, NOT, and in).",
+              "type": "boolean",
+              "x-nullable": true
+            },
+            "displayName": {
+              "description": "The name displayed in the address book for the user. This value is usually the combination of the user's first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Maximum length is 256 characters. Supports $filter (eq, ne, NOT , ge, le, in, startsWith), $orderBy, and $search.",
+              "type": "string",
+              "x-nullable": true
+            },
+            "employeeId": {
+              "description": "The employee identifier assigned to the user by the organization. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "givenName": {
+              "description": "The given name (first name) of the user. Maximum length is 64 characters. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "mail": {
+              "description": "The SMTP address for the user, for example, admin@contoso.com. Changes to this property will also update the user's proxyAddresses collection to include the value as an SMTP address. While this property can contain accent characters, using them can cause access issues with other Microsoft applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "mailNickname": {
+              "description": "The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "surname": {
+              "description": "The user's surname (family name or last name). Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "userType": {
+              "description": "A string value that can be used to classify user types in your directory, such as Member and Guest. Supports $filter (eq, ne, NOT, in,).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "usageLocation": {
+              "description": "A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries.  Examples include: US, JP, and GB. Not nullable. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "onPremisesImmutableId": {
+              "description": "This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. Note: The $ and _ characters cannot be used when specifying this property. Supports $filter (eq, ne, NOT, ge, le, in).",
+              "type": "string",
+              "x-nullable": true
+            },
+            "userPrincipalName": {
+              "description": "The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.",
+              "type": "string",
+              "x-nullable": true
+            }
+          },
+          "title": "user",
+          "type": "object"
+        }
+      ]
+    },
+    "OdataError": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/OdataErrorMain"
+        }
+      },
+      "required": [
+        "error"
+      ],
+      "type": "object"
+    },
+    "OdataErrorDetail": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    "OdataErrorMain": {
+      "additionalProperties": {
+        "type": "object"
+      },
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/OdataErrorDetail"
+          },
+          "type": "array"
+        },
+        "innererror": {
+          "additionalProperties": {
+            "type": "object"
+          },
+          "description": "The structure of this object is service-specific",
+          "type": "object"
+        },
+        "message": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "azureaadv2": {
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "flow": "accessCode",
+      "scopes": {},
+      "tokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+      "type": "oauth2"
+    }
+  },
+  "security": [
+    {
+      "azureaadv2": []
+    }
+  ],
+  "x-components": {
+    "parameters": {
+      "count": {
+        "description": "Include count of items",
+        "in": "query",
+        "name": "$count",
+        "type": "boolean"
+      },
+      "filter": {
+        "description": "Filter items by property values",
+        "in": "query",
+        "name": "$filter",
+        "type": "string"
+      },
+      "search": {
+        "description": "Search items by search phrases",
+        "in": "query",
+        "name": "$search",
+        "type": "string"
+      },
+      "skip": {
+        "description": "Skip the first n items",
+        "in": "query",
+        "minimum": 0,
+        "name": "$skip",
+        "type": "integer"
+      },
+      "top": {
+        "description": "Show only the first n items",
+        "in": "query",
+        "minimum": 0,
+        "name": "$top",
+        "type": "integer",
+        "x-example": 50
+      }
+    },
+    "responses": {
+    }
+  }
+}
