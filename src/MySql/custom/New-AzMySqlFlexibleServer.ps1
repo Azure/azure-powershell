@@ -97,9 +97,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]
     ${StorageAutogrow},
 
-    [Parameter(HelpMessage = "Number of IOPS to be allocated for this server. 
-    You will get certain amount of free IOPS based on compute and storage provisioned. 
-    The default value for IOPS is free IOPS.")]
+    [Parameter(HelpMessage = "Number of IOPS to be allocated for this server. You will get certain amount of free IOPS based on compute and storage provisioned. The default value for IOPS is free IOPS.")]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.Int32]
     ${Iops},
@@ -120,7 +118,7 @@ param(
     [System.String]
     ${SubnetPrefix},
 
-    [Parameter(HelpMessage = 'The Name or Id of an existing Subnet or name of a new one to create. Please note that the subnet will be delegated to Microsoft.DBforMySQL/flexibleServers. After delegation, this subnet cannot be used for any other type of Azure resources.')]
+    [Parameter(HelpMessage = 'The Name or Id of an existing Subnet or name of a new one to create. Use resource ID if you want to use a subnet from different resource group. Please note that the subnet will be delegated to Microsoft.DBforMySQL/flexibleServers. After delegation, this subnet cannot be used for any other type of Azure resources.')]
     [System.String]
     ${Subnet},
 
@@ -132,23 +130,15 @@ param(
     [System.String]
     ${Vnet},
 
-    [Parameter(HelpMessage = 'The id of an existing private dns zone. You can use the
-        private dns zone from same resource group, different resource group, or
-        different subscription. The suffix of dns zone has to be same as that of fully qualified domain of the server.')]
+    [Parameter(HelpMessage = 'The id of an existing private dns zone. The suffix of dns zone has to be same as that of fully qualified domain of the server.')]
     [System.String]
     ${PrivateDnsZone},
 
-    [Parameter(HelpMessage = "
-        Determines the public access. Enter single or range of IP addresses to be 
-        included in the allowed list of IPs. IP address ranges must be dash-
-        separated and not contain any spaces. Specifying 0.0.0.0 allows public
-        access from any resources deployed within Azure to access your server.
-        Specifying no IP address sets the server in public access mode but does
-        not create a firewall rule.")]
+    [Parameter(HelpMessage = "Determines the public access. Allowed values: All, None, IP address range (e.g., 1.1.1.1-1.1.1.5, 1.1.1.1) Specifying 0.0.0.0 allows public access from any resources deployed within Azure to access your server. Specifying no IP address sets the server in public access mode but does not create a firewall rule.")]
     [System.String]
     ${PublicAccess},
 
-    [Parameter(HelpMessage = 'Enable or disable high availability feature.  Default value is Disabled. Default: Disabled.')]
+    [Parameter(HelpMessage = "Enable or disable high availability feature. Allowed values are 'ZoneRedundant', 'SameZone', and 'Disabled'. Default value is Disabled.")]
     [Validateset('ZoneRedundant', 'SameZone', 'Disabled')]
     [Alias('HaEnabled')]
     [System.String]
@@ -290,26 +280,25 @@ process {
         else {
             $PSBoundParameters.StorageAutoGrow = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]::Disabled
         }
-        if ($PSBoundParameters.ContainsKey('StorageAutogrow')) {
-            $null = $PSBoundParameters.Remove('StorageAutogrow')
-        }
 
         if ($PSBoundParameters.ContainsKey('Iops')) {
             $PSBoundParameters.StorageIop = $PSBoundParameters.Iops
         }
-        else {
-            $PSBoundParameters.StorageIop = $PSBoundParameters.StorageSizeGb * 3
-        }
 
         if ($PSBoundParameters.ContainsKey('HighAvailability')){
             if($PSBoundParameters['HighAvailability'].ToLower() -eq 'disabled'){
-                $PSBoundParameter.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::Disabled
+                $PSBoundParameters["HighAvailabilityMode"] = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::Disabled
             }
             elseif($PSBoundParameters['HighAvailability'].ToLower() -eq 'zoneredundant') {
-                $PSBoundParameter.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::ZoneRedundant
+                if ($PSBoundParameters.SkuTier -eq 'Burstable') {
+                    throw "Zone redundant high availability cannot be enabled for Burstable tier."
+                }
+                $PSBoundParameters["HighAvailabilityMode"] = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::ZoneRedundant
+                $PSBoundParameters.StorageAutoGrow = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]::Enabled
             }
             elseif($PSBoundParameters['HighAvailability'].ToLower() -eq 'samezone') {
-                $PSBoundParameter.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::SameZone
+                $PSBoundParameters.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::SameZone
+                $PSBoundParameters.StorageAutoGrow = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]::Enabled
             }
             $null = $PSBoundParameters.Remove('HighAvailability')
         }
@@ -340,14 +329,6 @@ process {
         $RequiredKeys = 'SubscriptionId', 'ResourceGroupName', 'Name', 'Location'
         foreach($Key in $RequiredKeys){ $NetworkParameters[$Key] = $PSBoundParameters[$Key] }
 
-        if ($NetworkParameters.ContainsKey('Vnet') -Or  $NetworkParameters.ContainsKey('Subnet')){
-            $VnetSubnetParameters = CreateNetworkResource $NetworkParameters
-            $SubnetId = GetSubnetId $VnetSubnetParameters.ResourceGroupName $VnetSubnetParameters.VnetName $VnetSubnetParameters.SubnetName
-            $PSBoundParameters.NetworkDelegatedSubnetResourceId = $SubnetId
-            if ([string]::IsNullOrEmpty($PSBoundParameters.NetworkDelegatedSubnetResourceId)) {
-                $null = $PSBoundParameters.Remove('NetworkDelegatedSubnetResourceId')
-            }
-        }
         if ($NetworkParameters.ContainsKey('Vnet') -Or  $NetworkParameters.ContainsKey('Subnet')){
             $VnetSubnetParameters = CreateNetworkResource $NetworkParameters
             $SubnetId = GetSubnetId $VnetSubnetParameters.ResourceGroupName $VnetSubnetParameters.VnetName $VnetSubnetParameters.SubnetName
