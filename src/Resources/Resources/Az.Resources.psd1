@@ -96,7 +96,7 @@ FunctionsToExport = 'Get-AzAdUser', 'New-AzAdUser', 'Remove-AzAdUser', 'Update-A
                     'Get-AzAdAppCredential', 'New-AzAdAppCredential', 'Remove-AzAdAppCredential', 
                     'Get-AzAdSpCredential', 'New-AzAdSpCredential', 'Remove-AzAdSpCredential',
                     'Get-AzAdGroupMember', 'Add-AzAdGroupMember', 'Remove-AzAdGroupMember', 
-                    'Get-AzEligibleChildResource', 'Get-AzRoleAssignmentSchedule', 'Get-AzRoleAssignmentScheduleInstance', 
+                    'Get-AzRoleEligibleChildResource', 'Get-AzRoleAssignmentSchedule', 'Get-AzRoleAssignmentScheduleInstance', 
                     'Get-AzRoleAssignmentScheduleRequest', 'Get-AzRoleEligibilitySchedule', 'Get-AzRoleEligibilityScheduleInstance', 
                     'Get-AzRoleEligibilityScheduleRequest', 'Get-AzRoleManagementPolicy', 'Get-AzRoleManagementPolicyAssignment', 
                     'New-AzRoleAssignmentScheduleRequest', 'New-AzRoleEligibilityScheduleRequest', 'New-AzRoleManagementPolicyAssignment', 

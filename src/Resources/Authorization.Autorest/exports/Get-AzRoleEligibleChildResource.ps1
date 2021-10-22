@@ -41,9 +41,9 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azeligiblechildresource
+https://docs.microsoft.com/powershell/module/az.resources/get-azroleeligiblechildresource
 #>
-function Get-AzEligibleChildResource {
+function Get-AzRoleEligibleChildResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IEligibleChildResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
@@ -124,8 +124,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Get = 'Az.Resources.Authorization.private\Get-AzEligibleChildResource_Get';
-            GetViaIdentity = 'Az.Resources.Authorization.private\Get-AzEligibleChildResource_GetViaIdentity';
+            Get = 'Az.Resources.Authorization.private\Get-AzRoleEligibleChildResource_Get';
+            GetViaIdentity = 'Az.Resources.Authorization.private\Get-AzRoleEligibleChildResource_GetViaIdentity';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

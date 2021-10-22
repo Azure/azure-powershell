@@ -11,9 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell: Authorization cmdlets
 
 ## Az.Resources Cmdlets
-### [Get-AzEligibleChildResource](Get-AzEligibleChildResource.md)
-Get the child resources of a resource on which user has eligible access
-
 ### [Get-AzRoleAssignmentSchedule](Get-AzRoleAssignmentSchedule.md)
 Get the specified role assignment schedule for a resource scope
 
@@ -31,6 +28,9 @@ Gets the specified role eligibility schedule instance.
 
 ### [Get-AzRoleEligibilityScheduleRequest](Get-AzRoleEligibilityScheduleRequest.md)
 Get the specified role eligibility schedule request.
+
+### [Get-AzRoleEligibleChildResource](Get-AzRoleEligibleChildResource.md)
+Get the child resources of a resource on which user has eligible access
 
 ### [Get-AzRoleManagementPolicy](Get-AzRoleManagementPolicy.md)
 Get the specified role management policy for a resource scope

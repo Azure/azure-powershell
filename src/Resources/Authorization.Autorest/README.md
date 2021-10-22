@@ -205,5 +205,9 @@ directive:
           - Scope
           - RoleDefinitionId
           - PolicyId
-          
+  # rename cmdlet   
+  - where:
+      subject: ^EligibleChildResource$
+    set:
+      subject: RoleEligibleChildResource       
 ```
