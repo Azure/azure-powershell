@@ -24,8 +24,8 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerBackupInformation", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSBackupInformation))]
-    public class GetAzCosmosDBSqlContainerBackupInformation : AzureCosmosDBCmdletBase
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollectionBackupInformation", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSBackupInformation))]
+    public class GetAzCosmosDBMongoDBCollectionBackupInformation : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.ContainerNameHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.CollectionNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             try
             {
-                CosmosDBManagementClient.SqlResources.GetSqlDatabase(ResourceGroupName, AccountName, DatabaseName);
+                CosmosDBManagementClient.MongoDBResources.GetMongoDBDatabase(ResourceGroupName, AccountName, DatabaseName);
             }
             catch (CloudException e)
             {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             try
             {
-                CosmosDBManagementClient.SqlResources.GetSqlContainer(ResourceGroupName, AccountName, DatabaseName, Name);
+                CosmosDBManagementClient.MongoDBResources.GetMongoDBCollection(ResourceGroupName, AccountName, DatabaseName, Name);
             }
             catch (CloudException e)
             {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Location = Location
             };
 
-            BackupInformation backupInformation = CosmosDBManagementClient.SqlResources.RetrieveContinuousBackupInformation(ResourceGroupName, AccountName, DatabaseName, Name, continuousBackupRestoreLocation);
+            BackupInformation backupInformation = CosmosDBManagementClient.MongoDBResources.RetrieveContinuousBackupInformation(ResourceGroupName, AccountName, DatabaseName, Name, continuousBackupRestoreLocation);
             WriteObject(new PSBackupInformation(backupInformation));
 
             return;

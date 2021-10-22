@@ -73,6 +73,16 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
 
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupStorageRedundancy "Geo"
+  Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
+  Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
+  Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupStorageRedundancy "Geo"
+
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupStorageRedundancy "Local"
+  Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
+  Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
+  Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupStorageRedundancy "Local"
+
   $cosmosDBAccountKey = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname
   Assert-NotNull $cosmosDBAccountKey
 
@@ -318,4 +328,22 @@ function Test-AnalyticalStorageSchemaTypeUpdateAccount
     Remove-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
     Remove-AzResourceGroup -Name $resourceGroupName
   }
+}
+
+function Test-CosmosDBLocations {
+  $locationName = "East US"
+
+  $locationsProperties = Get-AzCosmosDBLocation
+  Write-Host $locationsProperties
+  foreach ($locationProperty in $locationsProperties) {
+    Assert-NotNull $locationProperty.SupportsAvailabilityZone
+    Assert-NotNull $locationProperty.IsResidencyRestricted
+    Assert-NotNull $locationProperty.BackupStorageRedundancies
+  }
+
+  $locationProperties = Get-AzCosmosDBLocation -Location $locationName
+  Write-Host $locationProperties
+  Assert-NotNull $locationProperties.SupportsAvailabilityZone
+  Assert-NotNull $locationProperties.IsResidencyRestricted
+  Assert-NotNull $locationProperties.BackupStorageRedundancies
 }
