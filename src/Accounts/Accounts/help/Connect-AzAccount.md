@@ -108,12 +108,12 @@ Account                SubscriptionName TenantId                Environment
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-### Example 2: (Windows PowerShell 5.1 only) Connect to Azure using organizational ID credentials
+### Example 2: Connect to Azure using organizational ID credentials
 
-This scenario works only in Windows PowerShell 5.1. The first command prompts for user credentials
-and stores them in the `$Credential` variable. The second command connects to an Azure account using
-the credentials stored in `$Credential`. This account authenticates with Azure using organizational
-ID credentials.
+This scenario works only when the user must not have multi-factor auth turned on. The first command
+prompts for user credentials and stores them in the `$Credential` variable. The second command
+connects to an Azure account using the credentials stored in `$Credential`. This account
+authenticates with Azure using organizational ID credentials.
 
 ```powershell
 $Credential = Get-Credential
