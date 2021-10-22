@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Common.MSGraph.DirectoryObjects.Models
+namespace Microsoft.Azure.Commands.Common.MSGraph.Version1_0.DirectoryObjects.Models
 {
     using Microsoft.Rest;
 

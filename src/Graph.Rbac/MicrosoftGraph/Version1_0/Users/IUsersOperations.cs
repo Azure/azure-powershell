@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Common.MSGraph.Users
+namespace Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users
 {
     using Microsoft.Rest;
     using Models;

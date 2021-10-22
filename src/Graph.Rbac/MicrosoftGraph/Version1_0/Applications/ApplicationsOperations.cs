@@ -8,9 +8,9 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Common.MSGraph.Applications
+namespace Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications
 {
-    using Microsoft.Azure.Commands.Common.MSGraph;
+    using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
     using Microsoft.Rest;
     using Models;
     using Newtonsoft.Json;

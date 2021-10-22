@@ -52,7 +52,7 @@ input-file:
 
 output-folder: Applications
 
-namespace: Microsoft.Azure.Commands.Common.MSGraph.Applications
+namespace: Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications
 ```
 
 ### Tag: DirectoryObjects
@@ -62,8 +62,7 @@ input-file:
 
 output-folder: DirectoryObjects
 
-namespace: Microsoft.Azure.Commands.Common.MSGraph.DirectoryObjects
-
+namespace: Microsoft.Azure.Commands.Common.MSGraph.Version1_0.DirectoryObjects
 ```
 
 ### Tag: Groups
@@ -73,8 +72,7 @@ input-file:
 
 output-folder: Groups
 
-namespace: Microsoft.Azure.Commands.Common.MSGraph.Groups
-
+namespace: Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups
 ```
 
 ### Tag: Users
@@ -84,6 +82,5 @@ input-file:
 
 output-folder: Users
 
-namespace: Microsoft.Azure.Commands.Common.MSGraph.Users
-
+namespace: Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users
 ```

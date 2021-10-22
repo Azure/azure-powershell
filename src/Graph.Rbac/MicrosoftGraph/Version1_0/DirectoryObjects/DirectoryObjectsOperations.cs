@@ -8,9 +8,9 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Common.MSGraph.DirectoryObjects
+namespace Microsoft.Azure.Commands.Common.MSGraph.Version1_0.DirectoryObjects
 {
-    using Microsoft.Azure.Commands.Common.MSGraph;
+    using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
     using Microsoft.Rest;
     using Models;
     using Newtonsoft.Json;

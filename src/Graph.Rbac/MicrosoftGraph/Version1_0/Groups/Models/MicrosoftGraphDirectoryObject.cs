@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Common.MSGraph.Groups.Models
+namespace Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
