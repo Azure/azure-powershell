@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a bug in `Set-AzOperationalInsightsLinkedService: when linked service does not exist, perform create(update) instead of failing`
 
 ## Version 2.3.0
 * Added `-ForceDelete` option for `Remove-AzOperationalInsightsWorkspace`

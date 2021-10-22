@@ -1,0 +1,45 @@
+{
+  "Get-AzWebPubSubSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-1/skus?api-version=2021-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg/providers/Microsoft.SignalRService/WebPubSub/azwps-1/skus?api-version=2021-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "e34db748-5c3a-4682-9975-9a8d4d6c9498" ],
+        "CommandName": [ "Get-AzWebPubSubSku" ],
+        "FullCommandName": [ "Get-AzWebPubSubSku_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "e34db748-5c3a-4682-9975-9a8d4d6c9498" ],
+        "x-rp-server-mvid": [ "052104b6-a76f-4c87-b183-74bee8bc2fa4" ],
+        "x-ms-request-id": [ "817d4941-e384-4fc2-a2f2-ab4474946850" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "4de56dc4-5202-4806-ab29-2a520c7fd576" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211018T085406Z:4de56dc4-5202-4806-ab29-2a520c7fd576" ],
+        "Date": [ "Mon, 18 Oct 2021 08:54:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "459" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"resourceType\":\"Microsoft.SignalRService/WebPubSub\",\"sku\":{\"name\":\"Free_F1\",\"tier\":\"Free\",\"capacity\":null},\"capacity\":{\"minimum\":0,\"maximum\":1,\"default\":1,\"allowedValues\":[0,1],\"scaleType\":\"Manual\"}},{\"resourceType\":\"Microsoft.SignalRService/WebPubSub\",\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"capacity\":null},\"capacity\":{\"minimum\":0,\"maximum\":100,\"default\":1,\"allowedValues\":[0,1,2,5,10,20,50,100],\"scaleType\":\"Automatic\"}}],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  }
+}

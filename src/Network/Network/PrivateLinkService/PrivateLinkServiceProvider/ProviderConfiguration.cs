@@ -35,9 +35,10 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.DigitalTwins/digitalTwinsInstances", "2020-12-01", true, true);
             RegisterConfiguration("Microsoft.DocumentDB/databaseAccounts", "2019-08-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventGrid/topics", "2020-04-01-preview", true, true);
-            RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview", true, true); 
+            RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventHub/namespaces", "2018-01-01-preview", true, false);
             RegisterConfiguration("Microsoft.HealthcareApis/services", "2020-03-30", false, true);
+            RegisterConfiguration("Microsoft.HDInsight/clusters", "2018-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.HybridCompute/privateLinkScopes", "2021-05-20",true, true);
             RegisterConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview", true, true);
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2018-02-14", false, false);
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Search/searchServices", "2020-08-01", true, false);
             RegisterConfiguration("Microsoft.ServiceBus/namespaces", "2018-01-01-preview", true, false);
             RegisterConfiguration("Microsoft.SignalRService/signalr", "2020-05-01", false, false);
-            RegisterConfiguration("Microsoft.SignalRService/webPubSub", "2021-09-01-preview", true, false);
+            RegisterConfiguration("Microsoft.SignalRService/webPubSub", "2021-10-01", true, false);
             RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false, false);
             RegisterConfiguration("Microsoft.StorageSync/storageSyncServices", "2020-03-01", true, false);

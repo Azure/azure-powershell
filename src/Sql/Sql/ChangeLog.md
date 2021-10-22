@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 3.5.1
+
 * Fixed `Get-AzSqlDatabaseImportExportStatus` to report the error encountered
 
 ## Version 3.5.0

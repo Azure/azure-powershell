@@ -38,6 +38,10 @@ namespace Microsoft.Azure.Commands.Synapse
         private const string RestoreFromRestorePointIdByNameParameterSet = "RestoreFromRestorePointIdByNameParameterSet";
         private const string RestoreFromRestorePointIdByParentObjectParameterSet = "RestoreFromRestorePointIdByParentObjectParameterSet";
 
+        // Restore from dropped sql pool
+        private const string RestoreFromDroppedSqlPoolByNameParameterSet = "RestoreFromDroppedSqlPoolByNameParameterSet";
+        private const string RestoreFromDroppedSqlPoolByParentObjectParameterSet = "RestoreFromDroppedSqlPoolByParentObjectParameterSet";
+
         [Parameter(ParameterSetName = RestoreFromBackupIdByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.FromBackup)]
         [Parameter(ParameterSetName = RestoreFromBackupIdByParentObjectParameterSet,
@@ -50,9 +54,17 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.FromRestorePoint)]
         public SwitchParameter FromRestorePoint { get; set; }
 
+        [Parameter(ParameterSetName = RestoreFromDroppedSqlPoolByNameParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.FromRestorePoint)]
+        [Parameter(ParameterSetName = RestoreFromDroppedSqlPoolByParentObjectParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.FromRestorePoint)]
+        public SwitchParameter FromDroppedSqlPool { get; set; }
+
         [Parameter(ParameterSetName = RestoreFromBackupIdByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [Parameter(ParameterSetName = RestoreFromRestorePointIdByNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
+        [Parameter(ParameterSetName = RestoreFromDroppedSqlPoolByNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -62,6 +74,8 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [Parameter(ParameterSetName = RestoreFromRestorePointIdByNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(ParameterSetName = RestoreFromDroppedSqlPoolByNameParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
@@ -69,6 +83,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipeline = true, ParameterSetName = RestoreFromBackupIdByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [Parameter(ValueFromPipeline = true, ParameterSetName = RestoreFromRestorePointIdByParentObjectParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
+        [Parameter(ValueFromPipeline = true, ParameterSetName = RestoreFromDroppedSqlPoolByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
@@ -93,6 +109,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.SourceDatabaseId)]
         [Parameter(ParameterSetName = RestoreFromBackupIdByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SourceDatabaseId)]
+        [Parameter(ParameterSetName = RestoreFromDroppedSqlPoolByNameParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.SourceDatabaseId)]
+        [Parameter(ParameterSetName = RestoreFromDroppedSqlPoolByParentObjectParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.SourceDatabaseId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -102,6 +122,12 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.RestorePoint)]
         [Alias(SynapseConstants.PointInTime)]
         public DateTime RestorePoint { get; set; }
+
+        [Parameter(ParameterSetName = RestoreFromDroppedSqlPoolByNameParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.DeletionDate)]
+        [Parameter(ParameterSetName = RestoreFromDroppedSqlPoolByParentObjectParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.DeletionDate)]
+        public DateTime DeletionDate { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -136,6 +162,13 @@ namespace Microsoft.Azure.Commands.Synapse
                 case RestoreFromBackupIdByParentObjectParameterSet:
                     createParams.CreateMode = SynapseSqlPoolCreateMode.Recovery;
                     createParams.RecoverableDatabaseId = this.ResourceId;
+                    break;
+
+                case RestoreFromDroppedSqlPoolByNameParameterSet:
+                case RestoreFromDroppedSqlPoolByParentObjectParameterSet:
+                    createParams.CreateMode = SynapseSqlPoolCreateMode.Restore;
+                    createParams.SourceDatabaseId = this.ResourceId;
+                    createParams.SourceDatabaseDeletionDate = this.DeletionDate;
                     break;
 
                 case RestoreFromRestorePointIdByNameParameterSet:

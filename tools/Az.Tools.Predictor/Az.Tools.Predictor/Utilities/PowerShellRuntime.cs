@@ -47,6 +47,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                 {
                     // Create a mini runspace by remove the types and formats
                     InitialSessionState minimalState = InitialSessionState.CreateDefault2();
+                    // Refer to the remarks for the property DefaultRunspace.
                     minimalState.Types.Clear();
                     minimalState.Formats.Clear();
                     var runspace = RunspaceFactory.CreateRunspace(minimalState);
@@ -56,11 +57,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
 
         /// <inheritdoc />
         /// <remarks>
+        /// We don't pre-load Az service modules since they may not always be installed.
         /// Creating the instance is at the first time this is called.
         /// It can be slow. So the first call must not be in the path of the user interaction.
-        /// Loading too many modules can also impact user experience because that may add to much memory pressure at the same time.
-        /// Ideally we should pre-load needed module such as Az.Accounts. But our module doesn't have Az.Accounts as required
-        /// dependency so we cannot assume that module is always intalled.
+        /// Loading too many modules can also impact user experience because that may add to much memory pressure at the same
+        /// time.
         /// </remarks>
         public Runspace DefaultRunspace => _defaultRunspace.Value;
 

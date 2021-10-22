@@ -1,0 +1,44 @@
+{
+  "Get-AzElasticDeploymentInfo+[NoContext]+List+$POST+https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/listDeploymentInfo?api-version=2020-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/listDeploymentInfo?api-version=2020-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "82f66db7-3414-4aea-b3c8-0900180f5c90" ],
+        "CommandName": [ "Get-AzElasticDeploymentInfo" ],
+        "FullCommandName": [ "Get-AzElasticDeploymentInfo_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "326f771a-6aa5-4424-8f53-4adb130ee42c" ],
+        "x-ms-correlation-request-id": [ "3e4fc511-91ed-4ff4-b5c6-9b829a9589a7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210907T071627Z:3e4fc511-91ed-4ff4-b5c6-9b829a9589a7" ],
+        "Date": [ "Tue, 07 Sep 2021 07:16:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "88" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"status\":\"Healthy\",\"version\":\"7.14.1\",\"memoryCapacity\":\"16384\",\"diskCapacity\":\"491520\"}",
+      "isContentBase64": false
+    }
+  }
+}

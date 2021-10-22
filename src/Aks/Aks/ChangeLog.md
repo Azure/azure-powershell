@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for changing the number of nodes in a node pool. [#12379]
 
 ## Version 2.4.0
 * Made `-Subscription <String>` available in all Aks cmdlets. You can manage Aks resources in other subscriptions without switching the context.

@@ -14,6 +14,7 @@
 
 using Microsoft.ApplicationInsights;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 using System.Text;
@@ -25,8 +26,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     public abstract class BasePSCmdlet : PSCmdlet
     {
+        /// <summary>
+        /// Gets and sets the properties in the telemetry event.
+        /// </summary>
+        protected IDictionary<string, string> AdditionalTelemetryProperties { get; set; }
+
         /// <inheritdoc/>
-        protected override void BeginProcessing()
+        protected override void EndProcessing()
         {
             TelemetryClient telemetryClient = TelemetryUtilities.CreateApplicationInsightTelemetryClient();
             var settings = Settings.GetSettings();
@@ -34,7 +40,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var azContext = new AzContext(nestedPowerShellRuntime)
             {
                 IsInternal = (settings.SetAsInternal == true) ? true : false,
-                SurveyId = settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
             };
 
             var invocation = MyInvocation;
@@ -57,13 +62,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var properties = TelemetryUtilities.CreateCommonProperties(azContext);
             properties.Add("CommandName", command.Name);
             properties.Add("BoundParameters", boundParameters.ToString());
+
+            if (AdditionalTelemetryProperties != null)
+            {
+                foreach (var property in AdditionalTelemetryProperties)
+                {
+                    properties.TryAdd(property.Key, property.Value);
+                }
+            }
+
             telemetryClient.TrackEvent($"{TelemetryUtilities.TelemetryEventPrefix}/Cmdlet", properties);
 
 #if DEBUG
             WriteDebug($"command name: {command.Name}, parameters: {boundParameters.ToString()}");
 #endif
 
-            base.BeginProcessing();
+            base.EndProcessing();
         }
     }
 }

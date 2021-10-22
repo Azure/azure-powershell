@@ -19,6 +19,15 @@
 -->
 
 ## Upcoming Release
+* Added support for Synapse data flow debug session
+    - Added `Start-AzSynapseDataFlowDebugSession` cmdlet to start a Synapse Analytics data flow debug session.
+    - Added `Add-AzSynapseDataFlowDebugSessionPackage` cmdlet
+    - Added `Invoke-AzSynapseDataFlowDebugSessionCommand` cmdlet
+    - Added `Get-AzSynapseDataFlowDebugSession` cmdlet
+    - Added `Stop-AzSynapseDataFlowDebugSession`cmdlet to Stop a data flow debug session by `SessionId`
+* Fixed the format of notebook file exported by `Export-AzSynapseNotebook`
+
+## Version 0.17.0
 * Added cmdlets for Synapse Integration Runtime
 	- Added `Start-AzSynapseIntegrationRuntime` cmdlet
 	- Added `Stop-AzSynapseIntegrationRuntime` cmdlet
@@ -32,6 +41,7 @@
     - Upgraded Azure.Analytics.Synapse.Spark to 1.0.0-preview.7
     - Upgraded Microsoft.Azure.Management.Synapse to 2.2.0-preview
 * Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for uploading spark configuration properties file by `SparkConfigFilePath`
+* Updated `Restore-AzSynapseSqlPool` to support for restoring SQL pool from a backup of a deleted SQL pool.
 
 ## Version 0.16.0
 * Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
