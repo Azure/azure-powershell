@@ -172,8 +172,8 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Get-AzCosmosDBMongoDBRestorableDatabase', 
                'Get-AzCosmosDBMongoDBRestorableCollection', 
                'Get-AzCosmosDBMongoDBRestorableResource', 
-               'Get-AzCosmosDBSqlContainerBackupInformation', 
-               'Get-AzCosmosDBMongoDBCollectionBackupInformation', 
+               'Get-AzCosmosDBSqlContainerBackupInformation',
+               'Get-AzCosmosDBMongoDBCollectionBackupInformation',
                'Get-AzCosmosDBLocation'
 
 # Variables to export from this module
