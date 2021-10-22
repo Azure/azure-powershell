@@ -43,4 +43,5 @@ Az.SpringCloud
 Az.StreamAnalytics
 Az.TimeSeriesInsights
 Az.VMware
+Az.WebPubSub
 Az.WindowsIotServices
