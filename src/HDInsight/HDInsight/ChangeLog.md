@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.1-preview
 * Add two parameters `-Zone` and `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster`
   - Add parameter `-Zone` to cmdlet `New-AzHDInsightCluster` to support to create cluster with availability zones feature
   - Add parameter `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster` to support to add private link configuration when creating cluster with private link feature.
