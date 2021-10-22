@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <Resource Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkVirtualApplianceTests\TestNetworkVirtualApplianceCRUD.json" />
+    <Resource Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkEncryption.json" />
   </ItemGroup>
 
   <ItemGroup>

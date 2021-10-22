@@ -37,6 +37,7 @@
     - `Remove-AzVirtualHubBgpConnection`
 * Onboard Azure HDInsight to Private Link Common Cmdlets
 * Support for new Match Variables in WAF Exclusions
+* Onboard Virtual Network Encryption to Virtual Network Cmdlets
 * Added new cmdlets to support Per Rule Exclusions for Application Gateway WAF
     - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet`
     - `New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup`
