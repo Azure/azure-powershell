@@ -14,7 +14,7 @@ Operation to update a lab schedule.
 
 ### ResourceId (Default)
 ```
-Update-AzLabServicesSchedule -ResourceId <String> [-Note <String>]
+Update-AzLabServicesSchedule -ResourceId <String> [-SubscriptionId <String>] [-Note <String>]
  [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <RecurrenceFrequency>]
  [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <WeekDay[]>] [-StartAt <DateTime>]
  [-StopAt <DateTime>] [-TimeZoneId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -22,7 +22,7 @@ Update-AzLabServicesSchedule -ResourceId <String> [-Note <String>]
 
 ### Lab
 ```
-Update-AzLabServicesSchedule -Lab <Lab> -Name <String> [-Note <String>]
+Update-AzLabServicesSchedule -Lab <Lab> -Name <String> [-SubscriptionId <String>] [-Note <String>]
  [-RecurrencePatternExpirationDate <DateTime>] [-RecurrencePatternFrequency <RecurrenceFrequency>]
  [-RecurrencePatternInterval <Int32>] [-RecurrencePatternWeekDay <WeekDay[]>] [-StartAt <DateTime>]
  [-StopAt <DateTime>] [-TimeZoneId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -264,7 +264,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

@@ -21,8 +21,8 @@ New-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <Strin
 
 ### Lab
 ```
-New-AzLabServicesUser -Lab <Lab> -Name <String> -Email <String> [-AdditionalUsageQuota <TimeSpan>]
- [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+New-AzLabServicesUser -Lab <Lab> -Name <String> -Email <String> [-SubscriptionId <String>]
+ [-AdditionalUsageQuota <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,7 +155,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -186,7 +186,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

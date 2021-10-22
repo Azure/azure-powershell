@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/Get-AzLabServicesUserVM
+online version: https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
 schema: 2.0.0
 ---
 
@@ -14,23 +14,26 @@ API to get the assigned vm for the user.
 
 ### ResourceId (Default)
 ```
-Get-AzLabServicesUserVM -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesUserVM -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzLabServicesUserVM -Email <String> -LabName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Lab
 ```
-Get-AzLabServicesUserVM -Email <String> -Lab <Lab> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesUserVM -Email <String> -Lab <Lab> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### User
 ```
-Get-AzLabServicesUserVM -User <User> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesUserVM -User <User> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,8 +148,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False

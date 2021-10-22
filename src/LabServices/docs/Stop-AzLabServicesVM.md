@@ -14,7 +14,8 @@ Action to stop a lab virtual machine.
 
 ### ResourceId (Default)
 ```
-Stop-AzLabServicesVM -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+Stop-AzLabServicesVM -ResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [<CommonParameters>]
 ```
 
 ### Stop
@@ -25,7 +26,8 @@ Stop-AzLabServicesVM -LabName <String> -Name <String> -ResourceGroupName <String
 
 ### VM
 ```
-Stop-AzLabServicesVM -VM <VirtualMachine> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+Stop-AzLabServicesVM -VM <VirtualMachine> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +112,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Stop
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -171,7 +173,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: (All)
 Aliases:
 
 Required: False

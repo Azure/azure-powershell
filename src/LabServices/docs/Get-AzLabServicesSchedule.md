@@ -14,7 +14,8 @@ Returns the properties of a lab Schedule.
 
 ### LabObject (Default)
 ```
-Get-AzLabServicesSchedule -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesSchedule -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -25,7 +26,8 @@ Get-AzLabServicesSchedule -LabName <String> -Name <String> -ResourceGroupName <S
 
 ### Lab
 ```
-Get-AzLabServicesSchedule -Lab <Lab> [-Name <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesSchedule -Lab <Lab> [-Name <String>] [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
@@ -167,7 +169,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: False

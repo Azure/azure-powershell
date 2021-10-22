@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/Add-AzLabServicesUserQuota
+online version: https://docs.microsoft.com/powershell/module/az.labservices/add-azlabservicesuserquota
 schema: 2.0.0
 ---
 
@@ -14,15 +14,15 @@ API to add additional user quota.
 
 ### User (Default)
 ```
-Add-AzLabServicesUserQuota -UsageQuotaToAddToExisting <TimeSpan> -User <User> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzLabServicesUserQuota -UsageQuotaToAddToExisting <TimeSpan> -User <User> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Email
 ```
 Add-AzLabServicesUserQuota -Email <String> -LabName <String> -ResourceGroupName <String>
- -UsageQuotaToAddToExisting <TimeSpan> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -UsageQuotaToAddToExisting <TimeSpan> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +54,21 @@ ContosoUser12345     Microsoft.LabServices/labs/users
 Increase the student quota by 5 hours.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -121,7 +136,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Email
+Parameter Sets: (All)
 Aliases:
 
 Required: False

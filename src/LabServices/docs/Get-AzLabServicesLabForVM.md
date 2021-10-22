@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/Get-AzLabServicesLabForVM
+online version: https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabforvm
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ API to return the lab for a specific VM.
 ## SYNTAX
 
 ```
-Get-AzLabServicesLabForVM -ResourceId <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzLabServicesLabForVM -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +61,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -26,8 +26,8 @@ Get-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-SubscriptionId
 
 ### LabPlan
 ```
-Get-AzLabServicesLab -LabPlan <LabPlan> [-Name <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzLabServicesLab -LabPlan <LabPlan> [-Name <String>] [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List1
@@ -44,8 +44,8 @@ Get-AzLabServicesLab -WildcardName <String> [-ResourceGroupName <String>] [-Subs
 
 ### ResourceId
 ```
-Get-AzLabServicesLab -ResourceId <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzLabServicesLab -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -201,7 +201,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1, ListByLabName
+Parameter Sets: (All)
 Aliases:
 
 Required: False

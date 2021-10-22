@@ -15,7 +15,8 @@ For troubleshooting connectivity.
 
 ### ResourceId (Default)
 ```
-Redeploy-AzLabServicesVM -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+Redeploy-AzLabServicesVM -ResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [<CommonParameters>]
 ```
 
 ### Redeploy
@@ -92,7 +93,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Redeploy
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -107,7 +108,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Redeploy
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -153,7 +154,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Redeploy
+Parameter Sets: (All)
 Aliases:
 
 Required: False

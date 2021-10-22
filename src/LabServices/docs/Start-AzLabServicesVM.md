@@ -14,7 +14,8 @@ Action to start a lab virtual machine.
 
 ### ResourceId (Default)
 ```
-Start-AzLabServicesVM -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+Start-AzLabServicesVM -ResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [<CommonParameters>]
 ```
 
 ### Start
@@ -25,7 +26,8 @@ Start-AzLabServicesVM -LabName <String> -Name <String> -ResourceGroupName <Strin
 
 ### VM
 ```
-Start-AzLabServicesVM -VM <VirtualMachine> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+Start-AzLabServicesVM -VM <VirtualMachine> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +112,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Start
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -171,7 +173,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: (All)
 Aliases:
 
 Required: False

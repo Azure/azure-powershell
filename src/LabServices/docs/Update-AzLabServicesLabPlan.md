@@ -31,7 +31,7 @@ Update-AzLabServicesLabPlan -Name <String> -ResourceGroupName <String> [-Subscri
 
 ### LabPlan
 ```
-Update-AzLabServicesLabPlan -LabPlan <LabPlan> [-AllowedRegion <String[]>]
+Update-AzLabServicesLabPlan -LabPlan <LabPlan> [-SubscriptionId <String>] [-AllowedRegion <String[]>]
  [-DefaultAutoShutdownProfileDisconnectDelay <TimeSpan>] [-DefaultAutoShutdownProfileIdleDelay <TimeSpan>]
  [-DefaultAutoShutdownProfileNoConnectDelay <TimeSpan>]
  [-DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState>]
@@ -41,7 +41,7 @@ Update-AzLabServicesLabPlan -LabPlan <LabPlan> [-AllowedRegion <String[]>]
  [-DefaultConnectionProfileClientSshAccessEnabled <ConnectionType>] [-DefaultNetworkProfileSubnetId <String>]
  [-LinkedLmsInstance <String>] [-SharedGalleryId <String>] [-SupportInfoEmail <String>]
  [-SupportInfoInstruction <String>] [-SupportInfoPhone <String>] [-SupportInfoUrl <String>] [-Tag <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +82,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -353,7 +353,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -401,7 +401,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

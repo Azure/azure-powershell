@@ -14,7 +14,8 @@ Gets an image resource.
 
 ### ResourceId (Default)
 ```
-Get-AzLabServicesPlanImage -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesPlanImage -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -25,8 +26,8 @@ Get-AzLabServicesPlanImage -LabPlanName <String> -Name <String> -ResourceGroupNa
 
 ### LabPlan
 ```
-Get-AzLabServicesPlanImage -LabPlan <LabPlan> [-Name <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzLabServicesPlanImage -LabPlan <LabPlan> [-Name <String>] [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
@@ -210,7 +211,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, ListByDisplayName
+Parameter Sets: (All)
 Aliases:
 
 Required: False

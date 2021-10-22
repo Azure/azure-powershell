@@ -38,7 +38,8 @@ Get-AzLabServicesLabPlan -Name <String> [-SubscriptionId <String[]>] [-DefaultPr
 
 ### ResourceId
 ```
-Get-AzLabServicesLabPlan -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesLabPlan -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,7 +145,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1, ListByLabPlanName
+Parameter Sets: (All)
 Aliases:
 
 Required: False

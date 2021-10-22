@@ -20,7 +20,8 @@ Sync-AzLabServicesLabUser -LabName <String> -ResourceGroupName <String> [-Subscr
 
 ### Lab
 ```
-Sync-AzLabServicesLabUser -Lab <Lab> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+Sync-AzLabServicesLabUser -Lab <Lab> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +105,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Sync
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -150,7 +151,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Sync
+Parameter Sets: (All)
 Aliases:
 
 Required: False

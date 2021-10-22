@@ -15,12 +15,14 @@ This will create or update all lab resources, such as virtual machines.
 
 ### ResourceId (Default)
 ```
-Publish-AzLabServicesLab -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+Publish-AzLabServicesLab -ResourceId <String> [-SubscriptionId <String>] [-AdditionalUsageQuota <Object>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### Lab
 ```
-Publish-AzLabServicesLab -Lab <Lab> [-DefaultProfile <PSObject>] [-AsJob] [<CommonParameters>]
+Publish-AzLabServicesLab -Lab <Lab> [-SubscriptionId <String>] [-AdditionalUsageQuota <Object>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### Publish
@@ -47,6 +49,21 @@ eastus2  Lab Name
 Publish the lab template.
 
 ## PARAMETERS
+
+### -AdditionalUsageQuota
+
+
+```yaml
+Type: System.Object
+Parameter Sets: Lab, ResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -114,7 +131,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Publish
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -175,7 +192,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Publish
+Parameter Sets: (All)
 Aliases:
 
 Required: False

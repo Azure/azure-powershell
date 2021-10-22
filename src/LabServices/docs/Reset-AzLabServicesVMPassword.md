@@ -14,21 +14,21 @@ Resets a lab virtual machine password.
 
 ### ResourceId (Default)
 ```
-Reset-AzLabServicesVMPassword -Password <SecureString> -ResourceId <String> [-Username <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Reset-AzLabServicesVMPassword -Password <SecureString> -ResourceId <String> [-SubscriptionId <String>]
+ [-Username <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [<CommonParameters>]
 ```
 
 ### Reset
 ```
 Reset-AzLabServicesVMPassword -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
- -Password <SecureString> -Username <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Password <SecureString> -Username <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VM
 ```
-Reset-AzLabServicesVMPassword -Password <SecureString> -VM <VirtualMachine> [-Username <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Reset-AzLabServicesVMPassword -Password <SecureString> -VM <VirtualMachine> [-SubscriptionId <String>]
+ [-Username <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +51,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reset
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -97,7 +97,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reset
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -112,7 +112,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Reset
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -164,6 +164,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
