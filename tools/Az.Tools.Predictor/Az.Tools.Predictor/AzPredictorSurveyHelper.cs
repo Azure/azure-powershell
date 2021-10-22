@@ -45,8 +45,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     Write-Host ''
                     Write-Host 'Run ' -NoNewline; Write-Host Open-AzPredictorSurvey -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline; Write-Host ' to give us your feedback.'
                     Write-Host ''
-                    $thePrompt=Prompt
-                    Write-Host -NoNewLine $thePrompt
+                    Write-Host '(Use ""Ctrl + C"" to return to the prompt)'
                 }";
 
             ScriptBlock scriptBlock = ScriptBlock.Create(promptMessageScript);
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 return _sharedSurveyHelper.ShouldPropmtSurvey(_ModuleName, _ModuleVersion);
             }
 
-            return false;
+            return true;
         }
 
         /// <inheritdoc/>
