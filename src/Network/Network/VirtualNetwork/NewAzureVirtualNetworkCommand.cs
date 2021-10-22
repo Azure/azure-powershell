@@ -87,13 +87,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If to enable encryption on the virtual network")]
+            HelpMessage = "Indicates if encryption is enabled on the virtual network. The value should be true to enable encryption on the virtual network, false to disable encryption.")]
         public string EnableEncryption { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "Set the Encryption EnforcementPolicy")]
+             HelpMessage = "Set the Encryption EnforcementPolicy. The value should be allowUnencrypted to allow VMs without encryption capability inside an encrypted virtual network, or dropUnencrypted to disable any VM without encryption capability from being added into an encrypted virtual network.")]
         public string EncryptionEnforcementPolicy { get; set; }
 
         [Parameter(

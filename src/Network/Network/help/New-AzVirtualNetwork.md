@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableEncryption
-If to enable encryption on the virtual network
+Indicates if encryption is enabled on the virtual network. The value should be true to enable encryption on the virtual network, false to disable encryption.
 
 ```yaml
 Type: System.String
@@ -211,7 +211,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionEnforcementPolicy
-Set the Encryption EnforcementPolicy
+Set the Encryption EnforcementPolicy. The value should be allowUnencrypted to allow VMs without encryption capability inside an encrypted virtual network, or dropUnencrypted to disable any VM without encryption capability from being added into an encrypted virtual network.
 
 ```yaml
 Type: System.String
