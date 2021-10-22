@@ -69,8 +69,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Display Open-AzPredictorSurvey cmdlet as the last suggestion in listview mode
-- Fixed compatibility issues with Powershell 7.2.0-preview 6 and PS Readline 2.2.0-beta3'
+        ReleaseNotes = '* Improvements in command parsing mechanism
+* Fixed end of user input detection when - character is used
+* Optimized collection of anonymized data'
 
         # Prerelease string of this module
         # Prerelease = ''
