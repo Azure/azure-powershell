@@ -110,7 +110,7 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 ### Example 2: Connect to Azure using organizational ID credentials
 
-This scenario works only when the user must not have multi-factor auth turned on. The first command
+This scenario works only when the user does not have multi-factor auth turned on. The first command
 prompts for user credentials and stores them in the `$Credential` variable. The second command
 connects to an Azure account using the credentials stored in `$Credential`. This account
 authenticates with Azure using organizational ID credentials.
