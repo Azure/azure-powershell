@@ -65,7 +65,8 @@
         "src/**/document/*",
         ".ci-config.json",
         "tools/PrepareAutorestModule.ps1",
-        "tools/SyncFromMainBranch.ps1"
+        "tools/SyncFromMainBranch.ps1",
+        ".azure-pipelines/sync-tools-folder.yml"
       ],
       "phases": []
     },
