@@ -12,7 +12,7 @@
 RootModule = './Az.ContainerInstance.psm1'
 
 # Version number of this module.
-ModuleVersion = '2.1.0'
+ModuleVersion = '2.1.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -94,7 +94,7 @@ CmdletsToExport = @()
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzContainerGroupOutboundNetworkDependencyEndpoint', '*'
+AliasesToExport = 'Get-AzContainerGroupOutboundNetworkDependencyEndpoint'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -123,7 +123,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Upgrade API version to 2021-09-01
+  - [Breaking Change] The type of parameter ''LogAnalyticWorkspaceResourceId'' in ''New-AzContainerGroup'' changes from Hashtable to String
+  - [Breaking Change] Parameter ''NetworkProfileId'' in ''New-AzContainerGroup'' is removed, ''Subnet'' and  ''Zone'' are added
+  - [Breaking Change] Parameter ''ReadinessProbeHttpGetHttpHeadersName'' and ''ReadinessProbeHttpGetHttpHeadersValue'' in ''New-AzContainerInstanceObject'' are removed and ''ReadinessProbeHttpGetHttpHeader'' is added as its alternatives
+  - [Breaking Change] Parameter ''LivenessProbeHttpGetHttpHeadersName'' and ''LivenessProbeHttpGetHttpHeadersValue'' in ''New-AzContainerInstanceObject'' are removed and ''LivenessProbeHttpGetHttpHeader'' is added as its alternatives
+  - Added ''Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint'''
 
         # Prerelease string of this module
         Prerelease = 'preview'
