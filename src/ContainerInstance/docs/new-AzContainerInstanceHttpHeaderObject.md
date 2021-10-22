@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceHttpHeaderObject
+online version: https://docs.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceHttpHeaderObject
 schema: 2.0.0
 ---
 
-# new-AzContainerInstanceHttpHeaderObject
+# New-AzContainerInstanceHttpHeaderObject
 
 ## SYNOPSIS
 Create a in-memory object for HttpHeader
@@ -13,7 +13,7 @@ Create a in-memory object for HttpHeader
 ## SYNTAX
 
 ```
-new-AzContainerInstanceHttpHeaderObject -Name <String> [-Value <String>] [<CommonParameters>]
+New-AzContainerInstanceHttpHeaderObject -Name <String> [-Value <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
