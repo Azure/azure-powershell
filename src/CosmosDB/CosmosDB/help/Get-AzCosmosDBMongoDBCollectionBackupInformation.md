@@ -1,38 +1,38 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerbackupinformation
+online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollection
 schema: 2.0.0
 ---
 
-# Get-AzCosmosDBSqlContainerBackupInformation
+# Get-AzCosmosDBMongoDBCollectionBackupInformation
 
 ## SYNOPSIS
-Retrieves the latest restorable timestamp for a sql container.
+Retrieves the latest restorable timestamp for a mongodb collection.
 
 ## SYNTAX
 
 ```
-Get-AzCosmosDBSqlContainerBackupInformation -ResourceGroupName <String> -AccountName <String>
+Get-AzCosmosDBMongoDBCollectionBackupInformation -ResourceGroupName <String> -AccountName <String>
  -DatabaseName <String> -Name <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieves the latest restorable timestamp for a sql container. This is the latest timestamp upto which user can successfully restore this container.
+Retrieves the latest restorable timestamp for a mongodb collection. This is the latest timestamp upto which user can successfully restore this collection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlContainerBackupInformation -ResourceGroupName CosmosDBResourceGroup3668 -AccountName pitr-sql-stage-source -DatabaseName TestDB1 -Name TestCollectionInDB1 -Location "EAST US 2"
+PS C:\> Get-AzCosmosDBMongoDBCollectionBackupInformation -ResourceGroupName CosmosDBResourceGroup3668 -AccountName pitr-sql-stage-source -DatabaseName TestDB1 -Name TestCollectionInDB1 -Location "EAST US 2"
 
 LatestRestorableTimestamp
 -------------------------
 1623042210
 ```
 
-Retrieves the latest restorable timestamp for a sql container. This is the latest timestamp upto which user can successfully restore this container.
+Retrieves the latest restorable timestamp for a mongodb collection. This is the latest timestamp upto which user can successfully restore this collection.
 
 ## PARAMETERS
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Container name.
+Collection name.
 
 ```yaml
 Type: System.String

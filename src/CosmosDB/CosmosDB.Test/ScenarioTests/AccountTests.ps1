@@ -347,7 +347,7 @@ function Test-CosmosDBLocations {
   Assert-NotNull $locationProperties.Id
   Assert-NotNull $locationProperties.Name
   Assert-NotNull $locationProperties.Type
-  Assert-NotNull $locationProperties.SupportsAvailabilityZone
-  Assert-NotNull $locationProperties.IsResidencyRestricted
-  Assert-NotNull $locationProperties.BackupStorageRedundancies
+  Assert-NotNull $locationProperties.Properties.SupportsAvailabilityZone
+  Assert-NotNull $locationProperties.Properties.IsResidencyRestricted
+  Assert-NotNull $locationProperties.Properties.BackupStorageRedundancies
 }

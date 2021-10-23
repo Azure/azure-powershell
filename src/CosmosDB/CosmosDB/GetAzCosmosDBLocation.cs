@@ -20,10 +20,10 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBLocation", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSLocationGetResult))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBLocation"), OutputType(typeof(PSLocationGetResult))]
     public class GetAzCosmosDBLocation : AzureCosmosDBCmdletBase
     {
-        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.LocationHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.LocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
