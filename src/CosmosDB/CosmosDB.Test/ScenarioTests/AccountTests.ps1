@@ -334,15 +334,19 @@ function Test-CosmosDBLocations {
   $locationName = "East US"
 
   $locationsProperties = Get-AzCosmosDBLocation
-  Write-Host $locationsProperties
   foreach ($locationProperty in $locationsProperties) {
-    Assert-NotNull $locationProperty.SupportsAvailabilityZone
-    Assert-NotNull $locationProperty.IsResidencyRestricted
-    Assert-NotNull $locationProperty.BackupStorageRedundancies
+    Assert-NotNull $locationProperty.Id
+    Assert-NotNull $locationProperty.Name
+    Assert-NotNull $locationProperty.Type
+    Assert-NotNull $locationProperty.Properties.SupportsAvailabilityZone
+    Assert-NotNull $locationProperty.Properties.IsResidencyRestricted
+    Assert-NotNull $locationProperty.Properties.BackupStorageRedundancies
   }
 
   $locationProperties = Get-AzCosmosDBLocation -Location $locationName
-  Write-Host $locationProperties
+  Assert-NotNull $locationProperties.Id
+  Assert-NotNull $locationProperties.Name
+  Assert-NotNull $locationProperties.Type
   Assert-NotNull $locationProperties.SupportsAvailabilityZone
   Assert-NotNull $locationProperties.IsResidencyRestricted
   Assert-NotNull $locationProperties.BackupStorageRedundancies

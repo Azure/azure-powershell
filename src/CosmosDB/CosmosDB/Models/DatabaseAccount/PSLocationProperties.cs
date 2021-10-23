@@ -14,46 +14,40 @@
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
+    using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Models;
 
-    public class PSLocationGetResult
+    public class PSLocationProperties
     {
-        public PSLocationGetResult()
+        public PSLocationProperties()
         {
         }
 
-        public PSLocationGetResult(LocationGetResult locationGetResult)
+        public PSLocationProperties(LocationProperties locationProperties)
         {
-            if (locationGetResult == null)
+            if (locationProperties == null)
             {
                 return;
             }
 
-            this.Id = locationGetResult.Id;
-            this.Name = locationGetResult.Name;
-            this.Type = locationGetResult.Type;
-
-            this.Properties = new PSLocationProperties(locationGetResult.Properties);
+            SupportsAvailabilityZone = locationProperties.SupportsAvailabilityZone;
+            IsResidencyRestricted = locationProperties.IsResidencyRestricted;
+            BackupStorageRedundancies = locationProperties.BackupStorageRedundancies;
         }
 
         /// <summary>
-        ///  Gets the unique resource identifier of the database account.
+        ///  Gets flag indicating whether the location supports availability zones or not.
         /// </summary>
-        public string Id { get; set; }
+        public bool? SupportsAvailabilityZone { get; set; }
 
         /// <summary>
-        ///  Gets the name of the database account.
+        ///  Gets flag indicating whether the location is residency sensitive.
         /// </summary>
-        public string Name { get; set; }
+        public bool? IsResidencyRestricted { get; set; }
 
         /// <summary>
-        ///  Gets the type of Azure resource.
+        ///  Gets the properties of available backup storage redundancies.
         /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        ///  Gets or sets cosmos DB location metadata
-        /// </summary>
-        public PSLocationProperties Properties { get; set; }
+        public IList<string> BackupStorageRedundancies { get; set; }
     }
 }
