@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzAdGroup'))
+if(($null -eq $TestName) -or ($TestName -contains 'Add-AzAdAppPermission'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzAdGroup.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Add-AzAdAppPermission.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAdGroup'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzAdGroup' {
-    It 'CreateExpanded' -skip {
+Describe 'Add-AzAdAppPermission' {
+    It 'ObjectIdParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Create' -skip {
+    It 'AppIdParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

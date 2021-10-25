@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Add-AzMgApplicationPassword'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAdAppPermission'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Add-AzMgApplicationPassword.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzAdAppPermission.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzMgApplicationPassword')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Add-AzMgApplicationPassword' {
-    It 'AddExpanded' -skip {
+Describe 'Get-AzAdAppPermission' {
+    It 'ObjectIdParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Add' -skip {
+    It 'AppIdParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
