@@ -224,14 +224,7 @@ function New-AzBotService {
                 }
                 $TemplateFile = [System.IO.Path]::Combine($PSScriptRoot, 'webappv4.template.json')
 
-                if ($PSEdition -eq 'Desktop')
-                {
-                    $AppSecret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ApplicationSecret))
-                }
-                else
-                {
-                    $AppSecret = ConvertFrom-SecureString $ApplicationSecret -AsPlainText
-                }
+                $AppSecret = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $ApplicationSecret
 
                 $Parameter = @{
                     'location' = $Location;
