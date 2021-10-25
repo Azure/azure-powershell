@@ -1,15 +1,15 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraphthroughput
+online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdblocation
 schema: 2.0.0
 ---
 
 # Get-AzCosmosDBLocation
 
 ## SYNOPSIS
-List Azure CosmosDB account and location properties for the locations.
-Get Azure CosmosDB account and location property for a specific location.
+List Azure CosmosDB locations and their properties.
+Get Azure CosmosDB location properties for a specific location.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzCosmosDBLocation [-Location <String>] [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-List Azure CosmosDB account with their location properties. It includes Account Id, Name, Type, SupportsAvailabilityZone, IsResidencyRestricted and BackupStorageRedundancies.
+List Azure CosmosDB locations with their location properties. It includes Location Id, Name, Type, SupportsAvailabilityZone, IsResidencyRestricted and BackupStorageRedundancies.
 
 ## EXAMPLES
 
@@ -95,7 +95,6 @@ PS C:\> Get-AzCosmosDBLocation | ConvertTo-Json
                            "BackupStorageRedundancies":  "Geo Local"
                        }
     }
-    ....
 ]
 ```
 

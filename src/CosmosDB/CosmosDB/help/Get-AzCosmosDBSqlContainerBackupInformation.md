@@ -135,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.Restore.PSBackupInformation
+### Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.Restore.Sql.PSSqlBackupInformation
 
 ## NOTES
 

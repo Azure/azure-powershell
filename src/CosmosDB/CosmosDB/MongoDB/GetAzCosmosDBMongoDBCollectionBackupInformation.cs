@@ -24,7 +24,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollectionBackupInformation", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSSqlBackupInformation))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBCollectionBackupInformation", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSMongoDBBackupInformation))]
     public class GetAzCosmosDBMongoDBCollectionBackupInformation : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             };
 
             BackupInformation backupInformation = CosmosDBManagementClient.MongoDBResources.RetrieveContinuousBackupInformation(ResourceGroupName, AccountName, DatabaseName, Name, continuousBackupRestoreLocation);
-            WriteObject(new PSSqlBackupInformation(backupInformation));
+            WriteObject(new PSMongoDBBackupInformation(backupInformation));
 
             return;
         }

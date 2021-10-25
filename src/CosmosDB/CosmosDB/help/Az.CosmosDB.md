@@ -42,8 +42,7 @@ Gets the CosmosDB Gremlin Graph.
 Gets the throughput of a CosmosDB Gremlin Graph.
 
 ### [Get-AzCosmosDBLocation](Get-AzCosmosDBLocation.md)
-List Azure CosmosDB account and location properties for the locations.
-Get Azure CosmosDB account and location property for a specific location.
+List Azure CosmosDB locations and their properties. Get Azure CosmosDB location properties for a specific location.
 
 ### [Get-AzCosmosDBMongoDBCollection](Get-AzCosmosDBMongoDBCollection.md)
 Gets the CosmosDB MongoDB Collection.
