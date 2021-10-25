@@ -73,10 +73,10 @@ directive:
   #    subject: CapacityReservation
   #  remove: true
   - select: command
-   where:
-     subject: SshPublicKey   
-     verb: New|Remove|Update|Get
-   remove: true
+    where:
+      subject: SshPublicKey   
+      verb: New|Remove|Update|Get
+    remove: true
   - where:
       subject: VirtualMachineRunCommand
     set:
