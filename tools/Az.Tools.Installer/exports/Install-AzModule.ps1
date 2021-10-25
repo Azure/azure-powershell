@@ -52,10 +52,10 @@ function Install-AzModule {
         [Switch]
         ${UseExactAccountVersion},
 
-        [Parameter(ParameterSetName = 'ByPackagePath', Mandatory)]
+        [Parameter(ParameterSetName = 'ByPath', Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]
-        ${PackagePath},
+        ${Path},
 
         [Parameter(HelpMessage = 'Scope to install modules. Accepted values: CurrentUser, AllUser.')]
         [ValidateSet('CurrentUser', 'AllUsers')]
@@ -86,7 +86,7 @@ function Install-AzModule {
             Install-AzModule_Default @PSBoundParameters -Invoker $Invoker
         }
         else {
-            Install-AzModule_ByPackagePath @PSBoundParameters -Invoker $Invoker
+            Install-AzModule_ByPath @PSBoundParameters -Invoker $Invoker
         }
 
         <#

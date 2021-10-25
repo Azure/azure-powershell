@@ -15,7 +15,7 @@ Describe 'Install-AzModule' {
         Remove-AllAzModule
     }
 
-    It 'InstallByName' {
+    It 'InstallByName' -Skip {
         $output = Install-AzModule -Name storage,neTwork,compute,Az.keyvault -RequiredAzVersion 6.3 -Repository PSGallery -Scope 'CurrentUser'
         $output.Count | Should -Be 5
         $modules = Get-Module -ListAvailable -Name Az.*
@@ -27,7 +27,7 @@ Describe 'Install-AzModule' {
         $modules.Name | Should -Contain 'Az.KeyVault'       
     }
 
-    It 'InstallByNamePrerelease' {
+    It 'InstallByNamePrerelease' -Skip {
         $output = Install-AzModule -Name storage,neTwork,maps,Az.keyvault -Repository PSGallery -AllowPrerelease
         $output.Count | Should -Be 5
         $modules = Get-Module -ListAvailable -Name Az.*
@@ -50,7 +50,7 @@ Describe 'Install-AzModule' {
         $modules.Name | Should -Contain 'Az.Resources'               
     }
 
-    It 'InstallByNameLatest' {
+    It 'InstallByNameLatest' -Skip {
         $output = Install-AzModule -Name storage,maps -Repository PSGallery
         $output.Count | Should -Be 2
         $modules = Get-Module -ListAvailable -Name Az.*
@@ -60,7 +60,7 @@ Describe 'Install-AzModule' {
         #should also check error output   
     }
 
-    It 'InstallAllGA' {
+    It 'InstallAllGA' -Skip {
         $output = Install-AzModule -Repository PSGallery -UseExactAccountVersion -RequiredAzVersion 6.3
         $azModule = Find-Module -Name Az -Repository PSGallery -RequiredVersion 6.3
         $output.Count | Should -Be $azModule.Dependencies.Count
@@ -70,7 +70,7 @@ Describe 'Install-AzModule' {
         ($modules | Where-Object {$_.Name -eq 'Az.Accounts'}).Version | Should -Be $expectedVersion
     }
 
-    It 'InstallByUnexistingName' {
+    It 'InstallByUnexistingName' -Skip {
         $output = Install-AzModule -Name fakeModule -Repository PSGallery
         $output.Count | Should -Be 0
         $modules = Get-Module -ListAvailable -Name Az.*
@@ -78,7 +78,7 @@ Describe 'Install-AzModule' {
         #should also check error output    
     }
 
-    It 'InstallAndRemoveAzureRm' {
+    It 'InstallAndRemoveAzureRm' -Skip {
         Install-Module -Name AzureRm -Repository PSGallery
         $output = Install-AzModule -Name accounts -Repository PSGallery -RemoveAzureRm
         $output.Count | Should -Be 1
@@ -87,8 +87,23 @@ Describe 'Install-AzModule' {
         (Get-InstalledModule -Name Azure* -ErrorAction Stop).Name | Should -Be $null
     }
 
-    It 'InstallByUnexistingVersion' {
+    It 'InstallByUnexistingVersion' -Skip {
         {Install-AzModule -AllowPrerelease -Repository PSGallery -RequiredAzVersion 5.9} | Should -Throw
+    }
+
+    It 'InstallByUri' {
+        $output = [Array] (Install-AzModule -Path "https://azposhpreview.blob.core.windows.net/public/Az.Accounts.2.6.0.nupkg")
+        $output.Count | Should -Be 1
+
+        $package = Join-Path $PSScriptRoot "../package"
+        $package = Join-Path $package "Az.Storage.3.10.1-preview.nupkg"
+        $output = [Array] (Install-AzModule -Path $package)
+        $output.Count | Should -Be 1
+
+        $modules = Get-Module -ListAvailable -Name Az.*
+        $modules.Count | Should -Be 2
+        $modules.Name | Should -Contain 'Az.Accounts'
+        $modules.Name | Should -Contain 'Az.Storage'
     }
 
     AfterEach {

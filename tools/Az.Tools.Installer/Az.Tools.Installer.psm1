@@ -39,16 +39,16 @@ using System.Threading.Tasks;
 
 public class ParallelDownloader
 {
-    private HttpClientHandler httpClientHandler = new HttpClientHandler();
-    private HttpClient client = null;
-    private string urlRepository = null;
+    private readonly HttpClientHandler httpClientHandler = new HttpClientHandler();
+    private readonly HttpClient client = null;
+    private readonly string urlRepository = null;
     private readonly CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
 
-    private IList<Task> tasks;
-    private IList<string> modules;
+    private readonly IList<Task> tasks;
+    private readonly IList<string> modules;
 
     private string lastModuleName = null;
-    private Version lastModuleVersion = null;
+    private string lastModuleVersion = null;
 
     public string LastModuleName
     {
@@ -58,7 +58,7 @@ public class ParallelDownloader
         }
     }
 
-    public Version LastModuleVersion
+    public string LastModuleVersion
     {
         get
         {
@@ -96,16 +96,27 @@ public class ParallelDownloader
         File.Copy(src, dest);
     }
 
-    bool ParseFile(string fileName, out string moduleName, out Version moduleVersion)
+    bool ParseFile(string fileName, out string moduleName, out Version moduleVersion, out Boolean preview)
     {
         try
         {
-            Regex pattern = new Regex(@"Az\.(?<moduleName>[a-zA-Z]+)\.(?<moduleVersion>[0-9.]+).nupkg");
+            Regex pattern = new Regex(@"Az\.(?<moduleName>[a-zA-Z]+)\.(?<moduleVersion>[0-9.]+(\-preview)?)\.nupkg");
             Match matches = pattern.Match(fileName);
             if (matches.Groups["moduleName"].Success && matches.Groups["moduleVersion"].Success)
             {
                 moduleName = "Az." + matches.Groups["moduleName"].Value;
-                moduleVersion = Version.Parse(matches.Groups["moduleVersion"].Value);
+                var versionString = matches.Groups["moduleVersion"].Value;
+                if (versionString.Contains('-'))
+                {
+                    var parts = versionString.Split('-');
+                    moduleVersion = Version.Parse(parts[0]);
+                    preview = string.Compare(parts[1], "preview", true) == 0;
+                }
+                else
+                {
+                    moduleVersion = Version.Parse(versionString);
+                    preview = false;
+                }
                 return true;
             }
         }
@@ -114,6 +125,7 @@ public class ParallelDownloader
         }
         moduleName = null;
         moduleVersion = null;
+        preview = false;
         return false;
     }
 
@@ -125,18 +137,20 @@ public class ParallelDownloader
             var fileName = Path.GetFileName(uri.AbsoluteUri);
             string module = null;
             Version version = null;
-            if (!ParseFile(fileName, out module, out version))
+            Boolean preview = false;
+            if (!ParseFile(fileName, out module, out version, out preview))
             {
                 throw new ArgumentException(string.Format("{0} is not a valid Az module nuget package name for installation.", fileName));
             }
-            var nupkgFile = Path.Combine(targetPath, String.Format("{0}.{1}.nupkg", module, version));
+            var nupkgFile = preview ? "{0}.{1}-preview.nupkg": "{0}.{1}.nupkg";
+            nupkgFile = Path.Combine(targetPath, String.Format(nupkgFile, module, version));
             if (uri.IsFile)
             {
-                Copy(uri.AbsoluteUri, nupkgFile);
+                Copy(uri.AbsolutePath, nupkgFile);
             }
             else if(String.Compare(uri.Scheme, "http", true) == 0 || String.Compare(uri.Scheme, "https", true) == 0)
             {
-                Task task = DownloadToFile(uri.AbsoluteUri, nupkgFile.ToString());
+                Task task = DownloadToFile(uri.AbsoluteUri, nupkgFile);
                 tasks.Add(task);
                 modules.Add(module);
             }
@@ -145,7 +159,7 @@ public class ParallelDownloader
                 throw new ArgumentException(string.Format("{0} scheme is not supported.", sourceUri));
             }
             lastModuleName = module;
-            lastModuleVersion = version;
+            lastModuleVersion = string.Format(preview ? "{0}-preview" : "{0}", version);
             return nupkgFile;
         }
         catch (UriFormatException)
@@ -154,14 +168,15 @@ public class ParallelDownloader
         }
     }
 
-    public string Download(string module, Version version, string path)
+    public string Download(string module, Version version, string path, Boolean preview = false)
     {
-        var nupkgFile = Path.Combine(path, String.Format("{0}.{1}.nupkg", module, version));
-        Task task = DownloadToFile(String.Format("{0}/package/{1}/{2}", urlRepository, module, version), nupkgFile.ToString());
+        var nupkgFile = preview ? "{0}.{1}-preview.nupkg" : "{0}.{1}.nupkg";
+        nupkgFile = Path.Combine(path, String.Format(nupkgFile, module, version));
+        Task task = DownloadToFile(String.Format("{0}/package/{1}/{2}", urlRepository, module, version), nupkgFile);
         tasks.Add(task);
         modules.Add(module);
         lastModuleName = module;
-        lastModuleVersion = version;
+        lastModuleVersion = string.Format(preview ? "{0}-preview" : "{0}", version);
         return nupkgFile;
     }
 

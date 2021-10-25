@@ -18,7 +18,7 @@ function Install-SingleModuleFromPackage{
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]
-        ${PackagePath},
+        ${Path},
 
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
@@ -47,7 +47,7 @@ function Install-SingleModuleFromPackage{
         $InstallStarted = Get-Date
         $downloader = [ParallelDownloader]::new()                
         try {
-            $filePath = $downloader.Download($PackagePath, $DestinationPath)
+            $filePath = $downloader.Download($Path, $DestinationPath)
             $moduleName = $downloader.LastModuleName
             $moduleVersion = $downloader.LastModuleVersion
             Write-Debug "[$Invoker] Downloading $moduleName version $moduleVersion."
