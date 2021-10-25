@@ -128,15 +128,14 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 ### Example 3: Connect to Azure using a service principal account
 
-The first command prompts for service principal credentials and stores them in the `$Credential`
-variable. Enter your application ID for the username and service principal secret as the password
-when prompted. The second command connects the specified Azure tenant using the service principal
-credentials stored in the `$Credential` variable. The **ServicePrincipal** switch parameter
-indicates that the account authenticates as a service principal.
+The first command stores the service principal credentials in the `$Credential` variable. The second
+command connects the specified Azure tenant using the service principal credentials stored in the
+`$Credential` variable. The **ServicePrincipal** switch parameter indicates that the account
+authenticates as a service principal.
 
 ```powershell
-$Credential = Get-Credential
-Connect-AzAccount -Credential $Credential -Tenant 'xxxx-xxxx-xxxx-xxxx' -ServicePrincipal
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecuredPassword
+Connect-AzAccount -ServicePrincipal -TenantId $TenantId -Credential $Credential
 ```
 
 ```Output
