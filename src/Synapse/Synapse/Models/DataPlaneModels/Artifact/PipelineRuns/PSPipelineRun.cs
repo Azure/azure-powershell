@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public PSPipelineRun(PipelineRun pipelineRun, string workspaceName)
         {
             this.WorkspaceName = workspaceName;
-            this.Keys = pipelineRun?.Keys;
             this.Message = pipelineRun?.Message;
             this.Status = pipelineRun?.Status;
             this.DurationInMs = pipelineRun?.DurationInMs;
@@ -37,12 +36,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.IsLatest = pipelineRun?.IsLatest;
             this.RunGroupId = pipelineRun?.RunGroupId;
             this.RunId = pipelineRun?.RunId;
-            this.Values = pipelineRun?.Values;
+            this.AdditionalProperties = pipelineRun?.AdditionalProperties;
         }
 
         public string WorkspaceName { get; set; }
-
-        public IEnumerable<string> Keys { get; set; }
 
         public string Message { get; set; }
 
@@ -68,6 +65,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string RunId { get; set; }
 
-        public IEnumerable<object> Values { get; set; }
+        public IReadOnlyDictionary<string, object> AdditionalProperties { get; }
     }
 }

@@ -112,6 +112,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return string.IsNullOrEmpty(match) || this.IsStringMatch(input, match);
         }
 
+        private IEnumerable<Provider> GetProvider(string namespaceMatch)
+        {
+            try
+            {
+                var tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.GetAtTenantScope(resourceProviderNamespace: namespaceMatch, expand: "resourceTypes/aliases");
+                return Enumerable.Repeat(tempResult, 1);
+            }
+            catch (Exception)
+            {
+            }
+
+            return Enumerable.Empty<Provider>();
+        }
+
         private IEnumerable<Provider> GetAllProviders()
         {
             var returnList = new List<Provider>();
@@ -166,10 +180,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         private IEnumerable<PsResourceProviderAlias> GetProviderResourceTypes(bool listAvailable, string namespaceMatch, string resourceTypeMatch, string aliasMatch, string pathMatch, string apiVersionMatch, string locationMatch)
         {
-            var allProviders = this.GetAllProviders();
-            var providers = this.GetMatchingProviders(allProviders, namespaceMatch, resourceTypeMatch);
+            var providers = this.GetProvider(namespaceMatch);
+            if (!providers.Any())
+            {
+                providers = this.GetAllProviders();
+            }
+
+            var matchingProviders = this.GetMatchingProviders(providers, namespaceMatch, resourceTypeMatch);
             var rv = new List<PsResourceProviderAlias>();
-            foreach (var provider in providers)
+            foreach (var provider in matchingProviders)
             {
                 var match = provider.ResourceTypes.Where(r => this.FilterFunction(r, listAvailable, resourceTypeMatch, aliasMatch, pathMatch, apiVersionMatch, locationMatch));
                 rv.AddRange(match.Select(t => new PsResourceProviderAlias { Aliases = t.Aliases, ApiVersions = t.ApiVersions, Locations = t.Locations, Namespace = provider.NamespaceProperty, ResourceType = t.ResourceType }));
