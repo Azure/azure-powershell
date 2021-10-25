@@ -75,7 +75,7 @@ Describe 'Uninstall-AzModule' {
         Uninstall-AzModule -RemoveAzureRm
         $modules = Get-Module -ListAvailable -Name Az.* -Debug
         $modules | Should -Be $null
-        Get-InstalledModule -Name Azure* -ErrorAction Stop | Should -Be $null
+        Get-InstalledModule -Name Azure* -ErrorAction 'Continue' | Should -Be $null
     }
 
     It 'UninstallByUnexistingName' {

@@ -270,9 +270,9 @@ function Normalize-ModuleName {
             }
         } | Sort-Object -Unique
 
-        if ($normalName -and $normalName -notmatch "Az(\.[a-zA-Z0-9]+)?$") {
+        if ($normalName -and $normalName -notmatch "Az(\.[a-zA-Z0-9.]+)?$") {
             $normalName = $null
-            throw "The Name parameter must only contain Az modules."
+            Write-Error "The Name parameter must only contain Az modules." -ErrorAction 'Stop'
         }
 
         if ($normalName -eq 'Az.Az') {

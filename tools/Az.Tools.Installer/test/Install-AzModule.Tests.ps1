@@ -84,7 +84,7 @@ Describe 'Install-AzModule' {
         $output.Count | Should -Be 1
         $modules = Get-Module -ListAvailable -Name Az.*
         $modules.Count | Should -Be 1
-        (Get-InstalledModule -Name Azure* -ErrorAction Stop).Name | Should -Be $null
+        Get-InstalledModule -Name Azure* -ErrorAction 'Continue' | Should -Be $null
     }
 
     It 'InstallByUnexistingVersion' -Skip {
