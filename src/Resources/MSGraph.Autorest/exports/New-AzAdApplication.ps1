@@ -182,6 +182,7 @@ param(
     ${ReplyUrls},
 
     [Parameter()]
+    [Alias('IdentifierUris')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]

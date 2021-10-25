@@ -22,6 +22,8 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 .Outputs
 System.Boolean
 .Notes
@@ -293,7 +295,7 @@ param(
     # key: application id
     ${ApplicationId},
 
-    [Parameter(ParameterSetName='InputObjectWithUpdateParamsParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='InputObjectWithUpdateParamsParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     # key: application object

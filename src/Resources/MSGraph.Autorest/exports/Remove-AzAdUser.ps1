@@ -20,6 +20,8 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 .Outputs
 System.Boolean
 .Notes
@@ -104,7 +106,7 @@ param(
     # user display name
     ${DisplayName},
 
-    [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser]
     # user input object

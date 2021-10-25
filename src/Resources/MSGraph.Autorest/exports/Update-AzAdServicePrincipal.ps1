@@ -22,6 +22,8 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 .Outputs
 System.Boolean
 .Notes
@@ -651,7 +653,7 @@ param(
     # The unique identifier for the associated application (its appId property).
     ${ApplicationId},
 
-    [Parameter(ParameterSetName='InputObjectWithDisplayNameParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='InputObjectWithDisplayNameParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
     # service principal object

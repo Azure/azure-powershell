@@ -90,19 +90,6 @@ function Update-AzAdUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
 [CmdletBinding(DefaultParameterSetName='UPNOrObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter()]
-    [Alias('UPN')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # The user principal name (UPN) of the user.
-    # The UPN is an Internet-style login name for the user based on the Internet standard RFC 822.
-    # By convention, this should map to the user's email name.
-    # The general format is alias@domain, where domain must be present in the tenant's collection of verified domains.
-    # This property is required when a user is created.
-    # The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user.
-    # Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.
-    ${UserPrincipalName},
-
     [Parameter(ParameterSetName='UPNOrObjectIdParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
@@ -407,6 +394,19 @@ param(
     # user input object
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UPNParameterSet', Mandatory)]
+    [Alias('UPN')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # The user principal name (UPN) of the user.
+    # The UPN is an Internet-style login name for the user based on the Internet standard RFC 822.
+    # By convention, this should map to the user's email name.
+    # The general format is alias@domain, where domain must be present in the tenant's collection of verified domains.
+    # This property is required when a user is created.
+    # The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user.
+    # Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.
+    ${UserPrincipalName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

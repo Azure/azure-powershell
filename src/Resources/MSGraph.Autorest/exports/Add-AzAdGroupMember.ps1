@@ -18,9 +18,13 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Example
-{{ Add code here }}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 .Example
-{{ Add code here }}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
