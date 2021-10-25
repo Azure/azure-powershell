@@ -23,19 +23,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     public sealed class RequestPredictionTelemetryData : ITelemetryData
     {
+        /// <summary>
+        /// The telemetry property name for "HttpRequestSent".
+        /// </summary>
+        public const string PropertyNameHttpRequestSent = "HttpRequestSent";
+
+        /// <inheritdoc/>
+        public PredictionClient Client { get; init; }
+
         /// <inheritdoc/>
         string ITelemetryData.CommandId { get; set; }
 
         /// <inheritdoc/>
         string ITelemetryData.RequestId { get; set; }
-
-        /// <inheritdoc/>
-        string ITelemetryData.SessionId { get; set; }
-
-        /// <summary>
-        /// Gets client that makes the calls.
-        /// </summary>
-        public PredictionClient Client { get; init; }
 
         /// <summary>
         /// Gets the masked command lines that are used to request prediction.

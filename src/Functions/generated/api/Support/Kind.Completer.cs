@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Storage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Storage", "Storage", global::System.Management.Automation.CompletionResultType.ParameterValue, "Storage");
+                yield return new global::System.Management.Automation.CompletionResult("'Storage'", "Storage", global::System.Management.Automation.CompletionResultType.ParameterValue, "Storage");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StorageV2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StorageV2", "StorageV2", global::System.Management.Automation.CompletionResultType.ParameterValue, "StorageV2");
+                yield return new global::System.Management.Automation.CompletionResult("'StorageV2'", "StorageV2", global::System.Management.Automation.CompletionResultType.ParameterValue, "StorageV2");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BlobStorage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BlobStorage", "BlobStorage", global::System.Management.Automation.CompletionResultType.ParameterValue, "BlobStorage");
+                yield return new global::System.Management.Automation.CompletionResult("'BlobStorage'", "BlobStorage", global::System.Management.Automation.CompletionResultType.ParameterValue, "BlobStorage");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FileStorage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FileStorage", "FileStorage", global::System.Management.Automation.CompletionResultType.ParameterValue, "FileStorage");
+                yield return new global::System.Management.Automation.CompletionResult("'FileStorage'", "FileStorage", global::System.Management.Automation.CompletionResultType.ParameterValue, "FileStorage");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BlockBlobStorage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BlockBlobStorage", "BlockBlobStorage", global::System.Management.Automation.CompletionResultType.ParameterValue, "BlockBlobStorage");
+                yield return new global::System.Management.Automation.CompletionResult("'BlockBlobStorage'", "BlockBlobStorage", global::System.Management.Automation.CompletionResultType.ParameterValue, "BlockBlobStorage");
             }
         }
     }

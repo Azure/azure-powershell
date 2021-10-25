@@ -13,11 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -27,21 +24,16 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Name = notebookKernelSpec?.Name;
             this.DisplayName = notebookKernelSpec?.DisplayName;
-            var propertiesEnum = notebookKernelSpec?.GetEnumerator();
-            if (propertiesEnum != null)
-            {
-                this.AdditionalProperties = new Dictionary<string, object>();
-                while (propertiesEnum.MoveNext())
-                {
-                    this.AdditionalProperties.Add(propertiesEnum.Current);
-                }
-            }
+            this.AdditionalProperties = notebookKernelSpec?.AdditionalProperties;
         }
 
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
+        [JsonProperty(PropertyName = "display_name")]
         public string DisplayName { get; set; }
 
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalProperties { get; set; }
     }
 }

@@ -271,10 +271,14 @@ function New-AzFunctionApp {
 
             ValidateFunctionsVersion -FunctionsVersion $FunctionsVersion
 
-            if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
+            if ($FunctionsVersion -eq "3")
             {
-                Write-Verbose "'DotNet' runtime version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to '$FunctionsVersion'." -Verbose
-                $RuntimeVersion = $FunctionsVersion
+                # In Functions V3, RuntimeVersion matches FunctionsVersion. However, this is no longer the case for Functions V4 or higher
+                if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
+                {
+                    Write-Verbose "'DotNet' runtime version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to '$FunctionsVersion'." -Verbose
+                    $RuntimeVersion = $FunctionsVersion
+                }
             }
 
             if (-not $OSType)

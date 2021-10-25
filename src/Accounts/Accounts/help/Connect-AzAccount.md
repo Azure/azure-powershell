@@ -45,6 +45,14 @@ Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -Appli
  [<CommonParameters>]
 ```
 
+### ClientAssertionParameterSet
+```
+Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrincipal] -Tenant <String>
+ [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
+ [-Force] -FederatedToken <String> [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ServicePrincipalCertificateFileWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrincipal] -Tenant <String>
@@ -302,7 +310,7 @@ Application ID of the service principal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ClientAssertionParameterSet, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases:
 
 Required: True
@@ -440,6 +448,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FederatedToken
+Specifies a token provided by another identity provider. The issuer and subject in this token must be first configured to be trusted by the ApplicationId.
+
+> [!CAUTION]
+> Federated tokens are a type of credential. You should take the appropriate security precautions to keep them confidential. Federated tokens also timeout and may prevent long running tasks from completing.
+
+```yaml
+Type: System.String
+Parameter Sets: ClientAssertionParameterSet
+Aliases: ClientAssertion
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 
 Overwrite the existing context with the same name without prompting.
@@ -571,7 +597,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ClientAssertionParameterSet, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases:
 
 Required: False
@@ -651,7 +677,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId, ClientAssertionParameterSet, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases: Domain, TenantId
 
 Required: True

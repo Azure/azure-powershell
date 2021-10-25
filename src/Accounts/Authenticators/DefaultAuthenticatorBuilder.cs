@@ -32,6 +32,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             AppendAuthenticator(() => { return new ServicePrincipalAuthenticator(); });
             AppendAuthenticator(() => { return new SilentAuthenticator(); });
             AppendAuthenticator(() => { return new ManagedServiceIdentityAuthenticator(); });
+            AppendAuthenticator(() => { return new ClientAssertionAuthenticator(); });
             AppendAuthenticator(() => { return new AccessTokenAuthenticator(); });
         }
 

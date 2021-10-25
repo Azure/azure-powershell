@@ -86,29 +86,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolIdentity"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal DiskPoolIdentity(global::System.Management.Automation.PSObject content)
-        {
-            bool returnNow = false;
-            BeforeDeserializePSObject(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).DiskPoolName = (string) content.GetValueForProperty("DiskPoolName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).DiskPoolName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).IscsiTargetName = (string) content.GetValueForProperty("IscsiTargetName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).IscsiTargetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Id, global::System.Convert.ToString);
-            AfterDeserializePSObject(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolIdentity"
         /// />.
         /// </summary>
@@ -129,6 +106,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
             ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).IscsiTargetName = (string) content.GetValueForProperty("IscsiTargetName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).IscsiTargetName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Id, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolIdentity"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        internal DiskPoolIdentity(global::System.Management.Automation.PSObject content)
+        {
+            bool returnNow = false;
+            BeforeDeserializePSObject(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).DiskPoolName = (string) content.GetValueForProperty("DiskPoolName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).DiskPoolName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Location, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).IscsiTargetName = (string) content.GetValueForProperty("IscsiTargetName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).IscsiTargetName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Id, global::System.Convert.ToString);
+            AfterDeserializePSObject(content);
         }
 
         /// <summary>

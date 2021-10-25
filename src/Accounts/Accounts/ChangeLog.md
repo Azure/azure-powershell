@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 2.6.0
+* Added `-FederatedToken` on `Connect-AzAccount`
+* Updated Azure.Core from 1.19.0 to 1.20.0.
+
 ## Version 2.5.4
 * Supported getting the access token for Microsoft Graph.
 * Added AuthorizeRequestDelegate to allow service module to adjust token audience.

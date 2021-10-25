@@ -35,5 +35,5 @@ jobs:
     inputs:
       targetType: inline
       script: >-
-        ./tools/BranchSync/BranchSync.ps1 -BranchName $(BranchName) -GithubToken $env:GITHUB_TOKEN
+        ./tools/SyncFromMainBranch.ps1 -BranchName $(BranchName) -GithubToken $env:GITHUB_TOKEN
       pwsh: true
