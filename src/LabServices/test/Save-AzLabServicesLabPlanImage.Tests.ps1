@@ -18,9 +18,8 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 . ($loadVarsPath)
 
 Describe 'Save-AzLabServicesLabPlanImage' {
-    It 'Save' {
-        $vmId = "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)/virtualMachines/0"
-        {Save-AzLabServicesLabPlanImage -LabPlanName $ENV:LabPlanName -ResourceGroupName $ENV:ResourceGroupName -Name 'UnitTestSave' -LabVirtualMachineId $vmId} | Should -Not -Throw
+    It 'Save' {        
+        {Save-AzLabServicesLabPlanImage -LabPlanName $ENV:LabPlanName -ResourceGroupName $ENV:ResourceGroupName -Name 'UnitTestSave' -LabVirtualMachineId "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)/virtualMachines/0"} | Should -Not -Throw
     }
 
 }

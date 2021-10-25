@@ -92,6 +92,7 @@ function Send-AzLabServicesUserInvite_ResourceId {
     
     process {
         $resourceHash = & $PSScriptRoot\Utilities\HandleUserResourceId.ps1 -ResourceId $ResourceId
+        $PSBoundParameters.Remove("SubscriptionId")
         if ($resourceHash) {
             $resourceHash.Keys | ForEach-Object {
                 $PSBoundParameters.Add($_, $($resourceHash[$_]))

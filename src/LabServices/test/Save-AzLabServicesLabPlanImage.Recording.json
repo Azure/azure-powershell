@@ -17,39 +17,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview\u0026monitor=true" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "Location": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview\u0026monitor=true" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH25:00000019" ],
-        "x-ms-correlation-request-id": [ "2e5c581b-22bc-4557-b730-73d63bb16f70" ],
-        "traceparent": [ "00-9e5303cdd5bda94a98b0ac0112484e7a-483a7eeb78bc0b3a-01" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview" ],
-        "Operation-Location": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLQU:00000001" ],
+        "x-ms-correlation-request-id": [ "d2a708f0-da32-4f6d-a778-24cf03f4b6be" ],
+        "traceparent": [ "00-f358900b4dabb641860c5a5f25b5f23e-45003708fd90329a-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview" ],
+        "Operation-Location": [ "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T202810Z:2e5c581b-22bc-4557-b730-73d63bb16f70" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T220958Z:d2a708f0-da32-4f6d-a778-24cf03f4b6be" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:28:09 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:09:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+2": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "165" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -63,36 +63,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11921" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH25:0000001A" ],
-        "x-ms-correlation-request-id": [ "e84e83e2-2554-415a-bc94-e049b3c328cf" ],
-        "traceparent": [ "00-b31835150682f443895ecebcb5375d43-429afb2da397c355-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7V8:00000002" ],
+        "x-ms-correlation-request-id": [ "2ffe49f7-82cf-4c35-ace0-ff213a5945a6" ],
+        "traceparent": [ "00-582b723732ac9c4392d94b9f55022828-15f1d4900bffdf79-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T202840Z:e84e83e2-2554-415a-bc94-e049b3c328cf" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221028Z:2ffe49f7-82cf-4c35-ace0-ff213a5945a6" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:28:39 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:10:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+3": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "166" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -106,36 +106,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11920" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKBC:0000001C" ],
-        "x-ms-correlation-request-id": [ "faaac583-916a-460d-911c-2d4aab051a1b" ],
-        "traceparent": [ "00-56e1f803cff0444ab33a22d578bc83f7-2257f2dd7999adab-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLQT:00000004" ],
+        "x-ms-correlation-request-id": [ "b8f458f8-408e-46f3-bfbf-c3953634d559" ],
+        "traceparent": [ "00-f51bf0af54c4734580bae6b473248c7b-e7ec2b9e64ccd7ff-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T202910Z:faaac583-916a-460d-911c-2d4aab051a1b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221058Z:b8f458f8-408e-46f3-bfbf-c3953634d559" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:29:09 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:10:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+4": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "167" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -149,36 +149,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH25:0000001D" ],
-        "x-ms-correlation-request-id": [ "7ca41db7-d4a3-4a0a-ab52-b6a7b97558b5" ],
-        "traceparent": [ "00-22119ba51cce6a41827658f27673dee6-04bc9a6d51e79197-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLQT:00000006" ],
+        "x-ms-correlation-request-id": [ "f648ab66-8f12-43fc-a879-9e1b499d1b53" ],
+        "traceparent": [ "00-15bb179d8e12ad4b8e8956c9cb8c1a4d-0c6e372948a627c0-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T202940Z:7ca41db7-d4a3-4a0a-ab52-b6a7b97558b5" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221128Z:f648ab66-8f12-43fc-a879-9e1b499d1b53" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:29:39 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:11:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+5": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "168" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -192,36 +192,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11918" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKBC:0000001E" ],
-        "x-ms-correlation-request-id": [ "2f9666d9-397e-4048-846f-ad19b9c436ae" ],
-        "traceparent": [ "00-cbb41b43c96a0c4b96e2f4dcaf1f10d6-148f1a0eaf447767-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7V8:00000006" ],
+        "x-ms-correlation-request-id": [ "af2aec91-cc2b-4eaf-bb35-d47c94b55635" ],
+        "traceparent": [ "00-fe2980bd932eee4091abbe0896aaa07f-cf3aae6d6a33024d-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203010Z:2f9666d9-397e-4048-846f-ad19b9c436ae" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221159Z:af2aec91-cc2b-4eaf-bb35-d47c94b55635" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:30:10 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:11:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+6": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "169" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -235,36 +235,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11917" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKBC:0000001F" ],
-        "x-ms-correlation-request-id": [ "09f22281-429a-426b-acbe-5d2645a08f97" ],
-        "traceparent": [ "00-9826fd760e58da42888ddd88524cf3f1-af3f7ba058a11fd5-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7V8:00000008" ],
+        "x-ms-correlation-request-id": [ "0f54db31-dcfb-4bef-87e6-958c2aca72aa" ],
+        "traceparent": [ "00-368b2cae29dfca41be866c9dd3a8ac67-8d20f70678a60aa1-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203040Z:09f22281-429a-426b-acbe-5d2645a08f97" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221229Z:0f54db31-dcfb-4bef-87e6-958c2aca72aa" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:30:40 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:12:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+7": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "170" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -278,36 +278,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11916" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH25:0000001F" ],
-        "x-ms-correlation-request-id": [ "3a437968-699a-4713-ac0d-ce2b326246e6" ],
-        "traceparent": [ "00-814f7193b1dfbb4b97ada73ebf49e9b1-32db82d963b5864d-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLQT:0000000A" ],
+        "x-ms-correlation-request-id": [ "66ddd08f-9f07-4a36-a630-a38541a6face" ],
+        "traceparent": [ "00-709780d18680c6478582acda0353a6cc-9b026ad07ae1d6b3-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203110Z:3a437968-699a-4713-ac0d-ce2b326246e6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221259Z:66ddd08f-9f07-4a36-a630-a38541a6face" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:31:10 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:12:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+8": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "171" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -321,36 +321,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11915" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH25:00000020" ],
-        "x-ms-correlation-request-id": [ "216a2c30-cca1-4d81-8d67-241e72a8d192" ],
-        "traceparent": [ "00-79a7181695398342a1a578238e14258a-5e0688a7b506e5be-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7V8:0000000B" ],
+        "x-ms-correlation-request-id": [ "60d4bf6b-fbc2-4156-9662-3285dcedf745" ],
+        "traceparent": [ "00-5aaca4b9f4a8f44bbb990e47348fd836-578817a8c2579e2e-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203141Z:216a2c30-cca1-4d81-8d67-241e72a8d192" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221329Z:60d4bf6b-fbc2-4156-9662-3285dcedf745" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:31:40 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:13:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+9": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "172" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -364,36 +364,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11914" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKBC:00000021" ],
-        "x-ms-correlation-request-id": [ "cea90afd-4aee-4a94-95f0-3a7843e513dc" ],
-        "traceparent": [ "00-8a10e0c6b3a57347b7c9bcd8668046dd-b968d89436bcf1aa-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7V8:0000000C" ],
+        "x-ms-correlation-request-id": [ "54957c44-4242-45ad-9b17-ade94903b789" ],
+        "traceparent": [ "00-5889761ba677214b8358d1964fdd7d55-72663f54ed2b37e0-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203211Z:cea90afd-4aee-4a94-95f0-3a7843e513dc" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221359Z:54957c44-4242-45ad-9b17-ade94903b789" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:32:10 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:13:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+10": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "173" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -407,36 +407,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11913" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH2A:00000001" ],
-        "x-ms-correlation-request-id": [ "2d08ddb1-7116-4da2-bcff-64eb30c72d51" ],
-        "traceparent": [ "00-fa99998d7ea6f14d95c8bd9c57452540-a063b363a88c5330-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7V8:0000000D" ],
+        "x-ms-correlation-request-id": [ "1beb35a5-4b1b-4f31-aff4-7960db76ef2f" ],
+        "traceparent": [ "00-acd9406910638b479152085633659619-3372c5d2b1a51405-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203241Z:2d08ddb1-7116-4da2-bcff-64eb30c72d51" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221429Z:1beb35a5-4b1b-4f31-aff4-7960db76ef2f" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:32:41 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:14:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+11": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "174" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -450,36 +450,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11912" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH2A:00000002" ],
-        "x-ms-correlation-request-id": [ "0df3b2d5-8cc7-438d-8271-c469ed6f7768" ],
-        "traceparent": [ "00-080027edbda21648935e0c5e439eccce-54de5a2ea02dbd95-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7V8:0000000E" ],
+        "x-ms-correlation-request-id": [ "dc32112e-36a3-48ca-813b-c9e154968ac6" ],
+        "traceparent": [ "00-37e632ba088a6648bf5dd2cfd83b03ee-2385257bb91128c5-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203311Z:0df3b2d5-8cc7-438d-8271-c469ed6f7768" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221459Z:dc32112e-36a3-48ca-813b-c9e154968ac6" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:33:11 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:14:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+12": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "175" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -493,36 +493,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11911" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH2A:00000003" ],
-        "x-ms-correlation-request-id": [ "02320e3b-3d4a-4f33-8214-156b06563d21" ],
-        "traceparent": [ "00-c6807db4571d624e8df589588bd9ce67-c1897585be238b40-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7V8:0000000F" ],
+        "x-ms-correlation-request-id": [ "6a69d80a-7566-40b7-b200-0f4cc69366e4" ],
+        "traceparent": [ "00-61fe34df07a8bc46a2dcdcbb49c6dddc-b95a49eec1f0cade-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203341Z:02320e3b-3d4a-4f33-8214-156b06563d21" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221529Z:6a69d80a-7566-40b7-b200-0f4cc69366e4" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:33:40 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:15:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+13": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "176" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -536,36 +536,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11910" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH2A:00000004" ],
-        "x-ms-correlation-request-id": [ "4c19e769-e3bc-4a6a-988d-efe0467c157b" ],
-        "traceparent": [ "00-bf0879fb812d1646b9bf1452a75594ab-31c90ed031e253eb-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLR0:00000003" ],
+        "x-ms-correlation-request-id": [ "f7d0d3e1-0ce7-46fd-9286-a4dac314087c" ],
+        "traceparent": [ "00-a388c0b638a55849ad6fd07a9d191159-876a94013ecccc59-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203411Z:4c19e769-e3bc-4a6a-988d-efe0467c157b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221600Z:f7d0d3e1-0ce7-46fd-9286-a4dac314087c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:34:10 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:16:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+14": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "177" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -579,36 +579,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11909" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH2A:00000005" ],
-        "x-ms-correlation-request-id": [ "cc01ea71-275b-4e62-bda9-1548a7dd6c0d" ],
-        "traceparent": [ "00-0fa3438d6075ff41879418788ff0246e-589c529e3b704b8a-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7VB:00000005" ],
+        "x-ms-correlation-request-id": [ "51f080f4-f31f-4475-8468-4258dff086cc" ],
+        "traceparent": [ "00-f9daa4d34596b748bb28a197515ef3f1-cb4ca9dd5baa9b62-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203441Z:cc01ea71-275b-4e62-bda9-1548a7dd6c0d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221630Z:51f080f4-f31f-4475-8468-4258dff086cc" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:34:41 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:16:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+15": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "178" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -622,36 +622,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11908" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH2A:00000006" ],
-        "x-ms-correlation-request-id": [ "7aca8b93-fe53-4e81-b8e6-b93ae74d81da" ],
-        "traceparent": [ "00-2bcedb094bbcc04aa6fc263bc7f5e7ef-3f2b7672624db53f-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLR0:00000006" ],
+        "x-ms-correlation-request-id": [ "9d4ed8f2-431d-4d41-b9d7-e70520450626" ],
+        "traceparent": [ "00-737e1711b3a8574a8f2d194233a57de0-50c54efde5fa279d-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203511Z:7aca8b93-fe53-4e81-b8e6-b93ae74d81da" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221700Z:9d4ed8f2-431d-4d41-b9d7-e70520450626" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:35:11 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:16:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+16": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "179" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -665,36 +665,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11907" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKBC:00000027" ],
-        "x-ms-correlation-request-id": [ "3ed7cadc-57ee-4dd4-a20f-be23f67a3385" ],
-        "traceparent": [ "00-030b16b2826ea64cbe894cf6d76a190b-97997db9b6a13814-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLR0:00000007" ],
+        "x-ms-correlation-request-id": [ "a4a78eb2-23ea-4044-8ac2-6ffebb2b30f1" ],
+        "traceparent": [ "00-22fbaff134301c4ab84f8ae066dfd1e5-a558afd1a9e12b5d-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203542Z:3ed7cadc-57ee-4dd4-a20f-be23f67a3385" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221730Z:a4a78eb2-23ea-4044-8ac2-6ffebb2b30f1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:35:41 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:17:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+17": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "180" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -708,36 +708,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11906" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKBH:00000005" ],
-        "x-ms-correlation-request-id": [ "ab5efe3d-7a73-4d22-aef0-dda2d32d7ae0" ],
-        "traceparent": [ "00-76d7d489c437ed4fa945e85fb10850e8-966dc433e696be72-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLR0:00000008" ],
+        "x-ms-correlation-request-id": [ "65bb687c-77f0-43ea-8477-70b61e09e65e" ],
+        "traceparent": [ "00-8d772e28bf463b4a9d0078bfde195fb9-30ec6f9ec536271d-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203612Z:ab5efe3d-7a73-4d22-aef0-dda2d32d7ae0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221800Z:65bb687c-77f0-43ea-8477-70b61e09e65e" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:36:11 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:17:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+18": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "181" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -751,36 +751,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11905" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKBH:00000006" ],
-        "x-ms-correlation-request-id": [ "4723afe9-a68a-4907-8c89-9cb64abbd319" ],
-        "traceparent": [ "00-9603d5aed0e38d459a89150aec82fc9c-f63381f16a99f99a-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7VB:0000000A" ],
+        "x-ms-correlation-request-id": [ "9982f283-63dd-4645-8b65-5814be3dc335" ],
+        "traceparent": [ "00-45c1552ed70ca049ba1637924a2d597f-cb8459166b332d6a-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203642Z:4723afe9-a68a-4907-8c89-9cb64abbd319" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221830Z:9982f283-63dd-4645-8b65-5814be3dc335" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:36:42 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:18:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+19": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+19": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "182" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -794,36 +794,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11904" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKBH:00000007" ],
-        "x-ms-correlation-request-id": [ "d7d057c2-4ea5-459e-80de-724de0b4e215" ],
-        "traceparent": [ "00-dd1f8e3499a18d41abb39d77a103ba22-414e974d631e9728-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLR0:0000000B" ],
+        "x-ms-correlation-request-id": [ "852d29fe-ec55-4353-b132-2490c649c0e5" ],
+        "traceparent": [ "00-a626949015fa584b9dead52a63bc7485-c7561c634b36f4b9-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203712Z:d7d057c2-4ea5-459e-80de-724de0b4e215" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221900Z:852d29fe-ec55-4353-b132-2490c649c0e5" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:37:12 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:19:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+20": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+20": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "183" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -837,36 +837,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11903" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH2B:00000009" ],
-        "x-ms-correlation-request-id": [ "9f2ff70c-7168-4308-8859-db5652b4d2e1" ],
-        "traceparent": [ "00-9ccfcd164b39734bbd4c9f80f522fb1e-60daceda776477aa-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7VB:0000000D" ],
+        "x-ms-correlation-request-id": [ "d11da282-83bb-4cc9-8db7-98602984b4cd" ],
+        "traceparent": [ "00-99fd190dae8b3441b7630b5e3c21dbb2-602f1053d1a21b5b-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203742Z:9f2ff70c-7168-4308-8859-db5652b4d2e1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T221931Z:d11da282-83bb-4cc9-8db7-98602984b4cd" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:37:42 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:19:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"InProgress\",\"startTime\":\"2021-10-22T20:28:09.9093635\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"InProgress\",\"startTime\":\"2021-10-25T22:09:58.2651362\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview+21": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview+21": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "184" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -880,36 +880,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11902" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH2B:0000000A" ],
-        "x-ms-correlation-request-id": [ "5d7f23e1-bca5-4e60-b7eb-66b1a43cd467" ],
-        "traceparent": [ "00-40b704c242b7bc40bc87d481315be832-ceff2ba3f6bb9405-01" ],
+        "x-ms-request-id": [ "0HMCNTDL2N7VB:0000000F" ],
+        "x-ms-correlation-request-id": [ "377e437c-49ae-4bbf-981b-05d8203f33bd" ],
+        "traceparent": [ "00-d0c831f267177942b39d6d9e88ca23b3-9c68ff586da80c81-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203813Z:5d7f23e1-bca5-4e60-b7eb-66b1a43cd467" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T222001Z:377e437c-49ae-4bbf-981b-05d8203f33bd" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:38:12 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:20:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "319" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-22T20:28:09.9093635\",\"endTime\":\"2021-10-22T20:38:09.8174886\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-25T22:09:58.2651362\",\"endTime\":\"2021-10-25T22:19:58.9139003\"}",
       "isContentBase64": false
     }
   },
-  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview\u0026monitor=true+22": {
+  "Save-AzLabServicesLabPlanImage+[NoContext]+Save+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview\u0026monitor=true+22": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292?api-version=2021-10-01-preview\u0026monitor=true",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795?api-version=2021-10-01-preview\u0026monitor=true",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "185" ],
-        "x-ms-client-request-id": [ "3145b4fa-6023-4725-92e2-11b5863a661e" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "d21159d2-e022-4513-8a9e-96959bfa36a5" ],
         "CommandName": [ "Save-AzLabServicesLabPlanImage" ],
         "FullCommandName": [ "Save-AzLabServicesLabPlanImage_SaveExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -923,23 +923,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11901" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKBH:0000000A" ],
-        "x-ms-correlation-request-id": [ "02732239-218e-4842-a47c-c7694b6db3a8" ],
-        "traceparent": [ "00-8337c4b876f8ca49bb769fae6994ab83-00aabbcc51277b8e-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLR0:0000000F" ],
+        "x-ms-correlation-request-id": [ "95744eb3-18a0-4659-a0be-e832b4899e34" ],
+        "traceparent": [ "00-526d3097817bdc41b3c1c4a40b0324c6-85e75f53205c58e2-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T203813Z:02732239-218e-4842-a47c-c7694b6db3a8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T222001Z:95744eb3-18a0-4659-a0be-e832b4899e34" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 20:38:12 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 22:20:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "319" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/1d9218af-c0f8-46c5-afbd-7c7495606292\",\"name\":\"1d9218af-c0f8-46c5-afbd-7c7495606292\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-22T20:28:09.9093635\",\"endTime\":\"2021-10-22T20:38:09.8174886\"}",
+      "Content": "{\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/locations/westcentralus/operationResults/7f913815-2af5-4790-ab9a-5665d8f29795\",\"name\":\"7f913815-2af5-4790-ab9a-5665d8f29795\",\"status\":\"Succeeded\",\"startTime\":\"2021-10-25T22:09:58.2651362\",\"endTime\":\"2021-10-25T22:19:58.9139003\"}",
       "isContentBase64": false
     }
   }

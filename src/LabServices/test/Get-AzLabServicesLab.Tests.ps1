@@ -35,8 +35,7 @@ Describe 'Get-AzLabServicesLab' {
     }
     
     It 'ResourceId' {        
-        $resourceId = "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)"
-        Get-AzLabServicesLab -ResourceId $resourceId | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabName)}"
+        Get-AzLabServicesLab -ResourceId "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)" | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabName)}"
     }
 
     It 'Name with wildcard' {

@@ -117,6 +117,7 @@ param(
 
 process {
     $resourceHash = & $PSScriptRoot\Utilities\HandleScheduleResourceId.ps1 -ResourceId $ResourceId
+    $PSBoundParameters.Remove("SubscriptionId")
     if ($resourceHash) {
         $resourceHash.Keys | ForEach-Object {
             $PSBoundParameters.Add($_, $($resourceHash[$_]))
