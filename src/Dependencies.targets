@@ -3,6 +3,7 @@
   <PropertyGroup>
     <IncludeSource>True</IncludeSource>
     <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <ItemGroup Condition="'$(OmitJsonPackage)' != 'true'">
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
