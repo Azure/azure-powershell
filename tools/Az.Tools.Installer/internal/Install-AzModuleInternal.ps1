@@ -88,7 +88,7 @@ function Install-AzModuleInternal {
                     $file = $null
                     foreach($file in $fileList) {
                         if (!(Test-Path -Path $file.Path)) {
-                            Write-Error "[$Invoker] Fail to download $($file.Name) to $tempRepo. Please check your network connection and retry." -ErrorAction 'Stop'
+                            Throw "[$Invoker] Fail to download $($file.Name) to $tempRepo. Please check your network connection and retry."
                         }
                     }
                     $durationInstallation = (Get-Date) - $InstallStarted
@@ -213,11 +213,11 @@ function Install-AzModuleInternal {
                         $runningJob = @()
                         $runningJob += Get-Job -State Running
                         if ($runningJob -and ($runningJob.Count -ge $maxJobCount)) {
-                            Get-Job -State Running | Wait-Job -Any -Timeout 120
+                            Get-Job -State Running | Wait-Job -Any -Timeout 120 | Out-Null
                             $runningJob = @()
                             $runningJob += Get-Job -State Running
                             if ($runningJob -and ($runningJob.Count -ge $maxJobCount)) {
-                                Write-Error "[$Invoker] You have enough background jobs currently. Please use 'Get-Job -State Running' to check them." -ErrorAction 'Stop'
+                                Throw "[$Invoker] You have enough background jobs currently. Please use 'Get-Job -State Running' to check them."
                             }
                         }
                         $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module $($module.Name) version $($module.Version)", "$($module.Name) version $($module.Version)", "Install")

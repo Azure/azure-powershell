@@ -89,7 +89,7 @@ function Uninstall-AzModule {
                 $moduleToUninstall = $moduleToUninstall | Where-Object {$ExcludeModule -NotContains $_.Name}
                 $modulesNotInstalled = $ExcludeModule | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
                 if ($modulesNotInstalled) {
-                    Write-Error "[$Invoker] $modulesNotInstalled are not installed." -ErrorAction 'Stop'
+                    Throw "[$Invoker] $modulesNotInstalled are not installed."
                 }
             }
         }

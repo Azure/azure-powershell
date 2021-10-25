@@ -272,7 +272,7 @@ function Normalize-ModuleName {
 
         if ($normalName -and $normalName -notmatch "Az(\.[a-zA-Z0-9.]+)?$") {
             $normalName = $null
-            Write-Error "The Name parameter must only contain Az modules." -ErrorAction 'Stop'
+            Throw "The Name parameter must only contain Az modules."
         }
 
         if ($normalName -eq 'Az.Az') {
@@ -317,7 +317,7 @@ function Get-AzModuleFromRemote {
         $azModule = "Az"
         if ($AllowPrerelease) {
             if ($RequiredVersion -and $RequiredVersion -lt [Version] "6.0") {
-                Write-Error "[$Invoker] Prerelease version cannot be lower than 6.0. Please install GA modules only and specify Az version above 6.0." -ErrorAction 'Stop'
+                Throw "[$Invoker] Prerelease version cannot be lower than 6.0. Please install GA modules only or specify Az version above 6.0."
             }
             else {
                 $azModule = "AzPreview"
@@ -334,7 +334,7 @@ function Get-AzModuleFromRemote {
 
         $modules = [Array] (PowerShellGet\Find-Module @findModuleParams)
         if ($modules.Count -gt 1) {
-            Write-Error "[$Invoker] You have multiple modules matched 'Az' in the registered reposistory $($modules.Repository). Please specify a single -Repository." -ErrorAction 'Stop'
+            Throw "[$Invoker] You have multiple modules matched 'Az' in the registered reposistory $($modules.Repository). Please specify a single -Repository."
         }
 
         $accountVersion = 0
@@ -426,7 +426,7 @@ foreach($function in $allFunctions) {
         . $function.Fullname
     }
     catch {
-        Write-Error -Message "Failed to import function $($function.fullname): $_"
+        Write-Error "Failed to import function $($function.fullname): $_"
     }
 }
 

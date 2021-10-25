@@ -53,7 +53,7 @@ function Install-SingleModuleFromPackage{
             Write-Debug "[$Invoker] Downloading $moduleName version $moduleVersion."
             $downloader.WaitForAllTasks()
             if (!(Test-Path -Path $filePath)) {
-                Write-Error "[$Invoker] Fail to download $moduleName to $DestinationPath. Please check your network connection and retry." -ErrorAction 'Stop'
+                Throw "[$Invoker] Fail to download $moduleName to $DestinationPath. Please check your network connection and retry."
             }
             $durationInstallation = (Get-Date) - $InstallStarted
             Write-Debug "[$Invoker] The download task is finished. Time Elapsed Total:$($durationInstallation.TotalSeconds)s."
