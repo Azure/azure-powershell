@@ -176,4 +176,3 @@ function Update-AzGalleryApplicationVersion {
         Az.Compute.internal\Update-AzGalleryApplicationVersion @PSBoundParameters
     }
 }
-    

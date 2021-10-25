@@ -30,23 +30,13 @@ Delete a gallery Application.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Gallery Application 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName -Name $name
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete a gallery application.
 
 ## PARAMETERS
 

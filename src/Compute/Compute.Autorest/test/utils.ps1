@@ -34,8 +34,6 @@ function setupEnv() {
 
     # Create GalleryApplication
     New-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $env.GalleryName -Name $env.GalleryApplicationName -Location $env.Location -SupportedOSType Windows
-    # Create GalleryApplicationVersion
-    New-AzGalleryApplicationVersion -ResourceGroupName $env.ResourceGroupName -GalleryName $env.GalleryName -GalleryApplicationName $env.GalleryApplicationName -Name $env.GalleryApplicationVersionName 
 }
 function cleanupEnv() {
     # Clean resources you create for testing

@@ -13,6 +13,7 @@ Create or update a gallery Application Version.
 Create or update a gallery Application Version.
 #>
 
+
 function New-AzGalleryApplicationVersion {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

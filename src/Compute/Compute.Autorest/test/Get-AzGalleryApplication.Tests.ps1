@@ -13,11 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzGalleryApplication' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $env.GalleryName
+        $galApp.Count | Should BeGreaterThan 0
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $env.GalleryName -Name $env.GalleryApplicationName
+        $galApp.Count | Should BeGreaterThan 0
     }
 
     It 'GetViaIdentity' -skip {

@@ -23,23 +23,13 @@ Create or update a gallery Application Definition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a gallery application 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryName $galleryName -Name $name -SupportedOSType Windows
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creating a Gallery Application in a Gallery.
 
 ## PARAMETERS
 

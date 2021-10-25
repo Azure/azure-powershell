@@ -21,7 +21,7 @@ Retrieves information about a gallery Application Version.
 Create or update a gallery Application Definition.
 
 ### [New-AzGalleryApplicationVersion](New-AzGalleryApplicationVersion.md)
-Create or update a gallery Application Version.
+
 
 ### [Remove-AzGalleryApplication](Remove-AzGalleryApplication.md)
 Delete a gallery Application.

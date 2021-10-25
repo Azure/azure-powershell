@@ -4,7 +4,7 @@ PS C:\> Get-AzGalleryApplicationVersion -ResourceGroupName $rgName -GalleryName 
 
 ```
 
-Retrieve a Gallery Application Version resource with the provided Resource Group, Gallery, Gallery Application name, and version name
+Retrieve a Gallery Application Version resource with the provided Resource Group, Gallery, Gallery Application name, and version name.
 
 ### Example 2: Get all the Gallery Application Versions in a GalleryApplication
 ```powershell

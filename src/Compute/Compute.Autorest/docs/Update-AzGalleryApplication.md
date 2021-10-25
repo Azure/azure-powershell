@@ -30,23 +30,13 @@ Update a gallery Application Definition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a Gallery Application
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzGalleryApplication -ResourceGroupName $rgName -GalleryName $galleryName -Name $name -Description "New Description"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Updating a Gallery Application.
 
 ## PARAMETERS
 
