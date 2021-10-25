@@ -57,8 +57,7 @@ Set-AzIntegrationAccountPartner -BusinessIdentities <Object> -Metadata <Object> 
 ## PARAMETERS
 
 ### -BusinessIdentities
-Specifies business identities for the integration account partner.
-Specify an nested array, with inner arrays containing the Qualifier as the first object/string and the Value as the second object/string.
+Specifies business identities for the integration account partner. It is a nested array, with inner arrays containing the Qualifier as the first object/string and the Value as the second object/string.
 
 ```yaml
 Type: System.Object
