@@ -178,7 +178,7 @@ param(
 process {
     if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
         $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience')
-        $null = $PSBoundParameters['AppendSelected']
+        $null = $PSBoundParameters.Remove('AppendSelected')
     }
 
     switch ($PSCmdlet.ParameterSetName) {
@@ -188,22 +188,22 @@ process {
             break
         }
         'SearchStringParameterSet' {
-            $PSBoundParameters['Filter'] = "startsWith(DisplayName, '$($PSBOundParameters['DisplayNameStartWith'])')"
+            $PSBoundParameters['Filter'] = "startsWith(DisplayName, '$($PSBoundParameters['DisplayNameStartWith'])')"
             $null = $PSBoundParameters.Remove('DisplayNameStartWith')
             break
         }
         'DisplayNameParameterSet' {
-            $PSBOundParameters['Filter'] = "displayName eq '$($PSBOundParameters['DisplayName'])'"
+            $PSBOundParameters['Filter'] = "displayName eq '$($PSBoundParameters['DisplayName'])'"
             $null = $PSBoundParameters.Remove('DisplayName')
             break
         }
         'ApplicationIdentifierUriParameterSet' {
-            $PSBOundParameters['Filter'] = "identifierUri eq '$($PSBOundParameters['IdentifierUri'])'"
+            $PSBOundParameters['Filter'] = "identifierUri eq '$($PSBoundParameters['IdentifierUri'])'"
             $null = $PSBoundParameters.Remove('IdentifierUri')
             break
         }
         'ApplicationIdParameterSet' {
-            $PSBOundParameters['Filter'] = "appId eq '$($PSBOundParameters['ApplicationId'])'"
+            $PSBOundParameters['Filter'] = "appId eq '$($PSBoundParameters['ApplicationId'])'"
             $null = $PSBoundParameters.Remove('ApplicationId')
             break
         }

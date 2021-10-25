@@ -156,7 +156,7 @@ function Get-AzAdGroup {
     process {
         if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
             $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'AdditionalProperties', 'SecurityEnabled', 'MailEnabled', 'MailNickname', 'Description')
-            $null = $PSBoundParameters['AppendSelected']
+            $null = $PSBoundParameters.Remove('AppendSelected')
         }
 
         if ($PSBoundParameters.ContainsKey('ObjectId')) {

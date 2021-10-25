@@ -184,7 +184,7 @@ param(
 process {
     if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
         $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'ServicePrincipalNames', 'AppId')
-        $null = $PSBoundParameters['AppendSelected']
+        $null = $PSBoundParameters.Remove('AppendSelected')
     }
 
     switch ($PSCmdlet.ParameterSetName) {

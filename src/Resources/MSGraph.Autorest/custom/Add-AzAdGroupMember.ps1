@@ -33,7 +33,7 @@ System.Boolean
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/new-azadgrouprefmember
 #>
-function New-AzAdGroupMember {
+function Add-AzAdGroupMember {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='MemberObjectIdWithGroupObjectId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
@@ -130,7 +130,10 @@ function New-AzAdGroupMember {
         $odataIdUriPrefix = "$($baseUrl)/$($apiVersion)/directoryObjects"
 
         if ($PSBoundParameters['TargetGroupDisplayName']) {
-            $param = @{'DisplayName' = $PSBoundParameters['TargetGroupDisplayName']; 'Debug' = $PSBoundParameters['Debug']}
+            $param = @{'DisplayName' = $PSBoundParameters['TargetGroupDisplayName']}
+            if ($PSBoundParameters['Debug']) {
+                $param['Debug'] = $PSBoundParameters['Debug']
+            }
             $PSBoundParameter['GroupId'] = (Get-AzAdGroup @param).Id
             $null = $PSBoundParameters.Remove('TargetGroupDisplayName')
         } elseif ($PSBoundParameters['TargetGroupObject']) {
