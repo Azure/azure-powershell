@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Recycle".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Recycle", "Recycle", global::System.Management.Automation.CompletionResultType.ParameterValue, "Recycle");
+                yield return new global::System.Management.Automation.CompletionResult("'Recycle'", "Recycle", global::System.Management.Automation.CompletionResultType.ParameterValue, "Recycle");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LogEvent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LogEvent", "LogEvent", global::System.Management.Automation.CompletionResultType.ParameterValue, "LogEvent");
+                yield return new global::System.Management.Automation.CompletionResult("'LogEvent'", "LogEvent", global::System.Management.Automation.CompletionResultType.ParameterValue, "LogEvent");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CustomAction".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CustomAction", "CustomAction", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomAction");
+                yield return new global::System.Management.Automation.CompletionResult("'CustomAction'", "CustomAction", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomAction");
             }
         }
     }

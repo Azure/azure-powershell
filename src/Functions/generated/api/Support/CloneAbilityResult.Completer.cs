@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Cloneable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Cloneable", "Cloneable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cloneable");
+                yield return new global::System.Management.Automation.CompletionResult("'Cloneable'", "Cloneable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cloneable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PartiallyCloneable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PartiallyCloneable", "PartiallyCloneable", global::System.Management.Automation.CompletionResultType.ParameterValue, "PartiallyCloneable");
+                yield return new global::System.Management.Automation.CompletionResult("'PartiallyCloneable'", "PartiallyCloneable", global::System.Management.Automation.CompletionResultType.ParameterValue, "PartiallyCloneable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotCloneable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotCloneable", "NotCloneable", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotCloneable");
+                yield return new global::System.Management.Automation.CompletionResult("'NotCloneable'", "NotCloneable", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotCloneable");
             }
         }
     }

@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Initializing".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Initializing", "Initializing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initializing");
+                yield return new global::System.Management.Automation.CompletionResult("'Initializing'", "Initializing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initializing");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Starting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Starting", "Starting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Starting");
+                yield return new global::System.Management.Automation.CompletionResult("'Starting'", "Starting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Starting");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Running".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Running", "Running", global::System.Management.Automation.CompletionResultType.ParameterValue, "Running");
+                yield return new global::System.Management.Automation.CompletionResult("'Running'", "Running", global::System.Management.Automation.CompletionResultType.ParameterValue, "Running");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PendingRestart".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PendingRestart", "PendingRestart", global::System.Management.Automation.CompletionResultType.ParameterValue, "PendingRestart");
+                yield return new global::System.Management.Automation.CompletionResult("'PendingRestart'", "PendingRestart", global::System.Management.Automation.CompletionResultType.ParameterValue, "PendingRestart");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stopped".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Stopped", "Stopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped");
+                yield return new global::System.Management.Automation.CompletionResult("'Stopped'", "Stopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped");
             }
         }
     }

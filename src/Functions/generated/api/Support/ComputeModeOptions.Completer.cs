@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Shared".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Shared", "Shared", global::System.Management.Automation.CompletionResultType.ParameterValue, "Shared");
+                yield return new global::System.Management.Automation.CompletionResult("'Shared'", "Shared", global::System.Management.Automation.CompletionResultType.ParameterValue, "Shared");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dedicated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Dedicated", "Dedicated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dedicated");
+                yield return new global::System.Management.Automation.CompletionResult("'Dedicated'", "Dedicated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dedicated");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dynamic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Dynamic", "Dynamic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dynamic");
+                yield return new global::System.Management.Automation.CompletionResult("'Dynamic'", "Dynamic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dynamic");
             }
         }
     }

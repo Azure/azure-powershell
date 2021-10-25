@@ -31,19 +31,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Logging".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Logging", "Logging", global::System.Management.Automation.CompletionResultType.ParameterValue, "Logging");
+                yield return new global::System.Management.Automation.CompletionResult("'Logging'", "Logging", global::System.Management.Automation.CompletionResultType.ParameterValue, "Logging");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Metrics".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Metrics", "Metrics", global::System.Management.Automation.CompletionResultType.ParameterValue, "Metrics");
+                yield return new global::System.Management.Automation.CompletionResult("'Metrics'", "Metrics", global::System.Management.Automation.CompletionResultType.ParameterValue, "Metrics");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureServices".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AzureServices", "AzureServices", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureServices");
+                yield return new global::System.Management.Automation.CompletionResult("'AzureServices'", "AzureServices", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureServices");
             }
         }
     }
