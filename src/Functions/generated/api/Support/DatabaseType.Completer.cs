@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SqlAzure".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SqlAzure", "SqlAzure", global::System.Management.Automation.CompletionResultType.ParameterValue, "SqlAzure");
+                yield return new global::System.Management.Automation.CompletionResult("'SqlAzure'", "SqlAzure", global::System.Management.Automation.CompletionResultType.ParameterValue, "SqlAzure");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MySql".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MySql", "MySql", global::System.Management.Automation.CompletionResultType.ParameterValue, "MySql");
+                yield return new global::System.Management.Automation.CompletionResult("'MySql'", "MySql", global::System.Management.Automation.CompletionResultType.ParameterValue, "MySql");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LocalMySql".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LocalMySql", "LocalMySql", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocalMySql");
+                yield return new global::System.Management.Automation.CompletionResult("'LocalMySql'", "LocalMySql", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocalMySql");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PostgreSql".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PostgreSql", "PostgreSql", global::System.Management.Automation.CompletionResultType.ParameterValue, "PostgreSql");
+                yield return new global::System.Management.Automation.CompletionResult("'PostgreSql'", "PostgreSql", global::System.Management.Automation.CompletionResultType.ParameterValue, "PostgreSql");
             }
         }
     }

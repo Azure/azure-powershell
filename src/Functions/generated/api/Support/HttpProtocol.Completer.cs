@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "https,http".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("https,http", "https,http", global::System.Management.Automation.CompletionResultType.ParameterValue, "https,http");
+                yield return new global::System.Management.Automation.CompletionResult("'https,http'", "https,http", global::System.Management.Automation.CompletionResultType.ParameterValue, "https,http");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "https".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("https", "https", global::System.Management.Automation.CompletionResultType.ParameterValue, "https");
+                yield return new global::System.Management.Automation.CompletionResult("'https'", "https", global::System.Management.Automation.CompletionResultType.ParameterValue, "https");
             }
         }
     }

@@ -31,11 +31,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Regular".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Regular", "Regular", global::System.Management.Automation.CompletionResultType.ParameterValue, "Regular");
+                yield return new global::System.Management.Automation.CompletionResult("'Regular'", "Regular", global::System.Management.Automation.CompletionResultType.ParameterValue, "Regular");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SoftDeleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SoftDeleted", "SoftDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleted");
+                yield return new global::System.Management.Automation.CompletionResult("'SoftDeleted'", "SoftDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleted");
             }
         }
     }
