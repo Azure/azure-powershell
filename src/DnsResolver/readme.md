@@ -95,7 +95,10 @@ directive:
       subject-prefix: ''
   - where:
       subject: DnsForwardingRulesetDnsForwardingRuleset
-    remove: true
+    set:
+      subject: DnsForwardingRuleset
+      subject-prefix: ''
+
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
