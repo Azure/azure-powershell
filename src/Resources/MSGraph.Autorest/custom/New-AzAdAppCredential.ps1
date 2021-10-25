@@ -194,7 +194,7 @@ function New-AzAdAppCredential {
             $null = $PSBoundParameters.Remove('PasswordCredentials')
         }
 
-        $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+        $param = @{}
         switch ($PSCmdlet.ParameterSetName) {
             { $_ -in 'ApplicationObjectIdWithPasswordParameterSet', 'ApplicationObjectIdWithCredentialParameterSet'} {
                 $id = $PSBoundParameters['ObjectId']

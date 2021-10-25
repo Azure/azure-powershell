@@ -163,7 +163,7 @@ function New-AzAdSpCredential {
             $null = $PSBoundParameters.Remove('PasswordCredentials')
         }
         
-        $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+        $param = @{}
         switch ($PSCmdlet.ParameterSetName) {
             {$_ -in 'SpObjectIdWithPasswordParameterSet', 'SpObjectIdWithCredentialParameterSet', 'SpObjectIdWithCertValueParameterSet'} {
                 $id = $PSBoundParameters['ObjectId']

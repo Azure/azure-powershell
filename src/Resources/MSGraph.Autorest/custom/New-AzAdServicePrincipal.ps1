@@ -740,7 +740,7 @@ function New-AzAdServicePrincipal {
       if ($spScope) {
         $param['Scope'] = $spScope
       }
-      for ($i = 0; i -lt 6; i++) {
+      for ($i = 0; $i -lt 6; $i++) {
         try {
           New-AzRoleAssignment @param
           break

@@ -118,7 +118,7 @@ function Remove-AzAdApplication {
     )
     
     process {
-        $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+        $param = @{}
         switch ($PSCmdlet.ParameterSetName) {
             'ObjectIdParameterSet' {
                 $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']

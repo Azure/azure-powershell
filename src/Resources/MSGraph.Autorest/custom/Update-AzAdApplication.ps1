@@ -484,7 +484,7 @@ function Update-AzAdApplication {
       }
       'ApplicationIdWithUpdateParamsParameterSet' {
         try {
-          $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+          $param = @{}
           $param['ApplicationId'] = $PSBoundParameters['ApplicationId']
           $PSBoundParameters['Id'] = (Get-AzAdApplication @param).Id
         }

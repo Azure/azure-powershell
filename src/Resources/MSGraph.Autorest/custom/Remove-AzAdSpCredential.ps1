@@ -93,7 +93,7 @@ function Remove-AzAdSpCredential {
       )
     
     process {
-        $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+        $param = @{}
         switch ($PSCmdlet.ParameterSetName) {
             'ObjectIdWithKeyIdParameterSet' {
                 $param['ObjectId'] = $PSBoundParameters['ObjectId']

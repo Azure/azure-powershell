@@ -178,7 +178,7 @@ function Update-AzAdServicePrincipal {
     # The unique identifier for the associated application (its appId property).
     ${ApplicationId},
 
-    [Parameter(ParameterSetName = 'InputObjectWithDisplayNameParameterSet', Mandatory)]
+    [Parameter(ParameterSetName = 'InputObjectWithDisplayNameParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
     # service principal object
@@ -573,7 +573,7 @@ function Update-AzAdServicePrincipal {
       $null = $PSBoundParameters.Remove('IdentifierUri')
     }
 
-    $param = @{'HttpPipelinePrepend' = $PSBoundParameters['HttpPipelinePrepend']}
+    $param = @{}
     switch ($PSCmdlet.ParameterSetName) {
       'SpObjectIdWithDisplayNameParameterSet' {
         $PSBoundParameters['Id'] = $PSBoundParameters['ObjectId']
