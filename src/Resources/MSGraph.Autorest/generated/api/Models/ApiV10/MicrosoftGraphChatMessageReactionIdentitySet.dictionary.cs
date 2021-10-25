@@ -13,12 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
 
         global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>.AdditionalProperties { get => __microsoftGraphIdentitySet.AdditionalProperties; }
 
-        int Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>.Count { get => __microsoftGraphIdentitySet.Count; }
-
-        global::System.Collections.Generic.IEnumerable<global::System.String> Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>.Keys { get => __microsoftGraphIdentitySet.Keys; }
-
-        global::System.Collections.Generic.IEnumerable<global::System.Object> Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>.Values { get => __microsoftGraphIdentitySet.Values; }
-
         public global::System.Object this[global::System.String index] { get => __microsoftGraphIdentitySet[index]; set => __microsoftGraphIdentitySet[index] = value; }
 
         /// <param name="key"></param>

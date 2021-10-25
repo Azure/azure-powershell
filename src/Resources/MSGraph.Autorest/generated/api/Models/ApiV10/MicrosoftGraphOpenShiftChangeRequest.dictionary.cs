@@ -13,12 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
 
         global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>.AdditionalProperties { get => __microsoftGraphScheduleChangeRequest.AdditionalProperties; }
 
-        int Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>.Count { get => __microsoftGraphScheduleChangeRequest.Count; }
-
-        global::System.Collections.Generic.IEnumerable<global::System.String> Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>.Keys { get => __microsoftGraphScheduleChangeRequest.Keys; }
-
-        global::System.Collections.Generic.IEnumerable<global::System.Object> Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>.Values { get => __microsoftGraphScheduleChangeRequest.Values; }
-
         public global::System.Object this[global::System.String index] { get => __microsoftGraphScheduleChangeRequest[index]; set => __microsoftGraphScheduleChangeRequest[index] = value; }
 
         /// <param name="key"></param>
