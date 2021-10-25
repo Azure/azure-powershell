@@ -172,6 +172,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $Virt
 This example provisions a new network and deploys a Windows VM from the Marketplace without creating a public IP address or Network Security Group.
 This script can be used for automatic provisioning because it uses the local virtual machine admin credentials inline instead of calling **Get-Credential** which requires user interaction.
 
+
 ## PARAMETERS
 
 ### -AddressPrefix
