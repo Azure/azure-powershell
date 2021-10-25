@@ -3257,5 +3257,10 @@ function Test-VMSSUserdataNorm
 
         Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
     }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
 }
 
