@@ -1,4 +1,131 @@
 {
+  "Get-AzLabServicesLab+[NoContext]+List+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/labs?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/providers/Microsoft.LabServices/labs?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "b7af8648-5fab-4419-8027-dd6b460defdb" ],
+        "CommandName": [ "Az.LabServices.internal\\Get-AzLabServicesLab" ],
+        "FullCommandName": [ "Get-AzLabServicesLab_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "0HMCF6OTAOLKO:00000001", "0HMCG0UM2HV8A:00000001", "0HMCF8VJJ2BA1:00000002", "0HMCG34PE97I2:00000002" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "e543ed4e-372d-4652-9eb0-4a53004e43be" ],
+        "x-ms-correlation-request-id": [ "e543ed4e-372d-4652-9eb0-4a53004e43be" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T153714Z:e543ed4e-372d-4652-9eb0-4a53004e43be" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Oct 2021 15:37:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "16715" ]
+      },
+      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:09:28.0882209Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-23T00:09:28.0882209Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"buc7eqtxk67ezoeg7bl6q6mbna\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"title\":\"LAB lab-unit-powershell\",\"description\":\"DESCRIPTION lab-unit-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell\",\"name\":\"lab-unit-powershell\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:24:52.2230081Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-23T00:24:52.2230081Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"licpn3zl7ivejg2vrivch2rk4q\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"title\":\"LAB lab-unit-powershell\",\"description\":\"DESCRIPTION lab-unit-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell-del\",\"name\":\"lab-unit-powershell-del\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"createdByType\":\"Application\",\"createdAt\":\"2021-08-11T17:27:43.7379874Z\",\"lastModifiedBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-08-11T17:27:43.7379874Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"networkProfile\":{},\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\",\"disconnectDelay\":\"PT15M\",\"noConnectDelay\":\"PT15M\",\"idleDelay\":\"PT15M\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":4},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT10H\",\"useSharedPassword\":\"Enabled\",\"adminUser\":{\"username\":\"student\"}},\"securityProfile\":{\"registrationCode\":\"jp5uvzzv7scublt3mqbhrtpgny\",\"openAccess\":\"Disabled\"},\"rosterProfile\":{\"ltiContextId\":\"db606294f537b645a89729de62e00a4032683ae7\",\"lmsInstance\":\"https://office365.instructure.com/\",\"ltiClientId\":\"170000000000711\",\"ltiRosterEndpoint\":\"https://office365.instructure.com/api/lti/courses/688/names_and_roles\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-southcentralus/providers/Microsoft.LabServices/labPlans/rgprodscus\",\"title\":\"Intro to algorithms with csharp\"},\"location\":\"southcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-southcentralus/providers/Microsoft.LabServices/labs/Intro to algorithms with csharp\",\"name\":\"Intro to algorithms with csharp\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"createdByType\":\"Application\",\"createdAt\":\"2021-08-12T17:34:40.559836Z\",\"lastModifiedBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-08-12T17:34:40.559836Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"networkProfile\":{},\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\",\"disconnectDelay\":\"PT15M\",\"noConnectDelay\":\"PT15M\",\"idleDelay\":\"PT15M\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"Public\",\"clientRdpAccess\":\"None\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"0001-com-ubuntu-server-focal\",\"publisher\":\"canonical\",\"sku\":\"20_04-lts\",\"version\":\"latest\"},\"osType\":\"Linux\",\"sku\":{\"name\":\"Basic\",\"capacity\":0},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT10H\",\"useSharedPassword\":\"Enabled\",\"adminUser\":{\"username\":\"student\"}},\"securityProfile\":{\"registrationCode\":\"efqso57n4s4utnfz6krr4wpkfy\",\"openAccess\":\"Disabled\"},\"rosterProfile\":{},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-southcentralus/providers/Microsoft.LabServices/labPlans/rgprodscus\",\"title\":\"ndepinet-testteams\"},\"location\":\"southcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-southcentralus/providers/Microsoft.LabServices/labs/ndepinet-testteams\",\"name\":\"ndepinet-testteams\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"createdByType\":\"Application\",\"createdAt\":\"2021-08-09T19:39:24.180471Z\",\"lastModifiedBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-08-09T19:39:24.180471Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"networkProfile\":{},\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\",\"disconnectDelay\":\"PT15M\",\"noConnectDelay\":\"PT15M\",\"idleDelay\":\"PT15M\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Basic\",\"capacity\":0},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT10H\",\"useSharedPassword\":\"Enabled\",\"adminUser\":{\"username\":\"default\"}},\"securityProfile\":{\"registrationCode\":\"zqpgpx46cmaendvuwwqhs5xqmy\",\"openAccess\":\"Disabled\"},\"rosterProfile\":{},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-southcentralus/providers/Microsoft.LabServices/labPlans/rgprodscus\",\"title\":\"test\"},\"location\":\"southcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-labservices/providers/Microsoft.LabServices/labs/test quota\",\"name\":\"test quota\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"jarewert@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-07-08T21:05:56.0618098Z\",\"lastModifiedBy\":\"jarewert@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-07-08T21:05:56.0618098Z\"},\"properties\":{\"provisioningState\":\"Failed\",\"networkProfile\":{},\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\",\"disconnectDelay\":\"PT15M\",\"noConnectDelay\":\"PT15M\",\"idleDelay\":\"PT15M\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"Public\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"None\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Basic\",\"capacity\":0},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT10H\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"jarewert\"}},\"securityProfile\":{\"registrationCode\":\"qmxot6slvrxutohul5my37l65e\",\"openAccess\":\"Disabled\"},\"rosterProfile\":{},\"title\":\"jarewert-01\"},\"location\":\"japaneast\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-labservices/providers/Microsoft.LabServices/labs/jarewert-init-001\",\"name\":\"jarewert-init-001\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"jarewert@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-07-08T23:03:43.3544005Z\",\"lastModifiedBy\":\"jarewert@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-07-08T23:03:43.3544005Z\"},\"properties\":{\"provisioningState\":\"Failed\",\"networkProfile\":{},\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\",\"disconnectDelay\":\"PT15M\",\"noConnectDelay\":\"PT15M\",\"idleDelay\":\"PT15M\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"Public\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"None\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Basic\",\"capacity\":0},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT10H\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"jarewert\"}},\"securityProfile\":{\"registrationCode\":\"rglk7frsck2uxa5i7il5zlvi3u\",\"openAccess\":\"Disabled\"},\"rosterProfile\":{},\"title\":\"jarewert-01\"},\"location\":\"japaneast\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-labservices/providers/Microsoft.LabServices/labs/jarewert-init-002\",\"name\":\"jarewert-init-002\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"jarewert@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-07-12T16:01:31.2446803Z\",\"lastModifiedBy\":\"jarewert@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-07-12T16:01:31.2446803Z\"},\"properties\":{\"provisioningState\":\"Failed\",\"networkProfile\":{},\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\",\"disconnectDelay\":\"PT15M\",\"noConnectDelay\":\"PT15M\",\"idleDelay\":\"PT15M\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"Public\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"None\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Basic\",\"capacity\":0},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT10H\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"jarewert\"}},\"securityProfile\":{\"registrationCode\":\"dkjv7ob37fne7hbjsdrfkdzkem\",\"openAccess\":\"Disabled\"},\"rosterProfile\":{},\"title\":\"jarewert-01\"},\"location\":\"japaneast\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-labservices/providers/Microsoft.LabServices/labs/jarewert-init-004\",\"name\":\"jarewert-init-004\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"createdByType\":\"Application\",\"createdAt\":\"2021-08-19T22:47:30.3644789Z\",\"lastModifiedBy\":\"v-xiaomouqin@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-08-24T02:36:24.2043529Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"networkProfile\":{},\"state\":\"Published\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\",\"disconnectDelay\":\"PT15M\",\"noConnectDelay\":\"PT15M\",\"idleDelay\":\"PT15M\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"Public\",\"clientRdpAccess\":\"None\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"0001-com-ubuntu-server-focal\",\"publisher\":\"canonical\",\"sku\":\"20_04-lts\",\"version\":\"latest\"},\"osType\":\"Linux\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT10H\",\"useSharedPassword\":\"Enabled\",\"adminUser\":{\"username\":\"snehardp\"}},\"securityProfile\":{\"registrationCode\":\"aooenmml5agupeldw4wx3pybha\",\"openAccess\":\"Enabled\"},\"rosterProfile\":{},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-eastus-2/providers/Microsoft.LabServices/labPlans/eastus2prod\",\"title\":\"eastus2-prod-lab\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-eastus-2/providers/Microsoft.LabServices/labs/eastus2-prod-lab\",\"name\":\"eastus2-prod-lab\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"createdByType\":\"Application\",\"createdAt\":\"2021-08-24T02:33:48.7334034Z\",\"lastModifiedBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-08-24T02:33:48.7334034Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"networkProfile\":{},\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\",\"disconnectDelay\":\"PT15M\",\"noConnectDelay\":\"PT15M\",\"idleDelay\":\"PT15M\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Basic\",\"capacity\":0},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT10H\",\"useSharedPassword\":\"Enabled\",\"adminUser\":{\"username\":\"vmuser\"}},\"securityProfile\":{\"registrationCode\":\"6ituczn7i3kubb7ugz6pz5x2iu\",\"openAccess\":\"Disabled\"},\"rosterProfile\":{},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-eastus-2/providers/Microsoft.LabServices/labPlans/eastus2prod\",\"title\":\"registerlinktest\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-eastus-2/providers/Microsoft.LabServices/labs/registerlinktest\",\"name\":\"registerlinktest\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"createdByType\":\"Application\",\"createdAt\":\"2021-07-13T17:25:08.1705671Z\",\"lastModifiedBy\":\"c7bb12bf-0b39-4f7f-9171-f418ff39b76a\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-07-13T17:25:08.1705671Z\"},\"properties\":{\"provisioningState\":\"Failed\",\"networkProfile\":{},\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\",\"disconnectDelay\":\"PT15M\",\"noConnectDelay\":\"PT15M\",\"idleDelay\":\"PT15M\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"Public\",\"clientRdpAccess\":\"None\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"ubuntu-1804\",\"publisher\":\"microsoft-dsvm\",\"sku\":\"1804\",\"version\":\"latest\"},\"osType\":\"Linux\",\"sku\":{\"name\":\"Standard\",\"capacity\":0},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT10H\",\"useSharedPassword\":\"Enabled\",\"adminUser\":{\"username\":\"snehardp\"}},\"securityProfile\":{\"registrationCode\":\"6wksgq3twk3erormts7gxvspdi\",\"openAccess\":\"Disabled\"},\"rosterProfile\":{},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-eastus2/providers/Microsoft.LabServices/labPlans/lpprodeastus2\",\"title\":\"wineastus2lab\"},\"location\":\"eastus2\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/rg-prod-eastus2/providers/Microsoft.LabServices/labs/wineastus2lab\",\"name\":\"wineastus2lab\",\"type\":\"Microsoft.LabServices/labs\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzLabServicesLab+[NoContext]+List with Resource Group+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "32f3372a-cff6-4ab9-9a60-999c10324ca0" ],
+        "CommandName": [ "Az.LabServices.internal\\Get-AzLabServicesLab" ],
+        "FullCommandName": [ "Get-AzLabServicesLab_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
+        "x-ms-request-id": [ "0HMCF6PDJDIBA:00000002" ],
+        "x-ms-correlation-request-id": [ "8f368cc7-16b2-4646-8d7d-a3de5fe632e9" ],
+        "traceparent": [ "00-d8caed9433333e4dbb12d40c4958cf92-2d945984d3269817-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T153714Z:8f368cc7-16b2-4646-8d7d-a3de5fe632e9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Oct 2021 15:37:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3005" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:09:28.0882209Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-23T00:09:28.0882209Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"buc7eqtxk67ezoeg7bl6q6mbna\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"title\":\"LAB lab-unit-powershell\",\"description\":\"DESCRIPTION lab-unit-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell\",\"name\":\"lab-unit-powershell\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:24:52.2230081Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-23T00:24:52.2230081Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"licpn3zl7ivejg2vrivch2rk4q\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"title\":\"LAB lab-unit-powershell\",\"description\":\"DESCRIPTION lab-unit-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell-del\",\"name\":\"lab-unit-powershell-del\",\"type\":\"Microsoft.LabServices/labs\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzLabServicesLab+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "d762a043-e051-477b-8eea-f6ce1ba9045d" ],
+        "CommandName": [ "Az.LabServices.internal\\Get-AzLabServicesLab" ],
+        "FullCommandName": [ "Get-AzLabServicesLab_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLKO:00000002" ],
+        "x-ms-correlation-request-id": [ "947c3e12-9ee4-406b-a311-262186038623" ],
+        "traceparent": [ "00-60b3ad268d00624fa96da9d82a35b93e-a987b1c827ce0fc5-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T153715Z:947c3e12-9ee4-406b-a311-262186038623" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Oct 2021 15:37:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1492" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:09:28.0882209Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-23T00:09:28.0882209Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"buc7eqtxk67ezoeg7bl6q6mbna\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"title\":\"LAB lab-unit-powershell\",\"description\":\"DESCRIPTION lab-unit-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell\",\"name\":\"lab-unit-powershell\",\"type\":\"Microsoft.LabServices/labs\"}",
+      "isContentBase64": false
+    }
+  },
   "Get-AzLabServicesLab+[NoContext]+LabPlan+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell?api-version=2021-10-01-preview+1": {
     "Request": {
       "Method": "GET",
@@ -6,8 +133,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "76fb06d4-e879-4584-b71d-4d1dbc187aee" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "2add2a7b-9890-4dc9-99af-74b21165b4d4" ],
         "CommandName": [ "Get-AzLabServicesLabPlan" ],
         "FullCommandName": [ "Get-AzLabServicesLabPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,23 +149,109 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKA9:00000007" ],
-        "x-ms-correlation-request-id": [ "6af805ce-9e16-4763-ac2b-ba01aceb09a9" ],
-        "traceparent": [ "00-dc6e2581386ea7468128917fa717ad8d-1c7636d7dbf16826-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDIBA:00000003" ],
+        "x-ms-correlation-request-id": [ "e7033514-4f11-4d7e-9b3f-069ae8d9da38" ],
+        "traceparent": [ "00-9937675fffa58049aef7ae64d16e165b-807a970c29b9e2e7-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190013Z:6af805ce-9e16-4763-ac2b-ba01aceb09a9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T153715Z:e7033514-4f11-4d7e-9b3f-069ae8d9da38" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:12 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 15:37:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1139" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-21T23:21:45.8112168Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-21T23:21:45.8112168Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"sharedGalleryId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.Compute/galleries/sigunitpowershell\",\"supportInfo\":{\"url\":\"https://help.contoso.com/\",\"email\":\"help@contoso.com\",\"phone\":\"+1-202-555-0123\",\"instructions\":\"Contact support for help.\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"name\":\"labplan-unit-powershell\",\"type\":\"Microsoft.LabServices/labPlans\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:06:53.3348948Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-23T00:06:53.3348948Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"sharedGalleryId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.Compute/galleries/sigunitpowershell\",\"supportInfo\":{\"url\":\"https://help.contoso.com/\",\"email\":\"help@contoso.com\",\"phone\":\"+1-202-555-0123\",\"instructions\":\"Contact support for help.\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"name\":\"labplan-unit-powershell\",\"type\":\"Microsoft.LabServices/labPlans\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzLabServicesLab+[NoContext]+LabPlan+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell?api-version=2021-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "8746a8c6-587c-4e1f-898d-26b322efd8cd" ],
+        "CommandName": [ "Az.LabServices.internal\\Get-AzLabServicesLab" ],
+        "FullCommandName": [ "Get-AzLabServicesLab_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLKO:00000003" ],
+        "x-ms-correlation-request-id": [ "b4d032b1-dbf4-4591-819a-af54b8d30c71" ],
+        "traceparent": [ "00-a64f695bd9fa414fb1b5c8d1b56a1032-5d45683a7ce75da2-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T153715Z:b4d032b1-dbf4-4591-819a-af54b8d30c71" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Oct 2021 15:37:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1492" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:09:28.0882209Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-23T00:09:28.0882209Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"buc7eqtxk67ezoeg7bl6q6mbna\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"title\":\"LAB lab-unit-powershell\",\"description\":\"DESCRIPTION lab-unit-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell\",\"name\":\"lab-unit-powershell\",\"type\":\"Microsoft.LabServices/labs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzLabServicesLab+[NoContext]+Name with wildcard+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs?api-version=2021-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "c0578769-c8fc-41b4-975d-6aab84d50989" ],
+        "CommandName": [ "Az.LabServices.internal\\Get-AzLabServicesLab" ],
+        "FullCommandName": [ "Get-AzLabServicesLab_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLKO:00000004" ],
+        "x-ms-correlation-request-id": [ "86bac4f2-c7bf-4308-a845-e630bb73b525" ],
+        "traceparent": [ "00-e39db85773f19b40b33e39258c66040e-48a036bf81dd15e3-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T153716Z:86bac4f2-c7bf-4308-a845-e630bb73b525" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Oct 2021 15:37:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3005" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:09:28.0882209Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-23T00:09:28.0882209Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"buc7eqtxk67ezoeg7bl6q6mbna\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"title\":\"LAB lab-unit-powershell\",\"description\":\"DESCRIPTION lab-unit-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell\",\"name\":\"lab-unit-powershell\",\"type\":\"Microsoft.LabServices/labs\"},{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:24:52.2230081Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-23T00:24:52.2230081Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"state\":\"Draft\",\"autoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"connectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"virtualMachineProfile\":{\"createOption\":\"TemplateVM\",\"imageReference\":{\"offer\":\"Windows-10\",\"publisher\":\"MicrosoftWindowsDesktop\",\"sku\":\"20h2-pro\",\"version\":\"latest\"},\"osType\":\"Windows\",\"sku\":{\"name\":\"Standard\",\"capacity\":2},\"additionalCapabilities\":{\"installGpuDrivers\":\"Disabled\"},\"usageQuota\":\"PT0S\",\"useSharedPassword\":\"Disabled\",\"adminUser\":{\"username\":\"testuser\"}},\"securityProfile\":{\"registrationCode\":\"licpn3zl7ivejg2vrivch2rk4q\",\"openAccess\":\"Disabled\"},\"labPlanId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"title\":\"LAB lab-unit-powershell\",\"description\":\"DESCRIPTION lab-unit-powershell\"},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labs/lab-unit-powershell-del\",\"name\":\"lab-unit-powershell-del\",\"type\":\"Microsoft.LabServices/labs\"}]}",
       "isContentBase64": false
     }
   }
