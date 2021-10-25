@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_LRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_LRS", "Standard_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_LRS");
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_LRS'", "Standard_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_LRS");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Premium_LRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Premium_LRS", "Premium_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Premium_LRS");
+                yield return new global::System.Management.Automation.CompletionResult("'Premium_LRS'", "Premium_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Premium_LRS");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StandardSSD_LRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StandardSSD_LRS", "StandardSSD_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "StandardSSD_LRS");
+                yield return new global::System.Management.Automation.CompletionResult("'StandardSSD_LRS'", "StandardSSD_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "StandardSSD_LRS");
             }
         }
     }
