@@ -36,7 +36,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             TelemetryClient telemetryClient = TelemetryUtilities.CreateApplicationInsightTelemetryClient();
             var settings = Settings.GetSettings();
-            var azContext = new AzContext()
+            var nestedPowerShellRuntime = new PowerShellRuntime();
+            var azContext = new AzContext(nestedPowerShellRuntime)
             {
                 IsInternal = (settings.SetAsInternal == true) ? true : false,
             };

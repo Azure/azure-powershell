@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,20 +27,25 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
     /// </summary>
     public sealed class ParameterSetTests : IDisposable
     {
-        private AzContext _azContext;
+        private readonly AzContext _azContext;
+        private PowerShellRuntime _powerShellRuntime;
 
         /// <summary>
         /// Creates a new instance of <see cref="ParameterSetTests" />.
         /// </summary>
-        public ParameterSetTests() => _azContext = new AzContext();
+        public ParameterSetTests()
+        {
+            _powerShellRuntime = new PowerShellRuntime();
+            _azContext = new AzContext(_powerShellRuntime);
+        }
 
         /// <inheritdoc/>
         public void Dispose()
         {
-            if (_azContext != null)
+            if (_powerShellRuntime is not null)
             {
-                _azContext.Dispose();
-                _azContext = null;
+                _powerShellRuntime.Dispose();
+                _powerShellRuntime = null;
             }
         }
 

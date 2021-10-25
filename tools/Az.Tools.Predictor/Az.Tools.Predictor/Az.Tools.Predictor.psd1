@@ -45,8 +45,6 @@ PowerShellVersion = '7.2'
 
 NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
-ScriptsToProcess = @("PromptSurvey.ps1")
-
 CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor", "Open-AzPredictorSurvey", "Send-AzPredictorRating")
 
 # Format files (.ps1xml) to be loaded when importing this module
