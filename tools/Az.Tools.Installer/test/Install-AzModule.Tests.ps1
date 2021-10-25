@@ -87,7 +87,7 @@ Describe 'Install-AzModule' {
         Get-InstalledModule -Name Azure* -ErrorAction 'Continue' | Should -Be $null
     }
 
-    It 'InstallByUnexistingVersion' -Skip {
+    It 'InstallByUnexistingVersion' {
         {Install-AzModule -AllowPrerelease -Repository PSGallery -RequiredAzVersion 5.9} | Should -Throw
     }
 

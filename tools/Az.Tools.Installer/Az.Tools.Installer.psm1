@@ -230,8 +230,13 @@ $getModule = Get-Module -Name "PowerShellGet"
 if ($null -ne $getModule -and $getModule.Version -lt [System.Version]"2.1.3") {
     Write-Error "This module requires PowerShellGet version 2.1.3. An earlier version of PowerShellGet is imported in the current PowerShell session. Please open a new session before importing this module." -ErrorAction Stop
 }
-elseif ($null -eq $getModule) {
-    Import-Module PowerShellGet -MinimumVersion 2.1.3 -Scope Global
+elseif ($null -eq $getModule -or $getModule.Version -ge [System.Version]"3.0") {
+    try {
+        Import-Module PowerShellGet -MinimumVersion 2.1.3 -MaximumVersion 3.0.0.0 -Scope Global -Force -ErrorAction Stop
+    }
+    catch {
+        Write-Error "This module requires PowerShellGet version no earlier than 2.1.3 and no later than 3.0. Please install the required PowerShell firstly."
+    }
 }
 
 function Get-AllAzModule {

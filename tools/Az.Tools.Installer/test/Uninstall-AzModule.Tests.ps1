@@ -92,6 +92,23 @@ Describe 'Uninstall-AzModule' {
         #should check output
     }
 
+    It 'UninstallAzAccountsWithDependancyExisted' {
+        Uninstall-AzModule -Name compute,accounts
+        $modules = Get-Module -ListAvailable -Name Az.*
+        $modules.Count | Should -Be 8
+        $modules.Name | Should -Contain 'Az.Accounts'
+        $modules.Name | Should -Contain 'Az.Attestation'
+        $modules.Name | Should -Contain 'Az.Resources'
+        $modules.Name | Should -Contain 'Az.Network'
+        $modules.Name | Should -Contain 'Az.Storage'
+    }
+
+    It 'UninstallAzAccountsWithDependancyExisted' {
+        Uninstall-AzModule -Name compute,accounts,Attestation,Resources,Network,Storage
+        $modules = Get-Module -ListAvailable -Name Az.*
+        $modules | Should -Be $null
+    }
+
     AfterEach {
         Remove-AllAzModule       
     }

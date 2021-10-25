@@ -121,7 +121,7 @@ function Update-AzModule {
             if ($WhatIfPreference) {
                 $module = $null
                 foreach($module in $moduleUpdateTable) {
-                    Write-Host "WhatIf: Wiil update $($module.Name) from $($module.VersionBeforeUpdate) to $($module.VersionUpdate)."
+                    Write-Host "WhatIf: Will update $($module.Name) from $($module.VersionBeforeUpdate) to $($module.VersionUpdate)."
                 }
             }
             else {

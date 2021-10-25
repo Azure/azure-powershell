@@ -168,7 +168,7 @@ function Install-AzModuleInternal {
                             $errorString = $null
                             try {
                                 Import-Module PackageManagement
-                                Import-Module PowerShellGet
+                                Import-Module PowerShellGet -MinimumVersion 2.1.3 -MaximumVersion 3.0.0.0 -Scope Global
                                 if ($RemovePrevious) {
                                     PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
                                 }

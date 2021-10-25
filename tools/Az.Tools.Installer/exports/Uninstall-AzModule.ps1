@@ -94,6 +94,12 @@ function Uninstall-AzModule {
             }
         }
 
+        $moduleNotToUninstall = $allInstalled.Name | Where-Object{$moduleToUninstall.Name -NotContains $_ }
+        if ($null -ne $moduleNotToUninstall -and $null -ne $Name -and $Name -Contains 'Az.Accounts') {
+            $moduleToUninstall = $moduleToUninstall | Where-Object{ $_.Name -ne 'Az.Accounts'}
+            Write-Warning "[$Invoker] 'Az.Accounts cannot be uninstalled now for other modules are still dependent of it."
+        }
+
         Write-Progress -Id 1 "Uninstall specified Az modules."
 
         if ($moduleToUninstall) {

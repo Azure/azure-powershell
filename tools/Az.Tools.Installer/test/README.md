@@ -4,6 +4,7 @@
 - Install-AzModule.Tests.ps1
 - Update-AzModule.Tests.ps1
 - Uninstall-AzModule.Tests.ps1
+- Az.Tools.Installer.Tests.Helper.ps1 helper functions used in tests
 
 ### Common cases
 Test platform: PowerShell 7.0, Windows PowerShell
@@ -68,3 +69,14 @@ At D:\workspace\azure-powershell\tools\Az.Tools.Installer\internal\Install-AzMod
     + CategoryInfo          : OperationStopped: ([Install-AzModu... to check them.:String) [], RuntimeException
     + FullyQualifiedErrorId : [Install-AzModule] Some background jobs are blocked. Please use 'Get-Job -State Running' to check them.
 ```
+
+### ImportModuleWithPowerShellGet3.+Installed
+- Step
+```
+Install-Module -Name PowerShellGet -Repository PSGallery
+Install-Module -Name PowerShellGet -Repository PSGallery -RequiredVersion 3.0.11-beta -AllowPrerelease
+Import-Module Az.Tools.Installer
+Get-Module -Name PowerShellGet
+```
+- Expected result
+  - PowerShellGet 2.+ (no earlier than 2.1.3) is imported
