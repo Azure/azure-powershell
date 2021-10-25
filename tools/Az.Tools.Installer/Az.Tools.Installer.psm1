@@ -100,11 +100,11 @@ public class ParallelDownloader
     {
         try
         {
-            Regex pattern = new Regex(@"Az\.(?<moduleName>[a-zA-Z]+)\.(?<moduleVersion>[0-9.]+(\-preview)?)\.nupkg");
+            Regex pattern = new Regex(@"(?<moduleName>[a-zA-Z.]+)\.(?<moduleVersion>[0-9.]+(\-preview)?)\.nupkg");
             Match matches = pattern.Match(fileName);
             if (matches.Groups["moduleName"].Success && matches.Groups["moduleVersion"].Success)
             {
-                moduleName = "Az." + matches.Groups["moduleName"].Value;
+                moduleName = matches.Groups["moduleName"].Value;
                 var versionString = matches.Groups["moduleVersion"].Value;
                 if (versionString.Contains('-'))
                 {
