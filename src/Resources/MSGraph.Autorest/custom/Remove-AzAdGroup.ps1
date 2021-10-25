@@ -49,8 +49,8 @@ param(
     # The display name of the group to be removed.
     ${DisplayName},
 
-    [Parameter(ParameterSetName = 'InputObjectParameterSet', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser]
+    [Parameter(ParameterSetName = 'InputObjectParameterSet', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup]
     # user input object
     ${InputObject},
 

@@ -343,7 +343,6 @@ function Update-AzAdUser {
         # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
         ${UsageLocation},
     
-        [Parameter()]
         [Parameter(ParameterSetName='UPNParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.String]
@@ -419,6 +418,30 @@ function Update-AzAdUser {
     )
     
     process {
+            switch ($PSCmdlet.ParameterSetName) {
+            'ObjectIdParameterSet' {
+                $id = $PSBoundParameters['ObjectId']
+                $null = $PSBoundParameters.Remove('ObjectId')
+                break
+            }
+            'InputObjectParameterSet' {
+                $id = $PSBoundParameters['InputObject'].Id
+                $null = $PSBoundParameters.Remove('InputObject')
+                break
+            }
+            'UPNOrObjectIdParameterSet' {
+                $id = $PSBoundParameters['UPNOrObjectId']
+                $null = $PSBoundParameters.Remove('UPNOrObjectId')
+                break
+            }
+            'UPNParameterSet' {
+              $id = $PSBoundParameters['UserPrincipalName']
+              $null = $PSBoundParameters.Remove('UserPrincipalName')
+              break
+          }
+      }
+        $PSBoundParameters['Id'] = $id
+
         MSGraph.internal\Update-AzAdUser @PSBoundParameters
     }
 }

@@ -511,7 +511,7 @@ param(
     if ($PSBoundParameters.ContainsKey('Password')) {
       $passwordProfile = [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordProfile]::New()
       $passwordProfile.ForceChangePasswordNextSignIn = $ForceChangePasswordNextLogin
-      $passwordProfile.Password = ConvertFrom-SecureString -SecureString $Password -AsPlainText
+      $passwordProfile.Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
       $null = $PSBoundParameters.Remove('Password')
       $null = $PSBoundParameters.Remove('ForceChangePasswordNextLogin')
       $PSBoundParameters['accountEnabled'] = $true
