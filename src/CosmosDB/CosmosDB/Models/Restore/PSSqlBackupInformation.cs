@@ -16,13 +16,13 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.Restore
 {
-    public class PSBackupInformation
+    public class PSSqlBackupInformation
     {
-        public PSBackupInformation()
+        public PSSqlBackupInformation()
         {
         }
 
-        public PSBackupInformation(BackupInformation backupInformation)
+        public PSSqlBackupInformation(BackupInformation backupInformation)
         {
             if (backupInformation == null || backupInformation.ContinuousBackupInformation == null)
                 return;
