@@ -35,6 +35,7 @@ Az.MonitoringSolutions
 Az.MySql
 Az.Portal
 Az.PostgreSql
+Az.PostgreSQL
 Az.ProviderHub
 Az.Purview
 Az.RedisEnterpriseCache
