@@ -19,7 +19,7 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Get-AzLabServicesLabForVM' {
     It 'Get Lab from VM' {
-        $vmId = "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)/virtualMachines/0"
-        Get-AzLabServicesLabForVM -ResourceId $vmId | Should -Not -BeNullOrEmpty
+        $vm = Get-AzLabServicesVM -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name 0
+        Get-AzLabServicesLabForVM -ResourceId $vm.Id | Should -Not -BeNullOrEmpty
     }
 }

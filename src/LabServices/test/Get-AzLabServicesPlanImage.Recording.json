@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "19" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,16 +22,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH0R:0000000B" ],
-        "x-ms-correlation-request-id": [ "6fa22cd7-7511-41f7-981a-34040347199a" ],
-        "traceparent": [ "00-57eb46d5a8b871428e2c3069de1bd9fe-3955dc43af55809b-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLM4:00000001" ],
+        "x-ms-correlation-request-id": [ "90179f3b-0584-4aa5-888f-f17c85f6c1d3" ],
+        "traceparent": [ "00-5d70b30b07542b4e91a37cfceb73fa1c-fc44fea78234af67-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190040Z:6fa22cd7-7511-41f7-981a-34040347199a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170027Z:90179f3b-0584-4aa5-888f-f17c85f6c1d3" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:40 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "271294" ],
@@ -50,8 +50,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,16 +65,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKA9:0000000C" ],
-        "x-ms-correlation-request-id": [ "9aad7614-7d45-44c7-91c9-beeaf710b983" ],
-        "traceparent": [ "00-d8c4ca1e37deee4a890b815d01a8bae3-043476b996052c99-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDICL:00000001" ],
+        "x-ms-correlation-request-id": [ "9c4f7a63-24a2-4743-ab5b-2a5ea9e279c9" ],
+        "traceparent": [ "00-8b478603e406674b90cddf4d122f6531-d9b140a79b6936e8-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190043Z:9aad7614-7d45-44c7-91c9-beeaf710b983" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170029Z:9c4f7a63-24a2-4743-ab5b-2a5ea9e279c9" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:42 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "184928" ],
@@ -93,8 +93,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -108,16 +108,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH0R:0000000C" ],
-        "x-ms-correlation-request-id": [ "50ba0fa4-7274-46b5-abdf-9b44cb8891f9" ],
-        "traceparent": [ "00-cb2a749ecc8b9c418f447805065f1f46-4ae7dd6924f1bf4a-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLM4:00000002" ],
+        "x-ms-correlation-request-id": [ "240fa720-a763-460c-848d-a65011bd3179" ],
+        "traceparent": [ "00-652ca2f62d0ef74483563ea35820d3c6-f2c771daf9b768aa-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190044Z:50ba0fa4-7274-46b5-abdf-9b44cb8891f9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170031Z:240fa720-a763-460c-848d-a65011bd3179" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:44 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "280816" ],
@@ -136,8 +136,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -151,16 +151,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKA9:0000000D" ],
-        "x-ms-correlation-request-id": [ "c73aa070-aa8d-425e-ac5e-c3ad94cc8394" ],
-        "traceparent": [ "00-194799a395319246a6f373efe0735be1-e07d6fd5f78594d1-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDICL:00000002" ],
+        "x-ms-correlation-request-id": [ "f00d59d6-8b9c-471d-a429-d8dd977fcf27" ],
+        "traceparent": [ "00-0f3831b23126224587e6ce3cf1b5d203-8ac71f3f13a3c0d4-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190046Z:c73aa070-aa8d-425e-ac5e-c3ad94cc8394" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170032Z:f00d59d6-8b9c-471d-a429-d8dd977fcf27" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:45 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "244466" ],
@@ -179,8 +179,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -194,16 +194,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH0R:0000000D" ],
-        "x-ms-correlation-request-id": [ "34d4ec48-eeb3-4f35-b31d-92d00a4a8fb7" ],
-        "traceparent": [ "00-1819c81415955f4b94f069077f4af38a-60ec4f48ccfd21d0-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLM4:00000003" ],
+        "x-ms-correlation-request-id": [ "22301dfc-220e-4fd0-94ba-e6f181ceeae2" ],
+        "traceparent": [ "00-05ac1e1cc2397543a684567310d381b9-c818442ff780361f-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190048Z:34d4ec48-eeb3-4f35-b31d-92d00a4a8fb7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170033Z:22301dfc-220e-4fd0-94ba-e6f181ceeae2" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:47 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "272956" ],
@@ -222,8 +222,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -237,16 +237,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKA9:0000000E" ],
-        "x-ms-correlation-request-id": [ "c0d94f39-df76-4d81-b5ff-2dffcaa0b791" ],
-        "traceparent": [ "00-93e944eaf3d80f46b099b4d3475cb3c6-0899ab8dbe9d9d74-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDICL:00000003" ],
+        "x-ms-correlation-request-id": [ "e44ec813-c01b-407a-8cf0-95c7d6368307" ],
+        "traceparent": [ "00-37938339fed61446a58949337ee63341-0581ffc3c757ced6-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190050Z:c0d94f39-df76-4d81-b5ff-2dffcaa0b791" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170035Z:e44ec813-c01b-407a-8cf0-95c7d6368307" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:49 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "270501" ],
@@ -265,8 +265,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -280,16 +280,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH0R:0000000E" ],
-        "x-ms-correlation-request-id": [ "1bd58488-92c4-4397-9e52-daabdccaf5c0" ],
-        "traceparent": [ "00-fe48f11bbfc6d542905f4cde530a74bc-b184765d09b52e32-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLM4:00000004" ],
+        "x-ms-correlation-request-id": [ "61eadb6a-c37a-47b4-b372-a3badc83dad5" ],
+        "traceparent": [ "00-fdc443c55cb39b4a8562489f2d7eab30-aefc886a38f0d2dc-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190052Z:1bd58488-92c4-4397-9e52-daabdccaf5c0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170037Z:61eadb6a-c37a-47b4-b372-a3badc83dad5" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:51 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "289970" ],
@@ -308,8 +308,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -323,16 +323,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKA9:0000000F" ],
-        "x-ms-correlation-request-id": [ "327e57cc-3c5e-4abe-a8d7-53649e260ebb" ],
-        "traceparent": [ "00-90157afdf6a1d346ad2a7529e612e105-6626a1ec953fef81-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDICL:00000004" ],
+        "x-ms-correlation-request-id": [ "8556c9d0-d476-456a-b69e-028b312beb17" ],
+        "traceparent": [ "00-fad58d689c017b44bc320347b2ae8799-95044f9557f57960-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190054Z:327e57cc-3c5e-4abe-a8d7-53649e260ebb" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170039Z:8556c9d0-d476-456a-b69e-028b312beb17" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:53 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "277077" ],
@@ -351,8 +351,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -366,16 +366,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH0R:0000000F" ],
-        "x-ms-correlation-request-id": [ "03e73762-1da4-4b7a-bfac-f7c96d4f654f" ],
-        "traceparent": [ "00-96deeb2a6c55e146bcafe13a05d4a9e7-cafca6288371cba8-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLM4:00000005" ],
+        "x-ms-correlation-request-id": [ "4c22ba23-b7ae-42bd-b12c-59973c3f7df1" ],
+        "traceparent": [ "00-c0b05f0c1cf9394aa0b8f956655bf639-ccd0287785959133-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190056Z:03e73762-1da4-4b7a-bfac-f7c96d4f654f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170040Z:4c22ba23-b7ae-42bd-b12c-59973c3f7df1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:55 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "264507" ],
@@ -394,8 +394,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -409,16 +409,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKA9:00000010" ],
-        "x-ms-correlation-request-id": [ "bc2132df-a3e4-4537-a06e-6b49ef67be9c" ],
-        "traceparent": [ "00-7ce79c225905f140ae06750e3a05591d-1720584c3002febf-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDICL:00000005" ],
+        "x-ms-correlation-request-id": [ "d567637b-76f4-447b-91c7-236fd968d0db" ],
+        "traceparent": [ "00-a3d3edd428f10941a6ca8e28b7593d79-7bb35fcbab207200-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190058Z:bc2132df-a3e4-4537-a06e-6b49ef67be9c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170042Z:d567637b-76f4-447b-91c7-236fd968d0db" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:57 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "265616" ],
@@ -437,8 +437,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -452,16 +452,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH0R:00000010" ],
-        "x-ms-correlation-request-id": [ "ef7dbbd5-aa52-463b-93d3-5688f4a2ee29" ],
-        "traceparent": [ "00-e42aa66f7c43fb4fbcad7f4865390070-88115c33e0684d5f-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLM4:00000006" ],
+        "x-ms-correlation-request-id": [ "388dbf26-4b3b-4bf3-85b4-ad83974a3e4c" ],
+        "traceparent": [ "00-c2f6dd81d5d6e448bc32178a5268885a-0bec4c86f9dbe7ea-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190100Z:ef7dbbd5-aa52-463b-93d3-5688f4a2ee29" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170044Z:388dbf26-4b3b-4bf3-85b4-ad83974a3e4c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:00:59 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "289997" ],
@@ -480,8 +480,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "30" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -495,16 +495,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKA9:00000011" ],
-        "x-ms-correlation-request-id": [ "4531e8a7-31fd-477a-aa26-06003300133a" ],
-        "traceparent": [ "00-a458704eeffe7843b51c1e1d1a4f4300-3ce04fca7a5d4b68-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDICL:00000006" ],
+        "x-ms-correlation-request-id": [ "fb74ccc2-c0b5-4e26-8313-3011d392639a" ],
+        "traceparent": [ "00-6c7defcad8552f44a23818c00482e3bb-372360800ba19bff-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190102Z:4531e8a7-31fd-477a-aa26-06003300133a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170046Z:fb74ccc2-c0b5-4e26-8313-3011d392639a" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:01:01 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "232661" ],
@@ -523,8 +523,8 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "8cdb927d-6ae8-41cf-8105-3c3d524b925e" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "27dfb73f-9089-43df-ad74-e482b7dc1e5b" ],
         "CommandName": [ "Get-AzLabServicesPlanImage" ],
         "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -538,16 +538,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6PDJDH0R:00000011" ],
-        "x-ms-correlation-request-id": [ "2939f3f9-a34e-4c8d-a23f-5d10dc436753" ],
-        "traceparent": [ "00-c52454fcbdcee94bb05384663abc8194-931e02d1fcd54352-01" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLM4:00000007" ],
+        "x-ms-correlation-request-id": [ "abd64d33-a25c-4b73-b5a4-c6ff3246072b" ],
+        "traceparent": [ "00-330eb5749d658b43a84e1f723c95b796-ce8aa16373c3e4fd-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190107Z:2939f3f9-a34e-4c8d-a23f-5d10dc436753" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170048Z:abd64d33-a25c-4b73-b5a4-c6ff3246072b" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:01:06 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "53909" ],
@@ -565,8 +565,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "16d52fef-954b-4757-8058-4918913c6e14" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "3085c95f-eb63-4b0a-a31b-3e51f0f56a99" ],
         "CommandName": [ "Get-AzLabServicesLabPlan" ],
         "FullCommandName": [ "Get-AzLabServicesLabPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -581,23 +581,109 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
         "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
-        "x-ms-request-id": [ "0HMCF6OTAOKA9:00000012" ],
-        "x-ms-correlation-request-id": [ "72c181b5-a5ec-4b5f-9e93-f63fd8d6edb9" ],
-        "traceparent": [ "00-71b084cf1925a84f9e53eca9dc3ab6ce-4b05054d436143d7-01" ],
+        "x-ms-request-id": [ "0HMCF6PDJDICL:00000007" ],
+        "x-ms-correlation-request-id": [ "f9b99db8-aa9d-4a28-9df2-a9c1134f750b" ],
+        "traceparent": [ "00-9ec72ff6727f574c8df7da0793d86fee-02bb5e497a0810e5-01" ],
         "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211022T190111Z:72c181b5-a5ec-4b5f-9e93-f63fd8d6edb9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170049Z:f9b99db8-aa9d-4a28-9df2-a9c1134f750b" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Oct 2021 19:01:10 GMT" ]
+        "Date": [ "Mon, 25 Oct 2021 17:00:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1139" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-21T23:21:45.8112168Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-21T23:21:45.8112168Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"sharedGalleryId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.Compute/galleries/sigunitpowershell\",\"supportInfo\":{\"url\":\"https://help.contoso.com/\",\"email\":\"help@contoso.com\",\"phone\":\"+1-202-555-0123\",\"instructions\":\"Contact support for help.\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"name\":\"labplan-unit-powershell\",\"type\":\"Microsoft.LabServices/labPlans\"}",
+      "Content": "{\"systemData\":{\"createdBy\":\"rbest@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-10-23T00:06:53.3348948Z\",\"lastModifiedBy\":\"rbest@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-10-23T00:06:53.3348948Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"defaultConnectionProfile\":{\"webSshAccess\":\"None\",\"webRdpAccess\":\"None\",\"clientSshAccess\":\"None\",\"clientRdpAccess\":\"Public\"},\"defaultAutoShutdownProfile\":{\"shutdownOnDisconnect\":\"Disabled\",\"shutdownWhenNotConnected\":\"Disabled\",\"shutdownOnIdle\":\"None\"},\"allowedRegions\":[\"westcentralus\"],\"sharedGalleryId\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.Compute/galleries/sigunitpowershell\",\"supportInfo\":{\"url\":\"https://help.contoso.com/\",\"email\":\"help@contoso.com\",\"phone\":\"+1-202-555-0123\",\"instructions\":\"Contact support for help.\"}},\"location\":\"westcentralus\",\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell\",\"name\":\"labplan-unit-powershell\",\"type\":\"Microsoft.LabServices/labPlans\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzLabServicesPlanImage+[NoContext]+Get specific Image name+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell/images/canonical.0001-com-ubuntu-server-focal.20_04-lts?api-version=2021-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell/images/canonical.0001-com-ubuntu-server-focal.20_04-lts?api-version=2021-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "c521c26a-ba0a-4afd-acd4-84655c27361d" ],
+        "CommandName": [ "Az.LabServices.private\\Get-AzLabServicesPlanImage_Get" ],
+        "FullCommandName": [ "Get-AzLabServicesPlanImage_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
+        "x-ms-request-id": [ "0HMCF6OTAOLM4:00000008" ],
+        "x-ms-correlation-request-id": [ "6a0942c9-f11b-4773-8dc5-6389f0a5c4f1" ],
+        "traceparent": [ "00-7c48b33225a85a40b2d9657243d25a9b-15cd99b6aa52f314-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170052Z:6a0942c9-f11b-4773-8dc5-6389f0a5c4f1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Oct 2021 17:00:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Ubuntu Server 20.04 LTS\",\"description\":\"Ubuntu Server is the world\u0027s most popular Linux for cloud environments. Updates and patches for Ubuntu Server 20.04 LTS will be available until April 2025. Ubuntu Server is the perfect virtual machine (VM) platform for all workloads from web applications to NoSQL databases and Hadoop. For more information see \u003ca href=\u0027https://ubuntu.com/azure\u0027 target=\u0027_blank\u0027\u003eUbuntu on Azure\u003c/a\u003e and \u003ca href=\u0027http://juju.ubuntu.com\u0027 target=\u0027_blank\u0027\u003eusing Juju to deploy your workloads\u003c/a\u003e.\",\"iconUrl\":\"https://store-images.s-microsoft.com/image/apps.18832.b1cb587c-4b08-4839-9156-b06fa2ff0960.74e50379-1739-4b89-9061-f6f8a69cef7e.18bb5c17-eee7-4276-b40c-e6eab81975f4\",\"author\":\"Canonical\",\"osType\":\"Linux\",\"plan\":\"20_04-lts-ARM\",\"offer\":\"0001-com-ubuntu-server-focal\",\"publisher\":\"canonical\",\"sku\":\"20_04-lts\",\"version\":\"latest\",\"availableRegions\":[],\"osState\":\"Generalized\",\"enabledState\":\"Enabled\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell/images/canonical.0001-com-ubuntu-server-focal.20_04-lts\",\"name\":\"canonical.0001-com-ubuntu-server-focal.20_04-lts\",\"type\":\"Microsoft.LabServices/labPlans/images\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzLabServicesPlanImage+[NoContext]+Get specific Display name+$GET+https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell/images?api-version=2021-10-01-preview\u0026$filter=Properties%2FDisplayName eq %27Ubuntu Server 20.04 LTS%27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell/images?api-version=2021-10-01-preview\u0026$filter=Properties%2FDisplayName%20eq%20%27Ubuntu%20Server%2020.04%20LTS%27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "5aeec073-b8d3-42e6-9eeb-c33f61b00e2d" ],
+        "CommandName": [ "Az.LabServices\\Get-AzLabServicesPlanImage" ],
+        "FullCommandName": [ "Get-AzLabServicesPlanImage_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "Request-Context": [ "appId=cid-v1:7a6e27f5-4c72-4f69-b2c3-dcc03e975107" ],
+        "x-ms-request-id": [ "0HMCF6PDJDICL:00000008" ],
+        "x-ms-correlation-request-id": [ "15f52b12-8ce6-46f7-a410-4598eec6de12" ],
+        "traceparent": [ "00-adabd8732a50ce4aa298879cb8bfee34-fa1ef1cd20f941d0-01" ],
+        "api-supported-versions": [ "2020-05-01-preview, 2021-10-01-preview" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20211025T170054Z:15f52b12-8ce6-46f7-a410-4598eec6de12" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Oct 2021 17:00:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1302" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Ubuntu Server 20.04 LTS\",\"description\":\"Ubuntu Server is the world\u0027s most popular Linux for cloud environments. Updates and patches for Ubuntu Server 20.04 LTS will be available until April 2025. Ubuntu Server is the perfect virtual machine (VM) platform for all workloads from web applications to NoSQL databases and Hadoop. For more information see \u003ca href=\u0027https://ubuntu.com/azure\u0027 target=\u0027_blank\u0027\u003eUbuntu on Azure\u003c/a\u003e and \u003ca href=\u0027http://juju.ubuntu.com\u0027 target=\u0027_blank\u0027\u003eusing Juju to deploy your workloads\u003c/a\u003e.\",\"iconUrl\":\"https://store-images.s-microsoft.com/image/apps.18832.b1cb587c-4b08-4839-9156-b06fa2ff0960.74e50379-1739-4b89-9061-f6f8a69cef7e.18bb5c17-eee7-4276-b40c-e6eab81975f4\",\"author\":\"Canonical\",\"osType\":\"Linux\",\"plan\":\"20_04-lts-ARM\",\"offer\":\"0001-com-ubuntu-server-focal\",\"publisher\":\"canonical\",\"sku\":\"20_04-lts\",\"version\":\"latest\",\"osState\":\"Generalized\",\"enabledState\":\"Enabled\"},\"id\":\"/subscriptions/63d7e191-c910-43ba-908f-252519936998/resourceGroups/powershell-sdk-testing/providers/Microsoft.LabServices/labPlans/labplan-unit-powershell/images/canonical.0001-com-ubuntu-server-focal.20_04-lts\",\"name\":\"canonical.0001-com-ubuntu-server-focal.20_04-lts\",\"type\":\"Microsoft.LabServices/labPlans/images\"}]}",
       "isContentBase64": false
     }
   }

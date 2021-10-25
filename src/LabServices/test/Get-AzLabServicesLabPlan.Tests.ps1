@@ -29,8 +29,7 @@ Describe 'Get-AzLabServicesLabPlan' {
         Get-AzLabServicesLabPlan -ResourceGroupName $ENV:ResourceGroupName | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get ResourceId' {
-        $resourceId = "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($ENV:LabPlanName)"
-        Get-AzLabServicesLabPlan -ResourceId $resourceId | Should -Not -BeNullOrEmpty
+    It 'Get ResourceId' {        
+        Get-AzLabServicesLabPlan -ResourceId "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($ENV:LabPlanName)" | Should -Not -BeNullOrEmpty
     }
 }
