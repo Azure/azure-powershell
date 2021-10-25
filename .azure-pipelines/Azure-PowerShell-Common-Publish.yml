@@ -91,8 +91,9 @@ steps:
   condition: and(succeeded(), ne(variables['publish'], 'false'))
   inputs:
     command: push
-    packagesToPush: 'artifacts/Package/Release/Microsoft.Azure.PowerShell.*.*nupkg' # .nupkg and .snupkg
+    packagesToPush: 'artifacts/Package/Release/Microsoft.Azure.PowerShell.*.nupkg;!artifacts/Package/Release/Microsoft.Azure.PowerShell.*.symbols.nupkg' # .nupkg and .snupkg
     publishVstsFeed: public/azure-powershell
+    includeSymbols: false
 
 - powershell: |
    dotnet msbuild build\publish.proj /p:Configuration=Release /p:ReleaseVersion=$env:VERSION /p:CommitId=$env:Build_SourceVersion /p:GitHubAccessToken=$(Github-azuresdkci-personalaccesstoken)  /NoLogo
@@ -103,5 +104,5 @@ steps:
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: artifacts/Package/Release/
-    ArtifactName: aitifacts
+    ArtifactName: artifacts
   condition: succeededOrFailed()
