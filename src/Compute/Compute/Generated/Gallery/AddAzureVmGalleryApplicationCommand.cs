@@ -20,9 +20,11 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Compute
+
+namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmGalleryApplication"), OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmGalleryApplication", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSVirtualMachine))]
     public class AddAzureVmGalleryApplicationCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
