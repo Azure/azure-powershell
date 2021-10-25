@@ -110,11 +110,6 @@ function Get-AzAdUser {
         ${IncludeTotalCount},
     
         [Parameter(ParameterSetName='List')]
-        [System.Management.Automation.SwitchParameter]
-        # Include count of items
-        ${Count},
-    
-        [Parameter(ParameterSetName='List')]
         [System.String]
         # Filter items by property values
         ${Filter},
@@ -178,15 +173,15 @@ function Get-AzAdUser {
     )
     
     process {
-        if('SignedInUser' -eq $PSCmdlet.ParameterSetName) {
-            $null = $PSBoundParameters.Remove('SignedIn')
-            Az.Resources.MSGraph.private\Get-AzAdUserSigned_Get
-            return
-        }
-
         if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
             $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail', 'onPremisesImmutableId')
-            $null = $PSBoundParameters['AppendSelected']
+            $null = $PSBoundParameters.Remove('AppendSelected')
+        }
+
+        if('SignedInUser' -eq $PSCmdlet.ParameterSetName) {
+            $null = $PSBoundParameters.Remove('SignedIn')
+            Az.Resources.MSGraph.private\Get-AzAdUserSigned_Get @PSBoundParameters
+            return
         }
 
         switch ($PSCmdlet.ParameterSetName) {
