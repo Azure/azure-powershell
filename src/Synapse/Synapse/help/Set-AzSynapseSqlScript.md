@@ -74,7 +74,7 @@ This command creates or updates a SQL script from SQL script file sqlscript.sql 
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The SQL file path.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: File
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 The description of the SQL script.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +135,7 @@ The folder that this SQL script is in.
 If not specified, this SQL script will appear at the root level.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 The sql script name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SqlScriptName
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 Limit of results, '-1' for no limit.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 Which database the sql script is going to use.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameAndSqlPool, SetByObjectAndSqlPool
 Aliases:
 
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 Which sql pool the sql script is going to connect to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameAndSqlPool, SetByObjectAndSqlPool
 Aliases:
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName, SetByNameAndSqlPool
 Aliases:
 
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: SetByObject, SetByObjectAndSqlPool
 Aliases:
 
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -256,7 +256,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

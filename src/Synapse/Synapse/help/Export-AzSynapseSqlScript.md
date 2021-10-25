@@ -14,19 +14,19 @@ Exports a sql script from a Synapse workspace.
 
 ### ExportByName (Default)
 ```
-Export-AzSynapseSqlScript -WorkspaceName <String> -OutputFolder <String> [-Name <String>]
+Export-AzSynapseSqlScript -WorkspaceName <String> -OutputFolder <String> [-PassThru] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExportByObject
 ```
-Export-AzSynapseSqlScript -WorkspaceObject <PSSynapseWorkspace> -OutputFolder <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Export-AzSynapseSqlScript -WorkspaceObject <PSSynapseWorkspace> -OutputFolder <String> [-PassThru]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExportByInputObject
 ```
-Export-AzSynapseSqlScript -InputObject <PSSqlScriptResource> -OutputFolder <String>
+Export-AzSynapseSqlScript -InputObject <PSSqlScriptResource> -OutputFolder <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -121,6 +121,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Display ServiceProperties
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

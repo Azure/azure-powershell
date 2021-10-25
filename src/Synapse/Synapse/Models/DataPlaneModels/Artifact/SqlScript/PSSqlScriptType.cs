@@ -13,29 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSSqlScript
+    public class PSSqlScriptType
     {
-        public PSSqlScript(SqlScript sqlscript)
+        public PSSqlScriptType(SqlScriptType? sqlScriptType)
         {
-            this.Description = sqlscript?.Description;
-            this.Type = new PSSqlScriptType(sqlscript?.Type);
-            this.Content = new PSSqlScriptContent(sqlscript?.Content);
-            this.Folder = new PSSqlScriptFolder(sqlscript?.Folder);
-            this.AdditionalProperties = sqlscript?.AdditionalProperties;
+            this.SqlQuery = SqlScriptType.SqlQuery.ToString();
         }
 
-        public string Description { get; set; }
-
-        public PSSqlScriptType Type { get; set; }
-
-        public PSSqlScriptContent Content { get; set; }
-
-        public IDictionary<string, object> AdditionalProperties { get; set; }
-
-        public PSSqlScriptFolder Folder { get; set; }
+        public string SqlQuery { get; set; }
     }
 }

@@ -383,6 +383,9 @@ Modifies TDE property for a SQL pool.
 ### [Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
+### [Set-AzSynapseSqlScript](Set-AzSynapseSqlScript.md)
+Creates or updates a SQL script in a workspace.
+
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.
 
