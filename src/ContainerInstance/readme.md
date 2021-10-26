@@ -30,13 +30,13 @@ For information on how to develop for `Az.ContainerInstance`, see [how-to.md](ho
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 2601b21eccaab01da2feb65d232ab6c3cb9c1c45
+Branch: 2601b21eccaab01da2feb65d232ab6c3cb9c1c45
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2021-03-01/containerInstance.json 
+  - $(repo)/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2021-09-01/containerInstance.json 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -94,6 +94,12 @@ directive:
   - where:
       verb: Restart
     hide: true
+  # Alias long name: Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint
+  - where:
+      verb: Get
+      subject: ContainerGroupOutboundNetworkDependencyEndpoint
+    set:
+      alias: Get-AzContainerGroupOutboundNetworkDependencyEndpoint
   - from: swagger-document
     where: $
     transform: return $.replace(/resourcegroups/, "resourceGroups")
@@ -114,4 +120,5 @@ directive:
             }
           }
         }
+
 ```

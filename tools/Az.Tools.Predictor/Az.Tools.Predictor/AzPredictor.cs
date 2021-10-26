@@ -92,7 +92,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         var azContext = new AzContext()
                         {
                             IsInternal = (_settings.SetAsInternal == true) ? true : false,
-                            SurveyId = _settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
                         };
 
                         RegisterDisposableObject(azContext);
@@ -100,6 +99,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         _azContext = azContext;
 
                         _azContext.UpdateContext();
+                        // This will run the script in the right context.
+                        var _ = _azContext.PowerShellVersion;
                         _telemetryClient = new AzPredictorTelemetryClient(_azContext);
                         _service = new AzPredictorService(_settings.ServiceUri, _telemetryClient, _azContext);
                         _isInitialized = true;
@@ -244,37 +245,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     // Need to create a new object to hold the string. They're used in a seperate thread the the contents in
                     // _lastTwoMaskedCommands may change when the method is called again.
                     var lastTwoMaskedCommands = new List<string>(_lastTwoMaskedCommands);
-                    Exception exception = null;
-                    var hasSentHttpRequest = false;
 
                     // We don't need to block on the task. It sends the HTTP request and update prediction list. That can run at the background.
-                    Task.Run(async () =>
-                            {
-                                var localCommandLineExecutedCompletion = _commandLineExecutedCompletion;
-                                var requestId = Guid.NewGuid().ToString();
-
-                                try
-                                {
-                                    hasSentHttpRequest = await _service.RequestPredictionsAsync(lastTwoMaskedCommands, requestId,  _predictionRequestCancellationSource.Token);
-                                }
-                                catch (ServiceRequestException e)
-                                {
-                                    hasSentHttpRequest = e.IsRequestSent;
-                                    exception = e.InnerException;
-                                }
-                                catch (Exception e)
-                                {
-                                    exception = e;
-                                }
-                                finally
-                                {
-                                    await localCommandLineExecutedCompletion.Task;
-                                    _telemetryClient.RequestId = requestId;
-                                    _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(client, lastTwoMaskedCommands,
-                                                hasSentHttpRequest,
-                                                (exception is OperationCanceledException ? null : exception)));
-                                }
-                            }, _predictionRequestCancellationSource.Token);
+                    var _ = AzPredictorUtilities.RequestPredictionAndCollectTelemetryAync(_service, _telemetryClient, client, lastTwoMaskedCommands, _commandLineExecutedCompletion, _predictionRequestCancellationSource.Token);
                 }
             }
         }
@@ -378,9 +351,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private ParsedCommandLineHistory GetAstAndMaskedCommandLine(string commandLine)
         {
-            var asts = Parser.ParseInput(commandLine, out _, out _);
-            var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
-            var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
+            var commandAst = CommandLineUtilities.GetCommandAst(commandLine);
 
             var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
             bool isSupported = _service.IsSupportedCommand(commandName);

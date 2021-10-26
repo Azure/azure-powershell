@@ -20,12 +20,12 @@ Create a in-memory object for ContainerPort
 Create a in-memory object for ContainerPort
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ContainerPort
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ContainerPort
 .Link
 https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstancePortObject
 #>
 function New-AzContainerInstancePortObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ContainerPort')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ContainerPort')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzContainerInstancePortObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ContainerPort]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ContainerPort]::New()
 
         $Object.Port = $Port
         $Object.Protocol = $Protocol

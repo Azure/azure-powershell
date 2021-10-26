@@ -15,12 +15,14 @@ Update a Disk pool.
 ### UpdateExpanded (Default)
 ```
 Update-AzDiskPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DiskId <String[]>]
+ [-ManagedBy <String>] [-ManagedByExtended <String[]>] [-SkuName <String>] [-SkuTier <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDiskPool -InputObject <IDiskPoolIdentity> [-DiskId <String[]>] [-Tag <Hashtable>]
+Update-AzDiskPool -InputObject <IDiskPoolIdentity> [-DiskId <String[]>] [-ManagedBy <String>]
+ [-ManagedByExtended <String[]>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -84,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskId
-List of Azure Managed Disk Ids to attach to a Disk Pool.
+List of Azure Managed Disks to attach to a Disk Pool.
 To construct, see NOTES section for DISK properties and create a hash table.
 
 ```yaml
@@ -112,6 +114,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedBy
+Azure resource id.
+Indicates if this resource is managed by another Azure resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedByExtended
+List of Azure resource ids that manage this resource.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -155,6 +188,36 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+Sku name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+Sku tier
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -231,7 +294,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool
 
 ## NOTES
 
