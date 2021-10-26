@@ -3168,7 +3168,7 @@ function Test-VMSSUserdata3
 
 <#
 .SYNOPSIS
-Test the VMSS spot restore policy 
+Test the VMSS userdata norm
 #>
 function Test-VMSSUserdataNorm
 {
@@ -3203,7 +3203,7 @@ function Test-VMSSUserdataNorm
         # userdata vmss 
         $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -Userdata $userData;
 
-        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Userdata;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceView:$false -Userdata;
 
         Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
 
