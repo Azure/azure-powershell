@@ -19,12 +19,11 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Send-AzLabServicesUserInvite' {
     It 'Send-AzLabServicesUserInvite User' {
-        $user = Get-AzLabServicesUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:UserNameSecond
-        {Send-AzLabServicesUserInvite -User $user -Text 'testing 1.'} | Should -Not -Throw
+        {Send-AzLabServicesUserInvite -ResourceGroupName $ENV:ResourceGroupName -LabName $ENV:LabName -UserName $ENV:UserName -Text "testing 1."} | Should -Not -Throw
     }
 
-    It 'Send-AzLabServicesUserInvite Id' {
+    It 'Send-AzLabServicesUserInvite Id' -Skip {
         $user = Get-AzLabServicesUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName -Name $ENV:UserNameSecond
-        {Send-AzLabServicesUserInvite -ResourceId $user.Id -Text 'testing 2.'} | Should -Not -Throw
+        {Send-AzLabServicesUserInvite -ResourceId $user.Id -Text "testing 2."} | Should -Not -Throw
     }
 }
