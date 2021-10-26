@@ -112,7 +112,7 @@ function Get-AzWebPubSubKey_ListViaIdentity
     {
         try
         {
-            $null = $InputObject.Id -match '/subscriptions/(?<SubscriptionId>.+)/resourceGroups/(?<ResourceGroupName>.+)/providers/Microsoft.SignalRService/WebPubSub/(?<ResourceName>.+)'
+            $null = $InputObject.Id -match '/subscriptions/(?<SubscriptionId>[a-zA-Z0-9-]{36})/resourceGroups/(?<ResourceGroupName>[^/]+)/providers/Microsoft.SignalRService/WebPubSub/(?<ResourceName>.+$)'
             $PSBoundParameters.Add("ResourceGroupName", $Matches.ResourceGroupName)
             $PSBoundParameters.Add("ResourceName", $Matches.ResourceName)
             $PSBoundParameters.Add("SubscriptionId", $Matches.SubscriptionId)
