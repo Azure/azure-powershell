@@ -87,8 +87,8 @@ param(
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Include count of items
-    ${Count},
+    # Reports the number of objects in the data set. Currently, this parameter does nothing.
+    ${IncludeTotalCount},
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
@@ -185,6 +185,11 @@ process {
     if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
         $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'ServicePrincipalNames', 'AppId')
         $null = $PSBoundParameters.Remove('AppendSelected')
+    }
+
+    if ($PSBoundParameters['IncludeTotalCount']) {
+        $PSBoundParameters['Count'] = $PSBoundParameters['IncludeTotalCount']
+        $null = $PSBoundParameters.Remove('IncludeTotalCount')
     }
 
     switch ($PSCmdlet.ParameterSetName) {
