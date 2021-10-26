@@ -52,7 +52,7 @@ Create a in-memory object for Volume
 ### [New-AzContainerInstanceEnvironmentVariableObject](New-AzContainerInstanceEnvironmentVariableObject.md)
 Create a in-memory object for EnvironmentVariable
 
-### [new-AzContainerInstanceHttpHeaderObject](new-AzContainerInstanceHttpHeaderObject.md)
+### [New-AzContainerInstanceHttpHeaderObject](New-AzContainerInstanceHttpHeaderObject.md)
 Create a in-memory object for HttpHeader
 
 ### [New-AzContainerInstanceInitDefinitionObject](New-AzContainerInstanceInitDefinitionObject.md)
