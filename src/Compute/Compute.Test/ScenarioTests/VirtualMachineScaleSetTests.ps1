@@ -2823,6 +2823,56 @@ function Test-VirtualMachineScaleSetSpotRestorePolicy
 }
 
 
+<#
+.SYNOPSIS
+Test the VMSS Flexible orchestration mode defaulting. 
+#>
+function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $networkAPIVersionFlexible = "2020-11-01";
+    $flexiblePFDC = 1;
+    $flexibleSinglePlacementGroup = $false;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup variables
+        $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+        $omode = "Flexible";
+        $username = "admin01"
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        # Create VMSS with minimal inputs to allow defaulting
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
+        Assert-NotNull $vmss;
+        Assert-AreEqual $vmss.OrchestrationMode $omode;
+        Assert-AreEqual $vmss.SinglePlacementGroup $flexibleSinglePlacementGroup;
+        Assert-AreEqual $vmss.PlatformFaultDomainCount $flexiblePFDC;
+        Assert-AreEqual $vmss.VirtualMachineProfile.NetworkProfile.NetworkAPIVersion $networkAPIVersionFlexible;
+
+        Assert-ThrowsContains 
+        {
+            $vmssError = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -SinglePlacementGroup; `
+        } ` 
+        "The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
 
 <#
 .SYNOPSIS
@@ -3206,7 +3256,6 @@ function Test-VMSSUserdataNorm
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceView:$false -Userdata;
 
         Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
-
     }
     finally
     {
@@ -3214,3 +3263,4 @@ function Test-VMSSUserdataNorm
         Clean-ResourceGroup $rgname;
     }
 }
+

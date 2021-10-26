@@ -506,5 +506,19 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string WorkspacePackages = "The workspace packages.";
 
         public const string PackageAction = "Package action must be specified when you add or remove a workspace package from a Apache Spark pool.";
+
+        public const string DataFlowDebugSessionId = "Identifier for Synapse data flow debug session.";
+
+        public const string DebugSessionCommand = "The data flow debug command. Optionals are executePreviewQuery, executeStatisticsQuery and executeExpressionQuery.";
+
+        public const string DebugSessionStreamName = "The stream name of data flow for debugging.";
+
+        public const string DebugSessionRowLimit = "The row limit for data flow data preview.";
+
+        public const string DebugSessionExpression = "The expression for data flow expression preview.";
+
+        public const string DebugSessionColumns = "The columns list for data flow statistics preview.";
+
+        public const string DataFlowDebugSessionFilePath = "File path for Synapse data flow debug session";
     }
 }

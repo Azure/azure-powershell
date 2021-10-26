@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InBuilt".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InBuilt", "InBuilt", global::System.Management.Automation.CompletionResultType.ParameterValue, "InBuilt");
+                yield return new global::System.Management.Automation.CompletionResult("'InBuilt'", "InBuilt", global::System.Management.Automation.CompletionResultType.ParameterValue, "InBuilt");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MsixApplication".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MsixApplication", "MsixApplication", global::System.Management.Automation.CompletionResultType.ParameterValue, "MsixApplication");
+                yield return new global::System.Management.Automation.CompletionResult("'MsixApplication'", "MsixApplication", global::System.Management.Automation.CompletionResultType.ParameterValue, "MsixApplication");
             }
         }
     }

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Security .NET SDK package reference to version 3.0.0
 
 ## Version 1.0.0
 * General availability of `Az.Security` module

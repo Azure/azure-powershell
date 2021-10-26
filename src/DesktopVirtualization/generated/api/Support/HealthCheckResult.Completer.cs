@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "HealthCheckSucceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("HealthCheckSucceeded", "HealthCheckSucceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "HealthCheckSucceeded");
+                yield return new global::System.Management.Automation.CompletionResult("'HealthCheckSucceeded'", "HealthCheckSucceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "HealthCheckSucceeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "HealthCheckFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("HealthCheckFailed", "HealthCheckFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "HealthCheckFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'HealthCheckFailed'", "HealthCheckFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "HealthCheckFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SessionHostShutdown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SessionHostShutdown", "SessionHostShutdown", global::System.Management.Automation.CompletionResultType.ParameterValue, "SessionHostShutdown");
+                yield return new global::System.Management.Automation.CompletionResult("'SessionHostShutdown'", "SessionHostShutdown", global::System.Management.Automation.CompletionResultType.ParameterValue, "SessionHostShutdown");
             }
         }
     }

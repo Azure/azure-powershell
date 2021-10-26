@@ -6,7 +6,8 @@ $ErrorActionPreference = 'Stop'
 
 $GAOSBuildNumber = 17784
 $GAOSUBR = 1374
-
+$V2OSBuildNumber = 20348
+$V2OSUBR = 288
 #region User visible strings
 
 $AdminConsentWarning = "You need additional Azure Active Directory permissions to register in this Azure subscription. Contact your Azure AD administrator to grant consent to AAD application identity {0} at {1}. Then, run Register-AzStackHCI again with same parameters to complete registration."
@@ -29,7 +30,7 @@ $ConnectingToCloudBillingServiceFailed = "Can't reach Azure from node(s) {0}. Ma
 $ResourceExistsInDifferentRegionError = "There is already an Azure Stack HCI resource with the same resource ID in region {0}, which is different from the input region {1}. Either specify the same region or delete the existing resource and try again."
 $ArcCmdletsNotAvailableError = "Azure Arc integration isn't available for the version of Azure Stack HCI installed on node(s) {0} yet. Check the documentation for details. You may need to install an update or join the Preview channel."
 $ArcRegistrationDisableInProgressError = "Unregister of Azure Arc integration is in progress. Try Unregister-AzStackHCI to finish unregistration and then try Register-AzStackHCI again."
-$ArcIntegrationNotAvailableChinaCloudError = "Azure Arc integration is not available in AzureChinaCloud. Specify '-EnableAzureArcServer:`$false' in Register-AzStackHCI Cmdlet to register without Arc integration."
+$ArcIntegrationNotAvailableForCloudError = "Azure Arc integration is not available in {0}. Specify '-EnableAzureArcServer:`$false' in Register-AzStackHCI Cmdlet to register without Arc integration."
 
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
 $ValidatingParametersFetchClusterName = "Validating cmdlet parameters"
@@ -140,9 +141,9 @@ $AuthorityAzureChinaCloud = "https://login.partner.microsoftonline.cn"
 $BillingServiceApiScopeAzureChinaCloud = "$UsageServiceFirstPartyAppId/.default"
 $GraphServiceApiScopeAzureChinaCloud = "https://microsoftgraph.chinacloudapi.cn/.default"
 
-$ServiceEndpointAzureUSGovernment = "https://azurestackhci-usage.trafficmanager.us"
+$ServiceEndpointAzureUSGovernment = "https://dp.azurestackhci.azure.us"
 $AuthorityAzureUSGovernment = "https://login.microsoftonline.us"
-$BillingServiceApiScopeAzureUSGovernment = "https://azurestackhci-usage.azurewebsites.us/.default"
+$BillingServiceApiScopeAzureUSGovernment = "https://dp.azurestackhci.azure.us/.default"
 $GraphServiceApiScopeAzureUSGovernment = "https://graph.windows.net/.default"
 
 $ServiceEndpointAzureGermanCloud = "https://azurestackhci-usage.trafficmanager.de"
@@ -150,8 +151,8 @@ $AuthorityAzureGermanCloud = "https://login.microsoftonline.de"
 $BillingServiceApiScopeAzureGermanCloud = "https://azurestackhci-usage.azurewebsites.de/.default"
 $GraphServiceApiScopeAzureGermanCloud = "https://graph.cloudapi.de/.default"
 
-$RPAPIVersion = "2020-10-01"
-$HCIArcAPIVersion = "2021-01-01-preview"
+$RPAPIVersion = "2021-09-01";
+$HCIArcAPIVersion = "2021-09-01"
 $HCIArcInstanceName = "/arcSettings/default"
 $HCIArcExtensions = "/Extensions"
 
@@ -464,7 +465,7 @@ param(
     }
     elseif($EnvironmentName -eq $AzureUSGovernment)
     {
-        $defaultRegion = "usgoviowa"
+        $defaultRegion = "usgovvirginia"
     }
     elseif($EnvironmentName -eq $AzureGermanCloud)
     {
@@ -941,7 +942,7 @@ param(
     [string] $Region,
     [ref] $SupportedRegions
     )
-    $resources = Get-AzResourceProvider -ProviderNamespace Microsoft.AzureStackHCI
+    $resources = Retry-Command -ScriptBlock { Get-AzResourceProvider -ProviderNamespace Microsoft.AzureStackHCI } -RetryIfNullOutput $true
     $locations = $resources.Where{($_.ResourceTypes.ResourceTypeName -eq 'clusters' -and $_.RegistrationState -eq 'Registered')}.Locations
 
     $locations | foreach {
@@ -1372,7 +1373,8 @@ param(
         $clusterNodeSessions = New-PSSession -ComputerName $clusterNodeNames -Credential $Credential
     }
 
-    if((Get-AzureStackHCIArcIntegration).ClusterArcStatus -eq [ArcStatus]::Disabled)
+    $nodeArcStatus = Invoke-Command -Session $Session -ScriptBlock { (Get-AzureStackHCIArcIntegration)}
+    if($nodeArcStatus.ClusterArcStatus -eq [ArcStatus]::Disabled)
     {
         return $res
     }
@@ -1423,7 +1425,8 @@ param(
     [string] $Region,
     [string] $AppName,
     [string] $ClusterDNSSuffix,
-    [Switch] $IsWAC
+    [Switch] $IsWAC,
+    [string] $Environment
     )
 
     if($IsManagementNode)
@@ -1482,16 +1485,35 @@ param(
             return [ErrorDetail]::ArcPermissionsMissing
         }
 
+        $arcCommand = Invoke-Command -Session $session -ScriptBlock { Get-Command -Name 'Initialize-AzureStackHCIArcIntegration' -ErrorAction SilentlyContinue }
+        if ($arcCommand.Parameters.ContainsKey('Cloud')) 
+        {
+            Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration with cloud switch")
+            $ArcRegistrationParams = @{
+                AppId = $AppId
+                Secret = $Secret
+                TenantId = $TenantId
+                SubscriptionId = $SubscriptionId
+                Region = $Region
+                ResourceGroup = $ResourceGroup 
+                cloud  = $Environment 
+            }    
+        }else
+        {
+            Write-Debug ("invoking Initialize-AzureStackHCIArcIntegration without cloud switch")
+            $ArcRegistrationParams = @{
+                AppId = $AppId
+                Secret = $Secret
+                TenantId = $TenantId
+                SubscriptionId = $SubscriptionId
+                Region = $Region
+                ResourceGroup = $ResourceGroup
+            }
+        }
+        
         # Save Arc context.
         Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $SetupArcMessage -PercentComplete 40
-        $ArcRegistrationParams = @{
-            AppId = $AppId
-            Secret = $Secret
-            TenantId = $TenantId
-            SubscriptionId = $SubscriptionId
-            Region = $Region
-            ResourceGroup = $ResourceGroup
-        }
+        
         Invoke-Command -Session $session -ScriptBlock { Initialize-AzureStackHCIArcIntegration @Using:ArcRegistrationParams }
     }
 
@@ -1794,7 +1816,7 @@ enum ErrorDetail
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
     .PARAMETER ComputerName
     Specifies the cluster name or one of the cluster node in on-premise cluster that is being registered to Azure.
@@ -2024,9 +2046,10 @@ param(
             AccountId: $AccountId EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
             RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC"
 
-        if(($EnvironmentName -eq $AzureChinaCloud) -and ($EnableAzureArcServer -eq $true))
+            if((($EnvironmentName -eq $AzureChinaCloud) -or ($EnvironmentName -eq $AzureUSGovernment)) -and ($EnableAzureArcServer -eq $true))
         {
-            Write-Error -Message $ArcIntegrationNotAvailableChinaCloudError
+            $ArcNotAvailableMessage = $ArcIntegrationNotAvailableForCloudError -f $EnvironmentName
+            Write-Error -Message $ArcNotAvailableMessage 
             $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
             Write-Output $registrationOutput
             return
@@ -2403,7 +2426,7 @@ param(
                 $arcAppName = $ResourceName + ".arc"
 
                 Write-Verbose "Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $arcResourceGroupName"
-                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -AppName $arcAppName -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC
+                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -AppName $arcAppName -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName
 
                 if($arcResult -ne [ErrorDetail]::Success)
                 {
@@ -2477,7 +2500,7 @@ param(
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
     .PARAMETER UseDeviceAuthentication
     Use device code authentication instead of an interactive browser prompt.
@@ -2800,7 +2823,7 @@ param(
     Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
     .PARAMETER Region
     Specifies the Region to connect to. Not used unless it is Canary region.
