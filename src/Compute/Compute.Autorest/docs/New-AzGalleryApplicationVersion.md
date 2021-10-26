@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzGalleryApplicationVersion
 
 ## SYNOPSIS
-
+Create a gallery Application Version.
 
 ## SYNTAX
 
@@ -22,6 +22,9 @@ New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <S
 ```
 
 ## DESCRIPTION
+Create a gallery Application Version.
+
+## EXAMPLES
 
 ### Example 1: Create a gallery application version.
 ```powershell
@@ -34,6 +37,7 @@ PS C:\> $SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken
 PS C:\> New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -Install "powershell -command 'Expand-Archive -Path package.zip -DestinationPath C:\\package\'" -Remove "del C:\\package" 
 
 ```
+
 Creating a Gallery Application Version. Using SAS Uri for the blob for PackageFileLink.
 
 ## PARAMETERS
