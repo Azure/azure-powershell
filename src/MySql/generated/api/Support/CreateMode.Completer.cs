@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Default".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Default", "Default", global::System.Management.Automation.CompletionResultType.ParameterValue, "Default");
+                yield return new global::System.Management.Automation.CompletionResult("'Default'", "Default", global::System.Management.Automation.CompletionResultType.ParameterValue, "Default");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PointInTimeRestore".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PointInTimeRestore", "PointInTimeRestore", global::System.Management.Automation.CompletionResultType.ParameterValue, "PointInTimeRestore");
+                yield return new global::System.Management.Automation.CompletionResult("'PointInTimeRestore'", "PointInTimeRestore", global::System.Management.Automation.CompletionResultType.ParameterValue, "PointInTimeRestore");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GeoRestore".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GeoRestore", "GeoRestore", global::System.Management.Automation.CompletionResultType.ParameterValue, "GeoRestore");
+                yield return new global::System.Management.Automation.CompletionResult("'GeoRestore'", "GeoRestore", global::System.Management.Automation.CompletionResultType.ParameterValue, "GeoRestore");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Replica".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Replica", "Replica", global::System.Management.Automation.CompletionResultType.ParameterValue, "Replica");
+                yield return new global::System.Management.Automation.CompletionResult("'Replica'", "Replica", global::System.Management.Automation.CompletionResultType.ParameterValue, "Replica");
             }
         }
     }

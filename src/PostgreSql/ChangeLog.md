@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed `Location` in `Restore-AzPostgreSqlFlexibleServer`
+* Minor fixes for `Get-AzPostgreSqlFlexibleServerLocationBasedCapability`, `Test-AzPostgreSqlFlexibleServerConnect` and `New-AzPostgreSqlFlexibleServer`
 
 ## Version 0.7.0
 * Changed default New-AzMySqlFlexibleServer network option from private access to public access

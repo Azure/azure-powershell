@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -20,6 +21,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD group.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSADGroup), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADGroup", SupportsShouldProcess = true), OutputType(typeof(PSADGroup))]
     public class NewAzureADGroupCommand : ActiveDirectoryBaseCmdlet
     {

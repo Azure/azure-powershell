@@ -26,6 +26,11 @@
     - Added `Get-AzSynapseDataFlowDebugSession` cmdlet
     - Added `Stop-AzSynapseDataFlowDebugSession`cmdlet to Stop a data flow debug session by `SessionId`
 * Fixed the format of notebook file exported by `Export-AzSynapseNotebook`
+* Added support for Synapse sql script
+    - Added `Get-AzSynapseSqlScript` cmdlet
+    - Added `Remove-AzSynapseSqlScript` cmdlet
+    - Added `Export-AzSynapseSqlScript` cmdlet
+    - Added `Set-AzSynapseSqlScript` cmdlet
 
 ## Version 0.17.0
 * Added cmdlets for Synapse Integration Runtime

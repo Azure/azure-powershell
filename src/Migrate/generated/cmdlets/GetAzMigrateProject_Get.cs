@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Extensions;
+    using System;
 
     /// <summary>Method to get a migrate project.</summary>
     /// <remarks>

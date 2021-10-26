@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Free".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Free", "Free", global::System.Management.Automation.CompletionResultType.ParameterValue, "Free");
+                yield return new global::System.Management.Automation.CompletionResult("'Free'", "Free", global::System.Management.Automation.CompletionResultType.ParameterValue, "Free");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Shared".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Shared", "Shared", global::System.Management.Automation.CompletionResultType.ParameterValue, "Shared");
+                yield return new global::System.Management.Automation.CompletionResult("'Shared'", "Shared", global::System.Management.Automation.CompletionResultType.ParameterValue, "Shared");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Basic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Basic", "Basic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Basic");
+                yield return new global::System.Management.Automation.CompletionResult("'Basic'", "Basic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Basic");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Standard", "Standard", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard");
+                yield return new global::System.Management.Automation.CompletionResult("'Standard'", "Standard", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Premium".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Premium", "Premium", global::System.Management.Automation.CompletionResultType.ParameterValue, "Premium");
+                yield return new global::System.Management.Automation.CompletionResult("'Premium'", "Premium", global::System.Management.Automation.CompletionResultType.ParameterValue, "Premium");
             }
         }
     }

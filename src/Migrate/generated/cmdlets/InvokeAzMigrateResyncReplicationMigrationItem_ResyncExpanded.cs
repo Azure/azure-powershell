@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Extensions;
+    using System;
 
     /// <summary>The operation to resynchronize replication of an ASR migration item.</summary>
     /// <remarks>
