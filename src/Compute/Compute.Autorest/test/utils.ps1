@@ -24,8 +24,22 @@ function setupEnv() {
         $envFile = 'localEnv.json'
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+
+    Import-Module Az.Compute
+
+    $env.vmname = "testpwshellvm"
+    $env.vmssname = "testpwshellvmss"
+    $env.rgname = "testpwshellcompute"
+    $user = "Foo12";
+    $password = RandomString -allChars $True -len 13 
+    $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+    $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+    New-AzResourceGroup -Name $env.rgname -Location "eastus"
+
+    #New-AzVM -ResourceGroupName $env.rgname -Location "eastus" -Name $env.vmname -Credential $cred
+    #New-AzVmss -ResourceGroupName $env.rgname -VMScaleSetName $env.vmssname -ImageName 'Win2016Datacenter' -Credential $cred -InstanceCount 2
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
+    $env.rgname = "testpwshellcompute"
+    #Remove-AzResourceGroup -Name $env.rgname
 }
-

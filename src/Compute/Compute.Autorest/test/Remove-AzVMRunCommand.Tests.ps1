@@ -15,8 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzVMRunCommand'))
 }
 
 Describe 'Remove-AzVMRunCommand' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    
+    BeforeAll { 
+        $vmname = "testpwshellvm"
+        $rgname = "testpwshellcompute"
+        $user = "Foo12";
+        $password = RandomString -allChars $True -len 13 
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        Write-Host $env.rgname
+        New-AzVM -ResourceGroupName $rgname -Location "eastus" -Name $vmname -Credential $cred
+        Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand1' -Location "eastus"
+    }
+
+    It 'Delete' {
+        Remove-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand"
     }
 
     It 'DeleteViaIdentity' -skip {

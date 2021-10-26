@@ -1,0 +1,124 @@
+{
+  "Remove-AzVmssVMRunCommand+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachineScaleSets/testpwshellvmss/virtualMachines/0/runCommands/first?api-version=2021-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachineScaleSets/testpwshellvmss/virtualMachines/0/runCommands/first?api-version=2021-07-01",
+      "Content": "{\r\n  \"location\": \"eastus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/f5b1315e-93e7-463b-9c58-f291f4dc6fff?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/VMScaleSetBatchedVMRequests5Min;1198,Microsoft.Compute/VmssQueuedVMOperations;0" ],
+        "x-ms-request-charge": [ "1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "f5b1315e-93e7-463b-9c58-f291f4dc6fff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "51212d26-34f1-47b4-8982-a47aa78cb860" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20211026T223735Z:51212d26-34f1-47b4-8982-a47aa78cb860" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Oct 2021 22:37:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "473" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"first\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachineScaleSets/testpwshellvmss/virtualMachines/0/runCommands/first\",\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"source\": {},\r\n    \"timeoutInSeconds\": 0,\r\n    \"provisioningState\": \"Updating\",\r\n    \"asyncExecution\": false\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVmssVMRunCommand+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/f5b1315e-93e7-463b-9c58-f291f4dc6fff?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/locations/eastus/operations/f5b1315e-93e7-463b-9c58-f291f4dc6fff?p=4bed644a-a596-4634-b1fa-8009f92f8b59\u0026api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "9838166f-ba1c-43dc-bd53-db59db5eb335" ],
+        "CommandName": [ "Set-AzVmssVMRunCommand" ],
+        "FullCommandName": [ "Set-AzVmssVMRunCommand_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetOperation3Min;14992,Microsoft.Compute/GetOperation30Min;29977" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ddc93f91-6525-4ff7-9bd6-3a124716d666" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "a8db722e-d327-4a47-8a89-38534a72cefc" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20211026T223805Z:a8db722e-d327-4a47-8a89-38534a72cefc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Oct 2021 22:38:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "184" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2021-10-26T22:37:35.4965974+00:00\",\r\n  \"endTime\": \"2021-10-26T22:37:35.9497363+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"f5b1315e-93e7-463b-9c58-f291f4dc6fff\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzVmssVMRunCommand+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachineScaleSets/testpwshellvmss/virtualMachines/0/runCommands/first?api-version=2021-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachineScaleSets/testpwshellvmss/virtualMachines/0/runCommands/first?api-version=2021-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "9838166f-ba1c-43dc-bd53-db59db5eb335" ],
+        "CommandName": [ "Set-AzVmssVMRunCommand" ],
+        "FullCommandName": [ "Set-AzVmssVMRunCommand_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "093c622e-1d39-4b51-98c3-359a941e1cdc" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "d73ea5c1-9ac9-4dd6-8025-a20c10a4f02e" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20211026T223805Z:d73ea5c1-9ac9-4dd6-8025-a20c10a4f02e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 26 Oct 2021 22:38:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "474" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"first\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/testpwshellcompute/providers/Microsoft.Compute/virtualMachineScaleSets/testpwshellvmss/virtualMachines/0/runCommands/first\",\r\n  \"type\": \"Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"source\": {},\r\n    \"timeoutInSeconds\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"asyncExecution\": false\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  }
+}
