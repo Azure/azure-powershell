@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             if (VM.ApplicationProfile == null)
             {
-                VM.ApplicationProfile = new ApplicationProfile();
+                VM.ApplicationProfile = new PSApplicationProfile();
             }
             if (VM.ApplicationProfile.GalleryApplications == null)
             {
-                VM.ApplicationProfile.GalleryApplications = new List<VMGalleryApplication>();
+                VM.ApplicationProfile.GalleryApplications = new List<PSVMGalleryApplication>();
             }
 
             if (this.IsParameterBound(c => c.Order))
@@ -57,9 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 GalleryApplication.Order = this.Order;
             }
 
-            var VMgalleryApplication = new VMGalleryApplication();
-            ComputeAutoMapperProfile.Mapper.Map<PSVMGalleryApplication, VMGalleryApplication>(GalleryApplication, VMgalleryApplication);
-            VM.ApplicationProfile.GalleryApplications.Add(VMgalleryApplication);
+            VM.ApplicationProfile.GalleryApplications.Add(GalleryApplication);
 
             WriteObject(VM);
         }
