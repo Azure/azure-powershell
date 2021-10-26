@@ -21,10 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Notebook,
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlScript,
         DefaultParameterSetName = GetByName)]
-    [OutputType(typeof(PSNotebookResource))]
-    public class GetAzureSynapseNotebook : SynapseArtifactsCmdletBase
+    [OutputType(typeof(PSSqlScriptResource))]
+    public class GetAzureSynapseSqlScript : SynapseArtifactsCmdletBase
     {
         private const string GetByName = "GetByName";
         private const string GetByObject = "GetByObject";
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NotebookName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.SqlScriptName)]
         [ValidateNotNullOrEmpty]
-        [Alias("NotebookName")]
+        [Alias("SqlScriptName")]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.IsParameterBound(c => c.Name))
             {
-                WriteObject(new PSNotebookResource(SynapseAnalyticsClient.GetNotebook(this.Name), this.WorkspaceName));
+                WriteObject(new PSSqlScriptResource(SynapseAnalyticsClient.GetSqlScript(this.Name), this.WorkspaceName));
             }
             else
             {
-                var notebooks = SynapseAnalyticsClient.GetNotebooksByWorkspace()
-                    .Select(element => new PSNotebookResource(element, this.WorkspaceName));
-                WriteObject(notebooks, true);
+                var sqlscripts = SynapseAnalyticsClient.GetSqlScriptsByWorkspace()
+                    .Select(element => new PSSqlScriptResource(element, this.WorkspaceName));
+                WriteObject(sqlscripts, true);
             }
         }
     }
