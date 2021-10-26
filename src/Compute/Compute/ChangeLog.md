@@ -59,6 +59,10 @@
     - SinglePlacementGroup must be false. Throws an error if true. 
     - Networking Profile's API version is 2020-11-01 or later.
     - Networking Profile IP Configurations Primary property is set to true.
+* Contains updates to the following powershell cmdlets
+	- `SetAzVmssDiskEncryptionExtension` : Added extension parameters for the cmdlet to work with test extensions and parameter `EncryptFormatAll` for Virtual Machine Scale Sets
+	- `GetAzVmssVMDiskEncryptionStatus`	 : Modified the functionality of the cmdlet to properly display the encryption status of data disks of Virtual Machine Scale Sets
+	- `SetAzDiskEncryptionExtension`     : Fixed a bug in the cmdlet in the migrate scenario from 2pass to 1pass encryption
 
 ## Version 4.17.1
 * Updated Compute .NET SDK package reference to version 49.1.0

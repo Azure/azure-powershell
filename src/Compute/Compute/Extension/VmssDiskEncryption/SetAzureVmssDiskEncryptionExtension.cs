@@ -115,10 +115,30 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension publisher name. If this parameter is not specified, default value is Microsoft.Azure.Security for windows VMs and Linux VMs")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets/extensions", "ResourceGroupName", "VMScaleSetName")]
+        [ValidateNotNullOrEmpty]
+        public string ExtensionPublisherName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets/extensions", "ResourceGroupName", "VMScaleSetName")]
         [ValidateNotNullOrEmpty]
         public string ExtensionName { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The extension type. Specify this parameter to override its default value of \"AzureDiskEncryption\" for Windows VMs and \"AzureDiskEncryptionForLinux\" for Linux VMs.")]
+        [ValidateNotNullOrEmpty]
+        public string ExtensionType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Encrypt-Format all data drives that are not already encrypted")]
+        public SwitchParameter EncryptFormatAll { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -146,7 +166,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultResourceIdKey, DiskEncryptionKeyVaultId ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.kekVaultResourceIdKey, KeyEncryptionKeyVaultId ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.volumeTypeKey, VolumeType ?? string.Empty);
-            publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionOperation);
+
+            if (EncryptFormatAll.IsPresent)
+            {
+                publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionFormatAllOperation);
+            }
+            else
+            {
+                publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionOperation);
+            }
 
             string keyEncryptAlgorithm = string.Empty;
             if (!string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
@@ -186,11 +214,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             if (OperatingSystemTypes.Windows.Equals(this.CurrentOSType))
             {
                 this.ExtensionName = this.ExtensionName ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName;
+                this.ExtensionPublisherName = this.ExtensionPublisherName ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultPublisher;
+                this.ExtensionType = this.ExtensionType ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName;
                 vmssExtensionParameters = new VirtualMachineScaleSetExtension
                 {
                     Name = this.ExtensionName,
-                    Publisher = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
-                    Type1 = AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultName,
+                    Publisher = this.ExtensionPublisherName,
+                    Type1 = this.ExtensionType,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.ExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,
@@ -201,11 +231,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             else if (OperatingSystemTypes.Linux.Equals(this.CurrentOSType))
             {
                 this.ExtensionName = this.ExtensionName ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+                this.ExtensionPublisherName = this.ExtensionPublisherName ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher;
+                this.ExtensionType = this.ExtensionType ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 vmssExtensionParameters = new VirtualMachineScaleSetExtension
                 {
                     Name = this.ExtensionName,
-                    Publisher = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
-                    Type1 = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
+                    Publisher = this.ExtensionPublisherName,
+                    Type1 = this.ExtensionType,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
                     Settings = SettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent,

@@ -23,13 +23,11 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public List<DiskInstanceView> Disks { get; set; }
         public VirtualMachineExtensionInstanceView Extension { get; set; }
         public EncryptionStatus OsVolumeEncrypted { get; set; }
-        public EncryptionStatus DataVolumesEncrypted { get; set; }
+        public string DataVolumesEncrypted { get; set; }
         public string DiskEncryptionStatus { get; set; }
-
         public PSVmssVMDiskEncryptionStatusContext()
         {
             OsVolumeEncrypted = EncryptionStatus.Unknown;
-            DataVolumesEncrypted = EncryptionStatus.Unknown;
         }
     }
 
