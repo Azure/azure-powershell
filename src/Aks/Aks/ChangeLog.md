@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for new parameters in `New-AzAksCluster`. [#13795]
 * Added support for changing the number of nodes in a node pool. [#12379]
 
 ## Version 2.4.0
