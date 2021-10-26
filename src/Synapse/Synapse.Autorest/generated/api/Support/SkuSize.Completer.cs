@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Extra small".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Extra small", "Extra small", global::System.Management.Automation.CompletionResultType.ParameterValue, "Extra small");
+                yield return new global::System.Management.Automation.CompletionResult("'Extra small'", "Extra small", global::System.Management.Automation.CompletionResultType.ParameterValue, "Extra small");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Small".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Small", "Small", global::System.Management.Automation.CompletionResultType.ParameterValue, "Small");
+                yield return new global::System.Management.Automation.CompletionResult("'Small'", "Small", global::System.Management.Automation.CompletionResultType.ParameterValue, "Small");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Medium".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Medium", "Medium", global::System.Management.Automation.CompletionResultType.ParameterValue, "Medium");
+                yield return new global::System.Management.Automation.CompletionResult("'Medium'", "Medium", global::System.Management.Automation.CompletionResultType.ParameterValue, "Medium");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Large".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Large", "Large", global::System.Management.Automation.CompletionResultType.ParameterValue, "Large");
+                yield return new global::System.Management.Automation.CompletionResult("'Large'", "Large", global::System.Management.Automation.CompletionResultType.ParameterValue, "Large");
             }
         }
     }
