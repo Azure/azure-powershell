@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzGalleryApplication
 
 ## SYNOPSIS
-Create a gallery Application Definition.
+Create or update a gallery Application Definition.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName
 ```
 
 ## DESCRIPTION
-Create a gallery Application Definition.
+Create or update a gallery Application Definition.
 
 ## EXAMPLES
 

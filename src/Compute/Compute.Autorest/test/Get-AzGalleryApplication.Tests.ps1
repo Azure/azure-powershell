@@ -12,8 +12,10 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzGalleryApplication' {
-    It 'List' -skip {
+    It 'List Get-AzGalleryApplication' -skip {
+        Write-Host -ForegroundColor Yellow "Checking GalleryApplication Get" 
         $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $env.GalleryName
+        Write-Host -ForegroundColor Yellow "Gallery Application Count: " $galApp.Count
         $galApp.Count | Should BeGreaterThan 0
     }
 

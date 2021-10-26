@@ -20,9 +20,9 @@ function setupEnv() {
 
     $env.ResourceGroupName = "RGComputeTest" + (RandomString $false 8)
     $env.Location = "EastUS"
-    $env.GalleryName = "RGComputeTest" +  (RandomString $false 8)
-    $env.GalleryApplicationName = "RGComputeTest" +  (RandomString $false 8)
-    $env.GalleryApplicationVersionName = "RGComputeTest" +  (RandomString $false 8)
+    $env.GalleryName = "gallery" + (RandomString $false 8)
+    $env.GalleryApplicationName = "galapp" +  (RandomString $false 8)
+    $env.GalleryApplicationVersionName = "galappversion" +  (RandomString $false 8)
     
 
     # Create ResourceGroup
@@ -30,10 +30,12 @@ function setupEnv() {
     New-AzResourceGroup -ResourceGroupName $env.ResourceGroupName -Location $env.Location
 
     # Create Gallery
-    New-AzGallery -ResourceGroupName $env.ResourceGroupName -Name $env.GalleryName -Location $env.Location
+    #Write-Host -ForegroundColor Yellow "Creating Gallery" $env.GalleryName
+    #New-AzGallery -ResourceGroupName $env.ResourceGroupName -Name $env.GalleryName -Location $env.Location
 
     # Create GalleryApplication
-    New-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $env.GalleryName -Name $env.GalleryApplicationName -Location $env.Location -SupportedOSType Windows
+    #Write-Host -ForegroundColor Yellow "Creating Gallery Application" $env.GalleryApplicationName
+    #New-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $env.GalleryName -Name $env.GalleryApplicationName -Location $env.Location -SupportedOSType Windows
 }
 function cleanupEnv() {
     # Clean resources you create for testing
