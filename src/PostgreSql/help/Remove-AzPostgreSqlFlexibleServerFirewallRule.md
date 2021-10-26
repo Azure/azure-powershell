@@ -40,7 +40,7 @@ This cmdlet removes PostgreSql Firewall Rule by name.
 
 ### Example 2: Remove PostgreSql Firewall Rule by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/firewallRules/firewall-rule-test"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/firewallRules/firewall-rule-test"
 PS C:\> Remove-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
  
 ```
