@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Updates an existing role assignment.
     /// </summary>
+    [GenericBreakingChange(BreakingChangeMSGraphMigration)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.RoleAssignment), OutputType(typeof(PSRoleAssignment))]
     public class SetAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
