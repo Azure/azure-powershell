@@ -14,21 +14,21 @@ schema: 2.0.0
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzAdGroupMember -GroupObjectId <String> [-Count] [-Expand <String[]>] [-Filter <String>] [-First <UInt64>]
+Get-AzAdGroupMember -GroupObjectId <String> [-Expand <String[]>] [-Filter <String>] [-First <UInt64>]
  [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzAdGroupMember -GroupDisplayName <String> [-Count] [-Expand <String[]>] [-Filter <String>]
- [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAdGroupMember -GroupDisplayName <String> [-Expand <String[]>] [-Filter <String>] [-First <UInt64>]
+ [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GroupObjectParameterSet
 ```
-Get-AzAdGroupMember -GroupObject <IMicrosoftGraphGroup> [-Count] [-Expand <String[]>] [-Filter <String>]
+Get-AzAdGroupMember -GroupObject <IMicrosoftGraphGroup> [-Expand <String[]>] [-Filter <String>]
  [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -57,21 +57,6 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -Count
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 

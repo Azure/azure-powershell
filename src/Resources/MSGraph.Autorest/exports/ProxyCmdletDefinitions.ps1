@@ -1347,11 +1347,6 @@ param(
     ${GroupObjectId},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    ${Count},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
