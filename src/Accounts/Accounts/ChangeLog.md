@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added new version of AAD service client using Microsoft Graph API
 
 ## Version 2.6.0
 * Added `-FederatedToken` on `Connect-AzAccount`
