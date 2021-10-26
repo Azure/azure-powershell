@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAdAppPermission
 
 ## SYNOPSIS
-Get app permission.
+
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ Get-AzAdAppPermission -ApplicationId <Guid> [-DefaultProfile <PSObject>] [<Commo
 ```
 
 ## DESCRIPTION
-Get app permission.
+
 
 ## EXAMPLES
 

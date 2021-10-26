@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzAdAppPermission
 
 ## SYNOPSIS
-Add app permission.
+
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Add-AzAdAppPermission -ApiId <Guid> -ApplicationId <Guid> -PermissionId <String>
 ```
 
 ## DESCRIPTION
-Add app permission.
+
 
 ## EXAMPLES
 
