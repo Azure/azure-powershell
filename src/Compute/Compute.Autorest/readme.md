@@ -28,7 +28,6 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
-
 ``` yaml
 branch: 7b19bbd8ee63fa724edf5c780b63ae038312d2b1
 require:
@@ -37,7 +36,7 @@ require:
 input-file:
 # You need to specify your swagger files here.
  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/gallery.json
- # - $(this-folder)\..\..\..\..\azure-rest-api-specs\specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/gallery.json
+ - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/runCommands.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 
 # For new RP, the version is 0.1.0
@@ -49,6 +48,7 @@ subject-prefix: ""
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -182,4 +182,28 @@ directive:
       subject: GalleryApplication
     hide: true 
   ### END # hide New-AzGalleryApplication, New-AzGalleryApplicationVersion, Update-AzGalleryApplicationVersion
+  - where:
+      subject: VirtualMachineRunCommand
+    set:
+      subject: VMRunCommand
+  - where:
+      subject: VirtualMachineScaleSetVMRunCommand
+    set:
+      subject: VmssVMRunCommand
+  - where:
+      verb: Start
+      subject: VirtualMachineCommand
+    remove: true
+  - where:
+      verb: Start
+      subject: VirtualMachineScaleSetVMCommand
+    remove: true
+  - where:
+      verb: New
+      subject: VmssVMRunCommand|VMRunCommand
+    remove: true
+  - where:
+      verb: Update
+      subject: VmssVMRunCommand|VMRunCommand
+    remove: true
 ```

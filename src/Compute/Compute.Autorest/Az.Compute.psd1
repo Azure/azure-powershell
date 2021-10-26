@@ -1,7 +1,7 @@
 @{
-  GUID = 'd2959029-b46f-4632-a5a3-d0d544abffdc'
+  GUID = '64d81db2-280c-4cff-a9f8-9e3ef386b229'
   RootModule = './Az.Compute.psm1'
-  ModuleVersion = '0.1.3'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Compute.private.dll'
   FormatsToProcess = './Az.Compute.format.ps1xml'
-  FunctionsToExport = 'Get-AzGalleryApplication', 'Get-AzGalleryApplicationVersion', 'New-AzGalleryApplication', 'New-AzGalleryApplicationVersion', 'Remove-AzGalleryApplication', 'Remove-AzGalleryApplicationVersion', 'Update-AzGalleryApplication', 'Update-AzGalleryApplicationVersion', '*'
+  FunctionsToExport = 'Get-AzGalleryApplication', 'Get-AzGalleryApplicationVersion', 'New-AzGalleryApplication', 'New-AzGalleryApplicationVersion', 'Remove-AzGalleryApplication', 'Remove-AzGalleryApplicationVersion', 'Update-AzGalleryApplication', 'Update-AzGalleryApplicationVersion', 'Get-AzVMRunCommand', 'Get-AzVmssVMRunCommand', 'Remove-AzVMRunCommand', 'Remove-AzVmssVMRunCommand', 'Set-AzVMRunCommand', 'Set-AzVmssVMRunCommand', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
