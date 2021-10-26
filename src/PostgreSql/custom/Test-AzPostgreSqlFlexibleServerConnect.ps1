@@ -130,7 +130,7 @@ function Test-AzPostgreSqlFlexibleServerConnect {
             $null = $PSBoundParameters.Remove('AdministratorUserName')
         }
 
-        $Password = $PSBoundParameters['AdministratorLoginPassword']
+        $Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
         $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
         
 
@@ -139,10 +139,14 @@ function Test-AzPostgreSqlFlexibleServerConnect {
         if ([string]::IsNullOrEmpty($AdministratorUserName)) {
             $AdministratorUserName = $Server.AdministratorLogin
         }
+
+        if ($Server.NetworkPublicNetworkAccess -eq 'Disabled'){
+            Write-Host "You have to run the test cmdlet in the subnet your server is linked."
+        }
         
         try {
             if ([string]::IsNullOrEmpty($DatabaseName)){
-                Open-PostGreConnection -Server $HostAddr -UserName $AdministratorUserName -Password $Password -RequireSSL -WarningAction 'silentlycontinue'
+                Open-PostGreConnection -Database "postgres" -Server $HostAddr -UserName $AdministratorUserName -Password $Password -RequireSSL -WarningAction 'silentlycontinue'
             }
             else {
                 Open-PostGreConnection -Database $DatabaseName -Server $HostAddr -UserName $AdministratorUserName -Password $Password -RequireSSL -WarningAction 'silentlycontinue'
