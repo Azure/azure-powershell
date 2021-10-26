@@ -19,7 +19,6 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Update-AzLabServicesLabPlan' {
     It 'Update' {
-        $time = New-TimeSpan -Minutes 17
         Update-AzLabServicesLabPlan `
         -Name $ENV:LabPlanName `
         -ResourceGroupName $ENV:ResourceGroupName `

@@ -14,12 +14,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Sync-AzLabServicesLabUser'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Sync-AzLabServicesLabUser' {
-    It 'Sync' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+$loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
+. ($loadVarsPath)
 
-    It 'Lab' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Sync-AzLabServicesLabUser' {
+    It 'Sync-AzLabServicesLabUser' {
+        {Sync-AzLabServicesLabUser -LabName $ENV:LabName -ResourceGroupName $ENV:ResourceGroupName} | Should -Throw
     }
 }

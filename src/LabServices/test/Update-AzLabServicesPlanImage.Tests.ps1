@@ -19,7 +19,6 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Update-AzLabServicesPlanImage' {
     It 'Update Image Name' {
-        $resourceId = "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($ENV:LabPlanName)/images/canonical.0001-com-ubuntu-server-focal.20_04-lts"
-        Update-AzLabServicesPlanImage -ResourceId $resourceId -EnabledState "Enabled" | Select -ExpandProperty EnabledState |  Should -BeExactly "Enabled"
+        Update-AzLabServicesPlanImage -ResourceId "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($ENV:LabPlanName)/images/canonical.0001-com-ubuntu-server-focal.20_04-lts" -EnabledState "Enabled" | Select -ExpandProperty EnabledState |  Should -BeExactly "Enabled"
     }
 }
