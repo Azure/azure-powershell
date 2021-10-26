@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed a bug about the exitcode of Bicep [#16055]
 * Added breaking change warnings for AAD cmdlets
 * Added property `UIFormDefinition` to Template Spec Versions,  `Export-AzTemplateSpec` will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.
 * Added error catching for role assignment creation fail while creating a Service Principal
