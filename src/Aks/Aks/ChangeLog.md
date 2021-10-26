@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added warnings of upcoming breaking change of migrating to Microsoft Graph.
 * Added support for changing the number of nodes in a node pool. [#12379]
 
 ## Version 2.4.0
