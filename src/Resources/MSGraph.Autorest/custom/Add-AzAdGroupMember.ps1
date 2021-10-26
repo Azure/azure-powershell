@@ -31,7 +31,7 @@ System.Collections.Hashtable
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadgrouprefmember
+https://docs.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 #>
 function Add-AzAdGroupMember {
     [OutputType([System.Boolean])]
