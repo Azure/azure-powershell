@@ -18,7 +18,7 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-AddOnNameToBeEnabled <String[]>] [-WorkspaceResourceId <String>] [-SubnetName <String>] [-EnableRbac]
  [-WindowsProfileAdminUserName <String>] [-WindowsProfileAdminUserPassword <SecureString>]
  [-NetworkPlugin <String>] [-NetworkPolicy <String>] [-PodCidr <String>] [-ServiceCidr <String>]
- [-DnsServiceIP <String>] [-DockerBridgeCidr <String>] [-NodePoolLabels <Hashtable>]
+ [-DnsServiceIP <String>] [-DockerBridgeCidr <String>] [-NodePoolLabel <Hashtable>]
  [-AksCustomHeader <Hashtable>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey]
  [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
  [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
@@ -429,7 +429,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NodePoolLabels
+### -NodePoolLabel
 Node pool labels used for building Kubernetes network.
 
 ```yaml

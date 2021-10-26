@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
 
-        public Hashtable NodePoolLabels { get; set; }
+        public Hashtable NodePoolLabel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Aks custom headers used for building Kubernetes network.")]
 
@@ -440,12 +440,12 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.ScaleSetPriority = NodeSetPriority;
             }
-            if (this.IsParameterBound(c => c.NodePoolLabels))
+            if (this.IsParameterBound(c => c.NodePoolLabel))
             {
                 defaultAgentPoolProfile.NodeLabels = new Dictionary<string, string>();
-                foreach (var key in NodePoolLabels.Keys)
+                foreach (var key in NodePoolLabel.Keys)
                 {
-                    defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabels[key].ToString());
+                    defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
                 }
             }
             defaultAgentPoolProfile.Mode = NodePoolMode;
