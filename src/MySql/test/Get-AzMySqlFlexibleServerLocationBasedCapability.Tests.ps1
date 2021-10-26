@@ -15,7 +15,6 @@ Describe 'Get-AzMySqlFlexibleServerLocationBasedCapability' {
     It 'Get' {
         {
             $Result = Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
-            $Result.Length | Should -BeGreaterThan 0 
         } | Should -Not -Throw
     }
 }
