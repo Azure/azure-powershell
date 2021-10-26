@@ -8,20 +8,13 @@ schema: 2.0.0
 # Get-AzLabServicesLab
 
 ## SYNOPSIS
-Returns the properties of a lab resource.
+API to get labs.
 
 ## SYNTAX
 
-### List (Default)
+### ListBySubscription (Default)
 ```
-Get-AzLabServicesLab [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesLab [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### LabPlan
@@ -30,16 +23,16 @@ Get-AzLabServicesLab -LabPlan <LabPlan> [-Name <String>] [-SubscriptionId <Strin
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### List1
+### ListByLabName
+```
+Get-AzLabServicesLab -Name <String> [-SubscriptionId <String[]>] [-ResourceGroupName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByResourceGroup
 ```
 Get-AzLabServicesLab -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### ListByLabName
-```
-Get-AzLabServicesLab -WildcardName <String> [-ResourceGroupName <String>] [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -49,7 +42,7 @@ Get-AzLabServicesLab -ResourceId <String> [-SubscriptionId <String[]>] [-Default
 ```
 
 ## DESCRIPTION
-Returns the properties of a lab resource.
+API to get labs.
 
 ## EXAMPLES
 
@@ -69,7 +62,7 @@ Returns all labs for the current subscription.
 
 ### Example 2: Get a specific lab
 ```powershell
-PS C:\> Get-AzLab -ResourceGroupName 'yourgroupname' -LabName 'yourlabname'
+PS C:\> Get-AzLab -ResourceGroupName 'yourgroupname' -Name 'yourlabname'
 
 Location      Name                                               Type
 --------      ----                                               ----
@@ -81,7 +74,7 @@ Get a specific lab using the resource group name and the lab name.
 ### Example 3: Get all labs created with a lab plan
 ```powershell
 PS C:\> $plan = Get-AzLabPlan -LabPlanName 'lab plan name'
-PS C:\> $plan | Get-AzLab -LabName 'lab name'
+PS C:\> $plan | Get-AzLab -Name 'lab name'
 
 Location      Name                                               Type
 --------      ----                                               ----
@@ -119,21 +112,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-The filter to apply to the operation.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LabPlan
 To construct, see NOTES section for LABPLAN properties and create a hash table.
 
@@ -150,28 +128,26 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the lab that uniquely identifies it within containing lab account.
-Used in resource URIs.
+
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, LabPlan
-Aliases: LabName
+Parameter Sets: LabPlan, ListByLabName
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1, ListByLabName
+Parameter Sets: ListByLabName, ListByResourceGroup
 Aliases:
 
 Required: True
@@ -209,21 +185,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-```
-
-### -WildcardName
-
-
-```yaml
-Type: System.String
-Parameter Sets: ListByLabName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: True
 ```
 
 ### -Confirm

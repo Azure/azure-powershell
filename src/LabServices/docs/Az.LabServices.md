@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: LabServices cmdlets
 API to add additional user quota.
 
 ### [Get-AzLabServicesLab](Get-AzLabServicesLab.md)
-Returns the properties of a lab resource.
+API to get labs.
 
 ### [Get-AzLabServicesLabForVM](Get-AzLabServicesLabForVM.md)
 API to return the lab for a specific VM.
@@ -57,10 +57,6 @@ Operation to create or update a lab user.
 Publish or re-publish a lab.
 This will create or update all lab resources, such as virtual machines.
 
-### [Redeploy-AzLabServicesVM](Redeploy-AzLabServicesVM.md)
-Action to redeploy a lab virtual machine to a different compute node.
-For troubleshooting connectivity.
-
 ### [Remove-AzLabServicesLab](Remove-AzLabServicesLab.md)
 Operation to delete a lab resource.
 
@@ -82,6 +78,10 @@ Saves an image from a lab VM to the attached shared image gallery.
 
 ### [Send-AzLabServicesUserInvite](Send-AzLabServicesUserInvite.md)
 Operation to invite a user to a lab.
+
+### [Start-AzLabServicesRedeployVM](Start-AzLabServicesRedeployVM.md)
+Action to redeploy a lab virtual machine to a different compute node.
+For troubleshooting connectivity.
 
 ### [Start-AzLabServicesUserVM](Start-AzLabServicesUserVM.md)
 API to start the assigned vm for the user.
