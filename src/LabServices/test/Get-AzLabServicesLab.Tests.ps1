@@ -34,7 +34,7 @@ Describe 'Get-AzLabServicesLab' {
         Get-AzLabServicesLab -LabPlan $plan -Name $ENV:LabName | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabName)}"
     }
     
-    It 'ResourceId' {        
+    It 'ResourceId' -skip {        
         Get-AzLabServicesLab -ResourceId "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labs/$($ENV:LabName)" | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabName)}"
     }
 

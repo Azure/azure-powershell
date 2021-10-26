@@ -112,14 +112,20 @@ function Reset-AzLabServicesVMPassword_ResourceId {
     )
     
     process {
-        $PSBoundParameters = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
-
+        $resourceHash = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
+        $PSBoundParameters.Remove("SubscriptionId") > $null
         if ($PSBoundParameters.ContainsKey('Password')) {
             $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
             $PSBoundParameters['Password'] = $psTxt
         }
         
-        if ($PSBoundParameters) {
+        if ($resourceHash) {
+            $resourceHash.Keys | ForEach-Object {
+                $PSBoundParameters.Add($_, $($resourceHash[$_]))
+            }
+       
+            $PSBoundParameters.Remove("ResourceId") > $null
+    
             return Az.LabServices\Reset-AzLabServicesVMPassword @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid VM Resource Id." -ErrorAction Stop

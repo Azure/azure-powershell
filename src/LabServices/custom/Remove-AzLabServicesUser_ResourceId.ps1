@@ -93,14 +93,20 @@ param(
 )
 
 process {
-    $PSBoundParameters = & $PSScriptRoot\Utilities\HandleUserResourceId.ps1 -ResourceId $ResourceId
+    $resourceHash = & $PSScriptRoot\Utilities\HandleUserResourceId.ps1 -ResourceId $ResourceId
 
     $PSBoundParameters.Remove("Name") > $null
     $PSBoundParameters.Add("Name", $PSBoundParameters.UserName)
     $PSBoundParameters.Remove("UserName") > $null
 
 
-    if ($PSBoundParameters) {
+    if ($resourceHash) {
+        $resourceHash.Keys | ForEach-Object {
+            $PSBoundParameters.Add($_, $($resourceHash[$_]))
+        }
+   
+        $PSBoundParameters.Remove("ResourceId") > $null
+
         return Az.LabServices\Remove-AzLabServicesUser @PSBoundParameters
     } else {
         Write-Error -Message "Error: Invalid User Resource Id." -ErrorAction Stop

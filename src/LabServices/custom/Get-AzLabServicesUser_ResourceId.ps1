@@ -77,9 +77,15 @@ function Get-AzLabServicesUser_ResourceId {
     
     process {
 
-        $PSBoundParameters = & $PSScriptRoot\Utilities\HandleUserResourceId.ps1 -ResourceId $ResourceId
-
-        if ($PSBoundParameters) {
+        $resourceHash = & $PSScriptRoot\Utilities\HandleUserResourceId.ps1 -ResourceId $ResourceId
+        $PSBoundParameters.Remove("SubscriptionId") > $null
+        if ($resourceHash) {
+            $resourceHash.Keys | ForEach-Object {
+                $PSBoundParameters.Add($_, $($resourceHash[$_]))
+            }
+       
+            $PSBoundParameters.Remove("ResourceId") > $null
+    
             return Az.LabServices.private\Get-AzLabServicesUser_Get @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid User Resource Id." -ErrorAction Stop

@@ -88,13 +88,20 @@ function Publish-AzLabServicesLab_ResourceId {
     )
     
     process {
-        $PSBoundParameters = & $PSScriptRoot\Utilities\HandleLabResourceId.ps1 -ResourceId $ResourceId
-
-        if ($PSBoundParameters) {
+        $resourceHash = & $PSScriptRoot\Utilities\HandleLabResourceId.ps1 -ResourceId $ResourceId
+        $PSBoundParameters.Remove("SubscriptionId")
+        if ($resourceHash) {
+            $resourceHash.Keys | ForEach-Object {
+                $PSBoundParameters.Add($_, $($resourceHash[$_]))
+            }
+       
+            $PSBoundParameters.Remove("ResourceId") > $null
+    
             return Az.LabServices\Publish-AzLabServicesLab @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid Lab Resource Id." -ErrorAction Stop
         }
+
     }
     
 }

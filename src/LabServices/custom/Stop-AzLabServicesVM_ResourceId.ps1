@@ -87,9 +87,15 @@ function Stop-AzLabServicesVM_ResourceId {
     )
     
     process {
-        $PSBoundParameters = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
-
-        if ($PSBoundParameters) {
+        $resourceHash = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
+        $PSBoundParameters.Remove("SubscriptionId") > $null
+        if ($resourceHash) {
+            $resourceHash.Keys | ForEach-Object {
+                $PSBoundParameters.Add($_, $($resourceHash[$_]))
+            }
+       
+            $PSBoundParameters.Remove("ResourceId") > $null
+    
             return Az.LabServices\Stop-AzLabServicesVM @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid Virtual Machine Resource Id." -ErrorAction Stop

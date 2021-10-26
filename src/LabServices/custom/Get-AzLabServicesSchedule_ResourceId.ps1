@@ -88,9 +88,15 @@ function Get-AzLabServicesSchedule_LabObject {
     
     process {
 
-        $PSBoundParameters = & $PSScriptRoot\Utilities\HandleScheduleResourceId.ps1 -ResourceId $ResourceId
-
-        if ($PSBoundParameters) {
+        $resourceHash = & $PSScriptRoot\Utilities\HandleScheduleResourceId.ps1 -ResourceId $ResourceId
+        $PSBoundParameters.Remove("SubscriptionId") > $null
+        if ($resourceHash) {
+            $resourceHash.Keys | ForEach-Object {
+                $PSBoundParameters.Add($_, $($resourceHash[$_]))
+            }
+       
+            $PSBoundParameters.Remove("ResourceId") > $null
+    
             return Az.LabServices\Get-AzLabServicesSchedule @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid Schedule Resource Id." -ErrorAction Stop

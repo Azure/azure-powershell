@@ -88,9 +88,15 @@ param(
 
 process {
 
-    $PSBoundParameters = & $PSScriptRoot\Utilities\HandleLabPlanResourceId.ps1 -ResourceId $ResourceId
+    $resourceHash = & $PSScriptRoot\Utilities\HandleLabPlanResourceId.ps1 -ResourceId $ResourceId
+    $PSBoundParameters.Remove("SubscriptionId") > $null
+    if ($resourceHash) {
+        $resourceHash.Keys | ForEach-Object {
+            $PSBoundParameters.Add($_, $($resourceHash[$_]))
+        }
+  
+        $PSBoundParameters.Remove("ResourceId") > $null
 
-    if ($PSBoundParameters) {
         return Az.LabServices\Get-AzLabServicesLabPlan @PSBoundParameters
     } else {
         Write-Error -Message "Error: Invalid Lab Plan Resource Id." -ErrorAction Stop

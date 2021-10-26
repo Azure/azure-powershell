@@ -87,9 +87,15 @@ function Get-AzLabServicesPlanImage_ResourceId {
     )
     
     process {
-        $PSBoundParameters = & $PSScriptRoot\Utilities\HandleLabPlanResourceId.ps1 -ResourceId $ResourceId
-
-        if ($PSBoundParameters) {
+        $resourceHash = & $PSScriptRoot\Utilities\HandleLabPlanResourceId.ps1 -ResourceId $ResourceId
+        $PSBoundParameters.Remove("SubscriptionId") > $nul
+        if ($resourceHash) {
+            $resourceHash.Keys | ForEach-Object {
+                $PSBoundParameters.Add($_, $($resourceHash[$_]))
+            }
+       
+            $PSBoundParameters.Remove("ResourceId") > $null
+    
             return Az.LabServices.private\Get-AzLabServicesPlanImage_List @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid Lab Plan Resource Id." -ErrorAction Stop            

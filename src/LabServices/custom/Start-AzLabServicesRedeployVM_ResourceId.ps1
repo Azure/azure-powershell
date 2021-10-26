@@ -104,9 +104,14 @@ function Start-AzLabServicesRedeployVM_ResourceId {
     )
     
     process {
-        $PSBoundParameters = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
-
-        if ($PSBoundParameters) {
+        $resourceHash = & $PSScriptRoot\Utilities\HandleVMResourceId.ps1 -ResourceId $ResourceId
+        $PSBoundParameters.Remove("SubscriptionId") > $null
+        if ($resourceHash) {
+            $resourceHash.Keys | ForEach-Object {
+                $PSBoundParameters.Add($_, $($resourceHash[$_]))
+            }
+       
+            $PSBoundParameters.Remove("ResourceId") > $null
             return Az.LabServices\Start-AzLabServicesRedeployVM @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid VM Resource Id." -ErrorAction Stop

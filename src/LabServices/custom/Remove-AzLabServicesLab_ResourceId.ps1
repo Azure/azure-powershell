@@ -92,9 +92,15 @@ function Remove-AzLabServicesLab_ResourceId {
     )
     
     process {
-        $PSBoundParameters = & $PSScriptRoot\Utilities\HandleLabResourceId.ps1 -ResourceId $ResourceId
+        $resourceHash = & $PSScriptRoot\Utilities\HandleLabResourceId.ps1 -ResourceId $ResourceId
+        $PSBoundParameters.Remove("SubscriptionId") > $null
+        if ($resourceHash) {
+            $resourceHash.Keys | ForEach-Object {
+                $PSBoundParameters.Add($_, $($resourceHash[$_]))
+            }
+       
+            $PSBoundParameters.Remove("ResourceId") > $null
     
-        if ($PSBoundParameters) {
             return Az.LabServices\Remove-AzLabServicesLab @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid Lab Resource Id." -ErrorAction Stop
