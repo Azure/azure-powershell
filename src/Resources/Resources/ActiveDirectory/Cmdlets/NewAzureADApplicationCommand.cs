@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSADApplication), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADApplication", DefaultParameterSetName = ParameterSet.ApplicationWithoutCredential, SupportsShouldProcess = true), OutputType(typeof(PSADApplication))]
     public class NewAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
@@ -102,6 +104,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChange("Password", ChangeDescription = "Parameter Password will not be supported, server generated secret text could be found in response")]
         public SecureString Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,

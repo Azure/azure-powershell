@@ -213,5 +213,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSpotRestorePolicy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetFlexibleOModeDefaulting()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetFlexibleOModeDefaulting");
+        }
     }
 }

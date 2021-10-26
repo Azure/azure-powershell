@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -21,6 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Gets AD service principal credentials.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSADCredential), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADSpCredential", DefaultParameterSetName = ParameterSet.ObjectId), OutputType(typeof(PSADCredential))]
     [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipalCredential")]
     public class GetAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet

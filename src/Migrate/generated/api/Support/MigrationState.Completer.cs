@@ -28,47 +28,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EnableMigrationInProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EnableMigrationInProgress", "EnableMigrationInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnableMigrationInProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'EnableMigrationInProgress'", "EnableMigrationInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnableMigrationInProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EnableMigrationFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("EnableMigrationFailed", "EnableMigrationFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnableMigrationFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'EnableMigrationFailed'", "EnableMigrationFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnableMigrationFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DisableMigrationInProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DisableMigrationInProgress", "DisableMigrationInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisableMigrationInProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'DisableMigrationInProgress'", "DisableMigrationInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisableMigrationInProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DisableMigrationFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DisableMigrationFailed", "DisableMigrationFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisableMigrationFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'DisableMigrationFailed'", "DisableMigrationFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisableMigrationFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InitialSeedingInProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InitialSeedingInProgress", "InitialSeedingInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InitialSeedingInProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'InitialSeedingInProgress'", "InitialSeedingInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InitialSeedingInProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InitialSeedingFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InitialSeedingFailed", "InitialSeedingFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "InitialSeedingFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'InitialSeedingFailed'", "InitialSeedingFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "InitialSeedingFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Replicating".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Replicating", "Replicating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Replicating");
+                yield return new global::System.Management.Automation.CompletionResult("'Replicating'", "Replicating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Replicating");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MigrationInProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MigrationInProgress", "MigrationInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationInProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'MigrationInProgress'", "MigrationInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationInProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MigrationSucceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MigrationSucceeded", "MigrationSucceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationSucceeded");
+                yield return new global::System.Management.Automation.CompletionResult("'MigrationSucceeded'", "MigrationSucceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationSucceeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MigrationFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MigrationFailed", "MigrationFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'MigrationFailed'", "MigrationFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "MigrationFailed");
             }
         }
     }
