@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzAdAppPermission
 
 ## SYNOPSIS
-
+Remove app permission.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzAdAppPermission -ApplicationId <Guid> -PermissionId <Guid> [-DefaultPro
 ```
 
 ## DESCRIPTION
-
+Remove app permission.
 
 ## EXAMPLES
 

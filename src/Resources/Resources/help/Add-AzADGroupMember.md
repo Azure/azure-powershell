@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azadgrouprefmember
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-azadgroupmember
 schema: 2.0.0
 ---
 

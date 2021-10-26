@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAdGroupMember
 
 ## SYNOPSIS
-
+Get member from group.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Get-AzAdGroupMember -GroupObject <IMicrosoftGraphGroup> [-Expand <String[]>] [-F
 ```
 
 ## DESCRIPTION
-
+Get member from group.
 
 ## EXAMPLES
 

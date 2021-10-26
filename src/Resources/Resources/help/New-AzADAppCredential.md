@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAdAppCredential
 
 ## SYNOPSIS
-
+Create credentials for application.
 
 ## SYNTAX
 
@@ -94,7 +94,7 @@ New-AzAdAppCredential -DisplayName <String> [-CustomKeyIdentifier <String>] [-En
 ```
 
 ## DESCRIPTION
-
+Create credentials for application.
 
 ## EXAMPLES
 

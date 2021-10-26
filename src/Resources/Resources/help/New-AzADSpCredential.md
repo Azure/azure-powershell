@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAdSpCredential
 
 ## SYNOPSIS
-
+Create credentials for service principal.
 
 ## SYNTAX
 
@@ -71,7 +71,7 @@ New-AzAdSpCredential -ObjectId <String> [-KeyCredentials <MicrosoftGraphKeyCrede
 ```
 
 ## DESCRIPTION
-
+Create credentials for service principal.
 
 ## EXAMPLES
 

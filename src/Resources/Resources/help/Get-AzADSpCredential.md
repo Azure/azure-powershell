@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAdSpCredential
 
 ## SYNOPSIS
-
+List credentials for service principal.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Get-AzAdSpCredential -ServicePrincipalName <String> [-DefaultProfile <PSObject>]
 ```
 
 ## DESCRIPTION
-
+List credentials for service principal.
 
 ## EXAMPLES
 

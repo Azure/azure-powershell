@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAdAppCredential
 
 ## SYNOPSIS
-
+List credentials for application.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Get-AzAdAppCredential -DisplayName <String> [-DefaultProfile <PSObject>] [-Confi
 ```
 
 ## DESCRIPTION
-
+List credential for application.
 
 ## EXAMPLES
 
