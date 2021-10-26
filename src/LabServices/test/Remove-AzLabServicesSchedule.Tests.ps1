@@ -19,8 +19,7 @@ $loadVarsPath = Join-Path $PSScriptRoot '\SetVariables.ps1'
 
 Describe 'Remove-AzLabServicesSchedule' {
     It 'Delete' {
-        $schedule = Get-AzLabServicesSchedule -ResourceGroupName $ENV:ResourceGroupName -LabName $ENV:LabName -Name $ENV:ScheduleNameSecond
-        {Remove-AzLabServicesSchedule -schedule $schedule } | Should -Not -Throw
+        {Remove-AzLabServicesSchedule -ResourceGroupName $ENV:ResourceGroupName -LabName $ENV:LabName -Name $ENV:ScheduleNameSecond } | Should -Not -Throw
         {Get-AzLabServicesSchedule -ResourceGroupName $ENV:ResourceGroupName -LabName $ENV:LabName -Name $ENV:ScheduleNameSecond} | Should -Throw
     }
 }
