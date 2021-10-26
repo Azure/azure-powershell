@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Approving".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Approving", "Approving", global::System.Management.Automation.CompletionResultType.ParameterValue, "Approving");
+                yield return new global::System.Management.Automation.CompletionResult("'Approving'", "Approving", global::System.Management.Automation.CompletionResultType.ParameterValue, "Approving");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ready".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ready", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
+                yield return new global::System.Management.Automation.CompletionResult("'Ready'", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dropping".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Dropping", "Dropping", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dropping");
+                yield return new global::System.Management.Automation.CompletionResult("'Dropping'", "Dropping", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dropping");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Rejecting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Rejecting", "Rejecting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Rejecting");
+                yield return new global::System.Management.Automation.CompletionResult("'Rejecting'", "Rejecting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Rejecting");
             }
         }
     }

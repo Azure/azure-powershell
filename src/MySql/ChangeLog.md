@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Changed API version to 2021-05-01
+* Fixed bugs for location capabilities
 
 ## Version 0.7.0
 * Resolved Cx provisiong failure incident caused by backend server minimum storage change (10gb to 20gb)

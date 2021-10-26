@@ -1009,6 +1009,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Synapse SQL Script &apos;{0}&apos; under workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveSynapseSqlScript {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove trigger &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseTrigger {
@@ -1230,6 +1239,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseSqlPoolRestorePoint {
             get {
                 return ResourceManager.GetString("RemovingSynapseSqlPoolRestorePoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Synapse SQL Script &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemovingSynapseSqlScript {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSqlScript", resourceCulture);
             }
         }
         
@@ -1495,6 +1513,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting Synapse Sql Script &apos;{0}&apos; in workspace &apos;{1}&apos;.
+        /// </summary>
+        internal static string SettingSynapseSqlScript {
+            get {
+                return ResourceManager.GetString("SettingSynapseSqlScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting trigger &apos;{0}&apos; in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string SettingSynapseTrigger {
@@ -1538,7 +1565,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("SqlPoolRestorePointDoesNotExist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Starting integration runtime &apos;{0}&apos; in workspace &apos;{1}&apos;.
         /// </summary>
@@ -1547,7 +1574,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("StartingIntegrationRuntime", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Start a Data Flow debug session under workspace &apos;{0}&apos;..
         /// </summary>

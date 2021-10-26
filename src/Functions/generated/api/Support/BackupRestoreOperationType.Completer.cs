@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Default".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Default", "Default", global::System.Management.Automation.CompletionResultType.ParameterValue, "Default");
+                yield return new global::System.Management.Automation.CompletionResult("'Default'", "Default", global::System.Management.Automation.CompletionResultType.ParameterValue, "Default");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Clone".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Clone", "Clone", global::System.Management.Automation.CompletionResultType.ParameterValue, "Clone");
+                yield return new global::System.Management.Automation.CompletionResult("'Clone'", "Clone", global::System.Management.Automation.CompletionResultType.ParameterValue, "Clone");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Relocation".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Relocation", "Relocation", global::System.Management.Automation.CompletionResultType.ParameterValue, "Relocation");
+                yield return new global::System.Management.Automation.CompletionResult("'Relocation'", "Relocation", global::System.Management.Automation.CompletionResultType.ParameterValue, "Relocation");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Snapshot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Snapshot", "Snapshot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Snapshot");
+                yield return new global::System.Management.Automation.CompletionResult("'Snapshot'", "Snapshot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Snapshot");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CloudFS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CloudFS", "CloudFS", global::System.Management.Automation.CompletionResultType.ParameterValue, "CloudFS");
+                yield return new global::System.Management.Automation.CompletionResult("'CloudFS'", "CloudFS", global::System.Management.Automation.CompletionResultType.ParameterValue, "CloudFS");
             }
         }
     }

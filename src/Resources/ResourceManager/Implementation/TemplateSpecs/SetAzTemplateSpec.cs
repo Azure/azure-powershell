@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             }
                             if (BicepUtility.IsBicepFile(TemplateFile))
                             {
-                                filePath = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose);
+                                filePath = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
                             }
 
                             // Note: We set uiFormDefinitionFilePath to null below because we process the UIFormDefinition

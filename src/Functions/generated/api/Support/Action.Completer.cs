@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Allow".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Allow", "Allow", global::System.Management.Automation.CompletionResultType.ParameterValue, "Allow");
+                yield return new global::System.Management.Automation.CompletionResult("'Allow'", "Allow", global::System.Management.Automation.CompletionResultType.ParameterValue, "Allow");
             }
         }
     }

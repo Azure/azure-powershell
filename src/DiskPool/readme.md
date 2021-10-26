@@ -30,18 +30,19 @@ For information on how to develop for `Az.DiskPool`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 418603118e704ffeabacff1dd56957400cf83f3a
+branch: 68acb8952caa568dc5c02d7ae4ca53d8356c9c0a
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/storagepool/resource-manager/Microsoft.StoragePool/preview/2021-04-01-preview/storagepool.json
+  - $(repo)/specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json
 
 module-version: 0.1.0
 title: DiskPool
 subject-prefix: $(service-name)
 identity-correction-for-post: true 
 nested-object-to-string: true
+resourcegroup-append: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -54,6 +55,12 @@ directive:
   - where:
       verb: Set
     remove: true
+  # Rename StaticAcls -> StaticAcl
+  - where:
+      parameter-name: StaticAcls
+    set:
+      parameter-name: StaticAcl
+  # Rename Invoke-AzDiskPoolDeallocateDiskPool -> Stop-AzDiskPool
   - where:
       verb: Invoke
       subject: DeallocateDiskPool
@@ -61,27 +68,32 @@ directive:
       verb: Stop
       subject-prefix: ''
       subject: DiskPool
+  # Rename Upgrade-AzDiskPool -> Invoke-AzDiskPoolRedeployment
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/upgrade"].post.operationId
+    transform: >-
+      return "DiskPools_Redeploy"
+  - where:
+      verb: Invoke
+      subject: RedeployDiskPool
+    set:
+      subject: Redeployment
+  # Rename DiskPoolName -> Name in Stop-AzDiskPool
   - where:
       verb: Stop
       subject: DiskPool
       parameter-name: DiskPoolName
     set:
       parameter-name: Name
+  # Change Disk <IDisk[]> to DiskId <String[]>
   - where:
       verb: New
       subject: DiskPool
     hide: true
+  # Change Disk <IDisk[]> to DiskId <String[]>
   - where:
       verb: Update
       subject: DiskPool
-    hide: true
-  - where:
-      verb: New
-      subject: IscsiTarget
-    hide: true
-  - where:
-      verb: Update
-      subject: IscsiTarget
     hide: true
   - model-cmdlet:
     - Acl
@@ -108,6 +120,7 @@ directive:
       format-table:
         properties:
           - Name
+          - ResourceGroupName
           - Location
           - Status
           - ProvisioningState

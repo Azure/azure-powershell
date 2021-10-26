@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RemoteApp".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RemoteApp", "RemoteApp", global::System.Management.Automation.CompletionResultType.ParameterValue, "RemoteApp");
+                yield return new global::System.Management.Automation.CompletionResult("'RemoteApp'", "RemoteApp", global::System.Management.Automation.CompletionResultType.ParameterValue, "RemoteApp");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Desktop".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Desktop", "Desktop", global::System.Management.Automation.CompletionResultType.ParameterValue, "Desktop");
+                yield return new global::System.Management.Automation.CompletionResult("'Desktop'", "Desktop", global::System.Management.Automation.CompletionResultType.ParameterValue, "Desktop");
             }
         }
     }
