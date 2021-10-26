@@ -84,15 +84,16 @@ namespace Microsoft.Azure.Commands.Synapse
                 }
                 else
                 {
-                    var infoList = new List<FileInfo>();
+                    var infoList = new List<string>();
                     var sqlscripts = SynapseAnalyticsClient.GetSqlScriptsByWorkspace()
                         .Select(element => new PSSqlScriptResource(element, this.WorkspaceName));
                     foreach (var sqlscript in sqlscripts)
                     {
                         WriteToFile(sqlscript);
                         string info = this.OutputFolder + @"\" + sqlscript.Name ;
-                        WriteObject(info);
+                        infoList.Add(info);
                     }
+                    WriteObject(infoList.ToArray(), true);
                 }
             }
         }

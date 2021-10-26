@@ -14,19 +14,19 @@ Exports a sql script from a Synapse workspace.
 
 ### ExportByName (Default)
 ```
-Export-AzSynapseSqlScript -WorkspaceName <String> -OutputFolder <String> [-PassThru] [-Name <String>]
+Export-AzSynapseSqlScript -WorkspaceName <String> -OutputFolder <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExportByObject
 ```
-Export-AzSynapseSqlScript -WorkspaceObject <PSSynapseWorkspace> -OutputFolder <String> [-PassThru]
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Export-AzSynapseSqlScript -WorkspaceObject <PSSynapseWorkspace> -OutputFolder <String> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExportByInputObject
 ```
-Export-AzSynapseSqlScript -InputObject <PSSqlScriptResource> -OutputFolder <String> [-PassThru]
+Export-AzSynapseSqlScript -InputObject <PSSqlScriptResource> -OutputFolder <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -127,21 +127,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Display ServiceProperties
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WorkspaceName
 Name of Synapse workspace.
 
@@ -183,8 +168,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Synapse.Models.PSSqlScriptResource
+### System.String
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSynapseSqlScript](./Get-AzSynapseSqlScript.md)
+
+[Remove-AzSynapseSqlScript](./Remove-AzSynapseSqlScript.md)
+
+[Set-AzSynapseSqlScript](./Set-AzSynapseSqlScript.md)

@@ -127,3 +127,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Export-AzSynapseSqlScript](./Export-AzSynapseSqlScript.md)
+
+[Remove-AzSynapseSqlScript](./Remove-AzSynapseSqlScript.md)
+
+[Set-AzSynapseSqlScript](./Set-AzSynapseSqlScript.md)
