@@ -23,11 +23,6 @@ function Get-AzAdGroupMember {
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup]
         # The group object that you are listing members from.
         ${GroupObject},
-        
-        [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        # Include count of items
-        ${Count},
     
         [Parameter()]
         [AllowEmptyCollection()]
@@ -132,7 +127,6 @@ function Get-AzAdGroupMember {
         }
 
         $PSBOundParameters['ConsistencyLevel'] = 'eventual'
-        $PSBOundParameters['Count'] = $true
 
         MSGraph.internal\Get-AzAdGroupMember @PSBoundParameters
     }

@@ -102,14 +102,6 @@ function Get-AzAdUser {
         ${AppendSelected},
     
         [Parameter(ParameterSetName='List')]
-        [Parameter(ParameterSetName='StartsWithParameterSet')]
-        [Parameter(ParameterSetName='DisplayNameParameterSet')]
-        [Parameter(ParameterSetName='MailParameterSet')]
-        [System.Management.Automation.SwitchParameter]
-        # Reports the number of objects in the data set. Currently, this parameter does nothing.
-        ${IncludeTotalCount},
-    
-        [Parameter(ParameterSetName='List')]
         [System.String]
         # Filter items by property values
         ${Filter},
@@ -213,11 +205,6 @@ function Get-AzAdUser {
             default {
                 break
             }
-        }
-
-        if ($PSBoundParameters.ContainsKey('IncludeTotalCount')) {
-            $PSBOundParameters['Count'] = $PSBoundParameters['IncludeTotalCount']
-            $null = $PSBoundParameters.Remove('IncludeTotalCount')
         }
 
         MSGraph.internal\Get-AzAdUser @PSBoundParameters

@@ -54,11 +54,6 @@ function Get-AzAdGroup {
         ${DisplayName},
 
         [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        # Reports the number of objects in the data set. Currently, this parameter does nothing.
-        ${IncludeTotalCount},
-
-        [Parameter()]
         [AllowEmptyCollection()]
         [System.String[]]
         # Expand related entities
