@@ -67,14 +67,6 @@ param(
     ${AppendSelected},
 
     [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='StartsWithParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameParameterSet')]
-    [Parameter(ParameterSetName='MailParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    ${IncludeTotalCount},
-
-    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Filter items by property values

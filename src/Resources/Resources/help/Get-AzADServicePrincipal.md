@@ -15,8 +15,8 @@ The directoryObject type is the base type for many other directory entity types.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzAdServicePrincipal [-Filter <String>] [-IncludeTotalCount] [-Orderby <String[]>] [-Search <String>]
- [-Select <String[]>] [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
+Get-AzAdServicePrincipal [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
+ [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -210,22 +210,6 @@ Gets only the first 'n' objects.
 ```yaml
 Type: System.UInt64
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeTotalCount
-Reports the number of objects in the data set.
-Currently, this parameter does nothing.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False

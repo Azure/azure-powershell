@@ -15,20 +15,20 @@ Represents an Azure Active Directory user object.
 ### List (Default)
 ```
 Get-AzAdUser [-AppendSelected] [-ConsistencyLevel <String>] [-DefaultProfile <PSObject>] [-Expand <String[]>]
- [-Filter <String>] [-First <UInt64>] [-IncludeTotalCount] [-Orderby <String[]>] [-Search <String>]
- [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
+ [-Filter <String>] [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
+ [-Skip <UInt64>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
 Get-AzAdUser -DisplayName <String> [-AppendSelected] [-DefaultProfile <PSObject>] [-Expand <String[]>]
- [-First <UInt64>] [-IncludeTotalCount] [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
+ [-First <UInt64>] [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
 ```
 
 ### MailParameterSet
 ```
 Get-AzAdUser -Mail <String> [-AppendSelected] [-DefaultProfile <PSObject>] [-Expand <String[]>]
- [-First <UInt64>] [-IncludeTotalCount] [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
+ [-First <UInt64>] [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
@@ -46,7 +46,7 @@ Get-AzAdUser -SignedIn [-AppendSelected] [-DefaultProfile <PSObject>] [-Expand <
 ### StartsWithParameterSet
 ```
 Get-AzAdUser -StartsWith <String> [-AppendSelected] [-DefaultProfile <PSObject>] [-Expand <String[]>]
- [-First <UInt64>] [-IncludeTotalCount] [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
+ [-First <UInt64>] [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
 ```
 
 ### UPNParameterSet
@@ -176,22 +176,6 @@ Gets only the first 'n' objects.
 
 ```yaml
 Type: System.UInt64
-Parameter Sets: DisplayNameParameterSet, List, MailParameterSet, StartsWithParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeTotalCount
-Reports the number of objects in the data set.
-Currently, this parameter does nothing.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DisplayNameParameterSet, List, MailParameterSet, StartsWithParameterSet
 Aliases:
 

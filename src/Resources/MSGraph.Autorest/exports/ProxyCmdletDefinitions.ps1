@@ -798,11 +798,6 @@ param(
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [System.Management.Automation.SwitchParameter]
-    ${IncludeTotalCount},
-
-    [Parameter(ParameterSetName='EmptyParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String]
     # Filter items by property values
     ${Filter},
@@ -1099,11 +1094,6 @@ function Get-AzAdGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]
 [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
 param(
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    ${IncludeTotalCount},
-
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -1678,11 +1668,6 @@ param(
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [System.Management.Automation.SwitchParameter]
-    ${IncludeTotalCount},
-
-    [Parameter(ParameterSetName='EmptyParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String]
     # Filter items by property values
     ${Filter},
@@ -2178,14 +2163,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     ${AppendSelected},
-
-    [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='StartsWithParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameParameterSet')]
-    [Parameter(ParameterSetName='MailParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    ${IncludeTotalCount},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]

@@ -16,28 +16,27 @@ The directoryObject type is the base type for many other directory entity types.
 ### EmptyParameterSet (Default)
 ```
 Get-AzAdGroup [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>] [-Filter <String>]
- [-First <UInt64>] [-IncludeTotalCount] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
 Get-AzAdGroup -DisplayName <String> [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>]
- [-First <UInt64>] [-IncludeTotalCount] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-First <UInt64>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
 Get-AzAdGroup -ObjectId <Guid> [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>]
- [-IncludeTotalCount] [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
 Get-AzAdGroup -DisplayNameStartsWith <String> [-AppendSelected] [-ConsistencyLevel <String>]
- [-Expand <String[]>] [-First <UInt64>] [-IncludeTotalCount] [-Select <String[]>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Expand <String[]>] [-First <UInt64>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -178,22 +177,6 @@ Gets only the first 'n' objects.
 ```yaml
 Type: System.UInt64
 Parameter Sets: DisplayNameParameterSet, EmptyParameterSet, SearchStringParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeTotalCount
-Reports the number of objects in the data set.
-Currently, this parameter does nothing.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
 Aliases:
 
 Required: False
