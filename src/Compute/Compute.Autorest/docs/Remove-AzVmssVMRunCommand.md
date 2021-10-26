@@ -30,23 +30,13 @@ The operation to delete the VMSS VM run command.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove VMSS VM RunCommand
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Remove VMSS VM RunCommand
 
 ## PARAMETERS
 
@@ -265,4 +255,3 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   - `[VMScaleSetName <String>]`: The name of the VM scale set.
 
 ## RELATED LINKS
-

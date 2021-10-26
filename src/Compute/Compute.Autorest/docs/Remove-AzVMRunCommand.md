@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzVMRunCommand
 
 ## SYNOPSIS
-The operation to delete the run command.
+Remove run command from the VM
 
 ## SYNTAX
 
@@ -26,27 +26,17 @@ Remove-AzVMRunCommand -InputObject <IComputeIdentity> [-DefaultProfile <PSObject
 ```
 
 ## DESCRIPTION
-The operation to delete the run command.
+Remove run command from the VM
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove Run Command
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Remove a Run Command by its Name
 
 ## PARAMETERS
 
@@ -250,4 +240,3 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   - `[VMScaleSetName <String>]`: The name of the VM scale set.
 
 ## RELATED LINKS
-

@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Simple Example
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand' 
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+The Set-AzVMRunCommand cmdlet updates properties for existing run command or adds a new run command to a virtual machine.
