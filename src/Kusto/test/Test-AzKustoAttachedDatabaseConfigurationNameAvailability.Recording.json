@@ -1,0 +1,38 @@
+{
+  "Test-AzKustoAttachedDatabaseConfigurationNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouppazj5i/providers/Microsoft.Kusto/Clusters/testclusterpazj5i/attachedDatabaseConfigurationCheckNameAvailability?api-version=2021-08-27+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgrouppazj5i/providers/Microsoft.Kusto/Clusters/testclusterpazj5i/attachedDatabaseConfigurationCheckNameAvailability?api-version=2021-08-27",
+      "Content": "{\r\n  \"name\": \"testdatabasegzbt03\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/attachedDatabaseConfigurations\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "106" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "c6cf02a2-fb6a-496b-ba0d-f3fc3493ec53" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "44afae1a-f38a-414f-9d0b-e0972d6fdc33" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20211005T074244Z:44afae1a-f38a-414f-9d0b-e0972d6fdc33" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Tue, 05 Oct 2021 07:42:43 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "63" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"testdatabasegzbt03\",\"nameAvailable\":true,\"message\":\"\"}",
+      "isContentBase64": false
+    }
+  }
+}
