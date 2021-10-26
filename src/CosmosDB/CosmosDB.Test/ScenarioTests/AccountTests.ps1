@@ -231,7 +231,7 @@ function Test-PrivateEndpoint
   $storageAccount = "xdmsa2";
   $vnetName = "MyVnetPE"
 	
-  $cosmosDBAccountName = "db946" 
+  $cosmosDBAccountName = "db947"
   $rgname = "CosmosDBResourceGroup9507"
 
   try{
