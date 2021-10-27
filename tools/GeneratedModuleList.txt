@@ -39,11 +39,8 @@ Az.ProviderHub
 Az.Purview
 Az.RedisEnterpriseCache
 Az.ResourceMover
-Az.SignalR
 Az.SpringCloud
 Az.StreamAnalytics
-Az.Synapse
 Az.TimeSeriesInsights
 Az.VMware
-Az.WebPubSub
 Az.WindowsIotServices
