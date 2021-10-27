@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "kerb".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("kerb", "kerb", global::System.Management.Automation.CompletionResultType.ParameterValue, "kerb");
+                yield return new global::System.Management.Automation.CompletionResult("'kerb'", "kerb", global::System.Management.Automation.CompletionResultType.ParameterValue, "kerb");
             }
         }
     }

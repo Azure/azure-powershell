@@ -20,8 +20,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Microsoft Azure SQL Server Management Library")]
 [assembly: AssemblyDescription("Provides management functionality for Microsoft Azure SQL.")]
 
-[assembly: AssemblyVersion("3.5.0")]
-[assembly: AssemblyFileVersion("3.5.0")]
+[assembly: AssemblyVersion("3.5.1")]
+[assembly: AssemblyFileVersion("3.5.1")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Azure .NET SDK")]

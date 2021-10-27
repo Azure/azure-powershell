@@ -11,7 +11,7 @@ This cmdlet gets firewall rules by name.
 
 ### Example 2: Get firewall rules by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/servers/mysql-test/firewallRules/firewallrule-test"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/firewallrule-test"
 PS C:\> Get-AzMySqlFlexibleServerFirewallRule -InputObject $ID
 
 FirewallRuleName   StartIPAddress   EndIPAddress

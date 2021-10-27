@@ -6,7 +6,7 @@
   "serverName": "mysql-test-100",
   "flexibleServerName": "mysql-flexible-test-100",
   "databaseName": "mysqldb",
-  "SubscriptionId": "7fec3109-5b78-4a24-b834-5d47d63e2596",
+  "SubscriptionId": "929287ae-832a-4946-8006-a6cc2a3f7244",
   "restoreName": "mysql-test-100-restore",
   "firewallRuleName": "mysqlrule01",
   "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",

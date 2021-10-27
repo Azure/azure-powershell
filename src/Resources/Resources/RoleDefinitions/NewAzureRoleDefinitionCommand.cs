@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new role definition.
     /// </summary>
+    [GenericBreakingChange(BreakingChangeMSGraphMigration)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleDefinition"), OutputType(typeof(PSRoleDefinition))]
     public class NewAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {

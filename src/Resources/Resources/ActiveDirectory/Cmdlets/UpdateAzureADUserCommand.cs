@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Updates an existing AD user.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSADUser), ReplacementCmdletOutputTypeName = "System.Boolean")]
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADUser", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.UPNOrObjectId), OutputType(typeof(PSADUser))]
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADUser")]
     public class UpdateAzureADUserCommand : ActiveDirectoryBaseCmdlet

@@ -2120,6 +2120,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.InitialRecoveryFabricLocation = details.InitialRecoveryFabricLocation;
             this.InitialPrimaryZone = details.InitialPrimaryZone;
             this.InitialRecoveryZone = details.InitialRecoveryZone;
+            this.RecoveryAvailabilityZone = details.RecoveryAvailabilityZone;
+            this.PrimaryAvailabilityZone = details.PrimaryAvailabilityZone;
             this.LifecycleId = details.LifecycleId;
 
             if (details.LastHeartbeat != null)
@@ -2306,6 +2308,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the initial recovery zone.
         /// </summary>
         public string InitialRecoveryZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery availability zone.
+        /// </summary>
+        public string RecoveryAvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the primary availability zone.
+        /// </summary>
+        public string PrimaryAvailabilityZone { get; set; }
 
         /// <summary>
         /// Gets or sets the only constant ID throught out the enable disable cycle.

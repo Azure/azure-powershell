@@ -39,8 +39,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly TriggerRunClient _triggerRunClient;
         private readonly DatasetClient _datasetClient;
         private readonly DataFlowClient _dataFlowClient;
+        private readonly DataFlowDebugSessionClient _dataFlowDebugSessionClient;
         private readonly BigDataPoolsClient _bigDataPoolsClient;
         private readonly SparkJobDefinitionClient _sparkJobDefinitionClient;
+        private readonly SqlScriptClient _sqlScriptClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -61,8 +63,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _triggerRunClient = new TriggerRunClient(uri, new AzureSessionCredential(context));
             _datasetClient = new DatasetClient(uri, new AzureSessionCredential(context));
             _dataFlowClient = new DataFlowClient(uri, new AzureSessionCredential(context));
+            _dataFlowDebugSessionClient = new DataFlowDebugSessionClient(uri, new AzureSessionCredential(context));
             _bigDataPoolsClient = new BigDataPoolsClient(uri, new AzureSessionCredential(context));
             _sparkJobDefinitionClient = new SparkJobDefinitionClient(uri, new AzureSessionCredential(context));
+            _sqlScriptClient = new SqlScriptClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -289,6 +293,41 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #endregion
 
+        #region DataFlowDebugSession
+
+        public AddDataFlowToDebugSessionResponse AddDataFlowDebugSessionPackage(string rawJsonContent, string sessionId)
+        {
+            DataFlowDebugPackage package = JsonConvert.DeserializeObject<DataFlowDebugPackage>(rawJsonContent);
+            if (!string.IsNullOrWhiteSpace(sessionId))
+            {
+                package.SessionId = sessionId;
+            }
+            var operation = _dataFlowDebugSessionClient.AddDataFlow(package);
+            return operation.Value;
+        }
+
+        public Pageable<DataFlowDebugSessionInfo> GetDataFlowDebugSessionsByWorkspace()
+        {
+            return _dataFlowDebugSessionClient.QueryDataFlowDebugSessionsByWorkspace();
+        }
+     
+        public DataFlowDebugCommandResponse InvokeDataFlowDebugSessionCommand(DataFlowDebugCommandRequest request)
+        {
+           return _dataFlowDebugSessionClient.StartExecuteCommand(request).Poll().Value;
+        }
+
+        public void DeleteDataFlowDebugSession(DeleteDataFlowDebugSessionRequest request)
+        {
+            _dataFlowDebugSessionClient.DeleteDataFlowDebugSession(request);
+        }
+
+        public CreateDataFlowDebugSessionResponse CreateDataFlowDebugSession(CreateDataFlowDebugSessionRequest request)
+        {
+            return _dataFlowDebugSessionClient.StartCreateDataFlowDebugSession(request).Poll().Value;
+        }
+
+        #endregion
+
         #region BigDataPools
 
         public BigDataPoolResourceInfo GetBigDataPool(string bigDataPoolName)
@@ -329,6 +368,28 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }).Poll();
         }
 
+        #endregion
+
+        #region SqlScript
+        public void DeleteSqlScript(string sqlscriptName)
+        {
+            _sqlScriptClient.StartDeleteSqlScript(sqlscriptName).Poll();
+        }
+
+        public SqlScriptResource GetSqlScript(string sqlscriptName)
+        {
+            return _sqlScriptClient.GetSqlScript(sqlscriptName);
+        }
+
+        public Pageable<SqlScriptResource> GetSqlScriptsByWorkspace()
+        {
+            return _sqlScriptClient.GetSqlScriptsByWorkspace();
+        }
+
+        public SqlScriptResource CreateOrUpdateSqlScript(string sqlScriptName, SqlScriptResource resource)
+        {
+            return _sqlScriptClient.StartCreateOrUpdateSqlScript(sqlScriptName, resource).Poll().Value;
+        }
         #endregion
 
         #region helpers
