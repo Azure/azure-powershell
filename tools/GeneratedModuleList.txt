@@ -39,6 +39,7 @@ Az.ProviderHub
 Az.Purview
 Az.RedisEnterpriseCache
 Az.ResourceMover
+Az.SignalR
 Az.SpringCloud
 Az.StreamAnalytics
 Az.Synapse
