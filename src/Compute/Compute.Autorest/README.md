@@ -35,7 +35,6 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-#  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/compute.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/runCommands.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # For new RP, the version is 0.1.0
@@ -53,31 +52,6 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Run$|^RunViaIdentity$
     remove: true
-  # Remove set cmdlet
-  # Remove following verbs
-  #- select: command
-  #  where:
-  #    verb: Export|Convert|Install|Set
-  #  remove: true
-  # Remove existing cmdlets
-  #- select: command
-  #  where:
-  #    subject: VirtualMachine|AvailabilitySet|DedicatedHost|Image|Operation|ProximityPlacementGroup|RestorePoint|RestorePointCollection|Usage|#CapacityReservationGroup|CapacityReservation
-  #  remove: true
-  #- select: parameter
-  #  where:
-  #    subject: CapacityReservationGroup
-  #    parameter-name: Expand
-  #  remove: true
-  #- select: command
-  #  where:
-  #    subject: CapacityReservation
-  #  remove: true
-  #- select: command
-  #  where:
-  #    subject: SshPublicKey   
-  #    verb: New|Remove|Update
-  #  remove: true
   - where:
       subject: VirtualMachineRunCommand
     set:
