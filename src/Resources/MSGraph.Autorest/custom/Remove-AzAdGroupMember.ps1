@@ -31,27 +31,27 @@ System.Collections.Hashtable
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
+https://docs.microsoft.com/powershell/module/az.resources/remove-azadgrouprefmember
 #>
 function Remove-AzAdGroupMember {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName = 'ExplicitParameterSet ', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectId', Mandatory)]
-        [Parameter(ParameterSetName='MemberUPNWithGroupObjectId', Mandatory)]
+        [Parameter(ParameterSetName='MemberUPNWithGroupObjectIdParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
         [System.String]
         # key: id of group
         ${GroupObjectId},
 
         [Parameter(ParameterSetName='MemberObjectIdWithGroupDisplayName', Mandatory)]
-        [Parameter(ParameterSetName='MemberUPNWithGroupDisplayName', Mandatory)]
+        [Parameter(ParameterSetName='MemberUPNWithGroupDisplayNameParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
         [System.String]
         ${GroupDisplayName},
 
         [Parameter(ParameterSetName='MemberObjectIdWithGroupObject', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='MemberUPNWithGroupObject', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='MemberUPNWithGroupObjectParameterSet', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup]
         ${GroupObject},
@@ -63,9 +63,9 @@ function Remove-AzAdGroupMember {
         [System.String[]]
         ${MemberObjectId},
 
-        [Parameter(ParameterSetName='MemberUPNWithGroupObjectId', Mandatory)]
-        [Parameter(ParameterSetName='MemberUPNWithGroupDisplayName', Mandatory)]
-        [Parameter(ParameterSetName='MemberUPNWithGroupObject', Mandatory)]
+        [Parameter(ParameterSetName='MemberUPNWithGroupObjectIdParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='MemberUPNWithGroupDisplayNameParameterSet', Mandatory)]
+        [Parameter(ParameterSetName='MemberUPNWithGroupObjectParameterSet', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
         [System.String[]]
         ${MemberUserPrincipalName},

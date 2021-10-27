@@ -6171,22 +6171,22 @@ GROUPOBJECT <MicrosoftGraphGroup>:
   [OdataId <String>]: The full id of object in directory
   [OdataType <String>]: The type of object in directory
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
+https://docs.microsoft.com/powershell/module/az.resources/remove-azadgrouprefmember
 #>
 function Remove-AzAdGroupMember {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='ExplicitParameterSet ', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='MemberUPNWithGroupObjectId', Mandatory)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupObjectIdParameterSet', Mandatory)]
     [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of group
     ${GroupObjectId},
 
-    [Parameter(ParameterSetName='MemberUPNWithGroupObjectId', Mandatory)]
-    [Parameter(ParameterSetName='MemberUPNWithGroupDisplayName', Mandatory)]
-    [Parameter(ParameterSetName='MemberUPNWithGroupObject', Mandatory)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupObjectIdParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupDisplayNameParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupObjectParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String[]]
     ${MemberUserPrincipalName},
@@ -6198,13 +6198,13 @@ param(
     [System.String[]]
     ${MemberObjectId},
 
-    [Parameter(ParameterSetName='MemberUPNWithGroupDisplayName', Mandatory)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupDisplayNameParameterSet', Mandatory)]
     [Parameter(ParameterSetName='MemberObjectIdWithGroupDisplayName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     ${GroupDisplayName},
 
-    [Parameter(ParameterSetName='MemberUPNWithGroupObject', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='MemberObjectIdWithGroupObject', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup]
@@ -6274,11 +6274,11 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
             ExplicitParameterSet  = 'MSGraph.custom\Remove-AzAdGroupMember';
-            MemberUPNWithGroupObjectId = 'MSGraph.custom\Remove-AzAdGroupMember';
+            MemberUPNWithGroupObjectIdParameterSet = 'MSGraph.custom\Remove-AzAdGroupMember';
             MemberObjectIdWithGroupObjectId = 'MSGraph.custom\Remove-AzAdGroupMember';
-            MemberUPNWithGroupDisplayName = 'MSGraph.custom\Remove-AzAdGroupMember';
+            MemberUPNWithGroupDisplayNameParameterSet = 'MSGraph.custom\Remove-AzAdGroupMember';
             MemberObjectIdWithGroupDisplayName = 'MSGraph.custom\Remove-AzAdGroupMember';
-            MemberUPNWithGroupObject = 'MSGraph.custom\Remove-AzAdGroupMember';
+            MemberUPNWithGroupObjectParameterSet = 'MSGraph.custom\Remove-AzAdGroupMember';
             MemberObjectIdWithGroupObject = 'MSGraph.custom\Remove-AzAdGroupMember';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
+online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadgrouprefmember
 schema: 2.0.0
 ---
 
@@ -38,21 +38,21 @@ Remove-AzAdGroupMember -GroupObjectId <String> -MemberObjectId <String[]> [-Defa
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### MemberUPNWithGroupDisplayName
+### MemberUPNWithGroupDisplayNameParameterSet
 ```
 Remove-AzAdGroupMember -GroupDisplayName <String> -MemberUserPrincipalName <String[]>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### MemberUPNWithGroupObject
+### MemberUPNWithGroupObjectIdParameterSet
 ```
-Remove-AzAdGroupMember -GroupObject <MicrosoftGraphGroup> -MemberUserPrincipalName <String[]>
+Remove-AzAdGroupMember -GroupObjectId <String> -MemberUserPrincipalName <String[]>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### MemberUPNWithGroupObjectId
+### MemberUPNWithGroupObjectParameterSet
 ```
-Remove-AzAdGroupMember -GroupObjectId <String> -MemberUserPrincipalName <String[]>
+Remove-AzAdGroupMember -GroupObject <MicrosoftGraphGroup> -MemberUserPrincipalName <String[]>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberUPNWithGroupDisplayName
+Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberUPNWithGroupDisplayNameParameterSet
 Aliases:
 
 Required: True
@@ -119,7 +119,7 @@ To construct, see NOTES section for GROUPOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
-Parameter Sets: MemberObjectIdWithGroupObject, MemberUPNWithGroupObject
+Parameter Sets: MemberObjectIdWithGroupObject, MemberUPNWithGroupObjectParameterSet
 Aliases:
 
 Required: True
@@ -134,7 +134,7 @@ key: id of group
 
 ```yaml
 Type: System.String
-Parameter Sets: MemberObjectIdWithGroupObjectId, MemberUPNWithGroupObjectId
+Parameter Sets: MemberObjectIdWithGroupObjectId, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
 
 Required: True
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MemberUPNWithGroupDisplayName, MemberUPNWithGroupObject, MemberUPNWithGroupObjectId
+Parameter Sets: MemberUPNWithGroupDisplayNameParameterSet, MemberUPNWithGroupObjectIdParameterSet, MemberUPNWithGroupObjectParameterSet
 Aliases:
 
 Required: True
