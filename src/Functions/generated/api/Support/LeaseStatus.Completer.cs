@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Locked".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Locked", "Locked", global::System.Management.Automation.CompletionResultType.ParameterValue, "Locked");
+                yield return new global::System.Management.Automation.CompletionResult("'Locked'", "Locked", global::System.Management.Automation.CompletionResultType.ParameterValue, "Locked");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unlocked".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unlocked", "Unlocked", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unlocked");
+                yield return new global::System.Management.Automation.CompletionResult("'Unlocked'", "Unlocked", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unlocked");
             }
         }
     }

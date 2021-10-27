@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -NumberOfNodesToRemove
-The number of nodes to add
+The number of nodes to remove
 
 ```yaml
 Type: System.Int32

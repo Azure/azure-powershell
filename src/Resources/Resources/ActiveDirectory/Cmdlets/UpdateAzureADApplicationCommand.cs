@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSADApplication), ReplacementCmdletOutputTypeName = "System.Boolean")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADApplication", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams), OutputType(typeof(PSADApplication))]
     [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADApplication")]
     public class UpdateAzureADApplicationCommand : ActiveDirectoryBaseCmdlet

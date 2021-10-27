@@ -28,35 +28,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "9.5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("9.5", "9.5", global::System.Management.Automation.CompletionResultType.ParameterValue, "9.5");
+                yield return new global::System.Management.Automation.CompletionResult("'9.5'", "9.5", global::System.Management.Automation.CompletionResultType.ParameterValue, "9.5");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "9.6".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("9.6", "9.6", global::System.Management.Automation.CompletionResultType.ParameterValue, "9.6");
+                yield return new global::System.Management.Automation.CompletionResult("'9.6'", "9.6", global::System.Management.Automation.CompletionResultType.ParameterValue, "9.6");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "10".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("10", "10", global::System.Management.Automation.CompletionResultType.ParameterValue, "10");
+                yield return new global::System.Management.Automation.CompletionResult("'10'", "10", global::System.Management.Automation.CompletionResultType.ParameterValue, "10");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "10.0".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("10.0", "10.0", global::System.Management.Automation.CompletionResultType.ParameterValue, "10.0");
+                yield return new global::System.Management.Automation.CompletionResult("'10.0'", "10.0", global::System.Management.Automation.CompletionResultType.ParameterValue, "10.0");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "10.2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("10.2", "10.2", global::System.Management.Automation.CompletionResultType.ParameterValue, "10.2");
+                yield return new global::System.Management.Automation.CompletionResult("'10.2'", "10.2", global::System.Management.Automation.CompletionResultType.ParameterValue, "10.2");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "11".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("11", "11", global::System.Management.Automation.CompletionResultType.ParameterValue, "11");
+                yield return new global::System.Management.Automation.CompletionResult("'11'", "11", global::System.Management.Automation.CompletionResultType.ParameterValue, "11");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "13".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("13", "13", global::System.Management.Automation.CompletionResultType.ParameterValue, "13");
+                yield return new global::System.Management.Automation.CompletionResult("'13'", "13", global::System.Management.Automation.CompletionResultType.ParameterValue, "13");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "12".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("12", "12", global::System.Management.Automation.CompletionResultType.ParameterValue, "12");
+                yield return new global::System.Management.Automation.CompletionResult("'12'", "12", global::System.Management.Automation.CompletionResultType.ParameterValue, "12");
             }
         }
     }

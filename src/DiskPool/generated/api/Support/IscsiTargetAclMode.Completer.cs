@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dynamic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Dynamic", "Dynamic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dynamic");
+                yield return new global::System.Management.Automation.CompletionResult("'Dynamic'", "Dynamic", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dynamic");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Static".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Static", "Static", global::System.Management.Automation.CompletionResultType.ParameterValue, "Static");
+                yield return new global::System.Management.Automation.CompletionResult("'Static'", "Static", global::System.Management.Automation.CompletionResultType.ParameterValue, "Static");
             }
         }
     }

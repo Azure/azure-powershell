@@ -28,47 +28,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Initialized".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Initialized", "Initialized", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initialized");
+                yield return new global::System.Management.Automation.CompletionResult("'Initialized'", "Initialized", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initialized");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WaitingOnCertificateOrder".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WaitingOnCertificateOrder", "WaitingOnCertificateOrder", global::System.Management.Automation.CompletionResultType.ParameterValue, "WaitingOnCertificateOrder");
+                yield return new global::System.Management.Automation.CompletionResult("'WaitingOnCertificateOrder'", "WaitingOnCertificateOrder", global::System.Management.Automation.CompletionResultType.ParameterValue, "WaitingOnCertificateOrder");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Succeeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Succeeded", "Succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Succeeded");
+                yield return new global::System.Management.Automation.CompletionResult("'Succeeded'", "Succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Succeeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CertificateOrderFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CertificateOrderFailed", "CertificateOrderFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateOrderFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'CertificateOrderFailed'", "CertificateOrderFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateOrderFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OperationNotPermittedOnKeyVault".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OperationNotPermittedOnKeyVault", "OperationNotPermittedOnKeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "OperationNotPermittedOnKeyVault");
+                yield return new global::System.Management.Automation.CompletionResult("'OperationNotPermittedOnKeyVault'", "OperationNotPermittedOnKeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "OperationNotPermittedOnKeyVault");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureServiceUnauthorizedToAccessKeyVault".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AzureServiceUnauthorizedToAccessKeyVault", "AzureServiceUnauthorizedToAccessKeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureServiceUnauthorizedToAccessKeyVault");
+                yield return new global::System.Management.Automation.CompletionResult("'AzureServiceUnauthorizedToAccessKeyVault'", "AzureServiceUnauthorizedToAccessKeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureServiceUnauthorizedToAccessKeyVault");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "KeyVaultDoesNotExist".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("KeyVaultDoesNotExist", "KeyVaultDoesNotExist", global::System.Management.Automation.CompletionResultType.ParameterValue, "KeyVaultDoesNotExist");
+                yield return new global::System.Management.Automation.CompletionResult("'KeyVaultDoesNotExist'", "KeyVaultDoesNotExist", global::System.Management.Automation.CompletionResultType.ParameterValue, "KeyVaultDoesNotExist");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "KeyVaultSecretDoesNotExist".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("KeyVaultSecretDoesNotExist", "KeyVaultSecretDoesNotExist", global::System.Management.Automation.CompletionResultType.ParameterValue, "KeyVaultSecretDoesNotExist");
+                yield return new global::System.Management.Automation.CompletionResult("'KeyVaultSecretDoesNotExist'", "KeyVaultSecretDoesNotExist", global::System.Management.Automation.CompletionResultType.ParameterValue, "KeyVaultSecretDoesNotExist");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnknownError".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UnknownError", "UnknownError", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnknownError");
+                yield return new global::System.Management.Automation.CompletionResult("'UnknownError'", "UnknownError", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnknownError");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ExternalPrivateKey".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ExternalPrivateKey", "ExternalPrivateKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "ExternalPrivateKey");
+                yield return new global::System.Management.Automation.CompletionResult("'ExternalPrivateKey'", "ExternalPrivateKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "ExternalPrivateKey");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
         }
     }

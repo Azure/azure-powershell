@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD servicePrincipal Credential.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSADCredential), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADSpCredential", DefaultParameterSetName = ParameterSet.SpObjectIdWithPassword, SupportsShouldProcess = true)]
     [OutputType(typeof(PSADCredential), typeof(PSADCredentialWrapper))]
     [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipalCredential")]
