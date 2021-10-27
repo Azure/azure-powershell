@@ -15,39 +15,39 @@ Supports $expand.
 
 ## SYNTAX
 
-### MemberObjectIdWithGroupObjectId (Default)
+### MemberObjectIdWithGroupObjectIdParameterSet (Default)
 ```
 Add-AzAdGroupMember -MemberObjectId <String[]> -TargetGroupObjectId <String> [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### MemberObjectIdWithGroupDisplayName
+### MemberObjectIdWithGroupDisplayNameParameterSet
 ```
 Add-AzAdGroupMember -MemberObjectId <String[]> -TargetGroupDisplayName <String> [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### MemberObjectIdWithGroupObject
+### MemberObjectIdWithGroupObjectParameterSet
 ```
 Add-AzAdGroupMember -MemberObjectId <String[]> -TargetGroupObject <MicrosoftGraphGroup>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### MemberUPNWithGroupDisplayName
+### MemberUPNWithGroupDisplayNameParameterSet
 ```
 Add-AzAdGroupMember -MemberUserPrincipalName <String[]> -TargetGroupDisplayName <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### MemberUPNWithGroupObject
+### MemberUPNWithGroupObjectIdParameterSet
 ```
-Add-AzAdGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObject <MicrosoftGraphGroup>
+Add-AzAdGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObjectId <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### MemberUPNWithGroupObjectId
+### MemberUPNWithGroupObjectParameterSet
 ```
-Add-AzAdGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObjectId <String>
+Add-AzAdGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObject <MicrosoftGraphGroup>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberObjectIdWithGroupObject, MemberObjectIdWithGroupObjectId
+Parameter Sets: MemberObjectIdWithGroupDisplayNameParameterSet, MemberObjectIdWithGroupObjectIdParameterSet, MemberObjectIdWithGroupObjectParameterSet
 Aliases:
 
 Required: True
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MemberUPNWithGroupDisplayName, MemberUPNWithGroupObject, MemberUPNWithGroupObjectId
+Parameter Sets: MemberUPNWithGroupDisplayNameParameterSet, MemberUPNWithGroupObjectIdParameterSet, MemberUPNWithGroupObjectParameterSet
 Aliases:
 
 Required: True
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberUPNWithGroupDisplayName
+Parameter Sets: MemberObjectIdWithGroupDisplayNameParameterSet, MemberUPNWithGroupDisplayNameParameterSet
 Aliases:
 
 Required: True
@@ -159,7 +159,7 @@ To construct, see NOTES section for TARGETGROUPOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup
-Parameter Sets: MemberObjectIdWithGroupObject, MemberUPNWithGroupObject
+Parameter Sets: MemberObjectIdWithGroupObjectParameterSet, MemberUPNWithGroupObjectParameterSet
 Aliases:
 
 Required: True
@@ -174,7 +174,7 @@ key: id of group
 
 ```yaml
 Type: System.String
-Parameter Sets: MemberObjectIdWithGroupObjectId, MemberUPNWithGroupObjectId
+Parameter Sets: MemberObjectIdWithGroupObjectIdParameterSet, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
 
 Required: True

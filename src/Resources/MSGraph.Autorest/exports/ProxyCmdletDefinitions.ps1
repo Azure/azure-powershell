@@ -349,37 +349,37 @@ https://docs.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 #>
 function Add-AzAdGroupMember {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='MemberObjectIdWithGroupObjectId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='MemberObjectIdWithGroupObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectId', Mandatory)]
-    [Parameter(ParameterSetName='MemberUPNWithGroupObjectId', Mandatory)]
+    [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectIdParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupObjectIdParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of group
     ${TargetGroupObjectId},
 
-    [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectId', Mandatory)]
-    [Parameter(ParameterSetName='MemberObjectIdWithGroupDisplayName', Mandatory)]
-    [Parameter(ParameterSetName='MemberObjectIdWithGroupObject', Mandatory)]
+    [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectIdParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='MemberObjectIdWithGroupDisplayNameParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String[]]
     ${MemberObjectId},
 
-    [Parameter(ParameterSetName='MemberUPNWithGroupObjectId', Mandatory)]
-    [Parameter(ParameterSetName='MemberUPNWithGroupDisplayName', Mandatory)]
-    [Parameter(ParameterSetName='MemberUPNWithGroupObject', Mandatory)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupObjectIdParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupDisplayNameParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupObjectParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String[]]
     ${MemberUserPrincipalName},
 
-    [Parameter(ParameterSetName='MemberUPNWithGroupDisplayName', Mandatory)]
-    [Parameter(ParameterSetName='MemberObjectIdWithGroupDisplayName', Mandatory)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupDisplayNameParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='MemberObjectIdWithGroupDisplayNameParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     ${TargetGroupDisplayName},
 
-    [Parameter(ParameterSetName='MemberUPNWithGroupObject', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='MemberObjectIdWithGroupObject', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='MemberUPNWithGroupObjectParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup]
     # To construct, see NOTES section for TARGETGROUPOBJECT properties and create a hash table.
@@ -447,12 +447,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            MemberObjectIdWithGroupObjectId = 'MSGraph.custom\Add-AzAdGroupMember';
-            MemberUPNWithGroupObjectId = 'MSGraph.custom\Add-AzAdGroupMember';
-            MemberUPNWithGroupDisplayName = 'MSGraph.custom\Add-AzAdGroupMember';
-            MemberObjectIdWithGroupDisplayName = 'MSGraph.custom\Add-AzAdGroupMember';
-            MemberUPNWithGroupObject = 'MSGraph.custom\Add-AzAdGroupMember';
-            MemberObjectIdWithGroupObject = 'MSGraph.custom\Add-AzAdGroupMember';
+            MemberObjectIdWithGroupObjectIdParameterSet = 'MSGraph.custom\Add-AzAdGroupMember';
+            MemberUPNWithGroupObjectIdParameterSet = 'MSGraph.custom\Add-AzAdGroupMember';
+            MemberUPNWithGroupDisplayNameParameterSet = 'MSGraph.custom\Add-AzAdGroupMember';
+            MemberObjectIdWithGroupDisplayNameParameterSet = 'MSGraph.custom\Add-AzAdGroupMember';
+            MemberUPNWithGroupObjectParameterSet = 'MSGraph.custom\Add-AzAdGroupMember';
+            MemberObjectIdWithGroupObjectParameterSet = 'MSGraph.custom\Add-AzAdGroupMember';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
