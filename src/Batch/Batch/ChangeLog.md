@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed assembly `System.Text.Encodings.Web.dll` [#16062]
 
 ## Version 3.1.0
 * Updated Az.Batch to use `Microsoft.Azure.Management.Batch` SDK version to 11.0.0
