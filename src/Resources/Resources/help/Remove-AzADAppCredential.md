@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzAdAppCredential
 
 ## SYNOPSIS
-
+Remove credentials for application.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Remove-AzAdAppCredential -ApplicationObject <IMicrosoftGraphApplication> [-KeyId
 ```
 
 ## DESCRIPTION
-
+Remove credentials for application.
 
 ## EXAMPLES
 

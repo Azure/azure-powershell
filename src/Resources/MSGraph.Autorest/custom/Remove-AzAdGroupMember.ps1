@@ -31,7 +31,7 @@ System.Collections.Hashtable
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgrouprefmember
+https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
 #>
 function Remove-AzAdGroupMember {
     [OutputType([System.Boolean])]

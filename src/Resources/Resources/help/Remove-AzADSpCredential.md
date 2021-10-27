@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzAdSpCredential
 
 ## SYNOPSIS
-
+Remove credentials for service principal.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Remove-AzAdSpCredential -ServicePrincipalName <String> [-KeyId <Guid>] [-Default
 ```
 
 ## DESCRIPTION
-
+Remove credentials for service principal.
 
 ## EXAMPLES
 
