@@ -12,42 +12,19 @@ Add new entity to users
 
 ## SYNTAX
 
-### DefaultSet (Default)
 ```
 New-AzAdUser -DisplayName <String> -MailNickname <String> -Password <SecureString> -UserPrincipalName <String>
  [-AboutMe <String>] [-AccountEnabled] [-AgeGroup <String>] [-Birthday <DateTime>] [-City <String>]
  [-CompanyName <String>] [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>]
  [-Department <String>] [-DeviceEnrollmentLimit <Int32>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>]
  [-EmployeeType <String>] [-ExternalUserState <String>] [-ExternalUserStateChangeDateTime <DateTime>]
- [-FaxNumber <String>] [-GivenName <String>] [-HireDate <DateTime>] [-Interest <String[]>]
- [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>] [-MobilePhone <String>] [-MySite <String>]
- [-OfficeLocation <String>] [-OnPremisesImmutableId <String>] [-OtherMail <String[]>] [-PostalCode <String>]
+ [-FaxNumber <String>] [-ForceChangePasswordNextLogin] [-GivenName <String>] [-HireDate <DateTime>]
+ [-ImmutableId <String>] [-Interest <String[]>] [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>]
+ [-MobilePhone <String>] [-MySite <String>] [-OfficeLocation <String>] [-OtherMail <String[]>]
+ [-PasswordPolicy <String>] [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>]
  [-PreferredLanguage <String>] [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>]
  [-ShowInAddressList] [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>]
  [-UsageLocation <String>] [-UserType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzAdUser [-AboutMe <String>] [-AccountEnabled] [-AgeGroup <String>] [-Birthday <DateTime>]
- [-City <String>] [-CompanyName <String>] [-ConsentProvidedForMinor <String>] [-Country <String>]
- [-DeletedDateTime <DateTime>] [-Department <String>] [-DeviceEnrollmentLimit <Int32>] [-DisplayName <String>]
- [-EmployeeHireDate <DateTime>] [-EmployeeId <String>] [-EmployeeType <String>] [-ExternalUserState <String>]
- [-ExternalUserStateChangeDateTime <DateTime>] [-FaxNumber <String>] [-GivenName <String>]
- [-HireDate <DateTime>] [-Interest <String[]>] [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>]
- [-MailNickname <String>] [-MobilePhone <String>] [-MySite <String>] [-OfficeLocation <String>]
- [-OnPremisesImmutableId <String>] [-OtherMail <String[]>] [-PasswordPolicy <String>]
- [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>] [-PreferredLanguage <String>]
- [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>] [-ShowInAddressList]
- [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>] [-UsageLocation <String>]
- [-UserPrincipalName <String>] [-UserType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### SimpleSet
-```
-New-AzAdUser [-ForceChangePasswordNextLogin] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -82,7 +59,7 @@ Returned only on $select.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -99,7 +76,7 @@ Supports $filter (eq, ne, NOT, and in).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -117,7 +94,7 @@ Supports $filter (eq, ne, NOT, and in).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -134,7 +111,7 @@ For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Returned only o
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -151,7 +128,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,7 +145,7 @@ The maximum length of the company name is 64 characters.Supports $filter (eq, ne
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -186,7 +163,7 @@ Supports $filter (eq, ne, NOT, and in).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -203,7 +180,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -233,7 +210,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -249,7 +226,7 @@ Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge, le, and in o
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -265,7 +242,7 @@ Allowed values are 5 or 1000.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -284,7 +261,7 @@ Supports $filter (eq, ne, NOT , ge, le, in, startsWith), $orderBy, and $search.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -300,7 +277,7 @@ Supports $filter (eq, ne, NOT , ge, le, in).
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -316,7 +293,7 @@ Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -333,7 +310,7 @@ Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -350,7 +327,7 @@ Supports $filter (eq, ne, NOT , in).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -366,7 +343,7 @@ Supports $filter (eq, ne, NOT , in).
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -382,7 +359,7 @@ Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -398,7 +375,7 @@ Default behavior is (false) to not change the password on the next successful lo
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SimpleSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -415,7 +392,7 @@ Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -435,8 +412,26 @@ We recommend using the native employeeHireDate property to set and update hire d
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutableId
+This property is used to associate an on-premises Active Directory user account to their Azure AD user object.
+This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property.
+Note: The $ and _ characters cannot be used when specifying this property.
+Supports $filter (eq, ne, NOT, ge, le, in).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: OnPremisesImmutableId
 
 Required: False
 Position: Named
@@ -451,7 +446,7 @@ Returned only on $select.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -466,7 +461,7 @@ Do not use – reserved for future use.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -483,7 +478,7 @@ Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -501,7 +496,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -519,7 +514,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -536,7 +531,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -552,7 +547,7 @@ Returned only on $select.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -569,25 +564,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OnPremisesImmutableId
-This property is used to associate an on-premises Active Directory user account to their Azure AD user object.
-This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property.
-Note: The $ and _ characters cannot be used when specifying this property.
-Supports $filter (eq, ne, NOT, ge, le, in).
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -602,7 +579,7 @@ A list of additional email addresses for the user; for example: ['bob@contoso.co
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -619,7 +596,7 @@ It is recommended to set a strong password.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -637,7 +614,7 @@ The two may be specified together; for example: DisablePasswordExpiration, Disab
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -653,7 +630,7 @@ To construct, see NOTES section for PASSWORDPROFILE properties and create a hash
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -672,7 +649,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -689,7 +666,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -705,7 +682,7 @@ Returned only on $select.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -721,7 +698,7 @@ Returned only on $select.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -737,7 +714,7 @@ Returned only on $select.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -755,7 +732,7 @@ Supports $filter (eq, ne, NOT, in).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -771,7 +748,7 @@ Returned only on $select.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -788,7 +765,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -805,7 +782,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -822,7 +799,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -841,7 +818,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -862,7 +839,7 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -878,7 +855,7 @@ Supports $filter (eq, ne, NOT, in,).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, DefaultSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False

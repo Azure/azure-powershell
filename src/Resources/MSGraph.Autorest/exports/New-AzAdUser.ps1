@@ -39,10 +39,9 @@ https://docs.microsoft.com/powershell/module/az.resources/new-azaduser
 #>
 function New-AzAdUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
-[CmdletBinding(DefaultParameterSetName='DefaultSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='DefaultSet', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in the address book for the user.
@@ -52,8 +51,7 @@ param(
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith), $orderBy, and $search.
     ${DisplayName},
 
-    [Parameter(ParameterSetName='DefaultSet', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The mail alias for the user.
@@ -62,8 +60,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${MailNickname},
 
-    [Parameter(ParameterSetName='DefaultSet', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The user principal name (UPN) of the user.
@@ -75,7 +72,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith) and $orderBy.
     ${UserPrincipalName},
 
-    [Parameter(ParameterSetName='DefaultSet', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Security.SecureString]
     # Password for the user.
@@ -83,16 +80,14 @@ param(
     # It is recommended to set a strong password.
     ${Password},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # A freeform text entry field for the user to describe themselves.
     # Returned only on $select.
     ${AboutMe},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if the account is enabled; otherwise, false.
@@ -100,8 +95,7 @@ param(
     # Supports $filter (eq, ne, NOT, and in).
     ${AccountEnabled},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Sets the age group of the user.
@@ -110,8 +104,7 @@ param(
     # Supports $filter (eq, ne, NOT, and in).
     ${AgeGroup},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The birthday of the user.
@@ -119,8 +112,7 @@ param(
     # For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Returned only on $select.
     ${Birthday},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The city in which the user is located.
@@ -128,8 +120,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${City},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The company name which the user is associated.
@@ -137,8 +128,7 @@ param(
     # The maximum length of the company name is 64 characters.Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${CompanyName},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Sets whether consent has been obtained for minors.
@@ -147,8 +137,7 @@ param(
     # Supports $filter (eq, ne, NOT, and in).
     ${ConsentProvidedForMinor},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The country/region in which the user is located; for example, US or UK.
@@ -156,47 +145,41 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${Country},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name for the department in which the user works.
     # Maximum length is 64 characters.Supports $filter (eq, ne, NOT , ge, le, and in operators).
     ${Department},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Int32]
     # The limit on the maximum number of devices that the user is permitted to enroll.
     # Allowed values are 5 or 1000.
     ${DeviceEnrollmentLimit},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The date and time when the user was hired or will start work in case of a future hire.
     # Supports $filter (eq, ne, NOT , ge, le, in).
     ${EmployeeHireDate},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The employee identifier assigned to the user by the organization.
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${EmployeeId},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Captures enterprise worker type.
@@ -204,8 +187,7 @@ param(
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${EmployeeType},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # For an external user invited to the tenant using the invitation API, this property represents the invited user's invitation status.
@@ -213,24 +195,21 @@ param(
     # Supports $filter (eq, ne, NOT , in).
     ${ExternalUserState},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # Shows the timestamp for the latest change to the externalUserState property.
     # Supports $filter (eq, ne, NOT , in).
     ${ExternalUserStateChangeDateTime},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The fax number of the user.
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${FaxNumber},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The given name (first name) of the user.
@@ -238,8 +217,7 @@ param(
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${GivenName},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # The hire date of the user.
@@ -250,8 +228,7 @@ param(
     # We recommend using the native employeeHireDate property to set and update hire date values using Microsoft Graph APIs.
     ${HireDate},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -259,15 +236,13 @@ param(
     # Returned only on $select.
     ${Interest},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Do not use – reserved for future use.
     ${IsResourceAccount},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The user's job title.
@@ -275,8 +250,7 @@ param(
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${JobTitle},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The SMTP address for the user, for example, admin@contoso.com.
@@ -285,8 +259,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith).
     ${Mail},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The primary cellular telephone number for the user.
@@ -294,16 +267,14 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${MobilePhone},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The URL for the user's personal site.
     # Returned only on $select.
     ${MySite},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The office location in the user's place of business.
@@ -311,26 +282,40 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${OfficeLocation},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
+    [Alias('OnPremisesImmutableId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # This property is used to associate an on-premises Active Directory user account to their Azure AD user object.
     # This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property.
     # Note: The $ and _ characters cannot be used when specifying this property.
     # Supports $filter (eq, ne, NOT, ge, le, in).
-    ${OnPremisesImmutableId},
+    ${ImmutableId},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
     # A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com'].NOTE: While this property can contain accent characters, they can cause access issues to first-party applications for the user.Supports $filter (eq, NOT, ge, le, in, startsWith).
     ${OtherMail},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Specifies password policies for the user.
+    # This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified.
+    # DisablePasswordExpiration can also be specified.
+    # The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.Supports $filter (ne, NOT).
+    ${PasswordPolicy},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile]
+    # passwordProfile
+    # To construct, see NOTES section for PASSWORDPROFILE properties and create a hash table.
+    ${PasswordProfile},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The postal code for the user's postal address.
@@ -340,8 +325,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${PostalCode},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The preferred language for the user.
@@ -349,16 +333,14 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${PreferredLanguage},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The preferred name for the user.
     # Returned only on $select.
     ${PreferredName},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -366,8 +348,7 @@ param(
     # Returned only on $select.
     ${Responsibility},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -375,8 +356,7 @@ param(
     # Returned only on $select.
     ${School},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if the Outlook global address list should contain this user, otherwise false.
@@ -385,8 +365,7 @@ param(
     # Supports $filter (eq, ne, NOT, in).
     ${ShowInAddressList},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -394,8 +373,7 @@ param(
     # Returned only on $select.
     ${Skill},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The state or province in the user's address.
@@ -403,8 +381,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${State},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The street address of the user's place of business.
@@ -412,8 +389,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${StreetAddress},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The user's surname (family name or last name).
@@ -421,8 +397,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${Surname},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # A two letter country code (ISO standard 3166).
@@ -432,31 +407,14 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${UsageLocation},
 
-    [Parameter(ParameterSetName='DefaultSet')]
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # A string value that can be used to classify user types in your directory, such as Member and Guest.
     # Supports $filter (eq, ne, NOT, in,).
     ${UserType},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # Specifies password policies for the user.
-    # This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified.
-    # DisablePasswordExpiration can also be specified.
-    # The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.Supports $filter (ne, NOT).
-    ${PasswordPolicy},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile]
-    # passwordProfile
-    # To construct, see NOTES section for PASSWORDPROFILE properties and create a hash table.
-    ${PasswordProfile},
-
-    [Parameter(ParameterSetName='SimpleSet')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # It must be specified if the user must change the password on the next successful login (true).
@@ -519,9 +477,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            DefaultSet = 'MSGraph.custom\New-AzAdUser';
-            CreateExpanded = 'MSGraph.custom\New-AzAdUser';
-            SimpleSet = 'MSGraph.custom\New-AzAdUser';
+            __AllParameterSets = 'MSGraph.custom\New-AzAdUser';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

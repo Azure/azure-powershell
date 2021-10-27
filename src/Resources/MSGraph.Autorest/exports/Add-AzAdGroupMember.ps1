@@ -85,7 +85,7 @@ TARGETGROUPOBJECT <MicrosoftGraphGroup>:
   [OdataId <String>]: The full id of object in directory
   [OdataType <String>]: The type of object in directory
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadgrouprefmember
+https://docs.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 #>
 function Add-AzAdGroupMember {
 [OutputType([System.Boolean])]
