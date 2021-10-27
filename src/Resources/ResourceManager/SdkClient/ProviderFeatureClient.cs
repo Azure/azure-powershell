@@ -156,6 +156,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
+        /// Creates a feature registration on the current subscription
+        /// </summary>
+        /// <param name="providerName">The name of the resource provider</param>
+        /// <param name="featureName">The name of the feature</param>
+        public SubscriptionFeatureRegistration CreateFeatureRegistration(string providerName, string featureName)
+        {
+            return this.FeaturesManagementClient.SubscriptionFeatureRegistrations.CreateOrUpdate(providerNamespace: providerName, featureName: featureName);
+        }
+
+        /// <summary>
+        /// Deletes a feature registration on the current subscription
+        /// </summary>
+        /// <param name="providerName">The name of the resource provider</param>
+        /// <param name="featureName">The name of the feature</param>
+        public void DeleteFeatureRegistration(string providerName, string featureName)
+        {
+            this.FeaturesManagementClient.SubscriptionFeatureRegistrations.Delete(providerNamespace: providerName, featureName: featureName);
+        }
+
+        /// <summary>
         /// Checks if a feature is registered with the current subscription
         /// </summary>
         /// <param name="feature">The feature</param>

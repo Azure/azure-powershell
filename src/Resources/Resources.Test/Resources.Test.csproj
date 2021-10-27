@@ -33,9 +33,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.14.0-preview" />
+    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.15.1-preview" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.9.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.TemplateSpecTests\SetTemplateSpec_Tags_AppliesInheritedTagsIfNewVersionAndNoTagsProvidedAndSpecExists.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
