@@ -21,17 +21,10 @@ namespace Microsoft.Azure.Commands.EventHub.Models
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Defines values for PSIdentityType.
+    /// Defines values for IdentityType.
     /// </summary>
-    public enum PSIdentityType
-    {
-        [EnumMember(Value = "SystemAssigned")]
-        SystemAssigned,
-        [EnumMember(Value = "UserAssigned")]
-        UserAssigned,
-        [EnumMember(Value = "SystemAssigned, UserAssigned")]
-        SystemAssignedUserAssigned,
-        [EnumMember(Value = "None")]
-        None
+    public enum IdentityType
+    {        
+        SystemAssigned = 0
     }
 }
