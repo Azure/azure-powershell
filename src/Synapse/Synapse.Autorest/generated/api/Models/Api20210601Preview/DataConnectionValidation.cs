@@ -58,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
 
         /// <summary>The data connection properties to validate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.DataConnection()); set => this._property = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.DataConnection()); set => this._property = value; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Origin(Microsoft.Azure.PowerShell.Cmdlets.Synapse.PropertyOrigin.Inlined)]
