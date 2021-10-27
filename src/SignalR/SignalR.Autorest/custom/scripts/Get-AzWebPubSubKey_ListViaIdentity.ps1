@@ -118,7 +118,7 @@ function Get-AzWebPubSubKey_ListViaIdentity
             $PSBoundParameters.Add("SubscriptionId", $Matches.SubscriptionId)
 
             $null = $PSBoundParameters.Remove("InputObject")
-            Az.WebPubSub\Get-AzWebPubSubKey @PSBoundParameters
+            Az.SignalR\Get-AzWebPubSubKey @PSBoundParameters
         } catch
         {
             throw

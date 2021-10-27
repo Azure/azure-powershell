@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.WebPubSub
+# Az.SignalR
 This directory contains the PowerShell module for the WebPubSub service.
 
 ---
 ## Status
-[![Az.WebPubSub](https://img.shields.io/powershellgallery/v/Az.WebPubSub.svg?style=flat-square&label=Az.WebPubSub "Az.WebPubSub")](https://www.powershellgallery.com/packages/Az.WebPubSub/)
+[![Az.SignalR](https://img.shields.io/powershellgallery/v/Az.SignalR.svg?style=flat-square&label=Az.SignalR "Az.SignalR")](https://www.powershellgallery.com/packages/Az.SignalR/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.WebPubSub`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.SignalR`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -32,7 +32,7 @@ For information on how to develop for `Az.WebPubSub`, see [how-to.md](how-to.md)
 ``` yaml
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 input-file:
 # You need to specify your swagger files here.
@@ -42,6 +42,10 @@ input-file:
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
+module-name: Az.SignalR
+psm1: SignalR.psm1
+psm1-internal: internal/Az.SignalR.internal.psm1
+psm1-custom: custom/Az.SignalR.custom.psm1
 # Normally, title is the service name
 title: WebPubSub
 subject-prefix: ''

@@ -153,7 +153,7 @@ function New-AzWebPubSubKey
     {
         try
         {
-            $null = Az.WebPubSub.internal\New-AzWebPubSubKey @PSBoundParameters
+            $null = Az.SignalR.internal\New-AzWebPubSubKey @PSBoundParameters
 
             $unacceptableKeys = "KeyType", "AsJob", "NoWait", "PassThru"
             foreach ($key in $unacceptableKeys)
@@ -165,7 +165,7 @@ function New-AzWebPubSubKey
             }
 
             # The new key resource is returned in the first REST API call, but auto.rest can only return the result of the last REST API call. Here get a key result manually to mitigate the problem.
-            Az.WebPubSub\Get-AzWebPubSubKey @PSBoundParameters
+            Az.SignalR\Get-AzWebPubSubKey @PSBoundParameters
         } catch
         {
             throw

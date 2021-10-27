@@ -316,7 +316,7 @@ function New-AzWebPubSub
   {
     try
     {
-      Az.WebPubSub.internal\New-AzWebPubSub @PSBoundParameters
+      Az.SignalR.internal\New-AzWebPubSub @PSBoundParameters
     } catch
     {
       throw

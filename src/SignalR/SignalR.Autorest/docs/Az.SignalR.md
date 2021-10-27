@@ -1,16 +1,16 @@
 ---
-Module Name: Az.WebPubSub
-Module Guid: 42cf5e19-9176-4826-9f5b-e5e9654fc69c
-Download Help Link: https://docs.microsoft.com/powershell/module/az.webpubsub
+Module Name: Az.SignalR
+Module Guid: 887a3597-2c6e-46ff-a239-c56a20f0bf79
+Download Help Link: https://docs.microsoft.com/powershell/module/az.signalr
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.WebPubSub Module
+# Az.SignalR Module
 ## Description
 Microsoft Azure PowerShell: WebPubSub cmdlets
 
-## Az.WebPubSub Cmdlets
+## Az.SignalR Cmdlets
 ### [Get-AzWebPubSub](Get-AzWebPubSub.md)
 Get the resource and its properties.
 

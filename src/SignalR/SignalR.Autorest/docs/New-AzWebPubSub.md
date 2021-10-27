@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.WebPubSub
+Module Name: Az.SignalR
 online version: https://docs.microsoft.com/powershell/module/az.webpubsub/new-azwebpubsub
 schema: 2.0.0
 ---

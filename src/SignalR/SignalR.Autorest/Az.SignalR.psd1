@@ -1,6 +1,6 @@
 @{
-  GUID = '42cf5e19-9176-4826-9f5b-e5e9654fc69c'
-  RootModule = './Az.WebPubSub.psm1'
+  GUID = '887a3597-2c6e-46ff-a239-c56a20f0bf79'
+  RootModule = 'SignalR.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
@@ -9,8 +9,8 @@
   Description = 'Microsoft Azure PowerShell: WebPubSub cmdlets'
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
-  RequiredAssemblies = './bin/Az.WebPubSub.private.dll'
-  FormatsToProcess = './Az.WebPubSub.format.ps1xml'
+  RequiredAssemblies = './bin/Az.SignalR.private.dll'
+  FormatsToProcess = './Az.SignalR.format.ps1xml'
   FunctionsToExport = 'Get-AzWebPubSub', 'Get-AzWebPubSubHub', 'Get-AzWebPubSubKey', 'Get-AzWebPubSubSku', 'Get-AzWebPubSubUsage', 'New-AzWebPubSub', 'New-AzWebPubSubHub', 'New-AzWebPubSubKey', 'Remove-AzWebPubSub', 'Remove-AzWebPubSubHub', 'Restart-AzWebPubSub', 'Test-AzWebPubSubNameAvailability', 'Update-AzWebPubSub', '*'
   AliasesToExport = '*'
   PrivateData = @{
