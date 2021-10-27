@@ -22,7 +22,7 @@
 * Azure Backup added NodesList and AutoProtectionPolicy to Get-AzRecoveryServicesBackupProtectableItem Cmdlets.
 * Azure Backup fixed GetItemsForContainerParamSet to support fetching the MAB backup item.
 * Azure Backup fixed Get-AzRecoveryServicesBackupContainer to support BackupManagementType MAB instead of MARS.
-* [Breaking Change] Get-AzRecoveryServicesBackupJob, Get-AzRecoveryServicesBackupContainer and Get-AzRecoveryServicesBackupProtectableItem commands will only support BackupManagementType MAB instead of MARS alias, changes will take effect from upcoming breaking release.
+* Added breaking change warning: `Get-AzRecoveryServicesBackupJob`, `Get-AzRecoveryServicesBackupContainer` and `Get-AzRecoveryServicesBackupProtectableItem` commands will only support `BackupManagementType MAB` instead of `MARS` alias, changes will take effect from upcoming breaking release.
 * Added support for ZRS disk type for Azure to Azure replication.
 * Added Availability zone information in replicated protected item response for Azure to Azure replication.
 
