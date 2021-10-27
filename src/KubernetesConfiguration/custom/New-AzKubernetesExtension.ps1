@@ -21,9 +21,9 @@ Create a new Kubernetes Cluster Extension.
 .Example
 PS C:\> New-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ExtensionType Microsoft.Arcdataservices
 
-Name                Type
-----                ----
-azps_test_extension Microsoft.KubernetesConfiguration/extensions
+Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ResourceGroupName
+----                -------------             -------      ----------------- ----------------------- -----------------
+azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    azps_test_group
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtension
@@ -42,6 +42,7 @@ function New-AzKubernetesExtension {
         ${ClusterName},
 
         [Parameter(Mandatory)]
+        [ValidateSet('ConnectedClusters', 'ManagedClusters')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
@@ -200,16 +201,10 @@ function New-AzKubernetesExtension {
     )
 
     process {
-        if ($PSBoundParameters.ContainsKey('ClusterType')) {
-            if ($ClusterType -eq 'ManagedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
-            }
-            elseif ($ClusterType -eq 'ConnectedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-            }
+        if ($ClusterType -eq 'ManagedClusters') {
+            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
         }
-        else {
-            $PSBoundParameters.Add('ClusterType', 'ConnectedClusters')
+        elseif ($ClusterType -eq 'ConnectedClusters') {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 

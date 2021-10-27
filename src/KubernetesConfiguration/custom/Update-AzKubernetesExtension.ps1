@@ -62,6 +62,7 @@ function Update-AzKubernetesExtension {
         ${ClusterName},
 
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [ValidateSet('ConnectedClusters', 'ManagedClusters')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
@@ -192,16 +193,10 @@ function Update-AzKubernetesExtension {
     )
 
     process {
-        if ($PSBoundParameters.ContainsKey('ClusterType')) {
-            if ($ClusterType -eq 'ManagedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
-            }
-            elseif ($ClusterType -eq 'ConnectedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-            }
+        if ($ClusterType -eq 'ManagedClusters') {
+            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
         }
-        else {
-            $PSBoundParameters.Add('ClusterType', 'ConnectedClusters')
+        elseif ($ClusterType -eq 'ConnectedClusters') {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 

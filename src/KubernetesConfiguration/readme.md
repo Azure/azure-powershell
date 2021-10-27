@@ -59,6 +59,8 @@ module-version: 0.1.0
 subject-prefix: ''
 
 identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
   - from: swagger-document 
@@ -198,4 +200,14 @@ directive:
       subject: KubernetesConfiguration
     set:
       alias: Remove-AzK8sConfiguration
+  - where:
+      model-name: Extension
+    set:
+      format-table:
+        properties:
+          - Name
+          - ExtensionType
+          - Version
+          - ProvisioningState
+          - AutoUpgradeMinorVersion
 ```
