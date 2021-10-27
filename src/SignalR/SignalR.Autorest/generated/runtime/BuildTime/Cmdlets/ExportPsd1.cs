@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PowerShell
                 var sb = new StringBuilder();
                 sb.AppendLine("@{");
                 sb.AppendLine($@"{GuidStart} = '{ModuleGuid}'");
-                sb.AppendLine($@"{Indent}RootModule = '{"SignalR.psm1"}'");
+                sb.AppendLine($@"{Indent}RootModule = '{"Az.SignalR.psm1"}'");
                 sb.AppendLine($@"{Indent}ModuleVersion = '{version}'");
                 sb.AppendLine($@"{Indent}CompatiblePSEditions = 'Core', 'Desktop'");
                 sb.AppendLine($@"{Indent}Author = '{"Microsoft Corporation"}'");
