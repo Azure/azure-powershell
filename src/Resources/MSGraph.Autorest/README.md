@@ -69,6 +69,7 @@ subject-prefix: Ad
 identity-correction-for-post: true
 endpoint-resource-id-key-name: MicrosoftGraphEndpointResourceId
 export-properties-for-dict: false
+nested-object-to-string: true
 
 # Disable default settings and Set in to empty for msgraph
 default-exclude-tableview-properties: false
