@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Deletes feature registration.
     /// </summary>
-    [Cmdlet("Delete", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class DeleteAzureFeatureRegistrationCmdlet : ProviderFeatureCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    public class RemoveAzureFeatureRegistrationCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>
         /// Gets or sets the provider name
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                processMessage: ProjectResources.UnregisterProviderMessage,
+                processMessage: ProjectResources.RemoveFeatureRegistrationMessage,
                 target: this.ProviderNamespace,
                 action: () =>
                 {

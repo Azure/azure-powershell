@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
     /// <summary>
     /// Tests the Azure Provider Feature cmdlets
     /// </summary>
-    public class CreateAzureFeatureRegistrationCmdletTests : RMTestBase
+    public class NewAzureFeatureRegistrationCmdletTests : RMTestBase
     {
         /// <summary>
         /// An instance of the cmdlet
         /// </summary>
-        private readonly CreateAzureFeatureRegistrationCmdlet cmdlet;
+        private readonly NewAzureFeatureRegistrationCmdlet cmdlet;
 
         /// <summary>
         /// A mock of the client
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderFeatureCmdletTests"/> class.
         /// </summary>
-        public CreateAzureFeatureRegistrationCmdletTests(ITestOutputHelper output)
+        public NewAzureFeatureRegistrationCmdletTests(ITestOutputHelper output)
         {
             this.featureOperationsMock = new Mock<ISubscriptionFeatureRegistrationsOperations>();
             var featureClient = new Mock<IFeatureClient>();
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
               .Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
               .Returns(() => true);
 
-            this.cmdlet = new CreateAzureFeatureRegistrationCmdlet()
+            this.cmdlet = new NewAzureFeatureRegistrationCmdlet()
             {
                 ProviderFeatureClient = new ProviderFeatureClient
                 {

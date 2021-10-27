@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
     /// <summary>
     /// Tests the Azure Provider Feature cmdlets
     /// </summary>
-    public class RemoveAzureFeatureRegistrationCmdletTests : RMTestBase
+    public class GetAzureFeatureRegistrationCmdletTests : RMTestBase
     {
         /// <summary>
         /// An instance of the cmdlet
         /// </summary>
-        private readonly RemoveAzureFeatureRegistrationCmdlet cmdlet;
+        private readonly GetAzureFeatureRegistrationCmdlet cmdlet;
 
         /// <summary>
         /// A mock of the client
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderFeatureCmdletTests"/> class.
         /// </summary>
-        public RemoveAzureFeatureRegistrationCmdletTests(ITestOutputHelper output)
+        public GetAzureFeatureRegistrationCmdletTests(ITestOutputHelper output)
         {
             this.featureOperationsMock = new Mock<ISubscriptionFeatureRegistrationsOperations>();
             var featureClient = new Mock<IFeatureClient>();
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
               .Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
               .Returns(() => true);
 
-            this.cmdlet = new RemoveAzureFeatureRegistrationCmdlet()
+            this.cmdlet = new GetAzureFeatureRegistrationCmdlet()
             {
                 ProviderFeatureClient = new ProviderFeatureClient
                 {
@@ -82,11 +82,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
         }
 
         /// <summary>
-        /// Validates all Delete-AzFeatureRegistration scenarios
+        /// Validates all Create-AzFeatureRegistration scenarios
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DeleteFeatureRegistrationTests()
+        public void GetFeatureRegistrationTests()
         {
             const string ProviderName = "Providers.Test";
             const string FeatureName = "Feature1";
@@ -98,14 +98,17 @@ namespace Microsoft.Azure.Commands.Resources.Test
             };
 
             this.featureOperationsMock
-                .Setup(client => client.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+                .Setup(client => client.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
                 .Callback((string providerName, string featureName, Dictionary<string, List<string>> customHeaders, CancellationToken ignored) =>
                 {
                     Assert.Equal(ProviderName, providerName, StringComparer.OrdinalIgnoreCase);
                     Assert.Equal(FeatureName, featureName, StringComparer.OrdinalIgnoreCase);
                 })
-                .Returns(() => Task.FromResult(new AzureOperationResponse(){}));
-
+                .Returns(() => Task.FromResult(new AzureOperationResponse<SubscriptionFeatureRegistration>()
+                {
+                    Body = registeredFeature
+                }));
+            
             this.cmdlet.ProviderNamespace = ProviderName;
             this.cmdlet.FeatureName = FeatureName;
 
@@ -113,8 +116,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
                 .Callback((object obj) =>
                 {
-                    Assert.IsType<Boolean>(obj);
-                    Assert.True((Boolean)obj);
+                    Assert.IsType<SubscriptionFeatureRegistration[]>(obj);
+                    var features = (SubscriptionFeatureRegistration[])obj;
+                    Assert.Single(features);
                 });
 
             this.cmdlet.ExecuteCmdlet();
@@ -127,7 +131,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyCallPatternAndReset(bool succeeded)
         {
-            this.featureOperationsMock.Verify(f => f.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
+            this.featureOperationsMock.Verify(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Once() : Times.Never());
 
             this.featureOperationsMock.ResetCalls();

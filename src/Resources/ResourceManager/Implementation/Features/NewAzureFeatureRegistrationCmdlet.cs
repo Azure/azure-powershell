@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates feature registration.
     /// </summary>
-    [Cmdlet("Create", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true), OutputType(typeof(SubscriptionFeatureRegistration))]
-    public class CreateAzureFeatureRegistrationCmdlet : ProviderFeatureCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true), OutputType(typeof(SubscriptionFeatureRegistration))]
+    public class NewAzureFeatureRegistrationCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>
         /// Gets or sets the provider name
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                processMessage: ProjectResources.UnregisterProviderMessage,
+                processMessage: ProjectResources.NewFeatureRegistrationMessage,
                 target: this.ProviderNamespace,
                 action: () => this.WriteObject(this.ProviderFeatureClient.CreateFeatureRegistration(providerName: this.ProviderNamespace, featureName: this.FeatureName)));
         }

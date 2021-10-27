@@ -156,6 +156,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
+        /// Lists the feature registrations on the current subscription
+        /// </summary>
+        /// <param name="providerName">The name of the resource provider</param>
+        /// <param name="featureName">The name of the feature</param>
+        public SubscriptionFeatureRegistration[] ListFeatureRegistrations(string providerName = null, string featureName = null)
+        {
+            var returnList = new List<SubscriptionFeatureRegistration>();
+
+            if (string.IsNullOrEmpty(featureName))
+            {
+                returnList.AddRange(this.FeaturesManagementClient.SubscriptionFeatureRegistrations.ListBySubscription(providerNamespace: providerName));
+            }
+            else
+            {
+                returnList.Add(this.FeaturesManagementClient.SubscriptionFeatureRegistrations.Get(providerNamespace: providerName, featureName: featureName));
+            }
+
+            return returnList.ToArray();
+        }
+
+        /// <summary>
         /// Creates a feature registration on the current subscription
         /// </summary>
         /// <param name="providerName">The name of the resource provider</param>
