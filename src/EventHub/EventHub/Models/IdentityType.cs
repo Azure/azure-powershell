@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------.
 
-namespace Microsoft.Azure.Commands.EventHub.Models
+namespace Microsoft.Azure.Management.EventHub.Models
 {
 
     using Newtonsoft.Json;
