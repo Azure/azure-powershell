@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get list of items associated with the recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [GenericBreakingChange("Please avoid using BackupManagementType MARS, it will be removed in upcoming breaking change release, instead use BackupManagementType MAB", "6.0.0")]
+    [GenericBreakingChange("Please avoid using BackupManagementType MARS, it will be removed in upcoming breaking change release, instead use BackupManagementType MAB", "5.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem",DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase))]
     public class GetAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
