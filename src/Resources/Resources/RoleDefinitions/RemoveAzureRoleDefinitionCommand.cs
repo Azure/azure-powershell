@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Deletes a given role definition.
     /// </summary>
+    [GenericBreakingChange(BreakingChangeMSGraphMigration)]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleDefinition", SupportsShouldProcess = true,DefaultParameterSetName = ParameterSet.RoleDefinitionId), OutputType(typeof(bool))]
     public class RemoveAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {

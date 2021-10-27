@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Boolean".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Boolean", "Boolean", global::System.Management.Automation.CompletionResultType.ParameterValue, "Boolean");
+                yield return new global::System.Management.Automation.CompletionResult("'Boolean'", "Boolean", global::System.Management.Automation.CompletionResultType.ParameterValue, "Boolean");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Numeric".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Numeric", "Numeric", global::System.Management.Automation.CompletionResultType.ParameterValue, "Numeric");
+                yield return new global::System.Management.Automation.CompletionResult("'Numeric'", "Numeric", global::System.Management.Automation.CompletionResultType.ParameterValue, "Numeric");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Integer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Integer", "Integer", global::System.Management.Automation.CompletionResultType.ParameterValue, "Integer");
+                yield return new global::System.Management.Automation.CompletionResult("'Integer'", "Integer", global::System.Management.Automation.CompletionResultType.ParameterValue, "Integer");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enumeration".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enumeration", "Enumeration", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enumeration");
+                yield return new global::System.Management.Automation.CompletionResult("'Enumeration'", "Enumeration", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enumeration");
             }
         }
     }

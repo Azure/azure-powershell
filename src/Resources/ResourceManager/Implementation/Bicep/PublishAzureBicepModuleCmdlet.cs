@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
 
         public override void ExecuteCmdlet()
         {
-            BicepUtility.PublishBicepModule(this.TryResolvePath(this.File), this.Target, this.WriteVerbose);
+            BicepUtility.PublishFile(this.TryResolvePath(this.File), this.Target, this.WriteVerbose, this.WriteWarning);
         }
     }
 }

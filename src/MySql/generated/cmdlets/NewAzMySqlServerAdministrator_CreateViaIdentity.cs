@@ -6,13 +6,14 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Creates or update active directory administrator on an existing server. The update action will overwrite the existing
     /// administrator.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/Administrators/activeDirectory"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/administrators/activeDirectory"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMySqlServerAdministrator_CreateViaIdentity", SupportsShouldProcess = true)]

@@ -41,6 +41,9 @@ When creating an Azure Synapse Analytics workspace, you can choose to encrypt al
 ### [Export-AzSynapseNotebook](Export-AzSynapseNotebook.md)
 Exports notbooks.
 
+### [Export-AzSynapseSqlScript](Export-AzSynapseSqlScript.md)
+Exports a sql script from a Synapse workspace.
+
 ### [Get-AzSynapseActivityRun](Get-AzSynapseActivityRun.md)
 Gets information about activity runs for a pipeline run.
 
@@ -160,6 +163,9 @@ Gets all vulnerability assessment scan record(s) associated with a given sql poo
 
 ### [Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting](Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a SQL pool.
+
+### [Get-AzSynapseSqlScript](Get-AzSynapseSqlScript.md)
+Gets information about sql scripts in a Synapse workspace.
 
 ### [Get-AzSynapseSqlVulnerabilityAssessmentSetting](Get-AzSynapseSqlVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a workspace.
@@ -290,6 +296,9 @@ Deletes a Synapse Analytics SQL pool restore point.
 ### [Remove-AzSynapseSqlPoolSensitivityClassification](Remove-AzSynapseSqlPoolSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the SQL pool.
 
+### [Remove-AzSynapseSqlScript](Remove-AzSynapseSqlScript.md)
+Removes a sql script from a Synapse workspace.
+
 ### [Remove-AzSynapseTrigger](Remove-AzSynapseTrigger.md)
 Removes a trigger from a workspace.
 
@@ -373,6 +382,9 @@ Modifies TDE property for a SQL pool.
 
 ### [Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
+
+### [Set-AzSynapseSqlScript](Set-AzSynapseSqlScript.md)
+Creates or updates a SQL script in a workspace.
 
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.

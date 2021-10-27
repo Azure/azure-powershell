@@ -53,8 +53,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(predictiveCommand, $"{nameof(predictiveCommand)} cannot be null.");
 
             var predictionText = CommandLineUtilities.EscapePredictionText(predictiveCommand.Command);
-            Ast ast = Parser.ParseInput(predictionText, out Token[] tokens, out _);
-            var commandAst = ast.Find((ast) => ast is CommandAst, searchNestedScriptBlocks: false) as CommandAst;
+            var commandAst = CommandLineUtilities.GetCommandAst(predictionText);
             var commandName = commandAst?.GetCommandName();
 
             Validation.CheckInvariant<CommandLineException>(!string.IsNullOrWhiteSpace(commandName), $"Cannot get the command name from the model {predictiveCommand.Command}");

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Gets the AD application.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSADApplication), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADApplication", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(PSADApplication))]
     public class GetAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.ServiceModel.Primitives", new Version("4.2.0.0")},
                 {"System.Text.Encodings.Web", new Version("4.0.5.1")},
                 {"System.Text.Json", new Version("4.0.0.0")},
-                {"System.Threading.Tasks.Extensions", new Version("4.2.0.0")},
+                {"System.Threading.Tasks.Extensions", new Version("4.2.0.1")},
                 {"System.Xml.ReaderWriter", new Version("4.1.0.0")}
             };
 

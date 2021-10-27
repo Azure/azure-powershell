@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoLicenseType".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NoLicenseType", "NoLicenseType", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoLicenseType");
+                yield return new global::System.Management.Automation.CompletionResult("'NoLicenseType'", "NoLicenseType", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoLicenseType");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WindowsServer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WindowsServer", "WindowsServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "WindowsServer");
+                yield return new global::System.Management.Automation.CompletionResult("'WindowsServer'", "WindowsServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "WindowsServer");
             }
         }
     }
