@@ -41,7 +41,7 @@ function Remove-AzAdSpCredential {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [System.String]
+        [System.Guid]
         ${KeyId},
 
         [Parameter()]
@@ -134,22 +134,22 @@ function Remove-AzAdSpCredential {
         } else {
             $list = @()
             foreach ($key in $sp.KeyCredentials) {
-                if ($key.KeyId -ne $PSBoundParameters['KeyId']) {
+                if (!$key.KeyId.Equals($PSBoundParameters['KeyId'])) {
                     $list += $key
                 }
-                if ($list.Count -ne $sp.KeyCredentials.Count) {
-                    $null = $PSBoundParameters.Remove('KeyId')
-                    $PSBoundParameters['Id'] = $sp.Id
-                    $PSBoundParameters['KeyCredentials'] = $list
-                    MSGraph.internal\Update-AzAdServicePrincipal @PSBoundParameters
-                    return
-                }
             }
-            foreach ($password in $sp.PasswordCredentials) {
-                if ($password.KeyId -eq $PSBoundParameters['KeyId']) {
-                    $PSBoundParameters['ServicePrincipalId'] = $sp.Id
-                    MSGraph.internal\Remove-AzAdServicePrincipalPassword @PSBoundParameters
-                    return
+            if ($list.Count -ne $sp.KeyCredentials.Count) {
+                $null = $PSBoundParameters.Remove('KeyId')
+                $PSBoundParameters['Id'] = $sp.Id
+                $PSBoundParameters['KeyCredentials'] = $list
+                MSGraph.internal\Update-AzAdServicePrincipal @PSBoundParameters
+            } else {
+                foreach ($password in $sp.PasswordCredentials) {
+                    if ($password.KeyId.Equals($PSBoundParameters['KeyId'])) {
+                        $PSBoundParameters['ServicePrincipalId'] = $sp.Id
+                        MSGraph.internal\Remove-AzAdServicePrincipalPassword @PSBoundParameters
+                        break
+                    }
                 }
             }
             Write-Error "service principal '$($sp.Id)' does not contains credential with key id: '$($PSBoundParameters['KeyId'])'."

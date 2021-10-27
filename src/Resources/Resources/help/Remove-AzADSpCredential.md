@@ -8,36 +8,36 @@ schema: 2.0.0
 # Remove-AzAdSpCredential
 
 ## SYNOPSIS
-Remove credentials for service principal.
+
 
 ## SYNTAX
 
 ### ObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzAdSpCredential -ObjectId <String> [-KeyId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Remove-AzAdSpCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DisplayNameWithKeyIdParameterSet
 ```
-Remove-AzAdSpCredential -DisplayName <String> [-KeyId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzAdSpCredential -DisplayName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectParameterSet
 ```
-Remove-AzAdSpCredential -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-KeyId <String>]
+Remove-AzAdSpCredential -ServicePrincipalObject <IMicrosoftGraphServicePrincipal> [-KeyId <Guid>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SPNWithKeyIdParameterSet
 ```
-Remove-AzAdSpCredential -ServicePrincipalName <String> [-KeyId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzAdSpCredential -ServicePrincipalName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove credentials for service principal.
+
 
 ## EXAMPLES
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: (All)
 Aliases:
 
