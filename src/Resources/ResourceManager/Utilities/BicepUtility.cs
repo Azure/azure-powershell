@@ -66,22 +66,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             RunBicepCommand($"bicep publish '{bicepFilePath}' --target '{target}'", MinimalVersionRequirementForBicepPublish, writeVerbose, writeWarning);
         }
 
-        private static void CheckBicepExecutable()
+        private static void CheckBicepExecutable(PowerShell powershell)
         {
             if (IsBicepExecutable)
             {
                 return;
             }
 
-            using (PowerShell powershell = PowerShell.Create())
-            {
-                powershell.AddScript("Get-Command bicep");
-                powershell.Invoke();
-                powershell.AddScript("$?");
-                var result = powershell.Invoke();
-                // Cache result
-                bool.TryParse(result[0].ToString(), out IsBicepExecutable);
-            }
+            powershell.AddScript("Get-Command bicep");
+            powershell.Invoke();
+            powershell.AddScript("$?");
+            var result = powershell.Invoke();
+            // Cache result
+            bool.TryParse(result[0].ToString(), out IsBicepExecutable);
 
             if (!IsBicepExecutable)
             {
@@ -118,10 +115,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         private static void RunBicepCommand(string command, string minimalVersionRequirement, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
-            CheckBicepExecutable();
-
             using (var powershell = PowerShell.Create())
             {
+                CheckBicepExecutable(powershell);
+
                 string currentBicepVersion = CheckMinimalVersionRequirement(powershell, minimalVersionRequirement);
 
                 powershell.AddScript(command);
