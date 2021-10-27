@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             TargetBigDataPool = properties?.TargetBigDataPool != null ? new PSBigDataPoolReference(properties.TargetBigDataPool) : null;
             RequiredSparkVersion = properties?.RequiredSparkVersion;
             JobProperties = properties?.JobProperties != null ? new PSSparkJobProperties(properties.JobProperties) : null;
+            Folder = properties?.Folder != null ? new PSSparkJobDefinitionFolder(properties.Folder) : null;
         }
 
         /// <summary> The description of the Spark job definition. </summary>
@@ -40,5 +41,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         /// <summary> The properties of the Spark job. </summary>
         public PSSparkJobProperties JobProperties { get; set; }
+
+        /// <summary> The folder that this Spark job definition is in. If not specified, this Spark job definition will appear at the root level.</summary>
+        public PSSparkJobDefinitionFolder Folder { get; set; }
     }
 }
