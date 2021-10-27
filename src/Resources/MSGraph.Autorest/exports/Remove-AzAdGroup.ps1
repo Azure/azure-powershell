@@ -85,7 +85,7 @@ https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroup
 #>
 function Remove-AzAdGroup {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
@@ -174,7 +174,6 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Delete = 'MSGraph.custom\Remove-AzAdGroup';
             ObjectIdParameterSet = 'MSGraph.custom\Remove-AzAdGroup';
             DisplayNameParameterSet = 'MSGraph.custom\Remove-AzAdGroup';
             InputObjectParameterSet = 'MSGraph.custom\Remove-AzAdGroup';

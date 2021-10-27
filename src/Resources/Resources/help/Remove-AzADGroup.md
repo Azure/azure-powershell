@@ -13,10 +13,10 @@ The directoryObject type is the base type for many other directory entity types.
 
 ## SYNTAX
 
-### Delete (Default)
+### ObjectIdParameterSet (Default)
 ```
-Remove-AzAdGroup [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzAdGroup -ObjectId <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
@@ -29,12 +29,6 @@ Remove-AzAdGroup -DisplayName <String> [-IfMatch <String>] [-DefaultProfile <PSO
 ```
 Remove-AzAdGroup -InputObject <IMicrosoftGraphGroup> [-IfMatch <String>] [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ObjectIdParameterSet
-```
-Remove-AzAdGroup -ObjectId <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
