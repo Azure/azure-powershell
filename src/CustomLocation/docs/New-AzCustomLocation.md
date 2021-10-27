@@ -14,8 +14,8 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 
 ```
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> -ClusterExtensionId <String[]>
- -DisplayName <String> -HostResourceId <String> -Location <String> -Namespace <String>
- [-SubscriptionId <String>] [-AuthenticationType <String>] [-AuthenticationValue <String>]
+ -HostResourceId <String> -Location <String> -Namespace <String> [-SubscriptionId <String>]
+ [-AuthenticationType <String>] [-AuthenticationValue <String>] [-DisplayName <String>]
  [-IdentityType <ResourceIdentityType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -27,11 +27,11 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 
 ### Example 1: Creates or updates a Custom Location in the specified Subscription and Resource Group
 ```powershell
-PS C:\> New-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster -Location eastus -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -DisplayName azps_test_cluster -Namespace arc
+PS C:\> New-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster -Location eastus -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -Namespace arc
 
-Location Name              Type
+Location Name              Namespace
 -------- ----              ----
-eastus   azps_test_cluster Microsoft.ExtendedLocation/customLocations
+eastus   azps_test_cluster arc
 ```
 
 Creates or updates a Custom Location in the specified Subscription and Resource Group
@@ -121,7 +121,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

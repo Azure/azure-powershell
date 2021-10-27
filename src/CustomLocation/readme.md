@@ -128,5 +128,5 @@ directive:
         properties:
           - Location
           - Name
-          - Type
+          - Namespace
 ```
