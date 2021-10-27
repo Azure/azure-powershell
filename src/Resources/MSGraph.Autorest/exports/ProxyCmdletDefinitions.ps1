@@ -5377,7 +5377,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
+    [System.Guid]
     ${KeyId},
 
     [Parameter(ParameterSetName='ApplicationIdWithKeyIdParameterSet', Mandatory)]

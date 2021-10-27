@@ -8,36 +8,36 @@ schema: 2.0.0
 # Remove-AzAdAppCredential
 
 ## SYNOPSIS
-Remove credentials for application.
+
 
 ## SYNTAX
 
 ### ApplicationObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzAdAppCredential -ObjectId <String> [-KeyId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzAdAppCredential -ObjectId <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ApplicationDisplayNameParameterSet
 ```
-Remove-AzAdAppCredential -DisplayName <String> [-KeyId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzAdAppCredential -DisplayName <String> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithKeyIdParameterSet
 ```
-Remove-AzAdAppCredential -ApplicationId <Guid> [-KeyId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzAdAppCredential -ApplicationId <Guid> [-KeyId <Guid>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithKeyIdParameterSet
 ```
-Remove-AzAdAppCredential -ApplicationObject <IMicrosoftGraphApplication> [-KeyId <String>]
+Remove-AzAdAppCredential -ApplicationObject <IMicrosoftGraphApplication> [-KeyId <Guid>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove credentials for application.
+
 
 ## EXAMPLES
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: (All)
 Aliases:
 

@@ -41,7 +41,7 @@ function Remove-AzAdAppCredential {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [System.String]
+        [System.Guid]
         ${KeyId},
 
         [Parameter()]
@@ -134,19 +134,19 @@ function Remove-AzAdAppCredential {
         } else {
             $list = @()
             foreach ($key in $app.KeyCredentials) {
-                if ($key.KeyId -ne $PSBoundParameters['KeyId']) {
+                if (!$key.KeyId.Equals($PSBoundParameters['KeyId'])) {
                     $list += $key
                 }
-                if ($list.Count -ne $app.KeyCredentials.Count) {
-                    $null = $PSBoundParameters.Remove('KeyId')
-                    $PSBoundParameters['Id'] = $app.Id
-                    $PSBoundParameters['KeyCredentials'] = $list
-                    MSGraph.internal\Update-AzAdApplication @PSBoundParameters
-                    return
-                }
+            }
+            if ($list.Count -ne $app.KeyCredentials.Count) {
+                $null = $PSBoundParameters.Remove('KeyId')
+                $PSBoundParameters['Id'] = $app.Id
+                $PSBoundParameters['KeyCredentials'] = $list
+                MSGraph.internal\Update-AzAdApplication @PSBoundParameters
+                return
             }
             foreach ($password in $app.PasswordCredentials) {
-                if ($password.KeyId -eq $PSBoundParameters['KeyId']) {
+                if ($password.KeyId.Equals($PSBoundParameters['KeyId'])) {
                     $PSBoundParameters['ApplicationId'] = $app.Id
                     MSGraph.internal\Remove-AzAdApplicationPassword @PSBoundParameters
                     return
