@@ -32,7 +32,26 @@ namespace Microsoft.Azure.Commands.EventHub.Models
             {
                 PrincipalId = resIdentity.PrincipalId;
                 TenantId = resIdentity.TenantId;
-                Type = resIdentity.Type;
+                if (resIdentity.Type != null)
+                {
+                    if (resIdentity.Type == ManagedServiceIdentityType.SystemAssigned)
+                    {
+                        Type = PSIdentityType.SystemAssigned;
+                    }
+                    else if ((resIdentity.Type == ManagedServiceIdentityType.UserAssigned))
+                    {
+                        Type = PSIdentityType.UserAssigned;
+                    }
+                    else if ((resIdentity.Type == ManagedServiceIdentityType.SystemAssignedUserAssigned))
+                    {
+                        Type = PSIdentityType.SystemAssignedUserAssigned;
+                    }
+                    else if ((resIdentity.Type == ManagedServiceIdentityType.None))
+                    {
+                        Type = PSIdentityType.None;
+                    }
+                }
+                
             };
         }
 
@@ -48,7 +67,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// currently supports only 'SystemAssigned'. Possible values include:
         /// 'SystemAssigned'
         /// </summary>
-        public ManagedServiceIdentityType? Type { get; set; }
+        public PSIdentityType? Type { get; set; }
 
     }
 }
