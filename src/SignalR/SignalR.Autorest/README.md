@@ -43,7 +43,7 @@ input-file:
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
 module-name: Az.SignalR
-psm1: SignalR.psm1
+psm1: Az.SignalR.psm1
 psm1-internal: internal/Az.SignalR.internal.psm1
 psm1-custom: custom/Az.SignalR.custom.psm1
 # Normally, title is the service name
