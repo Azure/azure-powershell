@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter Disable { get; set; }
 
         [Parameter(
-            Mandatory = true,
             Position = 2,
             ParameterSetName = EnableParameterSet,
             ValueFromPipelineByPropertyName = true,
@@ -86,14 +85,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.Enable.IsPresent)
             {
-                if (string.IsNullOrEmpty(this.StorageAccountName))
-                {
-                    if (diagnosticsProfile.BootDiagnostics.StorageUri == null)
-                    {
-                        ThrowNoStorageAccount();
-                    }
-                }
-                else
+                if (!string.IsNullOrEmpty(this.StorageAccountName))
                 {
                     var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);

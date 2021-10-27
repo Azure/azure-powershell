@@ -9,6 +9,8 @@ schema: 2.0.0
 
 ## SYNOPSIS
 The operation to start a Disk Pool.
+This start operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## SYNTAX
 
@@ -26,6 +28,8 @@ Start-AzDiskPool -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] [
 
 ## DESCRIPTION
 The operation to start a Disk Pool.
+This start operation can take 10 minutes to complete.
+This is expected service behavior.
 
 ## EXAMPLES
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added check for invalid IP address
 
 ## Version 1.1.1
 * Supported duplicate disk UUID in source disk.

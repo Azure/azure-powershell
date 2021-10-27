@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Passed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Passed", "Passed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Passed");
+                yield return new global::System.Management.Automation.CompletionResult("'Passed'", "Passed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Passed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Skipped".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Skipped", "Skipped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Skipped");
+                yield return new global::System.Management.Automation.CompletionResult("'Skipped'", "Skipped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Skipped");
             }
         }
     }

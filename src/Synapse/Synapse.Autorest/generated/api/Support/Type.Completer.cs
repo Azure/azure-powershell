@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Synapse/workspaces/kustoPools/databases".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Synapse/workspaces/kustoPools/databases", "Microsoft.Synapse/workspaces/kustoPools/databases", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Synapse/workspaces/kustoPools/databases");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Synapse/workspaces/kustoPools/databases'", "Microsoft.Synapse/workspaces/kustoPools/databases", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Synapse/workspaces/kustoPools/databases");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Synapse/workspaces/kustoPools/attachedDatabaseConfigurations".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Synapse/workspaces/kustoPools/attachedDatabaseConfigurations", "Microsoft.Synapse/workspaces/kustoPools/attachedDatabaseConfigurations", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Synapse/workspaces/kustoPools/attachedDatabaseConfigurations");
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Synapse/workspaces/kustoPools/attachedDatabaseConfigurations'", "Microsoft.Synapse/workspaces/kustoPools/attachedDatabaseConfigurations", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Synapse/workspaces/kustoPools/attachedDatabaseConfigurations");
             }
         }
     }

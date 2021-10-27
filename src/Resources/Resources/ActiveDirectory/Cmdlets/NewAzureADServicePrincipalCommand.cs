@@ -15,7 +15,9 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -27,6 +29,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new service principal.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSADServicePrincipal), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal")]
+    [CmdletOutputBreakingChange(typeof(PSADServicePrincipalWrapper), ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal", DefaultParameterSetName = "SimpleParameterSet", SupportsShouldProcess = true)]
     [OutputType(typeof(PSADServicePrincipal), typeof(PSADServicePrincipalWrapper))]
     public class NewAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
@@ -167,6 +171,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public override void ExecuteCmdlet()
         {
+            WriteWarningWithTimestamp("New-AzAdServicePrincipal will no longer assign role 'Contributor' to new created service principal by default");
             ExecutionBlock(() =>
             {
                 //safe gauard for login status, check if DefaultContext not existed, PSInvalidOperationException will be thrown
@@ -381,9 +386,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                             break;
                         }
                     }
+                    catch (ErrorResponseException e)
+                    {
+                        throw new ErrorResponseException(string.Format(ProjectResources.ServicePrincipalRoleAssignmentCreationFailed,e.Body.Error.Message),e);
+                    }
                     catch (Exception)
                     {
-                        // Do nothing
+                        // if the error is something else fail silently as before
                     }
                 }
             }

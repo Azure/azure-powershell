@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "QuickSolution".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("QuickSolution", "QuickSolution", global::System.Management.Automation.CompletionResultType.ParameterValue, "QuickSolution");
+                yield return new global::System.Management.Automation.CompletionResult("'QuickSolution'", "QuickSolution", global::System.Management.Automation.CompletionResultType.ParameterValue, "QuickSolution");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeepInvestigation".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DeepInvestigation", "DeepInvestigation", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeepInvestigation");
+                yield return new global::System.Management.Automation.CompletionResult("'DeepInvestigation'", "DeepInvestigation", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeepInvestigation");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BestPractices".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BestPractices", "BestPractices", global::System.Management.Automation.CompletionResultType.ParameterValue, "BestPractices");
+                yield return new global::System.Management.Automation.CompletionResult("'BestPractices'", "BestPractices", global::System.Management.Automation.CompletionResultType.ParameterValue, "BestPractices");
             }
         }
     }

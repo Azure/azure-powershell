@@ -11,6 +11,9 @@ Locale: en-US
 The topics in this section document the Azure PowerShell cmdlets for Azure Synapse Analytics.
 
 ## Az.Synapse Cmdlets
+### [Add-AzSynapseDataFlowDebugSessionPackage](Add-AzSynapseDataFlowDebugSessionPackage.md)
+Add data flow resource and its dependencies into specific data flow debug session.
+
 ### [Add-AzSynapseTriggerSubscription](Add-AzSynapseTriggerSubscription.md)
 Subscribe the event trigger to external service events.
 
@@ -38,11 +41,17 @@ When creating an Azure Synapse Analytics workspace, you can choose to encrypt al
 ### [Export-AzSynapseNotebook](Export-AzSynapseNotebook.md)
 Exports notbooks.
 
+### [Export-AzSynapseSqlScript](Export-AzSynapseSqlScript.md)
+Exports a sql script from a Synapse workspace.
+
 ### [Get-AzSynapseActivityRun](Get-AzSynapseActivityRun.md)
 Gets information about activity runs for a pipeline run.
 
 ### [Get-AzSynapseDataFlow](Get-AzSynapseDataFlow.md)
 Gets information about data flows in workspace.
+
+### [Get-AzSynapseDataFlowDebugSession](Get-AzSynapseDataFlowDebugSession.md)
+Get all active data flow debug sessions in specified Synapse workspace.
 
 ### [Get-AzSynapseDataset](Get-AzSynapseDataset.md)
 Gets information about datasets in workspace.
@@ -155,6 +164,9 @@ Gets all vulnerability assessment scan record(s) associated with a given sql poo
 ### [Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting](Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a SQL pool.
 
+### [Get-AzSynapseSqlScript](Get-AzSynapseSqlScript.md)
+Gets information about sql scripts in a Synapse workspace.
+
 ### [Get-AzSynapseSqlVulnerabilityAssessmentSetting](Get-AzSynapseSqlVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a workspace.
 
@@ -175,6 +187,9 @@ Gets a workspace key.
 
 ### [Get-AzSynapseWorkspacePackage](Get-AzSynapseWorkspacePackage.md)
 Gets a workspace package.
+
+### [Invoke-AzSynapseDataFlowDebugSessionCommand](Invoke-AzSynapseDataFlowDebugSessionCommand.md)
+Invoke debug action in data flow debug session.
 
 ### [Invoke-AzSynapseIntegrationRuntimeUpgrade](Invoke-AzSynapseIntegrationRuntimeUpgrade.md)
 Upgrades self-hosted integration runtime.
@@ -281,6 +296,9 @@ Deletes a Synapse Analytics SQL pool restore point.
 ### [Remove-AzSynapseSqlPoolSensitivityClassification](Remove-AzSynapseSqlPoolSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the SQL pool.
 
+### [Remove-AzSynapseSqlScript](Remove-AzSynapseSqlScript.md)
+Removes a sql script from a Synapse workspace.
+
 ### [Remove-AzSynapseTrigger](Remove-AzSynapseTrigger.md)
 Removes a trigger from a workspace.
 
@@ -365,8 +383,14 @@ Modifies TDE property for a SQL pool.
 ### [Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
+### [Set-AzSynapseSqlScript](Set-AzSynapseSqlScript.md)
+Creates or updates a SQL script in a workspace.
+
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.
+
+### [Start-AzSynapseDataFlowDebugSession](Start-AzSynapseDataFlowDebugSession.md)
+Starts a Synapse Analytics data flow debug session in Synapse Workspace.
 
 ### [Start-AzSynapseIntegrationRuntime](Start-AzSynapseIntegrationRuntime.md)
 Starts a managed dedicated integration runtime.
@@ -379,6 +403,9 @@ Starts a vulnerability assessment scan.
 
 ### [Start-AzSynapseTrigger](Start-AzSynapseTrigger.md)
 Starts a trigger in a workspace.
+
+### [Stop-AzSynapseDataFlowDebugSession](Stop-AzSynapseDataFlowDebugSession.md)
+Stops a data flow debug session in a workspace.
 
 ### [Stop-AzSynapseIntegrationRuntime](Stop-AzSynapseIntegrationRuntime.md)
 Stops a managed dedicated integration runtime.

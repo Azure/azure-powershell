@@ -34,7 +34,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
     'WEBSITE_CONTENTSHARE'
     'APPINSIGHTS_INSTRUMENTATIONKEY'
 )
-$constants["SupportedFunctionsVersion"] = @('3')
+$constants["SupportedFunctionsVersion"] = @('3', '4')
 $constants["FunctionsNoV2Version"] = @(
     "USNat West"
     "USNat East"
