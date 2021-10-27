@@ -52,7 +52,7 @@ PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>: passwordProfile
 https://docs.microsoft.com/powershell/module/az.resources/update-azaduser
 #>
 function Update-AzAdUser {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
+    [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='UPNOrObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UPNOrObjectIdParameterSet', Mandatory)]
@@ -65,7 +65,7 @@ function Update-AzAdUser {
         # The user principal name of the user to be updated.
         ${ObjectId},
         
-        [Parameter(ParameterSetName = 'InputObjectParameterSet', Mandatory)]
+        [Parameter(ParameterSetName = 'InputObjectParameterSet', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser]
         # user input object
         ${InputObject},
@@ -440,9 +440,9 @@ function Update-AzAdUser {
               break
           }
       }
-        $PSBoundParameters['Id'] = $id
+      $PSBoundParameters['Id'] = $id
 
-        MSGraph.internal\Update-AzAdUser @PSBoundParameters
+      MSGraph.internal\Update-AzAdUser @PSBoundParameters
     }
 }
     

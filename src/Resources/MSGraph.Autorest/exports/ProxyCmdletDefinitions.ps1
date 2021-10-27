@@ -8622,8 +8622,10 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
-.Outputs
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
+.Outputs
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8689,7 +8691,7 @@ PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>: passwordProfile
 https://docs.microsoft.com/powershell/module/az.resources/update-azaduser
 #>
 function Update-AzAdUser {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
+[OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='UPNOrObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UPNOrObjectIdParameterSet', Mandatory)]
@@ -8990,7 +8992,7 @@ param(
     # The user principal name of the user to be updated.
     ${ObjectId},
 
-    [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser]
     # user input object
