@@ -122,7 +122,7 @@ function Get-AzAdGroupMember {
             if ($PSBoundParameters['Debug']) {
                 $param['Debug'] = $PSBoundParameters['Debug']
             }
-            $PSBoundParameter['GroupId'] = (Get-AzAdGroup @param).Id
+            $PSBoundParameters['GroupId'] = (Get-AzAdGroup @param).Id
             $null = $PSBoundParameters.Remove('GroupDisplayName')
         }
 
