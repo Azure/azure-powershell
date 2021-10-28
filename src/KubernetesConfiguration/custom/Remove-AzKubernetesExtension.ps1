@@ -15,9 +15,20 @@
 
 <#
 .Synopsis
-This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
+Delete a Kubernetes Cluster Extension.
+This will cause the Agent to Uninstall the extension from the cluster.
 .Description
-This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
+Delete a Kubernetes Cluster Extension.
+This will cause the Agent to Uninstall the extension from the cluster.
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
@@ -31,58 +42,68 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the kubernetes cluster.
   [ClusterResourceName <String>]: The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
   [ClusterRp <String>]: The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+  [ExtensionName <String>]: Name of the Extension.
   [Id <String>]: Resource identity path
+  [OperationId <String>]: operation Id
   [ResourceGroupName <String>]: The name of the resource group.
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azextension
 #>
-function Remove-AzKubernetesConfiguration {
-    [Alias('Remove-AzK8sConfiguration')]
+function Remove-AzKubernetesExtension {
+    [Alias('Remove-AzK8sExtension')]
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'Delete', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="The name of the kubernetes cluster.")]
+        [Parameter(ParameterSetName = 'Delete', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the kubernetes cluster.
         ${ClusterName},
 
-        [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).")]
+        [Parameter(ParameterSetName = 'Delete', Mandatory)]
+        [ValidateSet('ConnectedClusters', 'ManagedClusters')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
         ${ClusterType},
 
-        [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="Name of the Source Control Configuration.")]
-        [Alias('SourceControlConfigurationName')]
+        [Parameter(ParameterSetName = 'Delete', Mandatory)]
+        [Alias('ExtensionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
-        # Name of the Source Control Configuration.
+        # Name of the Extension.
         ${Name},
 
-        [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="The name of the resource group.")]
+        [Parameter(ParameterSetName = 'Delete', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the resource group.
+        # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='Delete', HelpMessage="The Azure subscription ID.")]
+        [Parameter(ParameterSetName = 'Delete')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The Azure subscription ID.
         # This is a GUID-formatted string (e.g.
         # 00000000-0000-0000-0000-000000000000)
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline, HelpMessage="Identity Parameter")]
+        [Parameter(ParameterSetName = 'DeleteViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Query')]
+        [System.Management.Automation.SwitchParameter]
+        # Delete the extension resource in Azure - not the normal asynchronous delete.
+        ${ForceDelete},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -150,17 +171,14 @@ function Remove-AzKubernetesConfiguration {
         ${ProxyUseDefaultCredentials}
     )
 
-
     process {
-        
-        if ($PSBoundParameters.ContainsKey('ClusterType')) {
-            if ($ClusterType -eq 'ManagedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
-            } elseif ($ClusterType -eq 'ConnectedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-            }
+        if ($ClusterType -eq 'ManagedClusters') {
+            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+        }
+        elseif ($ClusterType -eq 'ConnectedClusters') {
+            $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        Az.KubernetesConfiguration.internal\Remove-AzKubernetesConfiguration @PSBoundParameters
+        Az.KubernetesConfiguration.internal\Remove-AzKubernetesExtension @PSBoundParameters
     }
 }

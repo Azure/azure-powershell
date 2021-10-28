@@ -14,13 +14,13 @@ Gets details of the Source Control Configuration.
 
 ### List (Default)
 ```
-Get-AzKubernetesConfiguration -ClusterName <String> -ClusterRp <String> -ClusterType <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKubernetesConfiguration -ClusterName <String> -ClusterRp <String> -ClusterType <String> -Name <String>
+Get-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -35,71 +35,33 @@ Gets details of the Source Control Configuration.
 
 ## EXAMPLES
 
-### Example 1: Get all configurations of kubernetes cluster
+### Example 1: List details of the Source Control Configuration.
 ```powershell
-PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -ClusterRp Microsoft.Kubernetes -ClusterType ConnectedClusters
+PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -ClusterType ConnectedClusters
 
-Name          SystemDataCreatedAt   SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
-----          -------------------   ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----
-k8sconfig-t02 12/21/2020 5:29:33 AM                                             12/21/2020 5:29:33 AM                                                          Microsoft.KubernetesConfiguration/so…
-k8sconfig-t01 12/21/2020 5:26:17 AM                                             12/21/2020 5:27:45 AM                                                          Microsoft.KubernetesConfiguration/so…
+Name          Type
+----          ----
+azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
 ```
 
-This command gets all configurations of kubernetes cluster.
+List details of the Source Control Configuration.
 
-### Example 2: Get a configuration of kubernetes cluster by name
+### Example 2: Gets details of the Source Control Configuration.
 ```powershell
-PS C:\>  Get-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -ClusterRp Microsoft.Kubernetes -ClusterType ConnectedClusters -Name  k8sconfig-t02
+PS C:\> Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azpstestk8s01
 
-Name          SystemDataCreatedAt   SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
-----          -------------------   ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----
-k8sconfig-t02 12/21/2020 5:29:33 AM                                             12/21/2020 5:29:33 AM                                                          Microsoft.KubernetesConfiguration/so…
+Name          Type
+----          ----
+azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
 ```
 
-This command gets a configuration of kubernetes cluster by name.
-
-### Example 3: Get a configuration of kubernetes cluster by object
-```powershell
-PS C:\> $kubConf = New-AzKubernetesConfiguration -Name k8sconfig-t02 -ClusterName connaks-dkc29c -ResourceGroupName connaks-rg-w9vlnp -RepositoryUrl http://github.com/xxxx
-PS C:\> Get-AzKubernetesConfiguration -InputObject $kubConf
-
-Name          SystemDataCreatedAt   SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
-----          -------------------   ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----
-k8sconfig-t02 12/21/2020 5:29:33 AM                                             12/21/2020 5:29:33 AM                                                          Microsoft.KubernetesConfiguration/so…
-```
-
-This command gets a configuration of kubernetes cluster by object.
-
-### Example 4: Get a configuration of kubernetes cluster by pipeline
-```powershell
-PS C:\> @{Id='/subscriptions/xxxxx-xxxxxxx-xxxxx-xxxxxx/resourceGroups/connaks-rg-w9vlnp/providers/Microsoft.Kubernetes/connectedClusters/connaks-d983yc/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/k8sconfig-t02'} | Get-AzKubernetesConfiguration
-
-Name          SystemDataCreatedAt   SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
-----          -------------------   ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----
-k8sconfig-t02 12/21/2020 5:29:33 AM                                             12/21/2020 5:29:33 AM                                                          Microsoft.KubernetesConfiguration/so…
-```
-
-This command gets a configuration of kubernetes cluster by pipeline.
+Gets details of the Source Control Configuration.
 
 ## PARAMETERS
 
 ### -ClusterName
 The name of the kubernetes cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterRp
-The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
 
 ```yaml
 Type: System.String
@@ -221,6 +183,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
+Get-AzK8sConfiguration
+
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
@@ -230,7 +194,9 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the kubernetes cluster.
   - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
   - `[ClusterRp <String>]`: The Kubernetes cluster RP - either Microsoft.ContainerService (for AKS clusters) or Microsoft.Kubernetes (for OnPrem K8S clusters).
+  - `[ExtensionName <String>]`: Name of the Extension.
   - `[Id <String>]`: Resource identity path
+  - `[OperationId <String>]`: operation Id
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SourceControlConfigurationName <String>]`: Name of the Source Control Configuration.
   - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
