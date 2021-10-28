@@ -1,87 +1,108 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
+external help file:
 Module Name: Az.Resources
-ms.assetid: 85DDA491-7A7D-4217-B0E3-72CDC3787889
 online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadgroup
 schema: 2.0.0
 ---
 
-# Get-AzADGroup
+# Get-AzAdGroup
 
 ## SYNOPSIS
-Filters active directory groups.
+Represents an Azure Active Directory object.
+The directoryObject type is the base type for many other directory entity types.
 
 ## SYNTAX
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADGroup [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
-```
-
-### SearchStringParameterSet
-```
-Get-AzADGroup -DisplayNameStartsWith <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzAdGroup [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>] [-Filter <String>]
+ [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzADGroup -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzAdGroup -DisplayName <String> [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>]
+ [-First <UInt64>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Get-AzADGroup -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>]
- [-First <UInt64>] [<CommonParameters>]
+Get-AzAdGroup -ObjectId <Guid> [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>]
+ [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### SearchStringParameterSet
+```
+Get-AzAdGroup -DisplayNameStartsWith <String> [-AppendSelected] [-ConsistencyLevel <String>]
+ [-Expand <String[]>] [-First <UInt64>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Filters active directory groups.
+Represents an Azure Active Directory object.
+The directoryObject type is the base type for many other directory entity types.
 
 ## EXAMPLES
 
-### Example 1: List all AD groups
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzADGroup
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Lists all AD groups in a tenant.
+{{ Add description here }}
 
-### Example 2: List all AD groups using paging
-
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzADGroup -First 100
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Lists the first 100 AD groups in a tenant.
-
-### Example 3: Get AD group by object id
-
-```powershell
-PS C:\> Get-AzADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
-```
-
-Gets an AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
-
-### Example 4: List groups by search string
-
-```powershell
-PS C:\> Get-AzADGroup -SearchString Joe
-```
-
-Lists all AD groups whose display name begins with 'Joe'.
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+### -AppendSelected
+
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConsistencyLevel
+Indicates the requested consistency level.
+Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -111,29 +132,62 @@ Used to find groups that begin with the provided string.
 ```yaml
 Type: System.String
 Parameter Sets: SearchStringParameterSet
-Aliases: SearchString
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ObjectId
-Object id of the group.
+### -Expand
+Expand related entities
 
 ```yaml
-Type: System.Guid
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+Filter items by property values
+
+```yaml
+Type: System.String
 Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -First
+Gets only the first 'n' objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: DisplayNameParameterSet, EmptyParameterSet, SearchStringParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ObjectId
+key: id of group
 
 ```yaml
 Type: System.Guid
@@ -143,15 +197,45 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludeTotalCount
-Reports the number of objects in the data set. Currently, this parameter does nothing.
+### -Orderby
+Order items by property values
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String[]
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Search
+Search items by search phrases
+
+```yaml
+Type: System.String
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Select
+Select properties to be returned
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -163,26 +247,11 @@ Accept wildcard characters: False
 ```
 
 ### -Skip
-Ignores the first N objects and then gets the remaining objects.
+Ignores the first 'n' objects and then gets the remaining objects.
 
 ```yaml
 Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -First
-The maximum number of objects to return.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
+Parameter Sets: DisplayNameParameterSet, EmptyParameterSet, SearchStringParameterSet
 Aliases:
 
 Required: False
@@ -197,21 +266,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Guid
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
-
-[Get-AzADUser](./Get-AzADUser.md)
-
-[Get-AzADServicePrincipal](./Get-AzADServicePrincipal.md)
-
-[Get-AzADGroupMember](./Get-AzADGroupMember.md)
 

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.4.0'
+ModuleVersion = '5.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -65,7 +65,10 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
                'Microsoft.Extensions.Options.dll', 
                'Microsoft.Extensions.Primitives.dll', 
-               'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll'
+               'Microsoft.Azure.Graph.RBAC.dll', 
+               'System.Runtime.CompilerServices.Unsafe.dll', 'AutoMapper.dll',
+               'MSGraph\bin\Az.Resources.MSGraph.private.dll',
+               'Authorization\bin\Az.Resources.Authorization.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -75,32 +78,39 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Resources.format.ps1xml', 'ResourceManager.format.ps1xml', 
-               'ResourceManager.generated.format.ps1xml', 'Tags.format.ps1xml'
+               'ResourceManager.generated.format.ps1xml', 'Tags.format.ps1xml',
+               'MSGraph\MSGraph.format.ps1xml', 'Authorization\Authorization.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Resources.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.Tags.dll')
+               'Microsoft.Azure.PowerShell.Cmdlets.Tags.dll', 
+               'MSGraph\bin\Az.Resources.MSGraph.private.dll', 'MSGraph\MSGraph.psm1', 
+               'Authorization\bin\Az.Resources.Authorization.private.dll', 'Authorization\Authorization.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = 'Get-AzAdUser', 'New-AzAdUser', 'Remove-AzAdUser', 'Update-AzAdUser',
+                    'Get-AzAdGroup', 'New-AzAdGroup', 'Remove-AzAdGroup', 
+                    'Get-AzAdApplication', 'New-AzAdApplication', 'Remove-AzAdApplication', 'Update-AzAdApplication', 
+                    'Get-AzAdServicePrincipal', 'New-AzAdServicePrincipal', 'Remove-AzAdServicePrincipal', 'Update-AzAdServicePrincipal', 
+                    'Get-AzAdAppCredential', 'New-AzAdAppCredential', 'Remove-AzAdAppCredential', 
+                    'Get-AzAdSpCredential', 'New-AzAdSpCredential', 'Remove-AzAdSpCredential',
+                    'Get-AzAdGroupMember', 'Add-AzAdGroupMember', 'Remove-AzAdGroupMember', 
+                    'Get-AzRoleEligibleChildResource', 'Get-AzRoleAssignmentSchedule', 'Get-AzRoleAssignmentScheduleInstance', 
+                    'Get-AzRoleAssignmentScheduleRequest', 'Get-AzRoleEligibilitySchedule', 'Get-AzRoleEligibilityScheduleInstance', 
+                    'Get-AzRoleEligibilityScheduleRequest', 'Get-AzRoleManagementPolicy', 'Get-AzRoleManagementPolicyAssignment', 
+                    'New-AzRoleAssignmentScheduleRequest', 'New-AzRoleEligibilityScheduleRequest', 'New-AzRoleManagementPolicyAssignment', 
+                    'New-AzRoleManagementPolicyRuleObject', 'Remove-AzRoleManagementPolicy', 'Remove-AzRoleManagementPolicyAssignment', 
+                    'Stop-AzRoleAssignmentScheduleRequest', 'Stop-AzRoleEligibilityScheduleRequest', 'Update-AzRoleManagementPolicy',
+                    'Add-AzAdAppPermission', 'Get-AzAdAppPermission', 'Remove-AzAdAppPermission'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment', 
                'Get-AzRoleAssignment', 'New-AzRoleAssignment', 
                'Set-AzRoleAssignment', 'Get-AzRoleDefinition', 
                'New-AzRoleDefinition', 'Set-AzRoleDefinition', 
-               'Remove-AzRoleDefinition', 'Get-AzADAppCredential', 
-               'Get-AzADApplication', 'Add-AzADGroupMember', 'Get-AzADGroupMember', 
-               'Remove-AzADGroupMember', 'Get-AzADGroup', 'New-AzADGroup', 
-               'Remove-AzADGroup', 'Get-AzADServicePrincipal', 
-               'Get-AzADSpCredential', 'Get-AzADUser', 'New-AzADAppCredential', 
-               'New-AzADSpCredential', 'New-AzADUser', 'Remove-AzADAppCredential', 
-               'Remove-AzADApplication', 'New-AzADApplication', 
-               'Remove-AzADServicePrincipal', 'New-AzADServicePrincipal', 
-               'Remove-AzADSpCredential', 'Remove-AzADUser', 
-               'Update-AzADApplication', 'Update-AzADServicePrincipal', 
-               'Update-AzADUser', 'Remove-AzResourceGroup', 'Get-AzProviderFeature', 
+               'Remove-AzRoleDefinition',
+               'Remove-AzResourceGroup', 'Get-AzProviderFeature', 
                'Register-AzProviderFeature', 'Unregister-AzProviderFeature', 
                'Get-AzLocation', 'Export-AzResourceGroup', 'Get-AzResourceProvider', 
                'Register-AzResourceProvider', 'Unregister-AzResourceProvider', 
@@ -158,10 +168,6 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzResourceProviderAction', 
-               'Get-AzADServicePrincipalCredential', 
-               'New-AzADServicePrincipalCredential', 
-               'Remove-AzADServicePrincipalCredential', 'Set-AzADApplication', 
-               'Set-AzADServicePrincipal', 'Set-AzADUser', 
                'New-AzSubscriptionDeployment', 'Get-AzSubscriptionDeployment', 
                'Test-AzSubscriptionDeployment', 'Remove-AzSubscriptionDeployment', 
                'Stop-AzSubscriptionDeployment', 
@@ -196,13 +202,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added a clearer error message for a case in which TemplateUri do not accept bicep file.
-* Fixed typos with ManagementGroups breaking change descriptions [#15819].
-* Fixed resource tags casing issue - resource tags casing not being preserved.
-* Updated to Microsoft.Azure.Management.Authorization 2.13.0-preview.'
+        ReleaseNotes = '* Upgrade AzAD cmdlets to consume MSGraph API.
+* Added new cmdlets of Microsoft.Authorization.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
