@@ -73,6 +73,22 @@ directive:
           "readOnly": true
       }
 
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/resourceGroups\//g, "resourcegroups/")
+
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/providers\/Microsoft.ExtendedLocation\//g, "providers/microsoft.extendedlocation/")
+
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/customLocations\//g, "customlocations/")
+
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\{resourceName\}\/enabledResourceTypes/g, "{resourceName}/enabledresourcetypes")
+
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
@@ -112,5 +128,5 @@ directive:
         properties:
           - Location
           - Name
-          - Type
+          - Namespace
 ```
