@@ -49,7 +49,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azextension
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesextension
 #>
 function Remove-AzKubernetesExtension {
     [Alias('Remove-AzK8sExtension')]
