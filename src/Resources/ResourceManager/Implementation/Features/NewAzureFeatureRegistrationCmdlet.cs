@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates feature registration.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true), OutputType(typeof(SubscriptionFeatureRegistration))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true)]
+    [OutputType(typeof(SubscriptionFeatureRegistration))]
     public class NewAzureFeatureRegistrationCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>

@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates feature registration.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true), OutputType(typeof(SubscriptionFeatureRegistration))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true)]
+    [OutputType(typeof(SubscriptionFeatureRegistration))]
     public class GetAzureFeatureRegistrationCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>
