@@ -134,7 +134,7 @@ function Remove-AzAdSpCredential {
         } else {
             $list = @()
             foreach ($key in $sp.KeyCredentials) {
-                if (!$key.KeyId.Equals($PSBoundParameters['KeyId'])) {
+                if ($PSBoundParameters['KeyId'] -ne $key.KeyId) {
                     $list += $key
                 }
             }
@@ -143,16 +143,20 @@ function Remove-AzAdSpCredential {
                 $PSBoundParameters['Id'] = $sp.Id
                 $PSBoundParameters['KeyCredentials'] = $list
                 MSGraph.internal\Update-AzAdServicePrincipal @PSBoundParameters
+                $foundKey = $true
             } else {
                 foreach ($password in $sp.PasswordCredentials) {
-                    if ($password.KeyId.Equals($PSBoundParameters['KeyId'])) {
+                    if ($PSBoundParameters['KeyId'] -eq $password.KeyId) {
                         $PSBoundParameters['ServicePrincipalId'] = $sp.Id
                         MSGraph.internal\Remove-AzAdServicePrincipalPassword @PSBoundParameters
+                        $foundKey = $true
                         break
                     }
                 }
             }
-            Write-Error "service principal '$($sp.Id)' does not contains credential with key id: '$($PSBoundParameters['KeyId'])'."
+            if (!$foundKey) {
+                Write-Error "service principal '$($sp.Id)' does not contains credential with key id: '$($PSBoundParameters['KeyId'])'."
+            }
             if ($PSBoundParameters['PassThru']) {
                 $PSCmdlet.WriteObject($true)
             }

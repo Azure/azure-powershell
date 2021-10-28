@@ -134,7 +134,7 @@ function Remove-AzAdAppCredential {
         } else {
             $list = @()
             foreach ($key in $app.KeyCredentials) {
-                if (!$key.KeyId.Equals($PSBoundParameters['KeyId'])) {
+                if ($PSBoundParameters['KeyId'] -ne $key.KeyId) {
                     $list += $key
                 }
             }
@@ -143,16 +143,20 @@ function Remove-AzAdAppCredential {
                 $PSBoundParameters['Id'] = $app.Id
                 $PSBoundParameters['KeyCredentials'] = $list
                 MSGraph.internal\Update-AzAdApplication @PSBoundParameters
+                $foundKey = $true
             } else {
                 foreach ($password in $app.PasswordCredentials) {
-                    if ($password.KeyId.Equals($PSBoundParameters['KeyId'])) {
+                    if ($PSBoundParameters['KeyId'] -eq $password.KeyId) {
                         $PSBoundParameters['ApplicationId'] = $app.Id
                         MSGraph.internal\Remove-AzAdApplicationPassword @PSBoundParameters
+                        $foundKey = $true
                         break
                     }
                 }
             }
-            Write-Error "application '$($app.Id)' does not contains credential with key id: '$($PSBoundParameters['KeyId'])'."
+            if (!$foundKey) {
+                Write-Error "application '$($app.Id)' does not contains credential with key id: '$($PSBoundParameters['KeyId'])'."
+            }
         }
         if ($PSBoundParameters['PassThru']) {
             $PSCmdlet.WriteObject($true)
