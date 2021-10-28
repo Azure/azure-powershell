@@ -44,5 +44,4 @@ Az.StreamAnalytics
 Az.Synapse
 Az.TimeSeriesInsights
 Az.VMware
-Az.WebPubSub
 Az.WindowsIotServices
