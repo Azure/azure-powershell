@@ -15,45 +15,54 @@
 
 <#
 .Synopsis
-Create a new Kubernetes Source Control Configuration.
+Create a new Kubernetes Cluster Extension.
 .Description
-Create a new Kubernetes Source Control Configuration.
+Create a new Kubernetes Cluster Extension.
+.Example
+PS C:\> New-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ExtensionType Microsoft.Arcdataservices
+
+Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ResourceGroupName
+----                -------------             -------      ----------------- ----------------------- -----------------
+azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    azps_test_group
+
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
+https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azextension
 #>
-function New-AzKubernetesConfiguration {
-    [Alias('New-AzK8sConfiguration')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration])]
+function New-AzKubernetesExtension {
+    [Alias('New-AzK8sExtension')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtension])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory, HelpMessage="The name of the kubernetes cluster.")]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the kubernetes cluster.
         ${ClusterName},
-    
-        [Parameter(HelpMessage="The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).")]
+
+        [Parameter(Mandatory)]
+        [ValidateSet('ConnectedClusters', 'ManagedClusters')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
         ${ClusterType},
-    
-        [Parameter(Mandatory, HelpMessage="Name of the Source Control Configuration.")]
-        [Alias('SourceControlConfigurationName')]
+
+        [Parameter(Mandatory)]
+        [Alias('ExtensionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
-        # Name of the Source Control Configuration.
+        # Name of the Extension.
         ${Name},
-    
-        [Parameter(Mandatory, HelpMessage="The name of the resource group.")]
+
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The name of the resource group.
+        # The name is case insensitive.
         ${ResourceGroupName},
-    
-        [Parameter(HelpMessage="The Azure subscription ID.")]
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -61,67 +70,76 @@ function New-AzKubernetesConfiguration {
         # This is a GUID-formatted string (e.g.
         # 00000000-0000-0000-0000-000000000000)
         ${SubscriptionId},
-    
-        [Parameter(Mandatory, HelpMessage="Url of the SourceControl Repository.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # Url of the SourceControl Repository.
-        ${RepositoryUrl},
-    
-        [Parameter(HelpMessage="Option to enable Helm Operator for this git configuration.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [switch]
-        # Option to enable Helm Operator for this git configuration.
-        ${EnableHelmOperator},
-    
-        [Parameter(HelpMessage="Values override for the operator Helm chart.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # Values override for the operator Helm chart.
-        ${HelmOperatorChartValue},
-    
-        [Parameter(HelpMessage="Version of the operator Helm chart.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # Version of the operator Helm chart.
-        ${HelmOperatorChartVersion},
-    
-        [Parameter(HelpMessage="Instance name of the operator - identifying the specific configuration.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # Instance name of the operator - identifying the specific configuration.
-        ${OperatorInstanceName},
-    
-        [Parameter(HelpMessage="The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # The namespace to which this operator is installed to.
-        # Maximum of 253 lower case alphanumeric characters, hyphen and period only.
-        ${OperatorNamespace},
-    
-        [Parameter(HelpMessage="Any Parameters for the Operator instance in string format.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # Any Parameters for the Operator instance in string format.
-        ${OperatorParameter},
 
-        [Parameter(HelpMessage="If passed set the scope of the Configuration to Cluster (default is nameSpace).")]
-        [switch]
-        ${ClusterScoped},
-
-        [Parameter(HelpMessage="If passed set the scope of the Configuration to Cluster (default is nameSpace).")]
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
-        ${SshKnownHost},
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType]
+        # The identity type.
+        ${AkAssignedIdentityType},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IConfigurationProtectedSettings]))]
+        [System.Management.Automation.SwitchParameter]
+        # Flag to note if this extension participates in auto upgrade of minor version, or not.
+        ${AutoUpgradeMinorVersion},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Namespace where the extension Release must be placed, for a Cluster scoped extension.
+        # If this namespace does not exist, it will be created
+        ${ClusterReleaseNamespace},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtensionPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
-        # Name-value pairs of protected configuration settings for the configuration
+        # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
         ${ConfigurationProtectedSetting},
-    
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210901.IExtensionPropertiesConfigurationSettings]))]
+        [System.Collections.Hashtable]
+        # Configuration settings, as name-value pairs for configuring this extension.
+        ${ConfigurationSetting},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Type of the Extension, of which this resource is an instance of.
+        # It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
+        ${ExtensionType},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType]
+        # The identity type.
+        ${IdentityType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Namespace where the extension will be created for an Namespace scoped extension.
+        # If this namespace does not exist, it will be created
+        ${NamespaceTargetNamespace},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # ReleaseTrain this extension participates in for auto-upgrade (e.g.
+        # Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
+        ${ReleaseTrain},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Version of the extension for this extension, if it is 'pinned' to a specific version.
+        # autoUpgradeMinorVersion must be 'false'.
+        ${Version},
+
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -129,67 +147,67 @@ function New-AzKubernetesConfiguration {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-    
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob},
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command asynchronously
+        ${NoWait},
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-    
-    process {
-        if ($PSBoundParameters.ContainsKey('ClusterScoped')) {
-            $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]::Cluster
-        } else {
-            $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]::Namespace
-        }
 
-        if ($PSBoundParameters.ContainsKey('ClusterType')) {
-            if ($ClusterType -eq 'ManagedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
-            } elseif ($ClusterType -eq 'ConnectedClusters') {
-                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-            }
-        } else {
-            $PSBoundParameters.Add('ClusterType', 'ConnectedClusters')
+    process {
+        if ($ClusterType -eq 'ManagedClusters') {
+            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+        }
+        elseif ($ClusterType -eq 'ConnectedClusters') {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        $PSBoundParameters.Add('OperatorType', [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType]::Flux)
-
-        Az.KubernetesConfiguration.internal\New-AzKubernetesConfiguration @PSBoundParameters
+        Az.KubernetesConfiguration.internal\New-AzKubernetesExtension @PSBoundParameters
     }
 }
