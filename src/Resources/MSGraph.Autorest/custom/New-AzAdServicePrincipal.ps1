@@ -748,7 +748,8 @@ function New-AzAdServicePrincipal {
       }
       for ($i = 0; $i -lt 6; $i++) {
         try {
-          New-AzRoleAssignment @param
+          $ra = New-AzRoleAssignment @param
+          Write-Verbose "Role assignment with role $($ra.RoleDefinitionName) and scope $($ra.Scope) successfully created for the created service principal."
           break
         } catch {
 
