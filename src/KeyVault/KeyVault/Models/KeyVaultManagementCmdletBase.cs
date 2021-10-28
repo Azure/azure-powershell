@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.KeyVault
     [SupportsSubscriptionId]
     public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
-
         private VaultManagementClient _keyVaultManagementClient;
         private DataServiceCredential _dataServiceCredential;
         public VaultManagementClient KeyVaultManagementClient

@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "pending".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("pending", "pending", global::System.Management.Automation.CompletionResultType.ParameterValue, "pending");
+                yield return new global::System.Management.Automation.CompletionResult("'pending'", "pending", global::System.Management.Automation.CompletionResultType.ParameterValue, "pending");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "completed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("completed", "completed", global::System.Management.Automation.CompletionResultType.ParameterValue, "completed");
+                yield return new global::System.Management.Automation.CompletionResult("'completed'", "completed", global::System.Management.Automation.CompletionResultType.ParameterValue, "completed");
             }
         }
     }

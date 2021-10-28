@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Migrated AAD Graph API to MSGraph API.
     * todo: update resource strings
+* Added warnings of upcoming breaking change of migrating to Microsoft Graph.
 
 ## Version 3.6.0
 * Supported custom role definitions on managed HSM:

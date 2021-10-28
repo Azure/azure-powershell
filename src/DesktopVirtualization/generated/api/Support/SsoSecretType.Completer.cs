@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SharedKey".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SharedKey", "SharedKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "SharedKey");
+                yield return new global::System.Management.Automation.CompletionResult("'SharedKey'", "SharedKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "SharedKey");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Certificate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Certificate", "Certificate", global::System.Management.Automation.CompletionResultType.ParameterValue, "Certificate");
+                yield return new global::System.Management.Automation.CompletionResult("'Certificate'", "Certificate", global::System.Management.Automation.CompletionResultType.ParameterValue, "Certificate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SharedKeyInKeyVault".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SharedKeyInKeyVault", "SharedKeyInKeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "SharedKeyInKeyVault");
+                yield return new global::System.Management.Automation.CompletionResult("'SharedKeyInKeyVault'", "SharedKeyInKeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "SharedKeyInKeyVault");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CertificateInKeyVault".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CertificateInKeyVault", "CertificateInKeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateInKeyVault");
+                yield return new global::System.Management.Automation.CompletionResult("'CertificateInKeyVault'", "CertificateInKeyVault", global::System.Management.Automation.CompletionResultType.ParameterValue, "CertificateInKeyVault");
             }
         }
     }

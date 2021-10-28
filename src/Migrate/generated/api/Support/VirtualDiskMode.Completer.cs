@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "persistent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("persistent", "persistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "persistent");
+                yield return new global::System.Management.Automation.CompletionResult("'persistent'", "persistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "persistent");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "independent_persistent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("independent_persistent", "independent_persistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "independent_persistent");
+                yield return new global::System.Management.Automation.CompletionResult("'independent_persistent'", "independent_persistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "independent_persistent");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "independent_nonpersistent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("independent_nonpersistent", "independent_nonpersistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "independent_nonpersistent");
+                yield return new global::System.Management.Automation.CompletionResult("'independent_nonpersistent'", "independent_nonpersistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "independent_nonpersistent");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "nonpersistent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("nonpersistent", "nonpersistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "nonpersistent");
+                yield return new global::System.Management.Automation.CompletionResult("'nonpersistent'", "nonpersistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "nonpersistent");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "undoable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("undoable", "undoable", global::System.Management.Automation.CompletionResultType.ParameterValue, "undoable");
+                yield return new global::System.Management.Automation.CompletionResult("'undoable'", "undoable", global::System.Management.Automation.CompletionResultType.ParameterValue, "undoable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "append".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("append", "append", global::System.Management.Automation.CompletionResultType.ParameterValue, "append");
+                yield return new global::System.Management.Automation.CompletionResult("'append'", "append", global::System.Management.Automation.CompletionResultType.ParameterValue, "append");
             }
         }
     }

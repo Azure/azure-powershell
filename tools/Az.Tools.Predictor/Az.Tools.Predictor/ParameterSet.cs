@@ -106,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     param = null;
                     arg = null;
                     hasSeenIncompleteParameter = true;
+                    parameters.Add(new Parameter(AzPredictorConstants.DashParameterName, null, false));
                 }
                 else
                 {

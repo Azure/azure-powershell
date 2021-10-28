@@ -44,6 +44,7 @@ using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 
 namespace Microsoft.Azure.Commands.Aks
 {
+    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     public abstract class CreateOrUpdateKubeBase : KubeCmdletBase
     {
         protected const string DefaultParamSet = "defaultParameterSet";

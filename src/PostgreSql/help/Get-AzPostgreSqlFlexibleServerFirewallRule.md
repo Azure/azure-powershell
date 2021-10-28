@@ -48,7 +48,7 @@ This cmdlet gets firewall rules by name.
 
 ### Example 2: Get firewall rules by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/servers/postgresql-test/firewallRules/firewallrule-test"
+PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/servers/postgresql-test/firewallRules/firewallrule-test"
 PS C:\> Get-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
 
 FirewallRuleName   StartIPAddress   EndIPAddress

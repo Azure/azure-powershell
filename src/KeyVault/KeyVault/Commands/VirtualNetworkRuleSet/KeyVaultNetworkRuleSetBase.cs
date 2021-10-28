@@ -20,10 +20,11 @@ using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.KeyVault.Models;
-
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     public class KeyVaultNetworkRuleSetBase : KeyVaultManagementCmdletBase
     {
         #region Input Parameter Definitions

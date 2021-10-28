@@ -16,11 +16,14 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
+    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     public class RbacCmdletBase : KeyVaultCmdletBase
     {
         private MicrosoftGraphClient _graphClient;

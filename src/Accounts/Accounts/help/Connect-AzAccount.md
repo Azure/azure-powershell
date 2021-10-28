@@ -45,6 +45,14 @@ Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -Appli
  [<CommonParameters>]
 ```
 
+### ClientAssertionParameterSet
+```
+Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrincipal] -Tenant <String>
+ [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
+ [-Force] -FederatedToken <String> [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ServicePrincipalCertificateFileWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -ApplicationId <String> [-ServicePrincipal] -Tenant <String>
@@ -100,12 +108,12 @@ Account                SubscriptionName TenantId                Environment
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-### Example 2: (Windows PowerShell 5.1 only) Connect to Azure using organizational ID credentials
+### Example 2: Connect to Azure using organizational ID credentials
 
-This scenario works only in Windows PowerShell 5.1. The first command prompts for user credentials
-and stores them in the `$Credential` variable. The second command connects to an Azure account using
-the credentials stored in `$Credential`. This account authenticates with Azure using organizational
-ID credentials.
+This scenario works only when the user does not have multi-factor auth turned on. The first command
+prompts for user credentials and stores them in the `$Credential` variable. The second command
+connects to an Azure account using the credentials stored in `$Credential`. This account
+authenticates with Azure using organizational ID credentials.
 
 ```powershell
 $Credential = Get-Credential
@@ -120,15 +128,14 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 ### Example 3: Connect to Azure using a service principal account
 
-The first command prompts for service principal credentials and stores them in the `$Credential`
-variable. Enter your application ID for the username and service principal secret as the password
-when prompted. The second command connects the specified Azure tenant using the service principal
-credentials stored in the `$Credential` variable. The **ServicePrincipal** switch parameter
-indicates that the account authenticates as a service principal.
+The first command stores the service principal credentials in the `$Credential` variable. The second
+command connects the specified Azure tenant using the service principal credentials stored in the
+`$Credential` variable. The **ServicePrincipal** switch parameter indicates that the account
+authenticates as a service principal.
 
 ```powershell
-$Credential = Get-Credential
-Connect-AzAccount -Credential $Credential -Tenant 'xxxx-xxxx-xxxx-xxxx' -ServicePrincipal
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecuredPassword
+Connect-AzAccount -ServicePrincipal -TenantId $TenantId -Credential $Credential
 ```
 
 ```Output
@@ -302,7 +309,7 @@ Application ID of the service principal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ClientAssertionParameterSet, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases:
 
 Required: True
@@ -440,6 +447,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FederatedToken
+Specifies a token provided by another identity provider. The issuer and subject in this token must be first configured to be trusted by the ApplicationId.
+
+> [!CAUTION]
+> Federated tokens are a type of credential. You should take the appropriate security precautions to keep them confidential. Federated tokens also timeout and may prevent long running tasks from completing.
+
+```yaml
+Type: System.String
+Parameter Sets: ClientAssertionParameterSet
+Aliases: ClientAssertion
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 
 Overwrite the existing context with the same name without prompting.
@@ -571,7 +596,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId, ClientAssertionParameterSet, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases:
 
 Required: False
@@ -651,7 +676,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId, ServicePrincipalCertificateFileWithSubscriptionId
+Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId, ClientAssertionParameterSet, ServicePrincipalCertificateFileWithSubscriptionId
 Aliases: Domain, TenantId
 
 Required: True
