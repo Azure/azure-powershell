@@ -104,6 +104,15 @@
   - 'Get-AzWebPubSubUsage'
   - 'Test-AzWebPubSubNameAvailability'
 
+### Thanks to our community contributors
+* bgomezangulo (@beagam), Update Resume-AzNetAppFilesReplication.md (#16040)
+* Jim McCormick (@eimajtrebor), Fixed typo (#16091)
+* Lampson Nguyen (@lampson), Update Get-AzDataShare.md (#16015)
+* @MaxMeng1985, Update Get-AzSynapseSqlPoolRestorePoint.md (#16138)
+* Reggie Gibson (@regedit32), New-AzBotService: Fix AppSecret conversion to plaintext on Windows PowerShell (#16160)
+* Mötz Jensen (@Splaxi), BusinessIdentities details doesn't match the current implementation (#16141)
+
+
 ## 6.5.0 - October 2021
 #### Az.Accounts
 * Supported getting the access token for Microsoft Graph.
