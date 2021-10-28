@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesredeployvm
+online version: https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
 schema: 2.0.0
 ---
 
-# Start-AzLabServicesRedeployVM
+# Start-AzLabServicesVMRedeployment
 
 ## SYNOPSIS
 Action to redeploy a lab virtual machine to a different compute node.
@@ -15,13 +15,13 @@ For troubleshooting connectivity.
 
 ### ResourceId (Default)
 ```
-Start-AzLabServicesRedeployVM -ResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+Start-AzLabServicesVMRedeployment -ResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [<CommonParameters>]
 ```
 
 ### Redeploy
 ```
-Start-AzLabServicesRedeployVM -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
+Start-AzLabServicesVMRedeployment -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ For troubleshooting connectivity.
 
 ### Example 1: Redeploy the specific Virtual machine.
 ```powershell
-PS C:\> Start-AzLabServicesRedeployVM -LabName "Lab Name" -ResourceGroupName "Group Name" -VirtualMachineName 1
+PS C:\> Start-AzLabServicesVMRedeployment -LabName "Lab Name" -ResourceGroupName "Group Name" -VirtualMachineName 1
 
 ```
 

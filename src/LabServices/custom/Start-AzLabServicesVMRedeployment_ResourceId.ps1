@@ -21,9 +21,9 @@ API to redeploy a VM.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesredeployvm
+https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
 #>
-function Start-AzLabServicesRedeployVM_ResourceId {
+function Start-AzLabServicesVMRedeployment_ResourceId {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
@@ -112,7 +112,7 @@ function Start-AzLabServicesRedeployVM_ResourceId {
             }
        
             $PSBoundParameters.Remove("ResourceId") > $null
-            return Az.LabServices\Start-AzLabServicesRedeployVM @PSBoundParameters
+            return Az.LabServices\Start-AzLabServicesVMRedeployment @PSBoundParameters
         } else {
             Write-Error -Message "Error: Invalid VM Resource Id." -ErrorAction Stop
         }

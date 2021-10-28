@@ -79,15 +79,15 @@ Saves an image from a lab VM to the attached shared image gallery.
 ### [Send-AzLabServicesUserInvite](Send-AzLabServicesUserInvite.md)
 Operation to invite a user to a lab.
 
-### [Start-AzLabServicesRedeployVM](Start-AzLabServicesRedeployVM.md)
-Action to redeploy a lab virtual machine to a different compute node.
-For troubleshooting connectivity.
-
 ### [Start-AzLabServicesUserVM](Start-AzLabServicesUserVM.md)
 API to start the assigned vm for the user.
 
 ### [Start-AzLabServicesVM](Start-AzLabServicesVM.md)
 Action to start a lab virtual machine.
+
+### [Start-AzLabServicesVMRedeployment](Start-AzLabServicesVMRedeployment.md)
+Action to redeploy a lab virtual machine to a different compute node.
+For troubleshooting connectivity.
 
 ### [Stop-AzLabServicesUserVM](Stop-AzLabServicesUserVM.md)
 API to stop the assigned vm for the user.
