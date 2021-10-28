@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 if (_graphClient != null) return _graphClient;
 
-                _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
+                _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
                 try
                 {
-                    _graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId);
+                    _graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
                     _graphClient.TenantID = DefaultContext.Tenant.Id.ToString();
                 }
                 catch

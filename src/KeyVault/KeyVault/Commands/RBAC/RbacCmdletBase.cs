@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 if (_graphClient != null) return _graphClient;
                 try
                 {
-                    _graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId);
+                    _graphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(DefaultContext, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
                     _graphClient.TenantID = DefaultContext.Tenant.Id.ToString();
                 }
                 catch
