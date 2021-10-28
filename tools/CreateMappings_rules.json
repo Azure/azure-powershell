@@ -704,5 +704,9 @@
   {
     "regex": "WebPubSub",
     "alias": "WebPubSub"
+  },
+  {
+    "alias": "CustomLocation",
+    "regex": "CustomLocation"
   }
 ]

@@ -10,6 +10,7 @@ Az.ConnectedKubernetes
 Az.ConnectedMachine
 Az.ContainerInstance
 Az.CostManagement
+Az.CustomLocation
 Az.CustomProviders
 Az.DataBox
 Az.Databricks
