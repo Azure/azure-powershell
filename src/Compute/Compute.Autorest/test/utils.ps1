@@ -25,12 +25,10 @@ function setupEnv() {
         $envFile = 'localEnv.json'
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
-
-    $env.ResourceGroupName = "RGComputeTest" + (RandomString $false 8)
+    
+    $env.RandomString = (RandomString $false 8)
+    $env.ResourceGroupName = "RGComputeTest" + $env.RandomString
     $env.Location = "EastUS"
-    $env.GalleryName = "gallery" + (RandomString $false 8)
-    $env.GalleryApplicationName = "galapp" +  (RandomString $false 8)
-    $env.GalleryApplicationVersionName = "galappversion" +  (RandomString $false 8)
     $env.vmname = "testpwshellvm"
     $env.vmssname = "testpwshellvmss"
     
@@ -38,9 +36,11 @@ function setupEnv() {
     Write-Host -ForegroundColor Yellow "Creating ResourceGroup" $env.ResourceGroupName
     New-AzResourceGroup -ResourceGroupName $env.ResourceGroupName -Location $env.Location
 
+    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.rgname -Force
+    Write-Host -ForegroundColor Yellow "Removing ResourceGroup" $env.ResourceGroupName
+    Remove-AzResourceGroup -Name $env.ResourceGroupName 
 }
 

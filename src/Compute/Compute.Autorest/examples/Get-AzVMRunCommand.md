@@ -1,24 +1,18 @@
-### Example 1: Get Run Command by Name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\>  Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand2"
+PS C:\> {{ Add code here }}
 
-Location Name             Type
--------- ----             ----
-eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
+{{ Add output here }}
 ```
 
-Get Run Command by it's name.
+{{ Add description here }}
 
-### Example 2: Get Run Commands by VM
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname  
+PS C:\> {{ Add code here }}
 
-Location Name             Type
--------- ----             ----
-eastus   firstruncommand  Microsoft.Compute/virtualMachines/runCommands
-eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
-eastus   firstruncommand3 Microsoft.Compute/virtualMachines/runCommands
+{{ Add output here }}
 ```
 
-Get Run Commands by VM name
+{{ Add description here }}
 

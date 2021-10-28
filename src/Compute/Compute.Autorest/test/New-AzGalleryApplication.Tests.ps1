@@ -15,7 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzGalleryApplication'))
 }
 
 Describe 'New-AzGalleryApplication' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $galleryName = "testgallery" + $env.RandomString
+        $galleryApplicationName = "testgalapp" + $env.RandomString
+        New-AzGallery -ResourceGroupName $env.ResourceGroupName -Name $galleryName -Location $env.Location
+        New-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName -Location $env.Location -SupportedOSType Windows
+
+        $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName
+        $galApp.Count | Should BeGreaterThan 0
     }
 }

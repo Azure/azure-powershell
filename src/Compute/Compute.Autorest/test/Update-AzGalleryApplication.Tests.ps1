@@ -15,11 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzGalleryApplication')
 }
 
 Describe 'Update-AzGalleryApplication' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll { 
+        $galleryName = "testgallery" + $env.RandomString
+        $galleryApplicationName = "testgalapp" + $env.RandomString
+        New-AzGallery -ResourceGroupName $env.ResourceGroupName -Name $galleryName -Location $env.Location
+        New-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName -Location $env.Location -SupportedOSType Windows
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $description = "testDescription"
+        Update-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName -Description $description
+        $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName
+        $galApp.Description | Should Be $description
+    }
+
+    It 'UpdateViaIdentityExpanded' {
+        $description = "testDescriptionNEW"
+        $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName
+        Update-AzGalleryApplication -InputObject $galApp.Id -Description $description
+        $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName
+        $galApp.Description | Should Be $description
     }
 }

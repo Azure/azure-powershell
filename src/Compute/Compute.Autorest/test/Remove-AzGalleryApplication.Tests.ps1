@@ -15,11 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzGalleryApplication')
 }
 
 Describe 'Remove-AzGalleryApplication' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll { 
+        $galleryName = "testgallery" + $env.RandomString
+        $galleryApplicationName1 = "testgalapp1" + $env.RandomString
+        $galleryApplicationName2 = "testgalapp2" + $env.RandomString
+        New-AzGallery -ResourceGroupName $env.ResourceGroupName -Name $galleryName -Location $env.Location
+        New-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName1 -Location $env.Location -SupportedOSType Windows
+        New-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName2 -Location $env.Location -SupportedOSType Windows
+    }
+    
+    It 'Delete' {
+        Remove-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName1
+        $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName
+        $galApp.Count | Should BeGreaterThan 0
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $galAppGet = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName -Name $galleryApplicationName2
+        $galApp1 = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName
+        Remove-AzGalleryApplication -InputObject $galAppGet.Id
+        $galApp = Get-AzGalleryApplication -ResourceGroupName $env.ResourceGroupName -GalleryName $galleryName
+        $galApp.Count | Should BeLessThan $galApp1.Count
     }
 }

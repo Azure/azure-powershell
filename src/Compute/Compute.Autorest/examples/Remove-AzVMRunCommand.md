@@ -1,7 +1,18 @@
-### Example 1: Remove Run Command
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand"
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
-Remove a Run Command by its Name
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

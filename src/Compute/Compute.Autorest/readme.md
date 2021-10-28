@@ -49,7 +49,6 @@ subject-prefix: ""
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 
-
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set

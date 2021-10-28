@@ -1,22 +1,18 @@
-### Example 1: Get RunCommand by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
+PS C:\> {{ Add code here }}
 
-Location Name  Type
--------- ----  ----
-eastus   first Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands
+{{ Add output here }}
 ```
 
-Get by runcommand name
+{{ Add description here }}
 
-### Example 2: Get RunCommand by Instance
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname  -VMScaleSetName $vmssname
+PS C:\> {{ Add code here }}
 
-Location Name  Type
--------- ----  ----
-eastus   first Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands
+{{ Add output here }}
 ```
 
-Get RunCommand by Instance
+{{ Add description here }}
 

@@ -8,9 +8,7 @@ schema: 2.0.0
 # Get-AzVMRunCommand
 
 ## SYNOPSIS
-The Get-AzVMRunCommand cmdlet gets properties of run command installed on a virtual machine.
-List all installed run commands when name is not specified.
-Specify the name of a run command for which to get properties.
+Gets specific run command for a subscription in a location.
 
 ## SYNTAX
 
@@ -54,29 +52,23 @@ Gets specific run command for a subscription in a location.
 
 ## EXAMPLES
 
-### Example 1: Get Run Command by Name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand2"
+PS C:\> {{ Add code here }}
 
-Location Name             Type
--------- ----             ----
-eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
+{{ Add output here }}
 ```
 
-Get Run Command by it's name.
+{{ Add description here }}
 
-### Example 2: Get Run Commands by VM
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname  
+PS C:\> {{ Add code here }}
 
-Location Name             Type
--------- ----             ----
-eastus   firstruncommand  Microsoft.Compute/virtualMachines/runCommands
-eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
-eastus   firstruncommand3 Microsoft.Compute/virtualMachines/runCommands
+{{ Add output here }}
 ```
 
-Get Run Commands by VM name
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -243,6 +235,11 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IComputeIdentity>: Identity Parameter
   - `[CommandId <String>]`: The command id.
+  - `[GalleryApplicationName <String>]`: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  - `[GalleryApplicationVersionName <String>]`: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  - `[GalleryImageName <String>]`: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  - `[GalleryImageVersionName <String>]`: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  - `[GalleryName <String>]`: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
   - `[Id <String>]`: Resource identity path
   - `[InstanceId <String>]`: The instance ID of the virtual machine.
   - `[Location <String>]`: The location upon which run commands is queried.
