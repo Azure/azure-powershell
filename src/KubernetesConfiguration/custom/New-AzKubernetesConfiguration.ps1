@@ -24,6 +24,7 @@ Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IS
 https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 #>
 function New-AzKubernetesConfiguration {
+    [Alias('New-AzK8sConfiguration')]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
@@ -77,7 +78,7 @@ function New-AzKubernetesConfiguration {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # Values override for the operator Helm chart.
-        ${HelmOperatorChartValues},
+        ${HelmOperatorChartValue},
     
         [Parameter(HelpMessage="Version of the operator Helm chart.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -102,7 +103,7 @@ function New-AzKubernetesConfiguration {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # Any Parameters for the Operator instance in string format.
-        ${OperatorParameters},
+        ${OperatorParameter},
 
         [Parameter(HelpMessage="If passed set the scope of the Configuration to Cluster (default is nameSpace).")]
         [switch]
@@ -112,7 +113,7 @@ function New-AzKubernetesConfiguration {
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.String]
         # Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
-        ${SshKnownHosts},
+        ${SshKnownHost},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
