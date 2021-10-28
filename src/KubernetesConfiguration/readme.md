@@ -210,4 +210,5 @@ directive:
           - Version
           - ProvisioningState
           - AutoUpgradeMinorVersion
+          - ReleaseTrain
 ```
