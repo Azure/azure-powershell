@@ -18,9 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.5.0
-* Added AzKubernetesExtension cmdlets and update New-AzKubernetesConfiguration HelmOperatorChartValues, OperatorParameters and SshKnownHosts parameters name: HelmOperatorChartValue, OperatorParameter, SshKnownHost
+* Added AzKubernetesExtension cmdlets
+* Removed the plural form of parameter HelmOperatorChartValues, OperatorParameters and SshKnownHosts in `New-AzKubernetesConfiguration`
 
 ## Version 0.4.0
 * Added SshKnownHosts and ConfigurationProtectedSetting to New-AzKubernetesConfiguration.
