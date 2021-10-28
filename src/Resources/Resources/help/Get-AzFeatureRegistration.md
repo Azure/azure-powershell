@@ -1,8 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-ms.assetid: 83EE33E5-18EF-4A7A-AEF2-E93D7A3CA541
-online version: https://docs.microsoft.com/powershell/module/az.resources/register-azproviderfeature
+online version: https://docs.microsoft.com/powershell/module/az.resources/get-azfeatureregistration
 schema: 2.0.0
 ---
 
@@ -23,8 +22,8 @@ The **Get-AzFeatureRegistration** cmdlet gets a feature registration in your acc
 
 ## EXAMPLES
 
-### Example 1: Gets a feature registration
-```
+### Example 1
+```powershell
 PS C:\>Get-AzFeatureRegistration -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
@@ -33,7 +32,7 @@ This gets the AllowApplicationSecurityGroups feature for Microsoft.Network in yo
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -48,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -FeatureName
-Specifies the name of the feature that this cmdlet gets.
+The feature name.
 
 ```yaml
 Type: System.String
@@ -63,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProviderNamespace
-Specifies a namespace for which this cmdlet gets a provider feature.
+The resource provider namespace.
 
 ```yaml
 Type: System.String
@@ -87,7 +86,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -103,7 +102,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -120,7 +119,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Management.ResourceManager.Models.SubscriptionFeatureRegistration
 
 ## NOTES
-
-## RELATED LINKS
 
 ## RELATED LINKS
