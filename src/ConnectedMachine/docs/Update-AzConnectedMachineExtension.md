@@ -15,9 +15,10 @@ The operation to create or update the extension.
 ### UpdateExpanded (Default)
 ```
 Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-ForceRerun <String>] [-ProtectedSetting <IAny>]
- [-Publisher <String>] [-Setting <IAny>] [-Tag <Hashtable>] [-Type <String>] [-TypeHandlerVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceRerun <String>]
+ [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>] [-Tag <Hashtable>] [-Type <String>]
+ [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
@@ -37,9 +38,9 @@ Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
 ### UpdateViaIdentityExpanded
 ```
 Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-AutoUpgradeMinorVersion]
- [-ForceRerun <String>] [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>] [-Tag <Hashtable>]
- [-Type <String>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-EnableAutomaticUpgrade] [-ForceRerun <String>] [-ProtectedSetting <IAny>] [-Publisher <String>]
+ [-Setting <IAny>] [-Tag <Hashtable>] [-Type <String>] [-TypeHandlerVersion <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,23 +48,76 @@ The operation to create or update the extension.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an extension
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $splat = @{
+            ResourceGroupName = "connectedMachines"
+            MachineName = "linux-eastus1_1"
+            Name = "customScript"
+            Settings = @{
+                commandToExecute = "ls -l"
+            }
+        }
+PS C:\> Update-AzConnectedMachineExtension @splat
 
-{{ Add output here }}
+Name         Location ProvisioningState
+----         -------- -----------------
+customScript eastus   Succeeded
 ```
 
-{{ Add description here }}
+Updates an extension on a specific machine.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update an extension with location specified via the pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+PS C:\> $extToUpdate | Update-AzConnectedMachineExtension -Settings @{
+                commandToExecute = "ls -l"
+            }
 
-{{ Add output here }}
+Name         Location ProvisioningState
+----         -------- -----------------
+customScript eastus   Succeeded
 ```
 
-{{ Add description here }}
+Updates a specific extension passed in via the pipeline.
+Here we are using the extension passed in via the pipeline to help us identify which extension we want to operate on and are specifying what we want to change via the normal parameters (like `-Settings`)
+
+### Example 3: Update an extension with extension parameters specified via the pipeline
+```powershell
+PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+PS C:\> # Update the settings on the object that will be used via the pipeline
+PS C:\> $extToUpdate.Setting.commandToExecute = "ls -l"
+PS C:\> $splat = @{
+            ResourceGroupName = "connectedMachines"
+            MachineName = "linux-eastus1_1"
+            Name = "customScript"
+        }
+PS C:\> $extToUpdate | Update-AzConnectedMachineExtension @splat
+
+Name         Location ProvisioningState
+----         -------- -----------------
+customScript eastus   Succeeded
+```
+
+Updates a specific extension passed in via the pipeline.
+Here we are using the extension passed in via the pipeline to provide the changes we want to make on the extension.
+The location of the extension is not retrieved via the pipeline but rather via the parameters specified normally (by the splat parameter).
+
+### Example 4: Using an extension object as both the location and parameters for updating
+```powershell
+PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+PS C:\> # Update the settings on the object that will be used via the pipeline
+PS C:\> $extToUpdate.Setting.commandToExecute = "ls -l"
+PS C:\> $extToUpdate | Update-AzConnectedMachineExtension -ExtensionParameter $extToUpdate
+
+Name         Location ProvisioningState
+----         -------- -----------------
+customScript eastus   Succeeded
+```
+
+Updates a specific extension passed in via the pipeline.
+Here we are using the extension passed in via the pipeline to help us identify which extension we want to operate on.
+In addition to that, we are using the parameters of the extension object to specify what to update.
 
 ## PARAMETERS
 
@@ -105,6 +159,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAutomaticUpgrade
+Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -383,6 +452,7 @@ EXTENSIONPARAMETER <IMachineExtensionUpdate>: Describes a Machine Extension Upda
   - `[Tag <IResourceUpdateTags>]`: Resource tags
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+  - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
   - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
   - `[ProtectedSetting <IAny>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   - `[Publisher <String>]`: The name of the extension handler publisher.

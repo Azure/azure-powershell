@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the tags of a private link scope
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
 
-{{ Add output here }}
+Name         Location    PublicNetworkAccess ProvisioningState Tag
+----         --------    ------------------- ----------------- ---
+name         eastus2euap Disabled            Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesRes…
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Update the tags of a private link scope

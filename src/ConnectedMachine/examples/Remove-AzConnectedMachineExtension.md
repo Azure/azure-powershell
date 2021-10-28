@@ -1,18 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a machine extension.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzConnectedMachineExtension -MachineName myMachine -ResourceGroupName myRG -Name custom
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Deletes the extension on the machine.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove extension via the pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName myMachine | Remove-AzConnectedMachineExtension
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+Removes all extensions in the specified machine.

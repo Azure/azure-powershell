@@ -15,8 +15,8 @@ The operation to create or update the extension.
 ### UpdateExpanded (Default)
 ```
 Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-ExtensionType <String>]
- [-ForceRerun <String>] [-InstanceViewName <String>] [-InstanceViewType <String>]
+ -Location <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade]
+ [-ExtensionType <String>] [-ForceRerun <String>] [-InstanceViewName <String>] [-InstanceViewType <String>]
  [-InstanceViewTypeHandlerVersion <String>] [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>]
  [-StatusCode <String>] [-StatusDisplayStatus <String>] [-StatusLevel <StatusLevelTypes>]
  [-StatusMessage <String>] [-StatusTime <DateTime>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>]
@@ -35,23 +35,30 @@ The operation to create or update the extension.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Set an extension on a machine
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
+PS C:\> Set-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
 
-{{ Add output here }}
+Name   Location ProvisioningState
+----   -------- -----------------
+custom eastus   Succeeded
 ```
 
-{{ Add description here }}
+Sets an extension on a machine.
 
-### Example 2: {{ Add title here }}
+### Example 2: Set an extension with extension parameters specified via the pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $otherExtension = Get-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName other
+PS C:\> $otherExtension | Set-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName important
 
-{{ Add output here }}
+Name   Location ProvisioningState
+----   -------- -----------------
+custom eastus   Succeeded
 ```
 
-{{ Add description here }}
+This sets an extension with the extension parameters provided by the object passed in via the pipeline.
+This is great if you want to grab the parameters of one machine and apply it to another machine.
 
 ## PARAMETERS
 
@@ -93,6 +100,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAutomaticUpgrade
+Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -489,6 +511,7 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
   - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+  - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
   - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
   - `[InstanceViewName <String>]`: The machine extension name.
   - `[InstanceViewType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".

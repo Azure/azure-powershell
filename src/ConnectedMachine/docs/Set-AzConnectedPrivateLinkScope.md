@@ -33,23 +33,16 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Set a private link scope in a subscription by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
 
-{{ Add output here }}
+Name         Location    PublicNetworkAccess ProvisioningState Tag
+----         --------    ------------------- ----------------- ---
+name         eastus2euap Disabled            Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesRes…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Updates the PublicNetworkAccess to "Disable" and tags to $tags
 
 ## PARAMETERS
 

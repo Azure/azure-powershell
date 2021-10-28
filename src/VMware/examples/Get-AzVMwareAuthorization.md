@@ -1,25 +1,21 @@
-### Example 1: Get authorization
+### Example 1: List authorization under resource group
 ```powershell
-PS C:\> Get-AzVMwareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
-
-
-Name           Type
-----           ----
-azps-test-auth Microsoft.AVS/privateClouds/authorizations
+Name                    Type                                       ResourceGroupName
+----                    ----                                       -----------------
+azps_test_authorization Microsoft.AVS/privateClouds/authorizations azps_test_group
 ```
 
-This cmdlet gets authorization `azps-test-auth` under private cloud `azps-test-cloud`
+List authorization under resource group
 
-### Example 2: List authorization
+### Example 2: Get authorization by name in a private cloud
 ```powershell
-PS C:\> Get-AzVMwareAuthorization -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_authorization
 
-
-
-Name           Type
-----           ----
-azps-test-auth Microsoft.AVS/privateClouds/authorizations
+Name                    Type                                       ResourceGroupName
+----                    ----                                       -----------------
+azps_test_authorization Microsoft.AVS/privateClouds/authorizations azps_test_group
 ```
 
-This cmdlet lists authorization `azps-test-auth` under private cloud `azps-test-cloud`
+Get authorization by name in a private cloud

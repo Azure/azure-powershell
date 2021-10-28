@@ -29,23 +29,14 @@ Deletes a Azure Arc PrivateLinkScope.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a private link scope in a subscription by name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
 
-{{ Add output here }}
+<None>
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Remove a private link scope in a subscription by name
 
 ## PARAMETERS
 

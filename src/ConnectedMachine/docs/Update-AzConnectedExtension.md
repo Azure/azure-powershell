@@ -44,23 +44,15 @@ The operation to Upgrade Machine Extensions.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an extension in a machine to a specific version
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}}
+PS C:\> Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -ExtensionTarget $target
 
-{{ Add output here }}
+<None>
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update an extension in a machine to a specific version
 
 ## PARAMETERS
 

@@ -115,5 +115,5 @@ Describe 'Update-AzConnectedMachineExtension' {
         } finally {
             $PSDefaultParameterValues["*:SubscriptionId"] = $before
         }
-    }
+    }   
 }
