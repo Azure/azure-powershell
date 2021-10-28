@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Added support for retreiving the state of packet capture even when the provisioning state of the packet capture was failure
     - `Get-AzNetworkWatcherPacketCapture`
 * Added support for accepting Vnet, Subnet and NIC resources as the TargetResourceId for the following cdmlets
@@ -69,6 +70,10 @@
         - `New-AzApplicationGatewayFirewallPolicyExclusion`
 * Bug Fix in Application Gateway Trusted Client Certificate cmdlets to load the entire cert chain from file.
 =======
+=======
+
+## Version 4.12.1
+>>>>>>> 53097c2e2b (Bump version for Az.Network (#16227))
 * Onboard Azure Virtual Network Manager Cmdlets for preview
     - `Get-AzNetworkManager` 
     - `New-AzNetworkManager` 

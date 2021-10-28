@@ -25,8 +25,13 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("be2ca022-590c-48ba-b465-9ab61d6e2ea0")]
+<<<<<<< HEAD
 [assembly: AssemblyVersion("4.15.0")]
 [assembly: AssemblyFileVersion("4.15.0")]
+=======
+[assembly: AssemblyVersion("4.12.1")]
+[assembly: AssemblyFileVersion("4.12.1")]
+>>>>>>> 53097c2e2b (Bump version for Az.Network (#16227))
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Network.Test")]
 #endif
