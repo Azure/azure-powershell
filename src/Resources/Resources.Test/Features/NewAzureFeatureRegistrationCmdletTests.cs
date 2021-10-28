@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             };
 
             this.featureOperationsMock
-                .Setup(client => client.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()))
+                .Setup(client => client.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<SubscriptionFeatureRegistration>(), null, It.IsAny<CancellationToken>()))
                 .Callback((string providerName, string featureName, SubscriptionFeatureRegistration subscriptionFeatureRegistrationType, Dictionary<string, List<string>> customHeaders, CancellationToken ignored) =>
                 {
                     Assert.Equal(ProviderName, providerName, StringComparer.OrdinalIgnoreCase);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyCallPatternAndReset(bool succeeded)
         {
-            this.featureOperationsMock.Verify(f => f.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()), Times.Once());
+            this.featureOperationsMock.Verify(f => f.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<SubscriptionFeatureRegistration>(), null, It.IsAny<CancellationToken>()), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Once() : Times.Never());
 
             this.featureOperationsMock.ResetCalls();

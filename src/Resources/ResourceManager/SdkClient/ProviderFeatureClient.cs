@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
     using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Management.ResourceManager;
@@ -26,6 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
     using System.Collections.Generic;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using Commands.Common.Authentication.Abstractions;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Helper client for performing operations on features
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="featureName">The name of the feature</param>
         public SubscriptionFeatureRegistration CreateFeatureRegistration(string providerName, string featureName)
         {
-            return this.FeaturesManagementClient.SubscriptionFeatureRegistrations.CreateOrUpdate(providerNamespace: providerName, featureName: featureName);
+            return this.FeaturesManagementClient.SubscriptionFeatureRegistrations.CreateOrUpdate(providerNamespace: providerName, featureName: featureName, subscriptionFeatureRegistrationType: new SubscriptionFeatureRegistration(id: Guid.NewGuid().ToString()));
         }
 
         /// <summary>
