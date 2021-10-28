@@ -260,17 +260,6 @@ param(
     # Maximum length is 128 characters.
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${OfficeLocation},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    [Alias('OnPremisesImmutableId')]
-    # This property is used to associate an on-premises Active Directory user account to their Azure AD user object.
-    # This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property.
-    # Note: The $ and _ characters cannot be used when specifying this property.
-    # Supports $filter (eq, ne, NOT, ge, le, in).
-    ${ImmutableId},
-
   
     [Parameter()]
     [AllowEmptyCollection()]
@@ -473,11 +462,6 @@ param(
       $null = $PSBoundParameters.Remove('ForceChangePasswordNextLogin')
       $PSBoundParameters['accountEnabled'] = $true
       $PSBoundParameters['PasswordProfile'] = $passwordProfile
-    }
-
-    if ($PSBoundParameters['ImmutableId']) {
-      $PSBoundParameters['OnPremisesImmutableId'] = $PSBoundParameters['ImmutableId']
-      $null = $PSBoundParameters.Remove('ImmutableId')
     }
 
     MSGraph.internal\New-AzAdUser @PSBoundParameters

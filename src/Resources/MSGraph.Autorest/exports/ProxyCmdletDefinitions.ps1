@@ -4976,16 +4976,6 @@ param(
     ${OfficeLocation},
 
     [Parameter()]
-    [Alias('OnPremisesImmutableId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [System.String]
-    # This property is used to associate an on-premises Active Directory user account to their Azure AD user object.
-    # This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property.
-    # Note: The $ and _ characters cannot be used when specifying this property.
-    # Supports $filter (eq, ne, NOT, ge, le, in).
-    ${ImmutableId},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -6171,7 +6161,7 @@ GROUPOBJECT <MicrosoftGraphGroup>:
   [OdataId <String>]: The full id of object in directory
   [OdataType <String>]: The type of object in directory
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgrouprefmember
+https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
 #>
 function Remove-AzAdGroupMember {
 [OutputType([System.Boolean])]

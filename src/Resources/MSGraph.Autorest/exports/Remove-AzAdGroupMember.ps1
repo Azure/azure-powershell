@@ -85,7 +85,7 @@ GROUPOBJECT <MicrosoftGraphGroup>:
   [OdataId <String>]: The full id of object in directory
   [OdataType <String>]: The type of object in directory
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgrouprefmember
+https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
 #>
 function Remove-AzAdGroupMember {
 [OutputType([System.Boolean])]

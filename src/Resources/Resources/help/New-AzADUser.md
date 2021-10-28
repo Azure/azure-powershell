@@ -19,13 +19,12 @@ New-AzAdUser -DisplayName <String> -MailNickname <String> -Password <SecureStrin
  [-Department <String>] [-DeviceEnrollmentLimit <Int32>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>]
  [-EmployeeType <String>] [-ExternalUserState <String>] [-ExternalUserStateChangeDateTime <DateTime>]
  [-FaxNumber <String>] [-ForceChangePasswordNextLogin] [-GivenName <String>] [-HireDate <DateTime>]
- [-ImmutableId <String>] [-Interest <String[]>] [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>]
- [-MobilePhone <String>] [-MySite <String>] [-OfficeLocation <String>] [-OtherMail <String[]>]
- [-PasswordPolicy <String>] [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>]
- [-PreferredLanguage <String>] [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>]
- [-ShowInAddressList] [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>]
- [-UsageLocation <String>] [-UserType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Interest <String[]>] [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>] [-MobilePhone <String>]
+ [-MySite <String>] [-OfficeLocation <String>] [-OtherMail <String[]>] [-PasswordPolicy <String>]
+ [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>] [-PreferredLanguage <String>]
+ [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>] [-ShowInAddressList]
+ [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>] [-UsageLocation <String>]
+ [-UserType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -414,24 +413,6 @@ We recommend using the native employeeHireDate property to set and update hire d
 Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImmutableId
-This property is used to associate an on-premises Active Directory user account to their Azure AD user object.
-This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property.
-Note: The $ and _ characters cannot be used when specifying this property.
-Supports $filter (eq, ne, NOT, ge, le, in).
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: OnPremisesImmutableId
 
 Required: False
 Position: Named

@@ -166,7 +166,7 @@ function Get-AzAdUser {
     
     process {
         if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
-            $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail', 'onPremisesImmutableId')
+            $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail')
             $null = $PSBoundParameters.Remove('AppendSelected')
         }
 
