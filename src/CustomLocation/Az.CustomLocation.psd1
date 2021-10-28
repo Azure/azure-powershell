@@ -109,7 +109,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'First preview release for module Az.CustomLocation'
 
         # Prerelease string of this module
         # Prerelease = ''
