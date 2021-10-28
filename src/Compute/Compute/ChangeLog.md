@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.18.0
 * Added cmdlets for adding VMGalleryApplication property to VM/VMSS
     - New-AzVmGalleryApplication
     - New-AzVmssGalleryApplication

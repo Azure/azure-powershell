@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.18.0
 * Added cmdlets for Synapse Kusto pool
     - Added `Get/New/Remove/Update/Start/Stop-AzSynapseKustoPool` cmdlet
     - Added `Get-AzSynapseKustoPoolSku` cmdlet

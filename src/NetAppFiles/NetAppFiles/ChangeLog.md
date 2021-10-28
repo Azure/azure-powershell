@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Added list NetAppAccounts by subscription
 * Added etags to response PSNetAppFilesVolume, PSNetAppFilesPool, PSNetAppFilesAccount, PSNetAppFilesBackupPolicy, PSNetAppFilesSnapshotPolicy
 * Added EncryptionType to New-AzNetAppFilesPool and PSNetAppFilesPool
