@@ -1,51 +1,44 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azextension
 schema: 2.0.0
 ---
 
-# Remove-AzKubernetesConfiguration
+# Remove-AzKubernetesExtension
 
 ## SYNOPSIS
-This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
+Delete a Kubernetes Cluster Extension.
+This will cause the Agent to Uninstall the extension from the cluster.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ForceDelete] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzKubernetesConfiguration -InputObject <IKubernetesConfigurationIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzKubernetesExtension -InputObject <IKubernetesConfigurationIdentity> [-ForceDelete]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
+Delete a Kubernetes Cluster Extension.
+This will cause the Agent to Uninstall the extension from the cluster.
 
 ## EXAMPLES
 
-### Example 1: Remove a configuation of kubernetes cluster by name
+### Example 1: Delete a Kubernetes Cluster Extension.
 ```powershell
-PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name  azpstestk8s01 -ClusterType ConnectedClusters
+PS C:\> Remove-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group
 
 ```
 
-This command removes a configuation of kubernetes cluster by name.
-
-### Example 2: Remove a configuation of kubernetes cluster by object
-```powershell
-PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group -Name azpstestk8s02
-PS C:\> Remove-AzKubernetesConfiguration -InputObject $kubConf
-
-```
-
-This command removes a configuation of kubernetes cluster by object.
+Delete a Kubernetes Cluster Extension.
 
 ## PARAMETERS
 
@@ -109,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ForceDelete
+Delete the extension resource in Azure - not the normal asynchronous delete.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -126,12 +134,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Source Control Configuration.
+Name of the Extension.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: SourceControlConfigurationName
+Aliases: ExtensionName
 
 Required: True
 Position: Named
@@ -172,6 +180,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -187,6 +196,8 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The Azure subscription ID.
+This is a GUID-formatted string (e.g.
+00000000-0000-0000-0000-000000000000)
 
 ```yaml
 Type: System.String
@@ -246,7 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-Remove-AzK8sConfiguration
+Remove-AzK8sExtension
 
 COMPLEX PARAMETER PROPERTIES
 
