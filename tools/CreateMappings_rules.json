@@ -703,7 +703,7 @@
   },
   {
     "regex": "WebPubSub",
-    "alias": "WebPubSub"
+    "alias": "Web PubSub"
   },
   {
     "alias": "CustomLocation",
