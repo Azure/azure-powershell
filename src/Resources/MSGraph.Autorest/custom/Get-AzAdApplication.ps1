@@ -192,7 +192,7 @@ process {
             break
         }
         'ApplicationIdentifierUriParameterSet' {
-            $PSBOundParameters['Filter'] = "identifierUri eq '$($PSBoundParameters['IdentifierUri'])'"
+            $PSBOundParameters['Filter'] = "identifierUris/any(s:s eq $($PSBoundParameters[IdentifierUri]))'"
             $null = $PSBoundParameters.Remove('IdentifierUri')
             break
         }
