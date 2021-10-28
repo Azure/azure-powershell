@@ -130,10 +130,10 @@ function Remove-AzAdGroupMember {
             if ($PSBoundParameters['Debug']) {
                 $param['Debug'] = $PSBoundParameters['Debug']
             }
-            $PSBoundParameter['GroupId'] = (Get-AzAdGroup @param).Id
+            $PSBoundParameters['GroupId'] = (Get-AzAdGroup @param).Id
             $null = $PSBoundParameters.Remove('GroupDisplayName')
         } elseif ($PSBoundParameters['GroupObject']) {
-            $PSBoundParameter['GroupId'] = $PSBoundParameters['GroupObject'].Id
+            $PSBoundParameters['GroupId'] = $PSBoundParameters['GroupObject'].Id
             $null = $PSBoundParameters['GroupObject']
         } else {
             $PSBoundParameters['GroupId'] = $PSBoundParameters['GroupObjectId']

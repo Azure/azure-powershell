@@ -134,10 +134,10 @@ function Add-AzAdGroupMember {
             if ($PSBoundParameters['Debug']) {
                 $param['Debug'] = $PSBoundParameters['Debug']
             }
-            $PSBoundParameter['GroupId'] = (Get-AzAdGroup @param).Id
+            $PSBoundParameters['GroupId'] = (Get-AzAdGroup @param).Id
             $null = $PSBoundParameters.Remove('TargetGroupDisplayName')
         } elseif ($PSBoundParameters['TargetGroupObject']) {
-            $PSBoundParameter['GroupId'] = $PSBoundParameters['TargetGroupObject'].Id
+            $PSBoundParameters['GroupId'] = $PSBoundParameters['TargetGroupObject'].Id
             $null = $PSBoundParameters['TargetGroupObject']
         } else {
             $PSBoundParameters['GroupId'] = $PSBoundParameters['TargetGroupObjectId']
