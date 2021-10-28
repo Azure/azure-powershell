@@ -9,16 +9,16 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = 'Az.SignalR.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.3.0'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
-GUID = 'a97e0c3e-e389-46a6-b73d-2b9bd6909bdb'
+GUID = '887a3597-2c6e-46ff-a239-c56a20f0bf79'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -30,9 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Azure SignalR service commands for Windows PowerShell and PowerShell Core.
-
-For more information on SignalR, please visit the following: https://docs.microsoft.com/azure/azure-signalr/'
+Description = 'Microsoft Azure PowerShell: WebPubSub cmdlets'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -56,8 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.SignalR.dll', 
-               'SignalR.Autorest\bin\Az.SignalR.private.dll'
+RequiredAssemblies = './bin/Az.SignalR.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -66,12 +63,10 @@ RequiredAssemblies = 'Microsoft.Azure.Management.SignalR.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'SignalR.format.ps1xml', 
-               'SignalR.Autorest\Az.SignalR.format.ps1xml'
+FormatsToProcess = './Az.SignalR.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Az.SignalR.psm1', 
-               'SignalR.Autorest\Az.SignalR.psm1')
+# NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzWebPubSub', 'Get-AzWebPubSubHub', 'Get-AzWebPubSubKey', 
@@ -81,16 +76,13 @@ FunctionsToExport = 'Get-AzWebPubSub', 'Get-AzWebPubSubHub', 'Get-AzWebPubSubKey
                'Test-AzWebPubSubNameAvailability', 'Update-AzWebPubSub'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzSignalR', 'Get-AzSignalR', 'Get-AzSignalRKey', 
-               'New-AzSignalRKey', 'Remove-AzSignalR', 'Update-AzSignalR', 
-               'Test-AzSignalRName', 'Restart-AzSignalR', 'Get-AzSignalRUsage', 
-               'Update-AzSignalRNetworkAcl', 'Set-AzSignalRUpstream'
+CmdletsToExport = @()
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Test-AzSignalR'
+AliasesToExport = '*'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -107,7 +99,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','SignalR'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','WebPubSub'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -119,14 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Changed to ''Allow'' and ''Deny'' parameters of ''Update-AzSignalRNetworkAcl'' cmdlet:
-    - Accepted ''Trace'' as a valid value.
-    - Accepted ''@()'' as empty collection to clear the list.
-* Supported ''ResourceGroupCompleter'' and ''ResourceNameCompleter'' in the applicable cmdlets.
-* Deprecated the ''HostNamePrefix'' property of output type ''PSSignalRResource'' of following cmdlets:
-    - ''Get-AzSignalR''
-    - ''New-AzSignalR''
-    - ''Update-AzSignalR'''
+        # ReleaseNotes = ''
 
         # Prerelease string of this module
         # Prerelease = ''
