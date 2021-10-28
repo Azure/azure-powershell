@@ -14,7 +14,7 @@ Gets a feature registration in your account.
 ## SYNTAX
 
 ```
-Get-AzFeatureRegistration -FeatureName <String> -ProviderNamespace <String>
+Get-AzFeatureRegistration [-FeatureName <String>] -ProviderNamespace <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -120,5 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Management.ResourceManager.Models.SubscriptionFeatureRegistration
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS
