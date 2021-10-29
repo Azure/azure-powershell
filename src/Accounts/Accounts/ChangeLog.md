@@ -19,8 +19,8 @@
 -->
 
 ## Upcoming Release
-* Added new version of AAD service client using Microsoft Graph API
 * Added Environment auto completer to the following cmdlets: Connect-AzAccount, Get-AzEnvironment, Set-AzEnvironment, and Remove-AzEnvironment [#15991]
+* Added new version of AAD service client using Microsoft Graph API
 
 ## Version 2.6.0
 * Added `-FederatedToken` on `Connect-AzAccount`
