@@ -47,6 +47,7 @@
 * Added support for Premium sku and namesapce and optional switch parameter 'DisableLocalAuth' to 'New-AzEventHubNamespace' and 'Set-AzEventHubNamespace' 
 
 #### Az.Functions
+* Set site config netFrameworkVersion for Windows V4 apps only
 * Enabled function app creation for Functions V4 stacks [#15919]
 
 #### Az.IotHub
