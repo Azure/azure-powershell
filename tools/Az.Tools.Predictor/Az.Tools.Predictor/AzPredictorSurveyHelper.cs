@@ -91,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 return _sharedSurveyHelper.ShouldPropmtSurvey(_ModuleName, _ModuleVersion);
             }
 
-            return true;
+            return false;
         }
 
         /// <inheritdoc/>

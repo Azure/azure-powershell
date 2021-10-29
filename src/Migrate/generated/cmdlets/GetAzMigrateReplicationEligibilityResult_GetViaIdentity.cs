@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Validates whether a given VM can be protected or not in which case returns list of errors.

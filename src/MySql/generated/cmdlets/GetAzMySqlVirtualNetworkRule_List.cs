@@ -6,10 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Extensions;
+    using System;
 
     /// <summary>Gets a list of virtual network rules in a server.</summary>
     /// <remarks>
-    /// [OpenAPI] ListByServer=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySQL/servers/{serverName}/virtualNetworkRules"
+    /// [OpenAPI] ListByServer=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMySqlVirtualNetworkRule_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule))]
@@ -31,6 +32,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -385,13 +392,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
                 // pageable / value / nextLink
                 var result = await response;
                 WriteObject(result.Value,true);
-                if (result.NextLink != null)
+                _nextLink = result.NextLink;
+                if (_isFirst)
                 {
-                    if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                    _isFirst = false;
+                    while (_nextLink != null)
                     {
-                        requestMessage = requestMessage.Clone(new global::System.Uri( result.NextLink ),Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get );
-                        await ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.VirtualNetworkRulesListByServer_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.VirtualNetworkRulesListByServer_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
                     }
                 }
             }

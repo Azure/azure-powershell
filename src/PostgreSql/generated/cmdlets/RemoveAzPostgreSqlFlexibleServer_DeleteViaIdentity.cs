@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
+    using System;
 
     /// <summary>Deletes a server.</summary>
     /// <remarks>
