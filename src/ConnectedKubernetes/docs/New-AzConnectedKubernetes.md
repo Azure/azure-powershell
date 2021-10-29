@@ -8,38 +8,39 @@ schema: 2.0.0
 # New-AzConnectedKubernetes
 
 ## SYNOPSIS
-API to register a new K8s cluster and thereby create a tracked resource in ARM
+API to register a new Kubernetes cluster and create a tracked resource in Azure Resource Manager (ARM).
 
 ## SYNTAX
 
 ```
 New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-KubeConfig <String>] [-KubeContext <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Distribution <String>] [-Infrastructure <String>] [-KubeConfig <String>]
+ [-KubeContext <String>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-API to register a new K8s cluster and thereby create a tracked resource in ARM
+API to register a new Kubernetes cluster and create a tracked resource in Azure Resource Manager (ARM).
 
 ## EXAMPLES
 
 ### Example 1: Create a connected kubernetes
 ```powershell
-PS C:\> New-AzConnectedKubernetes -ClusterName ps-connaks-t01 -ResourceGroupName connected-aks -Location 
-Location Name         Type
--------- ----         ----
-eastus   ps-connaks-t01 Microsoft.Kubernetes/connectedClusters
+PS C:\> New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps_test_cluster azps_test_group
 ```
 
 This command creates a connected kubernetes.
 
 ### Example 1: Create a connected kubernetes with parameters kubeConfig and kubeContext
 ```powershell
-PS C:\> New-AzConnectedKubernetes -ClusterName ps-connaks-t02 -ResourceGroupName connected-aks -Location eastus -KubeConfig $HOME\.kube\config -KubeContext portal-aks-t01
+PS C:\> New-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
 
-Location Name         Type
--------- ----         ----
-eastus   ps-connaks-t02 Microsoft.Kubernetes/connectedClusters
+Location Name               ResourceGroupName
+-------- ----               -----------------
+eastus   azps_test_cluster1 azps_test_group
 ```
 
 This command creates a connected kubernetes with parameters kubeConfig and kubeContext.
@@ -68,6 +69,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Distribution
+The Kubernetes distribution running on this connected cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Infrastructure
+The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -121,6 +152,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProvisioningState
+Provisioning state of the connected cluster resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group to which the kubernetes cluster is registered.
 
@@ -147,6 +193,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -189,7 +250,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20210301.IConnectedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster
 
 ## NOTES
 
