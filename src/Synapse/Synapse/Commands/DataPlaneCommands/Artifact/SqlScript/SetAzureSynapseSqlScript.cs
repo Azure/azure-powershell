@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [PSDefaultValue(Help = HelpMessages.DefaultResultLimit, Value = SynapseConstants.DefaultResultLimit)]
         public int ResultLimit { get; set; } = SynapseConstants.DefaultResultLimit;
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.FolderPath)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.SqlFolderPath)]
         [ValidateNotNullOrEmpty]
         [Alias("FolderName")]
         public string FolderPath { get; set; }

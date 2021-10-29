@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Renamed parameter [-FolderName] of `Set-AzSynapseSqlScript` cmdlet to [-FolderPath]
 * Added support for Synapse data flow debug session
     - Added `Start-AzSynapseDataFlowDebugSession` cmdlet to start a Synapse Analytics data flow debug session.
     - Added `Add-AzSynapseDataFlowDebugSessionPackage` cmdlet
