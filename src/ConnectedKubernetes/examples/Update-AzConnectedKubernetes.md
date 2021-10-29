@@ -11,8 +11,7 @@ This command updates a connected kubernetes.
 
 ### Example 2: Update a connected kubernetes by object
 ```powershell
-PS C:\> $conn = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
-PS C:\> Update-AzConnectedKubernetes -InputObject $conn -Tag @{'key'='2'}
+PS C:\> Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group | Update-AzConnectedKubernetes -Tag @{'key'='2'}
 
 Location Name              ResourceGroupName
 -------- ----              -----------------

@@ -12,16 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzConnectedKubernetes' {
-    It 'UpdateExpanded' {
-        Update-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName02 -Tag @{'key1'= 1; 'key2'= 2}
-        $connaks = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName02
-        $connaks.Tag.Count | Should -Be 2
+    It 'UpdateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        $connaks = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName02
-        Update-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName02 -Tag @{'key1'= 1; 'key2'= 2; 'key3'= 3}
-        $connaks = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName02
-        $connaks.Tag.Count | Should -Be 3
+    It 'UpdateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

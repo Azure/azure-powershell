@@ -12,18 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzConnectedKubernetes' {
-    # The cmdlet does not support the playback model because it uses helm and kubectl
     It 'Delete' -skip {
-        Remove-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName00
-        $connaksList =  Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup
-        $connaksList.Name | Should -Not -Contain $env.connaksName00
-
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {
-        $connaks = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName01
-        Remove-AzConnectedKubernetes -InputObject $connaks
-        $connaksList =  Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup
-        $connaksList.Name | Should -Not -Contain $env.connaksName01
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

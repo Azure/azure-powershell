@@ -12,16 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzConnectedKubernetes' {
-    # The cmdlet does not support the playback model because it uses helm and kubectl
     It 'CreateExpanded' -skip {
-        New-AzConnectedKubernetes -ClusterName $env.connaksName02 -ResourceGroupName $env.resourceGroup -Location $env.location -KubeConfig $HOME\.kube\config -KubeContext $env.kubeContext
-        $connaks = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName02
-        $connaks.ProvisioningState | Should -Be 'Succeeded'
-
-        New-AzConnectedKubernetes -ClusterName $env.connaksName03 -ResourceGroupName $env.resourceGroup -Location $env.location 
-        $connaks = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroup -Name $env.connaksName03
-        $connaks.ProvisioningState | Should -Be 'Succeeded'
-        # Clear helm azure-arc environment
-        helm delete azure-arc --no-hooks
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
