@@ -58,6 +58,24 @@ dir2/file2           False        1024            2020-03-23 09:57:33Z rwxrw-rw-
 
 This command move file 'dir1/file1' in 'filesystem1' to file 'dir2/file2' in 'filesystem2' in the same Storage account without prompt.
 
+### Example 3: Move an item with Sas token
+```
+PS C:\> $sas = New-AzStorageContainerSASToken -Name $filesystemName -Permission rdw -Context $ctx
+
+PS C:\> $sasctx = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $sas
+
+PS C:\> Move-AzDataLakeGen2Item -FileSystem $filesystemName -Path $itempath1 -DestFileSystem $filesystemName -DestPath "$($itempath2)$($sas)" -Context $sasctx 
+
+   FileSystem Name: filesystem1
+
+Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
+----                 -----------  ------          ------------         -----------  -----                -----               
+dir2/file1           False        1024            2021-03-23 09:57:33Z rwxrw-rw-    $superuser           $superuser
+```
+
+This first command creates a Sas token with rdw permission, the second command creates a Storage context from the Sas token, the 3rd command moves an item with the Sas token.
+This example use same Sastoken with rdw permission on both source and destication, if use 2 SAS token for source and destication, source need permission rd, destication need permission w.
+
 ## PARAMETERS
 
 ### -Context

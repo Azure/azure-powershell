@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [Alias("NotebookName")]
         public string Name { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.NoteBookFolderPath)]
+        [ValidateNotNullOrEmpty]
+        public string FolderPath { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByNameAndSparkPool,
             Mandatory = true, HelpMessage = HelpMessages.SparkPoolName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObjectAndSparkPool,
@@ -132,6 +136,13 @@ namespace Microsoft.Azure.Commands.Synapse
 
                     notebookResource.Properties.BigDataPool = new BigDataPoolReference(BigDataPoolReferenceType.BigDataPoolReference, this.SparkPoolName);
                     notebookResource.Properties.SessionProperties = new NotebookSessionProperties(options["memory"] + "g", (int)options["cores"], options["memory"] + "g", (int)options["cores"], (int)options["nodeCount"]);
+                }
+
+                if (this.IsParameterBound(c => c.FolderPath))
+                {
+                    NotebookFolder folder = new NotebookFolder();
+                    folder.Name = this.FolderPath;
+                    notebookResource.Properties.Folder = folder;
                 }
 
                 WriteObject(new PSNotebookResource(SynapseAnalyticsClient.CreateOrUpdateNotebook(this.Name, notebookResource), this.WorkspaceName));
