@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `Set-AzSynapseNoteBook` and `Set-AzSynapseSparkJobDefinition` to support new parameter [-FolderPath]
 
 ## Version 0.18.0
 * Added cmdlets for Synapse Kusto pool

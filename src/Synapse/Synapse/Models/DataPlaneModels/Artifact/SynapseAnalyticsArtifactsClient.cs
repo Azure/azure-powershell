@@ -339,10 +339,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region Spark Job Definition
 
-        public SparkJobDefinitionResource CreateOrUpdateSparkJobDefinition(string SparkJobDefinitionName, string rawJsonContent)
+        public SparkJobDefinitionResource CreateOrUpdateSparkJobDefinition(string SparkJobDefinitionName, SparkJobDefinitionResource SparkJobDefinition)
         {
-            SparkJobDefinitionResource SparkJobDefinition = new SparkJobDefinitionResource(JsonConvert.DeserializeObject<SparkJobDefinition>(rawJsonContent));
-            return _sparkJobDefinitionClient.StartCreateOrUpdateSparkJobDefinition(SparkJobDefinitionName, SparkJobDefinition).Poll().Value;
+            var operation = _sparkJobDefinitionClient.StartCreateOrUpdateSparkJobDefinition(SparkJobDefinitionName, SparkJobDefinition);
+            return operation.Poll().Value;
         }
 
         public SparkJobDefinitionResource GetSparkJobDefinition(string SparkJobDefinitionName)
