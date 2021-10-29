@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.6.1
 * Added new version of AAD service client using Microsoft Graph API
 
 ## Version 2.6.0

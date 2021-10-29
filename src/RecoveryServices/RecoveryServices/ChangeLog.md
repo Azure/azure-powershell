@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.8.0
 * Azure Backup fixed issues with StorageConfig
 * Azure Backup added NodesList and AutoProtectionPolicy to Get-AzRecoveryServicesBackupProtectableItem Cmdlets.
 * Azure Backup fixed GetItemsForContainerParamSet to support fetching the MAB backup item.

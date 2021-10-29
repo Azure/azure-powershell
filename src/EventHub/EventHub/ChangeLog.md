@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.0
 * Added support for Premium sku and namesapce and optional switch parameter 'DisableLocalAuth' to `New-AzEventHubNamespace` and `Set-AzEventHubNamespace` 
 
 ## Version 1.8.0

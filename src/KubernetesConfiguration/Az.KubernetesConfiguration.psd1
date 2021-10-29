@@ -12,7 +12,7 @@
 RootModule = './Az.KubernetesConfiguration.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.0'
+ModuleVersion = '0.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = './bin/Az.KubernetesConfiguration.private.dll'
@@ -84,7 +84,7 @@ CmdletsToExport = @()
 AliasesToExport = 'Get-AzK8sConfiguration', 'Get-AzK8sExtension', 
                'New-AzK8sConfiguration', 'New-AzK8sExtension', 
                'Remove-AzK8sConfiguration', 'Remove-AzK8sExtension', 
-               'Update-AzK8sExtension', '*'
+               'Update-AzK8sExtension'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -113,7 +113,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Onboarded cmdlets ''New/Update/Get/Remove-AzKubernetesExtension'' and ''New/Get/Remove-AzKubernetesConfiguration''
+* Removed the plural form of parameter HelmOperatorChartValues, OperatorParameters and SshKnownHosts in ''New-AzKubernetesConfiguration'''
 
         # Prerelease string of this module
         # Prerelease = ''

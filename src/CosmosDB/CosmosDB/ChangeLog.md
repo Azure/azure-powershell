@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.4.0
 * Introduced Get-AzCosmosDBMongoDBBackupInformation to retrieve latest backup information for MongoDB.
 * Updated New-AzCosmosDBAccount, Update-AzCosmosDBAccount to accept BackupStorageRedundancy
 * Introduced Get-AzCosmosDBLocation to list Azure CosmosDB Account and its locations properties.
