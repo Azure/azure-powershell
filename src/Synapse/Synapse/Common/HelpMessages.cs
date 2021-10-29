@@ -533,7 +533,7 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string ResultLimit = "Limit of results, '-1' for no limit.";
 
-        public const string FolderName = "The folder that this SQL script is in. If not specified, this SQL script will appear at the root level.";
+        public const string FolderPath = "The folder that this SQL script is in. If not specified, this SQL script will appear at the root level.";
 
         public const string Description = "The description of the SQL script.";
 

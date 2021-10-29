@@ -15,28 +15,28 @@ Creates or updates a SQL script in a workspace.
 ### SetByName (Default)
 ```
 Set-AzSynapseSqlScript -WorkspaceName <String> [-Name <String>] -DefinitionFile <String> [-ResultLimit <Int32>]
- [-FolderName <String>] [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-FolderPath <String>] [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByNameAndSqlPool
 ```
 Set-AzSynapseSqlScript -WorkspaceName <String> -SqlPoolName <String> -SqlDatabaseName <String> [-Name <String>]
- -DefinitionFile <String> [-ResultLimit <Int32>] [-FolderName <String>] [-Description <String>] [-AsJob]
+ -DefinitionFile <String> [-ResultLimit <Int32>] [-FolderPath <String>] [-Description <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObject
 ```
 Set-AzSynapseSqlScript -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -DefinitionFile <String>
- [-ResultLimit <Int32>] [-FolderName <String>] [-Description <String>] [-AsJob]
+ [-ResultLimit <Int32>] [-FolderPath <String>] [-Description <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObjectAndSqlPool
 ```
 Set-AzSynapseSqlScript -WorkspaceObject <PSSynapseWorkspace> -SqlPoolName <String> -SqlDatabaseName <String>
- [-Name <String>] -DefinitionFile <String> [-ResultLimit <Int32>] [-FolderName <String>]
+ [-Name <String>] -DefinitionFile <String> [-ResultLimit <Int32>] [-FolderPath <String>]
  [-Description <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -130,14 +130,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FolderName
-The folder that this SQL script is in.
-If not specified, this SQL script will appear at the root level.
+### -FolderPath
+The folder that this SQL script is in. If not specified, this SQL script will appear at the root level.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: FolderName
 
 Required: False
 Position: Named
