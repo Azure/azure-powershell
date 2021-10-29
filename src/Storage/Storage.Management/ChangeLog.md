@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed create contaienr SAS token fail from an access policy without expireTime, and set SAS token expireTime [#16266]
+    -  `New-AzStorageContainerSASToken` 
 
 ## Version 3.12.0
 * Upgraded Azure.Storage.Blobs to 12.10.0
