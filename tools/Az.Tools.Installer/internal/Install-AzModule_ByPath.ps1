@@ -51,7 +51,7 @@ function Install-AzModule_ByPath {
     process {
         if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
             Write-Progress -Id $script:FixProgressBarId "Uninstall Azure and AzureRM."
-            Uninstall-AzureRM
+            Remove-AzureRM
         }
 
         if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {

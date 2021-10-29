@@ -395,7 +395,7 @@ class ModuleInfo
     [Version[]] $Version = @()
 }
 
-function Uninstall-AzureRM {
+function Remove-AzureRM {
     process {
         try {
             $azureModuleNames = (Get-InstalledModule -Name Azure* -ErrorAction Stop).Name | Where-Object {$_ -match "Azure(\.[a-zA-Z0-9]+)?" -or $_ -match "AzureRM(\.[a-zA-Z0-9]+)?"}

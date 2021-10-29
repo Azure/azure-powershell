@@ -59,7 +59,7 @@ function Send-PageViewTelemetry
             Write-Debug -Message 'Initialize telemetry client'
             $TelemetryClient = New-Object Microsoft.ApplicationInsights.TelemetryClient
             $TelemetryClient.InstrumentationKey = [Constants]::PublicTelemetryInstrumentationKey
-            $TelemetryClient.Context.Session.Id = $CurrentSessionId
+            $TelemetryClient.Context.Session.Id = [Constants]::CurrentSessionId
             $TelemetryClient.Context.Device.OperatingSystem = [System.Environment]::OSVersion.ToString()
             [Constants]::TelemetryClient = $TelemetryClient
         }
