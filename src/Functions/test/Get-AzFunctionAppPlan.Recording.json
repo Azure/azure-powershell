@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "74" ],
-        "x-ms-client-request-id": [ "6d05714a-a611-4f11-9bbe-892a1f882512" ],
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "20ed66ea-9899-4c23-953b-4cfe34507475" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,34 +23,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "02452d84-eac4-493a-ae25-120ef1754cfb" ],
+        "x-ms-request-id": [ "b3dbe0c3-eb5a-4f4e-b46d-554da27e8004" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
-        "x-ms-correlation-request-id": [ "dff0535a-4ef5-47fd-8364-dc927ce23849" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181136Z:dff0535a-4ef5-47fd-8364-dc927ce23849" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11947" ],
+        "x-ms-correlation-request-id": [ "a8987ddf-511c-4f41-9206-954ebbefda45" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035452Z:a8987ddf-511c-4f41-9206-954ebbefda45" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:36 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:51 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "5901" ],
+        "Content-Length": [ "8649" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-oi4uc8/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan\",\"name\":\"CentralUSLinuxDynamicPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511316,\"name\":\"CentralUSLinuxDynamicPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Consumption-oi4uc8-CentralUSwebspace-Linux\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Linux-Consumption-oi4uc8\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq\",\"name\":\"Functions-Linux-Premium-mb5jkq\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511307,\"name\":\"Functions-Linux-Premium-mb5jkq\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Premium-x76lbq-CentralUSwebspace-Linux\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Linux-Premium-x76lbq\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-u561fe/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511314,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Consumption-u561fe-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Windows-Consumption-u561fe\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz\",\"name\":\"Functions-Windows-Premium-29iroz\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511304,\"name\":\"Functions-Windows-Premium-29iroz\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-7m6duz-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-7m6duz\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}],\"nextLink\":null,\"id\":null}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-1/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511739,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"frangom-central-us-1-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"frangom-central-us-1\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-2/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511747,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"frangom-central-us-2-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"frangom-central-us-2\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-fgtonm/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan\",\"name\":\"CentralUSLinuxDynamicPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3528818,\"name\":\"CentralUSLinuxDynamicPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Consumption-fgtonm-CentralUSwebspace-Linux\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Linux-Consumption-fgtonm\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp\",\"name\":\"Functions-Linux-Premium-bwzcqp\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3528803,\"name\":\"Functions-Linux-Premium-bwzcqp\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Premium-r162be-CentralUSwebspace-Linux\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Linux-Premium-r162be\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-3z0wkb/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3528814,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Consumption-3z0wkb-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Windows-Consumption-3z0wkb\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc\",\"name\":\"Functions-Windows-Premium-u4avhc\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3528802,\"name\":\"Functions-Windows-Premium-u4avhc\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-1nv526-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-1nv526\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}],\"nextLink\":null,\"id\":null}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+GetAll+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-oi4uc8/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan?api-version=2019-08-01+2": {
+  "Get-AzFunctionAppPlan+[NoContext]+GetAll+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-1/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-oi4uc8/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-1/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "75" ],
-        "x-ms-client-request-id": [ "62d8135b-25d2-46ad-97d2-03f7ad8e9dae" ],
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "4dc59e91-a963-487a-937a-97594fee979d" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,34 +66,120 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "9d8f4b77-3c6b-4086-9dce-aff0e290cb48" ],
+        "x-ms-request-id": [ "16af853b-5ab7-4120-a46a-bedb4b468798" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
-        "x-ms-correlation-request-id": [ "f6ae8afa-22f9-45af-b6f6-861208f38520" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181137Z:f6ae8afa-22f9-45af-b6f6-861208f38520" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11946" ],
+        "x-ms-correlation-request-id": [ "05da32df-6184-42b1-ba66-fecd86079df7" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035452Z:05da32df-6184-42b1-ba66-fecd86079df7" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:37 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1431" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-1/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":32733,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"frangom-central-us-1-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"frangom-central-us-1\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-225_32733\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFunctionAppPlan+[NoContext]+GetAll+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-2/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-2/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "c9ec8a7a-123f-49ac-98c8-805947e1581a" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
+        "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.0.6" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "75f95372-3431-4f99-9c1a-8bd040f6fb15" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11945" ],
+        "x-ms-correlation-request-id": [ "7eb314fc-252a-4bd1-aa5a-e3a24ff4941a" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035452Z:7eb314fc-252a-4bd1-aa5a-e3a24ff4941a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 29 Oct 2021 03:54:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1429" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-2/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":8096,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"frangom-central-us-2-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"frangom-central-us-2\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-245_8096\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFunctionAppPlan+[NoContext]+GetAll+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-fgtonm/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan?api-version=2019-08-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-fgtonm/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan?api-version=2019-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "95050fa0-1f39-4c0e-ab6e-b17474fa1bd2" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
+        "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.0.6" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ac61c90f-2648-47af-ab22-9ad35bf2a588" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11944" ],
+        "x-ms-correlation-request-id": [ "0d9a76b6-c33d-4df2-b0a0-a25d82df18da" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035453Z:0d9a76b6-c33d-4df2-b0a0-a25d82df18da" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 29 Oct 2021 03:54:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1529" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-oi4uc8/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan\",\"name\":\"CentralUSLinuxDynamicPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":56428,\"name\":\"CentralUSLinuxDynamicPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Consumption-oi4uc8-CentralUSwebspace-Linux\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Linux-Consumption-oi4uc8\",\"reserved\":true,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-157_56428\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-fgtonm/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan\",\"name\":\"CentralUSLinuxDynamicPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":56900,\"name\":\"CentralUSLinuxDynamicPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Consumption-fgtonm-CentralUSwebspace-Linux\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Linux-Consumption-fgtonm\",\"reserved\":true,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-157_56900\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+GetAll+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq?api-version=2019-08-01+3": {
+  "Get-AzFunctionAppPlan+[NoContext]+GetAll+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp?api-version=2019-08-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "76" ],
-        "x-ms-client-request-id": [ "2d039d7e-a90b-46a2-8930-8f99ac4fcd47" ],
+        "x-ms-unique-id": [ "86" ],
+        "x-ms-client-request-id": [ "5e56a633-11ca-4fb9-97f6-db4446bd3625" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -109,34 +195,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "994af48a-1421-4abd-a5ab-d54615b55cf9" ],
+        "x-ms-request-id": [ "13ab471c-9c0e-4006-8418-f7ca59e70fb1" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
-        "x-ms-correlation-request-id": [ "921cdc02-d5a8-46b2-a4ef-0867914fbeaf" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181137Z:921cdc02-d5a8-46b2-a4ef-0867914fbeaf" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11943" ],
+        "x-ms-correlation-request-id": [ "eb165ad5-b6fe-4a39-8352-9f229a3a1911" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035453Z:eb165ad5-b6fe-4a39-8352-9f229a3a1911" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:37 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1527" ],
+        "Content-Length": [ "1525" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq\",\"name\":\"Functions-Linux-Premium-mb5jkq\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":21575,\"name\":\"Functions-Linux-Premium-mb5jkq\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Premium-x76lbq-CentralUSwebspace-Linux\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Linux-Premium-x76lbq\",\"reserved\":true,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-191_21575\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp\",\"name\":\"Functions-Linux-Premium-bwzcqp\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":5898,\"name\":\"Functions-Linux-Premium-bwzcqp\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Premium-r162be-CentralUSwebspace-Linux\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Linux-Premium-r162be\",\"reserved\":true,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-235_5898\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+GetAll+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-u561fe/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01+4": {
+  "Get-AzFunctionAppPlan+[NoContext]+GetAll+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-3z0wkb/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-u561fe/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-3z0wkb/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "77" ],
-        "x-ms-client-request-id": [ "46cccb41-4514-4f5f-8b1b-83ff5596dbd4" ],
+        "x-ms-unique-id": [ "87" ],
+        "x-ms-client-request-id": [ "55ff9fd0-4d66-40ca-bc32-3350bdab152a" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -152,34 +238,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "ddddeedc-0499-4480-8cdb-6fd1ba8d56e3" ],
+        "x-ms-request-id": [ "d7bc5c1d-81d2-4b99-bc01-3fbb27db761d" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11949" ],
-        "x-ms-correlation-request-id": [ "aff233f1-e9a7-42e5-9d30-69c6a23c0453" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181137Z:aff233f1-e9a7-42e5-9d30-69c6a23c0453" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11942" ],
+        "x-ms-correlation-request-id": [ "51c26484-99c2-4ae6-874f-5c8b5a6fc20b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035453Z:51c26484-99c2-4ae6-874f-5c8b5a6fc20b" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:37 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1492" ],
+        "Content-Length": [ "1494" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-u561fe/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":1911,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Consumption-u561fe-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Windows-Consumption-u561fe\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-249_1911\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-3z0wkb/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":21587,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Consumption-3z0wkb-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Windows-Consumption-3z0wkb\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-221_21587\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+GetAll+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz?api-version=2019-08-01+5": {
+  "Get-AzFunctionAppPlan+[NoContext]+GetAll+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc?api-version=2019-08-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "78" ],
-        "x-ms-client-request-id": [ "bd3b5424-411a-4e3e-9f31-740f17be46a0" ],
+        "x-ms-unique-id": [ "88" ],
+        "x-ms-client-request-id": [ "72f034e5-f6d0-46be-b4b6-ab28cfd96d5a" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -195,34 +281,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "1e0275dc-c14e-4fef-8f98-ad1303bede92" ],
+        "x-ms-request-id": [ "72808e3f-105e-4817-9288-95dfbd5805e4" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11948" ],
-        "x-ms-correlation-request-id": [ "26a1aaf1-6a1f-4a77-8a1d-9f5c0362c677" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181137Z:26a1aaf1-6a1f-4a77-8a1d-9f5c0362c677" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11941" ],
+        "x-ms-correlation-request-id": [ "03054046-0839-4558-8827-5d87067c6430" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035453Z:03054046-0839-4558-8827-5d87067c6430" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:37 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1532" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz\",\"name\":\"Functions-Windows-Premium-29iroz\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":9929,\"name\":\"Functions-Windows-Premium-29iroz\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-7m6duz-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-7m6duz\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-241_9929\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc\",\"name\":\"Functions-Windows-Premium-u4avhc\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":5604,\"name\":\"Functions-Windows-Premium-u4avhc\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-1nv526-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-1nv526\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-247_5604\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+ByName \u0027Functions-Windows-Premium-29iroz\u0027+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz?api-version=2019-08-01+1": {
+  "Get-AzFunctionAppPlan+[NoContext]+ByName \u0027Functions-Windows-Premium-u4avhc\u0027+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc?api-version=2019-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "79" ],
-        "x-ms-client-request-id": [ "5e4db5df-455b-464d-a7ad-7f7f981b14c0" ],
+        "x-ms-unique-id": [ "89" ],
+        "x-ms-client-request-id": [ "7620127f-b001-4e01-8b5b-58f881e28111" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -238,34 +324,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "8da69ee5-8215-42aa-a1af-5a5d51674785" ],
+        "x-ms-request-id": [ "218a3916-a5f8-4617-be0d-5b1b27428e32" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11947" ],
-        "x-ms-correlation-request-id": [ "ce489e8a-ccab-4058-a0dd-82bb527e365b" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181138Z:ce489e8a-ccab-4058-a0dd-82bb527e365b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11940" ],
+        "x-ms-correlation-request-id": [ "11f1eac7-cafa-4d5f-948b-7cbc631f2961" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035454Z:11f1eac7-cafa-4d5f-948b-7cbc631f2961" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:37 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1532" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz\",\"name\":\"Functions-Windows-Premium-29iroz\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":9929,\"name\":\"Functions-Windows-Premium-29iroz\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-7m6duz-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-7m6duz\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-241_9929\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc\",\"name\":\"Functions-Windows-Premium-u4avhc\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":5604,\"name\":\"Functions-Windows-Premium-u4avhc\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-1nv526-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-1nv526\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-247_5604\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+ByName \u0027Functions-Linux-Premium-mb5jkq\u0027+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq?api-version=2019-08-01+1": {
+  "Get-AzFunctionAppPlan+[NoContext]+ByName \u0027Functions-Linux-Premium-bwzcqp\u0027+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp?api-version=2019-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "80" ],
-        "x-ms-client-request-id": [ "138d4503-10f4-40a7-a2d3-2f44007398c6" ],
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "cf68b905-ff6c-4bb9-8999-0107c2eafef9" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -281,34 +367,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "f3e439bb-8b12-40be-ab44-507b3fee9ccc" ],
+        "x-ms-request-id": [ "94bf9f61-be06-4ffa-89d3-b0159cc1f480" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11946" ],
-        "x-ms-correlation-request-id": [ "38136982-c558-47e2-8a35-bbbd6db59c8f" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181138Z:38136982-c558-47e2-8a35-bbbd6db59c8f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11939" ],
+        "x-ms-correlation-request-id": [ "4cc98cfe-7259-4e4e-a4b6-7e0ad81f1b38" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035454Z:4cc98cfe-7259-4e4e-a4b6-7e0ad81f1b38" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:38 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1527" ],
+        "Content-Length": [ "1525" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq\",\"name\":\"Functions-Linux-Premium-mb5jkq\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":21575,\"name\":\"Functions-Linux-Premium-mb5jkq\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Premium-x76lbq-CentralUSwebspace-Linux\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Linux-Premium-x76lbq\",\"reserved\":true,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-191_21575\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp\",\"name\":\"Functions-Linux-Premium-bwzcqp\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":5898,\"name\":\"Functions-Linux-Premium-bwzcqp\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Premium-r162be-CentralUSwebspace-Linux\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Linux-Premium-r162be\",\"reserved\":true,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-235_5898\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+ByResourceGroupName+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms?api-version=2019-08-01+1": {
+  "Get-AzFunctionAppPlan+[NoContext]+ByResourceGroupName+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms?api-version=2019-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "81" ],
-        "x-ms-client-request-id": [ "d8b22aea-836e-4246-8159-7314f8ebf850" ],
+        "x-ms-unique-id": [ "91" ],
+        "x-ms-client-request-id": [ "9366cd13-b977-4659-a90c-b4be95d0859a" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -324,22 +410,22 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "2058d476-947e-42fe-883e-e7698005a840" ],
+        "x-ms-request-id": [ "fa6ee663-8172-41aa-84a5-e249bc46bcaf" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11945" ],
-        "x-ms-correlation-request-id": [ "e5f6571c-abf7-420b-8894-027613c3df04" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181138Z:e5f6571c-abf7-420b-8894-027613c3df04" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11938" ],
+        "x-ms-correlation-request-id": [ "02b65335-4156-4fe8-9aab-06f9083ec711" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035454Z:02b65335-4156-4fe8-9aab-06f9083ec711" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:38 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1570" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz\",\"name\":\"Functions-Windows-Premium-29iroz\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":9929,\"name\":\"Functions-Windows-Premium-29iroz\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-7m6duz-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-7m6duz\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-241_9929\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}],\"nextLink\":null,\"id\":null}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc\",\"name\":\"Functions-Windows-Premium-u4avhc\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":5604,\"name\":\"Functions-Windows-Premium-u4avhc\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-1nv526-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-1nv526\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-247_5604\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}],\"nextLink\":null,\"id\":null}",
       "isContentBase64": false
     }
   },
@@ -350,8 +436,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "82" ],
-        "x-ms-client-request-id": [ "17de35dd-2e32-4fa2-9cde-74f90bb9c414" ],
+        "x-ms-unique-id": [ "92" ],
+        "x-ms-client-request-id": [ "2e3710a2-22d5-4dec-af3c-ff869566cff6" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -367,34 +453,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "baa4927f-9431-4e37-adfb-7cc7296972de" ],
+        "x-ms-request-id": [ "5c08151e-42df-46e0-877f-1f73c7048146" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11944" ],
-        "x-ms-correlation-request-id": [ "3607240a-e602-4e70-ae9f-a3cadc787c3c" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181138Z:3607240a-e602-4e70-ae9f-a3cadc787c3c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11937" ],
+        "x-ms-correlation-request-id": [ "5d8bc677-dddb-4432-9f27-11bbe6351eac" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035454Z:5d8bc677-dddb-4432-9f27-11bbe6351eac" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:38 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "5901" ],
+        "Content-Length": [ "8649" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-oi4uc8/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan\",\"name\":\"CentralUSLinuxDynamicPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511316,\"name\":\"CentralUSLinuxDynamicPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Consumption-oi4uc8-CentralUSwebspace-Linux\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Linux-Consumption-oi4uc8\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq\",\"name\":\"Functions-Linux-Premium-mb5jkq\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511307,\"name\":\"Functions-Linux-Premium-mb5jkq\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Premium-x76lbq-CentralUSwebspace-Linux\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Linux-Premium-x76lbq\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-u561fe/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511314,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Consumption-u561fe-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Windows-Consumption-u561fe\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz\",\"name\":\"Functions-Windows-Premium-29iroz\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511304,\"name\":\"Functions-Windows-Premium-29iroz\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-7m6duz-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-7m6duz\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}],\"nextLink\":null,\"id\":null}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-1/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511739,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"frangom-central-us-1-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"frangom-central-us-1\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-2/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3511747,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"frangom-central-us-2-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"frangom-central-us-2\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-fgtonm/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan\",\"name\":\"CentralUSLinuxDynamicPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3528818,\"name\":\"CentralUSLinuxDynamicPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Consumption-fgtonm-CentralUSwebspace-Linux\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Linux-Consumption-fgtonm\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp\",\"name\":\"Functions-Linux-Premium-bwzcqp\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3528803,\"name\":\"Functions-Linux-Premium-bwzcqp\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Premium-r162be-CentralUSwebspace-Linux\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Linux-Premium-r162be\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-3z0wkb/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3528814,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Consumption-3z0wkb-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Windows-Consumption-3z0wkb\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}},{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc\",\"name\":\"Functions-Windows-Premium-u4avhc\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":3528802,\"name\":\"Functions-Windows-Premium-u4avhc\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":null,\"currentWorkerSizeId\":null,\"currentNumberOfWorkers\":null,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-1nv526-CentralUSwebspace\",\"subscription\":null,\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Shared\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":null,\"elasticScaleEnabled\":null,\"maximumElasticWorkerCount\":null,\"numberOfSites\":0,\"hostingEnvironmentId\":null,\"isSpot\":null,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-1nv526\",\"reserved\":null,\"isXenon\":null,\"hyperV\":null,\"mdmId\":null,\"targetWorkerCount\":null,\"targetWorkerSizeId\":null,\"provisioningState\":null,\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":null},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}],\"nextLink\":null,\"id\":null}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+ByLocation+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-oi4uc8/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan?api-version=2019-08-01+2": {
+  "Get-AzFunctionAppPlan+[NoContext]+ByLocation+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-1/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-oi4uc8/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-1/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "83" ],
-        "x-ms-client-request-id": [ "31108fd8-014c-4e0e-844e-7d3a8aa22075" ],
+        "x-ms-unique-id": [ "93" ],
+        "x-ms-client-request-id": [ "cb8701d0-e664-41d9-8c04-db657c12eb28" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -410,34 +496,120 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "832650ba-b551-437f-8941-89e754472a71" ],
+        "x-ms-request-id": [ "16b1ee28-d1e2-4bca-8c10-78471eec8a0c" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11943" ],
-        "x-ms-correlation-request-id": [ "ccb58391-b090-4f89-9660-7bfcec652cf4" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181138Z:ccb58391-b090-4f89-9660-7bfcec652cf4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11936" ],
+        "x-ms-correlation-request-id": [ "e9518b02-4323-43f1-9f59-e2b39c91ebdb" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035454Z:e9518b02-4323-43f1-9f59-e2b39c91ebdb" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:38 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1431" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-1/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":32733,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"frangom-central-us-1-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"frangom-central-us-1\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-225_32733\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFunctionAppPlan+[NoContext]+ByLocation+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-2/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-2/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "94" ],
+        "x-ms-client-request-id": [ "74cf45d5-a912-4435-a416-2f1f3f51ba7d" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
+        "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.0.6" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1800ce40-1f0e-42ae-9ac5-a05df7adc82e" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11935" ],
+        "x-ms-correlation-request-id": [ "3d32cbce-8846-420e-9090-7e5fd9995de3" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035455Z:3d32cbce-8846-420e-9090-7e5fd9995de3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 29 Oct 2021 03:54:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1429" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/frangom-central-us-2/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":8096,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"frangom-central-us-2-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"frangom-central-us-2\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-245_8096\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFunctionAppPlan+[NoContext]+ByLocation+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-fgtonm/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan?api-version=2019-08-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-fgtonm/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan?api-version=2019-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "95" ],
+        "x-ms-client-request-id": [ "e7a3530c-4a8b-46fe-b700-06f131465e20" ],
+        "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
+        "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.5.0", "PSVersion/v7.0.6" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8b991fd8-bf72-4729-a2d2-6527f882d735" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11934" ],
+        "x-ms-correlation-request-id": [ "b595fa7b-c4be-4ca1-a7f2-09c3ea827363" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035455Z:b595fa7b-c4be-4ca1-a7f2-09c3ea827363" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 29 Oct 2021 03:54:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1529" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-oi4uc8/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan\",\"name\":\"CentralUSLinuxDynamicPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":56428,\"name\":\"CentralUSLinuxDynamicPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Consumption-oi4uc8-CentralUSwebspace-Linux\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Linux-Consumption-oi4uc8\",\"reserved\":true,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-157_56428\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Consumption-fgtonm/providers/Microsoft.Web/serverfarms/CentralUSLinuxDynamicPlan\",\"name\":\"CentralUSLinuxDynamicPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":56900,\"name\":\"CentralUSLinuxDynamicPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Consumption-fgtonm-CentralUSwebspace-Linux\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Linux-Consumption-fgtonm\",\"reserved\":true,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-157_56900\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+ByLocation+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq?api-version=2019-08-01+3": {
+  "Get-AzFunctionAppPlan+[NoContext]+ByLocation+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp?api-version=2019-08-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "84" ],
-        "x-ms-client-request-id": [ "e1b7ede9-7e7e-4415-b1b1-286bc1d5c311" ],
+        "x-ms-unique-id": [ "96" ],
+        "x-ms-client-request-id": [ "78074e65-d3a6-4def-8d53-bd1d2a32eb7a" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -453,34 +625,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "b28fd81d-cd25-4ed5-ae5a-25f8ebc62aa9" ],
+        "x-ms-request-id": [ "ea688bf1-2bf4-4b15-aeb1-808aacb60168" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11942" ],
-        "x-ms-correlation-request-id": [ "60615961-c3a5-4edf-bc83-dda2d69aef4e" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181139Z:60615961-c3a5-4edf-bc83-dda2d69aef4e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11933" ],
+        "x-ms-correlation-request-id": [ "c34f39af-7374-46f0-bdaf-e37a9a6ae35a" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035455Z:c34f39af-7374-46f0-bdaf-e37a9a6ae35a" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:39 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1527" ],
+        "Content-Length": [ "1525" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-x76lbq/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-mb5jkq\",\"name\":\"Functions-Linux-Premium-mb5jkq\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":21575,\"name\":\"Functions-Linux-Premium-mb5jkq\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Premium-x76lbq-CentralUSwebspace-Linux\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Linux-Premium-x76lbq\",\"reserved\":true,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-191_21575\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Linux-Premium-r162be/providers/Microsoft.Web/serverfarms/Functions-Linux-Premium-bwzcqp\",\"name\":\"Functions-Linux-Premium-bwzcqp\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":5898,\"name\":\"Functions-Linux-Premium-bwzcqp\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Linux-Premium-r162be-CentralUSwebspace-Linux\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Linux-Premium-r162be\",\"reserved\":true,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-235_5898\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+ByLocation+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-u561fe/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01+4": {
+  "Get-AzFunctionAppPlan+[NoContext]+ByLocation+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-3z0wkb/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-u561fe/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-3z0wkb/providers/Microsoft.Web/serverfarms/CentralUSPlan?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "85" ],
-        "x-ms-client-request-id": [ "b6175712-f0cd-4075-b1a8-c3c0ec4ad59b" ],
+        "x-ms-unique-id": [ "97" ],
+        "x-ms-client-request-id": [ "baeb2c6d-2f83-496c-81e3-3b3d2b474e56" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -496,34 +668,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "64248ea7-5c57-4a88-a305-6a377747b7ce" ],
+        "x-ms-request-id": [ "651e02d2-7abf-4248-ac0a-112bf05abd82" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11941" ],
-        "x-ms-correlation-request-id": [ "f7d08403-a049-49a2-bd21-438f9091ef1c" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181139Z:f7d08403-a049-49a2-bd21-438f9091ef1c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11932" ],
+        "x-ms-correlation-request-id": [ "7acbf59a-7706-4b23-8533-907a2396d54f" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035455Z:7acbf59a-7706-4b23-8533-907a2396d54f" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:39 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:55 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1492" ],
+        "Content-Length": [ "1494" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-u561fe/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":1911,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Consumption-u561fe-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Windows-Consumption-u561fe\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-249_1911\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Consumption-3z0wkb/providers/Microsoft.Web/serverfarms/CentralUSPlan\",\"name\":\"CentralUSPlan\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"functionapp\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":21587,\"name\":\"CentralUSPlan\",\"workerSize\":\"Default\",\"workerSizeId\":0,\"workerTierName\":null,\"numberOfWorkers\":0,\"currentWorkerSize\":\"Default\",\"currentWorkerSizeId\":0,\"currentNumberOfWorkers\":0,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Consumption-3z0wkb-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":0,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dynamic\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":false,\"maximumElasticWorkerCount\":1,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"functionapp\",\"resourceGroup\":\"Functions-Test-Windows-Consumption-3z0wkb\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-221_21587\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"Y1\",\"tier\":\"Dynamic\",\"size\":\"Y1\",\"family\":\"Y\",\"capacity\":0}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFunctionAppPlan+[NoContext]+ByLocation+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz?api-version=2019-08-01+5": {
+  "Get-AzFunctionAppPlan+[NoContext]+ByLocation+$GET+https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc?api-version=2019-08-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz?api-version=2019-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc?api-version=2019-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "86" ],
-        "x-ms-client-request-id": [ "4059bf99-42f0-4563-9b00-b09f78a8c004" ],
+        "x-ms-unique-id": [ "98" ],
+        "x-ms-client-request-id": [ "18ecba3f-a32e-4b8a-9bc4-94271fad9bb7" ],
         "CommandName": [ "Az.Functions.internal\\Get-AzFunctionAppPlan" ],
         "FullCommandName": [ "Get-AzFunctionAppPlan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -539,22 +711,22 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "69529502-17a4-4068-9787-e5f3d221d3b6" ],
+        "x-ms-request-id": [ "641bd502-f2be-4313-8575-2ba1075d6b9c" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11940" ],
-        "x-ms-correlation-request-id": [ "63e068ed-7a4e-4942-a3c0-d40923242e74" ],
-        "x-ms-routing-request-id": [ "WESTUS:20211023T181139Z:63e068ed-7a4e-4942-a3c0-d40923242e74" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11931" ],
+        "x-ms-correlation-request-id": [ "f7ac2a6d-0006-4d90-85c9-396a869aeb51" ],
+        "x-ms-routing-request-id": [ "WESTUS:20211029T035455Z:f7ac2a6d-0006-4d90-85c9-396a869aeb51" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 23 Oct 2021 18:11:39 GMT" ]
+        "Date": [ "Fri, 29 Oct 2021 03:54:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1532" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-7m6duz/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-29iroz\",\"name\":\"Functions-Windows-Premium-29iroz\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":9929,\"name\":\"Functions-Windows-Premium-29iroz\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-7m6duz-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-7m6duz\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-241_9929\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
+      "Content": "{\"id\":\"/subscriptions/26cfabf6-eb15-4de5-ae51-f2218958bd5f/resourceGroups/Functions-Test-Windows-Premium-1nv526/providers/Microsoft.Web/serverfarms/Functions-Windows-Premium-u4avhc\",\"name\":\"Functions-Windows-Premium-u4avhc\",\"type\":\"Microsoft.Web/serverfarms\",\"kind\":\"elastic\",\"location\":\"Central US\",\"properties\":{\"serverFarmId\":5604,\"name\":\"Functions-Windows-Premium-u4avhc\",\"workerSize\":\"D1\",\"workerSizeId\":3,\"workerTierName\":null,\"numberOfWorkers\":1,\"currentWorkerSize\":\"D1\",\"currentWorkerSizeId\":3,\"currentNumberOfWorkers\":1,\"status\":\"Ready\",\"webSpace\":\"Functions-Test-Windows-Premium-1nv526-CentralUSwebspace\",\"subscription\":\"26cfabf6-eb15-4de5-ae51-f2218958bd5f\",\"adminSiteName\":null,\"hostingEnvironment\":null,\"hostingEnvironmentProfile\":null,\"maximumNumberOfWorkers\":20,\"planName\":\"VirtualDedicatedPlan\",\"adminRuntimeSiteName\":null,\"computeMode\":\"Dedicated\",\"siteMode\":null,\"geoRegion\":\"Central US\",\"perSiteScaling\":false,\"elasticScaleEnabled\":true,\"maximumElasticWorkerCount\":10,\"numberOfSites\":1,\"hostingEnvironmentId\":null,\"isSpot\":false,\"spotExpirationTime\":null,\"freeOfferExpirationTime\":null,\"tags\":null,\"kind\":\"elastic\",\"resourceGroup\":\"Functions-Test-Windows-Premium-1nv526\",\"reserved\":false,\"isXenon\":false,\"hyperV\":false,\"mdmId\":\"waws-prod-dm1-247_5604\",\"targetWorkerCount\":0,\"targetWorkerSizeId\":0,\"provisioningState\":\"Succeeded\",\"webSiteId\":null,\"existingServerFarmIds\":null,\"kubeEnvironmentProfile\":null,\"zoneRedundant\":false},\"sku\":{\"name\":\"EP1\",\"tier\":\"ElasticPremium\",\"size\":\"EP1\",\"family\":\"EP\",\"capacity\":1}}",
       "isContentBase64": false
     }
   }
