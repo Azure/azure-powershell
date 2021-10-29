@@ -91,11 +91,9 @@ function Install-AzModule {
             Install-AzModule_ByPath @PSBoundParameters -Invoker $Invoker
         }
 
-        <#
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
             -IsSuccess $true `
             -StartDateTime $cmdStarted `
             -Duration ((Get-Date) - $cmdStarted)
-        #>
     }
 }
