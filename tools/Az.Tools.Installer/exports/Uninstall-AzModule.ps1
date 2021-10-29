@@ -140,13 +140,9 @@ function Uninstall-AzModule {
             Write-Debug "[$Invoker] All uninstallation tasks are finished; Time Elapsed Total: $($duration.TotalSeconds)s."
         }
 
-        <#
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
             -IsSuccess $true `
             -StartDateTime $cmdStarted `
             -Duration ((Get-Date) - $cmdStarted)
-
-        #>
-
     }
 }
