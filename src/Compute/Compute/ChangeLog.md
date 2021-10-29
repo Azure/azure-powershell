@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Update-AzVM will update ApplicationProfile.
 * Added support for proxy and debug settings for VM Extension for SAP (AEM)
 * Updated New-AzGalleryImageVersion to take in the 'Encryption' property correctly from '-TagetRegion' parameter. 
 * Updated Set-AzVmBootDiagnostic to default to managed storage account if not provided.

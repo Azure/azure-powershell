@@ -159,7 +159,8 @@ namespace Microsoft.Azure.Commands.Compute
                         AdditionalCapabilities = this.VM.AdditionalCapabilities,
                         EvictionPolicy = this.VM.EvictionPolicy,
                         Priority = this.VM.Priority,
-                        CapacityReservation = this.VM.CapacityReservation
+                        CapacityReservation = this.VM.CapacityReservation,
+                        ApplicationProfile = ComputeAutoMapperProfile.Mapper.Map<ApplicationProfile>(this.VM.ApplicationProfile)
                     };
 
                     if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
