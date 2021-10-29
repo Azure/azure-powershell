@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Update-AzVM will also update ApplicationProfile. 
 * Added cmdlets for adding VMGalleryApplication property to VM/VMSS
     - New-AzVmGalleryApplication
     - New-AzVmssGalleryApplication
