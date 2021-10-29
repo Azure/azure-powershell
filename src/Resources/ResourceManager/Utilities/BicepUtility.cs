@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             return currentBicepVersion;
         }
 
-        private static string GetBicepVesion(PowerShell powershell)
+        private static string GetBicepVersion(PowerShell powershell)
         {
             powershell.AddScript("bicep -v");
             var result = powershell.Invoke()[0].ToString();
