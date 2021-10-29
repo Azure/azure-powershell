@@ -20,6 +20,7 @@
 ## Upcoming Release
 
 ## Version 3.1.1
+* Set site config netFrameworkVersion for Windows V4 apps only
 * Enabled function app creation for Functions V4 stacks [#15919]
 
 ## Version 3.1.0
