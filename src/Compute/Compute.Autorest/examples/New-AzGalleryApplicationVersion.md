@@ -1,4 +1,4 @@
-`### Example 1: Create a gallery application version.
+### Example 1: Create a gallery application version.
 ```powershell
 PS C:\> $ctx = New-AzStorageContext -StorageAccountName $storAccName
 PS C:\> $SASToken = new-azstorageblobsastoken -Context $ctx -Container $containerName -blob $blobName -Permission r
@@ -13,4 +13,3 @@ PS C:\> New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location Eas
 Creating a Gallery Application Version. Using SAS Uri for the blob for PackageFileLink.
 
 
-`
