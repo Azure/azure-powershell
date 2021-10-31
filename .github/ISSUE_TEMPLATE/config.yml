@@ -5,4 +5,4 @@ contact_links:
     about: PowerShell related question
   - name: Microsoft Graph Module Question
     url: https://github.com/microsoftgraph/msgraph-sdk-powershell/issues/
-    about: Question about [Microsoft Graph PowerShell Module](https://www.powershellgallery.com/packages/Microsoft.Graph) 
+    about: Question about Microsoft Graph PowerShell Module 
