@@ -75,6 +75,7 @@ Accept wildcard characters: False
 
 ### -ExpiryTime
 Specifies the time at which the shared access signature becomes invalid.
+To get a **DateTime** object, use the Get-Date cmdlet.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
