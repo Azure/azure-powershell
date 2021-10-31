@@ -1,4 +1,4 @@
-name: 🐛 AzureRM module bug report
+name: AzureRM module bug report
 description: Report errors or unexpected behaviors for the AzureRM module
 labels: [needs-triage, AzureRM 6.x]
 
