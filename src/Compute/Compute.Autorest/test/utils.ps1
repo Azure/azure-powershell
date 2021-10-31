@@ -25,13 +25,13 @@ function setupEnv() {
         $envFile = 'localEnv.json'
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
-    
+
     $env.RandomString = (RandomString $false 8)
     $env.ResourceGroupName = "RGComputeTest" + $env.RandomString
     $env.Location = "EastUS"
     $env.vmname = "testpwshellvm"
     $env.vmssname = "testpwshellvmss"
-    
+
     # Create ResourceGroup
     Write-Host -ForegroundColor Yellow "Creating ResourceGroup" $env.ResourceGroupName
     New-AzResourceGroup -ResourceGroupName $env.ResourceGroupName -Location $env.Location

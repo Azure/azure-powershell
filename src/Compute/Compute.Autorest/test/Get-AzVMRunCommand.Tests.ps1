@@ -12,18 +12,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzVMRunCommand'))
       $currentPath = Split-Path -Path $currentPath -Parent
   }
   . ($mockingPath | Select-Object -First 1).FullName
+
 }
 
-Describe 'Get-AzVMRunCommand' {
-    It 'List' -skip {
 
-        $returnlist = Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname
-        $returnlist.Count |  Should -Be 1
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Get-AzVMRunCommand' {
+    
+    BeforeAll { 
+        $vmname = "testpwshellvm"
+        $rgname = "testpwshellcompute"
+        $user = "Foo12";
+        $password = RandomString -allChars $True -len 13 
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        Write-Host $env.rgname
+        New-AzVM -ResourceGroupName $rgname -Location "eastus" -Name $vmname -Credential $cred
+        #New-AzVmss -ResourceGroupName $env.rgname -VMScaleSetName $env.vmssname -ImageName 'Win2016Datacenter' -Credential $cred -InstanceCount 2
+        Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand1' -Location "eastus"
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $returnlist = Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname
+    }
+
+    It 'Get' {
+        $returnlist = Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand1"
     }
 
     It 'List1' -skip {

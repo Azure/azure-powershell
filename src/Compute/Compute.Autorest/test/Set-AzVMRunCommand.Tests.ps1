@@ -15,7 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzVMRunCommand'))
 }
 
 Describe 'Set-AzVMRunCommand' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+
+    BeforeAll { 
+        $vmname = "testpwshellvm"
+        $rgname = "testpwshellcompute"
+        $user = "Foo12";
+        $password = RandomString -allChars $True -len 13 
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        Write-Host $env.rgname
+        New-AzVM -ResourceGroupName $rgname -Location "eastus" -Name $vmname -Credential $cred
+    }
+    
+    It 'UpdateExpanded' {
+        Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand1' -Location "eastus"
     }
 }

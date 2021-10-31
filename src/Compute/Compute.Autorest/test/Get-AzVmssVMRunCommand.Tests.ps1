@@ -15,12 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzVmssVMRunCommand'))
 }
 
 Describe 'Get-AzVmssVMRunCommand' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+
+    BeforeAll { 
+        $vmname = "testpwshellvm"
+        $vmssname = "testpwshellvmss"
+        $rgname = "testpwshellcompute"
+        $user = "Foo12";
+        $password = RandomString -allChars $True -len 13 
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        
+        New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -ImageName 'Win2016Datacenter' -Credential $cred -InstanceCount 2
+        Set-AzVmssVMRunCommand -InstanceId 0 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname -Location "eastus"
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        Get-AzVmssVMRunCommand -InstanceId 0 -ResourceGroupName $rgname  -VMScaleSetName $vmssname
+    }
+
+    It 'Get' {
+        Get-AzVmssVMRunCommand -InstanceId 0 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
     }
 
     It 'GetViaIdentity' -skip {

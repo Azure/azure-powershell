@@ -30,23 +30,13 @@ The operation to delete the VMSS VM run command.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove VMSS VM RunCommand
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Remove VMSS VM RunCommand
 
 ## PARAMETERS
 
@@ -255,11 +245,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IComputeIdentity>: Identity Parameter
   - `[CommandId <String>]`: The command id.
-  - `[GalleryApplicationName <String>]`: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
-  - `[GalleryApplicationVersionName <String>]`: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
-  - `[GalleryImageName <String>]`: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
-  - `[GalleryImageVersionName <String>]`: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
-  - `[GalleryName <String>]`: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
   - `[Id <String>]`: Resource identity path
   - `[InstanceId <String>]`: The instance ID of the virtual machine.
   - `[Location <String>]`: The location upon which run commands is queried.
@@ -270,4 +255,3 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   - `[VMScaleSetName <String>]`: The name of the VM scale set.
 
 ## RELATED LINKS
-

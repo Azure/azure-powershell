@@ -8,7 +8,9 @@ schema: 2.0.0
 # Get-AzVMRunCommand
 
 ## SYNOPSIS
-Gets specific run command for a subscription in a location.
+The Get-AzVMRunCommand cmdlet gets properties of run command installed on a virtual machine.
+List all installed run commands when name is not specified.
+Specify the name of a run command for which to get properties.
 
 ## SYNTAX
 
@@ -52,23 +54,29 @@ Gets specific run command for a subscription in a location.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Run Command by Name
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand2"
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
 ```
 
-{{ Add description here }}
+Get Run Command by it's name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Run Commands by VM
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname  
 
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+eastus   firstruncommand  Microsoft.Compute/virtualMachines/runCommands
+eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
+eastus   firstruncommand3 Microsoft.Compute/virtualMachines/runCommands
 ```
 
-{{ Add description here }}
+Get Run Commands by VM name
 
 ## PARAMETERS
 
