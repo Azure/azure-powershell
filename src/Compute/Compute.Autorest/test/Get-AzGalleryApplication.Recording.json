@@ -1,8 +1,8 @@
 {
-  "Get-AzGalleryApplication+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd?api-version=2021-07-01+1": {
+  "Get-AzGalleryApplication+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01",
       "Content": "{\r\n  \"location\": \"EastUS\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -33,14 +33,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"testgalappbgi56apd\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzGalleryApplication+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd?api-version=2021-07-01+2": {
+  "Get-AzGalleryApplication+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -76,14 +76,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"testgalappbgi56apd\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzGalleryApplication+[NoContext]+List Get-AzGalleryApplication+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications?api-version=2021-07-01+1": {
+  "Get-AzGalleryApplication+[NoContext]+List Get-AzGalleryApplication+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications?api-version=2021-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications?api-version=2021-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -119,14 +119,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"testgalappbgi56apd\",\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd\",\r\n      \"type\": \"Microsoft.Compute/galleries/applications\",\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"supportedOSType\": \"Windows\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"testgalapp6adgv70k\",\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n      \"type\": \"Microsoft.Compute/galleries/applications\",\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"supportedOSType\": \"Windows\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzGalleryApplication+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd?api-version=2021-07-01+1": {
+  "Get-AzGalleryApplication+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -162,14 +162,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"testgalappbgi56apd\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzGalleryApplication+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd?api-version=2021-07-01+1": {
+  "Get-AzGalleryApplication+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -205,14 +205,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"testgalappbgi56apd\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzGalleryApplication+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd?api-version=2021-07-01+2": {
+  "Get-AzGalleryApplication+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k?api-version=2021-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -248,7 +248,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"testgalappbgi56apd\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTestbgi56apd/providers/Microsoft.Compute/galleries/testgallerybgi56apd/applications/testgalappbgi56apd\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k/applications/testgalapp6adgv70k\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   }

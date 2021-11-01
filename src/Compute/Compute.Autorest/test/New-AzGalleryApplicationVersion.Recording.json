@@ -1,8 +1,8 @@
 {
-  "New-AzGalleryApplicationVersion+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861?api-version=2021-07-01+1": {
+  "New-AzGalleryApplicationVersion+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1?api-version=2021-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1?api-version=2021-07-01",
       "Content": "{\r\n  \"location\": \"EastUS\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -33,14 +33,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"testgalapp20w1rs861\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k1\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "New-AzGalleryApplicationVersion+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861?api-version=2021-07-01+2": {
+  "New-AzGalleryApplicationVersion+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1?api-version=2021-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1?api-version=2021-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -76,15 +76,15 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"testgalapp20w1rs861\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"testgalapp6adgv70k1\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"supportedOSType\": \"Windows\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "New-AzGalleryApplicationVersion+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861/versions/0.1.0?api-version=2021-07-01+3": {
+  "New-AzGalleryApplicationVersion+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1/versions/0.1.0?api-version=2021-07-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861/versions/0.1.0?api-version=2021-07-01",
-      "Content": "{\r\n  \"location\": \"EastUS\",\r\n  \"properties\": {\r\n    \"publishingProfile\": {\r\n      \"source\": {\r\n        \"mediaLink\": \"https://storacc20w1rs861.blob.core.windows.net/container20w1rs861/testfile.txt\"\r\n      },\r\n      \"manageActions\": {\r\n        \"install\": \"powershell -command \\u0027Expand-Archive -Path package.zip -DestinationPath C:\\\\\\\\package\\\\\\u0027\",\r\n        \"remove\": \"del C:\\\\\\\\package\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1/versions/0.1.0?api-version=2021-07-01",
+      "Content": "{\r\n  \"location\": \"EastUS\",\r\n  \"properties\": {\r\n    \"publishingProfile\": {\r\n      \"source\": {\r\n        \"mediaLink\": \"https://storacc6adgv70k1.blob.core.windows.net/container6adgv70k1/testfile.txt\"\r\n      },\r\n      \"manageActions\": {\r\n        \"install\": \"powershell -command \\u0027Expand-Archive -Path package.zip -DestinationPath C:\\\\\\\\package\\\\\\u0027\",\r\n        \"remove\": \"del C:\\\\\\\\package\"\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -115,7 +115,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"0.1.0\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861/versions/0.1.0\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications/versions\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"publishingProfile\": {\r\n      \"source\": {\r\n        \"mediaLink\": \"https://storacc20w1rs861.blob.core.windows.net/container20w1rs861/testfile.txt\"\r\n      },\r\n      \"manageActions\": {\r\n        \"install\": \"powershell -command \u0027Expand-Archive -Path package.zip -DestinationPath C:\\\\\\\\package\\\\\u0027\",\r\n        \"remove\": \"del C:\\\\\\\\package\"\r\n      },\r\n      \"enableHealthCheck\": false,\r\n      \"targetRegions\": [\r\n        {\r\n          \"name\": \"East US\",\r\n          \"regionalReplicaCount\": 1,\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      ],\r\n      \"replicaCount\": 1,\r\n      \"excludeFromLatest\": false,\r\n      \"publishedDate\": \"2021-10-30T17:49:00.7935482+00:00\",\r\n      \"storageAccountType\": \"Standard_LRS\"\r\n    },\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"0.1.0\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1/versions/0.1.0\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications/versions\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"publishingProfile\": {\r\n      \"source\": {\r\n        \"mediaLink\": \"https://storacc6adgv70k1.blob.core.windows.net/container6adgv70k1/testfile.txt\"\r\n      },\r\n      \"manageActions\": {\r\n        \"install\": \"powershell -command \u0027Expand-Archive -Path package.zip -DestinationPath C:\\\\\\\\package\\\\\u0027\",\r\n        \"remove\": \"del C:\\\\\\\\package\"\r\n      },\r\n      \"enableHealthCheck\": false,\r\n      \"targetRegions\": [\r\n        {\r\n          \"name\": \"East US\",\r\n          \"regionalReplicaCount\": 1,\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      ],\r\n      \"replicaCount\": 1,\r\n      \"excludeFromLatest\": false,\r\n      \"publishedDate\": \"2021-10-30T17:49:00.7935482+00:00\",\r\n      \"storageAccountType\": \"Standard_LRS\"\r\n    },\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
@@ -506,10 +506,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzGalleryApplicationVersion+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861/versions/0.1.0?api-version=2021-07-01+13": {
+  "New-AzGalleryApplicationVersion+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1/versions/0.1.0?api-version=2021-07-01+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861/versions/0.1.0?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1/versions/0.1.0?api-version=2021-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -545,14 +545,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"0.1.0\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861/versions/0.1.0\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications/versions\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"publishingProfile\": {\r\n      \"source\": {\r\n        \"mediaLink\": \"https://storacc20w1rs861.blob.core.windows.net/container20w1rs861/testfile.txt\"\r\n      },\r\n      \"manageActions\": {\r\n        \"install\": \"powershell -command \u0027Expand-Archive -Path package.zip -DestinationPath C:\\\\\\\\package\\\\\u0027\",\r\n        \"remove\": \"del C:\\\\\\\\package\"\r\n      },\r\n      \"enableHealthCheck\": false,\r\n      \"targetRegions\": [\r\n        {\r\n          \"name\": \"East US\",\r\n          \"regionalReplicaCount\": 1,\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      ],\r\n      \"replicaCount\": 1,\r\n      \"excludeFromLatest\": false,\r\n      \"publishedDate\": \"2021-10-30T17:49:00.7935482+00:00\",\r\n      \"storageAccountType\": \"Standard_LRS\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"0.1.0\",\r\n  \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1/versions/0.1.0\",\r\n  \"type\": \"Microsoft.Compute/galleries/applications/versions\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"publishingProfile\": {\r\n      \"source\": {\r\n        \"mediaLink\": \"https://storacc6adgv70k1.blob.core.windows.net/container6adgv70k1/testfile.txt\"\r\n      },\r\n      \"manageActions\": {\r\n        \"install\": \"powershell -command \u0027Expand-Archive -Path package.zip -DestinationPath C:\\\\\\\\package\\\\\u0027\",\r\n        \"remove\": \"del C:\\\\\\\\package\"\r\n      },\r\n      \"enableHealthCheck\": false,\r\n      \"targetRegions\": [\r\n        {\r\n          \"name\": \"East US\",\r\n          \"regionalReplicaCount\": 1,\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        }\r\n      ],\r\n      \"replicaCount\": 1,\r\n      \"excludeFromLatest\": false,\r\n      \"publishedDate\": \"2021-10-30T17:49:00.7935482+00:00\",\r\n      \"storageAccountType\": \"Standard_LRS\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "New-AzGalleryApplicationVersion+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861/versions?api-version=2021-07-01+14": {
+  "New-AzGalleryApplicationVersion+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1/versions?api-version=2021-07-01+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861/versions?api-version=2021-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1/versions?api-version=2021-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -588,7 +588,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"0.1.0\",\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest20w1rs86/providers/Microsoft.Compute/galleries/testgallery20w1rs861/applications/testgalapp20w1rs861/versions/0.1.0\",\r\n      \"type\": \"Microsoft.Compute/galleries/applications/versions\",\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"publishingProfile\": {\r\n          \"source\": {\r\n            \"mediaLink\": \"https://storacc20w1rs861.blob.core.windows.net/container20w1rs861/testfile.txt\"\r\n          },\r\n          \"manageActions\": {\r\n            \"install\": \"powershell -command \u0027Expand-Archive -Path package.zip -DestinationPath C:\\\\\\\\package\\\\\u0027\",\r\n            \"remove\": \"del C:\\\\\\\\package\"\r\n          },\r\n          \"enableHealthCheck\": false,\r\n          \"targetRegions\": [\r\n            {\r\n              \"name\": \"East US\",\r\n              \"regionalReplicaCount\": 1,\r\n              \"storageAccountType\": \"Standard_LRS\"\r\n            }\r\n          ],\r\n          \"replicaCount\": 1,\r\n          \"excludeFromLatest\": false,\r\n          \"publishedDate\": \"2021-10-30T17:49:00.7935482+00:00\",\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        },\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"0.1.0\",\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/RGComputeTest6adgv70k/providers/Microsoft.Compute/galleries/testgallery6adgv70k1/applications/testgalapp6adgv70k1/versions/0.1.0\",\r\n      \"type\": \"Microsoft.Compute/galleries/applications/versions\",\r\n      \"location\": \"eastus\",\r\n      \"properties\": {\r\n        \"publishingProfile\": {\r\n          \"source\": {\r\n            \"mediaLink\": \"https://storacc6adgv70k1.blob.core.windows.net/container6adgv70k1/testfile.txt\"\r\n          },\r\n          \"manageActions\": {\r\n            \"install\": \"powershell -command \u0027Expand-Archive -Path package.zip -DestinationPath C:\\\\\\\\package\\\\\u0027\",\r\n            \"remove\": \"del C:\\\\\\\\package\"\r\n          },\r\n          \"enableHealthCheck\": false,\r\n          \"targetRegions\": [\r\n            {\r\n              \"name\": \"East US\",\r\n              \"regionalReplicaCount\": 1,\r\n              \"storageAccountType\": \"Standard_LRS\"\r\n            }\r\n          ],\r\n          \"replicaCount\": 1,\r\n          \"excludeFromLatest\": false,\r\n          \"publishedDate\": \"2021-10-30T17:49:00.7935482+00:00\",\r\n          \"storageAccountType\": \"Standard_LRS\"\r\n        },\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false
     }
   }
