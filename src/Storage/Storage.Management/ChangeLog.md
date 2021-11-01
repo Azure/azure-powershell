@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed create contaienr SAS token fail from an access policy without expireTime, and set SAS token expireTime [#16266]
+* Fixed creating container SAS token failed from an access policy without expire time, and set SAS token expire time [#16266]
     -  `New-AzStorageContainerSASToken` 
 
 ## Version 3.12.0
