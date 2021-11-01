@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Returns(() => Task.FromResult(new AzureOperationResponse(){}));
 
             this.cmdlet.ProviderNamespace = ProviderName;
-            this.cmdlet.FeatureName = FeatureName;
+            this.cmdlet.Name = FeatureName;
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private void VerifyCallPatternAndReset(bool succeeded)
         {
             this.featureOperationsMock.Verify(f => f.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
-            this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Once() : Times.Never());
+            this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Never() : Times.Once());
 
             this.featureOperationsMock.ResetCalls();
             this.commandRuntimeMock.ResetCalls();

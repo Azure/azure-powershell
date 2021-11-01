@@ -121,3 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzFeatureRegistration](./New-AzFeatureRegistration.md)
+
+[Remove-AzFeatureRegistration](./Remove-AzFeatureRegistration.md)

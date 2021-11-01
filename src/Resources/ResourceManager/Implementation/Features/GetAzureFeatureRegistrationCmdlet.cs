@@ -15,19 +15,22 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Management.ResourceManager.Models;
 
     /// <summary>
     /// Creates feature registration.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration"), OutputType(typeof(PSSubscriptionFeatureRegistration))]
     public class GetAzureFeatureRegistrationCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>
         /// Gets or sets the provider name
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The feature name.")]
+        [Alias("FeatureName")]
         [ValidateNotNullOrEmpty]
-        public string FeatureName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the provider name
@@ -41,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            this.WriteObject(this.ProviderFeatureClient.ListFeatureRegistrations(providerName: this.ProviderNamespace, featureName: this.FeatureName));
+            this.WriteObject(this.ProviderFeatureClient.ListFeatureRegistrations(providerName: this.ProviderNamespace, featureName: this.Name));
         }
     }
 }

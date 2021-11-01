@@ -20,15 +20,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Deletes feature registration.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FeatureRegistration", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureFeatureRegistrationCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>
         /// Gets or sets the provider name
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The feature name.")]
+        [Alias("FeatureName")]
         [ValidateNotNullOrEmpty]
-        public string FeatureName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the provider name
@@ -36,6 +37,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider namespace.")]
         [ValidateNotNullOrEmpty]
         public string ProviderNamespace { get; set; }
+
+        [Parameter(Mandatory = false)]
+        /// <summary>
+        /// Gets or sets the pass thru.
+        /// </summary>
+        public SwitchParameter PassThru { get; set; }
 
         /// <summary>
         /// Executes the cmdlet
@@ -47,8 +54,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 target: this.ProviderNamespace,
                 action: () =>
                 {
-                    this.ProviderFeatureClient.DeleteFeatureRegistration(providerName: this.ProviderNamespace, featureName: this.FeatureName);
-                    this.WriteObject(true);
+                    this.ProviderFeatureClient.DeleteFeatureRegistration(providerName: this.ProviderNamespace, featureName: this.Name);
+
+                    if (this.PassThru.IsPresent)
+                    {
+                        this.WriteObject(true);
+                    }
                 });
         }
     }

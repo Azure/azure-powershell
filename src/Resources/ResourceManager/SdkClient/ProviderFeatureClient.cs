@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// </summary>
         /// <param name="providerName">The name of the resource provider</param>
         /// <param name="featureName">The name of the feature</param>
-        public SubscriptionFeatureRegistration[] ListFeatureRegistrations(string providerName = null, string featureName = null)
+        public PSSubscriptionFeatureRegistration[] ListFeatureRegistrations(string providerName = null, string featureName = null)
         {
             var returnList = new List<SubscriptionFeatureRegistration>();
 
@@ -173,7 +173,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 returnList.Add(this.FeaturesManagementClient.SubscriptionFeatureRegistrations.Get(providerNamespace: providerName, featureName: featureName));
             }
 
-            return returnList.ToArray();
+            return returnList
+                .Select(val => val.ToPSSubscriptionFeatureRegistration())
+                .ToArray();
         }
 
         /// <summary>
@@ -181,9 +183,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// </summary>
         /// <param name="providerName">The name of the resource provider</param>
         /// <param name="featureName">The name of the feature</param>
-        public SubscriptionFeatureRegistration CreateFeatureRegistration(string providerName, string featureName)
+        public PSSubscriptionFeatureRegistration CreateFeatureRegistration(string providerName, string featureName)
         {
-            return this.FeaturesManagementClient.SubscriptionFeatureRegistrations.CreateOrUpdate(providerNamespace: providerName, featureName: featureName, subscriptionFeatureRegistrationType: new SubscriptionFeatureRegistration(id: Guid.NewGuid().ToString()));
+            return this.FeaturesManagementClient.SubscriptionFeatureRegistrations
+                .CreateOrUpdate(providerNamespace: providerName, featureName: featureName, subscriptionFeatureRegistrationType: new SubscriptionFeatureRegistration(id: Guid.NewGuid()
+                .ToString())).ToPSSubscriptionFeatureRegistration();
         }
 
         /// <summary>

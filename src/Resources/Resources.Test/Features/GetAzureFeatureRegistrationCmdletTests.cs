@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Rest.Azure;
@@ -110,14 +111,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 }));
             
             this.cmdlet.ProviderNamespace = ProviderName;
-            this.cmdlet.FeatureName = FeatureName;
+            this.cmdlet.Name = FeatureName;
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
                 .Callback((object obj) =>
                 {
-                    Assert.IsType<SubscriptionFeatureRegistration[]>(obj);
-                    var features = (SubscriptionFeatureRegistration[])obj;
+                    Assert.IsType<PSSubscriptionFeatureRegistration[]>(obj);
+                    var features = (PSSubscriptionFeatureRegistration[])obj;
                     Assert.Single(features);
                 });
 
