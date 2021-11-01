@@ -32,7 +32,14 @@ namespace Microsoft.Azure.Commands.EventHub.Models
             {
                 PrincipalId = resIdentity.PrincipalId;
                 TenantId = resIdentity.TenantId;
-                Type = resIdentity.Type;
+                if (resIdentity.Type != null)
+                {
+                    if (resIdentity.Type == ManagedServiceIdentityType.SystemAssigned)
+                    {
+                        Type = IdentityType.SystemAssigned;
+                    }
+                }
+                
             };
         }
 

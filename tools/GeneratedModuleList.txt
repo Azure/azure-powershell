@@ -10,6 +10,7 @@ Az.ConnectedKubernetes
 Az.ConnectedMachine
 Az.ContainerInstance
 Az.CostManagement
+Az.CustomLocation
 Az.CustomProviders
 Az.DataBox
 Az.Databricks
@@ -43,5 +44,4 @@ Az.SpringCloud
 Az.StreamAnalytics
 Az.TimeSeriesInsights
 Az.VMware
-Az.WebPubSub
 Az.WindowsIotServices
