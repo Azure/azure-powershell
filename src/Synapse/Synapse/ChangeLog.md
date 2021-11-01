@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Renamed parameter FolderName in `Set-AzSynapseSqlScript` to FolderPath and keeped FolderName as alias
 * Updated `Set-AzSynapseNoteBook` and `Set-AzSynapseSparkJobDefinition` to support new parameter [-FolderPath]
 
 ## Version 0.18.0
