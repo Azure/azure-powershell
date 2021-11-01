@@ -62,9 +62,7 @@
         "README.md",
         "**/ChangeLog.md",
         "**/readme.md",
-        "src/**/document/*",
-        "tools/CreateMappings_rules.json",
-        "tools/GeneratedModuleList.txt"
+        "src/**/document/*"
       ],
       "phases": []
     },
