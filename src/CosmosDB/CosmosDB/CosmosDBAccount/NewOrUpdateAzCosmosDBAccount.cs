@@ -91,6 +91,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.BackupRetentionInHoursHelpMessage)]
         public int? BackupRetentionIntervalInHours { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.BackupStorageRedundancyHelpMessage)]
+        [PSArgumentCompleter("Geo", "Local", "Zone")]
+        public string BackupStorageRedundancy { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.BackupTypeHelpMessage)]
         [PSArgumentCompleter("Periodic", "Continuous")]
         public string BackupPolicyType { get; set; }
