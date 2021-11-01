@@ -39,115 +39,116 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfiguration
 #>
 function Remove-AzKubernetesConfiguration {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="The name of the kubernetes cluster.")]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [System.String]
-    # The name of the kubernetes cluster.
-    ${ClusterName},
+    [Alias('Remove-AzK8sConfiguration')]
+    [OutputType([System.Boolean])]
+    [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    param(
+        [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="The name of the kubernetes cluster.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
+        [System.String]
+        # The name of the kubernetes cluster.
+        ${ClusterName},
 
-    [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).")]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [System.String]
-    # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
-    ${ClusterType},
+        [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
+        [System.String]
+        # The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+        ${ClusterType},
 
-    [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="Name of the Source Control Configuration.")]
-    [Alias('SourceControlConfigurationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [System.String]
-    # Name of the Source Control Configuration.
-    ${Name},
+        [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="Name of the Source Control Configuration.")]
+        [Alias('SourceControlConfigurationName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
+        [System.String]
+        # Name of the Source Control Configuration.
+        ${Name},
 
-    [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="The name of the resource group.")]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    ${ResourceGroupName},
+        [Parameter(ParameterSetName='Delete', Mandatory, HelpMessage="The name of the resource group.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
+        [System.String]
+        # The name of the resource group.
+        ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Delete', HelpMessage="The Azure subscription ID.")]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000)
-    ${SubscriptionId},
+        [Parameter(ParameterSetName='Delete', HelpMessage="The Azure subscription ID.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String]
+        # The Azure subscription ID.
+        # This is a GUID-formatted string (e.g.
+        # 00000000-0000-0000-0000-000000000000)
+        ${SubscriptionId},
 
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline, HelpMessage="Identity Parameter")]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+        [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline, HelpMessage="Identity Parameter")]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity]
+        # Identity Parameter
+        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+        ${InputObject},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
+        [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The credentials, account, tenant, and subscription used for communication with Azure.
+        ${DefaultProfile},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
+        ${Break},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command asynchronously
+        ${NoWait},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}
+    )
 
 
     process {

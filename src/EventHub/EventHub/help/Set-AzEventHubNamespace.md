@@ -17,7 +17,7 @@ Updates the specified Event Hubs namespace.
 Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>] [-EnableKafka]
  [-Identity] [-IdentityUserDefined <String>] [-KeySource <String>]
- [-KeyProperty <System.Collections.Generic.List`1[System.String[]]>]
+ [-KeyProperty <System.Collections.Generic.List`1[System.String[]]>] [-DisableLocalAuth]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Locatio
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
  [-EnableAutoInflate] [-MaximumThroughputUnits <Int32>] [-EnableKafka] [-Identity]
  [-IdentityUserDefined <String>] [-KeySource <String>]
- [-KeyProperty <System.Collections.Generic.List`1[System.String[]]>]
+ [-KeyProperty <System.Collections.Generic.List`1[System.String[]]>] [-DisableLocalAuth]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -178,6 +178,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAuth
+enabling or disabling  SAS authentication for namespace
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: NamespaceParameterSet, AutoInflateParameterSet
+Aliases:
 
 Required: False
 Position: Named

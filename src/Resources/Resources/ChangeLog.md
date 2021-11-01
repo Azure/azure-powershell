@@ -21,6 +21,13 @@
 ## Upcoming Release
 * Added 'New-AzFeatureRegistration', 'Remove-AzFeatureRegistration' and 'Get-AzFeatureRegistration' cmdlets.
 
+## Version 4.4.1
+* Fixed a bug about the exitcode of Bicep [#16055]
+* Added breaking change warnings for AAD cmdlets
+* Added property `UIFormDefinition` to Template Spec Versions,  `Export-AzTemplateSpec` will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.
+* Added error catching for role assignment creation fail while creating a Service Principal
+* Performance improvement for Get-AzPolicyAlias when -NamespaceMatch matches a single RP namespace
+
 ## Version 4.4.0
 * Added a clearer error message for a case in which TemplateUri do not accept bicep file.
 * Fixed typos with ManagementGroups breaking change descriptions [#15819].

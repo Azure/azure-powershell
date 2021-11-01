@@ -82,8 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Add a location to the Cosmos DB database account.
-Array of strings, ordered by failover priority.
+-Name of the Location in string.
 
 ```yaml
 Type: System.String

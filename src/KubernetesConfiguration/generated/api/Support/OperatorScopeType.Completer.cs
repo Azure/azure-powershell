@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "cluster".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("cluster", "cluster", global::System.Management.Automation.CompletionResultType.ParameterValue, "cluster");
+                yield return new global::System.Management.Automation.CompletionResult("'cluster'", "cluster", global::System.Management.Automation.CompletionResultType.ParameterValue, "cluster");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "namespace".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("namespace", "namespace", global::System.Management.Automation.CompletionResultType.ParameterValue, "namespace");
+                yield return new global::System.Management.Automation.CompletionResult("'namespace'", "namespace", global::System.Management.Automation.CompletionResultType.ParameterValue, "namespace");
             }
         }
     }
