@@ -24,7 +24,6 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 
     $env.RandomString = (RandomString $false 8)
     $env.ResourceGroupName = "RGComputeTest" + $env.RandomString
