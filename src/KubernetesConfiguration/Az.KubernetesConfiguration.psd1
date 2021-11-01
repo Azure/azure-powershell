@@ -11,8 +11,8 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.KubernetesConfiguration.private.dll'
   FormatsToProcess = './Az.KubernetesConfiguration.format.ps1xml'
-  FunctionsToExport = 'Get-AzKubernetesConfiguration', 'New-AzKubernetesConfiguration', 'Remove-AzKubernetesConfiguration', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzKubernetesConfiguration', 'Get-AzKubernetesExtension', 'New-AzKubernetesConfiguration', 'New-AzKubernetesExtension', 'Remove-AzKubernetesConfiguration', 'Remove-AzKubernetesExtension', 'Update-AzKubernetesExtension', '*'
+  AliasesToExport = 'Get-AzK8sConfiguration', 'Get-AzK8sExtension', 'New-AzK8sConfiguration', 'New-AzK8sExtension', 'Remove-AzK8sConfiguration', 'Remove-AzK8sExtension', 'Update-AzK8sExtension', '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'KubernetesConfiguration'

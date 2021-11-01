@@ -23,27 +23,33 @@ function setupEnv() {
     $clusterName = RandomString -allChars $false -len 6
     $extensionName = RandomString -allChars $false -len 6
     $clusterLocationName = RandomString -allChars $false -len 6
+    $clusterLocationName2 = RandomString -allChars $false -len 6
 
     $env.Add("k8sName", $k8sName)
     $env.Add("clusterName", $clusterName)
     $env.Add("extensionName", $extensionName)
     $env.Add("clusterLocationName", $clusterLocationName)
+    $env.Add("clusterLocationName2", $clusterLocationName2)
 
     $env.Add("location", "eastus")
 
     # Create the test group
-    write-host "start to create test group"
     $resourceGroup = "testgroup" + $env.clusterLocationName
     $env.Add("resourceGroup", $resourceGroup)
     
+    write-host "1. start to create test group..."
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
+    write-host "1. az aks create..."
     az aks create --name $env.k8sName --resource-group $env.resourceGroup --kubernetes-version 1.20.9 --vm-set-type AvailabilitySet
 
+    write-host "1. az aks get-credentials..."
     az aks get-credentials --resource-group $env.resourceGroup --name $env.k8sName
 
+    write-host "1. az connectedk8s connect..."
     az connectedk8s connect --name $env.clusterName --resource-group $env.resourceGroup --location $env.location
     
+    write-host "1. az k8s-extension create..."
     az k8s-extension create -c $env.clusterName -g $env.resourceGroup --name $env.extensionName --cluster-type connectedClusters --extension-type microsoft.arcdataservices --auto-upgrade false --scope cluster --release-namespace arc --config Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper
     
     az k8s-extension show -g $env.resourceGroup -c $env.clusterName --name $env.extensionName --cluster-type connectedclusters

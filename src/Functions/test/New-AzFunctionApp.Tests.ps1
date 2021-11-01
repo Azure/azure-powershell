@@ -891,6 +891,20 @@ Describe 'New-AzFunctionApp' {
                             $functionApp.ApplicationSettings[$appSettingName] | Should -Be $expectedAppSettingValue
                         }
                     }
+
+                    # Validate SiteConfig.NetFrameworkVersion for Windows apps
+                    if ($OSType -eq "Windows")
+                    {
+                        if ($functionsVersion -eq "3")
+                        {
+                            $functionApp.SiteConfig.NetFrameworkVersion | Should -Be "v4.0"
+                        }
+                        elseif ($functionsVersion -eq "4")
+                        {
+                            $functionApp.SiteConfig.NetFrameworkVersion | Should -Be "v6.0"
+                        }
+                    }
+
                 }
                 finally
                 {

@@ -16,6 +16,9 @@ Describe 'AzCustomLocation' {
         {
             $config = New-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName -Location $env.location -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName -Namespace arc
             $config.Type | Should -Be "Microsoft.ExtendedLocation/customLocations"
+
+            $config = New-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName2 -Location $env.location -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName -Namespace arctwo
+            $config.Type | Should -Be "Microsoft.ExtendedLocation/customLocations"
         } | Should -Not -Throw
     }
 
@@ -29,7 +32,7 @@ Describe 'AzCustomLocation' {
     It 'List1' {
         { 
             $config = Get-AzCustomLocation -ResourceGroupName $env.resourceGroup
-            $config.Type | Should -Be "Microsoft.ExtendedLocation/customLocations"
+            $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
@@ -49,14 +52,29 @@ Describe 'AzCustomLocation' {
 
     It 'Update' {
         {
-            $config = New-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName -Location $env.location -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName -Namespace arc
+            $config = Update-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName -Namespace arc
             $config.Name | Should -Be $env.clusterLocationName
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpanded' {
+        {
+            $config = Get-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName2
+            $config = Update-AzCustomLocation -InputObject $config
+            $config.Name | Should -Be $env.clusterLocationName2
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
             Remove-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName
+        } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentity' {
+        {
+            $config = Get-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName2 
+            Remove-AzCustomLocation -InputObject $config
         } | Should -Not -Throw
     }
 }
