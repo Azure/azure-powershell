@@ -66,7 +66,7 @@ directive:
       subject: Gallery$|GallerySharingProfile|GalleryImage$|GalleryImageVersion$
     remove: true
   - select: command
-    where:
+    where: 
       subject: GalleryApplication$|GalleryApplicationVersion$
       verb: Set
     remove: true
