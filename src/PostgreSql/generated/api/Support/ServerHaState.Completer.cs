@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotEnabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotEnabled", "NotEnabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotEnabled");
+                yield return new global::System.Management.Automation.CompletionResult("'NotEnabled'", "NotEnabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotEnabled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CreatingStandby".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CreatingStandby", "CreatingStandby", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreatingStandby");
+                yield return new global::System.Management.Automation.CompletionResult("'CreatingStandby'", "CreatingStandby", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreatingStandby");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ReplicatingData".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ReplicatingData", "ReplicatingData", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReplicatingData");
+                yield return new global::System.Management.Automation.CompletionResult("'ReplicatingData'", "ReplicatingData", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReplicatingData");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FailingOver".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FailingOver", "FailingOver", global::System.Management.Automation.CompletionResultType.ParameterValue, "FailingOver");
+                yield return new global::System.Management.Automation.CompletionResult("'FailingOver'", "FailingOver", global::System.Management.Automation.CompletionResultType.ParameterValue, "FailingOver");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Healthy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Healthy", "Healthy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Healthy");
+                yield return new global::System.Management.Automation.CompletionResult("'Healthy'", "Healthy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Healthy");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RemovingStandby".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RemovingStandby", "RemovingStandby", global::System.Management.Automation.CompletionResultType.ParameterValue, "RemovingStandby");
+                yield return new global::System.Management.Automation.CompletionResult("'RemovingStandby'", "RemovingStandby", global::System.Management.Automation.CompletionResultType.ParameterValue, "RemovingStandby");
             }
         }
     }

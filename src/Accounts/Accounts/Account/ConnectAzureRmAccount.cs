@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Profile
         public const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
         public const string ServicePrincipalCertificateFileParameterSet = "ServicePrincipalCertificateFileWithSubscriptionId";
         public const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
+        public const string ClientAssertionParameterSet = "ClientAssertionParameterSet";
         public const string ManagedServiceParameterSet = "ManagedServiceLogin";
         public const string MSIEndpointVariable = "MSI_ENDPOINT";
         public const string MSISecretVariable = "MSI_SECRET";
@@ -70,6 +71,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
         [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
+        [EnvironmentCompleter()]
         public string Environment { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
@@ -84,6 +86,8 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
                     Mandatory = true, HelpMessage = "SPN")]
+        [Parameter(ParameterSetName = ClientAssertionParameterSet,
+                    Mandatory = true, HelpMessage = "SPN")]
         [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet,
                     Mandatory = true, HelpMessage = "SPN")]
         public string ApplicationId { get; set; }
@@ -93,6 +97,8 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
                     Mandatory = false)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet,
+                    Mandatory = false)]
+        [Parameter(ParameterSetName = ClientAssertionParameterSet,
                     Mandatory = false)]
         public SwitchParameter ServicePrincipal { get; set; }
 
@@ -107,6 +113,8 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
         [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet,
+                    Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ClientAssertionParameterSet,
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
                     Mandatory = false, HelpMessage = "Optional tenant name or ID")]
@@ -141,20 +149,7 @@ namespace Microsoft.Azure.Commands.Profile
         public SwitchParameter Identity { get; set; }
 
         [Alias("SubscriptionName", "SubscriptionId")]
-        [Parameter(ParameterSetName = UserParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = UserWithCredentialParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = AccessTokenParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ManagedServiceParameterSet,
-                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
+        [Parameter(Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string Subscription { get; set; }
 
@@ -196,13 +191,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Skips context population if no contexts are found.")]
         public SwitchParameter SkipContextPopulation { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is "+ DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = UserWithCredentialParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
+        [Parameter(Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is "+ DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
         [PSDefaultValue(Help = DefaultMaxContextPopulationString, Value = DefaultMaxContextPopulation)]
         [ValidateRange(-1,int.MaxValue)]
         public int MaxContextPopulation { get; set; } = DefaultMaxContextPopulation;
@@ -225,6 +214,11 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateFileParameterSet, HelpMessage = "The password required to access the pkcs#12 certificate file.")]
         public SecureString CertificatePassword { get; set; }
+
+        [Parameter(ParameterSetName = ClientAssertionParameterSet, Mandatory = true, HelpMessage = "Specifies a token provided by another identity provider. The issuer and subject in this token must be first configured to be trusted by the ApplicationId.")]
+        [Alias("ClientAssertion")]
+        [ValidateNotNullOrEmpty]
+        public string FederatedToken { get; set; }
 
         protected override IAzureContext DefaultContext
         {
@@ -315,6 +309,16 @@ namespace Microsoft.Azure.Commands.Profile
 
             }
 
+            if(ClientAssertionParameterSet.Equals(ParameterSetName, StringComparison.OrdinalIgnoreCase))
+            {
+                string suppressWarningOrErrorValue = System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME);
+                bool.TryParse(suppressWarningOrErrorValue, out bool suppressWarningOrError);
+                if (!suppressWarningOrError)
+                {
+                    WriteWarning("The feature related to parameter name 'FederatedToken' is under preview.");
+                }
+            }
+
             var azureAccount = new AzureAccount();
 
             switch (ParameterSetName)
@@ -330,6 +334,9 @@ namespace Microsoft.Azure.Commands.Profile
                 case ServicePrincipalCertificateFileParameterSet:
                 case ServicePrincipalParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
+                    break;
+                case ClientAssertionParameterSet:
+                    azureAccount.Type = "ClientAssertion";
                     break;
                 case ManagedServiceParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ManagedService;
@@ -415,6 +422,17 @@ namespace Microsoft.Azure.Commands.Profile
                     var file = AzureSession.Instance.ARMProfileFile;
                     var directory = AzureSession.Instance.ARMProfileDirectory;
                     WriteWarning(string.Format(Resources.ServicePrincipalWarning, file, directory));
+                }
+            }
+            if (azureAccount.Type == "ClientAssertion" && FederatedToken != null)
+            {
+                password = SecureStringExtensions.ConvertToSecureString(FederatedToken);
+                azureAccount.SetProperty("ClientAssertion", FederatedToken);
+                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                {
+                    var file = AzureSession.Instance.ARMProfileFile;
+                    var directory = AzureSession.Instance.ARMProfileDirectory;
+                    WriteWarning(string.Format(Resources.ClientAssertionWarning, file, directory));
                 }
             }
 

@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "available".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("available", "available", global::System.Management.Automation.CompletionResultType.ParameterValue, "available");
+                yield return new global::System.Management.Automation.CompletionResult("'available'", "available", global::System.Management.Automation.CompletionResultType.ParameterValue, "available");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "unavailable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("unavailable", "unavailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "unavailable");
+                yield return new global::System.Management.Automation.CompletionResult("'unavailable'", "unavailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "unavailable");
             }
         }
     }

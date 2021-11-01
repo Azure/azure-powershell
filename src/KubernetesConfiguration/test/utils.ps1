@@ -6,28 +6,68 @@ function RandomString([bool]$allChars, [int32]$len) {
     }
 }
 $env = @{}
+if ($UsePreviousConfigForRecord) {
+    $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
+    $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
+}
+# Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
+# example: $val = $env.AddWithCache('key', $val, $true)
+$env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    Write-Host -ForegroundColor Yellow "WARNNING: Plese provide resource group with Azure Arc enabled Kubernetes."
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.location = 'eastus'
 
-    # Can't Azure Arc enabled Kubernetes via powershell(Kubernetes model not released) and New-AzDeployment(The template file Can't exported.)
-    # TODO: Kubernetes model be release or The template file can be export.
-    $env.resourceGroup = 'connaks-rg-w9vlnp' # 'kubconfig-rg-' + (RandomString -allChars $false -len 6)
-    # kubernetes in connaks-rg-w9vlnp
-    $env.kubernetesName00 = 'connaks-d983yc' 
-    $env.kubernetesName01 = 'connaks-dkc29c'
+    $k8sNameEUAP = RandomString -allChars $false -len 6
+    $k8sNameCUS = RandomString -allChars $false -len 6
 
-    $env.kubConf00 = 'kubconf-' + (RandomString -allChars $false -len 6) + '-test'
-    $env.kubConf01 = 'kubconf-' + (RandomString -allChars $false -len 6) + '-test'
+    $clusterNameEUAP = RandomString -allChars $false -len 6
+    $clusterNameCUS = RandomString -allChars $false -len 6
 
+    $extensionNameEUAP1 = RandomString -allChars $false -len 6
 
-    Write-Host -ForegroundColor Green "Start creating kubernetes connected for test..."
-    New-AzKubernetesConfiguration -Name $env.kubConf00 -ClusterName $env.kubernetesName00 -ResourceGroupName $env.resourceGroup -RepositoryUrl http://github.com/xxxx
-    Write-Host -ForegroundColor Green "Kubernetes connected created successfully."
+    $kubernetesConfigurationNameCUS1 = RandomString -allChars $false -len 6
+    $kubernetesConfigurationNameCUS2 = RandomString -allChars $false -len 6
+
+    $env.Add("k8sNameEUAP", $k8sNameEUAP)
+    $env.Add("k8sNameCUS", $k8sNameCUS)
+
+    $env.Add("clusterNameEUAP", $clusterNameEUAP)
+    $env.Add("clusterNameCUS", $clusterNameCUS)
+
+    $env.Add("extensionNameEUAP1", $extensionNameEUAP1)
+
+    $env.Add("kubernetesConfigurationNameCUS1", $kubernetesConfigurationNameCUS1)
+    $env.Add("kubernetesConfigurationNameCUS2", $kubernetesConfigurationNameCUS2)
+
+    $env.Add("locationEUAP", "eastus2euap")
+    $env.Add("locationCUS", "centralus")
+
+    $resourceGroupEUAP = "testgroup" + $env.locationEUAP
+    $resourceGroupCUS = "testgroup" + $env.locationCUS
+
+    $env.Add("resourceGroupEUAP", $resourceGroupEUAP)
+    $env.Add("resourceGroupCUS", $resourceGroupCUS)
+
+    write-host "1. start to create test group..."
+    New-AzResourceGroup -Name $env.resourceGroupEUAP -Location "eastus"
+    write-host "1. az aks create..."
+    az aks create --name $env.k8sNameEUAP --resource-group $env.resourceGroupEUAP --kubernetes-version 1.20.9 --vm-set-type AvailabilitySet
+    write-host "1. az aks get-credentials..."
+    az aks get-credentials --resource-group $env.resourceGroupEUAP --name $env.k8sNameEUAP
+    write-host "1. az connectedk8s connect..."
+    az connectedk8s connect --name $env.clusterNameEUAP --resource-group $env.resourceGroupEUAP --location $env.locationEUAP
+
+    write-host "2. start to create test group..."
+    New-AzResourceGroup -Name $env.resourceGroupCUS -Location "eastus"
+    write-host "2. az aks create..."
+    az aks create --name $env.k8sNameCUS --resource-group $env.resourceGroupCUS --kubernetes-version 1.20.9 --vm-set-type AvailabilitySet
+    write-host "2. az aks get-credentials..."
+    az aks get-credentials --resource-group $env.resourceGroupCUS --name $env.k8sNameCUS
+    write-host "2. az connectedk8s connect..."
+    az connectedk8s connect --name $env.clusterNameCUS --resource-group $env.resourceGroupCUS --location $env.locationCUS
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -36,7 +76,6 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $env.resourceGroupEUAP
+    Remove-AzResourceGroup -Name $env.resourceGroupCUS
 }
-

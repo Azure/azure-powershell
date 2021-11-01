@@ -21,19 +21,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     public sealed class SuggestionDisplayedTelemetryData : ITelemetryData
     {
+        /// <summary>
+        /// The telemetry property name for "Displayed".
+        /// </summary>
+        public const string PropertyNameDisplayed = "Displayed";
+
+        /// <inheritdoc/>
+        public PredictionClient Client { get; init; }
+
         /// <inheritdoc/>
         string ITelemetryData.CommandId { get; set; }
 
         /// <inheritdoc/>
         string ITelemetryData.RequestId { get; set; }
-
-        /// <inheritdoc/>
-        string ITelemetryData.SessionId { get; set; }
-
-        /// <summary>
-        /// Gets the client that makes the calls.
-        /// </summary>
-        public PredictionClient Client { get; init; }
 
         /// <summary>
         /// The mode the suggestion is displayed in.

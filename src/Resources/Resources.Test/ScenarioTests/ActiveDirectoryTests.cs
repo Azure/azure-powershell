@@ -600,7 +600,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithCustomScope");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)] // Because the role assignment id gets generated randomly during runtime this must be tested in playback mode
+        public void TestNewADServicePrincipalWithBadScope()
+        {
+            TestRunner.RunTestScript("Test-NewADServicePrincipalWithBadScope");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteAppCredentials()

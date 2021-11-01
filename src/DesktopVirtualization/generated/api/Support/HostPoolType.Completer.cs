@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Personal".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Personal", "Personal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Personal");
+                yield return new global::System.Management.Automation.CompletionResult("'Personal'", "Personal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Personal");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Pooled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Pooled", "Pooled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pooled");
+                yield return new global::System.Management.Automation.CompletionResult("'Pooled'", "Pooled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pooled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BYODesktop".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BYODesktop", "BYODesktop", global::System.Management.Automation.CompletionResultType.ParameterValue, "BYODesktop");
+                yield return new global::System.Management.Automation.CompletionResult("'BYODesktop'", "BYODesktop", global::System.Management.Automation.CompletionResultType.ParameterValue, "BYODesktop");
             }
         }
     }

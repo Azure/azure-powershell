@@ -19,6 +19,38 @@
 -->
 
 ## Upcoming Release
+* Updated `Set-AzSynapseNoteBook` and `Set-AzSynapseSparkJobDefinition` to support new parameter [-FolderPath]
+
+## Version 0.18.0
+* Added cmdlets for Synapse Kusto pool
+    - Added `Get/New/Remove/Update/Start/Stop-AzSynapseKustoPool` cmdlet
+    - Added `Get-AzSynapseKustoPoolSku` cmdlet
+* Added cmdlets for Synapse Kusto pool language extension
+    - Added `Add/Remove/Get-AzSynapseKustoPoolLanguageExtension` cmdlet
+* Added cmdlets for Synapse Kusto pool principal assignment
+    - Added `Get/New/Remove-AzSynapseKustoPoolPrincipalAssignment` cmdlet
+* Added `Get-AzSynapseKustoPoolFollowerDatabase` cmdlet
+* Added `Invoke-AzSynapseDetachKustoPoolFollowerDatabase` cmdlet
+* Added cmdlets for Synapse Kusto database
+    - Added `Get/New/Remove/Update-AzSynapseKustoPoolDatabase` cmdlet
+* Added cmdlets for Synapse Kusto database principal assignment
+    - Added `Get/New/Remove-AzSynapseKustoPoolDatabasePrincipalAssignment` cmdlet
+* Added cmdlets for Synapse Kusto data connection
+    - Added `Get/New/Remove/Update-AzSynapseKustoPoolDataConnection` cmdlet
+* Added cmdlets for Synapse Kusto pool attached database configuration
+    - Added `Get/New/Remove-AzSynaspeKustoPoolAttachedDatabaseConfiguration` cmdlet
+* Added support for Synapse data flow debug session
+    - Added `Start-AzSynapseDataFlowDebugSession` cmdlet to start a Synapse Analytics data flow debug session.
+    - Added `Add-AzSynapseDataFlowDebugSessionPackage` cmdlet
+    - Added `Invoke-AzSynapseDataFlowDebugSessionCommand` cmdlet
+    - Added `Get-AzSynapseDataFlowDebugSession` cmdlet
+    - Added `Stop-AzSynapseDataFlowDebugSession`cmdlet to Stop a data flow debug session by `SessionId`
+* Fixed the format of notebook file exported by `Export-AzSynapseNotebook`
+* Added support for Synapse sql script
+    - Added `Get-AzSynapseSqlScript` cmdlet
+    - Added `Remove-AzSynapseSqlScript` cmdlet
+    - Added `Export-AzSynapseSqlScript` cmdlet
+    - Added `Set-AzSynapseSqlScript` cmdlet
 
 ## Version 0.17.0
 * Added cmdlets for Synapse Integration Runtime
@@ -57,12 +89,6 @@
 	- Added `Remove-AzSynapseWorkspacePackage` cmdlet
 	- Updated `New-AzSynapseSparkPool` cmdlet to drop parameter `-LibraryRequirementsFilePath`
 	- Updated `Updated-AzSynapseSparkPool` cmdlet to add parameter `-Package` and `-PackageAction`
-* Added support for Synapse data flow debug session
-    - Added `Start-AzSynapseDataFlowDebugSession` cmdlet to start a Synapse Analytics data flow debug session.
-    - Added `Add-AzSynapseDataFlowDebugSessionPackage` cmdlet
-    - Added `Invoke-AzSynapseDataFlowDebugSessionCommand` cmdlet
-    - Added `Get-AzSynapseDataFlowDebugSession` cmdlet
-    - Added `Stop-AzSynapseDataFlowDebugSession`cmdlet to Stop a data flow debug session by `SessionId`
 
 ## Version 0.14.0
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet

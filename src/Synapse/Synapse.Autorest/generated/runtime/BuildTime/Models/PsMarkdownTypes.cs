@@ -132,10 +132,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.PowerShell
             {
                 parameterStrings = parameterStrings.Append(" [-Confirm]").Append(" [-WhatIf]");
             }
-            if (Variant.SupportsPaging)
-            {
-                parameterStrings = parameterStrings.Append(" [-First <UInt64>]").Append(" [-IncludeTotalCount]").Append(" [-Skip <UInt64>]");
-            }
             parameterStrings = parameterStrings.Append(" [<CommonParameters>]");
 
             var lines = new List<string>(20);

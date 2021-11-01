@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoGraph".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NoGraph", "NoGraph", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoGraph");
+                yield return new global::System.Management.Automation.CompletionResult("'NoGraph'", "NoGraph", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoGraph");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Table".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Table", "Table", global::System.Management.Automation.CompletionResultType.ParameterValue, "Table");
+                yield return new global::System.Management.Automation.CompletionResult("'Table'", "Table", global::System.Management.Automation.CompletionResultType.ParameterValue, "Table");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TimeSeries".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TimeSeries", "TimeSeries", global::System.Management.Automation.CompletionResultType.ParameterValue, "TimeSeries");
+                yield return new global::System.Management.Automation.CompletionResult("'TimeSeries'", "TimeSeries", global::System.Management.Automation.CompletionResultType.ParameterValue, "TimeSeries");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TimeSeriesPerInstance".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TimeSeriesPerInstance", "TimeSeriesPerInstance", global::System.Management.Automation.CompletionResultType.ParameterValue, "TimeSeriesPerInstance");
+                yield return new global::System.Management.Automation.CompletionResult("'TimeSeriesPerInstance'", "TimeSeriesPerInstance", global::System.Management.Automation.CompletionResultType.ParameterValue, "TimeSeriesPerInstance");
             }
         }
     }
