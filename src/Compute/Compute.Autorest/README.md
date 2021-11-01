@@ -40,7 +40,7 @@ input-file:
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.3
+module-version: 0.1.0
 # Normally, title is the service name
 title: Compute
 subject-prefix: ""
