@@ -42,22 +42,23 @@ Describe 'AzConnectedKubernetes' {
     It 'UpdateExpanded' {
         {
             $config = Update-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -Name $env.clusterNameEUS1 -Tag @{'key1'= 1; 'key2'= 2}
-            $connaks.Tag.Count | Should -Be 2
+            $config.Tag.Count | Should -Be 2
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
             $config = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS1
-            $connaks.Tag.Count | Should -Be 2
+            $config.Tag.Count | Should -Be 2
             $config.Name | Should -Be $env.clusterNameEUS1
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $connaks = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -Name $env.clusterNameEUS2 | Update-AzConnectedKubernetes -Tag @{'key1'= 1; 'key2'= 2; 'key3'= 3}
-            $connaks.Tag.Count | Should -Be 3
+            $config = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -Name $env.clusterNameEUS2
+            $config = Update-AzConnectedKubernetes -InputObject $config -Tag @{'key1'= 1; 'key2'= 2; 'key3'= 3}
+            $config.Tag.Count | Should -Be 3
         } | Should -Not -Throw
     }
 
@@ -65,7 +66,7 @@ Describe 'AzConnectedKubernetes' {
         {
             $config = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS2
             $config = Get-AzConnectedKubernetes -InputObject $config
-            $connaks.Tag.Count | Should -Be 3
+            $config.Tag.Count | Should -Be 3
             $config.Name | Should -Be $env.clusterNameEUS2
         } | Should -Not -Throw
     }
@@ -73,14 +74,14 @@ Describe 'AzConnectedKubernetes' {
     It 'ClusterUserCredential-AAD' {
         {
             $config = Get-AzConnectedClusterUserCredential -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS1 -AuthenticationMethod AAD -ClientProxy
-            $config.Kubeconfig | Should -Be $env.kubeContext
+            $config.Kubeconfig.Name | Should -Be "KubeConfig"
         } | Should -Not -Throw
     }
 
     It 'ClusterUserCredential-Token' {
         {
             $config = Get-AzConnectedClusterUserCredential -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS2 -AuthenticationMethod Token -ClientProxy
-            $config.Kubeconfig | Should -Be $env.kubeContext
+            $config.Kubeconfig.Name | Should -Be "KubeConfig"
         } | Should -Not -Throw
     }
 
@@ -92,7 +93,8 @@ Describe 'AzConnectedKubernetes' {
 
     It 'DeleteViaIdentity' {
         {
-            Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS2 | Remove-AzConnectedKubernetes
+            $config = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS2
+            Remove-AzConnectedKubernetes -InputObject $config
         } | Should -Not -Throw
     }
 }
