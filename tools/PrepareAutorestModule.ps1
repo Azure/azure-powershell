@@ -23,7 +23,6 @@ $ALL_MODULE = "ALL_MODULE"
 
 $SKIP_MODULES = @("ContainerInstance", "ConnectedMachine")
 
-
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
 foreach ($file in $ChangedFiles)
