@@ -35,8 +35,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
- - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/gallery.json
- - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/runCommands.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/gallery.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/runCommands.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 
 # For new RP, the version is 0.1.0

@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
+Create a gallery application version.
 
 ## SYNTAX
 
@@ -23,6 +24,7 @@ New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <S
 
 ## DESCRIPTION
 
+Create a gallery application version.
 
 ## EXAMPLES
 
