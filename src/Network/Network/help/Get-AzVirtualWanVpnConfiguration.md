@@ -87,7 +87,8 @@ Once the gateway has been created, it is connected to the VpnSite using the New-
 
 The configuration is then downloaded using this commandlet.
 
-If the commandlet is successful, then the download configuration will be written to the blob indicated by the SignedSasUrl.
+If the commandlet is successful, then the download configuration will be written to the blob indicated by the SignedSasUrl. Below is an example for how the URL will look like :
+https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]
 
 ## PARAMETERS
 

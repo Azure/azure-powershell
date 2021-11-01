@@ -232,7 +232,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     BackupType = BackupPolicyType,
                     BackupIntervalInMinutes = BackupIntervalInMinutes,
-                    BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                    BackupRetentionIntervalInHours = BackupRetentionIntervalInHours,
+                    BackupStorageRedundancy = BackupStorageRedundancy
                 };
 
                 if (BackupPolicyType.Equals(PSBackupPolicy.ContinuousModeBackupType, StringComparison.OrdinalIgnoreCase) &&
@@ -244,14 +245,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                 databaseAccountCreateUpdateParameters.BackupPolicy = backupPolicy.ToSDKModel();
             }
-            else if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
+            else if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue || !string.IsNullOrEmpty(BackupStorageRedundancy))
             {
                 databaseAccountCreateUpdateParameters.BackupPolicy = new PeriodicModeBackupPolicy()
                 {
                     PeriodicModeProperties = new PeriodicModeProperties()
                     {
                         BackupIntervalInMinutes = BackupIntervalInMinutes,
-                        BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                        BackupRetentionIntervalInHours = BackupRetentionIntervalInHours,
+                        BackupStorageRedundancy = BackupStorageRedundancy
                     }
                 };
             }
