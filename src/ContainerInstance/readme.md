@@ -63,14 +63,17 @@ directive:
   - where:
       verb: Set
     remove: true
+  # Rename *-AzContainerInstanceContainerGroup to *-AzContainerGroup
   - where:
       subject: ContainerGroup
     set:
       subject-prefix: ""
+  # Shorten *-AzContainerInstanceContainerLog to *-AzContainerInstanceLog
   - where:
       subject: ContainerLog
     set:
       subject: Log
+  # 
   - where:
       subject: Container
     set:

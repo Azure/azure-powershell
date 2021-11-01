@@ -1,6 +1,6 @@
 ### Example 1: Create an HTTP Header object
 ```powershell
-PS C:\> new-AzContainerInstanceHttpHeaderObject -name foo -value bar
+PS C:\> New-AzContainerInstanceHttpHeaderObject -name foo -value bar
 
 Name Value
 ---- -----
