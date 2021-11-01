@@ -26,6 +26,9 @@ function setupEnv() {
     $env.Add("clusterNameEUS1", $clusterNameEUS1)
     $env.Add("clusterNameEUS2", $clusterNameEUS2)
 
+    $K8sName = RandomString -allChars $false -len 6
+    $env.Add("K8sName", $K8sName)
+
     $env.Add("locationEUS","eastus")
 
     $resourceGroupEUS = "testgroup" + $env.locationEUS
@@ -36,6 +39,12 @@ function setupEnv() {
 
     write-host "1. start to create test group..."
     New-AzResourceGroup -Name $env.resourceGroupEUS -Location "eastus"
+
+    write-host "1. az aks create..."
+    az aks create --name $env.K8sName --resource-group $env.resourceGroupEUS --kubernetes-version 1.20.9 --vm-set-type AvailabilitySet
+    
+    write-host "1. az aks get-credentials..."
+    az aks get-credentials --resource-group $env.resourceGroupEUS --name $env.K8sName
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
