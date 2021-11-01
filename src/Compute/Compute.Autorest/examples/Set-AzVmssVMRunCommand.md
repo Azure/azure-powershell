@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Set RunCommand by name
 ```powershell
 PS C:\> Set-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
 

@@ -22,7 +22,7 @@ Describe 'Get-AzVMRunCommand' {
         $vmname = "testpwshellvm"
         $rgname = "testpwshellcompute"
         $user = "Foo12";
-        $password = RandomString -allChars $True -len 13 
+        $password = RandomString -allChars $True -len 120 
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         Write-Host $env.rgname
@@ -39,12 +39,12 @@ Describe 'Get-AzVMRunCommand' {
         $returnlist = Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand1"
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1'{
+        Get-AzVMRunCommand -Location eastus
     }
 
-    It 'Get1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get1' {
+        Get-AzVMRunCommand -CommandId RunPowerShellScript -Location eastus
     }
 
     It 'GetViaIdentity1' -skip {
