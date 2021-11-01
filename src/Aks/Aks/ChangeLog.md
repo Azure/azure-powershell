@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed the issue that `Set-AzAksCluster` can't upgrade cluster in some cases. [#14583]
+* Added support for new parameters `NetworkPolicy`, `PodCidr`, `ServiceCidr`, `DnsServiceIP`, `DockerBridgeCidr`, `NodePoolLabel`, `AksCustomHeader` in `New-AzAksCluster`. [#13795]
 * Added warnings of upcoming breaking change of migrating to Microsoft Graph.
 * Added support for changing the number of nodes in a node pool. [#12379]
 
