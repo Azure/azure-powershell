@@ -29,7 +29,6 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-branch: 7b19bbd8ee63fa724edf5c780b63ae038312d2b1
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -59,12 +58,17 @@ directive:
   # Remove following verbs
   - select: command
     where:
-      verb: Export|Convert|Install|Set
+      verb: Export|Convert|Install
     remove: true
   # Remove existing cmdlets
   - select: command
     where: 
       subject: Gallery$|GallerySharingProfile|GalleryImage$|GalleryImageVersion$
+    remove: true
+  - select: command
+    where:
+      subject: GalleryApplication$|GalleryApplicationVersion$
+      verb: Set
     remove: true
   # Change model names for GalleryApplicationVersion
   - where: 
