@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
     /// </summary>
     public abstract class ResourcesBaseCmdlet : AzureRMCmdlet
     {
+        protected const string BreakingChangeMSGraphMigration = @"This cmdlet will use Microsoft Graph in Az 7.x and later.
+Visit https://go.microsoft.com/fwlink/?linkid=2174792 for migration guide and breaking changes.";
+
         /// <summary>
         /// Field that holds the resource client instance
         /// </summary>

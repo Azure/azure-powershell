@@ -20,9 +20,24 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.18.0
+* Added cmdlets for adding VMGalleryApplication property to VM/VMSS
+    - New-AzVmGalleryApplication
+    - New-AzVmssGalleryApplication
+    - Add-AzVmGalleryApplication
+    - Add-AzVmssGalleryApplication
+    - Remove-AzVmGalleryApplication
+    - Remove-AzVmssGalleryApplication
 * Added support for proxy and debug settings for VM Extension for SAP (AEM)
-* Updated New-AzGalleryImageVersion to take in the 'Encryption' property correctly from '-TagetRegion' parameter. 
+* Updated New-AzGalleryImageVersion to take in the 'Encryption' property correctly from '-TargetRegion' parameter. 
 * Updated Set-AzVmBootDiagnostic to default to managed storage account if not provided.
+* Edited New-AzVmss defaulting behavior when `OrchestrationMode` is set to Flexible.
+    - Removed NAT Pool.
+    - Removed UpgradePolicy. Throws an error if provided.
+    - SinglePlacementGroup must be false. Throws an error if true. 
+    - Networking Profile's API version is 2020-11-01 or later.
+    - Networking Profile IP Configurations Primary property is set to true.
 
 ## Version 4.17.1
 * Updated Compute .NET SDK package reference to version 49.1.0

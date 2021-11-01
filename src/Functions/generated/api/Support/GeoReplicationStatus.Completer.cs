@@ -33,15 +33,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Live".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Live", "Live", global::System.Management.Automation.CompletionResultType.ParameterValue, "Live");
+                yield return new global::System.Management.Automation.CompletionResult("'Live'", "Live", global::System.Management.Automation.CompletionResultType.ParameterValue, "Live");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Bootstrap".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Bootstrap", "Bootstrap", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bootstrap");
+                yield return new global::System.Management.Automation.CompletionResult("'Bootstrap'", "Bootstrap", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bootstrap");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unavailable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unavailable", "Unavailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unavailable");
+                yield return new global::System.Management.Automation.CompletionResult("'Unavailable'", "Unavailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unavailable");
             }
         }
     }

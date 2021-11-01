@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Notification".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Notification", "Notification", global::System.Management.Automation.CompletionResultType.ParameterValue, "Notification");
+                yield return new global::System.Management.Automation.CompletionResult("'Notification'", "Notification", global::System.Management.Automation.CompletionResultType.ParameterValue, "Notification");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Api".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Api", "Api", global::System.Management.Automation.CompletionResultType.ParameterValue, "Api");
+                yield return new global::System.Management.Automation.CompletionResult("'Api'", "Api", global::System.Management.Automation.CompletionResultType.ParameterValue, "Api");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Email".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Email", "Email", global::System.Management.Automation.CompletionResultType.ParameterValue, "Email");
+                yield return new global::System.Management.Automation.CompletionResult("'Email'", "Email", global::System.Management.Automation.CompletionResultType.ParameterValue, "Email");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Webhook".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Webhook", "Webhook", global::System.Management.Automation.CompletionResultType.ParameterValue, "Webhook");
+                yield return new global::System.Management.Automation.CompletionResult("'Webhook'", "Webhook", global::System.Management.Automation.CompletionResultType.ParameterValue, "Webhook");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "All".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("All", "All", global::System.Management.Automation.CompletionResultType.ParameterValue, "All");
+                yield return new global::System.Management.Automation.CompletionResult("'All'", "All", global::System.Management.Automation.CompletionResultType.ParameterValue, "All");
             }
         }
     }

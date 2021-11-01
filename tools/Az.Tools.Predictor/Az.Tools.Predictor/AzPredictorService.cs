@@ -283,7 +283,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual async Task<bool> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
+        public virtual async Task<bool?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
@@ -292,43 +292,46 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             try
             {
-                if (string.Equals(localCommands, _commandToRequestPrediction, StringComparison.Ordinal))
+                if (string.Equals(localCommands, _commandToRequestPrediction, StringComparison.OrdinalIgnoreCase))
                 {
                     // It's the same history we've already requested the prediction for last time, skip it.
-                    return false;
+                    return null;
                 }
 
-                if (commands.Any())
+                if (!commands.Any())
                 {
-                    SetCommandToRequestPrediction(localCommands);
-
-                    AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.HashUserId, requestId);
-
-                    var requestContext = new PredictionRequestBody.RequestContext()
-                    {
-                        VersionNumber = this._azContext.AzVersion
-                    };
-
-                    var requestBody = new PredictionRequestBody(commands)
-                    {
-                        Context = requestContext,
-                    };
-
-                    cancellationToken.ThrowIfCancellationRequested();
-
-                    var requestBodyString = JsonSerializer.Serialize(requestBody, JsonUtilities.DefaultSerializerOptions);
-                    var httpResponseMessage = await _client.PostAsync(_predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
-                    isRequestSent = true;
-
-                    httpResponseMessage.EnsureSuccessStatusCode();
-                    var reply = await httpResponseMessage.Content.ReadAsStreamAsync(cancellationToken);
-                    var suggestionsList = await JsonSerializer.DeserializeAsync<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
-
-                    SetCommandBasedPreditor(localCommands, suggestionsList);
+                    return null;
                 }
 
+                // We have a check to avoid sending the request using the same commands. So we only check if it's cancelled
+                // here. We don't cancel the request once we set _commandToRequestPrediction to localCommands.
+                cancellationToken.ThrowIfCancellationRequested();
+                cancellationToken = CancellationToken.None;
+                SetCommandToRequestPrediction(localCommands);
+
+                AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.HashUserId, requestId);
+
+                var requestContext = new PredictionRequestBody.RequestContext()
+                {
+                    VersionNumber = this._azContext.AzVersion
+                };
+
+                var requestBody = new PredictionRequestBody(commands)
+                {
+                    Context = requestContext,
+                };
+
+                var requestBodyString = JsonSerializer.Serialize(requestBody, JsonUtilities.DefaultSerializerOptions);
+                var httpResponseMessage = await _client.PostAsync(_predictionsEndpoint, new StringContent(requestBodyString, Encoding.UTF8, "application/json"), cancellationToken);
+                isRequestSent = true;
+
+                httpResponseMessage.EnsureSuccessStatusCode();
+                var reply = await httpResponseMessage.Content.ReadAsStreamAsync(cancellationToken);
+                var suggestionsList = await JsonSerializer.DeserializeAsync<IList<PredictiveCommand>>(reply, JsonUtilities.DefaultSerializerOptions);
+
+                SetCommandBasedPreditor(localCommands, suggestionsList);
             }
-            catch (Exception e)
+            catch (Exception e) when (!(e is OperationCanceledException))
             {
                 throw new ServiceRequestException(e.Message, e)
                         {
@@ -392,33 +395,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
 
                         // Initialize predictions
-                        hasSentHttpRequest = false;
                         var placeholderCommands = new string[] {
                                     AzPredictorConstants.CommandPlaceholder,
                                     AzPredictorConstants.CommandPlaceholder};
-                        requestId = Guid.NewGuid().ToString();
 
-                        try
-                        {
-                            hasSentHttpRequest = await RequestPredictionsAsync(placeholderCommands, requestId, CancellationToken.None);
-                        }
-                        catch (ServiceRequestException e)
-                        {
-                            hasSentHttpRequest = e.IsRequestSent;
-                            exception = e.InnerException;
-                        }
-                        catch (Exception e)
-                        {
-                            exception = e;
-                        }
-                        finally
-                        {
-                            _telemetryClient.RequestId = requestId;
-                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
-                                        placeholderCommands,
-                                        hasSentHttpRequest,
-                                        (exception is OperationCanceledException ? null : exception)));
-                        }
+                        return AzPredictorUtilities.RequestPredictionAndCollectTelemetryAync(this, _telemetryClient, null, placeholderCommands, null, CancellationToken.None);
                     });
         }
 

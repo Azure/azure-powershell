@@ -17,6 +17,7 @@ trigger:
 variables:
   GenerationBranchName: generation
   AzureStackBranchName: Azs-tzl
+  GithubToken: $(GITHUB_TOKEN)
 
 jobs:
 - job: Sync
@@ -35,5 +36,5 @@ jobs:
     inputs:
       targetType: inline
       script: >-
-        ./tools/SyncFromMainBranch.ps1 -BranchName $(BranchName) -GithubToken $env:GITHUB_TOKEN
+        ./tools/SyncFromMainBranch.ps1 -BranchName $(BranchName) -GithubToken $(GithubToken)
       pwsh: true
