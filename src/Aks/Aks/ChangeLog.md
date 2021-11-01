@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Added `ResourceGroupName` in `PSKubernetesCluster`. [#15802]
+
+## Version 2.5.0
 * Added support for new parameters `NetworkPolicy`, `PodCidr`, `ServiceCidr`, `DnsServiceIP`, `DockerBridgeCidr`, `NodePoolLabel`, `AksCustomHeader` in `New-AzAksCluster`. [#13795]
 * Added warnings of upcoming breaking change of migrating to Microsoft Graph.
 * Added support for changing the number of nodes in a node pool. [#12379]

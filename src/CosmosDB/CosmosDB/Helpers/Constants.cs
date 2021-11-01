@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string BackupIntervalInMinHelpMessage = "The interval(in minutes) with which backup are taken (only for accounts with periodic mode backups)";
         public const string BackupRetentionInHoursHelpMessage = "The time(in hours) for which each backup is retained (only for accounts with periodic mode backups)";
         public const string BackupTypeHelpMessage = "The type of backups on the Cosmos DB account. Accepted values: Periodic, Continuous";
+        public const string BackupStorageRedundancyHelpMessage = "The redundancy type of the backup Storage account";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";

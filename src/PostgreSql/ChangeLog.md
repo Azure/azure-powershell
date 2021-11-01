@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Removed `Location` in `Restore-AzPostgreSqlFlexibleServer`
 * Minor fixes for `Get-AzPostgreSqlFlexibleServerLocationBasedCapability`, `Test-AzPostgreSqlFlexibleServerConnect` and `New-AzPostgreSqlFlexibleServer`
 

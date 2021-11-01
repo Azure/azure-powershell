@@ -317,6 +317,13 @@ function New-AzFunctionApp {
                 foreach ($PropertyName in $runtimeJsonDefintion.SiteConfigPropertiesDictionary.Keys)
                 {
                     $value = $runtimeJsonDefintion.SiteConfigPropertiesDictionary[$PropertyName]
+
+                    if (($OSType -eq "Windows") -and ($FunctionsVersion -eq "3") -and ($PropertyName -eq "netFrameworkVersion"))
+                    {
+                        # For Functions V3 apps, do not set netFrameworkVersion.
+                        continue
+                    }
+
                     $siteCofig.$PropertyName = $value
                 }
             }            
