@@ -696,9 +696,5 @@
   {
     "regex": "Logz",
     "alias": "Logz"
-  },
-  {
-    "regex": "WebPubSub",
-    "alias": "WebPubSub"
   }
 ]

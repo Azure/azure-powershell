@@ -1,6 +1,6 @@
 <!-- region Generated -->
 # Az.SignalR
-This directory contains the PowerShell module for the WebPubSub service.
+This directory contains the PowerShell module for the SignalR service.
 
 ---
 ## Status
