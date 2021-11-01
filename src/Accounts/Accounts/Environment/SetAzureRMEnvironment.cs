@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Profile
         }
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [EnvironmentCompleter()]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true)]
