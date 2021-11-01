@@ -20,7 +20,7 @@ Get the available SKU information for the location
 #>
 
 function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ICapabilityProperties])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityProperties])]
     [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]
@@ -100,7 +100,7 @@ function Get-AzPostgreSqlFlexibleServerLocationBasedCapability {
                     $Keys = $Skus.SupportedServerVersion[0].SupportedVcore
                     
                     foreach ($Key in $Keys) {
-                        $NewEntry = New-Object -TypeName PSCustomObject -Property @{SKU=$Key.Name; Tier=$TierName; vCore=$Key.Vcore; Memory=$Key.SupportedMemoryPerVcoreMb}
+                        $NewEntry = New-Object -TypeName PSCustomObject -Property @{SKU=$Key.Name; Tier=$TierName; vCore=$Key.VCore; Memory=$Key.SupportedMemoryPerVcoreMb}
                         $TableResult += $NewEntry
                     }
                 }

@@ -15,7 +15,7 @@ Describe 'Get-AzKustoClusterSku' {
     }
     It 'List' {
         [array]$clusterSku = Get-AzKustoClusterSku
-        $clusterSku.Count | Should -Be 530
+        $clusterSku.Count | Should -Be 610
     }
 
     It 'List1' {

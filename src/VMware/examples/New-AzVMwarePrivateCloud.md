@@ -1,11 +1,10 @@
-### Example 1: Create private cloud
+### Example 1: Create a private cloud
 ```powershell
-PS C:\> New-AzVMwarePrivateCloud -Name azps-test-cloud -ResourceGroupName azps-test-group -NetworkBlock 192.168.48.0/22 -SkuName av36 -ManagementClusterSize 3 -Location australiaeast
+PS C:\> New-AzVMwarePrivateCloud -Name azps_test_cloud -ResourceGroupName azps_test_group -NetworkBlock 192.168.48.0/22 -Sku av36 -ManagementClusterSize 3 -Location australiaeast
 
-Location      Name            Type
---------      ----            ----
-australiaeast azps-test-cloud Microsoft.AVS/privateClouds
+Location      Name            Type                        ResourceGroupName
+--------      ----            ----                        -----------------
+australiaeast azps_test_cloud Microsoft.AVS/privateClouds azps_test_group
 ```
 
-Create private cloud
-
+Create a private cloud

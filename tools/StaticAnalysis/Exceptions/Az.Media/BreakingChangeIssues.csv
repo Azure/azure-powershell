@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.Commands.Media.dll","Microsoft.Azure.Commands.Media.MediaService.NewAzureRmMediaService","New-AzMediaService","0","2010","The cmdlet 'New-AzMediaService' no longer supports the alias 'Tags' for parameter 'Tag'.","Add the alias 'Tags' back to parameter 'Tag'."

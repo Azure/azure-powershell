@@ -16,14 +16,18 @@ Initializes Restore Request object for triggering restore on a protected backup 
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
  -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetResourceId <String>
- [-PointInTime <String>] [-RecoveryPoint <String>] [<CommonParameters>]
+ [-PointInTime <DateTime>] [-RecoveryPoint <String>] [-RehydrationDuration <String>]
+ [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
+ [<CommonParameters>]
 ```
 
 ### OriginalLocationFullRecovery
 ```
 Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResource>
  -DatasourceType <DatasourceTypes> -RestoreLocation <String> -RestoreType <RestoreTargetType>
- -SourceDataStore <DataStoreType> [-PointInTime <String>] [-RecoveryPoint <String>] [<CommonParameters>]
+ -SourceDataStore <DataStoreType> [-PointInTime <DateTime>] [-RecoveryPoint <String>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>]
+ [-SecretStoreURI <String>] [<CommonParameters>]
 ```
 
 ### OriginalLocationILR
@@ -31,8 +35,18 @@ Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResourc
 Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResource>
  -DatasourceType <DatasourceTypes> -ItemLevelRecovery -RestoreLocation <String>
  -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> [-ContainersList <String[]>]
- [-FromPrefixPattern <String[]>] [-PointInTime <String>] [-RecoveryPoint <String>]
- [-ToPrefixPattern <String[]>] [<CommonParameters>]
+ [-FromPrefixPattern <String[]>] [-PointInTime <DateTime>] [-RecoveryPoint <String>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>]
+ [-SecretStoreURI <String>] [-ToPrefixPattern <String[]>] [<CommonParameters>]
+```
+
+### RestoreAsFiles
+```
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -FileNamePrefix <String>
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
+ -TargetContainerURI <String> [-RecoveryPoint <String>] [-RehydrationDuration <String>]
+ [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,14 +61,13 @@ PS C:\> $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxx-xxx-xxx" -R
 PS C:\> $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDisk -SourceDataStore OperationalStore -RestoreLocation "westus"  -RestoreType AlternateLocation -TargetResourceId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/disks/{DiskName}" -RecoveryPoint "892e5c5014dc4a96807d22924f5745c9"
 PS C:\> $restoreRequest
 
-ObjectType                                  RestoreTargetInfoObjectType RestoreTargetInfoRecoveryOption RestoreTargetInfoRestoreLocation SourceDataStoreType RecoveryPointI
-                                                                                                                                                             d
+ObjectType                                  RestoreTargetInfoObjectType RestoreTargetInfoRecoveryOption RestoreTargetInfoRestoreLocation SourceDataStoreType RecoveryPointId
 ----------                                  --------------------------- ------------------------------- -------------------------------- ------------------- --------------
 AzureBackupRecoveryPointBasedRestoreRequest RestoreTargetInfo           FailIfExists                    westus                           OperationalStore    892e5c5014dc4a96807d22924f5745c9
+
 ```
 
 This command initialized a restore request object which can be used to trigger restore.
-
 
 ### Example 2: Get restore request object for Protected Azure Blob Backup instance
 ```powershell
@@ -74,7 +87,6 @@ AzureBackupRecoveryTimeBasedRestoreRequest restoreTargetInfo           FailIfExi
 This command initialized a restore request object which can be used to trigger restore for Blobs.
 
 ### Example 3: Get restore request object for Item Level recovery for containers under protected AzureBlob Backup instance
-
 ```powershell
 PS C:\> $startTime = (Get-Date).AddDays(-30).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
 PS C:\> $endTime = (Get-Date).AddDays(0).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
@@ -92,7 +104,6 @@ AzureBackupRecoveryTimeBasedRestoreRequest itemLevelRestoreTargetInfo  FailIfExi
 This command initialized a restore request object which can be used to trigger Item Level Recovery at container level for Blobs.
 
 ### Example 4: Get restore request object for Item Level recovery for containers/prefixMatch under protected AzureBlob Backup instance
-
 ```powershell
 PS C:\> $startTime = (Get-Date).AddDays(-30).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
 PS C:\> $endTime = (Get-Date).AddDays(0).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
@@ -116,9 +127,8 @@ FromPrefix           ToPrefix
 "container1/ccc"    "container1/ddd"
 "container2/aab"    "container2/abc" 
 "container3"        "container3-0"   (restores whole container3)
-                    
-Note: The ranges shouldn't overlap with each other. Reference: https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
 
+Note: The ranges shouldn't overlap with each other. Reference: https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
 
 ## PARAMETERS
 
@@ -127,7 +137,7 @@ Backup Instance object to trigger original localtion restore.
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.BackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.BackupInstanceResource
 Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -159,6 +169,21 @@ Datasource Type
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileNamePrefix
+File name to be prefixed to the restored backup data.
+
+```yaml
+Type: System.String
+Parameter Sets: RestoreAsFiles
 Aliases:
 
 Required: True
@@ -202,8 +227,8 @@ Accept wildcard characters: False
 Point In Time for restore.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.DateTime
+Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
 Required: False
@@ -215,6 +240,37 @@ Accept wildcard characters: False
 
 ### -RecoveryPoint
 Id of the recovery point to be restored.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RehydrationDuration
+Rehydration duration for the archived recovery point to stay rehydrated, default value for rehydration duration is 15.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RehydrationPriority
+Rehydration priority for archived recovery point.
+This parameter is mandatory for rehydrate restore of archived points.
 
 ```yaml
 Type: System.String
@@ -258,12 +314,59 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecretStoreType
+Secret store type for secret store authentication of data source.
+This parameter is only supported for AzureDatabaseForPostgreSQL currently.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretStoreURI
+Secret uri for secret store authentication of data source.
+This parameter is only supported for AzureDatabaseForPostgreSQL currently.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceDataStore
 DataStore Type of the Recovery point
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetContainerURI
+Target storage account container Id to which backup data will be restored as files.
+
+```yaml
+Type: System.String
+Parameter Sets: RestoreAsFiles
 Aliases:
 
 Required: True
@@ -310,7 +413,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IAzureBackupRestoreRequest
 
 ## NOTES
 
@@ -331,7 +434,6 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
       - `[ResourceType <String>]`: Resource Type of Datasource.
       - `[ResourceUri <String>]`: Uri of the resource.
       - `[Type <String>]`: DatasourceType of the resource.
-    - `FriendlyName <String>`: Gets or sets the Backup Instance friendly name.
     - `ObjectType <String>`: 
     - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
       - `PolicyId <String>`: 
@@ -347,6 +449,9 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
       - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
       - `[ResourceType <String>]`: Resource Type of Datasource.
       - `[ResourceUri <String>]`: Uri of the resource.
+    - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
+      - `ObjectType <String>`: Type of the specific object - used for deserializing
+    - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
 
 ## RELATED LINKS
 

@@ -38,7 +38,7 @@ Get-AzDnsResolver -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top
 ### List2
 ```
 Get-AzDnsResolver -ResourceGroupName <String> -VirtualNetworkName <String> [-SubscriptionId <String[]>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,6 +91,17 @@ westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000c2d4-0000
 ```
 
 This command gets  single DNS Resolver by name.
+
+### Example 4: List all DNS Resolvers under the virtual network 
+```powershell
+PS C:\> Get-AzDnsResolver -ResourceGroupName powershell-test-rg -VirtualNetworkName virtualnetwork-test
+
+Location Name                      Type                           Etag
+-------- ----                      ----                           ----
+westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000c2d4-0000-0800-0000-604013880000"
+```
+
+This command gets  single DNS Resolver by virtual network.
 
 ## PARAMETERS
 
@@ -202,6 +213,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -213,6 +255,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver
 
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ISubResource
+
 ## NOTES
 
 ALIASES
@@ -223,11 +267,15 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
+  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
   - `[DnsResolverName <String>]`: The name of the DNS resolver.
+  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
   - `[Id <String>]`: Resource identity path
   - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
+  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
   - `[VirtualNetworkName <String>]`: The name of the virtual network.
 
 ## RELATED LINKS

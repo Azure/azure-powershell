@@ -196,11 +196,11 @@ function New-AzBotService {
                 Write-Error $NameAvailabilityResponse.Message
                 throw
             }
-            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                $EnvPSBoundParameters['SubscriptionId'] = [System.String]$SubscriptionId
-            }
             if ($BotKind -eq $Kind)
             {
+                if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                    $EnvPSBoundParameters['SubscriptionId'] = [System.String]$SubscriptionId
+                }
                 if (-not $PSBoundParameters.ContainsKey('DisplayName'))
                 {
                     $DisplayName = $Name
@@ -223,7 +223,7 @@ function New-AzBotService {
                     $CreateServerFarm = $true
                 }
                 $TemplateFile = [System.IO.Path]::Combine($PSScriptRoot, 'webappv4.template.json')
-                $AppSecret = ConvertFrom-SecureString $ApplicationSecret -AsPlainText
+                $AppSecret = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $ApplicationSecret
                 $Parameter = @{
                     'location' = $Location;
                     'kind' = $Kind;

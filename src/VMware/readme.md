@@ -47,36 +47,157 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 87fe548940e52c5f46fd86ac587de9c1f4bdde83
 require:
-# readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
-input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/vmware/resource-manager/Microsoft.AVS/stable/2020-03-20/vmware.json
+input-file: 
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-06-01/vmware.json
 
-module-version: 0.1.0
+module-version: 0.3.0
 title: VMware
 subject-prefix: $(service-name)
+resourcegroup-append: true
 
 identity-correction-for-post: true
 
 directive:
-  # Following is two common directive which are normally required in all the RPs
-  # 1. Remove the unexpanded parameter set
-  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
+  - from: swagger-document 
+    where: $.definitions.AdminCredentials.properties.nsxtPassword
+    transform: >-
+      return {
+          "description": "NSX-T Manager password",
+          "type": "string",
+          "readOnly": true,
+          "x-ms-secret": true,
+          "format": "password"
+      }
+  - from: swagger-document 
+    where: $.definitions.AdminCredentials.properties.vcenterPassword
+    transform: >-
+      return {
+          "description": "vCenter admin password",
+          "type": "string",
+          "readOnly": true,
+          "x-ms-secret": true,
+          "format": "password"
+      }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
-  # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
-  # Hide cmdlets.
+  - where:
+      verb: Get|New|Remove
+      subject: Addon
+    hide: true
   - where:
       verb: New|Remove
       subject: PrivateCloud
     hide: true
   - where:
+      verb: Get
+      subject: ScriptCmdlet|ScriptExecutionLog|ScriptPackage|WorkloadNetworkGateway|WorkloadNetworkVirtualMachine
+    hide: true
+  - where:
+      verb: Get|New|Remove
+      subject: ScriptExecution|WorkloadNetworkPublicIP|Datastore
+    hide: true
+  - where:
+      verb: Get|New|Update|Remove
+      subject: WorkloadNetworkDhcp|WorkloadNetworkDnsService|WorkloadNetworkDnsZone|WorkloadNetworkPortMirroring|WorkloadNetworkSegment|WorkloadNetworkVMGroup
+    hide: true
+  - where:
       verb: New|Get|Remove
       subject: HcxEnterpriseSite
     remove: true
+  - no-inline:
+      - AddonProperties
+  - model-cmdlet:
+      - ScriptSecureStringExecutionParameter
+      - ScriptStringExecutionParameter
+      - PSCredentialExecutionParameter
+      - AddonSrmProperties
+      - AddonVrProperties
+  - where:
+      verb: Test
+      subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$
+      variant: ^CheckViaIdentity$
+    remove: true
+  - where:
+      verb: Get
+      subject: ^PrivateCloudAdminCredentials$
+    set:
+      subject: PrivateCloudAdminCredential
+  - where:
+      verb: Invoke
+      subject: ^RotatePrivateCloudNsxtPassword$
+    set:
+      verb: New
+      subject: PrivateCloudNsxtPassword
+  - where:
+      verb: Invoke
+      subject: ^RotatePrivateCloudVcenterPassword$
+    set:
+      verb: New
+      subject: PrivateCloudVcenterPassword
+  - where:
+      verb: Get
+      subject: ^WorkloadNetworkVirtualMachine$
+    set:
+      subject: WorkloadNetworkVM
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkDhcp$
+      parameter-name: DhcpId
+    set:
+      parameter-name: DhcpName
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkDnsService$
+      parameter-name: DnsServiceId
+    set:
+      parameter-name: DnsServiceName
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkDnsZone$
+      parameter-name: DnsZoneId
+    set:
+      parameter-name: DnsZoneName
+  - where:
+      verb: Get
+      subject: ^WorkloadNetworkGateway$
+      parameter-name: GatewayId
+    set:
+      parameter-name: GatewayName
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkPortMirroring$
+      parameter-name: PortMirroringId
+    set:
+      parameter-name: PortMirroringName
+  - where:
+      verb: New|Get|Remove
+      subject: ^WorkloadNetworkPublicIP$
+      parameter-name: PublicIPId
+    set:
+      parameter-name: PublicIPName
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkSegment$
+      parameter-name: SegmentId
+    set:
+      parameter-name: SegmentName
+  - where:
+      verb: New|Get|Update|Remove
+      subject: ^WorkloadNetworkVMGroup$
+      parameter-name: VMGroupId
+    set:
+      parameter-name: VMGroupName
+  - where:
+      verb: New
+      subject: ^GlobalReachConnection$
+      parameter-name: PeerExpressRouteCircuit
+    set:
+      parameter-name: PeerExpressRouteResourceId
 ```

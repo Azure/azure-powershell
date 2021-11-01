@@ -152,9 +152,15 @@ namespace Tools.Common.Models
         {
             "Access",
             "Address",
+            "Alerts",
             "Alias",
             "Anonymous",
+            "Assets",
+            "Bypass",
+            "Credentials",
             "Diagnostics",
+            "Dns",
+            "Expires",
             "Express",
             "Https",
             "InBytes",
@@ -169,11 +175,14 @@ namespace Tools.Common.Models
             "Permissions",
             "Process",
             "Progress",
+            "Properties",
+            "ProxyUseDefaultCredentials",
             "SaveAs",
             "Statistics",
             "Status",
             "Success",
-            "Vmss"
+            "Vmss",
+            "Windows"
         };
 
         public List<ParameterMetadata> GetParametersWithPluralNoun()
@@ -275,6 +284,12 @@ namespace Tools.Common.Models
         public string DefaultParameterSetName { get; set; }
 
         /// <summary>
+        /// The default parameter set
+        /// </summary>
+        [JsonIgnore]
+        public ParameterSetMetadata DefaultParameterSet { get { return _parameterSets.Find(p => string.Equals(p.Name, this.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase)); } }
+
+        /// <summary>
         /// The set of output types for the cmdlet
         /// </summary>
         public List<OutputMetadata> OutputTypes { get { return _outputTypes; } }
@@ -316,7 +331,24 @@ namespace Tools.Common.Models
                             this.SupportsPaging == other.SupportsPaging;
             var thisDefaultSet = _parameterSets.Find(p => string.Equals(p.Name, this.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase));
             var otherDefaultSet = _parameterSets.Find(p => string.Equals(p.Name, other.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase));
-            cmdletsEqual &= thisDefaultSet.Equals(otherDefaultSet);
+            if (thisDefaultSet == null)
+            {
+                if (otherDefaultSet != null)
+                {
+                    cmdletsEqual = false;
+                }
+            }
+            else
+            {
+                if (otherDefaultSet == null)
+                {
+                    cmdletsEqual = false;
+                }
+                else
+                {
+                    cmdletsEqual &= thisDefaultSet.Equals(otherDefaultSet);
+                }
+            }
             foreach (var thisParameterSet in this.ParameterSets)
             {
                 var otherParameterSet = other.ParameterSets.Find(p => string.Equals(p.Name, thisParameterSet.Name, StringComparison.OrdinalIgnoreCase));

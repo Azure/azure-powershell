@@ -1,1 +1,2 @@
 "Directory","AssemblyName","Expected Version","Actual Version","Parent Assembly","Severity","ProblemId","Description","Remediation"
+"Az.IotHub","Microsoft.WindowsAzure.Storage","9.3.2.0","9.3.0.0","Microsoft.Azure.Devices.Client","1","1010","Assembly Microsoft.WindowsAzure.Storage version 9.3.2.0 referenced from Microsoft.Azure.Devices.Client.dll does not match assembly version on disk: 9.3.0.0","Update any references to version 9.3.0.0 of assembly Microsoft.WindowsAzure.Storage"

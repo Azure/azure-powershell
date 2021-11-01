@@ -51,7 +51,7 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json
+  - $(repo)/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json
 
 module-version: 0.1.0
 title: ProviderHub
@@ -81,6 +81,22 @@ directive:
   - where:
       verb: Set
     remove: true
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/fakefield/g, 'authorization');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/Fakefield/g, 'Authorization');
+
+# Hide commands to use Custom
+  - where:
+      verb: Get|New|Remove
+      subject: ResourceTypeRegistration
+    hide: true
+  - where:
+      verb: Get|New|Remove
+      subject: Sku
+    hide: true
   - where:
       verb: Get|New|Remove
       subject: SkuNestedResourceTypeFirst
@@ -97,10 +113,4 @@ directive:
       verb: New
       subject: ProviderRegistrationOperation
     hide: true
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/fakefield/g, 'authorization');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/Fakefield/g, 'Authorization');
 ```

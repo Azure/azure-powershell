@@ -13,7 +13,7 @@ function Test-DotNet
 {
     try
     {
-        if ((Get-PSDrive 'HKLM' -ErrorAction Ignore) -and (-not (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' -ErrorAction Stop | Get-ItemPropertyValue -ErrorAction Stop -Name Release | Where { $_ -ge 461808 })))
+        if ((Get-PSDrive 'HKLM' -ErrorAction Ignore) -and (-not (Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\' -ErrorAction Stop | Get-ItemPropertyValue -ErrorAction Stop -Name Release | Where-Object { $_ -ge 461808 })))
         {
             throw ".NET Framework versions lower than 4.7.2 are not supported in Az.  Please upgrade to .NET Framework 4.7.2 or higher."
         }
@@ -22,6 +22,29 @@ function Test-DotNet
     {
         Write-Verbose ".NET Framework version check failed."
     }
+}
+
+function Preload-Assembly {
+    param (
+        [string]
+        $AssemblyDirectory
+    )
+    if($PSEdition -eq 'Desktop' -and (Test-Path $AssemblyDirectory -ErrorAction Ignore))
+    {
+        try
+        {
+            Get-ChildItem -ErrorAction Stop -Path $AssemblyDirectory -Filter "*.dll" | ForEach-Object {
+                try
+                {
+                    Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+                }
+                catch {
+                    Write-Verbose $_
+                }
+            }
+        }
+        catch {}
+    }    
 }
 
 if (%ISAZMODULE% -and ($PSEdition -eq 'Desktop'))
@@ -33,6 +56,8 @@ if (%ISAZMODULE% -and ($PSEdition -eq 'Desktop'))
 
     Test-DotNet
 }
+
+%AZURECOREPREREQUISITE%
 
 if (Test-Path -Path "$PSScriptRoot\StartupScripts" -ErrorAction Ignore)
 {
@@ -50,29 +75,28 @@ if (Get-Module %AZORAZURERM%.profile -ErrorAction Ignore)
 }
 
 $preloadPath = (Join-Path $PSScriptRoot -ChildPath "PreloadAssemblies")
-if($PSEdition -eq 'Desktop' -and (Test-Path $preloadPath -ErrorAction Ignore))
-{
-    try
-    {
-        Get-ChildItem -ErrorAction Stop -Path $preloadPath -Filter "*.dll" | ForEach-Object {
-            Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
-        }
-    }
-    catch {}
-}
+Preload-Assembly -AssemblyDirectory $preloadPath
+$preloadPath = (Join-Path $PSScriptRoot -ChildPath "ModuleAlcAssemblies")
+Preload-Assembly -AssemblyDirectory $preloadPath
 
 $netCorePath = (Join-Path $PSScriptRoot -ChildPath "NetCoreAssemblies")
 if($PSEdition -eq 'Core' -and (Test-Path $netCorePath -ErrorAction Ignore))
 {
     try
     {
-        $loadedAssemblies = ([System.AppDomain]::CurrentDomain.GetAssemblies() | %{New-Object -TypeName System.Reflection.AssemblyName -ArgumentList $_.FullName} )
+        $loadedAssemblies = ([System.AppDomain]::CurrentDomain.GetAssemblies() | ForEach-Object {New-Object -TypeName System.Reflection.AssemblyName -ArgumentList $_.FullName} )
         Get-ChildItem -ErrorAction Stop -Path $netCorePath -Filter "*.dll" | ForEach-Object {
             $assemblyName = ([System.Reflection.AssemblyName]::GetAssemblyName($_.FullName))
             $matches = ($loadedAssemblies | Where-Object {$_.Name -eq $assemblyName.Name})
             if (-not $matches)
             {
-                Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+                try
+                {
+                    Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+                }
+                catch {
+                    Write-Verbose $_
+                }
             }
         }
     }
