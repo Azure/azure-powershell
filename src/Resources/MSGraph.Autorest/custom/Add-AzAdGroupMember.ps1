@@ -138,7 +138,7 @@ function Add-AzAdGroupMember {
             $null = $PSBoundParameters.Remove('TargetGroupDisplayName')
         } elseif ($PSBoundParameters['TargetGroupObject']) {
             $PSBoundParameters['GroupId'] = $PSBoundParameters['TargetGroupObject'].Id
-            $null = $PSBoundParameters['TargetGroupObject']
+            $null = $PSBoundParameters.Remove('TargetGroupObject')
         } else {
             $PSBoundParameters['GroupId'] = $PSBoundParameters['TargetGroupObjectId']
             $null = $PSBoundParameters.Remove('TargetGroupObjectId')

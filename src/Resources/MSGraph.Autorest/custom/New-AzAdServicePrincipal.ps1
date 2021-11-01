@@ -711,7 +711,7 @@ function New-AzAdServicePrincipal {
     }
     if ($PSBoundParameters['Scope']) {
       $spScope = $PSBoundParameters['Scope']
-      $null = $PSBoundParameters.Remove['Scope']
+      $null = $PSBoundParameters.Remove('Scope')
     }
     
     if ($PSBoundParameters['ApplicationObject']) {

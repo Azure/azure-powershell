@@ -161,7 +161,7 @@ process {
             } catch {
                 throw
             }
-            $null = $PSBoundParameters['ServicePrincipalName']
+            $null = $PSBoundParameters.Remove('ServicePrincipalName')
             break
         }
         'DisplayNameParameterSet' {
@@ -180,7 +180,7 @@ process {
             } catch {
                 throw
             }
-            $null = $PSBoundParameters.Remove['DisplayName']
+            $null = $PSBoundParameters.Remove('DisplayName')
             break
         }
         'InputObjectParameterSet' {
