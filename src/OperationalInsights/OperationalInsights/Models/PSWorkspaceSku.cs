@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         private void ValidateSKU()
         {
             AllowedWorkspaceServiceTiers serviceTrier;
-            if (!Enum.TryParse(this.Name, out serviceTrier))
+            if (!Enum.TryParse(this.Name, ignoreCase:true, out serviceTrier))
             {
                 throw new PSArgumentException($"Sku name only supports:{AllowedWorkspaceServiceTiers.standard}, {AllowedWorkspaceServiceTiers.premium}, " +
                     $"{AllowedWorkspaceServiceTiers.pernode}, {AllowedWorkspaceServiceTiers.standalone}, {AllowedWorkspaceServiceTiers.pergb2018}, " +

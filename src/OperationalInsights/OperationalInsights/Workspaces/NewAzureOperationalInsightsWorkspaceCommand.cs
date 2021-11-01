@@ -76,12 +76,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public override void ExecuteCmdlet()
         {
+            var selectedSku = string.IsNullOrEmpty(Sku) ? AllowedWorkspaceServiceTiers.pergb2018.ToString() : Sku;
+
             CreatePSWorkspaceParameters parameters = new CreatePSWorkspaceParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = Name,
                 Location = Location,
-                Sku = new PSWorkspaceSku(Sku, SkuCapacity),
+                Sku = new PSWorkspaceSku(selectedSku, SkuCapacity),
                 Tags = Tag,
                 RetentionInDays = RetentionInDays,
                 Force = Force.IsPresent,

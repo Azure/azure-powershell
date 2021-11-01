@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             {
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = Name,
-                Sku = new PSWorkspaceSku(Sku, SkuCapacity),
+                Sku = string.IsNullOrEmpty(Sku) ? null : new PSWorkspaceSku(Sku, SkuCapacity),
                 Tags = Tag,
                 PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
                 PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
