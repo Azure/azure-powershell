@@ -87,6 +87,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The DNS name prefix for the cluster. The length must be <= 9 if users plan to add windows container.")]
         public string DnsNamePrefix { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The version of Kubernetes to use for creating the cluster.")]
+        public string KubernetesVersion { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Unique name of the node pool profile in the context of the subscription and resource group.")]
         public string NodeName { get; set; }
 
@@ -113,9 +116,6 @@ namespace Microsoft.Azure.Commands.Aks
             HelpMessage = "SSH key file value or key file path. Defaults to {HOME}/.ssh/id_rsa.pub.")]
         [Alias("SshKeyPath")]
         public string SshKeyValue { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The version of Kubernetes to use for creating the cluster.")]
-        public string KubernetesVersion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr")]
         public string AcrNameToAttach { get; set; }
