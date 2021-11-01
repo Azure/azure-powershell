@@ -13,7 +13,7 @@ Removes a feature registration from your account.
 ## SYNTAX
 
 ```
-Remove-AzFeatureRegistration -FeatureName <String> -ProviderNamespace <String>
+Remove-AzFeatureRegistration -Name <String> -ProviderNamespace <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,18 +46,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FeatureName
+### -Name
 The feature name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: FeatureName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{ Fill PassThru Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

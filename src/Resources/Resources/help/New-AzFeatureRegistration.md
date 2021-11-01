@@ -13,8 +13,8 @@ Creates a feature registration in your account.
 ## SYNTAX
 
 ```
-New-AzFeatureRegistration -FeatureName <String> -ProviderNamespace <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFeatureRegistration -Name <String> -ProviderNamespace <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,13 +46,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FeatureName
+### -Name
 The feature name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: FeatureName
 
 Required: True
 Position: Named
