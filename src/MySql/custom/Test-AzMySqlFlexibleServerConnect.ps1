@@ -123,7 +123,7 @@ function Test-AzMySqlFlexibleServerConnect {
             $null = $PSBoundParameters.Remove('DatabaseName')
         }
         
-        $Password = ConvertFrom-SecureString $PSBoundParameters['AdministratorLoginPassword'] -AsPlainText
+        $Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['AdministratorLoginPassword']
         $null = $PSBoundParameters.Remove('AdministratorLoginPassword')
 
         $AdministratorUserName = [string]::Empty

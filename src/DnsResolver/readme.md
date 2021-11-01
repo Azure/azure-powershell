@@ -75,7 +75,7 @@ require:
 input-file:
   - $(this-folder)/resources/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2020-04-01-preview/dnsresolver.json
 
-module-version: 0.1.4
+module-version: 0.1.5
 title: DnsResolver
 subject-prefix: $(service-name)
 
@@ -93,9 +93,7 @@ directive:
       subject: DnsForwardingRuleset
     set:
       subject-prefix: ''
-  - where:
-      subject: DnsForwardingRulesetDnsForwardingRuleset
-    remove: true
+
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
