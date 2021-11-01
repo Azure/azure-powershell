@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Restore-AzDeletedWebApp` to fix issue that prevents the cmdlet from working on hosts with a locale is anything different from `en-US`
 
 ## Version 2.8.3
 * Updated `Import-AzWebAppKeyVaultCertificate1` to set the default name with combination of keyvault name and cert name 
