@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-If specified, cmdlet will return all disabled aliases
+If specified, cmdlet will return true when the feature registration is deleted.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
