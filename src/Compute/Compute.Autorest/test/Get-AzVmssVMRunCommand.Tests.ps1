@@ -21,20 +21,22 @@ Describe 'Get-AzVmssVMRunCommand' {
         $vmssname = "testpwshellvmss"
         $rgname = "testpwshellcompute"
         $user = "Foo12";
-        $password = RandomString -allChars $True -len 13 
+        $password = RandomString -allChars $True -len 120
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         
-        New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -ImageName 'Win2016Datacenter' -Credential $cred -InstanceCount 2
-        Set-AzVmssVMRunCommand -InstanceId 0 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname -Location "eastus"
+        New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -ImageName 'Win2016Datacenter' -Credential $cred -InstanceCount 1
+        $vms = Get-Azvmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssname
+        $instance = $vms.InstanceID[0]
+        Set-AzVmssVMRunCommand -InstanceId $instance -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname -Location "eastus"
     }
 
     It 'List' {
-        Get-AzVmssVMRunCommand -InstanceId 0 -ResourceGroupName $rgname  -VMScaleSetName $vmssname
+        Get-AzVmssVMRunCommand -InstanceId $instance -ResourceGroupName $rgname  -VMScaleSetName $vmssname
     }
 
     It 'Get' {
-        Get-AzVmssVMRunCommand -InstanceId 0 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
+        Get-AzVmssVMRunCommand -InstanceId $instance -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
     }
 
     It 'GetViaIdentity' -skip {
