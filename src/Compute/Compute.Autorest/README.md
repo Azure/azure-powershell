@@ -75,4 +75,8 @@ directive:
       verb: Update
       subject: VmssVMRunCommand|VMRunCommand
     remove: true
+  - where:
+      subject: VmssVMRunCommand|VMRunCommand
+      variant: ^GetViaIdentity1
+    remove: true
 ```

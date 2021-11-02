@@ -46,10 +46,6 @@ Describe 'Get-AzVMRunCommand' {
         Get-AzVMRunCommand -CommandId RunPowerShellScript -Location eastus
     }
 
-    It 'GetViaIdentity1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
