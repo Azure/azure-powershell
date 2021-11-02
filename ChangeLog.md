@@ -1,3 +1,119 @@
+## 6.6.0 - November 2021
+#### Az.Accounts
+* Added new version of AAD service client using Microsoft Graph API
+
+#### Az.Aks
+* Added support for new parameters 'NetworkPolicy', 'PodCidr', 'ServiceCidr', 'DnsServiceIP', 'DockerBridgeCidr', 'NodePoolLabel', 'AksCustomHeader' in 'New-AzAksCluster'. [#13795]
+* Added warnings of upcoming breaking change of migrating to Microsoft Graph.
+* Added support for changing the number of nodes in a node pool. [#12379]
+
+#### Az.ApiManagement
+* Fixed a bug in 'Get-AzApiManagementTenantGitAccess' cmdlet.
+
+#### Az.Batch
+* Removed assembly 'System.Text.Encodings.Web.dll' [#16062]
+
+#### Az.Compute
+* Added cmdlets for adding VMGalleryApplication property to VM/VMSS
+    - New-AzVmGalleryApplication
+    - New-AzVmssGalleryApplication
+    - Add-AzVmGalleryApplication
+    - Add-AzVmssGalleryApplication
+    - Remove-AzVmGalleryApplication
+    - Remove-AzVmssGalleryApplication
+* Added support for proxy and debug settings for VM Extension for SAP (AEM)
+* Updated New-AzGalleryImageVersion to take in the 'Encryption' property correctly from '-TargetRegion' parameter. 
+* Updated Set-AzVmBootDiagnostic to default to managed storage account if not provided.
+* Edited New-AzVmss defaulting behavior when 'OrchestrationMode' is set to Flexible.
+    - Removed NAT Pool.
+    - Removed UpgradePolicy. Throws an error if provided.
+    - SinglePlacementGroup must be false. Throws an error if true. 
+    - Networking Profile's API version is 2020-11-01 or later.
+    - Networking Profile IP Configurations Primary property is set to true.
+
+#### Az.CosmosDB
+* Introduced Get-AzCosmosDBMongoDBBackupInformation to retrieve latest backup information for MongoDB.
+* Updated New-AzCosmosDBAccount, Update-AzCosmosDBAccount to accept BackupStorageRedundancy
+* Introduced Get-AzCosmosDBLocation to list Azure CosmosDB Account and its locations properties.
+
+#### Az.DataFactory
+* Added PublicNetworkAccess to Update_AzDataFactoryV2 Command
+* Updated ADF .Net SDK version to 4.26.0
+
+#### Az.DesktopVirtualization
+* Upgraded api version to 2021-07-12.
+
+#### Az.EventHub
+* Added support for Premium sku and namesapce and optional switch parameter 'DisableLocalAuth' to 'New-AzEventHubNamespace' and 'Set-AzEventHubNamespace' 
+
+#### Az.Functions
+* Set site config netFrameworkVersion for Windows V4 apps only
+* Enabled function app creation for Functions V4 stacks [#15919]
+
+#### Az.IotHub
+* Updated IoT Hub Management SDK to version 4.1.0 (api-version 2021-07-10)
+
+#### Az.KeyVault
+* Added warning message of upcoming breaking change to 'New-AzKeyVaultRoleDefinition' and 'Get-AzKeyVaultRoleDefinition'.
+    - To comply with the syntax of 'New-AzRoleDefinition' and 'Get-AzRoleDefinition' we are going to rename some of the properties of 'PSKeyVaultPermission' model, which might affect these two cmdlets.
+* Added warnings of upcoming breaking change of migrating to Microsoft Graph.
+
+#### Az.Migrate
+* Added check for invalid IP address
+
+#### Az.OperationalInsights
+* Fixed a bug in 'Set-AzOperationalInsightsLinkedService: when linked service does not exist, perform create(update) instead of failing'
+
+#### Az.RecoveryServices
+* Azure Backup fixed issues with StorageConfig
+* Azure Backup added NodesList and AutoProtectionPolicy to Get-AzRecoveryServicesBackupProtectableItem Cmdlets.
+* Azure Backup fixed GetItemsForContainerParamSet to support fetching the MAB backup item.
+* Azure Backup fixed Get-AzRecoveryServicesBackupContainer to support BackupManagementType MAB instead of MARS.
+* Added breaking change warning: 'Get-AzRecoveryServicesBackupJob', 'Get-AzRecoveryServicesBackupContainer' and 'Get-AzRecoveryServicesBackupProtectableItem' commands will only support 'BackupManagementType MAB' instead of 'MARS' alias, changes will take effect from upcoming breaking release.
+* Added support for ZRS disk type for Azure to Azure replication.
+* Added Availability zone information in replicated protected item response for Azure to Azure replication.
+
+#### Az.RedisCache
+* Created new examples in documentation of 'New-AzRedisCache' and 'Set-AzRedisCache'.
+
+#### Az.Resources
+* Fixed a bug about the exitcode of Bicep [#16055]
+* Added breaking change warnings for AAD cmdlets
+* Added property 'UIFormDefinition' to Template Spec Versions,  'Export-AzTemplateSpec' will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.
+* Added error catching for role assignment creation fail while creating a Service Principal
+* Performance improvement for Get-AzPolicyAlias when -NamespaceMatch matches a single RP namespace
+
+#### Az.Security
+* Updated Security .NET SDK package reference to version 3.0.0
+
+#### Az.ServiceBus
+* Added support for ZoneRedundant and optional switch parameter 'DisableLocalAuth' to 'New-AzServiceBusNamespace' and 'Set-AzServiceBusNamespace' 
+
+#### Az.SignalR
+* Added Web PubSub cmdlets
+  - 'New-AzWebPubSub'
+  - 'Get-AzWebPubSub'
+  - 'Update-AzWebPubSub'
+  - 'Restart-AzWebPubSub'
+  - 'Remove-AzWebPubSub'
+  - 'New-AzWebPubSubHub'
+  - 'Get-AzWebPubSubHub'
+  - 'Remove-AzWebPubSubHub'
+  - 'New-AzWebPubSubKey'
+  - 'Get-AzWebPubSubKey'
+  - 'Get-AzWebPubSubSku'
+  - 'Get-AzWebPubSubUsage'
+  - 'Test-AzWebPubSubNameAvailability'
+
+### Thanks to our community contributors
+* bgomezangulo (@beagam), Update Resume-AzNetAppFilesReplication.md (#16040)
+* Jim McCormick (@eimajtrebor), Fixed typo (#16091)
+* Lampson Nguyen (@lampson), Update Get-AzDataShare.md (#16015)
+* @MaxMeng1985, Update Get-AzSynapseSqlPoolRestorePoint.md (#16138)
+* Reggie Gibson (@regedit32), New-AzBotService: Fix AppSecret conversion to plaintext on Windows PowerShell (#16160)
+* Mötz Jensen (@Splaxi), BusinessIdentities details doesn't match the current implementation (#16141)
+
+
 ## 6.5.0 - October 2021
 #### Az.Accounts
 * Supported getting the access token for Microsoft Graph.

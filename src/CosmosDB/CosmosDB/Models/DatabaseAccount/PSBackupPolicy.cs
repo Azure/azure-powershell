@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 BackupIntervalInMinutes = periodicModeBackupPolicy.PeriodicModeProperties.BackupIntervalInMinutes;
                 BackupRetentionIntervalInHours = periodicModeBackupPolicy.PeriodicModeProperties.BackupRetentionIntervalInHours;
                 BackupType = PeriodicModeBackupType;
+                BackupStorageRedundancy = periodicModeBackupPolicy.PeriodicModeProperties.BackupStorageRedundancy;
             }
             else if (backupPolicy is ContinuousModeBackupPolicy)
             {
@@ -48,6 +49,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public int? BackupRetentionIntervalInHours { get; set; }
 
         public string BackupType { get; set; }
+
+        public string BackupStorageRedundancy { get; set; }
 
         public BackupPolicy ToSDKModel()
         {
@@ -62,7 +65,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                     PeriodicModeProperties = new PeriodicModeProperties()
                     {
                         BackupIntervalInMinutes = BackupIntervalInMinutes,
-                        BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
+                        BackupRetentionIntervalInHours = BackupRetentionIntervalInHours,
+                        BackupStorageRedundancy = BackupStorageRedundancy
                     }
                 };
 

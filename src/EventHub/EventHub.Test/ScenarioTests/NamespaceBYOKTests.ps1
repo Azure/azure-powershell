@@ -20,8 +20,8 @@ Tests BYOK for EventHub Namespace operations.
 function NamespaceTests
 {
     # Setup    
-    $location = Get-Location	
-	$locationKafka = "westus"
+    $location = "East US 2"	
+	$locationKafka = "East US 2"
 	$namespaceName = getAssetName "Eventhub-Namespace1-"
 	$namespaceName2 = getAssetName "Eventhub-Namespace2-"
 	$keyVaultName = "SDKTesting1Key"
