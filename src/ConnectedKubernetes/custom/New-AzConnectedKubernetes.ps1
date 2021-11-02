@@ -187,8 +187,8 @@ function New-AzConnectedKubernetes {
         $PSBoundParameters.Add('IdentityType', $IdentityType)
 
         #Region check helm install
+        $HelmVersion = helm version --short --kubeconfig $KubeConfig
         try {
-            $HelmVersion = helm version --short --kubeconfig $KubeConfig
             if ($HelmVersion.Contains("v2")) {
                 Write-Error "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
                 return
@@ -268,7 +268,11 @@ function New-AzConnectedKubernetes {
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
         #Region pull helm chart
         try {
-            helm chart pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
+             if ($HelmVersion.Contains("v3.7")) {
+                helm pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
+             } else {
+                helm chart pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
+             }
         } catch {
             Write-Error "Unable to pull helm chart from the registery $RegisteryPath"
             throw
@@ -283,7 +287,11 @@ function New-AzConnectedKubernetes {
             $ChartExportPath = Join-Path -Path $Home -ChildPath '.azure' | Join-Path -ChildPath 'AzureArcCharts'
         }
         try {
-            helm chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
+             if ($HelmVersion.Contains("v3.7")) {
+                helm pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
+             } else {
+                helm chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
+             }
         } catch {
             Write-Error "Unable to export helm chart from the registery $RegisteryPath"
             throw
