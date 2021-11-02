@@ -4,13 +4,6 @@ pr: none
 pool:
   vmImage: 'windows-2019'
 
-steps:
-- task: PowerShell@2
-  displayName: 'Install platyPS'
-  inputs:
-    targetType: inline
-    script: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
-
 - task: PowerShell@2
   displayName: 'Install PowerShellGet [v2.1.3 has a Publish-Module bug]'
   inputs:
@@ -23,6 +16,9 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'tools\Az.Tools.Installer\build.proj /t:"Clean;Build" /p:Configuration=Release'
+
+- pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+  displayName: 'Install platyPS'
 
 - task: DotNetCoreCLI@2
   displayName: 'Generate Help'
