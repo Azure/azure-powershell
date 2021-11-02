@@ -180,7 +180,8 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'New-AzRestorePointCollection', 'Get-AzRestorePointCollection', 
                'Update-AzRestorePointCollection', 
                'Remove-AzRestorePointCollection', 'New-AzRestorePoint', 
-               'Get-AzRestorePoint', 'Remove-AzRestorePoint'
+               'Get-AzRestorePoint', 'Remove-AzRestorePoint',
+               'Add-AzVmssRunCommand', 'Remove-AzVmssRunCommand'
 
 # Variables to export from this module
 # VariablesToExport = @()
