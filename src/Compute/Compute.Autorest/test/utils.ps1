@@ -28,8 +28,9 @@ function setupEnv() {
     $env.RandomString = (RandomString $false 8)
     $env.ResourceGroupName = "RGComputeTest" + $env.RandomString
     $env.Location = "EastUS"
-    $env.vmname = "testpwshellvm"
-    $env.vmssname = "testpwshellvmss"
+    
+    $env.rgname = "testpwshellcompute"
+    New-AzResourceGroup -Name $env.rgname -Location "eastus"
 
     # Create ResourceGroup
     Write-Host -ForegroundColor Yellow "Creating ResourceGroup" $env.ResourceGroupName
@@ -41,4 +42,7 @@ function cleanupEnv() {
     # Clean resources you create for testing
     Write-Host -ForegroundColor Yellow "Removing ResourceGroup" $env.ResourceGroupName
     Remove-AzResourceGroup -Name $env.ResourceGroupName 
+    
+    $env.rgname = "testpwshellcompute"
+    Remove-AzResourceGroup -Name $env.rgname
 }
