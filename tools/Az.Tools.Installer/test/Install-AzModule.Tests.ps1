@@ -90,7 +90,7 @@ Describe 'Install-AzModule' {
         {Install-AzModule -AllowPrerelease -Repository PSGallery -RequiredAzVersion 5.9} | Should -Throw
     }
 
-    It 'InstallByUri' {
+    It 'InstallByUri' -Skip {
         $output = [Array] (Install-AzModule -Path "https://azposhpreview.blob.core.windows.net/public/Az.Accounts.2.6.0.nupkg")
         $output.Count | Should -Be 1
 
