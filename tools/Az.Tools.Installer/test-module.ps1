@@ -13,13 +13,14 @@
 # ----------------------------------------------------------------------------------
 param([switch]$Isolated)
 $ErrorActionPreference = 'Stop'
-
+<#
 if($Isolated) {
   Write-Host -ForegroundColor Green 'Creating isolated process...'
   $pwsh = [System.Diagnostics.Process]::GetCurrentProcess().Path
   & "$pwsh" -NonInteractive -NoLogo -NoProfile -File $MyInvocation.MyCommand.Path @PSBoundParameters -Isolated
   return
 }
+#>
 
 $ProgressPreference = 'SilentlyContinue'
 
@@ -31,7 +32,6 @@ Import-Module -Name Pester -MinimumVersion 4.0
 Import-Module -Name $modulePath
 
 $testFolder = Join-Path $PSScriptRoot 'test'
-
-Invoke-Pester -Script @{Path = $testFolder } -EnableExit -OutputFile (Join-Path $testFolder "$moduleName-TestResults.xml")
+Invoke-Pester -Script @{Path = $testFolder } -OutputFile (Join-Path $testFolder "$moduleName-TestResults.xml")
 
 Write-Host -ForegroundColor Green '-------------Done-------------'

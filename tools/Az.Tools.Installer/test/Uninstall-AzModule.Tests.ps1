@@ -82,14 +82,12 @@ Describe 'Uninstall-AzModule' {
         Uninstall-AzModule -Name fakeModule
         $modules = Get-AzSubModule
         $modules.Count | Should -Be 9
-        #should check output
     }
 
     It 'UninstallByExcludingUnexistingName' {
         {Uninstall-AzModule -ExcludeModule fakeModule} | Should -Throw
         $modules = Get-AzSubModule
         $modules.Count | Should -Be 9
-        #should check output
     }
 
     It 'UninstallAzAccountsWithDependancyExisted' {

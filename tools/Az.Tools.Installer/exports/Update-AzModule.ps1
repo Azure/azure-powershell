@@ -152,6 +152,6 @@ function Update-AzModule {
         Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
         -IsSuccess $true `
         -StartDateTime $cmdStarted `
-        -Duration $Duration
+        -Duration ((Get-Date) - $cmdStarted)
     }
 }
