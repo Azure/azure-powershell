@@ -513,21 +513,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private int? immutabilityPeriod;
 
-        [Parameter(Mandatory = false, HelpMessage = "When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. " +
-            "This property can only be specified with '-EnableAccountLevelImmutability'.")]
-        public bool AllowProtectedAppendWrite
-        {
-            get
-            {
-                return allowProtectedAppendWrite is null ? false : allowProtectedAppendWrite.Value;
-            }
-            set
-            {
-                allowProtectedAppendWrite = value;
-            }
-        }
-        private bool? allowProtectedAppendWrite;
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Disabled. " +
@@ -772,7 +757,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.PublicNetworkAccess = this.PublicNetworkAccess;
             }
-            if (EnableAccountLevelImmutability.IsPresent || this.immutabilityPeriod != null || this.allowProtectedAppendWrite != null || this.ImmutabilityPolicyState != null)
+            if (EnableAccountLevelImmutability.IsPresent || this.immutabilityPeriod != null ||  this.ImmutabilityPolicyState != null)
             {
                 if (!EnableAccountLevelImmutability.IsPresent)
                 {
@@ -780,12 +765,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 createParameters.ImmutableStorageWithVersioning = new ImmutableStorageAccount();
                 createParameters.ImmutableStorageWithVersioning.Enabled = this.EnableAccountLevelImmutability.IsPresent;
-                if (this.immutabilityPeriod != null || this.allowProtectedAppendWrite != null || this.ImmutabilityPolicyState != null)
+                if (this.immutabilityPeriod != null || this.ImmutabilityPolicyState != null)
                 {
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy = new AccountImmutabilityPolicyProperties();
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
-                    createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.AllowProtectedAppendWrites = this.allowProtectedAppendWrite;
                 }
             }
 

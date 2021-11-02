@@ -27,8 +27,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
  [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
- [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-ImmutabilityPolicyState <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -47,9 +47,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
  [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
- [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>]
- [-ImmutabilityPolicyState <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [<CommonParameters>]
+ [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -270,16 +269,16 @@ The command creates account with disable PublicNetworkAccess of the account.
 
 ### Example 15: Create account with account level  mmutability policy
 ```
-PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Unlocked -AllowProtectedAppendWrite $true
+PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Unlocked
 
 PS C:\> $account.ImmutableStorageWithVersioning.Enabled
 True
 
 PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
 
-ImmutabilityPeriodSinceCreationInDays State    AllowProtectedAppendWrites
-------------------------------------- -----    --------------------------
-                                    1 Unlocked                       True
+ImmutabilityPeriodSinceCreationInDays State    
+------------------------------------- -----    
+                                    1 Unlocked 
 ```
 
 The command creates an account and enable account level immutability with versioning by '-EnableAccountLevelImmutability', then all the containers under this account will have object-level immutability enabled by default.
@@ -414,22 +413,6 @@ Accept wildcard characters: False
 
 ### -AllowCrossTenantReplication
 Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AllowProtectedAppendWrite
-When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. 
-This property can only be specified with '-EnableAccountLevelImmutability'.
 
 ```yaml
 Type: System.Boolean

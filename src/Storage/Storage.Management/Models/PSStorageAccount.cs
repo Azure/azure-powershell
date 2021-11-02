@@ -291,11 +291,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 this.ImmutabilityPeriodSinceCreationInDays = accountImmutabilityPolicyProperties.ImmutabilityPeriodSinceCreationInDays;
                 this.State = accountImmutabilityPolicyProperties.State;
-                this.AllowProtectedAppendWrites = accountImmutabilityPolicyProperties.AllowProtectedAppendWrites;
             }
         }
         public int? ImmutabilityPeriodSinceCreationInDays { get; set; }
         public string State { get; set; }
-        public bool? AllowProtectedAppendWrites { get; set; }
     }
 }

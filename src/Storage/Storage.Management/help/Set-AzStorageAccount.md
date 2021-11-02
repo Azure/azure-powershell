@@ -24,8 +24,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -40,8 +40,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -58,8 +58,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -331,16 +331,16 @@ This command updates a Storage account by set PublicNetworkAccess as enabled.
 
 ### Example 19: Update account level  mmutability policy
 ```
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked -AllowProtectedAppendWrite $false
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked
 
 PS C:\> $account.ImmutableStorageWithVersioning.Enabled
 True
 
 PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
 
-ImmutabilityPeriodSinceCreationInDays State    AllowProtectedAppendWrites
-------------------------------------- -----    --------------------------
-                                    2 Unlocked                      False
+ImmutabilityPeriodSinceCreationInDays State    
+------------------------------------- -----    
+                                    2 Unlocked 
 ```
 
 The command updates account-level immutability policy properties on an existing storage account, and show the result. 
@@ -477,22 +477,6 @@ Accept wildcard characters: False
 
 ### -AllowCrossTenantReplication
 Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AllowProtectedAppendWrite
-When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. 
-This property can only be changed when account is created with '-EnableAccountLevelImmutability', and ImmutabilityPolicy State is disabled or unlocked.
 
 ```yaml
 Type: System.Boolean

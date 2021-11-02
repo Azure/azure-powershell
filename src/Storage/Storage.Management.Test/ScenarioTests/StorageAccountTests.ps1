@@ -2087,7 +2087,7 @@ function Test-AzureStorageAccountWorm
         $kind = 'StorageV2'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Disabled -AllowProtectedAppendWrite $true
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Disabled 
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -2097,19 +2097,16 @@ function Test-AzureStorageAccountWorm
         Assert-AreEqual $true $sto.ImmutableStorageWithVersioning.Enabled;
         Assert-AreEqual 1 $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays;
         Assert-AreEqual Disabled $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.State;
-        Assert-AreEqual $true $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.AllowProtectedAppendWrites;
         
-        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked -AllowProtectedAppendWrite $false }
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked  }
         Assert-AreEqual $true $sto.ImmutableStorageWithVersioning.Enabled;
         Assert-AreEqual 2 $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays;
         Assert-AreEqual Unlocked $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.State;
-        Assert-AreEqual $false $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.AllowProtectedAppendWrites;
         
         Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -ImmutabilityPolicyState Locked }
         Assert-AreEqual $true $sto.ImmutableStorageWithVersioning.Enabled;
         Assert-AreEqual 2 $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays;
         Assert-AreEqual Locked $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.State;
-        Assert-AreEqual $false $sto.ImmutableStorageWithVersioning.ImmutabilityPolicy.AllowProtectedAppendWrites;
 		
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
