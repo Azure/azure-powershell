@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'AzConnectedKubernetes' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         {
             $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS1 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS
             $config.ProvisioningState | Should -Be 'Succeeded'
@@ -82,13 +82,13 @@ Describe 'AzConnectedKubernetes' {
         } | Should -Not -Throw
     }
 
-    It 'Delete' {
+    It 'Delete' -skip {
         {
             Remove-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS1
         } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         {
             $config = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS2
             Remove-AzConnectedKubernetes -InputObject $config
