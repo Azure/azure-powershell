@@ -970,6 +970,16 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The role assignment creation operation failed with the error: &apos;{0}&apos;
+        ///This means the role assignment was not able to be created. Please assign a role manually with help of the Service Principal Id.
+        /// </summary>
+        internal static string ServicePrincipalRoleAssignmentCreationFailed {
+            get {
+                return ResourceManager.GetString("ServicePrincipalRoleAssignmentCreationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service principal with display name &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string ServicePrincipalWithDisplayNameDoesntExist {

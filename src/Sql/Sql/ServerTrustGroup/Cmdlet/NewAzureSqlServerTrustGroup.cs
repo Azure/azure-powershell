@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 	/// Cmdlet to create a new Azure Sql Server Trust Group.
 	/// </summary>
 	[Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTrustGroup", DefaultParameterSetName = "GroupMemberObjectSet", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerTrustGroupModel))]
+	[Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTrustGroup")]
 	public class NewAzureSqlServerTrustGroup : AzureSqlServerTrustGroupCmdletBase
 	{
 		/// <summary>
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustGroup.Cmdlet
 				throw;
 			}
 
-			throw new PSArgumentException("This Server Trust Group already exists");
+			return null;
 		}
 
 		protected override IEnumerable<AzureSqlServerTrustGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerTrustGroupModel> model)

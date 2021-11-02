@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DisableMigration".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DisableMigration", "DisableMigration", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisableMigration");
+                yield return new global::System.Management.Automation.CompletionResult("'DisableMigration'", "DisableMigration", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisableMigration");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TestMigrate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TestMigrate", "TestMigrate", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestMigrate");
+                yield return new global::System.Management.Automation.CompletionResult("'TestMigrate'", "TestMigrate", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestMigrate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TestMigrateCleanup".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TestMigrateCleanup", "TestMigrateCleanup", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestMigrateCleanup");
+                yield return new global::System.Management.Automation.CompletionResult("'TestMigrateCleanup'", "TestMigrateCleanup", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestMigrateCleanup");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Migrate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Migrate", "Migrate", global::System.Management.Automation.CompletionResultType.ParameterValue, "Migrate");
+                yield return new global::System.Management.Automation.CompletionResult("'Migrate'", "Migrate", global::System.Management.Automation.CompletionResultType.ParameterValue, "Migrate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StartResync".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StartResync", "StartResync", global::System.Management.Automation.CompletionResultType.ParameterValue, "StartResync");
+                yield return new global::System.Management.Automation.CompletionResult("'StartResync'", "StartResync", global::System.Management.Automation.CompletionResultType.ParameterValue, "StartResync");
             }
         }
     }

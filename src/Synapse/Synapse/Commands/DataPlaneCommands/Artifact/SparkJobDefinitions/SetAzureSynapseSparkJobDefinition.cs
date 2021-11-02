@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
@@ -54,6 +55,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [Alias("File")]
         public string DefinitionFile { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.SparkConfigurationFolderPath)]
+        [ValidateNotNullOrEmpty]
+        public string FolderPath { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -67,7 +72,15 @@ namespace Microsoft.Azure.Commands.Synapse
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseSparkJobDefinition, this.Name, this.WorkspaceName)))
             {
                 string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
-                WriteObject(new PSSparkJobDefinitionResource(SynapseAnalyticsClient.CreateOrUpdateSparkJobDefinition(this.Name, rawJsonContent)));
+                SparkJobDefinition sparkJobDefinition = JsonConvert.DeserializeObject<SparkJobDefinition>(rawJsonContent);
+                SparkJobDefinitionResource sparkJobDefinitionResource = new SparkJobDefinitionResource(sparkJobDefinition);
+                if (this.IsParameterBound(c => c.FolderPath))
+                {
+                    SparkJobDefinitionFolder folder = new SparkJobDefinitionFolder();
+                    folder.Name = FolderPath;
+                    sparkJobDefinitionResource.Properties.Folder = folder;
+                }
+                WriteObject(new PSSparkJobDefinitionResource(SynapseAnalyticsClient.CreateOrUpdateSparkJobDefinition(this.Name, sparkJobDefinitionResource)));
             }
         }
     }

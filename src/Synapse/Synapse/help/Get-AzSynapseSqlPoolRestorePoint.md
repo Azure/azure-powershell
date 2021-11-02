@@ -43,7 +43,7 @@ The **Get-AzSynapseSqlPoolRestorePoint** cmdlet retrieves the distinct restore p
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlPoolRestorePoint -WorkspaceName -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+PS C:\> Get-AzSynapseSqlPoolRestorePoint -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command returns all available restore points for the Azure Synapse Analytics SQL pool named ContosoSqlPool.

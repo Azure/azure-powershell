@@ -19,17 +19,20 @@
 --->
 
 ## Upcoming Release
+<<<<<<< HEAD
 * Added optional parameter `-IsSecuritySite` to the following cmdlet:
     - `New-AzVpnSite`
 * Support for Sku, ScaleUnits parameters of BastionHost resource. [#15885]
     - `New-AzBastion`
     - `Set-AzBastion`
+
+## Version 4.12.0
 * Onboard Azure Resource Manager to Private Link Common Cmdlets
 * Updated cmdlets to add properties to enable/disable BgpRouteTranslationForNat for VpnGateway.
-    - `New-AzVpnGateway'
-    - `Update-AzVpnGateway`	
+    - `New-AzVpnGateway`
+    - `Update-AzVpnGateway`
 * Updated cmdlet to add property to disable InternetSecurity for P2SVpnGateway.
-    - `New-AzP2sVpnGateway'
+    - `New-AzP2sVpnGateway`
 * Added new cmdlets for HubBgpConnection child resource of VirtualHub.
     - `Get-AzVirtualHubBgpConnection`
     - `New-AzVirtualHubBgpConnection`

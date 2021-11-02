@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PreparedForResynchronization".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PreparedForResynchronization", "PreparedForResynchronization", global::System.Management.Automation.CompletionResultType.ParameterValue, "PreparedForResynchronization");
+                yield return new global::System.Management.Automation.CompletionResult("'PreparedForResynchronization'", "PreparedForResynchronization", global::System.Management.Automation.CompletionResultType.ParameterValue, "PreparedForResynchronization");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StartedResynchronization".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StartedResynchronization", "StartedResynchronization", global::System.Management.Automation.CompletionResultType.ParameterValue, "StartedResynchronization");
+                yield return new global::System.Management.Automation.CompletionResult("'StartedResynchronization'", "StartedResynchronization", global::System.Management.Automation.CompletionResultType.ParameterValue, "StartedResynchronization");
             }
         }
     }

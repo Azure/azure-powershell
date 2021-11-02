@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "VMwareFabric".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("VMwareFabric", "VMwareFabric", global::System.Management.Automation.CompletionResultType.ParameterValue, "VMwareFabric");
+                yield return new global::System.Management.Automation.CompletionResult("'VMwareFabric'", "VMwareFabric", global::System.Management.Automation.CompletionResultType.ParameterValue, "VMwareFabric");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "HyperVFabric".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("HyperVFabric", "HyperVFabric", global::System.Management.Automation.CompletionResultType.ParameterValue, "HyperVFabric");
+                yield return new global::System.Management.Automation.CompletionResult("'HyperVFabric'", "HyperVFabric", global::System.Management.Automation.CompletionResultType.ParameterValue, "HyperVFabric");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LinuxGuest".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LinuxGuest", "LinuxGuest", global::System.Management.Automation.CompletionResultType.ParameterValue, "LinuxGuest");
+                yield return new global::System.Management.Automation.CompletionResult("'LinuxGuest'", "LinuxGuest", global::System.Management.Automation.CompletionResultType.ParameterValue, "LinuxGuest");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WindowsGuest".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WindowsGuest", "WindowsGuest", global::System.Management.Automation.CompletionResultType.ParameterValue, "WindowsGuest");
+                yield return new global::System.Management.Automation.CompletionResult("'WindowsGuest'", "WindowsGuest", global::System.Management.Automation.CompletionResultType.ParameterValue, "WindowsGuest");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LinuxServer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LinuxServer", "LinuxServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "LinuxServer");
+                yield return new global::System.Management.Automation.CompletionResult("'LinuxServer'", "LinuxServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "LinuxServer");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WindowsServer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WindowsServer", "WindowsServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "WindowsServer");
+                yield return new global::System.Management.Automation.CompletionResult("'WindowsServer'", "WindowsServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "WindowsServer");
             }
         }
     }

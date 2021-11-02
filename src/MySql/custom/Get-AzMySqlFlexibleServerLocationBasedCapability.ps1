@@ -20,7 +20,7 @@ Get the available SKU information for the location
 #>
 
 function Get-AzMySqlFlexibleServerLocationBasedCapability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.ICapabilityProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ICapabilityProperties])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -97,10 +97,10 @@ process {
         foreach ($Skus in $SkusTiers) {
             $TierName = $Skus.Name
             try {
-                $Keys = $Skus.SupportedServerVersion[0].SupportedVcore
+                $Keys = $Skus.SupportedServerVersion[0].SupportedSku
                 
                 foreach ($Key in $Keys) {
-                    $NewEntry = New-Object -TypeName PSCustomObject -Property @{SKU=$Key.Name; Tier=$TierName; vCore=$Key.Vcore; Memory=$Key.SupportedMemoryPerVcoreMb}
+                    $NewEntry = New-Object -TypeName PSCustomObject -Property @{SKU=$Key.Name; Tier=$TierName; vCore=$Key.VCore; Memory=$Key.SupportedMemoryPerVcoreMb}
                     $TableResult += $NewEntry
                 }
             }

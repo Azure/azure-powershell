@@ -182,7 +182,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string templateSpecVersion,
             string location,
             PackagedTemplate packagedTemplate,
-            object UIFormDefinition,
             string templateSpecDisplayName = null,
             string templateSpecDescription = null,
             string versionDescription = null,
@@ -212,7 +211,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 MainTemplate = packagedTemplate.RootTemplate,
                 LinkedTemplates = packagedTemplate.Artifacts?.ToList(),
                 Description = versionDescription ?? existingTemplateSpecVersion?.Description,
-                UiFormDefinition = UIFormDefinition
+                UiFormDefinition = packagedTemplate.UIFormDefinition
         };
 
             // Handle our conditional tagging:

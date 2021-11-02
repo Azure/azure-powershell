@@ -197,12 +197,18 @@ function Bump-AzVersion
 
     $versionBump = [PSVersion]::NONE
     $updatedModules = @()
-    foreach ($galleryDependency in $galleryAz.Dependencies)
+    foreach ($localDependency in $localAz.RequiredModules)
     {
-        $localDependency = $localAz.RequiredModules | where { $_.Name -eq $galleryDependency.Name }
-        if ($localDependency -eq $null)
+        $galleryDependency = $galleryAz.Dependencies | where { $_.Name -eq $localDependency.Name }
+        if ($galleryDependency -eq $null)
         {
-            Write-Error "Could not find matching dependency for $($galleryDependency.Name)"
+            $updatedModules += $localDependency.Name
+            if ($versionBump -ne [PSVersion]::MAJOR)
+            {
+                $versionBump = [PSVersion]::MINOR
+            }
+            Write-Host "Found new added module $($localDependency.Name)"
+            continue
         }
 
         $galleryVersion = $galleryDependency.RequiredVersion

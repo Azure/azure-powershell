@@ -73,5 +73,25 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.Equal(expected, maskedCommandLine);
         }
+
+        /// <summary>
+        /// Verify that GetCommandAst return the right command ast.
+        /// </summary>
+        [Theory]
+        [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant <String>", null)]
+        [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant {String}", null)]
+        [InlineData("Set-AzContext -Subscription $subscription -Tenant [[String]]", null)]
+        [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant TenantName", null)]
+        [InlineData("Get-AzContext | Set-AzContext", "Get-AzContext")]
+        public void VerifyGetCommandAst(string input, string expected)
+        {
+            if (expected == null)
+            {
+                expected = input;
+            }
+
+            var commandAst = CommandLineUtilities.GetCommandAst(input);
+            Assert.Equal(expected, commandAst.ToString());
+        }
     }
 }

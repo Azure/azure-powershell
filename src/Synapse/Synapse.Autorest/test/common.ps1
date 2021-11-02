@@ -36,3 +36,131 @@ function Validate_Cluster{
     $KustoPool.SkuSize | Should -Be $SkuSize
 	$KustoPool.SkuCapacity | Should -Be $Capacity
 }
+
+<#
+.SYNOPSIS
+Validate principal assignment
+#>
+function Validate_PrincipalAssignment {
+	Param ([Object]$PrincipalAssignment,
+		[string]$PrincipalAssignmentFullName,
+		[string]$PrincipalId,
+		[string]$PrincipalType,
+		[string]$Role)
+		$PrincipalAssignment.Name | Should -Be $PrincipalAssignmentFullName
+		$PrincipalAssignment.PrincipalId | Should -Be $PrincipalId
+		$PrincipalAssignment.PrincipalType | Should -Be $PrincipalType
+		$PrincipalAssignment.Role | Should -Be $Role
+}
+
+<#
+.SYNOPSIS
+Gets a kusto database soft delet perios in days parameter
+#>
+function Get-Soft-Delete-Period-In-Days
+{
+	return New-TimeSpan -Days 4
+}
+
+<#
+.SYNOPSIS
+Gets a kusto database hot cache period in days
+#>
+function Get-Hot-Cache-Period-In-Days
+{
+	return New-TimeSpan -Days 2
+}
+
+<#
+.SYNOPSIS
+Validate if kusto database is valid
+#>
+function Validate_Database {
+	Param ([Object]$Database,
+		[string]$DatabaseFullName,
+		[string]$Location,
+		[string]$ResourceType,
+		[Nullable[timespan]]$SoftDeletePeriodInDays,
+		[Nullable[timespan]]$HotCachePeriodInDays)
+		$Database.Name | Should -Be $DatabaseFullName
+		$Database.Location | Should -Be $Location
+		$Database.Type | Should -Be $ResourceType
+		$Database.SoftDeletePeriod | Should -Be $SoftDeletePeriodInDays
+		$Database.HotCachePeriod | Should -Be $HotCachePeriodInDays
+}
+
+function Validate_AttachedDatabaseConfiguration {
+	Param ([Object]$AttachedDatabaseConfigurationCreated,
+		[string]$AttachedDatabaseConfigurationFullName,
+		[string]$Location,
+		[string]$KustoPoolResourceId,
+		[string]$DatabaseName,
+		[string]$DefaultPrincipalsModificationKind)
+		$AttachedDatabaseConfigurationCreated.Name | Should -Be $AttachedDatabaseConfigurationFullName
+		$AttachedDatabaseConfigurationCreated.Location | Should -Be $Location
+		$AttachedDatabaseConfigurationCreated.KustoPoolResourceId | Should -Be $KustoPoolResourceId
+		$AttachedDatabaseConfigurationCreated.DatabaseName | Should -Be $DatabaseName
+		$AttachedDatabaseConfigurationCreated.DefaultPrincipalsModificationKind | Should -Be $DefaultPrincipalsModificationKind
+}
+
+function Validate_ClusterFollowerDatabase {
+	Param ([Object]$ClusterFollowerDatabase,
+		[string]$AttachedDatabaseConfigurationName,
+		[string]$FollowerClusterResourceId,
+		[string]$DatabaseName)
+		$ClusterFollowerDatabase.AttachedDatabaseConfigurationName | Should -Be $AttachedDatabaseConfigurationName
+		$ClusterFollowerDatabase.KustoPoolResourceId | Should -Be $FollowerClusterResourceId
+		$ClusterFollowerDatabase.DatabaseName | Should -Be $DatabaseName
+}
+
+<#
+.SYNOPSIS
+Validate if data connection is valid for EventHub
+#>
+function Validate_EventHubDataConnection {
+	Param ([Object]$DataConnection,
+		[string]$dataConnectionFullName,
+		[string]$location,
+		[string]$eventHubResourceId,
+		[string]$kind)
+		$DataConnection.Name | Should -Be $dataConnectionFullName
+		$DataConnection.Location | Should -Be $location
+		$DataConnection.EventHubResourceId | Should -Be $eventHubResourceId
+		$DataConnection.Kind | Should -Be $kind
+}
+
+<#
+.SYNOPSIS
+Validate if data connection is valid for EventGrid
+#>
+function Validate_EventGridDataConnection {
+	Param ([Object]$DataConnection,
+		[string]$dataConnectionFullName,
+		[string]$location,
+		[string]$eventHubResourceId,
+		[string]$storageAccountResourceId,
+		[string]$kind)
+		$DataConnection.Name | Should -Be $dataConnectionFullName
+		$DataConnection.Location | Should -Be $location
+		$DataConnection.EventHubResourceId | Should -Be $eventHubResourceId
+		$DataConnection.StorageAccountResourceId | Should -Be $storageAccountResourceId
+		$DataConnection.Kind | Should -Be $kind
+}
+
+<#
+.SYNOPSIS
+Validate if data connection is valid for IotHub
+#>
+function Validate_IotHubDataConnection {
+	Param ([Object]$DataConnection,
+		[string]$dataConnectionFullName,
+		[string]$location,
+		[string]$iotHubResourceId,
+		[string]$sharedAccessPolicyName,
+		[string]$kind)
+		$DataConnection.Name | Should -Be $dataConnectionFullName
+		$DataConnection.Location | Should -Be $location
+		$DataConnection.IotHubResourceId | Should -Be $iotHubResourceId
+		$DataConnection.SharedAccessPolicyName | Should -Be $sharedAccessPolicyName
+		$DataConnection.Kind | Should -Be $kind
+}

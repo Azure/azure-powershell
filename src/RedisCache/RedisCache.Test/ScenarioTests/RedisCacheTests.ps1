@@ -829,7 +829,7 @@ function Test-Zones
     New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -Zone @("1") -Tag @{"example-key" = "example-value"}
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -Zone @("1","2") -Tag @{"example-key" = "example-value"}
 
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -838,6 +838,7 @@ function Test-Zones
     Assert-AreEqual "6GB" $cacheCreated.Size
     Assert-AreEqual "Premium" $cacheCreated.Sku
     Assert-AreEqual "1" $cacheCreated.Zone[0]
+    Assert-AreEqual "2" $cacheCreated.Zone[1]
     Assert-AreEqual "example-value" $cacheCreated.Tag.Item("example-key")
     Assert-NotNull $cacheCreated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheCreated.SecondaryKey "SecondaryKey do not exists"
@@ -851,6 +852,7 @@ function Test-Zones
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
             Assert-AreEqual "1" $cacheGet[0].Zone[0]
+            Assert-AreEqual "2" $cacheGet[0].Zone[1]
             Assert-AreEqual "example-value" $cacheGet[0].Tag.Item("example-key")
             break
         }
@@ -863,7 +865,6 @@ function Test-Zones
     # Delete resource group
     Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
-
 
 <#
 .SYNOPSIS

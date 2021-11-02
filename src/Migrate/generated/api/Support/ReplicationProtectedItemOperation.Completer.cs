@@ -28,59 +28,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ReverseReplicate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ReverseReplicate", "ReverseReplicate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReverseReplicate");
+                yield return new global::System.Management.Automation.CompletionResult("'ReverseReplicate'", "ReverseReplicate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReverseReplicate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Commit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Commit", "Commit", global::System.Management.Automation.CompletionResultType.ParameterValue, "Commit");
+                yield return new global::System.Management.Automation.CompletionResult("'Commit'", "Commit", global::System.Management.Automation.CompletionResultType.ParameterValue, "Commit");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PlannedFailover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PlannedFailover", "PlannedFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "PlannedFailover");
+                yield return new global::System.Management.Automation.CompletionResult("'PlannedFailover'", "PlannedFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "PlannedFailover");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnplannedFailover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UnplannedFailover", "UnplannedFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnplannedFailover");
+                yield return new global::System.Management.Automation.CompletionResult("'UnplannedFailover'", "UnplannedFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnplannedFailover");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DisableProtection".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DisableProtection", "DisableProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisableProtection");
+                yield return new global::System.Management.Automation.CompletionResult("'DisableProtection'", "DisableProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisableProtection");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TestFailover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TestFailover", "TestFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestFailover");
+                yield return new global::System.Management.Automation.CompletionResult("'TestFailover'", "TestFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestFailover");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TestFailoverCleanup".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TestFailoverCleanup", "TestFailoverCleanup", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestFailoverCleanup");
+                yield return new global::System.Management.Automation.CompletionResult("'TestFailoverCleanup'", "TestFailoverCleanup", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestFailoverCleanup");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failback".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failback", "Failback", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failback");
+                yield return new global::System.Management.Automation.CompletionResult("'Failback'", "Failback", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failback");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "FinalizeFailback".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("FinalizeFailback", "FinalizeFailback", global::System.Management.Automation.CompletionResultType.ParameterValue, "FinalizeFailback");
+                yield return new global::System.Management.Automation.CompletionResult("'FinalizeFailback'", "FinalizeFailback", global::System.Management.Automation.CompletionResultType.ParameterValue, "FinalizeFailback");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CancelFailover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CancelFailover", "CancelFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "CancelFailover");
+                yield return new global::System.Management.Automation.CompletionResult("'CancelFailover'", "CancelFailover", global::System.Management.Automation.CompletionResultType.ParameterValue, "CancelFailover");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ChangePit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ChangePit", "ChangePit", global::System.Management.Automation.CompletionResultType.ParameterValue, "ChangePit");
+                yield return new global::System.Management.Automation.CompletionResult("'ChangePit'", "ChangePit", global::System.Management.Automation.CompletionResultType.ParameterValue, "ChangePit");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RepairReplication".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RepairReplication", "RepairReplication", global::System.Management.Automation.CompletionResultType.ParameterValue, "RepairReplication");
+                yield return new global::System.Management.Automation.CompletionResult("'RepairReplication'", "RepairReplication", global::System.Management.Automation.CompletionResultType.ParameterValue, "RepairReplication");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SwitchProtection".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SwitchProtection", "SwitchProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "SwitchProtection");
+                yield return new global::System.Management.Automation.CompletionResult("'SwitchProtection'", "SwitchProtection", global::System.Management.Automation.CompletionResultType.ParameterValue, "SwitchProtection");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CompleteMigration".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CompleteMigration", "CompleteMigration", global::System.Management.Automation.CompletionResultType.ParameterValue, "CompleteMigration");
+                yield return new global::System.Management.Automation.CompletionResult("'CompleteMigration'", "CompleteMigration", global::System.Management.Automation.CompletionResultType.ParameterValue, "CompleteMigration");
             }
         }
     }

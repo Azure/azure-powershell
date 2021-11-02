@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Pending".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Pending", "Pending", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pending");
+                yield return new global::System.Management.Automation.CompletionResult("'Pending'", "Pending", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pending");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Compliant".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Compliant", "Compliant", global::System.Management.Automation.CompletionResultType.ParameterValue, "Compliant");
+                yield return new global::System.Management.Automation.CompletionResult("'Compliant'", "Compliant", global::System.Management.Automation.CompletionResultType.ParameterValue, "Compliant");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Noncompliant".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Noncompliant", "Noncompliant", global::System.Management.Automation.CompletionResultType.ParameterValue, "Noncompliant");
+                yield return new global::System.Management.Automation.CompletionResult("'Noncompliant'", "Noncompliant", global::System.Management.Automation.CompletionResultType.ParameterValue, "Noncompliant");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Installed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Installed", "Installed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Installed");
+                yield return new global::System.Management.Automation.CompletionResult("'Installed'", "Installed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Installed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
         }
     }
