@@ -8,9 +8,6 @@
 
 @{
 
-# Script module or binary module file associated with this manifest.
-# RootModule = ''
-
 # Version number of this module.
 ModuleVersion = '4.18.0'
 
@@ -59,7 +56,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.0'; })
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Compute.dll', 
                'Microsoft.WindowsAzure.Storage.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.dll'
+               'Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.dll',
+               'Compute.Autorest\bin\Az.Compute.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -69,10 +67,11 @@ RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Compute.dll',
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Compute.format.ps1xml', 'Compute.generated.format.ps1xml', 
-               'Compute.Automation.generated.format.ps1xml'
+               'Compute.Automation.generated.format.ps1xml',
+               'Compute.Autorest\Az.Compute.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Compute.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Compute.dll', 'Compute.Autorest\Az.Compute.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -180,6 +179,8 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'New-AzRestorePointCollection', 'Get-AzRestorePointCollection', 
                'Update-AzRestorePointCollection', 
                'Remove-AzRestorePointCollection', 'New-AzRestorePoint', 
+               'Get-AzRestorePoint', 'Remove-AzRestorePoint',
+               'Get-AzVMRunCommand', 'Get-AzVmssVMRunCommand', 'Remove-AzVMRunCommand', 'Remove-AzVmssVMRunCommand', 'Set-AzVMRunCommand', 'Set-AzVmssVMRunCommand',
                'Get-AzRestorePoint', 'Remove-AzRestorePoint', 
                'New-AzVmGalleryApplication', 'New-AzVmssGalleryApplication', 
                'Add-AzVmGalleryApplication', 'Add-AzVmssGalleryApplication', 

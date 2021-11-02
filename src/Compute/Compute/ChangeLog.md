@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added VMRunCommand cmdlets.
 * Update-AzVM will update ApplicationProfile.
 
 ## Version 4.18.0
