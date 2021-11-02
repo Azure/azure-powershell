@@ -27,7 +27,6 @@ Describe 'Get-AzVMRunCommand' {
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         Write-Host $env.rgname
         New-AzVM -ResourceGroupName $rgname -Location "eastus" -Name $vmname -Credential $cred
-        #New-AzVmss -ResourceGroupName $env.rgname -VMScaleSetName $env.vmssname -ImageName 'Win2016Datacenter' -Credential $cred -InstanceCount 2
         Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand1' -Location "eastus"
     }
 

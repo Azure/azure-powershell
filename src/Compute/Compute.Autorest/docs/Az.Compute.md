@@ -43,6 +43,7 @@ The operation to delete the VMSS VM run command.
 
 ### [Set-AzVMRunCommand](Set-AzVMRunCommand.md)
 The operation to create or update the run command.
+
 ### [Update-AzGalleryApplication](Update-AzGalleryApplication.md)
 Update a gallery Application Definition.
 

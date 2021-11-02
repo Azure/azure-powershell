@@ -42,4 +42,3 @@ function cleanupEnv() {
     Write-Host -ForegroundColor Yellow "Removing ResourceGroup" $env.ResourceGroupName
     Remove-AzResourceGroup -Name $env.ResourceGroupName 
 }
-
