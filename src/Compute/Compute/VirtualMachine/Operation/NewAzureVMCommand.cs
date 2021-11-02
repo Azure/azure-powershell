@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (_cmdlet.DiskFile == null)
                 {
-                    //adam testin
+                    //adam testing
                     if (String.IsNullOrEmpty(_cmdlet.UserData) ||
                         _cmdlet.UserData.Contains(" ") ||
                         _cmdlet.UserData.Length % 4 != 0 ||
@@ -479,6 +479,7 @@ namespace Microsoft.Azure.Commands.Compute
                         _cmdlet.UserData.Contains("\r") ||
                         _cmdlet.UserData.Contains("\n"))
                     {
+                        ValidateBase64EncodedParameter.Validate();
                         var x = 1;
                         x += 1;
                     }
