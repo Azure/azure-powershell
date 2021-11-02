@@ -77,6 +77,13 @@ Describe 'Update-AzModule' {
         $modules.Name | Should -Contain 'Az.Storage'
     }
 
+    It 'UpdateWithoutAzAccounts' {
+        $output = Update-AzModule -Name storage -Repository PSGallery -Scope 'CurrentUser'
+        $output.Count | Should -Be 2
+        $output = Update-AzModule -Name compute -Repository PSGallery -Scope 'CurrentUser'
+        $output.Count | Should -Be 1
+    }
+
     AfterEach {
         Remove-AllAzModule       
     }

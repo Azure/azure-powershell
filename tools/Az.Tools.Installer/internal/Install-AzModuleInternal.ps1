@@ -115,8 +115,9 @@ function Install-AzModuleInternal {
                 AllowPrerelease = if ($AllowPrerelease) {$AllowPrerelease} else {$false}
             }
 
-            if ($ModuleList[0].Name -eq 'Az.Accounts') {
-                $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module Az.Accounts version $($ModuleList[0].Version)", "Az.Accounts version $($ModuleList[0].Version)", "Install")
+            $modules = [Array] $moduleList
+            if ($modules[0].Name -eq 'Az.Accounts') {
+                $confirmInstallation = $Force -or $PSCmdlet.ShouldProcess("Install module Az.Accounts version $($modules[0].Version)", "Az.Accounts version $($modules[0].Version)", "Install")
                 $confirmUninstallation = $false
                 if ($RemovePrevious) {
                     $confirmUninstallation = $Force -or $PSCmdlet.ShouldProcess("Remove previously installed Az.Accounts", "Az.Accounts", 'Remove')
@@ -125,13 +126,13 @@ function Install-AzModuleInternal {
                     if ($confirmUninstallation) {
                         PowerShellGet\Uninstall-Module -Name "Az.Accounts" -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
                     }
-                    PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($moduleList[0].Version)"
+                    PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($modules[0].Version)"
                 }
                 $moduleInstalled += [PSCustomObject]@{
                     Name = "Az.Accounts"
-                    Version = ($moduleList[0].Version | Select-Object -First 1)
+                    Version = ($modules[0].Version | Select-Object -First 1)
                 }
-                $modules = [Array] ($moduleList | Select-Object -Last ($moduleList.Length - 1))
+                $modules = [Array] ($modules | Select-Object -Last ($modules.Length - 1))
             }
 
             try
