@@ -4,6 +4,7 @@ pr: none
 pool:
   vmImage: 'windows-2019'
 
+steps:
 - task: PowerShell@2
   displayName: 'Install PowerShellGet [v2.1.3 has a Publish-Module bug]'
   inputs:
