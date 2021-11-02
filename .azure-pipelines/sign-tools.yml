@@ -8,8 +8,12 @@ steps:
 - task: PowerShell@2
   displayName: 'Install platyPS'
   inputs:
-    targetType: inline
-    script: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+    targetType: 'inline'
+    script: |
+      $command = "`$PSVersionTable `
+                  Install-Module platyPS -Force -Confirm:`$false -Scope CurrentUser `
+                  Exit"
+      dotnet tool run pwsh -c $command
 
 - task: PowerShell@2
   displayName: 'Install PowerShellGet [v2.1.3 has a Publish-Module bug]'
