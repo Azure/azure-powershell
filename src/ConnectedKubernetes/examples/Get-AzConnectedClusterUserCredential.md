@@ -16,16 +16,15 @@ Gets cluster user credentials of the connected cluster with a specified resource
 
 ### Example 2: Gets cluster user credentials of the connected cluster with a specified resource group and name.
 ```powershell
-PS C:\> Get-AzConnectedClusterUserCredential -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AuthenticationMethod Token -ClientProxy
+PS C:\> Get-AzConnectedClusterUserCredential -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AuthenticationMethod Token -ClientProxy:$false
 
-HybridConnectionConfigExpirationTime       : 1635519896
-HybridConnectionConfigHybridConnectionName : microsoft.kubernetes/connectedclusters/2a61c17d05261c26bf496d96958f54eecdb281a868527ca433939d2601f5e862/1635509096466859776
-HybridConnectionConfigRelay                : azgnrelay-eastus-l1
-HybridConnectionConfigToken                : SharedAccessSignature sr=http%3A%2F%2Fazgnrelay-eastus-l1.servicebus.windows.net%2Fmicrosoft.kubernetes%2Fconnectedclusters%2F2a61c17d05261c26bf496d96958f54eecdb28
-                                             1a868527ca433939d2601f5e862%2F1635509096466859776%2F&sig=%2Fn8mI10MPtKMxaz89NX1dnTALNbnJjNmYnySR7ilTXY%3D&se=1635520496&skn=sender20211026
+HybridConnectionConfigExpirationTime       :
+HybridConnectionConfigHybridConnectionName :
+HybridConnectionConfigRelay                :
+HybridConnectionConfigToken                :
 Kubeconfig                                 : {{
                                                "name": "KubeConfig",
-                                               "value": "YXBpVm***VyDQo="
+                                               "value": "YXBpVm***G9wDQo="
                                              }}
 ```
 
