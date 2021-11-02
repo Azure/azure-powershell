@@ -45,5 +45,8 @@ namespace Microsoft.Azure.Commands.Aks
         internal const string DotNetApiParameterResourceGroupName = "resourceGroupName";
         internal const string DotNetApiParameterResourceName = "resourceName";
         internal const string DotNetApiParameterAgentPoolName = "agentPoolName";
+
+        public const string BreakingChangeMSGraphMigration = @"This cmdlet will use Microsoft Graph in Az 7.x and later.
+Visit https://go.microsoft.com/fwlink/?linkid=2174792 for migration guide and breaking changes.";
     }
 }

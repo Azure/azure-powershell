@@ -42,15 +42,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Parameters = pipelineResource?.Parameters?
                 .Select(element => new KeyValuePair<string, PSParameterSpecification>(element.Key, new PSParameterSpecification(element.Value)))
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-            var propertiesEnum = pipelineResource?.GetEnumerator();
-            if (propertiesEnum != null)
-            {
-                this.AdditionalProperties = new Dictionary<string, object>();
-                while (propertiesEnum.MoveNext())
-                {
-                    this.AdditionalProperties.Add(propertiesEnum.Current);
-                }
-            }
+            this.AdditionalProperties = pipelineResource?.AdditionalProperties;
         }
 
         public PSPipelineResource() { }

@@ -11,12 +11,6 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-
-$DEFAULT_DB_NAME = 'flexibleserverdb'
-$DELEGATION_SERVICE_NAME = "Microsoft.DBforMySQL/flexibleServers"
-$DEFAULT_VNET_PREFIX = '10.0.0.0/16'
-$DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
-
 Describe 'AzMySqlFlexibleServer' {
     It 'List1' {
         {
@@ -33,7 +27,7 @@ Describe 'AzMySqlFlexibleServer' {
             $servers.Name | Should -Be $env.flexibleServerName
             
             $server = Update-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -BackupRetentionDay 12 
-            $server.StorageProfileBackupRetentionDay | Should -Be 12
+            $server.BackupRetentionDay | Should -Be 12
 
             $server = Update-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -MaintenanceWindow "Mon:1:30"
             $server.MaintenanceWindowCustomWindow | Should -Be 'Enabled'
@@ -66,11 +60,11 @@ Describe 'AzMySqlFlexibleServer' {
             $server.Name | Should -Be $env.flexibleServerName
 
             $server = Update-AzMySqlFlexibleServer -InputObject $server -StorageInMb 20480
-            $server.StorageProfileStorageMb  | Should -Be 20480
+            $server.StorageSizeGb  | Should -Be 20
 
-            $server = Update-AzMySqlFlexibleServer -InputObject $server -SkuTier GeneralPurpose -Sku Standard_D2ds_v4
+            $server = Update-AzMySqlFlexibleServer -InputObject $server -SkuTier GeneralPurpose -Sku Standard_D4ds_v4
             $server.SkuTier | Should -Be 'GeneralPurpose'
-            $server.SkuName | Should -Be 'Standard_D2ds_v4'
+            $server.SkuName | Should -Be 'Standard_D4ds_v4'
 
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/stop"
             Stop-AzMySqlFlexibleServer -InputObject $ID
@@ -84,7 +78,7 @@ Describe 'AzMySqlFlexibleServer' {
             $restorePointInTime = (Get-Date).AddMinutes(-10)
             $restoredServer = Restore-AzMySqlFlexibleServer -Name $env.restoreName -ResourceGroupName $env.resourceGroup -RestorePointInTime $restorePointInTime -InputObject $server
             
-            Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $restoredServer
+            Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $restoredServer.Name
 
         } | Should -Not -Throw
     }

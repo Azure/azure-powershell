@@ -4,33 +4,30 @@ function Test-NewNodePool
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
-    $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
-    $kubeVersion = "1.15.11"
+    $location = 'eastus'
+    $kubeVersion = "1.20.7"
     $nodeVmSize = "Standard_A2"
     $nodeVmSetType = "VirtualMachineScaleSets"
     $nodeOsType = "Linux"
     $networkPlugin = "azure"
     $nodeVmSetType = "VirtualMachineScaleSets"
     $winAdminUser = "winuser"
-    $winPassword = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
+    $winPassword = ConvertTo-SecureString -AsPlainText "Password!!123Length" -Force
     $winNodeName = "windef"
     $winNodeOsType = "Windows"
+    $updatedNodePoolSize = 5
 
-    $poolKubeVersion = "1.15.11"
+    $poolKubeVersion = "1.20.7"
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        $cred = $(createTestCredential "618a2a3a-9d44-415a-b0ce-9729253a4ba9" "xkz7Q~MBGEOD0Kg5B-naUO8dj5kvPlmAh7v3P")
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ServicePrincipalIdAndSecret $cred -NetworkPlugin $networkPlugin `
+            -KubernetesVersion $kubeVersion -NodeVmSetType $nodeVmSetType -WindowsProfileAdminUserName $winAdminUser `
+            -WindowsProfileAdminUserPassword $winPassword
 
-        #new cluster
-        if (IsLive) {
-            $cred = $(createTestCredential "Unicorns" "Puppies")
-            New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ClientIdAndSecret $cred -NetworkPlugin $networkPlugin `
-                -KubernetesVersion $kubeVersion -NodeVmSetType $nodeVmSetType -WindowsProfileAdminUserName $winAdminUser `
-                -WindowsProfileAdminUserPassword $winPassword
-        } else {
-            New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NetworkPlugin $networkPlugin -KubernetesVersion $kubeVersion
-        }
 
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual $networkPlugin $cluster.NetworkProfile.NetworkPlugin
@@ -49,8 +46,9 @@ function Test-NewNodePool
         Assert-AreEqual $nodeVmSetType $winPool.AgentPoolType
         Assert-AreEqual $poolKubeVersion $winPool.OrchestratorVersion
 
-        $updatedWinPool = $winPool | Update-AzAksNodePool -KubernetesVersion $kubeVersion
+        $updatedWinPool = $winPool | Update-AzAksNodePool -KubernetesVersion $kubeVersion -NodeCount $updatedNodePoolSize
         Assert-AreEqual $kubeVersion $updatedWinPool.OrchestratorVersion
+        Assert-AreEqual $updatedNodePoolSize $updatedWinPool.Count
 
         $updatedWinPool | Remove-AzAksNodePool -Force
         $cluster | Remove-AzAksCluster -Force

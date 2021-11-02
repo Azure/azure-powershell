@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.2.0
 * Added Guest patch maintenance support.
 
 ## Version 1.1.1

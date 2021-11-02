@@ -257,10 +257,10 @@ function EventHubsAuthTests
 	$policyKey1 = "SecondaryKey"
 
 	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $namespaceListKeys.PrimaryKey
-	Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $namespaceListKeys.PrimaryKey
+	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceRegenerateKeys.SecondaryKey}
 
 	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey1
-	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.PrimaryKey}	
+	Assert-True {$namespaceRegenerateKeys1.PrimaryKey -ne $namespaceListKeys.PrimaryKey}	
 
 	# Cleanup
 	Write-Debug "Delete the created EventHub AuthorizationRule"

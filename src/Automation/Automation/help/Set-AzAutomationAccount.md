@@ -13,8 +13,18 @@ Modifies an Automation account.
 
 ## SYNTAX
 
+### AutomationServicesEncryption (Default)
 ```
 Set-AzAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Plan <String>] [-Tags <IDictionary>]
+ [-AssignSystemIdentity] [-AssignUserIdentity <String[]>] [-AutomationServicesEncryption]
+ [-DisablePublicNetworkAccess] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### KeyVaultEncryption
+```
+Set-AzAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Plan <String>] [-Tags <IDictionary>]
+ [-AssignSystemIdentity] [-AssignUserIdentity <String[]>] [-KeyVaultEncryption] -KeyName <String>
+ -KeyVersion <String> -KeyVaultUri <String> [-UserIdentityEncryption <String>] [-DisablePublicNetworkAccess]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -49,6 +59,7 @@ Generate and assign a new System Identity for this Automation Account for use wi
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -63,6 +74,7 @@ Specifies the list of user assigned identities associated with the automation ac
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -77,6 +89,7 @@ Specify whether set Automation Account Encryption KeySource to Microsoft.Automat
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AutomationServicesEncryption
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -106,6 +119,7 @@ Whether to disable traffic on the non-ARM endpoints (Webhook/Agent) from the pub
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -120,6 +134,7 @@ Automation Account encryption KeyVault KeyName
 Type: System.String
 Parameter Sets: KeyVaultEncryption
 Aliases:
+
 Required: True
 Position: Named
 Default value: None
@@ -134,6 +149,7 @@ Specify whether set Automation Account encryption keySource to Microsoft.KeyVaul
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: KeyVaultEncryption
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -148,6 +164,7 @@ Automation Account encryption KeyVault KeyVaultUri
 Type: System.String
 Parameter Sets: KeyVaultEncryption
 Aliases:
+
 Required: True
 Position: Named
 Default value: None
@@ -162,6 +179,7 @@ Automation Account encryption KeyVault KeyVersion
 Type: System.String
 Parameter Sets: KeyVaultEncryption
 Aliases:
+
 Required: True
 Position: Named
 Default value: None
@@ -218,20 +236,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -UserIdentityEncryption
-User Assigned Identity associated with the account to be used for encryption. The user assigned identity reference will be ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
-
-```yaml
-Type: System.String
-Parameter Sets: KeyVaultEncryption
-Aliases:
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Tags
 Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
@@ -248,8 +252,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -UserIdentityEncryption
+User Assigned Identity associated with the account to be used for encryption. The user assigned identity reference will be ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

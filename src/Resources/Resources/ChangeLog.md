@@ -19,10 +19,19 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.4.1
+* Fixed a bug about the exitcode of Bicep [#16055]
+* Added breaking change warnings for AAD cmdlets
+* Added property `UIFormDefinition` to Template Spec Versions,  `Export-AzTemplateSpec` will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.
+* Added error catching for role assignment creation fail while creating a Service Principal
+* Performance improvement for Get-AzPolicyAlias when -NamespaceMatch matches a single RP namespace
+
+## Version 4.4.0
 * Added a clearer error message for a case in which TemplateUri do not accept bicep file.
 * Fixed typos with ManagementGroups breaking change descriptions [#15819].
 * Fixed resource tags casing issue - resource tags casing not being preserved.
-* Update to Microsoft.Azure.Management.Authorization 2.13.0-preview.
+* Updated to Microsoft.Azure.Management.Authorization 2.13.0-preview.
 
 ## Version 4.3.1
 * Use JsonExtensions to serialize deserialize JSON objects to ensure the use of custom serialization settings [#15552]
@@ -59,7 +68,7 @@
 
 ## Version 3.4.1
 * Added upcoming breaking change warnings on below cmdlets, because the value of `IdentifierUris` parameter will need verified domain.
-  - `New-AzADApplication` 
+  - `New-AzADApplication`
   - `Update-AzADApplication`
   - `New-AzADServicePrincipal`
   - `Update-AzADServicePrincipal`
@@ -94,7 +103,7 @@
 
 ## Version 3.1.0
 * Added `-Tag` parameter support to `Set-AzTemplateSpec` and `New-AzTemplateSpec`
-* Added Tag display support to default formatter for Template Specs 
+* Added Tag display support to default formatter for Template Specs
 
 ## Version 3.0.1
 * Fixed an issue where What-If shows two resource group scopes with different casing
@@ -112,7 +121,7 @@
 * Fixed an issue where template deployment cmdlets does not preserve case for template parameters
 * Added a default API version to be used in `Export-AzResourceGroup` cmdlet
 * Added cmdlets for Template Specs (`Get-AzTemplateSpec`, `Set-AzTemplateSpec`, `New-AzTemplateSpec`, `Remove-AzTemplateSpec`, `Export-AzTemplateSpec`)
-* Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter) 
+* Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter)
 * Updated `Get-AzResourceGroupDeploymentOperation` to use the SDK.
 * Removed `-ApiVersion` parameter from `*-AzDeployment` cmdlets.
 
@@ -197,7 +206,7 @@
     - New-AzTag -ResourceId
     - Remove-AzTag -ResourceId
 * Added new Tag cmdlet
-    - Update-AzTag -ResourceId 
+    - Update-AzTag -ResourceId
 * Brought ScopedDeployment from SDK 3.3.0
 
 ## Version 1.11.0

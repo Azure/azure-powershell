@@ -114,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="commandNoun">The command noun</param>
         /// <param name="parameterName">The parameter name</param>
         /// <returns>The parameter value from the history command. Null if that is not available.</returns>
-        public string GetParameterValueFromAzCommand(string commandNoun, string parameterName)
+        public string GetParameterValueFromCommand(string commandNoun, string parameterName)
         {
             parameterName = parameterName.ToLower();
             var key = parameterName;
@@ -136,16 +136,29 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return null;
         }
 
-        public static string GetAzCommandNoun(string commandName)
+        public static string GetCommandNoun(string commandName)
         {
-            var monikerIndex = commandName?.IndexOf(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase);
-
-            if (!monikerIndex.HasValue || (monikerIndex.Value == -1))
+            if (string.IsNullOrWhiteSpace(commandName))
             {
                 return null;
             }
 
-            return commandName.Substring(monikerIndex.Value + AzPredictorConstants.AzCommandMoniker.Length);
+            var monikerIndex = commandName.IndexOf(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase);
+            int nounIndex = monikerIndex + AzPredictorConstants.AzCommandMoniker.Length;
+
+            if (monikerIndex == -1)
+            {
+                // Treat it as a regular cmdlet.
+                monikerIndex = commandName.IndexOf(AzPredictorConstants.CommandSeparator, StringComparison.OrdinalIgnoreCase);
+                nounIndex = monikerIndex + AzPredictorConstants.CommandSeparator.Length;
+            }
+
+            if (monikerIndex == -1)
+            {
+                return null;
+            }
+
+            return commandName.Substring(nounIndex);
         }
 
         /// <summary>
@@ -169,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // We need to extract the noun to construct the parameter name.
 
             var commandName = command.GetCommandName();
-            var commandNoun = ParameterValuePredictor.GetAzCommandNoun(commandName)?.ToLower();
+            var commandNoun = ParameterValuePredictor.GetCommandNoun(commandName)?.ToLower();
             if (commandNoun == null)
             {
                 return;

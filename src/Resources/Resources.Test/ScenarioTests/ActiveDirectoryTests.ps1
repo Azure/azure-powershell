@@ -677,6 +677,37 @@ function Test-NewADServicePrincipalWithCustomScope
 
 <#
 .SYNOPSIS
+Tests creating a service principal with permissions over a non existant scope
+#>
+function Test-NewADServicePrincipalWithBadScope
+{
+
+#"Resource group 'totallyRealScopeThatCanTotallyExistAndThisTestWillNeverEverCollide' could not be found."
+#This means the role assignment was not able to be created. Please assign a role manually with help of the Service Principal Id
+
+
+
+    # Setup
+    $displayName = "IfYouSeeThisCleanupWentWrongDeleteOnSight"
+    $defaultRoleDefinitionName = "Reader"
+    $subscription = Get-AzSubscription | Select -Last 1 -Wait
+    $resourceGroup = "totallyRealScopeThatCanTotallyExistAndThisTestWillNeverEverCollide"
+    $scope = "/subscriptions/" + $subscription.Id + "/resourceGroups/" + $resourceGroup
+
+    # Test
+        try
+    {
+        Assert-ThrowsContains { New-AzADServicePrincipal -DisplayName $displayName -Scope $scope -Role $defaultRoleDefinitionName} "Please assign a role manually"
+    }
+    finally
+    {
+        $servicePrincipal = Get-AzADServicePrincipal -DisplayName $displayName
+        Remove-AzADApplication -ApplicationId $servicePrincipal.ApplicationId -Force
+    }
+}
+
+<#
+.SYNOPSIS
 Tests Creating and deleting application using App Credentials.
 #>
 function Test-CreateDeleteAppCredentials
