@@ -109,8 +109,10 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '* Fix bugs for Install-AzModule
-            * Fix syntax errors when run in Windows Powershell'
+            ReleaseNotes = '* Az.Tools.Installer version2
+              - Optimize the functions of Az.Tools.Installer
+              - Improve the performance
+              - Improve user experience'
     
             # Prerelease string of this module
             # Prerelease = ''
