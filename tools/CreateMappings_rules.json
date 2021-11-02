@@ -692,5 +692,13 @@
   {
     "alias": "Elastic",
     "regex": "Elastic"
+  },
+  {
+    "regex": "Logz",
+    "alias": "Logz"
+  },
+  {
+    "regex": "WebPubSub",
+    "alias": "WebPubSub"
   }
 ]

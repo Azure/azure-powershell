@@ -52,15 +52,47 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-03-01/kubernetesconfiguration.json
-  # - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-09-01/extensions.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-09-01/extensions.json
 
 title: KubernetesConfiguration
 module-version: 0.1.0
 subject-prefix: ''
 
 identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/definitions/Extension"
+          }
+        },
+        "202": {
+          "description": "Request received successfully, and the resource will be updated asynchronously.",
+          "schema": {
+            "$ref": "#/definitions/Extension"
+          }
+        },
+        "409": {
+          "description": "Conflict",
+          "x-ms-error-response": true,
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/fa0a95854a551be7fdb04367e2e7b6500ab2e341/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/fa0a95854a551be7fdb04367e2e7b6500ab2e341/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
   - from: swagger-document 
     where: $.definitions.Extension.properties.properties.properties.statuses
     transform: >-
@@ -92,7 +124,7 @@ directive:
       subject: KubernetesConfiguration
       parameter-name: HelmOperatorPropertyChartValue
     set:
-      parameter-name: HelmOperatorChartValues
+      parameter-name: HelmOperatorChartValue
   - where:
       verb: New
       subject: KubernetesConfiguration
@@ -104,24 +136,79 @@ directive:
       subject: KubernetesConfiguration
       parameter-name: OperatorParameters
     set:
-      parameter-name: OperatorParam
+      parameter-name: OperatorParameter
   - where:
       verb: New
       subject: KubernetesConfiguration
       parameter-name: SshKnownHostsContent
     set:
-      parameter-name: SshKnownHosts
+      parameter-name: SshKnownHost
   - where:
       verb: Set
       subject: KubernetesConfiguration
     set:
       verb: Update
   - where:
-      verb: New|Remove
       subject: KubernetesConfiguration
     hide: true
   - where:
       verb: Update
       subject: KubernetesConfiguration
     remove: true
+  - where:
+      subject: OperationStatus
+    remove: true
+  - where:
+      subject: ^Extension$
+    set:
+      subject: KubernetesExtension
+  - where:
+      subject: KubernetesExtension
+    hide: true
+  - where:
+      verb: Get
+      subject: KubernetesExtension
+    set:
+      alias: Get-AzK8sExtension
+  - where:
+      verb: New
+      subject: KubernetesExtension
+    set:
+      alias: New-AzK8sExtension
+  - where:
+      verb: Remove
+      subject: KubernetesExtension
+    set:
+      alias: Remove-AzK8sExtension
+  - where:
+      verb: Update
+      subject: KubernetesExtension
+    set:
+      alias: Update-AzK8sExtension
+  - where:
+      verb: Get
+      subject: KubernetesConfiguration
+    set:
+      alias: Get-AzK8sConfiguration
+  - where:
+      verb: New
+      subject: KubernetesConfiguration
+    set:
+      alias: New-AzK8sConfiguration
+  - where:
+      verb: Remove
+      subject: KubernetesConfiguration
+    set:
+      alias: Remove-AzK8sConfiguration
+  - where:
+      model-name: Extension
+    set:
+      format-table:
+        properties:
+          - Name
+          - ExtensionType
+          - Version
+          - ProvisioningState
+          - AutoUpgradeMinorVersion
+          - ReleaseTrain
 ```

@@ -78,7 +78,7 @@ Describe 'AzMySqlFlexibleServer' {
             $restorePointInTime = (Get-Date).AddMinutes(-10)
             $restoredServer = Restore-AzMySqlFlexibleServer -Name $env.restoreName -ResourceGroupName $env.resourceGroup -RestorePointInTime $restorePointInTime -InputObject $server
             
-            Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $restoredServer
+            Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $restoredServer.Name
 
         } | Should -Not -Throw
     }

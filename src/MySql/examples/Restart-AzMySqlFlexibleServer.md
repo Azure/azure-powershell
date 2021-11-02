@@ -12,3 +12,10 @@ PS C:\> Restart-AzMySqlFlexibleServer -InputObject $ID
 ```
 
 Restart the server by identity
+
+### Example 2: Restart the server with failover
+```powershell
+PS C:\> Restart-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test -RestartWithFailover Enabled
+```
+
+Restart the server with failover
