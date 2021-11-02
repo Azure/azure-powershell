@@ -17,9 +17,6 @@ Describe 'AzConnectedKubernetes' {
             $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS1 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS
             $config.ProvisioningState | Should -Be 'Succeeded'
 
-            $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS2 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS -KubeConfig $HOME\.kube\config -KubeContext $env.kubeContext
-            $config.ProvisioningState | Should -Be 'Succeeded'
-
             # Clear helm azure-arc environment
             helm delete azure-arc --no-hooks
         } | Should -Not -Throw

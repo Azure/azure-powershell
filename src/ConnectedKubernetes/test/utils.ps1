@@ -40,12 +40,9 @@ function setupEnv() {
     write-host "1. start to create test group..."
     New-AzResourceGroup -Name $env.resourceGroupEUS -Location "eastus"
 
-    write-host "1. az aks create..."
-    az aks create --name $env.K8sName --resource-group $env.resourceGroupEUS --kubernetes-version 1.20.9 --vm-set-type AvailabilitySet
-    
-    write-host "1. az aks get-credentials..."
-    az aks get-credentials --resource-group $env.resourceGroupEUS --name $env.K8sName
-    
+    write-host "1. Create a Connected Kubernetes..."
+    New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS2 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS -KubeConfig $HOME\.kube\config -KubeContext $env.kubeContext
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -54,6 +51,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    # Remove-AzResourceGroup -Name $env.resourceGroupEUS
+    Remove-AzResourceGroup -Name $env.resourceGroupEUS
 }
 
