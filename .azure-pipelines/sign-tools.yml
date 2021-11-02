@@ -22,7 +22,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'tools\Az.Tools.Installer\build.proj /t:Build'
+    arguments: 'tools\Az.Tools.Installer\build.proj /t:"Clean;Build;GenerateHelp" /p:Configuration=Release'
 
 - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
   displayName: 'Signing'
@@ -65,7 +65,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'tools\Az.Tools.Predictor\build.proj /target:"Clean;Build;GenerateHelp" /p:Configuration=Release'
+    arguments: 'tools\Az.Tools.Installer\build.proj /target:Package /p:Configuration=Release'
 
 - task: PublishPipelineArtifact@0
   displayName: 'Save artifacts'
