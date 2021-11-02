@@ -21,6 +21,9 @@
 -->
 ## Upcoming Release
 * Update-AzVM will update ApplicationProfile.
+* Adding new cmdlets:
+    - Add-AzVmssRunCommand
+    - Remove-AzVmssRunCommand
 
 ## Version 4.18.0
 * Added cmdlets for adding VMGalleryApplication property to VM/VMSS
