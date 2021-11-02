@@ -2903,9 +2903,9 @@ function Test-AddAndRemoveAzVmssRunCommand
         $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel
         #$vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
         
-        Add-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Location eastus -Name myruncommand -Script "Write-Host Hello World" -TimeOutInSeconds 3600 -RunAsUser "admin01" 
-        Assert-AreEqual $vmss.RunAsUser "admin01";
-        Assert-AreEqual $vmss.TimeOutInSeconds "3600";
+        $runcmds = Add-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Location eastus -Name myruncommand -Script "Write-Host Hello World" -TimeOutInSeconds 3600 -RunAsUser "admin01" 
+        Assert-AreEqual $runcmds.RunAsUser "admin01";
+        Assert-AreEqual $runcmds.TimeOutInSeconds "3600";
         Remove-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Name myruncommand
 
     } 
