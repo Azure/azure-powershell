@@ -17,7 +17,7 @@ Adding Run Command to VMSS instances
 Add-AzVmssRunCommand [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-Location] <String>
  [-CommandId <String>] -Name <String> [-ScriptPath <String>] [-ScriptUri <String>] [-Script <String>]
  [-TimeOutInSeconds <String>] [-ErrorBlobUri <String>] [-OutputBlobUri <String>] [-RunAsUser <String>]
- [-RunAsPassword <SecureString>] [-Parameters <Hashtable>] [-ProtectedParameters <Hashtable>]
+ [-RunAsPassword <SecureString>] [-Parameter <Hashtable>] [-ProtectedParameter <Hashtable>]
  [-AsyncExecution <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,8 +26,8 @@ Add-AzVmssRunCommand [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-
 ```
 Add-AzVmssRunCommand [-CommandId <String>] -Name <String> [-ScriptPath <String>] [-ScriptUri <String>]
  [-Script <String>] [-TimeOutInSeconds <String>] [-ErrorBlobUri <String>] [-OutputBlobUri <String>]
- [-RunAsUser <String>] [-RunAsPassword <SecureString>] [-Parameters <Hashtable>]
- [-ProtectedParameters <Hashtable>] [-AsyncExecution <Boolean>]
+ [-RunAsUser <String>] [-RunAsPassword <SecureString>] [-Parameter <Hashtable>]
+ [-ProtectedParameter <Hashtable>] [-AsyncExecution <Boolean>]
  [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -167,7 +167,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 The parameters used by the script.
 
 ```yaml
@@ -182,7 +182,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProtectedParameters
+### -ProtectedParameter
 The parameters used by the script.
 
 ```yaml

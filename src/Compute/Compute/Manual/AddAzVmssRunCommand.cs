@@ -57,8 +57,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             vmScaleSetName = this.VMScaleSetName;
                             break;
                     }
-                    RunCommandInput parameters = new RunCommandInput();
-                    parameters.CommandId = this.CommandId;
                     VirtualMachineRunCommand vmruncommand;
 
                     vmruncommand = new VirtualMachineRunCommand
@@ -92,28 +90,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         vmruncommand.Source = new VirtualMachineRunCommandScriptSource(this.Script, this.ScriptPath, this.CommandId);
                     }
 
-                    if (this.Parameters != null)
+                    if (this.Parameter != null)
                     {
                         var vParameter = new List<RunCommandInputParameter>();
-                        foreach (var key in this.Parameters.Keys)
+                        foreach (var key in this.Parameter.Keys)
                         {
                             RunCommandInputParameter p = new RunCommandInputParameter();
 
                             p.Name = key.ToString();
-                            p.Value = this.Parameters[key].ToString();
+                            p.Value = this.Parameter[key].ToString();
                             vParameter.Add(p);
                         }
                         vmruncommand.Parameters = vParameter;
                     }
-                    else if (this.ProtectedParameters != null)
+                    else if (this.ProtectedParameter != null)
                     {
                         var vParameter = new List<RunCommandInputParameter>();
-                        foreach (var key in this.ProtectedParameters.Keys)
+                        foreach (var key in this.ProtectedParameter.Keys)
                         {
                             RunCommandInputParameter p = new RunCommandInputParameter();
 
                             p.Name = key.ToString();
-                            p.Value = this.ProtectedParameters[key].ToString();
+                            p.Value = this.ProtectedParameter[key].ToString();
                             vParameter.Add(p);
                         }
                         vmruncommand.ProtectedParameters = vParameter;
@@ -226,12 +224,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         [AllowNull]
-        public Hashtable Parameters { get; set; }
+        public Hashtable Parameter { get; set; }
 
         [Parameter(
             Mandatory = false)]
         [AllowNull]
-        public Hashtable ProtectedParameters { get; set; }
+        public Hashtable ProtectedParameter { get; set; }
 
         [Parameter(
             Mandatory = false)]
