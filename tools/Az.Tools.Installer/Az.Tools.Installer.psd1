@@ -109,10 +109,12 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '* Az.Tools.Installer version2
-              - Optimize the functions of Az.Tools.Installer
-              - Improve the performance
-              - Improve user experience'
+            ReleaseNotes = '* Supported for installing from a path of nuget package
+            * Supported installing Az sub modules using minimum required Az.Accounts version
+            * Supported uninstalling by module name filter and whether in preview
+            * Provided progress bar to show the cmdlet execution status
+            * Unsupported uninstalling by Az version
+            * Optimized the performance of Az.Tools.Installer'
     
             # Prerelease string of this module
             # Prerelease = ''

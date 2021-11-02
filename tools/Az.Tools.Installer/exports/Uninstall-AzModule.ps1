@@ -23,9 +23,9 @@ function Uninstall-AzModule {
 
     .Example
         C:\PS> Uninstall-AzModule storage, network
-
+    .Example
         C:\PS> Uninstall-AzModule -ExcludeModule storage, network
-
+    .Example
         C:\PS> Uninstall-AzModule -PrereleaseOnly
 #>
 

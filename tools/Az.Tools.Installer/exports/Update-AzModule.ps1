@@ -20,10 +20,9 @@ function Update-AzModule {
 
     .Description
         Update Azure PowerShell modules.
-
     .Example
         C:\PS> Update-AzModule -Repository PSGallery
-
+    .Example
         C:\PS> Update-AzModule -Name desktopVirtualization,RecoveryServices -Repository PSGallery
 #>
     [OutputType([PSCustomObject[]])]
