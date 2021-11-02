@@ -28,6 +28,7 @@ Describe 'Get-AzVMRunCommand' {
         Write-Host $env.rgname
         New-AzVM -ResourceGroupName $rgname -Location "eastus" -Name $vmname -Credential $cred
         Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand1' -Location "eastus"
+        
     }
 
     It 'List' {
