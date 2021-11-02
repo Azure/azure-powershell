@@ -4,8 +4,6 @@ Module Name: Az.RedisCache
 ms.assetid: 81179AFE-6524-4F59-8BC2-3E152F51D1DD
 online version: https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache
 schema: 2.0.0
-content_git_url: https://github.com/Azure/azure-powershell/blob/main/src/RedisCache/RedisCache/help/New-AzRedisCache.md
-original_content_git_url: https://github.com/Azure/azure-powershell/blob/main/src/RedisCache/RedisCache/help/New-AzRedisCache.md
 ---
 
 # New-AzRedisCache
@@ -108,7 +106,7 @@ PS C:\> New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location 
 This command creates Azure cache for Redis instance in mutliple zones.
 
 ### Example 4: Create a Virtual Network enable Cache
-   
+
 Requirements for creating Virtual Network enable cache.
 1. Create the virtual network in same resource group in which you want to create your redis cache. You can create virtual network from [New-AzVirtualNetwork](./../../../Network/Network/help/New-AzVirtualNetwork.md) powershell command.
 1. You will need SubnetID for VNET enable cache. Syntax of SubnetID is given below.
