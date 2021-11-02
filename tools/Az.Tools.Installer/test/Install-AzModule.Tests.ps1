@@ -59,7 +59,6 @@ Describe 'Install-AzModule' {
         $modules.Count | Should -Be 2
         $modules.Name | Should -Contain 'Az.Accounts'
         $modules.Name | Should -Contain 'Az.Storage'
-        #should also check error output   
     }
 
     It 'InstallAllGA' {
@@ -74,11 +73,9 @@ Describe 'Install-AzModule' {
 
     It 'InstallByUnexistingName' {
         $output = [Array] (Install-AzModule -Name fakeModule -Repository PSGallery)
-        Write-Error ($output | Out-String)
         $output.Count | Should -Be 0
         $modules = Get-AzSubModule
         $modules.Count | Should -Be 0
-        #should also check error output    
     }
 
     It 'InstallAndRemoveAzureRm' {

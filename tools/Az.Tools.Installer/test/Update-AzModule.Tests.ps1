@@ -75,7 +75,6 @@ Describe 'Update-AzModule' {
         $modules.Name | Should -Contain 'Az.Resources'
         $modules.Name | Should -Contain 'Az.Network'  
         $modules.Name | Should -Contain 'Az.Storage'
-        #should check the output
     }
 
     AfterEach {

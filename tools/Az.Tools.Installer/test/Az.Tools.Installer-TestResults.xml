@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="22" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2021-11-02" time="11:39:58">
+  <environment clr-version="Unknown" user="leijin" nunit-version="2.5.8.0" machine-name="DESKTOP-COPFV04" user-domain="FAREAST" os-version="10.0.19043" cwd="D:\workspace\azure-powershell\tools\Az.Tools.Installer" platform="Microsoft Windows 10 企业版|C:\WINDOWS|\Device\Harddisk0\Partition3" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="2927.9646" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="D:\workspace\azure-powershell\tools\Az.Tools.Installer\test\Install-AzModule.Tests.ps1" executed="True" result="Success" success="True" time="720.8485" asserts="0" description="D:\workspace\azure-powershell\tools\Az.Tools.Installer\test\Install-AzModule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Install-AzModule" executed="True" result="Success" success="True" time="720.7488" asserts="0" description="Install-AzModule">
+            <results>
+              <test-case description="InstallByName" name="Install-AzModule.InstallByName" time="35.984" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InstallByNamePrerelease" name="Install-AzModule.InstallByNamePrerelease" time="69.7732" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InstallByNameLatest" name="Install-AzModule.InstallByNameLatest" time="22.6091" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InstallAllGA" name="Install-AzModule.InstallAllGA" time="164.6573" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InstallByUnexistingName" name="Install-AzModule.InstallByUnexistingName" time="8.977" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InstallAndRemoveAzureRm" name="Install-AzModule.InstallAndRemoveAzureRm" time="389.0748" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InstallByUnexistingVersion" name="Install-AzModule.InstallByUnexistingVersion" time="0.1452" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InstallByUri" name="Install-AzModule.InstallByUri" time="24.5529" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\workspace\azure-powershell\tools\Az.Tools.Installer\test\Uninstall-AzModule.Tests.ps1" executed="True" result="Success" success="True" time="1655.8849" asserts="0" description="D:\workspace\azure-powershell\tools\Az.Tools.Installer\test\Uninstall-AzModule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Uninstall-AzModule" executed="True" result="Success" success="True" time="1655.7972" asserts="0" description="Uninstall-AzModule">
+            <results>
+              <test-case description="UninstallByName" name="Uninstall-AzModule.UninstallByName" time="144.398" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UninstallByExclude" name="Uninstall-AzModule.UninstallByExclude" time="127.5857" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UninstallPrereleaseOnly" name="Uninstall-AzModule.UninstallPrereleaseOnly" time="119.145" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UninstallByExcludePrereleaseCombined" name="Uninstall-AzModule.UninstallByExcludePrereleaseCombined" time="119.7653" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UninstallAll" name="Uninstall-AzModule.UninstallAll" time="145.3882" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UninstallAzureRm" name="Uninstall-AzModule.UninstallAzureRm" time="531.763" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UninstallByUnexistingName" name="Uninstall-AzModule.UninstallByUnexistingName" time="107.3698" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UninstallByExcludingUnexistingName" name="Uninstall-AzModule.UninstallByExcludingUnexistingName" time="104.9824" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UninstallAzAccountsWithDependancyExisted" name="Uninstall-AzModule.UninstallAzAccountsWithDependancyExisted" time="108.284" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UninstallAzAccountsWithDependancyExisted" name="Uninstall-AzModule.UninstallAzAccountsWithDependancyExisted" time="146.5268" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\workspace\azure-powershell\tools\Az.Tools.Installer\test\Update-AzModule.Tests.ps1" executed="True" result="Success" success="True" time="551.2313" asserts="0" description="D:\workspace\azure-powershell\tools\Az.Tools.Installer\test\Update-AzModule.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzModule" executed="True" result="Success" success="True" time="551.1817" asserts="0" description="Update-AzModule">
+            <results>
+              <test-case description="UpdateByName" name="Update-AzModule.UpdateByName" time="135.7002" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateAllKeepPrevious" name="Update-AzModule.UpdateAllKeepPrevious" time="124.0748" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateAllReplacePrevious" name="Update-AzModule.UpdateAllReplacePrevious" time="166.4209" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateByUnexistingName" name="Update-AzModule.UpdateByUnexistingName" time="124.5727" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
