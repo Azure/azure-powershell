@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         protected string GetObjectId(string objectId, string upn, string email, string spn)
         {
             string objId = null;
-            var objectFilter = objectId ?? string.Empty;
+            var objectFilter = objectId ?? upn ?? email ?? spn ?? string.Empty;
 
             if (!string.IsNullOrEmpty(objectId))
             {

@@ -113,8 +113,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             if (ParameterSetName == ParameterSet.DefinitionIdApplicationId
                 || ParameterSetName == ParameterSet.DefinitionNameApplicationId)
             {
-                // todo: test role assignment
-                string filter = ODataHelper.FormatFilterString<MicrosoftGraphServicePrincipal>(s => string.Equals(s.AppId, ApplicationId, StringComparison.OrdinalIgnoreCase));
+                // can't use string.Equals() here as it will result in incorrect filter string
+                string filter = ODataHelper.FormatFilterString<MicrosoftGraphServicePrincipal>(s => s.AppId == ApplicationId);
                 var servicePrincipal = GraphClient.ServicePrincipals.ListServicePrincipal(filter: filter).Value.SingleOrDefault();
                 if (servicePrincipal == null)
                 {
