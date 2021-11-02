@@ -1990,11 +1990,11 @@ function Test-AzureDiskEncryptionExtensionDualPassToSinglePassMigration
         Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $malformedKeyvaultUri -DiskEncryptionKeyVaultId $keyVaultResourceId -Force; } `
         "Operation returned an invalid status code";
         #Incorrectly migrate VM to single pass and verify whether exception is thrown
-        Write-Verbose "Migrate VM to 1pass with incorrect keyvault uri"
+        Write-Verbose "Migrate VM to No AAD with incorrect keyvault uri"
         Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Migrate -Force; } `
         "Failure occured while uploading encryption settings to host";
         #Run Migrate Command again and it should throw the same failure
-        Write-Verbose "Migrate VM to 1pass with incorrect keyvault uri once again"
+        Write-Verbose "Migrate VM to No AAD with incorrect keyvault uri once again"
         Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Migrate -Force; } `
         "Failure occured while uploading encryption settings to host";
 

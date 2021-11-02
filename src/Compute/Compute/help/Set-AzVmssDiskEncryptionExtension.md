@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptFormatAll
-Encrypt-Format all data drives that are not already encrypted
+EncryptFormatAll data drives that are not already encrypted
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 
 ### -ExtensionName
 The extension name.
-If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs
+If this parameter is not specified, default values used are AzureDiskEncryption for Windows VMs and AzureDiskEncryptionForLinux for Linux VMs
 
 ```yaml
 Type: System.String
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExtensionPublisherName
-The extension publisher name. If this parameter is not specified, default value is Microsoft.Azure.Security for windows VMs and Linux VMs
+The extension publisher name. If this parameter is not specified, default value is Microsoft.Azure.Security for Windows VMs and Linux VMs
 
 ```yaml
 Type: System.String

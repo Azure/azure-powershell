@@ -839,6 +839,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         {
             Hashtable vmPublicSettings = JsonConvert.DeserializeObject<Hashtable>(adeExtensionInstanceView.PublicSettings);
             VerifyKeyVaultProperties(virtualMachineResponse, vmPublicSettings);
+
+            //Add Migrate Flag only if its not present on the vmPublicSettings already
             if (!vmPublicSettings.Contains(AzureDiskEncryptionExtensionConstants.migrateAdeOperationKey))
             {
                 vmPublicSettings.Add(AzureDiskEncryptionExtensionConstants.migrateAdeOperationKey, AzureDiskEncryptionExtensionConstants.migrateAdeOperationValue);

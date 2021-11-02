@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
 
             psResult.OsVolumeEncrypted = GetOsDiskEncryptionStatus(psResult.Disks, vmssVM.StorageProfile);
-            psResult.DataVolumesEncrypted = JsonConvert.SerializeObject(GetDataDisksEncryptionStatus(psResult.Disks, vmssVM.StorageProfile));
+            psResult.DataVolumesEncryptionStatus = JsonConvert.SerializeObject(GetDataDisksEncryptionStatus(psResult.Disks, vmssVM.StorageProfile));
 
             return psResult;
         }
