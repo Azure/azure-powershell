@@ -37,12 +37,6 @@ Get-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName 
 Get-AzVMRunCommand -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity1
-```
-Get-AzVMRunCommand -InputObject <IComputeIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzVMRunCommand -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String[]>]
@@ -54,7 +48,7 @@ Gets specific run command for a subscription in a location.
 
 ## EXAMPLES
 
-### Example 1: Get Run Command by Name
+### Example 1: Get RunCommand by Name
 ```powershell
 PS C:\> Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand2"
 
@@ -65,7 +59,7 @@ eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
 
 Get Run Command by it's name.
 
-### Example 2: Get Run Commands by VM
+### Example 2: Get RunCommands by VM
 ```powershell
 PS C:\> Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname  
 
@@ -115,7 +109,7 @@ The expand expression to apply on the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, GetViaIdentity1, List1
+Parameter Sets: Get1, List1
 Aliases:
 
 Required: False
@@ -131,7 +125,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True

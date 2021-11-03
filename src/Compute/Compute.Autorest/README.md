@@ -38,8 +38,6 @@ input-file:
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/gallery.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/runCommands.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-
-# For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name
 title: Compute
@@ -209,5 +207,9 @@ directive:
   - where:
       verb: Update
       subject: VmssVMRunCommand|VMRunCommand
+    remove: true
+  - where:
+      subject: VmssVMRunCommand|VMRunCommand
+      variant: ^GetViaIdentity1
     remove: true
 ```
