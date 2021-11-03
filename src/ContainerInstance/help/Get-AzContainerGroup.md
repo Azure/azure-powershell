@@ -45,13 +45,13 @@ The operation returns the properties of each container group including container
 ### Example 1: List all container groups in the current subscription
 ```powershell
 PS C:\> Get-AzContainerGroup
-
+```
+```output
 Location Name           Type
 -------- ----           ----
 eastus   bez-cg1         Microsoft.ContainerInstance/containerGroups
 eastus   bez-cg2        Microsoft.ContainerInstance/containerGroups
 ```
-
 This command gets all container groups in the current subscription.
 
 ### Example 2: Get a specific container group
