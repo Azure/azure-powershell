@@ -37,10 +37,10 @@ The **Switch-AzWebAppSlot** cmdlet switches two slots associated with an Azure W
 PS C:\> Switch-AzWebAppSlot -SourceSlotName "sourceslot" -DestinationSlotName "destinationslot" -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
-This command will switch slot "sourceslot" slot with "destinationslot" on the Web App ContosoWebApp in the resource group Default-Web-WestUS.
+This command will switch slot "sourceslot" with slot "destinationslot" on the Web App ContosoWebApp in the resource group Default-Web-WestUS.
 
 > [!NOTE]
-> Please use "production" as the slot name when the either the source or destination slot is intended to be the production slot.
+> Use "production" as the slot name when the either the source or destination slot is intended to be the production slot.
 
 ## PARAMETERS
 
