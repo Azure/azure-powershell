@@ -59,6 +59,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.0'; })
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Compute.dll', 
                'Microsoft.WindowsAzure.Storage.dll', 
+               'Compute.Autorest\bin\Az.Compute.private.dll',
                'Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -69,13 +70,14 @@ RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Compute.dll',
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Compute.format.ps1xml', 'Compute.generated.format.ps1xml', 
+               'Compute.Autorest\Az.Compute.format.ps1xml',
                'Compute.Automation.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Compute.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Compute.dll', 'Compute.Autorest\Az.Compute.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = @('Get-AzVMRunCommand', 'Get-AzVmssVMRunCommand', 'Remove-AzVMRunCommand', 'Remove-AzVmssVMRunCommand', 'Set-AzVMRunCommand', 'Set-AzVmssVMRunCommand')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet', 
