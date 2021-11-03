@@ -109,7 +109,6 @@ param(
     ${VMName},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GetViaIdentity1', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
     # Identity Parameter
@@ -117,7 +116,6 @@ param(
     ${InputObject},
 
     [Parameter(ParameterSetName='Get1')]
-    [Parameter(ParameterSetName='GetViaIdentity1')]
     [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Query')]
     [System.String]
@@ -183,7 +181,6 @@ begin {
             Get = 'Az.Compute.private\Get-AzVMRunCommand_Get';
             Get1 = 'Az.Compute.private\Get-AzVMRunCommand_Get1';
             GetViaIdentity = 'Az.Compute.private\Get-AzVMRunCommand_GetViaIdentity';
-            GetViaIdentity1 = 'Az.Compute.private\Get-AzVMRunCommand_GetViaIdentity1';
             List = 'Az.Compute.private\Get-AzVMRunCommand_List';
             List1 = 'Az.Compute.private\Get-AzVMRunCommand_List1';
         }

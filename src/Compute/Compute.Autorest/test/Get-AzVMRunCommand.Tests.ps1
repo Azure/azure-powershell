@@ -28,6 +28,7 @@ Describe 'Get-AzVMRunCommand' {
         Write-Host $env.rgname
         New-AzVM -ResourceGroupName $rgname -Location "eastus" -Name $vmname -Credential $cred
         Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand1' -Location "eastus"
+        
     }
 
     It 'List' {
@@ -44,10 +45,6 @@ Describe 'Get-AzVMRunCommand' {
 
     It 'Get1' {
         Get-AzVMRunCommand -CommandId RunPowerShellScript -Location eastus
-    }
-
-    It 'GetViaIdentity1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {
