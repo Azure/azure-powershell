@@ -64,7 +64,7 @@
   - `Get-AzOperationalInsightsPurgeWorkspaceStatus`
 
 
-## Version 2.4.0
+## Version 2.3.1
 * Fixed a bug in `Set-AzOperationalInsightsLinkedService: when linked service does not exist, perform create(update) instead of failing`
 
 ## Version 2.3.0
