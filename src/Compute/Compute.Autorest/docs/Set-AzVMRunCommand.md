@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzVMRunCommand
 
 ## SYNOPSIS
-The Set-AzVMRunCommand cmdlet updates properties for existing run command or adds a new run command to a virtual machine.
+The operation to create or update the run command.
 
 ## SYNTAX
 
@@ -22,13 +22,13 @@ Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName 
 ```
 
 ## DESCRIPTION
-The Set-AzVMRunCommand cmdlet updates properties for existing run command or adds a new run command to a virtual machine.
+The operation to create or update the run command.
 
 ## EXAMPLES
 
 ### Example 1: Simple Example
 ```powershell
-PS C:\> Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand' -Location eastus
+PS C:\> Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand' 
 
 Location Name             Type
 -------- ----             ----
@@ -401,3 +401,4 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
   - `Value <String>`: The run command parameter value.
 
 ## RELATED LINKS
+

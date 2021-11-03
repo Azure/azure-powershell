@@ -27,7 +27,7 @@ The operation to get the VMSS VM run command.
 Create or update a gallery Application Definition.
 
 ### [New-AzGalleryApplicationVersion](New-AzGalleryApplicationVersion.md)
-Create a gallery application version.
+Create or update a gallery Application Version.
 
 ### [Remove-AzGalleryApplication](Remove-AzGalleryApplication.md)
 Delete a gallery Application.
@@ -44,11 +44,12 @@ The operation to delete the VMSS VM run command.
 ### [Set-AzVMRunCommand](Set-AzVMRunCommand.md)
 The operation to create or update the run command.
 
+### [Set-AzVmssVMRunCommand](Set-AzVmssVMRunCommand.md)
+The operation to create or update the VMSS VM run command.
+
 ### [Update-AzGalleryApplication](Update-AzGalleryApplication.md)
 Update a gallery Application Definition.
 
 ### [Update-AzGalleryApplicationVersion](Update-AzGalleryApplicationVersion.md)
 Update a gallery Application Version.
-### [Set-AzVmssVMRunCommand](Set-AzVmssVMRunCommand.md)
-The operation to create or update the VMSS VM run command.
 
