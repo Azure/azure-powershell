@@ -1220,10 +1220,10 @@ function Test-CRGReplication {
     $recoveryContainerName = getRecoveryContainer
     $vaultRgLocation = getVaultRgLocation
     $vaultName = getVaultName
-    $vaultLocation = getVaultLocation
+    $vaultLocation = "centraluseuap"
     $vaultRg = getVaultRg
     $primaryLocation = getPrimaryLocation
-    $recoveryLocation = getRecoveryLocation
+    $recoveryLocation = "centraluseuap"
     $primaryFabricName = getPrimaryFabric
     $recoveryFabricName = getRecoveryFabric
     $RecoveryReplicaDiskAccountType = "Premium_LRS"
