@@ -26,20 +26,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.Management.StorageSync.Models.CloudEndpoint}" />
     public class CloudEndpointConverter : ConverterBase<PSCloudEndpoint, StorageSyncModels.CloudEndpoint>
     {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CloudEndpointConverter" /> class.
-        /// </summary>
-        public CloudEndpointConverter()
-        {
-        }
-
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.CloudEndpoint.</returns>
-        protected override StorageSyncModels.CloudEndpoint Transform(PSCloudEndpoint source) => new StorageSyncModels.CloudEndpoint(source.ResourceId, source.CloudEndpointName, source.Type, source.StorageAccountResourceId, source.AzureFileShareName, source.StorageAccountTenantId, friendlyName: source.FriendlyName);
+        protected override StorageSyncModels.CloudEndpoint Transform(PSCloudEndpoint source) => new StorageSyncModels.CloudEndpoint(
+            id: source.ResourceId,
+            name: source.CloudEndpointName,
+            type: source.Type,
+            storageAccountResourceId: source.StorageAccountResourceId,
+            azureFileShareName: source.AzureFileShareName,
+            storageAccountTenantId: source.StorageAccountTenantId,
+            friendlyName: source.FriendlyName);
 
         /// <summary>
         /// Transforms the specified source.
@@ -48,6 +47,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>PSCloudEndpoint.</returns>
         protected override PSCloudEndpoint Transform(StorageSyncModels.CloudEndpoint source)
         {
+            PSCloudEndpointChangeEnumerationStatus changeEnumerationStatus = source.ChangeEnumerationStatus != null ? new CloudEndpointChangeEnumerationStatusConverter().Convert(source.ChangeEnumerationStatus) : null;
+
             var resourceIdentifier = new ResourceIdentifier(source.Id);
             return new PSCloudEndpoint()
             {
@@ -60,12 +61,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 FriendlyName = source.FriendlyName,
                 StorageAccountResourceId = source.StorageAccountResourceId,
                 AzureFileShareName = source.AzureFileShareName,
-                StorageAccountTenantId = source.StorageAccountTenantId?.Trim('"'),
+                StorageAccountTenantId = source.StorageAccountTenantId,
                 BackupEnabled = System.Convert.ToBoolean(source.BackupEnabled),
                 LastWorkflowId = source.LastWorkflowId,
                 LastOperationName = source.LastOperationName,
                 PartnershipId = source.PartnershipId,
                 ProvisioningState = source.ProvisioningState,
+                ChangeEnumerationStatus = changeEnumerationStatus
             };
         }
     }

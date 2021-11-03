@@ -45,8 +45,11 @@ using System.Management.Automation;
 using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using CM = Microsoft.Azure.Management.Compute.Models;
 using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
+using Microsoft.Azure.Commands.Compute;
+
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -57,6 +60,7 @@ namespace Microsoft.Azure.Commands.Compute
         public const string DefaultParameterSet = "DefaultParameterSet";
         public const string SimpleParameterSet = "SimpleParameterSet";
         public const string DiskFileParameterSet = "DiskFileParameterSet";
+        public bool ConfigAsyncVisited = false;
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -291,6 +295,26 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Name of the SSH Public Key resource.",
+            ParameterSetName = DefaultParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Name of the SSH Public Key resource.",
+            ParameterSetName = SimpleParameterSet)]
+        public string SshKeyName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Generate a SSH Public/Private key pair and create a SSH Public Key resource on Azure.",
+            ParameterSetName = DefaultParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Generate a SSH Public/Private key pair and create a SSH Public Key resource on Azure.",
+            ParameterSetName = SimpleParameterSet)]
+        public SwitchParameter GenerateSshKey { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [Parameter(
@@ -329,6 +353,7 @@ namespace Microsoft.Azure.Commands.Compute
                 _cmdlet = cmdlet;
                 _client = client;
                 _resourceClient = resourceClient;
+                _cmdlet.validate();
             }
 
             public ImageAndOsType ImageAndOsType { get; set; }
@@ -374,6 +399,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()
             {
+
                 if (_cmdlet.DiskFile == null)
                 {
                     ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
@@ -418,6 +444,19 @@ namespace Microsoft.Azure.Commands.Compute
                         name: _cmdlet.AvailabilitySetName,
                         proximityPlacementGroup: ppgSubResourceFunc);
 
+
+                List<SshPublicKey> sshPublicKeyList = null;
+                if (!String.IsNullOrEmpty(_cmdlet.SshKeyName))
+                {
+                    SshPublicKey sshPublicKey = _cmdlet.createPublicKeyObject(_cmdlet.Credential.UserName); 
+                    sshPublicKeyList = new List<SshPublicKey>()
+                    {
+                        sshPublicKey
+                    };
+                }
+
+                _cmdlet.ConfigAsyncVisited = true;
+
                 if (_cmdlet.DiskFile == null)
                 {
                     return resourceGroup.CreateVirtualMachineConfig(
@@ -442,6 +481,7 @@ namespace Microsoft.Azure.Commands.Compute
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                         encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        sshPublicKeys: sshPublicKeyList,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
@@ -520,6 +560,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Linux ? OperatingSystemTypes.Linux : OperatingSystemTypes.Windows,
                     null,
                     null);
+
                 var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
                     DefaultProfile.DefaultContext,
                     AzureEnvironment.Endpoint.ResourceManager);
@@ -575,7 +616,17 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+            VirtualMachine result;
+            try
+            {
+                result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+            }
+            catch (Microsoft.Rest.Azure.CloudException ex)
+            {
+                cleanUp();
+                throw ex;
+            }
+
 
             if (result != null)
             {
@@ -594,6 +645,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         public void DefaultExecuteCmdlet()
         {
+            validate();
+
             base.ExecuteCmdlet();
             if (this.VM.DiagnosticsProfile == null)
             {
@@ -667,11 +720,27 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    var result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
+                    Rest.Azure.AzureOperationResponse<VirtualMachine> result;
+
+                    if (this.IsParameterBound(c => c.SshKeyName))
+                    { 
+                        parameters = addSshPublicKey(parameters);
+                    }
+
+                    try
+                    {
+                        result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VM.Name,
                         parameters,
                         auxAuthHeader).GetAwaiter().GetResult();
+                    }
+                    catch (Exception ex)
+                    {
+                        cleanUp();
+                        throw ex;
+                    }
+
                     var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
                     if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
@@ -702,6 +771,7 @@ namespace Microsoft.Azure.Commands.Compute
                             psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
                         }
                     }
+
                     WriteObject(psResult);
                 });
             }
@@ -965,6 +1035,134 @@ namespace Microsoft.Azure.Commands.Compute
             var storageUri = uri.Authority;
             var index = storageUri.IndexOf('.');
             return storageUri.Substring(0, index);
+        }
+
+        private SshPublicKey createPublicKeyObject(string username)
+        {
+            string publicKeyPath = "/home/" + username + "/.ssh/authorized_keys";
+            string publicKey = GenerateOrFindSshKey();
+            SshPublicKey sshPublicKey = new SshPublicKey(publicKeyPath, publicKey);
+            return sshPublicKey;
+
+        }
+        private string GenerateOrFindSshKey()
+        {
+            string publicKey = "";
+            SshPublicKeyResource SshPublicKey;
+            if (!this.ConfigAsyncVisited && this.GenerateSshKey.IsPresent)
+            {
+                try
+                {
+                    SshPublicKey = this.ComputeClient.ComputeManagementClient.SshPublicKeys.Get(this.ResourceGroupName, this.SshKeyName);
+                    publicKey = SshPublicKey.PublicKey;
+                }
+                catch (Rest.Azure.CloudException)
+                {
+                    //create key 
+                    SshPublicKeyResource sshkey = new SshPublicKeyResource();
+                    sshkey.Location = this.Location != null ? this.Location : "eastus";
+                    SshPublicKey = this.ComputeClient.ComputeManagementClient.SshPublicKeys.Create(this.ResourceGroupName, this.SshKeyName, sshkey);
+                    SshPublicKeyGenerateKeyPairResult keypair = this.ComputeClient.ComputeManagementClient.SshPublicKeys.GenerateKeyPair(this.ResourceGroupName, this.SshKeyName);
+
+                    string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh");
+                    if (!Directory.Exists(sshFolder))
+                    {
+                        Directory.CreateDirectory(sshFolder);
+                    }
+
+                    DateTimeOffset now = DateTimeOffset.UtcNow;
+                    string privateKeyFileName = now.ToUnixTimeSeconds().ToString();
+                    string publicKeyFileName = now.ToUnixTimeSeconds().ToString() + ".pub";
+                    string privateKeyFilePath = Path.Combine(sshFolder, privateKeyFileName);
+                    string publicKeyFilePath = Path.Combine(sshFolder, publicKeyFileName);
+                    using (StreamWriter writer = new StreamWriter(privateKeyFilePath))
+                    {
+                        writer.WriteLine(keypair.PrivateKey);
+                    }
+                    Console.WriteLine("Private key is saved to " + privateKeyFilePath);
+
+                    using (StreamWriter writer = new StreamWriter(publicKeyFilePath))
+                    {
+                        writer.WriteLine(keypair.PublicKey);
+                    }
+                    Console.WriteLine("Public key is saved to " + publicKeyFilePath);
+
+                    return keypair.PublicKey;
+                }
+
+                throw new Exception("The SSH Public Key resource with name '-SshKeyName' already exists. Either remove '-GenerateSshKey' to use the existing resource or update '-SshKeyName' to create a SSH Public Key resource with a different name.");
+
+            }
+            else
+            {
+                try
+                {
+                    SshPublicKey = this.ComputeClient.ComputeManagementClient.SshPublicKeys.Get(this.ResourceGroupName, this.SshKeyName);
+                    publicKey = SshPublicKey.PublicKey;
+                }
+                catch (Rest.Azure.CloudException)
+                {
+                    throw new Exception("The SSH Public Key resource with name '-SshKeyName' was not found. Either provide '-GenerateSshKey' to create the resource or provide a '-SshKeyName' that exists in the provided Resource Group.");
+                }
+
+                return publicKey;
+            }
+        }
+
+        private VirtualMachine addSshPublicKey(VirtualMachine parameters)
+        {
+            SshPublicKey sshPublicKey = createPublicKeyObject(parameters.OsProfile.AdminUsername);
+            List<SshPublicKey> sshPublicKeys = new List<SshPublicKey>()
+            {
+                sshPublicKey
+            };
+            if (parameters.OsProfile.LinuxConfiguration.Ssh == null)
+            {
+                SshConfiguration sshConfig = new SshConfiguration();
+                parameters.OsProfile.LinuxConfiguration.Ssh = sshConfig;
+            }
+            parameters.OsProfile.LinuxConfiguration.Ssh.PublicKeys = sshPublicKeys;
+
+            return parameters;
+        }
+
+        private void cleanUp()
+        {
+            if (this.GenerateSshKey.IsPresent)
+            {
+                //delete the created ssh key resource
+                WriteInformation("VM creation failed. Deleting the SSH key resource that was created.", new string[] { "PSHOST" });
+                this.ComputeClient.ComputeManagementClient.SshPublicKeys.Delete(this.ResourceGroupName, this.SshKeyName);
+            }
+        }
+
+        private void validate()
+        {
+            if (this.IsParameterBound(c => c.SshKeyName))
+            {
+                if (this.ParameterSetName == "DefaultParameterSet" && !IsLinuxOs())
+                {
+                    throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
+                }
+
+                if (this.ParameterSetName == "SimpleParameterSet")
+                {
+                    var client = new Client(DefaultProfile.DefaultContext);
+                    ImageAndOsType ImageAndOsType = client.UpdateImageAndOsTypeAsync(
+                            null, this.ResourceGroupName, this.Image, "").Result;
+                    if (ImageAndOsType?.OsType != OperatingSystemTypes.Linux)
+                    {
+                        throw new Exception("Parameters '-SshKeyName' and '-GenerateSshKey' are only allowed with Linux VMs");
+                    }
+                }
+            }
+            else
+            {
+                if (this.GenerateSshKey.IsPresent)
+                {
+                    throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
+                }
+            }  
         }
     }
 }

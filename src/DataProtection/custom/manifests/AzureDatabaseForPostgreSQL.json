@@ -5,56 +5,68 @@
   "datasourceType": "Microsoft.DBforPostgreSQL/servers/databases",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
   "allowedRestoreTargetTypes": [ "AlternateLocation", "RestoreAsFiles" ],
+  "itemLevelRecoveyEnabled": false,
+  "supportSecretStoreAuthentication": true,
   "policySettings": {
-    "supportedRetentionTags": [ "Daily", "Weekly", "Monthly", "Yearly" ],
-    "supportedDatastoreTypes": [ "VaultStore" ],
+    "supportedRetentionTags": [ "Weekly", "Monthly", "Yearly" ],
+    "supportedDatastoreTypes": [ "VaultStore", "ArchiveStore" ],
     "disableAddRetentionRule": false,
     "disableCustomRetentionTag": false,
-    "supportedBackupFrequency": [ "Daily", "Weekly" ],
-    "backupScheduleSupported":  true,
+    "backupScheduleSupported": true,
+    "supportedBackupFrequency": [ "Weekly" ],
     "defaultPolicy": {
-      "DatasourceType": [ "Microsoft.DBforPostgreSQL/servers/databases" ],
-      "ObjectType": "BackupPolicy",
-      "PolicyRule": [
+      "name": "OssPolicy1",
+      "datasourceTypes": [ "Microsoft.DBforPostgreSQL/servers/databases" ],
+      "objectType": "BackupPolicy",
+      "policyRules": [
         {
-          "BackupParameter": {
-            "BackupType": "Full",
-            "ObjectType": "AzureBackupParams"
+          "backupParameters": {
+            "backupType": "Full",
+            "objectType": "AzureBackupParams"
           },
-          "BackupParameterObjectType": "AzureBackupParams",
-          "DataStoreObjectType": "DataStoreInfoBase",
-          "DataStoreType": "VaultStore",
-          "Name": "BackupWeekly",
-          "ObjectType": "AzureBackupRule",
-          "Trigger": {
-            "ObjectType": "ScheduleBasedTriggerContext",
-            "ScheduleRepeatingTimeInterval": [ "R/2020-04-05T13:00:00+00:00/P1W" ],
-            "TaggingCriterion": [
+          "trigger": {
+            "schedule": {
+              "repeatingTimeIntervals": [
+                "R/2021-08-22T02:00:00+00:00/P1W"
+              ],
+              "timeZone": "UTC"
+            },
+            "taggingCriteria": [
               {
-                "Criterion": null,
-                "IsDefault": true,
-                "TagInfoETag": null,
-                "TagInfoId": "Default_",
-                "TagInfoTagName": "Default",
-                "TaggingPriority": 99
+                "tagInfo": {
+                  "tagName": "Default",
+                  "id": "Default_"
+                },
+                "taggingPriority": 99,
+                "isDefault": true
               }
-            ]
+            ],
+            "objectType": "ScheduleBasedTriggerContext"
           },
-          "TriggerObjectType": "ScheduleBasedTriggerContext"
+          "dataStore": {
+            "dataStoreType": "VaultStore",
+            "objectType": "DataStoreInfoBase"
+          },
+          "name": "BackupWeekly",
+          "objectType": "AzureBackupRule"
         },
         {
-          "IsDefault": true,
-          "Lifecycle": [
+          "lifecycles": [
             {
-              "DeleteAfterDuration": "P10D",
-              "DeleteAfterObjectType": "AbsoluteDeleteOption",
-              "SourceDataStoreObjectType": "DataStoreInfoBase",
-              "SourceDataStoreType": "VaultStore",
-              "TargetDataStoreCopySetting": null
+              "deleteAfter": {
+                "objectType": "AbsoluteDeleteOption",
+                "duration": "P3M"
+              },
+              "targetDataStoreCopySettings": [],
+              "sourceDataStore": {
+                "dataStoreType": "VaultStore",
+                "objectType": "DataStoreInfoBase"
+              }
             }
           ],
-          "Name": "Default",
-          "ObjectType": "AzureRetentionRule"
+          "isDefault": true,
+          "name": "Default",
+          "objectType": "AzureRetentionRule"
         }
       ]
     }

@@ -11,6 +11,9 @@ Locale: en-US
 The topics in this section document the Azure PowerShell cmdlets for Azure Synapse Analytics.
 
 ## Az.Synapse Cmdlets
+### [Add-AzSynapseDataFlowDebugSessionPackage](Add-AzSynapseDataFlowDebugSessionPackage.md)
+Add data flow resource and its dependencies into specific data flow debug session.
+
 ### [Add-AzSynapseTriggerSubscription](Add-AzSynapseTriggerSubscription.md)
 Subscribe the event trigger to external service events.
 
@@ -33,16 +36,22 @@ Enables Advanced Data Security on a workspace.
 Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the SQL pool.
 
 ### [Enable-AzSynapseWorkspace](Enable-AzSynapseWorkspace.md)
-Activate a new Azure Synapse Analytics workspace.
+When creating an Azure Synapse Analytics workspace, you can choose to encrypt all data at rest in the workspace `with a customer-managed key which will provide double encryption to the workspace.You may need to set up the encryption environment firstly, such as to create a key vault with purge protection enable and specify Access Polices to the key vault. Then use this cmdlet to activate the new Azure Synapse Analytics workspace which double encryption is enabled using a customer-managed key.
 
 ### [Export-AzSynapseNotebook](Export-AzSynapseNotebook.md)
 Exports notbooks.
+
+### [Export-AzSynapseSqlScript](Export-AzSynapseSqlScript.md)
+Exports a sql script from a Synapse workspace.
 
 ### [Get-AzSynapseActivityRun](Get-AzSynapseActivityRun.md)
 Gets information about activity runs for a pipeline run.
 
 ### [Get-AzSynapseDataFlow](Get-AzSynapseDataFlow.md)
 Gets information about data flows in workspace.
+
+### [Get-AzSynapseDataFlowDebugSession](Get-AzSynapseDataFlowDebugSession.md)
+Get all active data flow debug sessions in specified Synapse workspace.
 
 ### [Get-AzSynapseDataset](Get-AzSynapseDataset.md)
 Gets information about datasets in workspace.
@@ -72,7 +81,7 @@ Gets information about linked services in workspace.
 Gets Managed Identity Sql Control Settings.
 
 ### [Get-AzSynapseManagedPrivateEndpoint](Get-AzSynapseManagedPrivateEndpoint.md)
-Gets a Synapse managed private endpoint.
+Gets information about mananged private endpoints in a workspace
 
 ### [Get-AzSynapseNotebook](Get-AzSynapseNotebook.md)
 Gets information about notebooks in a workspace.
@@ -99,7 +108,7 @@ Gets a Synapse Analytics Spark job.
 Gets a Spark job definition in workspace.
 
 ### [Get-AzSynapseSparkPool](Get-AzSynapseSparkPool.md)
-Gets a Synapse Analytics Spark pool.
+Gets a Apache Spark pool in Azure Synapse Analytics.
 
 ### [Get-AzSynapseSparkSession](Get-AzSynapseSparkSession.md)
 Gets a Synapse Analytics Spark session.
@@ -155,6 +164,9 @@ Gets all vulnerability assessment scan record(s) associated with a given sql poo
 ### [Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting](Get-AzSynapseSqlPoolVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a SQL pool.
 
+### [Get-AzSynapseSqlScript](Get-AzSynapseSqlScript.md)
+Gets information about sql scripts in a Synapse workspace.
+
 ### [Get-AzSynapseSqlVulnerabilityAssessmentSetting](Get-AzSynapseSqlVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a workspace.
 
@@ -173,6 +185,12 @@ Gets a Synapse Analytics workspace.
 ### [Get-AzSynapseWorkspaceKey](Get-AzSynapseWorkspaceKey.md)
 Gets a workspace key.
 
+### [Get-AzSynapseWorkspacePackage](Get-AzSynapseWorkspacePackage.md)
+Gets a workspace package.
+
+### [Invoke-AzSynapseDataFlowDebugSessionCommand](Invoke-AzSynapseDataFlowDebugSessionCommand.md)
+Invoke debug action in data flow debug session.
+
 ### [Invoke-AzSynapseIntegrationRuntimeUpgrade](Invoke-AzSynapseIntegrationRuntimeUpgrade.md)
 Upgrades self-hosted integration runtime.
 
@@ -182,14 +200,23 @@ Invokes a pipeline to start a run for it.
 ### [Invoke-AzSynapseSparkStatement](Invoke-AzSynapseSparkStatement.md)
 Invokes a Synapse Analytics Spark statement.
 
+### [Invoke-AzSynapseTriggerRun](Invoke-AzSynapseTriggerRun.md)
+Invokes another instance of a trigger run.
+
 ### [New-AzSynapseFirewallRule](New-AzSynapseFirewallRule.md)
 Creates a Synapse Analytics Firewall Rule.
+
+### [New-AzSynapseGitRepositoryConfig](New-AzSynapseGitRepositoryConfig.md)
+Creates Git repository configuration.
 
 ### [New-AzSynapseIntegrationRuntimeKey](New-AzSynapseIntegrationRuntimeKey.md)
 Regenerate self-hosted integration runtime key.
 
+### [New-AzSynapseLinkedServiceEncryptedCredential](New-AzSynapseLinkedServiceEncryptedCredential.md)
+Encrypt credential in linked service with specified integration runtime.
+
 ### [New-AzSynapseManagedPrivateEndpoint](New-AzSynapseManagedPrivateEndpoint.md)
-Creates a Synapse managed private endpoint.
+Creates or updates a managed private endpoint in a workspace.
 
 ### [New-AzSynapseManagedVirtualNetworkConfig](New-AzSynapseManagedVirtualNetworkConfig.md)
 Creates managed virtual network configuration.
@@ -215,6 +242,9 @@ Creates a Synapse Analytics workspace.
 ### [New-AzSynapseWorkspaceKey](New-AzSynapseWorkspaceKey.md)
 Creates a workspace key.
 
+### [New-AzSynapseWorkspacePackage](New-AzSynapseWorkspacePackage.md)
+Uploads a local workspace package file to an Azure Synapse workspace.
+
 ### [Remove-AzSynapseDataFlow](Remove-AzSynapseDataFlow.md)
 Removes a data flow from workspace.
 
@@ -234,7 +264,7 @@ Remove a node with the given name on an integration runtime.
 Removes a linked service from workspace.
 
 ### [Remove-AzSynapseManagedPrivateEndpoint](Remove-AzSynapseManagedPrivateEndpoint.md)
-Removes a Synape managed private endpoint.
+Removes a managed private endpoint from a workspace.
 
 ### [Remove-AzSynapseNotebook](Remove-AzSynapseNotebook.md)
 Removes a notebook from a workspace.
@@ -249,7 +279,7 @@ Deletes a Synapse Analytics role assignment.
 Removes a Spark job definition from workspace.
 
 ### [Remove-AzSynapseSparkPool](Remove-AzSynapseSparkPool.md)
-Deletes a Synapse Analytics Spark pool.
+Deletes a Apache Spark pool in Azure Synapse Analytics.
 
 ### [Remove-AzSynapseSqlActiveDirectoryAdministrator](Remove-AzSynapseSqlActiveDirectoryAdministrator.md)
 Removes an Azure AD administrator for Synapse Analytics Workspace.
@@ -266,6 +296,9 @@ Deletes a Synapse Analytics SQL pool restore point.
 ### [Remove-AzSynapseSqlPoolSensitivityClassification](Remove-AzSynapseSqlPoolSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the SQL pool.
 
+### [Remove-AzSynapseSqlScript](Remove-AzSynapseSqlScript.md)
+Removes a sql script from a Synapse workspace.
+
 ### [Remove-AzSynapseTrigger](Remove-AzSynapseTrigger.md)
 Removes a trigger from a workspace.
 
@@ -277,6 +310,9 @@ Deletes a Synapse Analytics workspace.
 
 ### [Remove-AzSynapseWorkspaceKey](Remove-AzSynapseWorkspaceKey.md)
 Deletes a workspace key.
+
+### [Remove-AzSynapseWorkspacePackage](Remove-AzSynapseWorkspacePackage.md)
+Deletes a workspace package.
 
 ### [Reset-AzSynapseSparkSessionTimeout](Reset-AzSynapseSparkSessionTimeout.md)
 Resets timeout of a Synapse Analytics Spark session.
@@ -347,8 +383,17 @@ Modifies TDE property for a SQL pool.
 ### [Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline](Set-AzSynapseSqlPoolVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
+### [Set-AzSynapseSqlScript](Set-AzSynapseSqlScript.md)
+Creates or updates a SQL script in a workspace.
+
 ### [Set-AzSynapseTrigger](Set-AzSynapseTrigger.md)
 Creates a trigger in a workspace.
+
+### [Start-AzSynapseDataFlowDebugSession](Start-AzSynapseDataFlowDebugSession.md)
+Starts a Synapse Analytics data flow debug session in Synapse Workspace.
+
+### [Start-AzSynapseIntegrationRuntime](Start-AzSynapseIntegrationRuntime.md)
+Starts a managed dedicated integration runtime.
 
 ### [Start-AzSynapseSparkSession](Start-AzSynapseSparkSession.md)
 Starts a Synapse Analytics Spark session.
@@ -358,6 +403,12 @@ Starts a vulnerability assessment scan.
 
 ### [Start-AzSynapseTrigger](Start-AzSynapseTrigger.md)
 Starts a trigger in a workspace.
+
+### [Stop-AzSynapseDataFlowDebugSession](Stop-AzSynapseDataFlowDebugSession.md)
+Stops a data flow debug session in a workspace.
+
+### [Stop-AzSynapseIntegrationRuntime](Stop-AzSynapseIntegrationRuntime.md)
+Stops a managed dedicated integration runtime.
 
 ### [Stop-AzSynapsePipelineRun](Stop-AzSynapsePipelineRun.md)
 Stops a pipeline run in a workspace.
@@ -373,6 +424,9 @@ Cancels a Synapse Analytics Spark statement.
 
 ### [Stop-AzSynapseTrigger](Stop-AzSynapseTrigger.md)
 Stops a trigger in a workspace.
+
+### [Stop-AzSynapseTriggerRun](Stop-AzSynapseTriggerRun.md)
+Stops a trigger run in a synapse workspace.
 
 ### [Submit-AzSynapseSparkJob](Submit-AzSynapseSparkJob.md)
 Submits a Synapse Analytics Spark job.
@@ -408,7 +462,7 @@ Updates self-hosted integration runtime node.
 Updates managed virtual network configuration to workspace.
 
 ### [Update-AzSynapseSparkPool](Update-AzSynapseSparkPool.md)
-Updates a Synapse Analytics Spark pool.
+Updates a Apache Spark pool in Azure Synapse Analytics.
 
 ### [Update-AzSynapseSqlAdvancedThreatProtectionSetting](Update-AzSynapseSqlAdvancedThreatProtectionSetting.md)
 Updates an advanced threat protection settings on a workspace.
@@ -434,3 +488,89 @@ Updates a Synapse Analytics workspace.
 ### [Wait-AzSynapseSparkJob](Wait-AzSynapseSparkJob.md)
 Waits for a Synapse Analytics Spark job to complete.
 
+### [Add-AzSynapseKustoPoolLanguageExtension](Add-AzSynapseKustoPoolLanguageExtension.md)
+Add a list of language extensions that can run within KQL queries.
+
+### [Get-AzSynapseKustoPool](Get-AzSynapseKustoPool.md)
+Gets a Kusto pool.
+
+### [Get-AzSynapseKustoPoolAttachedDatabaseConfiguration](Get-AzSynapseKustoPoolAttachedDatabaseConfiguration.md)
+Returns an attached database configuration.
+
+### [Get-AzSynapseKustoPoolDatabase](Get-AzSynapseKustoPoolDatabase.md)
+Returns a database.
+
+### [Get-AzSynapseKustoPoolDatabasePrincipalAssignment](Get-AzSynapseKustoPoolDatabasePrincipalAssignment.md)
+Gets a Kusto pool database principalAssignment.
+
+### [Get-AzSynapseKustoPoolDataConnection](Get-AzSynapseKustoPoolDataConnection.md)
+Returns a data connection.
+
+### [Get-AzSynapseKustoPoolFollowerDatabase](Get-AzSynapseKustoPoolFollowerDatabase.md)
+Returns a list of databases that are owned by this Kusto Pool and were followed by another Kusto Pool.
+
+### [Get-AzSynapseKustoPoolLanguageExtension](Get-AzSynapseKustoPoolLanguageExtension.md)
+Returns a list of language extensions that can run within KQL queries.
+
+### [Get-AzSynapseKustoPoolPrincipalAssignment](Get-AzSynapseKustoPoolPrincipalAssignment.md)
+Gets a Kusto pool principalAssignment.
+
+### [Get-AzSynapseKustoPoolSku](Get-AzSynapseKustoPoolSku.md)
+Lists eligible SKUs for Kusto Pool resource.
+
+### [Invoke-AzSynapseDetachKustoPoolFollowerDatabase](Invoke-AzSynapseDetachKustoPoolFollowerDatabase.md)
+Detaches all followers of a database owned by this Kusto Pool.
+
+### [New-AzSynapseKustoPool](New-AzSynapseKustoPool.md)
+Create or update a Kusto pool.
+
+### [New-AzSynapseKustoPoolAttachedDatabaseConfiguration](New-AzSynapseKustoPoolAttachedDatabaseConfiguration.md)
+Creates or updates an attached database configuration.
+
+### [New-AzSynapseKustoPoolDatabase](New-AzSynapseKustoPoolDatabase.md)
+Creates or updates a database.
+
+### [New-AzSynapseKustoPoolDatabasePrincipalAssignment](New-AzSynapseKustoPoolDatabasePrincipalAssignment.md)
+Creates a Kusto pool database principalAssignment.
+
+### [New-AzSynapseKustoPoolDataConnection](New-AzSynapseKustoPoolDataConnection.md)
+Creates or updates a data connection.
+
+### [New-AzSynapseKustoPoolPrincipalAssignment](New-AzSynapseKustoPoolPrincipalAssignment.md)
+Create a Kusto pool principalAssignment.
+
+### [Remove-AzSynapseKustoPool](Remove-AzSynapseKustoPool.md)
+Deletes a Kusto pool.
+
+### [Remove-AzSynapseKustoPoolAttachedDatabaseConfiguration](Remove-AzSynapseKustoPoolAttachedDatabaseConfiguration.md)
+Deletes the attached database configuration with the given name.
+
+### [Remove-AzSynapseKustoPoolDatabase](Remove-AzSynapseKustoPoolDatabase.md)
+Deletes the database with the given name.
+
+### [Remove-AzSynapseKustoPoolDatabasePrincipalAssignment](Remove-AzSynapseKustoPoolDatabasePrincipalAssignment.md)
+Deletes a Kusto pool principalAssignment.
+
+### [Remove-AzSynapseKustoPoolDataConnection](Remove-AzSynapseKustoPoolDataConnection.md)
+Deletes the data connection with the given name.
+
+### [Remove-AzSynapseKustoPoolLanguageExtension](Remove-AzSynapseKustoPoolLanguageExtension.md)
+Remove a list of language extensions that can run within KQL queries.
+
+### [Remove-AzSynapseKustoPoolPrincipalAssignment](Remove-AzSynapseKustoPoolPrincipalAssignment.md)
+Deletes a Kusto pool principalAssignment.
+
+### [Start-AzSynapseKustoPool](Start-AzSynapseKustoPool.md)
+Starts a Kusto pool.
+
+### [Stop-AzSynapseKustoPool](Stop-AzSynapseKustoPool.md)
+Stops a Kusto pool.
+
+### [Update-AzSynapseKustoPool](Update-AzSynapseKustoPool.md)
+Update a Kusto Kusto Pool.
+
+### [Update-AzSynapseKustoPoolDatabase](Update-AzSynapseKustoPoolDatabase.md)
+Updates a database.
+
+### [Update-AzSynapseKustoPoolDataConnection](Update-AzSynapseKustoPoolDataConnection.md)
+Updates a data connection.

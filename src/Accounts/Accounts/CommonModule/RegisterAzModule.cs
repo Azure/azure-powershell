@@ -54,6 +54,13 @@ namespace Microsoft.Azure.Commands.Common
                     // this gets called before the generated cmdlet makes a call across the wire (allows you to change the HTTP pipeline)
                     OnNewRequest = ContextAdapter.Instance.OnNewRequest,
 
+                    //OnNewRequest = AddRequestUserAgentHandler + AddPatchRequestUriHandler + AddAuthorizeRequestHandler
+                    AddRequestUserAgentHandler = ContextAdapter.Instance.AddRequestUserAgentHandler,
+
+                    AddPatchRequestUriHandler = ContextAdapter.Instance.AddPatchRequestUriHandler,
+
+                    AddAuthorizeRequestHandler = ContextAdapter.Instance.AddAuthorizeRequestHandler,
+
                     // Called for well-known parameters that require argument completers
                     ArgumentCompleter = ContextAdapter.Instance.CompleteArgument,
 

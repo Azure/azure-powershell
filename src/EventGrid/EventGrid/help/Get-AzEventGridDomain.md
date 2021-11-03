@@ -84,7 +84,7 @@ List all the Event Grid domains in resource group \`MyResourceGroupName\` withou
 
 ```powershell
 PS C:\> $result=Get-AzEventGridDomain -ResourceGroup MyResourceGroupName
-PS C:\> echo $result.PsDomainsList
+PS C:\> Write-Output $result.PsDomainsList
 
 ResourceGroupName : MyResourceGroupName
 DomainName        : Domain1
@@ -132,13 +132,13 @@ PS C:\> $total = 0
 PS C:\> $odataFilter = "Name ne 'ABCD'"
 PS C:\> $result = Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Top 10 -ODataQuery $odataFilter
 PS C:\> $total += $result.Count
-PS C:\> while ($result.NextLink -ne $Null)
+PS C:\> while ($null -ne $result.NextLink)
     {
         $result = Get-AzEventGridDomain -NextLink $result.NextLink
         $total += $result.Count
     }
 
-PS C:\> echo "Total number of domains is $Total"
+PS C:\> Write-Output "Total number of domains is $Total"
 ```
 
 ### Example 5
@@ -147,7 +147,7 @@ List all the Event Grid domains in Azure Subscription without pagination (all do
 
 ```powershell
 PS C:\> $result=Get-AzEventGridDomain
-PS C:\> echo $result.PsDomainsList
+PS C:\> Write-Output $result.PsDomainsList
 
 ResourceGroupName : MyResourceGroupName
 DomainName        : Domain1
@@ -195,12 +195,12 @@ PS C:\> $total = 0
 PS C:\> $odataFilter = "Contains(Name, 'ABCD')"
 PS C:\> $result = Get-AzEventGridDomain -Top 20 -ODataQuery $odataFilter
 PS C:\> $total += $result.Count
-PS C:\> while ($result.NextLink -ne $Null)
+PS C:\> while ($null -ne $result.NextLink)
     {
         $result = Get-AzEventGridDomain -NextLink $result.NextLink
         $total += $result.Count
     }
-PS C:\> echo "Total number of domains is $Total"
+PS C:\> Write-Output "Total number of domains is $Total"
 ```
 
 ## PARAMETERS

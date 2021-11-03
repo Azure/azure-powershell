@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 2.8.3
+* Updated `Import-AzWebAppKeyVaultCertificate1` to set the default name with combination of keyvault name and cert name 
+
+## Version 2.8.2
+* Fixed `Set-AzWebApp` to return a valid warning message when fails to add -Hostname #9316
+* Fixed `Get-AzWebApp` to return CustomDomainVerificationId in the response. #9316
+
 ## Version 2.8.1
 * Fixed `Add-AzWebAppAccessRestrictionRule` failing when users does not have permissions to get Service Tag list #15316 and #14862
 

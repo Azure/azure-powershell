@@ -93,9 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>Backing field for <see cref="PropertiesBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku _propertiesBody= new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ResourceTypeSku();
+        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource _propertiesBody= new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.SkuResource();
 
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeSku PropertiesBody { get => this._propertiesBody; set => this._propertiesBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource PropertiesBody { get => this._propertiesBody; set => this._propertiesBody = value; }
 
         /// <summary>Backing field for <see cref="ProviderNamespace" /> property.</summary>
         private string _providerNamespace;
@@ -110,6 +110,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Path)]
         public string ProviderNamespace { get => this._providerNamespace; set => this._providerNamespace = value; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState))]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState ProvisioningState { get => PropertiesBody.ProvisioningState ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState)""); set => PropertiesBody.ProvisioningState = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -157,10 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = ".")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @".",
         SerializedName = @"skuSettings",
@@ -259,7 +271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.Debug:

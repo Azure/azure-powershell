@@ -19,19 +19,19 @@ Create or update a cluster in a private cloud
 .Description
 Create or update a cluster in a private cloud
 .Example
-PS C:\> New-AzVMwareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group -ClusterSize 3 -SkuName av36
+PS C:\> New-AzVMwareCluster -Name azps_test_cluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -ClusterSize 3 -SkuName av36
 
-Name              Type
-----              ----
-azps-test-cluster Microsoft.AVS/privateClouds/clusters
+Name              Type                                 ResourceGroupName
+----              ----                                 -----------------
+azps_test_cluster Microsoft.AVS/privateClouds/clusters azps_test_group
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICluster
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.vmware/new-azvmwarecluster
+https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarecluster
 #>
 function New-AzVMwareCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20210601.ICluster])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -146,6 +146,8 @@ begin {
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

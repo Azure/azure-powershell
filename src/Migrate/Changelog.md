@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.2
+* Added check for invalid IP address
+
+## Version 1.1.1
+* Supported duplicate disk UUID in source disk.
+* Supported subnets in same VNet for AVSet.
+* Supported runAsAccount fetching for multiple Vcenters in same site.
+
 ## Version 1.1.0
 * Added SQL Server license type.
 * Added CRN feature.

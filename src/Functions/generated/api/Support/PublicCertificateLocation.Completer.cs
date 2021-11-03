@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CurrentUserMy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CurrentUserMy", "CurrentUserMy", global::System.Management.Automation.CompletionResultType.ParameterValue, "CurrentUserMy");
+                yield return new global::System.Management.Automation.CompletionResult("'CurrentUserMy'", "CurrentUserMy", global::System.Management.Automation.CompletionResultType.ParameterValue, "CurrentUserMy");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LocalMachineMy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LocalMachineMy", "LocalMachineMy", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocalMachineMy");
+                yield return new global::System.Management.Automation.CompletionResult("'LocalMachineMy'", "LocalMachineMy", global::System.Management.Automation.CompletionResultType.ParameterValue, "LocalMachineMy");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
+                yield return new global::System.Management.Automation.CompletionResult("'Unknown'", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
             }
         }
     }

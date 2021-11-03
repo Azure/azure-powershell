@@ -19,6 +19,25 @@
 -->
 
 ## Upcoming Release
+* Added Environment auto completer to the following cmdlets: Connect-AzAccount, Get-AzEnvironment, Set-AzEnvironment, and Remove-AzEnvironment [#15991]
+
+## Version 2.6.1
+* Added new version of AAD service client using Microsoft Graph API
+
+## Version 2.6.0
+* Added `-FederatedToken` on `Connect-AzAccount`
+* Updated Azure.Core from 1.19.0 to 1.20.0.
+
+## Version 2.5.4
+* Supported getting the access token for Microsoft Graph.
+* Added AuthorizeRequestDelegate to allow service module to adjust token audience.
+* Utilized [AssemblyLoadContext](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext) to resolve assembly conflict issues in PowerShell.
+* Updated Azure.Core from 1.16.0 to 1.19.0.
+
+## Version 2.5.3
+* Corrected the URLs to Azure Portal in the results of `Get-AzEnvironment` and `Get-AzContext`. [#15429]
+* Made infrastructural changes to support overriding default subscription via a `-SubscriptionId <String>` parameter.
+    - [Az.Aks](https://docs.microsoft.com/powershell/module/az.aks/get-azakscluster) is the first module that supports it.
 
 ## Version 2.5.2
 * Disabled context auto saving when token cache persistence fails on Windows and macOS
@@ -53,7 +72,7 @@
 
 ## Version 2.2.7
 * Fixed incorrect warning message on Windows PowerShell [#14556]
-* Set Azure Environment variable `AzureKeyVaultServiceEndpointResourceId` according to the value of `AzureKeyVaultDnsSuffix` when discovering environment 
+* Set Azure Environment variable `AzureKeyVaultServiceEndpointResourceId` according to the value of `AzureKeyVaultDnsSuffix` when discovering environment
 
 ## Version 2.2.6
 * Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when ADFS credential is used [#13560]
@@ -83,7 +102,7 @@
 * Added new cmdlet `Get-AzAccessToken`
 * Fixed an issue that error happens if user profile path is inaccessible
 * Fixed an issue causing Write-Object error during Connect-AzAccount [#13419]
-* Added parameter "ContainerRegistryEndpointSuffix" to: `Add-AzEnvironment`, `Set-AzEnvironment` 
+* Added parameter "ContainerRegistryEndpointSuffix" to: `Add-AzEnvironment`, `Set-AzEnvironment`
 * Supported interrupting login by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>
 * Fixed an issue causing `Connect-AzAccount -KeyVaultAccessToken` not working [#13127]
 * Fixed null reference and method case insensitive in `Invoke-AzRestMethod`

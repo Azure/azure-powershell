@@ -234,6 +234,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommandsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMRunCommands;
+            }
+        }
+
         public IVirtualMachinesOperations VirtualMachinesClient
         {
             get
@@ -254,6 +262,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             get
             {
                 return ComputeClient.ComputeManagementClient.CapacityReservations;
+            }
+        }
+
+        public IRestorePointCollectionsOperations RestorePointCollectionsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.RestorePointCollections;
+            }
+        }
+
+        public IRestorePointsOperations RestorePointClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.RestorePoints;
             }
         }
 

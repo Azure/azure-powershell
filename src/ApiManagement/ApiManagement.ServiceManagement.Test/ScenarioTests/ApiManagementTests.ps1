@@ -2682,6 +2682,9 @@ function TenantGitConfiguration-CrudTest {
 
         Assert-NotNull $tenantGitAccess
         Assert-AreEqual $true $tenantGitAccess.Enabled
+        Assert-AreEqual "git" $tenantGitAccess.id
+        Assert-Null $tenantGitAccess.PrimaryKey
+        Assert-Null $tenantGitAccess.SecondaryKey
 
         #get Tenant Sync state
         $tenantSyncState = Get-AzApiManagementTenantSyncState -Context $context

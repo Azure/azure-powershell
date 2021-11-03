@@ -206,5 +206,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetExtRollingUpgrade");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSpotRestorePolicy()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSpotRestorePolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetFlexibleOModeDefaulting()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetFlexibleOModeDefaulting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzVmssRunCommand()
+        {
+            TestRunner.RunTestScript("Test-AddAndRemoveAzVmssRunCommand");
+        }
     }
 }

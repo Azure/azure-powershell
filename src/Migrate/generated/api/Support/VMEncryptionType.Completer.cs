@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotEncrypted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotEncrypted", "NotEncrypted", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotEncrypted");
+                yield return new global::System.Management.Automation.CompletionResult("'NotEncrypted'", "NotEncrypted", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotEncrypted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OnePassEncrypted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OnePassEncrypted", "OnePassEncrypted", global::System.Management.Automation.CompletionResultType.ParameterValue, "OnePassEncrypted");
+                yield return new global::System.Management.Automation.CompletionResult("'OnePassEncrypted'", "OnePassEncrypted", global::System.Management.Automation.CompletionResultType.ParameterValue, "OnePassEncrypted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TwoPassEncrypted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TwoPassEncrypted", "TwoPassEncrypted", global::System.Management.Automation.CompletionResultType.ParameterValue, "TwoPassEncrypted");
+                yield return new global::System.Management.Automation.CompletionResult("'TwoPassEncrypted'", "TwoPassEncrypted", global::System.Management.Automation.CompletionResultType.ParameterValue, "TwoPassEncrypted");
             }
         }
     }

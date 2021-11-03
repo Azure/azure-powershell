@@ -17,14 +17,79 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+* Renamed parameter FolderName in `Set-AzSynapseSqlScript` to FolderPath and keeped FolderName as alias
+* Updated `Set-AzSynapseNoteBook` and `Set-AzSynapseSparkJobDefinition` to support new parameter [-FolderPath]
+
+## Version 0.18.0
+* Added cmdlets for Synapse Kusto pool
+    - Added `Get/New/Remove/Update/Start/Stop-AzSynapseKustoPool` cmdlet
+    - Added `Get-AzSynapseKustoPoolSku` cmdlet
+* Added cmdlets for Synapse Kusto pool language extension
+    - Added `Add/Remove/Get-AzSynapseKustoPoolLanguageExtension` cmdlet
+* Added cmdlets for Synapse Kusto pool principal assignment
+    - Added `Get/New/Remove-AzSynapseKustoPoolPrincipalAssignment` cmdlet
+* Added `Get-AzSynapseKustoPoolFollowerDatabase` cmdlet
+* Added `Invoke-AzSynapseDetachKustoPoolFollowerDatabase` cmdlet
+* Added cmdlets for Synapse Kusto database
+    - Added `Get/New/Remove/Update-AzSynapseKustoPoolDatabase` cmdlet
+* Added cmdlets for Synapse Kusto database principal assignment
+    - Added `Get/New/Remove-AzSynapseKustoPoolDatabasePrincipalAssignment` cmdlet
+* Added cmdlets for Synapse Kusto data connection
+    - Added `Get/New/Remove/Update-AzSynapseKustoPoolDataConnection` cmdlet
+* Added cmdlets for Synapse Kusto pool attached database configuration
+    - Added `Get/New/Remove-AzSynaspeKustoPoolAttachedDatabaseConfiguration` cmdlet
+* Added support for Synapse data flow debug session
+    - Added `Start-AzSynapseDataFlowDebugSession` cmdlet to start a Synapse Analytics data flow debug session.
+    - Added `Add-AzSynapseDataFlowDebugSessionPackage` cmdlet
+    - Added `Invoke-AzSynapseDataFlowDebugSessionCommand` cmdlet
+    - Added `Get-AzSynapseDataFlowDebugSession` cmdlet
+    - Added `Stop-AzSynapseDataFlowDebugSession`cmdlet to Stop a data flow debug session by `SessionId`
+* Fixed the format of notebook file exported by `Export-AzSynapseNotebook`
+* Added support for Synapse sql script
+    - Added `Get-AzSynapseSqlScript` cmdlet
+    - Added `Remove-AzSynapseSqlScript` cmdlet
+    - Added `Export-AzSynapseSqlScript` cmdlet
+    - Added `Set-AzSynapseSqlScript` cmdlet
+
+## Version 0.17.0
+* Added cmdlets for Synapse Integration Runtime
+	- Added `Start-AzSynapseIntegrationRuntime` cmdlet
+	- Added `Stop-AzSynapseIntegrationRuntime` cmdlet
+* Added cmdlets for Synapse trigger run
+	- Added `Stop-AzSynapseTriggerRun` cmdlet
+	- Added `Invoke-AzSynapseTriggerRun` cmdlet
+* Added `New-AzSynapseLinkedServiceEncryptedCredential` cmdlet to encrypt credential in linked service
+* Upgraded some package version
+    - Upgraded Azure.Analytics.Synapse.AccessControl to 1.0.0-preview.5
+    - Upgraded Azure.Analytics.Synapse.ManagedPrivateEndpoints to 1.0.0-beta.5
+    - Upgraded Azure.Analytics.Synapse.Spark to 1.0.0-preview.7
+    - Upgraded Microsoft.Azure.Management.Synapse to 2.2.0-preview
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for uploading spark configuration properties file by `SparkConfigFilePath`
+* Updated `Restore-AzSynapseSqlPool` to support for restoring SQL pool from a backup of a deleted SQL pool.
+
+## Version 0.16.0
+* Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
+
+## Version 0.15.0
+* Fixed the issue when `Update-AzSynapseSparkPool` is used with workspace package
 * Added support for Synapse Managed Private Endpoint
 	- Added `New-AzSynapseManagedPrivateEndpoint` cmdlet
 	- Added `Get-AzSynapseManagedPrivateEndpoint` cmdlet
 	- Added `Remove-AzSynapseManagedPrivateEndpoint` cmdlet
 * Fixed the blank page issue of pause setting and scale setting for Apache Spark pool through management API
 * Updated `Set-AzSynapseSqlActiveDirectoryAdministrator` to support for setting SQL Admin by `DisplayName` or by `ObjectId`
-* Renamed `Update-AzSynapseWorkspaceKey` to `Enable-AzSynapseWorkspace` to activate a new synapse workspace without `-Activate` parameter 
+* Renamed `Update-AzSynapseWorkspaceKey` to `Enable-AzSynapseWorkspace` to activate a new synapse workspace without `-Activate` parameter
+* Added `New-AzSynapseGitRepositoryConfig` cmdlet to create Git repository configuration
+* Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for connecting a workspace to a Git reposirory
+  - Added parameters `-GitRepositoryType`
+* Added support for workspace package
+	- Added `New-AzSynapseWorkspacePackage` cmdlet
+	- Added `Get-AzSynapseWorkspacePackage` cmdlet
+	- Added `Remove-AzSynapseWorkspacePackage` cmdlet
+	- Updated `New-AzSynapseSparkPool` cmdlet to drop parameter `-LibraryRequirementsFilePath`
+	- Updated `Updated-AzSynapseSparkPool` cmdlet to add parameter `-Package` and `-PackageAction`
 
 ## Version 0.14.0
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet

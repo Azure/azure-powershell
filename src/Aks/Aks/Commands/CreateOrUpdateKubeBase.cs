@@ -43,6 +43,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
+    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     public abstract class CreateOrUpdateKubeBase : KubeCmdletBase
     {
         protected const string DefaultParamSet = "defaultParameterSet";

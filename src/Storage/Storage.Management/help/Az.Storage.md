@@ -54,7 +54,7 @@ Enable last access time tracking for the Azure Storage Blob service.
 Enables Blob Restore Policy on a Storage account.
 
 ### [Enable-AzStorageContainerDeleteRetentionPolicy](Enable-AzStorageContainerDeleteRetentionPolicy.md)
-Enable delete retention policy for Azure Storage blob contatiners.
+Enable delete retention policy for Azure Storage blob containers.
 
 ### [Enable-AzStorageDeleteRetentionPolicy](Enable-AzStorageDeleteRetentionPolicy.md)
 Enable delete retention policy  for the Azure Storage Blob service.
@@ -98,6 +98,9 @@ Get the NetWorkRule property of a Storage account
 ### [Get-AzStorageBlob](Get-AzStorageBlob.md)
 Lists blobs in a container.
 
+### [Get-AzStorageBlobByTag](Get-AzStorageBlobByTag.md)
+Lists blobs in a storage account across containers, with a blob tag filter sql expression.
+
 ### [Get-AzStorageBlobContent](Get-AzStorageBlobContent.md)
 Downloads a storage blob.
 
@@ -112,6 +115,9 @@ Applies a simple Structured Query Language (SQL) statement on a blob's contents 
 
 ### [Get-AzStorageBlobServiceProperty](Get-AzStorageBlobServiceProperty.md)
 Gets service properties for Azure Storage Blob services.
+
+### [Get-AzStorageBlobTag](Get-AzStorageBlobTag.md)
+Get blob tags of a specific blob.
 
 ### [Get-AzStorageContainer](Get-AzStorageContainer.md)
 Lists the storage containers.
@@ -175,6 +181,9 @@ Gets the Storage resource usage of the current subscription.
 
 ### [Invoke-AzStorageAccountFailover](Invoke-AzStorageAccountFailover.md)
 Invokes failover of a Storage account.
+
+### [Invoke-AzStorageAccountHierarchicalNamespaceUpgrade](Invoke-AzStorageAccountHierarchicalNamespaceUpgrade.md)
+Validates if a storage account can be upgraded to enable HierarchicalNamespace, or upgrades a Storage account to enabled HierarchicalNamespace.
 
 ### [Lock-AzRmStorageContainerImmutabilityPolicy](Lock-AzRmStorageContainerImmutabilityPolicy.md)
 Locks ImmutabilityPolicy of a Storage blob containers
@@ -374,6 +383,9 @@ Uploads a local file to an Azure Storage blob.
 ### [Set-AzStorageBlobInventoryPolicy](Set-AzStorageBlobInventoryPolicy.md)
 Creates or updates blob inventory policy in a Storage account.
 
+### [Set-AzStorageBlobTag](Set-AzStorageBlobTag.md)
+Set blob tags of a specific blob.
+
 ### [Set-AzStorageContainerAcl](Set-AzStorageContainerAcl.md)
 Sets the public access permission to a storage container.
 
@@ -415,6 +427,9 @@ Start an Incremental copy operation from a Page blob snapshot to the specified d
 
 ### [Start-AzStorageFileCopy](Start-AzStorageFileCopy.md)
 Starts to copy a source file.
+
+### [Stop-AzStorageAccountHierarchicalNamespaceUpgrade](Stop-AzStorageAccountHierarchicalNamespaceUpgrade.md)
+Aborts an ongoing HierarchicalNamespace upgrade task on a storage account.
 
 ### [Stop-AzStorageBlobCopy](Stop-AzStorageBlobCopy.md)
 Stops a copy operation.

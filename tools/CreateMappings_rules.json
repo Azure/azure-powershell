@@ -680,5 +680,33 @@
   {
     "alias": "Datadog",
     "regex": "Datadog"
+  },
+  {
+    "regex": "ChangeAnalysis",
+    "alias": "ChangeAnalysis"
+  },
+  {
+    "alias": "Purview",
+    "regex": "Purview"
+  },
+  {
+    "alias": "Elastic",
+    "regex": "Elastic"
+  },
+  {
+    "regex": "Logz",
+    "alias": "Logz"
+  },
+  {
+    "alias": "DiskPool",
+    "regex": "DiskPool"
+  },
+  {
+    "regex": "WebPubSub",
+    "alias": "Web PubSub"
+  },
+  {
+    "alias": "CustomLocation",
+    "regex": "CustomLocation"
   }
 ]

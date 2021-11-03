@@ -188,7 +188,6 @@ directive:
       parameter-name: Name
     set:
       parameter-name: FunctionAppName
-    hide: true
   - where:
       verb: New
       subject: Connection

@@ -67,7 +67,7 @@ function New-AzPostgreSqlFlexibleServer {
         [ValidateNotNullOrEmpty()]
         ${AdministratorLoginPassword},
 
-        [Parameter(HelpMessage = 'The name of the sku, typically, tier + family + cores, e.g. Standard_B1ms, Standard_D2ds_v4.')]
+        [Parameter(HelpMessage = 'The name of the sku, typically, tier + family + cores, e.g. Standard_B1ms, Standard_D2s_v3.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.String]
         ${Sku},
@@ -107,6 +107,12 @@ function New-AzPostgreSqlFlexibleServer {
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion]
         ${Version},
 
+        [Parameter(HelpMessage = 'The id of an existing private dns zone. You can use the
+        private dns zone from same resource group, different resource group, or
+        different subscription. The suffix of dns zone has to be same as that of fully qualified domain of the server. ')]
+        [System.String]
+        ${PrivateDnsZone},
+
         # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
         [Parameter(HelpMessage = 'The subnet IP address prefix to use when creating a new vnet in CIDR format. Default value is 10.0.0.0/24.')]
         [System.String]
@@ -126,15 +132,6 @@ function New-AzPostgreSqlFlexibleServer {
         [Parameter(HelpMessage = 'The Name or Id of an existing virtual network or name of a new one to create. The name must be between 2 to 64 characters. The name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens.')]
         [System.String]
         ${Vnet},
-
-        # [Parameter(ParameterSetName='CreateWithPrivateAccess')]
-        [Parameter(HelpMessage = 'This parameter only applies for a server with private access. 
-            The name or id of new or existing private dns zone. You can use the private dns zone from same resource group, 
-            different resource group, or different subscription. If you want to use a zone from different resource group or 
-            subscription, please provide resource Id. CLI creates a new private dns zone within the same resource group as 
-            virtual network if not provided by users.')]
-        [System.String]
-        ${PrivateDnsZone},
 
         [Parameter(HelpMessage = "
             Determines the public access. Enter single or range of IP addresses to be 
@@ -300,6 +297,8 @@ function New-AzPostgreSqlFlexibleServer {
                 $null = $PSBoundParameters.Remove('HaEnabled')
             }
 
+            
+
             $PSBoundParameters.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::Default
 
             # Handling Vnet & Subnet
@@ -317,9 +316,37 @@ function New-AzPostgreSqlFlexibleServer {
             if ($NetworkParameters.ContainsKey('Vnet') -Or  $NetworkParameters.ContainsKey('Subnet')){
                 $VnetSubnetParameters = CreateNetworkResource $NetworkParameters
                 $SubnetId = GetSubnetId $VnetSubnetParameters.ResourceGroupName $VnetSubnetParameters.VnetName $VnetSubnetParameters.SubnetName
+                $VnetId = [string]::Join("/",$SubnetId.split("/")[0..8])
                 $PSBoundParameters.NetworkDelegatedSubnetResourceId = $SubnetId
                 if ([string]::IsNullOrEmpty($PSBoundParameters.NetworkDelegatedSubnetResourceId)) {
-                    $null = $PSBoundParameters.Remove('DelegatedSubnetArgumentSubnetArmResourceId')
+                    $null = $PSBoundParameters.Remove('NetworkDelegatedSubnetResourceId')
+                }
+                if ($NetworkParameters.ContainsKey('PrivateDnsZone')){
+                    if (!(Get-Module -ListAvailable -Name Az.PrivateDns)) {
+                        throw 'Please install Az.Network module by entering "Install-Module -Name Az.PrivateDns"'
+                    }
+                    else {
+                        Import-Module -Name Az.PrivateDns
+                    }
+                    $ZoneName = $NetworkParameters["PrivateDnsZone"].split("/")[-1]
+                    $DnsResourceGroup = $NetworkParameters["PrivateDnsZone"].split("/")[4]
+                    $Links = Get-AzPrivateDnsVirtualNetworkLink -ZoneName $ZoneName -ResourceGroupName $DnsResourceGroup
+                    $LinkedFlag = $false
+                    foreach($Link in $Links){
+                        if ($Link.VirtualNetworkId -eq $VnetId){
+                            $LinkedFlag = $true
+                            break
+                        }
+                    }
+                    if (!$LinkedFlag){
+                        Write-Host "Adding virtual network link to the DNS zone..."
+                        New-AzPrivateDnsVirtualNetworkLink -ZoneName $ZoneName -ResourceGroupName $DnsResourceGroup -Name $PSBoundParameters["Name"] -VirtualNetworkId $VnetId
+                    }
+                    $PSBoundParameters.NetworkPrivateDnsZoneArmResourceId = $NetworkParameters["PrivateDnsZone"]
+                    $null = $PSBoundParameters.Remove('PrivateDnsZone')
+                }
+                else{
+                    throw "To provision a server with private access, you need to provide private DNS zone."
                 }
             }
             else{

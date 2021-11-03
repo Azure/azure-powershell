@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Infinite".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Infinite", "Infinite", global::System.Management.Automation.CompletionResultType.ParameterValue, "Infinite");
+                yield return new global::System.Management.Automation.CompletionResult("'Infinite'", "Infinite", global::System.Management.Automation.CompletionResultType.ParameterValue, "Infinite");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Fixed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Fixed", "Fixed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Fixed");
+                yield return new global::System.Management.Automation.CompletionResult("'Fixed'", "Fixed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Fixed");
             }
         }
     }

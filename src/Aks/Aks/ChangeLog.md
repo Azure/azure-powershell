@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 2.5.0
+* Added support for new parameters `NetworkPolicy`, `PodCidr`, `ServiceCidr`, `DnsServiceIP`, `DockerBridgeCidr`, `NodePoolLabel`, `AksCustomHeader` in `New-AzAksCluster`. [#13795]
+* Added warnings of upcoming breaking change of migrating to Microsoft Graph.
+* Added support for changing the number of nodes in a node pool. [#12379]
+
+## Version 2.4.0
+* Made `-Subscription <String>` available in all Aks cmdlets. You can manage Aks resources in other subscriptions without switching the context.
+
 ## Version 2.3.0
 * Added `Start-AzAksCluster`, `Stop-AzAksCluster`, `Get-AzAksUpgradeProfile` and `Get-AzAksNodePoolUpgradeProfile`. [#14194]
 * Added property `IdentityProfile` in the output of `Get-AzAksCluster`. [#12546]
@@ -31,7 +39,7 @@
 
 ## Version 2.1.0
 * Added support `AcrNameToAttach` in `Set-AzAksCluster`. [#14692]
-* Added support `AcrNameToDetach` in `Set-AzAksCluster`. [#14693] 
+* Added support `AcrNameToDetach` in `Set-AzAksCluster`. [#14693]
 * Added `Set-AzAksClusterCredential` to reset the ServicePrincipal of an existing AKS cluster.
 
 ## Version 2.0.2

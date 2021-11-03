@@ -503,4 +503,7 @@ You can help us improve the accuracy of the result by opening an issue here: htt
   <data name="BicepVersionRequirement" xml:space="preserve">
     <value>Please use bicep '{0}' or higher verison.</value>
   </data>
+  <data name="BuildBicepFileToJsonFailed" xml:space="preserve">
+    <value>Build bicep file '{0}' to json failed.</value>
+  </data>
 </root>
