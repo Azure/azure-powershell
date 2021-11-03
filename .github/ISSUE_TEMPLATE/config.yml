@@ -6,3 +6,6 @@ contact_links:
   - name: Microsoft Graph Module Question
     url: https://github.com/microsoftgraph/msgraph-sdk-powershell/issues/
     about: Question about Microsoft Graph PowerShell Module 
+  - name: AutoRest PowerShell Generator Question
+    url: https://github.com/Azure/autorest.powershell/issues
+    about: Question about PowerShell plugin of AutoRest
