@@ -6,6 +6,13 @@ pool:
 
 steps:
 - task: PowerShell@2
+  displayName: 'Install platyPS'
+  inputs:
+    targetType: inline
+    script: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+    pwsh: true
+
+- task: PowerShell@2
   displayName: 'Install PowerShellGet [v2.1.3 has a Publish-Module bug]'
   inputs:
     targetType: inline
@@ -16,17 +23,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'tools\Az.Tools.Installer\build.proj /t:"Clean;Build" /p:Configuration=Release'
-
-- pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
-  displayName: 'Install platyPS'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Generate Help'
-  inputs:
-    command: custom
-    custom: msbuild
-    arguments: 'tools\Az.Tools.Installer\build.proj /t:GenerateHelp /p:Configuration=Release'
+    arguments: 'tools\Az.Tools.Installer\build.proj /t:"Clean;Build;GenerateHelp" /p:Configuration=Release'
 
 - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
   displayName: 'Signing'
