@@ -52,8 +52,6 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-03-01/kubernetesconfiguration.json
-  - $(this-folder)/resources/custom.json
-  # - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-09-01/extensions.json
 
 title: KubernetesConfiguration
 module-version: 0.1.0

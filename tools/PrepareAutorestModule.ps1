@@ -103,8 +103,9 @@ foreach ($Module in $ModuleList)
         npx autorest --use:@autorest/powershell@2.1.401 --max-memory-size=8192
     }
     ./build-module.ps1
-    # Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
-    # Remove-Item "$ModuleFolder\*" -Recurse -Force
+    Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
+    Remove-Item "$ModuleFolder\*" -Recurse -Force
 }
 #EndRegion
+Write-Host 'warning | PreCheck/DuplicateSchema | Duplicate Schema named ErrorResponse -- properties.error.description : undefined => "The error object.",properties.error.$ref: undefined => "#/components/schemas/schemas:152",title: undefined => "Error response" [C:\Users\yunwang\source\repos\azure-powershell-generation\build.proj]'
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
