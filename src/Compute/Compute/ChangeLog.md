@@ -20,8 +20,10 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.19.0
 * Update-AzVM will update ApplicationProfile.
-* Adding new cmdlets:
+* Added new cmdlets:
     - Add-AzVmssRunCommand
     - Remove-AzVmssRunCommand
 
