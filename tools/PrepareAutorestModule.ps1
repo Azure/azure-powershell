@@ -75,6 +75,8 @@ Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
 #EndRegion
 
 #Region generate the code and make the struture same with main branch.
+$AutorestOutputDir = "$PSScriptRoot\..\artifacts\autorest"
+New-Item -ItemType Directory -Force -Path $AutorestOutputDir
 foreach ($Module in $ModuleList)
 {
     $ModuleFolder = "$PSScriptRoot\..\src\$Module\"
@@ -88,7 +90,7 @@ foreach ($Module in $ModuleList)
     Set-Location -Path $ModuleFolder
     try
     {
-        npx autorest --max-memory-size=8192
+        npx autorest --max-memory-size=8192 > "$AutorestOutputDir\$Module.log"
     }
     catch
     {
