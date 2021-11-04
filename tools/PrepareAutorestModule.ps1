@@ -88,7 +88,7 @@ foreach ($Module in $ModuleList)
     Set-Location -Path $ModuleFolder
     try
     {
-        npx autorest --max-memory-size=8192
+        $null = npx autorest --max-memory-size=8192
     }
     catch
     {
