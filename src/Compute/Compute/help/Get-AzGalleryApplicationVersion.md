@@ -1,62 +1,56 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvmruncommand
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azgalleryapplicationversion
 schema: 2.0.0
 ---
 
-# Get-AzVmssVMRunCommand
+# Get-AzGalleryApplicationVersion
 
 ## SYNOPSIS
-The operation to get the VMSS VM run command.
+Retrieves information about a gallery Application Version.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -VMScaleSetName <String>
- [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
- -VMScaleSetName <String> [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <ReplicationStatusTypes>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzVmssVMRunCommand -InputObject <IComputeIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzGalleryApplicationVersion -InputObject <IComputeIdentity> [-Expand <ReplicationStatusTypes>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to get the VMSS VM run command.
+Retrieves information about a gallery Application Version.
 
 ## EXAMPLES
 
-### Example 1: Get RunCommand by name
+### Example 1: Get a Gallery Application Version
 ```powershell
-PS C:\> Get-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
+PS C:\> Get-AzGalleryApplicationVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryApplicationName $galleryAppName -Name $versionName
 
-Location Name  Type
--------- ----  ----
-eastus   first Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands
 ```
 
-Get by runcommand name
+Retrieve a Gallery Application Version resource with the provided Resource Group, Gallery, Gallery Application name, and version name.
 
-### Example 2: Get RunCommand by Instance
+### Example 2: Get all the Gallery Application Versions in a GalleryApplication
 ```powershell
-PS C:\> Get-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname  -VMScaleSetName $vmssname
+PS C:\> Get-AzGalleryApplicationVersion -GalleryName $GalleryName -ResourceGroupName $rgName -GalleryApplicationName $galleryAppName
 
-Location Name  Type
--------- ----  ----
-eastus   first Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands
 ```
 
-Get RunCommand by Instance
+Retrieve all the Gallery Application Version resources in the provided Resource Group, Gallery, and Gallery Application Name.
 
 ## PARAMETERS
 
@@ -79,11 +73,41 @@ Accept wildcard characters: False
 The expand expression to apply on the operation.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GalleryApplicationName
+The name of the gallery Application Definition in which the Application Version resides.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GalleryName
+The name of the Shared Application Gallery in which the Application Definition resides.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,13 +130,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InstanceId
-The instance ID of the virtual machine.
+### -Name
+The name of the gallery Application Version to be retrieved.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: Get
+Aliases: GalleryApplicationVersionName
 
 Required: True
 Position: Named
@@ -127,21 +151,6 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RunCommandName
-The name of the virtual machine run command.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -167,21 +176,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMScaleSetName
-The name of the VM scale set.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -191,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion
 
 ## NOTES
 

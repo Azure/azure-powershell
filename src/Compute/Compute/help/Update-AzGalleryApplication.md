@@ -1,64 +1,59 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvmruncommand
+online version: https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplication
 schema: 2.0.0
 ---
 
-# Get-AzVmssVMRunCommand
+# Update-AzGalleryApplication
 
 ## SYNOPSIS
-The operation to get the VMSS VM run command.
+Update a gallery Application Definition.
 
 ## SYNTAX
 
-### List (Default)
+### UpdateExpanded (Default)
 ```
-Get-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -VMScaleSetName <String>
- [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
- -VMScaleSetName <String> [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Update-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Get-AzVmssVMRunCommand -InputObject <IComputeIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Update-AzGalleryApplication -InputObject <IComputeIdentity> [-Description <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to get the VMSS VM run command.
+Update a gallery Application Definition.
 
 ## EXAMPLES
 
-### Example 1: Get RunCommand by name
+### Example 1: Update a Gallery Application
 ```powershell
-PS C:\> Get-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
+PS C:\> Update-AzGalleryApplication -ResourceGroupName $rgName -GalleryName $galleryName -Name $name -Description "New Description"
 
-Location Name  Type
--------- ----  ----
-eastus   first Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands
 ```
 
-Get by runcommand name
-
-### Example 2: Get RunCommand by Instance
-```powershell
-PS C:\> Get-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname  -VMScaleSetName $vmssname
-
-Location Name  Type
--------- ----  ----
-eastus   first Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands
-```
-
-Get RunCommand by Instance
+Updating a Gallery Application.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -75,8 +70,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Expand
-The expand expression to apply on the operation.
+### -Description
+The description of this gallery Application Definition resource.
+This property is updatable.
 
 ```yaml
 Type: System.String
@@ -90,13 +86,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GalleryName
+The name of the Shared Application Gallery in which the Application Definition is to be updated.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -106,15 +117,32 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InstanceId
-The instance ID of the virtual machine.
+### -Name
+The name of the gallery Application Definition to be updated.
+The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle.
+The maximum length is 80 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: UpdateExpanded
+Aliases: GalleryApplicationName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -126,22 +154,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RunCommandName
-The name of the virtual machine run command.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -156,8 +169,8 @@ Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -167,15 +180,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMScaleSetName
-The name of the VM scale set.
+### -Tag
+Resource tags
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -191,7 +235,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication
 
 ## NOTES
 
