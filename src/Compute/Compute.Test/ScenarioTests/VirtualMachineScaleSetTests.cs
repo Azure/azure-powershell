@@ -220,5 +220,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetFlexibleOModeDefaulting");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzVmssRunCommand()
+        {
+            TestRunner.RunTestScript("Test-AddAndRemoveAzVmssRunCommand");
+        }
     }
 }

@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
         [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
+        [EnvironmentCompleter()]
         public string Environment { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,

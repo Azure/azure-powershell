@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Added new cmdlet `Publish-AzBicepModule` for publishing Bicep modules
+
+## Version 4.4.1
 * Fixed a bug about the exitcode of Bicep [#16055]
 * Added breaking change warnings for AAD cmdlets
 * Added property `UIFormDefinition` to Template Spec Versions,  `Export-AzTemplateSpec` will now include a Template Spec Version's UIFormDefinition (if any) as part of the export.
