@@ -77,7 +77,8 @@ Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
 function GenerateCode
 {
     param()
-    # npx autorest --max-memory-size=8192
+    npx autorest --max-memory-size=8192
+    return
 }
 
 #Region generate the code and make the struture same with main branch.
@@ -101,9 +102,9 @@ foreach ($Module in $ModuleList)
         Write-Host "Generating $currentModule with m3"
         npx autorest --use:@autorest/powershell@2.1.401 --max-memory-size=8192
     }
-    # ./build-module.ps1
-    # Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
-    # Remove-Item "$ModuleFolder\*" -Recurse -Force
+    ./build-module.ps1
+    Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder
+    Remove-Item "$ModuleFolder\*" -Recurse -Force
 }
 #EndRegion
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
