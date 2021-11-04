@@ -63,36 +63,36 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
-  # - from: swagger-document 
-  #   where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}"].patch.responses
-  #   transform: >-
-  #     return {
-  #       "200": {
-  #         "description": "OK",
-  #         "schema": {
-  #           "$ref": "#/definitions/Extension"
-  #         }
-  #       },
-  #       "202": {
-  #         "description": "Request received successfully, and the resource will be updated asynchronously.",
-  #         "schema": {
-  #           "$ref": "#/definitions/Extension"
-  #         }
-  #       },
-  #       "409": {
-  #         "description": "Conflict",
-  #         "x-ms-error-response": true,
-  #         "schema": {
-  #           "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/fa0a95854a551be7fdb04367e2e7b6500ab2e341/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
-  #         }
-  #       },
-  #       "default": {
-  #         "description": "Error response describing why the operation failed.",
-  #         "schema": {
-  #           "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/fa0a95854a551be7fdb04367e2e7b6500ab2e341/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
-  #         }
-  #       }
-  #     }
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions/{extensionName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/definitions/Extension"
+          }
+        },
+        "202": {
+          "description": "Request received successfully, and the resource will be updated asynchronously.",
+          "schema": {
+            "$ref": "#/definitions/Extension"
+          }
+        },
+        "409": {
+          "description": "Conflict",
+          "x-ms-error-response": true,
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/fa0a95854a551be7fdb04367e2e7b6500ab2e341/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/fa0a95854a551be7fdb04367e2e7b6500ab2e341/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
   - from: swagger-document 
     where: $.definitions.Extension.properties.properties.properties.statuses
     transform: >-
@@ -212,3 +212,4 @@ directive:
           - AutoUpgradeMinorVersion
           - ReleaseTrain
 ```
+

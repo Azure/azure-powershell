@@ -74,6 +74,12 @@ Import-Module Az.Accounts
 Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
 #EndRegion
 
+function GenerateCode
+{
+    param()
+    npx autorest --max-memory-size=8192
+}
+
 #Region generate the code and make the struture same with main branch.
 foreach ($Module in $ModuleList)
 {
@@ -88,7 +94,7 @@ foreach ($Module in $ModuleList)
     Set-Location -Path $ModuleFolder
     try
     {
-        npx autorest --max-memory-size=8192
+        GenerateCode
     }
     catch
     {
