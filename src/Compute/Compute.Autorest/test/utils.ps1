@@ -13,6 +13,7 @@ if ($UsePreviousConfigForRecord) {
 # Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
+
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
@@ -23,15 +24,25 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 
-    Import-Module Az.Compute
-
+    $env.RandomString = (RandomString $false 8)
+    $env.ResourceGroupName = "RGComputeTest" + $env.RandomString
+    $env.Location = "EastUS"
+    
     $env.rgname = "testpwshellcompute"
     New-AzResourceGroup -Name $env.rgname -Location "eastus"
 
+    # Create ResourceGroup
+    Write-Host -ForegroundColor Yellow "Creating ResourceGroup" $env.ResourceGroupName
+    New-AzResourceGroup -ResourceGroupName $env.ResourceGroupName -Location $env.Location
+
+    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
+    # Clean resources you create for testing
+    Write-Host -ForegroundColor Yellow "Removing ResourceGroup" $env.ResourceGroupName
+    Remove-AzResourceGroup -Name $env.ResourceGroupName 
+    
     $env.rgname = "testpwshellcompute"
     Remove-AzResourceGroup -Name $env.rgname
 }
