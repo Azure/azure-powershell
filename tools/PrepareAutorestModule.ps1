@@ -74,13 +74,6 @@ Import-Module Az.Accounts
 Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
 #EndRegion
 
-function GenerateCode
-{
-    param()
-    npx autorest --max-memory-size=8192
-    return
-}
-
 #Region generate the code and make the struture same with main branch.
 foreach ($Module in $ModuleList)
 {
@@ -95,7 +88,7 @@ foreach ($Module in $ModuleList)
     Set-Location -Path $ModuleFolder
     try
     {
-        GenerateCode
+        npx autorest --max-memory-size=8192 > a.log
     }
     catch
     {
@@ -107,5 +100,6 @@ foreach ($Module in $ModuleList)
     Remove-Item "$ModuleFolder\*" -Recurse -Force
 }
 #EndRegion
-# Write-Host 'warning | PreCheck/DuplicateSchema | Duplicate Schema named ErrorResponse -- properties.error.description : undefined => "The error object.",properties.error.$ref: undefined => "#/components/schemas/schemas:152",title: undefined => "Error response" [C:\Users\yunwang\source\repos\azure-powershell-generation\build.proj]'
+# Write-Host 'xxx error xxx:'
+# Write-Host 'warning | PreCheck/DuplicateSchema |  undefined => "#/components/schemas/schemas:152",title: undefined => "Error response" [C:\Users\yunwang\source\repos\azure-powershell-generation\build.proj]'
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
