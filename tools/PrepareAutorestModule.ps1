@@ -89,6 +89,7 @@ foreach ($Module in $ModuleList)
     try
     {
         $null = npx autorest --max-memory-size=8192
+        'warning | PreCheck/DuplicateSchema | Duplicate Schema named ErrorResponse -- properties.error.description: undefined => "The error object.",properties.error.$ref: undefined => "#/components/schemas/schemas:152",title: undefined => "Error response"'
     }
     catch
     {
