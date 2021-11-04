@@ -2891,8 +2891,7 @@ function Test-VirtualMachineScaleSetUserdata
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         $vmssName = 'vmss' + $rgname;
-        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-        $platformFaultDomain = 1;
+        $domainNameLabel = "dnl" + $rgname;
 
         $text = "new vmss";
         $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
@@ -2904,7 +2903,7 @@ function Test-VirtualMachineScaleSetUserdata
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         # Create Vmss with UserData.
-        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -Userdata $userData;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -Userdata $userData;
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceView:$false -Userdata;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
 
