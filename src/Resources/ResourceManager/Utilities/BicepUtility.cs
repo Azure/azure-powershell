@@ -66,29 +66,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             RunBicepCommand($"bicep publish '{bicepFilePath}' --target '{target}'", MinimalVersionRequirementForBicepPublish, writeVerbose, writeWarning);
         }
 
-        private static void CheckBicepExecutable(PowerShell powershell)
+        private static void CheckBicepExecutable()
         {
-            if (IsBicepExecutable)
+            using (var powerShell = PowerShell.Create())
             {
-                return;
-            }
+                if (IsBicepExecutable)
+                {
+                    return;
+                }
 
-            powershell.AddScript("Get-Command bicep");
-            powershell.Invoke();
-            powershell.AddScript("$?");
-            var result = powershell.Invoke();
-            // Cache result
-            bool.TryParse(result[0].ToString(), out IsBicepExecutable);
+                powerShell.AddScript("Get-Command bicep");
+                powerShell.Invoke();
+                powerShell.AddScript("$?");
+                var result = powerShell.Invoke();
+                // Cache result
+                bool.TryParse(result[0].ToString(), out IsBicepExecutable);
 
-            if (!IsBicepExecutable)
-            {
-                throw new AzPSApplicationException(Properties.Resources.BicepNotFound);
+                if (!IsBicepExecutable)
+                {
+                    throw new AzPSApplicationException(Properties.Resources.BicepNotFound);
+                }
             }
         }
 
-        private static string CheckMinimalVersionRequirement(PowerShell powershell, string minimalVersionRequirement)
+        private static string CheckMinimalVersionRequirement(string minimalVersionRequirement)
         {
-            string currentBicepVersion = GetBicepVesion(powershell);
+            string currentBicepVersion = GetBicepVersion();
             if (Version.Parse(minimalVersionRequirement).CompareTo(Version.Parse(currentBicepVersion)) > 0)
             {
                 throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionRequirement, minimalVersionRequirement));
@@ -96,13 +99,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             return currentBicepVersion;
         }
 
-        private static string GetBicepVersion(PowerShell powershell)
+        private static string GetBicepVersion()
         {
-            powershell.AddScript("bicep -v");
-            var result = powershell.Invoke()[0].ToString();
-            Regex pattern = new Regex("\\d+(\\.\\d+)+");
-            string bicepVersion = pattern.Match(result)?.Value;
-            return bicepVersion;
+            using (var powerShell = PowerShell.Create())
+            {
+                powerShell.AddScript("bicep -v");
+                var result = powerShell.Invoke()[0].ToString();
+                Regex pattern = new Regex("\\d+(\\.\\d+)+");
+                string bicepVersion = pattern.Match(result)?.Value;
+
+                return bicepVersion;
+            }
         }
 
         private static int GetLastExitCode(PowerShell powershell)
@@ -115,14 +122,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         private static void RunBicepCommand(string command, string minimalVersionRequirement, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
-            using (var powershell = PowerShell.Create())
+            CheckBicepExecutable();
+
+            string currentBicepVersion = CheckMinimalVersionRequirement(minimalVersionRequirement);
+
+            using (var powerShell = PowerShell.Create())
             {
-                CheckBicepExecutable(powershell);
-
-                string currentBicepVersion = CheckMinimalVersionRequirement(powershell, minimalVersionRequirement);
-
-                powershell.AddScript(command);
-                var result = powershell.Invoke();
+                powerShell.AddScript(command);
+                var result = powerShell.Invoke();
 
                 if (writeVerbose != null)
                 {
@@ -132,13 +139,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
                 // Bicep uses error stream to report warning message and error message, record it
                 string warningOrErrorMsg = string.Empty;
-                if (powershell.HadErrors)
+                if (powerShell.HadErrors)
                 {
-                    powershell.Streams.Error.ForEach(e => { warningOrErrorMsg += (e + Environment.NewLine); });
+                    powerShell.Streams.Error.ForEach(e => { warningOrErrorMsg += (e + Environment.NewLine); });
                     warningOrErrorMsg = warningOrErrorMsg.Substring(0, warningOrErrorMsg.Length - Environment.NewLine.Length);
                 }
 
-                if (0 == GetLastExitCode(powershell))
+                if (0 == GetLastExitCode(powerShell))
                 {
                     // print warning message
                     if (writeWarning != null && !string.IsNullOrEmpty(warningOrErrorMsg))
