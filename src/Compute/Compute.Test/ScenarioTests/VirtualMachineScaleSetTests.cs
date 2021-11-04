@@ -214,12 +214,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSpotRestorePolicy");
         }
 
-        [Fact]
+        /*[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMSSUserdata()
         {
             //TestRunner.RunTestScript("Test-VMSSUserdata");
-        }
+        }*/
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -244,9 +244,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVMSSUserdataNorm()
+        public void TestVirtualMachineScaleSetUserdata()
         {
-            TestRunner.RunTestScript("Test-VMSSUserdataNorm");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetUserdata");
         }
     }
 }

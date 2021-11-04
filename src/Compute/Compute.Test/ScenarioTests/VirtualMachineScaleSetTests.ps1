@@ -3218,9 +3218,9 @@ function Test-VMSSUserdata3
 
 <#
 .SYNOPSIS
-Test the VMSS userdata norm
+Test the VMSS UserData feature in the Vmss and VmssVm resources.
 #>
-function Test-VMSSUserdataNorm
+function Test-VirtualMachineScaleSetUserdata
 {
 
     # Setup
@@ -3252,10 +3252,27 @@ function Test-VMSSUserdataNorm
 
         # userdata vmss 
         $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -Userdata $userData;
-
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceView:$false -Userdata;
-
         Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
+
+        $text2 = "update vmss";
+        $bytes2 = [System.Text.Encoding]::Unicode.GetBytes($text2);
+        $encodedText2 = [Convert]::ToBase64String($bytes2);
+        $userData2 = $encodedText2;
+
+        $vmssUp = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssGet -Userdata $userData2;
+        $vmssGet2 = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName -Userdata -InstanceView:$false;
+        Assert-AreEqual $vmssGet2.VirtualMachineProfile.UserData $userData2;
+
+        $text3 = "vm update vmss vm";
+        $bytes3 = [System.Text.Encoding]::Unicode.GetBytes($text3);
+        $encodedText3 = [Convert]::ToBase64String($bytes3);
+        $userData3 = $encodedText3;
+        $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName; 
+        $vmssvmUp = Update-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData $userData3;
+        $vmssvm2 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData; 
+        Assert-AreEqual $vmssvm2.UserData $userData3;
+
     }
     finally
     {
