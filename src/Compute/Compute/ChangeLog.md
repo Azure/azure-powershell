@@ -20,14 +20,22 @@
 
 -->
 ## Upcoming Release
-* Update-AzVM will update ApplicationProfile.
 * `Add-AzVhd` has the following new functionalities:
     - if a VHDX file is given as `-LocalFilePath`, it coverts to a VHD file using Hyper-V. Throws error if Hyper-V is not found.
     - if a VHD file given in `-LocalFilePath` is dynamically sized, it will covert it to fixed size using Hyper-V. Throws error if Hyper-V is not found.
     - if a VHD file given in `-LocalFilePath` needs resizing, it will resize it using Hyper-V. Throws error if Hyper-V is not found.
-* Adding new cmdlets:
+
+## Version 4.19.0
+* Update-AzVM will update ApplicationProfile.
+* Added new cmdlets:
     - Add-AzVmssRunCommand
     - Remove-AzVmssRunCommand
+    - Set-AzVMRunCommand
+    - Get-AzVMRunCommand
+    - Remove-AzVMRunCommand
+    - Set-AzVmssVMRunCommand
+    - Remove-AzVmssVMRunCommand
+    - Get-AzVmssVMRunCommand
 
 ## Version 4.18.0
 * Added cmdlets for adding VMGalleryApplication property to VM/VMSS
