@@ -21,7 +21,7 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @("ContainerInstance", "ConnectedMachine")
+$SKIP_MODULES = @()
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
@@ -41,7 +41,7 @@ foreach ($file in $ChangedFiles)
     }
     else
     {
-        # $NUll = $ModuleSet.Add($ALL_MODULE)
+        $NUll = $ModuleSet.Add($ALL_MODULE)
     }
 }
 if ($ModuleSet.Contains($ALL_MODULE))
@@ -75,6 +75,8 @@ Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
 #EndRegion
 
 #Region generate the code and make the struture same with main branch.
+$AutorestOutputDir = "$PSScriptRoot\..\artifacts\autorest"
+New-Item -ItemType Directory -Force -Path $AutorestOutputDir
 foreach ($Module in $ModuleList)
 {
     $ModuleFolder = "$PSScriptRoot\..\src\$Module\"
@@ -86,11 +88,8 @@ foreach ($Module in $ModuleList)
         continue
     }
     Set-Location -Path $ModuleFolder
-    try
-    {
-        npx autorest --max-memory-size=8192 > a.log
-    }
-    catch
+    npx autorest --max-memory-size=8192 > "$AutorestOutputDir\$Module.log"
+    if ($LASTEXITCODE)
     {
         Write-Host "Generating $currentModule with m3"
         npx autorest --use:@autorest/powershell@2.1.401 --max-memory-size=8192
@@ -100,6 +99,4 @@ foreach ($Module in $ModuleList)
     Remove-Item "$ModuleFolder\*" -Recurse -Force
 }
 #EndRegion
-# Write-Host 'xxx error xxx:'
-# Write-Host 'warning | PreCheck/DuplicateSchema |  undefined => "#/components/schemas/schemas:152",title: undefined => "Error response" [C:\Users\yunwang\source\repos\azure-powershell-generation\build.proj]'
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
