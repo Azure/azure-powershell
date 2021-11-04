@@ -3224,7 +3224,7 @@ function Test-VirtualMachineScaleSetUserdata
 {
 
     # Setup
-    $rgname = Get-ComputeTestResourceName
+    $rgname = Get-ComputeTestResourceName;
     $loc = Get-ComputeVMLocation;
     try
     {
@@ -3245,16 +3245,12 @@ function Test-VirtualMachineScaleSetUserdata
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        ##VMSS in Flexible orchestration mode
-        #$vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomain -UserData $userData;
-        #$vmss = New-AzVmss -VirtualMachineScaleSet $vmssConfig -ResourceGroupName $rgname -Name $vmssName;
-        #$vm = New-AzVm -ResourceGroupName $rgname -Location $loc -Name $vmssName -VmssId $vmss.Id -Credential $cred;
-
-        # userdata vmss 
+        # Create Vmss with UserData.
         $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -Userdata $userData;
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceView:$false -Userdata;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
 
+        # Update UserData property on Vmss.
         $text2 = "update vmss";
         $bytes2 = [System.Text.Encoding]::Unicode.GetBytes($text2);
         $encodedText2 = [Convert]::ToBase64String($bytes2);
@@ -3264,12 +3260,15 @@ function Test-VirtualMachineScaleSetUserdata
         $vmssGet2 = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName -Userdata -InstanceView:$false;
         Assert-AreEqual $vmssGet2.VirtualMachineProfile.UserData $userData2;
 
+        # Update VmssVm UserData property.
         $text3 = "vm update vmss vm";
         $bytes3 = [System.Text.Encoding]::Unicode.GetBytes($text3);
         $encodedText3 = [Convert]::ToBase64String($bytes3);
         $userData3 = $encodedText3;
-        $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName; 
+        $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -UserData; 
+        Assert-AreNotEqual $vmssvm.UserData $userData3;
         $vmssvmUp = Update-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData $userData3;
+        
         $vmssvm2 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData; 
         Assert-AreEqual $vmssvm2.UserData $userData3;
 
