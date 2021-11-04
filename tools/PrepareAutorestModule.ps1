@@ -107,5 +107,5 @@ foreach ($Module in $ModuleList)
     Remove-Item "$ModuleFolder\*" -Recurse -Force
 }
 #EndRegion
-Write-Host 'warning | PreCheck/DuplicateSchema | Duplicate Schema named ErrorResponse -- properties.error.description : undefined => "The error object.",properties.error.$ref: undefined => "#/components/schemas/schemas:152",title: undefined => "Error response" [C:\Users\yunwang\source\repos\azure-powershell-generation\build.proj]'
+# Write-Host 'warning | PreCheck/DuplicateSchema | Duplicate Schema named ErrorResponse -- properties.error.description : undefined => "The error object.",properties.error.$ref: undefined => "#/components/schemas/schemas:152",title: undefined => "Error response" [C:\Users\yunwang\source\repos\azure-powershell-generation\build.proj]'
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Recurse -Force
