@@ -101,6 +101,23 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             }; 
         }
 
+        public static EventHubReceiver CreateEventHubReceiver(
+            string name,
+            string subscriptionId,
+            string eventHubNameSpace,
+            string eventHubName,
+            bool useCommonAlertSchema = defaultBoolValue)
+        {
+            return new EventHubReceiver
+            {
+                Name = name,
+                SubscriptionId = subscriptionId,
+                EventHubNameSpace = eventHubNameSpace,
+                EventHubName = eventHubName,
+                UseCommonAlertSchema = useCommonAlertSchema
+            };
+        }
+
         public static ArmRoleReceiver CreateArmRoleReceiver(
             string name,
             string roleId, 
@@ -218,6 +235,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 
                 voiceReceivers: new List<VoiceReceiver>
                 { CreateVoiceReceiver("voice", "someCountryCode", "somePhoeNumber") },
+
+                eventHubReceivers: new List<EventHubReceiver>
+                {
+                    CreateEventHubReceiver("eventhub1", "5def922a-3ed4-49c1-b9fd-05ec533819a3", "eventhub1NameSpace1", "testEventHubName1"),
+                    CreateEventHubReceiver("eventhub2", "5def922a-3ed4-49c1-b9fd-05ec533819a3", "eventhub1NameSpace1", "testEventHubName2", false)
+                },
 
                 armRoleReceivers: new List<ArmRoleReceiver>
                 {

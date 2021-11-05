@@ -10,36 +10,51 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// ----------------------------------------------------------------------------------
+// ---
 
 using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wraps the ArmRoleReceiver class.
+    /// Wraps the EventHubReceiver class.
     /// </summary>
-    public class PSArmRoleReceiver : PSActionGroupReceiverBase
+    /// 
+    public class PSEventHubReceiver : PSActionGroupReceiverBase
     {
-        /// <summary>Gets or sets the role id of this receiver.</summary>
-        public string RoleId { get; set; }
+        /// <summary>
+        /// Gets or sets the SubscriptionId.
+        /// </summary>
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the namespace.
+        /// </summary>
+        public string EventHubNameSpace { get; set; }
+
+        /// <summary>
+        /// Gets or sets the event hub name.
+        /// </summary>
+        public string EventHubName { get; set; }
 
         /// <summary>Gets or sets a value indicating whether or not use common alert schema.</summary>
         public bool UseCommonAlertSchema { get; set; }
 
-        /// <summary>Initializes a new instance of the PSArmRoleReceiver class</summary>
-        public PSArmRoleReceiver()
+        /// <summary>Initializes a new instance of the PSEventHubReceiver class</summary>
+        public PSEventHubReceiver()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the PSArmRoleReceiver class.
+        /// Initializes a new instance of the PSEventHubReceiver class.
         /// </summary>
         /// <param name="receiver">The receiver to wrap.</param>
-        public PSArmRoleReceiver(ArmRoleReceiver receiver)
+        public PSEventHubReceiver(EventHubReceiver receiver)
         {
             this.Name = receiver.Name;
-            this.RoleId = receiver.RoleId;
+            this.SubscriptionId = receiver.SubscriptionId;
+            this.EventHubNameSpace = receiver.EventHubNameSpace;
+            this.EventHubName = receiver.EventHubName;
             this.UseCommonAlertSchema = (bool)receiver.UseCommonAlertSchema;
         }
     }

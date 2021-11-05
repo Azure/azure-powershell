@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.RunbookName = receiver.RunbookName;
             this.WebhookResourceId = receiver.WebhookResourceId;
             this.IsGlobalRunbook = receiver.IsGlobalRunbook;
-            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
+            this.UseCommonAlertSchema = (bool)receiver.UseCommonAlertSchema;
             this.ServiceUri = receiver.ServiceUri;
         }
     }
