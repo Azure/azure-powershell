@@ -242,6 +242,29 @@ PS C:\> Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-ff
 
 Gets latest policy state records generated in the last day for the specified resource and expand policyEvaluationDetails.
 
+### Example 23: Get latest component policy states for a resource (eg. vault) and policy assignment referencing a resource provider mode policy definition
+```powershell
+PS C:\> Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myvault" - Filter "policyAssignmentId eq '/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1'" -Expand "Components(`$filter=ComplianceState eq 'NonCompliant' or ComplianceState eq 'Compliant')"
+```
+
+Gets latest component policy state records generated in the last day for the specified resource, resource provider mode policy assignment referencing a resource provider mode policy definition.
+
+
+### Example 24: Get latest component policy states for a resource (eg. vault) and policy assignment referencing an initiative containing a resource provider mode policy definition
+```powershell
+PS C:\> Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myvault" - Filter "policyAssignmentId eq '/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1' and policyDefinitionReferenceId eq 'myResourceProviderModeDefinitionReferenceId'" -Expand "Components(`$filter=ComplianceState eq 'NonCompliant' or ComplianceState eq 'Compliant')"
+```
+
+Gets latest component policy state records generated in the last day for the specified resource, resource provider mode policy assignment referencing an initiative containing a resource provider mode policy definition.
+
+
+### Example 25: Get latest component counts by compliance state for a resource (eg. vault) and policy assignment referencing a resource provider mode policy definition
+```powershell
+PS C:\> Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myvault" - Filter "policyAssignmentId eq '/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1'" -Expand "Components(`$filter=ComplianceState eq 'NonCompliant' or ComplianceState eq 'Compliant' or ComplianceState eq 'Conflict';`$apply=groupby((complianceState),aggregate(`$count as count)))"
+```
+
+Gets latest component counts generated in the last day for the specified resource, resource provider mode policy assignment and grouped by the compliance state.
+
 
 ## PARAMETERS
 
