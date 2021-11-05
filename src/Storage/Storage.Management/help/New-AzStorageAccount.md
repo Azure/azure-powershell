@@ -19,7 +19,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVersion <String>]
- [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableHierarchicalNamespace <Boolean>]
+ [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableSftp <Boolean>]
+ [-EnableLocalUser <Boolean>] [-EnableHierarchicalNamespace <Boolean>]
  [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
  [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
@@ -27,7 +28,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>]
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
  [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
- [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
+ [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
  [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
@@ -37,8 +38,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVersion <String>]
- [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableHierarchicalNamespace <Boolean>]
- [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
+ [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableSftp <Boolean>]
+ [-EnableLocalUser <Boolean>] [-EnableHierarchicalNamespace <Boolean>] [-EnableLargeFileShare]
+ [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
  [-EnableActiveDirectoryDomainServicesForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
  [-ActiveDirectoryNetBiosDomainName <String>] [-ActiveDirectoryForestName <String>]
  [-ActiveDirectoryDomainGuid <String>] [-ActiveDirectoryDomainSid <String>]
@@ -48,8 +50,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
  [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>]
- [-ImmutabilityPolicyState <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [<CommonParameters>]
+ [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,12 +92,12 @@ PS C:\>New-AzStorageAccount -ResourceGroupName MyResourceGroup -AccountName myst
 
 This command creates a Storage account that has NetworkRuleSet property from JSON
 
-### Example 5: Create a Storage account with Hierarchical Namespace enabled.
+### Example 5: Create a Storage account with Hierarchical Namespace enabled, Sftp enabled, and localuser enabled.
 ```powershell
-PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2  -EnableHierarchicalNamespace $true
+PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2  -EnableHierarchicalNamespace $true -EnableSftp $true -EnableLocalUser $true
 ```
 
-This command creates a Storage account with Hierarchical Namespace enabled.
+This command creates a Storage account with Hierarchical Namespace enabled, Sftp enabled, and localuser enabled.
 
 ### Example 6: Create a Storage account with Azure Files AAD DS Authentication, and enable large file share.
 ```powershell
@@ -439,6 +441,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllowedCopyScope
+Set restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AllowProtectedAppendWrite
 When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. 
 This property can only be specified with '-EnableAccountLevelImmutability'.
@@ -655,8 +672,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableLocalUser
+Enable local users feature for the Storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableNfsV3
 Enable NFS 3.0 protocol support if sets to true
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSftp
+Enable Secure File Transfer Protocol for the Storage account.
 
 ```yaml
 Type: System.Boolean

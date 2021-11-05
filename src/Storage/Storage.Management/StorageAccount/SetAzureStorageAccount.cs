@@ -514,6 +514,28 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableSftp = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable local users feature for the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableLocalUser
+        {
+            get
+            {
+                return enableLocalUser != null ? enableLocalUser.Value : false;
+            }
+            set
+            {
+                enableLocalUser = value;
+            }
+        }
+        private bool? enableLocalUser = null;
+
+        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
+        [PSArgumentCompleter("PrivateLink", "AAD")]
+        [ValidateNotNullOrEmpty]
+        public string AllowedCopyScope { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -765,6 +787,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (this.enableSftp != null)
                     {
                         updateParameters.IsSftpEnabled = this.enableSftp;
+                    }
+                    if (this.enableLocalUser != null)
+                    {
+                        updateParameters.IsLocalUserEnabled = this.enableLocalUser;
+                    }
+                    if (this.AllowedCopyScope != null)
+                    {
+                        updateParameters.AllowedCopyScope = this.AllowedCopyScope;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
