@@ -24,6 +24,15 @@
     - if a VHDX file is given as `-LocalFilePath`, it coverts to a VHD file using Hyper-V. Throws error if Hyper-V is not found.
     - if a VHD file given in `-LocalFilePath` is dynamically sized, it will covert it to fixed size using Hyper-V. Throws error if Hyper-V is not found.
     - if a VHD file given in `-LocalFilePath` needs resizing, it will resize it using Hyper-V. Throws error if Hyper-V is not found.
+* Added cmdlets to support gallery applications and versions:
+    - Get-AzGalleryApplication
+    - Get-AzGalleryApplicationVersion
+    - New-AzGalleryApplication
+    - New-AzGalleryApplicationVersion
+    - Remove-AzGalleryApplication
+    - Remove-AzGalleryApplicationVersion
+    - Update-AzGalleryApplication
+    - Update-AzGalleryApplicationVersion
 
 ## Version 4.19.0
 * Update-AzVM will update ApplicationProfile.

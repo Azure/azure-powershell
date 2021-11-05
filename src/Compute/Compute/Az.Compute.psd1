@@ -78,9 +78,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Compute.dll',
                'Compute.Autorest\Az.Compute.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzVMRunCommand', 'Get-AzVmssVMRunCommand', 
-               'Remove-AzVMRunCommand', 'Remove-AzVmssVMRunCommand', 
-               'Set-AzVMRunCommand', 'Set-AzVmssVMRunCommand'
+FunctionsToExport = 'Get-AzGalleryApplication', 'Get-AzGalleryApplicationVersion', 'Get-AzVMRunCommand', 'Get-AzVmssVMRunCommand', 'New-AzGalleryApplication', 'New-AzGalleryApplicationVersion', 'Remove-AzGalleryApplication', 'Remove-AzGalleryApplicationVersion', 'Remove-AzVMRunCommand', 'Remove-AzVmssVMRunCommand', 'Set-AzVMRunCommand', 'Set-AzVmssVMRunCommand', 'Update-AzGalleryApplication', 'Update-AzGalleryApplicationVersion'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet', 
