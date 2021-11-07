@@ -22,29 +22,53 @@ function Test-TableCRUD
 	$rgName = Get-ResourceGroupName
 	$workspaceName = Get-ResourceName
 	$loc = Get-ProviderLocation
+	$tableNotFound = Get-ResourceName
+	$initialRetention = 60
+	$updattedRetention = 61
 
 	$rgNameExisting = "dabenham-dev"
 	$wsNameExisting = "dabenham-eus"
 	$tableNameExisting = "dabenhamDev_CL"
-	$retention = 98
+
 
 	try
 	{
-		# get Table
-		$table = Get-AzOperationalInsightsTable -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -tableName $tableNameExisting
+		# create new RG for the test
+		New-AzResourceGroup -Name $rgname -Location $loc
 
-		Assert-NotNull $table
-		Assert-AreEqual $tableNameExisting $table.Name
+		# create new WS for the test
+		$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $workspaceName -Location $loc
 
-		# update table, change retention and validate the change
-		$updatedTable = Set-AzOperationalInsightsTable  -ResourceGroupName $rgNameExisting -WorkspaceName $wsNameExisting -tableName $tableNameExisting -RetentionInDays $retention
-		Assert-AreEqual $tableNameExisting $table.Name
-		Assert-AreEqual $retention $table.RetentionInDays
+		# get all existing tables
+		$allTable = Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $workspaceName
+		Assert-NotNull $allTable
+		Assert-True {$allTable.Count -gt 0}
+		
+		# get table that does not exist 
+		Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $workspaceName -tableName $tableNotFound} 'NotFound'
+
+		# Create table that does not exist
+		Assert-ThrowsContains {Set-AzOperationalInsightsTable  -ResourceGroupName $rgName -WorkspaceName $workspaceName -tableName $tableNotFound -RetentionInDays $initialRetention} 'NotFound'
+
+		# take the first table and try updating it
+		$tableForTest = $allTable.Item(1)
+		Assert-NotNull $tableForTest
+		Assert-NotNull $tableForTest.Name
+		Assert-True {$tableForTest.RetentionInDays -gt 0}
+		$tableRetentionForTest = $tableForTest.RetentionInDays + 1
+
+		# update the table with new retention value
+		$updattedTable = Set-AzOperationalInsightsTable  -ResourceGroupName $rgName -WorkspaceName $workspaceName -tableName $tableForTest.Name -RetentionInDays $tableRetentionForTest
+		Assert-NotNull $updattedTable
+		Assert-AreEqual $tableForTest.Name $updattedTable.Name
+		Assert-AreEqual $tableRetentionForTest $updattedTable.RetentionInDays
+
+		Remove-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $workspaceName -force
 	}
 	finally
 	{
 		# Cleanup
-        Clean-ResourceGroup $rgName
+        Clean-ResourceGroup $rgname 
 	}
 	
 }
