@@ -47,22 +47,6 @@ function Test-TableCRUD
 		# get table that does not exist 
 		Assert-ThrowsContains {Get-AzOperationalInsightsTable -ResourceGroupName $rgName -WorkspaceName $workspaceName -tableName $tableNotFound} 'NotFound'
 
-		# Create table that does not exist
-		Assert-ThrowsContains {Set-AzOperationalInsightsTable  -ResourceGroupName $rgName -WorkspaceName $workspaceName -tableName $tableNotFound -RetentionInDays $initialRetention} 'NotFound'
-
-		# take the first table and try updating it
-		$tableForTest = $allTable.Item(1)
-		Assert-NotNull $tableForTest
-		Assert-NotNull $tableForTest.Name
-		Assert-True {$tableForTest.RetentionInDays -gt 0}
-		$tableRetentionForTest = $tableForTest.RetentionInDays + 1
-
-		# update the table with new retention value
-		$updattedTable = Set-AzOperationalInsightsTable  -ResourceGroupName $rgName -WorkspaceName $workspaceName -tableName $tableForTest.Name -RetentionInDays $tableRetentionForTest
-		Assert-NotNull $updattedTable
-		Assert-AreEqual $tableForTest.Name $updattedTable.Name
-		Assert-AreEqual $tableRetentionForTest $updattedTable.RetentionInDays
-
 		Remove-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $workspaceName -force
 	}
 	finally

@@ -51,7 +51,7 @@
 * Added SupportsShouldProcess attribute to cmdlet:
   - `Set-AzOperationalInsightsStorageInsight`
 * Added new cmdlets:
-  - `Set-AzOperationalInsightsTable`
+  - `Set-AzOperationalInsightsTable` (currently not exported as endpoint supports this operation functionality only for PUT but .NET SDK uses PATCH)
   - `Get-AzOperationalInsightsTable`
   - `Get-AzOperationalInsightsOperations`
   - `Get-AzOperationalInsightsDataExport`
