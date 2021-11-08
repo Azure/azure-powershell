@@ -1,9 +1,9 @@
 {
-  "AzConnectedKubernetes+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo?api-version=2021-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr?api-version=2021-10-01",
-      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"agentPublicKeyCertificate\": \"MIICCgKCAgEApaDc9qopilLBnJopRFNaIDMCEf5N2Mdym3dYVPKrH5fUqotGB4RZ5AzGoahpSfyHXHgx2JL1Bw8MdmoIi806O3CwpNm7Ui7LxNZOzClX014NRV4/cQe6nWCNOz5BEyJWpZBRAomlbXMq4GppuFOir+2nUSWOV2AHaTXFURZsLPGRwLry2aOfdDenV+w8hMcZqa9niPCloQoV0apheoK+cG83O2JM/AGn1H1aT1EyUlIPdbnYr4XiqaHPE5FSfFFNYUInfotRlkXkhQ2Y9DvWCrowAW8HYG8coI006xw08WNuS3In0FHXSTTdS1Q2HYRf+XYWOT0Gy9aXUT36Zt+U7K3QqDXgEc8ih1z0Yzf8M+KoI/ixXWnEiwIjlXEWNLRIWDW7MPr74sgUhYYMH1m/fN56QJ2rXk0Nz/b5gVesBmzX07+YuG0BdPL42iyO9KUoALI9Zynfo9XHxyDxZykNSw7ri+dCO71cs/fhEr/0ipIuoeZXteRT07BzEPbznJyPoPe5V+KWEIRfTePs7qBO4TBBeb0NQrt++CoDEJFVsxIMbkDSl80EGi91t5etZ0bEMKbQrcmXVlxAub9j+wap0f42N6tdID5wFmia0CDLzsItYQmlWyanzH0StoaeGJRfYdzQ4ldj2V/+EnUG/sWA+H4ZEbGtNFSEqu5icegcwmECAwEAAQ==\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo?api-version=2021-10-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"agentPublicKeyCertificate\": \"MIICCgKCAgEAmlVIGKCEw4aYyWgjyY7uoLwOu82TsyKUO2D79lPb4LAupvivpuDMmQFvH9hj0CA3YHtp28oLIDY9jJiIrBmBpse1Et8gqMg1CMBoYr0zw3TlDFSZgTjMCgH2IwIyj8lXol+9ScvpYOR+BZg5D4tDAdsnDolf7+vFPB4fFEwn1/XBjie5ZZXFfsoFRYebKEX0PtK3d595sIamNg0qQ9OBu8faEtZTCVrPkn/3Dj82RqwImvGdl+5hYmN/Rf2MCrmwqbLeu+TnacbABpGNi1fhVg6+70QiIkIzNfgKBFIGQgY+jNweC0WEs5aZVZRN4TAiPG5vty2BfGereyjkxMHXjOTIDJeaR44syQ7uZOGWY8J/oH9wELryPRuHqAmnvVp9JuGOsPO8ZSVD+FilxvHDyRASFPGsuLEpsr4kyfZe2h4lgyNl3SRANc9j3r3n7K+/VTnD4YmW6A8ZIoiVergtM/93kWPN/wLsJFniYilF0NUyAcE7PgPH3n2yWj1AoLUi3222BmTzv0YB+7WpmoejwxSG27JvkSIUZ1y10gpEs14uL5gSfLyHwaBaPtplHdhZT/3o+VC1neZh+lxbCicn6jLfPOeu5eEFMDoFscNtrkkFkT3Vz06GxEncD4QbAoqKkuRSjRzgzzQ1k2xiecS0lqVA9JjjjCd6d2t04Dn6Eh0CAwEAAQ==\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,36 +17,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"10006166-0000-4d00-0000-6180ffb70000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "ETag": [ "\"070092c4-0000-0400-0000-6188db990000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/05dbe5aa-f900-42d0-87b1-b3aa622fcccd*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA?api-version=2021-10-01" ],
-        "x-ms-request-id": [ "05dbe5aa-f900-42d0-87b1-b3aa622fcccd" ],
-        "x-ms-correlation-request-id": [ "894c79bb-b8f1-4fac-b762-9a58122cc09b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090704Z:894c79bb-b8f1-4fac-b762-9a58122cc09b" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/539d3dd2-d734-464b-b120-30bae036989f*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E?api-version=2021-10-01" ],
+        "x-ms-request-id": [ "539d3dd2-d734-464b-b120-30bae036989f" ],
+        "x-ms-correlation-request-id": [ "157fa4f5-fb55-4216-bb0f-8abde4ab52ca" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081106Z:157fa4f5-fb55-4216-bb0f-8abde4ab52ca" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:04 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1422" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr\",\"name\":\"ihdctr\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:07:00.9878665Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-02T09:07:00.9878665Z\"},\"identity\":{\"principalId\":\"1fca86a5-af00-4cb4-927f-1b6ff84e9e00\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Accepted\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApaDc9qopilLBnJopRFNaIDMCEf5N2Mdym3dYVPKrH5fUqotGB4RZ5AzGoahpSfyHXHgx2JL1Bw8MdmoIi806O3CwpNm7Ui7LxNZOzClX014NRV4/cQe6nWCNOz5BEyJWpZBRAomlbXMq4GppuFOir+2nUSWOV2AHaTXFURZsLPGRwLry2aOfdDenV+w8hMcZqa9niPCloQoV0apheoK+cG83O2JM/AGn1H1aT1EyUlIPdbnYr4XiqaHPE5FSfFFNYUInfotRlkXkhQ2Y9DvWCrowAW8HYG8coI006xw08WNuS3In0FHXSTTdS1Q2HYRf+XYWOT0Gy9aXUT36Zt+U7K3QqDXgEc8ih1z0Yzf8M+KoI/ixXWnEiwIjlXEWNLRIWDW7MPr74sgUhYYMH1m/fN56QJ2rXk0Nz/b5gVesBmzX07+YuG0BdPL42iyO9KUoALI9Zynfo9XHxyDxZykNSw7ri+dCO71cs/fhEr/0ipIuoeZXteRT07BzEPbznJyPoPe5V+KWEIRfTePs7qBO4TBBeb0NQrt++CoDEJFVsxIMbkDSl80EGi91t5etZ0bEMKbQrcmXVlxAub9j+wap0f42N6tdID5wFmia0CDLzsItYQmlWyanzH0StoaeGJRfYdzQ4ldj2V/+EnUG/sWA+H4ZEbGtNFSEqu5icegcwmECAwEAAQ==\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo\",\"name\":\"z2xhuo\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:11:03.3603392Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-08T08:11:03.3603392Z\"},\"identity\":{\"principalId\":\"21779f1b-0565-41ca-9e7f-fe705e505b6f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Accepted\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAmlVIGKCEw4aYyWgjyY7uoLwOu82TsyKUO2D79lPb4LAupvivpuDMmQFvH9hj0CA3YHtp28oLIDY9jJiIrBmBpse1Et8gqMg1CMBoYr0zw3TlDFSZgTjMCgH2IwIyj8lXol+9ScvpYOR+BZg5D4tDAdsnDolf7+vFPB4fFEwn1/XBjie5ZZXFfsoFRYebKEX0PtK3d595sIamNg0qQ9OBu8faEtZTCVrPkn/3Dj82RqwImvGdl+5hYmN/Rf2MCrmwqbLeu+TnacbABpGNi1fhVg6+70QiIkIzNfgKBFIGQgY+jNweC0WEs5aZVZRN4TAiPG5vty2BfGereyjkxMHXjOTIDJeaR44syQ7uZOGWY8J/oH9wELryPRuHqAmnvVp9JuGOsPO8ZSVD+FilxvHDyRASFPGsuLEpsr4kyfZe2h4lgyNl3SRANc9j3r3n7K+/VTnD4YmW6A8ZIoiVergtM/93kWPN/wLsJFniYilF0NUyAcE7PgPH3n2yWj1AoLUi3222BmTzv0YB+7WpmoejwxSG27JvkSIUZ1y10gpEs14uL5gSfLyHwaBaPtplHdhZT/3o+VC1neZh+lxbCicn6jLfPOeu5eEFMDoFscNtrkkFkT3Vz06GxEncD4QbAoqKkuRSjRzgzzQ1k2xiecS0lqVA9JjjjCd6d2t04Dn6Eh0CAwEAAQ==\"}}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/05dbe5aa-f900-42d0-87b1-b3aa622fcccd*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA?api-version=2021-10-01+2": {
+  "AzConnectedKubernetes+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/539d3dd2-d734-464b-b120-30bae036989f*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E?api-version=2021-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/05dbe5aa-f900-42d0-87b1-b3aa622fcccd*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/539d3dd2-d734-464b-b120-30bae036989f*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "41645a1e-2af2-422c-8f67-fdd121f470e6" ],
+        "x-ms-client-request-id": [ "f0b16bbf-ce35-41b6-93a8-f7fc6ad6b75e" ],
         "CommandName": [ "Az.ConnectedKubernetes.internal\\New-AzConnectedKubernetes" ],
         "FullCommandName": [ "New-AzConnectedKubernetes_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -60,34 +60,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0200ad85-0000-4d00-0000-6180ffcb0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11995" ],
-        "x-ms-request-id": [ "2f92de4b-0ef0-479d-89e6-994e710ae4c3" ],
-        "x-ms-correlation-request-id": [ "fbf8f5cd-530f-433a-91b6-e76dd6e446b5" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090735Z:fbf8f5cd-530f-433a-91b6-e76dd6e446b5" ],
+        "ETag": [ "\"3401ad7c-0000-0100-0000-6188dba60000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11992" ],
+        "x-ms-request-id": [ "c521cceb-8ecd-45ed-a063-303b8723a80e" ],
+        "x-ms-correlation-request-id": [ "294fafee-1320-4529-957e-a2d51a15315e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081136Z:294fafee-1320-4529-957e-a2d51a15315e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:35 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:36 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "565" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/05dbe5aa-f900-42d0-87b1-b3aa622fcccd*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA\",\"name\":\"05dbe5aa-f900-42d0-87b1-b3aa622fcccd*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr\",\"status\":\"Succeeded\",\"startTime\":\"2021-11-02T09:07:02.1097685Z\",\"endTime\":\"2021-11-02T09:07:23.8190571Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/539d3dd2-d734-464b-b120-30bae036989f*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E\",\"name\":\"539d3dd2-d734-464b-b120-30bae036989f*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo\",\"status\":\"Succeeded\",\"startTime\":\"2021-11-08T08:11:04.1710471Z\",\"endTime\":\"2021-11-08T08:11:18.9578657Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr?api-version=2021-10-01+3": {
+  "AzConnectedKubernetes+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo?api-version=2021-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "41645a1e-2af2-422c-8f67-fdd121f470e6" ],
+        "x-ms-client-request-id": [ "f0b16bbf-ce35-41b6-93a8-f7fc6ad6b75e" ],
         "CommandName": [ "Az.ConnectedKubernetes.internal\\New-AzConnectedKubernetes" ],
         "FullCommandName": [ "New-AzConnectedKubernetes_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -101,22 +101,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"10009266-0000-4d00-0000-6180ffcc0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "ETag": [ "\"9a02a194-0000-0100-0000-6188dba60000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "193f3815-00a1-412e-8434-5f508678ddf2" ],
-        "x-ms-correlation-request-id": [ "a255672e-fe1f-4b51-959d-ecee9881ca04" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090735Z:a255672e-fe1f-4b51-959d-ecee9881ca04" ],
+        "x-ms-request-id": [ "394521ec-5270-4d2b-a503-ef5f25b34960" ],
+        "x-ms-correlation-request-id": [ "645a847f-795e-449d-bdaa-a122b9010019" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081137Z:645a847f-795e-449d-bdaa-a122b9010019" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:35 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1444" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr\",\"name\":\"ihdctr\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:07:00.9878665Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-02T09:07:12.8443302Z\"},\"identity\":{\"principalId\":\"1fca86a5-af00-4cb4-927f-1b6ff84e9e00\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApaDc9qopilLBnJopRFNaIDMCEf5N2Mdym3dYVPKrH5fUqotGB4RZ5AzGoahpSfyHXHgx2JL1Bw8MdmoIi806O3CwpNm7Ui7LxNZOzClX014NRV4/cQe6nWCNOz5BEyJWpZBRAomlbXMq4GppuFOir+2nUSWOV2AHaTXFURZsLPGRwLry2aOfdDenV+w8hMcZqa9niPCloQoV0apheoK+cG83O2JM/AGn1H1aT1EyUlIPdbnYr4XiqaHPE5FSfFFNYUInfotRlkXkhQ2Y9DvWCrowAW8HYG8coI006xw08WNuS3In0FHXSTTdS1Q2HYRf+XYWOT0Gy9aXUT36Zt+U7K3QqDXgEc8ih1z0Yzf8M+KoI/ixXWnEiwIjlXEWNLRIWDW7MPr74sgUhYYMH1m/fN56QJ2rXk0Nz/b5gVesBmzX07+YuG0BdPL42iyO9KUoALI9Zynfo9XHxyDxZykNSw7ri+dCO71cs/fhEr/0ipIuoeZXteRT07BzEPbznJyPoPe5V+KWEIRfTePs7qBO4TBBeb0NQrt++CoDEJFVsxIMbkDSl80EGi91t5etZ0bEMKbQrcmXVlxAub9j+wap0f42N6tdID5wFmia0CDLzsItYQmlWyanzH0StoaeGJRfYdzQ4ldj2V/+EnUG/sWA+H4ZEbGtNFSEqu5icegcwmECAwEAAQ==\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo\",\"name\":\"z2xhuo\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:11:03.3603392Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-08T08:11:10.2280362Z\"},\"identity\":{\"principalId\":\"21779f1b-0565-41ca-9e7f-fe705e505b6f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAmlVIGKCEw4aYyWgjyY7uoLwOu82TsyKUO2D79lPb4LAupvivpuDMmQFvH9hj0CA3YHtp28oLIDY9jJiIrBmBpse1Et8gqMg1CMBoYr0zw3TlDFSZgTjMCgH2IwIyj8lXol+9ScvpYOR+BZg5D4tDAdsnDolf7+vFPB4fFEwn1/XBjie5ZZXFfsoFRYebKEX0PtK3d595sIamNg0qQ9OBu8faEtZTCVrPkn/3Dj82RqwImvGdl+5hYmN/Rf2MCrmwqbLeu+TnacbABpGNi1fhVg6+70QiIkIzNfgKBFIGQgY+jNweC0WEs5aZVZRN4TAiPG5vty2BfGereyjkxMHXjOTIDJeaR44syQ7uZOGWY8J/oH9wELryPRuHqAmnvVp9JuGOsPO8ZSVD+FilxvHDyRASFPGsuLEpsr4kyfZe2h4lgyNl3SRANc9j3r3n7K+/VTnD4YmW6A8ZIoiVergtM/93kWPN/wLsJFniYilF0NUyAcE7PgPH3n2yWj1AoLUi3222BmTzv0YB+7WpmoejwxSG27JvkSIUZ1y10gpEs14uL5gSfLyHwaBaPtplHdhZT/3o+VC1neZh+lxbCicn6jLfPOeu5eEFMDoFscNtrkkFkT3Vz06GxEncD4QbAoqKkuRSjRzgzzQ1k2xiecS0lqVA9JjjjCd6d2t04Dn6Eh0CAwEAAQ==\"}}",
       "isContentBase64": false
     }
   },
@@ -128,7 +128,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "38783a80-ed3d-4252-9914-a317c407e737" ],
+        "x-ms-client-request-id": [ "5538cf99-681c-45d2-a131-7737315aa5ed" ],
         "CommandName": [ "Get-AzConnectedKubernetes" ],
         "FullCommandName": [ "Get-AzConnectedKubernetes_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -143,21 +143,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "dd30e3ea-e1db-4b3b-8665-e0582d505d9b", "153dfd46-6874-449e-9ae2-bbaac07ade89", "9aa06d8e-cc2d-41a2-b52c-ac4f53fa89e5", "492612fb-bd0e-47ac-b7b2-8ed4fb4448e4", "780136e3-eeab-4d25-86c8-871bac201002", "eff80166-4c2e-463b-abfd-b1eefffc6b1c", "3577d70c-f058-4268-9796-fd47447c1427", "4cba6a36-b384-4037-ad79-11e0d9a3f0f9", "e9cd5e34-673b-4794-828f-55b2d6381d7c", "4a81b449-ef5a-4830-90aa-b6186727c3d2", "33ff61ed-767e-46b0-b11b-97abf45cf681", "cbabcbfe-1aa1-4bed-a010-335e4971f455", "ba7e1254-aa7e-48da-921b-d121307a939f", "02a868e9-b253-4147-8ff4-59b40d821754", "c3d4a16c-e58c-41c5-8077-74211c58bff2", "77eb70c3-1281-4623-9aa7-4e97224a0086", "903f0c29-bab8-425b-bc0d-81e968cd5bc2", "82e2c57a-1a8a-450d-95c2-614db6def18a" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "0a2efa0a-3949-4e51-8b63-7a13ecdfdf77" ],
-        "x-ms-correlation-request-id": [ "0a2efa0a-3949-4e51-8b63-7a13ecdfdf77" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090738Z:0a2efa0a-3949-4e51-8b63-7a13ecdfdf77" ],
+        "x-ms-original-request-ids": [ "e1d7023d-8472-49ed-af40-72f03aa16998", "a1835fa3-1106-4ec0-bf82-9fe55c2b0f3e", "baa2f8d6-52a0-4304-ab55-380dad0f48c8", "f7f718f4-386c-4760-812a-b177e31fd170", "e0c6ac98-080e-401e-972a-9557a683cf38", "27170331-1d71-4684-a71a-cb5f9d7dc93c", "e19e655a-cf7d-427b-b96d-69b459ca7b28", "4b6a2fad-29ed-4c88-a26e-c107e43df178", "24893e91-50ad-454a-89bf-382c37aca482", "816d58aa-9788-4921-903d-6d0294b641df", "e45f8f65-5c4e-401c-be78-3ea911e4388a", "daa13749-2576-4bea-a9b8-5bbc20a2f9c6", "16ecf4b2-a9aa-4f5c-8860-ae67259fee1a", "cd9c751b-053b-46af-9fd7-6cc231a23a9a", "57300124-809e-4120-b068-289360c1adc8", "5f0bea6f-c001-476e-a8f2-663dbc4f3265", "edf9ed63-db0f-4426-adff-64243b799d33", "dc9b279d-81f8-4e8d-b94b-5ded66f8ab68" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-request-id": [ "dfff4864-468a-4484-a933-fa2b3989510c" ],
+        "x-ms-correlation-request-id": [ "dfff4864-468a-4484-a933-fa2b3989510c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081139Z:dfff4864-468a-4484-a933-fa2b3989510c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:38 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
-        "Content-Length": [ "5690" ]
+        "Content-Length": [ "2901" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/jinpei_gp/providers/Microsoft.Kubernetes/connectedClusters/jinpeick\",\"name\":\"jinpeick\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T06:52:39.2456709Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-02T06:52:49.5852345Z\"},\"identity\":{\"principalId\":\"d95c3e56-1286-4878-b483-1e0e2ad75a70\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAqCyQBEoeQwISN+vg1nbvEhKtO1ABJbNPFfLXjkb3KZONkZg/HmhguF/lbMcrND7r4zVwPXmmtgfR7v6r0xJV9jhUB56R9y2iEXcI7E5LRK70yx9nFfpW3npDCB61/Y4bYhY1U9smBYHXyw2456PzETdrzXKqC+l+APfcc088fkbEwCbRChNYlOUSkKKF+nmYjTH7XemKFjyCdBpp9VDzfzGLVDLfYg78rvDGSHKCGsc6C03sa0Z5Kz5COamrvbbGr0aP5pdWYOnwcUeh7pFO1EBFR8kIptZUdYKoE9QuMsoB/X/ZZLCt2aSPCYNXgztsktP2sxpWXun+iYgwjO6lE46ntrqQNX7NN3rHb94GL3HN6JSQ/lA+soug2eg4tqxNaN1FG+kalkm7wnnN/Ux8ZMuGwV0gGGo5y1GNC+ElbbsVa69BMgEGb0iMWRCAirQnDXkcyv1DyOkW1bhPGn2X6nfxxohkX9NZ2HkF8rouAJ99DGzdP5iwpOVd/FJGF+tgaozE3Pb3m7cOc6otwB5O0jNrGz25BOAGmlFGTJ9SSbJNzMk9dR8AAJYw2PCckLrmAf5KNcuaHVMp2+XORH9IfHI5QnquiYqHsVoO6FdlxjI48Z4uW0rb9TKOPmKacI2OL3nCIrFQqntrUBSqjBeWMGve9poZbO4FvDZyfMBEaikCAwEAAQ==\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/jinpei_gp/providers/Microsoft.Kubernetes/connectedClusters/jinpeick-01\",\"name\":\"jinpeick-01\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-02T09:02:53.2776943Z\"},\"identity\":{\"principalId\":\"8716fc26-785f-4b45-9bf4-66cbbadc13f0\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAu5UGds/TyaCpe37bzNM2xBO06JfuFLj4YUVtEm++CC+o2p8DG9FZ9M2U/a7bCZKbY7M0aW0T+WdRWBp5WXO5l3GDIkxWP8lAhpi2aqxf214b7JGCtLlQcEvFtwpy8GcTAorCDypUqfiXtSUDgM5t+Y1BZ6xT66DBivg/4Fmqm9Xz573Pv7bAHg1NJkeJaFtQj8N4mkRCXRpUyoUDpb+EQH9napBCd2UTF1WXh/SvOubtzzF46XTkW1ZUVXbEAnyefKIwZHCbnyCb11udvHLTypoFSqJVFn/eZcwhf2ndxwBe1U2HQXhgf6sBcN3yeoIE2knYTTNB1odFVlVVAjkonCIH4SqeP+gcLxg/B4vQJFNV+oyjx1i7k78Hg4ZV0ISnguJFhEporgEgSs7H+hm8Px5898JH2DE6nLiO1qHBoF/wtnve72/BUvD5xgf0iaSesm7srF428s0Szsh5F2gPo/Uh+R+5Z7M71AC3cSRGr1hEDgwBabr5BrJGMdtnSweWIT3MQgSi0zmfkYJPK5RqypTm3XJa6bXyEWlaZo3Bj4vxLY9I1e98PPpxDNMxcKsou8KjvOuaTX7MpKzYqXKq4161tQJCv7F4TdL/uRSz6BCDvXzIDYnDYpucnDOybELva4lnHxInqT4o+NkjnfHbH00FyVXiyyHNpEdxB/VrUGECAwEAAQ==\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7\",\"name\":\"ar5fw7\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:06:16.1025071Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-02T09:06:24.9432755Z\"},\"identity\":{\"principalId\":\"d2f36216-493e-4c8c-9679-00a436ea72c6\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEA3eQ25xYN9JB+uSoTsZTH8Yc0sJjbQwFB4eOlJcVAxVXlMWW/q5lW2PRtJO5FUtfXdyl6TMaZslWIOmH6o+fBZ4/Yu0l/jmgOJUSNZvObjF7al3555rsGU6NI+ghZ5J2o/DWo2mXz7ZR1pjBwOb2Y5cvq1g0qzyShejVkL1YoYobbCJMYj/S2oBgKXpaETrygwxH1afBJoHEe6ut485pIVlU+f2GHCouOg6vU1pAwsF+vAcSA52LSAHzxvHaRx9Yd6X58D6uAHbrnp8rOPyeBGYqT2dGFgasIJA5MKat8O8vW8T9pm+TaL8N2+RqxvehWkLqhSrOO3+v/8/HFp97mEd4pWPd3Ie1TaAOgqcBULQkheaiu2h0L+OuAgggyUk2zj3rsCMBgB4t8Ur56srmH3tFG2B9WfngE4VRjK/CH6oROUg9gXXRtTn3oUUhQ9uLgOGjrhrfbbEImURlDRjyO5tZWFiZSZOdaBBaBVr7D+2SlB5peODKNkB8xFsPk04bu8gBFSkkUfvp2gjIaFTbcueogCy10fM7S9a+N38Ry/m9FvSEnsovYRiSZ4iKg+dABiL5uoiY7aiOR231FVN+QPLX572exFBZPwoOhMLS5GN8XXi0ELNS3smsaZgU6VBZVPM5VmxSe+9PWVyFEgDVAO2Ek/A0CgZonMXdsXoX2+hUCAwEAAQ==\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr\",\"name\":\"ihdctr\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:07:00.9878665Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-02T09:07:12.8443302Z\"},\"identity\":{\"principalId\":\"1fca86a5-af00-4cb4-927f-1b6ff84e9e00\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApaDc9qopilLBnJopRFNaIDMCEf5N2Mdym3dYVPKrH5fUqotGB4RZ5AzGoahpSfyHXHgx2JL1Bw8MdmoIi806O3CwpNm7Ui7LxNZOzClX014NRV4/cQe6nWCNOz5BEyJWpZBRAomlbXMq4GppuFOir+2nUSWOV2AHaTXFURZsLPGRwLry2aOfdDenV+w8hMcZqa9niPCloQoV0apheoK+cG83O2JM/AGn1H1aT1EyUlIPdbnYr4XiqaHPE5FSfFFNYUInfotRlkXkhQ2Y9DvWCrowAW8HYG8coI006xw08WNuS3In0FHXSTTdS1Q2HYRf+XYWOT0Gy9aXUT36Zt+U7K3QqDXgEc8ih1z0Yzf8M+KoI/ixXWnEiwIjlXEWNLRIWDW7MPr74sgUhYYMH1m/fN56QJ2rXk0Nz/b5gVesBmzX07+YuG0BdPL42iyO9KUoALI9Zynfo9XHxyDxZykNSw7ri+dCO71cs/fhEr/0ipIuoeZXteRT07BzEPbznJyPoPe5V+KWEIRfTePs7qBO4TBBeb0NQrt++CoDEJFVsxIMbkDSl80EGi91t5etZ0bEMKbQrcmXVlxAub9j+wap0f42N6tdID5wFmia0CDLzsItYQmlWyanzH0StoaeGJRfYdzQ4ldj2V/+EnUG/sWA+H4ZEbGtNFSEqu5icegcwmECAwEAAQ==\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv\",\"name\":\"hzdwsv\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:10:20.2651468Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-08T08:10:28.0374268Z\"},\"identity\":{\"principalId\":\"77f7e832-c66b-469b-b8b2-ee478b2d08be\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApWlel73SHkszwvHIlUfvPuqiIZvU7VsTKKispU+2ARXtO6peaN9TLOlElp1YEfKFCzWPIJ1ETSzSHlrDyHne2FK5p29bhKXdKfOF401mX8GMHQCVubWAaL0YtqWRuyMmQqPUAOPSrlYs+z3wg5a9y019K6iATmWYjeyTYd2IFHeNFjt2N43mhGrCuRtJNloynRoOyd3TGksDRYTl130aknX3/yVd+hyt2cAyCsGMhR/1AHYbNKX6MRLE+/MjPS/pU2osYqXf7fFAFTPOBpyYnIxdTB2rkJjRWG8Q5DWxbZrzwWqnboCwoWvuCYGXRzGutBAap/pg6IwKbuFCIgcCBaEEap13w93KN4MT0xKwuisTOQtTVkcqNarJmfpAfbaeh/ufg020OH776BkPRkaETAw9v0ycNFUKFBN2DSwd6MeOhlQyg+qI0GjUWFEpOIkXDhiyIIMTzXIl0Z1jCiJMdq5Zr0XYemxxenQ2wI1OtM6l730zr9ttfGEWxJKcEiIMYMtPggJ0aOBsE+jAUSGeha2j4Bye+/YICKCHpeglPtVunZF9/K/GSC5I9XPxP/acrywBOgnlzOwixWzLyzcioNVYnCak81pZ0F6G6gxywf4XxgVl8zTq5dfMN+jWnvSZNQNF1dJa7eB/1pMKgf2mm73FPuY/RCjTB7yxfYkRsbECAwEAAQ==\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo\",\"name\":\"z2xhuo\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:11:03.3603392Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-08T08:11:10.2280362Z\"},\"identity\":{\"principalId\":\"21779f1b-0565-41ca-9e7f-fe705e505b6f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAmlVIGKCEw4aYyWgjyY7uoLwOu82TsyKUO2D79lPb4LAupvivpuDMmQFvH9hj0CA3YHtp28oLIDY9jJiIrBmBpse1Et8gqMg1CMBoYr0zw3TlDFSZgTjMCgH2IwIyj8lXol+9ScvpYOR+BZg5D4tDAdsnDolf7+vFPB4fFEwn1/XBjie5ZZXFfsoFRYebKEX0PtK3d595sIamNg0qQ9OBu8faEtZTCVrPkn/3Dj82RqwImvGdl+5hYmN/Rf2MCrmwqbLeu+TnacbABpGNi1fhVg6+70QiIkIzNfgKBFIGQgY+jNweC0WEs5aZVZRN4TAiPG5vty2BfGereyjkxMHXjOTIDJeaR44syQ7uZOGWY8J/oH9wELryPRuHqAmnvVp9JuGOsPO8ZSVD+FilxvHDyRASFPGsuLEpsr4kyfZe2h4lgyNl3SRANc9j3r3n7K+/VTnD4YmW6A8ZIoiVergtM/93kWPN/wLsJFniYilF0NUyAcE7PgPH3n2yWj1AoLUi3222BmTzv0YB+7WpmoejwxSG27JvkSIUZ1y10gpEs14uL5gSfLyHwaBaPtplHdhZT/3o+VC1neZh+lxbCicn6jLfPOeu5eEFMDoFscNtrkkFkT3Vz06GxEncD4QbAoqKkuRSjRzgzzQ1k2xiecS0lqVA9JjjjCd6d2t04Dn6Eh0CAwEAAQ==\"}}]}",
       "isContentBase64": false
     }
   },
@@ -169,7 +169,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "8c2a8e9e-8b4b-48c2-a25b-9cd7e365331f" ],
+        "x-ms-client-request-id": [ "db2c7bcd-5057-4e8d-a8ab-b9d08951b60e" ],
         "CommandName": [ "Get-AzConnectedKubernetes" ],
         "FullCommandName": [ "Get-AzConnectedKubernetes_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -184,28 +184,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "ed5f8230-0bd2-4501-bbc5-549768c3b814", "af8f1c05-3d72-43c6-aa78-4004da07672c", "77fe6e16-18f0-483c-9f26-9522604272f9", "8a79900b-f951-4394-b0b8-83b7e9ac72ae", "37a9e0cb-e5d4-4262-8a89-debeecd556df", "9f6c2525-0ce0-454e-b416-bd0a579bfc6c", "901b8a45-4cf9-44d1-b33f-223ed343151c", "1ffe30a0-1422-4a88-81ab-a35850b6909c", "318bc5bf-5bfe-4ac2-be9e-09933a8e6ae8", "365c91f9-8bea-4496-95ba-0a0c9af4e6eb", "3bfee853-6695-474d-8ade-7f46996bc82d", "199e321e-786d-46eb-b084-412cff6d92fb", "dba0a526-d0bd-49ce-a07d-65971d5a2727", "ce12ea56-a97d-41ff-915f-e56b5c549498", "e341ceef-2da8-4a04-8871-e2da63f7e69b", "ded77f75-bcac-4e8f-8a29-ec00cd8afb80", "40ff3b0c-bd4a-417e-a34c-b29f5af2648f", "1c6d6898-7a72-43ce-b799-8b9ac569af15" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-request-id": [ "f74f6536-0805-48e3-b468-c675adf42fd6" ],
-        "x-ms-correlation-request-id": [ "f74f6536-0805-48e3-b468-c675adf42fd6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090740Z:f74f6536-0805-48e3-b468-c675adf42fd6" ],
+        "x-ms-original-request-ids": [ "6ed904e5-6823-4e55-9944-891fa63c93f7", "27e25517-3a36-4391-8a7a-79b997978bc7", "244bfcee-d9c7-4685-bef4-4971810dac80", "9a9183ae-b189-4ea0-98d1-7f9212b16b36", "6fc8b69e-2f97-4034-9891-2f817231458a", "4fc54775-42d8-45f4-bd6c-f29a5384034a", "22d7891b-ac20-45e8-9fc8-46cfab45b491", "298d0422-5cb7-42c5-ba96-a40d7461a38a", "571916bc-61bc-454c-a48a-24ec8ff256e2", "d681547a-bbe9-414a-8b2c-b9ac7a4a321c", "058eb156-9acc-4c8e-a5f8-a90149743713", "1158452e-2f42-4ca6-a28c-42e3e323d5be", "c8a30c0d-eb44-42be-849f-9f087af2ab14", "8c25a76c-b4a8-4522-aa63-17b5ce2a9367", "98a13fe3-b054-4e5c-b705-fb410a7e4ab5", "274c84a4-9c91-426d-ba36-29a692b454d0", "107b2149-0217-4881-b413-566337fd7c57", "aefc1c0e-1b13-44c6-b7ae-029c48b4c06d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-request-id": [ "ec1aab7b-478f-476e-8dcb-43aca012e611" ],
+        "x-ms-correlation-request-id": [ "ec1aab7b-478f-476e-8dcb-43aca012e611" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081140Z:ec1aab7b-478f-476e-8dcb-43aca012e611" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:39 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
         "Content-Length": [ "2901" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7\",\"name\":\"ar5fw7\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:06:16.1025071Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-02T09:06:24.9432755Z\"},\"identity\":{\"principalId\":\"d2f36216-493e-4c8c-9679-00a436ea72c6\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEA3eQ25xYN9JB+uSoTsZTH8Yc0sJjbQwFB4eOlJcVAxVXlMWW/q5lW2PRtJO5FUtfXdyl6TMaZslWIOmH6o+fBZ4/Yu0l/jmgOJUSNZvObjF7al3555rsGU6NI+ghZ5J2o/DWo2mXz7ZR1pjBwOb2Y5cvq1g0qzyShejVkL1YoYobbCJMYj/S2oBgKXpaETrygwxH1afBJoHEe6ut485pIVlU+f2GHCouOg6vU1pAwsF+vAcSA52LSAHzxvHaRx9Yd6X58D6uAHbrnp8rOPyeBGYqT2dGFgasIJA5MKat8O8vW8T9pm+TaL8N2+RqxvehWkLqhSrOO3+v/8/HFp97mEd4pWPd3Ie1TaAOgqcBULQkheaiu2h0L+OuAgggyUk2zj3rsCMBgB4t8Ur56srmH3tFG2B9WfngE4VRjK/CH6oROUg9gXXRtTn3oUUhQ9uLgOGjrhrfbbEImURlDRjyO5tZWFiZSZOdaBBaBVr7D+2SlB5peODKNkB8xFsPk04bu8gBFSkkUfvp2gjIaFTbcueogCy10fM7S9a+N38Ry/m9FvSEnsovYRiSZ4iKg+dABiL5uoiY7aiOR231FVN+QPLX572exFBZPwoOhMLS5GN8XXi0ELNS3smsaZgU6VBZVPM5VmxSe+9PWVyFEgDVAO2Ek/A0CgZonMXdsXoX2+hUCAwEAAQ==\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr\",\"name\":\"ihdctr\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:07:00.9878665Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-02T09:07:12.8443302Z\"},\"identity\":{\"principalId\":\"1fca86a5-af00-4cb4-927f-1b6ff84e9e00\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApaDc9qopilLBnJopRFNaIDMCEf5N2Mdym3dYVPKrH5fUqotGB4RZ5AzGoahpSfyHXHgx2JL1Bw8MdmoIi806O3CwpNm7Ui7LxNZOzClX014NRV4/cQe6nWCNOz5BEyJWpZBRAomlbXMq4GppuFOir+2nUSWOV2AHaTXFURZsLPGRwLry2aOfdDenV+w8hMcZqa9niPCloQoV0apheoK+cG83O2JM/AGn1H1aT1EyUlIPdbnYr4XiqaHPE5FSfFFNYUInfotRlkXkhQ2Y9DvWCrowAW8HYG8coI006xw08WNuS3In0FHXSTTdS1Q2HYRf+XYWOT0Gy9aXUT36Zt+U7K3QqDXgEc8ih1z0Yzf8M+KoI/ixXWnEiwIjlXEWNLRIWDW7MPr74sgUhYYMH1m/fN56QJ2rXk0Nz/b5gVesBmzX07+YuG0BdPL42iyO9KUoALI9Zynfo9XHxyDxZykNSw7ri+dCO71cs/fhEr/0ipIuoeZXteRT07BzEPbznJyPoPe5V+KWEIRfTePs7qBO4TBBeb0NQrt++CoDEJFVsxIMbkDSl80EGi91t5etZ0bEMKbQrcmXVlxAub9j+wap0f42N6tdID5wFmia0CDLzsItYQmlWyanzH0StoaeGJRfYdzQ4ldj2V/+EnUG/sWA+H4ZEbGtNFSEqu5icegcwmECAwEAAQ==\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv\",\"name\":\"hzdwsv\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:10:20.2651468Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-08T08:10:28.0374268Z\"},\"identity\":{\"principalId\":\"77f7e832-c66b-469b-b8b2-ee478b2d08be\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApWlel73SHkszwvHIlUfvPuqiIZvU7VsTKKispU+2ARXtO6peaN9TLOlElp1YEfKFCzWPIJ1ETSzSHlrDyHne2FK5p29bhKXdKfOF401mX8GMHQCVubWAaL0YtqWRuyMmQqPUAOPSrlYs+z3wg5a9y019K6iATmWYjeyTYd2IFHeNFjt2N43mhGrCuRtJNloynRoOyd3TGksDRYTl130aknX3/yVd+hyt2cAyCsGMhR/1AHYbNKX6MRLE+/MjPS/pU2osYqXf7fFAFTPOBpyYnIxdTB2rkJjRWG8Q5DWxbZrzwWqnboCwoWvuCYGXRzGutBAap/pg6IwKbuFCIgcCBaEEap13w93KN4MT0xKwuisTOQtTVkcqNarJmfpAfbaeh/ufg020OH776BkPRkaETAw9v0ycNFUKFBN2DSwd6MeOhlQyg+qI0GjUWFEpOIkXDhiyIIMTzXIl0Z1jCiJMdq5Zr0XYemxxenQ2wI1OtM6l730zr9ttfGEWxJKcEiIMYMtPggJ0aOBsE+jAUSGeha2j4Bye+/YICKCHpeglPtVunZF9/K/GSC5I9XPxP/acrywBOgnlzOwixWzLyzcioNVYnCak81pZ0F6G6gxywf4XxgVl8zTq5dfMN+jWnvSZNQNF1dJa7eB/1pMKgf2mm73FPuY/RCjTB7yxfYkRsbECAwEAAQ==\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo\",\"name\":\"z2xhuo\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:11:03.3603392Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-08T08:11:10.2280362Z\"},\"identity\":{\"principalId\":\"21779f1b-0565-41ca-9e7f-fe705e505b6f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAmlVIGKCEw4aYyWgjyY7uoLwOu82TsyKUO2D79lPb4LAupvivpuDMmQFvH9hj0CA3YHtp28oLIDY9jJiIrBmBpse1Et8gqMg1CMBoYr0zw3TlDFSZgTjMCgH2IwIyj8lXol+9ScvpYOR+BZg5D4tDAdsnDolf7+vFPB4fFEwn1/XBjie5ZZXFfsoFRYebKEX0PtK3d595sIamNg0qQ9OBu8faEtZTCVrPkn/3Dj82RqwImvGdl+5hYmN/Rf2MCrmwqbLeu+TnacbABpGNi1fhVg6+70QiIkIzNfgKBFIGQgY+jNweC0WEs5aZVZRN4TAiPG5vty2BfGereyjkxMHXjOTIDJeaR44syQ7uZOGWY8J/oH9wELryPRuHqAmnvVp9JuGOsPO8ZSVD+FilxvHDyRASFPGsuLEpsr4kyfZe2h4lgyNl3SRANc9j3r3n7K+/VTnD4YmW6A8ZIoiVergtM/93kWPN/wLsJFniYilF0NUyAcE7PgPH3n2yWj1AoLUi3222BmTzv0YB+7WpmoejwxSG27JvkSIUZ1y10gpEs14uL5gSfLyHwaBaPtplHdhZT/3o+VC1neZh+lxbCicn6jLfPOeu5eEFMDoFscNtrkkFkT3Vz06GxEncD4QbAoqKkuRSjRzgzzQ1k2xiecS0lqVA9JjjjCd6d2t04Dn6Eh0CAwEAAQ==\"}}]}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo?api-version=2021-10-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo?api-version=2021-10-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"key2\": \"2\",\r\n    \"key1\": \"1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -220,34 +220,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1000c466-0000-4d00-0000-6180ffdd0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "ETag": [ "\"0700b6c4-0000-0400-0000-6188dbbe0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "e5447d1a-3070-413b-8828-1ea13d3b8759" ],
-        "x-ms-correlation-request-id": [ "7cb7b8f8-4a15-40bc-b54f-15d52cd7bf78" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090743Z:7cb7b8f8-4a15-40bc-b54f-15d52cd7bf78" ],
+        "x-ms-request-id": [ "cd32f42e-8c3b-43b1-8d8c-3e9c7209e6aa" ],
+        "x-ms-correlation-request-id": [ "820d871b-9eda-4589-8015-02760d0b8b29" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081144Z:820d871b-9eda-4589-8015-02760d0b8b29" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:43 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1454" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr\",\"name\":\"ihdctr\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:07:00.9878665Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-02T09:07:40.9631709Z\"},\"identity\":{\"principalId\":\"1fca86a5-af00-4cb4-927f-1b6ff84e9e00\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApaDc9qopilLBnJopRFNaIDMCEf5N2Mdym3dYVPKrH5fUqotGB4RZ5AzGoahpSfyHXHgx2JL1Bw8MdmoIi806O3CwpNm7Ui7LxNZOzClX014NRV4/cQe6nWCNOz5BEyJWpZBRAomlbXMq4GppuFOir+2nUSWOV2AHaTXFURZsLPGRwLry2aOfdDenV+w8hMcZqa9niPCloQoV0apheoK+cG83O2JM/AGn1H1aT1EyUlIPdbnYr4XiqaHPE5FSfFFNYUInfotRlkXkhQ2Y9DvWCrowAW8HYG8coI006xw08WNuS3In0FHXSTTdS1Q2HYRf+XYWOT0Gy9aXUT36Zt+U7K3QqDXgEc8ih1z0Yzf8M+KoI/ixXWnEiwIjlXEWNLRIWDW7MPr74sgUhYYMH1m/fN56QJ2rXk0Nz/b5gVesBmzX07+YuG0BdPL42iyO9KUoALI9Zynfo9XHxyDxZykNSw7ri+dCO71cs/fhEr/0ipIuoeZXteRT07BzEPbznJyPoPe5V+KWEIRfTePs7qBO4TBBeb0NQrt++CoDEJFVsxIMbkDSl80EGi91t5etZ0bEMKbQrcmXVlxAub9j+wap0f42N6tdID5wFmia0CDLzsItYQmlWyanzH0StoaeGJRfYdzQ4ldj2V/+EnUG/sWA+H4ZEbGtNFSEqu5icegcwmECAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo\",\"name\":\"z2xhuo\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:11:03.3603392Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-08T08:11:42.1905125Z\"},\"identity\":{\"principalId\":\"21779f1b-0565-41ca-9e7f-fe705e505b6f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAmlVIGKCEw4aYyWgjyY7uoLwOu82TsyKUO2D79lPb4LAupvivpuDMmQFvH9hj0CA3YHtp28oLIDY9jJiIrBmBpse1Et8gqMg1CMBoYr0zw3TlDFSZgTjMCgH2IwIyj8lXol+9ScvpYOR+BZg5D4tDAdsnDolf7+vFPB4fFEwn1/XBjie5ZZXFfsoFRYebKEX0PtK3d595sIamNg0qQ9OBu8faEtZTCVrPkn/3Dj82RqwImvGdl+5hYmN/Rf2MCrmwqbLeu+TnacbABpGNi1fhVg6+70QiIkIzNfgKBFIGQgY+jNweC0WEs5aZVZRN4TAiPG5vty2BfGereyjkxMHXjOTIDJeaR44syQ7uZOGWY8J/oH9wELryPRuHqAmnvVp9JuGOsPO8ZSVD+FilxvHDyRASFPGsuLEpsr4kyfZe2h4lgyNl3SRANc9j3r3n7K+/VTnD4YmW6A8ZIoiVergtM/93kWPN/wLsJFniYilF0NUyAcE7PgPH3n2yWj1AoLUi3222BmTzv0YB+7WpmoejwxSG27JvkSIUZ1y10gpEs14uL5gSfLyHwaBaPtplHdhZT/3o+VC1neZh+lxbCicn6jLfPOeu5eEFMDoFscNtrkkFkT3Vz06GxEncD4QbAoqKkuRSjRzgzzQ1k2xiecS0lqVA9JjjjCd6d2t04Dn6Eh0CAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo?api-version=2021-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "224f0ddd-c6b5-4397-bc75-83d0f74c53d8" ],
+        "x-ms-client-request-id": [ "3a5d7d15-b54a-4f37-91c8-37d0bf9b35d2" ],
         "CommandName": [ "Get-AzConnectedKubernetes" ],
         "FullCommandName": [ "Get-AzConnectedKubernetes_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -262,34 +262,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1000c466-0000-4d00-0000-6180ffdd0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "ETag": [ "\"0700b6c4-0000-0400-0000-6188dbbe0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "cf365ace-f204-4e2b-85b8-ade40204b3b4" ],
-        "x-ms-correlation-request-id": [ "9c4a0746-373e-428b-8774-bb5acc4b2024" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090745Z:9c4a0746-373e-428b-8774-bb5acc4b2024" ],
+        "x-ms-request-id": [ "5d35808d-3459-443b-bb4c-f88b165e76d9" ],
+        "x-ms-correlation-request-id": [ "cf9a3d55-a550-4bb4-b402-84594e397183" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081146Z:cf9a3d55-a550-4bb4-b402-84594e397183" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:44 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1454" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr\",\"name\":\"ihdctr\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:07:00.9878665Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-02T09:07:40.9631709Z\"},\"identity\":{\"principalId\":\"1fca86a5-af00-4cb4-927f-1b6ff84e9e00\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApaDc9qopilLBnJopRFNaIDMCEf5N2Mdym3dYVPKrH5fUqotGB4RZ5AzGoahpSfyHXHgx2JL1Bw8MdmoIi806O3CwpNm7Ui7LxNZOzClX014NRV4/cQe6nWCNOz5BEyJWpZBRAomlbXMq4GppuFOir+2nUSWOV2AHaTXFURZsLPGRwLry2aOfdDenV+w8hMcZqa9niPCloQoV0apheoK+cG83O2JM/AGn1H1aT1EyUlIPdbnYr4XiqaHPE5FSfFFNYUInfotRlkXkhQ2Y9DvWCrowAW8HYG8coI006xw08WNuS3In0FHXSTTdS1Q2HYRf+XYWOT0Gy9aXUT36Zt+U7K3QqDXgEc8ih1z0Yzf8M+KoI/ixXWnEiwIjlXEWNLRIWDW7MPr74sgUhYYMH1m/fN56QJ2rXk0Nz/b5gVesBmzX07+YuG0BdPL42iyO9KUoALI9Zynfo9XHxyDxZykNSw7ri+dCO71cs/fhEr/0ipIuoeZXteRT07BzEPbznJyPoPe5V+KWEIRfTePs7qBO4TBBeb0NQrt++CoDEJFVsxIMbkDSl80EGi91t5etZ0bEMKbQrcmXVlxAub9j+wap0f42N6tdID5wFmia0CDLzsItYQmlWyanzH0StoaeGJRfYdzQ4ldj2V/+EnUG/sWA+H4ZEbGtNFSEqu5icegcwmECAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo\",\"name\":\"z2xhuo\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:11:03.3603392Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-08T08:11:42.1905125Z\"},\"identity\":{\"principalId\":\"21779f1b-0565-41ca-9e7f-fe705e505b6f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEAmlVIGKCEw4aYyWgjyY7uoLwOu82TsyKUO2D79lPb4LAupvivpuDMmQFvH9hj0CA3YHtp28oLIDY9jJiIrBmBpse1Et8gqMg1CMBoYr0zw3TlDFSZgTjMCgH2IwIyj8lXol+9ScvpYOR+BZg5D4tDAdsnDolf7+vFPB4fFEwn1/XBjie5ZZXFfsoFRYebKEX0PtK3d595sIamNg0qQ9OBu8faEtZTCVrPkn/3Dj82RqwImvGdl+5hYmN/Rf2MCrmwqbLeu+TnacbABpGNi1fhVg6+70QiIkIzNfgKBFIGQgY+jNweC0WEs5aZVZRN4TAiPG5vty2BfGereyjkxMHXjOTIDJeaR44syQ7uZOGWY8J/oH9wELryPRuHqAmnvVp9JuGOsPO8ZSVD+FilxvHDyRASFPGsuLEpsr4kyfZe2h4lgyNl3SRANc9j3r3n7K+/VTnD4YmW6A8ZIoiVergtM/93kWPN/wLsJFniYilF0NUyAcE7PgPH3n2yWj1AoLUi3222BmTzv0YB+7WpmoejwxSG27JvkSIUZ1y10gpEs14uL5gSfLyHwaBaPtplHdhZT/3o+VC1neZh+lxbCicn6jLfPOeu5eEFMDoFscNtrkkFkT3Vz06GxEncD4QbAoqKkuRSjRzgzzQ1k2xiecS0lqVA9JjjjCd6d2t04Dn6Eh0CAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "f81a8cb5-c7b0-4b01-868b-c4d743e4dcc3" ],
+        "x-ms-client-request-id": [ "0e402c81-d054-492e-aac2-197c4da9a800" ],
         "CommandName": [ "Get-AzConnectedKubernetes" ],
         "FullCommandName": [ "Get-AzConnectedKubernetes_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -304,30 +304,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"10000c66-0000-4d00-0000-6180ff990000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "ETag": [ "\"1a00f153-0000-0200-0000-6188db7b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "f7ecb527-4ec9-4dfc-bd27-e3cffd9d013d" ],
-        "x-ms-correlation-request-id": [ "e2b839b0-e2d8-42e0-9887-b1f2bfdd8966" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090746Z:e2b839b0-e2d8-42e0-9887-b1f2bfdd8966" ],
+        "x-ms-request-id": [ "52f263eb-a7dd-46e2-ae6a-f2088c40b6fb" ],
+        "x-ms-correlation-request-id": [ "77b7cb69-8c21-4283-a2df-a7e9c2898f87" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081146Z:77b7cb69-8c21-4283-a2df-a7e9c2898f87" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:45 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1444" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7\",\"name\":\"ar5fw7\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:06:16.1025071Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-02T09:06:24.9432755Z\"},\"identity\":{\"principalId\":\"d2f36216-493e-4c8c-9679-00a436ea72c6\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEA3eQ25xYN9JB+uSoTsZTH8Yc0sJjbQwFB4eOlJcVAxVXlMWW/q5lW2PRtJO5FUtfXdyl6TMaZslWIOmH6o+fBZ4/Yu0l/jmgOJUSNZvObjF7al3555rsGU6NI+ghZ5J2o/DWo2mXz7ZR1pjBwOb2Y5cvq1g0qzyShejVkL1YoYobbCJMYj/S2oBgKXpaETrygwxH1afBJoHEe6ut485pIVlU+f2GHCouOg6vU1pAwsF+vAcSA52LSAHzxvHaRx9Yd6X58D6uAHbrnp8rOPyeBGYqT2dGFgasIJA5MKat8O8vW8T9pm+TaL8N2+RqxvehWkLqhSrOO3+v/8/HFp97mEd4pWPd3Ie1TaAOgqcBULQkheaiu2h0L+OuAgggyUk2zj3rsCMBgB4t8Ur56srmH3tFG2B9WfngE4VRjK/CH6oROUg9gXXRtTn3oUUhQ9uLgOGjrhrfbbEImURlDRjyO5tZWFiZSZOdaBBaBVr7D+2SlB5peODKNkB8xFsPk04bu8gBFSkkUfvp2gjIaFTbcueogCy10fM7S9a+N38Ry/m9FvSEnsovYRiSZ4iKg+dABiL5uoiY7aiOR231FVN+QPLX572exFBZPwoOhMLS5GN8XXi0ELNS3smsaZgU6VBZVPM5VmxSe+9PWVyFEgDVAO2Ek/A0CgZonMXdsXoX2+hUCAwEAAQ==\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv\",\"name\":\"hzdwsv\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:10:20.2651468Z\",\"lastModifiedBy\":\"64b12d6e-6549-484c-8cc6-6281839ba394\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-11-08T08:10:28.0374268Z\"},\"identity\":{\"principalId\":\"77f7e832-c66b-469b-b8b2-ee478b2d08be\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApWlel73SHkszwvHIlUfvPuqiIZvU7VsTKKispU+2ARXtO6peaN9TLOlElp1YEfKFCzWPIJ1ETSzSHlrDyHne2FK5p29bhKXdKfOF401mX8GMHQCVubWAaL0YtqWRuyMmQqPUAOPSrlYs+z3wg5a9y019K6iATmWYjeyTYd2IFHeNFjt2N43mhGrCuRtJNloynRoOyd3TGksDRYTl130aknX3/yVd+hyt2cAyCsGMhR/1AHYbNKX6MRLE+/MjPS/pU2osYqXf7fFAFTPOBpyYnIxdTB2rkJjRWG8Q5DWxbZrzwWqnboCwoWvuCYGXRzGutBAap/pg6IwKbuFCIgcCBaEEap13w93KN4MT0xKwuisTOQtTVkcqNarJmfpAfbaeh/ufg020OH776BkPRkaETAw9v0ycNFUKFBN2DSwd6MeOhlQyg+qI0GjUWFEpOIkXDhiyIIMTzXIl0Z1jCiJMdq5Zr0XYemxxenQ2wI1OtM6l730zr9ttfGEWxJKcEiIMYMtPggJ0aOBsE+jAUSGeha2j4Bye+/YICKCHpeglPtVunZF9/K/GSC5I9XPxP/acrywBOgnlzOwixWzLyzcioNVYnCak81pZ0F6G6gxywf4XxgVl8zTq5dfMN+jWnvSZNQNF1dJa7eB/1pMKgf2mm73FPuY/RCjTB7yxfYkRsbECAwEAAQ==\"}}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01+2": {
+  "AzConnectedKubernetes+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01",
-      "Content": "{\r\n  \"tags\": {\r\n    \"key2\": \"2\",\r\n    \"key1\": \"1\",\r\n    \"key3\": \"3\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key3\": \"3\",\r\n    \"key1\": \"1\",\r\n    \"key2\": \"2\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -341,34 +341,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1000d066-0000-4d00-0000-6180ffe40000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "ETag": [ "\"0700bac4-0000-0400-0000-6188dbc40000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "78a6c70c-07ff-47fc-aee2-d54c6b36042e" ],
-        "x-ms-correlation-request-id": [ "75655ff2-7379-486b-bb07-0ecd96d7fe08" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090750Z:75655ff2-7379-486b-bb07-0ecd96d7fe08" ],
+        "x-ms-request-id": [ "d1d61f9f-9809-4804-b5f9-83524f8dcb48" ],
+        "x-ms-correlation-request-id": [ "67d74aad-4587-49b2-9173-a3530b00cf33" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081150Z:67d74aad-4587-49b2-9173-a3530b00cf33" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:49 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1465" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7\",\"name\":\"ar5fw7\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\",\"key3\":\"3\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:06:16.1025071Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-02T09:07:47.6182478Z\"},\"identity\":{\"principalId\":\"d2f36216-493e-4c8c-9679-00a436ea72c6\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEA3eQ25xYN9JB+uSoTsZTH8Yc0sJjbQwFB4eOlJcVAxVXlMWW/q5lW2PRtJO5FUtfXdyl6TMaZslWIOmH6o+fBZ4/Yu0l/jmgOJUSNZvObjF7al3555rsGU6NI+ghZ5J2o/DWo2mXz7ZR1pjBwOb2Y5cvq1g0qzyShejVkL1YoYobbCJMYj/S2oBgKXpaETrygwxH1afBJoHEe6ut485pIVlU+f2GHCouOg6vU1pAwsF+vAcSA52LSAHzxvHaRx9Yd6X58D6uAHbrnp8rOPyeBGYqT2dGFgasIJA5MKat8O8vW8T9pm+TaL8N2+RqxvehWkLqhSrOO3+v/8/HFp97mEd4pWPd3Ie1TaAOgqcBULQkheaiu2h0L+OuAgggyUk2zj3rsCMBgB4t8Ur56srmH3tFG2B9WfngE4VRjK/CH6oROUg9gXXRtTn3oUUhQ9uLgOGjrhrfbbEImURlDRjyO5tZWFiZSZOdaBBaBVr7D+2SlB5peODKNkB8xFsPk04bu8gBFSkkUfvp2gjIaFTbcueogCy10fM7S9a+N38Ry/m9FvSEnsovYRiSZ4iKg+dABiL5uoiY7aiOR231FVN+QPLX572exFBZPwoOhMLS5GN8XXi0ELNS3smsaZgU6VBZVPM5VmxSe+9PWVyFEgDVAO2Ek/A0CgZonMXdsXoX2+hUCAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv\",\"name\":\"hzdwsv\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key3\":\"3\",\"key1\":\"1\",\"key2\":\"2\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:10:20.2651468Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-08T08:11:47.9955417Z\"},\"identity\":{\"principalId\":\"77f7e832-c66b-469b-b8b2-ee478b2d08be\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApWlel73SHkszwvHIlUfvPuqiIZvU7VsTKKispU+2ARXtO6peaN9TLOlElp1YEfKFCzWPIJ1ETSzSHlrDyHne2FK5p29bhKXdKfOF401mX8GMHQCVubWAaL0YtqWRuyMmQqPUAOPSrlYs+z3wg5a9y019K6iATmWYjeyTYd2IFHeNFjt2N43mhGrCuRtJNloynRoOyd3TGksDRYTl130aknX3/yVd+hyt2cAyCsGMhR/1AHYbNKX6MRLE+/MjPS/pU2osYqXf7fFAFTPOBpyYnIxdTB2rkJjRWG8Q5DWxbZrzwWqnboCwoWvuCYGXRzGutBAap/pg6IwKbuFCIgcCBaEEap13w93KN4MT0xKwuisTOQtTVkcqNarJmfpAfbaeh/ufg020OH776BkPRkaETAw9v0ycNFUKFBN2DSwd6MeOhlQyg+qI0GjUWFEpOIkXDhiyIIMTzXIl0Z1jCiJMdq5Zr0XYemxxenQ2wI1OtM6l730zr9ttfGEWxJKcEiIMYMtPggJ0aOBsE+jAUSGeha2j4Bye+/YICKCHpeglPtVunZF9/K/GSC5I9XPxP/acrywBOgnlzOwixWzLyzcioNVYnCak81pZ0F6G6gxywf4XxgVl8zTq5dfMN+jWnvSZNQNF1dJa7eB/1pMKgf2mm73FPuY/RCjTB7yxfYkRsbECAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "54d5d1a2-e9f7-4f7a-883f-6e678bb13098" ],
+        "x-ms-client-request-id": [ "27f0936a-e94e-4dcd-89e2-a39e1608a055" ],
         "CommandName": [ "Get-AzConnectedKubernetes" ],
         "FullCommandName": [ "Get-AzConnectedKubernetes_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -383,34 +383,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1000d066-0000-4d00-0000-6180ffe40000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "ETag": [ "\"0700bac4-0000-0400-0000-6188dbc40000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "29600d47-e4fc-4447-8190-0577b2dcdf84" ],
-        "x-ms-correlation-request-id": [ "4c0e3ac4-fca5-4195-9c9f-c3b7d5ca02df" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090751Z:4c0e3ac4-fca5-4195-9c9f-c3b7d5ca02df" ],
+        "x-ms-request-id": [ "b8f82f3b-7ac7-4595-8870-c4409e619ea3" ],
+        "x-ms-correlation-request-id": [ "59c669c9-1ac1-44fc-8b57-3d60814d7788" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081151Z:59c669c9-1ac1-44fc-8b57-3d60814d7788" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:50 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1465" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7\",\"name\":\"ar5fw7\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\",\"key3\":\"3\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:06:16.1025071Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-02T09:07:47.6182478Z\"},\"identity\":{\"principalId\":\"d2f36216-493e-4c8c-9679-00a436ea72c6\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEA3eQ25xYN9JB+uSoTsZTH8Yc0sJjbQwFB4eOlJcVAxVXlMWW/q5lW2PRtJO5FUtfXdyl6TMaZslWIOmH6o+fBZ4/Yu0l/jmgOJUSNZvObjF7al3555rsGU6NI+ghZ5J2o/DWo2mXz7ZR1pjBwOb2Y5cvq1g0qzyShejVkL1YoYobbCJMYj/S2oBgKXpaETrygwxH1afBJoHEe6ut485pIVlU+f2GHCouOg6vU1pAwsF+vAcSA52LSAHzxvHaRx9Yd6X58D6uAHbrnp8rOPyeBGYqT2dGFgasIJA5MKat8O8vW8T9pm+TaL8N2+RqxvehWkLqhSrOO3+v/8/HFp97mEd4pWPd3Ie1TaAOgqcBULQkheaiu2h0L+OuAgggyUk2zj3rsCMBgB4t8Ur56srmH3tFG2B9WfngE4VRjK/CH6oROUg9gXXRtTn3oUUhQ9uLgOGjrhrfbbEImURlDRjyO5tZWFiZSZOdaBBaBVr7D+2SlB5peODKNkB8xFsPk04bu8gBFSkkUfvp2gjIaFTbcueogCy10fM7S9a+N38Ry/m9FvSEnsovYRiSZ4iKg+dABiL5uoiY7aiOR231FVN+QPLX572exFBZPwoOhMLS5GN8XXi0ELNS3smsaZgU6VBZVPM5VmxSe+9PWVyFEgDVAO2Ek/A0CgZonMXdsXoX2+hUCAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv\",\"name\":\"hzdwsv\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key3\":\"3\",\"key1\":\"1\",\"key2\":\"2\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:10:20.2651468Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-08T08:11:47.9955417Z\"},\"identity\":{\"principalId\":\"77f7e832-c66b-469b-b8b2-ee478b2d08be\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApWlel73SHkszwvHIlUfvPuqiIZvU7VsTKKispU+2ARXtO6peaN9TLOlElp1YEfKFCzWPIJ1ETSzSHlrDyHne2FK5p29bhKXdKfOF401mX8GMHQCVubWAaL0YtqWRuyMmQqPUAOPSrlYs+z3wg5a9y019K6iATmWYjeyTYd2IFHeNFjt2N43mhGrCuRtJNloynRoOyd3TGksDRYTl130aknX3/yVd+hyt2cAyCsGMhR/1AHYbNKX6MRLE+/MjPS/pU2osYqXf7fFAFTPOBpyYnIxdTB2rkJjRWG8Q5DWxbZrzwWqnboCwoWvuCYGXRzGutBAap/pg6IwKbuFCIgcCBaEEap13w93KN4MT0xKwuisTOQtTVkcqNarJmfpAfbaeh/ufg020OH776BkPRkaETAw9v0ycNFUKFBN2DSwd6MeOhlQyg+qI0GjUWFEpOIkXDhiyIIMTzXIl0Z1jCiJMdq5Zr0XYemxxenQ2wI1OtM6l730zr9ttfGEWxJKcEiIMYMtPggJ0aOBsE+jAUSGeha2j4Bye+/YICKCHpeglPtVunZF9/K/GSC5I9XPxP/acrywBOgnlzOwixWzLyzcioNVYnCak81pZ0F6G6gxywf4XxgVl8zTq5dfMN+jWnvSZNQNF1dJa7eB/1pMKgf2mm73FPuY/RCjTB7yxfYkRsbECAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01+2": {
+  "AzConnectedKubernetes+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "1c0b8de1-9e41-4bb5-9f54-7fe8850c112c" ],
+        "x-ms-client-request-id": [ "90203dc1-c52b-47ba-8799-c634868aa109" ],
         "CommandName": [ "Get-AzConnectedKubernetes" ],
         "FullCommandName": [ "Get-AzConnectedKubernetes_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -425,29 +425,29 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1000d066-0000-4d00-0000-6180ffe40000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "ETag": [ "\"0700bac4-0000-0400-0000-6188dbc40000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "f53972b8-e12f-439d-af22-3a6b13d1fe1c" ],
-        "x-ms-correlation-request-id": [ "08c894c8-be61-4508-a069-477415f566b4" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090752Z:08c894c8-be61-4508-a069-477415f566b4" ],
+        "x-ms-request-id": [ "84067079-f6c5-434f-b225-34716965f749" ],
+        "x-ms-correlation-request-id": [ "2656c9b0-fb00-4055-962f-0c880b072d07" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081152Z:2656c9b0-fb00-4055-962f-0c880b072d07" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:51 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1465" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7\",\"name\":\"ar5fw7\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\",\"key3\":\"3\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:06:16.1025071Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-02T09:07:47.6182478Z\"},\"identity\":{\"principalId\":\"d2f36216-493e-4c8c-9679-00a436ea72c6\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEA3eQ25xYN9JB+uSoTsZTH8Yc0sJjbQwFB4eOlJcVAxVXlMWW/q5lW2PRtJO5FUtfXdyl6TMaZslWIOmH6o+fBZ4/Yu0l/jmgOJUSNZvObjF7al3555rsGU6NI+ghZ5J2o/DWo2mXz7ZR1pjBwOb2Y5cvq1g0qzyShejVkL1YoYobbCJMYj/S2oBgKXpaETrygwxH1afBJoHEe6ut485pIVlU+f2GHCouOg6vU1pAwsF+vAcSA52LSAHzxvHaRx9Yd6X58D6uAHbrnp8rOPyeBGYqT2dGFgasIJA5MKat8O8vW8T9pm+TaL8N2+RqxvehWkLqhSrOO3+v/8/HFp97mEd4pWPd3Ie1TaAOgqcBULQkheaiu2h0L+OuAgggyUk2zj3rsCMBgB4t8Ur56srmH3tFG2B9WfngE4VRjK/CH6oROUg9gXXRtTn3oUUhQ9uLgOGjrhrfbbEImURlDRjyO5tZWFiZSZOdaBBaBVr7D+2SlB5peODKNkB8xFsPk04bu8gBFSkkUfvp2gjIaFTbcueogCy10fM7S9a+N38Ry/m9FvSEnsovYRiSZ4iKg+dABiL5uoiY7aiOR231FVN+QPLX572exFBZPwoOhMLS5GN8XXi0ELNS3smsaZgU6VBZVPM5VmxSe+9PWVyFEgDVAO2Ek/A0CgZonMXdsXoX2+hUCAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv\",\"name\":\"hzdwsv\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key3\":\"3\",\"key1\":\"1\",\"key2\":\"2\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:10:20.2651468Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-08T08:11:47.9955417Z\"},\"identity\":{\"principalId\":\"77f7e832-c66b-469b-b8b2-ee478b2d08be\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApWlel73SHkszwvHIlUfvPuqiIZvU7VsTKKispU+2ARXtO6peaN9TLOlElp1YEfKFCzWPIJ1ETSzSHlrDyHne2FK5p29bhKXdKfOF401mX8GMHQCVubWAaL0YtqWRuyMmQqPUAOPSrlYs+z3wg5a9y019K6iATmWYjeyTYd2IFHeNFjt2N43mhGrCuRtJNloynRoOyd3TGksDRYTl130aknX3/yVd+hyt2cAyCsGMhR/1AHYbNKX6MRLE+/MjPS/pU2osYqXf7fFAFTPOBpyYnIxdTB2rkJjRWG8Q5DWxbZrzwWqnboCwoWvuCYGXRzGutBAap/pg6IwKbuFCIgcCBaEEap13w93KN4MT0xKwuisTOQtTVkcqNarJmfpAfbaeh/ufg020OH776BkPRkaETAw9v0ycNFUKFBN2DSwd6MeOhlQyg+qI0GjUWFEpOIkXDhiyIIMTzXIl0Z1jCiJMdq5Zr0XYemxxenQ2wI1OtM6l730zr9ttfGEWxJKcEiIMYMtPggJ0aOBsE+jAUSGeha2j4Bye+/YICKCHpeglPtVunZF9/K/GSC5I9XPxP/acrywBOgnlzOwixWzLyzcioNVYnCak81pZ0F6G6gxywf4XxgVl8zTq5dfMN+jWnvSZNQNF1dJa7eB/1pMKgf2mm73FPuY/RCjTB7yxfYkRsbECAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+ClusterUserCredential-AAD-True+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr/listClusterUserCredential?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+ClusterUserCredential-AAD-True+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo/listClusterUserCredential?api-version=2021-10-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr/listClusterUserCredential?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo/listClusterUserCredential?api-version=2021-10-01",
       "Content": "{\r\n  \"authenticationMethod\": \"AAD\",\r\n  \"clientProxy\": true\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -462,28 +462,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "34f5e843-2e2d-466e-bb06-ce34d2130045" ],
-        "x-ms-correlation-request-id": [ "caa91584-d15e-46ea-81c7-2b2e8145e98a" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090754Z:caa91584-d15e-46ea-81c7-2b2e8145e98a" ],
+        "x-ms-request-id": [ "8ff5794f-3a9f-44d4-b817-4f321ccb437f" ],
+        "x-ms-correlation-request-id": [ "17e9161d-7cf4-403d-bc3a-e1b382193460" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081154Z:17e9161d-7cf4-403d-bc3a-e1b382193460" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:53 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1796" ],
+        "Content-Length": [ "1802" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"hybridConnectionConfig\":{\"expirationTime\":1635854874,\"hybridConnectionName\":\"microsoft.kubernetes/connectedclusters/4dc1481e74f1b6de5a0c079eda97bf6a93f8e5c35ea200527c255f129890c0ca/1635844074240182528\",\"relay\":\"azgnrelay-eastus-l1\",\"token\":\"SharedAccessSignature sr=http%3A%2F%2Fazgnrelay-eastus-l1.servicebus.windows.net%2Fmicrosoft.kubernetes%2Fconnectedclusters%2F4dc1481e74f1b6de5a0c079eda97bf6a93f8e5c35ea200527c255f129890c0ca%2F1635844074240182528%2F\u0026sig=RjNN002bI4LwWM5WtiT9NNMRc%2FzQgEdgV2T9rX9jfQI%3D\u0026se=1635855474\u0026skn=sender20211101\"},\"kubeconfigs\":[{\"name\":\"KubeConfig\",\"value\":\"YXBpVmVyc2lvbjogdjENCmNsdXN0ZXJzOg0KICAtIGNsdXN0ZXI6DQogICAgICBzZXJ2ZXI6IGh0dHBzOi8vMWZjYTg2YTUtYWYwMC00Y2I0LTkyN2YtMWI2ZmY4NGU5ZTAwLmVhc3R1cy5rOHNjb25uZWN0LmF6dXJlLmNvbQ0KICAgICAgaW5zZWN1cmUtc2tpcC10bHMtdmVyaWZ5OiB0cnVlDQogICAgbmFtZTogaWhkY3RyDQpjb250ZXh0czoNCiAgLSBjb250ZXh0Og0KICAgICAgY2x1c3RlcjogaWhkY3RyDQogICAgICB1c2VyOiBjbHVzdGVyVXNlcl90ZXN0Z3JvdXBlYXN0dXNfaWhkY3RyDQogICAgbmFtZTogaWhkY3RyDQpjdXJyZW50LWNvbnRleHQ6IGloZGN0cg0Ka2luZDogQ29uZmlnDQpwcmVmZXJlbmNlczogbnVsbA0KdXNlcnM6DQogIC0gbmFtZTogY2x1c3RlclVzZXJfdGVzdGdyb3VwZWFzdHVzX2loZGN0cg0KICAgIHVzZXI6DQogICAgICBleGVjOg0KICAgICAgICBhcGlWZXJzaW9uOiBjbGllbnQuYXV0aGVudGljYXRpb24uazhzLmlvL3YxYmV0YTENCiAgICAgICAgY29tbWFuZDoga3ViZWxvZ2luDQogICAgICAgIHByb3ZpZGVDbHVzdGVySW5mbzogdHJ1ZQ0KICAgICAgICBhcmdzOg0KICAgICAgICAgIC0gZ2V0LXRva2VuDQogICAgICAgICAgLSAtLWVudmlyb25tZW50DQogICAgICAgICAgLSBBenVyZVB1YmxpY0Nsb3VkDQogICAgICAgICAgLSAtLXNlcnZlci1pZA0KICAgICAgICAgIC0gNjI1NmM4NWYtMGFhZC00ZDUwLWI5NjAtZTZlOWIyMWVmZTM1DQogICAgICAgICAgLSAtLWNsaWVudC1pZA0KICAgICAgICAgIC0gM2Y0NDM5ZmYtZTY5OC00ZDZkLTg0ZmUtMDljOWQ1NzRmMDZiDQogICAgICAgICAgLSAtLXRlbmFudC1pZA0KICAgICAgICAgIC0gNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3DQogICAgICAgICAgLSAtLXdpdGgtcG9wDQo=\"}]}",
+      "Content": "{\"hybridConnectionConfig\":{\"expirationTime\":1636369914,\"hybridConnectionName\":\"microsoft.kubernetes/connectedclusters/97877f34cb2fc994f58a85fae9d56b8b358cfb26a72cc71978d40cc7fc075e8e/1636359114158310656\",\"relay\":\"azgnrelay-eastus-l1\",\"token\":\"SharedAccessSignature sr=http%3A%2F%2Fazgnrelay-eastus-l1.servicebus.windows.net%2Fmicrosoft.kubernetes%2Fconnectedclusters%2F97877f34cb2fc994f58a85fae9d56b8b358cfb26a72cc71978d40cc7fc075e8e%2F1636359114158310656%2F\u0026sig=EHm%2F2ElWM%2BOBKv%2BLXA7OSkQWMvUdYkNRWur7zWZ%2B3e8%3D\u0026se=1636370514\u0026skn=sender20211108\"},\"kubeconfigs\":[{\"name\":\"KubeConfig\",\"value\":\"YXBpVmVyc2lvbjogdjENCmNsdXN0ZXJzOg0KICAtIGNsdXN0ZXI6DQogICAgICBzZXJ2ZXI6IGh0dHBzOi8vMjE3NzlmMWItMDU2NS00MWNhLTllN2YtZmU3MDVlNTA1YjZmLmVhc3R1cy5rOHNjb25uZWN0LmF6dXJlLmNvbQ0KICAgICAgaW5zZWN1cmUtc2tpcC10bHMtdmVyaWZ5OiB0cnVlDQogICAgbmFtZTogejJ4aHVvDQpjb250ZXh0czoNCiAgLSBjb250ZXh0Og0KICAgICAgY2x1c3RlcjogejJ4aHVvDQogICAgICB1c2VyOiBjbHVzdGVyVXNlcl90ZXN0Z3JvdXBlYXN0dXNfejJ4aHVvDQogICAgbmFtZTogejJ4aHVvDQpjdXJyZW50LWNvbnRleHQ6IHoyeGh1bw0Ka2luZDogQ29uZmlnDQpwcmVmZXJlbmNlczogbnVsbA0KdXNlcnM6DQogIC0gbmFtZTogY2x1c3RlclVzZXJfdGVzdGdyb3VwZWFzdHVzX3oyeGh1bw0KICAgIHVzZXI6DQogICAgICBleGVjOg0KICAgICAgICBhcGlWZXJzaW9uOiBjbGllbnQuYXV0aGVudGljYXRpb24uazhzLmlvL3YxYmV0YTENCiAgICAgICAgY29tbWFuZDoga3ViZWxvZ2luDQogICAgICAgIHByb3ZpZGVDbHVzdGVySW5mbzogdHJ1ZQ0KICAgICAgICBhcmdzOg0KICAgICAgICAgIC0gZ2V0LXRva2VuDQogICAgICAgICAgLSAtLWVudmlyb25tZW50DQogICAgICAgICAgLSBBenVyZVB1YmxpY0Nsb3VkDQogICAgICAgICAgLSAtLXNlcnZlci1pZA0KICAgICAgICAgIC0gNjI1NmM4NWYtMGFhZC00ZDUwLWI5NjAtZTZlOWIyMWVmZTM1DQogICAgICAgICAgLSAtLWNsaWVudC1pZA0KICAgICAgICAgIC0gM2Y0NDM5ZmYtZTY5OC00ZDZkLTg0ZmUtMDljOWQ1NzRmMDZiDQogICAgICAgICAgLSAtLXRlbmFudC1pZA0KICAgICAgICAgIC0gNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3DQogICAgICAgICAgLSAtLXdpdGgtcG9wDQo=\"}]}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+ClusterUserCredential-AAD-False+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr/listClusterUserCredential?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+ClusterUserCredential-AAD-False+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo/listClusterUserCredential?api-version=2021-10-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr/listClusterUserCredential?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo/listClusterUserCredential?api-version=2021-10-01",
       "Content": "{\r\n  \"authenticationMethod\": \"AAD\",\r\n  \"clientProxy\": false\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -498,28 +498,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "2822ee24-2f37-4ba6-a3b0-5b93680ad273" ],
-        "x-ms-correlation-request-id": [ "ea8594c7-737e-49f9-9c4d-49cc66b23a06" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090756Z:ea8594c7-737e-49f9-9c4d-49cc66b23a06" ],
+        "x-ms-request-id": [ "57c1c516-7a47-409e-b298-484b1fc6cea8" ],
+        "x-ms-correlation-request-id": [ "7aca6a40-eb1c-4d68-aad4-f19a873f4cf7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081155Z:7aca6a40-eb1c-4d68-aad4-f19a873f4cf7" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:55 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1250" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"kubeconfigs\":[{\"name\":\"KubeConfig\",\"value\":\"YXBpVmVyc2lvbjogdjENCmNsdXN0ZXJzOg0KICAtIGNsdXN0ZXI6DQogICAgICBzZXJ2ZXI6IGh0dHBzOi8vMWZjYTg2YTUtYWYwMC00Y2I0LTkyN2YtMWI2ZmY4NGU5ZTAwLmVhc3R1cy5rOHNjb25uZWN0LmF6dXJlLmNvbQ0KICAgICAgaW5zZWN1cmUtc2tpcC10bHMtdmVyaWZ5OiB0cnVlDQogICAgbmFtZTogaWhkY3RyDQpjb250ZXh0czoNCiAgLSBjb250ZXh0Og0KICAgICAgY2x1c3RlcjogaWhkY3RyDQogICAgICB1c2VyOiBjbHVzdGVyVXNlcl90ZXN0Z3JvdXBlYXN0dXNfaWhkY3RyDQogICAgbmFtZTogaWhkY3RyDQpjdXJyZW50LWNvbnRleHQ6IGloZGN0cg0Ka2luZDogQ29uZmlnDQpwcmVmZXJlbmNlczogbnVsbA0KdXNlcnM6DQogIC0gbmFtZTogY2x1c3RlclVzZXJfdGVzdGdyb3VwZWFzdHVzX2loZGN0cg0KICAgIHVzZXI6DQogICAgICBleGVjOg0KICAgICAgICBhcGlWZXJzaW9uOiBjbGllbnQuYXV0aGVudGljYXRpb24uazhzLmlvL3YxYmV0YTENCiAgICAgICAgY29tbWFuZDoga3ViZWxvZ2luDQogICAgICAgIHByb3ZpZGVDbHVzdGVySW5mbzogdHJ1ZQ0KICAgICAgICBhcmdzOg0KICAgICAgICAgIC0gZ2V0LXRva2VuDQogICAgICAgICAgLSAtLWVudmlyb25tZW50DQogICAgICAgICAgLSBBenVyZVB1YmxpY0Nsb3VkDQogICAgICAgICAgLSAtLXNlcnZlci1pZA0KICAgICAgICAgIC0gNjI1NmM4NWYtMGFhZC00ZDUwLWI5NjAtZTZlOWIyMWVmZTM1DQogICAgICAgICAgLSAtLWNsaWVudC1pZA0KICAgICAgICAgIC0gM2Y0NDM5ZmYtZTY5OC00ZDZkLTg0ZmUtMDljOWQ1NzRmMDZiDQogICAgICAgICAgLSAtLXRlbmFudC1pZA0KICAgICAgICAgIC0gNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3DQogICAgICAgICAgLSAtLXdpdGgtcG9wDQo=\"}]}",
+      "Content": "{\"kubeconfigs\":[{\"name\":\"KubeConfig\",\"value\":\"YXBpVmVyc2lvbjogdjENCmNsdXN0ZXJzOg0KICAtIGNsdXN0ZXI6DQogICAgICBzZXJ2ZXI6IGh0dHBzOi8vMjE3NzlmMWItMDU2NS00MWNhLTllN2YtZmU3MDVlNTA1YjZmLmVhc3R1cy5rOHNjb25uZWN0LmF6dXJlLmNvbQ0KICAgICAgaW5zZWN1cmUtc2tpcC10bHMtdmVyaWZ5OiB0cnVlDQogICAgbmFtZTogejJ4aHVvDQpjb250ZXh0czoNCiAgLSBjb250ZXh0Og0KICAgICAgY2x1c3RlcjogejJ4aHVvDQogICAgICB1c2VyOiBjbHVzdGVyVXNlcl90ZXN0Z3JvdXBlYXN0dXNfejJ4aHVvDQogICAgbmFtZTogejJ4aHVvDQpjdXJyZW50LWNvbnRleHQ6IHoyeGh1bw0Ka2luZDogQ29uZmlnDQpwcmVmZXJlbmNlczogbnVsbA0KdXNlcnM6DQogIC0gbmFtZTogY2x1c3RlclVzZXJfdGVzdGdyb3VwZWFzdHVzX3oyeGh1bw0KICAgIHVzZXI6DQogICAgICBleGVjOg0KICAgICAgICBhcGlWZXJzaW9uOiBjbGllbnQuYXV0aGVudGljYXRpb24uazhzLmlvL3YxYmV0YTENCiAgICAgICAgY29tbWFuZDoga3ViZWxvZ2luDQogICAgICAgIHByb3ZpZGVDbHVzdGVySW5mbzogdHJ1ZQ0KICAgICAgICBhcmdzOg0KICAgICAgICAgIC0gZ2V0LXRva2VuDQogICAgICAgICAgLSAtLWVudmlyb25tZW50DQogICAgICAgICAgLSBBenVyZVB1YmxpY0Nsb3VkDQogICAgICAgICAgLSAtLXNlcnZlci1pZA0KICAgICAgICAgIC0gNjI1NmM4NWYtMGFhZC00ZDUwLWI5NjAtZTZlOWIyMWVmZTM1DQogICAgICAgICAgLSAtLWNsaWVudC1pZA0KICAgICAgICAgIC0gM2Y0NDM5ZmYtZTY5OC00ZDZkLTg0ZmUtMDljOWQ1NzRmMDZiDQogICAgICAgICAgLSAtLXRlbmFudC1pZA0KICAgICAgICAgIC0gNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3DQogICAgICAgICAgLSAtLXdpdGgtcG9wDQo=\"}]}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+ClusterUserCredential-Token-True+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7/listClusterUserCredential?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+ClusterUserCredential-Token-True+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv/listClusterUserCredential?api-version=2021-10-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7/listClusterUserCredential?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv/listClusterUserCredential?api-version=2021-10-01",
       "Content": "{\r\n  \"authenticationMethod\": \"Token\",\r\n  \"clientProxy\": true\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -534,28 +534,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "b54b6154-89fd-4e50-b7a5-a661675fd7bc" ],
-        "x-ms-correlation-request-id": [ "1b4f72c0-e149-4955-b872-e396c9495d16" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090757Z:1b4f72c0-e149-4955-b872-e396c9495d16" ],
+        "x-ms-request-id": [ "f61e8e50-4f5b-4418-b640-ea97da4aa599" ],
+        "x-ms-correlation-request-id": [ "6f4fa5e5-2522-4ad0-811a-7fb59e59fd48" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081157Z:6f4fa5e5-2522-4ad0-811a-7fb59e59fd48" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:57 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1208" ],
+        "Content-Length": [ "1206" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"hybridConnectionConfig\":{\"expirationTime\":1635854877,\"hybridConnectionName\":\"microsoft.kubernetes/connectedclusters/b4907625537471c046a790ffa99e0187a63cdf6842aa4e07c175a76ab13d8813/1635844077789798912\",\"relay\":\"azgnrelay-eastus-l1\",\"token\":\"SharedAccessSignature sr=http%3A%2F%2Fazgnrelay-eastus-l1.servicebus.windows.net%2Fmicrosoft.kubernetes%2Fconnectedclusters%2Fb4907625537471c046a790ffa99e0187a63cdf6842aa4e07c175a76ab13d8813%2F1635844077789798912%2F\u0026sig=5%2B1aKJJIMmcXj%2BhQu2UbU%2B68CS8CxwR1BODzGWjEeq8%3D\u0026se=1635855477\u0026skn=sender20211101\"},\"kubeconfigs\":[{\"name\":\"KubeConfig\",\"value\":\"YXBpVmVyc2lvbjogdjENCmNsdXN0ZXJzOg0KICAtIGNsdXN0ZXI6DQogICAgICBzZXJ2ZXI6IGh0dHBzOi8vZDJmMzYyMTYtNDkzZS00YzhjLTk2NzktMDBhNDM2ZWE3MmM2LmVhc3R1cy5rOHNjb25uZWN0LmF6dXJlLmNvbQ0KICAgICAgaW5zZWN1cmUtc2tpcC10bHMtdmVyaWZ5OiB0cnVlDQogICAgbmFtZTogYXI1Znc3DQpjb250ZXh0czoNCiAgLSBjb250ZXh0Og0KICAgICAgY2x1c3RlcjogYXI1Znc3DQogICAgICB1c2VyOiBjbHVzdGVyVXNlcl90ZXN0Z3JvdXBlYXN0dXNfYXI1Znc3DQogICAgbmFtZTogYXI1Znc3DQpjdXJyZW50LWNvbnRleHQ6IGFyNWZ3Nw0Ka2luZDogQ29uZmlnDQpwcmVmZXJlbmNlczogbnVsbA0KdXNlcnM6DQogIC0gbmFtZTogY2x1c3RlclVzZXJfdGVzdGdyb3VwZWFzdHVzX2FyNWZ3Nw0KICAgIHVzZXI6DQogICAgICB0b2tlbjogdG9rZW4tcGxhY2Vob2xkZXINCg==\"}]}",
+      "Content": "{\"hybridConnectionConfig\":{\"expirationTime\":1636369917,\"hybridConnectionName\":\"microsoft.kubernetes/connectedclusters/1299bf1975f684fd1fa86df8a73d143788d1ffd00ee10550027786f9e85226f4/1636359117687229440\",\"relay\":\"azgnrelay-eastus-l1\",\"token\":\"SharedAccessSignature sr=http%3A%2F%2Fazgnrelay-eastus-l1.servicebus.windows.net%2Fmicrosoft.kubernetes%2Fconnectedclusters%2F1299bf1975f684fd1fa86df8a73d143788d1ffd00ee10550027786f9e85226f4%2F1636359117687229440%2F\u0026sig=SkStN%2Bo%2FPH2OCpNQPb0jL0B9BLAPrxob5lRr2YAkmKw%3D\u0026se=1636370517\u0026skn=sender20211108\"},\"kubeconfigs\":[{\"name\":\"KubeConfig\",\"value\":\"YXBpVmVyc2lvbjogdjENCmNsdXN0ZXJzOg0KICAtIGNsdXN0ZXI6DQogICAgICBzZXJ2ZXI6IGh0dHBzOi8vNzdmN2U4MzItYzY2Yi00NjliLWI4YjItZWU0NzhiMmQwOGJlLmVhc3R1cy5rOHNjb25uZWN0LmF6dXJlLmNvbQ0KICAgICAgaW5zZWN1cmUtc2tpcC10bHMtdmVyaWZ5OiB0cnVlDQogICAgbmFtZTogaHpkd3N2DQpjb250ZXh0czoNCiAgLSBjb250ZXh0Og0KICAgICAgY2x1c3RlcjogaHpkd3N2DQogICAgICB1c2VyOiBjbHVzdGVyVXNlcl90ZXN0Z3JvdXBlYXN0dXNfaHpkd3N2DQogICAgbmFtZTogaHpkd3N2DQpjdXJyZW50LWNvbnRleHQ6IGh6ZHdzdg0Ka2luZDogQ29uZmlnDQpwcmVmZXJlbmNlczogbnVsbA0KdXNlcnM6DQogIC0gbmFtZTogY2x1c3RlclVzZXJfdGVzdGdyb3VwZWFzdHVzX2h6ZHdzdg0KICAgIHVzZXI6DQogICAgICB0b2tlbjogdG9rZW4tcGxhY2Vob2xkZXINCg==\"}]}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+ClusterUserCredential-Token-False+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7/listClusterUserCredential?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+ClusterUserCredential-Token-False+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv/listClusterUserCredential?api-version=2021-10-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7/listClusterUserCredential?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv/listClusterUserCredential?api-version=2021-10-01",
       "Content": "{\r\n  \"authenticationMethod\": \"Token\",\r\n  \"clientProxy\": false\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -570,33 +570,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "b97fbaf9-9998-44b2-9ecb-5c9071af7e7d" ],
-        "x-ms-correlation-request-id": [ "e98e588b-e724-4f72-8483-bb4e48d7b616" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090759Z:e98e588b-e724-4f72-8483-bb4e48d7b616" ],
+        "x-ms-request-id": [ "f4643d8e-af6b-4a59-b5f6-89ff9e5ca1d8" ],
+        "x-ms-correlation-request-id": [ "840355f8-2c39-4b74-b1eb-bc2e59a5afca" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081159Z:840355f8-2c39-4b74-b1eb-bc2e59a5afca" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:07:59 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:11:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "658" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"kubeconfigs\":[{\"name\":\"KubeConfig\",\"value\":\"YXBpVmVyc2lvbjogdjENCmNsdXN0ZXJzOg0KICAtIGNsdXN0ZXI6DQogICAgICBzZXJ2ZXI6IGh0dHBzOi8vZDJmMzYyMTYtNDkzZS00YzhjLTk2NzktMDBhNDM2ZWE3MmM2LmVhc3R1cy5rOHNjb25uZWN0LmF6dXJlLmNvbQ0KICAgICAgaW5zZWN1cmUtc2tpcC10bHMtdmVyaWZ5OiB0cnVlDQogICAgbmFtZTogYXI1Znc3DQpjb250ZXh0czoNCiAgLSBjb250ZXh0Og0KICAgICAgY2x1c3RlcjogYXI1Znc3DQogICAgICB1c2VyOiBjbHVzdGVyVXNlcl90ZXN0Z3JvdXBlYXN0dXNfYXI1Znc3DQogICAgbmFtZTogYXI1Znc3DQpjdXJyZW50LWNvbnRleHQ6IGFyNWZ3Nw0Ka2luZDogQ29uZmlnDQpwcmVmZXJlbmNlczogbnVsbA0KdXNlcnM6DQogIC0gbmFtZTogY2x1c3RlclVzZXJfdGVzdGdyb3VwZWFzdHVzX2FyNWZ3Nw0KICAgIHVzZXI6DQogICAgICB0b2tlbjogdG9rZW4tcGxhY2Vob2xkZXINCg==\"}]}",
+      "Content": "{\"kubeconfigs\":[{\"name\":\"KubeConfig\",\"value\":\"YXBpVmVyc2lvbjogdjENCmNsdXN0ZXJzOg0KICAtIGNsdXN0ZXI6DQogICAgICBzZXJ2ZXI6IGh0dHBzOi8vNzdmN2U4MzItYzY2Yi00NjliLWI4YjItZWU0NzhiMmQwOGJlLmVhc3R1cy5rOHNjb25uZWN0LmF6dXJlLmNvbQ0KICAgICAgaW5zZWN1cmUtc2tpcC10bHMtdmVyaWZ5OiB0cnVlDQogICAgbmFtZTogaHpkd3N2DQpjb250ZXh0czoNCiAgLSBjb250ZXh0Og0KICAgICAgY2x1c3RlcjogaHpkd3N2DQogICAgICB1c2VyOiBjbHVzdGVyVXNlcl90ZXN0Z3JvdXBlYXN0dXNfaHpkd3N2DQogICAgbmFtZTogaHpkd3N2DQpjdXJyZW50LWNvbnRleHQ6IGh6ZHdzdg0Ka2luZDogQ29uZmlnDQpwcmVmZXJlbmNlczogbnVsbA0KdXNlcnM6DQogIC0gbmFtZTogY2x1c3RlclVzZXJfdGVzdGdyb3VwZWFzdHVzX2h6ZHdzdg0KICAgIHVzZXI6DQogICAgICB0b2tlbjogdG9rZW4tcGxhY2Vob2xkZXINCg==\"}]}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo?api-version=2021-10-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "46df51b6-c110-49a9-8aa1-4fef0064da10" ],
+        "x-ms-client-request-id": [ "e879171a-e3f8-4600-b64f-2cc5e2252d73" ],
         "CommandName": [ "Az.ConnectedKubernetes.internal\\Remove-AzConnectedKubernetes" ],
         "FullCommandName": [ "Remove-AzConnectedKubernetes_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -611,17 +611,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1000ee66-0000-4d00-0000-6180fff30000\"" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/a2483990-3274-413c-a7d5-2162f05d28d3*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA?api-version=2021-10-01" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "ETag": [ "\"0700d0c4-0000-0400-0000-6188dbd20000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/f60dfe96-452f-4e89-9ab8-f3224218d9d5*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E?api-version=2021-10-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/a2483990-3274-413c-a7d5-2162f05d28d3*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA?api-version=2021-10-01" ],
-        "x-ms-request-id": [ "a2483990-3274-413c-a7d5-2162f05d28d3" ],
-        "x-ms-correlation-request-id": [ "6d22709d-aaf8-4fcb-8f56-9cf36c8ae5e6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090803Z:6d22709d-aaf8-4fcb-8f56-9cf36c8ae5e6" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/f60dfe96-452f-4e89-9ab8-f3224218d9d5*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E?api-version=2021-10-01" ],
+        "x-ms-request-id": [ "f60dfe96-452f-4e89-9ab8-f3224218d9d5" ],
+        "x-ms-correlation-request-id": [ "5e0808f1-1e6f-41f5-94c9-1510f811feb4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081202Z:5e0808f1-1e6f-41f5-94c9-1510f811feb4" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:08:02 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:12:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4" ],
@@ -632,16 +632,16 @@
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/a2483990-3274-413c-a7d5-2162f05d28d3*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA?api-version=2021-10-01+2": {
+  "AzConnectedKubernetes+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/f60dfe96-452f-4e89-9ab8-f3224218d9d5*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E?api-version=2021-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/a2483990-3274-413c-a7d5-2162f05d28d3*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/f60dfe96-452f-4e89-9ab8-f3224218d9d5*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "46df51b6-c110-49a9-8aa1-4fef0064da10" ],
+        "x-ms-client-request-id": [ "e879171a-e3f8-4600-b64f-2cc5e2252d73" ],
         "CommandName": [ "Az.ConnectedKubernetes.internal\\Remove-AzConnectedKubernetes" ],
         "FullCommandName": [ "Remove-AzConnectedKubernetes_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -655,34 +655,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0200c285-0000-4d00-0000-6180fffd0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11994" ],
-        "x-ms-request-id": [ "ce1aeff2-4f46-4bf0-96b7-29c241f74585" ],
-        "x-ms-correlation-request-id": [ "89a5bfed-52b1-47bb-9ccd-874096ffa1db" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090834Z:89a5bfed-52b1-47bb-9ccd-874096ffa1db" ],
+        "ETag": [ "\"11009cdd-0000-0200-0000-6188dbdb0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11991" ],
+        "x-ms-request-id": [ "37a3ea3a-648e-4787-a132-f51062ae8b88" ],
+        "x-ms-correlation-request-id": [ "241170cf-2fa4-4a50-9c45-9b3406ec038a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081233Z:241170cf-2fa4-4a50-9c45-9b3406ec038a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:08:33 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:12:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "565" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/a2483990-3274-413c-a7d5-2162f05d28d3*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA\",\"name\":\"a2483990-3274-413c-a7d5-2162f05d28d3*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr\",\"status\":\"Succeeded\",\"startTime\":\"2021-11-02T09:08:02.1587074Z\",\"endTime\":\"2021-11-02T09:08:13.7448787Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/f60dfe96-452f-4e89-9ab8-f3224218d9d5*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E\",\"name\":\"f60dfe96-452f-4e89-9ab8-f3224218d9d5*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo\",\"status\":\"Succeeded\",\"startTime\":\"2021-11-08T08:12:01.7847185Z\",\"endTime\":\"2021-11-08T08:12:11.1619711Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/a2483990-3274-413c-a7d5-2162f05d28d3*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA?api-version=2021-10-01+3": {
+  "AzConnectedKubernetes+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/f60dfe96-452f-4e89-9ab8-f3224218d9d5*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E?api-version=2021-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/a2483990-3274-413c-a7d5-2162f05d28d3*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/f60dfe96-452f-4e89-9ab8-f3224218d9d5*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "46df51b6-c110-49a9-8aa1-4fef0064da10" ],
+        "x-ms-client-request-id": [ "e879171a-e3f8-4600-b64f-2cc5e2252d73" ],
         "CommandName": [ "Az.ConnectedKubernetes.internal\\Remove-AzConnectedKubernetes" ],
         "FullCommandName": [ "Remove-AzConnectedKubernetes_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -696,33 +696,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0200c285-0000-4d00-0000-6180fffd0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11993" ],
-        "x-ms-request-id": [ "721f6abc-89ab-4d74-b684-6f8d432ff014" ],
-        "x-ms-correlation-request-id": [ "6e365335-6be3-4ad8-ad7a-8f9d34861785" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090834Z:6e365335-6be3-4ad8-ad7a-8f9d34861785" ],
+        "ETag": [ "\"11009cdd-0000-0200-0000-6188dbdb0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11990" ],
+        "x-ms-request-id": [ "5e92fa36-dd2e-4967-9626-404eef77ce5c" ],
+        "x-ms-correlation-request-id": [ "27b52d1d-ae8f-4194-b12c-fbe3724fe556" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081234Z:27b52d1d-ae8f-4194-b12c-fbe3724fe556" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:08:34 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:12:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "565" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/a2483990-3274-413c-a7d5-2162f05d28d3*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA\",\"name\":\"a2483990-3274-413c-a7d5-2162f05d28d3*4DC1481E74F1B6DE5A0C079EDA97BF6A93F8E5C35EA200527C255F129890C0CA\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ihdctr\",\"status\":\"Succeeded\",\"startTime\":\"2021-11-02T09:08:02.1587074Z\",\"endTime\":\"2021-11-02T09:08:13.7448787Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/f60dfe96-452f-4e89-9ab8-f3224218d9d5*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E\",\"name\":\"f60dfe96-452f-4e89-9ab8-f3224218d9d5*97877F34CB2FC994F58A85FAE9D56B8B358CFB26A72CC71978D40CC7FC075E8E\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/z2xhuo\",\"status\":\"Succeeded\",\"startTime\":\"2021-11-08T08:12:01.7847185Z\",\"endTime\":\"2021-11-08T08:12:11.1619711Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01+1": {
+  "AzConnectedKubernetes+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "e990bd4d-152b-4cf3-835b-00f8d1e7b78f" ],
+        "x-ms-client-request-id": [ "8575dab7-68e7-4687-b0d6-94cb2bada3fa" ],
         "CommandName": [ "Get-AzConnectedKubernetes" ],
         "FullCommandName": [ "Get-AzConnectedKubernetes_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -737,34 +737,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"1000d066-0000-4d00-0000-6180ffe40000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "ETag": [ "\"0700bac4-0000-0400-0000-6188dbc40000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "e8b44e12-baae-438e-af02-c7d01ebc5233" ],
-        "x-ms-correlation-request-id": [ "fbc32974-cc09-41bb-b3a0-9ab2bec841ff" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090836Z:fbc32974-cc09-41bb-b3a0-9ab2bec841ff" ],
+        "x-ms-request-id": [ "0d5d9f2f-bfdf-4aad-860e-6d079e9855fb" ],
+        "x-ms-correlation-request-id": [ "230ef93c-a4ad-402c-8afe-cd05350adaae" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081235Z:230ef93c-a4ad-402c-8afe-cd05350adaae" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:08:35 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:12:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1465" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7\",\"name\":\"ar5fw7\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key2\":\"2\",\"key1\":\"1\",\"key3\":\"3\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-02T09:06:16.1025071Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-02T09:07:47.6182478Z\"},\"identity\":{\"principalId\":\"d2f36216-493e-4c8c-9679-00a436ea72c6\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEA3eQ25xYN9JB+uSoTsZTH8Yc0sJjbQwFB4eOlJcVAxVXlMWW/q5lW2PRtJO5FUtfXdyl6TMaZslWIOmH6o+fBZ4/Yu0l/jmgOJUSNZvObjF7al3555rsGU6NI+ghZ5J2o/DWo2mXz7ZR1pjBwOb2Y5cvq1g0qzyShejVkL1YoYobbCJMYj/S2oBgKXpaETrygwxH1afBJoHEe6ut485pIVlU+f2GHCouOg6vU1pAwsF+vAcSA52LSAHzxvHaRx9Yd6X58D6uAHbrnp8rOPyeBGYqT2dGFgasIJA5MKat8O8vW8T9pm+TaL8N2+RqxvehWkLqhSrOO3+v/8/HFp97mEd4pWPd3Ie1TaAOgqcBULQkheaiu2h0L+OuAgggyUk2zj3rsCMBgB4t8Ur56srmH3tFG2B9WfngE4VRjK/CH6oROUg9gXXRtTn3oUUhQ9uLgOGjrhrfbbEImURlDRjyO5tZWFiZSZOdaBBaBVr7D+2SlB5peODKNkB8xFsPk04bu8gBFSkkUfvp2gjIaFTbcueogCy10fM7S9a+N38Ry/m9FvSEnsovYRiSZ4iKg+dABiL5uoiY7aiOR231FVN+QPLX572exFBZPwoOhMLS5GN8XXi0ELNS3smsaZgU6VBZVPM5VmxSe+9PWVyFEgDVAO2Ek/A0CgZonMXdsXoX2+hUCAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv\",\"name\":\"hzdwsv\",\"type\":\"microsoft.kubernetes/connectedclusters\",\"location\":\"eastus\",\"tags\":{\"key3\":\"3\",\"key1\":\"1\",\"key2\":\"2\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-11-08T08:10:20.2651468Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-11-08T08:11:47.9955417Z\"},\"identity\":{\"principalId\":\"77f7e832-c66b-469b-b8b2-ee478b2d08be\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"connectivityStatus\":\"Connecting\",\"agentPublicKeyCertificate\":\"MIICCgKCAgEApWlel73SHkszwvHIlUfvPuqiIZvU7VsTKKispU+2ARXtO6peaN9TLOlElp1YEfKFCzWPIJ1ETSzSHlrDyHne2FK5p29bhKXdKfOF401mX8GMHQCVubWAaL0YtqWRuyMmQqPUAOPSrlYs+z3wg5a9y019K6iATmWYjeyTYd2IFHeNFjt2N43mhGrCuRtJNloynRoOyd3TGksDRYTl130aknX3/yVd+hyt2cAyCsGMhR/1AHYbNKX6MRLE+/MjPS/pU2osYqXf7fFAFTPOBpyYnIxdTB2rkJjRWG8Q5DWxbZrzwWqnboCwoWvuCYGXRzGutBAap/pg6IwKbuFCIgcCBaEEap13w93KN4MT0xKwuisTOQtTVkcqNarJmfpAfbaeh/ufg020OH776BkPRkaETAw9v0ycNFUKFBN2DSwd6MeOhlQyg+qI0GjUWFEpOIkXDhiyIIMTzXIl0Z1jCiJMdq5Zr0XYemxxenQ2wI1OtM6l730zr9ttfGEWxJKcEiIMYMtPggJ0aOBsE+jAUSGeha2j4Bye+/YICKCHpeglPtVunZF9/K/GSC5I9XPxP/acrywBOgnlzOwixWzLyzcioNVYnCak81pZ0F6G6gxywf4XxgVl8zTq5dfMN+jWnvSZNQNF1dJa7eB/1pMKgf2mm73FPuY/RCjTB7yxfYkRsbECAwEAAQ==\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01+2": {
+  "AzConnectedKubernetes+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "29c12043-61c2-4506-849e-594a4fdacac1" ],
+        "x-ms-client-request-id": [ "eeddd6e7-204a-4fe4-8fe7-3d7ad08ce5b9" ],
         "CommandName": [ "Az.ConnectedKubernetes.internal\\Remove-AzConnectedKubernetes" ],
         "FullCommandName": [ "Remove-AzConnectedKubernetes_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -779,17 +779,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"10004d67-0000-4d00-0000-618100170000\"" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/6260815e-abda-4281-b518-875f4c645b49*B4907625537471C046A790FFA99E0187A63CDF6842AA4E07C175A76AB13D8813?api-version=2021-10-01" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "ETag": [ "\"0700ffc4-0000-0400-0000-6188dbf50000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/4d386756-6677-4a68-a747-e11d9f94484b*1299BF1975F684FD1FA86DF8A73D143788D1FFD00EE10550027786F9E85226F4?api-version=2021-10-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/6260815e-abda-4281-b518-875f4c645b49*B4907625537471C046A790FFA99E0187A63CDF6842AA4E07C175A76AB13D8813?api-version=2021-10-01" ],
-        "x-ms-request-id": [ "6260815e-abda-4281-b518-875f4c645b49" ],
-        "x-ms-correlation-request-id": [ "70daf1d4-cbaf-4b57-b5e0-1122e7a28d7e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090839Z:70daf1d4-cbaf-4b57-b5e0-1122e7a28d7e" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/4d386756-6677-4a68-a747-e11d9f94484b*1299BF1975F684FD1FA86DF8A73D143788D1FFD00EE10550027786F9E85226F4?api-version=2021-10-01" ],
+        "x-ms-request-id": [ "4d386756-6677-4a68-a747-e11d9f94484b" ],
+        "x-ms-correlation-request-id": [ "10ffa916-268f-49bc-a11a-66fc0c6574ec" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081238Z:10ffa916-268f-49bc-a11a-66fc0c6574ec" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:08:39 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:12:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4" ],
@@ -800,16 +800,16 @@
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/6260815e-abda-4281-b518-875f4c645b49*B4907625537471C046A790FFA99E0187A63CDF6842AA4E07C175A76AB13D8813?api-version=2021-10-01+3": {
+  "AzConnectedKubernetes+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/4d386756-6677-4a68-a747-e11d9f94484b*1299BF1975F684FD1FA86DF8A73D143788D1FFD00EE10550027786F9E85226F4?api-version=2021-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/6260815e-abda-4281-b518-875f4c645b49*B4907625537471C046A790FFA99E0187A63CDF6842AA4E07C175A76AB13D8813?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/4d386756-6677-4a68-a747-e11d9f94484b*1299BF1975F684FD1FA86DF8A73D143788D1FFD00EE10550027786F9E85226F4?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "29c12043-61c2-4506-849e-594a4fdacac1" ],
+        "x-ms-client-request-id": [ "eeddd6e7-204a-4fe4-8fe7-3d7ad08ce5b9" ],
         "CommandName": [ "Az.ConnectedKubernetes.internal\\Remove-AzConnectedKubernetes" ],
         "FullCommandName": [ "Remove-AzConnectedKubernetes_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -823,34 +823,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0200ca85-0000-4d00-0000-618100220000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11992" ],
-        "x-ms-request-id": [ "afe72fb3-55b0-4106-99bb-de4fd4b9e36d" ],
-        "x-ms-correlation-request-id": [ "4ee41c2d-d65b-44a3-be36-c7d5a6f48b92" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090910Z:4ee41c2d-d65b-44a3-be36-c7d5a6f48b92" ],
+        "ETag": [ "\"780190c2-0000-0400-0000-6188dc010000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11989" ],
+        "x-ms-request-id": [ "8bd6ab41-c8a6-46e4-b12d-cb9d5ae6c72c" ],
+        "x-ms-correlation-request-id": [ "42550934-c781-42be-99ac-a5c4ce0ed0da" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081308Z:42550934-c781-42be-99ac-a5c4ce0ed0da" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:09:10 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:13:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "565" ],
+        "Content-Length": [ "563" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/6260815e-abda-4281-b518-875f4c645b49*B4907625537471C046A790FFA99E0187A63CDF6842AA4E07C175A76AB13D8813\",\"name\":\"6260815e-abda-4281-b518-875f4c645b49*B4907625537471C046A790FFA99E0187A63CDF6842AA4E07C175A76AB13D8813\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7\",\"status\":\"Succeeded\",\"startTime\":\"2021-11-02T09:08:38.6673271Z\",\"endTime\":\"2021-11-02T09:08:50.3012386Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/4d386756-6677-4a68-a747-e11d9f94484b*1299BF1975F684FD1FA86DF8A73D143788D1FFD00EE10550027786F9E85226F4\",\"name\":\"4d386756-6677-4a68-a747-e11d9f94484b*1299BF1975F684FD1FA86DF8A73D143788D1FFD00EE10550027786F9E85226F4\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv\",\"status\":\"Succeeded\",\"startTime\":\"2021-11-08T08:12:37.245681Z\",\"endTime\":\"2021-11-08T08:12:49.015086Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "AzConnectedKubernetes+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/6260815e-abda-4281-b518-875f4c645b49*B4907625537471C046A790FFA99E0187A63CDF6842AA4E07C175A76AB13D8813?api-version=2021-10-01+4": {
+  "AzConnectedKubernetes+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/4d386756-6677-4a68-a747-e11d9f94484b*1299BF1975F684FD1FA86DF8A73D143788D1FFD00EE10550027786F9E85226F4?api-version=2021-10-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/6260815e-abda-4281-b518-875f4c645b49*B4907625537471C046A790FFA99E0187A63CDF6842AA4E07C175A76AB13D8813?api-version=2021-10-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/4d386756-6677-4a68-a747-e11d9f94484b*1299BF1975F684FD1FA86DF8A73D143788D1FFD00EE10550027786F9E85226F4?api-version=2021-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "29c12043-61c2-4506-849e-594a4fdacac1" ],
+        "x-ms-client-request-id": [ "eeddd6e7-204a-4fe4-8fe7-3d7ad08ce5b9" ],
         "CommandName": [ "Az.ConnectedKubernetes.internal\\Remove-AzConnectedKubernetes" ],
         "FullCommandName": [ "Remove-AzConnectedKubernetes_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -864,21 +864,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0200ca85-0000-4d00-0000-618100220000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11991" ],
-        "x-ms-request-id": [ "286e9356-8297-4772-b700-aeee24ed3d5d" ],
-        "x-ms-correlation-request-id": [ "ef62edf6-4c20-40b6-86f5-c1b527d07c5a" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211102T090910Z:ef62edf6-4c20-40b6-86f5-c1b527d07c5a" ],
+        "ETag": [ "\"780190c2-0000-0400-0000-6188dc010000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11988" ],
+        "x-ms-request-id": [ "db236cb2-0f86-4cfd-915d-07a017591888" ],
+        "x-ms-correlation-request-id": [ "8d5e7c91-b1fe-41e9-a2a0-207a99218fa3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20211108T081308Z:8d5e7c91-b1fe-41e9-a2a0-207a99218fa3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 02 Nov 2021 09:09:10 GMT" ]
+        "Date": [ "Mon, 08 Nov 2021 08:13:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "565" ],
+        "Content-Length": [ "563" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/6260815e-abda-4281-b518-875f4c645b49*B4907625537471C046A790FFA99E0187A63CDF6842AA4E07C175A76AB13D8813\",\"name\":\"6260815e-abda-4281-b518-875f4c645b49*B4907625537471C046A790FFA99E0187A63CDF6842AA4E07C175A76AB13D8813\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/ar5fw7\",\"status\":\"Succeeded\",\"startTime\":\"2021-11-02T09:08:38.6673271Z\",\"endTime\":\"2021-11-02T09:08:50.3012386Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.Kubernetes/locations/EASTUS/operationStatuses/4d386756-6677-4a68-a747-e11d9f94484b*1299BF1975F684FD1FA86DF8A73D143788D1FFD00EE10550027786F9E85226F4\",\"name\":\"4d386756-6677-4a68-a747-e11d9f94484b*1299BF1975F684FD1FA86DF8A73D143788D1FFD00EE10550027786F9E85226F4\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroupeastus/providers/Microsoft.Kubernetes/connectedClusters/hzdwsv\",\"status\":\"Succeeded\",\"startTime\":\"2021-11-08T08:12:37.245681Z\",\"endTime\":\"2021-11-08T08:12:49.015086Z\",\"properties\":null}",
       "isContentBase64": false
     }
   }

@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'AzConnectedKubernetes' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded'  {
         {
             $config = New-AzConnectedKubernetes -ClusterName $env.clusterNameEUS1 -ResourceGroupName $env.resourceGroupEUS -Location $env.locationEUS
             $config.ProvisioningState | Should -Be 'Succeeded'
@@ -70,39 +70,39 @@ Describe 'AzConnectedKubernetes' {
 
     It 'ClusterUserCredential-AAD-True' {
         {
-            $config = Get-AzConnectedClusterUserCredential -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS1 -AuthenticationMethod AAD -ClientProxy
+            $config = Get-AzConnectedKubernetesUserCredential -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS1 -AuthenticationMethod AAD -ClientProxy
             $config.Kubeconfig.Name | Should -Be "KubeConfig"
         } | Should -Not -Throw
     }
 
     It 'ClusterUserCredential-AAD-False' {
         {
-            $config = Get-AzConnectedClusterUserCredential -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS1 -AuthenticationMethod AAD -ClientProxy:$false
+            $config = Get-AzConnectedKubernetesUserCredential -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS1 -AuthenticationMethod AAD -ClientProxy:$false
             $config.Kubeconfig.Name | Should -Be "KubeConfig"
         } | Should -Not -Throw
     }
 
     It 'ClusterUserCredential-Token-True' {
         {
-            $config = Get-AzConnectedClusterUserCredential -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS2 -AuthenticationMethod Token -ClientProxy
+            $config = Get-AzConnectedKubernetesUserCredential -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS2 -AuthenticationMethod Token -ClientProxy
             $config.Kubeconfig.Name | Should -Be "KubeConfig"
         } | Should -Not -Throw
     }
 
     It 'ClusterUserCredential-Token-False' {
         {
-            $config = Get-AzConnectedClusterUserCredential -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS2 -AuthenticationMethod Token -ClientProxy:$false
+            $config = Get-AzConnectedKubernetesUserCredential -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS2 -AuthenticationMethod Token -ClientProxy:$false
             $config.Kubeconfig.Name | Should -Be "KubeConfig"
         } | Should -Not -Throw
     }
 
-    It 'Delete' -skip {
+    It 'Delete'  {
         {
             Remove-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS1
         } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity'  {
         {
             $config = Get-AzConnectedKubernetes -ResourceGroupName $env.resourceGroupEUS -ClusterName $env.clusterNameEUS2
             Remove-AzConnectedKubernetes -InputObject $config

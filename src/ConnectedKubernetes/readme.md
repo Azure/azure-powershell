@@ -55,7 +55,7 @@ input-file:
 
 title: ConnectedKubernetes
 module-version: 0.1.0
-subject-prefix: ''
+subject-prefix: $(service-name)
 
 identity-correction-for-post: true
 resourcegroup-append: true
@@ -63,32 +63,24 @@ nested-object-to-string: true
 
 directive:
   - where:
-      subject: ConnectedCluster
+      subject: ^ConnectedCluster(.*)
     set:
-      subject: ConnectedKubernetes
+      subject: $1
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      subject: ConnectedKubernetes
+      subject-prefix: ConnectedKubernetes
     remove: true
   - where:
-      subject: ConnectedKubernetes
+      subject-prefix: ConnectedKubernetes
       parameter-name: ClusterName
     set:
       alias: Name
   - where:
       verb: New|Update|Remove
-      subject: ConnectedKubernetes
+      subject-prefix: ConnectedKubernetes
     hide: true
+
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/\).Match\(viaIdentity\)/g, ', global::System.Text.RegularExpressions.RegexOptions.IgnoreCase\).Match\(viaIdentity\)');
-  - where:
-      verb: Get
-      subject: ConnectedClusterUserCredentials
-    remove: true
-  - from: swagger-document
-    where: $.definitions["ConnectedClusterAADProfile"].required
-    # remove: true
-    transform: >-
-        return undefined
 ```

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedKubernetes
-online version: https://docs.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedclusterusercredential
+online version: https://docs.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesusercredential
 schema: 2.0.0
 ---
 
-# Get-AzConnectedClusterUserCredential
+# Get-AzConnectedKubernetesUserCredential
 
 ## SYNOPSIS
 Gets cluster user credentials of the connected cluster with a specified resource group and name.
@@ -14,14 +14,14 @@ Gets cluster user credentials of the connected cluster with a specified resource
 
 ### ListExpanded (Default)
 ```
-Get-AzConnectedClusterUserCredential -ClusterName <String> -ResourceGroupName <String>
+Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
  -AuthenticationMethod <AuthenticationMethod> -ClientProxy [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzConnectedClusterUserCredential -ClusterName <String> -ResourceGroupName <String>
+Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
  -Property <IListClusterUserCredentialProperties> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ Gets cluster user credentials of the connected cluster with a specified resource
 
 ### Example 1: Gets cluster user credentials of the connected cluster with a specified resource group and name.
 ```powershell
-PS C:\> Get-AzConnectedClusterUserCredential -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AuthenticationMethod AAD -ClientProxy
+PS C:\> Get-AzConnectedKubernetesUserCredential -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AuthenticationMethod AAD -ClientProxy
 
 HybridConnectionConfigExpirationTime       : 1635508790
 HybridConnectionConfigHybridConnectionName : microsoft.kubernetes/connectedclusters/8d3bccced1f3ad1d0e01b03e87d1c8f8a312df7ff028e642512a7999542e46fc/1635497990523092736
@@ -49,7 +49,7 @@ Gets cluster user credentials of the connected cluster with a specified resource
 
 ### Example 2: Gets cluster user credentials of the connected cluster with a specified resource group and name.
 ```powershell
-PS C:\> Get-AzConnectedClusterUserCredential -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AuthenticationMethod Token -ClientProxy:$false
+PS C:\> Get-AzConnectedKubernetesUserCredential -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AuthenticationMethod Token -ClientProxy:$false
 
 HybridConnectionConfigExpirationTime       :
 HybridConnectionConfigHybridConnectionName :
@@ -101,7 +101,7 @@ The name of the Kubernetes cluster on which get is called.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named

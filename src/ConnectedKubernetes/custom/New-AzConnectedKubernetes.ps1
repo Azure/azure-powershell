@@ -268,7 +268,7 @@ function New-AzConnectedKubernetes {
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
         #Region pull helm chart
         try {
-             if ($HelmVersion.Contains("v3.7")) {
+             if ($HelmVersion -ge "v3.7") {
                 helm pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
              } else {
                 helm chart pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
@@ -287,7 +287,7 @@ function New-AzConnectedKubernetes {
             $ChartExportPath = Join-Path -Path $Home -ChildPath '.azure' | Join-Path -ChildPath 'AzureArcCharts'
         }
         try {
-             if ($HelmVersion.Contains("v3.7")) {
+             if ($HelmVersion -ge "v3.7") {
                 helm pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
              } else {
                 helm chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
