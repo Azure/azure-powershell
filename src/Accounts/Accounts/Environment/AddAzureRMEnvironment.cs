@@ -117,6 +117,14 @@ namespace Microsoft.Azure.Commands.Profile
         public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 16, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Microsoft Graph Endpoint Resource Id")]
+        public string MicrosoftGraphEndpointResourceId { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 17, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Microsoft Graph Url")]
+        public string MicrosoftGraphUrl { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 16, Mandatory = false, ValueFromPipelineByPropertyName = true,
           HelpMessage = "Enable ADFS authentication by disabling the authority validation")]
         [Alias("OnPremise")]
         public SwitchParameter EnableAdfsAuthentication { get; set; }
@@ -378,6 +386,10 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(AzureSynapseAnalyticsEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId,
                                     nameof(AzureSynapseAnalyticsEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId,
+                                    nameof(MicrosoftGraphEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl,
+                                    nameof(MicrosoftGraphUrl));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });
