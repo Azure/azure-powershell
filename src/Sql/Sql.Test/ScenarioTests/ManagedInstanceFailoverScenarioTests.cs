@@ -20,6 +20,9 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
+    /// <summary>
+    /// These tests depends on the existing resources. Please contact MDCSSQLCustomerExp@microsoft.com for instructions.
+    /// </summary>
     public class ManagedInstanceFailoverScenarioTests : SqlTestsBase
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)

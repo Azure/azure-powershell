@@ -21,6 +21,9 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
+    /// <summary>
+    /// These tests depends on the existing resources. Please contact MDCSSQLCustomerExp@microsoft.com for instructions.
+    /// </summary>
     public class ManagedDatabaseBackupTests : SqlTestsBase
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)

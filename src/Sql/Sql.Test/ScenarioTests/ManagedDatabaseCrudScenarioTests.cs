@@ -22,6 +22,9 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
+    /// <summary>
+    /// These tests depends on the existing resources. Please contact MDCSSQLCustomerExp@microsoft.com for instructions.
+    /// </summary>
     public class ManagedDatabaseCrudScenarioTests : SqlTestsBase
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
@@ -76,9 +79,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-RestoreDeletedManagedDatabase");
         }
 
-        /// <summary>
-        /// This test depends on the existing resources. Please ping MDCSSQLCustomerExp@microsoft.com for instructions.
-        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedDatabaseGeoBackup()
@@ -86,9 +86,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-GetManagedDatabaseGeoBackup");
         }
 
-        /// <summary>
-        /// This test depends on the existing resources. Please ping MDCSSQLCustomerExp@microsoft.com for instructions.
-        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGeoRestoreManagedDatabase()
