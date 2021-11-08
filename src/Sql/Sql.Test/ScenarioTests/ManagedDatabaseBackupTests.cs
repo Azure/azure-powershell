@@ -39,14 +39,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             };
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagedDatabaseShortTermRetentionPolicy()
         {
             RunPowerShellTest("Test-ManagedLiveDatabaseShortTermRetentionPolicy");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagedDeletedDatabaseShortTermRetentionPolicy()
         {

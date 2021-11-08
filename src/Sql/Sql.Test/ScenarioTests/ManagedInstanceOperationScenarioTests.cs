@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -36,14 +35,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             ////base.resourceTypesToIgnoreApiVersion = new string[] { "Microsoft.Sql/managedInstance/operations" };
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedInstanceOperation()
         {
             RunPowerShellTest("Test-GetManagedInstanceOperation");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopManagedInstanceOperation()
         {

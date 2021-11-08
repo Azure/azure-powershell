@@ -957,24 +957,55 @@ function Get-DNSNameBasedOnEnvironment ()
      return ".database.windows.net"
 }
 
+function Get-DefaultManagedInstanceParameters()
+{
+	return @{
+		rg = "CustomerExperienceTeam_RG";
+		location = "westcentralus";
+		subnet = "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Network/virtualNetworks/vnet-mi-tooling/subnets/ManagedInstance";
+		subscriptionId = "8313371e-0879-428e-b1da-6353575a9192";
+		defaultMI = "autobot-managed-instance";
+		defaultMIDB = "autobot-managed-database";
+		sku = "GP_Gen5";
+		vCore = 4;
+		storageSizeInGb = 64;
+		timezone = "Central Europe Standard Time";
+		uami = "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourcegroups/customerexperienceteam_rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/wasd-wcus-identity"
+	}
+}
+
 <#
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql managed instance CRUD tests
 #>
-function Create-ManagedInstanceForTest ($resourceGroup, $subnetId, $vCore)
+function Create-ManagedInstanceForTest ($resourceGroup, $vCore)
 {
-	$managedInstanceName = Get-ManagedInstanceName
-	$credentials = Get-ServerCredential
 	if($vCore -eq $null)
 	{
-		$vCore = 16
+		$vCore = 4
 	}
 
- 	$skuName = "GP_Gen5"
+	if($vCore -gt 8)
+	{
+		throw "Maximum allowed vCores is 8."
+	}
 
-	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
- 			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
- 			-Vcore $vCore -SkuName $skuName -AssignIdentity
+	$managedInstanceName = Get-ManagedInstanceName
+	$credentials = Get-ServerCredential
+	$params = Get-DefaultManagedInstanceParameters
+ 	$skuName = "GP_Gen5"
+	 
+	if($resourceGroup -eq $null)
+	{
+		$resourceGroup = $params.rg
+	}
+	else {
+		$resourceGroup = $resourceGroup.ResourceGroupName
+	}
+
+	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup -Name $managedInstanceName `
+ 			-Location $params.location -AdministratorCredential $credentials -SubnetId $params.subnet `
+ 			-Vcore $vCore -SkuName $skuName
 
 	# The previous command keeps polling until managed instance becomes ready. However, it can happen that the managed instance
 	# becomes ready but the create operation is still in progress. Because of that, we should wait until the operation is completed.
@@ -982,8 +1013,41 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId, $vCore)
 		Start-Sleep -s 30
 	}
 
-
 	return $managedInstance
+}
+
+<#
+	.SYNOPSIS
+	Creates the test environment needed to perform the Sql managed instance CRUD tests
+#>
+function Create-ManagedInstanceForTestAsJob ($resourceGroup, $vCore)
+{
+	if($vCore -eq $null)
+	{
+		$vCore = 4
+	}
+
+	if($vCore -gt 8)
+	{
+		throw "Maximum allowed vCores is 8."
+	}
+
+	$managedInstanceName = Get-ManagedInstanceName
+	$credentials = Get-ServerCredential
+	$params = Get-DefaultManagedInstanceParameters
+ 	$skuName = "GP_Gen5"
+	 
+	if($resourceGroup -eq $null)
+	{
+		$resourceGroup = $params.rg
+	}
+	else {
+		$resourceGroup = $resourceGroup.ResourceGroupName
+	}
+
+	return New-AzSqlInstance -ResourceGroupName $resourceGroup -Name $managedInstanceName `
+ 			-Location $params.location -AdministratorCredential $credentials -SubnetId $params.subnet `
+ 			-Vcore $vCore -SkuName $skuName -AsJob
 }
 
 <#

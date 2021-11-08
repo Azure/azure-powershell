@@ -34,32 +34,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Depends on hardcoded resource")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverManagedInstance()
         {
             RunPowerShellTest("Test-FailoverManagedInstance");
-        }
-
-        [Fact(Skip = "Depends on hardcoded resource")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestFailoverManagedInstancePassThru()
-        {
-            RunPowerShellTest("Test-FailoverManagedInstancePassThru");
-        }
-
-        [Fact(Skip = "Depends on hardcoded resource")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestFailoverManagedInstancePiping()
-        {
-            RunPowerShellTest("Test-FailoverManagedInstancePiping");
-        }
-
-        [Fact(Skip = "Depends on hardcoded resource")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestFailoverManagedInstanceReadableSecondary()
-        {
-            RunPowerShellTest("Test-FailoverManagedInstanceReadableSecondary");
         }
     }
 }

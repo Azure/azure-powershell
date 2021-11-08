@@ -48,42 +48,48 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateManagedDatabase");
         }
 
-        [Fact(Skip = "Skip due to bug in ignore api version plus long setup time for managed instance")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedDatabase()
         {
             RunPowerShellTest("Test-GetManagedDatabase");
         }
 
-        [Fact(Skip = "Skip due to long setup time for managed instance")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveManagedDatabase()
         {
             RunPowerShellTest("Test-RemoveManagedDatabase");
         }
 
-        [Fact(Skip = "Skip due to long setup time for managed instance")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreManagedDatabase()
         {
             RunPowerShellTest("Test-RestoreManagedDatabase");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedManagedDatabase()
         {
             RunPowerShellTest("Test-RestoreDeletedManagedDatabase");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        /// <summary>
+        /// This test depends on the existing resources. Please ping MDCSSQLCustomerExp@microsoft.com for instructions.
+        /// </summary>
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedDatabaseGeoBackup()
         {
             RunPowerShellTest("Test-GetManagedDatabaseGeoBackup");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        /// <summary>
+        /// This test depends on the existing resources. Please ping MDCSSQLCustomerExp@microsoft.com for instructions.
+        /// </summary>
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGeoRestoreManagedDatabase()
         {

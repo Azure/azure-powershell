@@ -20,14 +20,7 @@ function Test-ManagedLiveDatabaseShortTermRetentionPolicy
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg
 
 	# Retention shouldn't be under 7 days or over 35 days
 	$invalidRetention = 45
@@ -96,14 +89,7 @@ function Test-ManagedDeletedDatabaseShortTermRetentionPolicy
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg
 
 	# Retention shouldn't be under 7 days or over 35 days
 	$invalidRetention = 45
