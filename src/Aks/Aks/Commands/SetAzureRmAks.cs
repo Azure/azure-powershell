@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Commands.Aks
                             cluster.KubernetesVersion = KubernetesVersion;
                         }
                         bool upgradeAllNode = false;
-                        if (cluster.MaxAgentPools < 8 || !AllAgentPoolVirtualMachineScaleSets)
+                        if (cluster.MaxAgentPools < 8 || !allAgentPoolVirtualMachineScaleSets)
                         {
                             if (this.IsParameterBound(c => c.ControlPlaneOnly))
                             {
