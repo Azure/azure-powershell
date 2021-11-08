@@ -22,8 +22,6 @@ using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.ContainerService;

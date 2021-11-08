@@ -25,8 +25,6 @@ using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -237,16 +235,11 @@ namespace Microsoft.Azure.Commands.Aks
 
         private AcsServicePrincipal BuildServicePrincipal(string name, string clientSecret)
         {
-            var pwCreds = new PasswordCredential(
-                value: clientSecret,
-                startDate: DateTime.UtcNow,
-                endDate: DateTime.UtcNow.AddYears(2));
-
             var keyCredentials = new List<MicrosoftGraphKeyCredential> {
                     new MicrosoftGraphKeyCredential {
-                        EndDateTime = pwCreds.EndDate,
-                        StartDateTime = pwCreds.StartDate,
-                        Key = pwCreds.Value,
+                        EndDateTime = DateTime.UtcNow.AddYears(2),
+                        StartDateTime = DateTime.UtcNow,
+                        Key = clientSecret,
                         Type = "Symmetric",
                         Usage = "Verify"
                     }
