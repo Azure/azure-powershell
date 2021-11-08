@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.20.0
 * Added cmdlets to support gallery applications and versions:
     - Get-AzGalleryApplication
     - Get-AzGalleryApplicationVersion
