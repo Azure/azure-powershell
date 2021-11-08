@@ -39,7 +39,8 @@ using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -241,21 +242,32 @@ namespace Microsoft.Azure.Commands.Aks
                 startDate: DateTime.UtcNow,
                 endDate: DateTime.UtcNow.AddYears(2));
 
-            var app = GraphClient.Applications.Create(new ApplicationCreateParameters(
-                false,
-                name,
-                new List<string> { },
-                null,
-                passwordCredentials: new List<PasswordCredential> { pwCreds }));
+            var keyCredentials = new List<MicrosoftGraphKeyCredential> {
+                    new MicrosoftGraphKeyCredential {
+                        EndDateTime = pwCreds.EndDate,
+                        StartDateTime = pwCreds.StartDate,
+                        Key = pwCreds.Value,
+                        Type = "Symmetric",
+                        Usage = "Verify"
+                    }
+            };
+            var appCreateParameters = new MicrosoftGraphApplication
+            {
+                DisplayName = name,
+                KeyCredentials = keyCredentials
+            };
+            var app = GraphClient.Applications.CreateApplication(appCreateParameters);
 
-            ServicePrincipal sp = null;
+            MicrosoftGraphServicePrincipal sp = null;
             var success = RetryAction(() =>
             {
-                var spCreateParams = new ServicePrincipalCreateParameters(
-                                app.AppId,
-                                true,
-                                passwordCredentials: new List<PasswordCredential> { pwCreds });
-                sp = GraphClient.ServicePrincipals.Create(spCreateParams);
+                var servicePrincipalCreateParams = new MicrosoftGraphServicePrincipal
+                {
+                    AppId = app.AppId,
+                    AccountEnabled = true,
+                    KeyCredentials = keyCredentials
+                };
+                sp = GraphClient.ServicePrincipals.CreateServicePrincipal(servicePrincipalCreateParams);
             }, Resources.ServicePrincipalCreate);
 
             if (!success)
@@ -265,8 +277,8 @@ namespace Microsoft.Azure.Commands.Aks
                     desensitizedMessage: Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
             }
 
-            AddSubscriptionRoleAssignment("Contributor", sp.ObjectId);
-            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = app.ObjectId };
+            AddSubscriptionRoleAssignment("Contributor", sp.Id);
+            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = app.AppId };
         }
 
         protected RoleAssignment GetRoleAssignmentWithRoleDefinitionId(string roleDefinitionId)
@@ -315,10 +327,8 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 try
                 {
-                    //Please note string.Equals doesn't work here, while == works.
-                    var odataQuery = new ODataQuery<ServicePrincipal>(sp => sp.AppId == acsServicePrincipal.SpId);
-                    var servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery).First();
-                    spObjectId = servicePrincipal.ObjectId;
+                    var servicePrincipal = GraphClient.ServicePrincipals.GetServicePrincipal(acsServicePrincipal.SpId);
+                    spObjectId = servicePrincipal.Id;
                 }
                 catch(Exception ex)
                 {
