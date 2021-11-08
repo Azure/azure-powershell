@@ -433,7 +433,7 @@
     <value>Legacy clusters do not support control plane only upgrade. All node pools will be upgraded to {0} as well. Continue?</value>
   </data>
   <data name="ConfirmNotControlPlaneOnly" xml:space="preserve">
-    <value>Since control-plane-only argument is not specified, this will upgrade the control plane AND all nodepools to version {0}. Continue?</value>
+    <value>Since control-plane-only argument is not specified, this will upgrade the control plane AND all node pools to version {0}. Continue?</value>
   </data>
   <data name="ConfirmOnlyUpgradeNodeVersion" xml:space="preserve">
     <value>This node image upgrade operation will run across every node pool in the cluster and might take a while, do you wish to continue?</value>
