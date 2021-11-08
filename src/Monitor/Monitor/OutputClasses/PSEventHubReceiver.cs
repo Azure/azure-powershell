@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.SubscriptionId = receiver.SubscriptionId;
             this.EventHubNameSpace = receiver.EventHubNameSpace;
             this.EventHubName = receiver.EventHubName;
-            this.UseCommonAlertSchema = (bool)receiver.UseCommonAlertSchema;
+            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema.HasValue ? receiver.UseCommonAlertSchema.Value : false;
         }
     }
 }
