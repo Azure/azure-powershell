@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `ResourceGroupName` in `PSKubernetesCluster`. [#15802]
 
 ## Version 2.5.0
 * Added support for new parameters `NetworkPolicy`, `PodCidr`, `ServiceCidr`, `DnsServiceIP`, `DockerBridgeCidr`, `NodePoolLabel`, `AksCustomHeader` in `New-AzAksCluster`. [#13795]
