@@ -15,8 +15,7 @@ Executes a command for a specific container instance in a specified resource gro
 ```
 Invoke-AzContainerInstanceCommand -ContainerGroupName <String> -ContainerName <String>
  -ResourceGroupName <String> -Command <String> [-SubscriptionId <String>] [-TerminalSizeCol <Int32>]
- [-TerminalSizeRow <Int32>] [-DefaultProfile <PSObject>] [-PassResult] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TerminalSizeRow <Int32>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,8 +96,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassResult
-Returns true when the command succeeds
+### -PassThru
+Returns last execution result when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

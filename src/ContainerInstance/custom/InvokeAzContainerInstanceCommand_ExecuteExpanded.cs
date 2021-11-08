@@ -63,12 +63,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
                     var rcvBuffer = WebSocket.CreateClientBuffer(4096, 4096);
                     WebSocketReceiveResult webSocketReceiveResult = await socket.ReceiveAsync(rcvBuffer, this._cancellationTokenSource.Token);
 
-                    allBytes.AddRange(new List<byte>(rcvBuffer).GetRange(0, webSocketReceiveResult.Count));
-                    if (allBytes.Count > 0 && webSocketReceiveResult.EndOfMessage)
+                    if(null != webSocketReceiveResult)
                     {
-                        result = Encoding.UTF8.GetString(allBytes.ToArray(), 0, allBytes.Count);
-                        Console.Write(result);
-                        allBytes.Clear();
+                        allBytes.AddRange(new List<byte>(rcvBuffer).GetRange(0, webSocketReceiveResult.Count));
+                        if (allBytes.Count > 0 && webSocketReceiveResult.EndOfMessage)
+                        {
+                            result = Encoding.UTF8.GetString(allBytes.ToArray(), 0, allBytes.Count);
+                            Console.Write(result);
+                            allBytes.Clear();
+                        }
                     }
                 }
 
@@ -82,6 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
             return Task.Factory.StartNew(async () =>
             {
                 StringBuilder input = new StringBuilder();
+                // Loop until input is entered.
                 while (socket.State == WebSocketState.Open && !this._cancellationTokenSource.Token.IsCancellationRequested)
                 {
                     if (Console.KeyAvailable)
@@ -94,6 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
                             input.Clear();
                         }
                     }
+                    System.Threading.Thread.Sleep(250); 
                 }
 
             }, this._cancellationTokenSource.Token);
