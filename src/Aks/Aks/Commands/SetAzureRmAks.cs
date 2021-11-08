@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.Aks
                             throw new AzPSArgumentException(Resources.UpdateKubernetesVersionAndNodeImageOnlyConflict, "KubernetesVersion");
                         }
 
-                        bool AllAgentPoolVirtualMachineScaleSets = cluster.AgentPoolProfiles.All(c => c.Type.ToLower().Equals("virtualmachinescalesets"));
+                        bool allAgentPoolVirtualMachineScaleSets = cluster.AgentPoolProfiles.All(c => c.Type.ToLower().Equals("virtualmachinescalesets"));
                         if (this.IsParameterBound(c => c.NodeImageOnly))
                         {
                             if (!ShouldProcess(Resources.ConfirmOnlyUpgradeNodeVersion, ""))
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.Aks
 
                             foreach (var agentPoolProfile in cluster.AgentPoolProfiles)
                             {
-                                if (!AllAgentPoolVirtualMachineScaleSets)
+                                if (!allAgentPoolVirtualMachineScaleSets)
                                 {
                                     throw new AzPSApplicationException(Resources.NotUsingVirtualMachineScaleSets);
                                 }
