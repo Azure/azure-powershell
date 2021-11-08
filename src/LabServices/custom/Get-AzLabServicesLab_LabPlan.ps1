@@ -98,10 +98,18 @@ function Get-AzLabServicesLab_LabPlan {
         $labPlanId = $LabPlan.Id
         $PSBoundParameters.Remove("LabPlan") > $null
         $PSBoundParameters.Remove("LabPlanName") > $null
-        
+                
         if ($PSBoundParameters.ContainsKey('Name')) {            
-            # If there is a lab name do a get for the specific lab.
-            return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
+            # If there is a lab name do a get for the specific lab or check for wildcard.
+            if ($(& $PSScriptRoot\Utilities\CheckForWildcards.ps1 -ResourceId $PSBoundParameters.Name))
+            {
+                $currentLab = $PSBoundParameters.Name
+                $PSBoundParameters.Remove('Name') > $null
+
+                return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters |  Where-Object { $_.Name -like $currentLab }
+            } else {
+                return Az.LabServices.internal\Get-AzLabServicesLab @PSBoundParameters
+            }
         } else {
             # Get all labs for the lab plan.
             $PSBoundParameters.Remove("Filter") > $null
