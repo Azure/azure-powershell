@@ -50,15 +50,16 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
+branch: 6d7653ffd37cdc781e16202306567e355b45ebf8
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/6d7653ffd37cdc781e16202306567e355b45ebf8/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Images.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/6d7653ffd37cdc781e16202306567e355b45ebf8/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/LabPlans.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/6d7653ffd37cdc781e16202306567e355b45ebf8/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/LabServices.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/6d7653ffd37cdc781e16202306567e355b45ebf8/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Labs.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/6d7653ffd37cdc781e16202306567e355b45ebf8/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/OperationResults.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/6d7653ffd37cdc781e16202306567e355b45ebf8/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Schedules.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/6d7653ffd37cdc781e16202306567e355b45ebf8/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Users.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/6d7653ffd37cdc781e16202306567e355b45ebf8/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/VirtualMachines.json
+  - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Images.json
+  - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/LabPlans.json
+  - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/LabServices.json
+  - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Labs.json
+  - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/OperationResults.json
+  - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Schedules.json
+  - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Users.json
+  - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/VirtualMachines.json
 module-version: 0.1.0
 title: LabServices
 subject-prefix: $(service-name)
