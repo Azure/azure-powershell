@@ -133,6 +133,11 @@ namespace Microsoft.Azure.Commands.Profile
         public string GraphAccessToken { get; set; }
 
         [Parameter(ParameterSetName = AccessTokenParameterSet,
+                   Mandatory = false, HelpMessage = "AccessToken for Microsoft Graph Service")]
+        [ValidateNotNullOrEmpty]
+        public string MicrosoftGraphAccessToken { get; set; }
+
+        [Parameter(ParameterSetName = AccessTokenParameterSet,
                    Mandatory = false, HelpMessage = "AccessToken for KeyVault Service")]
         [ValidateNotNullOrEmpty]
         public string KeyVaultAccessToken { get; set; }
@@ -329,6 +334,7 @@ namespace Microsoft.Azure.Commands.Profile
                     azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
                     azureAccount.SetProperty(AzureAccount.Property.GraphAccessToken, GraphAccessToken);
                     azureAccount.SetProperty(AzureAccount.Property.KeyVaultAccessToken, KeyVaultAccessToken);
+                    azureAccount.SetProperty(AzureAccount.Property.MicrosoftGraphAccessToken, MicrosoftGraphAccessToken);
                     break;
                 case ServicePrincipalCertificateParameterSet:
                 case ServicePrincipalCertificateFileParameterSet:
