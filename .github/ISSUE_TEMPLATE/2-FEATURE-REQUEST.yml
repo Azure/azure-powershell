@@ -1,0 +1,26 @@
+name: ✨ Feature request
+description: Suggest a new feature or improvement
+title: '[Feature]: '
+labels: [feature-request, needs-triage]
+
+body:
+- type: markdown
+  attributes:
+    value: >
+      Thanks for reporting.
+      
+      - Please search the existing feature request to see if there has been a similar issue filed.
+- type: textarea
+  attributes:
+    label: Description of the new feature
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Proposed implementation details (optional)
+  validations:
+    required: false
+- type: markdown
+  attributes:
+    value: >
+      The Azure PowerShell team is listening, please let us know how we are doing: https://aka.ms/azpssurvey?Q_CHL=REPO.
