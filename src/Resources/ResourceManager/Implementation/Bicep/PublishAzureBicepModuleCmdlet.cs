@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
         [ValidateNotNullOrEmpty]
         public string Target { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage="Indicates that this cmdlet returns a boolean result. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
