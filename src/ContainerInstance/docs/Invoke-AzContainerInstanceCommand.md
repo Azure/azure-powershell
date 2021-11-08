@@ -15,7 +15,8 @@ Executes a command for a specific container instance in a specified resource gro
 ```
 Invoke-AzContainerInstanceCommand -ContainerGroupName <String> -ContainerName <String>
  -ResourceGroupName <String> -Command <String> [-SubscriptionId <String>] [-TerminalSizeCol <Int32>]
- [-TerminalSizeRow <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TerminalSizeRow <Int32>] [-DefaultProfile <PSObject>] [-PassResult] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,6 +97,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassResult
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -137,7 +153,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: $host.UI.RawUI.WindowSize.Width
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -152,7 +168,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: $host.UI.RawUI.WindowSize.Height
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -195,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerExecResponse
+### System.String
 
 ## NOTES
 

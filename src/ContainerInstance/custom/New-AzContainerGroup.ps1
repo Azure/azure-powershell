@@ -388,21 +388,12 @@ param(
 )
 process {
     try {
-      if($PSBoundParameters.ContainsKey("ImageRegistryCredential")){
-        $null = $PSBoundParameters.Add("ImageRegistryCredentials", $ImageRegistryCredential)
-        $null = $PSBoundParameters.Remove("ImageRegistryCredential")        
-      }
 
       if($PSBoundParameters.ContainsKey("IPAddressType") -and !$PSBoundParameters.ContainsKey("IPAddressPort"))
       {
         $null = $PSBoundParameters.Add("IPAddressPort", $Container.Port)
       }
       
-      if(!$PSBoundParameters.ContainsKey("OSType"))
-      {
-        $null = $PSBoundParameters.Add("OSType", "Linux")
-      }
-
       if($PSBoundParameters.ContainsKey("IdentityUserAssignedIdentity"))
       {
         $IdentityUserAssignedIdentityHashTable = @{}

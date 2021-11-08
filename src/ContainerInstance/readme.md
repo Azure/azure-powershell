@@ -73,23 +73,51 @@ directive:
       subject: ContainerLog
     set:
       subject: Log
-  # 
+  # Rename Add-AzContainerInstanceContainer -> Add-AzContainerInstanceOutput
   - where:
       subject: Container
     set:
       subject: Output    
+  # Rename Invoke-AzContainerInstanceExecuteContainerCommand -> Invoke-AzContainerInstanceCommand
   - where:
       subject: ExecuteContainerCommand
     set:
       subject: Command
+  # Shorten Get-AzContainerInstanceLocation(.*) -> Get-AzContainerInstance(.*)
   - where:
       subject: (^Location)(.*) 
     set:
       subject: $2
+  # ImageRegistryCredentials -> ImageRegistryCredential
+  - where:
+      parameter-name: ImageRegistryCredentials
+    set:
+      parameter-name: ImageRegistryCredential
+  # Sets OSType equal Linux by default
+  - where:
+      parameter-name: OSType
+    set:
+      default:
+        description: Sets OSType equal Linux by default.
+        script: 'Linux'
+  # 1. IPAddressPort equals $Container.Port
+  # 2. IdentityUserAssignedIdentity <string[]> -> IdentityUserAssignedIdentity <HashTable>
+  # 3. Subnet <string> -> SubnetId <ContainerGroupSubnetId>
   - where:
       verb: New
       subject: ContainerGroup
     hide: true
+  - where:
+      parameter-name: TerminalSizeCol
+    set:
+      default:
+        script: '$host.UI.RawUI.WindowSize.Width'
+  - where:
+      parameter-name: TerminalSizeRow
+    set:
+      default:
+        script: '$host.UI.RawUI.WindowSize.Height'
+  # Command optional -> required
   - where:
       verb: Invoke
       subject: Command
@@ -123,5 +151,4 @@ directive:
             }
           }
         }
-
 ```

@@ -5,15 +5,24 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
 {
-    using static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Extensions;
     using System;
+    using System.Collections.Generic;
     using System.Net.WebSockets;
     using System.Text;
-    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public partial class InvokeAzContainerInstanceCommand_ExecuteExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.IEventListener
     {
+        /// <summary>
+        /// When specified, forces the cmdlet returns last execution result when the command succeeds
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
+
+        private System.Net.WebSockets.ClientWebSocket socket;
+
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
@@ -23,36 +32,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
-
         partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerExecResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow)
         {
             var containerExecResponse = response.ConfigureAwait(false).GetAwaiter().GetResult();
-            var socket = new System.Net.WebSockets.ClientWebSocket();
-            var uri = new System.Uri(containerExecResponse.WebSocketUri);
-            var token = ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.IEventListener)this).Token;
-
+            socket = new System.Net.WebSockets.ClientWebSocket();
             try
             {
-                socket.ConnectAsync(uri, token).ConfigureAwait(false).GetAwaiter().GetResult();
-                // Send Password
-                socket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(containerExecResponse.Password)), WebSocketMessageType.Text, false, token).ConfigureAwait(false).GetAwaiter().GetResult();
+                // Connect and send password
+                socket.ConnectAsync(new System.Uri(containerExecResponse.WebSocketUri), _cancellationTokenSource.Token).ConfigureAwait(false).GetAwaiter().GetResult();
+                socket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(containerExecResponse.Password)), WebSocketMessageType.Text, true, _cancellationTokenSource.Token).ConfigureAwait(false).GetAwaiter().GetResult();
 
-                var allBytes = new List<byte>();
-                var rcvBuffer = WebSocket.CreateClientBuffer(4096, 4096);
-                while (socket.State == WebSocketState.Open)
-                {
-                    WebSocketReceiveResult webSocketReceiveResult = socket.ReceiveAsync(rcvBuffer, token).ConfigureAwait(false).GetAwaiter().GetResult();
-                    allBytes.AddRange(new List<byte>(rcvBuffer).GetRange(0, webSocketReceiveResult.Count));
-                }
-
-                var result = Encoding.UTF8.GetString(allBytes.ToArray(), 0, allBytes.Count);
-                WriteObject(result);
+                var receiver = PullResponse();
+                var sender = PushCommand();
+                Task.WaitAll(sender, receiver);
             }
             finally
             {
-                socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Done", token).ConfigureAwait(false).GetAwaiter().GetResult();
                 returnNow = global::System.Threading.Tasks.Task.FromResult(true);
             }
+        }
+
+        private Task PullResponse()
+        {
+            return Task.Factory.StartNew(async () =>
+            {
+                string result = string.Empty;
+                var allBytes = new List<byte>();
+                while (WebSocketState.Open == socket.State && !this._cancellationTokenSource.Token.IsCancellationRequested)
+                {
+                    var rcvBuffer = WebSocket.CreateClientBuffer(4096, 4096);
+                    WebSocketReceiveResult webSocketReceiveResult = await socket.ReceiveAsync(rcvBuffer, this._cancellationTokenSource.Token);
+
+                    allBytes.AddRange(new List<byte>(rcvBuffer).GetRange(0, webSocketReceiveResult.Count));
+                    if (allBytes.Count > 0 && webSocketReceiveResult.EndOfMessage)
+                    {
+                        result = Encoding.UTF8.GetString(allBytes.ToArray(), 0, allBytes.Count);
+                        Console.Write(result);
+                        allBytes.Clear();
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(result) && PassThru.ToBool()) { WriteObject(result.TrimEnd()); }
+
+            }, this._cancellationTokenSource.Token);
+        }
+
+        private Task PushCommand()
+        {
+            return Task.Factory.StartNew(async () =>
+            {
+                StringBuilder input = new StringBuilder();
+                while (socket.State == WebSocketState.Open && !this._cancellationTokenSource.Token.IsCancellationRequested)
+                {
+                    if (Console.KeyAvailable)
+                    {
+                        var key = Console.ReadKey(false);
+                        input.Append(key.KeyChar);
+                        if (key.Key == ConsoleKey.Enter)
+                        {
+                            _ = socket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(input.ToString())), WebSocketMessageType.Text, true, this._cancellationTokenSource.Token);
+                            input.Clear();
+                        }
+                    }
+                }
+
+            }, this._cancellationTokenSource.Token);
+
         }
     }
 }
