@@ -80,9 +80,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [PSDefaultValue(Help = HelpMessages.DefaultResultLimit, Value = SynapseConstants.DefaultResultLimit)]
         public int ResultLimit { get; set; } = SynapseConstants.DefaultResultLimit;
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.FolderName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.SqlFolderPath)]
         [ValidateNotNullOrEmpty]
-        public string FolderName { get; set; }
+        [Alias("FolderName")]
+        public string FolderPath { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.Description)]
         [ValidateNotNullOrEmpty]
@@ -143,10 +144,10 @@ namespace Microsoft.Azure.Commands.Synapse
 
                 SqlScript sqlscript = new SqlScript(content);
                 sqlscript.Type = SqlScriptType.SqlQuery;
-                if (this.IsParameterBound(c => c.FolderName)) 
+                if (this.IsParameterBound(c => c.FolderPath)) 
                 {
                     SqlScriptFolder folder = new SqlScriptFolder();
-                    folder.Name = FolderName;
+                    folder.Name = FolderPath;
                     sqlscript.Folder = folder;
                 }
                 if (this.IsParameterBound(c => c.Description)) 

@@ -21,6 +21,23 @@
 -->
 ## Upcoming Release
 
+## Version 4.20.0
+* Added cmdlets to support gallery applications and versions:
+    - Get-AzGalleryApplication
+    - Get-AzGalleryApplicationVersion
+    - New-AzGalleryApplication
+    - New-AzGalleryApplicationVersion
+    - Remove-AzGalleryApplication
+    - Remove-AzGalleryApplicationVersion
+    - Update-AzGalleryApplication
+    - Update-AzGalleryApplicationVersion
+
+## Version 4.19.0
+* Update-AzVM will update ApplicationProfile.
+* Added new cmdlets:
+    - Add-AzVmssRunCommand
+    - Remove-AzVmssRunCommand
+
 ## Version 4.18.0
 * Added cmdlets for adding VMGalleryApplication property to VM/VMSS
     - New-AzVmGalleryApplication

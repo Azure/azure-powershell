@@ -43,6 +43,25 @@ The command passes that job to the current cmdlet by using the pipeline operator
 The command deletes that job.
 Because the command includes the *Force* parameter, it does not prompt you for confirmation.
 
+### Example 3: Loop through all jobs and delete
+```
+# Get context
+$accountname = "PUT YOUR AZURE BATCH ACCOUNT NAME HERE"
+$batchcontext = Get-AzBatchAccount -AccountName $accountname
+
+# Get jobs
+$jobs = Get-AzBatchJob -BatchContext $batchcontext
+
+# Loop through jobs
+foreach ($element in $jobs) {
+	Write-Host "Processing "$element.Id
+	Remove-AzBatchJob -Id $element.Id -BatchContext $batchcontext -Force -Confirm:$false
+}
+```
+
+The commands above Remove all of the jobs for a given Azure Batch account.
+Because the command includes the *Force* parameter, it does not prompt you for confirmation.
+
 ## PARAMETERS
 
 ### -BatchContext
