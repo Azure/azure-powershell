@@ -1,34 +1,34 @@
 ---
 external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/remove-vmazstackhciattestation
+online version: https://docs.microsoft.com/powershell/module/az.stackhci/remove-AzStackHCIVMAttestation
 schema: 2.0.0
 ---
 
-# Remove-VMAzStackHCIAttestation
+# Remove-AzStackHCIVMAttestation
 
 ## SYNOPSIS
-Remove-VMAzStackHCIAttestation removes guests from AzureStack HCI IMDS Attestation.
+Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.
 
 ## SYNTAX
 
 ### VMName (Default)
 ```
-Remove-VMAzStackHCIAttestation [-VMName] <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VMObject
 ```
-Remove-VMAzStackHCIAttestation [-VM] <Object[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation [-VM] <Object[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveAll
 ```
-Remove-VMAzStackHCIAttestation [-RemoveAll] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation [-RemoveAll] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove-VMAzStackHCIAttestation removes guests from AzureStack HCI IMDS Attestation.
+Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.
 
 ## EXAMPLES
 
@@ -37,14 +37,14 @@ Remove-VMAzStackHCIAttestation removes guests from AzureStack HCI IMDS Attestati
 Removing all guests on current node
 ```
 
-C:\PS\>Remove-VMAzStackHCIAttestation -RemoveVM
+C:\PS\>Remove-AzStackHCIVMAttestation -RemoveVM
 
 ### EXAMPLE 2
 ```
 Invoking from the management node/WAC
 ```
 
-C:\PS\>Invoke-Command -ScriptBlock {Remove-VMAzStackHCIAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
+C:\PS\>Invoke-Command -ScriptBlock {Remove-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
 
 ## PARAMETERS
 
@@ -52,7 +52,7 @@ C:\PS\>Invoke-Command -ScriptBlock {Remove-VMAzStackHCIAttestation -VMName "gues
 No confirmations.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Specifies a switch that will remove all guest VMs from Attestation on the current node
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: RemoveAll
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Specifies an array of VM objects from Get-VM.
 
 ```yaml
-Type: Object[]
+Type: System.Object[]
 Parameter Sets: VMObject
 Aliases:
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 Specifies an array of guest VMs to enable.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: VMName
 Aliases:
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -128,7 +128,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

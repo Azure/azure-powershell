@@ -1,47 +1,47 @@
 ---
 external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/add-vmazstackhciattestation
+online version: https://docs.microsoft.com/powershell/module/az.stackhci/add-AzStackHCIVMAttestation
 schema: 2.0.0
 ---
 
-# Add-VMAzStackHCIAttestation
+# Add-AzStackHCIVMAttestation
 
 ## SYNOPSIS
-Add-VMAzStackHCIAttestation configures guests for AzureStack HCI IMDS Attestation.
+Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestation.
 
 ## SYNTAX
 
 ### VMName (Default)
 ```
-Add-VMAzStackHCIAttestation [-VMName] <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VMObject
 ```
-Add-VMAzStackHCIAttestation [-VM] <Object[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzStackHCIVMAttestation [-VM] <Object[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddAll
 ```
-Add-VMAzStackHCIAttestation [-AddAll] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzStackHCIVMAttestation [-AddAll] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Add-VMAzStackHCIAttestation configures guests for AzureStack HCI IMDS Attestation.
+Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestation.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```powershell
-C:\PS\>Add-VMAzStackHCIAttestation -AddAll
+C:\PS\>Add-AzStackHCIVMAttestation -AddAll
 ```
 
 Adding all guests on current node
 
 ### EXAMPLE 2
 ```powershell
-C:\PS\>Invoke-Command -ScriptBlock {Add-VMAzStackHCIAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
+C:\PS\>Invoke-Command -ScriptBlock {Add-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
 ```
 
 Invoking from the management node/WAC
@@ -52,7 +52,7 @@ Invoking from the management node/WAC
 Specifies a switch that will add all current guest VMs on host to IMDS Attestation on the current node.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AddAll
 Aliases:
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 No Confirmation
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Specifies an array of VM objects from Get-VM.
 
 ```yaml
-Type: Object[]
+Type: System.Object[]
 Parameter Sets: VMObject
 Aliases:
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 Specifies an array of guest VMs to enable.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: VMName
 Aliases:
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -128,7 +128,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

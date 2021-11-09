@@ -94,6 +94,7 @@ $SetProgressWarningWSSD = "Windows Server Subscription will no longer activate y
 $SecondaryProgressBarId = 2
 $EnableAzsHciImdsActivity = "Enable Azure Stack HCI IMDS Attestation..."
 $ConfirmEnableImds = "Enabling IMDS Attestation configures your cluster to use workloads that are exclusively available on Azure."
+$ConfirmDisableImds = "Disabling IMDS Attestation will remove the ability for some exclusive Azure workloads to function."
 $ImdsClusterNotRegistered = "The cluster is not registered with Azure. Register the cluster using Register-AzStackHCI and then try again."
 $DisableAzsHciImdsActivity = "Disable Azure Stack HCI IMDS Attestation..."
 $AddAzsHciImdsActivity = "Add Virtual Machines to Azure Stack HCI IMDS Attestation..."
@@ -106,7 +107,7 @@ $ConfiguringClusterNode = "Configuring AzureStack HCI IMDS Attestation on {0}"
 $DisablingIMDSOnNode = "Disabling AzureStack HCI IMDS Attestation on {0}"
 $RemovingVmImdsFromNode = "Removing AzureStack HCI IMDS Attestation from guests on {0}"
 $AttestationNotEnabled = "The IMDS Service on {0} needs to be activated. This is required before guests can be configured. Run Enable-AzStackHCIAttestation cmdlet."
-$ErrorAddingAllVMs = "Did not add all guests. Try running Add-VMAzStackHCIAttestation on each node manually."
+$ErrorAddingAllVMs = "Did not add all guests. Try running Add-AzStackHCIVMAttestation on each node manually."
 #endregion
 
 #region Constants
@@ -3062,7 +3063,7 @@ param(
     .Description
     Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster to enable or disable features.
     .PARAMETER ComputerName
-    Specifies one of the cluster node in on-premise cluster that is being registered to Azure.
+    Specifies one of the cluster node in on-premise cluster that is registered to Azure.
     .PARAMETER Credential
     Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
     .PARAMETER ResourceId
@@ -3099,8 +3100,9 @@ param(
 #>
 function Set-AzStackHCI{
 [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
+[OutputType([PSCustomObject])]
 param(
-    [Parameter(Mandatory = $false)]
+    [Parameter(Position = 0, Mandatory = $false)]
     [string] $ComputerName,
     [Parameter(Mandatory = $false)]
     [System.Management.Automation.PSCredential] $Credential,
@@ -3600,6 +3602,9 @@ $TemplateVmImdsParams = @{
     .PARAMETER AddVM
     After enabling each cluster node for Attestation, add all guests on each node.
 
+    .PARAMETER Force
+    No confirmations.
+
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
     Cluster:     Name of cluster
@@ -3611,11 +3616,12 @@ $TemplateVmImdsParams = @{
     C:\PS>Enable-AzStackHCIAttestation -AddVM
 
     .EXAMPLE
-    Invoking from the management node/WAC
-    C:\PS>Enable-AzStackHCIAttestation -VMName "guest1", "guest2" -ComputerName "host1"
+    Invoking from WAC/Management node and adding all existing VMs cluster-wide
+    C:\PS>Enable-AzStackHCIAttestation -ComputerName "host1" -AddVM
 #>
 function Enable-AzStackHCIAttestation{
     [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([PSCustomObject])]
 param(
     [Parameter(Position = 0, Mandatory = $false)]
     [string] $ComputerName,
@@ -3833,7 +3839,7 @@ param(
                     Write-Information "Adding VMs to IMDS Attestation on $NodeName"
                     $ConfiguringClusterNode -f $NodeName | % { Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete }
 
-                    Invoke-Command @SessionParams -ScriptBlock { Add-VMAzStackHCIAttestation -AddAll } | Out-Null
+                    Invoke-Command @SessionParams -ScriptBlock { Add-AzStackHCIVMAttestation -AddAll } | Out-Null
                 }
                 catch 
                 {
@@ -3866,6 +3872,9 @@ param(
     .PARAMETER Credential
     Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
 
+    .PARAMETER Force
+    No confirmation.
+
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
     Cluster:     Name of cluster
@@ -3874,14 +3883,15 @@ param(
 
     .EXAMPLE
     Remove all guests from IMDS Attestation before disabling on cluster nodes.
-    C:\PS>Disable-AzStackHCIAttestation -Remove
+    C:\PS>Disable-AzStackHCIAttestation -RemoveVM
 
     .EXAMPLE
     Invoking from the management node/WAC
     C:\PS>Disable-AzStackHCIAttestation -ComputerName "host1"
 #>
 function Disable-AzStackHCIAttestation{
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([PSCustomObject])]
 param(
     [Parameter(Position = 0, Mandatory = $false)]
     [string] $ComputerName,
@@ -3890,7 +3900,10 @@ param(
     [System.Management.Automation.PSCredential] $Credential = [System.Management.Automation.PSCredential]::Empty,
 
     [Parameter(Mandatory = $false)]
-    [switch] $RemoveVM
+    [switch] $RemoveVM,
+
+    [Parameter(Mandatory = $false)]
+    [switch] $Force
     )
 
     begin
@@ -3938,7 +3951,7 @@ param(
             $percentComplete = 5
             Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $DiscoveringClusterNodes -percentcomplete $percentComplete
 
-            
+            $ClusterName  = Invoke-Command @SessionParams -ScriptBlock { (Get-Cluster).Name }            
             $ClusterNodes = Invoke-Command @SessionParams -ScriptBlock { Get-ClusterNode }
 
             foreach ($node in $ClusterNodes)
@@ -3955,16 +3968,16 @@ param(
 
                 if (!$RemoveVM)
                 {
-                    $guests = Invoke-Command @SessionParams -ScriptBlock { Get-VMAzStackHCIAttestation -Local }
+                    $guests = Invoke-Command @SessionParams -ScriptBlock { Get-AzStackHCIVMAttestation -Local }
                     if (($guests | Measure-Object).Count -ne 0)
                     {
-                        throw ("There are still guests connected to IMDS Attestation. Use switch -RemoveVM or Remove-VMAzStackHCIAttestation cmdlet.")
+                        throw ("There are still guests connected to IMDS Attestation. Use switch -RemoveVM or Remove-AzStackHCIVMAttestation cmdlet.")
                     }
                 }
                 else 
                 {
                     $RemovingVmImdsFromNode -f $node.name | % {Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete}
-                    $removedGuests = Invoke-Command @SessionParams -ScriptBlock { Remove-VMAzStackHCIAttestation -RemoveAll }
+                    $removedGuests = Invoke-Command @SessionParams -ScriptBlock { Remove-AzStackHCIVMAttestation -RemoveAll }
                 }
             }
 
@@ -3985,47 +3998,50 @@ param(
 
     Process
     {
-        foreach ($node in $ClusterNodes)
+        if($Force -or $PSCmdlet.ShouldContinue($ConfirmDisableImds, "Disable Cluster $($ClusterName)?"))
         {
-            $NodeName = $node.Name
-            
-            try 
+            foreach ($node in $ClusterNodes)
             {
-                Write-Information "Disabling IMDS Attestation on $NodeName"
+                $NodeName = $node.Name
                 
-                $percentComplete = $percentComplete + ($nodePercentChunk / 2)
-                $DisablingIMDSOnNode -f $NodeName | % {Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete;}
-
-                $SessionParams["ComputerName"] = $NodeName
-            
-                if ($NodeName -ieq [Environment]::MachineName)
+                try 
                 {
-                    $SessionParams.Remove("ComputerName")
-                }
-            
-                $attestationSwitchId = Invoke-Command @SessionParams -ScriptBlock { (Get-AzureStackHCIAttestation).AttestationSwitchId }
-                if ($attestationSwitchId -ne [Guid]::Empty -and $attestationSwitchId)
-                {
-                    Invoke-Command @SessionParams -ScriptBlock { param($switchId); Get-VMSwitch -SwitchId $switchId -ErrorAction SilentlyContinue | Remove-VMSwitch -Force -ErrorAction SilentlyContinue } -ArgumentList $attestationSwitchId
-                }
-
-
-                $percentComplete = $percentComplete + ($nodePercentChunk / 2)
-                $DisablingIMDSOnNode -f $NodeName | % {Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete; }
+                    Write-Information "Disabling IMDS Attestation on $NodeName"
+                    
+                    $percentComplete = $percentComplete + ($nodePercentChunk / 2)
+                    $DisablingIMDSOnNode -f $NodeName | % {Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete;}
+    
+                    $SessionParams["ComputerName"] = $NodeName
                 
-                Invoke-Command @SessionParams -ScriptBlock { param($switchId); Set-AzureStackHCIAttestation -SwitchId $switchId } -ArgumentList ([Guid]::Empty) | Out-Null
-
-                $nodeAttestation = [AzStackHCIImdsStatus] (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
-                $disableImdsOutputList.Add($nodeAttestation) | Out-Null
-
-            }
-            catch 
-            {
-                Write-Error -Exception $_.Exception -Category OperationStopped
-                $positionMessage = $_.InvocationInfo.PositionMessage
-                Write-Error ("Exception occurred in Enable-AzueStackHCIImdsAttestation : " + $positionMessage) -Category OperationStopped
-                Stop-Transcript | out-null
-                throw $_
+                    if ($NodeName -ieq [Environment]::MachineName)
+                    {
+                        $SessionParams.Remove("ComputerName")
+                    }
+                
+                    $attestationSwitchId = Invoke-Command @SessionParams -ScriptBlock { (Get-AzureStackHCIAttestation).AttestationSwitchId }
+                    if ($attestationSwitchId -ne [Guid]::Empty -and $attestationSwitchId)
+                    {
+                        Invoke-Command @SessionParams -ScriptBlock { param($switchId); Get-VMSwitch -SwitchId $switchId -ErrorAction SilentlyContinue | Remove-VMSwitch -Force -ErrorAction SilentlyContinue } -ArgumentList $attestationSwitchId
+                    }
+    
+    
+                    $percentComplete = $percentComplete + ($nodePercentChunk / 2)
+                    $DisablingIMDSOnNode -f $NodeName | % {Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete; }
+                    
+                    Invoke-Command @SessionParams -ScriptBlock { param($switchId); Set-AzureStackHCIAttestation -SwitchId $switchId } -ArgumentList ([Guid]::Empty) | Out-Null
+    
+                    $nodeAttestation = [AzStackHCIImdsStatus] (Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCIAttestation })
+                    $disableImdsOutputList.Add($nodeAttestation) | Out-Null
+    
+                }
+                catch 
+                {
+                    Write-Error -Exception $_.Exception -Category OperationStopped
+                    $positionMessage = $_.InvocationInfo.PositionMessage
+                    Write-Error ("Exception occurred in Enable-AzueStackHCIImdsAttestation : " + $positionMessage) -Category OperationStopped
+                    Stop-Transcript | out-null
+                    throw $_
+                }
             }
         }
 
@@ -4042,7 +4058,7 @@ param(
 
 <#
     .Description
-    Add-VMAzStackHCIAttestation configures guests for AzureStack HCI IMDS Attestation.
+    Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestation.
     
     .PARAMETER VMName
     Specifies an array of guest VMs to enable.
@@ -4053,6 +4069,9 @@ param(
     .PARAMETER AddAll
     Specifies a switch that will add all current guest VMs on host to IMDS Attestation on the current node.
 
+    .Parameter Force
+    No confirmations.
+
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
     Name:            Name of the VM.
@@ -4061,14 +4080,15 @@ param(
 
     .EXAMPLE
     Adding all guests on current node
-    C:\PS>Add-VMAzStackHCIAttestation -AddAll
+    C:\PS>Add-AzStackHCIVMAttestation -AddAll
 
     .EXAMPLE
     Invoking from the management node/WAC
-    C:\PS>Invoke-Command -ScriptBlock {Add-VMAzStackHCIAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
+    C:\PS>Invoke-Command -ScriptBlock {Add-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
 #>
-function Add-VMAzStackHCIAttestation{
+function Add-AzStackHCIVMAttestation{
     [CmdletBinding(DefaultParameterSetName="VMName", SupportsShouldProcess)]
+    [OutputType([PSCustomObject])]
 param(
     [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = "VMName")]
     [string[]] $VMName,
@@ -4151,7 +4171,7 @@ param(
         {
             Write-Error -Exception $_.Exception -Category OperationStopped
             $positionMessage = $_.InvocationInfo.PositionMessage
-            Write-Error ("Exception occurred in Add-VMAzStackHCIAttestation : " + $positionMessage) -Category OperationStopped
+            Write-Error ("Exception occurred in Add-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
             Stop-Transcript | out-null
             throw $_
         }
@@ -4211,7 +4231,7 @@ param(
         {
             Write-Error -Exception $_.Exception -Category OperationStopped
             $positionMessage = $_.InvocationInfo.PositionMessage
-            Write-Error ("Exception occurred in Add-VMAzStackHCIAttestation : " + $positionMessage) -Category OperationStopped
+            Write-Error ("Exception occurred in Add-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
             Stop-Transcript | out-null
             throw $_
         }
@@ -4225,7 +4245,7 @@ param(
 
 <#
     .Description
-    Remove-VMAzStackHCIAttestation removes guests from AzureStack HCI IMDS Attestation.
+    Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.
     
     .PARAMETER VMName
     Specifies an array of guest VMs to enable.
@@ -4236,6 +4256,9 @@ param(
     .PARAMETER RemoveAll
     Specifies a switch that will remove all guest VMs from Attestation on the current node
 
+    .PARAMETER Force
+    No confirmations.
+
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
     Name:            Name of the VM.
@@ -4244,14 +4267,15 @@ param(
 
     .EXAMPLE
     Removing all guests on current node
-    C:\PS>Remove-VMAzStackHCIAttestation -RemoveVM
+    C:\PS>Remove-AzStackHCIVMAttestation -RemoveVM
 
     .EXAMPLE
     Invoking from the management node/WAC
-    C:\PS>Invoke-Command -ScriptBlock {Remove-VMAzStackHCIAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
+    C:\PS>Invoke-Command -ScriptBlock {Remove-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
 #>
-function Remove-VMAzStackHCIAttestation{
+function Remove-AzStackHCIVMAttestation{
     [CmdletBinding(DefaultParameterSetName="VMName", SupportsShouldProcess)]
+    [OutputType([PSCustomObject])]
 param(
     [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = "VMName")]
     [string[]] $VMName,
@@ -4302,7 +4326,7 @@ param(
         {
             Write-Error -Exception $_.Exception -Category OperationStopped
             $positionMessage = $_.InvocationInfo.PositionMessage
-            Write-Error ("Exception occurred in Remove-VMAzStackHCIAttestation : " + $positionMessage) -Category OperationStopped
+            Write-Error ("Exception occurred in Remove-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
             Stop-Transcript | out-null
             throw $_
         }
@@ -4341,7 +4365,7 @@ param(
         {
             Write-Error -Exception $_.Exception -Category OperationStopped
             $positionMessage = $_.InvocationInfo.PositionMessage
-            Write-Error ("Exception occurred in Remove-VMAzStackHCIAttestation : " + $positionMessage) -Category OperationStopped
+            Write-Error ("Exception occurred in Remove-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
             Stop-Transcript | out-null
             throw $_
         }
@@ -4355,7 +4379,7 @@ param(
 
 <#
     .Description
-    Get-VMAzStackHCIAttestation shows a list of guests added to IMDS Attestation on a node.
+    Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
 
     .PARAMETER Local
     Only retrieve guests with Attestation from the node executing the cmdlet.
@@ -4368,18 +4392,15 @@ param(
 
     .EXAMPLE
     Get all guests on cluster.
-    C:\PS>Get-VMAzStackHCIAttestation
+    C:\PS>Get-AzStackHCIVMAttestation
 
     .EXAMPLE
     Get all guests on current node.
-    C:\PS>Get-VMAzStackHCIAttestation -Local
-
-    .EXAMPLE
-    Invoking from the management node/WAC.
-    C:\PS>Invoke-Command -ScriptBlock {Get-VMAzStackHCIAttestation} -ComputerName "node1"
+    C:\PS>Get-AzStackHCIVMAttestation -Local
 #>
-function Get-VMAzStackHCIAttestation {
+function Get-AzStackHCIVMAttestation {
     [CmdletBinding()]
+    [OutputType([PSCustomObject])]
 param(
     [Parameter(Mandatory = $false)]
     [switch] $Local
@@ -4399,7 +4420,7 @@ param(
         {
             Write-Error -Exception $_.Exception -Category OperationStopped
             $positionMessage = $_.InvocationInfo.PositionMessage
-            Write-Error ("Exception occurred in Get-VMAzStackHCIAttestation : " + $positionMessage) -Category OperationStopped
+            Write-Error ("Exception occurred in Get-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
             throw $_
         }
     }
@@ -4448,7 +4469,7 @@ param(
         {
             Write-Error -Exception $_.Exception -Category OperationStopped
             $positionMessage = $_.InvocationInfo.PositionMessage
-            Write-Error ("Exception occurred in Get-VMAzStackHCIAttestation : " + $positionMessage) -Category OperationStopped
+            Write-Error ("Exception occurred in Get-AzStackHCIVMAttestation : " + $positionMessage) -Category OperationStopped
             throw $_
         }
     }
@@ -4464,6 +4485,6 @@ Export-ModuleMember -Function Test-AzStackHCIConnection
 Export-ModuleMember -Function Set-AzStackHCI
 Export-ModuleMember -Function Enable-AzStackHCIAttestation
 Export-ModuleMember -Function Disable-AzStackHCIAttestation
-Export-ModuleMember -Function Add-VMAzStackHCIAttestation
-Export-ModuleMember -Function Remove-VMAzStackHCIAttestation
-Export-ModuleMember -Function Get-VMAzStackHCIAttestation
+Export-ModuleMember -Function Add-AzStackHCIVMAttestation
+Export-ModuleMember -Function Remove-AzStackHCIVMAttestation
+Export-ModuleMember -Function Get-AzStackHCIVMAttestation

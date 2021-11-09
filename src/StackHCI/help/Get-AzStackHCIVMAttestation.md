@@ -1,46 +1,37 @@
 ---
 external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/get-vmazstackhciattestation
+online version: https://docs.microsoft.com/powershell/module/az.stackhci/get-AzStackHCIVMAttestation
 schema: 2.0.0
 ---
 
-# Get-VMAzStackHCIAttestation
+# Get-AzStackHCIVMAttestation
 
 ## SYNOPSIS
-Get-VMAzStackHCIAttestation shows a list of guests added to IMDS Attestation on a node.
+Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
 
 ## SYNTAX
 
 ```
-Get-VMAzStackHCIAttestation [-Local] [<CommonParameters>]
+Get-AzStackHCIVMAttestation [-Local] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get-VMAzStackHCIAttestation shows a list of guests added to IMDS Attestation on a node.
+Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```powershell
-C:\PS\>Get-VMAzStackHCIAttestation
+C:\PS\>Get-AzStackHCIVMAttestation
 ```
 
 Get all guests on cluster.
 
 ### EXAMPLE 2
 ```powershell
-C:\PS\>Get-VMAzStackHCIAttestation -Local
+C:\PS\>Get-AzStackHCIVMAttestation -Local
 ```
-
-Get all guests on current node.
-
-### EXAMPLE 3
-```powershell
-C:\PS\>Invoke-Command -ScriptBlock {Get-VMAzStackHCIAttestation} -ComputerName "node1"
-```
-
-Invoking from the management node/WAC.
 
 ## PARAMETERS
 
@@ -48,7 +39,7 @@ Invoking from the management node/WAC.
 Only retrieve guests with Attestation from the node executing the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

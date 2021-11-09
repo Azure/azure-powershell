@@ -13,8 +13,8 @@ Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 ## SYNTAX
 
 ```
-Disable-AzStackHCIAttestation [[-ComputerName] <String>] [-Credential <PSCredential>] [-RemoveVM]
- [<CommonParameters>]
+Disable-AzStackHCIAttestation [[-ComputerName] <String>] [-Credential <PSCredential>] [-RemoveVM] [-Force]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 
 ### EXAMPLE 1
 ```powershell
-C:\PS\>Disable-AzStackHCIAttestation -Remove
+C:\PS\>Disable-AzStackHCIAttestation -RemoveVM
 ```
 
 Remove all guests from IMDS Attestation before disabling on cluster nodes.
@@ -40,7 +40,7 @@ C:\PS\>Disable-AzStackHCIAttestation -ComputerName "host1"
 Specifies the AzureStack HCI host to perform the operation on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -56,7 +56,7 @@ Specifies the credential for the ComputerName.
 Default is the current user executing the Cmdlet.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -67,12 +67,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RemoveVM
-Specifies the guests on each node should be removed from IMDS Attestation before disabling on cluster.
-Disable cannot continue before guests are removed.
+### -Force
+No confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -83,17 +82,63 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RemoveVM
+Specifies the guests on each node should be removed from IMDS Attestation before disabling on cluster.
+Disable cannot continue before guests are removed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
+
 ### PSCustomObject. Returns following Properties in PSCustomObject
 ### Cluster:     Name of cluster
 ### Node:        Name of the host.
 ### Attestation: IMDS Attestation status.
-
 ## NOTES
 
 ## RELATED LINKS

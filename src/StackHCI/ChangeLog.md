@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added Support for AzureStack HCI Attestation (Azure Benefits)
-    - New cmdlets: Enable-AzStackHCIAttestation, Disable-AzStackHCIAttestation, Add-VMAzStackHCIAttestation, Remove-VMAzStackHCIAttestation, Get-VMAzStackHCIAttestation
+    - New cmdlets: Enable-AzStackHCIAttestation, Disable-AzStackHCIAttestation, Add-AzStackHCIVMAttestation, Remove-AzStackHCIVMAttestation, Get-AzStackHCIVMAttestation
 * Added Support for Windows Server Subscription
     - New cmdlet: Set-AzStackHCI
 

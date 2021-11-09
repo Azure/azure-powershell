@@ -13,10 +13,10 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 ## SYNTAX
 
 ```
-Set-AzStackHCI [[-ComputerName] <String>] [[-Credential] <PSCredential>] [[-ResourceId] <String>]
- [[-EnableWSSubscription] <Boolean>] [[-DiagnosticLevel] <DiagnosticLevel>] [[-TenantId] <String>]
- [[-ArmAccessToken] <String>] [[-GraphAccessToken] <String>] [[-AccountId] <String>]
- [[-EnvironmentName] <String>] [-UseDeviceAuthentication] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzStackHCI [[-ComputerName] <String>] [-Credential <PSCredential>] [-ResourceId <String>]
+ [-EnableWSSubscription <Boolean>] [-DiagnosticLevel <DiagnosticLevel>] [-TenantId <String>]
+ [-ArmAccessToken <String>] [-GraphAccessToken <String>] [-AccountId <String>] [-EnvironmentName <String>]
+ [-UseDeviceAuthentication] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +28,7 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 ```powershell
 PS C:\\\> Set-AzStackHCI -EnableWSSubscription $true
 ```
+
 ```output
 Result: Success
 ```
@@ -38,6 +39,7 @@ Invoking on one of the cluster node to enable Windows Server Subscription featur
 ```powershell
 PS C:\\\> Set-AzStackHCI -ComputerName ClusterNode1 -DiagnosticLevel Basic
 ```
+
 ```output
 Result: Success
 ```
@@ -51,12 +53,12 @@ Specifies the ARM access token.
 Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -67,22 +69,22 @@ Specifies the ARM access token.
 Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ComputerName
-Specifies one of the cluster node in on-premise cluster that is being registered to Azure.
+Specifies one of the cluster node in on-premise cluster that is registered to Azure.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,12 +100,12 @@ Specifies the credential for the ComputerName.
 Default is the current user executing the Cmdlet.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -119,7 +121,7 @@ Aliases:
 Accepted values: Off, Basic, Enhanced
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -130,12 +132,12 @@ Specifies if Windows Server Subscription should be enabled or disabled.
 Enabling this feature starts billing through your Azure subscription for Windows Server guest licenses.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -147,12 +149,12 @@ Default is AzureCloud.
 Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: Named
 Default value: $AzureCloud
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -162,7 +164,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -178,12 +180,12 @@ Specifies the Graph access token.
 Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -193,12 +195,12 @@ Accept wildcard characters: False
 Specifies the fully qualified resource ID, including the subscription, as in the following example: \`/Subscriptions/\`subscription ID\`/providers/Microsoft.AzureStackHCI/clusters/MyCluster\`
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -208,12 +210,12 @@ Accept wildcard characters: False
 Specifies the Azure TenantId.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -223,7 +225,7 @@ Accept wildcard characters: False
 Use device code authentication instead of an interactive browser prompt.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +240,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -254,7 +256,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
