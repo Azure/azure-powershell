@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+## Version 2.6.2
 * Supported login hint
 * Added Environment auto completer to the following cmdlets: Connect-AzAccount, Get-AzEnvironment, Set-AzEnvironment, and Remove-AzEnvironment [#15991]
 
