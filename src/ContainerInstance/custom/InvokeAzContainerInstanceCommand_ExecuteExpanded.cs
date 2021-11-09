@@ -36,20 +36,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         {
             var containerExecResponse = response.ConfigureAwait(false).GetAwaiter().GetResult();
             socket = new System.Net.WebSockets.ClientWebSocket();
-            try
-            {
-                // Connect and send password
-                socket.ConnectAsync(new System.Uri(containerExecResponse.WebSocketUri), _cancellationTokenSource.Token).ConfigureAwait(false).GetAwaiter().GetResult();
-                socket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(containerExecResponse.Password)), WebSocketMessageType.Text, true, _cancellationTokenSource.Token).ConfigureAwait(false).GetAwaiter().GetResult();
+            // Connect and send password
+            socket.ConnectAsync(new System.Uri(containerExecResponse.WebSocketUri), _cancellationTokenSource.Token).ConfigureAwait(false).GetAwaiter().GetResult();
+            socket.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(containerExecResponse.Password)), WebSocketMessageType.Text, true, _cancellationTokenSource.Token).ConfigureAwait(false).GetAwaiter().GetResult();
 
-                var receiver = PullResponse();
-                var sender = PushCommand();
-                Task.WaitAll(sender, receiver);
-            }
-            finally
-            {
-                returnNow = global::System.Threading.Tasks.Task.FromResult(true);
-            }
+            var receiver = PullResponse();
+            var sender = PushCommand();
+            Task.WaitAll(sender, receiver);
+            returnNow = global::System.Threading.Tasks.Task.FromResult(true);
         }
 
         private Task PullResponse()
