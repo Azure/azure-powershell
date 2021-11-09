@@ -224,3 +224,31 @@ function Test-ResetAzureKubernetesServicePrincipal
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-UpgradeKubernetesVersion
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
+    $nodeVmSize = "Standard_D2_v2"
+    $kubeVersion = "1.21.2"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
+        
+        $credObject = $(createTestCredential "618a2a3a-9d44-415a-b0ce-9729253a4ba9" "4i67Q~wKNtuxRd0bdWEleI_2J.AwDFAHpMaKy")
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject -NodeVmSetType VirtualMachineScaleSets
+        #New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSetType VirtualMachineScaleSets
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -KubernetesVersion $kubeVersion -ControlPlaneOnly
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeImageOnly
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual $kubeVersion $cluster.KubernetesVersion
+        Assert-AreEqual $kubeVersion $cluster.AgentPoolProfiles[0].OrchestratorVersion
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

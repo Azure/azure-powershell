@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that `Set-AzAksCluster` can't upgrade cluster when node pool version doesn't match cluster version. [#14583]
+* Added `ResourceGroupName` in `PSKubernetesCluster`. [#15802]
 
 ## Version 2.5.0
 * Added support for new parameters `NetworkPolicy`, `PodCidr`, `ServiceCidr`, `DnsServiceIP`, `DockerBridgeCidr`, `NodePoolLabel`, `AksCustomHeader` in `New-AzAksCluster`. [#13795]
