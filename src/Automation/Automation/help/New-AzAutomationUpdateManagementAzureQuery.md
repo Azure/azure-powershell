@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAutomationUpdateManagementAzureQuery
 
 ## SYNOPSIS
-Creates azure automation software update configuration azure query object.
+Creates an Update Management Azure Query object.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzAutomationUpdateManagementAzureQuery -Scope <String[]> [-Location <String[
 ```
 
 ## DESCRIPTION
-Creates a software update configuration azure queries object that will be used to create a software update configuration which will runs on a schedule to update a list of dynamically resolved list of azure virtual machines.
+Creates an "Update Management Azure Query" object that will dynamically resolve a list of Azure virtual machines for use in scheduling software updates.
 
 ## EXAMPLES
 
