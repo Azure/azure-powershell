@@ -245,7 +245,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 {
                     var newOutputType = outputDictionary[oldOutput.Type.Name];
 
-                    _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
+                    _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, null);
                 }
                 // If the output cannot be found by name, check if the old output can be mapped
                 // to any of the new output types
