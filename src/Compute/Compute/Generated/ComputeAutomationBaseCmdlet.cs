@@ -234,6 +234,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommandsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMRunCommands;
+            }
+        }
+
         public IVirtualMachinesOperations VirtualMachinesClient
         {
             get
