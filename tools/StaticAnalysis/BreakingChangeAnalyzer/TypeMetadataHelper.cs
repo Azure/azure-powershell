@@ -101,6 +101,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         continue;
                     }
 
+                    oldPropertyType = oldTypeMetadata.GetClassNameWithoutApiVersion(oldPropertyType);
+                    newPropertyType = newTypeMetadata.GetClassNameWithoutApiVersion(newPropertyType);
                     // If the types are the same, compare their properties
                     if (oldPropertyType.Equals(newPropertyType, StringComparison.OrdinalIgnoreCase))
                     {
@@ -315,8 +317,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // Check if the type is an array
             if (oldTypeMetadata.ElementType != null && newTypeMetadata.ElementType != null)
             {
+                string oldTypeName = oldTypeMetadata.GetClassNameWithoutApiVersion(oldTypeMetadata.ElementType);
+                string newTypeName = newTypeMetadata.GetClassNameWithoutApiVersion(newTypeMetadata.ElementType);
+            
                 // Check if the element of the array is the same in the old and new metadata
-                if (oldTypeMetadata.ElementType.Equals(newTypeMetadata.ElementType, StringComparison.OrdinalIgnoreCase))
+                if (oldTypeName.Equals(newTypeName, StringComparison.OrdinalIgnoreCase))
                 {
                     // If we have not previously seen this element type,
                     // run this method on the type
