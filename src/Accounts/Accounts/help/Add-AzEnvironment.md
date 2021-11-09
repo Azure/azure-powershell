@@ -21,15 +21,15 @@ Add-AzEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-Servi
  [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
  [[-TrafficManagerDnsSuffix] <String>] [[-SqlDatabaseDnsSuffix] <String>]
  [[-AzureDataLakeStoreFileSystemEndpointSuffix] <String>]
- [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
- [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
- [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
- [[-AzureOperationalInsightsEndpoint] <String>] [-AzureAnalysisServicesEndpointSuffix <String>]
- [-AzureAnalysisServicesEndpointResourceId <String>] [-AzureAttestationServiceEndpointSuffix <String>]
- [-AzureAttestationServiceEndpointResourceId <String>] [-AzureSynapseAnalyticsEndpointSuffix <String>]
- [-ContainerRegistryEndpointSuffix <String>] [-AzureSynapseAnalyticsEndpointResourceId <String>]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [[-MicrosoftGraphEndpointResourceId] <String>]
+ [[-MicrosoftGraphUrl] <String>] [-EnableAdfsAuthentication] [[-AdTenant] <String>] [[-GraphAudience] <String>]
+ [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId] <String>]
+ [[-AzureOperationalInsightsEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpoint] <String>]
+ [-AzureAnalysisServicesEndpointSuffix <String>] [-AzureAnalysisServicesEndpointResourceId <String>]
+ [-AzureAttestationServiceEndpointSuffix <String>] [-AzureAttestationServiceEndpointResourceId <String>]
+ [-AzureSynapseAnalyticsEndpointSuffix <String>] [-ContainerRegistryEndpointSuffix <String>]
+ [-AzureSynapseAnalyticsEndpointResourceId <String>] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ARMEndpoint
@@ -545,6 +545,36 @@ Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MicrosoftGraphEndpointResourceId
+Microsoft Graph Endpoint Resource Id
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases:
+
+Required: False
+Position: 16
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MicrosoftGraphUrl
+Microsoft Graph Url
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases:
+
+Required: False
+Position: 17
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
