@@ -1688,6 +1688,153 @@
           }
         }
       }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolvers": {
+      "post": {
+        "tags": [
+          "ReverseResourceLookUp"
+        ],
+        "operationId": "DnsResolvers_ListDnsResolversByVirtualNetwork",
+        "description": "Lists DNS resolver resource IDs linked to a virtual network.",
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/VirtualNetworkNameParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/TopParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of DNS resolver resource IDs linked to the virtual network.",
+            "schema": {
+              "$ref": "#/definitions/SubResourceListResult"
+            }
+          },
+          "default": {
+            "description": "Default response. It will be deserialized as per the Error definition.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List DNS resolvers by virtual network": {
+            "$ref": "./examples/DnsResolver_ListByVirtualNetwork.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsForwardingRulesets": {
+      "post": {
+        "tags": [
+          "ReverseResourceLookUp"
+        ],
+        "operationId": "DnsForwardingRulesets_ListByVirtualNetwork",
+        "description": "Lists DNS forwarding ruleset resource IDs attached to a virtual network.",
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/VirtualNetworkNameParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/TopParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of DNS forwarding ruleset resource IDs and virtual network link resource IDs attached to the virtual network.",
+            "schema": {
+              "$ref": "#/definitions/VirtualNetworkDnsForwardingRulesetListResult"
+            }
+          },
+          "default": {
+            "description": "Default response. It will be deserialized as per the Error definition.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List DNS forwarding rulesets by virtual network": {
+            "$ref": "./examples/DnsForwardingRuleset_ListByVirtualNetwork.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}/listDnsForwardingRulesets": {
+      "post": {
+        "tags": [
+          "ReverseResourceLookUp"
+        ],
+        "operationId": "DnsForwardingRulesets_ListByOutboundEndpoint",
+        "description": "Lists DNS forwarding ruleset resource IDs attached to a outbound endpoint.",
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/DnsResolverNameParameter"
+          },
+          {
+            "$ref": "#/parameters/OutboundEndpointNameParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/TopParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of DNS forwarding ruleset resource IDs linked to the outbound.",
+            "schema": {
+              "$ref": "#/definitions/SubResourceListResult"
+            }
+          },
+          "default": {
+            "description": "Default response. It will be deserialized as per the Error definition.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List DNS forwarding rulesets by virtual network": {
+            "$ref": "./examples/DnsForwardingRuleset_ListByOutboundEndpoint.json"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -2302,7 +2449,8 @@
         "port": {
           "description": "DNS server port.",
           "type": "integer",
-          "format": "int64"
+          "format": "int32",
+          "default": 53
         }
       }
     },
@@ -2326,6 +2474,24 @@
       "type": "string",
       "description": "The Guid property of the resource."
     },
+    "SubResourceListResult": {
+      "description": "The response to an enumeration operation on sub-resources.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Enumeration of the sub-resources.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubResource"
+          }
+        },
+        "nextLink": {
+          "description": "The continuation token for the next page of results.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
     "SubResource": {
       "description": "Reference to another ARM resource.",
       "properties": {
@@ -2335,6 +2501,49 @@
         }
       },
       "x-ms-azure-resource": true
+    },
+    "VirtualNetworkDnsForwardingRulesetListResult": {
+      "description": "The response to an enumeration operation on Virtual Network DNS Forwarding Ruleset.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "Enumeration of the Virtual Network DNS Forwarding Ruleset.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VirtualNetworkDnsForwardingRuleset"
+          }
+        },
+        "nextLink": {
+          "description": "The continuation token for the next page of results.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "VirtualNetworkLinkSubResourceProperties": {
+      "description": "The reference to the virtual network link that associates between the DNS forwarding ruleset and virtual network.",
+      "type": "object",
+      "properties": {
+        "virtualNetworkLink": {
+          "description": "The reference to the virtual network link.",
+          "$ref": "#/definitions/SubResource"
+        }
+      }
+    },
+    "VirtualNetworkDnsForwardingRuleset": {
+      "description": "Reference to DNS forwarding ruleset and associated virtual network link.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "DNS Forwarding Ruleset Resource ID."
+        },
+        "properties": {
+          "description": "Properties of the virtual network link sub-resource reference.",
+          "$ref": "#/definitions/VirtualNetworkLinkSubResourceProperties",
+          "x-ms-client-flatten": true
+        }
+      }
     },
     "CloudError": {
       "description": "An error message",

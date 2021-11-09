@@ -1,0 +1,23 @@
+{
+    "location" : "East US 2",
+    "skuSize" : "Medium",
+    "skuName" : "Storage optimized",
+    "updatedSkuName" : "Compute optimized",
+    "capacity" : 2,
+    "defaultPrincipalsModificationKind": "Union",
+    "langExt1": "R",
+    "langExt2": "PYTHON",
+    "resourceType" : "Microsoft.Synapse/workspaces/kustoPools",
+    "databaseType": "Microsoft.Synapse/workspaces/kustoPools/Databases",
+    "iothubSharedAccessPolicyName": "registryRead",
+    "clusterPrincipalAssignmentResourceType": "Microsoft.Synapse/workspaces/kustoPools/principalAssignments",
+    "databasePrincipalAssignmentResourceType": "Microsoft.Synapse/workspaces/kustoPools/databases/principalAssignments",
+    "dataConnectionResourceType": "Microsoft.Synapse/workspaces/kustoPools/databases/dataConnections",
+    "principalAssignmentName": "KustoPoolScenarioTest",
+    "principalId": "f94e1c61-c7e1-43ef-9047-048c5086e3c9",
+    "principalType": "App",
+    "principalRole": "AllDatabasesViewer",
+    "databasePrincipalRole": "Viewer",
+    "principalAssignmentName1": "KustoPoolScenarioTest1",
+    "principalId1": "9c527a58-9c1d-4c4f-970f-61feb236b74a"
+  }

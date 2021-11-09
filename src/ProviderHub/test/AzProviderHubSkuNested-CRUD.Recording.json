@@ -1,0 +1,148 @@
+{
+  "AzProviderHubSkuNested-CRUD+[NoContext]+Create, get, and delete a nested sku resource type+$PUT+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType/skus/default?api-version=2020-11-20+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType/skus/default?api-version=2020-11-20",
+      "Content": "{\r\n  \"properties\": {\r\n    \"skuSettings\": [\r\n      {\r\n        \"name\": \"freeSku\",\r\n        \"tier\": \"Tier1\",\r\n        \"kind\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"freeSku2\",\r\n        \"tier\": \"Tier1\",\r\n        \"kind\": \"Standard\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "259" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "c0b8a0a2-7c10-4bd7-8b64-80a040f389ae" ],
+        "x-ms-correlation-request-id": [ "0b638ed1-60c9-4e90-8665-8086c6e85116" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210917T234846Z:0b638ed1-60c9-4e90-8665-8086c6e85116" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 23:48:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "211" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"skuSettings\":[{\"name\":\"freeSku\",\"tier\":\"Tier1\",\"kind\":\"Standard\"},{\"name\":\"freeSku2\",\"tier\":\"Tier1\",\"kind\":\"Standard\"}]},\"type\":\"Microsoft.ProviderHub/providerRegistrationsskus\",\"name\":\"default\"}"
+    }
+  },
+  "AzProviderHubSkuNested-CRUD+[NoContext]+Create, get, and delete a nested sku resource type+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType/skus?api-version=2020-11-20+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType/skus?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "f4b501c7-4f46-46f2-98d6-786377923e5c" ],
+        "CommandName": [ "Get-AzProviderHubSku" ],
+        "FullCommandName": [ "Get-AzProviderHubSku_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "244e3910-e00c-4602-85e3-d78856c3e9a0" ],
+        "x-ms-correlation-request-id": [ "c0e7ef61-da0d-4ea1-8396-3361af9eb442" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210917T234846Z:c0e7ef61-da0d-4ea1-8396-3361af9eb442" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 23:48:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "223" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"skuSettings\":[{\"name\":\"freeSku\",\"tier\":\"Tier1\",\"kind\":\"Standard\"},{\"name\":\"freeSku2\",\"tier\":\"Tier1\",\"kind\":\"Standard\"}]},\"type\":\"Microsoft.ProviderHub/providerRegistrationsskus\",\"name\":\"default\"}]}"
+    }
+  },
+  "AzProviderHubSkuNested-CRUD+[NoContext]+Create, get, and delete a nested sku resource type+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType/skus/default?api-version=2020-11-20+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType/skus/default?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "e3281da6-b17e-480a-90fb-3e7d0e566fd8" ],
+        "CommandName": [ "Get-AzProviderHubSku" ],
+        "FullCommandName": [ "Get-AzProviderHubSku_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "34f1813e-f3cc-491b-b1a1-284192c5a915" ],
+        "x-ms-correlation-request-id": [ "89b37d42-a7fe-41bd-9d5d-9fe6496b3d41" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210917T234847Z:89b37d42-a7fe-41bd-9d5d-9fe6496b3d41" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 23:48:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "211" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"skuSettings\":[{\"name\":\"freeSku\",\"tier\":\"Tier1\",\"kind\":\"Standard\"},{\"name\":\"freeSku2\",\"tier\":\"Tier1\",\"kind\":\"Standard\"}]},\"type\":\"Microsoft.ProviderHub/providerRegistrationsskus\",\"name\":\"default\"}"
+    }
+  },
+  "AzProviderHubSkuNested-CRUD+[NoContext]+Create, get, and delete a nested sku resource type+$DELETE+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType/skus/default?api-version=2020-11-20+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/resourcetypeRegistrations/employees%2Fresourcetyperegistrations%2FnestedResourceType/skus/default?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "eb6457dc-f2c7-4339-b306-8e9d77c2c1e8" ],
+        "CommandName": [ "Remove-AzProviderHubSku" ],
+        "FullCommandName": [ "Remove-AzProviderHubSku_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "e7033cfe-9110-4e60-935d-d09fe1767291" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210917T234847Z:e7033cfe-9110-4e60-935d-d09fe1767291" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Sep 2021 23:48:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}
