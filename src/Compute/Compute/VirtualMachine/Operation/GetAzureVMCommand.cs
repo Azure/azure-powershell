@@ -130,16 +130,6 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-            
-                if (this.UserData == true)
-                {
-                    //InstanceViewExpand = InstanceViewTypes.UserData;
-                }
-                else
-                {
-                   // InstanceViewExpand = InstanceViewTypes.InstanceView;
-                }
-                
                 if (this.ParameterSetName.Equals(ListLocationVirtualMachinesParamSet))
                 {   
                     ReturnListVMObject(

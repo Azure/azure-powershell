@@ -338,6 +338,23 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.UserData))
+            {
+                //adam testing
+                if (String.IsNullOrEmpty(this.UserData) ||
+                    this.UserData.Contains(" ") ||
+                    this.UserData.Length % 4 != 0 ||
+                    this.UserData.Contains("\t") ||
+                    this.UserData.Contains("\r") ||
+                    this.UserData.Contains("\n"))
+                {
+                    var bytesToEncode = System.Text.ASCIIEncoding.ASCII.GetBytes(this.UserData);
+                    this.UserData = System.Convert.ToBase64String(bytesToEncode);
+                    this.WriteInformation("The provided UserData parameter value was not base64 encoded. The cmdlet has automatically changed your value and base64 encoded it.", new string[] { "PSHOST" });
+                }
+                //adam
+            }
+
             switch (ParameterSetName)
             {
                 case SimpleParameterSet:
@@ -471,20 +488,6 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (_cmdlet.DiskFile == null)
                 {
-                    //adam testing
-                    if (String.IsNullOrEmpty(_cmdlet.UserData) ||
-                        _cmdlet.UserData.Contains(" ") ||
-                        _cmdlet.UserData.Length % 4 != 0 ||
-                        _cmdlet.UserData.Contains("\t") ||
-                        _cmdlet.UserData.Contains("\r") ||
-                        _cmdlet.UserData.Contains("\n"))
-                    {
-                        ValidateBase64EncodedParameter.Validate();
-                        var x = 1;
-                        x += 1;
-                    }
-                    //adam
-                
                     return resourceGroup.CreateVirtualMachineConfig(
                         name: _cmdlet.Name,
                         networkInterface: networkInterface,
