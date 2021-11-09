@@ -3276,6 +3276,27 @@ param(
 
             $TenantId = Azure-Login @azureLoginParameters
         }
+        else 
+        {
+            try
+            {
+                Import-Module -Name Az.Resources -ErrorAction Stop
+            }
+            catch
+            {
+                try
+                {
+                    Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+                }
+                catch
+                {
+                    Install-PackageProvider NuGet -Force | Out-Null
+                }
+
+                Install-Module -Name Az.Resources -Force -AllowClobber
+                Import-Module -Name Az.Resources
+            }    
+        }
 
         $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ErrorAction Stop
 
