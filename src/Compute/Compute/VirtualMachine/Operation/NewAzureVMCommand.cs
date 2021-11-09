@@ -340,19 +340,11 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (this.IsParameterBound(c => c.UserData))
             {
-                //adam testing
-                if (String.IsNullOrEmpty(this.UserData) ||
-                    this.UserData.Contains(" ") ||
-                    this.UserData.Length % 4 != 0 ||
-                    this.UserData.Contains("\t") ||
-                    this.UserData.Contains("\r") ||
-                    this.UserData.Contains("\n"))
+                if (!ValidateBase64EncodedString.validateStringIsBase64Encoded(this.UserData))
                 {
-                    var bytesToEncode = System.Text.ASCIIEncoding.ASCII.GetBytes(this.UserData);
-                    this.UserData = System.Convert.ToBase64String(bytesToEncode);
-                    this.WriteInformation("The provided UserData parameter value was not base64 encoded. The cmdlet has automatically changed your value and base64 encoded it.", new string[] { "PSHOST" });
+                    this.UserData = ValidateBase64EncodedString.encodeStringToBase64(this.UserData);
+                    this.WriteInformation("The provided UserData parameter value was not Base64 encoded. The cmdlet has automatically changed your value and Base64 encoded it. The new UserData value is " + this.UserData, new string[] { "PSHOST" });
                 }
-                //adam
             }
 
             switch (ParameterSetName)

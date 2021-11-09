@@ -40,6 +40,7 @@
     - `Update-AzVm`
     - `Update-AzVmss`
     - `Update-AzVmssVm`
+  When UserData is provided as a string to a cmdlet, the cmdlet will base64 encode the parameter if it is not already and inform the user of this new value.
 
 ## Version 4.17.1
 * Updated Compute .NET SDK package reference to version 49.1.0
