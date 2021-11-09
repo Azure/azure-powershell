@@ -237,8 +237,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             }
 
             // If the types are different, log an issue
-            string oldTypeName = oldTypeMetadata.GetClassNameWithoutApiVersion();
-            string newTypeName = newTypeMetadata.GetClassNameWithoutApiVersion();
+            string oldTypeName = oldTypeMetadata.GetClassNameWithoutApiVersion(oldTypeMetadata.Name);
+            string newTypeName = newTypeMetadata.GetClassNameWithoutApiVersion(newTypeMetadata.Name);
             if (!oldTypeName.Equals(newTypeName, StringComparison.OrdinalIgnoreCase))
             {
                 issueLogger?.LogBreakingChangeIssue(
@@ -433,8 +433,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
             // If the type of the generics are the same, return true
-            string oldTypeName = oldTypeMetadata.GetClassNameWithoutApiVersion();
-            string newTypeName = newTypeMetadata.GetClassNameWithoutApiVersion();
+            string oldTypeName = oldTypeMetadata.GetClassNameWithoutApiVersion(oldTypeMetadata.Name);
+            string newTypeName = newTypeMetadata.GetClassNameWithoutApiVersion(newTypeMetadata.Name);
             if (oldTypeName.Equals(newTypeName, StringComparison.OrdinalIgnoreCase))
             {
                 return true;
