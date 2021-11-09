@@ -45,6 +45,19 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  #  Kind 'basic' is not supported on the server.
+  - from: swagger-document
+    where: $.definitions.WebTestProperties.properties.Kind.enum
+    transform: >-
+      return [
+        "ping",
+        "multistep",
+        "standard"
+      ]
+  - from: swagger-document
+    where: $.definitions.WebTestProperties.properties.Kind.description
+    transform: return "The kind of web test this is, valid choices are ping, multistep, and standard."
+
   # microsoft.insights is the service response.
   - from: swagger-document
     where: $
@@ -57,7 +70,83 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
-  
+
+  # Hide the SyntheticMonitorId parameter because the default value is passed by the server.
+  - where:
+      verb: New
+      subject: WebTest
+      parameter-name: SyntheticMonitorId
+    hide: true
+
+  # Hide the Kind parameter because the WebKind override it.
+  - where:
+      verb: New
+      subject: WebTest
+      parameter-name: Kind
+    set:
+      parameter-name: HideKind
+  - where:
+      verb: New
+      subject: WebTest
+      parameter-name: HideKind
+    hide: true
+  # rename WebTestKind to Kind  
+  - where:
+      verb: New
+      subject: WebTest
+      parameter-name: WebTestKind
+    set:
+      parameter-name: Kind
+
+  # Rename parameters
+  - where:
+      verb: Get
+      subject: WebTest
+      parameter-name: ComponentName
+    set:
+      parameter-name: AppInsightsName
+
+  - where:
+      verb: New
+      subject: WebTest
+      parameter-name: PropertiesLocations
+    set:
+      parameter-name: GeoLocation
+
+  - where:
+      verb: New
+      subject: WebTest
+      parameter-name: PropertiesWebTestName
+    set:
+      parameter-name: TestName
+
+  - where:
+      verb: New
+      subject: WebTest
+      parameter-name: ConfigurationWebTest
+    set:
+      parameter-name: Configuration
+
+  - where:
+      verb: New
+      subject: WebTest
+      parameter-name: ContentValidationContentMatch
+    set:
+      parameter-name: ContentMatch
+
+  - where:
+      verb: New
+      subject: WebTest
+      parameter-name: (.*)Validation(.*)
+    set:
+      parameter-name: $1$2
+  - where:
+      verb: New
+      subject: WebTest
+      parameter-name: RequestParseDependentRequest
+    set:
+      parameter-name: RequestParseDependent
+
   - where:
       verb: Update
       subject: WebTestTag
@@ -65,7 +154,23 @@ directive:
     set:
       parameter-name: Name
 
+  # Hide command for custom command.
+  - where:
+      verb: New
+      subject: ^WebTest$
+    hide: true
+
   - model-cmdlet:
     - WebTestGeolocation
     - HeaderField
+  
+  # format output table
+  - where:
+      model-name: WebTest
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - WebTestKind
 ```

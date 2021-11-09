@@ -33,9 +33,9 @@ Creates or updates an Application Insights web test definition.
 ```powershell
 PS C:\> Update-AzApplicationInsightsWebTestTag -ResourceGroupName lucas-rg-test -Name webtest01-lucasappinsights -Tag @{"hidden-link:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/microsoft.insights/components/lucasappinsights" = "Resource"}
 
-Location Name                       Type                        Kind ResourceGroupName
--------- ----                       ----                        ---- -----------------
-westus2  webtest01-lucasappinsights microsoft.insights/webtests      lucas-rg-test
+Location Name                       WebTestKind   ResourceGroupName
+-------- ----                       -----------   -----------------
+westus2  webtest01-lucasappinsights standard      lucas-rg-test
 ```
 
 This command updates parameter tag of  the Application Insights web test.
@@ -44,9 +44,9 @@ This command updates parameter tag of  the Application Insights web test.
 ```powershell
 PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName lucas-rg-test -WebTestName webtest01-lucasappinsights | Update-AzApplicationInsightsWebTestTag -Tag @{"hidden-link:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/microsoft.insights/components/appinsightsportal01" = "Resource"}
 
-Location Name                       Type                        Kind ResourceGroupName
--------- ----                       ----                        ---- -----------------
-westus2  webtest01-lucasappinsights microsoft.insights/webtests      lucas-rg-test
+Location Name                       WebTestKind   ResourceGroupName
+-------- ----                       -----------   -----------------
+westus2  webtest01-lucasappinsights standard      lucas-rg-test
 ```
 
 This command updates parameter tag of the Application Insights web test by pipeline.
