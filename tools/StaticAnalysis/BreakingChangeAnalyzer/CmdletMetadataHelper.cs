@@ -251,7 +251,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // to any of the new output types
                 else
                 {
-                    var foundOutput = outputDictionary.Values.Any(o => _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, o, null));
+                    var foundOutput = outputDictionary.Values.Any(o => _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, o, issueLogger));
                     if (!foundOutput)
                     {
                         issueLogger?.LogBreakingChangeIssue(
