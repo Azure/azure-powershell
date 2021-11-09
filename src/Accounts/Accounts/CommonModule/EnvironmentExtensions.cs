@@ -58,6 +58,12 @@ namespace Microsoft.Azure.Commands.Common
                 return baseEndpoint.PatchHost(environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId]);
             }
 
+            if (environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl)
+                && baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl].IsMatch(baseEndpoint))
+            {
+                return baseEndpoint.PatchHost(environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl]);
+            }
+
             if (environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint) 
                 && baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint].IsMatch(baseEndpoint))
             {
