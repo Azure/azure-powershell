@@ -69,8 +69,15 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.1'; })
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Register-AzStackHCI', 'Unregister-AzStackHCI', 
-               'Test-AzStackHCIConnection'
+FunctionsToExport = 'Register-AzStackHCI', 
+                    'Unregister-AzStackHCI', 
+                    'Test-AzStackHCIConnection', 
+                    'Set-AzStackHCI',
+                    'Enable-AzStackHCIAttestation',
+                    'Disable-AzStackHCIAttestation',
+                    'Add-VMAzStackHCIAttestation',
+                    'Remove-VMAzStackHCIAttestation',
+                    'Get-VMAzStackHCIAttestation'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

@@ -21,3 +21,22 @@ Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premise cluster and unregisters the on-premise cluster with Azure.
 The registered information available on the cluster is used to unregister the cluster if no parameters are passed.
 
+### [Set-AzStackHCI](Set-AzStackHCI.md)
+Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster to enable or disable features.
+
+### [Enable-AzStackHCIAttestation](Enable-AzStackHCIAttestation.md)
+Enable-AzStackHCIAttestation configures the host and enables specified guests for IMDS attestation.
+
+### [Disable-AzStackHCIAttestation](Disable-AzStackHCIAttestation.md)
+Disable-AzStackHCIAttestation disables IMDS Attestation on the host
+
+### [Add-VMAzStackHCIAttestation](Add-VMAzStackHCIAttestation.md)
+Add-VMAzStackHCIAttestation configures guests for AzureStack HCI IMDS Attestation.
+
+### [Remove-VMAzStackHCIAttestation](Remove-VMAzStackHCIAttestation.md)
+Remove-VMAzStackHCIAttestation removes guests from AzureStack HCI IMDS Attestation.
+
+### [Get-VMAzStackHCIAttestation](Get-VMAzStackHCIAttestation.md)
+Get-VMAzStackHCIAttestation shows a list of guests added to IMDS Attestation on a node.
+
+
