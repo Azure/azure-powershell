@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         private const string Location = "Global";
 
         private const string ResourceId =
-            "/subscriptions/7de05d20-f39f-44d8-83ca-e7d2f12118b0/resourceGroups/testResourceGroup/providers/microsoft.insights/actionGroups/ActionGroupName";
+            "/subscriptions/7de05d20-f39f-44d8-83ca-e7d2f12118b0/resourceGroups/testResourceGroup/providers/Microsoft.Insights/actionGroups/ActionGroupName";
 
         private readonly SetAzureRmActionGroupCommand cmdlet;
         private readonly Mock<MonitorManagementClient> insightsManagementClientMock;

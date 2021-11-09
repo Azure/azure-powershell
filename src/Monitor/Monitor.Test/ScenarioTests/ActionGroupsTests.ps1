@@ -57,7 +57,7 @@ function Test-AddGetListSetRemoveActionGroup
 		Assert-AreEqual false $eventhub1.UseCommonAlertSchema
 		
 		Write-Verbose " ****** Creating a new event hub receiver with  UseCommonAlertSchema  explicitly set to true"
-		$eventhub2 = New-AzActionGroupReceiver -EventHubReceiver -Name 'eventhub2receiver' -SubscriptionId '5def922a-3ed4-49c1-b9fd-05ec533819a3' -EventHubNameSpace 'eventhubNameSpace2' -EventHubName 'testEventHubName2'
+		$eventhub2 = New-AzActionGroupReceiver -EventHubReceiver -Name 'eventhub2receiver' -SubscriptionId '5def922a-3ed4-49c1-b9fd-05ec533819a3' -EventHubNameSpace 'eventhubNameSpace2' -EventHubName 'testEventHubName2' -UseCommonAlertSchema
 		Assert-NotNull $eventhub2
 		Assert-AreEqual 'eventhub2receiver' $eventhub2.Name
 		Assert-AreEqual '5def922a-3ed4-49c1-b9fd-05ec533819a3' $eventhub2.SubscriptionId

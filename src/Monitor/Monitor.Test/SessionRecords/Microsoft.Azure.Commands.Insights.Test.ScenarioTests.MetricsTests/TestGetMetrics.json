@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/56bb45c9-5c14-4914-885e-c6fd6f130f7c/resourceGroups/reactdemo/providers/Microsoft.Web/sites/reactdemowebapi/providers/microsoft.insights/metrics?timespan=2018-03-23T22:00:00.0000000Z%2F2018-03-23T22:30:00.0000000Z&api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTZiYjQ1YzktNWMxNC00OTE0LTg4NWUtYzZmZDZmMTMwZjdjL3Jlc291cmNlR3JvdXBzL3JlYWN0ZGVtby9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9yZWFjdGRlbW93ZWJhcGkvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9tZXRyaWNzP3RpbWVzcGFuPTIwMTgtMDMtMjNUMjIlM0EwMCUzQTAwLjAwMDAwMDBaJTJGMjAxOC0wMy0yM1QyMiUzQTMwJTNBMDAuMDAwMDAwMFomYXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/56bb45c9-5c14-4914-885e-c6fd6f130f7c/resourceGroups/reactdemo/providers/Microsoft.Web/sites/reactdemowebapi/providers/Microsoft.Insights/metrics?timespan=2018-03-23T22:00:00.001Z/2018-03-23T22:30:00.001Z&api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTZiYjQ1YzktNWMxNC00OTE0LTg4NWUtYzZmZDZmMTMwZjdjL3Jlc291cmNlR3JvdXBzL3JlYWN0ZGVtby9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9yZWFjdGRlbW93ZWJhcGkvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9tZXRyaWNzP3RpbWVzcGFuPTIwMTgtMDMtMjNUMjI6MDA6MDAuMDAxWi8yMDE4LTAzLTIzVDIyOjMwOjAwLjAwMVomYXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -70,8 +70,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/56bb45c9-5c14-4914-885e-c6fd6f130f7c/resourceGroups/reactdemo/providers/Microsoft.Web/sites/reactdemowebapi/providers/microsoft.insights/metrics?timespan=2018-03-23T22:00:00.0000000Z%2F2018-03-23T22:30:00.0000000Z&interval=PT1M&metricnames=CpuTime%2CRequests&aggregation=Count&api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTZiYjQ1YzktNWMxNC00OTE0LTg4NWUtYzZmZDZmMTMwZjdjL3Jlc291cmNlR3JvdXBzL3JlYWN0ZGVtby9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9yZWFjdGRlbW93ZWJhcGkvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9tZXRyaWNzP3RpbWVzcGFuPTIwMTgtMDMtMjNUMjIlM0EwMCUzQTAwLjAwMDAwMDBaJTJGMjAxOC0wMy0yM1QyMiUzQTMwJTNBMDAuMDAwMDAwMFomaW50ZXJ2YWw9UFQxTSZtZXRyaWNuYW1lcz1DcHVUaW1lJTJDUmVxdWVzdHMmYWdncmVnYXRpb249Q291bnQmYXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/56bb45c9-5c14-4914-885e-c6fd6f130f7c/resourceGroups/reactdemo/providers/Microsoft.Web/sites/reactdemowebapi/providers/Microsoft.Insights/metrics?timespan=2018-03-23T22:00:00.0000000Z%2F2018-03-23T22:30:00.0000000Z&interval=PT1M&metricnames=CpuTime%2CRequests&aggregation=Count&api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTZiYjQ1YzktNWMxNC00OTE0LTg4NWUtYzZmZDZmMTMwZjdjL3Jlc291cmNlR3JvdXBzL3JlYWN0ZGVtby9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9yZWFjdGRlbW93ZWJhcGkvcHJvdmlkZXJzL01pY3Jvc29mdC5JbnNpZ2h0cy9tZXRyaWNzP3RpbWVzcGFuPTIwMTgtMDMtMjNUMjI6MDA6MDAuMDAwMDAwMFolMkYyMDE4LTAzLTIzVDIyOjMwOjAwLjAwMDAwMDBaJmludGVydmFsPVBUMU0mbWV0cmljbmFtZXM9Q3B1VGltZSUyQ1JlcXVlc3RzJmFnZ3JlZ2F0aW9uPUNvdW50JmFwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

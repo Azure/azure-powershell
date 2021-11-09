@@ -38,6 +38,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public string Type { get; set; }
 
         /// <summary>
+        /// Metric Unit
+        /// </summary>
+        public string Unit { get; set; }
+
+        /// <summary>
         /// Metric data
         /// </summary>
         public IList<MetricValue> Data { get; set; }
@@ -53,7 +58,8 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <param name="metric">The input Metric object</param>
         public PSMetric(Metric metric)
         {
-            this.Name = metric.Name;
+            this.Name = metric.Name; 
+            this.Unit = metric.Unit;
             this.Id = metric.Id;
             this.Type = metric.Type;
             this.Data = ((metric.Timeseries != null && metric.Timeseries.Count > 0 && metric.Timeseries[0].Data != null)? new PSMetricValuesCollection(metric.Timeseries[0].Data) : null);

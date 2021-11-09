@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
                 groupShortName: shortName,
 
                 id:
-                    $"/subscriptions/7de05d20-f39f-44d8-83ca-e7d2f12118b0/resourceGroups/testResourceGroup/providers/microsoft.insights/actionGroups/{name}",
+                    $"/subscriptions/7de05d20-f39f-44d8-83ca-e7d2f12118b0/resourceGroups/testResourceGroup/providers/Microsoft.Insights/actionGroups/{name}",
 
                 emailReceivers: new List<EmailReceiver>
                 {
