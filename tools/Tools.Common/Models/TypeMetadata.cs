@@ -217,7 +217,7 @@ namespace Tools.Common.Models
 
         public List<MethodSignature> Constructors { get { return _constructors; } }
 
-        private string GetClassNameWithoutApiVersion(string className)
+        public string GetClassNameWithoutApiVersion(string className)
         {
             var matcher = Regex.Match(className, @"Microsoft\.Azure\.PowerShell\.Cmdlets\.([\w\.]+)\.Api[\w\d]+\.([\w\.]+)");
             if (!matcher.Success || matcher.Groups.Count < 3)
