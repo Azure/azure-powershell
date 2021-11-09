@@ -394,19 +394,17 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The Scope of the role assignment.
-In the format of relative URI.
-For e.g.
-"/subscriptions/9004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/TestRG".
-If not specified, will create the role assignment at subscription level.
-If specified, it should start with "/subscriptions/{id}".
+The Scope of the role assignment in the format of relative URI.
+Examples: 
+- ResourceGroup level: "/subscriptions/{id}/resourceGroups/{rgName}"
+- Subscription level: "/subscriptions/{id}"
 
 ```yaml
 Type: System.String
 Parameter Sets: EmptyParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
