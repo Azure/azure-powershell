@@ -237,7 +237,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             }
 
             // If the types are different, log an issue
-            if (!oldTypeMetadata.Name.Equals(newTypeMetadata.Name, StringComparison.OrdinalIgnoreCase))
+            if (!oldTypeMetadata.Equals(newTypeMetadata))
             {
                 issueLogger?.LogBreakingChangeIssue(
                     cmdlet: cmdlet,
