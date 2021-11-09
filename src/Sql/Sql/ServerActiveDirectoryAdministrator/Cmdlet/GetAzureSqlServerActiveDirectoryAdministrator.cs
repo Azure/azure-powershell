@@ -13,15 +13,33 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryAdministrator",ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerActiveDirectoryAdministrator", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerActiveDirectoryAdministratorModel))]
     public class GetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
+        private void WriteTestToFile(object inpt)
+        {
+            StreamWriter file = new StreamWriter("C:/Users/jaredwelsh/jaredwelsh/WriteLines2.txt", append: true);
+
+            file.WriteLine("GET");
+            file.WriteLine(inpt.ToString());
+            file.WriteLine($"{ModelAdapter.Context.Account.Credential}");
+            file.WriteLine($"{ModelAdapter.Context.Account.Type}");
+            file.WriteLine($"{ModelAdapter.Context.Account}");
+            file.WriteLine($"{ModelAdapter.Context.Tenant}");
+            file.WriteLine($"{ModelAdapter.Context.Subscription}");
+            file.WriteLine($"{ModelAdapter.Context.Environment}");
+            file.WriteLine("****");
+            file.Close();
+        }
+
         /// <summary>
         /// Get the entities from the service
         /// </summary>
@@ -29,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         protected override IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel> GetEntity()
         {
             ICollection<AzureSqlServerActiveDirectoryAdministratorModel> results;
-
+            WriteTestToFile("1");
             results = ModelAdapter.ListServerActiveDirectoryAdministrators(this.ResourceGroupName, this.ServerName);
 
             return results;
@@ -42,6 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel> model)
         {
+            WriteTestToFile("2");
             return model;
         }
 
@@ -52,6 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel> PersistChanges(IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel> entity)
         {
+            WriteTestToFile("3");
             return entity;
         }
     }
