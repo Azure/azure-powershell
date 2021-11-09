@@ -15,42 +15,33 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsLifecycle.Register, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Metastore,
-        DefaultParameterSetName = RegisterByName, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Metastore,
+        DefaultParameterSetName = GetByName)]
     [OutputType(typeof(PSMetastore))]
-    public class RegisterAzureSynapseMetastore : SynapseArtifactsCmdletBase
+    public class GetAzureSynapseMetastore : SynapseArtifactsCmdletBase
     {
-        private const string RegisterByName = "RegisterByName";
-        private const string RegisterByObject = "RegisterByObject";
+        private const string GetByName = "GetByName";
+        private const string GetByObject = "GetByObject";
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RegisterByName,
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public override string WorkspaceName { get; set; }
 
-        [Parameter(ValueFromPipeline = true, ParameterSetName = RegisterByObject,
+        [Parameter(ValueFromPipeline = true, ParameterSetName = GetByObject,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.CreatedDatabaseName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.DatabaseName)]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.InputFolder)]
-        [ValidateNotNullOrEmpty]
-        public string InputFolder { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
-        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -59,10 +50,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.RegisteringSynapseMetastore, this.DatabaseName, this.WorkspaceName)))
-            {
-                WriteObject(new PSMetastore(SynapseAnalyticsClient.RegisterMetaStore(this.DatabaseName, this.InputFolder), this.WorkspaceName, this.DatabaseName));
-            }
+            WriteObject(new PSMetastore(SynapseAnalyticsClient.GetMetaStore(this.DatabaseName), this.WorkspaceName, this.DatabaseName));
         }
     }
 }

@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
 
             _context = context;
-            string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
+            //string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
+            string suffix = "dev.azuresynapse-dogfood.net";
             Uri uri = new Uri("https://" + workspaceName + "." + suffix);
             _endpoint = uri;
             _pipelineClient = new PipelineClient(uri, new AzureSessionCredential(context));
@@ -336,6 +337,11 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public MetastoreRegistrationResponse RegisterMetaStore(string databaseName, string inputFolder)
         {
             return _metastoreClient.Register(databaseName, new MetastoreRegisterObject(inputFolder));
+        }
+
+        public MetastoreRequestSuccessResponse GetMetaStore(string databaseName)
+        {
+            return _metastoreClient.GetDatabaseOperations(databaseName);
         }
 
         public MetastoreUpdationResponse UpdateMetaStore(string databaseName, string inputFolder)

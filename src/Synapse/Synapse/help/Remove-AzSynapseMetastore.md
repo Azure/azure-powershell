@@ -52,7 +52,7 @@ This command deletes files in the database named ContosoDatabase through pipelin
 
 ### Example 3
 ```powershell
-PS C:\> $metastore = Register-AzSynapseMetastore -WorkspaceName ContosoWorkspace -DatabaseName ContosoDatabase -InputFolder "https://testsymsstorage.dfs.core.windows.net/testsymscontainer/CDM/"
+PS C:\> $metastore = Get-AzSynapseMetastore -WorkspaceName ContosoWorkspace -DatabaseName ContosoDatabase
 PS C:\> $metastore | Remove-AzSynapseMetastore
 ```
 
@@ -64,7 +64,7 @@ This command deletes files in the database named ContosoDatabase through pipelin
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The name of the database to be deleted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByName, RemoveByObject
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 The dataset object.
 
 ```yaml
-Type: PSMetastore
+Type: Microsoft.Azure.Commands.Synapse.Models.PSMetastore
 Parameter Sets: RemoveByInputObject
 Aliases:
 
@@ -140,7 +140,7 @@ This Cmdlet does not return an object by default.
 If this switch is specified, it returns true if successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveByName
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: RemoveByObject
 Aliases:
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -201,7 +201,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -187,7 +187,7 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'Stop-AzSynapseTriggerRun', 
                'New-AzSynapseLinkedServiceEncryptedCredential',
                'Register-AzSynapseMetastore', 'Update-AzSynapseMetastore',
-               'Remove-AzSynapseMetastore'
+               'Remove-AzSynapseMetastore', 'Get-AzSynapseMetastore'
 
 # Variables to export from this module
 # VariablesToExport = @()

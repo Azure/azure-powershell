@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.Synapse
         public PSMetastore InputObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByName,
-            Mandatory = true, HelpMessage = HelpMessages.RemovedDatabaseName)]
+            Mandatory = true, HelpMessage = HelpMessages.DatabaseName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByObject,
-            Mandatory = true, HelpMessage = HelpMessages.RemovedDatabaseName)]
+            Mandatory = true, HelpMessage = HelpMessages.DatabaseName)]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 

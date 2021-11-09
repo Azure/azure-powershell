@@ -507,11 +507,9 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string PackageAction = "Package action must be specified when you add or remove a workspace package from a Apache Spark pool.";
 
-        public const string DatabaseName = "The name of the database to be created. The name can contain only alphanumeric characters and should not exceed 24 characters.";
+        public const string CreatedDatabaseName = "The name of the database to be created. The name can contain only alphanumeric characters and should not exceed 24 characters.";
 
-        public const string UpdatedDatabaseName = "The name of the database to be updated.";
-
-        public const string RemovedDatabaseName = "The name of the database to be deleted.";
+        public const string DatabaseName = "The name of the database.";
 
         public const string InputFolder = "The input folder containing CDM files.";
     }

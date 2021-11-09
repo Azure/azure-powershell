@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Synapse
         public PSMetastore InputObject { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = UpdateByName,
-            Mandatory = true, HelpMessage = HelpMessages.UpdatedDatabaseName)]
+            Mandatory = true, HelpMessage = HelpMessages.DatabaseName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = UpdateByObject,
-            Mandatory = true, HelpMessage = HelpMessages.UpdatedDatabaseName)]
+            Mandatory = true, HelpMessage = HelpMessages.DatabaseName)]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 

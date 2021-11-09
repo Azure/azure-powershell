@@ -20,19 +20,26 @@ namespace Microsoft.Azure.Commands.Synapse.Models
     {
         public PSMetastore(MetastoreRegistrationResponse response, string workspaceName, string databaseName)
         {
-            this.Status = response?.Status;
+            this.Status = response?.Status.ToString();
             this.WorkspaceName = workspaceName;
             this.DatabaseName = databaseName;
         }
 
         public PSMetastore(MetastoreUpdationResponse response, string workspaceName, string databaseName)
         {
-            this.Status = response?.Status;
+            this.Status = response?.Status.ToString();
             this.WorkspaceName = workspaceName;
             this.DatabaseName = databaseName;
         }
 
-        public RequestStatus? Status { get; }
+        public PSMetastore(MetastoreRequestSuccessResponse response, string workspaceName, string databaseName)
+        {
+            this.Status = response?.Status.ToString();
+            this.WorkspaceName = workspaceName;
+            this.DatabaseName = databaseName;
+        }
+
+        public string Status { get; }
 
         public string WorkspaceName { get; set; }
 

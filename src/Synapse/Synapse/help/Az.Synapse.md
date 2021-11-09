@@ -74,9 +74,6 @@ Gets Managed Identity Sql Control Settings.
 ### [Get-AzSynapseManagedPrivateEndpoint](Get-AzSynapseManagedPrivateEndpoint.md)
 Gets information about mananged private endpoints in a workspace
 
-### [Get-AzSynapseNotebook](Get-AzSynapseNotebook.md)
-Gets information about notebooks in a workspace.
-
 ### [Get-AzSynapsePipeline](Get-AzSynapsePipeline.md)
 Gets information about pipelines in workspace.
 
@@ -230,6 +227,9 @@ Creates a workspace key.
 ### [New-AzSynapseWorkspacePackage](New-AzSynapseWorkspacePackage.md)
 Uploads a local workspace package file to an Azure Synapse workspace.
 
+### [Register-AzSynapseMetastore](Register-AzSynapseMetastore.md)
+Registers files in Syms.
+
 ### [Remove-AzSynapseDataFlow](Remove-AzSynapseDataFlow.md)
 Removes a data flow from workspace.
 
@@ -250,6 +250,9 @@ Removes a linked service from workspace.
 
 ### [Remove-AzSynapseManagedPrivateEndpoint](Remove-AzSynapseManagedPrivateEndpoint.md)
 Removes a managed private endpoint from a workspace.
+
+### [Remove-AzSynapseMetastore](Remove-AzSynapseMetastore.md)
+Deletes files in Syms.
 
 ### [Remove-AzSynapseNotebook](Remove-AzSynapseNotebook.md)
 Removes a notebook from a workspace.
@@ -433,6 +436,9 @@ Updates self-hosted integration runtime node.
 
 ### [Update-AzSynapseManagedVirtualNetworkConfig](Update-AzSynapseManagedVirtualNetworkConfig.md)
 Updates managed virtual network configuration to workspace.
+
+### [Update-AzSynapseMetastore](Update-AzSynapseMetastore.md)
+Updates files in Syms.
 
 ### [Update-AzSynapseSparkPool](Update-AzSynapseSparkPool.md)
 Updates a Apache Spark pool in Azure Synapse Analytics.

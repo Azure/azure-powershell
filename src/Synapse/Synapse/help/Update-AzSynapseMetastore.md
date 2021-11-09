@@ -52,11 +52,11 @@ This command updates files in Syms using files under folder "https://testsymssto
 
 ### Example 3
 ```powershell
-PS C:\> $metastore = Register-AzSynapseMetastore -WorkspaceName ContosoWorkspace -DatabaseName ContosoDatabase -InputFolder "https://testsymsstorage.dfs.core.windows.net/testsymscontainer/CDM/"
-PS C:\> $metastore | Update-AzSynapseMetastore -InputFolder "https://testsymsstorage.dfs.core.windows.net/testsymscontainer/updatedCDM/"
+PS C:\> $metastore = Get-AzSynapseMetastore -WorkspaceName ContosoWorkspace -DatabaseName ContosoDatabase
+PS C:\> $metastore | Update-AzSynapseMetastore -InputFolder "https://testsymsstorage.dfs.core.windows.net/testsymscontainer/CDM/"
 ```
 
-This command updates files in Syms using files under folder "https://testsymsstorage.dfs.core.windows.net/testsymscontainer/updatedCDM/" in the database named ContosoDatabase through pipeline.
+This command updates files in Syms using files under folder "https://testsymsstorage.dfs.core.windows.net/testsymscontainer/CDM/" in the database named ContosoDatabase through pipeline.
 
 ## PARAMETERS
 
@@ -64,7 +64,7 @@ This command updates files in Syms using files under folder "https://testsymssto
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The name of the database to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByName, UpdateByObject
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The input folder containing CDM files.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 The dataset object.
 
 ```yaml
-Type: PSMetastore
+Type: Microsoft.Azure.Commands.Synapse.Models.PSMetastore
 Parameter Sets: UpdateByInputObject
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Name of Synapse workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateByName
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 workspace input object, usually passed through the pipeline.
 
 ```yaml
-Type: PSSynapseWorkspace
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 Parameter Sets: UpdateByObject
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +185,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
