@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Preparing".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Preparing", "Preparing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Preparing");
+                yield return new global::System.Management.Automation.CompletionResult("'Preparing'", "Preparing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Preparing");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ready".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ready", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
+                yield return new global::System.Management.Automation.CompletionResult("'Ready'", "Ready", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ready");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Scaling".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Scaling", "Scaling", global::System.Management.Automation.CompletionResultType.ParameterValue, "Scaling");
+                yield return new global::System.Management.Automation.CompletionResult("'Scaling'", "Scaling", global::System.Management.Automation.CompletionResultType.ParameterValue, "Scaling");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deleting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deleting", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
+                yield return new global::System.Management.Automation.CompletionResult("'Deleting'", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
             }
         }
     }

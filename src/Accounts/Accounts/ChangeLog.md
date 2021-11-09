@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+* Supported login hint
+* Added Environment auto completer to the following cmdlets: Connect-AzAccount, Get-AzEnvironment, Set-AzEnvironment, and Remove-AzEnvironment [#15991]
+
+## Version 2.6.1
+* Added new version of AAD service client using Microsoft Graph API
+
+## Version 2.6.0
 * Added `-FederatedToken` on `Connect-AzAccount`
 * Updated Azure.Core from 1.19.0 to 1.20.0.
 

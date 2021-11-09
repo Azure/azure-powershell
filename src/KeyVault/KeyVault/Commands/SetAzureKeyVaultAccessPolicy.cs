@@ -19,9 +19,11 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
+    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultAccessPolicy", SupportsShouldProcess = true, DefaultParameterSetName = ByUserPrincipalName)]
     [OutputType(typeof(PSKeyVault))]
     public class SetAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase

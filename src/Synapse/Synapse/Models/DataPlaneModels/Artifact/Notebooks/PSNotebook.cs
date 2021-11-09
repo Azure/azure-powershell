@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.BigDataPool = new PSBigDataPoolReference(notebook?.BigDataPool);
             this.SessionProperties = new PSNotebookSessionProperties(notebook?.SessionProperties);
             this.Metadata = new PSNotebookMetadata(notebook?.Metadata);
+            this.Folder = new PSNotebookFolder(notebook?.Folder);
             this.NotebookFormat = notebook?.Nbformat;
             this.NotebookFormatMinor = notebook?.NbformatMinor;
             this.Cells = notebook?.Cells?.Select(element => new PSNotebookCell(element)).ToList();
@@ -45,6 +46,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         [JsonProperty(PropertyName = "metadata")]
         public PSNotebookMetadata Metadata { get; set; }
+
+        [JsonIgnore]
+        public PSNotebookFolder Folder { get; set; }
 
         [DefaultValue(4)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate, PropertyName = "nbformat")]

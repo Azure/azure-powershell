@@ -83,7 +83,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.EventHub", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {

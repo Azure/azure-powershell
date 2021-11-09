@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Connect", AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
+    [Cmdlet("Connect", AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = UserParameterSet, SupportsShouldProcess=true)]
     [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-" + AzureRMConstants.AzureRMPrefix + "Account")]
     [OutputType(typeof(PSAzureProfile))]
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
         [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
+        [EnvironmentCompleter()]
         public string Environment { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
@@ -136,6 +137,8 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string KeyVaultAccessToken { get; set; }
 
+        [Parameter(ParameterSetName = UserParameterSet,
+            Mandatory = false, HelpMessage = "Account Id / User Id / User Name to login with")]
         [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = true, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
@@ -322,6 +325,13 @@ namespace Microsoft.Azure.Commands.Profile
 
             switch (ParameterSetName)
             {
+                case UserParameterSet:
+                    azureAccount.Type = AzureAccount.AccountType.User;
+                    if(!string.IsNullOrEmpty(AccountId))
+                    {
+                        azureAccount.SetProperty("LoginHint", AccountId);
+                    }
+                    break;
                 case AccessTokenParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.AccessToken;
                     azureAccount.Id = AccountId;

@@ -1,0 +1,27 @@
+name: ✒️ Document issue or question
+description: Report document related issue
+title: '[Doc]: '
+labels: [needs-triage]
+
+body:
+- type: markdown
+  attributes:
+    value: >
+      Thanks for reporting. Azure PowerShell document includes 3 categories.
+
+      - Conceptual doc about Azure PowerShell: https://docs.microsoft.com/en-us/powershell/azure 
+      
+      - Cmdlet reference doc: https://docs.microsoft.com/en-us/powershell/module
+      
+      - Engineering doc on Github repo: https://github.com/Azure/azure-powershell
+- type: textarea
+  attributes:
+    label: Description
+    description: >
+      Please describe issue or question about doc. The link of document is helpful for discussion.
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: >
+      The Azure PowerShell team is listening, please let us know how we are doing: https://aka.ms/azpssurvey?Q_CHL=REPO.

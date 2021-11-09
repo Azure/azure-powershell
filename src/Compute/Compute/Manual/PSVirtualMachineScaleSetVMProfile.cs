@@ -38,5 +38,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public ScheduledEventsProfile ScheduledEventsProfile { get; set; }
         public CapacityReservationProfile CapacityReservation { get; set; }
         public string UserData { get; set; }
+        public PSApplicationProfile ApplicationProfile { get; set; }
     }
 }

@@ -39,7 +39,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create();
             powershell.AddScript("Get-Command bicep");
             powershell.Invoke();
-            IsBicepExecutable = powershell.HadErrors ? false : true;
+            powershell.AddScript("$?");
+            var result = powershell.Invoke();
+            bool.TryParse(result[0].ToString(), out bool res);
+            // Cache result
+            IsBicepExecutable = res;
             return IsBicepExecutable;
         }
 
@@ -55,17 +59,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         public static string GetBicepVesion()
         {
-            System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create();
-            powershell.AddScript("bicep -v");
-            var result = powershell.Invoke()[0].ToString();
-            Regex pattern = new Regex("\\d+(\\.\\d+)+");
-            string bicepVersion = pattern.Match(result)?.Value;
-            return bicepVersion;
+            using(System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
+            {
+                powershell.AddScript("bicep -v");
+                var result = powershell.Invoke()[0].ToString();
+                Regex pattern = new Regex("\\d+(\\.\\d+)+");
+                string bicepVersion = pattern.Match(result)?.Value;
+                return bicepVersion;
+            }
         }
 
-        public delegate void OutputMethod(string msg);
+        public static int GetLastExitCode(System.Management.Automation.PowerShell powershell)
+        {
+            powershell.AddScript("$LASTEXITCODE");
+            var result = powershell.Invoke();
+            int.TryParse(result[0]?.ToString(), out int exitcode);
+            return exitcode;
+        }
 
-        public static string BuildFile(string bicepTemplateFilePath, OutputMethod outputMethod = null)
+        public delegate void VerboseOutputMethod(string msg);
+        public delegate void WarningOutputMethod(string msg);
+
+        public static string BuildFile(string bicepTemplateFilePath, VerboseOutputMethod writeVerbose = null, WarningOutputMethod writeWarning = null)
         {
             if (!IsBicepExecutable && !CheckBicepExecutable())
             {
@@ -79,30 +94,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
             if (FileUtilities.DataStore.FileExists(bicepTemplateFilePath))
             {
-                System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create();
-                powershell.AddScript($"bicep build '{bicepTemplateFilePath}' --outdir '{tempDirectory}'");
-                var result = powershell.Invoke();
-                if (outputMethod != null)
+                using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
                 {
-                    outputMethod(string.Format("Using Bicep v{0}", currentBicepVersion));
-                    result.ForEach(r => outputMethod(r.ToString()));
-                }
+                    powershell.AddScript($"bicep build '{bicepTemplateFilePath}' --outdir '{tempDirectory}'");
+                    var result = powershell.Invoke();
+                    
+                    if (writeVerbose != null)
+                    {
+                        writeVerbose(string.Format("Using Bicep v{0}", currentBicepVersion));
+                        result.ForEach(r => writeVerbose(r.ToString()));
+                    }
 
-                string errorMsg = string.Empty;
-                if (powershell.HadErrors)
-                {
-                    powershell.Streams.Error.ForEach(e => { errorMsg += (e + Environment.NewLine); });
-                    errorMsg = errorMsg.Substring(0, errorMsg.Length- Environment.NewLine.Length);
-                    outputMethod(errorMsg);
-                }
+                    // Bicep uses error stream to report warning message and error message, record it
+                    string warningOrErrorMsg = string.Empty;
+                    if (powershell.HadErrors)
+                    {
+                        powershell.Streams.Error.ForEach(e => { warningOrErrorMsg += (e + Environment.NewLine); });
+                        warningOrErrorMsg = warningOrErrorMsg.Substring(0, warningOrErrorMsg.Length - Environment.NewLine.Length);
+                    }
 
-                powershell.AddScript("$LASTEXITCODE");
-                result = powershell.Invoke();
-                int.TryParse(result.ToString(), out int exitcode);
-                
-                if (exitcode != 0)
-                {
-                    throw new AzPSApplicationException(errorMsg);
+                    if (0 == GetLastExitCode(powershell))
+                    {
+                        // print warning message
+                        if(writeWarning != null && !string.IsNullOrEmpty(warningOrErrorMsg))
+                        {
+                            writeWarning(warningOrErrorMsg);
+                        }                        
+                    }
+                    else
+                    {
+                        throw new AzPSApplicationException(warningOrErrorMsg);
+                    }
                 }
             }
             else
@@ -110,7 +132,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePath, "TemplateFile");
             }
 
-            return Path.Combine(tempDirectory, Path.GetFileName(bicepTemplateFilePath)).Replace(".bicep", ".json");
+            string buildResultPath = Path.Combine(tempDirectory, Path.GetFileName(bicepTemplateFilePath)).Replace(".bicep", ".json");
+            if (!FileUtilities.DataStore.FileExists(buildResultPath))
+            {
+                throw new AzPSApplicationException(string.Format(Properties.Resources.BuildBicepFileToJsonFailed, bicepTemplateFilePath));
+            }
+            return buildResultPath;
         }
     }
 }

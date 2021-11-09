@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.1.1
 * Updated Security .NET SDK package reference to version 3.0.0
 
 ## Version 1.0.0

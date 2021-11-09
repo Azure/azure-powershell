@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StandardDomainValidatedSsl".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StandardDomainValidatedSsl", "StandardDomainValidatedSsl", global::System.Management.Automation.CompletionResultType.ParameterValue, "StandardDomainValidatedSsl");
+                yield return new global::System.Management.Automation.CompletionResult("'StandardDomainValidatedSsl'", "StandardDomainValidatedSsl", global::System.Management.Automation.CompletionResultType.ParameterValue, "StandardDomainValidatedSsl");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StandardDomainValidatedWildCardSsl".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StandardDomainValidatedWildCardSsl", "StandardDomainValidatedWildCardSsl", global::System.Management.Automation.CompletionResultType.ParameterValue, "StandardDomainValidatedWildCardSsl");
+                yield return new global::System.Management.Automation.CompletionResult("'StandardDomainValidatedWildCardSsl'", "StandardDomainValidatedWildCardSsl", global::System.Management.Automation.CompletionResultType.ParameterValue, "StandardDomainValidatedWildCardSsl");
             }
         }
     }

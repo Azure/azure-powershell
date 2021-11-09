@@ -2876,6 +2876,49 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
 
 <#
 .SYNOPSIS
+Test Add and remove Vmss Run Command. 
+#>
+function Test-AddAndRemoveAzVmssRunCommand
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = "eastus";
+
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup variables
+        $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "dnl" + $rgname;
+        $username = "admin01"
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        # Create VMSS with minimal inputs to allow defaulting
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel
+        #$vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
+        
+        $runcmds = Add-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Location eastus -Name myruncommand -Script "Write-Host Hello World" -TimeOutInSeconds 3600 -RunAsUser "admin01" 
+        Assert-AreEqual $runcmds.RunAsUser "admin01";
+        Assert-AreEqual $runcmds.TimeOutInSeconds "3600";
+        Remove-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Name myruncommand
+
+    } 
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test the VMSS UserData feature in the Vmss and VmssVm resources.
 #>
 function Test-VirtualMachineScaleSetUserdata
@@ -2930,10 +2973,4 @@ function Test-VirtualMachineScaleSetUserdata
         Assert-AreEqual $vmssvm2.UserData $userData3;
 
     }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname;
-    }
 }
-

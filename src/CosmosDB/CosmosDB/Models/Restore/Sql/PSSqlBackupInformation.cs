@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Management.CosmosDB.Models;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.Restore.Sql
+namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.Restore
 {
     public class PSSqlBackupInformation
     {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.Restore.Sql
 
         //
         // Summary:
-        //     Gets sql container latest restorable timestamp.
+        //     Gets latest restorable timestamp.
         public string LatestRestorableTimestamp { get; set; }
     }
 }

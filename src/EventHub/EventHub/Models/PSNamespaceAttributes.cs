@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 ResourceGroupName = Regex.Split(evResource.Id, @"/")[4];
                 Identity = new PSIdentityAttributes(evResource.Identity);
                 ZoneRedundant = evResource.ZoneRedundant;
+                DisableLocalAuth = evResource.DisableLocalAuth;
                 ClusterArmId = evResource.ClusterArmId;
                 Encryption = new PSEncryptionAttributes(evResource.Encryption);
             }
@@ -154,5 +155,11 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public PSEncryptionAttributes Encryption { get; set; }
 
         public Dictionary<string, string> Tags = new Dictionary<string, string>();
+
+        /// <summary>
+        /// Gets or sets this property disables SAS authentication for the
+        /// Service Bus namespace.
+        /// </summary>
+        public bool? DisableLocalAuth { get; set; }
     }
 }

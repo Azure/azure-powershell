@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.5.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Network.dll'
@@ -104,6 +104,9 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Set-AzApplicationGatewayWebApplicationFirewallConfiguration', 
                'New-AzApplicationGatewayFirewallDisabledRuleGroupConfig', 
                'New-AzApplicationGatewayFirewallExclusionConfig', 
+               'New-AzApplicationGatewayFirewallPolicyExclusionManagedRule',
+               'New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup',
+               'New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet',
                'New-AzApplicationGatewayFirewallCondition', 
                'New-AzApplicationGatewayFirewallCustomRule', 
                'New-AzApplicationGatewayFirewallMatchVariable', 

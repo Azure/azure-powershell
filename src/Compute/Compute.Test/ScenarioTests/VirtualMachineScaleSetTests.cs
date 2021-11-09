@@ -223,6 +223,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzVmssRunCommand()
+        {
+            TestRunner.RunTestScript("Test-AddAndRemoveAzVmssRunCommand");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetUserdata()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetUserdata");

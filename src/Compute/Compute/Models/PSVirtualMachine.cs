@@ -22,6 +22,7 @@
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -135,5 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         
         // Gets or sets the UserData
         public string UserData { get; set; }
+        
+        public PSApplicationProfile ApplicationProfile { get; set; }
     }
 }

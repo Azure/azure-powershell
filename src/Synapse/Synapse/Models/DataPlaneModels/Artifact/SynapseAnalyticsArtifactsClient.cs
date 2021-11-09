@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly DataFlowDebugSessionClient _dataFlowDebugSessionClient;
         private readonly BigDataPoolsClient _bigDataPoolsClient;
         private readonly SparkJobDefinitionClient _sparkJobDefinitionClient;
+        private readonly SqlScriptClient _sqlScriptClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _dataFlowDebugSessionClient = new DataFlowDebugSessionClient(uri, new AzureSessionCredential(context));
             _bigDataPoolsClient = new BigDataPoolsClient(uri, new AzureSessionCredential(context));
             _sparkJobDefinitionClient = new SparkJobDefinitionClient(uri, new AzureSessionCredential(context));
+            _sqlScriptClient = new SqlScriptClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -337,10 +339,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #region Spark Job Definition
 
-        public SparkJobDefinitionResource CreateOrUpdateSparkJobDefinition(string SparkJobDefinitionName, string rawJsonContent)
+        public SparkJobDefinitionResource CreateOrUpdateSparkJobDefinition(string SparkJobDefinitionName, SparkJobDefinitionResource SparkJobDefinition)
         {
-            SparkJobDefinitionResource SparkJobDefinition = new SparkJobDefinitionResource(JsonConvert.DeserializeObject<SparkJobDefinition>(rawJsonContent));
-            return _sparkJobDefinitionClient.StartCreateOrUpdateSparkJobDefinition(SparkJobDefinitionName, SparkJobDefinition).Poll().Value;
+            var operation = _sparkJobDefinitionClient.StartCreateOrUpdateSparkJobDefinition(SparkJobDefinitionName, SparkJobDefinition);
+            return operation.Poll().Value;
         }
 
         public SparkJobDefinitionResource GetSparkJobDefinition(string SparkJobDefinitionName)
@@ -366,6 +368,28 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }).Poll();
         }
 
+        #endregion
+
+        #region SqlScript
+        public void DeleteSqlScript(string sqlscriptName)
+        {
+            _sqlScriptClient.StartDeleteSqlScript(sqlscriptName).Poll();
+        }
+
+        public SqlScriptResource GetSqlScript(string sqlscriptName)
+        {
+            return _sqlScriptClient.GetSqlScript(sqlscriptName);
+        }
+
+        public Pageable<SqlScriptResource> GetSqlScriptsByWorkspace()
+        {
+            return _sqlScriptClient.GetSqlScriptsByWorkspace();
+        }
+
+        public SqlScriptResource CreateOrUpdateSqlScript(string sqlScriptName, SqlScriptResource resource)
+        {
+            return _sqlScriptClient.StartCreateOrUpdateSqlScript(sqlScriptName, resource).Poll().Value;
+        }
         #endregion
 
         #region helpers

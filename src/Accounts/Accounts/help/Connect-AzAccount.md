@@ -14,10 +14,10 @@ Connect to Azure with an authenticated account for use with cmdlets from the Az 
 
 ### UserWithSubscriptionId (Default)
 ```
-Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-Subscription <String>] [-AuthScope <String>]
- [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-UseDeviceAuthentication]
- [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-AccountId <String>] [-Subscription <String>]
+ [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
+ [-UseDeviceAuthentication] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
@@ -108,12 +108,12 @@ Account                SubscriptionName TenantId                Environment
 azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
 
-### Example 2: (Windows PowerShell 5.1 only) Connect to Azure using organizational ID credentials
+### Example 2: Connect to Azure using organizational ID credentials
 
-This scenario works only in Windows PowerShell 5.1. The first command prompts for user credentials
-and stores them in the `$Credential` variable. The second command connects to an Azure account using
-the credentials stored in `$Credential`. This account authenticates with Azure using organizational
-ID credentials.
+This scenario works only when the user does not have multi-factor auth turned on. The first command
+prompts for user credentials and stores them in the `$Credential` variable. The second command
+connects to an Azure account using the credentials stored in `$Credential`. This account
+authenticates with Azure using organizational ID credentials.
 
 ```powershell
 $Credential = Get-Credential
@@ -128,15 +128,14 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 ### Example 3: Connect to Azure using a service principal account
 
-The first command prompts for service principal credentials and stores them in the `$Credential`
-variable. Enter your application ID for the username and service principal secret as the password
-when prompted. The second command connects the specified Azure tenant using the service principal
-credentials stored in the `$Credential` variable. The **ServicePrincipal** switch parameter
-indicates that the account authenticates as a service principal.
+The first command stores the service principal credentials in the `$Credential` variable. The second
+command connects the specified Azure tenant using the service principal credentials stored in the
+`$Credential` variable. The **ServicePrincipal** switch parameter indicates that the account
+authenticates as a service principal.
 
 ```powershell
-$Credential = Get-Credential
-Connect-AzAccount -Credential $Credential -Tenant 'xxxx-xxxx-xxxx-xxxx' -ServicePrincipal
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecuredPassword
+Connect-AzAccount -ServicePrincipal -TenantId $TenantId -Credential $Credential
 ```
 
 ```Output
@@ -276,16 +275,16 @@ Accept wildcard characters: False
 
 ### -AccountId
 
-Account ID for access token in **AccessToken** parameter set. Account ID for managed service in
+Account Id / User Id / User Name to login with in **Default (UserWithSubscriptionId)** parameter set; Account ID for access token in **AccessToken** parameter set; Account ID for managed service in
 **ManagedService** parameter set. Can be a managed service resource ID, or the associated client ID.
 To use the system assigned identity, leave this field blank.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccessTokenWithSubscriptionId
+Parameter Sets: UserWithSubscriptionId, ManagedServiceLogin
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -294,10 +293,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagedServiceLogin
+Parameter Sets: AccessTokenWithSubscriptionId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -191,6 +191,7 @@ namespace Microsoft.Azure.Commands.Compute
                         EvictionPolicy = this.VM.EvictionPolicy,
                         Priority = this.VM.Priority,
                         CapacityReservation = this.VM.CapacityReservation,
+                        ApplicationProfile = ComputeAutoMapperProfile.Mapper.Map<ApplicationProfile>(this.VM.ApplicationProfile),
                         UserData = this.IsParameterBound(c => c.UserData)
                             ? this.UserData
                             : this.VM.UserData
