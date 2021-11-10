@@ -94,6 +94,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
         public string EncryptionType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "")]
+        public bool? AcceleratedNetwork { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("SnapshotUpdate", "New"))
@@ -112,7 +125,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // Sku
             SnapshotSku vSku = null;
-            
+
+            // SupportedCapabilities
+            SupportedCapabilities vSupportedCapabilities = null;
+
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
                 if (vEncryptionSettingsCollection == null)
@@ -186,6 +202,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
+            if (this.IsParameterBound(c => c.AcceleratedNetwork))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.AcceleratedNetwork = AcceleratedNetwork;
+            }
+
             var vSnapshotUpdate = new PSSnapshotUpdate
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -194,7 +219,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Encryption = vEncryption,
                 Sku = vSku,
-                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null
+                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
+                SupportedCapabilities = vSupportedCapabilities,
+                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null
             };
 
             WriteObject(vSnapshotUpdate);

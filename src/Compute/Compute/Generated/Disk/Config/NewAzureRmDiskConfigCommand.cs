@@ -212,6 +212,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public bool? BurstingEnabled { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "")]
+        public bool? AcceleratedNetwork { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Disk", "New"))
@@ -236,6 +249,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtendedLocation
             ExtendedLocation vExtendedLocation = null;
+
+            // SupportedCapabilities
+            SupportedCapabilities vSupportedCapabilities = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -390,6 +406,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
             }
 
+            if (this.IsParameterBound(c => c.AcceleratedNetwork))
+            {
+                if (vSupportedCapabilities == null)
+                {
+                    vSupportedCapabilities = new SupportedCapabilities();
+                }
+                vSupportedCapabilities.AcceleratedNetwork = AcceleratedNetwork;
+            }
+
             var vDisk = new PSDisk
             {
                 Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
@@ -413,7 +438,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null,
                 BurstingEnabled = this.IsParameterBound(c => c.BurstingEnabled) ? this.BurstingEnabled : null,
                 PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? this.PurchasePlan : null,
-                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null
+                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
+                SupportedCapabilities = vSupportedCapabilities,
+                PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null
             };
 
             WriteObject(vDisk);
