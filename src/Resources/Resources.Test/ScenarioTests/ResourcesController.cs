@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
@@ -109,20 +110,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
-                //todo: fix build
-                // _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                // SetupManagementClients(context);
+                SetupManagementClients(context);
 
-                // var callingClassName = callingClassType
-                //                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                //                         .Last();
-                // _helper.SetupModules(AzureModule.AzureResourceManager,
-                //     "ScenarioTests\\Common.ps1",
-                //     "ScenarioTests\\" + callingClassName + ".ps1",
-                //     _helper.RMProfileModule,
-                //     _helper.RMResourceModule,
-                //     _helper.GetRMModulePath("AzureRM.Monitor.psd1"));
+                var callingClassName = callingClassType
+                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
+                                        .Last();
+                _helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    _helper.RMProfileModule,
+                    _helper.RMResourceModule,
+                    _helper.GetRMModulePath("AzureRM.Monitor.psd1"));
 
                 try
                 {
