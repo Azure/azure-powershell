@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzApplicationInsightsW
 }
 
 Describe 'Update-AzApplicationInsightsWebTestTag' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $webTest = Update-AzApplicationInsightsWebTestTag -ResourceGroup $env.resourceGroup -Name $env.standardWebTest01 -Tag @{"hidden-link:$($env.appInsights02Id)" = "Resource"}
+        $webTest.Tag.ContainsKey("hidden-link:$($env.appInsights02Id)") | Should -BeTrue
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $webTest = Get-AzApplicationInsightsWebTest -ResourceGroup $env.resourceGroup -Name $env.standardWebTest01 
+        $webTest = Update-AzApplicationInsightsWebTestTag -InputObject $webTest -Tag @{"hidden-link:$($env.appInsights01Id)" = "Resource"}
+        $webTest.Tag.ContainsKey("hidden-link:$($env.appInsights01Id)") | Should -BeTrue
     }
 }

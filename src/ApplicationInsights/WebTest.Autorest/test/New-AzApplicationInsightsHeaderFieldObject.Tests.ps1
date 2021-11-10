@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzApplicationInsightsHead
 }
 
 Describe 'New-AzApplicationInsightsHeaderFieldObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        { New-AzApplicationInsightsHeaderFieldObject -Name 'version' -Value '2.0.1' } | Should -Not -Throw
     }
 }

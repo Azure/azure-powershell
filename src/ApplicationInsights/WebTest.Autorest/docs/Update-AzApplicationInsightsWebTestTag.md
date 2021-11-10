@@ -29,27 +29,27 @@ Creates or updates an Application Insights web test definition.
 
 ## EXAMPLES
 
-### Example 1: Updates parameter tag of  the Application Insights web test
+### Example 1: Updates Application Insights link of the Web test
 ```powershell
-PS C:\> Update-AzApplicationInsightsWebTestTag -ResourceGroupName lucas-rg-test -Name webtest01-lucasappinsights -Tag @{"hidden-link:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/microsoft.insights/components/lucasappinsights" = "Resource"}
+PS C:\> Update-AzApplicationInsightsWebTestTag -ResourceGroupName azpwsh-rg-test -Name webtest01-lucasappinsights -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/lucasappinsights" = "Resource"}
 
 Location Name                       WebTestKind   ResourceGroupName
 -------- ----                       -----------   -----------------
-westus2  webtest01-lucasappinsights standard      lucas-rg-test
+westus2  webtest01-lucasappinsights standard      azpwsh-rg-test
 ```
 
-This command updates parameter tag of  the Application Insights web test.
+This command updates Application Insights link of the Web test.
 
-### Example 2: Updates parameter tag of  the Application Insights web test by pipeline
+### Example 2: Updates Application Insights link of the Web test by pipeline
 ```powershell
-PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName lucas-rg-test -WebTestName webtest01-lucasappinsights | Update-AzApplicationInsightsWebTestTag -Tag @{"hidden-link:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/microsoft.insights/components/appinsightsportal01" = "Resource"}
+PS C:\> Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -WebTestName webtest01-lucasappinsights | Update-AzApplicationInsightsWebTestTag -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsightsportal01" = "Resource"}
 
 Location Name                       WebTestKind   ResourceGroupName
 -------- ----                       -----------   -----------------
-westus2  webtest01-lucasappinsights standard      lucas-rg-test
+westus2  webtest01-lucasappinsights standard      azpwsh-rg-test
 ```
 
-This command updates parameter tag of the Application Insights web test by pipeline.
+This command updates Application Insights link of the Web test by pipeline.
 
 ## PARAMETERS
 

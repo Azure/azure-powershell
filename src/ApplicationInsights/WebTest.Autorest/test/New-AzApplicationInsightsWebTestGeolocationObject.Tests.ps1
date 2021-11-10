@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzApplicationInsightsWebT
 }
 
 Describe 'New-AzApplicationInsightsWebTestGeolocationObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        { New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr" } | Should -Not -Throw
     }
 }

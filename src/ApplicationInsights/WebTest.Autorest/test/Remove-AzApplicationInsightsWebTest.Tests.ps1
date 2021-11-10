@@ -16,10 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzApplicationInsightsW
 
 Describe 'Remove-AzApplicationInsightsWebTest' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        # Test script merged into New-AzApplicationInsightsWebTest
     }
 
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        # Test script merged into New-AzApplicationInsightsWebTest
     }
 }

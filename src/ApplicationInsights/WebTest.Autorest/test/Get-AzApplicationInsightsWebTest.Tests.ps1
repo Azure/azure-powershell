@@ -15,23 +15,30 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzApplicationInsightsWebT
 }
 
 Describe 'Get-AzApplicationInsightsWebTest' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $webTestList = Get-AzApplicationInsightsWebTest
+        $webTestList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $webTest = Get-AzApplicationInsightsWebTest -ResourceGroupName $env.resourceGroup -Name $env.standardWebTest01
+        $webTest.Name | Should -Be $env.standardWebTest01
     }
 
-    It 'List2' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List2' {
+        $webTestList = Get-AzApplicationInsightsWebTest -ResourceGroupName $env.resourceGroup
+        $webTestList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $webTest = Get-AzApplicationInsightsWebTest -ResourceGroupName $env.resourceGroup -AppInsightsName $env.appInsights01
+        $webTest.Name | Should -Be $env.standardWebTest01
+
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $webTest = Get-AzApplicationInsightsWebTest -ResourceGroupName $env.resourceGroup -Name $env.standardWebTest01
+        $webTest = Get-AzApplicationInsightsWebTest -InputObject $webTest
+        $webTest.Name | Should -Be $env.standardWebTest01
     }
 }

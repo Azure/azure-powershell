@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a in-memory object for HeaderField
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzApplicationInsightsHeaderFieldObject -Name 'version' -Value '2.0.1'
 
-{{ Add output here }}
+Name    Value
+----    -----
+version 2.0.1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a in-memory object for HeaderField,  As value of the `RequestHeader` parameter in `New-AzApplicationInsightsWebTest`.
 

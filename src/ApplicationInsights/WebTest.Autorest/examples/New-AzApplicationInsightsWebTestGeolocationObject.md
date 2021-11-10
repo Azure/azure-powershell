@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a in-memory object for WebTestGeolocation
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
 
-{{ Add output here }}
+Location
+--------
+emea-nl-ams-azr
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a memory object for WebTestGeolocation. As value of the `GeoLocation` parameter in `New-AzApplicationInsightsWebTest`.
 
