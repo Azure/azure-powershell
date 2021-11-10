@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -333,6 +334,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
                 var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
+
+                if (_cmdlet.IsParameterBound(c => c.UserData))
+                {
+                    if (!ValidateBase64EncodedString.validateStringIsBase64Encoded(_cmdlet.UserData))
+                    {
+                        _cmdlet.UserData = ValidateBase64EncodedString.encodeStringToBase64(_cmdlet.UserData);
+                        _cmdlet.WriteInformation("The provided UserData parameter value was not Base64 encoded. The cmdlet has automatically changed your value and Base64 encoded it. The new UserData value is " + _cmdlet.UserData, new string[] { "PSHOST" });
+                    }
+                }
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,

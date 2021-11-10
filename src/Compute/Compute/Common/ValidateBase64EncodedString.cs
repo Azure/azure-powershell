@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Commands.Compute.Common
                     encodedString.Contains("\n"))
             {
                 return false;
-                //this.WriteInformation("The provided UserData parameter value was not base64 encoded. The cmdlet has automatically changed your value and base64 encoded it. The new UserData value is " + this.UserData, new string[] { "PSHOST" });
             }
             else
             {

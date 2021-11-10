@@ -29,7 +29,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-//adam
 using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -45,14 +44,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         public override void ExecuteCmdlet()
         {
-            if (this.IsParameterBound(c => c.UserData))
-            {
-                if (!ValidateBase64EncodedString.validateStringIsBase64Encoded(this.UserData))
-                {
-                    this.UserData = ValidateBase64EncodedString.encodeStringToBase64(this.UserData);
-                    this.WriteInformation("The provided UserData parameter value was not Base64 encoded. The cmdlet has automatically changed your value and Base64 encoded it. The new UserData value is " + this.UserData, new string[] { "PSHOST" });
-                }
-            }
 
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
@@ -132,6 +123,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (this.IsParameterBound(c => c.UserData))
                     {
+                        if (!ValidateBase64EncodedString.validateStringIsBase64Encoded(this.UserData))
+                        {
+                            this.UserData = ValidateBase64EncodedString.encodeStringToBase64(this.UserData);
+                            this.WriteInformation("The provided UserData parameter value was not Base64 encoded. The cmdlet has automatically changed your value and Base64 encoded it. The new UserData value is " + this.UserData, new string[] { "PSHOST" });
+                        }
                         parameters.UserData = this.UserData;
                     }
 
