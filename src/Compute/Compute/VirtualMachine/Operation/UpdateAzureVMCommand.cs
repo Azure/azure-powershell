@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (!ValidateBase64EncodedString.validateStringIsBase64Encoded(this.UserData))
                 {
                     this.UserData = ValidateBase64EncodedString.encodeStringToBase64(this.UserData);
-                    this.WriteInformation("The provided UserData parameter value was not Base64 encoded. The cmdlet has automatically changed your value and Base64 encoded it. The new UserData value is " + this.UserData, new string[] { "PSHOST" });
+                    this.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification + this.UserData, new string[] { "PSHOST" });
                 }
             }
 

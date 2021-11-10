@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (!ValidateBase64EncodedString.validateStringIsBase64Encoded(_cmdlet.UserData))
                     {
                         _cmdlet.UserData = ValidateBase64EncodedString.encodeStringToBase64(_cmdlet.UserData);
-                        _cmdlet.WriteInformation("The provided UserData parameter value was not Base64 encoded. The cmdlet has automatically changed your value and Base64 encoded it. The new UserData value is " + _cmdlet.UserData, new string[] { "PSHOST" });
+                        _cmdlet.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification + _cmdlet.UserData, new string[] { "PSHOST" });
                     }
                 }
 
