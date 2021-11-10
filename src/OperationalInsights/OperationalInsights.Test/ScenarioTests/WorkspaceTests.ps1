@@ -25,11 +25,11 @@ function Test-WorkspaceCreateUpdateDelete
     New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create and get a workspace
-    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "STANDARD" -Tag @{"tag1" = "val1"} -Force
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Tag @{"tag1" = "val1"} -Force
     Assert-AreEqual $rgname $workspace.ResourceGroupName
     Assert-AreEqual $wsname $workspace.Name
     Assert-AreEqual $wslocation $workspace.Location
-    Assert-AreEqual "STANDARD" $workspace.Sku
+    Assert-AreEqual "pergb2018" $workspace.Sku
     # if no value for RetentionInDays is specified, use the default value for the sku. For standard, the default is 30.
     Assert-AreEqual 30 $workspace.RetentionInDays
     Assert-NotNull $workspace.ResourceId
@@ -45,7 +45,7 @@ function Test-WorkspaceCreateUpdateDelete
     Assert-AreEqual $rgname $workspace.ResourceGroupName
     Assert-AreEqual $wsname $workspace.Name
     Assert-AreEqual $wslocation $workspace.Location
-    Assert-AreEqual "STANDARD" $workspace.Sku
+    Assert-AreEqual "pergb2018" $workspace.Sku
     Assert-AreEqual 30 $workspace.RetentionInDays
     Assert-NotNull $workspace.ResourceId
     Assert-AreEqual 1 $workspace.Tags.Count
@@ -58,7 +58,7 @@ function Test-WorkspaceCreateUpdateDelete
 
     # Create a second workspace for list testing
     $wstwoname = Get-ResourceName
-    $workspacetwo = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wstwoname -Location $wslocation -Sku "PerNode" -RetentionInDays 60 -Force
+    $workspacetwo = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wstwoname -Location $wslocation -Sku "pergb2018" -RetentionInDays 60 -Force
 
     $workspacetwo = Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wstwoname
     Assert-AreEqual 60 $workspacetwo.RetentionInDays
@@ -150,7 +150,7 @@ function Test-WorkspaceActions
     #Assert-ThrowsContains { New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "STANDARD" -CustomerId ([guid]::NewGuid()) } "BadRequest"
 
     # Create a real workspace for use in the rest of the test
-    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "STANDARD" -Tag @{"tag1" = "val1"} -Force
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Tag @{"tag1" = "val1"} -Force
 
     # Get the shared keys (both param sets)
     $keys = Get-AzOperationalInsightsWorkspaceSharedKeys -ResourceGroupName $rgname -Name $wsname
@@ -200,11 +200,11 @@ function Test-WorkspaceEnableDisableListIntelligencePacks
 	New-AzResourceGroup -Name $rgname -Location $wslocation -Force
 
 	# Create and get a workspace
-    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "STANDARD" -Tag @{"tag1" = "val1"} -Force
+    $workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku "pergb2018" -Tag @{"tag1" = "val1"} -Force
     Assert-AreEqual $rgname $workspace.ResourceGroupName
     Assert-AreEqual $wsname $workspace.Name
     Assert-AreEqual $wslocation $workspace.Location
-    Assert-AreEqual "STANDARD" $workspace.Sku
+    Assert-AreEqual "pergb2018" $workspace.Sku
     Assert-NotNull $workspace.ResourceId
     Assert-AreEqual 1 $workspace.Tags.Count
     
