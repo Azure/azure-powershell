@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
 {
-    [Cmdlet(VerbsData.Publish, AzureRMConstants.AzureRMPrefix + "BicepModule", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet(VerbsData.Publish, AzureRMConstants.AzureRMPrefix + "BicepModule", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class PublishAzureBicepModuleCmdlet : AzureRMCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the bicep file to publish.")]
