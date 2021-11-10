@@ -42,11 +42,11 @@ using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [GenericBreakingChange(Constants.BreakingChangeMSGraphMigration)]
     public abstract class CreateOrUpdateKubeBase : KubeCmdletBase
     {
         protected const string DefaultParamSet = "defaultParameterSet";
         protected readonly Regex DnsRegex = new Regex("[^A-Za-z0-9-]");
+        private const string SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
 
         [Parameter(
             Position = 0,
@@ -226,6 +226,21 @@ namespace Microsoft.Azure.Commands.Aks
                     clientSecret = RandomBase64String(16);
                 }
 
+                bool supressWarningOrError = false;
+
+                try
+                {
+                    supressWarningOrError = bool.Parse(Environment.GetEnvironmentVariable(SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
+                }
+                catch (Exception)
+                {
+                    //no action
+                }
+                if (!supressWarningOrError)
+                {
+                    WriteVerbose(Constants.MSGraphMigrationMessage);
+                }
+
                 acsServicePrincipal = BuildServicePrincipal(Name, clientSecret);
                 WriteVerbose(Resources.CreatedANewServicePrincipalAndAssignedTheContributorRole);
                 StoreServicePrincipal(acsServicePrincipal);
@@ -271,7 +286,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
 
             AddSubscriptionRoleAssignment("Contributor", sp.Id);
-            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = app.AppId };
+            return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = sp.Id };
         }
 
         protected RoleAssignment GetRoleAssignmentWithRoleDefinitionId(string roleDefinitionId)
